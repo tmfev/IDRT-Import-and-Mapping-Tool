@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
+  <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\IDRT-NOPID.cfg.csv&quot;"/>
+  <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\IDRT-NOPID.csv&quot;"/>
+  <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
+  <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop/CSV/&quot;"/>
+  <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+  <contextParameter comment="&quot;Ordner mit CSV Dateien&quot;" name="folderCSV" prompt="folderCSV?" promptNeeded="true" type="id_Directory" value="C:/Desktop/CSV/CSV/"/>
+  <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+  <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="true" type="id_Character" value="&quot;"/>
+  <contextParameter comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
+  <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd-MM-yyyy&quot;"/>
+</talendfile:ContextType>

@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<icdo>
+	<class>
+		<code>T</code>
+		<label>Topographie</label>
+		<path>\i2b2\ST\ICD-O\T\</path>
+		<level>4</level>
+	</class>
+	<class>
+		<code>C00-C14</code>
+		<label>Lippe, Mundhöhle und Pharynx</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C00</code>
+		<label>Lippe</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C00\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C01</code>
+		<label>Zungengrund</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C01\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C02</code>
+		<label>Sonstige und nicht näher bezeichnete Teile der Zunge</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C02\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C03</code>
+		<label>Zahnfleisch</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C03\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C04</code>
+		<label>Mundboden</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C04\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C05</code>
+		<label>Gaumen</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C05\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C06</code>
+		<label>Sonstige und nicht näher bezeichnete Teile des Mundes</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C06\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C07</code>
+		<label>Parotis</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C07\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C08</code>
+		<label>Sonstige und nicht näher bezeichnete große Speicheldrüsen</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C08\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C09</code>
+		<label>Tonsille</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C09\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C10</code>
+		<label>Oropharynx</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C10\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C11</code>
+		<label>Nasopharynx [Nasenrachenraum]</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C11\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C12</code>
+		<label>Sinus piriformis</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C12\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C13</code>
+		<label>Hypopharynx</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C13\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C14</code>
+		<label>Sonstiger oder mangelhaft bezeichneter Sitz an Lippe, Mundhöhle und Pharynx</label>
+		<path>\i2b2\ST\ICD-O\T\C00-C14\C14\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C15-C26</code>
+		<label>Verdauungsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C15</code>
+		<label>Ösophagus</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C15\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C16</code>
+		<label>Magen</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C16\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C17</code>
+		<label>Dünndarm</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C17\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C18</code>
+		<label>Kolon</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C18\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C19</code>
+		<label>Rektosigmoidaler Übergang</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C19\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C20</code>
+		<label>Rektum</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C20\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C21</code>
+		<label>Analkanal und Anus</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C21\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C22</code>
+		<label>Leber und intrahepatische Gallengänge</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C22\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C23</code>
+		<label>Gallenblase</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C23\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C24</code>
+		<label>Sonstige und nicht näher bezeichnete Teile der Gallenwege</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C24\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C25</code>
+		<label>Pankreas</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C25\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C26</code>
+		<label>Sonstiger oder mangelhaft bezeichneter Sitz innerhalb der Verdauungsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C15-C26\C26\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C30-C39</code>
+		<label>Atemwege [Respirationstrakt] und intrathorakale Organe</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C30</code>
+		<label>Nasenhöhle und Mittelohr</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C30\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C31</code>
+		<label>Nasennebenhöhlen</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C31\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C32</code>
+		<label>Larynx</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C32\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C33</code>
+		<label>Trachea</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C33\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C34</code>
+		<label>Bronchus und Lunge</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C34\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C37</code>
+		<label>Thymus</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C37\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C38</code>
+		<label>Herz, Mediastinum und Pleura</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C38\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C39</code>
+		<label>Sonstiger oder mangelhaft bezeichneter Sitz innerhalb der Atemwege [Respirationstrakt] und intrathorakaler Organe</label>
+		<path>\i2b2\ST\ICD-O\T\C30-C39\C39\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C40-C41</code>
+		<label>Knochen, Gelenke und Gelenkknorpel</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C40</code>
+		<label>Knochen, Gelenke und Gelenkknorpel der Extremitäten</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C40\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C41</code>
+		<label>Knochen, Gelenke und Gelenkknorpel sonstiger und nicht näher bezeichneter Lokalisationen</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C41\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C42</code>
+		<label>Hämatopoetisches und retikuloendotheliales System</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C42\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C44</code>
+		<label>Haut</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C44\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C47</code>
+		<label>Periphere Nerven und autonomes Nervensystem</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C47\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C48</code>
+		<label>Retroperitoneum und Peritoneum</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C48\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C49</code>
+		<label>Bindegewebe, Subkutangewebe und sonstige Weichteile</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C49\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C50</code>
+		<label>Brust [Mamma]</label>
+		<path>\i2b2\ST\ICD-O\T\C40-C41\C50\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C51-C58</code>
+		<label>Weibliche Geschlechtsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C51</code>
+		<label>Vulva</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C51\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C52</code>
+		<label>Vagina</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C52\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C53</code>
+		<label>Cervix uteri</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C53\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C54</code>
+		<label>Corpus uteri</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C54\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C55</code>
+		<label>Uterus o.n.A.</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C55\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C56</code>
+		<label>Ovar</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C56\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C57</code>
+		<label>Sonstige und nicht näher bezeichnete Teile der weiblichen Geschlechtsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C57\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C58</code>
+		<label>Plazenta</label>
+		<path>\i2b2\ST\ICD-O\T\C51-C58\C58\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C60-C63</code>
+		<label>Männliche Geschlechtsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C60-C63\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C60</code>
+		<label>Penis</label>
+		<path>\i2b2\ST\ICD-O\T\C60-C63\C60\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C61</code>
+		<label>Prostata</label>
+		<path>\i2b2\ST\ICD-O\T\C60-C63\C61\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C62</code>
+		<label>Testis</label>
+		<path>\i2b2\ST\ICD-O\T\C60-C63\C62\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C63</code>
+		<label>Sonstige und nicht näher bezeichnete Teile der männlichen Geschlechtsorgane</label>
+		<path>\i2b2\ST\ICD-O\T\C60-C63\C63\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C64-C68</code>
+		<label>Harntrakt</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C64</code>
+		<label>Niere</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\C64\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C65</code>
+		<label>Nierenbecken</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\C65\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C66</code>
+		<label>Ureter</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\C66\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C67</code>
+		<label>Harnblase</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\C67\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C68</code>
+		<label>Sonstige und nicht näher bezeichnete Teile des Harntraktes</label>
+		<path>\i2b2\ST\ICD-O\T\C64-C68\C68\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C69-C72</code>
+		<label>Auge, Gehirn und sonstige Teile des Zentralnervensystems</label>
+		<path>\i2b2\ST\ICD-O\T\C69-C72\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C69</code>
+		<label>Auge und Augenanhangsgebilde</label>
+		<path>\i2b2\ST\ICD-O\T\C69-C72\C69\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C70</code>
+		<label>Meningen</label>
+		<path>\i2b2\ST\ICD-O\T\C69-C72\C70\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C71</code>
+		<label>Gehirn</label>
+		<path>\i2b2\ST\ICD-O\T\C69-C72\C71\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C72</code>
+		<label>Rückenmark, Hirnnerven und sonstige Teile des Zentralnervensystems</label>
+		<path>\i2b2\ST\ICD-O\T\C69-C72\C72\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C73-C75</code>
+		<label>Schilddrüse und sonstige endokrine Drüsen</label>
+		<path>\i2b2\ST\ICD-O\T\C73-C75\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C73</code>
+		<label>Schilddrüse</label>
+		<path>\i2b2\ST\ICD-O\T\C73-C75\C73\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C74</code>
+		<label>Nebenniere</label>
+		<path>\i2b2\ST\ICD-O\T\C73-C75\C74\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C75</code>
+		<label>Sonstige endokrine Drüsen und verwandte Strukturen</label>
+		<path>\i2b2\ST\ICD-O\T\C73-C75\C75\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C76-C80</code>
+		<label>Anderer oder mangelhaft bezeichneter Sitz</label>
+		<path>\i2b2\ST\ICD-O\T\C76-C80\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>C76</code>
+		<label>Sonstiger oder mangelhaft bezeichneter Sitz</label>
+		<path>\i2b2\ST\ICD-O\T\C76-C80\C76\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C77</code>
+		<label>Lymphknoten</label>
+		<path>\i2b2\ST\ICD-O\T\C76-C80\C77\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>C80</code>
+		<label>Unbekannte Primärlokalisation</label>
+		<path>\i2b2\ST\ICD-O\T\C76-C80\C80\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>M</code>
+		<label>Morphologie</label>
+		<path>\i2b2\ST\ICD-O\M\</path>
+		<level>4</level>
+	</class>
+	<class>
+		<code>800-800</code>
+		<label>Neoplasien o.n.A.</label>
+		<path>\i2b2\ST\ICD-O\M\800-800\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>801-804</code>
+		<label>Epitheliale Neoplasien o.n.A.</label>
+		<path>\i2b2\ST\ICD-O\M\801-804\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>805-808</code>
+		<label>Plattenepithelneoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\805-808\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>809-811</code>
+		<label>Basalzellneoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\809-811\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>812-813</code>
+		<label>Übergangszellpapillome und -karzinome</label>
+		<path>\i2b2\ST\ICD-O\M\812-813\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>814-838</code>
+		<label>Adenome und Adenokarzinome</label>
+		<path>\i2b2\ST\ICD-O\M\814-838\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>839-842</code>
+		<label>Neoplasien der Haut und der Hautanhangsgebilde</label>
+		<path>\i2b2\ST\ICD-O\M\839-842\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>843-843</code>
+		<label>Mukoepidermoide Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\843-843\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>844-849</code>
+		<label>Zystische, muzinöse und seröse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\844-849\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>850-854</code>
+		<label>Duktale und lobuläre Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\850-854\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>855-855</code>
+		<label>Azinuszellneoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\855-855\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>856-857</code>
+		<label>Komplexe epitheliale Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\856-857\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>858-858</code>
+		<label>Epitheliale Neoplasien des Thymus</label>
+		<path>\i2b2\ST\ICD-O\M\858-858\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>859-867</code>
+		<label>Spezielle Neoplasien der Gonaden</label>
+		<path>\i2b2\ST\ICD-O\M\859-867\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>868-871</code>
+		<label>Paragangliome und Stromatumoren</label>
+		<path>\i2b2\ST\ICD-O\M\868-871\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>872-879</code>
+		<label>Nävi und Melanome</label>
+		<path>\i2b2\ST\ICD-O\M\872-879\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>880-880</code>
+		<label>Weichteiltumoren und Sarkome o.n.A.</label>
+		<path>\i2b2\ST\ICD-O\M\880-880\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>881-883</code>
+		<label>Fibromatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\881-883\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>884-884</code>
+		<label>Myxomatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\884-884\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>885-888</code>
+		<label>Lipomatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\885-888\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>889-892</code>
+		<label>Myomatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\889-892\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>893-899</code>
+		<label>Komplexe Misch- und Stromaneoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\893-899\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>900-903</code>
+		<label>Fibroepitheliale Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\900-903\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>904-904</code>
+		<label>Synoviaähnliche Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\904-904\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>905-905</code>
+		<label>Mesotheliale Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\905-905\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>906-909</code>
+		<label>Neoplasien der Keimzellen</label>
+		<path>\i2b2\ST\ICD-O\M\906-909\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>910-910</code>
+		<label>Trophoblastische Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\910-910\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>911-911</code>
+		<label>Neoplasien des Mesonephros</label>
+		<path>\i2b2\ST\ICD-O\M\911-911\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>912-916</code>
+		<label>Neoplasien der Blutgefäße</label>
+		<path>\i2b2\ST\ICD-O\M\912-916\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>917-917</code>
+		<label>Neoplasien der Lymphgefäße</label>
+		<path>\i2b2\ST\ICD-O\M\917-917\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>918-924</code>
+		<label>Ossäre und chondromatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\918-924\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>925-925</code>
+		<label>Riesenzellneoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\925-925\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>926-926</code>
+		<label>Sonstige Neoplasien des KnochensC40.-C41.-</label>
+		<path>\i2b2\ST\ICD-O\M\926-926\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>927-934</code>
+		<label>Odontogene NeoplasienC41.-</label>
+		<path>\i2b2\ST\ICD-O\M\927-934\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>935-937</code>
+		<label>Sonstige Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\935-937\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>938-948</code>
+		<label>Neoplasien der Glia</label>
+		<path>\i2b2\ST\ICD-O\M\938-948\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>949-952</code>
+		<label>Neuroepitheliomatöse Neoplasien</label>
+		<path>\i2b2\ST\ICD-O\M\949-952\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>953-953</code>
+		<label>Neoplasien der MeningenC70.-</label>
+		<path>\i2b2\ST\ICD-O\M\953-953\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>954-957</code>
+		<label>Neoplasien der Nervenscheiden</label>
+		<path>\i2b2\ST\ICD-O\M\954-957\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>958-958</code>
+		<label>Neoplasien der Granularzellen und alveoläres Weichteilsarkom</label>
+		<path>\i2b2\ST\ICD-O\M\958-958\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>959-972</code>
+		<label>Hodgkin- und Non-Hodgkin-Lymphome</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>959-959</code>
+		<label>Maligne Lymphome, o.n.A. oder diffus</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\959-959\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>965-966</code>
+		<label>Hodgkin-Lymphome</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\965-966\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>967-972</code>
+		<label>Non-Hodgkin-Lymphome</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\967-972\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>967-969</code>
+		<label>Reifzellige B-Zell-Lymphome</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\967-972\967-969\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>970-971</code>
+		<label>Reifzellige T- und NK-Zell-Lymphome</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\967-972\970-971\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>972-972</code>
+		<label>Lymphoblastische Lymphome der Vorläuferzellen</label>
+		<path>\i2b2\ST\ICD-O\M\959-972\967-972\972-972\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>973-973</code>
+		<label>Neoplasien der Plasmazellen</label>
+		<path>\i2b2\ST\ICD-O\M\973-973\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>974-974</code>
+		<label>Neoplasien der Mastzellen</label>
+		<path>\i2b2\ST\ICD-O\M\974-974\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>975-975</code>
+		<label>Neoplasien der Histiozyten und akzessorischer lymphoider Zellen</label>
+		<path>\i2b2\ST\ICD-O\M\975-975\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>976-976</code>
+		<label>Immunoproliferative Krankheiten</label>
+		<path>\i2b2\ST\ICD-O\M\976-976\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>980-994</code>
+		<label>Leukämien</label>
+		<path>\i2b2\ST\ICD-O\M\980-994\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>980-980</code>
+		<label>Leukämien o.n.A.C42.1</label>
+		<path>\i2b2\ST\ICD-O\M\980-994\980-980\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>981-983</code>
+		<label>Lymphatische LeukämienC42.1</label>
+		<path>\i2b2\ST\ICD-O\M\980-994\981-983\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>984-993</code>
+		<label>Myeloische LeukämienC42.1</label>
+		<path>\i2b2\ST\ICD-O\M\980-994\984-993\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>994-994</code>
+		<label>Sonstige LeukämienC42.1</label>
+		<path>\i2b2\ST\ICD-O\M\980-994\994-994\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>995-996</code>
+		<label>Chronische myeloproliferative KrankheitenC42.1</label>
+		<path>\i2b2\ST\ICD-O\M\995-996\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>997-997</code>
+		<label>Sonstige myeloproliferative Krankheiten</label>
+		<path>\i2b2\ST\ICD-O\M\997-997\</path>
+		<level>5</level>
+	</class>
+	<class>
+		<code>998-998</code>
+		<label>Myelodysplastische SyndromeC42.1</label>
+		<path>\i2b2\ST\ICD-O\M\998-998\</path>
+		<level>5</level>
+	</class>
+</icdo>

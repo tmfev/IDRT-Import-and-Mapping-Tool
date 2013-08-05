@@ -1,0 +1,52 @@
+ENTLASSUNGSGRUND_ID;ENTLASSUNGSGRUND_NAME
+01;Behandlung regulär beendet
+02;Behandlung regulär beendet, nachstationäre Behandlung vorgesehen
+03;Behandlung aus sonstigen Gründen beendet
+04;Behandlung gegen ärztlichen Rat beendet
+05;Zuständigkeitswechsel des Kostenträgers (bei tagesbezogenen Entgelten)
+06;Verlegung in ein anderes Krankenhaus
+07;Tod
+08;Verlegung in ein anderes Krankenhaus im Rahmen einer Kooperation §14
+09;Entlassung in eine Rehabilitationseinrichtung
+10;Entlassung in eine Pflegeeinrichtung
+11;Entlassung in ein Hospiz
+12;Interne Verlegung
+13;Externe Verlegung zur psychiatrischen Behandlung
+14;Behandlung aus sonstigen Gründen beendet, nachstationäre Behandlung vorgesehen
+15;Behandlung gegen ärztlichen Rat beendet, nachstationäre Behandlung vorgesehen
+16;Externe Verlegung mit Rückverlegung oder Wechsel zwischen den Entgeltbereichen der DRG-Fallpauschalen, nach der BPflV oder für besondere Einrichtungen nach § 17b Abs. 1 Satz 15 KHG mit Rückverlegung
+17;Interne Verlegung mit Wechsel zwischen den Entgeltbereichen der DRG-Fallpauschalen, nach der BPflV oder für besondere Einrichtungen nach § 17b Abs. 1 Satz 15 KHG
+18;Rückverlegung
+19;Entlassung vor Wiederaufnahme mit Neueinstufung
+20;Entlassung vor Wiederaufnahme mit Neueinstufung wegen Komplikation
+21;Entlassung oder Verlegung mit nachfolgender Wiederaufnahme
+22;Fallabschluss (interne Verlegung) bei Wechsel zwischen voll- und teilstationärer Behandlung
+011;Arbeitsfähig entlassen
+012;Arbeitsunfähig entlassen
+021;Arbeitsfähig entlassen
+022;Arbeitsunfähig entlassen
+031;Arbeitsfähig entlassen
+032;Arbeitsunfähig entlassen
+041;Arbeitsfähig entlassen
+042;Arbeitsunfähig entlassen
+141;Arbeitsfähig entlassen
+142;Arbeitsunfähig entlassen
+151;Arbeitsfähig entlassen
+152;Arbeitsunfähig entlassen
+211;Arbeitsfähig entlassen
+212;Arbeitsunfähig entlassen
+059;Keine Angabe
+069;Keine Angabe
+079;Keine Angabe
+089;Keine Angabe
+099;Keine Angabe
+109;Keine Angabe
+119;Keine Angabe
+129;Keine Angabe
+139;Keine Angabe
+169;Keine Angabe
+179;Keine Angabe
+189;Keine Angabe
+199;Keine Angabe
+209;Keine Angabe
+229;Keine Angabe

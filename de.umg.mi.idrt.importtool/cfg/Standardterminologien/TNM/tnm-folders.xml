@@ -1,0 +1,26 @@
+<tnm>
+	<class>
+		<level>2</level>
+		<path>\i2b2\ST\TNM\Metastasis\</path>
+		<label>Fernmetastasen</label>
+		<code>M</code>
+	</class>
+	<class>
+		<level>2</level>
+		<path>\i2b2\ST\TNM\Nodes\</path>
+		<label>Regionären Lymphknotenmetastasen</label>
+		<code>N</code>
+	</class>
+	<class>
+		<level>2</level>
+		<path>\i2b2\ST\TNM\Stage\</path>
+		<label>Stadienbestimmung</label>
+		<code>STAGE</code>
+	</class>
+	<class>
+		<level>2</level>
+		<path>\i2b2\ST\TNM\Tumor\</path>
+		<label>Ausdehnung des Primärtumors</label>
+		<code>T</code>
+	</class>
+</tnm>

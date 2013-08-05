@@ -1,0 +1,4 @@
+Spaltenname (Pflicht);IK;KH_INTERNES_KENNZEICHEN;DRGCODE;MDC;PCCL;GST;RELGEW;ABSCHLAGGEW;ABSCHLAGTAGE;ABSCHLAGVERLGEW;ABSCHLAGVERLTAGE;ZUSCHLAGGEW;ZUSCHLAGTAGE;ZUSCHLAGKOOPBETRAG;EFFGEW;ENTGSTATUS;PATIENTSTATUS;VWDVERWENDET;FLAGVWD;FLAGALTER;FLAGGESCHLECHT;FLAGTAGESFALL;FLAGENTLGRUND;FLAGAUFNGEWICHT1;FLAGAUFNGEWICHT2;FLAGANZBEATMUNGSTD;FLAGEINWEISUNG;DRGVERSION;BASISRATE;ABTTYP
+Datentyp (Pflicht);Integer;Integer;String;String;Integer;Integer;Float;Float;Integer;Float;Integer;Float;Integer;Float;Float;Integer;Integer;Integer;Integer;Integer;Integer;Integer;Integer;Integer;Integer;Integer;Integer;String;Float;Integer
+Nicename (kann leer sein);;Fallnummer;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Metainformationen (mind. EncounterID);;EncounterID;;;;;;;;;;;;;;;;;;;;;;;;;;;;

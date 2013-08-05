@@ -1,0 +1,4 @@
+Spaltenname (Pflicht);IK;ENTLASSENDER_STANDORT;ENTGELTBEREICH;KH_INTERNES_KENNZEICHEN;FAB;FAB_AUFNAHMEDATUM;FAB_ENTLASSUNGSDATUM
+Datentyp (Pflicht);Integer;Integer;String;Integer;String;Date;Date
+Nicename (kann leer sein);;;;Fallnummer;Fachabteilung_ID;;
+Metainformationen (mind. EncounterID);;;;EncounterID;;;

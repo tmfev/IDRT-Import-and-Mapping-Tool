@@ -1,0 +1,122 @@
+<tnm>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Metastisis\M0\</path>
+		<label>Keine Anzeichen für Fernmetastasen</label>
+		<code>M0</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Metastisis\M1\</path>
+		<label>Fernmetastasen vorhanden</label>
+		<code>M1</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Metastisis\MX\</path>
+		<label>Keine Aussage über Fernmetastasen möglich</label>
+		<code>MX</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Nodes\N0\</path>
+		<label>Keine Anzeichen für Lymphknotenbefall</label>
+		<code>N0</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Nodes\N1\</path>
+		<label>Regionäre Lymphknotenmetastase</label>
+		<code>N1</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Nodes\N2\</path>
+		<label>Zunehmender Befall regionärer Lymphknoten</label>
+		<code>N2</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Nodes\N3\</path>
+		<label>Zunehmender Befall regionärer Lymphknoten</label>
+		<code>N3</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Nodes\NX\</path>
+		<label>Keine Aussagen über Lymphknotenbefall</label>
+		<code>NX</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Stage\0\</path>
+		<label>Carcinoma in situ</label>
+		<code>STAGE0</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Stage\I\</path>
+		<label>Krebs ist auf einen Teil des Körpers beschränkt</label>
+		<code>STAGEI</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Stage\II\</path>
+		<label>Fortgeschrittene Verbreitung</label>
+		<code>STAGEII</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Stage\III\</path>
+		<label>Fortgeschrittene Verbreitung</label>
+		<code>STAGEIII</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Stage\IV\</path>
+		<label>Metastasierung entfernter Lymphknoten oder Organe</label>
+		<code>STAGEIV</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\T0\</path>
+		<label>Keine Anzeichen eines Primärtumors</label>
+		<code>T0</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\T1\</path>
+		<label>Tumor geringer Ausdehnung</label>
+		<code>T1</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\T2\</path>
+		<label>Tumor mittlerer Ausdehnung</label>
+		<code>T2</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\T3\</path>
+		<label>Tumor großer Ausdehnung</label>
+		<code>T3</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\T4\</path>
+		<label>Tumor sehr großer Ausdehnung</label>
+		<code>T4</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\Tis\</path>
+		<label>Carcinoma in situ</label>
+		<code>Tis</code>
+	</class>
+	<class>
+		<level>3</level>
+		<path>\i2b2\ST\TNM\Tumor\TX\</path>
+		<label>Keine Aussage über den Primärtumor möglich</label>
+		<code>TX</code>
+	</class>
+</tnm>

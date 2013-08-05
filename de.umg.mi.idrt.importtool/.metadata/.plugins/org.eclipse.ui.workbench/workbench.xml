@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window height="772" width="645" x="2505" y="157">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar/>
+<coolbarLayout/>
+<page focus="true" label="&lt;Unknown Label&gt; - Perspective">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+</editorArea>
+</editors>
+<views>
+<view id="ImportIDRT.view" partName="IDRTImport">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="ImportIDRT.view" activePerspective="ImportIDRT.perspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="1" version="0.016">
+<descriptor class="de.goettingen.i2b2.importtool.importidrt.Perspective" id="ImportIDRT.perspective" label="Perspective"/>
+<view id="ImportIDRT.view"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="ImportIDRT.view" moveable="false" showTitle="true" standalone="true"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@29d65b">
+<folder activePageID="ImportIDRT.view" appearance="3" expanded="2">
+<page content="ImportIDRT.view" label="IDRTImport"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="282" ratioRight="94" relationship="2" relative="org.eclipse.ui.internal.ViewStack@29d65b">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.5" ratioLeft="188" ratioRight="188" relationship="2" relative="org.eclipse.ui.internal.ViewStack@29d65b"/>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout/>
+</window>
+<mruList/>
+</workbench>

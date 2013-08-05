@@ -1,0 +1,269 @@
+KATALOGVERSION_ID	MDC_NAME	MDC_CODE
+2003	Krankheiten und Störungen des Nervensystems	1
+2003	Krankheiten und Störungen des Auges	2
+2003	Krankheiten und Störungen im HNO-Bereich	3
+2003	Krankheiten und Störungen der Atmungsorgane	4
+2003	Krankheiten und Störungen des Kreislaufsystems	5
+2003	Krankheiten und Störungen der Verdauungsorgane	6
+2003	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2003	Krankheiten und Störungen am Muskel-Skelett-System und Bindegewebe	8
+2003	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2003	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2003	Krankheiten und Störungen der Harnorgane	11
+2003	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2003	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2003	Schwangerschaft, Geburt und Wochenbett	14
+2003	Neugeborene	15
+2003	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2003	Hämatologische und solide Neubildungen	17
+2003	Infektiöse und parasitäre Krankheiten	18
+2003	Psychische Krankheiten und Störungen	19
+2003	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2003	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21
+2003	Verbrennungen	22
+2003	Faktoren die den Gesundheitszustand beeinflussen und andere Inanspruchnahmen des Gesundheitswesens	23
+2003	Fehler-DRG	FE
+2003	Prä-MDC	PR
+2004	Krankheiten und Störungen des Nervensystems	1
+2004	Krankheiten und Störungen des Auges	2
+2004	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2004	Krankheiten und Störungen der Atmungsorgane	4
+2004	Krankheiten und Störungen des Kreislaufsystems	5
+2004	Krankheiten und Störungen der Verdauungsorgane	6
+2004	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2004	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2004	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2004	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2004	Krankheiten und Störungen der Harnorgane	11
+2004	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2004	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2004	Schwangerschaft, Geburt und Wochenbett	14
+2004	Neugeborene	15
+2004	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2004	Hämatologische und solide Neubildungen	17
+2004	Psychische Krankheiten	19
+2004	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2004	Verbrennungen	22
+2004	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2004	HIV	18A
+2004	Infektiöse und parasitäre Erkrankungen	18B
+2004	Polytrauma	21A
+2004	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2004	Fehler-DRG	FE
+2004	Prä-MDC	PR
+2005	Krankheiten und Störungen des Nervensystems	1
+2005	Krankheiten und Störungen des Auges	2
+2005	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2005	Krankheiten und Störungen der Atmungsorgane	4
+2005	Krankheiten und Störungen des Kreislaufsystems	5
+2005	Krankheiten und Störungen der Verdauungsorgane	6
+2005	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2005	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2005	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2005	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2005	Krankheiten und Störungen der Harnorgane	11
+2005	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2005	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2005	Schwangerschaft, Geburt und Wochenbett	14
+2005	Neugeborene	15
+2005	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2005	Hämatologische und solide Neubildungen	17
+2005	Psychische Krankheiten und Störungen	19
+2005	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2005	Verbrennungen	22
+2005	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2005	HIV	18A
+2005	Infektiöse und parasitäre Erkrankungen	18B
+2005	Polytrauma	21A
+2005	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2005	Fehler-DRG	FE
+2005	Prä-MDC	PR
+2006	Krankheiten und Störungen des Nervensystems	1
+2006	Krankheiten und Störungen des Auges	2
+2006	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2006	Krankheiten und Störungen der Atmungsorgane	4
+2006	Krankheiten und Störungen des Kreislaufsystems	5
+2006	Krankheiten und Störungen der Verdauungsorgane	6
+2006	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2006	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2006	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2006	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2006	Krankheiten und Störungen der Harnorgane	11
+2006	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2006	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2006	Schwangerschaft, Geburt und Wochenbett	14
+2006	Neugeborene	15
+2006	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2006	Hämatologische und solide Neubildungen	17
+2006	Psychische Krankheiten und Störungen	19
+2006	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2006	Verbrennungen	22
+2006	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2006	HIV	18A
+2006	Infektiöse und parasitäre Krankheiten	18B
+2006	Polytrauma	21A
+2006	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2006	Fehler-DRGs und sonstige DRGs	FE
+2006	Prä-MDC	PR
+2007	Krankheiten und Störungen des Nervensystems	1
+2007	Krankheiten und Störungen des Auges	2
+2007	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2007	Krankheiten und Störungen der Atmungsorgane	4
+2007	Krankheiten und Störungen des Kreislaufsystems	5
+2007	Krankheiten und Störungen der Verdauungsorgane	6
+2007	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2007	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2007	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2007	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2007	Krankheiten und Störungen der Harnorgane	11
+2007	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2007	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2007	Schwangerschaft, Geburt und Wochenbett	14
+2007	Neugeborene	15
+2007	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2007	Hämatologische und solide Neubildungen	17
+2007	Psychische Krankheiten und Störungen	19
+2007	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2007	Verbrennungen	22
+2007	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2007	HIV	18A
+2007	Infektiöse und parasitäre Krankheiten	18B
+2007	Polytrauma	21A
+2007	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2007	Fehler-DRGs und sonstige DRGs	FE
+2007	Prä-MDC	PR
+2008	Krankheiten und Störungen des Nervensystems	1
+2008	Krankheiten und Störungen des Auges	2
+2008	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2008	Krankheiten und Störungen der Atmungsorgane	4
+2008	Krankheiten und Störungen des Kreislaufsystems	5
+2008	Krankheiten und Störungen der Verdauungsorgane	6
+2008	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2008	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2008	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2008	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2008	Krankheiten und Störungen der Harnorgane	11
+2008	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2008	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2008	Schwangerschaft, Geburt und Wochenbett	14
+2008	Neugeborene	15
+2008	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2008	Hämatologische und solide Neubildungen	17
+2008	Psychische Krankheiten und Störungen	19
+2008	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2008	Verbrennungen	22
+2008	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2008	HIV	18A
+2008	Infektiöse und parasitäre Krankheiten	18B
+2008	Polytrauma	21A
+2008	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2008	Fehler-DRGs und sonstige DRGs	FE
+2008	Prä-MDC	PR
+2009	Krankheiten und Störungen des Nervensystems	1
+2009	Krankheiten und Störungen des Auges	2
+2009	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2009	Krankheiten und Störungen der Atmungsorgane	4
+2009	Krankheiten und Störungen des Kreislaufsystems	5
+2009	Krankheiten und Störungen der Verdauungsorgane	6
+2009	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2009	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2009	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2009	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2009	Krankheiten und Störungen der Harnorgane	11
+2009	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2009	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2009	Schwangerschaft, Geburt und Wochenbett	14
+2009	Neugeborene	15
+2009	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2009	Hämatologische und solide Neubildungen	17
+2009	Psychische Krankheiten und Störungen	19
+2009	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2009	Verbrennungen	22
+2009	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2009	HIV	18A
+2009	Infektiöse und parasitäre Krankheiten	18B
+2009	Polytrauma	21A
+2009	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2009	Fehler-DRGs und sonstige DRGs	FE
+2009	Prä-MDC	PR
+2010	Krankheiten und Störungen des Nervensystems	1
+2010	Krankheiten und Störungen des Auges	2
+2010	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2010	Krankheiten und Störungen der Atmungsorgane	4
+2010	Krankheiten und Störungen des Kreislaufsystems	5
+2010	Krankheiten und Störungen der Verdauungsorgane	6
+2010	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2010	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2010	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2010	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2010	Krankheiten und Störungen der Harnorgane	11
+2010	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2010	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2010	Schwangerschaft, Geburt und Wochenbett	14
+2010	Neugeborene	15
+2010	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2010	Hämatologische und solide Neubildungen	17
+2010	Psychische Krankheiten und Störungen	19
+2010	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2010	Verbrennungen	22
+2010	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2010	HIV	18A
+2010	Infektiöse und parasitäre Krankheiten	18B
+2010	Polytrauma	21A
+2010	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2010	Fehler-DRGs und sonstige DRGs	FE
+2010	Prä-MDC	PR
+2011	Krankheiten und Störungen des Nervensystems	1
+2011	Krankheiten und Störungen des Auges	2
+2011	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2011	Krankheiten und Störungen der Atmungsorgane	4
+2011	Krankheiten und Störungen des Kreislaufsystems	5
+2011	Krankheiten und Störungen der Verdauungsorgane	6
+2011	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2011	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2011	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2011	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2011	Krankheiten und Störungen der Harnorgane	11
+2011	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2011	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2011	Schwangerschaft, Geburt und Wochenbett	14
+2011	Neugeborene	15
+2011	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2011	Hämatologische und solide Neubildungen	17
+2011	Psychische Krankheiten und Störungen	19
+2011	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2011	Verbrennungen	22
+2011	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2011	HIV	18A
+2011	Infektiöse und parasitäre Krankheiten	18B
+2011	Polytrauma	21A
+2011	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2011	Fehler-DRGs und sonstige DRGs	FE
+2011	Prä-MDC	PR
+2012	Krankheiten und Störungen des Nervensystems	1
+2012	Krankheiten und Störungen des Auges	2
+2012	Krankheiten und Störungen des Ohres, der Nase, des Mundes und des Halses	3
+2012	Krankheiten und Störungen der Atmungsorgane	4
+2012	Krankheiten und Störungen des Kreislaufsystems	5
+2012	Krankheiten und Störungen der Verdauungsorgane	6
+2012	Krankheiten und Störungen an hepatobiliärem System und Pankreas	7
+2012	Krankheiten und Störungen an Muskel-Skelett-System und Bindegewebe	8
+2012	Krankheiten und Störungen an Haut, Unterhaut und Mamma	9
+2012	Endokrine, Ernährungs- und Stoffwechselkrankheiten	10
+2012	Krankheiten und Störungen der Harnorgane	11
+2012	Krankheiten und Störungen der männlichen Geschlechtsorgane	12
+2012	Krankheiten und Störungen der weiblichen Geschlechtsorgane	13
+2012	Schwangerschaft, Geburt und Wochenbett	14
+2012	Neugeborene	15
+2012	Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems	16
+2012	Hämatologische und solide Neubildungen	17
+2012	Psychische Krankheiten und Störungen	19
+2012	Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische Störungen	20
+2012	Verbrennungen	22
+2012	Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens	23
+2012	HIV	18A
+2012	Infektiöse und parasitäre Krankheiten	18B
+2012	Polytrauma	21A
+2012	Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten	21B
+2012	Fehler-DRGs und sonstige DRGs	FE
+2012	Prä-MDC	PR

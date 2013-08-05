@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/ojdbc5-11g.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/systemRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/talend-db-oracle-timestamptz.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/userRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/xdb.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/xmlparserv2.jar"/>
+	<classpathentry kind="lib" path="lib/cdatetime-0.14.0.jar"/>
+	<classpathentry kind="lib" path="lib/classpath.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6-11g.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
+	<classpathentry kind="lib" path="lib/swingextensions-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/systemRoutines.jar"/>
+	<classpathentry kind="lib" path="lib/talendcsv.jar"/>
+	<classpathentry kind="lib" path="lib/tosidrtconnector_0_4.jar"/>
+	<classpathentry kind="lib" path="lib/xdb.jar"/>
+	<classpathentry kind="lib" path="lib/xmlparserv2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/cwt-0.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/datechooser-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/forms-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/gallery-0.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/grid-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc5-11g.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/OpenCSV.jar"/>
+	<classpathentry kind="lib" path="lib/pgroup-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
+	<classpathentry kind="lib" path="lib/swt_win64.jar"/>
+	<classpathentry kind="lib" path="lib/swt-grouplayout.jar"/>
+	<classpathentry kind="lib" path="lib/talend_file_enhanced_20070724.jar"/>
+	<classpathentry kind="lib" path="lib/talend-oracle-timestamptz.jar"/>
+	<classpathentry kind="lib" path="lib/tns.jar"/>
+	<classpathentry kind="lib" path="lib/userRoutines.jar"/>
+	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
+	<classpathentry kind="lib" path="lib"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

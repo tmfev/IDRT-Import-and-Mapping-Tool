@@ -1,0 +1,3 @@
+instructions.configure=\
+  addRepository(type:0,location:http${#58}//i2b2.mi.med.uni-goettingen.de/iitupdateSite/);\
+  addRepository(type:1,location:http${#58}//i2b2.mi.med.uni-goettingen.de/iitupdateSite/);

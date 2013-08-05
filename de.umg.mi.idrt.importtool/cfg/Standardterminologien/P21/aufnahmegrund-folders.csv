@@ -1,0 +1,9 @@
+aufnahmegrund_id;aufnahmegrund_name
+01;Krankenhausbehandlung, vollstationär
+02;Krankenhausbehandlung, vollstationär mit vorausgegangener vorstationärer Behandlung
+03;Krankenhausbehandlung, teilstationär
+04;Vorstationäre Behandlung ohne anschließende vollstationäre Behandlung
+05;Stationäre Entbindung
+06;Geburt
+07;Wiederaufnahme wegen Komplikationen (Fallpauschale) nach KFPV 2003
+08;Stationäre Aufnahme zur Organentnahme

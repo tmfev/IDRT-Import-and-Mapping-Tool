@@ -1,0 +1,4 @@
+Spaltenname (Pflicht);IK;ENTLASSENDER_STANDORT;ENTGELTBEREICH;KH_INTERNES_KENNZEICHEN;OPS_VERSION;OPS_KODE;LOKALISATION;OPS_DATUM;BELEGOPERATEUR;BELEGANAESTHESIST;BELEGHEBAMME
+Datentyp (Pflicht);Integer;Integer;String;Integer;Integer;String;String;Date;String;String;String
+Nicename (kann leer sein);;;;Fallnummer;;;;;;;
+Metainformationen (mind. Encounter);;;;EncounterID;;;;;;;

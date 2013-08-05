@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
+  <contextParameter comment="" name="p21_input" prompt="p21_input?" promptNeeded="true" type="id_String" value="C:\Desktop\p21\p21\"/>
+  <contextParameter comment="" name="p21_output" prompt="p21_output?" promptNeeded="true" type="id_String" value="C:\Desktop\p21\output\"/>
+</talendfile:ContextType>

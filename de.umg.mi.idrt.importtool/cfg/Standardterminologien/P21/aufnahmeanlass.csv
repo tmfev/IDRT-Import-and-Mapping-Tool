@@ -1,0 +1,9 @@
+AUFNAHMEANLASS_ID;AUFNAHMEANLASS_NAME
+A;Verlegung mit Behandlungsdauer im verlegenden Krankenhaus bis zu 24 Stunden
+B;Begleitperson
+E;Einweisung durch einen Arzt
+G;Geburt
+N;Notfall
+R;Aufnahme nach vorausgehender Behandlung in einer Rehabilitationseinrichtung
+V;Verlegung mit Behandlungsdauer im verlegenden Krankenhaus länger als 24 Stunden
+Z;Einweisung durch einen Zahnarzt
