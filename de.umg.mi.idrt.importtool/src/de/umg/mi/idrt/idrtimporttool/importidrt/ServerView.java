@@ -799,6 +799,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.setInput(new ServerImportDBModel());
 			sourceServerViewer.setAutoExpandLevel(1);
 			sourceServerViewer.setSorter(new ViewerSorter());
+			
 			/**
 			 * Menu for the source servers
 			 */
@@ -912,6 +913,9 @@ public class ServerView extends ViewPart {
 //					.setExpanded(true);
 //			}
 			targetServerViewer.refresh();
+
+			targetServerViewer.expandAll();
+			
 			targetServerViewer.getTree().setMenu(mainMenu);
 			targetServerViewer.addDragSupport(operations, transferTypes,
 					new ServerDragSourceListener(targetServerViewer));
@@ -1112,6 +1116,7 @@ public class ServerView extends ViewPart {
 				}
 			});
 
+			
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION
 //						new MenuItem(mainMenu, SWT.SEPARATOR);
 //						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
