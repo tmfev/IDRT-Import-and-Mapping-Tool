@@ -57,7 +57,7 @@ public class MyOntologyTree extends JPanel {
 	JPopupMenu popup = null;
 
 	// private tree components
-	public OTGUI _gui = new OTGUI(this);
+
 
 	private OntologyTreeNode sourceRootNode = null;
 	private OntologyTreeNode targetRootNode = null;
@@ -409,14 +409,7 @@ public class MyOntologyTree extends JPanel {
 		return this._ontologyTreeSource.getItemLists();
 	}
 
-	/**
-	 * Returns the instance of the MyOTGUI object.
-	 * 
-	 * @return the MyOTGUI object
-	 */
-	public OTGUI getGUI() {
-		return this._gui;
-	}
+
 
 	protected void expandTreePaths(TreePath path) {
 		this._ontologyTreeSource.expandPath(path);
