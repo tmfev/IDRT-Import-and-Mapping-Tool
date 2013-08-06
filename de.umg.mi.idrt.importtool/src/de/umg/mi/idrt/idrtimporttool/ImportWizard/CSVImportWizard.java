@@ -175,27 +175,16 @@ public class CSVImportWizard extends Wizard {
 
 					contextMap = new HashMap<String, String>();
 
-					/*
+					/**
 					 * page 1
 					 */
 					contextMap.put("DBHost", ipText);
-//					defaultProps.setProperty("DBHost", ipText);
-
 					contextMap.put("DBPassword", passwordText);
-					// defaultProps.setProperty("pw",
-					// WizardPageOne.getDBUserPasswordText());
-
 					contextMap.put("DBUsername", dbUserText);
-//					defaultProps.setProperty("DBUsername", dbUserText);
-
 					contextMap.put("DBInstance", dbSID);
-//					defaultProps.setProperty("DBInstance", dbSID);
-
 					contextMap.put("DBPort", dbPort);
-//					defaultProps.setProperty("DBPort", dbPort);
-
 					contextMap.put("DBSchema", dbSchema);
-//					defaultProps.setProperty("DBSchema", dbSchema);
+
 					/**
 					 * page 2
 					 */

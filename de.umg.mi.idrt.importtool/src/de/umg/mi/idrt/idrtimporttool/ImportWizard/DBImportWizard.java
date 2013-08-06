@@ -37,14 +37,6 @@ import au.com.bytecode.opencsv.CSVWriter;
  */
 public class DBImportWizard extends Wizard {
 
-	//	private static void closeBar(String msg, int status) {
-	//		closeBar(msg, "", status);
-	//	}
-	//
-	//	private static void closeBar(String msg, final String fileName, int status) {
-	//		ServerView.closeBar(msg, fileName, status);
-	//	}
-
 	public static DBWizardPageThree getThree() {
 		return three;
 	}
@@ -332,10 +324,8 @@ System.out.println("filename: " + file.getAbsolutePath());
 				URL cfgUrl = FileLocator.find(bundle, cfgPath,
 						Collections.EMPTY_MAP);
 				URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
 				File rootDir = new File(cfgFileUrl.getPath()
 						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-
 				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
 				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
 				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
