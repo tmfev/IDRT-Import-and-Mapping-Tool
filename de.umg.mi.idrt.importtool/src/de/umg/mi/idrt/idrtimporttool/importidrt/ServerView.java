@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.prefs.BackingStoreException;
+
+import org.eclipse.core.commands.Command;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -52,6 +54,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.osgi.framework.Bundle;
@@ -154,21 +157,21 @@ public class ServerView extends ViewPart {
 			}
 		});
 	}
-//	public static void closeBar(String msg, String file, int status) {
-//		setProgress(0);
-//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-//		;
-//		if (status == 1) {
-//			color = SWTResourceManager.getColor(SWT.COLOR_RED);
-//		}
-//		if (status == 0) {
-//			color = SWTResourceManager.getColor(SWT.COLOR_GREEN);
-//		}
-//		progressLabelTop.setText(file);
-//		progressLabelTop.setForeground(color);
-//		progressLabelBottom.setText(msg);
-//		progressLabelBottom.setForeground(color);
-//	}
+	//	public static void closeBar(String msg, String file, int status) {
+	//		setProgress(0);
+	//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+	//		;
+	//		if (status == 1) {
+	//			color = SWTResourceManager.getColor(SWT.COLOR_RED);
+	//		}
+	//		if (status == 0) {
+	//			color = SWTResourceManager.getColor(SWT.COLOR_GREEN);
+	//		}
+	//		progressLabelTop.setText(file);
+	//		progressLabelTop.setForeground(color);
+	//		progressLabelBottom.setText(msg);
+	//		progressLabelBottom.setForeground(color);
+	//	}
 
 	public static String getCsvPathSpecific() {
 		return csvPathSpecific;
@@ -318,10 +321,10 @@ public class ServerView extends ViewPart {
 
 	public static void setProgressBottom(final String string) {
 		if (progressBar.getSelection()>0) {
-		progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
-				+ string);
-		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-		progressLabelBottom.setForeground(color);
+			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
+					+ string);
+			Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+			progressLabelBottom.setForeground(color);
 		}
 		else
 			progressLabelBottom.setText("");
@@ -608,7 +611,6 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
-			// System.out.println("NYI");
 			handlerService.executeCommand(
 					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
 		} catch (Exception ex) {
@@ -616,7 +618,7 @@ public class ServerView extends ViewPart {
 			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
 		}
 	}
-	
+
 	//edu.goettingen.i2b2.importtool.OntologyEditorLoad
 	//	/**
 	//	 * Removes possible database locks. Only works with Oracle + sys/system user.
@@ -651,7 +653,7 @@ public class ServerView extends ViewPart {
 			Path tmpPath = new Path("/misc/tmp/"); 
 			URL tmpURL = FileLocator.find(bundle, tmpPath,
 					Collections.EMPTY_MAP);
-			
+
 			if (tmpURL==null) {
 				Path miscPath = new Path("/misc/"); 
 				URL miscURL = FileLocator.find(bundle, miscPath,
@@ -666,9 +668,9 @@ public class ServerView extends ViewPart {
 			File folder = new File(tmpURL2.getPath());
 			File[] listOfFiles = folder.listFiles();
 
-			
-			
-			
+
+
+
 			for (File listOfFile : listOfFiles) {
 				if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
 					listOfFile.delete();
@@ -813,7 +815,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.setInput(new ServerImportDBModel());
 			sourceServerViewer.setAutoExpandLevel(1);
 			sourceServerViewer.setSorter(new ViewerSorter());
-			
+
 			/**
 			 * Menu for the source servers
 			 */
@@ -825,7 +827,7 @@ public class ServerView extends ViewPart {
 			 */
 			Label targetServerLabel = new Label(targetServercomposite, SWT.NONE);
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
-//			targetServerLabel.setText(Messages.ServerView_TargetServer + " " + " NEW NEW NEW");
+			//			targetServerLabel.setText(Messages.ServerView_TargetServer + " " + " NEW NEW NEW");
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
 			Tree targetServerTree = targetServerViewer.getTree();
@@ -833,8 +835,8 @@ public class ServerView extends ViewPart {
 			targetServerViewer.setContentProvider(new ServerContentProvider());
 			targetServerViewer.setLabelProvider(new ServerLabelProvider());
 			targetServerViewer.setInput(new ServerModel());
-//			targetServerViewer.setAutoExpandLevel(2);
-			
+			//			targetServerViewer.setAutoExpandLevel(2);
+
 			targetServerViewer.setSorter(new ViewerSorter());
 
 			targetServerViewer.getTree().addSelectionListener(new SelectionListener() {
@@ -844,7 +846,7 @@ public class ServerView extends ViewPart {
 				}
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					
+
 					TreeItem selectedItem = (TreeItem) e.item;
 					String selectedItemString = selectedItem.getText();
 					if (ServerList.isServer(selectedItemString)) {
@@ -892,7 +894,7 @@ public class ServerView extends ViewPart {
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}
-						
+
 					}
 				}
 			});
@@ -922,15 +924,18 @@ public class ServerView extends ViewPart {
 			});
 			mainMenu = new Menu(targetServerViewer.getTree());
 
-//			if (targetServerViewer.getTree().getItemCount()>0) {
-//			targetServerViewer.getTree().getItem(0)
-//					.setExpanded(true);
-//			}
 			targetServerViewer.refresh();
 
 			targetServerViewer.getTree().setMenu(mainMenu);
 			targetServerViewer.addDragSupport(operations, transferTypes,
 					new ServerDragSourceListener(targetServerViewer));
+
+
+			ICommandService commandService = (ICommandService) PlatformUI
+					.getWorkbench().getActiveWorkbenchWindow().getService(
+							ICommandService.class);
+			final Command command = commandService
+					.getCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 			final MenuItem loadOntologyMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			loadOntologyMenuItem.setText("Load Ontology");
 			loadOntologyMenuItem.addSelectionListener(new SelectionListener() {
@@ -941,9 +946,15 @@ public class ServerView extends ViewPart {
 
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-
 				}
-			});
+			}); 
+			
+			if (!command.isEnabled()) {
+				loadOntologyMenuItem.setEnabled(false);
+				loadOntologyMenuItem.setText("Load Ontology (IOE only)"); 
+			}
+
+			new MenuItem(mainMenu, SWT.SEPARATOR);
 			Menu importMenu = new Menu(mainMenu);
 
 			final MenuItem importMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
@@ -983,8 +994,8 @@ public class ServerView extends ViewPart {
 
 				}
 			});
-			
-			
+
+
 
 			final MenuItem importTermsMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			importTermsMenuItem.setText(Messages.ServerView_ImportAndMapST);
@@ -1043,8 +1054,8 @@ public class ServerView extends ViewPart {
 					importP21();
 				}
 			});
-			
-			
+
+
 			MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
 			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
@@ -1145,22 +1156,22 @@ public class ServerView extends ViewPart {
 				}
 			});
 
-			
+
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION
-//						new MenuItem(mainMenu, SWT.SEPARATOR);
-//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//						adminMenuItem.setText("Administration");
-//						adminMenuItem.addSelectionListener(new SelectionListener() {
-//							@Override
-//							public void widgetSelected(SelectionEvent e) {
-//								adminTargetServer();
-//							}
-//			
-//							@Override
-//							public void widgetDefaultSelected(SelectionEvent e) {
-//			
-//							}
-//						});
+			//						new MenuItem(mainMenu, SWT.SEPARATOR);
+			//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//						adminMenuItem.setText("Administration");
+			//						adminMenuItem.addSelectionListener(new SelectionListener() {
+			//							@Override
+			//							public void widgetSelected(SelectionEvent e) {
+			//								adminTargetServer();
+			//							}
+			//			
+			//							@Override
+			//							public void widgetDefaultSelected(SelectionEvent e) {
+			//			
+			//							}
+			//						});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1172,6 +1183,7 @@ public class ServerView extends ViewPart {
 						if (targetServerViewer.getTree().getSelection()[0].getParentItem() == null) {
 							importMenuItem.setEnabled(false);
 							truncateMenuItem.setEnabled(false);
+							loadOntologyMenuItem.setEnabled(false);
 							importTermsMenuItem.setEnabled(false);
 							deleteServerMenuItem.setEnabled(true);
 							editServerMenuItem.setEnabled(true);
@@ -1181,6 +1193,13 @@ public class ServerView extends ViewPart {
 							exportServerMenuItem.setEnabled(false);
 							importMenuItem.setEnabled(true);
 							truncateMenuItem.setEnabled(true);
+							
+							if (!command.isEnabled()) {
+								loadOntologyMenuItem.setEnabled(false);
+							}
+							else {
+								loadOntologyMenuItem.setEnabled(true);
+							}
 							importTermsMenuItem.setEnabled(true);
 						}
 					} else {
@@ -1188,6 +1207,7 @@ public class ServerView extends ViewPart {
 						deleteServerMenuItem.setEnabled(false);
 						importMenuItem.setEnabled(false);
 						truncateMenuItem.setEnabled(false);
+						loadOntologyMenuItem.setEnabled(false);
 						importTermsMenuItem.setEnabled(false);
 						exportServerMenuItem.setEnabled(false);
 					}
@@ -1798,7 +1818,7 @@ public class ServerView extends ViewPart {
 	/**
 	 * 
 	 */
-	
+
 }
 
 class ViewContentProvider implements IStructuredContentProvider {
