@@ -43,6 +43,7 @@ public class GUIDialogTest extends Dialog {
 	public GUIDialogTest(Shell parent, int style) {
 		super(parent, style);
 		setText("SWT Dialog");
+		
 	}
 
 	/**
