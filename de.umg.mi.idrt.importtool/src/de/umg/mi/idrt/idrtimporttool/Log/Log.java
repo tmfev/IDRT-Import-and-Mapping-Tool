@@ -19,6 +19,10 @@ public class Log {
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 		ServerView.setLog(sdf.format(cal.getTime()), log);
 
+		
+		
+		
+		
 	}
 
 }
