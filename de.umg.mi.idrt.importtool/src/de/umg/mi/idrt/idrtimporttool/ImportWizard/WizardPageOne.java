@@ -45,8 +45,6 @@ public class WizardPageOne extends WizardPage {
 	private static Text DBUserText;
 	private static Text DBUserPasswordText;
 	private static Text DBSIDText;
-	// private static Text DBSchemaText;
-	// private static Label uniqueIDText;
 	private static Label DBTest;
 	private static Composite container;
 	private static Combo comboDB;
@@ -65,10 +63,6 @@ public class WizardPageOne extends WizardPage {
 		setDescription("Please enter your target database connection data");
 	}
 
-	// @Override
-	// public IWizardPage getPreviousPage() {
-	// return new WizardPageZero();
-	// }
 	@Override
 	public void createControl(Composite parent) {
 		try {
@@ -80,60 +74,16 @@ public class WizardPageOne extends WizardPage {
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 
-//			schema = defaultProps.getProperty("schema");
 			String serverUniqueName = ServerView.getSelectedServer();
-			// String serverUniqueName = null;
-			// TreeViewer viewer = ServerView.getViewer();
-			// if (viewer != null) {
-			// if (viewer.getTree().getSelectionCount()>0){
-			// if (viewer.getTree().getSelection()[0].getParentItem()!= null){
-			// schema = viewer.getTree().getSelection()[0].getText();
-			// serverUniqueName =
-			// viewer.getTree().getSelection()[0].getParentItem().getText();
-			// }
-			// }
-			// }
 			container = new Composite(parent, SWT.NULL);
 			GridLayout layout = new GridLayout(2, true);
 			container.setLayout(layout);
 			Label uniqueID = new Label(container, SWT.FILL | SWT.CENTER);
 			uniqueID.setText("Unique Identifier");
 
-			// uniqueIDText = new Label(container, SWT.FILL);
-			// uniqueIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-			// false, 1, 1));
-			// if(currentServer!=null)
-			// uniqueIDText.setText(currentServer.getUniqueID());
-			// else{
-			// uniqueIDText.setText("");
-			// }
-			//
 			comboDB = new Combo(container, SWT.NONE);
 			schema = ServerView.getCurrentSchema();
-			// int selectedServerIndex = 0;
-			// TreeItem[] treeItems = viewer.getTree().getItems();
-			// String[] serverNames = new String[treeItems.length];
-			// for (int i = 0; i < treeItems.length; i++) {
-			// serverNames[i] = treeItems[i].getText();
-			// if (viewer.getTree().getSelectionCount()>0){
-			// if(viewer.getTree().getSelection()[0].getParentItem() != null){
-			// if
-			// (treeItems[i].getText().equals(viewer.getTree().getSelection()[0].getParentItem().getText()))
-			// selectedServerIndex=i;
-			// }
-			// else if (viewer.getTree().getSelection()[0] != null){
-			// if
-			// (treeItems[i].getText().equals(viewer.getTree().getSelection()[0].getText()))
-			// selectedServerIndex=i;
-			// }
-			// }
-			// else{
-			// selectedServerIndex=0;
-			// }
-			// }
-			// comboDB.setItems(serverNames);
 			comboDB.setItems(ServerView.getCurrentServers());
-			// comboDB.select(selectedServerIndex);
 			comboDB.select(ServerView.getCurrentServerIndex());
 
 			if (serverUniqueName == null) {
@@ -162,8 +112,6 @@ public class WizardPageOne extends WizardPage {
 					setSelectedServer(selectedServer);
 
 					int selectedUserIndex = 0;
-					// TreeItem[] treeItems = viewer.getTree().getItems();
-					// String[] serverNames = new String[treeItems.length];
 					HashSet<String> users = ServerList.getUsersTargetServer(selectedServer);
 
 					if (users != null) {
@@ -186,20 +134,8 @@ public class WizardPageOne extends WizardPage {
 				}
 			});
 
-			// uniqueIDText.addKeyListener(new KeyListener() {
-			// public void keyPressed(KeyEvent e) {
-			// }
-			// public void keyReleased(KeyEvent e) {
-			// if (!uniqueIDText.getText().isEmpty()) {
-			// setPageComplete(true);
-			// }
-			// else
-			// setPageComplete(false);
-			// }
-			// });
 			Label ip = new Label(container, SWT.FILL | SWT.CENTER);
 			ip.setText("IP");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			ipText = new Text(container, SWT.FILL);
 			ipText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
 					1, 1));
@@ -225,7 +161,6 @@ public class WizardPageOne extends WizardPage {
 
 			Label Port = new Label(container, SWT.FILL | SWT.CENTER);
 			Port.setText("Port");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			PortText = new Text(container, SWT.FILL);
 			PortText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					false, 1, 1));
@@ -250,7 +185,6 @@ public class WizardPageOne extends WizardPage {
 			});
 			DBUser = new Label(container, SWT.FILL | SWT.CENTER);
 			DBUser.setText("DB Username");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			DBUserText = new Text(container, SWT.FILL);
 			DBUserText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					false, 1, 1));
@@ -276,7 +210,6 @@ public class WizardPageOne extends WizardPage {
 
 			DBUserPassword = new Label(container, SWT.FILL | SWT.CENTER);
 			DBUserPassword.setText("DB Password");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			DBUserPasswordText = new Text(container, SWT.FILL);
 
 			DBUserPasswordText.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
@@ -304,13 +237,11 @@ public class WizardPageOne extends WizardPage {
 
 			Label DBSID = new Label(container, SWT.FILL | SWT.CENTER);
 			DBSID.setText("DB SID");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 			DBSIDText = new Text(container, SWT.FILL);
 			DBSIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					false, 1, 1));
 			if (currentServer != null) {
 				DBSIDText.setText(currentServer.getSID());
-//				System.out.println("GET SID: " + currentServer.getSID());
 			} else {
 				DBSIDText.setText(defaultProps.getProperty("database"));
 			}
@@ -332,7 +263,6 @@ public class WizardPageOne extends WizardPage {
 			
 			Label DBSchema = new Label(container, SWT.FILL | SWT.CENTER);
 			DBSchema.setText("DB Schema");
-			// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 
 			comboUser = new Combo(container, SWT.NONE);
 			DBTypeLabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
@@ -381,8 +311,6 @@ public class WizardPageOne extends WizardPage {
 
 			DBIntegratedSecurity.setText("Use Windows Authentication?");
 			int selectedUserIndex = 0;
-			// TreeItem[] treeItems = viewer.getTree().getItems();
-			// String[] serverNames = new String[treeItems.length];
 			String[] userList;
 			if (currentServer != null) {
 				HashSet<String> users = ServerList.getUsersTargetServer(currentServer);
@@ -402,48 +330,11 @@ public class WizardPageOne extends WizardPage {
 					userList = new String[0];
 				}
 
-				// for (int i = 0; i < userList.length; i++) {
-				// userList[i] = users.iterator().(i).getName();
-				// if (schema.equals(userList[i]))
-				// selectedUserIndex=i;
-				//
-				// }
 				comboUser.setItems(userList);
 			}
 			comboUser.select(selectedUserIndex);
 			comboUser.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
-			// comboUser.addSelectionListener(new SelectionListener() {
-			//
-			// @Override
-			// public void widgetSelected(SelectionEvent e) {
-			// Combo selectedCombo = (Combo)e.widget;
-			// Server selectedServer =
-			// ServerList.getServers().get(selectedCombo.getText());
-			// setSelectedServer(selectedServer);
-			// }
-			//
-			// @Override
-			// public void widgetDefaultSelected(SelectionEvent e) {
-			//
-			// }
-			// });
-
-			// DBSchemaText = new Text(container, SWT.FILL);
-			// DBSchemaText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-			// false, 1, 1));
-			//
-			// DBSchemaText.setText(schema);
-			//
-			// DBSchemaText.addKeyListener(new KeyListener() {
-			// public void keyPressed(KeyEvent e) {
-			// }
-			// public void keyReleased(KeyEvent e) {
-			// if (!DBSchemaText.getText().isEmpty()) {
-			// setPageComplete(true);
-			// }
-			// }
-			// });
 
 			Button buttonTestDB = new Button(container, SWT.PUSH);
 			buttonTestDB.setText("Test DB connectivity");
@@ -467,10 +358,7 @@ public class WizardPageOne extends WizardPage {
 						DBTest.setForeground(color_red);
 						DBTest.pack();
 					} else {
-						// RGB value = Color.red;
 						DBTest.setText("failure");
-						// org.eclipse.swt.graphics.Color red = new
-						// CSWT.COLOR_RED;
 						Color color_red = container.getDisplay()
 								.getSystemColor(SWT.COLOR_RED);
 						DBTest.setForeground(color_red);

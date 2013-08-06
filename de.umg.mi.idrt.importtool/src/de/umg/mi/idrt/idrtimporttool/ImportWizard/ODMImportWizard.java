@@ -41,14 +41,6 @@ public class ODMImportWizard extends Wizard {
 
 	public boolean done = false;
 	
-//	private static void closeBar(String msg, int status) {
-//		closeBar(msg, "", status); 
-//	}
-//
-//	private static void closeBar(String msg, final String fileName, int status) {
-//		ServerView.closeBar(msg, fileName, status);
-//	}
-
 	@SuppressWarnings("deprecation")
 	public static void killThread() {
 		if (started) {
@@ -56,7 +48,6 @@ public class ODMImportWizard extends Wizard {
 			Display.getDefault().syncExec(new Runnable() {
 				@Override
 				public void run() {
-//					closeBar(Messages.ODMImportWizard_ODMImportFailed, 1);
 					Log.addLog(1, Messages.ODMImportWizard_ODMImportFailed); 
 					MessageDialog
 							.openError(
@@ -147,30 +138,15 @@ public class ODMImportWizard extends Wizard {
 			defaultProps.setProperty("DBHost", WizardPageOne.getIpText()); 
 
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText()); 
-			// defaultProps.setProperty("pw",
-			// WizardPageOne.getDBUserPasswordText());
-
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText()); 
-//			defaultProps.setProperty("DBUsername", WizardPageOne.getDBUserText()); 
-
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText()); 
-//			defaultProps.setProperty("DBInstance", WizardPageOne.getDBSIDText()); 
-
 			contextMap.put("DBPort", WizardPageOne.getPortText()); 
-//			defaultProps.setProperty("DBPort", WizardPageOne.getPortText()); 
-
 			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText()); 
-//			defaultProps.setProperty("DBSchema", WizardPageOne.getDBSchemaText()); 
 
 			/*
 			 * page 2
 			 */
-//			defaultProps.setProperty("importSingleFile", "false");  
-			contextMap.put("importSingleFile", "false");  
-
 			contextMap.put("folderODM", ODMWizardPageTwo.getFolderODMText()); 
-//			defaultProps.setProperty("folderODM", 
-//					ODMWizardPageTwo.getFolderODMText());
 
 			Path miscPath = new Path("/misc/"); 
 			URL miscUrl = FileLocator.find(bundle, miscPath,
@@ -182,76 +158,25 @@ public class ODMImportWizard extends Wizard {
 					+ "/"; 
 
 			contextMap.put("folderMain", miscPathReplaced); 
-//			defaultProps.setProperty("folderMain", miscPathReplaced); 
 
 			if (ODMWizardPageTwo.getTerms()) {
-				/*
+				/**
 				 * ST-Import
 				 */
-				Path cfgPath = new Path("/cfg/"); 
+				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
 				URL cfgUrl = FileLocator.find(bundle, cfgPath,
 						Collections.EMPTY_MAP);
 				URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
 				File rootDir = new File(cfgFileUrl.getPath()
-						+ "/Standardterminologien/".replaceAll("\\\\", "/"));   
-
-				System.out.println("**********************"); 
-				System.out.println("STFOLDER: " 
-						+ rootDir.getAbsolutePath().replaceAll("\\\\", "/"));  
-				System.out.println("**********************"); 
-
-				File icd10Dir = new File(rootDir.getAbsolutePath()
-						+ "/ICD-10-GM/"); 
-				contextMap.put("icd10Dir", icd10Dir.getAbsolutePath() 
-						.replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("icd10Dir", icd10Dir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File tnmDir = new File(rootDir.getAbsolutePath() + "/TNM/"); 
-				contextMap.put("tnmDir", 
-						tnmDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("tnmDir", tnmDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				contextMap.put("rootDir", 
-						rootDir.getAbsolutePath().replaceAll("\\\\", 
-								"/") 
-								+ "/"); 
-//				defaultProps.setProperty("rootDir", rootDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File loincDir = new File(rootDir.getAbsolutePath() + "/LOINC/"); 
-				contextMap.put("loincDir", loincDir.getAbsolutePath() 
-						.replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("loincDir", loincDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File opsDir = new File(rootDir.getAbsolutePath() + "/OPS/"); 
-				contextMap.put("opsDir", 
-						opsDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("opsDir", opsDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File p21Dir = new File(rootDir.getAbsolutePath() + "/P21/"); 
-				contextMap.put("p21Dir", 
-						p21Dir.getAbsolutePath().replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("p21Dir", p21Dir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File drgDir = new File(rootDir.getAbsolutePath() + "/DRG/"); 
-				contextMap.put("drgDir", 
-						drgDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");   
-//				defaultProps.setProperty("drgDir", drgDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
-
-				File icdoDir = new File(rootDir.getAbsolutePath() + "/ICD-O-3/"); 
-				contextMap.put("icdoDir", 
-						icdoDir.getAbsolutePath().replaceAll("\\\\", 
-								"/") 
-								+ "/"); 
-//				defaultProps.setProperty("icdoDir", icdoDir.getAbsolutePath() 
-//						.replaceAll("\\\\", "/") + "/");   
+						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
+				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
+				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
+				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
+				contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
+				contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
+				contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
+				contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
+				contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/"); 
 			}
 
 			if (cleanUp) {
@@ -278,10 +203,8 @@ public class ODMImportWizard extends Wizard {
 			if (ODMWizardPageTwo.getTruncate()) {
 				System.out.println("truncating"); 
 				contextMap.put("truncateProject", "true");  
-//				defaultProps.setProperty("truncateProject", "true");  
 			} else {
 				contextMap.put("truncateProject", "false");  
-//				defaultProps.setProperty("truncateProject", "false");  
 			}
 
 			done = false;
@@ -294,7 +217,6 @@ public class ODMImportWizard extends Wizard {
 					final long start = System.currentTimeMillis();
 					IDRTImport.setCompleteContext(contextMap);
 					int exitCode = IDRTImport.runODMImport(terms);
-					//					System.out.println("exitCode: " + exitCode); 
 					done = true;
 					started = false;
 					StatusListener.setStatus(0, "", "");  

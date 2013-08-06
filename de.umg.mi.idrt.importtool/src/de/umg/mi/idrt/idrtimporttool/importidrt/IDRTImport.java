@@ -161,7 +161,7 @@ public class IDRTImport {
 				contextMap.put("DBPort", server.getPort());
 				contextMap.put("DBSchema", project);
 
-				/*
+				/**
 				 * ST-Import
 				 */
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -169,57 +169,16 @@ public class IDRTImport {
 				URL cfgUrl = FileLocator.find(bundle, cfgPath,
 						Collections.EMPTY_MAP);
 				URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-				File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-				System.out.println("t_mapping: "  + t_mapping.getAbsolutePath());
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-
 				File rootDir = new File(cfgFileUrl.getPath()
-						+ "/Standardterminologien/".replaceAll("\\\\",
-								"/"));
-
-				System.out.println("**********************");
-				System.out.println("STFOLDER: "
-						+ rootDir.getAbsolutePath().replaceAll("\\\\",
-								"/"));
-				System.out.println("**********************");
-
-				File icd10Dir = new File(rootDir.getAbsolutePath()
-						+ "/ICD-10-GM/");
-				contextMap.put("icd10Dir", icd10Dir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File tnmDir = new File(rootDir.getAbsolutePath()
-						+ "/TNM/");
-				contextMap.put("tnmDir", tnmDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				contextMap.put("rootDir", rootDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File loincDir = new File(rootDir.getAbsolutePath()
-						+ "/LOINC/");
-				contextMap.put("loincDir", loincDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File opsDir = new File(rootDir.getAbsolutePath()
-						+ "/OPS/");
-				contextMap.put("opsDir", opsDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File p21Dir = new File(rootDir.getAbsolutePath()
-						+ "/P21/");
-				contextMap.put("p21Dir", p21Dir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File drgDir = new File(rootDir.getAbsolutePath()
-						+ "/DRG/");
-				contextMap.put("drgDir", drgDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File icdoDir = new File(rootDir.getAbsolutePath()
-						+ "/ICD-O-3/");
-				contextMap.put("icdoDir", icdoDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
+						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
+				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
+				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
+				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
+				contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
+				contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
+				contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
+				contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
+				contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/"); 
 				setCompleteContext(contextMap);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -540,23 +499,9 @@ public class IDRTImport {
 			StatusListener.startLogging();
 			
 			ServerView.btnStopSetEnabled(true);
-//			if (oldVersion) { // old=1
-//				System.out.println("old Version");
-//				P21_ERWEITERUNG_2010 p21_1 = new P21_ERWEITERUNG_2010();
-//				exitCode = p21_1.runJobInTOS(getARGV());
-//			} else {// new=2
-				System.out.println(version);
-//				exitCode = runCSVImport(importTerms);
-//				P21_ERWEITERUNG_2011_2012 p21_2 = new P21_ERWEITERUNG_2011_2012();
-//				exitCode = p21_2.runJobInTOS(getARGV());
-//			}
-//			if (exitCode == 0) {
 				CSV_MASTER CSVImport = new CSV_MASTER();
 				exitCode = CSVImport.runJobInTOS(getARGV());
 				clearInputFolder();
-//			} else {
-//				return 1;
-//			}
 			if (exitCode == 0 && importTerms) {
 				StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
 				IDRT_STDTERM stdTerm = new IDRT_STDTERM();
@@ -608,12 +553,10 @@ public class IDRTImport {
 		}
 
 		public static void setContextVariable(String key, String value) {
-			//System.out.println("set: " + key + "=" + value);
 			contextVariables.put(key, value);
 		}
 
 		public static void setStatus(String statusMsg, int percentage) {
-			//System.out.println(statusMsg + " " + percentage + "% completed!");
 			status = percentage;
 		}
 
@@ -675,7 +618,7 @@ public class IDRTImport {
 		private static void clearInputFolder() {
 			try {
 				Bundle bundle = Activator.getDefault().getBundle();
-				Path inputPath = new Path("/misc/input/"); //$NON-NLS-1$
+				Path inputPath = new Path("/misc/input/");
 				URL inputURL = FileLocator.find(bundle, inputPath,
 						Collections.EMPTY_MAP);
 				URL inputURL2 = FileLocator.toFileURL(inputURL);
