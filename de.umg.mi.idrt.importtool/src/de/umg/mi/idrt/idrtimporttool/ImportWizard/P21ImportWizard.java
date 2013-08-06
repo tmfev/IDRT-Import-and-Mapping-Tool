@@ -88,12 +88,10 @@ public class P21ImportWizard extends Wizard {
 
 		if (started) {
 			b.stop();
-			// progressBar.close();
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
-					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "§21 Import Failed: " + error);
 					MessageDialog.openError(Display.getDefault()
 							.getActiveShell(), "Import Failed!",
@@ -107,9 +105,6 @@ public class P21ImportWizard extends Wizard {
 
 	public static void updateStatus() {
 		if (started) {
-			// progressBar.setProgress((int)StatusListener.getPercentage());
-			// progressBar.setText(StatusListener.getFile());
-			// progressBar.setTitle(""+ StatusListener.getStatus());
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
@@ -156,8 +151,6 @@ public class P21ImportWizard extends Wizard {
 
 			for (File listOfInputFile : listOfInputFiles) {
 				if (listOfInputFile.getName().endsWith(".csv")) {
-					System.out.println("deleting input file: "
-							+ listOfInputFile.getName());
 					listOfInputFile.delete();
 				}
 			}
@@ -176,31 +169,25 @@ public class P21ImportWizard extends Wizard {
 			 * page 1
 			 */
 			contextMap.put("DBHost", WizardPageOne.getIpText());
-
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
-
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
-
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
-
 			contextMap.put("DBPort", WizardPageOne.getPortText());
-
 			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText());
 
 			/**
 			 * page 2
 			 */
 
-			Path tmpPath = new Path("/misc/input/"); //$NON-NLS-1$
+			Path tmpPath = new Path("/misc/input/"); 
 			URL tmpurl = FileLocator.find(bundle, tmpPath,
 					Collections.EMPTY_MAP);
 			URL tmpurl2 = FileLocator.toFileURL(tmpurl);
 			File tmpFolder = new File(tmpurl2.getPath());
-			// String tempDir = System.getProperty(property);
 			CSVPath = tmpFolder.getAbsolutePath();
 			CSVPath = CSVPath.replaceAll("\\\\", "/") + "/";
 
-			Path miscPath = new Path("/misc/"); //$NON-NLS-1$
+			Path miscPath = new Path("/misc/"); 
 			URL miscUrl = FileLocator.find(bundle, miscPath,
 					Collections.EMPTY_MAP);
 			URL miscFileUrl = null;
@@ -217,56 +204,20 @@ public class P21ImportWizard extends Wizard {
 				/**
 				 * ST-Import
 				 */
-				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
+				Path cfgPath = new Path("/cfg/"); 
 				URL cfgUrl = FileLocator.find(bundle, cfgPath,
 						Collections.EMPTY_MAP);
 				URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
 				File rootDir = new File(cfgFileUrl.getPath()
 						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-
-				System.out.println("**********************");
-				System.out.println("STFOLDER: "
-						+ rootDir.getAbsolutePath().replaceAll("\\\\", "/"));
-				System.out.println("**********************");
-
-				File icd10Dir = new File(rootDir.getAbsolutePath()
-						+ "/ICD-10-GM/");
-				contextMap.put("icd10Dir", icd10Dir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File tnmDir = new File(rootDir.getAbsolutePath() + "/TNM/");
-				contextMap.put("tnmDir",
-						tnmDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-
-				contextMap
-				.put("rootDir",
-						rootDir.getAbsolutePath().replaceAll("\\\\",
-								"/")
-								+ "/");
-
-				File loincDir = new File(rootDir.getAbsolutePath() + "/LOINC/");
-				contextMap.put("loincDir", loincDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-
-				File opsDir = new File(rootDir.getAbsolutePath() + "/OPS/");
-				contextMap.put("opsDir",
-						opsDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-
-				File p21Dir = new File(rootDir.getAbsolutePath() + "/P21/");
-				contextMap.put("p21Dir",
-						p21Dir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-
-				File drgDir = new File(rootDir.getAbsolutePath() + "/DRG/");
-				contextMap.put("drgDir",
-						drgDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-
-				File icdoDir = new File(rootDir.getAbsolutePath() + "/ICD-O-3/");
-				contextMap
-				.put("icdoDir",
-						icdoDir.getAbsolutePath().replaceAll("\\\\",
-								"/")
-								+ "/");
+				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
+				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
+				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
+				contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
+				contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
+				contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
+				contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
+				contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/");
 			}
 			if (cleanUp) {
 				defaultProps.setProperty("cleanUp", "true");
@@ -276,23 +227,18 @@ public class P21ImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");
 			}
 			contextMap.put("p21_input", P21WizardPageTwo.getFolderCSVText());
-
 			contextMap.put("p21_output", CSVPath);
 
 			if (P21WizardPageTwo.getSaveContext()) {
-				System.out.println("saving context");
 				defaultProps.store(new FileWriter(properties), "");
 			}
-
 			if (P21WizardPageTwo.getTruncate()) {
-				System.out.println("truncating");
 				contextMap.put("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");
 			}
 
 			contextMap.put("folderMain", miscPathReplaced);
-
 			contextMap.put("folderCSV", CSVPath);
 
 			done = false;
@@ -304,7 +250,6 @@ public class P21ImportWizard extends Wizard {
 					final long start = System.currentTimeMillis();
 					try {
 						StatusListener.setStatus(1, "Preparing §21 Import", "");  
-						System.out.println("p21 Version: " + version);
 						Path p21Path = new Path("/cfg/p21/" + version+"/");
 						URL p21url = FileLocator.find(bundle, p21Path,
 								Collections.EMPTY_MAP);
@@ -317,13 +262,8 @@ public class P21ImportWizard extends Wizard {
 
 						for (File listOfFile : listOfFiles) {
 							if (listOfFile.getName().endsWith(".cfg.csv")) {
-								System.out.println("copy p21 file: "
-										+ listOfFile.getAbsolutePath());
 								File output = new File(CSVPath + listOfFile.getName().toLowerCase());
-								System.out.println("new output: "
-										+ output.getAbsolutePath());
 								if (listOfFile.getName().toLowerCase().startsWith("fall")) {
-									System.out.println("FALL CFG!!");
 									output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
 								}
 								copyFile(listOfFile, output);
@@ -355,13 +295,11 @@ public class P21ImportWizard extends Wizard {
 					IDRTImport.setCompleteContext(contextMap);
 				
 					int exitCode = IDRTImport.runP21Import(version, terms);
-					
 					done = true;
 					StatusListener.setStatus(0, "", "");  
 					StatusListener.setSubStatus(0.0f, "");
 					StatusListener.notifyListener();
 					started = false;
-					// progressBar.close();
 					if (exitCode == 0) {
 						Display.getDefault().syncExec(new Runnable() {
 
@@ -369,7 +307,6 @@ public class P21ImportWizard extends Wizard {
 							public void run() {
 								long end = System.currentTimeMillis();
 								long time = end - start;
-								//								closeBar("§21 Import Finished!", 0);
 								Log.addLog(0, "§21 Import Finished!");
 								Log.addLog(0, "Duration: " + (time / 1000)
 										+ " s");
@@ -384,8 +321,6 @@ public class P21ImportWizard extends Wizard {
 			});
 
 			if (!started) {
-				// progressBar = new AddProgressBar();
-				// progressBar.init();
 				b.start();
 			}
 

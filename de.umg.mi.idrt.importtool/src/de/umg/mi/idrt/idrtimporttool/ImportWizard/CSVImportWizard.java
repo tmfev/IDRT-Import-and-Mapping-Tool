@@ -175,27 +175,16 @@ public class CSVImportWizard extends Wizard {
 
 					contextMap = new HashMap<String, String>();
 
-					/*
+					/**
 					 * page 1
 					 */
 					contextMap.put("DBHost", ipText);
-//					defaultProps.setProperty("DBHost", ipText);
-
 					contextMap.put("DBPassword", passwordText);
-					// defaultProps.setProperty("pw",
-					// WizardPageOne.getDBUserPasswordText());
-
 					contextMap.put("DBUsername", dbUserText);
-//					defaultProps.setProperty("DBUsername", dbUserText);
-
 					contextMap.put("DBInstance", dbSID);
-//					defaultProps.setProperty("DBInstance", dbSID);
-
 					contextMap.put("DBPort", dbPort);
-//					defaultProps.setProperty("DBPort", dbPort);
-
 					contextMap.put("DBSchema", dbSchema);
-//					defaultProps.setProperty("DBSchema", dbSchema);
+
 					/**
 					 * page 2
 					 */
@@ -208,99 +197,34 @@ public class CSVImportWizard extends Wizard {
 							.replaceAll("\\\\", "/") + "/";
 
 					if (terms) {
-
-						/*
+						/**
 						 * ST-Import
 						 */
 						Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
 						URL cfgUrl = FileLocator.find(bundle, cfgPath,
 								Collections.EMPTY_MAP);
 						URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
 						File rootDir = new File(cfgFileUrl.getPath()
-								+ "/Standardterminologien/".replaceAll("\\\\",
-										"/"));
-
-						System.out.println("**********************");
-						System.out.println("STFOLDER: "
-								+ rootDir.getAbsolutePath().replaceAll("\\\\",
-										"/"));
-						System.out.println("**********************");
-
-						File icd10Dir = new File(rootDir.getAbsolutePath()
-								+ "/ICD-10-GM/");
-						contextMap.put("icd10Dir", icd10Dir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("icd10Dir", icd10Dir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File tnmDir = new File(rootDir.getAbsolutePath()
-								+ "/TNM/");
-						contextMap.put("tnmDir", tnmDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("tnmDir", tnmDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						contextMap.put("rootDir", rootDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("rootDir", rootDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File loincDir = new File(rootDir.getAbsolutePath()
-								+ "/LOINC/");
-						contextMap.put("loincDir", loincDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("loincDir", loincDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File opsDir = new File(rootDir.getAbsolutePath()
-								+ "/OPS/");
-						contextMap.put("opsDir", opsDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("opsDir", opsDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File p21Dir = new File(rootDir.getAbsolutePath()
-								+ "/P21/");
-						contextMap.put("p21Dir", p21Dir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("p21Dir", p21Dir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File drgDir = new File(rootDir.getAbsolutePath()
-								+ "/DRG/");
-						contextMap.put("drgDir", drgDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("drgDir", drgDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
-
-						File icdoDir = new File(rootDir.getAbsolutePath()
-								+ "/ICD-O-3/");
-						contextMap.put("icdoDir", icdoDir.getAbsolutePath()
-								.replaceAll("\\\\", "/") + "/");
-//						defaultProps.setProperty("icdoDir", icdoDir
-//								.getAbsolutePath().replaceAll("\\\\", "/")
-//								+ "/");
+								+ "/Standardterminologien/".replaceAll("\\\\", "/"));
+						contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
+						contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
+						contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
+						contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
+						contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
+						contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
+						contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
+						contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/");
 					} 
 
 					if (truncate) {
 						System.out.println("truncating");
 						contextMap.put("truncateProject", "true");
-//						defaultProps.setProperty("truncateProject", "true");
 					} else {
 						contextMap.put("truncateProject", "false");
-//						defaultProps.setProperty("truncateProject", "false");
 					}
 					contextMap.put("PIDURL", defaultProps.getProperty("PIDURL"));
+				
 					contextMap.put("folderMain", miscPathReplaced);
-//					defaultProps.setProperty("folderMainCSV", miscPathReplaced);
 
 					contextMap.put("datePattern", pattern);
 					defaultProps.setProperty("datePattern", pattern);
@@ -326,8 +250,6 @@ public class CSVImportWizard extends Wizard {
 
 							if (i > 0) {
 								contextMap.put("truncateProject", "false");
-//								defaultProps.setProperty("truncateProject",
-//										"false");
 							}
 							String currentConfig = configs.get(i);
 							System.out.println("config: " + currentConfig
@@ -385,10 +307,7 @@ public class CSVImportWizard extends Wizard {
 										+ "idFile_" + filename;
 
 								contextMap.put("pidgen", "true");
-								defaultProps.setProperty("pidgen", "true");
 								contextMap.put("idFile", outputFilename);
-								defaultProps.setProperty("idFile",
-										outputFilename);
 
 								contextMap
 								.put("folderCSV", inputFolderReplaced);
@@ -511,11 +430,8 @@ public class CSVImportWizard extends Wizard {
 						if (truncate) {
 							System.out.println("truncating");
 							contextMap.put("truncateProject", "true");
-//							defaultProps.setProperty("truncateProject", "true");
 						} else {
 							contextMap.put("truncateProject", "false");
-//							defaultProps
-//							.setProperty("truncateProject", "false");
 						}
 
 						b = new Thread(new Runnable() {
