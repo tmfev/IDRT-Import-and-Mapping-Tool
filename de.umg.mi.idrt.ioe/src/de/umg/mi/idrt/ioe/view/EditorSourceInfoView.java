@@ -20,7 +20,6 @@ import org.eclipse.ui.part.ViewPart;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.GUITools;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
@@ -648,34 +647,5 @@ public class EditorSourceInfoView extends ViewPart {
 		return jComboBox;
 	}
 	
-	private JTextField createJTextField(String name, String value, int size) {
-
-		JTextField jTextField = new JTextField(size);
-		jTextField.setName(name);
-		jTextField.setText(value);
-
-		// add this object to the session array
-		//this.editorFields.put(name, jTextField);
-
-		return jTextField;
-	}
 	
-	private JButton createIconButton(String label, String command, String icon) {
-
-		JButton button = createButton(label, command);
-		button.setIcon(GUITools.createImageIcon(icon));
-		button.setBorderPainted(false);
-		button.setIconTextGap(0);
-
-		return button;
-	}
-	
-	private void disposeChildren(Composite composite){
-		Control[] children = composite.getChildren();
-		
-		for(int x = 0; x < children.length; x++){
-			children[x].dispose();
-		}
-		
-	}
 }
