@@ -44,6 +44,7 @@ public class GUIDialogTest extends Dialog {
 		super(parent, style);
 		setText("SWT Dialog");
 		
+		
 	}
 
 	/**
