@@ -30,6 +30,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.wb.swt.ResourceManager;
 
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
@@ -49,7 +50,7 @@ import org.eclipse.swt.events.MenuAdapter;
 import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.widgets.MenuItem;
 
-import com.swtdesigner.ResourceManager;
+
 
 public class EditorTargetView extends ViewPart {
 
