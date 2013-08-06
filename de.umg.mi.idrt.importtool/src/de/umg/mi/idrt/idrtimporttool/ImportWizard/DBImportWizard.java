@@ -310,35 +310,14 @@ System.out.println("filename: " + file.getAbsolutePath());
 			}
 			contextMap = new HashMap<String, String>();
 
-			// contextMap.put("dbImport", "false");
-			// defaultProps.setProperty("dbImport", "false");
-
-			// contextMap.put("currentfile", output.getAbsolutePath());
-			// defaultProps.setProperty("currentfile",
-			// output.getAbsolutePath());
-
-			// contextMap.put("config", tmpConfigFile.getAbsolutePath());
-			// defaultProps.setProperty("config",tmpConfigFile.getAbsolutePath());
-
-			// contextMap.put("table", server.getTable());
-			// defaultProps.setProperty("table", server.getTable());
-
 			contextMap.put("DBHost", WizardPageOne.getIpText());
-			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
+//			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
-			// defaultProps.setProperty("pw",
-			// WizardPageOne.getDBUserPasswordText());
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
-			//			defaultProps.setProperty("DBUsername", WizardPageOne.getDBUserText());
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
-			//			defaultProps.setProperty("DBInstance", WizardPageOne.getDBSIDText());
 			contextMap.put("DBPort", WizardPageOne.getPortText());
-			//			defaultProps.setProperty("DBPort", WizardPageOne.getPortText());
 			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText());
-			//			defaultProps.setProperty("DBSchema", WizardPageOne.getDBSchemaText());
 
-			// defaultProps.setProperty("databaseTable",
-			// DBWizardPageThree.getDBTableText());
 
 			/**
 			 * page 2
@@ -357,64 +336,14 @@ System.out.println("filename: " + file.getAbsolutePath());
 				File rootDir = new File(cfgFileUrl.getPath()
 						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
 
-				System.out.println("**********************");
-				System.out.println("STFOLDER: "
-						+ rootDir.getAbsolutePath().replaceAll("\\\\", "/"));
-				System.out.println("**********************");
-
-				File icd10Dir = new File(rootDir.getAbsolutePath()
-						+ "/ICD-10-GM/");
-				contextMap.put("icd10Dir", icd10Dir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("icd10Dir", icd10Dir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File tnmDir = new File(rootDir.getAbsolutePath() + "/TNM/");
-				contextMap.put("tnmDir",
-						tnmDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("tnmDir", tnmDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				contextMap
-				.put("rootDir",
-						rootDir.getAbsolutePath().replaceAll("\\\\",
-								"/")
-								+ "/");
-				//				defaultProps.setProperty("rootDir", rootDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File loincDir = new File(rootDir.getAbsolutePath() + "/LOINC/");
-				contextMap.put("loincDir", loincDir.getAbsolutePath()
-						.replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("loincDir", loincDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File opsDir = new File(rootDir.getAbsolutePath() + "/OPS/");
-				contextMap.put("opsDir",
-						opsDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("opsDir", opsDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File p21Dir = new File(rootDir.getAbsolutePath() + "/P21/");
-				contextMap.put("p21Dir",
-						p21Dir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("p21Dir", p21Dir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File drgDir = new File(rootDir.getAbsolutePath() + "/DRG/");
-				contextMap.put("drgDir",
-						drgDir.getAbsolutePath().replaceAll("\\\\", "/") + "/");
-				//				defaultProps.setProperty("drgDir", drgDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
-
-				File icdoDir = new File(rootDir.getAbsolutePath() + "/ICD-O-3/");
-				contextMap
-				.put("icdoDir",
-						icdoDir.getAbsolutePath().replaceAll("\\\\",
-								"/")
-								+ "/");
-				//				defaultProps.setProperty("icdoDir", icdoDir.getAbsolutePath()
-				//						.replaceAll("\\\\", "/") + "/");
+				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
+				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
+				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
+				contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
+				contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
+				contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
+				contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
+				contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/");
 			} else {
 			}
 
@@ -489,17 +418,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 					StatusListener.setSubStatus(0.0f, "");
 					StatusListener.notifyListener();
 					started = false;
-					// progressBar.close();
-					// delete old files
-					// try{
-					// File folder = new File(FOLDERCSV);
-					// File[] files = folder.listFiles();
-					// for (int i = 0; i < files.length; i++) {
-					// files[i].delete();
-					// }
-					// }catch (Exception e) {
-					// System.err.println("Deletion Failed!");
-					// }
 
 					if (exitCode == 0) {
 						Display.getDefault().syncExec(new Runnable() {
