@@ -914,7 +914,7 @@ public class ServerView extends ViewPart {
 //			}
 			targetServerViewer.refresh();
 
-			targetServerViewer.expandAll();
+			
 			
 			targetServerViewer.getTree().setMenu(mainMenu);
 			targetServerViewer.addDragSupport(operations, transferTypes,
