@@ -18,6 +18,7 @@ public class Log {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 		ServerView.setLog(sdf.format(cal.getTime()), log);
+		
 	}
 
 }
