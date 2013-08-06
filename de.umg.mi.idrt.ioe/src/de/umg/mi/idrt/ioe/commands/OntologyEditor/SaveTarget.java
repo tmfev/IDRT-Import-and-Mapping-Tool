@@ -84,10 +84,6 @@ public class SaveTarget extends AbstractHandler {
 		// i2b2ImportTool.getMyOT().getOTTarget().setModel(newTreeModel2);
 		// i2b2ImportTool.getMyOT().getOTTarget().updateUI();
 
-		/*
-		 * if (OTTarget != null) { OTTarget.setCellRenderer( new OTRenderer(
-		 * i2b2ImportTool.getMyOT() )); }
-		 */
 
 		return null;
 	}
