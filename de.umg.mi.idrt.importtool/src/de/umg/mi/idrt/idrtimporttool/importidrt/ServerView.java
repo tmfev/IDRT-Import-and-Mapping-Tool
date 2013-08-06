@@ -604,6 +604,20 @@ public class ServerView extends ViewPart {
 			throw new RuntimeException("DBImport.command not found"); 
 		}
 	}
+	private void loadOntology() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			// System.out.println("NYI");
+			handlerService.executeCommand(
+					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
+		}
+	}
+	
+	//edu.goettingen.i2b2.importtool.OntologyEditorLoad
 	//	/**
 	//	 * Removes possible database locks. Only works with Oracle + sys/system user.
 	//	 */
@@ -914,11 +928,22 @@ public class ServerView extends ViewPart {
 //			}
 			targetServerViewer.refresh();
 
-			
-			
 			targetServerViewer.getTree().setMenu(mainMenu);
 			targetServerViewer.addDragSupport(operations, transferTypes,
 					new ServerDragSourceListener(targetServerViewer));
+			final MenuItem loadOntologyMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			loadOntologyMenuItem.setText("Load Ontology");
+			loadOntologyMenuItem.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					loadOntology();
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+			});
 			Menu importMenu = new Menu(mainMenu);
 
 			final MenuItem importMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
@@ -958,6 +983,8 @@ public class ServerView extends ViewPart {
 
 				}
 			});
+			
+			
 
 			final MenuItem importTermsMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			importTermsMenuItem.setText(Messages.ServerView_ImportAndMapST);
@@ -1016,6 +1043,8 @@ public class ServerView extends ViewPart {
 					importP21();
 				}
 			});
+			
+			
 			MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
 			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
