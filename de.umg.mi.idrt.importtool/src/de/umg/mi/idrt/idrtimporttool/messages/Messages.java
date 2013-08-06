@@ -1,6 +1,5 @@
 package de.umg.mi.idrt.idrtimporttool.messages;
 
-import java.util.Locale;
 import org.eclipse.osgi.util.NLS;
 
 /**

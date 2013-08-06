@@ -1,7 +1,5 @@
 package de.umg.mi.idrt.idrtimporttool.importidrt;
 
-import java.util.Locale;
-
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;

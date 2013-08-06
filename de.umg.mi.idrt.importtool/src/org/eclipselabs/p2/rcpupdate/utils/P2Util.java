@@ -1,9 +1,6 @@
 package org.eclipselabs.p2.rcpupdate.utils;
 
 import java.lang.reflect.InvocationTargetException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -21,8 +18,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipselabs.p2.rcpupdate.utils.plugin.Activator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.eclipse.equinox.internal.p2.ui.model.MetadataRepositoryElement;
-import org.eclipse.equinox.internal.p2.ui.model.ElementUtils;
 
 /**
  * @see http://wiki.eclipse.org/Equinox/p2/Adding_Self-Update_to_an_RCP_Application

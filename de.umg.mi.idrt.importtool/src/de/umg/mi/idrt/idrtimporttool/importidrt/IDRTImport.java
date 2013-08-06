@@ -6,10 +6,7 @@ import idrt52.idrt_stdterm_0_1.IDRT_STDTERM;
 import idrt52.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import idrt52.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
 import idrt52.odm_master_0_1.ODM_MASTER;
-import idrt52.p21_erweiterung_2010_0_1.P21_ERWEITERUNG_2010;
-import idrt52.p21_erweiterung_2011_2012_0_1.P21_ERWEITERUNG_2011_2012;
 import idrt52.server_freelocks_0_1.SERVER_FreeLocks;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
