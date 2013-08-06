@@ -17,6 +17,8 @@ public class NodeDragListener implements DragSourceListener {
 
 	public NodeDragListener(TreeViewer viewer) {
 		this.viewer = viewer;
+		
+		
 	}
 
 	@Override
