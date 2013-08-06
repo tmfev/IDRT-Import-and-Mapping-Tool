@@ -205,9 +205,8 @@ public class MyOntologyTree extends JPanel {
 			}
 		};
 
-		// set custom renderer and listener
+		// set custom listener
 		if (this._ontologyTreeSource != null) {
-			this._ontologyTreeSource.setCellRenderer(new OTRenderer(this));
 			// this.OT.addTreeSelectionListener(this);
 			this._ontologyTreeSource.addMouseListener(ma);
 			// Debug.d("# calling: setActive");
@@ -356,7 +355,7 @@ public class MyOntologyTree extends JPanel {
 
 		// set custom renderer and listener
 		if (this._ontologyTreeTarget != null) {
-			this._ontologyTreeTarget.setCellRenderer(new OTRenderer(this));
+			
 			// this.OTTarget.addTreeSelectionListener(this);
 			this._ontologyTreeTarget.addMouseListener(ma);
 		}

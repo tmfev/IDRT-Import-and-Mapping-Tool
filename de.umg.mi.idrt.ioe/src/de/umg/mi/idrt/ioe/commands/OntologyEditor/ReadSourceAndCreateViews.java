@@ -17,7 +17,6 @@ import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OTCreatorTOS;
-import de.umg.mi.idrt.ioe.OntologyTree.OTRenderer;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -127,8 +126,8 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 					.getOntologyTreeSource();
 
 			if (OT != null) {
-				OT.setCellRenderer(new OTRenderer(i2b2ImportTool
-						.getMyOntologyTrees()));
+				
+
 				// OT.addTreeSelectionListener(i2b2ImportTool.getMyOT());
 				// OT.addMouseListener(ma);
 				// Debug.d("# calling: setActive");
@@ -160,10 +159,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			OntologyTree OTTarget = i2b2ImportTool.getMyOntologyTrees()
 					.getOntologyTreeTarget();
 
-			if (OTTarget != null) {
-				OTTarget.setCellRenderer(new OTRenderer(i2b2ImportTool
-						.getMyOntologyTrees()));
-			}
+
 
 			editorTargetView.setComposite(OTTarget);
 

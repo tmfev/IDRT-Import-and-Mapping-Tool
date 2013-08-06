@@ -17,7 +17,6 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OTCreatorTOS;
-import de.umg.mi.idrt.ioe.OntologyTree.OTRenderer;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -95,11 +94,7 @@ public class ReadTarget extends AbstractHandler {
 				//i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().updateUI();
 				Application.getEditorTargetView().setSelection(editorTargetView.getI2B2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getRootNode());
 				Application.getEditorTargetView().getTreeViewer().expandAll();
-				/*
-				if (OTTarget != null) {
-					OTTarget.setCellRenderer( new OTRenderer( i2b2ImportTool.getMyOT() ));
-				}
-				*/
+
 				
 
 				
