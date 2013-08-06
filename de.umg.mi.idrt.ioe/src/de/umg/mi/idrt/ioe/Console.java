@@ -51,16 +51,7 @@ public class Console {
 	
 	public static void error(String text, boolean dialog){
 		error(text);
-		/*
-		if (dialog == true){
-			ActionCommand command = new ActionCommand("edu.goettingen.i2b2.importtool.commands.OpenDialog");
-			command.addParameter("edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Title", "Ein Fehler ist passiert! Panik ist angesagt! (vielleicht)");
-			command.addParameter("edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Type", "error");
-			command.addParameter("edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Title", text);
-			Application.executeCommand(command);	
-		}
-		*/
-		
+			
 	}
 	
 	public static void error(String message, Exception exception){

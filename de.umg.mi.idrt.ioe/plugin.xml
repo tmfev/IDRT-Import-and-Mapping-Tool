@@ -68,26 +68,6 @@
             name="%command.name.0">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OpenDialog"
-            id="edu.goettingen.i2b2.importtool.commands.OpenDialog"
-            name="%command.name.2">
-         <commandParameter
-               id="edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Title"
-               name="Title"
-               optional="true">
-         </commandParameter>
-         <commandParameter
-               id="edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Type"
-               name="Type"
-               optional="true">
-         </commandParameter>
-         <commandParameter
-               id="edu.goettingen.i2b2.importtool.commands.OpenDialog.Parameter.Message"
-               name="Message"
-               optional="true">
-         </commandParameter>
-      </command>
-      <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.ShowImportProgressBar"
             id="edu.goettingen.i2b2.importtool.commands.ShowImportProgressBar"
             name="%command.name.5">
@@ -189,15 +169,6 @@
             <command
                   commandId="edu.goettingen.i2b2.importtool.OTReadTarget"
                   label=" - load target"
-                  style="push">
-            </command>
-         </menu>
-         <menu
-               id="menuHelp"
-               label="%menu.label.2">
-            <command
-                  commandId="edu.goettingen.i2b2.importtool.commands.OpenDialog"
-                  label="openDialog"
                   style="push">
             </command>
          </menu>

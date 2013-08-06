@@ -267,11 +267,8 @@ public class Application implements IApplication {
 				handlerService.executeCommand(commandID, null);
 			} catch(NotHandledException ne){
 				Debug.d("NotHandledException while executing command \"" + commandID + "\"");
-				if (!commandID.equals("edu.goettingen.i2b2.importtool.commands.OpenDialog."))
-					Console.error(ne, true);
 			} catch (Exception e) {
-				if (!commandID.equals("edu.goettingen.i2b2.importtool.commands.OpenDialog."))
-					Console.error(e, true);
+				Console.error(e, true);
 			}
 		}
 	}
