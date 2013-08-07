@@ -133,21 +133,6 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
-               id="menuFile"
-               label="%menu.label">
-            <command
-                  commandId="org.eclipse.ui.window.preferences"
-                  label="%command.label.3"
-                  style="push">
-            </command>
-            <command
-                  commandId="edu.goettingen.i2b2.importtool.commands.SystemExit"
-                  label="%command.label.4"
-                  style="push"
-                  tooltip="%command.tooltip.1">
-            </command>
-         </menu>
-         <menu
                label="Import">
          </menu>
          <menu
