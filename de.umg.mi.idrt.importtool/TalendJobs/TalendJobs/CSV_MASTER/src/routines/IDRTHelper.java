@@ -116,7 +116,7 @@ public class IDRTHelper {
 	}
 	public String replaceIDRT(String toReplace){
 
-		return toReplace.replace("Ã„", "AE").replace("Ã¤", "ae").replace("Ã–", "OE").replace("Ã¶", "oe").replace("Ã¼", "ue").replace("-", "_");
+		return toReplace.replace("Ä„", "AE").replace("ä", "ae").replace("Ö", "OE").replace("ö", "oe").replace("ü", "ue").replace("-", "_");
 
 	}
 	public void readConfig(File config, char quoteChar) {
@@ -358,7 +358,7 @@ public class IDRTHelper {
 			ontLine[j++] = "\\"+headnode+"\\";
 			ontLine[j++] = "";
 			ontLine[j++] = "";
-			ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+			ontLine[j++] = "";
 			ontLine[j++] = "";
 			ontLine[j++] = "";
 			ontLine[j++] = "FAE";
@@ -390,7 +390,7 @@ public class IDRTHelper {
 
 				ontLine[j++] = "";
 				ontLine[j++] = "";
-				ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "FAE";
@@ -407,7 +407,7 @@ public class IDRTHelper {
 				ontLine[j++] = "\\"+tableName+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
-				ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "DAE";
@@ -446,7 +446,7 @@ public class IDRTHelper {
 						ontLine[j++] = "\\"+tableName+"\\"+string+"\\";
 						ontLine[j++] = IDRTItemMap.get(colCounter).getDataType();
 						ontLine[j++] = "";
-						ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+						ontLine[j++] = "";
 						ontLine[j++] = "";
 						ontLine[j++] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
 						ontLine[j++] = "DAE";
@@ -479,7 +479,7 @@ public class IDRTHelper {
 				ontLine[j++] = "\\"+headnode+"\\"+pd+"\\";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
-				ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "FAE";
@@ -494,7 +494,7 @@ public class IDRTHelper {
 				ontLine[j++] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
-				ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "";
 				ontLine[j++] = "FAE";
@@ -525,7 +525,7 @@ public class IDRTHelper {
 						ontLine[j++] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
 						ontLine[j++] = IDRTItemMap.get(colCounter).getDataType();
 						ontLine[j++] = "";
-						ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
+						ontLine[j++] = "";
 						ontLine[j++] = "";
 						ontLine[j++] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
 						ontLine[j++] = "FAE";

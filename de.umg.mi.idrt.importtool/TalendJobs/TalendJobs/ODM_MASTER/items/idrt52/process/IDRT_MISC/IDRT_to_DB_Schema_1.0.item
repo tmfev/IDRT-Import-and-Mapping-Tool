@@ -3,25 +3,32 @@
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="&quot;Std. Terminologien importieren?&quot;" name="importTerms" prompt="importTerms?" promptNeeded="true" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="lastPatient" prompt="lastPatient?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
+    <contextParameter comment="" name="dataRows" prompt="dataRows?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="ontRows" prompt="ontRows?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="currentOntRow" prompt="currentOntRow?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="currentDataRow" prompt="currentDataRow?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="dataMod" prompt="dataMod?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="ontMod" prompt="ontMod?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;aa_diagnosesicherung&quot;"/>
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value="8Hm+c/CLC8Q="/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
-    <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value="8Hm+c/CLC8Q="/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value=""/>
@@ -59,12 +66,6 @@
     <contextParameter comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Patientendaten&quot;"/>
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;IDRT.xslt&quot;"/>
     <contextParameter comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
-    <contextParameter comment="" name="dataRows" prompt="dataRows?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="ontRows" prompt="ontRows?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="currentOntRow" prompt="currentOntRow?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="currentDataRow" prompt="currentDataRow?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="dataMod" prompt="dataMod?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="ontMod" prompt="ontMod?" promptNeeded="false" type="id_Integer" value=""/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
@@ -318,7 +319,7 @@
       <column comment="" key="false" name="itemGroupRepeatKey" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="toCD" expressionFilter="patientData.m_applied_path.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="CONCEPT_PATH" expression="patientData.Path" type="id_String"/>
@@ -356,7 +357,7 @@
         <mapperTableEntries name="Download_Date" expression="patientData.Download_Date" type="id_Date" nullable="true"/>
         <mapperTableEntries name="StudyEventRepeatKey" expression="patientData.StudyEventRepeatKey" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemGroupRepeatKey" expression="patientData.itemGroupRepeatKey" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="startDate" expression="patientData.startDate" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="startDate" expression="patientData.DataType.equalsIgnoreCase(&quot;date&quot;)?TalendDate.parseDate(context.datePattern,patientData.Value)  :patientData.startDate    " type="id_Date" nullable="true"/>
         <mapperTableEntries name="endDate" expression="patientData.endDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="source" expression="patientData.source" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONCEPT_CD" expression="patientData.CONCEPT_CD " type="id_String" nullable="true"/>
@@ -3350,7 +3351,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="row10.xml.equals(&quot;xml&quot;) " type="id_Boolean"/>
         <mapperTableEntries name="var2" type="id_String"/>

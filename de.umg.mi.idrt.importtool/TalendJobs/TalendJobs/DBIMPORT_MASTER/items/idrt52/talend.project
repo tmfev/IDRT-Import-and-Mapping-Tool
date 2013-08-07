@@ -1789,7 +1789,7 @@
     <migrationTask xmi:id="_t806jNcdEeK6KtgkAtx7Aw" id="org.talend.repository.model.migration.ChangeBagName4tPigCode" breaks="5.2.1" version="5.3.0" status="ok"/>
     <migrationTask xmi:id="_t806jdcdEeK6KtgkAtx7Aw" id="org.talend.repository.model.migration.ChangePigVersionOfPigLoadMigrationTask" breaks="5.3.0" version="5.3.0" status="ok"/>
     <migrationTask xmi:id="_t806jtcdEeK6KtgkAtx7Aw" id="org.talend.repository.model.migration.ChangeHadoopVersionsOfReferenceComponentsMigrationTask" breaks="5.3.0" version="5.3.0" status="ok"/>
-    <migrationTask xmi:id="_-xpX4PhhEeKkTamBHZXjKg" id="org.talend.repository.model.migration.UpdateExistentMigrationTasksToAdaptNewMigrationSystemMigrationTask" breaks="5.1.1" version="5.1.2" status="ok"/>
+    <migrationTask xmi:id="_O_GEIf6HEeKBjNcq0fBtoQ" id="org.talend.repository.model.migration.UpdateExistentMigrationTasksToAdaptNewMigrationSystemMigrationTask" breaks="5.1.1" version="5.1.2" status="ok"/>
   </TalendProperties:Project>
   <TalendProperties:User xmi:id="_t79X0NcdEeK6KtgkAtx7Aw" login="test@talend.com" password="D41D8CD98F00B204E9800998ECF8427E"/>
   <TalendProperties:ExchangeUser xmi:id="_t79-4NcdEeK6KtgkAtx7Aw" username="" login="" password=""/>

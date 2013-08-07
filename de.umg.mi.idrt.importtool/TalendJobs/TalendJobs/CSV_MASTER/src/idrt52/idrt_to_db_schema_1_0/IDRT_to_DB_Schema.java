@@ -138,6 +138,61 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
+			if (patientDataFolder != null) {
+
+				this.setProperty("patientDataFolder",
+						patientDataFolder.toString());
+
+			}
+
+			if (uploadFolder != null) {
+
+				this.setProperty("uploadFolder", uploadFolder.toString());
+
+			}
+
+			if (dataRows != null) {
+
+				this.setProperty("dataRows", dataRows.toString());
+
+			}
+
+			if (ontRows != null) {
+
+				this.setProperty("ontRows", ontRows.toString());
+
+			}
+
+			if (currentOntRow != null) {
+
+				this.setProperty("currentOntRow", currentOntRow.toString());
+
+			}
+
+			if (currentDataRow != null) {
+
+				this.setProperty("currentDataRow", currentDataRow.toString());
+
+			}
+
+			if (dataMod != null) {
+
+				this.setProperty("dataMod", dataMod.toString());
+
+			}
+
+			if (ontMod != null) {
+
+				this.setProperty("ontMod", ontMod.toString());
+
+			}
+
+			if (datePattern != null) {
+
+				this.setProperty("datePattern", datePattern.toString());
+
+			}
+
 			if (fileName != null) {
 
 				this.setProperty("fileName", fileName.toString());
@@ -156,15 +211,45 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (DBInstance != null) {
+			if (DBHost != null) {
 
-				this.setProperty("DBInstance", DBInstance.toString());
+				this.setProperty("DBHost", DBHost.toString());
 
 			}
 
 			if (dbImport != null) {
 
 				this.setProperty("dbImport", dbImport.toString());
+
+			}
+
+			if (DBInstance != null) {
+
+				this.setProperty("DBInstance", DBInstance.toString());
+
+			}
+
+			if (DBPassword != null) {
+
+				this.setProperty("DBPassword", DBPassword.toString());
+
+			}
+
+			if (DBPort != null) {
+
+				this.setProperty("DBPort", DBPort.toString());
+
+			}
+
+			if (DBSchema != null) {
+
+				this.setProperty("DBSchema", DBSchema.toString());
+
+			}
+
+			if (DBUsername != null) {
+
+				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -186,22 +271,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
 			if (idFile != null) {
 
 				this.setProperty("idFile", idFile.toString());
-
-			}
-
-			if (patientDataFolder != null) {
-
-				this.setProperty("patientDataFolder",
-						patientDataFolder.toString());
 
 			}
 
@@ -217,39 +289,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
 			if (truncateProject != null) {
 
 				this.setProperty("truncateProject", truncateProject.toString());
-
-			}
-
-			if (uploadFolder != null) {
-
-				this.setProperty("uploadFolder", uploadFolder.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -488,42 +530,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (dataRows != null) {
-
-				this.setProperty("dataRows", dataRows.toString());
-
-			}
-
-			if (ontRows != null) {
-
-				this.setProperty("ontRows", ontRows.toString());
-
-			}
-
-			if (currentOntRow != null) {
-
-				this.setProperty("currentOntRow", currentOntRow.toString());
-
-			}
-
-			if (currentDataRow != null) {
-
-				this.setProperty("currentDataRow", currentDataRow.toString());
-
-			}
-
-			if (dataMod != null) {
-
-				this.setProperty("dataMod", dataMod.toString());
-
-			}
-
-			if (ontMod != null) {
-
-				this.setProperty("ontMod", ontMod.toString());
-
-			}
-
 		}
 
 		public Boolean importTerms;
@@ -536,6 +542,60 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		public Integer getLastPatient() {
 			return this.lastPatient;
+		}
+
+		public String patientDataFolder;
+
+		public String getPatientDataFolder() {
+			return this.patientDataFolder;
+		}
+
+		public String uploadFolder;
+
+		public String getUploadFolder() {
+			return this.uploadFolder;
+		}
+
+		public Integer dataRows;
+
+		public Integer getDataRows() {
+			return this.dataRows;
+		}
+
+		public Integer ontRows;
+
+		public Integer getOntRows() {
+			return this.ontRows;
+		}
+
+		public Integer currentOntRow;
+
+		public Integer getCurrentOntRow() {
+			return this.currentOntRow;
+		}
+
+		public Integer currentDataRow;
+
+		public Integer getCurrentDataRow() {
+			return this.currentDataRow;
+		}
+
+		public Integer dataMod;
+
+		public Integer getDataMod() {
+			return this.dataMod;
+		}
+
+		public Integer ontMod;
+
+		public Integer getOntMod() {
+			return this.ontMod;
+		}
+
+		public String datePattern;
+
+		public String getDatePattern() {
+			return this.datePattern;
 		}
 
 		public String fileName;
@@ -556,16 +616,46 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.coding;
 		}
 
-		public String DBInstance;
+		public String DBHost;
 
-		public String getDBInstance() {
-			return this.DBInstance;
+		public String getDBHost() {
+			return this.DBHost;
 		}
 
 		public Boolean dbImport;
 
 		public Boolean getDbImport() {
 			return this.dbImport;
+		}
+
+		public String DBInstance;
+
+		public String getDBInstance() {
+			return this.DBInstance;
+		}
+
+		public java.lang.String DBPassword;
+
+		public java.lang.String getDBPassword() {
+			return this.DBPassword;
+		}
+
+		public String DBPort;
+
+		public String getDBPort() {
+			return this.DBPort;
+		}
+
+		public String DBSchema;
+
+		public String getDBSchema() {
+			return this.DBSchema;
+		}
+
+		public String DBUsername;
+
+		public String getDBUsername() {
+			return this.DBUsername;
 		}
 
 		public String exportDBConfig;
@@ -586,22 +676,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.FTPUser;
 		}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
 		public String idFile;
 
 		public String getIdFile() {
 			return this.idFile;
-		}
-
-		public String patientDataFolder;
-
-		public String getPatientDataFolder() {
-			return this.patientDataFolder;
 		}
 
 		public Boolean pidgen;
@@ -616,40 +694,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.PIDURL;
 		}
 
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
-		}
-
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
 		public Boolean truncateProject;
 
 		public Boolean getTruncateProject() {
 			return this.truncateProject;
-		}
-
-		public String uploadFolder;
-
-		public String getUploadFolder() {
-			return this.uploadFolder;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
 		}
 
 		public String concept_cd;
@@ -872,42 +920,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		public String getXslt_namespace() {
 			return this.xslt_namespace;
-		}
-
-		public Integer dataRows;
-
-		public Integer getDataRows() {
-			return this.dataRows;
-		}
-
-		public Integer ontRows;
-
-		public Integer getOntRows() {
-			return this.ontRows;
-		}
-
-		public Integer currentOntRow;
-
-		public Integer getCurrentOntRow() {
-			return this.currentOntRow;
-		}
-
-		public Integer currentDataRow;
-
-		public Integer getCurrentDataRow() {
-			return this.currentDataRow;
-		}
-
-		public Integer dataMod;
-
-		public Integer getDataMod() {
-			return this.dataMod;
-		}
-
-		public Integer ontMod;
-
-		public Integer getOntMod() {
-			return this.ontMod;
 		}
 	}
 
@@ -14625,7 +14637,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												out2_tmp.Download_Date = patientData.Download_Date;
 												out2_tmp.StudyEventRepeatKey = patientData.StudyEventRepeatKey;
 												out2_tmp.itemGroupRepeatKey = patientData.itemGroupRepeatKey;
-												out2_tmp.startDate = patientData.startDate;
+												out2_tmp.startDate = patientData.DataType
+														.equalsIgnoreCase("date") ? TalendDate
+														.parseDate(
+																context.datePattern,
+																patientData.Value)
+														: patientData.startDate;
 												out2_tmp.endDate = patientData.endDate;
 												out2_tmp.source = patientData.source;
 												out2_tmp.CONCEPT_CD = patientData.CONCEPT_CD;
@@ -50638,6 +50655,46 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			} catch (NumberFormatException e) {
 				context.lastPatient = null;
 			}
+			context.patientDataFolder = (String) context
+					.getProperty("patientDataFolder");
+			context.uploadFolder = (String) context.getProperty("uploadFolder");
+			try {
+				context.dataRows = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("dataRows"));
+			} catch (NumberFormatException e) {
+				context.dataRows = null;
+			}
+			try {
+				context.ontRows = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("ontRows"));
+			} catch (NumberFormatException e) {
+				context.ontRows = null;
+			}
+			try {
+				context.currentOntRow = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("currentOntRow"));
+			} catch (NumberFormatException e) {
+				context.currentOntRow = null;
+			}
+			try {
+				context.currentDataRow = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("currentDataRow"));
+			} catch (NumberFormatException e) {
+				context.currentDataRow = null;
+			}
+			try {
+				context.dataMod = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("dataMod"));
+			} catch (NumberFormatException e) {
+				context.dataMod = null;
+			}
+			try {
+				context.ontMod = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("ontMod"));
+			} catch (NumberFormatException e) {
+				context.ontMod = null;
+			}
+			context.datePattern = (String) context.getProperty("datePattern");
 			context.fileName = (String) context.getProperty("fileName");
 			try {
 				context.cleanUp = routines.system.ParserUtils
@@ -50646,22 +50703,25 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.cleanUp = null;
 			}
 			context.coding = (String) context.getProperty("coding");
-			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBHost = (String) context.getProperty("DBHost");
 			try {
 				context.dbImport = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("dbImport"));
 			} catch (NumberFormatException e) {
 				context.dbImport = null;
 			}
+			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBPassword = (java.lang.String) context
+					.getProperty("DBPassword");
+			context.DBPort = (String) context.getProperty("DBPort");
+			context.DBSchema = (String) context.getProperty("DBSchema");
+			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.exportDBConfig = (String) context
 					.getProperty("exportDBConfig");
 			context.FTPPassword = (java.lang.String) context
 					.getProperty("FTPPassword");
 			context.FTPUser = (String) context.getProperty("FTPUser");
-			context.DBHost = (String) context.getProperty("DBHost");
 			context.idFile = (String) context.getProperty("idFile");
-			context.patientDataFolder = (String) context
-					.getProperty("patientDataFolder");
 			try {
 				context.pidgen = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("pidgen"));
@@ -50669,18 +50729,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.pidgen = null;
 			}
 			context.PIDURL = (String) context.getProperty("PIDURL");
-			context.DBPort = (String) context.getProperty("DBPort");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBSchema = (String) context.getProperty("DBSchema");
 			try {
 				context.truncateProject = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("truncateProject"));
 			} catch (NumberFormatException e) {
 				context.truncateProject = null;
 			}
-			context.uploadFolder = (String) context.getProperty("uploadFolder");
-			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.concept_cd = (String) context.getProperty("concept_cd");
 			context.concept_path = (String) context.getProperty("concept_path");
 			context.currentFile = (String) context.getProperty("currentFile");
@@ -50747,42 +50801,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			context.xslt = (String) context.getProperty("xslt");
 			context.xslt_namespace = (String) context
 					.getProperty("xslt_namespace");
-			try {
-				context.dataRows = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("dataRows"));
-			} catch (NumberFormatException e) {
-				context.dataRows = null;
-			}
-			try {
-				context.ontRows = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("ontRows"));
-			} catch (NumberFormatException e) {
-				context.ontRows = null;
-			}
-			try {
-				context.currentOntRow = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("currentOntRow"));
-			} catch (NumberFormatException e) {
-				context.currentOntRow = null;
-			}
-			try {
-				context.currentDataRow = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("currentDataRow"));
-			} catch (NumberFormatException e) {
-				context.currentDataRow = null;
-			}
-			try {
-				context.dataMod = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("dataMod"));
-			} catch (NumberFormatException e) {
-				context.dataMod = null;
-			}
-			try {
-				context.ontMod = routines.system.ParserUtils
-						.parseTo_Integer(context.getProperty("ontMod"));
-			} catch (NumberFormatException e) {
-				context.ontMod = null;
-			}
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -50798,6 +50816,38 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.lastPatient = (Integer) parentContextMap
 						.get("lastPatient");
 			}
+			if (parentContextMap.containsKey("patientDataFolder")) {
+				context.patientDataFolder = (String) parentContextMap
+						.get("patientDataFolder");
+			}
+			if (parentContextMap.containsKey("uploadFolder")) {
+				context.uploadFolder = (String) parentContextMap
+						.get("uploadFolder");
+			}
+			if (parentContextMap.containsKey("dataRows")) {
+				context.dataRows = (Integer) parentContextMap.get("dataRows");
+			}
+			if (parentContextMap.containsKey("ontRows")) {
+				context.ontRows = (Integer) parentContextMap.get("ontRows");
+			}
+			if (parentContextMap.containsKey("currentOntRow")) {
+				context.currentOntRow = (Integer) parentContextMap
+						.get("currentOntRow");
+			}
+			if (parentContextMap.containsKey("currentDataRow")) {
+				context.currentDataRow = (Integer) parentContextMap
+						.get("currentDataRow");
+			}
+			if (parentContextMap.containsKey("dataMod")) {
+				context.dataMod = (Integer) parentContextMap.get("dataMod");
+			}
+			if (parentContextMap.containsKey("ontMod")) {
+				context.ontMod = (Integer) parentContextMap.get("ontMod");
+			}
+			if (parentContextMap.containsKey("datePattern")) {
+				context.datePattern = (String) parentContextMap
+						.get("datePattern");
+			}
 			if (parentContextMap.containsKey("fileName")) {
 				context.fileName = (String) parentContextMap.get("fileName");
 			}
@@ -50807,12 +50857,29 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("coding")) {
 				context.coding = (String) parentContextMap.get("coding");
 			}
+			if (parentContextMap.containsKey("DBHost")) {
+				context.DBHost = (String) parentContextMap.get("DBHost");
+			}
+			if (parentContextMap.containsKey("dbImport")) {
+				context.dbImport = (Boolean) parentContextMap.get("dbImport");
+			}
 			if (parentContextMap.containsKey("DBInstance")) {
 				context.DBInstance = (String) parentContextMap
 						.get("DBInstance");
 			}
-			if (parentContextMap.containsKey("dbImport")) {
-				context.dbImport = (Boolean) parentContextMap.get("dbImport");
+			if (parentContextMap.containsKey("DBPassword")) {
+				context.DBPassword = (java.lang.String) parentContextMap
+						.get("DBPassword");
+			}
+			if (parentContextMap.containsKey("DBPort")) {
+				context.DBPort = (String) parentContextMap.get("DBPort");
+			}
+			if (parentContextMap.containsKey("DBSchema")) {
+				context.DBSchema = (String) parentContextMap.get("DBSchema");
+			}
+			if (parentContextMap.containsKey("DBUsername")) {
+				context.DBUsername = (String) parentContextMap
+						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("exportDBConfig")) {
 				context.exportDBConfig = (String) parentContextMap
@@ -50825,15 +50892,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("FTPUser")) {
 				context.FTPUser = (String) parentContextMap.get("FTPUser");
 			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
 			if (parentContextMap.containsKey("idFile")) {
 				context.idFile = (String) parentContextMap.get("idFile");
-			}
-			if (parentContextMap.containsKey("patientDataFolder")) {
-				context.patientDataFolder = (String) parentContextMap
-						.get("patientDataFolder");
 			}
 			if (parentContextMap.containsKey("pidgen")) {
 				context.pidgen = (Boolean) parentContextMap.get("pidgen");
@@ -50841,27 +50901,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("PIDURL")) {
 				context.PIDURL = (String) parentContextMap.get("PIDURL");
 			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
 			if (parentContextMap.containsKey("truncateProject")) {
 				context.truncateProject = (Boolean) parentContextMap
 						.get("truncateProject");
-			}
-			if (parentContextMap.containsKey("uploadFolder")) {
-				context.uploadFolder = (String) parentContextMap
-						.get("uploadFolder");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("concept_cd")) {
 				context.concept_cd = (String) parentContextMap
@@ -51003,26 +51045,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("xslt_namespace")) {
 				context.xslt_namespace = (String) parentContextMap
 						.get("xslt_namespace");
-			}
-			if (parentContextMap.containsKey("dataRows")) {
-				context.dataRows = (Integer) parentContextMap.get("dataRows");
-			}
-			if (parentContextMap.containsKey("ontRows")) {
-				context.ontRows = (Integer) parentContextMap.get("ontRows");
-			}
-			if (parentContextMap.containsKey("currentOntRow")) {
-				context.currentOntRow = (Integer) parentContextMap
-						.get("currentOntRow");
-			}
-			if (parentContextMap.containsKey("currentDataRow")) {
-				context.currentDataRow = (Integer) parentContextMap
-						.get("currentDataRow");
-			}
-			if (parentContextMap.containsKey("dataMod")) {
-				context.dataMod = (Integer) parentContextMap.get("dataMod");
-			}
-			if (parentContextMap.containsKey("ontMod")) {
-				context.ontMod = (Integer) parentContextMap.get("ontMod");
 			}
 		}
 
@@ -51174,6 +51196,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1392023 characters generated by Talend Open Studio for Data Integration on
- * the July 30, 2013 12:18:50 PM CEST
+ * 1392573 characters generated by Talend Open Studio for Data Integration on
+ * the August 7, 2013 3:47:43 PM CEST
  ************************************************************************************************/
