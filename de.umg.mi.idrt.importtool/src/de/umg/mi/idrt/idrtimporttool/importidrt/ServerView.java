@@ -930,12 +930,16 @@ public class ServerView extends ViewPart {
 			targetServerViewer.addDragSupport(operations, transferTypes,
 					new ServerDragSourceListener(targetServerViewer));
 
-
+			/**
+			 * Check if Load Ontology Command is enabled
+			 */
 			ICommandService commandService = (ICommandService) PlatformUI
 					.getWorkbench().getActiveWorkbenchWindow().getService(
 							ICommandService.class);
 			final Command command = commandService
 					.getCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
+
+
 			final MenuItem loadOntologyMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			loadOntologyMenuItem.setText("Load Ontology");
 			loadOntologyMenuItem.addSelectionListener(new SelectionListener() {
@@ -948,7 +952,7 @@ public class ServerView extends ViewPart {
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 			}); 
-			
+
 			if (!command.isEnabled()) {
 				loadOntologyMenuItem.setEnabled(false);
 				loadOntologyMenuItem.setText("Load Ontology (IOE only)"); 
@@ -1193,7 +1197,7 @@ public class ServerView extends ViewPart {
 							exportServerMenuItem.setEnabled(false);
 							importMenuItem.setEnabled(true);
 							truncateMenuItem.setEnabled(true);
-							
+
 							if (!command.isEnabled()) {
 								loadOntologyMenuItem.setEnabled(false);
 							}
