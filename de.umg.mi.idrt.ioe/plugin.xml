@@ -133,12 +133,6 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
-               label="Import">
-         </menu>
-         <menu
-               label="Server Settings">
-         </menu>
-         <menu
                label="Editor">
             <command
                   commandId="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
@@ -157,10 +151,6 @@
                   style="push">
             </command>
          </menu>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:edu.goettingen.i2b2.importtool.view.MainView">
       </menuContribution>
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.installationDialog.buttonbar">

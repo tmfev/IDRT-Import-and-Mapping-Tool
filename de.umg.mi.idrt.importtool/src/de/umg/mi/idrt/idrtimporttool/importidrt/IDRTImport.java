@@ -324,7 +324,7 @@ public class IDRTImport {
 				if (exitCode == 0) {
 					HashMap<String, String> contextMap = new HashMap<String, String>();
 					Bundle bundle = Activator.getDefault().getBundle();
-					Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
+					Path cfgPath = new Path("/cfg/");
 					URL cfgUrl = FileLocator.find(bundle, cfgPath,
 							Collections.EMPTY_MAP);
 					URL cfgFileUrl;
@@ -342,6 +342,7 @@ public class IDRTImport {
 					exitCode = transform.runJobInTOS(getARGV());
 					
 				}
+				StatusListener.clearStatus();
 				ServerView.btnStopSetEnabled(false);
 				StatusListener.stopLogging();
 				return exitCode;

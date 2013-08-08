@@ -223,7 +223,7 @@ public class CSVImportWizard extends Wizard {
 						contextMap.put("truncateProject", "false");
 					}
 					contextMap.put("PIDURL", defaultProps.getProperty("PIDURL"));
-				
+
 					contextMap.put("folderMain", miscPathReplaced);
 
 					contextMap.put("datePattern", pattern);
@@ -382,7 +382,7 @@ public class CSVImportWizard extends Wizard {
 									long end = System.currentTimeMillis();
 									//
 									long time = end - start;
-//									closeBar("CSV Import Finished!", 0);
+									//									closeBar("CSV Import Finished!", 0);
 									Log.addLog(0, "CSV Import Finished!");
 									Log.addLog(0, "Duration: " + (time / 1000)
 											+ " s");
@@ -446,31 +446,45 @@ public class CSVImportWizard extends Wizard {
 								StatusListener.setSubStatus(0, "");
 								StatusListener.notifyListener();
 								started = false;
-								// progressBar.close();
 								if (exitCode == 0) {
 									Display.getDefault().syncExec(
 											new Runnable() {
-
 												@Override
 												public void run() {
 													long end = System
 															.currentTimeMillis();
 													//
 													long time = end - start;
-//													closeBar(
-//															"CSV Import Finished!",
-//															0);
 													Log.addLog(0,
 															"CSV Import Finished!");
+
+													if (StatusListener.getImportErrorCounter()>0) {
+														Log.addLog(0,
+																StatusListener.getImportErrorCounter() + " Errors occured " +
+																"during import!");
+													}
 													Log.addLog(0, "Duration: "
 															+ (time / 1000)
 															+ " s");
-													MessageDialog
-													.openInformation(
-															Display.getDefault()
-															.getActiveShell(),
-															"Import Finished",
-															"Import finished.");
+
+													if (StatusListener.getImportErrorCounter()>0) {
+														MessageDialog
+														.openInformation(
+																Display.getDefault()
+																.getActiveShell(),
+																"Import Finished",
+																"Import finished.\n"+StatusListener.getImportErrorCounter() 
+																+ " Errors occured!");
+														StatusListener.setImportErrorCounter(0);
+													}
+													else {
+														MessageDialog
+														.openInformation(
+																Display.getDefault()
+																.getActiveShell(),
+																"Import Finished",
+																"Import finished.");
+													}
 												}
 											});
 								}
@@ -492,13 +506,13 @@ public class CSVImportWizard extends Wizard {
 		return true;
 	}
 
-//	private static void closeBar(String msg, int status) {
-//		closeBar(msg, "", status);
-//	}
+	//	private static void closeBar(String msg, int status) {
+	//		closeBar(msg, "", status);
+	//	}
 
-//	private static void closeBar(String msg, final String fileName, int status) {
-//		ServerView.closeBar(msg, fileName, status);
-//	}
+	//	private static void closeBar(String msg, final String fileName, int status) {
+	//		ServerView.closeBar(msg, fileName, status);
+	//	}
 
 	/**
 	 * Copies a file.
@@ -537,7 +551,7 @@ public class CSVImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-//					closeBar("CSV Import Failed!", 1);
+					//					closeBar("CSV Import Failed!", 1);
 					Log.addLog(1, "CSV Import Failed!");
 					MessageDialog
 					.openError(Display.getDefault().getActiveShell(),
@@ -562,7 +576,7 @@ public class CSVImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-//					closeBar(error, fileName, 1);
+					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "CSV Import Failed: " + error);
 					MessageDialog.openError(Display.getDefault()
 							.getActiveShell(), "Import Failed!",

@@ -320,6 +320,7 @@ public class ServerView extends ViewPart {
 	}
 
 	public static void setProgressBottom(final String string) {
+		System.out.println(string);
 		if (progressBar.getSelection()>0) {
 			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
 					+ string);

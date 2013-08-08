@@ -142,6 +142,7 @@ public class P21ImportWizard extends Wizard {
 			final boolean cleanUp = P21WizardPageTwo.getCleanUp();
 			final boolean terms = P21WizardPageTwo.getTerms();
 			final Bundle bundle = Activator.getDefault().getBundle();
+			final String pattern = P21WizardPageTwo.getPattern(); 
 			Path inputPath = new Path("/misc/input/"); //$NON-NLS-1$
 			URL inputURL = FileLocator.find(bundle, inputPath,
 					Collections.EMPTY_MAP);
@@ -227,6 +228,11 @@ public class P21ImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");
 			}
 			contextMap.put("p21_input", P21WizardPageTwo.getFolderCSVText());
+			defaultProps.setProperty("p21_input", P21WizardPageTwo.getFolderCSVText());
+			
+			contextMap.put("datePattern", pattern);
+			defaultProps.setProperty("datePattern", pattern);
+			
 			contextMap.put("p21_output", CSVPath);
 
 			if (P21WizardPageTwo.getSaveContext()) {
