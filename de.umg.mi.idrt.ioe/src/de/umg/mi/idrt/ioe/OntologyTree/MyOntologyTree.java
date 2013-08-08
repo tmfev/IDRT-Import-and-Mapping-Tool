@@ -4,24 +4,17 @@ import java.awt.GridLayout;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTree;
 import javax.swing.TransferHandler;
 import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -32,17 +25,22 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.ResourceManager;
-
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.Global;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
+import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.view.ViewTree;
+
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         main class managing and giving access to the source and target trees
+ */
 
 public class MyOntologyTree extends JPanel {
 
@@ -57,8 +55,6 @@ public class MyOntologyTree extends JPanel {
 	JPopupMenu popup = null;
 
 	// private tree components
-
-
 	private OntologyTreeNode sourceRootNode = null;
 	private OntologyTreeNode targetRootNode = null;
 
@@ -81,7 +77,7 @@ public class MyOntologyTree extends JPanel {
 	 * 
 	 */
 	public void initiate() {
-		Debug.d("initiate @MyOT");
+		Console.info("Initiating source and target Tree.");
 		this.createOntologyTreeSource();
 		this.createOntologyTreeTarget();
 	}
@@ -94,7 +90,7 @@ public class MyOntologyTree extends JPanel {
 	 * @return void
 	 */
 	public void valueChanged(TreeSelectionEvent event) {
-		Console.info("valueChanged (OT)");
+		String message = "";
 
 		OntologyTreeNode node = (OntologyTreeNode) this._ontologyTreeSource
 				.getLastSelectedPathComponent();
@@ -108,65 +104,48 @@ public class MyOntologyTree extends JPanel {
 			Activator.getDefault().getResource().getEditorSourceInfoView()
 					.setNode(node);
 
+			message = "Selection in source tree changed to \'" + node.getName() + "\'.";
+
 			Application.getStatusView().addMessage(
-					new SystemMessage("Selection changed to \'"
-							+ node.getName() + "\'.",
+					new SystemMessage(message,
 							SystemMessage.MessageType.SUCCESS));
 
 		} else {
 			// do nothing if the node is null or no NodeType is set
-			Console.info("ValueChanged but no new selection is no node? Ohh my!");
-			return;
+			message = "Selection in source tree changed, but the the new selection isn't a node.";
 		}
+		
+		Console.info(message);
 	}
 
 	public void createOntologyTreeSource() {
-		Console.info("Creating OntologyTreeSource");
+		Console.info("Creating the source tree ...");
 
 		OntologyTreeNode rootNode = new OntologyTreeNode(
 				"OntologyTreeSourceRootNode");
-
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
 		rootNode.setTreePathLevel(-1);
 		rootNode.setNodeType(NodeType.ROOT);
-		
-
 
 		_ontologyTreeSource = new OntologyTree(rootNode);
-
+		
+	
+		_ontologyTreeSource.getNodeLists().add(rootNode.getID(), rootNode.getTreePath(), rootNode);
+		/*
 		_ontologyTreeSource.getNodeLists().addIDtoPaths(rootNode.getID(),
 				rootNode.getTreePath());
 		_ontologyTreeSource.getNodeLists().addNodeByID(rootNode.getID(),
 				rootNode);
 		_ontologyTreeSource.getNodeLists().addNodyByPath(
 				rootNode.getTreePath(), rootNode);
+		
 		_ontologyTreeSource.getNodeLists().setNodeStatusByPath(
 				rootNode.getTreePath(), ItemStatus.UNCHECKED);
-
-		setSourceRootNode(rootNode);
-		
-		/*
-		OntologyTreeNode subRootNode = new OntologyTreeNode("Source-Ontology");
-
-		subRootNode.setID("i2b2");
-		subRootNode.setTreePath("\\i2b2\\");
-		subRootNode.setTreePathLevel(0);
-		subRootNode.setType(TYPE.ONTOLOGY_SOURCE);
-		subRootNode.setNodeType(NodeType.I2B2ROOT);
-
-		rootNode.add(subRootNode);
-		
-		_ontologyTreeSource.getNodeLists().addIDtoPaths(subRootNode.getID(),
-				subRootNode.getTreePath());
-		_ontologyTreeSource.getNodeLists().addNodeByID(subRootNode.getID(),
-				subRootNode);
-		_ontologyTreeSource.getNodeLists().addNodyByPath(
-				subRootNode.getTreePath(), subRootNode);
-		_ontologyTreeSource.getNodeLists().setNodeStatusByPath(
-				subRootNode.getTreePath(), ItemStatus.UNCHECKED);
 		*/
 		
+		setSourceRootNode(rootNode);
+
 		_ontologyTreeSource.setDragEnabled(true);
 		_ontologyTreeSource.setAutoscrolls(true);
 		_ontologyTreeSource.setRootVisible(false);
@@ -243,7 +222,6 @@ public class MyOntologyTree extends JPanel {
 
 		OntologyTreeNode subRootNode = new OntologyTreeNode("Target-Ontology");
 
-		
 		subRootNode.setID("i2b2");
 		subRootNode.setTreePath("\\i2b2\\");
 		subRootNode.setTreePathLevel(0);
@@ -305,16 +283,16 @@ public class MyOntologyTree extends JPanel {
 
 				int childIndex = dropLocation.getChildIndex();
 				if (childIndex == -1) {
-					childIndex = getOntologyTreeTarget().getModel().getChildCount(
-							path.getLastPathComponent());
+					childIndex = getOntologyTreeTarget().getModel()
+							.getChildCount(path.getLastPathComponent());
 				}
 
 				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(
 						transferData);
 				DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) path
 						.getLastPathComponent();
-				((DefaultTreeModel) getOntologyTreeTarget().getModel()).insertNodeInto(
-						newNode, parentNode, childIndex);
+				((DefaultTreeModel) getOntologyTreeTarget().getModel())
+						.insertNodeInto(newNode, parentNode, childIndex);
 
 				TreePath newPath = path.pathByAddingChild(newNode);
 				getOntologyTreeTarget().makeVisible(newPath);
@@ -355,7 +333,7 @@ public class MyOntologyTree extends JPanel {
 
 		// set custom renderer and listener
 		if (this._ontologyTreeTarget != null) {
-			
+
 			// this.OTTarget.addTreeSelectionListener(this);
 			this._ontologyTreeTarget.addMouseListener(ma);
 		}
@@ -407,8 +385,6 @@ public class MyOntologyTree extends JPanel {
 	public OTItemLists getItemLists() {
 		return this._ontologyTreeSource.getItemLists();
 	}
-
-
 
 	protected void expandTreePaths(TreePath path) {
 		this._ontologyTreeSource.expandPath(path);
