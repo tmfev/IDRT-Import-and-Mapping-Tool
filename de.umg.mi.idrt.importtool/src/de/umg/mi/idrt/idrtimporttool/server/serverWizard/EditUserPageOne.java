@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.SimplePassGen;
@@ -30,7 +31,6 @@ public class EditUserPageOne extends WizardPage {
 	private static Composite container1;
 	private static String oldUserName;
 	private Label lblLength;
-	private Server server;
 	private Button btnGeneratePassword;
 	private Label label;
 	private Composite composite;
@@ -41,9 +41,8 @@ public class EditUserPageOne extends WizardPage {
 	private static Button checkEMailButton;
 	private Text passwordLength;
 
-	public EditUserPageOne(Server server, I2B2User user) {
+	public EditUserPageOne(Server servers, I2B2User user) {
 		super("Server Setup");
-		this.server = server;
 		setUser(user);
 		setTitle("Edit User");
 		setDescription("Edit User");

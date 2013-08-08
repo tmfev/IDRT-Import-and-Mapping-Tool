@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -45,11 +46,13 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
+
 import swing2swt.layout.BorderLayout;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -57,8 +60,6 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.commands.CSVImportCommand;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
-
-import org.eclipse.swt.widgets.Label;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

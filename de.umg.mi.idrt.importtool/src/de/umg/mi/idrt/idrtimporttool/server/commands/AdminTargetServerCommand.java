@@ -1,6 +1,7 @@
 package de.umg.mi.idrt.idrtimporttool.server.commands;
 
 import java.util.LinkedList;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -27,6 +28,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.importidrt.SWTResourceManager;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -36,7 +38,6 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AdminServerContentProvi
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AdminServerLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AdminServerModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditUserWizard;
-import swing2swt.layout.BorderLayout;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

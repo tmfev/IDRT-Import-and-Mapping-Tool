@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -20,6 +21,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 
+import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.ExportDB.ExportConfig;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
@@ -28,7 +30,6 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-import au.com.bytecode.opencsv.CSVWriter;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

@@ -57,8 +57,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.wb.swt.ResourceManager;
 import org.osgi.framework.Bundle;
 
+import swing2swt.layout.BorderLayout;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBImportWizard;
@@ -76,8 +78,6 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProvider;
-import swing2swt.layout.BorderLayout;
-import org.eclipse.wb.swt.ResourceManager;
 
 /**
  * Main view for the IDRT-Import-Tool.
@@ -157,21 +157,6 @@ public class ServerView extends ViewPart {
 			}
 		});
 	}
-	//	public static void closeBar(String msg, String file, int status) {
-	//		setProgress(0);
-	//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-	//		;
-	//		if (status == 1) {
-	//			color = SWTResourceManager.getColor(SWT.COLOR_RED);
-	//		}
-	//		if (status == 0) {
-	//			color = SWTResourceManager.getColor(SWT.COLOR_GREEN);
-	//		}
-	//		progressLabelTop.setText(file);
-	//		progressLabelTop.setForeground(color);
-	//		progressLabelBottom.setText(msg);
-	//		progressLabelBottom.setForeground(color);
-	//	}
 
 	public static String getCsvPathSpecific() {
 		return csvPathSpecific;
@@ -289,22 +274,6 @@ public class ServerView extends ViewPart {
 			text.getParent().layout();
 			text.getParent().redraw();
 		}
-		//		org.eclipse.swt.graphics.Color color = SWTResourceManager
-		//				.getColor(SWT.COLOR_BLACK);
-		//		switch (code) {
-		//		case 0:
-		//			color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-		//			break;
-		//		case 1:
-		//			color = SWTResourceManager.getColor(SWT.COLOR_RED);
-		//			break;
-		//		default:
-		//			break;
-		//		}
-		//		tableItem.setForeground(color);
-		//		logTblClmTime.pack();
-		//		logTblClmMessage.pack();
-		//		logTable.update();
 	}
 
 	public static void setSubProgress(final int percentage) {
@@ -531,20 +500,6 @@ public class ServerView extends ViewPart {
 		}
 	}
 
-	//	/**
-	//	 * Starts the CSV-Specific-Import.
-	//	 */
-	//	private void importCSVSpecific() {
-	//		IHandlerService handlerService = (IHandlerService) getSite()
-	//				.getService(IHandlerService.class);
-	//		try {
-	//			handlerService.executeCommand(
-	//					"de.goettingen.i2b2.importtool.CSVImport", null); 
-	//		} catch (Exception ex) {
-	//			throw new RuntimeException("CSVImport.command not found"); 
-	//		}
-	//	}
-
 	/**
 	 * Starts the ODM-Import.
 	 */
@@ -560,21 +515,6 @@ public class ServerView extends ViewPart {
 			throw new RuntimeException("ODMImport.command not found"); 
 		}
 	}
-	//	/**
-	//	 * Starts the ODM-Specific-Import.
-	//	 */
-	//	private void importODMSpecific() {
-	//		IHandlerService handlerService = (IHandlerService) getSite()
-	//				.getService(IHandlerService.class);
-	//		try {
-	//			handlerService.executeCommand(
-	//					"de.goettingen.i2b2.importtool.ODMImportSpecific", null); 
-	//
-	//		} catch (Exception ex) {
-	//			ex.printStackTrace();
-	//			throw new RuntimeException("ODMImport.command not found"); 
-	//		}
-	//	}
 
 	/**
 	 * Starts the DB-Import.
@@ -600,7 +540,6 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
-			// System.out.println("NYI");
 			handlerService.executeCommand(
 					"de.goettingen.i2b2.importtool.P21Import", null); 
 		} catch (Exception ex) {
@@ -620,29 +559,12 @@ public class ServerView extends ViewPart {
 		}
 	}
 
-	//edu.goettingen.i2b2.importtool.OntologyEditorLoad
-	//	/**
-	//	 * Removes possible database locks. Only works with Oracle + sys/system user.
-	//	 */
-	//	private void removeLocks() {
-	//		IHandlerService handlerService = (IHandlerService) getSite()
-	//				.getService(IHandlerService.class);
-	//		try {
-	//			handlerService.executeCommand(
-	//					"de.goettingen.i2b2.importtool.RemoveLocks", null); 
-	//		} catch (Exception ex) {
-	//			ex.printStackTrace();
-	//			throw new RuntimeException("RemoveLocks.command not found"); 
-	//		}
-	//	}
-
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
 
 			parent = new Composite(parentComp, SWT.NONE);
 			parent.getShell().setMinimumSize(500, 200);
-			//			parent.setLayout(new FillLayout());
 			System.out.println("Current Version: "
 					+ Activator.getDefault().getBundle().getVersion()
 					.toString());
@@ -668,9 +590,6 @@ public class ServerView extends ViewPart {
 			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
 			File folder = new File(tmpURL2.getPath());
 			File[] listOfFiles = folder.listFiles();
-
-
-
 
 			for (File listOfFile : listOfFiles) {
 				if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
@@ -721,7 +640,6 @@ public class ServerView extends ViewPart {
 					listOfOutputFile.delete();
 				}
 			}
-			// Bundle bundle = Activator.getDefault().getBundle();
 			Path propPath = new Path("/cfg/Default.properties"); 
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = FileLocator.toFileURL(url);
@@ -760,9 +678,6 @@ public class ServerView extends ViewPart {
 
 			sourceAndTargetServercomposite = new SashForm(leftSideComposite, SWT.SMOOTH | SWT.VERTICAL);
 			sourceAndTargetServercomposite.setLayout(new FillLayout(SWT.VERTICAL));
-			// treeComp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-			// true, 1, 1));
-			// treeComp.setLayout(new GridLayout(1, false));
 			sourceAndTargetServercomposite.addDisposeListener(new DisposeListener() {
 
 				@Override
@@ -1472,63 +1387,17 @@ public class ServerView extends ViewPart {
 			gl_progressComp.marginWidth = 0;
 			progressComp.setLayout(gl_progressComp);
 
-			//			Composite composite_11 = new Composite(progressComp, SWT.NONE);
-			//			GridData gd_composite_11 = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
-			//			gd_composite_11.widthHint = 304;
-			//			composite_11.setLayoutData(gd_composite_11);
-			//			composite_11.setLayout(new GridLayout(2, false));
-			//			GridData gd_composite_11 = new GridData(SWT.LEFT, SWT.FILL, true,
-			//					false, 1, 1);
-			//			gd_composite_11.minimumHeight = 100;
-			//			gd_composite_11.minimumWidth = 200;
-			//			composite_11.setLayoutData(gd_composite_11);
-			//			composite_11.setLayout(new GridLayout(2, false));
-
 			progressLabelTop = new Label(progressComp, SWT.NONE);
-			//			gd_progressLabelTop.widthHint = 213;
 			progressLabelTop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-			//			progressLabelTop.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
-			//					true, true, 1, 1));
 			progressLabelTop.setText("");
 			progressLabelBottom = new Label(progressComp, SWT.NONE);
 			progressLabelBottom.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-			//						progressLabelBottom.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
-			//								true, true, 1, 1));
 			progressLabelBottom.setText("");
 
-			//			Composite composite_2 = new Composite(progressComp, SWT.NONE);
-			//			composite_2.setLayout(new GridLayout(1, false));
-			//			composite_2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-			//					true, 1, 1));
-
 			progressBar = new ProgressBar(progressComp, SWT.SMOOTH);
-			//			gd_progressBar.heightHint = 30;
 			progressBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					true, 1, 1));
 
-			//			composite_11.addControlListener(new ControlListener() {
-			//				
-			//				@Override
-			//				public void controlResized(ControlEvent e) {
-			//					System.out.println("sash "+sashForm_1.getBounds().toString());
-			//					gd_btnStop.widthHint = sashForm_1.getBounds().width/3;
-			//					gd_btnStop.heightHint = sashForm_1.getBounds().height/3;
-			//					btnStop.getParent().layout();
-			////					btnStop.setBounds(sashForm_1.getBounds());
-			//					btnStop.update();
-			//					btnStop.redraw();
-			//					btnStop.pack();
-			//				
-			//				
-			//					
-			//					System.out.println("btn: " + btnStop.getBounds().toString());
-			//				}
-			//				
-			//				@Override
-			//				public void controlMoved(ControlEvent e) {
-			//					
-			//				}
-			//			});
 			btnStop = new Button(progressComp, SWT.PUSH);
 			btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/terminate_co.gif"));
 			btnStop.setToolTipText("Terminate Import!");
@@ -1622,6 +1491,7 @@ public class ServerView extends ViewPart {
 
 			text = new Text(composite_3, SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
 			text.addListener(SWT.Modify, new Listener(){
+				@Override
 				public void handleEvent(Event e){
 					text.setTopIndex(0);
 					text.getParent().layout();

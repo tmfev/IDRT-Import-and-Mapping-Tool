@@ -1,6 +1,7 @@
 package au.com.bytecode.opencsv.bean;
 
 import java.io.IOException;
+
 import au.com.bytecode.opencsv.CSVReader;
 
 /**

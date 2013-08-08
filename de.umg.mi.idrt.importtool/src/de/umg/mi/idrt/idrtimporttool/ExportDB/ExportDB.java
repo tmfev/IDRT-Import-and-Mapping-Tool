@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+
 import au.com.bytecode.opencsv.CSVWriter;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

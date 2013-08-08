@@ -4,26 +4,28 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.osgi.framework.Bundle;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.layout.GridData;
+import org.osgi.framework.Bundle;
+
 import swing2swt.layout.BorderLayout;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
+import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
