@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/ojdbc5-11g.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/systemRoutines.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/talend-db-oracle-timestamptz.jar"/>
@@ -39,6 +41,5 @@
 	<classpathentry kind="lib" path="lib/tns.jar"/>
 	<classpathentry kind="lib" path="lib/userRoutines.jar"/>
 	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
-	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

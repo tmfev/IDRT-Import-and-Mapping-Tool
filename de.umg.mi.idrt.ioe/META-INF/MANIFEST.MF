@@ -61,6 +61,7 @@ Bundle-ClassPath: .,
  TalendJobs/TOSIDRTConnector/TOSIDRTConnector/classpath.jar,
  TalendJobs/TOSIDRTConnector/TOSIDRTConnector/tosidrtconnector_0_1.jar,
  lib/passwordCrypt.jar,
+ lib/org.eclipse.wb.swt.jar,
  lib/
 Import-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
