@@ -132,17 +132,6 @@ public class MyOntologyTree extends JPanel {
 		
 	
 		_ontologyTreeSource.getNodeLists().add(rootNode.getID(), rootNode.getTreePath(), rootNode);
-		/*
-		_ontologyTreeSource.getNodeLists().addIDtoPaths(rootNode.getID(),
-				rootNode.getTreePath());
-		_ontologyTreeSource.getNodeLists().addNodeByID(rootNode.getID(),
-				rootNode);
-		_ontologyTreeSource.getNodeLists().addNodyByPath(
-				rootNode.getTreePath(), rootNode);
-		
-		_ontologyTreeSource.getNodeLists().setNodeStatusByPath(
-				rootNode.getTreePath(), ItemStatus.UNCHECKED);
-		*/
 		
 		setSourceRootNode(rootNode);
 
@@ -152,7 +141,6 @@ public class MyOntologyTree extends JPanel {
 
 		_ontologyTreeSource.setTransferHandler(new OTTransferHandler());
 
-		// openNodes(getOT().getTreeRoot());
 		getOntologyTreeSource().updateUI();
 
 		expandTreePaths(new TreePath(
@@ -411,49 +399,6 @@ public class MyOntologyTree extends JPanel {
 
 	public OntologyTree getOntologyTreeTarget() {
 		return this._ontologyTreeTarget;
-	}
-
-	/*
-	 * public void openNodes(OTNode node) { //
-	 * Debug.d(">"+node.getName()+"("+node.getDepth()+")"); if (node != null) {
-	 * this.getOT().expandPath(new TreePath(node.getPath())); } if
-	 * (node.getChildCount() > 0 && (node.getOntologyCellAttributes() != null ?
-	 * node .getOntologyCellAttributes().getC_HLEVEL() < 5 : true)) { for (int x
-	 * = 0; x < node.getChildCount(); x++) {
-	 * 
-	 * openNodes((OTNode) node.getChildAt(x));
-	 * 
-	 * 
-	 * } } }
-	 */
-
-	public String capitalize(String string) {
-		if (string != null && string.length() > 1) {
-			// Debug.d("***** CUTTER");
-			// Debug.d("*"+string.substring(0,1).toUpperCase());
-			// Debug.d("*"+string.substring(1).toLowerCase());
-			string = string.substring(0, 1).toUpperCase()
-					+ string.substring(1).toLowerCase();
-		}
-		return string;
-	}
-
-	public String createFilename(String oldFilename, String affix,
-			String fileExtension) {
-		String newFilename = "";
-		if (oldFilename != null && !oldFilename.isEmpty()) {
-			int lastIndex = oldFilename.lastIndexOf(".");
-			if (lastIndex > 0) {
-				newFilename = oldFilename.substring(0, lastIndex);
-			} else {
-				newFilename = oldFilename;
-			}
-		} else {
-			newFilename = "file";
-		}
-		newFilename += "_" + affix + "." + fileExtension;
-
-		return newFilename;
 	}
 
 	public String createLongStringID(int id) {
