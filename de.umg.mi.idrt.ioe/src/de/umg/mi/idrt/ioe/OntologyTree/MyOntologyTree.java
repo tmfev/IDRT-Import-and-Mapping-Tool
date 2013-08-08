@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JTree;
 import javax.swing.TransferHandler;
 import javax.swing.event.TreeSelectionEvent;
@@ -49,10 +48,8 @@ public class MyOntologyTree extends JPanel {
 	// jTree components
 	private OntologyTree _ontologyTreeSource = null;
 	private OntologyTree _ontologyTreeTarget = null;
-	private ViewTree viewTree = null;
+	private ViewTree viewTreeSource = null;
 	private ViewTree viewTreeTarget = null;
-
-	JPopupMenu popup = null;
 
 	// private tree components
 	private OntologyTreeNode sourceRootNode = null;
@@ -104,7 +101,8 @@ public class MyOntologyTree extends JPanel {
 			Activator.getDefault().getResource().getEditorSourceInfoView()
 					.setNode(node);
 
-			message = "Selection in source tree changed to \'" + node.getName() + "\'.";
+			message = "Selection in source tree changed to \'" + node.getName()
+					+ "\'.";
 
 			Application.getStatusView().addMessage(
 					new SystemMessage(message,
@@ -114,7 +112,7 @@ public class MyOntologyTree extends JPanel {
 			// do nothing if the node is null or no NodeType is set
 			message = "Selection in source tree changed, but the the new selection isn't a node.";
 		}
-		
+
 		Console.info(message);
 	}
 
@@ -129,10 +127,10 @@ public class MyOntologyTree extends JPanel {
 		rootNode.setNodeType(NodeType.ROOT);
 
 		_ontologyTreeSource = new OntologyTree(rootNode);
-		
-	
-		_ontologyTreeSource.getNodeLists().add(rootNode.getID(), rootNode.getTreePath(), rootNode);
-		
+
+		_ontologyTreeSource.getNodeLists().add(rootNode.getID(),
+				rootNode.getTreePath(), rootNode);
+
 		setSourceRootNode(rootNode);
 
 		_ontologyTreeSource.setDragEnabled(true);
@@ -176,10 +174,9 @@ public class MyOntologyTree extends JPanel {
 		if (this._ontologyTreeSource != null) {
 			// this.OT.addTreeSelectionListener(this);
 			this._ontologyTreeSource.addMouseListener(ma);
-			// Debug.d("# calling: setActive");
 		}
 
-		this.viewTree = new ViewTree();
+		this.viewTreeSource = new ViewTree();
 
 	}
 
@@ -248,6 +245,9 @@ public class MyOntologyTree extends JPanel {
 			}
 
 			public boolean importData(TransferHandler.TransferSupport support) {
+				Console.info("... importing data via the TransferHandler. Crazy.");
+				Console.error("This is just plain wrong.");
+				Console.subinfo("Subinfo");
 				if (!canImport(support)) {
 					return false;
 				}
@@ -639,8 +639,8 @@ public class MyOntologyTree extends JPanel {
 
 	}
 
-	public ViewTree getViewTree() {
-		return this.viewTree;
+	public ViewTree getVieTreeSource() {
+		return this.viewTreeSource;
 	}
 
 	public ViewTree getViewTreeTarget() {

@@ -19,7 +19,7 @@ public class Console {
 	}
 	
 	public static void info(String text){
-		Debug.d("* " + text);
+		Debug.d(". " + text);
 		System.out.println("* " + text);
 	}
 	
