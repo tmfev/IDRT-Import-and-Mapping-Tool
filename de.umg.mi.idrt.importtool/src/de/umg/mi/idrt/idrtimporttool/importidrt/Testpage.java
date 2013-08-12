@@ -2,8 +2,8 @@ package de.umg.mi.idrt.idrtimporttool.importidrt;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.about.InstallationPage;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.about.InstallationPage;
 
 public class Testpage extends InstallationPage {
 	private Text txtTestOk;

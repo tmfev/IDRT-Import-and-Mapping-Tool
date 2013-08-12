@@ -2,6 +2,7 @@ package de.umg.mi.idrt.idrtimporttool.ImportWizard;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import org.eclipse.swt.widgets.TableItem;
 
 /**

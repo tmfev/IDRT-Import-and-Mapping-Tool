@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -44,11 +45,14 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
+
 import swing2swt.layout.BorderLayout;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -56,8 +60,6 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.commands.CSVImportCommand;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
-
-import org.eclipse.swt.widgets.Label;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -81,7 +83,7 @@ public class CSVWizardPageThree extends WizardPage {
 	private TableColumn tblclmnName;
 	private TableColumn tblclmnPIDGen;
 	private Composite compositeTables;
-
+	private boolean allConfigs;
 
 	private static List<String> configList;
 
@@ -147,6 +149,7 @@ public class CSVWizardPageThree extends WizardPage {
 	 * Button for "clear Table"
 	 */
 	private Button clearTables;
+	private Button button;
 
 	/**
 	 * Default Constructor
@@ -386,6 +389,38 @@ public class CSVWizardPageThree extends WizardPage {
 			serverListViewer.getTable().setLayoutData(
 					new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 			new Label(compositeList, SWT.NONE);
+			
+						button = new Button(compositeList, SWT.NONE);
+						button.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+						button.setText("Guess All Schemata");
+						button.addSelectionListener(new SelectionListener() {
+
+							@Override
+							public void widgetSelected(SelectionEvent e) {
+
+								boolean cont = MessageDialog.openConfirm(parent.getShell(),
+										"Overwrite all Configs?",
+										"Do you really want to overwirte all Configs?");
+								if (cont) {
+									for (int i = 0; i<serverListViewer.getTable().getItemCount();i++) {
+
+
+										allConfigs = true;
+										serverListViewer.getTable().select(i);
+										System.out.println("SELECTED: " + serverListViewer.getTable().getItem(i).getText());
+										serverListViewer.getTable().notifyListeners(SWT.Selection, new Event());
+										btnGuessSchema.notifyListeners(SWT.Selection, new Event());
+
+										serverListViewer.getTable().deselect(i);
+										allConfigs = false;
+									}
+								}
+							}
+
+							@Override
+							public void widgetDefaultSelected(SelectionEvent e) {
+							}
+						});
 			new Label(compositeList, SWT.NONE);
 
 			serverListViewer
@@ -459,11 +494,12 @@ public class CSVWizardPageThree extends WizardPage {
 
 			buttonComposite = new Composite(compositeTables, SWT.NONE);
 			buttonComposite.setLayoutData(BorderLayout.SOUTH);
-			buttonComposite.setLayout(new GridLayout(5, false));
+			buttonComposite.setLayout(new GridLayout(2, false));
 			serverListViewer.getTable().addSelectionListener(
 					new SelectionListener() {
 						@Override
 						public void widgetDefaultSelected(SelectionEvent e) {
+							System.out.println("widgetDefaultSelected");
 						}
 
 						@Override
@@ -530,7 +566,7 @@ public class CSVWizardPageThree extends WizardPage {
 										table.removeAll();
 										table.clearAll();
 										for (int i = 1; i < line1.length; i++) {
-											
+
 											final TableItem item = new TableItem(
 													table, SWT.NONE);
 											item.setText(0, line1[i]);
@@ -687,9 +723,6 @@ public class CSVWizardPageThree extends WizardPage {
 			});
 			btnGuessSchema = new Button(buttonComposite, SWT.NONE);
 			btnGuessSchema.setText(Messages.CSVWizardPageThree_GuessSchema);
-			new Label(buttonComposite, SWT.NONE);
-			new Label(buttonComposite, SWT.NONE);
-			new Label(buttonComposite, SWT.NONE);
 			btnGuessSchema.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
@@ -698,10 +731,13 @@ public class CSVWizardPageThree extends WizardPage {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 
-					boolean cont = MessageDialog.openConfirm(parent.getShell(),
-							Messages.CSVWizardPageThree_GuessSchemaConfirm,
-							Messages.CSVWizardPageThree_GuessSchemaConfirmText);
+					boolean cont = allConfigs;
 
+					if (!cont) {
+						cont = MessageDialog.openConfirm(parent.getShell(),
+								Messages.CSVWizardPageThree_GuessSchemaConfirm,
+								Messages.CSVWizardPageThree_GuessSchemaConfirmText);
+					}
 					if (cont) {
 						clearMetaDataFromTable();
 
@@ -733,6 +769,7 @@ public class CSVWizardPageThree extends WizardPage {
 								}
 							}
 							reader.close();
+
 							reader = new CSVReader(new FileReader(csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
@@ -799,7 +836,8 @@ public class CSVWizardPageThree extends WizardPage {
 									if (next.matches(regex)) {
 										countDate++;
 									} else {
-										countString++;
+										if (next.length()>0)
+											countString++;
 									}
 
 									// try integer
@@ -831,11 +869,9 @@ public class CSVWizardPageThree extends WizardPage {
 									table.getItems()[i].setText(2, "Float"); 
 								} else if ((countInt > countFloat)
 										&& (countString <= 0) && countString ==0) {
-									System.out.println(table.getItems()[i].getText(0) + " 1 i:"+countInt + " f:" + countFloat +  " s:" + countString);   //$NON-NLS-3$
 									table.getItems()[i].setText(2, "Integer"); 
 								} else if ((countFloat == countInt)
 										&& (countFloat != 0) && countString ==0) {
-									System.out.println(table.getItems()[i].getText(0) + "2 i:"+countInt + " f:" + countFloat +  " s:" + countString);   //$NON-NLS-3$
 									table.getItems()[i].setText(2, "Integer"); 
 								} else if ((countDate > 0)
 										&& (countString <= 0)) {
@@ -937,7 +973,6 @@ public class CSVWizardPageThree extends WizardPage {
 								}
 							} 
 							saveTable();
-
 						} catch (FileNotFoundException e1) {
 							e1.printStackTrace();
 						} catch (IOException e2) {
@@ -946,6 +981,7 @@ public class CSVWizardPageThree extends WizardPage {
 					}
 				}
 			});
+
 			sashForm.setWeights(new int[] { 192, 379 });
 			setControl(container);
 			setPageComplete(true);
@@ -1007,7 +1043,7 @@ public class CSVWizardPageThree extends WizardPage {
 			TableItem[] items = table.getItems();
 			List<String> names = new LinkedList<String>();
 			for (TableItem item : items) {
-				System.out.println(item.getText(1));
+				System.out.println("item: " + item.getText(1));
 				names.add(item.getText(1));
 			}
 			table.removeAll();
@@ -1026,7 +1062,6 @@ public class CSVWizardPageThree extends WizardPage {
 			e2.printStackTrace();
 		}
 	}
-
 	/**
 	 * Clears the current table.
 	 */

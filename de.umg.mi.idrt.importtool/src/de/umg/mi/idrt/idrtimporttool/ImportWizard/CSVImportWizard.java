@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -19,13 +20,13 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
 
 /**
  * Wizard for the CSV-Import.
@@ -223,7 +224,7 @@ public class CSVImportWizard extends Wizard {
 						contextMap.put("truncateProject", "false");
 					}
 					contextMap.put("PIDURL", defaultProps.getProperty("PIDURL"));
-				
+
 					contextMap.put("folderMain", miscPathReplaced);
 
 					contextMap.put("datePattern", pattern);
@@ -382,7 +383,7 @@ public class CSVImportWizard extends Wizard {
 									long end = System.currentTimeMillis();
 									//
 									long time = end - start;
-//									closeBar("CSV Import Finished!", 0);
+									//									closeBar("CSV Import Finished!", 0);
 									Log.addLog(0, "CSV Import Finished!");
 									Log.addLog(0, "Duration: " + (time / 1000)
 											+ " s");
@@ -446,31 +447,45 @@ public class CSVImportWizard extends Wizard {
 								StatusListener.setSubStatus(0, "");
 								StatusListener.notifyListener();
 								started = false;
-								// progressBar.close();
 								if (exitCode == 0) {
 									Display.getDefault().syncExec(
 											new Runnable() {
-
 												@Override
 												public void run() {
 													long end = System
 															.currentTimeMillis();
 													//
 													long time = end - start;
-//													closeBar(
-//															"CSV Import Finished!",
-//															0);
 													Log.addLog(0,
 															"CSV Import Finished!");
+
+													if (StatusListener.getImportErrorCounter()>0) {
+														Log.addLog(0,
+																StatusListener.getImportErrorCounter() + " Errors occured " +
+																"during import!");
+													}
 													Log.addLog(0, "Duration: "
 															+ (time / 1000)
 															+ " s");
-													MessageDialog
-													.openInformation(
-															Display.getDefault()
-															.getActiveShell(),
-															"Import Finished",
-															"Import finished.");
+
+													if (StatusListener.getImportErrorCounter()>0) {
+														MessageDialog
+														.openInformation(
+																Display.getDefault()
+																.getActiveShell(),
+																"Import Finished",
+																"Import finished.\n"+StatusListener.getImportErrorCounter() 
+																+ " Errors occured!");
+														StatusListener.setImportErrorCounter(0);
+													}
+													else {
+														MessageDialog
+														.openInformation(
+																Display.getDefault()
+																.getActiveShell(),
+																"Import Finished",
+																"Import finished.");
+													}
 												}
 											});
 								}
@@ -492,13 +507,13 @@ public class CSVImportWizard extends Wizard {
 		return true;
 	}
 
-//	private static void closeBar(String msg, int status) {
-//		closeBar(msg, "", status);
-//	}
+	//	private static void closeBar(String msg, int status) {
+	//		closeBar(msg, "", status);
+	//	}
 
-//	private static void closeBar(String msg, final String fileName, int status) {
-//		ServerView.closeBar(msg, fileName, status);
-//	}
+	//	private static void closeBar(String msg, final String fileName, int status) {
+	//		ServerView.closeBar(msg, fileName, status);
+	//	}
 
 	/**
 	 * Copies a file.
@@ -529,6 +544,7 @@ public class CSVImportWizard extends Wizard {
 	/**
 	 * Brutally kills the the import thread.
 	 */
+	@SuppressWarnings("deprecation")
 	public static void killThread() {
 		if (started) {
 			importThread.stop();
@@ -537,7 +553,7 @@ public class CSVImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-//					closeBar("CSV Import Failed!", 1);
+					//					closeBar("CSV Import Failed!", 1);
 					Log.addLog(1, "CSV Import Failed!");
 					MessageDialog
 					.openError(Display.getDefault().getActiveShell(),
@@ -562,7 +578,7 @@ public class CSVImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-//					closeBar(error, fileName, 1);
+					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "CSV Import Failed: " + error);
 					MessageDialog.openError(Display.getDefault()
 							.getActiveShell(), "Import Failed!",

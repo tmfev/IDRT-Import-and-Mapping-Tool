@@ -1,6 +1,5 @@
 package org.eclipselabs.p2.rcpupdate.utils.plugin;
 
-import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

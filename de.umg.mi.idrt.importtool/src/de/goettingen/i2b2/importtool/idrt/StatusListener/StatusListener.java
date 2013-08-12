@@ -27,7 +27,8 @@ public class StatusListener {
 	public static String subStatus = "";
 	public static String status = "";
 	public static String file = "";
-	public static int logCounter = 0;
+	private static int logCounter = 0;
+	private static int importErrorCounter = 0;
 	public static boolean sleeping = false;
 	public static String log;
 	public static String filename;
@@ -53,6 +54,7 @@ public class StatusListener {
 		filename = file.getName();
 		log = logg;
 		logCounter++;
+		setImportErrorCounter(getImportErrorCounter() + 1);
 		System.out.println("ERRORLOG: " + logCounter + " -- " + filename + " - " + log);
 	}
 
@@ -137,11 +139,7 @@ public class StatusListener {
 	}
 
 	public static float getPercentage() {
-		if (perc == 0) {
-			return perc + 1;
-		} else {
 			return perc;
-		}
 	}
 
 	public static String getStatus() {
@@ -249,5 +247,25 @@ public class StatusListener {
 		//		ODMImportWizard.updateStatus();
 		//		ODMImportWizardSpecific.updateStatus();
 		//		P21ImportWizard.updateStatus();
+	}
+
+	public static int getImportErrorCounter() {
+		return importErrorCounter;
+	}
+
+	public static void setImportErrorCounter(int importErrorCounter) {
+		StatusListener.importErrorCounter = importErrorCounter;
+	}
+
+	/**
+	 * 
+	 */
+	public static void clearStatus() {
+		perc = 0;
+		subPerc = 0;
+		subStatus = "";
+		status = "";
+		file = "";
+		ServerView.updateStatus();
 	}
 }

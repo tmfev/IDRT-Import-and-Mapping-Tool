@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -65,6 +66,8 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.osgi.framework.Bundle;
+
+import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -73,7 +76,6 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBLabelProv
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProvider;
 import de.umg.mi.idrt.idrtimporttool.table.TableRow;
-import swing2swt.layout.BorderLayout;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -106,6 +108,7 @@ public class DBWizardPageTwo extends WizardPage {
 	private static TableItem item;
 	private static CCombo combo;
 
+	@SuppressWarnings("unchecked")
 	private static void clearSingleTable() {
 		try {
 			tableName = serverViewer.getTree().getSelection()[0].getText();
@@ -1136,6 +1139,7 @@ public class DBWizardPageTwo extends WizardPage {
 	/**
 	 * Saves the current table to disc.
 	 */
+	@SuppressWarnings("unchecked")
 	private void saveCurrentTableToDisc() {
 		try {
 			System.out.println("@saveCurrentTable() -- saving: " + tableName);
@@ -1191,6 +1195,7 @@ public class DBWizardPageTwo extends WizardPage {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private boolean tablesComplete() {
 		boolean complete = false;
 		boolean tableComplete = false;

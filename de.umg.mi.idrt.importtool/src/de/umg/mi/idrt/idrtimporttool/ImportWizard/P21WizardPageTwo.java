@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Properties;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
@@ -27,6 +28,7 @@ import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -90,7 +92,8 @@ public class P21WizardPageTwo extends WizardPage {
 	private static Text folderP21Text;
 
 	private static Text folderMainText;
-
+	private static Combo datePatternCombo;
+	private Label lblDatePattern;
 	/**
 	 * @return the csvSeperatorext
 	 */
@@ -211,7 +214,19 @@ public class P21WizardPageTwo extends WizardPage {
 			p21Version.setText("P21 Version");
 
 			p21VersionCombo = new Combo(container, SWT.READ_ONLY);
+			new Label(container, SWT.NONE);
 			
+			
+			lblDatePattern = new Label(container, SWT.NONE);
+			lblDatePattern.setText(Messages.CSVWizardPageTwo_DatePattern);
+			
+			datePatternCombo = new Combo(container, SWT.NONE);
+
+			datePatternCombo.setItems(new String[] { "yyyyMMddHHmm","yyyy-MM-dd", 
+					"yyyy.MM.dd", "dd-MM-yyyy", "dd-MM-yy", "dd.MM.yyyy", "dd.MM.yy" }); 
+			datePatternCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+					true, false, 1, 1));
+			datePatternCombo.setText(defaultProps.getProperty("datePattern")); 
 			
 			Path p21Path = new Path("/cfg/p21/"); //$NON-NLS-1$
 			URL p21url = FileLocator.find(bundle, p21Path,
@@ -273,5 +288,12 @@ public class P21WizardPageTwo extends WizardPage {
 	@Override
 	public boolean isPageComplete() {
 		return getP21Selected();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getPattern() {
+		return datePatternCombo.getText();
 	}
 }
