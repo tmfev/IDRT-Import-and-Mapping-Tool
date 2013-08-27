@@ -191,7 +191,7 @@ public class StatusListener {
 		perc = percentage;
 		status = statusMsg;
 		file = fileName.getName();
-		System.out.println("STATUS: " + statusMsg + " " + percentage);
+//		System.out.println("STATUS: " + statusMsg + " " + percentage);
 		ServerView.updateStatus();
 		//		DBImportWizard.updateStatus();
 		//		ODMImportWizard.updateStatus();

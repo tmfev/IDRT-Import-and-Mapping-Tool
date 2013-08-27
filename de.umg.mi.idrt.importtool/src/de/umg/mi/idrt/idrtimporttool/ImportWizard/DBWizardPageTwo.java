@@ -1149,6 +1149,7 @@ public class DBWizardPageTwo extends WizardPage {
 					Collections.EMPTY_MAP);
 			URL fileUrl = FileLocator.toFileURL(url);
 			File serverFile = new File(fileUrl.getPath());
+			
 			ObjectInputStream is;
 			// tableMap = new HashMap<String, List<List<String>>>();
 			is = new ObjectInputStream(new FileInputStream(serverFile));

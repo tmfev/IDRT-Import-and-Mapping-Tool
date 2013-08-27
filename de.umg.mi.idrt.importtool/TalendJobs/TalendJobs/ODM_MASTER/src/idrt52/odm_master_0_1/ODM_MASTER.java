@@ -171,6 +171,12 @@ public class ODM_MASTER implements TalendJob {
 
 			}
 
+			if (datePattern != null) {
+
+				this.setProperty("datePattern", datePattern.toString());
+
+			}
+
 			if (fileName != null) {
 
 				this.setProperty("fileName", fileName.toString());
@@ -189,9 +195,39 @@ public class ODM_MASTER implements TalendJob {
 
 			}
 
+			if (DBHost != null) {
+
+				this.setProperty("DBHost", DBHost.toString());
+
+			}
+
 			if (DBInstance != null) {
 
 				this.setProperty("DBInstance", DBInstance.toString());
+
+			}
+
+			if (DBPassword != null) {
+
+				this.setProperty("DBPassword", DBPassword.toString());
+
+			}
+
+			if (DBPort != null) {
+
+				this.setProperty("DBPort", DBPort.toString());
+
+			}
+
+			if (DBSchema != null) {
+
+				this.setProperty("DBSchema", DBSchema.toString());
+
+			}
+
+			if (DBUsername != null) {
+
+				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -207,39 +243,9 @@ public class ODM_MASTER implements TalendJob {
 
 			}
 
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
 			if (truncateProject != null) {
 
 				this.setProperty("truncateProject", truncateProject.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -301,6 +307,12 @@ public class ODM_MASTER implements TalendJob {
 
 				this.setProperty("i2b2HeadNodeName",
 						i2b2HeadNodeName.toString());
+
+			}
+
+			if (importCodelist != null) {
+
+				this.setProperty("importCodelist", importCodelist.toString());
 
 			}
 
@@ -516,6 +528,12 @@ public class ODM_MASTER implements TalendJob {
 			return this.basedir;
 		}
 
+		public String datePattern;
+
+		public String getDatePattern() {
+			return this.datePattern;
+		}
+
 		public String fileName;
 
 		public String getFileName() {
@@ -534,10 +552,40 @@ public class ODM_MASTER implements TalendJob {
 			return this.coding;
 		}
 
+		public String DBHost;
+
+		public String getDBHost() {
+			return this.DBHost;
+		}
+
 		public String DBInstance;
 
 		public String getDBInstance() {
 			return this.DBInstance;
+		}
+
+		public java.lang.String DBPassword;
+
+		public java.lang.String getDBPassword() {
+			return this.DBPassword;
+		}
+
+		public String DBPort;
+
+		public String getDBPort() {
+			return this.DBPort;
+		}
+
+		public String DBSchema;
+
+		public String getDBSchema() {
+			return this.DBSchema;
+		}
+
+		public String DBUsername;
+
+		public String getDBUsername() {
+			return this.DBUsername;
 		}
 
 		public java.lang.String FTPPassword;
@@ -552,40 +600,10 @@ public class ODM_MASTER implements TalendJob {
 			return this.FTPUser;
 		}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
-		}
-
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
 		public Boolean truncateProject;
 
 		public Boolean getTruncateProject() {
 			return this.truncateProject;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
 		}
 
 		public String concept_cd;
@@ -646,6 +664,12 @@ public class ODM_MASTER implements TalendJob {
 
 		public String getI2b2HeadNodeName() {
 			return this.i2b2HeadNodeName;
+		}
+
+		public Boolean importCodelist;
+
+		public Boolean getImportCodelist() {
+			return this.importCodelist;
 		}
 
 		public Boolean importSingleFile;
@@ -1897,23 +1921,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_2.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_2.put("basedir", context.basedir);
+				parentContextMap_tRunJob_2.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_2.put("fileName", context.fileName);
 				parentContextMap_tRunJob_2.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_2.put("coding", context.coding);
+				parentContextMap_tRunJob_2.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_2
 						.put("DBInstance", context.DBInstance);
+				parentContextMap_tRunJob_2
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_2.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_2.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_2
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_2.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_2.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_2.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_2.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_2
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_2.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_2.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_2
-						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_2
 						.put("concept_cd", context.concept_cd);
 				parentContextMap_tRunJob_2.put("concept_path",
@@ -1931,6 +1957,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_2.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_2.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_2.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_2.put("includePids",
@@ -2098,8 +2126,8 @@ public class ODM_MASTER implements TalendJob {
 
 				context.status = context.status + (context.statusTmp / 100)
 						* 30;
-				StatusListener.setStatus(context.status, "Creating DB schema",
-						context.currentFile);
+				StatusListener.setStatus(context.status,
+						"Creating DB schema STATUS", context.currentFile);
 				System.out.println(context.status);
 
 				/**
@@ -2837,23 +2865,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_3.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_3.put("basedir", context.basedir);
+				parentContextMap_tRunJob_3.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_3.put("fileName", context.fileName);
 				parentContextMap_tRunJob_3.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_3.put("coding", context.coding);
+				parentContextMap_tRunJob_3.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_3
 						.put("DBInstance", context.DBInstance);
+				parentContextMap_tRunJob_3
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_3.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_3.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_3
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_3.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_3.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_3.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_3.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_3
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_3.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_3.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_3
-						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_3
 						.put("concept_cd", context.concept_cd);
 				parentContextMap_tRunJob_3.put("concept_path",
@@ -2871,6 +2901,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_3.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_3.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_3.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_3.put("includePids",
@@ -3175,23 +3207,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_4.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_4.put("basedir", context.basedir);
+				parentContextMap_tRunJob_4.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_4.put("fileName", context.fileName);
 				parentContextMap_tRunJob_4.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_4.put("coding", context.coding);
+				parentContextMap_tRunJob_4.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_4
 						.put("DBInstance", context.DBInstance);
+				parentContextMap_tRunJob_4
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_4.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_4.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_4
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_4.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_4.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_4.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_4.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_4
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_4.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_4.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_4
-						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_4
 						.put("concept_cd", context.concept_cd);
 				parentContextMap_tRunJob_4.put("concept_path",
@@ -3209,6 +3243,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_4.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_4.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_4.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_4.put("includePids",
@@ -3833,23 +3869,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_12.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_12.put("basedir", context.basedir);
+				parentContextMap_tRunJob_12.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_12.put("fileName", context.fileName);
 				parentContextMap_tRunJob_12.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_12.put("coding", context.coding);
+				parentContextMap_tRunJob_12.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_12.put("DBInstance",
 						context.DBInstance);
+				parentContextMap_tRunJob_12.put("DBPassword",
+						context.DBPassword);
+				parentContextMap_tRunJob_12.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_12.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_12.put("DBUsername",
+						context.DBUsername);
 				parentContextMap_tRunJob_12.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_12.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_12.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_12.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_12.put("DBPassword",
-						context.DBPassword);
-				parentContextMap_tRunJob_12.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_12.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_12.put("DBUsername",
-						context.DBUsername);
 				parentContextMap_tRunJob_12.put("concept_cd",
 						context.concept_cd);
 				parentContextMap_tRunJob_12.put("concept_path",
@@ -3867,6 +3905,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_12.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_12.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_12.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_12.put("includePids",
@@ -4771,23 +4811,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_1.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_1.put("basedir", context.basedir);
+				parentContextMap_tRunJob_1.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_1.put("fileName", context.fileName);
 				parentContextMap_tRunJob_1.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_1.put("coding", context.coding);
+				parentContextMap_tRunJob_1.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_1
 						.put("DBInstance", context.DBInstance);
+				parentContextMap_tRunJob_1
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_1.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_1.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_1
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_1.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_1.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_1.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_1.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_1
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_1.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_1.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_1
-						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_1
 						.put("concept_cd", context.concept_cd);
 				parentContextMap_tRunJob_1.put("concept_path",
@@ -4805,6 +4847,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_1.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_1.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_1.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_1.put("includePids",
@@ -5939,23 +5983,25 @@ public class ODM_MASTER implements TalendJob {
 				parentContextMap_tRunJob_10.put("importTerms",
 						context.importTerms);
 				parentContextMap_tRunJob_10.put("basedir", context.basedir);
+				parentContextMap_tRunJob_10.put("datePattern",
+						context.datePattern);
 				parentContextMap_tRunJob_10.put("fileName", context.fileName);
 				parentContextMap_tRunJob_10.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_10.put("coding", context.coding);
+				parentContextMap_tRunJob_10.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_10.put("DBInstance",
 						context.DBInstance);
+				parentContextMap_tRunJob_10.put("DBPassword",
+						context.DBPassword);
+				parentContextMap_tRunJob_10.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_10.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_10.put("DBUsername",
+						context.DBUsername);
 				parentContextMap_tRunJob_10.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_10.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_10.put("DBHost", context.DBHost);
-				parentContextMap_tRunJob_10.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_10.put("DBPassword",
-						context.DBPassword);
-				parentContextMap_tRunJob_10.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_10.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_10.put("DBUsername",
-						context.DBUsername);
 				parentContextMap_tRunJob_10.put("concept_cd",
 						context.concept_cd);
 				parentContextMap_tRunJob_10.put("concept_path",
@@ -5973,6 +6019,8 @@ public class ODM_MASTER implements TalendJob {
 						context.i2b2HeadNode);
 				parentContextMap_tRunJob_10.put("i2b2HeadNodeName",
 						context.i2b2HeadNodeName);
+				parentContextMap_tRunJob_10.put("importCodelist",
+						context.importCodelist);
 				parentContextMap_tRunJob_10.put("importSingleFile",
 						context.importSingleFile);
 				parentContextMap_tRunJob_10.put("includePids",
@@ -7222,6 +7270,7 @@ public class ODM_MASTER implements TalendJob {
 				context.importTerms = null;
 			}
 			context.basedir = (String) context.getProperty("basedir");
+			context.datePattern = (String) context.getProperty("datePattern");
 			context.fileName = (String) context.getProperty("fileName");
 			try {
 				context.cleanUp = routines.system.ParserUtils
@@ -7230,22 +7279,22 @@ public class ODM_MASTER implements TalendJob {
 				context.cleanUp = null;
 			}
 			context.coding = (String) context.getProperty("coding");
+			context.DBHost = (String) context.getProperty("DBHost");
 			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBPassword = (java.lang.String) context
+					.getProperty("DBPassword");
+			context.DBPort = (String) context.getProperty("DBPort");
+			context.DBSchema = (String) context.getProperty("DBSchema");
+			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.FTPPassword = (java.lang.String) context
 					.getProperty("FTPPassword");
 			context.FTPUser = (String) context.getProperty("FTPUser");
-			context.DBHost = (String) context.getProperty("DBHost");
-			context.DBPort = (String) context.getProperty("DBPort");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBSchema = (String) context.getProperty("DBSchema");
 			try {
 				context.truncateProject = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("truncateProject"));
 			} catch (NumberFormatException e) {
 				context.truncateProject = null;
 			}
-			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.concept_cd = (String) context.getProperty("concept_cd");
 			context.concept_path = (String) context.getProperty("concept_path");
 			context.currentFile = (String) context.getProperty("currentFile");
@@ -7257,6 +7306,12 @@ public class ODM_MASTER implements TalendJob {
 			context.i2b2HeadNode = (String) context.getProperty("i2b2HeadNode");
 			context.i2b2HeadNodeName = (String) context
 					.getProperty("i2b2HeadNodeName");
+			try {
+				context.importCodelist = routines.system.ParserUtils
+						.parseTo_Boolean(context.getProperty("importCodelist"));
+			} catch (NumberFormatException e) {
+				context.importCodelist = null;
+			}
 			try {
 				context.importSingleFile = routines.system.ParserUtils
 						.parseTo_Boolean(context
@@ -7350,6 +7405,10 @@ public class ODM_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("basedir")) {
 				context.basedir = (String) parentContextMap.get("basedir");
 			}
+			if (parentContextMap.containsKey("datePattern")) {
+				context.datePattern = (String) parentContextMap
+						.get("datePattern");
+			}
 			if (parentContextMap.containsKey("fileName")) {
 				context.fileName = (String) parentContextMap.get("fileName");
 			}
@@ -7359,9 +7418,26 @@ public class ODM_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("coding")) {
 				context.coding = (String) parentContextMap.get("coding");
 			}
+			if (parentContextMap.containsKey("DBHost")) {
+				context.DBHost = (String) parentContextMap.get("DBHost");
+			}
 			if (parentContextMap.containsKey("DBInstance")) {
 				context.DBInstance = (String) parentContextMap
 						.get("DBInstance");
+			}
+			if (parentContextMap.containsKey("DBPassword")) {
+				context.DBPassword = (java.lang.String) parentContextMap
+						.get("DBPassword");
+			}
+			if (parentContextMap.containsKey("DBPort")) {
+				context.DBPort = (String) parentContextMap.get("DBPort");
+			}
+			if (parentContextMap.containsKey("DBSchema")) {
+				context.DBSchema = (String) parentContextMap.get("DBSchema");
+			}
+			if (parentContextMap.containsKey("DBUsername")) {
+				context.DBUsername = (String) parentContextMap
+						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("FTPPassword")) {
 				context.FTPPassword = (java.lang.String) parentContextMap
@@ -7370,26 +7446,9 @@ public class ODM_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("FTPUser")) {
 				context.FTPUser = (String) parentContextMap.get("FTPUser");
 			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
 			if (parentContextMap.containsKey("truncateProject")) {
 				context.truncateProject = (Boolean) parentContextMap
 						.get("truncateProject");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("concept_cd")) {
 				context.concept_cd = (String) parentContextMap
@@ -7427,6 +7486,10 @@ public class ODM_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("i2b2HeadNodeName")) {
 				context.i2b2HeadNodeName = (String) parentContextMap
 						.get("i2b2HeadNodeName");
+			}
+			if (parentContextMap.containsKey("importCodelist")) {
+				context.importCodelist = (Boolean) parentContextMap
+						.get("importCodelist");
 			}
 			if (parentContextMap.containsKey("importSingleFile")) {
 				context.importSingleFile = (Boolean) parentContextMap
@@ -7694,6 +7757,6 @@ public class ODM_MASTER implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 223538 characters generated by Talend Open Studio for Data Integration on the
- * August 7, 2013 3:47:48 PM CEST
+ * 225589 characters generated by Talend Open Studio for Data Integration on the
+ * August 27, 2013 4:21:24 PM CEST
  ************************************************************************************************/

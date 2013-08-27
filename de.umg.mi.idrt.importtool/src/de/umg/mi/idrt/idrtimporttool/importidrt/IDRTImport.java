@@ -319,7 +319,6 @@ public class IDRTImport {
 					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
 
 					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					System.out.println("t_mapping: "  + t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					setCompleteContext(contextMap);
 				} catch (IOException e) {
@@ -365,7 +364,6 @@ public class IDRTImport {
 				try {
 					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
 					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					System.out.println("t_mapping: "  + t_mapping.getAbsolutePath());
 					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					setCompleteContext(contextMap);
 				} catch (IOException e) {
@@ -415,7 +413,6 @@ public class IDRTImport {
 					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
 
 					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					System.out.println("t_mapping: "  + t_mapping.getAbsolutePath());
 					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					setCompleteContext(contextMap);
 				} catch (IOException e) {
@@ -456,7 +453,6 @@ public class IDRTImport {
 					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
 
 					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					System.out.println("t_mapping: "  + t_mapping.getAbsolutePath());
 					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					setCompleteContext(contextMap);
 				} catch (IOException e) {
@@ -503,7 +499,6 @@ public class IDRTImport {
 					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
 
 					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					System.out.println("t_mapping: "  + t_mapping.getAbsolutePath());
 					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
 					setCompleteContext(contextMap);
 				} catch (IOException e) {

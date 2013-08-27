@@ -289,7 +289,6 @@ public class ServerView extends ViewPart {
 	}
 
 	public static void setProgressBottom(final String string) {
-		System.out.println(string);
 		if (progressBar.getSelection()>0) {
 			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
 					+ string);
@@ -573,11 +572,12 @@ public class ServerView extends ViewPart {
 
 			// Remove tmp files
 
-			Path tmpPath = new Path("/misc/tmp/"); 
+			Path tmpPath = new Path("/misc/tmp/");
 			URL tmpURL = FileLocator.find(bundle, tmpPath,
 					Collections.EMPTY_MAP);
 
 			if (tmpURL==null) {
+				System.out.println("TMPURL == NULL");
 				Path miscPath = new Path("/misc/"); 
 				URL miscURL = FileLocator.find(bundle, miscPath,
 						Collections.EMPTY_MAP);
@@ -587,6 +587,7 @@ public class ServerView extends ViewPart {
 				tmpURL = FileLocator.find(bundle, tmpPath,
 						Collections.EMPTY_MAP);
 			}
+			
 			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
 			File folder = new File(tmpURL2.getPath());
 			File[] listOfFiles = folder.listFiles();
@@ -1078,20 +1079,20 @@ public class ServerView extends ViewPart {
 
 
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			//						new MenuItem(mainMenu, SWT.SEPARATOR);
-			//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			//						adminMenuItem.setText("Administration");
-			//						adminMenuItem.addSelectionListener(new SelectionListener() {
-			//							@Override
-			//							public void widgetSelected(SelectionEvent e) {
-			//								adminTargetServer();
-			//							}
-			//			
-			//							@Override
-			//							public void widgetDefaultSelected(SelectionEvent e) {
-			//			
-			//							}
-			//						});
+//									new MenuItem(mainMenu, SWT.SEPARATOR);
+//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+//									adminMenuItem.setText("Administration");
+//									adminMenuItem.addSelectionListener(new SelectionListener() {
+//										@Override
+//										public void widgetSelected(SelectionEvent e) {
+//											adminTargetServer();
+//										}
+//						
+//										@Override
+//										public void widgetDefaultSelected(SelectionEvent e) {
+//						
+//										}
+//									});
 
 			/*
 			 * Dis-/Enables the mainMenu items.

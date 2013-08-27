@@ -6,7 +6,7 @@
     <contextParameter comment="" name="counter" prompt="counter?" promptNeeded="false" type="id_Integer" value=""/>
     <contextParameter comment="" name="counter2" prompt="counter2?" promptNeeded="false" type="id_Integer" value=""/>
     <contextParameter comment="" name="progress" prompt="progress?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy&quot;"/>
+    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;yyyy-MM-dd&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
   </context>
   <parameters>

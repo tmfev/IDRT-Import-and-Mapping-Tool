@@ -148,7 +148,8 @@ public class ODMImportWizard extends Wizard {
 			 * page 2
 			 */
 			contextMap.put("folderODM", ODMWizardPageTwo.getFolderODMText()); 
-
+			defaultProps.setProperty("folderODM", ODMWizardPageTwo.getFolderODMText());
+			
 			Path miscPath = new Path("/misc/"); 
 			URL miscUrl = FileLocator.find(bundle, miscPath,
 					Collections.EMPTY_MAP);

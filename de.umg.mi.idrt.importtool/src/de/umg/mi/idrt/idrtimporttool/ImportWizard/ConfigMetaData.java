@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.eclipse.swt.widgets.TableItem;
 
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+
 /**
  * Contains all possible metadata for CSV/DB imports.
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -13,7 +15,7 @@ import org.eclipse.swt.widgets.TableItem;
  */
 public class ConfigMetaData {
 
-	public static String[] optionsData = { "String", "Date", "Float", "Integer" };
+	public static String[] optionsData = { "String", "Date", "Float", "Integer" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	
 	/**
 	 * 
@@ -30,45 +32,45 @@ public class ConfigMetaData {
 		boolean sex = false;
 		
 		for (TableItem item : items) {
-			if (item.getText(4).equalsIgnoreCase("FirstName")) {
+			if (item.getText(4).equalsIgnoreCase("FirstName")) { //$NON-NLS-1$
 				firstName = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("LastName")) {
+			if (item.getText(4).equalsIgnoreCase("LastName")) { //$NON-NLS-1$
 				name = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("Reporting Date")) {
+			if (item.getText(4).equalsIgnoreCase("Reporting Date")) { //$NON-NLS-1$
 				reportDate = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("Birthday")) {
+			if (item.getText(4).equalsIgnoreCase("Birthday")) { //$NON-NLS-1$
 				birthday = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("Sex")) {
+			if (item.getText(4).equalsIgnoreCase("Sex")) { //$NON-NLS-1$
 				sex = true;
 			}
 		}
 		List<String> metaOptionList = new LinkedList<String>();
 
 		if (currentOption.isEmpty()) {
-			metaOptionList.add("");
+			metaOptionList.add(""); //$NON-NLS-1$
 		} else {
-			metaOptionList.add("");
+			metaOptionList.add(""); //$NON-NLS-1$
 			metaOptionList.add(currentOption);
 		}
 
 		if (!firstName) {
-			metaOptionList.add("FirstName");
+			metaOptionList.add("FirstName"); //$NON-NLS-1$
 		}
 		if (!name) {
-			metaOptionList.add("LastName");
+			metaOptionList.add("LastName"); //$NON-NLS-1$
 		}
 		if (!reportDate) {
-			metaOptionList.add("Reporting Date");
+			metaOptionList.add("Reporting Date"); //$NON-NLS-1$
 		}
 		if (!birthday) {
-			metaOptionList.add("Birthday");
+			metaOptionList.add("Birthday"); //$NON-NLS-1$
 		}
 		if (!sex) {
-			metaOptionList.add("Sex");
+			metaOptionList.add("Sex"); //$NON-NLS-1$
 		}
 	
 		String[] metaString = new String[metaOptionList.size()];
@@ -103,34 +105,34 @@ public class ConfigMetaData {
 		boolean otherSic = false;
 		
 		for (TableItem item : items) {
-			if (item.getText(3).equalsIgnoreCase("PatientID")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_PatientID)) { 
 				patientID = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("EncounterID")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_EncounterID)) { 
 				encounterID = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("UpdateDate")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_UpdateDate)) {
 				updateDate = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("ImportDate")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_ImportDate)) { 
 				importDate = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("DownloadDate")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_DownloadDate)) { 
 				downloadDate = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("StartDate")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_StartDate)) { 
 				startDate = true;
 			}
-			if (item.getText(3).equalsIgnoreCase("EndDate")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_EndDate)) {
 				endDate = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("imagesic")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_ImageSic)) { 
 				imageSic = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("BiomaterialSic")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_BiomaterialSic)) {
 				biomaterialSic = true;
 			}
-			if (item.getText(4).equalsIgnoreCase("OtherSic")) {
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_OtherSic)) { 
 				otherSic = true;
 			}
 		}
@@ -142,39 +144,41 @@ public class ConfigMetaData {
 			metaOptionList.add("");
 			metaOptionList.add(currentOption);
 		}
-		metaOptionList.add("ignore");
+		
 
 		if (!patientID) {
-			metaOptionList.add("PatientID");
+			metaOptionList.add(Messages.ConfigMetaData_PatientID);
 		}
 		if (!encounterID) {
-			metaOptionList.add("EncounterID");
+			metaOptionList.add(Messages.ConfigMetaData_EncounterID);
 		}
 		if (!updateDate) {
-			metaOptionList.add("UpdateDate");
+			metaOptionList.add(Messages.ConfigMetaData_UpdateDate);
 		}
 		if (!importDate) {
-			metaOptionList.add("ImportDate");
+			metaOptionList.add(Messages.ConfigMetaData_ImportDate);
 		}
 		if (!downloadDate) {
-			metaOptionList.add("DownloadDate");
+			metaOptionList.add(Messages.ConfigMetaData_DownloadDate);
 		}
 		if (!startDate) {
-			metaOptionList.add("StartDate");
+			metaOptionList.add(Messages.ConfigMetaData_StartDate);
 		}
 		if (!endDate) {
-			metaOptionList.add("EndDate");
+			metaOptionList.add(Messages.ConfigMetaData_EndDate);
 		}
 		if (!imageSic) {
-			metaOptionList.add("ImageSic");
+			metaOptionList.add(Messages.ConfigMetaData_ImageSic);
 		}
 		if (!biomaterialSic) {
-			metaOptionList.add("BiomaterialSic");
+			metaOptionList.add(Messages.ConfigMetaData_BiomaterialSic);
 		}
 		if (!otherSic) {
-			metaOptionList.add("OtherSic");
+			metaOptionList.add(Messages.ConfigMetaData_OtherSic);
 		}
-
+		
+		metaOptionList.add("ignore");
+		
 		String[] metaString = new String[metaOptionList.size()];
 		for (int i = 0; i < metaOptionList.size(); i++) {
 			metaString[i] = metaOptionList.get(i);

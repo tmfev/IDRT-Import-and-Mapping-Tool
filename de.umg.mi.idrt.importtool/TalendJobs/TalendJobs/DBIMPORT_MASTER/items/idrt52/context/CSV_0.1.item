@@ -9,5 +9,5 @@
   <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" type="id_String" value="&quot;aa_diagnosesicherung&quot;"/>
   <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="true" type="id_Character" value="&quot;"/>
   <contextParameter comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
-  <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yyyy&quot;"/>
+  <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;yyyy-MM-dd&quot;"/>
 </talendfile:ContextType>

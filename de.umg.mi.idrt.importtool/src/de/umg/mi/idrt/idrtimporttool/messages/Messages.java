@@ -8,9 +8,19 @@ import org.eclipse.osgi.util.NLS;
  * www.mi.med.uni-goettingen.de
  */
 public class Messages extends NLS {
-	
+
 	private static final String BUNDLE_NAME = "de.umg.mi.idrt.idrtimporttool.messages.messages"; //$NON-NLS-1$
-	
+
+	public static String ConfigMetaData_BiomaterialSic;
+	public static String ConfigMetaData_DownloadDate;
+	public static String ConfigMetaData_EncounterID;
+	public static String ConfigMetaData_EndDate;
+	public static String ConfigMetaData_ImageSic;
+	public static String ConfigMetaData_ImportDate;
+	public static String ConfigMetaData_OtherSic;
+	public static String ConfigMetaData_PatientID;
+	public static String ConfigMetaData_StartDate;
+	public static String ConfigMetaData_UpdateDate;
 	public static String CSVWizardPageThree_ClearTable;
 	public static String CSVWizardPageThree_ClearTableConfirm;
 	public static String CSVWizardPageThree_ClearTableConfirmText;
@@ -39,7 +49,6 @@ public class Messages extends NLS {
 	public static String ODMImportWizard_ImpFailedSeeLog;
 	public static String ODMImportWizard_ODMImpFinished;
 	public static String ODMImportWizard_ODMImportFailed;
-	
 	public static String ODMWizardPageTwo_CleanUp;
 	public static String ODMWizardPageTwo_ImportSTandMap;
 	public static String ODMWizardPageTwo_ImportSTandMapToolTip;
@@ -87,7 +96,6 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProject;
 	public static String ServerView_TruncateProjectConfirmText;
 	public static String ServerView_TruncateProjectQuestion;
-	public static String CSVWizardPageThree_btnGuessAllSchemata_text;
 
 	static {
 		// initialize resource bundle
@@ -97,5 +105,5 @@ public class Messages extends NLS {
 	private Messages() {
 	}
 
-	
+
 }

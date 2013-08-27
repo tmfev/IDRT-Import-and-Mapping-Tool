@@ -25,6 +25,41 @@ import au.com.bytecode.opencsv.CSVWriter;
  */
 public class IDRTHelper {
 
+	private static int ONT_HLEVEL = 0;
+	private static int ONT_NAME = 1;
+	private static int ONT_PATH = 2;
+	private static int ONT_DATATYPE = 3;
+	private static int ONT_UPDATEDATE= 4;
+	private static int ONT_IMPORTDATE = 5;
+	private static int ONT_DOWNLOADDATE = 6;
+	private static int ONT_PATHID = 7;
+	private static int ONT_VISUAL = 8;
+	private static int ONT_ITEMCODE = 9;
+	private static int ONT_SOURCE = 10;
+	private static int ONT_XML = 11;
+	private static int ONT_M_APPLIEDPATH = 12;
+	private static int ONT_LENGTH = 13;
+
+	private static int OBS_PATIENTID = 0;
+	private static int OBS_ENCOUNTERID = 1;
+	private static int OBS_IMPORTDATE = 2;
+	private static int OBS_UPDATEDATE = 3;
+	private static int OBS_DOWNLOADDATE = 4;
+	private static int OBS_ITEM = 5;
+	private static int OBS_VALUE = 6;
+	private static int OBS_NICENAME = 7;
+	private static int OBS_DATATYPE = 8;
+	private static int OBS_UNIQUEID = 9;
+	private static int OBS_BIRTHDAY = 10;
+	private static int OBS_DEATHDAY = 11;
+	private static int OBS_STARTDATE = 12;
+	private static int OBS_ENDDATE = 13;
+	private static int OBS_SOURCESYSTEM = 14;
+	private static int OBS_INSTANCENUM = 15;
+	private static int OBS_MODIFIERTYPE = 16;
+	private static int OBS_SIC = 17;
+	private static int OBS_LENGTH = 18;
+
 	private static int PID = -1;
 	private static int UpdateDate = -1;
 	private static int ImportDate = -1;
@@ -334,38 +369,36 @@ public class IDRTHelper {
 
 			System.out.println("delim: " + outputDelim);
 			CSVWriter ontOutput = new CSVWriter(new FileWriter(ont), outputDelim);
-			String[] ontLine = new String[14];
-			int j = 0;
-			ontLine[j++] = "HLEVEL";
-			ontLine[j++] = "Name";
-			ontLine[j++] = "Path";
-			ontLine[j++] = "DataType";
-			ontLine[j++] = "Update_Date";
-			ontLine[j++] = "Import_Date";
-			ontLine[j++] = "Download_Date";
-			ontLine[j++] = "PathID";
-			ontLine[j++] = "visual";
-			ontLine[j++] = "itemCode";
-			ontLine[j++] = "source";
-			ontLine[j++] = "xml";
-			ontLine[j++] = "m_applied_path";
+			String[] ontLine = new String[ONT_LENGTH];
+			ontLine[ONT_HLEVEL] = "HLEVEL";
+			ontLine[ONT_NAME] = "Name";
+			ontLine[ONT_PATH] = "Path";
+			ontLine[ONT_DATATYPE] = "DataType";
+			ontLine[ONT_UPDATEDATE] = "Update_Date";
+			ontLine[ONT_IMPORTDATE] = "Import_Date";
+			ontLine[ONT_DOWNLOADDATE] = "Download_Date";
+			ontLine[ONT_PATHID] = "PathID";
+			ontLine[ONT_VISUAL] = "visual";
+			ontLine[ONT_ITEMCODE] = "itemCode";
+			ontLine[ONT_SOURCE] = "source";
+			ontLine[ONT_XML] = "xml";
+			ontLine[ONT_M_APPLIEDPATH] = "m_applied_path";
 			ontOutput.writeNext(ontLine);
 
 			//
-			j=0;
-			ontLine[j++] = "0";
-			ontLine[j++] = "Ontology";
-			ontLine[j++] = "\\"+headnode+"\\";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "FAE";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "@";
+			ontLine[ONT_HLEVEL] = "0";
+			ontLine[ONT_NAME] = "Ontology";
+			ontLine[ONT_PATH] = "\\"+headnode+"\\";
+			ontLine[ONT_DATATYPE] = "";
+			ontLine[ONT_UPDATEDATE] = "";
+			ontLine[ONT_IMPORTDATE] = "";
+			ontLine[ONT_DOWNLOADDATE] = "";
+			ontLine[ONT_PATHID] = "";
+			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_ITEMCODE] = "";
+			ontLine[ONT_SOURCE] = "";
+			ontLine[ONT_XML] = "";
+			ontLine[ONT_M_APPLIEDPATH] = "@";
 			ontOutput.writeNext(ontLine);
 
 			/**
@@ -373,57 +406,74 @@ public class IDRTHelper {
 			 */
 			if (bioSic>=0 || imageSic >= 0 || otherSic >= 0) { 
 				System.out.println("GOING FOR MODIFIER");
-				j=0;
-				ontLine[j++] = "1";
+				ontLine[ONT_HLEVEL] = "1";
 				if (bioSic>=0) {
-					ontLine[j++] = "Biomaterial";	//TODO context variable
-					ontLine[j++] = "\\"+headnode+"\\"+"BD"+"\\"; //TODO context variable
+					ontLine[ONT_NAME] = "Biomaterial";	//TODO context variable
+					ontLine[ONT_PATH] = "\\"+headnode+"\\"+"BD"+"\\"; //TODO context variable
 				}
 				else if (imageSic>=0) {
-					ontLine[j++] = "Bilddaten";	//TODO context variable
-					ontLine[j++] = "\\"+headnode+"\\"+"ID"+"\\"; //TODO context variable
+					ontLine[ONT_NAME] = "Bilddaten";	//TODO context variable
+					ontLine[ONT_PATH] = "\\"+headnode+"\\"+"ID"+"\\"; //TODO context variable
 				}
 				else if (otherSic>=0) {
-					ontLine[j++] = "Andere Objekte";	//TODO context variable
-					ontLine[j++] = "\\"+headnode+"\\"+"OD"+"\\"; //TODO context variable
+					ontLine[ONT_NAME] = "Andere Objekte";	//TODO context variable
+					ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OD"+"\\"; //TODO context variable
 				}
 
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "FAE";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "@"; //applied path
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
+				ontLine[ONT_M_APPLIEDPATH] = "@";
 
 				ontOutput.writeNext(ontLine);
 
-				j=0;
-				ontLine[j++] = "1";
-				ontLine[j++] = tableName;
-				ontLine[j++] = "\\"+tableName+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "DAE";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
+				ontLine[ONT_HLEVEL] = "1";
+				ontLine[ONT_NAME] = "OBJECTID";
+				ontLine[ONT_PATH] = "\\i2b2\\"+"OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "DHE";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
+				ontLine[ONT_M_APPLIEDPATH] = "@";  //applied path
+
+				ontOutput.writeNext(ontLine);
+
+
+				ontLine[ONT_HLEVEL] = "1";
+				ontLine[ONT_NAME] = tableName;
+				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "DAE";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
 				if (bioSic>=0)
-					ontLine[j++] = "\\"+headnode+"\\"+"BD"+"\\";  //applied path
+					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"BD"+"\\";  //applied path
 				else if (imageSic>=0) {
-					ontLine[j++] = "\\"+headnode+"\\"+"ID"+"\\";  //applied path
+					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"ID"+"\\";  //applied path
 				}
 				else if (otherSic>=0) {
-					ontLine[j++] = "\\"+headnode+"\\"+"OD"+"\\";  //applied path
+					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OD"+"\\";  //applied path
 				}
 
 				ontOutput.writeNext(ontLine);
+
+
 
 				int columnNum = columnNames.size();
 				int colCounter = 0;
@@ -431,77 +481,74 @@ public class IDRTHelper {
 				//				while(coulumnNameIterator.hasNext()){
 				for (int i= 0; i<columnNum;i++){
 					//					currentColumn = coulumnNameIterator.next();
-					j=0;
 
 					if ( !ignoreList.contains(colCounter) && colCounter!=PID && 
 							colCounter!= Sourcesystem && colCounter != DownloadDate && 
 							colCounter != ImportDate && colCounter != UpdateDate && 
 							colCounter != EncounterID && colCounter != DeathDay && 
 							colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate
-							){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
+					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
-						ontLine[j++] = "2";
-						ontLine[j++] = IDRTItemMap.get(colCounter).getNiceName();
-						ontLine[j++] = "\\"+tableName+"\\"+string+"\\";
-						ontLine[j++] = IDRTItemMap.get(colCounter).getDataType();
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-						ontLine[j++] = "DAE";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
+						ontLine[ONT_HLEVEL] = "2";
+						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+						ontLine[ONT_PATH] = "\\"+tableName+"\\"+string+"\\";
+						ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
+						ontLine[ONT_UPDATEDATE] = "";
+						ontLine[ONT_IMPORTDATE] = "";
+						ontLine[ONT_DOWNLOADDATE] = "";
+						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
+						ontLine[ONT_VISUAL] = "DAE";
+						ontLine[ONT_ITEMCODE] = "";
+						ontLine[ONT_SOURCE] = "";
+						ontLine[ONT_XML] = "";
 						if (bioSic>=0)
-							ontLine[j++] = "\\"+headnode+"\\"+"BD"+"\\";
+							ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"BD"+"\\";
 						else if (imageSic>=0) {
-							ontLine[j++] = "\\"+headnode+"\\"+"ID"+"\\";
+							ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"ID"+"\\";
 						}
 						else if (otherSic>=0) {
-							ontLine[j++] = "\\"+headnode+"\\"+"OD"+"\\";
+							ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OD"+"\\";
 						}
 
 						ontOutput.writeNext(ontLine);
 					}
 					colCounter++;
 				}
-				System.out.println("flushing");
 				ontOutput.flush();
 				ontOutput.close();
 
 			}
 			else {
 				//No Modifiers
-				j=0;
-				ontLine[j++] = "1";
-				ontLine[j++] = pdName;
-				ontLine[j++] = "\\"+headnode+"\\"+pd+"\\";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "FAE";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "@";
+				ontLine[ONT_HLEVEL] = "1";
+				ontLine[ONT_NAME] = pdName;
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\";
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
+				ontLine[ONT_M_APPLIEDPATH] = "@";
 				ontOutput.writeNext(ontLine);
-				j=0;
-				ontLine[j++] = "2";
-				ontLine[j++] = tableName;
-				ontLine[j++] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "FAE";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "";
-				ontLine[j++] = "@";
+
+				ontLine[ONT_HLEVEL] = "2";
+				ontLine[ONT_NAME] = tableName;
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
+				ontLine[ONT_M_APPLIEDPATH] = "@";
 				ontOutput.writeNext(ontLine);
 
 				int columnNum = columnNames.size();
@@ -510,29 +557,28 @@ public class IDRTHelper {
 				//				while(coulumnNameIterator.hasNext()){
 				for (int i= 0; i<columnNum;i++){
 					//					currentColumn = coulumnNameIterator.next();
-					j=0;
 
 					if ( !ignoreList.contains(colCounter) && colCounter!=PID && 
 							colCounter!= Sourcesystem && colCounter != DownloadDate && 
 							colCounter != ImportDate && colCounter != UpdateDate && 
 							colCounter != EncounterID && colCounter != DeathDay && 
 							colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate
-							){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
+					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
-						ontLine[j++] = "3";
-						ontLine[j++] = IDRTItemMap.get(colCounter).getNiceName();
-						ontLine[j++] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
-						ontLine[j++] = IDRTItemMap.get(colCounter).getDataType();
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-						ontLine[j++] = "FAE";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = "";
-						ontLine[j++] = "@";
+						ontLine[ONT_HLEVEL] = "3";
+						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+						ontLine[ONT_PATH] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
+						ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
+						ontLine[ONT_UPDATEDATE] = "";
+						ontLine[ONT_IMPORTDATE] = "";
+						ontLine[ONT_DOWNLOADDATE] = "";
+						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
+						ontLine[ONT_VISUAL] = "FAE";
+						ontLine[ONT_ITEMCODE] = "";
+						ontLine[ONT_SOURCE] = "";
+						ontLine[ONT_XML] = "";
+						ontLine[ONT_M_APPLIEDPATH] = "@";
 						ontOutput.writeNext(ontLine);
 					}
 					colCounter++;
@@ -551,28 +597,27 @@ public class IDRTHelper {
 			/**
 			 * writing header
 			 */
-			int k = 0;
-			String [] header = new String[18];
-			header[k++] = "PatientID"; //0
-			header[k++] = "EncounterID"; //1
-			header[k++] = "ImportDate"; //2
-			header[k++] = "UpdateDate"; //3
-			header[k++] = "DownloadDate"; //4
-			header[k++] = "Item"; //5
-			header[k++] = "Value"; //6
-			header[k++] = "NiceName";
-			header[k++] = "DataType";
-			header[k++] = "uniqueID";
-			header[k++] = "BirthDay";
-			header[k++] = "DeathDay";
-			header[k++] = "StartDate";
-			header[k++] = "EndDate";
-			header[k++] = "SourceSystem";
-			header[k++] = "instanceNum";
-			header[k++] = "modifierType";
-			header[k++] = "sic";
+			String [] header = new String[OBS_LENGTH];
+			header[OBS_PATIENTID] = "PatientID";
+			header[OBS_ENCOUNTERID] = "EncounterID"; 
+			header[OBS_IMPORTDATE] = "ImportDate"; 
+			header[OBS_UPDATEDATE] = "UpdateDate"; 
+			header[OBS_DOWNLOADDATE] = "DownloadDate";
+			header[OBS_ITEM] = "Item";
+			header[OBS_VALUE] = "Value";
+			header[OBS_NICENAME] = "NiceName";
+			header[OBS_DATATYPE] = "DataType";
+			header[OBS_UNIQUEID] = "uniqueID";
+			header[OBS_BIRTHDAY] = "BirthDay";
+			header[OBS_DEATHDAY] = "DeathDay";
+			header[OBS_STARTDATE] = "StartDate";
+			header[OBS_ENDDATE] = "EndDate";
+			header[OBS_SOURCESYSTEM] = "SourceSystem";
+			header[OBS_INSTANCENUM] = "instanceNum";
+			header[OBS_MODIFIERTYPE] = "modifierType";
+			header[OBS_SIC] = "sic";
 			rotatedOutput.writeNext(header);
-			String [] nextOutputLine = new String[18];
+			String [] nextOutputLine = new String[OBS_LENGTH];
 			int rows = 1;
 			int mod = 1;
 			if(allRows/100 > 0)
@@ -588,9 +633,9 @@ public class IDRTHelper {
 				int columnCounter = 0;
 				int instanceNum = 0;
 
-//				if(bioSic>=0) {
-//					instanceNum++;
-//				}
+				//				if(bioSic>=0) {
+				//					instanceNum++;
+				//				}
 				String encounterIDString;
 				if (PID>=0  && patientInstanceNumMap.containsKey(nextLine[PID])){
 					if (EncounterID>=0){
@@ -662,114 +707,110 @@ public class IDRTHelper {
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
 							columnCounter != BirthDay && columnCounter != StartDate && columnCounter != EndDate 
-							){ //&& columnCounter != bioSic && columnCounter != imageSic && columnCounter != otherSic
+					){ //&& columnCounter != bioSic && columnCounter != imageSic && columnCounter != otherSic
 
 
-						if (PID>=0){
-							//							System.out.println("pid: " + PID);
-							nextOutputLine[0] = nextLine[PID];
-
-						}
+						if (PID>=0)
+							nextOutputLine[OBS_PATIENTID] = nextLine[PID];
 						else 
-							nextOutputLine[0] = "";
+							nextOutputLine[OBS_PATIENTID] = "";
 
 						if (EncounterID>=0)
-							nextOutputLine[1] = nextLine[EncounterID];
+							nextOutputLine[OBS_ENCOUNTERID] = nextLine[EncounterID];
 						else
-							nextOutputLine[1] = "";
+							nextOutputLine[OBS_ENCOUNTERID] = "";
 
 						if (ImportDate>=0){
 							if (nextLine[ImportDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[ImportDate]);
-								nextOutputLine[2] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_IMPORTDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[2] = "";
+							nextOutputLine[OBS_IMPORTDATE] = "";
 
 						if (UpdateDate>=0){
 							if (nextLine[UpdateDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[UpdateDate]);
-								nextOutputLine[3] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_UPDATEDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[3] = "";
+							nextOutputLine[OBS_UPDATEDATE] = "";
 
 						if (DownloadDate>=0){
 							if (nextLine[DownloadDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[DownloadDate]);
-								nextOutputLine[4] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_DOWNLOADDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[4] = "";
+							nextOutputLine[OBS_DOWNLOADDATE] = "";
 
-						nextOutputLine[5] = currentColumn;
-						//System.out.println("value: " + nextLine[columnCounter]);
+						nextOutputLine[OBS_ITEM] = currentColumn;
 						if (nextLine[columnCounter].length()>180)
-							nextOutputLine[6] = nextLine[columnCounter].substring(0, 179);
+							nextOutputLine[OBS_VALUE] = nextLine[columnCounter].substring(0, 179);
 						else
-							nextOutputLine[6] = nextLine[columnCounter];
+							nextOutputLine[OBS_VALUE] = nextLine[columnCounter];
 						//						System.out.println("COUNTER: " + columnCounter);
-						nextOutputLine[7] = IDRTItemMap.get(columnCounter).getNiceName();
-						nextOutputLine[8] = IDRTItemMap.get(columnCounter).getDataType();
-						nextOutputLine[9] = input.getName().substring(0, input.getName().lastIndexOf("."));	
+						nextOutputLine[OBS_NICENAME] = IDRTItemMap.get(columnCounter).getNiceName();
+						nextOutputLine[OBS_DATATYPE] = IDRTItemMap.get(columnCounter).getDataType();
+						nextOutputLine[OBS_UNIQUEID] = input.getName().substring(0, input.getName().lastIndexOf("."));	
 
 						if (BirthDay>=0){
 							if (nextLine[BirthDay].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[BirthDay]);
-								nextOutputLine[10] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_BIRTHDAY] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[10] = "";
+							nextOutputLine[OBS_BIRTHDAY] = "";
 						if (DeathDay>=0){
 							if (nextLine[DeathDay].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[DeathDay]);
-								nextOutputLine[11] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_DEATHDAY] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[11] = "";
+							nextOutputLine[OBS_DEATHDAY] = "";
 
 						if(StartDate>=0){
 							if (nextLine[StartDate].length()>0){
 								Date date3 = TalendDate.parseDate(pattern, nextLine[StartDate]);
-								nextOutputLine[12] = TalendDate.formatDate("dd.MM.yyyy", date3);
+								nextOutputLine[OBS_STARTDATE] = TalendDate.formatDate("dd.MM.yyyy", date3);
 							}
 						}
 						else
-							nextOutputLine[12] = "";
+							nextOutputLine[OBS_STARTDATE] = "";
 
 						if(EndDate>=0){
 							if (nextLine[EndDate].length()>0){
 								Date date3 = TalendDate.parseDate(pattern, nextLine[EndDate]);
-								nextOutputLine[13] = TalendDate.formatDate("dd.MM.yyyy", date3);
+								nextOutputLine[OBS_ENDDATE] = TalendDate.formatDate("dd.MM.yyyy", date3);
 							}
 						}
 						else
-							nextOutputLine[13] = "";
+							nextOutputLine[OBS_ENDDATE] = "";
 
 						if (Sourcesystem>=0)
-							nextOutputLine[14] = nextLine[Sourcesystem]; //+"_"+global;
+							nextOutputLine[OBS_SOURCESYSTEM] = nextLine[Sourcesystem]; //+"_"+global;
 						else{
-							nextOutputLine[14] = "";	
+							nextOutputLine[OBS_SOURCESYSTEM] = "";	
 						}
 
 
-						nextOutputLine[15] = ""+instanceNum;
+						nextOutputLine[OBS_INSTANCENUM] = ""+instanceNum;
 						if (bioSic >=0) {
-							nextOutputLine[16] = "bio";
-							nextOutputLine[17] =  nextLine[bioSic];
+							nextOutputLine[OBS_MODIFIERTYPE] = "bio";
+							nextOutputLine[OBS_SIC] =  nextLine[bioSic];
 						}
 						else if (imageSic >=0) {
-							nextOutputLine[16] = "image";
-							nextOutputLine[17] =  nextLine[imageSic];
+							nextOutputLine[OBS_MODIFIERTYPE] = "image";
+							nextOutputLine[OBS_SIC] =  nextLine[imageSic];
 						}
 						else if (otherSic >=0) {
-							nextOutputLine[16] = "other";
-							nextOutputLine[17] =  nextLine[otherSic];
+							nextOutputLine[OBS_MODIFIERTYPE] = "other";
+							nextOutputLine[OBS_SIC] =  nextLine[otherSic];
 						}
 
 						rotatedOutput.writeNext(nextOutputLine);
@@ -853,64 +894,67 @@ public class IDRTHelper {
 			}
 
 			CSVWriter ontOutput = new CSVWriter(new FileWriter(ont), outputDelim);
-			String[] ontLine = new String[13];
-			int j = 0;
-			ontLine[j++] = "HLEVEL";
-			ontLine[j++] = "Name";
-			ontLine[j++] = "Path";
-			ontLine[j++] = "DataType";
-			ontLine[j++] = "Update_Date";
-			ontLine[j++] = "Import_Date";
-			ontLine[j++] = "Download_Date";
-			ontLine[j++] = "PathID";
-			ontLine[j++] = "visual";
-			ontLine[j++] = "itemCode";
-			ontLine[j++] = "source";
-			ontLine[j++] = "xml";
+			String[] ontLine = new String[ONT_LENGTH];
+			ontLine[ONT_HLEVEL] = "HLEVEL";
+			ontLine[ONT_NAME] = "Name";
+			ontLine[ONT_PATH] = "Path";
+			ontLine[ONT_DATATYPE] = "DataType";
+			ontLine[ONT_UPDATEDATE] = "Update_Date";
+			ontLine[ONT_IMPORTDATE] = "Import_Date";
+			ontLine[ONT_DOWNLOADDATE] = "Download_Date";
+			ontLine[ONT_PATHID] = "PathID";
+			ontLine[ONT_VISUAL] = "visual";
+			ontLine[ONT_ITEMCODE] = "itemCode";
+			ontLine[ONT_SOURCE] = "source";
+			ontLine[ONT_XML] = "xml";
+			ontLine[ONT_M_APPLIEDPATH] = "m_applied_path";
 			ontOutput.writeNext(ontLine);
 
 			//
-			j=0;
-			ontLine[j++] = "0";
-			ontLine[j++] = "Ontology";
-			ontLine[j++] = "\\"+headnode+"\\";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "FAE";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
+			ontLine[ONT_HLEVEL] = "0";
+			ontLine[ONT_NAME] = "Ontology";
+			ontLine[ONT_PATH] = "\\"+headnode+"\\";
+			ontLine[ONT_DATATYPE] = "";
+			ontLine[ONT_UPDATEDATE] = "";
+			ontLine[ONT_IMPORTDATE] = "";
+			ontLine[ONT_DOWNLOADDATE] = "";
+			ontLine[ONT_PATHID] = "";
+			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_ITEMCODE] = "";
+			ontLine[ONT_SOURCE] = "";
+			ontLine[ONT_XML] = "";
+			ontLine[ONT_M_APPLIEDPATH] = "@";
 			ontOutput.writeNext(ontLine);
-			j=0;
-			ontLine[j++] = "1";
-			ontLine[j++] = pdName;
-			ontLine[j++] = "\\"+headnode+"\\"+pd+"\\";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "FAE";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
+
+			ontLine[ONT_HLEVEL] = "1";
+			ontLine[ONT_NAME] = pdName;
+			ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\";
+			ontLine[ONT_DATATYPE] = "";
+			ontLine[ONT_UPDATEDATE] = "";
+			ontLine[ONT_IMPORTDATE] = "";
+			ontLine[ONT_DOWNLOADDATE] = "";
+			ontLine[ONT_PATHID] = "";
+			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_ITEMCODE] = "";
+			ontLine[ONT_SOURCE] = "";
+			ontLine[ONT_XML] = "";
+			ontLine[ONT_M_APPLIEDPATH] = "@";
+
 			ontOutput.writeNext(ontLine);
-			j=0;
-			ontLine[j++] = "2";
-			ontLine[j++] = tableName;
-			ontLine[j++] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "FAE";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
-			ontLine[j++] = "";
+
+			ontLine[ONT_HLEVEL] = "2";
+			ontLine[ONT_NAME] = tableName;
+			ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+			ontLine[ONT_DATATYPE] = "";
+			ontLine[ONT_UPDATEDATE] = "";
+			ontLine[ONT_IMPORTDATE] = "";
+			ontLine[ONT_DOWNLOADDATE] = "";
+			ontLine[ONT_PATHID] = "";
+			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_ITEMCODE] = "";
+			ontLine[ONT_SOURCE] = "";
+			ontLine[ONT_XML] = "";
+			ontLine[ONT_M_APPLIEDPATH] = "@";
 			ontOutput.writeNext(ontLine);
 
 			int columnNum = columnNames.size();
@@ -919,7 +963,6 @@ public class IDRTHelper {
 			//				while(coulumnNameIterator.hasNext()){
 			for (int i= 0; i<columnNum;i++){
 				//					currentColumn = coulumnNameIterator.next();
-				j=0;
 
 				if ( !ignoreList.contains(colCounter) && colCounter!=PID && 
 						colCounter!= Sourcesystem && colCounter != DownloadDate && 
@@ -928,18 +971,19 @@ public class IDRTHelper {
 						colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate ){
 
 					String string = columnNames.get(i);	
-					ontLine[j++] = "3";
-					ontLine[j++] = string;
-					ontLine[j++] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
-					ontLine[j++] = IDRTItemMap.get(colCounter).getDataType();
-					ontLine[j++] = "";
-					ontLine[j++] = TalendDate.getDate("dd-MM-yyyy");
-					ontLine[j++] = "";
-					ontLine[j++] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-					ontLine[j++] = "FAE";
-					ontLine[j++] = "";
-					ontLine[j++] = "";
-					ontLine[j++] = "";
+					ontLine[ONT_HLEVEL] = "3";
+					ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+					ontLine[ONT_PATH] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
+					ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
+					ontLine[ONT_UPDATEDATE] = "";
+					ontLine[ONT_IMPORTDATE] = "";
+					ontLine[ONT_DOWNLOADDATE] = "";
+					ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
+					ontLine[ONT_VISUAL] = "FAE";
+					ontLine[ONT_ITEMCODE] = "";
+					ontLine[ONT_SOURCE] = "";
+					ontLine[ONT_XML] = "";
+					ontLine[ONT_M_APPLIEDPATH] = "@";
 					ontOutput.writeNext(ontLine);
 				}
 				colCounter++;
@@ -962,24 +1006,25 @@ public class IDRTHelper {
 			/**
 			 * writing header
 			 */
-			j = 0;
-			String [] header = new String[16];
-			header[j++] = "PatientID";
-			header[j++] = "EncounterID";
-			header[j++] = "ImportDate";
-			header[j++] = "UpdateDate";
-			header[j++] = "DownloadDate";
-			header[j++] = "Item";
-			header[j++] = "Value";
-			header[j++] = "NiceName";
-			header[j++] = "DataType";
-			header[j++] = "uniqueID";
-			header[j++] = "BirthDay";
-			header[j++] = "DeathDay";
-			header[j++] = "StartDate";
-			header[j++] = "EndDate";
-			header[j++] = "SourceSystem";
-			header[j++] = "instanceNum";
+			String [] header = new String[OBS_LENGTH];
+			header[OBS_PATIENTID] = "PatientID";
+			header[OBS_ENCOUNTERID] = "EncounterID"; 
+			header[OBS_IMPORTDATE] = "ImportDate"; 
+			header[OBS_UPDATEDATE] = "UpdateDate"; 
+			header[OBS_DOWNLOADDATE] = "DownloadDate";
+			header[OBS_ITEM] = "Item";
+			header[OBS_VALUE] = "Value";
+			header[OBS_NICENAME] = "NiceName";
+			header[OBS_DATATYPE] = "DataType";
+			header[OBS_UNIQUEID] = "uniqueID";
+			header[OBS_BIRTHDAY] = "BirthDay";
+			header[OBS_DEATHDAY] = "DeathDay";
+			header[OBS_STARTDATE] = "StartDate";
+			header[OBS_ENDDATE] = "EndDate";
+			header[OBS_SOURCESYSTEM] = "SourceSystem";
+			header[OBS_INSTANCENUM] = "instanceNum";
+			header[OBS_MODIFIERTYPE] = "modifierType";
+			header[OBS_SIC] = "sic";
 			rotatedOutput.writeNext(header);
 			int k = 0;
 			int rows = 1;
@@ -1031,7 +1076,7 @@ public class IDRTHelper {
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
 							columnCounter != BirthDay && columnCounter != StartDate && columnCounter != EndDate){
-						String [] nextOutputLine = new String[16];
+						String [] nextOutputLine = new String[OBS_LENGTH];
 
 						//						if (PID>=0){
 						//							System.out.println("pid: " + PID);
@@ -1046,7 +1091,7 @@ public class IDRTHelper {
 								break;
 							}
 							else {
-								nextOutputLine[0] = pidMap.get(""+nextLine[PID]);
+								nextOutputLine[OBS_PATIENTID] = pidMap.get(""+nextLine[PID]);
 							}
 						}
 						//WORKING
@@ -1061,91 +1106,94 @@ public class IDRTHelper {
 						//						}
 
 						if (EncounterID>=0)
-							nextOutputLine[1] = nextLine[EncounterID];
+							nextOutputLine[OBS_ENCOUNTERID] = nextLine[EncounterID];
 						else
-							nextOutputLine[1] = "";
+							nextOutputLine[OBS_ENCOUNTERID] = "";
 
 						if (ImportDate>=0){
 							if (nextLine[ImportDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[ImportDate]);
-								nextOutputLine[2] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_IMPORTDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[2] = "";
+							nextOutputLine[OBS_IMPORTDATE] = "";
 
 						if (UpdateDate>=0){
 							if (nextLine[UpdateDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[UpdateDate]);
-								nextOutputLine[3] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_UPDATEDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[3] = "";
+							nextOutputLine[OBS_UPDATEDATE] = "";
 
 						if (DownloadDate>=0){
 							if (nextLine[DownloadDate].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[DownloadDate]);
-								nextOutputLine[4] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_DOWNLOADDATE] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[4] = "";
+							nextOutputLine[OBS_DOWNLOADDATE] = "";
 
-						nextOutputLine[5] = currentColumn;
+						nextOutputLine[OBS_ITEM] = currentColumn;
 						if (nextLine[columnCounter].length()>180)
-							nextOutputLine[6] = nextLine[columnCounter].substring(0, 179);
+							nextOutputLine[OBS_VALUE] = nextLine[columnCounter].substring(0, 179);
 						else
-							nextOutputLine[6] = nextLine[columnCounter];
-						nextOutputLine[7] = IDRTItemMap.get(columnCounter).getNiceName();
-						nextOutputLine[8] = IDRTItemMap.get(columnCounter).getDataType();
+							nextOutputLine[OBS_VALUE] = nextLine[columnCounter];
+						nextOutputLine[OBS_NICENAME] = IDRTItemMap.get(columnCounter).getNiceName();
+						nextOutputLine[OBS_DATATYPE] = IDRTItemMap.get(columnCounter).getDataType();
 						//						if (Sourcesystem>=0)
 						//							nextOutputLine[9] = nextLine[Sourcesystem]; //+"_"+global;
 						//						else
-						nextOutputLine[9] = input.getName().substring(0, input.getName().lastIndexOf("."));	
+						nextOutputLine[OBS_UNIQUEID] = input.getName().substring(0, input.getName().lastIndexOf("."));	
 
 						if (BirthDay>=0){
 							if (nextLine[BirthDay].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[BirthDay]);
-								nextOutputLine[10] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_BIRTHDAY] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[10] = "";
+							nextOutputLine[OBS_BIRTHDAY] = "";
 						if (DeathDay>=0){
 							if (nextLine[DeathDay].length()>0){
 								Date date2 = TalendDate.parseDate(pattern, nextLine[DeathDay]);
-								nextOutputLine[11] = TalendDate.formatDate("dd.MM.yyyy", date2);
+								nextOutputLine[OBS_DEATHDAY] = TalendDate.formatDate("dd.MM.yyyy", date2);
 							}
 						}
 						else
-							nextOutputLine[11] = "";
+							nextOutputLine[OBS_DEATHDAY] = "";
 						if(StartDate>=0){
 							if (nextLine[StartDate].length()>0){
 								Date date3 = TalendDate.parseDate(pattern, nextLine[StartDate]);
-								nextOutputLine[12] = TalendDate.formatDate("dd.MM.yyyy", date3);
+								nextOutputLine[OBS_STARTDATE] = TalendDate.formatDate("dd.MM.yyyy", date3);
 							}
 						}
 						else
-							nextOutputLine[12] = "";
+							nextOutputLine[OBS_STARTDATE] = "";
 
 						if (EndDate>=0){
 							if (nextLine[EndDate].length()>0){
 								Date date3 = TalendDate.parseDate(pattern, nextLine[EndDate]);
-								nextOutputLine[13] = TalendDate.formatDate("dd.MM.yyyy", date3);
+								nextOutputLine[OBS_ENDDATE] = TalendDate.formatDate("dd.MM.yyyy", date3);
 							}
 						}
 						else {
-							nextOutputLine[13] = "";
+							nextOutputLine[OBS_ENDDATE] = "";
 						}
 
 						if (Sourcesystem>=0)
-							nextOutputLine[14] = nextLine[Sourcesystem]; //+"_"+global;
+							nextOutputLine[OBS_SOURCESYSTEM] = nextLine[Sourcesystem]; //+"_"+global;
 						else{
-							nextOutputLine[14] = "";	
+							nextOutputLine[OBS_SOURCESYSTEM] = "";	
 						}
-						nextOutputLine[15] = ""+instanceNum;
+						nextOutputLine[OBS_INSTANCENUM] = ""+instanceNum;
 						rotatedOutput.writeNext(nextOutputLine);
+
+						nextOutputLine[OBS_MODIFIERTYPE] = "";
+						nextOutputLine[OBS_SIC] =  "";
 					} 
 					columnCounter++;
 				}

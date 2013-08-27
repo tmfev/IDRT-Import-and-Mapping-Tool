@@ -30,13 +30,11 @@ public class DBImport {
 				System.out.print(rset.getMetaData().getColumnClassName(i));
 				System.out.print(" | ");
 			}
-			System.out.println();
 			for (int i = 1; i <= count; i++) {
 				System.out.print(rset.getMetaData().getColumnName(i));
 				System.out.print(" | ");
 			}
 
-			System.out.println();
 			while (rset.next()) {
 
 				for (int i = 1; i <= count; i++) {

@@ -57,6 +57,9 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 //the import part of tJava_4
 //import java.util.List;
 
+//the import part of tJava_6
+//import java.util.List;
+
 //the import part of tJava_5
 //import java.util.List;
 
@@ -136,6 +139,18 @@ public class ODM_Extract_PD implements TalendJob {
 
 			}
 
+			if (encounterItem != null) {
+
+				this.setProperty("encounterItem", encounterItem.toString());
+
+			}
+
+			if (subStatus != null) {
+
+				this.setProperty("subStatus", subStatus.toString());
+
+			}
+
 			if (concept_cd != null) {
 
 				this.setProperty("concept_cd", concept_cd.toString());
@@ -194,6 +209,12 @@ public class ODM_Extract_PD implements TalendJob {
 
 				this.setProperty("i2b2HeadNodeName",
 						i2b2HeadNodeName.toString());
+
+			}
+
+			if (importCodelist != null) {
+
+				this.setProperty("importCodelist", importCodelist.toString());
 
 			}
 
@@ -358,18 +379,6 @@ public class ODM_Extract_PD implements TalendJob {
 
 			}
 
-			if (encounterItem != null) {
-
-				this.setProperty("encounterItem", encounterItem.toString());
-
-			}
-
-			if (subStatus != null) {
-
-				this.setProperty("subStatus", subStatus.toString());
-
-			}
-
 		}
 
 		public String source;
@@ -388,6 +397,18 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public String getSubjid() {
 			return this.subjid;
+		}
+
+		public String encounterItem;
+
+		public String getEncounterItem() {
+			return this.encounterItem;
+		}
+
+		public Float subStatus;
+
+		public Float getSubStatus() {
+			return this.subStatus;
 		}
 
 		public String concept_cd;
@@ -448,6 +469,12 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public String getI2b2HeadNodeName() {
 			return this.i2b2HeadNodeName;
+		}
+
+		public Boolean importCodelist;
+
+		public Boolean getImportCodelist() {
+			return this.importCodelist;
 		}
 
 		public Boolean includePids;
@@ -598,18 +625,6 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public String getXslt() {
 			return this.xslt;
-		}
-
-		public String encounterItem;
-
-		public String getEncounterItem() {
-			return this.encounterItem;
-		}
-
-		public Float subStatus;
-
-		public Float getSubStatus() {
-			return this.subStatus;
 		}
 	}
 
@@ -950,6 +965,16 @@ public class ODM_Extract_PD implements TalendJob {
 		tJava_4_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tJava_6_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_6", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_6_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_4_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1002,6 +1027,39 @@ public class ODM_Extract_PD implements TalendJob {
 		status = "failure";
 
 		tJava_5_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileInputDelimited_16_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_16", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_16_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tMap_10_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tMap_10", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_16_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileOutputDelimited_14_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileOutputDelimited_14", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_16_onSubJobError(exception, errorComponent,
+				globalMap);
 	}
 
 	public void tJava_3_error(java.lang.Exception exception,
@@ -1349,6 +1407,17 @@ public class ODM_Extract_PD implements TalendJob {
 				globalMap);
 	}
 
+	public void tFileInputDelimited_17_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_17", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_17_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
 	public void tAdvancedHash_row8_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1401,6 +1470,17 @@ public class ODM_Extract_PD implements TalendJob {
 		status = "failure";
 
 		tFileInputDelimited_14_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tAdvancedHash_row22_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_row22", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_17_onSubJobError(exception, errorComponent,
 				globalMap);
 	}
 
@@ -1602,6 +1682,17 @@ public class ODM_Extract_PD implements TalendJob {
 
 	}
 
+	public void tJava_6_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tFileInputDelimited_4_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
@@ -1616,6 +1707,18 @@ public class ODM_Extract_PD implements TalendJob {
 
 	public void tJava_5_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_16_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
@@ -1697,6 +1800,18 @@ public class ODM_Extract_PD implements TalendJob {
 	}
 
 	public void tFileInputDelimited_14_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_17_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -11238,7 +11353,8 @@ public class ODM_Extract_PD implements TalendJob {
 																				out2_tmp.SubjectKey = fromPatient.SubjectKey;
 																				out2_tmp.Path = fromOnt.Path;
 																				out2_tmp.PathID = fromOnt.PathID;
-																				out2_tmp.DataType = fromOnt.DataType;
+																				out2_tmp.DataType = fromCode.Datatype != null ? fromCode.Datatype
+																						: fromOnt.DataType;
 																				out2_tmp.Update_Date = fromOnt.Update_Date;
 																				out2_tmp.Import_Date = fromOnt.Import_Date;
 																				out2_tmp.Download_Date = fromOnt.Download_Date;
@@ -11332,6 +11448,7 @@ public class ODM_Extract_PD implements TalendJob {
 																					.equals("integer"))
 																				row5.Path = out2.Path
 																						+ "xml\\";
+
 																			// else
 																			// if
 																			// (out2.DataType.toLowerCase().trim().equals("date")||out2.DataType.toLowerCase().trim().equals("partialDate"))
@@ -11354,6 +11471,7 @@ public class ODM_Extract_PD implements TalendJob {
 																					+ hash.hashCode()
 																					+ "\\";
 																		}
+
 																		row5.PathID = out2.PathID;
 																		row5.DataType = out2.DataType;
 																		row5.Update_Date = out2.Update_Date;
@@ -12445,6 +12563,13 @@ public class ODM_Extract_PD implements TalendJob {
 																					tHash_Lookup_row7
 																							.lookup(row7HashKey);
 
+																					if (!tHash_Lookup_row7
+																							.hasNext()) { // G_TM_M_090
+
+																						rejectedInnerJoin_tMap_8 = true;
+
+																					} // G_TM_M_090
+
 																				} // G_TM_M_020
 
 																				if (tHash_Lookup_row7 != null
@@ -12504,47 +12629,54 @@ public class ODM_Extract_PD implements TalendJob {
 																					out5 = null;
 																					out6 = null;
 
-																					// #
-																					// Output
-																					// table
-																					// :
-																					// 'out5'
-																					out5_tmp.itemID = out4.itemID;
-																					out5_tmp.Value = row7.TranslatedText;
-																					out5_tmp.VisitID = out4.VisitID;
-																					out5_tmp.FormID = out4.FormID;
-																					out5_tmp.SubjectKey = out4.SubjectKey;
-																					out5_tmp.Path = out4.Path;
-																					out5_tmp.PathID = out4.PathID;
-																					out5_tmp.DataType = "string";
-																					out5_tmp.Update_Date = out4.Update_Date;
-																					out5_tmp.Import_Date = out4.Import_Date;
-																					out5_tmp.Download_Date = out4.Download_Date;
-																					out5_tmp.StudyEventRepeatKey = out4.StudyEventRepeatKey;
-																					out5_tmp.itemGroupRepeatKey = out4.itemGroupRepeatKey;
-																					out5_tmp.itemCode = out4.itemCode;
-																					out5 = out5_tmp;
+																					if (!rejectedInnerJoin_tMap_8) {
 
-																					// #
-																					// Output
-																					// table
-																					// :
-																					// 'out6'
-																					out6_tmp.HLEVEL = 8;
-																					out6_tmp.Name = row7.TranslatedText;
-																					out6_tmp.Path = out4.Path;
-																					out6_tmp.DataType = "string";
-																					out6_tmp.Update_Date = out4.Update_Date;
-																					out6_tmp.Import_Date = out4.Import_Date;
-																					out6_tmp.Download_Date = out4.Download_Date;
-																					out6_tmp.PathID = out4.PathID;
-																					out6_tmp.visual = "LAE";
-																					out6_tmp.codeList = "";
-																					out6_tmp.source = "";
-																					out6_tmp.xml = "";
-																					out6_tmp.m_applied_path = "@";
-																					out6 = out6_tmp;
-																					// ###############################
+																						// #
+																						// Output
+																						// table
+																						// :
+																						// 'out5'
+																						out5_tmp.itemID = out4.itemID;
+																						out5_tmp.Value = row7.TranslatedText;
+																						out5_tmp.VisitID = out4.VisitID;
+																						out5_tmp.FormID = out4.FormID;
+																						out5_tmp.SubjectKey = out4.SubjectKey;
+																						out5_tmp.Path = out4.Path;
+																						out5_tmp.PathID = out4.PathID;
+																						out5_tmp.DataType = "String";
+																						out5_tmp.Update_Date = out4.Update_Date;
+																						out5_tmp.Import_Date = out4.Import_Date;
+																						out5_tmp.Download_Date = out4.Download_Date;
+																						out5_tmp.StudyEventRepeatKey = out4.StudyEventRepeatKey;
+																						out5_tmp.itemGroupRepeatKey = out4.itemGroupRepeatKey;
+																						out5_tmp.itemCode = out4.itemCode;
+																						out5 = out5_tmp;
+
+																						// #
+																						// Output
+																						// table
+																						// :
+																						// 'out6'
+																						out6_tmp.HLEVEL = 8;
+																						out6_tmp.Name = row7.TranslatedText;
+																						out6_tmp.Path = out4.Path;
+																						out6_tmp.DataType = "String";
+																						out6_tmp.Update_Date = out4.Update_Date;
+																						out6_tmp.Import_Date = out4.Import_Date;
+																						out6_tmp.Download_Date = out4.Download_Date;
+																						out6_tmp.PathID = out4.PathID;
+																						out6_tmp.visual = "LAE";
+																						out6_tmp.codeList = "";
+																						out6_tmp.source = "";
+																						out6_tmp.xml = "";
+																						out6_tmp.m_applied_path = "@";
+																						out6 = out6_tmp;
+																					} // closing
+																						// inner
+																						// join
+																						// bracket
+																						// (2)
+																						// ###############################
 
 																				} // end
 																					// of
@@ -13695,7 +13827,7 @@ public class ODM_Extract_PD implements TalendJob {
 						"");
 			}
 
-			tFileInputDelimited_4Process(globalMap);
+			tJava_6Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -13708,6 +13840,95 @@ public class ODM_Extract_PD implements TalendJob {
 		}
 
 		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_6Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_6_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_6 begin ] start
+				 */
+
+				ok_Hash.put("tJava_6", false);
+				start_Hash.put("tJava_6", System.currentTimeMillis());
+				currentComponent = "tJava_6";
+
+				int tos_count_tJava_6 = 0;
+
+				if (context.importCodelist)
+					System.out.println("Importing Codelists...");
+
+				/**
+				 * [tJava_6 begin ] stop
+				 */
+				/**
+				 * [tJava_6 main ] start
+				 */
+
+				currentComponent = "tJava_6";
+
+				tos_count_tJava_6++;
+
+				/**
+				 * [tJava_6 main ] stop
+				 */
+				/**
+				 * [tJava_6 end ] start
+				 */
+
+				currentComponent = "tJava_6";
+
+				ok_Hash.put("tJava_6", true);
+				end_Hash.put("tJava_6", System.currentTimeMillis());
+
+				if (context.importCodelist) {
+
+					tFileInputDelimited_16Process(globalMap);
+				}
+
+				/**
+				 * [tJava_6 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_6:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tFileInputDelimited_4Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw new java.lang.Error(error);
+
+		}
+
+		globalMap.put("tJava_6_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row12Struct implements
@@ -18789,6 +19010,1815 @@ public class ODM_Extract_PD implements TalendJob {
 		}
 
 		globalMap.put("tJava_5_SUBPROCESS_STATE", 1);
+	}
+
+	public static class out11Struct implements
+			routines.system.IPersistableRow<out11Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Extract_PD = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Extract_PD = new byte[0];
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String Path;
+
+		public String getPath() {
+			return this.Path;
+		}
+
+		public String DataType;
+
+		public String getDataType() {
+			return this.DataType;
+		}
+
+		public String Update_Date;
+
+		public String getUpdate_Date() {
+			return this.Update_Date;
+		}
+
+		public String Import_Date;
+
+		public String getImport_Date() {
+			return this.Import_Date;
+		}
+
+		public String Download_Date;
+
+		public String getDownload_Date() {
+			return this.Download_Date;
+		}
+
+		public String PathID;
+
+		public String getPathID() {
+			return this.PathID;
+		}
+
+		public String visual;
+
+		public String getVisual() {
+			return this.visual;
+		}
+
+		public String codeList;
+
+		public String getCodeList() {
+			return this.codeList;
+		}
+
+		public String source;
+
+		public String getSource() {
+			return this.source;
+		}
+
+		public String xml;
+
+		public String getXml() {
+			return this.xml;
+		}
+
+		public String m_applied_path;
+
+		public String getM_applied_path() {
+			return this.m_applied_path;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Extract_PD.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Extract_PD.length == 0) {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Extract_PD, 0, length);
+				strReturn = new String(commonByteArray_IDRT52_ODM_Extract_PD,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Extract_PD) {
+
+				try {
+
+					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
+
+					this.Name = readString(dis);
+
+					this.Path = readString(dis);
+
+					this.DataType = readString(dis);
+
+					this.Update_Date = readString(dis);
+
+					this.Import_Date = readString(dis);
+
+					this.Download_Date = readString(dis);
+
+					this.PathID = readString(dis);
+
+					this.visual = readString(dis);
+
+					this.codeList = readString(dis);
+
+					this.source = readString(dis);
+
+					this.xml = readString(dis);
+
+					this.m_applied_path = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.Path, dos);
+
+				// String
+
+				writeString(this.DataType, dos);
+
+				// String
+
+				writeString(this.Update_Date, dos);
+
+				// String
+
+				writeString(this.Import_Date, dos);
+
+				// String
+
+				writeString(this.Download_Date, dos);
+
+				// String
+
+				writeString(this.PathID, dos);
+
+				// String
+
+				writeString(this.visual, dos);
+
+				// String
+
+				writeString(this.codeList, dos);
+
+				// String
+
+				writeString(this.source, dos);
+
+				// String
+
+				writeString(this.xml, dos);
+
+				// String
+
+				writeString(this.m_applied_path, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",Name=" + Name);
+			sb.append(",Path=" + Path);
+			sb.append(",DataType=" + DataType);
+			sb.append(",Update_Date=" + Update_Date);
+			sb.append(",Import_Date=" + Import_Date);
+			sb.append(",Download_Date=" + Download_Date);
+			sb.append(",PathID=" + PathID);
+			sb.append(",visual=" + visual);
+			sb.append(",codeList=" + codeList);
+			sb.append(",source=" + source);
+			sb.append(",xml=" + xml);
+			sb.append(",m_applied_path=" + m_applied_path);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(out11Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row21Struct implements
+			routines.system.IPersistableRow<row21Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Extract_PD = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Extract_PD = new byte[0];
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String Path;
+
+		public String getPath() {
+			return this.Path;
+		}
+
+		public String DataType;
+
+		public String getDataType() {
+			return this.DataType;
+		}
+
+		public String Update_Date;
+
+		public String getUpdate_Date() {
+			return this.Update_Date;
+		}
+
+		public String Import_Date;
+
+		public String getImport_Date() {
+			return this.Import_Date;
+		}
+
+		public String Download_Date;
+
+		public String getDownload_Date() {
+			return this.Download_Date;
+		}
+
+		public String PathID;
+
+		public String getPathID() {
+			return this.PathID;
+		}
+
+		public String visual;
+
+		public String getVisual() {
+			return this.visual;
+		}
+
+		public String itemCode;
+
+		public String getItemCode() {
+			return this.itemCode;
+		}
+
+		public String source;
+
+		public String getSource() {
+			return this.source;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Extract_PD.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Extract_PD.length == 0) {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Extract_PD, 0, length);
+				strReturn = new String(commonByteArray_IDRT52_ODM_Extract_PD,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Extract_PD) {
+
+				try {
+
+					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
+
+					this.Name = readString(dis);
+
+					this.Path = readString(dis);
+
+					this.DataType = readString(dis);
+
+					this.Update_Date = readString(dis);
+
+					this.Import_Date = readString(dis);
+
+					this.Download_Date = readString(dis);
+
+					this.PathID = readString(dis);
+
+					this.visual = readString(dis);
+
+					this.itemCode = readString(dis);
+
+					this.source = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.Path, dos);
+
+				// String
+
+				writeString(this.DataType, dos);
+
+				// String
+
+				writeString(this.Update_Date, dos);
+
+				// String
+
+				writeString(this.Import_Date, dos);
+
+				// String
+
+				writeString(this.Download_Date, dos);
+
+				// String
+
+				writeString(this.PathID, dos);
+
+				// String
+
+				writeString(this.visual, dos);
+
+				// String
+
+				writeString(this.itemCode, dos);
+
+				// String
+
+				writeString(this.source, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",Name=" + Name);
+			sb.append(",Path=" + Path);
+			sb.append(",DataType=" + DataType);
+			sb.append(",Update_Date=" + Update_Date);
+			sb.append(",Import_Date=" + Import_Date);
+			sb.append(",Download_Date=" + Download_Date);
+			sb.append(",PathID=" + PathID);
+			sb.append(",visual=" + visual);
+			sb.append(",itemCode=" + itemCode);
+			sb.append(",source=" + source);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row21Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class after_tFileInputDelimited_16Struct implements
+			routines.system.IPersistableRow<after_tFileInputDelimited_16Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Extract_PD = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Extract_PD = new byte[0];
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String Path;
+
+		public String getPath() {
+			return this.Path;
+		}
+
+		public String DataType;
+
+		public String getDataType() {
+			return this.DataType;
+		}
+
+		public String Update_Date;
+
+		public String getUpdate_Date() {
+			return this.Update_Date;
+		}
+
+		public String Import_Date;
+
+		public String getImport_Date() {
+			return this.Import_Date;
+		}
+
+		public String Download_Date;
+
+		public String getDownload_Date() {
+			return this.Download_Date;
+		}
+
+		public String PathID;
+
+		public String getPathID() {
+			return this.PathID;
+		}
+
+		public String visual;
+
+		public String getVisual() {
+			return this.visual;
+		}
+
+		public String itemCode;
+
+		public String getItemCode() {
+			return this.itemCode;
+		}
+
+		public String source;
+
+		public String getSource() {
+			return this.source;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Extract_PD.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Extract_PD.length == 0) {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Extract_PD, 0, length);
+				strReturn = new String(commonByteArray_IDRT52_ODM_Extract_PD,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Extract_PD) {
+
+				try {
+
+					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
+
+					this.Name = readString(dis);
+
+					this.Path = readString(dis);
+
+					this.DataType = readString(dis);
+
+					this.Update_Date = readString(dis);
+
+					this.Import_Date = readString(dis);
+
+					this.Download_Date = readString(dis);
+
+					this.PathID = readString(dis);
+
+					this.visual = readString(dis);
+
+					this.itemCode = readString(dis);
+
+					this.source = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.Path, dos);
+
+				// String
+
+				writeString(this.DataType, dos);
+
+				// String
+
+				writeString(this.Update_Date, dos);
+
+				// String
+
+				writeString(this.Import_Date, dos);
+
+				// String
+
+				writeString(this.Download_Date, dos);
+
+				// String
+
+				writeString(this.PathID, dos);
+
+				// String
+
+				writeString(this.visual, dos);
+
+				// String
+
+				writeString(this.itemCode, dos);
+
+				// String
+
+				writeString(this.source, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",Name=" + Name);
+			sb.append(",Path=" + Path);
+			sb.append(",DataType=" + DataType);
+			sb.append(",Update_Date=" + Update_Date);
+			sb.append(",Import_Date=" + Import_Date);
+			sb.append(",Download_Date=" + Download_Date);
+			sb.append(",PathID=" + PathID);
+			sb.append(",visual=" + visual);
+			sb.append(",itemCode=" + itemCode);
+			sb.append(",source=" + source);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(after_tFileInputDelimited_16Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_16Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_16_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				tFileInputDelimited_17Process(globalMap);
+
+				row21Struct row21 = new row21Struct();
+				out11Struct out11 = new out11Struct();
+
+				/**
+				 * [tFileOutputDelimited_14 begin ] start
+				 */
+
+				ok_Hash.put("tFileOutputDelimited_14", false);
+				start_Hash.put("tFileOutputDelimited_14",
+						System.currentTimeMillis());
+				currentComponent = "tFileOutputDelimited_14";
+
+				int tos_count_tFileOutputDelimited_14 = 0;
+
+				String fileName_tFileOutputDelimited_14 = "";
+				fileName_tFileOutputDelimited_14 = (new java.io.File(
+						((String) globalMap
+								.get("tCreateTemporaryFile_4_FILEPATH"))))
+						.getAbsolutePath().replace("\\", "/");
+				String fullName_tFileOutputDelimited_14 = null;
+				String extension_tFileOutputDelimited_14 = null;
+				String directory_tFileOutputDelimited_14 = null;
+				if ((fileName_tFileOutputDelimited_14.indexOf("/") != -1)) {
+					if (fileName_tFileOutputDelimited_14.lastIndexOf(".") < fileName_tFileOutputDelimited_14
+							.lastIndexOf("/")) {
+						fullName_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14;
+						extension_tFileOutputDelimited_14 = "";
+					} else {
+						fullName_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14
+								.substring(0, fileName_tFileOutputDelimited_14
+										.lastIndexOf("."));
+						extension_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14
+								.substring(fileName_tFileOutputDelimited_14
+										.lastIndexOf("."));
+					}
+					directory_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14
+							.substring(0, fileName_tFileOutputDelimited_14
+									.lastIndexOf("/"));
+				} else {
+					if (fileName_tFileOutputDelimited_14.lastIndexOf(".") != -1) {
+						fullName_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14
+								.substring(0, fileName_tFileOutputDelimited_14
+										.lastIndexOf("."));
+						extension_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14
+								.substring(fileName_tFileOutputDelimited_14
+										.lastIndexOf("."));
+					} else {
+						fullName_tFileOutputDelimited_14 = fileName_tFileOutputDelimited_14;
+						extension_tFileOutputDelimited_14 = "";
+					}
+					directory_tFileOutputDelimited_14 = "";
+				}
+				boolean isFileGenerated_tFileOutputDelimited_14 = true;
+				java.io.File filetFileOutputDelimited_14 = new java.io.File(
+						fileName_tFileOutputDelimited_14);
+				globalMap.put("tFileOutputDelimited_14_FILE_NAME",
+						fileName_tFileOutputDelimited_14);
+				if (filetFileOutputDelimited_14.exists()) {
+					isFileGenerated_tFileOutputDelimited_14 = false;
+				}
+
+				int nb_line_tFileOutputDelimited_14 = 0;
+				int splitEvery_tFileOutputDelimited_14 = 1000;
+				int splitedFileNo_tFileOutputDelimited_14 = 0;
+				int currentRow_tFileOutputDelimited_14 = 0;
+
+				final String OUT_DELIM_tFileOutputDelimited_14 = /**
+				 * Start field
+				 * tFileOutputDelimited_14:FIELDSEPARATOR
+				 */
+				"\t"/** End field tFileOutputDelimited_14:FIELDSEPARATOR */
+				;
+
+				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_14 = /**
+				 * Start
+				 * field tFileOutputDelimited_14:ROWSEPARATOR
+				 */
+				"\n"/** End field tFileOutputDelimited_14:ROWSEPARATOR */
+				;
+
+				// create directory only if not exists
+				if (directory_tFileOutputDelimited_14 != null
+						&& directory_tFileOutputDelimited_14.trim().length() != 0) {
+					java.io.File dir_tFileOutputDelimited_14 = new java.io.File(
+							directory_tFileOutputDelimited_14);
+					if (!dir_tFileOutputDelimited_14.exists()) {
+						dir_tFileOutputDelimited_14.mkdirs();
+					}
+				}
+
+				// routines.system.Row
+				java.io.Writer outtFileOutputDelimited_14 = null;
+				try {
+					outtFileOutputDelimited_14 = new java.io.BufferedWriter(
+							new java.io.OutputStreamWriter(
+									new java.io.FileOutputStream(
+											fileName_tFileOutputDelimited_14,
+											true), "ISO-8859-15"));
+
+					/**
+					 * [tFileOutputDelimited_14 begin ] stop
+					 */
+
+					/**
+					 * [tMap_10 begin ] start
+					 */
+
+					ok_Hash.put("tMap_10", false);
+					start_Hash.put("tMap_10", System.currentTimeMillis());
+					currentComponent = "tMap_10";
+
+					int tos_count_tMap_10 = 0;
+
+					// ###############################
+					// # Lookup's keys initialization
+
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct> tHash_Lookup_row22 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct>) globalMap
+							.get("tHash_Lookup_row22"));
+
+					row22Struct row22HashKey = new row22Struct();
+					row22Struct row22Default = new row22Struct();
+					// ###############################
+
+					// ###############################
+					// # Vars initialization
+					class Var__tMap_10__Struct {
+					}
+					Var__tMap_10__Struct Var__tMap_10 = new Var__tMap_10__Struct();
+					// ###############################
+
+					// ###############################
+					// # Outputs initialization
+					out11Struct out11_tmp = new out11Struct();
+					// ###############################
+
+					/**
+					 * [tMap_10 begin ] stop
+					 */
+
+					/**
+					 * [tFileInputDelimited_16 begin ] start
+					 */
+
+					ok_Hash.put("tFileInputDelimited_16", false);
+					start_Hash.put("tFileInputDelimited_16",
+							System.currentTimeMillis());
+					currentComponent = "tFileInputDelimited_16";
+
+					int tos_count_tFileInputDelimited_16 = 0;
+
+					int nb_line_tFileInputDelimited_16 = 0;
+					int footer_tFileInputDelimited_16 = 0;
+					int totalLinetFileInputDelimited_16 = 0;
+					int limittFileInputDelimited_16 = -1;
+					int lastLinetFileInputDelimited_16 = -1;
+
+					char fieldSeparator_tFileInputDelimited_16[] = null;
+
+					// support passing value (property: Field Separator) by
+					// 'context.fs' or 'globalMap.get("fs")'.
+					if (((String) "\t").length() > 0) {
+						fieldSeparator_tFileInputDelimited_16 = ((String) "\t")
+								.toCharArray();
+					} else {
+						throw new IllegalArgumentException(
+								"Field Separator must be assigned a char.");
+					}
+
+					char rowSeparator_tFileInputDelimited_16[] = null;
+
+					// support passing value (property: Row Separator) by
+					// 'context.rs' or 'globalMap.get("rs")'.
+					if (((String) "\n").length() > 0) {
+						rowSeparator_tFileInputDelimited_16 = ((String) "\n")
+								.toCharArray();
+					} else {
+						throw new IllegalArgumentException(
+								"Row Separator must be assigned a char.");
+					}
+
+					Object filename_tFileInputDelimited_16 = /**
+					 * Start field
+					 * tFileInputDelimited_16:FILENAME
+					 */
+					context.folderMain + context.folderOutput + "ont.csv"/**
+					 * End
+					 * field tFileInputDelimited_16:FILENAME
+					 */
+					;
+					com.talend.csv.CSVReader csvReadertFileInputDelimited_16 = null;
+
+					try {
+
+						String[] rowtFileInputDelimited_16 = null;
+						int currentLinetFileInputDelimited_16 = 0;
+						int outputLinetFileInputDelimited_16 = 0;
+						try {// TD110 begin
+							if (filename_tFileInputDelimited_16 instanceof java.io.InputStream) {
+
+								int footer_value_tFileInputDelimited_16 = 0;
+								if (footer_value_tFileInputDelimited_16 > 0) {
+									throw new java.lang.Exception(
+											"When the input source is a stream,footer shouldn't be bigger than 0.");
+								}
+
+								csvReadertFileInputDelimited_16 = new com.talend.csv.CSVReader(
+										(java.io.InputStream) filename_tFileInputDelimited_16,
+										fieldSeparator_tFileInputDelimited_16[0],
+										"ISO-8859-15");
+							} else {
+								csvReadertFileInputDelimited_16 = new com.talend.csv.CSVReader(
+										new java.io.BufferedReader(
+												new java.io.InputStreamReader(
+														new java.io.FileInputStream(
+																String.valueOf(filename_tFileInputDelimited_16)),
+														"ISO-8859-15")),
+										fieldSeparator_tFileInputDelimited_16[0]);
+							}
+
+							csvReadertFileInputDelimited_16
+									.setTrimWhitespace(false);
+							if ((rowSeparator_tFileInputDelimited_16[0] != '\n')
+									&& (rowSeparator_tFileInputDelimited_16[0] != '\r'))
+								csvReadertFileInputDelimited_16
+										.setLineEnd(""
+												+ rowSeparator_tFileInputDelimited_16[0]);
+
+							csvReadertFileInputDelimited_16.setQuoteChar('"');
+
+							csvReadertFileInputDelimited_16
+									.setEscapeChar(csvReadertFileInputDelimited_16
+											.getQuoteChar());
+
+							if (footer_tFileInputDelimited_16 > 0) {
+								for (totalLinetFileInputDelimited_16 = 0; totalLinetFileInputDelimited_16 < 1; totalLinetFileInputDelimited_16++) {
+									csvReadertFileInputDelimited_16.readNext();
+								}
+								csvReadertFileInputDelimited_16
+										.setSkipEmptyRecords(true);
+								while (csvReadertFileInputDelimited_16
+										.readNext()) {
+
+									rowtFileInputDelimited_16 = csvReadertFileInputDelimited_16
+											.getValues();
+									if (!(rowtFileInputDelimited_16.length == 1 && ("\015")
+											.equals(rowtFileInputDelimited_16[0]))) {// empty
+																						// line
+																						// when
+																						// row
+																						// separator
+																						// is
+																						// '\n'
+
+										totalLinetFileInputDelimited_16++;
+
+									}
+
+								}
+								int lastLineTemptFileInputDelimited_16 = totalLinetFileInputDelimited_16
+										- footer_tFileInputDelimited_16 < 0 ? 0
+										: totalLinetFileInputDelimited_16
+												- footer_tFileInputDelimited_16;
+								if (lastLinetFileInputDelimited_16 > 0) {
+									lastLinetFileInputDelimited_16 = lastLinetFileInputDelimited_16 < lastLineTemptFileInputDelimited_16 ? lastLinetFileInputDelimited_16
+											: lastLineTemptFileInputDelimited_16;
+								} else {
+									lastLinetFileInputDelimited_16 = lastLineTemptFileInputDelimited_16;
+								}
+
+								csvReadertFileInputDelimited_16.close();
+								if (filename_tFileInputDelimited_16 instanceof java.io.InputStream) {
+									csvReadertFileInputDelimited_16 = new com.talend.csv.CSVReader(
+											(java.io.InputStream) filename_tFileInputDelimited_16,
+											fieldSeparator_tFileInputDelimited_16[0],
+											"ISO-8859-15");
+								} else {
+									csvReadertFileInputDelimited_16 = new com.talend.csv.CSVReader(
+											new java.io.BufferedReader(
+													new java.io.InputStreamReader(
+															new java.io.FileInputStream(
+																	String.valueOf(filename_tFileInputDelimited_16)),
+															"ISO-8859-15")),
+											fieldSeparator_tFileInputDelimited_16[0]);
+								}
+								csvReadertFileInputDelimited_16
+										.setTrimWhitespace(false);
+								if ((rowSeparator_tFileInputDelimited_16[0] != '\n')
+										&& (rowSeparator_tFileInputDelimited_16[0] != '\r'))
+									csvReadertFileInputDelimited_16
+											.setLineEnd(""
+													+ rowSeparator_tFileInputDelimited_16[0]);
+
+								csvReadertFileInputDelimited_16
+										.setQuoteChar('"');
+
+								csvReadertFileInputDelimited_16
+										.setEscapeChar(csvReadertFileInputDelimited_16
+												.getQuoteChar());
+
+							}
+
+							if (limittFileInputDelimited_16 != 0) {
+								for (currentLinetFileInputDelimited_16 = 0; currentLinetFileInputDelimited_16 < 1; currentLinetFileInputDelimited_16++) {
+									csvReadertFileInputDelimited_16.readNext();
+								}
+							}
+							csvReadertFileInputDelimited_16
+									.setSkipEmptyRecords(true);
+
+						} catch (java.lang.Exception e) {
+
+							System.err.println(e.getMessage());
+
+						}// TD110 end
+
+						while (limittFileInputDelimited_16 != 0
+								&& csvReadertFileInputDelimited_16 != null
+								&& csvReadertFileInputDelimited_16.readNext()) {
+
+							rowtFileInputDelimited_16 = csvReadertFileInputDelimited_16
+									.getValues();
+
+							if (rowtFileInputDelimited_16.length == 1
+									&& ("\015")
+											.equals(rowtFileInputDelimited_16[0])) {// empty
+																					// line
+																					// when
+																					// row
+																					// separator
+																					// is
+																					// '\n'
+								continue;
+							}
+
+							currentLinetFileInputDelimited_16++;
+
+							if (lastLinetFileInputDelimited_16 > -1
+									&& currentLinetFileInputDelimited_16 > lastLinetFileInputDelimited_16) {
+								break;
+							}
+							outputLinetFileInputDelimited_16++;
+							if (limittFileInputDelimited_16 > 0
+									&& outputLinetFileInputDelimited_16 > limittFileInputDelimited_16) {
+								break;
+							}
+
+							row21 = null;
+
+							boolean whetherReject_tFileInputDelimited_16 = false;
+							row21 = new row21Struct();
+							try {
+
+								if (rowtFileInputDelimited_16.length == 1
+										&& ("\015")
+												.equals(rowtFileInputDelimited_16[0])) {// empty
+																						// line
+																						// when
+																						// row
+																						// separator
+																						// is
+																						// '\n'
+
+									row21.HLEVEL = null;
+
+									row21.Name = null;
+
+									row21.Path = null;
+
+									row21.DataType = null;
+
+									row21.Update_Date = null;
+
+									row21.Import_Date = null;
+
+									row21.Download_Date = null;
+
+									row21.PathID = null;
+
+									row21.visual = null;
+
+									row21.itemCode = null;
+
+									row21.source = null;
+
+								} else {
+
+									int columnIndexWithD_tFileInputDelimited_16 = 0; // Column
+																						// Index
+
+									columnIndexWithD_tFileInputDelimited_16 = 0;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										if (rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16]
+												.length() > 0) {
+
+											row21.HLEVEL = ParserUtils
+													.parseTo_Integer(rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16]);
+
+										} else {
+											row21.HLEVEL = null;
+										}
+
+									} else {
+										row21.HLEVEL = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 1;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.Name = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.Name = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 2;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.Path = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.Path = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 3;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.DataType = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.DataType = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 4;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.Update_Date = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.Update_Date = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 5;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.Import_Date = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.Import_Date = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 6;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.Download_Date = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.Download_Date = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 7;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.PathID = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.PathID = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 8;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.visual = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.visual = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 9;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.itemCode = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.itemCode = null;
+									}
+
+									columnIndexWithD_tFileInputDelimited_16 = 10;
+
+									if (columnIndexWithD_tFileInputDelimited_16 < rowtFileInputDelimited_16.length) {
+
+										row21.source = rowtFileInputDelimited_16[columnIndexWithD_tFileInputDelimited_16];
+
+									} else {
+										row21.source = null;
+									}
+
+								}
+
+							} catch (java.lang.Exception e) {
+								whetherReject_tFileInputDelimited_16 = true;
+
+								System.err.println(e.getMessage());
+								row21 = null;
+
+							}
+
+							/**
+							 * [tFileInputDelimited_16 begin ] stop
+							 */
+							/**
+							 * [tFileInputDelimited_16 main ] start
+							 */
+
+							currentComponent = "tFileInputDelimited_16";
+
+							tos_count_tFileInputDelimited_16++;
+
+							/**
+							 * [tFileInputDelimited_16 main ] stop
+							 */
+							// Start of branch "row21"
+							if (row21 != null) {
+
+								/**
+								 * [tMap_10 main ] start
+								 */
+
+								currentComponent = "tMap_10";
+
+								boolean hasCasePrimitiveKeyWithNull_tMap_10 = false;
+
+								// ###############################
+								// # Input tables (lookups)
+								boolean rejectedInnerJoin_tMap_10 = false;
+								boolean mainRowRejected_tMap_10 = false;
+
+								// /////////////////////////////////////////////
+								// Starting Lookup Table "row22"
+								// /////////////////////////////////////////////
+
+								boolean forceLooprow22 = false;
+
+								row22Struct row22ObjectFromLookup = null;
+
+								if (!rejectedInnerJoin_tMap_10) { // G_TM_M_020
+
+									hasCasePrimitiveKeyWithNull_tMap_10 = false;
+
+									row22HashKey.OID = row21.itemCode;
+
+									row22HashKey.hashCodeDirty = true;
+
+									tHash_Lookup_row22.lookup(row22HashKey);
+
+									if (!tHash_Lookup_row22.hasNext()) { // G_TM_M_090
+
+										forceLooprow22 = true;
+
+									} // G_TM_M_090
+
+								} // G_TM_M_020
+
+								else { // G 20 - G 21
+									forceLooprow22 = true;
+								} // G 21
+
+								row22Struct row22 = null;
+
+								while ((tHash_Lookup_row22 != null && tHash_Lookup_row22
+										.hasNext()) || forceLooprow22) { // G_TM_M_043
+
+									// CALL close loop of lookup 'row22'
+
+									row22Struct fromLookup_row22 = null;
+									row22 = row22Default;
+
+									if (!forceLooprow22) { // G 46
+
+										fromLookup_row22 = tHash_Lookup_row22
+												.next();
+
+										if (fromLookup_row22 != null) {
+											row22 = fromLookup_row22;
+										}
+
+									} // G 46
+
+									forceLooprow22 = false;
+
+									// ###############################
+									{ // start of Var scope
+
+										// ###############################
+										// # Vars tables
+
+										Var__tMap_10__Struct Var = Var__tMap_10;// ###############################
+										// ###############################
+										// # Output tables
+
+										out11 = null;
+
+										// # Output table : 'out11'
+										// # Filter conditions
+										if (
+
+										row21.Path != null
+												&& row22.CodeListItem != null
+
+										) {
+											out11_tmp.HLEVEL = 8;
+											out11_tmp.Name = row22.TranslatedText;
+											out11_tmp.Path = row21.Path
+													+ (row21.Path + row22.CodeListItem)
+															.hashCode() + "\\";
+											out11_tmp.DataType = "String";
+											out11_tmp.Update_Date = row21.Update_Date;
+											out11_tmp.Import_Date = row21.Import_Date;
+											out11_tmp.Download_Date = row21.Download_Date;
+											out11_tmp.PathID = row21.PathID;
+											out11_tmp.visual = "LAE";
+											out11_tmp.codeList = "";
+											out11_tmp.source = row21.source;
+											out11_tmp.xml = "";
+											out11_tmp.m_applied_path = "@";
+											out11 = out11_tmp;
+										} // closing filter/reject
+											// ###############################
+
+									} // end of Var scope
+
+									rejectedInnerJoin_tMap_10 = false;
+
+									tos_count_tMap_10++;
+
+									/**
+									 * [tMap_10 main ] stop
+									 */
+									// Start of branch "out11"
+									if (out11 != null) {
+
+										/**
+										 * [tFileOutputDelimited_14 main ] start
+										 */
+
+										currentComponent = "tFileOutputDelimited_14";
+
+										StringBuilder sb_tFileOutputDelimited_14 = new StringBuilder();
+
+										if (out11.HLEVEL != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.HLEVEL
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.Name != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.Name
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.Path != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.Path
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.DataType != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.DataType
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.Update_Date != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.Update_Date
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.Import_Date != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.Import_Date
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.Download_Date != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.Download_Date
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.PathID != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.PathID
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.visual != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.visual
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.codeList != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.codeList
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.source != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.source
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.xml != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.xml
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_tFileOutputDelimited_14);
+
+										if (out11.m_applied_path != null) {
+
+											sb_tFileOutputDelimited_14.append(
+
+											out11.m_applied_path
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_14
+												.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_14);
+
+										nb_line_tFileOutputDelimited_14++;
+
+										outtFileOutputDelimited_14
+												.write(sb_tFileOutputDelimited_14
+														.toString());
+
+										tos_count_tFileOutputDelimited_14++;
+
+										/**
+										 * [tFileOutputDelimited_14 main ] stop
+										 */
+
+									} // End of branch "out11"
+
+								} // close loop of lookup 'row22' // G_TM_M_043
+
+							} // End of branch "row21"
+
+							/**
+							 * [tFileInputDelimited_16 end ] start
+							 */
+
+							currentComponent = "tFileInputDelimited_16";
+
+							nb_line_tFileInputDelimited_16++;
+						}
+
+					} finally {
+						if (!(filename_tFileInputDelimited_16 instanceof java.io.InputStream)) {
+							if (csvReadertFileInputDelimited_16 != null) {
+								csvReadertFileInputDelimited_16.close();
+							}
+						}
+						if (csvReadertFileInputDelimited_16 != null) {
+							globalMap.put("tFileInputDelimited_16_NB_LINE",
+									nb_line_tFileInputDelimited_16);
+						}
+					}
+
+					ok_Hash.put("tFileInputDelimited_16", true);
+					end_Hash.put("tFileInputDelimited_16",
+							System.currentTimeMillis());
+
+					/**
+					 * [tFileInputDelimited_16 end ] stop
+					 */
+
+					/**
+					 * [tMap_10 end ] start
+					 */
+
+					currentComponent = "tMap_10";
+
+					// ###############################
+					// # Lookup hashes releasing
+					if (tHash_Lookup_row22 != null) {
+						tHash_Lookup_row22.endGet();
+					}
+					globalMap.remove("tHash_Lookup_row22");
+
+					// ###############################
+
+					ok_Hash.put("tMap_10", true);
+					end_Hash.put("tMap_10", System.currentTimeMillis());
+
+					/**
+					 * [tMap_10 end ] stop
+					 */
+
+					/**
+					 * [tFileOutputDelimited_14 end ] start
+					 */
+
+					currentComponent = "tFileOutputDelimited_14";
+
+				} finally {
+					if (outtFileOutputDelimited_14 != null) {
+						outtFileOutputDelimited_14.flush();
+						outtFileOutputDelimited_14.close();
+					}
+					globalMap.put("tFileOutputDelimited_14_NB_LINE",
+							nb_line_tFileOutputDelimited_14);
+					globalMap.put("tFileOutputDelimited_14_FILE_NAME",
+							fileName_tFileOutputDelimited_14);
+				} // finally
+
+				ok_Hash.put("tFileOutputDelimited_14", true);
+				end_Hash.put("tFileOutputDelimited_14",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileOutputDelimited_14 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw new java.lang.Error(error);
+
+		} finally {
+			// free memory for "tMap_10"
+			globalMap.remove("tHash_Lookup_row22");
+
+		}
+
+		globalMap.put("tFileInputDelimited_16_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJava_3Process(final java.util.Map<String, Object> globalMap)
@@ -26321,6 +28351,12 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.ItemGroupOID;
 		}
 
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
 		@Override
 		public int hashCode() {
 			if (this.hashCodeDirty) {
@@ -26375,6 +28411,7 @@ public class ODM_Extract_PD implements TalendJob {
 			other.CodeListItem = this.CodeListItem;
 			other.TranslatedText = this.TranslatedText;
 			other.ItemGroupOID = this.ItemGroupOID;
+			other.Datatype = this.Datatype;
 
 		}
 
@@ -26496,6 +28533,8 @@ public class ODM_Extract_PD implements TalendJob {
 
 				this.TranslatedText = readString(dis, ois);
 
+				this.Datatype = readString(dis, ois);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 
@@ -26515,6 +28554,8 @@ public class ODM_Extract_PD implements TalendJob {
 
 				writeString(this.TranslatedText, dos, oos);
 
+				writeString(this.Datatype, dos, oos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -26531,6 +28572,7 @@ public class ODM_Extract_PD implements TalendJob {
 			sb.append(",CodeListItem=" + CodeListItem);
 			sb.append(",TranslatedText=" + TranslatedText);
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
+			sb.append(",Datatype=" + Datatype);
 			sb.append("]");
 
 			return sb.toString();
@@ -26663,7 +28705,7 @@ public class ODM_Extract_PD implements TalendJob {
 					try {
 						fid_tFileInputDelimited_7 = new org.talend.fileprocess.FileInputDelimited(
 								context.folderMain + context.folderOutput
-										+ "codelist.csv", "ISO-8859-15", ";",
+										+ "codelist.csv", "ISO-8859-15", "\t",
 								"\n", true, 0, 0, -1, -1, false);
 					} catch (java.lang.Exception e) {
 
@@ -26709,6 +28751,11 @@ public class ODM_Extract_PD implements TalendJob {
 							row7.ItemGroupOID = fid_tFileInputDelimited_7
 									.get(columnIndexWithD_tFileInputDelimited_7);
 
+							columnIndexWithD_tFileInputDelimited_7 = 5;
+
+							row7.Datatype = fid_tFileInputDelimited_7
+									.get(columnIndexWithD_tFileInputDelimited_7);
+
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_7 = true;
 
@@ -26751,6 +28798,8 @@ public class ODM_Extract_PD implements TalendJob {
 							row7_HashRow.TranslatedText = row7.TranslatedText;
 
 							row7_HashRow.ItemGroupOID = row7.ItemGroupOID;
+
+							row7_HashRow.Datatype = row7.Datatype;
 
 							tHash_Lookup_row7.put(row7_HashRow);
 
@@ -26860,6 +28909,12 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.ItemGroupOID;
 		}
 
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
 		@Override
 		public int hashCode() {
 			if (this.hashCodeDirty) {
@@ -26903,6 +28958,7 @@ public class ODM_Extract_PD implements TalendJob {
 			other.CodeListItem = this.CodeListItem;
 			other.TranslatedText = this.TranslatedText;
 			other.ItemGroupOID = this.ItemGroupOID;
+			other.Datatype = this.Datatype;
 
 		}
 
@@ -27019,6 +29075,8 @@ public class ODM_Extract_PD implements TalendJob {
 
 				this.TranslatedText = readString(dis, ois);
 
+				this.Datatype = readString(dis, ois);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 
@@ -27040,6 +29098,8 @@ public class ODM_Extract_PD implements TalendJob {
 
 				writeString(this.TranslatedText, dos, oos);
 
+				writeString(this.Datatype, dos, oos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -27056,6 +29116,7 @@ public class ODM_Extract_PD implements TalendJob {
 			sb.append(",CodeListItem=" + CodeListItem);
 			sb.append(",TranslatedText=" + TranslatedText);
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
+			sb.append(",Datatype=" + Datatype);
 			sb.append("]");
 
 			return sb.toString();
@@ -27184,7 +29245,7 @@ public class ODM_Extract_PD implements TalendJob {
 					try {
 						fid_tFileInputDelimited_14 = new org.talend.fileprocess.FileInputDelimited(
 								context.folderMain + context.folderOutput
-										+ "codelist.csv", "ISO-8859-15", ";",
+										+ "codelist.csv", "ISO-8859-15", "\t",
 								"\n", true, 0, 0, -1, -1, false);
 					} catch (java.lang.Exception e) {
 
@@ -27230,6 +29291,11 @@ public class ODM_Extract_PD implements TalendJob {
 							fromCode.ItemGroupOID = fid_tFileInputDelimited_14
 									.get(columnIndexWithD_tFileInputDelimited_14);
 
+							columnIndexWithD_tFileInputDelimited_14 = 5;
+
+							fromCode.Datatype = fid_tFileInputDelimited_14
+									.get(columnIndexWithD_tFileInputDelimited_14);
+
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_14 = true;
 
@@ -27272,6 +29338,8 @@ public class ODM_Extract_PD implements TalendJob {
 							fromCode_HashRow.TranslatedText = fromCode.TranslatedText;
 
 							fromCode_HashRow.ItemGroupOID = fromCode.ItemGroupOID;
+
+							fromCode_HashRow.Datatype = fromCode.Datatype;
 
 							tHash_Lookup_fromCode.put(fromCode_HashRow);
 
@@ -27339,6 +29407,541 @@ public class ODM_Extract_PD implements TalendJob {
 		}
 
 		globalMap.put("tFileInputDelimited_14_SUBPROCESS_STATE", 1);
+	}
+
+	public static class row22Struct implements
+			routines.system.IPersistableComparableLookupRow<row22Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Extract_PD = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Extract_PD = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String OID;
+
+		public String getOID() {
+			return this.OID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String CodeListItem;
+
+		public String getCodeListItem() {
+			return this.CodeListItem;
+		}
+
+		public String TranslatedText;
+
+		public String getTranslatedText() {
+			return this.TranslatedText;
+		}
+
+		public String ItemGroupOID;
+
+		public String getItemGroupOID() {
+			return this.ItemGroupOID;
+		}
+
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result
+						+ ((this.OID == null) ? 0 : this.OID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row22Struct other = (row22Struct) obj;
+
+			if (this.OID == null) {
+				if (other.OID != null)
+					return false;
+			} else if (!this.OID.equals(other.OID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row22Struct other) {
+
+			other.OID = this.OID;
+			other.Name = this.Name;
+			other.CodeListItem = this.CodeListItem;
+			other.TranslatedText = this.TranslatedText;
+			other.ItemGroupOID = this.ItemGroupOID;
+			other.Datatype = this.Datatype;
+
+		}
+
+		public void copyKeysDataTo(row22Struct other) {
+
+			other.OID = this.OID;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Extract_PD.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Extract_PD.length == 0) {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Extract_PD = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Extract_PD, 0, length);
+				strReturn = new String(commonByteArray_IDRT52_ODM_Extract_PD,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Extract_PD) {
+
+				try {
+
+					int length = 0;
+
+					this.OID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.OID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.Name = readString(dis, ois);
+
+				this.CodeListItem = readString(dis, ois);
+
+				this.TranslatedText = readString(dis, ois);
+
+				this.ItemGroupOID = readString(dis, ois);
+
+				this.Datatype = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.Name, dos, oos);
+
+				writeString(this.CodeListItem, dos, oos);
+
+				writeString(this.TranslatedText, dos, oos);
+
+				writeString(this.ItemGroupOID, dos, oos);
+
+				writeString(this.Datatype, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("OID=" + OID);
+			sb.append(",Name=" + Name);
+			sb.append(",CodeListItem=" + CodeListItem);
+			sb.append(",TranslatedText=" + TranslatedText);
+			sb.append(",ItemGroupOID=" + ItemGroupOID);
+			sb.append(",Datatype=" + Datatype);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row22Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.OID, other.OID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_17Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_17_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				row22Struct row22 = new row22Struct();
+
+				/**
+				 * [tAdvancedHash_row22 begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_row22", false);
+				start_Hash.put("tAdvancedHash_row22",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_row22";
+
+				int tos_count_tAdvancedHash_row22 = 0;
+
+				// connection name:row22
+				// source node:tFileInputDelimited_17 -
+				// inputs:(after_tFileInputDelimited_16) outputs:(row22,row22) |
+				// target node:tAdvancedHash_row22 - inputs:(row22) outputs:()
+				// linked node: tMap_10 - inputs:(row21,row22) outputs:(out11)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row22 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct> tHash_Lookup_row22 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<row22Struct> getLookup(matchingModeEnum_row22);
+
+				globalMap.put("tHash_Lookup_row22", tHash_Lookup_row22);
+
+				/**
+				 * [tAdvancedHash_row22 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_17 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_17", false);
+				start_Hash.put("tFileInputDelimited_17",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_17";
+
+				int tos_count_tFileInputDelimited_17 = 0;
+
+				int nb_line_tFileInputDelimited_17 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_17 = null;
+				try {
+
+					Object filename_tFileInputDelimited_17 = context.folderMain
+							+ context.folderOutput + "codelist.csv";
+					if (filename_tFileInputDelimited_17 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_17 = 0, random_value_tFileInputDelimited_17 = -1;
+						if (footer_value_tFileInputDelimited_17 > 0
+								|| random_value_tFileInputDelimited_17 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_17 = new org.talend.fileprocess.FileInputDelimited(
+								context.folderMain + context.folderOutput
+										+ "codelist.csv", "ISO-8859-15", "\t",
+								"\n", true, 0, 0, -1, -1, false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_17 != null
+							&& fid_tFileInputDelimited_17.nextRecord()) {
+
+						row22 = null;
+
+						row22 = null;
+
+						boolean whetherReject_tFileInputDelimited_17 = false;
+						row22 = new row22Struct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_17 = 0;
+
+							columnIndexWithD_tFileInputDelimited_17 = 0;
+
+							row22.OID = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+							columnIndexWithD_tFileInputDelimited_17 = 1;
+
+							row22.Name = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+							columnIndexWithD_tFileInputDelimited_17 = 2;
+
+							row22.CodeListItem = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+							columnIndexWithD_tFileInputDelimited_17 = 3;
+
+							row22.TranslatedText = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+							columnIndexWithD_tFileInputDelimited_17 = 4;
+
+							row22.ItemGroupOID = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+							columnIndexWithD_tFileInputDelimited_17 = 5;
+
+							row22.Datatype = fid_tFileInputDelimited_17
+									.get(columnIndexWithD_tFileInputDelimited_17);
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_17 = true;
+
+							System.err.println(e.getMessage());
+							row22 = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_17 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_17 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_17";
+
+						tos_count_tFileInputDelimited_17++;
+
+						/**
+						 * [tFileInputDelimited_17 main ] stop
+						 */
+						// Start of branch "row22"
+						if (row22 != null) {
+
+							/**
+							 * [tAdvancedHash_row22 main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row22";
+
+							row22Struct row22_HashRow = new row22Struct();
+
+							row22_HashRow.OID = row22.OID;
+
+							row22_HashRow.Name = row22.Name;
+
+							row22_HashRow.CodeListItem = row22.CodeListItem;
+
+							row22_HashRow.TranslatedText = row22.TranslatedText;
+
+							row22_HashRow.ItemGroupOID = row22.ItemGroupOID;
+
+							row22_HashRow.Datatype = row22.Datatype;
+
+							tHash_Lookup_row22.put(row22_HashRow);
+
+							tos_count_tAdvancedHash_row22++;
+
+							/**
+							 * [tAdvancedHash_row22 main ] stop
+							 */
+
+						} // End of branch "row22"
+
+						/**
+						 * [tFileInputDelimited_17 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_17";
+
+					}
+				} finally {
+					if (!((Object) (context.folderMain + context.folderOutput + "codelist.csv") instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_17 != null) {
+							fid_tFileInputDelimited_17.close();
+						}
+					}
+					if (fid_tFileInputDelimited_17 != null) {
+						globalMap.put("tFileInputDelimited_17_NB_LINE",
+								fid_tFileInputDelimited_17.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_17", true);
+				end_Hash.put("tFileInputDelimited_17",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_17 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row22 end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row22";
+
+				tHash_Lookup_row22.endPut();
+
+				ok_Hash.put("tAdvancedHash_row22", true);
+				end_Hash.put("tAdvancedHash_row22", System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_row22 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw new java.lang.Error(error);
+
+		}
+
+		globalMap.put("tFileInputDelimited_17_SUBPROCESS_STATE", 1);
 	}
 
 	public String resuming_logs_dir_path = null;
@@ -27460,6 +30063,14 @@ public class ODM_Extract_PD implements TalendJob {
 				context.startDate = null;
 			}
 			context.subjid = (String) context.getProperty("subjid");
+			context.encounterItem = (String) context
+					.getProperty("encounterItem");
+			try {
+				context.subStatus = routines.system.ParserUtils
+						.parseTo_Float(context.getProperty("subStatus"));
+			} catch (NumberFormatException e) {
+				context.subStatus = null;
+			}
 			context.concept_cd = (String) context.getProperty("concept_cd");
 			context.concept_path = (String) context.getProperty("concept_path");
 			context.currentFile = (String) context.getProperty("currentFile");
@@ -27471,6 +30082,12 @@ public class ODM_Extract_PD implements TalendJob {
 			context.i2b2HeadNode = (String) context.getProperty("i2b2HeadNode");
 			context.i2b2HeadNodeName = (String) context
 					.getProperty("i2b2HeadNodeName");
+			try {
+				context.importCodelist = routines.system.ParserUtils
+						.parseTo_Boolean(context.getProperty("importCodelist"));
+			} catch (NumberFormatException e) {
+				context.importCodelist = null;
+			}
 			try {
 				context.includePids = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("includePids"));
@@ -27517,14 +30134,6 @@ public class ODM_Extract_PD implements TalendJob {
 			context.MDPD = (String) context.getProperty("MDPD");
 			context.MDPDName = (String) context.getProperty("MDPDName");
 			context.xslt = (String) context.getProperty("xslt");
-			context.encounterItem = (String) context
-					.getProperty("encounterItem");
-			try {
-				context.subStatus = routines.system.ParserUtils
-						.parseTo_Float(context.getProperty("subStatus"));
-			} catch (NumberFormatException e) {
-				context.subStatus = null;
-			}
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -27540,6 +30149,13 @@ public class ODM_Extract_PD implements TalendJob {
 			}
 			if (parentContextMap.containsKey("subjid")) {
 				context.subjid = (String) parentContextMap.get("subjid");
+			}
+			if (parentContextMap.containsKey("encounterItem")) {
+				context.encounterItem = (String) parentContextMap
+						.get("encounterItem");
+			}
+			if (parentContextMap.containsKey("subStatus")) {
+				context.subStatus = (Float) parentContextMap.get("subStatus");
 			}
 			if (parentContextMap.containsKey("concept_cd")) {
 				context.concept_cd = (String) parentContextMap
@@ -27577,6 +30193,10 @@ public class ODM_Extract_PD implements TalendJob {
 			if (parentContextMap.containsKey("i2b2HeadNodeName")) {
 				context.i2b2HeadNodeName = (String) parentContextMap
 						.get("i2b2HeadNodeName");
+			}
+			if (parentContextMap.containsKey("importCodelist")) {
+				context.importCodelist = (Boolean) parentContextMap
+						.get("importCodelist");
 			}
 			if (parentContextMap.containsKey("includePids")) {
 				context.includePids = (Boolean) parentContextMap
@@ -27673,13 +30293,6 @@ public class ODM_Extract_PD implements TalendJob {
 			}
 			if (parentContextMap.containsKey("xslt")) {
 				context.xslt = (String) parentContextMap.get("xslt");
-			}
-			if (parentContextMap.containsKey("encounterItem")) {
-				context.encounterItem = (String) parentContextMap
-						.get("encounterItem");
-			}
-			if (parentContextMap.containsKey("subStatus")) {
-				context.subStatus = (Float) parentContextMap.get("subStatus");
 			}
 		}
 
@@ -27830,6 +30443,6 @@ public class ODM_Extract_PD implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 742517 characters generated by Talend Open Studio for Data Integration on the
- * August 7, 2013 3:47:42 PM CEST
+ * 813119 characters generated by Talend Open Studio for Data Integration on the
+ * August 27, 2013 4:21:18 PM CEST
  ************************************************************************************************/

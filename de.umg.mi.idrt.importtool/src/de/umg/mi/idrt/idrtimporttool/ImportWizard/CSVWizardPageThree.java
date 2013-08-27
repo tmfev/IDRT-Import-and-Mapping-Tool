@@ -298,6 +298,7 @@ public class CSVWizardPageThree extends WizardPage {
 									text.dispose();
 								}
 							});
+
 							// Datatype of the column
 						} else if (column == 2) {
 							final CCombo combo = new CCombo(table,
@@ -389,38 +390,36 @@ public class CSVWizardPageThree extends WizardPage {
 			serverListViewer.getTable().setLayoutData(
 					new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 			new Label(compositeList, SWT.NONE);
-			
-						button = new Button(compositeList, SWT.NONE);
-						button.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
-						button.setText("Guess All Schemata");
-						button.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
+			button = new Button(compositeList, SWT.NONE);
+			button.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+			button.setText("Guess All Schemata");
+			button.addSelectionListener(new SelectionListener() {
 
-								boolean cont = MessageDialog.openConfirm(parent.getShell(),
-										"Overwrite all Configs?",
-										"Do you really want to overwirte all Configs?");
-								if (cont) {
-									for (int i = 0; i<serverListViewer.getTable().getItemCount();i++) {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
 
+					boolean cont = MessageDialog.openConfirm(parent.getShell(),
+							"Overwrite all Configs?",
+							"Do you really want to overwirte all Configs?");
+					if (cont) {
+						for (int i = 0; i<serverListViewer.getTable().getItemCount();i++) {
+							allConfigs = true;
+							serverListViewer.getTable().select(i);
+							System.out.println("SELECTED: " + serverListViewer.getTable().getItem(i).getText());
+							serverListViewer.getTable().notifyListeners(SWT.Selection, new Event());
+							btnGuessSchema.notifyListeners(SWT.Selection, new Event());
 
-										allConfigs = true;
-										serverListViewer.getTable().select(i);
-										System.out.println("SELECTED: " + serverListViewer.getTable().getItem(i).getText());
-										serverListViewer.getTable().notifyListeners(SWT.Selection, new Event());
-										btnGuessSchema.notifyListeners(SWT.Selection, new Event());
+							serverListViewer.getTable().deselect(i);
+							allConfigs = false;
+						}
+					}
+				}
 
-										serverListViewer.getTable().deselect(i);
-										allConfigs = false;
-									}
-								}
-							}
-
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-							}
-						});
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+			});
 			new Label(compositeList, SWT.NONE);
 
 			serverListViewer
