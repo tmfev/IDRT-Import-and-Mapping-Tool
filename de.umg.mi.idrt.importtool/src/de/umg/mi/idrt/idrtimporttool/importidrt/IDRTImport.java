@@ -553,12 +553,14 @@ public class IDRTImport {
 			connect.close();
 		} catch (SQLException e) {
 			error = Server.getError();
-			e.printStackTrace();
+			System.err.println(Server.getError());
+//			e.printStackTrace();
 			return false;
 		}
 		catch(Exception e2) {
 			error = Server.getError();
-			e2.printStackTrace();
+//			e2.printStackTrace();
+			System.err.println(Server.getError());
 			return false;
 		}
 		return true;

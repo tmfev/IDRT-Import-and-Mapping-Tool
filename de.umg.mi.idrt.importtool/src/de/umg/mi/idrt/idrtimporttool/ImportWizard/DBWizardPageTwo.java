@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.idrtimporttool.ImportWizard;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -1093,7 +1094,7 @@ public class DBWizardPageTwo extends WizardPage {
 	private void loadCurrentTableFromDisc() {
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
@@ -1101,7 +1102,7 @@ public class DBWizardPageTwo extends WizardPage {
 			}
 			File serverFile = null;
 			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath());
+				serverFile = new File(fileUrl.getPath()+"/tables");
 			}
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
@@ -1127,6 +1128,9 @@ public class DBWizardPageTwo extends WizardPage {
 					}
 				}
 			}
+			
+		}catch (EOFException ee) {
+			System.err.println("EOF");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -1144,15 +1148,13 @@ public class DBWizardPageTwo extends WizardPage {
 		try {
 			System.out.println("@saveCurrentTable() -- saving: " + tableName);
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path imgImportPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, imgImportPath,
 					Collections.EMPTY_MAP);
 			URL fileUrl = FileLocator.toFileURL(url);
-			File serverFile = new File(fileUrl.getPath());
+			File serverFile = new File(fileUrl.getPath()+"/tables");
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(serverFile));
 			
-			ObjectInputStream is;
-			// tableMap = new HashMap<String, List<List<String>>>();
-			is = new ObjectInputStream(new FileInputStream(serverFile));
 			// List<List<String>> itemList = (List<List<String>>)
 			// is.readObject();
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
@@ -1160,7 +1162,7 @@ public class DBWizardPageTwo extends WizardPage {
 			if (tableMap == null) {
 				tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
 			}
-			is.close();
+		
 			TableItem[] tableItems = table.getItems();
 			List<List<String>> itemList = new LinkedList<List<String>>();
 			for (TableItem currentItem : tableItems) {
@@ -1187,10 +1189,52 @@ public class DBWizardPageTwo extends WizardPage {
 			os.writeObject(tableMap);
 			os.flush();
 			os.close();
-		} catch (FileNotFoundException e1) {
+			
+		} catch (EOFException eee) {
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
+			URL url = FileLocator.find(bundle, imgImportPath,
+					Collections.EMPTY_MAP);
+			URL fileUrl;
+			try {
+				fileUrl = FileLocator.toFileURL(url);
+			
+			File serverFile = new File(fileUrl.getPath()+"/tables");
+			tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
+			TableItem[] tableItems = table.getItems();
+			List<List<String>> itemList = new LinkedList<List<String>>();
+			for (TableItem currentItem : tableItems) {
+				List<String> currentItemList = new LinkedList<String>();
+				for (int j = 0; j < 5; j++) {
+					currentItemList.add(currentItem.getText(j));
+				}
+				itemList.add(currentItemList);
+			}
+
+			if (server == null) {
+				System.out.println("SERVER NULL???!?!?");
+			}
+			if (tableMap.get(server.getUniqueID()) == null) {
+				System.out.println("save getserver null");
+				HashMap<String, List<List<String>>> tmpHash = new HashMap<String, List<List<String>>>();
+				tmpHash.put(tableName, itemList);
+				tableMap.put(server.getUniqueID(), tmpHash);
+			} else {
+				tableMap.get(server.getUniqueID()).put(tableName, itemList);
+			}
+			ObjectOutputStream os;
+			os = new ObjectOutputStream(new FileOutputStream(serverFile));
+			os.writeObject(tableMap);
+			os.flush();
+			os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		 catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -1203,15 +1247,24 @@ public class DBWizardPageTwo extends WizardPage {
 
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
+				System.out.println(".");
 				fileUrl = FileLocator.toFileURL(url);
 			}
 			File serverFile = null;
 			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath());
+				System.out.println("fileurl null");
+				serverFile = new File(fileUrl.getPath()+"/tables");
+			}
+			if (!serverFile.exists()) {
+				System.out.println("TABVLES2");
+				System.out.println(serverFile.getAbsolutePath());
+				serverFile = new File(serverFile.getAbsolutePath());
+				System.out.println(serverFile.createNewFile());
+				
 			}
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
@@ -1305,6 +1358,8 @@ public class DBWizardPageTwo extends WizardPage {
 				setErrorMessage(null);
 			}
 
+		}		catch (EOFException ee) {
+			System.err.println("Tables empty!");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
