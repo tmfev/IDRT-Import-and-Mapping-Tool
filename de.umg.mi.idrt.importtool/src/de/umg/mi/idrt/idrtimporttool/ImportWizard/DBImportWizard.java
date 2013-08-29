@@ -276,11 +276,21 @@ System.out.println("filename: " + file.getAbsolutePath());
 						System.out.println("table " + table + " created.");
 
 						bundle = Activator.getDefault().getBundle();
-						Path imgImportPath = new Path("/cfg/tables"); //$NON-NLS-1$
+						Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
 						url = FileLocator.find(bundle, imgImportPath,
 								Collections.EMPTY_MAP);
-						fileUrl = FileLocator.toFileURL(url);
-						File serverFile = new File(fileUrl.getPath());
+						URL fileUrl1 = null;
+						if (url != null) {
+							fileUrl1 = FileLocator.toFileURL(url);
+						}
+						File serverFile = new File(fileUrl1.getPath()+"/tables");
+						if (!serverFile.exists()) {
+							System.out.println("TABLES");
+							System.out.println(serverFile.getAbsolutePath());
+							serverFile = new File(serverFile.getAbsolutePath());
+							System.out.println(serverFile.createNewFile());
+							
+						}
 						ObjectInputStream is = new ObjectInputStream(
 								new FileInputStream(serverFile));
 						@SuppressWarnings("unchecked")
