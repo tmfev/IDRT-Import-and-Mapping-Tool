@@ -41,24 +41,22 @@ public class ODMWizardPageTwo extends WizardPage {
 	private static String odmPath = ""; 
 	private static String completeCodelist;
 	// private static String mainPath = "";
-	private static Button includePids;
+	private static Button checkIncludePids;
 	private static Button checkContext;
 	private static Button checkTruncate;
-	private static Button CB_checkTerms;
-	private Label cleanUplabel;
-	private static Button cleanUpBtn;
-	private Label includeCodelists;
-	private static Button CB_completeCodelists;
+	private static Button checkTerms;
+	private static Button checkCleanUp;
+	private static Button checkCompleteCodelists;
 
 	public static boolean getCleanUp() {
-		return cleanUpBtn.getSelection();
+		return checkCleanUp.getSelection();
 	}
 	
 	/**
 	 * @return the completeCodelist
 	 */
 	public static boolean getCompleteCodelist() {
-		return CB_completeCodelists.getSelection();
+		return checkCompleteCodelists.getSelection();
 	}
 
 	/**
@@ -79,7 +77,7 @@ public class ODMWizardPageTwo extends WizardPage {
 	 * @return the check
 	 */
 	public static boolean getIncludePids() {
-		return includePids.getSelection();
+		return checkIncludePids.getSelection();
 	}
 
 	/**
@@ -98,7 +96,7 @@ public class ODMWizardPageTwo extends WizardPage {
 	}
 
 	public static boolean getTerms() {
-		return CB_checkTerms.getSelection();
+		return checkTerms.getSelection();
 	}
 
 	public static boolean getTruncate() {
@@ -135,11 +133,11 @@ public class ODMWizardPageTwo extends WizardPage {
 
 			new Label(container, SWT.NONE);
 
-			cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
 
-			cleanUpBtn = new Button(container, SWT.CHECK);
-			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
+			checkCleanUp = new Button(container, SWT.CHECK);
+			checkCleanUp.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp"))); 
 			new Label(container, SWT.NONE);
 
@@ -185,20 +183,20 @@ public class ODMWizardPageTwo extends WizardPage {
 				}
 			});
 			
-			includeCodelists = new Label(container, SWT.NONE);
-			includeCodelists.setText("Include complete Codelists?");
+			Label includeCodelists = new Label(container, SWT.NONE);
+			includeCodelists.setText(Messages.ODMWizardPageTwo_ImportCodelists);
 			
 			completeCodelist = defaultProps.getProperty("importCodelist","false");
 			
-			CB_completeCodelists = new Button(container, SWT.CHECK);
-			CB_completeCodelists.setSelection(Boolean.parseBoolean(completeCodelist));
+			checkCompleteCodelists = new Button(container, SWT.CHECK);
+			checkCompleteCodelists.setSelection(Boolean.parseBoolean(completeCodelist));
 			
 			new Label(container, SWT.NONE);
 
 			Label labelCheck = new Label(container, SWT.NONE);
 			labelCheck.setText(Messages.ODMWizardPageTwo_IncludePid);
-			includePids = new Button(container, SWT.CHECK);
-			includePids.setSelection(false);
+			checkIncludePids = new Button(container, SWT.CHECK);
+			checkIncludePids.setSelection(false);
 
 			new Label(container, SWT.NONE);
 
@@ -206,8 +204,8 @@ public class ODMWizardPageTwo extends WizardPage {
 			labelImportTerms.setText(Messages.ODMWizardPageTwo_ImportSTandMap);
 			labelImportTerms
 					.setToolTipText(Messages.ODMWizardPageTwo_ImportSTandMapToolTip);
-			CB_checkTerms = new Button(container, SWT.CHECK);
-			CB_checkTerms.setSelection(false);
+			checkTerms = new Button(container, SWT.CHECK);
+			checkTerms.setSelection(false);
 			new Label(container, SWT.NONE);
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText(Messages.ODMWizardPageTwo_SaveSettings);
