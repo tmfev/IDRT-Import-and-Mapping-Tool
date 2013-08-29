@@ -189,6 +189,14 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");  
 			}
 
+			
+			if (ODMWizardPageTwo.getCompleteCodelist()) {
+				contextMap.put("importCodelist", "true");  
+				defaultProps.setProperty("importCodelist", "true");  
+			} else {
+				contextMap.put("importCodelist", "false");  
+				defaultProps.setProperty("importCodelist", "false");  
+			}
 			if (ODMWizardPageTwo.getIncludePids()) {
 				contextMap.put("includePids", "true");  
 				defaultProps.setProperty("includePids", "true");  

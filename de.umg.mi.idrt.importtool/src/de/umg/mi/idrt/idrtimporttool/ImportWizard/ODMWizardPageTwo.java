@@ -39,16 +39,26 @@ public class ODMWizardPageTwo extends WizardPage {
 	private static Text folderODMText;
 	private static Text folderMainText;
 	private static String odmPath = ""; 
+	private static String completeCodelist;
 	// private static String mainPath = "";
 	private static Button includePids;
 	private static Button checkContext;
 	private static Button checkTruncate;
-	private static Button checkTerms;
+	private static Button CB_checkTerms;
 	private Label cleanUplabel;
 	private static Button cleanUpBtn;
+	private Label includeCodelists;
+	private static Button CB_completeCodelists;
 
 	public static boolean getCleanUp() {
 		return cleanUpBtn.getSelection();
+	}
+	
+	/**
+	 * @return the completeCodelist
+	 */
+	public static boolean getCompleteCodelist() {
+		return CB_completeCodelists.getSelection();
 	}
 
 	/**
@@ -88,7 +98,7 @@ public class ODMWizardPageTwo extends WizardPage {
 	}
 
 	public static boolean getTerms() {
-		return checkTerms.getSelection();
+		return CB_checkTerms.getSelection();
 	}
 
 	public static boolean getTruncate() {
@@ -137,7 +147,8 @@ public class ODMWizardPageTwo extends WizardPage {
 			folder.setText(Messages.ODMWizardPageTwo_ODMFolder);
 			folder.setToolTipText(Messages.ODMWizardPageTwo_ODMFolderToolTip);
 
-			odmPath = defaultProps.getProperty("folderODM"); 
+			odmPath = defaultProps.getProperty("folderODM");
+			
 			final DirectoryDialog dlg = new DirectoryDialog(parent.getShell());
 			dlg.setText(Messages.ODMWizardPageTwo_ODMFolder); 
 			dlg.setFilterPath(defaultProps.getProperty("folderODM")); 
@@ -173,6 +184,16 @@ public class ODMWizardPageTwo extends WizardPage {
 					folderODMText.setText(odmPath);
 				}
 			});
+			
+			includeCodelists = new Label(container, SWT.NONE);
+			includeCodelists.setText("Include complete Codelists?");
+			
+			completeCodelist = defaultProps.getProperty("importCodelist","false");
+			
+			CB_completeCodelists = new Button(container, SWT.CHECK);
+			CB_completeCodelists.setSelection(Boolean.parseBoolean(completeCodelist));
+			
+			new Label(container, SWT.NONE);
 
 			Label labelCheck = new Label(container, SWT.NONE);
 			labelCheck.setText(Messages.ODMWizardPageTwo_IncludePid);
@@ -185,8 +206,8 @@ public class ODMWizardPageTwo extends WizardPage {
 			labelImportTerms.setText(Messages.ODMWizardPageTwo_ImportSTandMap);
 			labelImportTerms
 					.setToolTipText(Messages.ODMWizardPageTwo_ImportSTandMapToolTip);
-			checkTerms = new Button(container, SWT.CHECK);
-			checkTerms.setSelection(false);
+			CB_checkTerms = new Button(container, SWT.CHECK);
+			CB_checkTerms.setSelection(false);
 			new Label(container, SWT.NONE);
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText(Messages.ODMWizardPageTwo_SaveSettings);
