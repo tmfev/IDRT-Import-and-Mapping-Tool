@@ -205,11 +205,6 @@
             name="Options">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.AboutCommand"
-            id="de.goettingen.i2b2.importtool.idrt.about"
-            name="About">
-      </command>
-      <command
             defaultHandler="org.eclipselabs.p2.rcpupdate.utils.handler.InstallNewSoftwareHandler"
             id="org.eclipselabs.p2.rcpupdate.install"
             name="Install New Software">

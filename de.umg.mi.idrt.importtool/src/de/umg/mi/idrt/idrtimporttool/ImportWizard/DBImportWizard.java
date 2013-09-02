@@ -37,7 +37,27 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
  *         www.mi.med.uni-goettingen.de
  */
 public class DBImportWizard extends Wizard {
+	
+	private Properties defaultProps;
+	private static Thread b;
+	private HashMap<String, String> contextMap;
+	protected WizardPageOne one;
 
+	public static DBWizardPageTwo two;
+	public static DBWizardPageThree three;
+	public boolean done = false;
+	public static boolean started = false;
+
+	private static String FOLDERCSV;
+
+	public static void setThree(DBWizardPageThree three) {
+		DBImportWizard.three = three;
+	}
+
+	public DBImportWizard() {
+		super();
+		setNeedsProgressMonitor(false);
+	}
 	public static DBWizardPageThree getThree() {
 		return three;
 	}
@@ -56,7 +76,6 @@ public class DBImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-					//					closeBar("DB Import Failed!", 1);
 					Log.addLog(1, "DB Import Failed!");
 					MessageDialog
 					.openError(Display.getDefault().getActiveShell(),
@@ -75,13 +94,11 @@ public class DBImportWizard extends Wizard {
 
 		if (started) {
 			b.stop();
-			// progressBar.close();
 
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
-					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "DB Import Failed: " + error);
 					MessageDialog.openError(Display.getDefault()
 							.getActiveShell(), "Import Failed!",
@@ -109,27 +126,6 @@ public class DBImportWizard extends Wizard {
 				}
 			});
 		}
-	}
-
-	private Properties defaultProps;
-	private static Thread b;
-	private HashMap<String, String> contextMap;
-	protected WizardPageOne one;
-
-	public static DBWizardPageTwo two;
-	public static DBWizardPageThree three;
-	public boolean done = false;
-	public static boolean started = false;
-
-	private static String FOLDERCSV;
-
-	public static void setThree(DBWizardPageThree three) {
-		DBImportWizard.three = three;
-	}
-
-	public DBImportWizard() {
-		super();
-		setNeedsProgressMonitor(false);
 	}
 
 	@Override
@@ -236,6 +232,7 @@ public class DBImportWizard extends Wizard {
 			Iterator<Server> tableServerIterator = checkedTables.keySet()
 					.iterator();
 			List<ExportConfig> exportConfigs = new LinkedList<ExportConfig>();
+	
 			/**
 			 * Import all checked tables read from disc
 			 */
@@ -291,9 +288,7 @@ public class DBImportWizard extends Wizard {
 				}
 			}
 			contextMap = new HashMap<String, String>();
-
 			contextMap.put("DBHost", WizardPageOne.getIpText());
-			//			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
@@ -376,7 +371,6 @@ public class DBImportWizard extends Wizard {
 					started = true;
 					final long start = System.currentTimeMillis();
 					IDRTImport.setCompleteContext(contextMap);
-					// int exitCode = IDRTImport.runCSVImport();
 					int exitCode = IDRTImport.runDBImport(terms);
 					done = true;
 					StatusListener.setStatus(0, "", "");  
@@ -389,7 +383,6 @@ public class DBImportWizard extends Wizard {
 
 							@Override
 							public void run() {
-								//								closeBar("DB Import Finished!", 0);
 								Log.addLog(0, "DB Import Finished!");
 								long end = System.currentTimeMillis();
 								long time = end - start;
@@ -405,8 +398,6 @@ public class DBImportWizard extends Wizard {
 			});
 
 			if (!started) {
-				// progressBar = new AddProgressBar();
-				// progressBar.init();
 				b.start();
 			}
 
