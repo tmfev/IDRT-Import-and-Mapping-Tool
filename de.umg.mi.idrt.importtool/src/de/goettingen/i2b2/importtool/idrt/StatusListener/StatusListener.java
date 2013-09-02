@@ -49,13 +49,12 @@ public class StatusListener {
 	}
 
 	public static void addError(final String logg, final String fileName) {
-		
 		final File file = new File(fileName);
 		filename = file.getName();
 		log = logg;
 		logCounter++;
 		setImportErrorCounter(getImportErrorCounter() + 1);
-		System.out.println("ERRORLOG: " + logCounter + " -- " + filename + " - " + log);
+//		System.out.println("ERRORLOG: " + logCounter + " -- " + filename + " - " + log);
 	}
 
 	public static void addLog(final String log, final String fileName) {
@@ -68,6 +67,7 @@ public class StatusListener {
 
 			}});
 	}
+	
 	public static void startLogging() {
 		System.out.println("START LOGGING");
 		Runnable helloRunnable = new Runnable() {
@@ -89,7 +89,6 @@ public class StatusListener {
 		};
 		executor = Executors.newScheduledThreadPool(1);
 		executor.scheduleAtFixedRate(helloRunnable, 3, 3, TimeUnit.SECONDS);
-
 	}
 
 	public static void stopLogging() {
@@ -99,19 +98,11 @@ public class StatusListener {
 
 	public static void error(final String msg, final String error,
 			final String fileName) {
-		// System.out.println("errorrr");
-		// interrupt();
 
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
 				interruptExtern(error, fileName);
-
-				//				CSVImportWizard.killThreadRemote(msg, fileName);
-				//				ODMImportWizard.killThreadRemote(msg, fileName);
-				//				ODMImportWizardSpecific.killThreadRemote(msg, fileName);
-				//				DBImportWizard.killThreadRemote(msg, fileName);
-				//				P21ImportWizard.killThreadRemote(msg, fileName);
 				Log.addLog(1, msg + " - " + error);
 			}
 		});
@@ -154,6 +145,7 @@ public class StatusListener {
 		DBImportWizard.killThread();
 		P21ImportWizard.killThread();
 	}
+	
 	public static void interruptExtern(String error, String fileName) {
 		interrupted = true;
 		CSVImportWizard.killThreadRemote(error,fileName);
@@ -179,10 +171,6 @@ public class StatusListener {
 		status = "Getting PIDs...";
 		file = fileName.getName();
 		ServerView.updateStatus();
-		//		DBImportWizard.updateStatus();
-		//		ODMImportWizard.updateStatus();
-		//		ODMImportWizardSpecific.updateStatus();
-		//		P21ImportWizard.updateStatus();
 	}
 
 	public static void setStatus(float percentage, final String statusMsg,
@@ -191,12 +179,7 @@ public class StatusListener {
 		perc = percentage;
 		status = statusMsg;
 		file = fileName.getName();
-//		System.out.println("STATUS: " + statusMsg + " " + percentage);
 		ServerView.updateStatus();
-		//		DBImportWizard.updateStatus();
-		//		ODMImportWizard.updateStatus();
-		//		ODMImportWizardSpecific.updateStatus();
-		//		P21ImportWizard.updateStatus();
 
 		Display.getDefault().syncExec(new Runnable() {
 
@@ -206,36 +189,24 @@ public class StatusListener {
 			}
 		});
 	}
+	
 	public static void setStatus(final String statusMsg) {
-		//		File fileName = new File(currentFile);
-		//		perc = percentage;
 		status = statusMsg;
-		//		file = fileName.getName();
-		//		System.out.println("STATUS: " + statusMsg + " " + percentage);
 		ServerView.updateStatus();
-		//		DBImportWizard.updateStatus();
-		//		ODMImportWizard.updateStatus();
-		//		ODMImportWizardSpecific.updateStatus();
-		//		P21ImportWizard.updateStatus();
-
 		Display.getDefault().syncExec(new Runnable() {
-
 			@Override
 			public void run() {
 				Log.addLog(0, statusMsg);
 			}
 		});
 	}
+	
 	public static void setSubStatus(float percentage, final String statusMsg) {
 		subPerc = percentage;
 		subStatus = statusMsg;
-		//		System.out.println("SUBSTATUS: " + statusMsg + " " + percentage);
 		ServerView.updateStatus();
-		//		DBImportWizard.updateStatus();
-		//		ODMImportWizard.updateStatus();
-		//		ODMImportWizardSpecific.updateStatus();
-		//		P21ImportWizard.updateStatus();
 	}
+
 	public static void setStatusPID(float percentage, String msg,
 			String currentFile) {
 		File fileName = new File(currentFile);
@@ -243,10 +214,6 @@ public class StatusListener {
 		status = msg;
 		file = fileName.getName();
 		ServerView.updateStatus();
-		//		DBImportWizard.updateStatus();
-		//		ODMImportWizard.updateStatus();
-		//		ODMImportWizardSpecific.updateStatus();
-		//		P21ImportWizard.updateStatus();
 	}
 
 	public static int getImportErrorCounter() {
@@ -257,9 +224,6 @@ public class StatusListener {
 		StatusListener.importErrorCounter = importErrorCounter;
 	}
 
-	/**
-	 * 
-	 */
 	public static void clearStatus() {
 		perc = 0;
 		subPerc = 0;

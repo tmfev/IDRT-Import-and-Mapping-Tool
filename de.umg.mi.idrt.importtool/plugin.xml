@@ -31,7 +31,7 @@
             class="de.umg.mi.idrt.idrtimporttool.importidrt.ServerView"
             icon="images/addServer.png"
             id="de.umg.mi.idrt.importtool.ServerView"
-            name="IDRTImport">
+            name="IDRT Import Tool">
       </view>
    </extension>
    <extension

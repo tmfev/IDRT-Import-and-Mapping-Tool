@@ -27,7 +27,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="images/tmf.jpg"/>
+   <windowImages i64="images/tmf.jpg"/>
 
    <launcher name="IDRT Import Tool">
       <solaris/>
@@ -35,6 +35,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
       <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
