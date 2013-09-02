@@ -119,7 +119,6 @@ public class ODMImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			//			System.out.println("ODM: finish"); 
 			final boolean cleanUp = ODMWizardPageTwo.getCleanUp();
 			final boolean terms = ODMWizardPageTwo.getTerms();
 			Bundle bundle = Activator.getDefault().getBundle();
@@ -206,12 +205,10 @@ public class ODMImportWizard extends Wizard {
 			}
 
 			if (ODMWizardPageTwo.getSaveContext()) {
-				System.out.println("saving context"); 
 				defaultProps.store(new FileWriter(properties), ""); 
 			}
 
 			if (ODMWizardPageTwo.getTruncate()) {
-				System.out.println("truncating"); 
 				contextMap.put("truncateProject", "true");  
 			} else {
 				contextMap.put("truncateProject", "false");  

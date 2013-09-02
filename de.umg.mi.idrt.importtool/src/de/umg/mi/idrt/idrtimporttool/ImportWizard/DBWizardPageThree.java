@@ -168,7 +168,6 @@ public class DBWizardPageThree extends WizardPage {
 			// String tempDir = System.getProperty(property);
 			CSVPath = tmpFolder.getAbsolutePath();
 			CSVPath = CSVPath.replaceAll("\\\\", "/") + "/";
-			System.out.println("CSVPath: " + CSVPath);
 			final DirectoryDialog dlg = new DirectoryDialog(parent.getShell());
 			dlg.setText("DB Folder");
 			dlg.setFilterPath(defaultProps.getProperty("folderCSV"));

@@ -64,7 +64,6 @@ public class P21WizardPageTwo extends WizardPage {
 	}
 
 	public static String getP21VersionCombo() {
-		System.out.println("p21 Versioncompbo: " + p21VersionCombo.getText());
 		return p21VersionCombo.getText();
 	}
 
@@ -236,10 +235,8 @@ public class P21WizardPageTwo extends WizardPage {
 			File[] listOfFiles = p21.listFiles();
 			String[] p21FolderNames = new String[listOfFiles.length];
 			for (int i = 0; i < listOfFiles.length; i++) {
-				System.out.println(listOfFiles[i].getName());
 				p21FolderNames[i] = listOfFiles[i].getName();
 			}
-//			p21VersionCombo.setItems(new String[] { "2010", "2011/2012" });
 			p21VersionCombo.setItems(p21FolderNames);
 			p21VersionCombo.select(Integer.parseInt(defaultProps.getProperty("p21Version")));
 			p21VersionCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -252,8 +249,6 @@ public class P21WizardPageTwo extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					System.out.println("index: "
-							+ p21VersionCombo.getSelectionIndex());
 					P21WizardPageTwo.this.getWizard().getContainer()
 							.updateButtons();
 				}

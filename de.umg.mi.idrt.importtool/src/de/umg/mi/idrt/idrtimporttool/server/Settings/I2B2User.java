@@ -110,7 +110,6 @@ public class I2B2User {
 			if (date != null) {
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				DateFormat iitdf = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
-				// System.out.println(date.toString());
 				java.util.Date formattedDate = df.parse(date.toString());
 				lastLogin = iitdf.format(formattedDate).toString();
 			} else {
@@ -162,7 +161,6 @@ public class I2B2User {
 			if (date != null) {
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				DateFormat iitdf = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
-				// System.out.println(date.toString());
 				java.util.Date formattedDate = df.parse(date.toString());
 				lastQuery = iitdf.format(formattedDate).toString();
 			} else {

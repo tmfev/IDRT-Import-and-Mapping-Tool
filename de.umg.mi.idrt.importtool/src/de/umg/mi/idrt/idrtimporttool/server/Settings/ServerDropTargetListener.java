@@ -23,7 +23,6 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 	public void drop(DropTargetEvent event) {
 		int location = determineLocation(event);
 		// String target = ((Server) determineTarget(event)).getUniqueID();
-		// System.out.println("target: " + target);
 		String translatedLocation = "";
 		switch (location) {
 			case 1:
@@ -39,15 +38,12 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 				translatedLocation = "Dropped into nothing ";
 				break;
 		}
-		System.out.println(translatedLocation);
 		super.drop(event);
 	}
 
 	@Override
 	public boolean performDrop(Object data) {
-		System.out.println("performdrop: " + (String) data);
 		Server draggedServer = ServerList.getTargetServers().get(data);
-		System.out.println("servertostring: " + draggedServer.toString());
 		Server newServer = new Server("copy of " + draggedServer.getUniqueID(),
 				draggedServer.getIp(), draggedServer.getPort(),
 				draggedServer.getUser(), draggedServer.getPassword(),

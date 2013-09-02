@@ -256,9 +256,6 @@ public class ServerView extends ViewPart {
 	}
 
 	public static void setLog(String time, String log) {
-		System.out.println("adding new log: " + log + " " + time); 
-		//		final TableItem tableItem = new TableItem(logTable, SWT.NONE, 0);
-		//		tableItem.setText(new String[] { time, log });
 		String old = text.getText();
 		if (!old.isEmpty()) {
 			String newText = time+"\t"+log + "\n"+ old;
@@ -522,7 +519,6 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
-			// System.out.println("NYI");
 			handlerService.executeCommand(
 					"de.goettingen.i2b2.importtool.DBImport", null); 
 
@@ -577,7 +573,6 @@ public class ServerView extends ViewPart {
 					Collections.EMPTY_MAP);
 
 			if (tmpURL==null) {
-				System.out.println("TMPURL == NULL");
 				Path miscPath = new Path("/misc/"); 
 				URL miscURL = FileLocator.find(bundle, miscPath,
 						Collections.EMPTY_MAP);
@@ -652,7 +647,6 @@ public class ServerView extends ViewPart {
 			String logdir = defaultProps.getProperty("sysoLogLoc"); 
 			if (sysLog && (logdir != null)) {
 
-				System.out.println(logdir);
 				PrintStream ps = new PrintStream(new BufferedOutputStream(
 						new FileOutputStream(new File(logdir))), true);
 				System.setOut(ps);
@@ -1421,9 +1415,7 @@ public class ServerView extends ViewPart {
 								.getColor(SWT.COLOR_RED));
 						StatusListener.interrupt();
 						btnStop.setEnabled(false);
-					} else {
-						System.out.println("nothing started"); 
-					}
+					} 
 				}
 			});
 			new Label(progressComp, SWT.NONE);
@@ -1599,7 +1591,6 @@ public class ServerView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("add server clicked"); 
 				addSourceServer();
 			}
 		});
@@ -1615,7 +1606,6 @@ public class ServerView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("edit server clicked"); 
 				editSourceServer();
 			}
 		});
@@ -1631,10 +1621,8 @@ public class ServerView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("delete server clicked"); 
 				deleteSourceServer();
 				if (targetServerViewer.getTree().getChildren() == null) {
-					System.out.println("empty tree"); 
 				}
 			}
 		});

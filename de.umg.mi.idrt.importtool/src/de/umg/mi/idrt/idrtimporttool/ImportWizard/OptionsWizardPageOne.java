@@ -160,12 +160,9 @@ public class OptionsWizardPageOne extends WizardPage {
 			lblSysolog.setText("Syso-Log:");
 			lblSysolog.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 1, 1));
-			System.out.println(":: " + defaultProps.getProperty("sysoLog"));
 			boolean sysoLog = ((defaultProps.getProperty("sysoLog")
 					.equals("true")) ? true : false);
 
-			System.out.println("from prop "
-					+ Boolean.getBoolean(defaultProps.getProperty("sysoLog")));
 			checkSysoLog = new Button(composite, SWT.CHECK);
 			checkSysoLog.setSelection(sysoLog);
 			checkSysoLog.addSelectionListener(new SelectionAdapter() {

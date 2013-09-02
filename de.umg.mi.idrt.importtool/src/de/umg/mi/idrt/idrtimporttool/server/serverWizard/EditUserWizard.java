@@ -62,7 +62,6 @@ public class EditUserWizard extends Wizard {
 				newEmail, date);
 
 		if (!EditUserPageOne.getUserPasswordText().isEmpty()) {
-			System.out.println("change pw");
 			final String newPassword = I2B2User
 					.getHashedPassword(EditUserPageOne.getUserPasswordText());
 			ServerList.editUserPW(server, oldUsername, newPassword);

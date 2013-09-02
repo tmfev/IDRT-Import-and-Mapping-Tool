@@ -39,7 +39,6 @@ public class EditServerWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
-		System.out.println("finish");
 
 		Server editedServer = new Server(EditServerPageOne.getUniqueIDText(),
 				EditServerPageOne.getIpText(), EditServerPageOne.getPortText(),

@@ -22,7 +22,6 @@ public class ServerDragSourceListener implements DragSourceListener {
 
 	@Override
 	public void dragFinished(DragSourceEvent event) {
-		System.out.println("Finshed Drag");
 	}
 
 	@Override
@@ -33,7 +32,6 @@ public class ServerDragSourceListener implements DragSourceListener {
 					.getSelection();
 			Server server = (Server) selection.getFirstElement();
 
-			System.out.println("dragged server: " + server.toString());
 			if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
 				event.data = server.getUniqueID();
 			}
@@ -46,7 +44,6 @@ public class ServerDragSourceListener implements DragSourceListener {
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
-		System.out.println("Start Drag");
 	}
 
 }

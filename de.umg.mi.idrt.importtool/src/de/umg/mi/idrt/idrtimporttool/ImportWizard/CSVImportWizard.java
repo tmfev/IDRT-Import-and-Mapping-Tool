@@ -83,9 +83,6 @@ public class CSVImportWizard extends Wizard {
 	public boolean performCancel() {
 		if (CSVWizardPageThree.lastTable != null) {
 			CSVWizardPageThree.saveTable();
-			System.out.println("cancel, lasttable!=null");
-		} else {
-			System.out.println("cancel, lasttable == null");
 		}
 		return super.performCancel();
 	}
@@ -129,7 +126,6 @@ public class CSVImportWizard extends Wizard {
 		while (configIt.hasNext()) {
 			String currentConfig = configIt.next();
 			configs.add(configMap.get(currentConfig));
-			System.out.println("added " + configMap.get(currentConfig));
 		}
 
 		importThread = new Thread(new Runnable() {
@@ -137,7 +133,6 @@ public class CSVImportWizard extends Wizard {
 			@Override
 			public void run() {
 				try {
-					System.out.println("CSV: finish");
 					final long start = System.currentTimeMillis();
 
 					Bundle bundle = Activator.getDefault().getBundle();
@@ -162,10 +157,7 @@ public class CSVImportWizard extends Wizard {
 
 					for (File listOfInputFile : listOfInputFiles) {
 						if (listOfInputFile.getName().endsWith(".csv")) {
-							System.out.println("deleting input file: "
-									+ listOfInputFile.getName());
 							boolean delete = listOfInputFile.delete();
-							System.out.println("success? " + delete);
 						}
 					}
 
@@ -218,7 +210,6 @@ public class CSVImportWizard extends Wizard {
 					} 
 
 					if (truncate) {
-						System.out.println("truncating");
 						contextMap.put("truncateProject", "true");
 					} else {
 						contextMap.put("truncateProject", "false");
@@ -234,18 +225,12 @@ public class CSVImportWizard extends Wizard {
 					defaultProps.setProperty("quoteChar", quoteChar);
 					// WITH PIDGEN!
 					if (usePIDGenerator && IDinCSVFile) {
-						System.out.println("WITH PIDGEN");
 						// Int. Import
 
-						System.out.println("CONFIGS: " + configs);
-						System.out.println("SIZE: " + configs.size());
 						for (int i = 0; i < configs.size(); i++) {
 							for (File listOfInputFile : listOfInputFiles) {
 								if (listOfInputFile.getName().endsWith(".csv")) {
-									System.out.println("deleting input file: "
-											+ listOfInputFile.getName());
 									boolean delete = listOfInputFile.delete();
-									System.out.println("success? " + delete);
 								}
 							}
 
@@ -253,9 +238,6 @@ public class CSVImportWizard extends Wizard {
 								contextMap.put("truncateProject", "false");
 							}
 							String currentConfig = configs.get(i);
-							System.out.println("config: " + currentConfig
-									+ " -- RUN: " + i + " von "
-									+ configs.size());
 							CSVReader readerConfig = new CSVReader(
 									new FileReader(new File(folderCSV
 											+ currentConfig)), delim);
@@ -268,29 +250,22 @@ public class CSVImportWizard extends Wizard {
 							for (int j = 0; j < line4.length; j++) {
 								if (line4[j].equals("FirstName")) {
 									FIRSTNAME = j;
-									System.out
-									.println("FIRSTNAME " + FIRSTNAME);
 								}
 								if (line4[j].equals("LastName")) {
 									NAME = j;
-									System.out.println("NAME: " + NAME);
 								}
 								if (line4[j].equals("Reporting Date")) {
 									REPDATE = j;
-									System.out.println("REPDATE: " + REPDATE);
 								}
 								if (line4[j].equals("Birthday")) {
 									BDAY = j;
-									System.out.println("BDAY: " + BDAY);
 								}
 								if (line4[j].equals("Sex")) {
 									SEX = j;
-									System.out.println("SEX: " + SEX);
 								}
 							}
 							if ((FIRSTNAME < 0) || (NAME < 0) || (REPDATE < 0)
 									|| (BDAY < 0) || (SEX < 0)) {
-								System.out.println("NONONONO");
 							} else {
 								String inputFolderReplaced = inputFolder
 										.getAbsolutePath().replaceAll("\\\\",
@@ -364,9 +339,7 @@ public class CSVImportWizard extends Wizard {
 							started = true;
 
 							IDRTImport.setCompleteContext(contextMap);
-							System.out.println("STARTING CSVIMPORT");
 							exitCode = IDRTImport.runCSVImport(terms);
-							System.out.println("CSVIMPORT FINISHED!");
 							StatusListener.notifyListener();
 							started = false;
 
@@ -402,7 +375,6 @@ public class CSVImportWizard extends Wizard {
 						defaultProps.setProperty("folderCSV", folderCSV);
 
 						if (usePIDGenerator && IDinExternalIDFile) {
-							System.out.println("GetPid==true");
 							contextMap.put("pidgen", "true");
 							defaultProps.setProperty("pidgen", "true");
 							contextMap.put("idFile", externalIDFilePath);
@@ -410,7 +382,6 @@ public class CSVImportWizard extends Wizard {
 									externalIDFilePath);
 						}
 						else {
-							System.out.println("GetPid==false");
 							contextMap.put("pidgen", "false");
 							defaultProps.setProperty("pidgen", "false");
 						}
@@ -424,12 +395,10 @@ public class CSVImportWizard extends Wizard {
 						}
 
 						if (save) {
-							System.out.println("saving context");
 							defaultProps.store(new FileWriter(properties), "");
 						}
 
 						if (truncate) {
-							System.out.println("truncating");
 							contextMap.put("truncateProject", "true");
 						} else {
 							contextMap.put("truncateProject", "false");

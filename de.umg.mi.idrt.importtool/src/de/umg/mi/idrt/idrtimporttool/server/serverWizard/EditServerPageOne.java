@@ -264,7 +264,6 @@ public class EditServerPageOne extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println();
 				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) {
 					DBIntegratedSecurity.setEnabled(true);
 					DBMSSQLUseWinAuth.setEnabled(true);
@@ -351,7 +350,6 @@ public class EditServerPageOne extends WizardPage {
 				if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 						DBUserText.getText(), DBUserPasswordText.getText(),
 						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection())) {
-					System.out.println("working");
 					DBTest.setText("Success");
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_GREEN);
@@ -366,8 +364,6 @@ public class EditServerPageOne extends WizardPage {
 					DBTest.setForeground(color_red);
 					DBTest.setToolTipText(IDRTImport.error);
 					DBTest.pack();
-					System.out.println("broken");
-					System.out.println(IDRTImport.error);
 				}
 			}
 		});

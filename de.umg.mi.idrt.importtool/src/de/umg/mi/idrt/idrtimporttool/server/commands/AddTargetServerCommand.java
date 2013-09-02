@@ -18,7 +18,6 @@ public class AddTargetServerCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("adding server");
 		TreeViewer viewer = ServerView.getTargetServersViewer();
 
 		WizardDialog wizardDialog = new WizardDialog(viewer.getControl()

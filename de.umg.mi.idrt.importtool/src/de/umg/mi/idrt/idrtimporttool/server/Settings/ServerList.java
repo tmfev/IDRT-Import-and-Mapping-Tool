@@ -64,11 +64,8 @@ public class ServerList {
 
 	public static void addSourceServer(Server loadServer) {
 		if (!servers.containsKey(loadServer.getUniqueID())) {
-			//			System.out.println("put: " + loadServer.getUniqueID());
 			importDBServers.put(loadServer.getUniqueID(), loadServer);
 			try {
-				// System.out.println("adding server: " +
-				// serverFile.getAbsolutePath());
 
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverImportDBFile));
@@ -87,11 +84,7 @@ public class ServerList {
 
 	public static void addServer(Server server) {
 		try {
-
 			if (!importDBServers.containsKey(server.getUniqueID())) {
-				// System.out.println("adding server: " +
-				// serverFile.getAbsolutePath());
-
 				servers.put(server.getUniqueID(), server);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverFile));
@@ -207,13 +200,9 @@ public class ServerList {
 	public static HashMap<String, Server> deserializeServer(File file) {
 		try {
 			if (!file.exists()) {
-				System.out.println("no file");
-				System.out.println(file.getAbsolutePath());
 				file = new File(file.getAbsolutePath());
-				System.out.println(file.createNewFile());
-				
+				file.createNewFile();				
 			}
-
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
 					file));
 			HashMap<String, Server> list  = (HashMap<String, Server>) is.readObject();
@@ -240,7 +229,6 @@ public class ServerList {
 	public static ResultSet getPreview(String table, String schema,
 			Server server) {
 		ResultSet resultSet = null;
-		//		System.out.println("preview");
 		try {
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
@@ -252,14 +240,10 @@ public class ServerList {
 						+ table + " where rownum <= 5");
 			}
 			else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
-				//				statement.executeQuery("use " + schema);
-				System.out.println("mysql " + table + " " + schema);
 				resultSet = statement.executeQuery("select * from " + schema+"."+table);// + " where rownum <= 5");
-
 			}
 			else if (server.getDatabaseType().equalsIgnoreCase("mssql")){
 				ServerTable currentTable = getTableMap().get(table);
-				System.out.println("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());
 				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());// + " where rownum <= 5");
 			}
 
@@ -336,8 +320,6 @@ public class ServerList {
 							Boolean secondary = resultSet.getString("secondary")
 									.equals("Y");
 	
-							// System.out.println("temp? + " + temp + " name: " + table
-							// + " -- " + defaultProps.getProperty("hideTemp"));
 							if (defaultProps.getProperty("hideTemp").equals("true")) {
 								if (!temp && !secondary) {
 									ServerTable newTable = new ServerTable(server,
@@ -368,26 +350,18 @@ public class ServerList {
 							.executeQuery("show tables");
 					while (resultSet.next()) {
 						String table = resultSet.getString(1);
-						System.out.println("MYSQL TABLE: " + table);
 						ServerTable newTable = new ServerTable(server,
 								user.getName(), table);
 						tables.add(newTable);
 					}
 				}
 				else if(user.getServer().getDatabaseType().equalsIgnoreCase("mssql")) {
-					System.out.println("MSSQL: " + user.getName());
-	//				resultSet = statement.executeQuery("use " + user.getName());
 					statement.execute("use " + user.getName());
-	//				connect = server.getConnection();
-	//				statement = connect.createStatement();
 						resultSet = statement
 								.executeQuery("select * from information_schema.tables;");
-	//					System.out.println(resultSet.getWarnings().toString());
 						while (resultSet.next()) {
 							String table = resultSet.getString("table_name");
 							String schema = resultSet.getString("table_schema");
-							// System.out.println("temp? + " + temp + " name: " + table
-							// + " -- " + defaultProps.getProperty("hideTemp"));
 								ServerTable newTable = new ServerTable(server,
 										user.getName(), table);
 								newTable.setDatabaseSchema(schema);
@@ -845,7 +819,6 @@ public class ServerList {
 	public static LinkedList<String> getAssignedUsersFromProject(Server server,
 			String project) {
 		try {
-			System.out.println("PROJECT: " + project);
 			LinkedList<String> users = new LinkedList<String>();
 			if (!project.isEmpty()) {
 
@@ -997,7 +970,6 @@ public class ServerList {
 					users.add(resultSet.getString("project_id"));
 				}
 			} else {
-				System.out.println("not system");
 				users = new HashSet<String>();
 				throw new Exception(
 						"Not enough Database priviliges, try system or sys!");
@@ -1024,23 +996,6 @@ public class ServerList {
 		return null;
 	}
 
-
-
-	// public static void storePreferences(String fileName){
-	// try {
-	// File file = new File(fileName);
-	// prefsRoot.exportSubtree(new FileOutputStream(file));
-	// // prefsRoot.exportNode(new FileOutputStream(file));
-	// System.out.println(file.getAbsolutePath());
-	// } catch (FileNotFoundException e) {
-	// e.printStackTrace();
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// } catch (BackingStoreException e) {
-	// e.printStackTrace();
-	// }
-	// }
-
 	public static boolean isServer(String uniqueID) {
 		if ((servers.get(uniqueID) != null)
 				|| (importDBServers.get(uniqueID) != null)) {
@@ -1052,7 +1007,6 @@ public class ServerList {
 
 	public static void loadServersfromProps() throws BackingStoreException {
 		try {
-			// init(password.toCharArray(), salt, iterations);
 
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path propPath = new Path("/cfg"); //$NON-NLS-1$
@@ -1120,7 +1074,6 @@ public class ServerList {
 	public static void removeServer(Server server) {
 
 		if (importDBServers.containsKey(server.getUniqueID())) {
-			//			System.out.println("startswith removed");
 			try {
 				importDBServers.remove(server.getUniqueID());
 				ObjectOutputStream os = new ObjectOutputStream(
@@ -1152,7 +1105,6 @@ public class ServerList {
 	public static void removeServer(String serverUniqueID) {
 		if (importDBServers.containsKey(serverUniqueID)) {
 			try {
-				//				System.out.println("removing importdb: " + serverUniqueID);
 				importDBServers.remove(serverUniqueID);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverImportDBFile));
@@ -1166,7 +1118,6 @@ public class ServerList {
 			}
 		} else if (servers.containsKey(serverUniqueID)) {
 			try {
-				//				System.out.println("removing: " + serverUniqueID);
 				servers.remove(serverUniqueID);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverFile));

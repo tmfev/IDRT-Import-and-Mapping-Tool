@@ -282,14 +282,9 @@ public class P21ImportWizard extends Wizard {
 
 						for (File listOfFile : listOfP21InputFiles) {
 							if (listOfFile.getName().endsWith(".csv")) {
-								System.out.println("copy p21 file: "
-										+ listOfFile.getAbsolutePath());
 								File output = new File(CSVPath + listOfFile.getName().toLowerCase());
-								System.out.println("new output: "
-										+ output.getAbsolutePath());
 
 								if (listOfFile.getName().toLowerCase().startsWith("fall")) {
-									System.out.println("FALL!!");
 									output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
 								}
 								copyFile(listOfFile, output);

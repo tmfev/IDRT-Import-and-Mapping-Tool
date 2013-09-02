@@ -149,7 +149,6 @@ public class DBImportWizard extends Wizard {
 			String fileName) {
 		try {
 			File file = new File(fileName);
-System.out.println("filename: " + file.getAbsolutePath());
 			CSVWriter writer = new CSVWriter(new FileWriter(file), ';');
 			String[] nextLine = new String[10];
 
@@ -166,9 +165,7 @@ System.out.println("filename: " + file.getAbsolutePath());
 			nextLine[k++] = "Server DatabaseType";
 			nextLine[k++] = "mssqlSchema";
 			writer.writeNext(nextLine);
-			System.out.println("TABLEMAP: " + ServerList.getTableMap());
 			for (int i = 0; i < exportConfigs.size(); i++) {
-				System.out.println(exportConfigs.get(i).getServer().getDatabaseType());
 				k = 0;
 				nextLine[k++] = exportConfigs.get(i).getServer().getName();
 				nextLine[k++] = exportConfigs.get(i).getServer().getIp();
@@ -195,7 +192,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 
 	@Override
 	public void dispose() {
-		System.out.println("disposing");
 		super.dispose();
 	}
 
@@ -207,7 +203,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			final boolean terms = DBWizardPageThree.getTerms();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPageThree.getCSVPath();
-			System.out.println("finish?");
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
@@ -230,8 +225,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 
 			for (File listOfInputFile : listOfInputFiles) {
 				if (listOfInputFile.getName().endsWith(".csv")) {
-					System.out.println("deleting input file: "
-							+ listOfInputFile.getName());
 					listOfInputFile.delete();
 				}
 			}
@@ -240,7 +233,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			defaultProps.load(new FileReader(properties));
 			HashMap<Server, HashMap<String, List<String>>> checkedTables = DBWizardPageTwo
 					.getCheckedTables();
-			System.out.println(checkedTables);
 			Iterator<Server> tableServerIterator = checkedTables.keySet()
 					.iterator();
 			List<ExportConfig> exportConfigs = new LinkedList<ExportConfig>();
@@ -251,29 +243,20 @@ System.out.println("filename: " + file.getAbsolutePath());
 				Server currentServer = tableServerIterator.next();
 				String currentServerUniqueID = currentServer.getUniqueID()
 						.replaceAll(" ", "_");
-				System.out.println("currentserver: " + currentServerUniqueID);
 				HashMap<String, java.util.List<String>> schemaHashMap = checkedTables
 						.get(currentServer);
 				Iterator<String> schemaHashMapIterator = schemaHashMap.keySet()
 						.iterator();
 				while (schemaHashMapIterator.hasNext()) {
 					String currentSchema = schemaHashMapIterator.next();
-					System.out.println("currentSchema: " + currentSchema);
 					java.util.List<String> currentTables = schemaHashMap
 							.get(currentSchema);
 					Iterator<String> tablesTableIterator = currentTables
 							.iterator();
 					while (tablesTableIterator.hasNext()) {
 						String table = tablesTableIterator.next();
-						System.out.println("currenttable: " + table);
 						currentServer.setTable(table);
 						currentServer.setSchema(currentSchema);
-						// output = new
-						// File(FOLDERCSV+currentServerUniqueID+"_"+currentSchema+"_"+table+".csv");
-						System.out.println("after output");
-						// EXPORT DB --> TOS
-						// ExportDB.exportDB(currentServer, output);
-						System.out.println("table " + table + " created.");
 
 						bundle = Activator.getDefault().getBundle();
 						Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
@@ -285,11 +268,8 @@ System.out.println("filename: " + file.getAbsolutePath());
 						}
 						File serverFile = new File(fileUrl1.getPath()+"/tables");
 						if (!serverFile.exists()) {
-							System.out.println("TABLES");
-							System.out.println(serverFile.getAbsolutePath());
 							serverFile = new File(serverFile.getAbsolutePath());
-							System.out.println(serverFile.createNewFile());
-							
+							serverFile.createNewFile();							
 						}
 						ObjectInputStream is = new ObjectInputStream(
 								new FileInputStream(serverFile));
@@ -307,14 +287,13 @@ System.out.println("filename: " + file.getAbsolutePath());
 						ExportConfig currentExportConfig = new ExportConfig(
 								currentServer, currentSchema, table);
 						exportConfigs.add(currentExportConfig);
-
 					}
 				}
 			}
 			contextMap = new HashMap<String, String>();
 
 			contextMap.put("DBHost", WizardPageOne.getIpText());
-//			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
+			//			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
@@ -357,7 +336,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			}
 
 			if (DBWizardPageThree.getSaveContext()) {
-				System.out.println("saving context");
 				defaultProps.store(new FileWriter(properties), "");
 			}
 
@@ -366,15 +344,11 @@ System.out.println("filename: " + file.getAbsolutePath());
 					Collections.EMPTY_MAP);
 			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
 
-			// String fileName ="C:/Desktop/export.csv";
 			String fileName = tmpURL2.getPath() + "exportConfig.csv";
-			System.out.println("ExportConfig FileName: " + fileName);
 			createDBExportConfigCSV(exportConfigs, fileName);
-//			defaultProps.setProperty("exportDBConfig", fileName);
-						contextMap.put("exportDBConfig", fileName);
+			contextMap.put("exportDBConfig", fileName);
 
-//			defaultProps.setProperty("folderCSV", FOLDERCSV);
-						contextMap.put("folderCSV", FOLDERCSV);
+			contextMap.put("folderCSV", FOLDERCSV);
 
 			Path miscPath = new Path("/misc/"); //$NON-NLS-1$
 			URL miscUrl = FileLocator.find(bundle, miscPath,
@@ -386,25 +360,15 @@ System.out.println("filename: " + file.getAbsolutePath());
 					"/")
 					+ "/";
 			contextMap.put("folderMain", miscPathReplaced);
-			//			defaultProps.setProperty("folderMainCSV", miscPathReplaced);
-
 			if (DBWizardPageThree.getTruncate()) {
-				System.out.println("truncating");
 				contextMap.put("truncateProject", "true");
-				//				defaultProps.setProperty("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");
-				//				defaultProps.setProperty("truncateProject", "false");
 			}
-
 			contextMap.put("datePattern", "yyyy-MM-dd");
-			//			defaultProps.setProperty("datePattern", "yyyy-MM-dd");
-
 			contextMap.put("pidgen", "false");
-			//			defaultProps.setProperty("pidgen", "false");
 
 			done = false;
-			System.out.println("creating b");
 			b = new Thread(new Runnable() {
 
 				@Override
@@ -487,7 +451,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 				rotatedOutput.writeNext(nextLine);
 			}
 			rotatedOutput.close();
-			System.out.println("writing cfg done");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -29,7 +29,6 @@ public class ImportSourceServerCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		HashMap<String, Server> serverList = ServerList.getSourceServers();
-		System.out.println("import Source server");
 		TreeViewer viewer = ServerView.getSourceServerViewer();
 		FileDialog dialog = new FileDialog(Display.getDefault()
 				.getActiveShell(), SWT.OPEN);

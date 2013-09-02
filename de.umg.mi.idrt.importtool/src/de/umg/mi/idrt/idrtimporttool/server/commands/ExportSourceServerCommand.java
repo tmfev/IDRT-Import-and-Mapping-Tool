@@ -29,7 +29,6 @@ public class ExportSourceServerCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("exporting server");
 		TreeViewer viewer = ServerView.getSourceServerViewer();
 
 		String serverName = viewer.getTree().getSelection()[0].getText();

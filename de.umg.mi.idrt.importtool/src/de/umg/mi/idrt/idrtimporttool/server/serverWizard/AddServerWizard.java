@@ -32,7 +32,6 @@ public class AddServerWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		System.out.println("finish");
 		Server newServer = new Server(AddServerPageOne.getUniqueIDText(),
 				AddServerPageOne.getIpText(), AddServerPageOne.getPortText(),
 				AddServerPageOne.getDBUserText(),

@@ -212,8 +212,6 @@ public class CSVWizardPageThree extends WizardPage {
 					if (configList.contains(filename + ".cfg" + extension)) { 
 						fileConfigMap.put(list.get(i), filename + ".cfg" 
 								+ extension);
-						System.out.println("put: " + list.get(i) + " "  
-								+ filename + ".cfg" + extension); 
 					}
 				}
 			}
@@ -406,7 +404,6 @@ public class CSVWizardPageThree extends WizardPage {
 						for (int i = 0; i<serverListViewer.getTable().getItemCount();i++) {
 							allConfigs = true;
 							serverListViewer.getTable().select(i);
-							System.out.println("SELECTED: " + serverListViewer.getTable().getItem(i).getText());
 							serverListViewer.getTable().notifyListeners(SWT.Selection, new Event());
 							btnGuessSchema.notifyListeners(SWT.Selection, new Event());
 
@@ -498,7 +495,6 @@ public class CSVWizardPageThree extends WizardPage {
 					new SelectionListener() {
 						@Override
 						public void widgetDefaultSelected(SelectionEvent e) {
-							System.out.println("widgetDefaultSelected");
 						}
 
 						@Override
@@ -511,8 +507,6 @@ public class CSVWizardPageThree extends WizardPage {
 								 */
 								if ((lastTable != null)
 										&& (fileConfigMap.get(lastTable) != null)) {
-									System.out.println("saved lasttable: " 
-											+ lastTable);
 									saveTable();
 								}
 
@@ -618,11 +612,6 @@ public class CSVWizardPageThree extends WizardPage {
 											.getTable().getSelection()[0]
 													.getText(), filename + ".cfg" 
 															+ extension);
-									System.out.println("reading: " 
-											+ csvFolder
-											+ serverListViewer.getTable()
-											.getSelection()[0]
-													.getText());
 
 									reader = new CSVReader(new FileReader(
 											csvFolder
@@ -688,7 +677,6 @@ public class CSVWizardPageThree extends WizardPage {
 											rotatedOutput.writeNext(nextLine);
 										}
 										rotatedOutput.close();
-										System.out.println("writing cfg done"); 
 									} catch (IOException e2) {
 										e2.printStackTrace();
 									}
@@ -740,13 +728,6 @@ public class CSVWizardPageThree extends WizardPage {
 					if (cont) {
 						clearMetaDataFromTable();
 
-						System.out.println("fileConfigMap: " 
-								+ fileConfigMap.toString());
-						System.out.println("Guessing Schema"); 
-						System.out.println("selected file: " 
-								+ csvFolder
-								+ serverListViewer.getTable().getSelection()[0]
-										.getText());
 						try {
 							char inputDelim = ';';
 							CSVReader reader = new CSVReader(new FileReader(
@@ -788,7 +769,6 @@ public class CSVWizardPageThree extends WizardPage {
 								.println("Guess Row is not an Integer."); 
 								guessRow = -1;
 							}
-							System.out.println("GUESSROW: " + guessRow); 
 							if (guessRow > 0) {
 								while (((nextLine = reader.readNext()) != null)
 										&& (k < guessRow)) {
@@ -1011,12 +991,9 @@ public class CSVWizardPageThree extends WizardPage {
 			fileConfigMap.put(
 					serverListViewer.getTable().getSelection()[0].getText(),
 					filename + ".cfg" + extension); 
-			System.out.println("reading: " + csvFolder 
-					+ serverListViewer.getTable().getSelection()[0].getText());
 
 			// Read File to generate new Config
 			char inputDelim = ';';
-			System.out.println("DEFAULTDELIM: .." + DEFAULTDELIM + "..");  
 			CSVReader reader = new CSVReader(new FileReader(csvFolder
 					+ serverListViewer.getTable().getSelection()[0].getText()),
 					inputDelim);
@@ -1042,7 +1019,6 @@ public class CSVWizardPageThree extends WizardPage {
 			TableItem[] items = table.getItems();
 			List<String> names = new LinkedList<String>();
 			for (TableItem item : items) {
-				System.out.println("item: " + item.getText(1));
 				names.add(item.getText(1));
 			}
 			table.removeAll();
@@ -1105,30 +1081,19 @@ public class CSVWizardPageThree extends WizardPage {
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
-		System.out.println(fileConfigMap.get(serverListViewer.getTable()
-				.getSelection()[0].getText()));
 	}
 
 	/**
 	 * Saves the Table to disc.
 	 */
 	public static void saveTable() {
-		System.out.println("lastTable: " + lastTable); 
-		System.out.println("fileconfigmap: " + fileConfigMap); 
-		System.out.println("table.isDisposed() " + table.isDisposed()); 
-		System.out.println("fileConfigMap.get(lastTable) " 
-				+ fileConfigMap.get(lastTable));
-		System.out.println();
 		if ((fileConfigMap.get(lastTable) != null) && !table.isDisposed()) {
-			System.out.println("writing cfg to: " + csvFolder 
-					+ fileConfigMap.get(lastTable));
 
 			File tmpTableFile = new File(csvFolder
 					+ fileConfigMap.get(lastTable));
 			try {
 				CSVWriter rotatedOutput = new CSVWriter(new FileWriter(
 						tmpTableFile), DEFAULTDELIM);
-				System.out.println("save table: ::" + DEFAULTDELIM + "::");  
 				TableItem[] tableItems = table.getItems();
 				String[] nextLine = new String[tableItems.length + 1];
 
@@ -1178,5 +1143,4 @@ public class CSVWizardPageThree extends WizardPage {
 		}
 		return super.getPreviousPage();
 	}
-
 }

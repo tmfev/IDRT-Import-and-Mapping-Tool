@@ -93,7 +93,6 @@ public class IDRTImport {
 				ServerView.btnStopSetEnabled(true);
 				exitCode = 	freeLocks.runJobInTOS(getARGV());
 				ServerView.btnStopSetEnabled(false);
-				System.out.println("Removing LocksRemoving LocksRemoving Locks");
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -198,7 +197,6 @@ public class IDRTImport {
 				ServerView.btnStopSetEnabled(true);
 				IDRT_STDTERM stImport = new IDRT_STDTERM();
 				exitCode = 	stImport.runJobInTOS(getARGV());
-				System.out.println("DONE DONE DONE");
 				if (exitCode==0) {
 					IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 					exitCode = transform.runJobInTOS(getARGV());

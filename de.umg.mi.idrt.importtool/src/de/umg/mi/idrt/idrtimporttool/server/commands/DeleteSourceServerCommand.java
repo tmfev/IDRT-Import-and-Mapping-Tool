@@ -22,7 +22,6 @@ public class DeleteSourceServerCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("delete server command");
 		TreeViewer viewer = ServerView.getSourceServerViewer();
 		if ((DBWizardPageTwo.getImportDBViewer() != null)
 				&& !DBWizardPageTwo.getImportDBViewer().getTree().isDisposed()) {
@@ -48,18 +47,15 @@ public class DeleteSourceServerCommand extends AbstractHandler {
 		if (result) {
 
 			if (viewer.getTree().getSelectionCount() > 1) {
-				System.out.println("multiple servers");
 				for (int i = 0; i < viewer.getTree().getSelectionCount(); i++) {
 
 					TreeItem currentTreeItem = viewer.getTree().getSelection()[i];
 					String serverUniqueID = currentTreeItem.getText();
 					Server currentServer = null;
 					if (ServerList.isServer(serverUniqueID)) {
-						System.out.println("is server");
 						currentServer = ServerList.getSourceServers().get(
 								serverUniqueID);
 					} else {
-						System.out.println("getting parent:");
 						TreeItem parentTreeitem = currentTreeItem
 								.getParentItem();
 						serverUniqueID = parentTreeitem.getText();
@@ -73,14 +69,11 @@ public class DeleteSourceServerCommand extends AbstractHandler {
 				TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
 				String serverUniqueID = currentTreeItem.getText();
 				Server currentServer = null;
-				System.out.println("serverUniqueID: " + serverUniqueID);
 				if (ServerList.isServer(serverUniqueID)) {
-					System.out.println("is server: " + serverUniqueID);
 					currentServer = ServerList.getSourceServers().get(
 							serverUniqueID);
 
 				} else {
-					System.out.println("getting parent:");
 					TreeItem parentTreeitem = currentTreeItem.getParentItem();
 					serverUniqueID = parentTreeitem.getText();
 					currentServer = ServerList.getSourceServers().get(
@@ -104,13 +97,9 @@ public class DeleteSourceServerCommand extends AbstractHandler {
 					DBWizardPageTwo.refresh();
 				}
 				if (viewer.getTree().getItemCount() > 0) {
-					System.out.println("setselection");
-					System.out.println(viewer.getTree().getItem(0).getText());
 					viewer.getTree().select(viewer.getTree().getItem(0));
-
 				}
 			}
-
 		}
 		return viewer;
 	}

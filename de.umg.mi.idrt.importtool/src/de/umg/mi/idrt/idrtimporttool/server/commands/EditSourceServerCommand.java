@@ -30,9 +30,7 @@ public class EditSourceServerCommand extends AbstractHandler {
 		if (viewer.getTree().getSelection().length > 0) {
 			TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
 			String serverUniqueID = currentTreeItem.getText();
-			System.out.println("testing: " + serverUniqueID);
 			if (ServerList.isServer(serverUniqueID)) {
-				System.out.println("is server");
 				Server currentServer = ServerList.getSourceServers().get(
 						serverUniqueID);
 				if (currentServer == null) {
@@ -45,7 +43,6 @@ public class EditSourceServerCommand extends AbstractHandler {
 						currentServer, false));
 				wizardDialog.open();
 			} else {
-				System.out.println("getting parent:");
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();
 				serverUniqueID = parentTreeitem.getText();
 				Server currentServer = ServerList.getSourceServers().get(
