@@ -15,7 +15,7 @@ import de.umg.mi.idrt.idrtimporttool.messages.Messages;
  */
 public class ConfigMetaData {
 
-	public static String[] optionsData = { "String", "Date", "Float", "Integer" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+	public static String[] optionsData = { "String", "Date", "Float", "Integer" };
 	
 	/**
 	 * 

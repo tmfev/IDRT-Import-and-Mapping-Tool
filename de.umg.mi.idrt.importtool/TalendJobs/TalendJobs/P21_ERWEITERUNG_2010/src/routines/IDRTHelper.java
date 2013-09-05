@@ -21,7 +21,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 /**	Rotates a given CSV-File to an EAV-Format
  * @author Benjamin Baum
  * @author Christian Bauer
- * @version 0.9
+ * @version 1.0
  */
 public class IDRTHelper {
 
@@ -78,6 +78,7 @@ public class IDRTHelper {
 	private static int Admission = -1;
 	private static int DeathDay = -1;
 
+	private static int headline;
 
 	private String SourcesystemName;
 	//	private static String dbName = "I2B2IDRTDEMO.IDRTHelper";
@@ -195,6 +196,9 @@ public class IDRTHelper {
 			String []niceName = CSVInput.readNext();
 			String []configRow = CSVInput.readNext();
 			String []pidRow = CSVInput.readNext();
+			String []headerRow = CSVInput.readNext();
+			
+			headline = Integer.parseInt(headerRow[1]);
 			CSVInput.close();
 
 			for (int k = 0; k< configRow.length; k++){
@@ -324,7 +328,7 @@ public class IDRTHelper {
 			long start = System.currentTimeMillis();
 			char inputDelim = '\t';
 			char outputDelim = '\t';
-			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim);
+			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
 			String []nextLine = CSVInput.readNext();
 			while((nextLine = CSVInput.readNext()) != null){
@@ -332,7 +336,7 @@ public class IDRTHelper {
 			}
 			System.out.println("ROWS: " + allRows);
 			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim);
+			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			nextLine = CSVInput.readNext();
 
 			if (nextLine.length==1){
@@ -348,7 +352,7 @@ public class IDRTHelper {
 			}
 			System.out.println("quote: " + quoteChar);
 			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar); //
+			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline); //
 
 			CSVWriter rotatedOutput = new CSVWriter(new FileWriter(output), outputDelim);
 
@@ -847,7 +851,7 @@ public class IDRTHelper {
 			System.out.println("PIDGENROTATE");
 			char inputDelim = '\t';
 			char outputDelim = '\t';
-			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim);
+			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
 			String []nextLine = CSVInput.readNext();
 			while((nextLine = CSVInput.readNext()) != null){
@@ -855,7 +859,7 @@ public class IDRTHelper {
 			}
 			System.out.println("ROWS: " + allRows);
 			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim);
+			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			nextLine = CSVInput.readNext();
 
 			if (nextLine.length==1){
@@ -873,7 +877,7 @@ public class IDRTHelper {
 
 
 			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar);
+			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 
 			CSVWriter rotatedOutput = new CSVWriter(new FileWriter(output), outputDelim);
 

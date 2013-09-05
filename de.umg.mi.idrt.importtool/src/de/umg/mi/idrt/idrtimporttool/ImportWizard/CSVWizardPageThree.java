@@ -30,6 +30,8 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseAdapter;
@@ -37,6 +39,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -60,6 +63,7 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.commands.CSVImportCommand;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import org.eclipse.wb.swt.ResourceManager;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -68,6 +72,7 @@ import de.umg.mi.idrt.idrtimporttool.messages.Messages;
  */
 public class CSVWizardPageThree extends WizardPage {
 
+	private static char QUOTECHAR='\"';
 	private Composite container;
 	private static String csvFolder;
 	//	private static String mainPath = "";
@@ -84,7 +89,7 @@ public class CSVWizardPageThree extends WizardPage {
 	private TableColumn tblclmnPIDGen;
 	private Composite compositeTables;
 	private boolean allConfigs;
-	
+
 	private static String oldHeadlineNumber;
 
 	private static List<String> configList;
@@ -153,7 +158,8 @@ public class CSVWizardPageThree extends WizardPage {
 	private Button clearTables;
 	private Button button;
 	private Label startLineLabel;
-	private Text startLineText;
+	private static Text headLineText;
+	private Button refreshBtn;
 
 	/**
 	 * Default Constructor
@@ -163,6 +169,15 @@ public class CSVWizardPageThree extends WizardPage {
 		setTitle(Messages.CSVWizardPageThree_CSVImportSettings); 
 		setWizard(CSVImportCommand.getWizard());
 		setDescription(Messages.CSVWizardPageThree_CSVImportSettings); 
+	}
+	
+	private static int getHeadLine() {
+		try {
+			return Integer.parseInt(headLineText.getText());
+		}catch (Exception e) {
+			System.err.println("Error @ Config:Headline");
+			return 0;
+		}
 	}
 
 	@Override
@@ -494,7 +509,7 @@ public class CSVWizardPageThree extends WizardPage {
 
 			buttonComposite = new Composite(compositeTables, SWT.NONE);
 			buttonComposite.setLayoutData(BorderLayout.SOUTH);
-			buttonComposite.setLayout(new GridLayout(4, false));
+			buttonComposite.setLayout(new GridLayout(5, false));
 			serverListViewer.getTable().addSelectionListener(
 					new SelectionListener() {
 						@Override
@@ -505,7 +520,7 @@ public class CSVWizardPageThree extends WizardPage {
 						public void widgetSelected(SelectionEvent e) {
 
 							try {
-
+								System.out.println("SELECTED");
 								/*
 								 * Fills the table on click by reading or creating a config file
 								 */
@@ -518,6 +533,7 @@ public class CSVWizardPageThree extends WizardPage {
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
 								}
+								//Config present
 								if (fileConfigMap.get(serverListViewer
 										.getTable().getSelection()[0].getText()) != null) {
 									File configFile = new File(csvFolder
@@ -559,8 +575,11 @@ public class CSVWizardPageThree extends WizardPage {
 										String[] line5 = reader.readNext();
 										String[] line6 = reader.readNext();
 										//TODO read header line from config, pidgen?
-										startLineText.setText(line6[1]);
-										startLineText.update();
+										System.out.println("READ: " + line6[1]);
+										headLineText.setText(line6[1]);
+										oldHeadlineNumber = line6[1];
+										headLineText.update();
+										headLineText.redraw();
 										reader.close();
 										lastTable = serverListViewer.getTable()
 												.getSelection()[0].getText();
@@ -578,6 +597,7 @@ public class CSVWizardPageThree extends WizardPage {
 												item.setText(4, line5[i]);
 										}
 									}
+									//new config
 								} else {
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
@@ -590,7 +610,7 @@ public class CSVWizardPageThree extends WizardPage {
 													.getTable()
 													.getSelection()[0]
 															.getText()),
-															DEFAULTDELIM);
+															DEFAULTDELIM,QUOTECHAR,getHeadLine());
 									String[] testLine = reader.readNext();
 									reader.close();
 
@@ -627,7 +647,7 @@ public class CSVWizardPageThree extends WizardPage {
 											.getTable()
 											.getSelection()[0]
 													.getText()),
-													inputDelim);
+													inputDelim,'\"',getHeadLine()); //TODO QUOTECHAR, READLINE
 									String[] line1 = reader.readNext();
 									reader.close();
 									for (String element : line1) {
@@ -702,33 +722,41 @@ public class CSVWizardPageThree extends WizardPage {
 			startLineLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 			startLineLabel.setText("Headline:");
 
-			startLineText = new Text(buttonComposite, SWT.BORDER);
+			headLineText = new Text(buttonComposite, SWT.BORDER);
 			GridData gd_startLineText = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-			gd_startLineText.widthHint = 45;
-			startLineText.setLayoutData(gd_startLineText);
-			startLineText.setText("0");
-			startLineText.addModifyListener(new ModifyListener() {
-				
+			gd_startLineText.widthHint = 25;
+			headLineText.setLayoutData(gd_startLineText);
+			headLineText.setText("");
+			headLineText.addModifyListener(new ModifyListener() {
+
 				@Override
 				public void modifyText(ModifyEvent e) {
 					try {
-						Integer.parseInt(startLineText.getText());
-						oldHeadlineNumber = startLineText.getText();
-						
-						System.out.println(startLineText.getText());
-					
-					//TODO reRead CSV
+						Integer.parseInt(headLineText.getText());
+						oldHeadlineNumber = headLineText.getText();
+							
+						//TODO reRead CSV
 					}catch (NumberFormatException e2) {
-						if (startLineText.getText().isEmpty()) {
-							System.out.println(startLineText.getText());
-							oldHeadlineNumber = startLineText.getText();
-						
+						if (headLineText.getText().isEmpty()) {
+							oldHeadlineNumber = headLineText.getText();
 						}
-						else
-							startLineText.setText(oldHeadlineNumber);
+						else {
+							headLineText.setText(oldHeadlineNumber);
+						}
 					}
 				}});
+			
+			refreshBtn = new Button(buttonComposite, SWT.NONE);
+			refreshBtn.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+//					serverListViewer.getTable().notifyListeners(SWT.Selection, new Event());
+					clearTables.notifyListeners(SWT.Selection, new Event());
+				}
+			});
+			refreshBtn.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/refresh.gif"));
 			clearTables = new Button(buttonComposite, SWT.PUSH);
+			clearTables.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 			clearTables.setText(Messages.CSVWizardPageThree_ClearTable);
 			clearTables.addSelectionListener(new SelectionListener() {
 				@Override
@@ -746,6 +774,7 @@ public class CSVWizardPageThree extends WizardPage {
 				}
 			});
 			btnGuessSchema = new Button(buttonComposite, SWT.NONE);
+			btnGuessSchema.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 			btnGuessSchema.setText(Messages.CSVWizardPageThree_GuessSchema);
 			btnGuessSchema.addSelectionListener(new SelectionListener() {
 				@Override
@@ -771,7 +800,7 @@ public class CSVWizardPageThree extends WizardPage {
 									csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0]
-											.getText()), inputDelim);
+											.getText()), inputDelim,QUOTECHAR,getHeadLine());
 
 							String[] nextLine = reader.readNext();
 							if (nextLine.length == 1) {
@@ -790,7 +819,7 @@ public class CSVWizardPageThree extends WizardPage {
 							reader = new CSVReader(new FileReader(csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
-									inputDelim);
+									inputDelim,QUOTECHAR,getHeadLine());
 							DEFAULTDELIM = inputDelim;
 
 							nextLine = reader.readNext();
@@ -899,7 +928,7 @@ public class CSVWizardPageThree extends WizardPage {
 							reader = new CSVReader(new FileReader(csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
-									inputDelim);
+									inputDelim,QUOTECHAR,getHeadLine());
 							DEFAULTDELIM = inputDelim;
 
 							nextLine = reader.readNext();
@@ -1002,182 +1031,186 @@ public class CSVWizardPageThree extends WizardPage {
 			setControl(container);
 			setPageComplete(true);
 
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-
-		/**
-		 * Clear all metadata from the current table.
-		 */
-		private static void clearMetaDataFromTable() {
-			try {
-				Log.addLog(0, "Deleted " 
-						+ serverListViewer.getTable().getSelection()[0].getText());
-				fileConfigMap.remove(serverListViewer.getTable().getSelection()[0]
-						.getText());
-
-				String tmpElement = serverListViewer.getTable().getSelection()[0]
-						.getText();
-				String filename = tmpElement.substring(0,
-						tmpElement.lastIndexOf(".")); 
-				String extension = tmpElement
-						.substring(tmpElement.lastIndexOf(".")); 
-				fileConfigMap.put(
-						serverListViewer.getTable().getSelection()[0].getText(),
-						filename + ".cfg" + extension); 
-
-				// Read File to generate new Config
-				char inputDelim = ';';
-				CSVReader reader = new CSVReader(new FileReader(csvFolder
-						+ serverListViewer.getTable().getSelection()[0].getText()),
-						inputDelim);
-
-				String[] nextLine = reader.readNext();
-				if (nextLine.length == 1) {
-					System.err.println("Wrong delimiter?"); 
-					if (inputDelim == DEFAULTDELIM) {
-						inputDelim = '\t';
-						System.err.println("Delimiter set to: \\t"); 
-					} else {
-						inputDelim = DEFAULTDELIM;
-
-						System.err.println("Delimiter set to: " + DEFAULTDELIM); 
-					}
-				}
-				reader.close();
-				reader = new CSVReader(new FileReader(csvFolder
-						+ serverListViewer.getTable().getSelection()[0].getText()),
-						inputDelim);
-
-				DEFAULTDELIM = inputDelim;
-				TableItem[] items = table.getItems();
-				List<String> names = new LinkedList<String>();
-				for (TableItem item : items) {
-					names.add(item.getText(1));
-				}
-				table.removeAll();
-				String[] line1 = reader.readNext();
-				for (int i = 0; i < line1.length; i++) {
-					final TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, line1[i]);
-					item.setText(1, names.get(i));
-					item.setText(2, ""); 
-					item.setText(3, ""); 
-				}
-				reader.close();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e2) {
-				e2.printStackTrace();
-			}
-		}
-		/**
-		 * Clears the current table.
-		 */
-		private static void clearTable() {
-			try {
-				table.removeAll();
-				Log.addLog(0, "Deleted " 
-						+ serverListViewer.getTable().getSelection()[0].getText());
-
-				// Read File to generate new Config
-				File newConf = new File(csvFolder
-						+ serverListViewer.getTable().getSelection()[0].getText());
-				char inputDelim = ';';
-				CSVReader reader = new CSVReader(new FileReader(newConf),
-						inputDelim);
-
-				String[] nextLine = reader.readNext();
-				if (nextLine.length == 1) {
-					System.err.println("Wrong delimiter?"); 
-					if (inputDelim == DEFAULTDELIM) {
-						inputDelim = '\t';
-						System.err.println("Delimiter set to: \\t"); 
-					} else {
-						inputDelim = DEFAULTDELIM;
-						System.err.println("Delimiter set to: " + DEFAULTDELIM); 
-					}
-				}
-				reader.close();
-				reader = new CSVReader(new FileReader(newConf), inputDelim);
-				DEFAULTDELIM = inputDelim;
-				String[] line1 = reader.readNext();
-				for (String element : line1) {
-					final TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, element);
-					item.setText(1, ""); 
-					item.setText(2, ""); 
-					item.setText(3, ""); 
-				}
-				reader.close();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e2) {
-				e2.printStackTrace();
-			}
-		}
-
-		/**
-		 * Saves the Table to disc.
-		 */
-		public static void saveTable() {
-			if ((fileConfigMap.get(lastTable) != null) && !table.isDisposed()) {
-
-				File tmpTableFile = new File(csvFolder
-						+ fileConfigMap.get(lastTable));
-				try {
-					CSVWriter rotatedOutput = new CSVWriter(new FileWriter(
-							tmpTableFile), DEFAULTDELIM);
-					TableItem[] tableItems = table.getItems();
-					String[] nextLine = new String[tableItems.length + 1];
-
-					nextLine[0] = "Spaltenname (Pflicht)"; 
-					if (tableItems != null) {
-						nextLine[0] = "Spaltenname (Pflicht)"; 
-						for (int i = 0; i < tableItems.length; i++) {
-							nextLine[i + 1] = tableItems[i].getText(0);
-						}
-						rotatedOutput.writeNext(nextLine);
-
-						nextLine[0] = "Datentyp (Pflicht)"; 
-						for (int i = 0; i < tableItems.length; i++) {
-							nextLine[i + 1] = tableItems[i].getText(2);
-						}
-						rotatedOutput.writeNext(nextLine);
-
-						nextLine[0] = "Name (kann leer sein)"; 
-						for (int i = 0; i < tableItems.length; i++) {
-							nextLine[i + 1] = tableItems[i].getText(1);
-						}
-						rotatedOutput.writeNext(nextLine);
-
-						nextLine[0] = "Metainformationen"; 
-						for (int i = 0; i < tableItems.length; i++) {
-							nextLine[i + 1] = tableItems[i].getText(3);
-						}
-						rotatedOutput.writeNext(nextLine);
-
-						nextLine[0] = "PID-Generator"; 
-						for (int i = 0; i < tableItems.length; i++) {
-							nextLine[i + 1] = tableItems[i].getText(4);
-						}
-						rotatedOutput.writeNext(nextLine);
-					}
-					rotatedOutput.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} 
-		}
-
-		@Override
-		public IWizardPage getPreviousPage() {
-			if (lastTable != null) {
-				saveTable();
-			}
-			return super.getPreviousPage();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
+
+	/**
+	 * Clear all metadata from the current table.
+	 */
+	private static void clearMetaDataFromTable() {
+		try {
+			Log.addLog(0, "Deleted " 
+					+ serverListViewer.getTable().getSelection()[0].getText());
+			fileConfigMap.remove(serverListViewer.getTable().getSelection()[0]
+					.getText());
+
+			String tmpElement = serverListViewer.getTable().getSelection()[0]
+					.getText();
+			String filename = tmpElement.substring(0,
+					tmpElement.lastIndexOf(".")); 
+			String extension = tmpElement
+					.substring(tmpElement.lastIndexOf(".")); 
+			fileConfigMap.put(
+					serverListViewer.getTable().getSelection()[0].getText(),
+					filename + ".cfg" + extension); 
+
+			// Read File to generate new Config
+			char inputDelim = ';';
+			CSVReader reader = new CSVReader(new FileReader(csvFolder
+					+ serverListViewer.getTable().getSelection()[0].getText()),
+					inputDelim,QUOTECHAR,getHeadLine());
+
+			String[] nextLine = reader.readNext();
+			if (nextLine.length == 1) {
+				System.err.println("Wrong delimiter?"); 
+				if (inputDelim == DEFAULTDELIM) {
+					inputDelim = '\t';
+					System.err.println("Delimiter set to: \\t"); 
+				} else {
+					inputDelim = DEFAULTDELIM;
+
+					System.err.println("Delimiter set to: " + DEFAULTDELIM); 
+				}
+			}
+			reader.close();
+			reader = new CSVReader(new FileReader(csvFolder
+					+ serverListViewer.getTable().getSelection()[0].getText()),
+					inputDelim,QUOTECHAR,getHeadLine());
+
+			DEFAULTDELIM = inputDelim;
+			TableItem[] items = table.getItems();
+			List<String> names = new LinkedList<String>();
+			for (TableItem item : items) {
+				names.add(item.getText(1));
+			}
+			table.removeAll();
+			String[] line1 = reader.readNext();
+			for (int i = 0; i < line1.length; i++) {
+				final TableItem item = new TableItem(table, SWT.NONE);
+				item.setText(0, line1[i]);
+				item.setText(1, names.get(i));
+				item.setText(2, ""); 
+				item.setText(3, ""); 
+			}
+			reader.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	}
+	/**
+	 * Clears the current table.
+	 */
+	private static void clearTable() {
+		try {
+			table.removeAll();
+			Log.addLog(0, "Deleted " 
+					+ serverListViewer.getTable().getSelection()[0].getText());
+
+			// Read File to generate new Config
+			File newConf = new File(csvFolder
+					+ serverListViewer.getTable().getSelection()[0].getText());
+			char inputDelim = ';';
+			CSVReader reader = new CSVReader(new FileReader(newConf),
+					inputDelim,QUOTECHAR,getHeadLine());
+
+			String[] nextLine = reader.readNext();
+			if (nextLine.length == 1) {
+				System.err.println("Wrong delimiter?"); 
+				if (inputDelim == DEFAULTDELIM) {
+					inputDelim = '\t';
+					System.err.println("Delimiter set to: \\t"); 
+				} else {
+					inputDelim = DEFAULTDELIM;
+					System.err.println("Delimiter set to: " + DEFAULTDELIM); 
+				}
+			}
+			reader.close();
+			reader = new CSVReader(new FileReader(newConf), inputDelim,QUOTECHAR,getHeadLine());
+			DEFAULTDELIM = inputDelim;
+			String[] line1 = reader.readNext();
+			for (String element : line1) {
+				final TableItem item = new TableItem(table, SWT.NONE);
+				item.setText(0, element);
+				item.setText(1, ""); 
+				item.setText(2, ""); 
+				item.setText(3, ""); 
+			}
+//			headLineText.setText("0");
+			reader.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	}
+
+	/**
+	 * Saves the Table to disc.
+	 */
+	public static void saveTable() {
+		if ((fileConfigMap.get(lastTable) != null) && !table.isDisposed()) {
+
+			File tmpTableFile = new File(csvFolder
+					+ fileConfigMap.get(lastTable));
+			try {
+				CSVWriter rotatedOutput = new CSVWriter(new FileWriter(
+						tmpTableFile), DEFAULTDELIM);
+				TableItem[] tableItems = table.getItems();
+				String[] nextLine = new String[tableItems.length + 1];
+
+				nextLine[0] = "Spaltenname (Pflicht)"; 
+				if (tableItems != null) {
+					nextLine[0] = "Spaltenname (Pflicht)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(0);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Datentyp (Pflicht)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(2);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Name (kann leer sein)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(1);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Metainformationen"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(3);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "PID-Generator"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(4);
+					}
+					rotatedOutput.writeNext(nextLine);
+					nextLine[0] = "Headline"; 
+					nextLine[1] = headLineText.getText();
+					rotatedOutput.writeNext(nextLine);
+				}
+				rotatedOutput.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+	}
+
+	@Override
+	public IWizardPage getPreviousPage() {
+		if (lastTable != null) {
+			saveTable();
+		}
+		return super.getPreviousPage();
+	}
+}

@@ -97,8 +97,6 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProject;
 	public static String ServerView_TruncateProjectConfirmText;
 	public static String ServerView_TruncateProjectQuestion;
-	public static String CSVWizardPageThree_lblStartLine_text;
-	public static String CSVWizardPageThree_text_1_text;
 
 	static {
 		// initialize resource bundle
