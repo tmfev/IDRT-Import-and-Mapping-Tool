@@ -50,6 +50,15 @@ public class Resource {
 	private EditorSourceInfoView _editorSourceInfoView;
 	private EditorTargetView _editorTargetView;
 	private EditorTargetInfoView _editorTargetInfoView;
+	public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
+	public final static String COLOR_INFO_HTML = "C8C8E6";
+	public final static Color COLOR_INFO = new Color(200, 200, 230);
+	public final static String COLOR_ERROR_HTML_LIGHT = "FDD3D3";
+	public final static String COLOR_ERROR_HTML = "FC4A4A";
+	public final static Color COLOR_ERROR = new Color(252, 74, 74);
+	public final static String COLOR_SUCCESS_HTML_LIGHT = "D3FDD2";
+	public final static String COLOR_SUCCESS_HTML = "50FC4A";
+	public final static Color COLOR_SUCCESS = new Color(80, 252, 74);
 
 	public Resource() {
 		Debug.c("Resource");
@@ -799,132 +808,6 @@ public class Resource {
 
 		public void setDisplay(Display display) {
 			// this.display = display;
-		}
-
-		/**
-		 * Loads the properties from a file into this class.
-		 * 
-		 * @throws IOException
-		 * 
-		 */
-		public void setGlobalFromPropertiesFiles() {// Display display) {
-
-			if (true)
-				return;
-			Debug.f("setGlobalFromPropertiesFiles @I2B2ImportTool");
-			String tmpProperty = "";
-			File tmpFile = new File("hans.txt");
-
-			// Shell shell = new Shell (display);
-			// shell.open ();
-
-			/*
-			 * while (!shell.isDisposed ()) { if (!display.readAndDispatch ())
-			 * display.sleep (); }
-			 */
-
-			URL url = Platform.getInstanceLocation().getURL();
-
-			Debug.d("FileDialog:" + url.getPath());
-			/*
-			 * FileDialog fileDialog = new FileDialog(shell);
-			 * 
-			 * fileDialog.setFilterPath(url.getPath());
-			 * 
-			 * fileDialog.setFileName("ImportODMDialog");
-			 * fileDialog.setText("import something"); String openFile =
-			 * fileDialog.open();
-			 */
-			String tmpString2 = "";
-			try {
-				tmpString2 = tmpFile.getCanonicalPath();
-			} catch (IOException e) {
-				Console.error(e);
-			}
-
-			Debug.d("TMPFILE:" + tmpFile.getAbsolutePath() + " :" + tmpString2);
-			this.PROPERTIES = new Properties();
-			try {
-				// loading properties file
-
-				String propertiesFileNameFQ = "properties/hibernate.properties";
-				/*
-				 * Path hibernatePropertiesPath = new
-				 * Path(propertiesFileNameFQ);
-				 * 
-				 * Bundle hibernatePropertiesBundle =
-				 * hibernatePropertiesPlugin.getBundle();
-				 * 
-				 * URL hibernatePropertiesURL = FileLocator.find
-				 * (hibernatePropertiesBundle, hibernatePropertiesPath, null);
-				 * 
-				 * if (null == hibernatePropertiesURL) throw new Exception
-				 * ("URL is null for: " + propertiesFileNameFQ);
-				 * ////////////////
-				 * //////////////////////////////////////////////// boolean
-				 * substituteArgumentsFlag = false; InputStream
-				 * hibernatePropertiesInputStream =
-				 * FileLocator.openStream(hibernatePropertiesBundle,
-				 * hibernatePropertiesPath, substituteArgumentsFlag);
-				 */
-
-				this.PROPERTIES.load(new FileInputStream(
-						this.CONFIGURATION_FILE));
-
-				// loading text file
-
-				this.TEXT.load(new FileInputStream(this.TEXT_FILE));
-
-				this.PROGRAMM_TITLE = (this.PROPERTIES
-						.getProperty("TOOL.PROGRAMM_TITLE") != null ? this.PROPERTIES
-						.getProperty("TOOL.PROGRAMM_TITLE")
-						: "OntologyDataTool 0.01");
-				this.FILE_EXTENSION = this.PROPERTIES
-						.getProperty("TOOL.FILE_EXTENSION") != null ? this.PROPERTIES
-						.getProperty("TOOL.FILE_EXTENSION") : "csv";
-				this.SQL_STUDYID = "";
-				/*
-				 * this.CONCEPTCODE_PATH_SEPARATOR = this.PROPERTIES
-				 * .getProperty("I2B2.BASECODE_SEPARATOR") != null ?
-				 * this.PROPERTIES .getProperty("I2B2.BASECODE_SEPARATOR") :
-				 * ":"; this.PATH_SEPARATOR = this.PROPERTIES
-				 * .getProperty("I2B2.PATH_SEPARATOR") != null ? this.PROPERTIES
-				 * .getProperty("I2B2.PATH_SEPARATOR") : "\\";
-				 */
-				this.I2B2USER = this.PROPERTIES.getProperty("I2B2.USER") != null ? this.PROPERTIES
-						.getProperty("I2B2.USER") : "i2b2i2b2thesis";
-				this.ONTOLOGYHEADPATH = this.PROPERTIES
-						.getProperty("I2B2.ONTOLOGYHEADPATH") != null ? this.PROPERTIES
-						.getProperty("I2B2.ONTOLOGYHEADPATH") : "\\i2b2";
-				this.DELETE_OLD_ENTRIES = this.PROPERTIES
-						.getProperty("I2B2.DELETE_OLD_ENTRIES") != null ? (this.PROPERTIES
-						.getProperty("I2B2.DELETE_OLD_ENTRIES").equals("true") ? true
-						: false)
-						: true;
-				this.CREATE_ONE_SQL_FILE = this.PROPERTIES
-						.getProperty("I2B2.CREATE_ONE_SQL_FILE") != null ? (this.PROPERTIES
-						.getProperty("I2B2.CREATE_ONE_SQL_FILE").equals("true") ? true
-						: false)
-						: true;
-				tmpProperty = this.PROPERTIES.getProperty("I2B2.DATABASE_URL");
-				this.DATABASE_URL = tmpProperty != null
-						&& !tmpProperty.isEmpty() ? this.PROPERTIES
-						.getProperty("I2B2.DATABASE_URL") : "";
-				tmpProperty = this.PROPERTIES
-						.getProperty("I2B2.DATABASE_USERNAME");
-				this.DATABASE_USERNAME = tmpProperty != null
-						&& !tmpProperty.isEmpty() ? this.PROPERTIES
-						.getProperty("I2B2.DATABASE_USERNAME") : "";
-			} catch (Exception e) {
-				System.err.println("Error in reading properties from file. ("
-						+ e.toString() + ")");
-				/*
-				 * Global.messages.addMessage(
-				 * "Error in reading properties from file. ("+e.toString()+")",
-				 * SystemMessage.MessageType.SUCCESS,
-				 * SystemMessage.MessageLocation.MAIN);
-				 */
-			}
 		}
 
 		/**

@@ -2,7 +2,6 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.io.UnsupportedEncodingException;
 import javax.swing.JTree;
-import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -10,7 +9,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.Global;
 
 
 public class OntologyTree extends JTree {

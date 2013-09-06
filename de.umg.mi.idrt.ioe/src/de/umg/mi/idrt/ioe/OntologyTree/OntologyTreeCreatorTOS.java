@@ -24,15 +24,16 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 
 
-
 /**
- * This class provides loads data from csv files and constructes a jtree.
- * All   
- *  
- * @author	Christian Bauer	
- * @version 1
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         sdf
+ * 
  */
-public class OTCreatorTOS extends OntologyTreeCreator {
+
+public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 
 	String _filename = "";
 
@@ -43,7 +44,7 @@ public class OTCreatorTOS extends OntologyTreeCreator {
 	private InputStream _patientStream;
 	private InputStream _patientDataStream;
 
-	public OTCreatorTOS ( MyOntologyTree myOT, String filename ){
+	public OntologyTreeCreatorTOS ( MyOntologyTree myOT, String filename ){
 		super(myOT);
 		_filename = filename;
 		System.out.println("OTCreatorTOS");

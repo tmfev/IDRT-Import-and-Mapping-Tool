@@ -15,12 +15,21 @@ import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
+import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
+
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         main view for the eio source, a drag and drop tree
+ */
 
 public class EditorSourceView extends ViewPart {
 
@@ -40,7 +49,7 @@ public class EditorSourceView extends ViewPart {
 
 	@Override
 	public void setFocus() {
-
+		// do nothing
 	}
 
 	public I2B2ImportTool setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
@@ -52,10 +61,9 @@ public class EditorSourceView extends ViewPart {
 	}
 
 	public void setComposite() {
-		System.out.println("setCompostieSource!!");
-
 		Control[] children = this._composite.getChildren();
 
+		// delete old tree
 		for (int x = 0; x < children.length; x++) {
 			children[0].dispose();
 		}
@@ -72,11 +80,9 @@ public class EditorSourceView extends ViewPart {
 
 		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeSource());
-		//treeContentProvider.setViewTree(this._i2b2ImportTool
-		//		.getMyOntologyTrees().getViewTree());
-
+		
 		if (treeContentProvider.getRoot() == null) {
-			System.out.println("!!!!rootNull");
+			Console.error("EditorSourceView: TreeContentRoot is null.");
 			_composite.getChildren()[0].dispose();
 			Label label = new Label(_composite, SWT.SHADOW_NONE);
 			String message = "Error while reading or creating source tree. Please visit the LOG-File-World of despair.";
@@ -92,7 +98,7 @@ public class EditorSourceView extends ViewPart {
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
 		viewer.setInput(oTreeContent.getModel());
-		viewer.expandToLevel( Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL );
+		viewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
 		this._i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 				.setTreeViewer(viewer);
@@ -103,26 +109,13 @@ public class EditorSourceView extends ViewPart {
 
 				// ViewTableNode viewNode = (ViewTableNode) e.item.item;
 				if (e.item == null || e.item.getData() == null) {
-					System.out
-							.println("WidgetSelected but no known node found!");
+					Console.error("WidgetSelected but no known node found!");
 					return;
 				}
-
-				/*
-				 * ViewTreeNode viewNode = (ViewTreeNode) e.item.getData();
-				 * OTNode node = viewNode.getOTNode();
-				 */
-
+				
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
 
 				if (node != null) {
-
-					/*
-					 * if (!node.getNodeType().equals( NodeType.ITEM )){
-					 * 
-					 * // //Activator.getDefault().getResource().
-					 * getOntologyAnswersPreviewView().setItemNode(null); }
-					 */
 
 					Activator.getDefault().getResource()
 							.getEditorSourceInfoView().setNode(node);

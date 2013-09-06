@@ -11,11 +11,21 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreator;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         interface that enables a talend open studio job to interact with the
+ *         ioe a dummy copy of this has to be imported into the tos job
+ */
+
 public class TOSHandler {
 
 	OntologyTree _ot = null;
-	private OntologyTreeCreator _otCreator;
+
 	private OntologyTree _ontologyTreeTarget;
+	private OntologyTreeCreator _otCreator;
 
 	public TOSHandler() {
 
@@ -71,9 +81,6 @@ public class TOSHandler {
 			Date DOWNLOAD_DATE, Date IMPORT_DATE, String SOURCESYSTEM_CD,
 			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
 			String C_SYMBOL) {
-
-		
-	
 
 		if (_ot == null)
 			System.out.println("_ot == null!!");

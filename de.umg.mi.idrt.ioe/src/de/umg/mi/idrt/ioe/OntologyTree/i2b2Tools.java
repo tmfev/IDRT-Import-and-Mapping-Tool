@@ -1,7 +1,6 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.Global;
 
 public class i2b2Tools {
 

@@ -195,18 +195,18 @@ public class SystemMessage {
 		public MessageLooks(SystemMessage.MessageType messageType) {
 			if (messageType.equals(SystemMessage.MessageType.SUCCESS)) {
 				// actionMessagePane.setBackground( Color.GREEN );
-				color = Global.COLOR_SUCCESS_HTML;
-				colorLight = Global.COLOR_SUCCESS_HTML_LIGHT;
+				color = Resource.COLOR_SUCCESS_HTML;
+				colorLight = Resource.COLOR_SUCCESS_HTML_LIGHT;
 				iconName = "sign-success.png";
 			} else if (messageType.equals(SystemMessage.MessageType.ERROR)) {
 				// actionMessagePane.setBackground( Color.RED );
-				color = Global.COLOR_ERROR_HTML;
-				colorLight = Global.COLOR_ERROR_HTML_LIGHT;
+				color = Resource.COLOR_ERROR_HTML;
+				colorLight = Resource.COLOR_ERROR_HTML_LIGHT;
 				iconName = "sign-error.png";
 			} else {
 				// actionMessagePane.setBackground( Color.LIGHT_GRAY );
-				color = Global.COLOR_INFO_HTML;
-				colorLight = Global.COLOR_INFO_HTML_LIGHT;
+				color = Resource.COLOR_INFO_HTML;
+				colorLight = Resource.COLOR_INFO_HTML_LIGHT;
 				iconName = "sign-info.png";
 			}
 		}

@@ -67,11 +67,6 @@
             id="edu.goettingen.i2b2.importtool.commands.SystemExit"
             name="%command.name.0">
       </command>
-      <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.ShowImportProgressBar"
-            id="edu.goettingen.i2b2.importtool.commands.ShowImportProgressBar"
-            name="%command.name.5">
-      </command>
       <category
             id="edu.goettingen.i2b2.importtool.OntologyEditor"
             name="OntologyEditor">

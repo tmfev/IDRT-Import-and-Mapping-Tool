@@ -13,8 +13,6 @@ import java.util.Properties;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.widgets.TreeItem;
 import org.osgi.framework.Bundle;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
@@ -25,6 +23,14 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         connector for using the TOS-generated java files inside the ieo code
+ * 
+ */
 
 public class TOSConnector {
 
@@ -35,20 +41,7 @@ public class TOSConnector {
 
 	public TOSConnector() {
 
-		System.out.println("--->> activate TOSConnector");
-		Debug.d("TOSConnector: activate!!!");
-
-		/*
-		 * String [][]tmpOutput = tos.runJob((getARGV()));
-		 * 
-		 * Debug.d("TOSConnector: >>> output");
-		 * 
-		 * for ( int i = 0; i < tmpOutput.length; i++ ){
-		 * 
-		 * for ( int j = 0; j < tmpOutput[i].length; j++ ) {
-		 * 
-		 * Debug.d("tos: " + tmpOutput[i][j]); } }
-		 */
+		Console.info("TOSConnector: establising a TOS connection");
 	}
 
 	public static tos.tosidrtconnector_0_4.TOSIDRTConnector getConnection() {
@@ -58,8 +51,6 @@ public class TOSConnector {
 
 		try {
 			tos = new tos.tosidrtconnector_0_4.TOSIDRTConnector();
-
-			File file = new File("asd");
 
 			contextName = "Default";
 
@@ -93,24 +84,24 @@ public class TOSConnector {
 			}
 
 			String schema = ServerView.getCurrentSchema();
-//					defaultProps.getProperty("schema");
+			// defaultProps.getProperty("schema");
 			String serverUniqueName = ServerView.getSelectedServer();
-			System.out.println(serverUniqueName);
+			Console.info(serverUniqueName);
 			Server currentServer = null;
 			if (serverUniqueName != null) {
-				currentServer = ServerList.getTargetServers().get(serverUniqueName);
+				currentServer = ServerList.getTargetServers().get(
+						serverUniqueName);
 			}
 
-			System.out.println("Current server: " + currentServer.toString());
+			Console.info("Current server: " + currentServer.toString());
 
 			if (currentServer != null) {
 				Console.info("Using selected server \""
 						+ currentServer.getName() + "(\""
 						+ currentServer.getSchema() + "\")\" for db query.");
 
-
-				System.out.println("currentSchema:" + schema);
-				System.out.println("sid: " + currentServer.getSID());
+				Console.info("currentSchema:" + schema);
+				Console.info("sid: " + currentServer.getSID());
 				System.out
 						.println("OracleUsername: " + currentServer.getUser());
 
@@ -140,11 +131,9 @@ public class TOSConnector {
 	}
 
 	public void getOntology() {
-		System.out.println("TOSConnector: getOntology()");
+		Console.info("TOSConnector: getOntology()");
 		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 
-		
-		
 		try {
 
 			setContextVariable("Job", "ontology");
@@ -162,7 +151,7 @@ public class TOSConnector {
 					+ e.getMessage();
 			Console.error(message);
 			Application.getStatusView().addErrorMessage(message);
-			System.out.println("TOS-Error2: " + tos.getErrorCode() + " / "
+			Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
 					+ tos.getEndpoint() + " / " + tos.getException() + " / "
 					+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
 					+ " / " + tos.getContext().SQLCommand);

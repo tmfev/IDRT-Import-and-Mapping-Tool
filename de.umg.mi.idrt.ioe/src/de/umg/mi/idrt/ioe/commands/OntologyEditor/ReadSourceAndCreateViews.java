@@ -16,7 +16,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OTCreatorTOS;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreatorTOS;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -105,12 +105,14 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			OntologyTreeNode treeRoot = i2b2ImportTool.getMyOntologyTrees()
 					.getTreeRoot();
 
-			OTCreatorTOS creator = new OTCreatorTOS(
+			OntologyTreeCreatorTOS creator = new OntologyTreeCreatorTOS(
 					i2b2ImportTool.getMyOntologyTrees(), "");
 
+			/*
 			creator.createMeta();
 			creator.createOntology();
 			creator.createPatientData();
+			*/
 
 			editorSourceView.setComposite();
 

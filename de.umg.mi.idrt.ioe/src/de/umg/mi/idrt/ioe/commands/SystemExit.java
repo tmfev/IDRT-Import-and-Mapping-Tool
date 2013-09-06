@@ -5,23 +5,25 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
-
-
 
 public class SystemExit extends AbstractHandler {
 
-	public SystemExit(){
-		super();
-	}
+	//TODO maybe delete? is it used?
 	
+	public SystemExit() {
+		super();
+		Console.info("SuperExit!");
+
+	}
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		HandlerUtil.getActiveWorkbenchWindow(event).close();
-		Debug.d("Workbench closed");
+		Console.info("Workbench closed");
 		System.exit(0);
 		return null;
 	}
-
 
 }

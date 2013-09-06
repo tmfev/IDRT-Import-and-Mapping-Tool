@@ -1,6 +1,5 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.swt.SWT;
@@ -11,16 +10,23 @@ import org.eclipse.swt.widgets.MenuItem;
 
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
+import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 
-
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         drop listener for getting data from the source tree to the target
+ *         tree
+ * 
+ */
 
 public class NodeDropListener extends ViewerDropAdapter {
-	
-	private MyOntologyTree myOT = null;
 
+	private MyOntologyTree myOT = null;
 	private final Viewer viewer;
-	
 	private OntologyTreeNode sourceNode = null;
 	private OntologyTreeNode targetNode = null;
 
@@ -36,14 +42,15 @@ public class NodeDropListener extends ViewerDropAdapter {
 	public void drop(DropTargetEvent event) {
 		int location = this.determineLocation(event);
 		// String target = (String) determineTarget(event);
-		
+
 		String translatedLocation = "";
-		System.out.println("getDate: " + ((OntologyTreeNode)event.item.getData()).getName());
+		Console.info("getDate: "
+				+ ((OntologyTreeNode) event.item.getData()).getName());
 		event.item.getData();
 		OntologyTreeNode targetNode = (OntologyTreeNode) determineTarget(event);
 
 		this.targetNode = targetNode;
-		
+
 		switch (location) {
 		case 1:
 			translatedLocation = "Dropped before the target ";
@@ -59,16 +66,14 @@ public class NodeDropListener extends ViewerDropAdapter {
 			break;
 		}
 
-		System.out.println(translatedLocation);
+		Console.info(translatedLocation);
 
 		if (location != 4) {
-			System.out.println("The drop was done on the element: "
+			Console.info("The drop was done on the element: "
 					+ targetNode.getName());
 
-			/* copy nodes  */
-			
-			
-			
+			/* copy nodes */
+
 		}
 		super.drop(event);
 	}
@@ -79,68 +84,69 @@ public class NodeDropListener extends ViewerDropAdapter {
 	// viewer by calling its setInput method.
 	@Override
 	public boolean performDrop(Object data) {
-			System.out.println("Dropped performed with data:");
-		//System.out.println(" - selectedObjectClass: " + this..getSelectedObject().getClass().getSimpleName());
-		System.out.println(" - data: " + data.getClass().getSimpleName());
-		System.out.println(" - data_toString: " + (String)data.toString());
-		
-		if (this.targetNode != null){
-			System.out.println(" - targetNode: " +  targetNode.getName());
+		Console.info("Dropped performed with data:");
+		// Console.info(" - selectedObjectClass: " +
+		// this..getSelectedObject().getClass().getSimpleName());
+		Console.info(" - data: " + data.getClass().getSimpleName());
+		Console.info(" - data_toString: " + (String) data.toString());
+
+		if (this.targetNode != null) {
+			Console.info(" - targetNode: " + targetNode.getName());
 		} else {
-			System.out.println(" - targetNode is Null!");
+			Console.info(" - targetNode is Null!");
 		}
-		
-		
-		
-		System.out.println(" - data this.myOT?: " + ( this.myOT == null ? "isNull" : "is NOT null" ) );
-		System.out.println(" - data this.myOT.getViewTree()?: " + ( this.myOT.getVieTreeSource() == null ? "isNull" : "is NOT null" ) );
-		
-		System.out.println(" - data size?: " + this.myOT.getVieTreeSource().stringPathToViewTreeNode.size() );
-		System.out.println(" - data size2?: " + this.myOT.getViewTreeTarget().stringPathToViewTreeNode.size() );
+
+		Console.info(" - data this.myOT?: "
+				+ (this.myOT == null ? "isNull" : "is NOT null"));
+		Console.info(" - data this.myOT.getViewTree()?: "
+				+ (this.myOT.getVieTreeSource() == null ? "isNull"
+						: "is NOT null"));
+
+		Console.info(" - data size?: "
+				+ this.myOT.getVieTreeSource().stringPathToViewTreeNode.size());
+		System.out
+				.println(" - data size2?: "
+						+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
+								.size());
 
 		/*
-		ActionCommand command2 = new ActionCommand(Resource.ID.OntologyTreeEditor.Command.EXPORT);
-		command2.addParameter(Resource.ID.Command.EXPORT_ATTRIBUTE_RESTRICT_NUMBER_OF_PATIENTS, Integer.valueOf(2));
-		command2.addParameter(Resource.ID.Command.EXPORT_ATTRIBUTE_NUMBER_OF_PATIENTS, "3");
+		 * ActionCommand command2 = new
+		 * ActionCommand(Resource.ID.OntologyTreeEditor.Command.EXPORT);
+		 * command2.addParameter(Resource.ID.Command.
+		 * EXPORT_ATTRIBUTE_RESTRICT_NUMBER_OF_PATIENTS, Integer.valueOf(2));
+		 * command2
+		 * .addParameter(Resource.ID.Command.EXPORT_ATTRIBUTE_NUMBER_OF_PATIENTS
+		 * , "3");
+		 * 
+		 * Application.executeCommand(command2);
+		 */
 
-		Application.executeCommand(command2);
-		*/
-		
-		System.out.println("OTCOPY:");
-		
-		System.out.println(" - things to copy: SourceNode (\"" + data.toString() + "\") or TargetNode (\"" + targetNode.getTreePath() + "\") ");
-		
-		
-		myOT.dropCommandCopyNodes( data.toString(), targetNode.getTreePath() );
-		
-		
-		//OTNode sourceNode = this.myOT.getOT().getNodeLists().getNodeByPath( data.toString() );
-		
-		
+		Console.info("OTCOPY:");
+
+		Console.info(" - things to copy: SourceNode (\""
+				+ data.toString() + "\") or TargetNode (\""
+				+ targetNode.getTreePath() + "\") ");
+
+		myOT.dropCommandCopyNodes(data.toString(), targetNode.getTreePath());
+
+		// OTNode sourceNode = this.myOT.getOT().getNodeLists().getNodeByPath(
+		// data.toString() );
+
 		/*
-		
-		if ( sourceNode != null ){
-			System.out.println("sourceNode found:" + sourceNode.getName());
-			this.myOT.copySourceNodeToTarget(sourceNode, targetNode);
-			//targetNode.get
-			//myOT.getOTTarget().getTreeViewer().expandToLevel(targetNode, level);
-		} else {
-			System.out.println("Eorr in NodeDropListener: SourceNode (\"" + data.toString() + "\") not found.");
-		}
-		
-		
-		
-		
-		*/
+		 * 
+		 * if ( sourceNode != null ){ Console.info("sourceNode found:" +
+		 * sourceNode.getName()); this.myOT.copySourceNodeToTarget(sourceNode,
+		 * targetNode); //targetNode.get
+		 * //myOT.getOTTarget().getTreeViewer().expandToLevel(targetNode,
+		 * level); } else {
+		 * Console.info("Eorr in NodeDropListener: SourceNode (\"" +
+		 * data.toString() + "\") not found."); }
+		 */
 
-	    //fileSelectionButton.setFocus();
-		
-		
-		
-		
+		// fileSelectionButton.setFocus();
+
 		this.viewer.refresh();
-		
-		
+
 		return false;
 	}
 
@@ -151,7 +157,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 	}
 
-	public void setMyOT(MyOntologyTree myOT){
+	public void setMyOT(MyOntologyTree myOT) {
 		this.myOT = myOT;
 	}
 }
