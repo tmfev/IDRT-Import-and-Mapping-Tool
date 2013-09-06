@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.idrtimporttool.ImportWizard;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -133,8 +134,6 @@ public class DBWizardPageTwo extends WizardPage {
 			is.close();
 
 			tableMap.remove(tableName);
-			System.out.println("deleted " + tableName + " from "
-					+ server.getUniqueID());
 
 			ObjectOutputStream os;
 			os = new ObjectOutputStream(new FileOutputStream(serverFile));
@@ -241,7 +240,6 @@ public class DBWizardPageTwo extends WizardPage {
 	 * commands for target server
 	 */
 	public static void refresh() {
-		System.out.println("refreshing");
 		serverViewer.setContentProvider(new ServerSourceContentProvider());
 		serverViewer.refresh();
 	}
@@ -261,7 +259,6 @@ public class DBWizardPageTwo extends WizardPage {
 	 * Checks the active, shown table, if patientID is assigned.
 	 */
 	private void checkTable() {
-		System.out.println("CHECKING TABLE");
 		boolean pid = false;
 		getWizard().getContainer().updateButtons();
 		TableItem[] items = table.getItems();
@@ -288,12 +285,6 @@ public class DBWizardPageTwo extends WizardPage {
 	}
 
 	private void clearMetaDataFromTable() {
-
-		// TableItem[] items = table.getItems();
-		//
-		// for (int i = 0; i < items.length; i++) {
-		// System.out.println("1: " + items[i].getText(1));
-		// }
 		clearSingleTable();
 		loadCurrentTableFromDB();
 	}
@@ -340,7 +331,6 @@ public class DBWizardPageTwo extends WizardPage {
 				public void mouseDown(MouseEvent event) {
 					old = editor.getEditor();
 					if (old != null) {
-						System.out.println("old editor !=null");
 						old.dispose();
 					}
 					Point pt = new Point(event.x, event.y);
@@ -559,13 +549,9 @@ public class DBWizardPageTwo extends WizardPage {
 					if (cont) {
 						DBWizardPageTwo.this.clearMetaDataFromTable();
 
-						System.out.println("Guessing Schema");
 						TableItem[] items = table.getItems();
 
 						for (int i = 0; i < items.length; i++) {
-							System.out.println("0: " + items[i].getText(0));
-							System.out.println("1: " + items[i].getText(1));
-							System.out.println();
 
 							if (items[i].getText(0).toLowerCase()
 									.contains("patient")
@@ -635,7 +621,6 @@ public class DBWizardPageTwo extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					System.out.println("deleting saved tables");
 					try {
 						boolean result = MessageDialog.openConfirm(
 								parent.getShell(), "Clear All Tables?",
@@ -649,7 +634,6 @@ public class DBWizardPageTwo extends WizardPage {
 							URL fileUrl = FileLocator.toFileURL(url);
 							File serverFile = new File(fileUrl.getPath());
 							tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
-							System.out.println(serverFile.getAbsolutePath());
 							ObjectOutputStream os = new ObjectOutputStream(
 									new FileOutputStream(serverFile));
 							// os.writeObject(itemList);
@@ -709,8 +693,6 @@ public class DBWizardPageTwo extends WizardPage {
 					for (Object checkedElement : checkedElements) {
 						if (checkedElement.getClass().equals(ServerTable.class)) {
 							ServerTable currentTable = (ServerTable) checkedElement;
-							System.out.println("currenttable server: "
-									+ currentTable.getServer());
 							server = currentTable.getServer();
 							if (checkedTables.get(currentTable.getServer()) != null) {
 
@@ -777,7 +759,6 @@ public class DBWizardPageTwo extends WizardPage {
 							// if (viewer.getTree().getSelection()[0].getData()
 							// instanceof ServerTable && server !=null){
 							if ((server != null) && (tableName != null)) {
-								System.out.println("saved: " + tableName);
 								DBWizardPageTwo.this.saveCurrentTableToDisc();
 							}
 							// }
@@ -787,14 +768,8 @@ public class DBWizardPageTwo extends WizardPage {
 							if (serverViewer.getTree().getSelectionCount() > 0) {
 								if ((serverViewer.getTree().getSelection()[0]
 										.getData() instanceof ServerTable)) {
-									System.out.println("class: "
-											+ serverViewer.getTree()
-													.getSelection()[0]
-													.getData().getClass());
 									tableName = serverViewer.getTree()
 											.getSelection()[0].getText();
-									System.out.println("NEW TABLE NAME: "
-											+ tableName);
 									if (serverViewer.getTree().getSelection()[0]
 											.getData() instanceof ServerTable) {
 										server = ServerList
@@ -835,7 +810,6 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							System.out.println("add server clicked");
 							DBWizardPageTwo.this.addSourceDBServer();
 						}
 					});
@@ -852,7 +826,6 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							System.out.println("edit server clicked");
 							DBWizardPageTwo.this.editSourceServer();
 						}
 					});
@@ -869,10 +842,8 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							System.out.println("delete server clicked");
 							DBWizardPageTwo.this.deleteSourceServer();
 							if (serverViewer.getTree().getChildren() == null) {
-								System.out.println("empty tree");
 							}
 						}
 					});
@@ -1041,8 +1012,6 @@ public class DBWizardPageTwo extends WizardPage {
 				.getTree().getSelection()[0].getParentItem().getText(), server);
 		try {
 			int columnCount = rset.getMetaData().getColumnCount();
-			System.out.println("count: " + columnCount);
-			System.out.println("size: " + rset.getFetchSize());
 			List<String> rowContent = new LinkedList<String>();
 			while (rset.next()) {
 				for (int i = 1; i <= columnCount; i++) {
@@ -1052,7 +1021,6 @@ public class DBWizardPageTwo extends WizardPage {
 
 			for (int i = 1; i <= columnCount; i++) {
 				String dataType = null;
-				System.out.println("DATATYPE: " + rset.getMetaData().getColumnClassName(i));
 				if (rset.getMetaData().getColumnClassName(i)
 						.equalsIgnoreCase("java.lang.String")) {
 					dataType = "String";
@@ -1093,7 +1061,7 @@ public class DBWizardPageTwo extends WizardPage {
 	private void loadCurrentTableFromDisc() {
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
@@ -1101,7 +1069,7 @@ public class DBWizardPageTwo extends WizardPage {
 			}
 			File serverFile = null;
 			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath());
+				serverFile = new File(fileUrl.getPath()+"/tables");
 			}
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
@@ -1109,12 +1077,9 @@ public class DBWizardPageTwo extends WizardPage {
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
 					.readObject();
 			is.close();
-			System.out.println("loading " + tableName + " "
-					+ server.getUniqueID());
 
-			if (tableMap.get(server.getUniqueID()) == null) {
-				System.out.println("get server null");
-			} else {
+			if (tableMap.get(server.getUniqueID()) != null) {
+			
 				List<List<String>> itemList = tableMap
 						.get(server.getUniqueID()).get(tableName);
 				if (itemList != null) {
@@ -1127,6 +1092,9 @@ public class DBWizardPageTwo extends WizardPage {
 					}
 				}
 			}
+			
+		}catch (EOFException ee) {
+			System.err.println("EOF");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -1142,16 +1110,14 @@ public class DBWizardPageTwo extends WizardPage {
 	@SuppressWarnings("unchecked")
 	private void saveCurrentTableToDisc() {
 		try {
-			System.out.println("@saveCurrentTable() -- saving: " + tableName);
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path imgImportPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, imgImportPath,
 					Collections.EMPTY_MAP);
 			URL fileUrl = FileLocator.toFileURL(url);
-			File serverFile = new File(fileUrl.getPath());
-			ObjectInputStream is;
-			// tableMap = new HashMap<String, List<List<String>>>();
-			is = new ObjectInputStream(new FileInputStream(serverFile));
+			File serverFile = new File(fileUrl.getPath()+"/tables");
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(serverFile));
+			
 			// List<List<String>> itemList = (List<List<String>>)
 			// is.readObject();
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
@@ -1159,7 +1125,7 @@ public class DBWizardPageTwo extends WizardPage {
 			if (tableMap == null) {
 				tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
 			}
-			is.close();
+		
 			TableItem[] tableItems = table.getItems();
 			List<List<String>> itemList = new LinkedList<List<String>>();
 			for (TableItem currentItem : tableItems) {
@@ -1171,10 +1137,8 @@ public class DBWizardPageTwo extends WizardPage {
 			}
 
 			if (server == null) {
-				System.out.println("SERVER NULL???!?!?");
 			}
 			if (tableMap.get(server.getUniqueID()) == null) {
-				System.out.println("save getserver null");
 				HashMap<String, List<List<String>>> tmpHash = new HashMap<String, List<List<String>>>();
 				tmpHash.put(tableName, itemList);
 				tableMap.put(server.getUniqueID(), tmpHash);
@@ -1186,10 +1150,48 @@ public class DBWizardPageTwo extends WizardPage {
 			os.writeObject(tableMap);
 			os.flush();
 			os.close();
-		} catch (FileNotFoundException e1) {
+			
+		} catch (EOFException eee) {
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
+			URL url = FileLocator.find(bundle, imgImportPath,
+					Collections.EMPTY_MAP);
+			URL fileUrl;
+			try {
+				fileUrl = FileLocator.toFileURL(url);
+			
+			File serverFile = new File(fileUrl.getPath()+"/tables");
+			tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
+			TableItem[] tableItems = table.getItems();
+			List<List<String>> itemList = new LinkedList<List<String>>();
+			for (TableItem currentItem : tableItems) {
+				List<String> currentItemList = new LinkedList<String>();
+				for (int j = 0; j < 5; j++) {
+					currentItemList.add(currentItem.getText(j));
+				}
+				itemList.add(currentItemList);
+			}
+
+			if (tableMap.get(server.getUniqueID()) == null) {
+				HashMap<String, List<List<String>>> tmpHash = new HashMap<String, List<List<String>>>();
+				tmpHash.put(tableName, itemList);
+				tableMap.put(server.getUniqueID(), tmpHash);
+			} else {
+				tableMap.get(server.getUniqueID()).put(tableName, itemList);
+			}
+			ObjectOutputStream os;
+			os = new ObjectOutputStream(new FileOutputStream(serverFile));
+			os.writeObject(tableMap);
+			os.flush();
+			os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		 catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -1202,7 +1204,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/tables"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
@@ -1210,7 +1212,11 @@ public class DBWizardPageTwo extends WizardPage {
 			}
 			File serverFile = null;
 			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath());
+				serverFile = new File(fileUrl.getPath()+"/tables");
+			}
+			if (!serverFile.exists()) {
+				serverFile = new File(serverFile.getAbsolutePath());
+				serverFile.createNewFile();				
 			}
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
@@ -1218,12 +1224,9 @@ public class DBWizardPageTwo extends WizardPage {
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
 					.readObject();
 			is.close();
-			// System.out.println("loading " + tableName + " " +
-			// server.getUniqueID());
 
 			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPageTwo
 					.getCheckedTables();
-			System.out.println("CHECKED TABLEs@tablesComplete: " + tables);
 			if (!tables.isEmpty()) {
 				Iterator<Server> tableServerIterator = tables.keySet()
 						.iterator();
@@ -1231,7 +1234,6 @@ public class DBWizardPageTwo extends WizardPage {
 				// server
 				while (tableServerIterator.hasNext()) {
 					Server currentServer = tableServerIterator.next();
-					System.out.println("currentServer: " + currentServer);
 					HashMap<String, java.util.List<String>> schemaHashMap = tables
 							.get(currentServer);
 					Iterator<String> schemaHashMapIterator = schemaHashMap
@@ -1240,7 +1242,6 @@ public class DBWizardPageTwo extends WizardPage {
 					// schema
 					while (schemaHashMapIterator.hasNext()) {
 						String currentSchema = schemaHashMapIterator.next();
-						System.out.println("currentSchema: " + currentSchema);
 						java.util.List<String> currentTables = schemaHashMap
 								.get(currentSchema);
 						Iterator<String> tablesTableIterator = currentTables
@@ -1249,13 +1250,7 @@ public class DBWizardPageTwo extends WizardPage {
 						// tables
 						while (tablesTableIterator.hasNext()) {
 							String currentTable = tablesTableIterator.next();
-							System.out.println("currentTable: " + currentTable);
-							// list.add(currentServer.getUniqueID() + ": " +
-							// currentSchema + " - " +
-							// tablesTableIterator.next());
-							if (tableMap.get(currentServer.getUniqueID()) == null) {
-								System.out.println("get server null");
-							} else {
+							if (tableMap.get(currentServer.getUniqueID()) != null) {
 								List<List<String>> itemList = tableMap.get(
 										currentServer.getUniqueID()).get(
 										currentTable);
@@ -1266,13 +1261,8 @@ public class DBWizardPageTwo extends WizardPage {
 									for (int i = 0; i < itemList.size(); i++) {
 										List<String> currentList = itemList
 												.get(i);
-										// oldTableItems[i].setText(j,
-										// currentList.get(j));
-										// check if patient id is set
 										if (currentList.get(3).toLowerCase()
 												.contains("patientid")) {
-											System.out.println("PID FOUND: "
-													+ currentList.get(3));
 											complete = true;
 											continue;
 										}
@@ -1300,10 +1290,11 @@ public class DBWizardPageTwo extends WizardPage {
 					}
 				}
 			} else {
-				System.out.println("TABLES EMPTY!");
 				setErrorMessage(null);
 			}
 
+		}		catch (EOFException ee) {
+			System.err.println("Tables empty!");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {

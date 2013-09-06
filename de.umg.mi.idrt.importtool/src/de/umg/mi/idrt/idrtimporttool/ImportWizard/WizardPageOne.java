@@ -88,8 +88,6 @@ public class WizardPageOne extends WizardPage {
 			comboDB.select(ServerView.getCurrentServerIndex());
 
 			if (serverUniqueName == null) {
-				System.out.println("first select: "
-						+ comboDB.getItem(comboDB.getSelectionIndex()));
 				serverUniqueName = comboDB.getItem(comboDB.getSelectionIndex());
 			}
 			Server currentServer = null;
@@ -284,7 +282,6 @@ public class WizardPageOne extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					System.out.println();
 					if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) {
 						DBIntegratedSecurity.setEnabled(true);
 						DBMSSQLUseWinAuth.setEnabled(true);
@@ -351,7 +348,6 @@ public class WizardPageOne extends WizardPage {
 					if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 							DBUserText.getText(), DBUserPasswordText.getText(),
 							DBSIDText.getText(),DBTypeCombo.getText(), DBMSSQLUseWinAuth.getSelection())) {
-						System.out.println("working");
 
 						DBTest.setText("success");
 						Color color_red = container.getDisplay()
@@ -365,8 +361,6 @@ public class WizardPageOne extends WizardPage {
 						DBTest.setForeground(color_red);
 						DBTest.setToolTipText(IDRTImport.error);
 						DBTest.pack();
-						System.out.println("broken");
-						System.out.println(IDRTImport.error);
 					}
 				}
 			});
@@ -443,7 +437,6 @@ public class WizardPageOne extends WizardPage {
 	}
 
 	public static void setSelectedServer(Server server) {
-		System.out.println("setting server: " + server.getUniqueID());
 
 		ipText.setText(server.getIp());
 		PortText.setText(server.getPort());

@@ -97,7 +97,7 @@ public class ServerView extends ViewPart {
 	private Composite sourceServerComposite;
 	private Composite targetServercomposite;
 	private Composite sourceTreeComp;
-	private Composite logComposite;
+	private Composite logButtonAndTextComposite;
 
 	public static boolean stdImportStarted;
 	private static Button btnStop;
@@ -121,11 +121,6 @@ public class ServerView extends ViewPart {
 	private static TreeViewer targetServerViewer;
 	private static TreeViewer sourceServerViewer;
 
-	//	private static TableColumn logTblClmTime;
-	//	private static TableColumn logTblClmMessage;
-
-	//	private static Table logTable;
-
 	private static Menu importSourceServerMenu;
 	private static Menu mainMenu;
 
@@ -142,7 +137,7 @@ public class ServerView extends ViewPart {
 	private static ProgressBar progressBar2;
 
 	private static Properties defaultProps;
-	private static Text text;
+	private static Text logText;
 
 	public static void updateStatus() {
 		Display.getDefault().syncExec(new Runnable() {
@@ -256,23 +251,20 @@ public class ServerView extends ViewPart {
 	}
 
 	public static void setLog(String time, String log) {
-		System.out.println("adding new log: " + log + " " + time); 
-		//		final TableItem tableItem = new TableItem(logTable, SWT.NONE, 0);
-		//		tableItem.setText(new String[] { time, log });
-		String old = text.getText();
+		String old = logText.getText();
 		if (!old.isEmpty()) {
 			String newText = time+"\t"+log + "\n"+ old;
-			text.setText(newText);
-			text.update();
-			text.getParent().layout();
-			text.getParent().redraw();
+			logText.setText(newText);
+			logText.update();
+			logText.getParent().layout();
+			logText.getParent().redraw();
 		}
 		else {
 			String newText = time+"\t"+log;
-			text.setText(newText);
-			text.update();
-			text.getParent().layout();
-			text.getParent().redraw();
+			logText.setText(newText);
+			logText.update();
+			logText.getParent().layout();
+			logText.getParent().redraw();
 		}
 	}
 
@@ -289,7 +281,6 @@ public class ServerView extends ViewPart {
 	}
 
 	public static void setProgressBottom(final String string) {
-		System.out.println(string);
 		if (progressBar.getSelection()>0) {
 			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
 					+ string);
@@ -523,7 +514,6 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
-			// System.out.println("NYI");
 			handlerService.executeCommand(
 					"de.goettingen.i2b2.importtool.DBImport", null); 
 
@@ -573,7 +563,7 @@ public class ServerView extends ViewPart {
 
 			// Remove tmp files
 
-			Path tmpPath = new Path("/misc/tmp/"); 
+			Path tmpPath = new Path("/misc/tmp/");
 			URL tmpURL = FileLocator.find(bundle, tmpPath,
 					Collections.EMPTY_MAP);
 
@@ -587,6 +577,7 @@ public class ServerView extends ViewPart {
 				tmpURL = FileLocator.find(bundle, tmpPath,
 						Collections.EMPTY_MAP);
 			}
+
 			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
 			File folder = new File(tmpURL2.getPath());
 			File[] listOfFiles = folder.listFiles();
@@ -651,7 +642,6 @@ public class ServerView extends ViewPart {
 			String logdir = defaultProps.getProperty("sysoLogLoc"); 
 			if (sysLog && (logdir != null)) {
 
-				System.out.println(logdir);
 				PrintStream ps = new PrintStream(new BufferedOutputStream(
 						new FileOutputStream(new File(logdir))), true);
 				System.setOut(ps);
@@ -1078,20 +1068,20 @@ public class ServerView extends ViewPart {
 
 
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			//						new MenuItem(mainMenu, SWT.SEPARATOR);
-			//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			//						adminMenuItem.setText("Administration");
-			//						adminMenuItem.addSelectionListener(new SelectionListener() {
-			//							@Override
-			//							public void widgetSelected(SelectionEvent e) {
-			//								adminTargetServer();
-			//							}
-			//			
-			//							@Override
-			//							public void widgetDefaultSelected(SelectionEvent e) {
-			//			
-			//							}
-			//						});
+			//									new MenuItem(mainMenu, SWT.SEPARATOR);
+			//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//									adminMenuItem.setText("Administration");
+			//									adminMenuItem.addSelectionListener(new SelectionListener() {
+			//										@Override
+			//										public void widgetSelected(SelectionEvent e) {
+			//											adminTargetServer();
+			//										}
+			//						
+			//										@Override
+			//										public void widgetDefaultSelected(SelectionEvent e) {
+			//						
+			//										}
+			//									});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1334,14 +1324,13 @@ public class ServerView extends ViewPart {
 				}
 			});
 
-			SashForm infoboxSash = new SashForm(sashForm, SWT.VERTICAL);
-			infoboxSash.setLayout(new FillLayout(SWT.VERTICAL));
-			//			 infoBoxComposite = new Composite(infoboxSash, SWT.NONE);
-			//			 infoBoxComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
-			labelNameComposite = new Composite(infoboxSash, SWT.NONE);
+			SashForm infoBoxSash = new SashForm(sashForm, SWT.VERTICAL);
+			infoBoxSash.setLayout(new FillLayout(SWT.VERTICAL));
+			
+			labelNameComposite = new Composite(infoBoxSash, SWT.NONE);
 			labelNameComposite.setLayout(new GridLayout(2, false));
-			//			 labelNameComposite.setLayout(new GridData(2, false));
 			labelNameComposite.pack();
+
 			labelName = new Label(labelNameComposite, SWT.SHADOW_IN);
 			labelName.setText(Messages.ServerView_Name);
 
@@ -1378,32 +1367,33 @@ public class ServerView extends ViewPart {
 					SWT.SHADOW_IN);
 			lblObservationsCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 			lblObservationsCurrent.setText("");
-			Composite sashForm_1 = new Composite(infoboxSash, SWT.NONE);
+			Composite sashForm_1 = new Composite(infoBoxSash, SWT.NONE);
 			sashForm_1.setLayout(new BorderLayout(0, 0));
 
-			Composite progressComp = new Composite(sashForm_1, SWT.NONE);
-			progressComp.setLayoutData(BorderLayout.NORTH);
+			Composite progressBarComp = new Composite(sashForm_1, SWT.NONE);
+			progressBarComp.setLayoutData(BorderLayout.NORTH);
 			GridLayout gl_progressComp = new GridLayout(2, false);
 			gl_progressComp.marginWidth = 0;
-			progressComp.setLayout(gl_progressComp);
+			progressBarComp.setLayout(gl_progressComp);
 
-			progressLabelTop = new Label(progressComp, SWT.NONE);
+			progressLabelTop = new Label(progressBarComp, SWT.NONE);
 			progressLabelTop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 			progressLabelTop.setText("");
-			progressLabelBottom = new Label(progressComp, SWT.NONE);
+			progressLabelBottom = new Label(progressBarComp, SWT.NONE);
 			progressLabelBottom.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 			progressLabelBottom.setText("");
 
-			progressBar = new ProgressBar(progressComp, SWT.SMOOTH);
+			progressBar = new ProgressBar(progressBarComp, SWT.SMOOTH);
 			progressBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					true, 1, 1));
 
-			btnStop = new Button(progressComp, SWT.PUSH);
+			btnStop = new Button(progressBarComp, SWT.PUSH);
 			btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/terminate_co.gif"));
 			btnStop.setToolTipText("Terminate Import!");
 			btnStop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 			btnStop.setEnabled(false);
 			btnStop.addSelectionListener(new SelectionListener() {
+				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
@@ -1420,57 +1410,40 @@ public class ServerView extends ViewPart {
 								.getColor(SWT.COLOR_RED));
 						StatusListener.interrupt();
 						btnStop.setEnabled(false);
-					} else {
-						System.out.println("nothing started"); 
-					}
+					} 
 				}
 			});
-			new Label(progressComp, SWT.NONE);
-			new Label(progressComp, SWT.NONE);
+			new Label(progressBarComp, SWT.NONE);
+			new Label(progressBarComp, SWT.NONE);
 
-			subProgressLabel = new Label(progressComp, SWT.NONE);
+			subProgressLabel = new Label(progressBarComp, SWT.NONE);
 			subProgressLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 			subProgressLabel.setText("");
-			progressBar2 = new ProgressBar(progressComp, SWT.SMOOTH);
+			progressBar2 = new ProgressBar(progressBarComp, SWT.SMOOTH);
 
 			GridData gd_progressBar2 = new GridData(SWT.FILL, SWT.FILL, true,
 					true, 1, 1);
 			gd_progressBar2.heightHint = 20;
 			progressBar2.setLayoutData(gd_progressBar2);
-			new Label(progressComp, SWT.NONE);
-			Composite composite = new Composite(sashForm_1, SWT.NONE);
-			composite.setLayoutData(BorderLayout.CENTER);
-			composite.setLayout(new BorderLayout(0, 0));
+			new Label(progressBarComp, SWT.NONE);
+			Composite logComposite = new Composite(sashForm_1, SWT.NONE);
+			logComposite.setLayoutData(BorderLayout.CENTER);
+			logComposite.setLayout(new BorderLayout(0, 0));
 
-			Label lblLog = new Label(composite, SWT.NONE);
+			Label lblLog = new Label(logComposite, SWT.NONE);
 			lblLog.setLayoutData(BorderLayout.NORTH);
 			lblLog.setText(Messages.ServerView_Log);
 
-			logComposite = new Composite(composite, SWT.NONE);
-			logComposite.setLayoutData(BorderLayout.CENTER);
-			logComposite.setBounds(0, 0, 64, 64);
-			logComposite.setLayout(new BorderLayout(0, 0));
+			logButtonAndTextComposite = new Composite(logComposite, SWT.NONE);
+			logButtonAndTextComposite.setLayoutData(BorderLayout.CENTER);
+			logButtonAndTextComposite.setBounds(0, 0, 64, 64);
+			logButtonAndTextComposite.setLayout(new BorderLayout(0, 0));
 
-			//			logTable = new Table(logComposite, SWT.FULL_SELECTION
-			//					| SWT.HIDE_SELECTION);
-			//			logTable.setLayoutData(BorderLayout.CENTER);
-			//			logTable.setHeaderVisible(false);
-			//			logTable.setLinesVisible(false);
-			//
-			//			logTblClmTime = new TableColumn(logTable, SWT.NONE);
-			//			logTblClmTime.setWidth(100);
-			//			logTblClmTime.setText(Messages.ServerView_Time);
-			//
-			//			logTblClmMessage = new TableColumn(logTable, SWT.LEFT);
-			//			logTblClmMessage.setWidth(100);
-			//			logTblClmMessage.setText(Messages.ServerView_Message);
+			Composite logButtonComposite = new Composite(logButtonAndTextComposite, SWT.NONE);
+			logButtonComposite.setLayoutData(BorderLayout.SOUTH);
+			logButtonComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-			Composite composite_1 = new Composite(logComposite, SWT.NONE);
-			composite_1.setLayoutData(BorderLayout.SOUTH);
-			//			composite_1.setLayoutData(BorderLayout.SOUTH);
-			composite_1.setLayout(new FillLayout(SWT.HORIZONTAL));
-
-			Button btnClearLog = new Button(composite_1, SWT.NONE);
+			Button btnClearLog = new Button(logButtonComposite, SWT.NONE);
 			btnClearLog.setText(Messages.ServerView_ClearLog);
 			btnClearLog.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1479,26 +1452,26 @@ public class ServerView extends ViewPart {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					text.setText("");
+					logText.setText("");
 				}
 			});
-			Button btnExportLog = new Button(composite_1, SWT.CENTER);
+			Button btnExportLog = new Button(logButtonComposite, SWT.CENTER);
 			btnExportLog.setText(Messages.ServerView_ExportLog);
 
-			Composite composite_3 = new Composite(logComposite,  SWT.BORDER);
-			composite_3.setLayoutData(BorderLayout.CENTER);
-			composite_3.setLayout(new FillLayout(SWT.HORIZONTAL));
+			Composite logTextComposite = new Composite(logButtonAndTextComposite,  SWT.BORDER);
+			logTextComposite.setLayoutData(BorderLayout.CENTER);
+			logTextComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-			text = new Text(composite_3, SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
-			text.addListener(SWT.Modify, new Listener(){
+			logText = new Text(logTextComposite, SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+			logText.addListener(SWT.Modify, new Listener(){
 				@Override
 				public void handleEvent(Event e){
-					text.setTopIndex(0);
-					text.getParent().layout();
+					logText.setTopIndex(0);
+					logText.getParent().layout();
 				}
 			});
-			text.setText("");
-			infoboxSash.setWeights(new int[] {2, 7});
+			logText.setText("");
+			infoBoxSash.setWeights(new int[] {2, 7});
 			btnExportLog.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
@@ -1518,21 +1491,15 @@ public class ServerView extends ViewPart {
 						String fileName = defaultProps.getProperty("log"); 
 						File log = new File(fileName);
 
-						Log.addLog(0,
-								Messages.ServerView_ExportLogTo + log.getAbsolutePath());
+						Log.addLog(0,Messages.ServerView_ExportLogTo + log.getAbsolutePath());
 
 						FileWriter outFile = new FileWriter(log);
 						PrintWriter out = new PrintWriter(outFile);
-						out.print(text.getText());
-						//						for (int i = 0; i < logTable.getItemCount(); i++) {
-						//							out.println(logTable.getItems()[i].getText(0) + "|" 
-						//									+ logTable.getItems()[i].getText(1));
-						//						}
+						out.print(logText.getText());
 						out.close();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-
 				}
 			});
 			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
@@ -1543,13 +1510,11 @@ public class ServerView extends ViewPart {
 	}
 	public static void btnStopSetEnabled(final boolean enabled) {
 		Display.getDefault().syncExec(new Runnable() {
-
 			@Override
 			public void run() {
 				btnStop.setEnabled(enabled);  
 			}
 		});
-
 	}
 
 	@Override
@@ -1587,18 +1552,17 @@ public class ServerView extends ViewPart {
 
 	private void layoutSourceServerContextMenu() {
 		importSourceServerMenu = new Menu(sourceServerViewer.getTree());
-
 		MenuItem addSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
 		addSourceServerMenuItem.setText(Messages.ServerView_AddServer);
 		addSourceServerMenuItem.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("add server clicked"); 
 				addSourceServer();
 			}
 		});
@@ -1608,13 +1572,13 @@ public class ServerView extends ViewPart {
 		editSourceServerMenuItem.setText(Messages.ServerView_EditServer);
 		editSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("edit server clicked"); 
 				editSourceServer();
 			}
 		});
@@ -1624,16 +1588,15 @@ public class ServerView extends ViewPart {
 		deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteServer);
 		deleteSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("delete server clicked"); 
 				deleteSourceServer();
 				if (targetServerViewer.getTree().getChildren() == null) {
-					System.out.println("empty tree"); 
 				}
 			}
 		});
@@ -1644,10 +1607,11 @@ public class ServerView extends ViewPart {
 		exportSourceServerMenuItem.setText(Messages.ServerView_ExportServer);
 		exportSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				exportSourceServer();
@@ -1658,10 +1622,11 @@ public class ServerView extends ViewPart {
 		importSourceServerMenuItem.setText(Messages.ServerView_ImportServer);
 		importSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				importSourceServer();
@@ -1673,27 +1638,21 @@ public class ServerView extends ViewPart {
 		refreshSourceServerMenuItem.setText(Messages.ServerView_Refresh);
 		refreshSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
+			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-
+	
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				refresh();
 			}
 		});
 	}
-
+	
 	@Override
 	public void setFocus() {
 	}
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
-
 }
 
 class ViewContentProvider implements IStructuredContentProvider {

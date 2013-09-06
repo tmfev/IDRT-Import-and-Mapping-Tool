@@ -145,7 +145,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 								// selectedItemString);
 
 								if (ServerList.isServer(selectedItemString)) {
-									System.out.println("selected server");
 									String currentServerID = selectedItem
 											.getText();
 									Server server = ServerList.getTargetServers()
@@ -205,7 +204,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 											.setRedraw(true);
 
 								} else {
-									System.out.println("project");
 									String parentServer = selectedItem
 											.getParentItem().getText();
 									Server server = ServerList.getTargetServers()
@@ -408,8 +406,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 							public void widgetSelected(SelectionEvent e) {
 								TreeItem selectedItem = (TreeItem) e.item;
 								projectTab_assignedUserTree.deselectAll();
-								System.out.println(selectedItem.getText()
-										+ " clicked!");
 								Server server = ServerList.getTargetServers().get(
 										projectTab_projectID_answer.getText());
 								I2B2User i2b2user = ServerList.getI2B2UserData(
@@ -573,8 +569,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 							@Override
 							public void widgetSelected(SelectionEvent e) {
 								TreeItem selectedItem = (TreeItem) e.item;
-								System.out.println(selectedItem.getText()
-										+ " clicked!");
 								Server server = ServerList.getTargetServers().get(
 										projectTab_projectID_answer.getText());
 								I2B2User i2b2user = ServerList.getI2B2UserData(
@@ -793,7 +787,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 					@Override
 					public void widgetSelected(SelectionEvent e) {
 						if (projectTab_projectID_answer.getText().isEmpty()) {
-							System.out.println("empty server");
 							MessageDialog.openError(shell, "Error",
 									"No Server Selected");
 						} else {
@@ -818,7 +811,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 					public void widgetSelected(SelectionEvent e) {
 						if (projectTab_projectID_answer.getText().isEmpty()
 								|| userTab_userName_answer.getText().isEmpty()) {
-							System.out.println("empty server");
 							MessageDialog.openError(shell, "Error",
 									"No Server/User Selected");
 						} else {

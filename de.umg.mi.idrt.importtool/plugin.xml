@@ -31,7 +31,7 @@
             class="de.umg.mi.idrt.idrtimporttool.importidrt.ServerView"
             icon="images/addServer.png"
             id="de.umg.mi.idrt.importtool.ServerView"
-            name="IDRTImport">
+            name="IDRT Import Tool">
       </view>
    </extension>
    <extension
@@ -203,11 +203,6 @@
             defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.OptionsCommand"
             id="de.goettingen.i2b2.importtool.idrt.options"
             name="Options">
-      </command>
-      <command
-            defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.AboutCommand"
-            id="de.goettingen.i2b2.importtool.idrt.about"
-            name="About">
       </command>
       <command
             defaultHandler="org.eclipselabs.p2.rcpupdate.utils.handler.InstallNewSoftwareHandler"

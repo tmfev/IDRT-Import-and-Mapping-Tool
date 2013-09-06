@@ -39,16 +39,24 @@ public class ODMWizardPageTwo extends WizardPage {
 	private static Text folderODMText;
 	private static Text folderMainText;
 	private static String odmPath = ""; 
+	private static String completeCodelist;
 	// private static String mainPath = "";
-	private static Button includePids;
+	private static Button checkIncludePids;
 	private static Button checkContext;
 	private static Button checkTruncate;
 	private static Button checkTerms;
-	private Label cleanUplabel;
-	private static Button cleanUpBtn;
+	private static Button checkCleanUp;
+	private static Button checkCompleteCodelists;
 
 	public static boolean getCleanUp() {
-		return cleanUpBtn.getSelection();
+		return checkCleanUp.getSelection();
+	}
+	
+	/**
+	 * @return the completeCodelist
+	 */
+	public static boolean getCompleteCodelist() {
+		return checkCompleteCodelists.getSelection();
 	}
 
 	/**
@@ -69,7 +77,7 @@ public class ODMWizardPageTwo extends WizardPage {
 	 * @return the check
 	 */
 	public static boolean getIncludePids() {
-		return includePids.getSelection();
+		return checkIncludePids.getSelection();
 	}
 
 	/**
@@ -125,11 +133,11 @@ public class ODMWizardPageTwo extends WizardPage {
 
 			new Label(container, SWT.NONE);
 
-			cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
 
-			cleanUpBtn = new Button(container, SWT.CHECK);
-			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
+			checkCleanUp = new Button(container, SWT.CHECK);
+			checkCleanUp.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp"))); 
 			new Label(container, SWT.NONE);
 
@@ -137,7 +145,8 @@ public class ODMWizardPageTwo extends WizardPage {
 			folder.setText(Messages.ODMWizardPageTwo_ODMFolder);
 			folder.setToolTipText(Messages.ODMWizardPageTwo_ODMFolderToolTip);
 
-			odmPath = defaultProps.getProperty("folderODM"); 
+			odmPath = defaultProps.getProperty("folderODM");
+			
 			final DirectoryDialog dlg = new DirectoryDialog(parent.getShell());
 			dlg.setText(Messages.ODMWizardPageTwo_ODMFolder); 
 			dlg.setFilterPath(defaultProps.getProperty("folderODM")); 
@@ -173,11 +182,21 @@ public class ODMWizardPageTwo extends WizardPage {
 					folderODMText.setText(odmPath);
 				}
 			});
+			
+			Label includeCodelists = new Label(container, SWT.NONE);
+			includeCodelists.setText(Messages.ODMWizardPageTwo_ImportCodelists);
+			
+			completeCodelist = defaultProps.getProperty("importCodelist","false");
+			
+			checkCompleteCodelists = new Button(container, SWT.CHECK);
+			checkCompleteCodelists.setSelection(Boolean.parseBoolean(completeCodelist));
+			
+			new Label(container, SWT.NONE);
 
 			Label labelCheck = new Label(container, SWT.NONE);
 			labelCheck.setText(Messages.ODMWizardPageTwo_IncludePid);
-			includePids = new Button(container, SWT.CHECK);
-			includePids.setSelection(false);
+			checkIncludePids = new Button(container, SWT.CHECK);
+			checkIncludePids.setSelection(false);
 
 			new Label(container, SWT.NONE);
 

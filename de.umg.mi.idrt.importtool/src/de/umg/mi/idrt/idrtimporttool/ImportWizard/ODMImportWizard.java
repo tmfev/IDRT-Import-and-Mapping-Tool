@@ -119,7 +119,6 @@ public class ODMImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			//			System.out.println("ODM: finish"); 
 			final boolean cleanUp = ODMWizardPageTwo.getCleanUp();
 			final boolean terms = ODMWizardPageTwo.getTerms();
 			Bundle bundle = Activator.getDefault().getBundle();
@@ -148,7 +147,8 @@ public class ODMImportWizard extends Wizard {
 			 * page 2
 			 */
 			contextMap.put("folderODM", ODMWizardPageTwo.getFolderODMText()); 
-
+			defaultProps.setProperty("folderODM", ODMWizardPageTwo.getFolderODMText());
+			
 			Path miscPath = new Path("/misc/"); 
 			URL miscUrl = FileLocator.find(bundle, miscPath,
 					Collections.EMPTY_MAP);
@@ -188,6 +188,14 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");  
 			}
 
+			
+			if (ODMWizardPageTwo.getCompleteCodelist()) {
+				contextMap.put("importCodelist", "true");  
+				defaultProps.setProperty("importCodelist", "true");  
+			} else {
+				contextMap.put("importCodelist", "false");  
+				defaultProps.setProperty("importCodelist", "false");  
+			}
 			if (ODMWizardPageTwo.getIncludePids()) {
 				contextMap.put("includePids", "true");  
 				defaultProps.setProperty("includePids", "true");  
@@ -197,12 +205,10 @@ public class ODMImportWizard extends Wizard {
 			}
 
 			if (ODMWizardPageTwo.getSaveContext()) {
-				System.out.println("saving context"); 
 				defaultProps.store(new FileWriter(properties), ""); 
 			}
 
 			if (ODMWizardPageTwo.getTruncate()) {
-				System.out.println("truncating"); 
 				contextMap.put("truncateProject", "true");  
 			} else {
 				contextMap.put("truncateProject", "false");  

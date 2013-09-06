@@ -80,10 +80,8 @@ public class Server implements Serializable {
 	 */
 	public Connection getConnection() {
 		try {
-			//			System.out.println("DATABASETYPE: " + this.getDatabaseType());
 			DriverManager.setLoginTimeout(2);
 			if(this.getDatabaseType() == null) {
-				//				System.out.println("DATABASE == NULL");
 				Class.forName(ORACLEDRIVER);
 				return DriverManager.getConnection("jdbc:oracle:thin:@" + this.getIp() + ":" + this.getPort() + ":"
 						+ this.getSID(), this.getUser(), this.getPassword());
@@ -106,7 +104,6 @@ public class Server implements Serializable {
 								+ getPort(), getUser(), getPassword());
 					}
 					else {
-						//						System.out.println("getSID: " + getSID());
 						return DriverManager.getConnection("jdbc:sqlserver://"+getIp()+ ":" 
 								+ getPort()+";databaseName="+getSID()+";integratedSecurity=true");
 
@@ -117,7 +114,6 @@ public class Server implements Serializable {
 						return DriverManager.getConnection("jdbc:sqlserver://" + getIp(), getUser(), getPassword());
 					}
 					else {
-						//						System.out.println("getSID: " + getSID());
 						return DriverManager.getConnection("jdbc:sqlserver://"+getIp()
 								+";databaseName="+this.getSID()+";integratedSecurity=true");
 

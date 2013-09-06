@@ -29,7 +29,6 @@ public class EditTargetServerCommand extends AbstractHandler {
 			String serverUniqueID = currentTreeItem.getText();
 
 			if (ServerList.isServer(serverUniqueID)) {
-				System.out.println("is server");
 				Server currentServer = ServerList.getTargetServers().get(
 						serverUniqueID);
 				WizardDialog wizardDialog = new WizardDialog(viewer
@@ -37,7 +36,6 @@ public class EditTargetServerCommand extends AbstractHandler {
 						currentServer, true));
 				wizardDialog.open();
 			} else {
-				System.out.println("getting parent:");
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();
 				serverUniqueID = parentTreeitem.getText();
 				Server currentServer = ServerList.getTargetServers().get(

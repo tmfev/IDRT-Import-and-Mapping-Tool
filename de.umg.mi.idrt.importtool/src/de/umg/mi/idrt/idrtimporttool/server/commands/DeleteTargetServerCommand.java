@@ -21,7 +21,6 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("delete server command");
 		TreeViewer viewer = ServerView.getTargetServersViewer();
 
 		boolean result;
@@ -43,18 +42,15 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 		if (result) {
 
 			if (viewer.getTree().getSelectionCount() > 1) {
-				System.out.println("multiple servers");
 				for (int i = 0; i < viewer.getTree().getSelectionCount(); i++) {
 
 					TreeItem currentTreeItem = viewer.getTree().getSelection()[i];
 					String serverUniqueID = currentTreeItem.getText();
 					Server currentServer = null;
 					if (ServerList.isServer(serverUniqueID)) {
-						System.out.println("is server");
 						currentServer = ServerList.getTargetServers().get(
 								serverUniqueID);
 					} else {
-						System.out.println("getting parent:");
 						TreeItem parentTreeitem = currentTreeItem
 								.getParentItem();
 						serverUniqueID = parentTreeitem.getText();
@@ -69,11 +65,9 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 				String serverUniqueID = currentTreeItem.getText();
 				Server currentServer = null;
 				if (ServerList.isServer(serverUniqueID)) {
-					System.out.println("is server");
 					currentServer = ServerList.getTargetServers().get(serverUniqueID);
 
 				} else {
-					System.out.println("getting parent:");
 					TreeItem parentTreeitem = currentTreeItem.getParentItem();
 					serverUniqueID = parentTreeitem.getText();
 					currentServer = ServerList.getTargetServers().get(serverUniqueID);
@@ -81,8 +75,6 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 				ServerList.removeServer(currentServer);
 				viewer.refresh();
 				if (viewer.getTree().getItemCount() > 0) {
-					System.out.println("setselection");
-					System.out.println(viewer.getTree().getItem(0).getText());
 					viewer.getTree().select(viewer.getTree().getItem(0));
 
 				}

@@ -52,7 +52,6 @@ public class AddUserWizard extends Wizard {
 					newEmail, date);
 
 			if (AddUserPageOne.getSendEmail() && !newEmail.isEmpty()) {
-				System.out.println("sending email");
 				URI mailtoURI;
 				try {
 					mailtoURI = new URI("mailto:" + newEmail

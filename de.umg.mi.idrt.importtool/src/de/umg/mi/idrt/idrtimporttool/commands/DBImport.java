@@ -27,23 +27,20 @@ public class DBImport {
 		try {
 			int count = rset.getMetaData().getColumnCount();
 			for (int i = 1; i <= count; i++) {
-				System.out.print(rset.getMetaData().getColumnClassName(i));
-				System.out.print(" | ");
+//				System.out.print(rset.getMetaData().getColumnClassName(i));
+//				System.out.print(" | ");
 			}
-			System.out.println();
 			for (int i = 1; i <= count; i++) {
-				System.out.print(rset.getMetaData().getColumnName(i));
-				System.out.print(" | ");
+//				System.out.print(rset.getMetaData().getColumnName(i));
+//				System.out.print(" | ");
 			}
 
-			System.out.println();
 			while (rset.next()) {
 
 				for (int i = 1; i <= count; i++) {
-					System.out.print(rset.getString(i));
-					System.out.print(" | ");
+//					System.out.print(rset.getString(i));
+//					System.out.print(" | ");
 				}
-				System.out.println();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,11 +65,6 @@ public class DBImport {
 		try {
 			int count = rset.getMetaData().getColumnCount();
 
-			// for (int i = 1; i<=count;i++){
-			// System.out.print(rset.getMetaData().getColumnClassName(i));
-			// System.out.print(" | ");
-			// }
-			// System.out.println();
 			String[] names = new String[count + 1];
 			names[0] = "Datentyp (Pflicht)";
 			for (int i = 1; i <= count; i++) {
@@ -109,12 +101,6 @@ public class DBImport {
 	public String[] getTableNames() {
 		try {
 			int count = rset.getMetaData().getColumnCount();
-
-			// for (int i = 1; i<=count;i++){
-			// System.out.print(rset.getMetaData().getColumnClassName(i));
-			// System.out.print(" | ");
-			// }
-			// System.out.println();
 			String[] names = new String[count + 1];
 			names[0] = "Spaltenname (Pflicht)";
 			for (int i = 1; i <= count; i++) {

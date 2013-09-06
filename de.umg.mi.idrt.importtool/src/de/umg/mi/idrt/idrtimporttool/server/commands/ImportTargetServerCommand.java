@@ -30,7 +30,6 @@ public class ImportTargetServerCommand extends AbstractHandler {
 
 		HashMap<String, Server> serverList = ServerList.getTargetServers();
 		TreeViewer viewer = ServerView.getTargetServersViewer();
-		System.out.println("import server");
 
 		FileDialog dialog = new FileDialog(Display.getDefault()
 				.getActiveShell(), SWT.OPEN);

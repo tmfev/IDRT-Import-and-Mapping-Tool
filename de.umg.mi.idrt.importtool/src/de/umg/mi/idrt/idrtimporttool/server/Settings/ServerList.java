@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.idrtimporttool.server.Settings;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -63,11 +64,8 @@ public class ServerList {
 
 	public static void addSourceServer(Server loadServer) {
 		if (!servers.containsKey(loadServer.getUniqueID())) {
-			//			System.out.println("put: " + loadServer.getUniqueID());
 			importDBServers.put(loadServer.getUniqueID(), loadServer);
 			try {
-				// System.out.println("adding server: " +
-				// serverFile.getAbsolutePath());
 
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverImportDBFile));
@@ -86,11 +84,7 @@ public class ServerList {
 
 	public static void addServer(Server server) {
 		try {
-
 			if (!importDBServers.containsKey(server.getUniqueID())) {
-				// System.out.println("adding server: " +
-				// serverFile.getAbsolutePath());
-
 				servers.put(server.getUniqueID(), server);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverFile));
@@ -207,16 +201,17 @@ public class ServerList {
 		try {
 			if (!file.exists()) {
 				file = new File(file.getAbsolutePath());
-				file.createNewFile();
+				file.createNewFile();				
 			}
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
 					file));
-			@SuppressWarnings("unchecked")
-			HashMap<String, Server> list = (HashMap<String, Server>) is
-			.readObject();
+			HashMap<String, Server> list  = (HashMap<String, Server>) is.readObject();
 			is.close();
 			return list;
 
+		} catch (EOFException ee) {
+			System.err.println("ServerList: <" +  file.getName() + "> is empty!");
+			return new HashMap<String, Server>();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -234,29 +229,24 @@ public class ServerList {
 	public static ResultSet getPreview(String table, String schema,
 			Server server) {
 		ResultSet resultSet = null;
-		//		System.out.println("preview");
 		try {
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 
 			statement = connect.createStatement();
-			
+
 			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 				resultSet = statement.executeQuery("select * from " + schema + "."
 						+ table + " where rownum <= 5");
 			}
 			else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
-//				statement.executeQuery("use " + schema);
-				System.out.println("mysql " + table + " " + schema);
 				resultSet = statement.executeQuery("select * from " + schema+"."+table);// + " where rownum <= 5");
-				
 			}
 			else if (server.getDatabaseType().equalsIgnoreCase("mssql")){
 				ServerTable currentTable = getTableMap().get(table);
-				System.out.println("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());
 				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());// + " where rownum <= 5");
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -264,51 +254,51 @@ public class ServerList {
 	}
 
 	/**
-		 * Returns all Tables or Views from a User. Usable for ImportDB schemas.
-		 * 
-		 * @param user
-		 * @return ServerTables
-		 */
-		public static List<ServerTable> getTables(User user) {
-			try {
-				tableMap = new HashMap<String, ServerTable>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-				URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-	
-				URL fileUrl = FileLocator.toFileURL(url);
-				File properties = new File(fileUrl.getPath());
-				defaultProps = new Properties();
-				defaultProps.load(new FileReader(properties));
-				Server server = user.getServer();
-				DriverManager.setLoginTimeout(2);
-				connect = server.getConnection();
-				List<ServerTable> tables = new LinkedList<ServerTable>();
-				statement = connect.createStatement();
-				if(user.getServer().getDatabaseType().equalsIgnoreCase("oracle")) {
-					if (user.getServer().getUser().toLowerCase().equals("system")) {
-						resultSet = statement
-								.executeQuery("select table_name,temporary,secondary from dba_tables where owner='"
-										+ user.getName() + "'");
-						while (resultSet.next()) {
-							Boolean temp = resultSet.getString("temporary").equals("Y");
-							Boolean secondary = resultSet.getString("secondary")
-									.equals("Y");
-							String table = resultSet.getString("table_name");
-	
-							if (defaultProps.getProperty("hideTemp").equals("true")) {
-								if (!temp && !secondary) {
-									ServerTable newTable = new ServerTable(server,
-											user.getName(), table);
-									tables.add(newTable);
-								}
-							} else {
+	 * Returns all Tables or Views from a User. Usable for ImportDB schemas.
+	 * 
+	 * @param user
+	 * @return ServerTables
+	 */
+	public static List<ServerTable> getTables(User user) {
+		try {
+			tableMap = new HashMap<String, ServerTable>();
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
+			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
+
+			URL fileUrl = FileLocator.toFileURL(url);
+			File properties = new File(fileUrl.getPath());
+			defaultProps = new Properties();
+			defaultProps.load(new FileReader(properties));
+			Server server = user.getServer();
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+			List<ServerTable> tables = new LinkedList<ServerTable>();
+			statement = connect.createStatement();
+			if(user.getServer().getDatabaseType().equalsIgnoreCase("oracle")) {
+				if (user.getServer().getUser().toLowerCase().equals("system")) {
+					resultSet = statement
+							.executeQuery("select table_name,temporary,secondary from dba_tables where owner='"
+									+ user.getName() + "'");
+					while (resultSet.next()) {
+						Boolean temp = resultSet.getString("temporary").equals("Y");
+						Boolean secondary = resultSet.getString("secondary")
+								.equals("Y");
+						String table = resultSet.getString("table_name");
+
+						if (defaultProps.getProperty("hideTemp").equals("true")) {
+							if (!temp && !secondary) {
 								ServerTable newTable = new ServerTable(server,
 										user.getName(), table);
 								tables.add(newTable);
 							}
-	
+						} else {
+							ServerTable newTable = new ServerTable(server,
+									user.getName(), table);
+							tables.add(newTable);
 						}
+
+					}
 						resultSet = statement
 								.executeQuery("select view_name from dba_views where owner ='"
 										+ user.getName() + "'");
@@ -330,8 +320,6 @@ public class ServerList {
 							Boolean secondary = resultSet.getString("secondary")
 									.equals("Y");
 	
-							// System.out.println("temp? + " + temp + " name: " + table
-							// + " -- " + defaultProps.getProperty("hideTemp"));
 							if (defaultProps.getProperty("hideTemp").equals("true")) {
 								if (!temp && !secondary) {
 									ServerTable newTable = new ServerTable(server,
@@ -362,26 +350,18 @@ public class ServerList {
 							.executeQuery("show tables");
 					while (resultSet.next()) {
 						String table = resultSet.getString(1);
-						System.out.println("MYSQL TABLE: " + table);
 						ServerTable newTable = new ServerTable(server,
 								user.getName(), table);
 						tables.add(newTable);
 					}
 				}
 				else if(user.getServer().getDatabaseType().equalsIgnoreCase("mssql")) {
-					System.out.println("MSSQL: " + user.getName());
-	//				resultSet = statement.executeQuery("use " + user.getName());
 					statement.execute("use " + user.getName());
-	//				connect = server.getConnection();
-	//				statement = connect.createStatement();
 						resultSet = statement
 								.executeQuery("select * from information_schema.tables;");
-	//					System.out.println(resultSet.getWarnings().toString());
 						while (resultSet.next()) {
 							String table = resultSet.getString("table_name");
 							String schema = resultSet.getString("table_schema");
-							// System.out.println("temp? + " + temp + " name: " + table
-							// + " -- " + defaultProps.getProperty("hideTemp"));
 								ServerTable newTable = new ServerTable(server,
 										user.getName(), table);
 								newTable.setDatabaseSchema(schema);
@@ -839,7 +819,6 @@ public class ServerList {
 	public static LinkedList<String> getAssignedUsersFromProject(Server server,
 			String project) {
 		try {
-			System.out.println("PROJECT: " + project);
 			LinkedList<String> users = new LinkedList<String>();
 			if (!project.isEmpty()) {
 
@@ -991,7 +970,6 @@ public class ServerList {
 					users.add(resultSet.getString("project_id"));
 				}
 			} else {
-				System.out.println("not system");
 				users = new HashSet<String>();
 				throw new Exception(
 						"Not enough Database priviliges, try system or sys!");
@@ -1018,23 +996,6 @@ public class ServerList {
 		return null;
 	}
 
-
-
-	// public static void storePreferences(String fileName){
-	// try {
-	// File file = new File(fileName);
-	// prefsRoot.exportSubtree(new FileOutputStream(file));
-	// // prefsRoot.exportNode(new FileOutputStream(file));
-	// System.out.println(file.getAbsolutePath());
-	// } catch (FileNotFoundException e) {
-	// e.printStackTrace();
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// } catch (BackingStoreException e) {
-	// e.printStackTrace();
-	// }
-	// }
-
 	public static boolean isServer(String uniqueID) {
 		if ((servers.get(uniqueID) != null)
 				|| (importDBServers.get(uniqueID) != null)) {
@@ -1046,10 +1007,9 @@ public class ServerList {
 
 	public static void loadServersfromProps() throws BackingStoreException {
 		try {
-			// init(password.toCharArray(), salt, iterations);
 
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/server"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
@@ -1057,19 +1017,13 @@ public class ServerList {
 			}
 			File serverStorage = null;
 			if (fileUrl != null) {
-				serverStorage = new File(fileUrl.getPath());
-				//				System.out.println("if1");
-			} else {
-				//				System.out.println("else1");
-				serverStorage = new File(System.getProperty("user.home")
-						+ "/idrt/cfg/server");
+				serverStorage = new File(fileUrl.getPath()+"/server");
 			}
 			serverFile = serverStorage;
 
-			//			System.out.println("bla " + serverFile.getAbsolutePath());
 			servers = deserializeServer(serverFile);
 
-			propPath = new Path("/cfg/serverImportDB"); //$NON-NLS-1$
+			propPath = new Path("/cfg"); //$NON-NLS-1$
 			url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			fileUrl = null;
 			if (url != null) {
@@ -1077,13 +1031,8 @@ public class ServerList {
 			}
 			serverImportDBFile = null;
 			if (fileUrl != null) {
-				serverImportDBFile = new File(fileUrl.getPath());
-				//				System.out.println("if importdb");
-			} else {
-				//				System.out.println("else importdb");
-				serverImportDBFile = new File(System.getProperty("user.home")
-						+ "/idrt/cfg/serverImportDB");
-			}
+				serverImportDBFile = new File(fileUrl.getPath()+"/serverImportDB");
+			} 
 			serverFile = serverStorage;
 			importDBServers = deserializeServer(serverImportDBFile);
 			if (importDBServers == null) {
@@ -1096,36 +1045,12 @@ public class ServerList {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * String [] childrenNames = prefsRoot.childrenNames(); boolean isServer
-		 * = false; for (int i = 0; i < childrenNames.length; i++) {
-		 * System.out.println("loading: " + childrenNames[i]);
-		 * 
-		 * Preferences serverPrefs = prefsRoot.node(childrenNames[i]);
-		 * 
-		 * 
-		 * if (childrenNames[i].startsWith(Server.getIMPORTDBPREFIX())){
-		 * System.out.println("importdb server loaded"); Server loadServer = new
-		 * Server(childrenNames[i], serverPrefs.get("ip", null),
-		 * serverPrefs.get("port", null), serverPrefs.get("user",
-		 * null),serverPrefs.get("password", null), serverPrefs.get("sid",
-		 * null)); addImportDBServer(loadServer); } else { String [] serverKeys
-		 * = serverPrefs.keys(); for (int j = 0; j<serverKeys.length;j++){
-		 * System.out.println(serverKeys[j]); if (serverKeys[j].equals("ip")){
-		 * isServer=true; break; } }
-		 * 
-		 * if(isServer){ Server loadServer = new Server(childrenNames[i],
-		 * serverPrefs.get("ip", null), serverPrefs.get("port", null),
-		 * serverPrefs.get("user", null),serverPrefs.get("password", null),
-		 * serverPrefs.get("sid", null)); addServer(loadServer); } else
-		 * System.out.println("no server!"); isServer = false; } }
-		 */
 	}
 
 	public static void removeAll() {
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/server"); //$NON-NLS-1$
+			Path propPath = new Path("/cfg"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
 			URL fileUrl = null;
 			if (url != null) {
@@ -1133,29 +1058,14 @@ public class ServerList {
 			}
 			File serverStorage = null;
 			if (fileUrl != null) {
-				serverStorage = new File(fileUrl.getPath());
-				//				System.out.println("if");
-			} else {
-				//				System.out.println("else");
-				serverStorage = new File(System.getProperty("user.home")
-						+ "/idrt/cfg/server");
-			}
+				serverStorage = new File(fileUrl.getPath()+"/server");
+			} 
 			serverFile = serverStorage;
 
 			String path = serverFile.getAbsolutePath();
-			//			System.out.println("serverpath: " + path);
 			serverFile.delete();
 			serverFile = new File(path);
 
-			// prefsRoot.clear();
-			// String [] childrenNames = prefsRoot.childrenNames();
-			//
-			// for (int i = 0; i < childrenNames.length; i++) {
-			// Preferences removePrefs = prefsRoot.node(childrenNames[i]);
-			// removePrefs.removeNode();
-			// }
-			// servers.clear();
-			// importDBServers.clear();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -1164,7 +1074,6 @@ public class ServerList {
 	public static void removeServer(Server server) {
 
 		if (importDBServers.containsKey(server.getUniqueID())) {
-			//			System.out.println("startswith removed");
 			try {
 				importDBServers.remove(server.getUniqueID());
 				ObjectOutputStream os = new ObjectOutputStream(
@@ -1196,7 +1105,6 @@ public class ServerList {
 	public static void removeServer(String serverUniqueID) {
 		if (importDBServers.containsKey(serverUniqueID)) {
 			try {
-				//				System.out.println("removing importdb: " + serverUniqueID);
 				importDBServers.remove(serverUniqueID);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverImportDBFile));
@@ -1210,7 +1118,6 @@ public class ServerList {
 			}
 		} else if (servers.containsKey(serverUniqueID)) {
 			try {
-				//				System.out.println("removing: " + serverUniqueID);
 				servers.remove(serverUniqueID);
 				ObjectOutputStream os = new ObjectOutputStream(
 						new FileOutputStream(serverFile));

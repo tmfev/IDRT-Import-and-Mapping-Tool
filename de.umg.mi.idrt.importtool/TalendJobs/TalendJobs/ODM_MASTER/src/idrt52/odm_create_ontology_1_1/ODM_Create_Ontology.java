@@ -62,6 +62,9 @@ import java.util.Comparator;
 //the import part of tJavaRow_2
 //import java.util.List;
 
+//the import part of tJavaRow_10
+//import java.util.List;
+
 //the import part of tJava_2
 //import java.util.List;
 
@@ -918,6 +921,26 @@ public class ODM_Create_Ontology implements TalendJob {
 		tFileInputXML_16_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tJavaRow_10_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJavaRow_10", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_16_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_29_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tMap_29", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_16_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tUniqRow_3_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1193,6 +1216,17 @@ public class ODM_Create_Ontology implements TalendJob {
 		status = "failure";
 
 		tFileInputDelimited_15_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileInputDelimited_23_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_23", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_23_onSubJobError(exception, errorComponent,
 				globalMap);
 	}
 
@@ -1670,6 +1704,17 @@ public class ODM_Create_Ontology implements TalendJob {
 		tLibraryLoad_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tCreateTemporaryFile_16_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_16", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_16_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
 	public void tAdvancedHash_row15_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1748,10 +1793,12 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_row28_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
+	public void tAdvancedHash_fromTemp5ItemGroup_error(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_row28", System.currentTimeMillis());
+		end_Hash.put("tAdvancedHash_fromTemp5ItemGroup",
+				System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1759,10 +1806,22 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_itemName_error(java.lang.Exception exception,
+	public void tAdvancedHash_row14_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_itemName", System.currentTimeMillis());
+		end_Hash.put("tAdvancedHash_row14", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_23_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tAdvancedHash_fromItemNames_error(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_fromItemNames", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -2029,6 +2088,18 @@ public class ODM_Create_Ontology implements TalendJob {
 	}
 
 	public void tFileInputDelimited_15_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_23_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -2309,6 +2380,18 @@ public class ODM_Create_Ontology implements TalendJob {
 
 	public void tLibraryLoad_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_16_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
@@ -3423,7 +3506,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				String fileName_tFileOutputDelimited_13 = "";
 				fileName_tFileOutputDelimited_13 = (new java.io.File(
 						((String) globalMap
-								.get("tCreateTemporaryFile_5_FILEPATH"))))
+								.get("tCreateTemporaryFile_16_FILEPATH"))))
 						.getAbsolutePath().replace("\\", "/");
 				String fullName_tFileOutputDelimited_13 = null;
 				String extension_tFileOutputDelimited_13 = null;
@@ -3473,7 +3556,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_13:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_13:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_13:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_13 = /**
@@ -3501,6 +3584,85 @@ public class ODM_Create_Ontology implements TalendJob {
 									new java.io.FileOutputStream(
 											fileName_tFileOutputDelimited_13,
 											false), "ISO-8859-15"));
+
+					if (filetFileOutputDelimited_13.length() == 0) {
+
+						outtFileOutputDelimited_13.write("StudyID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("MetaID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("VisitID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("FormID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("QuestionID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("ItemID");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("ParentItem");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("Name");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("VisitNo");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("Sequence");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("hidden");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("FormFamily");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("AdditionalData");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("item_Datatype");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_tFileOutputDelimited_13);
+
+						outtFileOutputDelimited_13.write("HLEVEL");
+
+						outtFileOutputDelimited_13
+								.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_13);
+						outtFileOutputDelimited_13.flush();
+					}
 
 					/**
 					 * [tFileOutputDelimited_13 begin ] stop
@@ -4185,405 +4347,395 @@ public class ODM_Create_Ontology implements TalendJob {
 
 										tHash_Lookup_row22.lookup(row22HashKey);
 
-										if (!tHash_Lookup_row22.hasNext()) { // G_TM_M_090
-
-											forceLooprow22 = true;
-
-										} // G_TM_M_090
-
 									} // G_TM_M_020
 
-									else { // G 20 - G 21
-										forceLooprow22 = true;
-									} // G 21
+									if (tHash_Lookup_row22 != null
+											&& tHash_Lookup_row22
+													.getCount(row22HashKey) > 1) { // G
+																					// 071
+
+										// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row22' and it contains more one result from keys :  row22.VisitOID = '"
+										// + row22HashKey.VisitOID + "'");
+									} // G 071
 
 									row22Struct row22 = null;
 
-									while ((tHash_Lookup_row22 != null && tHash_Lookup_row22
-											.hasNext()) || forceLooprow22) { // G_TM_M_043
+									row22Struct fromLookup_row22 = null;
+									row22 = row22Default;
 
-										// CALL close loop of lookup 'row22'
+									if (tHash_Lookup_row22 != null
+											&& tHash_Lookup_row22.hasNext()) { // G
+																				// 099
 
-										row22Struct fromLookup_row22 = null;
-										row22 = row22Default;
+										fromLookup_row22 = tHash_Lookup_row22
+												.next();
 
-										if (!forceLooprow22) { // G 46
+									} // G 099
 
-											fromLookup_row22 = tHash_Lookup_row22
-													.next();
+									if (fromLookup_row22 != null) {
+										row22 = fromLookup_row22;
+									}
 
-											if (fromLookup_row22 != null) {
-												row22 = fromLookup_row22;
-											}
-
-										} // G 46
-
-										forceLooprow22 = false;
+									// ###############################
+									{ // start of Var scope
 
 										// ###############################
-										{ // start of Var scope
+										// # Vars tables
 
-											// ###############################
-											// # Vars tables
+										Var__tMap_9__Struct Var = Var__tMap_9;// ###############################
+										// ###############################
+										// # Output tables
 
-											Var__tMap_9__Struct Var = Var__tMap_9;// ###############################
-											// ###############################
-											// # Output tables
+										out8 = null;
 
-											out8 = null;
+										// # Output table : 'out8'
+										out8_tmp.StudyID = row15.StudyID;
+										out8_tmp.MetaID = row15.MetaID;
+										out8_tmp.VisitID = row21.OID;
+										out8_tmp.FormID = null;
+										out8_tmp.QuestionID = null;
+										out8_tmp.ItemID = null;
+										out8_tmp.ParentItem = null;
+										out8_tmp.Name = row21.order + " "
+												+ row22.Name;
+										out8_tmp.VisitNo = null;
+										out8_tmp.Sequence = null;
+										out8_tmp.hidden = null;
+										out8_tmp.FormFamily = null;
+										out8_tmp.AdditionalData = null;
+										out8_tmp.item_Datatype = row15.item_Datatype;
+										out8_tmp.HLEVEL = 4;
+										out8 = out8_tmp;
+										// ###############################
 
-											// # Output table : 'out8'
-											out8_tmp.StudyID = row15.StudyID;
-											out8_tmp.MetaID = row15.MetaID;
-											out8_tmp.VisitID = row21.OID;
-											out8_tmp.FormID = null;
-											out8_tmp.QuestionID = null;
-											out8_tmp.ItemID = null;
-											out8_tmp.ParentItem = null;
-											out8_tmp.Name = row21.order + " "
-													+ row22.Name;
-											out8_tmp.VisitNo = null;
-											out8_tmp.Sequence = null;
-											out8_tmp.hidden = null;
-											out8_tmp.FormFamily = null;
-											out8_tmp.AdditionalData = null;
-											out8_tmp.item_Datatype = null;
-											out8_tmp.HLEVEL = 4;
-											out8 = out8_tmp;
-											// ###############################
+									} // end of Var scope
 
-										} // end of Var scope
+									rejectedInnerJoin_tMap_9 = false;
 
-										rejectedInnerJoin_tMap_9 = false;
+									tos_count_tMap_9++;
 
-										tos_count_tMap_9++;
+									/**
+									 * [tMap_9 main ] stop
+									 */
+									// Start of branch "out8"
+									if (out8 != null) {
 
 										/**
-										 * [tMap_9 main ] stop
+										 * [tUniqRow_4 main ] start
 										 */
-										// Start of branch "out8"
-										if (out8 != null) {
 
-											/**
-											 * [tUniqRow_4 main ] start
-											 */
+										currentComponent = "tUniqRow_4";
 
-											currentComponent = "tUniqRow_4";
+										row10 = null;
+										if (out8.StudyID == null) {
+											finder_tUniqRow_4.StudyID = null;
+										} else {
+											finder_tUniqRow_4.StudyID = out8.StudyID
+													.toLowerCase();
+										}
+										if (out8.MetaID == null) {
+											finder_tUniqRow_4.MetaID = null;
+										} else {
+											finder_tUniqRow_4.MetaID = out8.MetaID
+													.toLowerCase();
+										}
+										if (out8.VisitID == null) {
+											finder_tUniqRow_4.VisitID = null;
+										} else {
+											finder_tUniqRow_4.VisitID = out8.VisitID
+													.toLowerCase();
+										}
+										finder_tUniqRow_4.hashCodeDirty = true;
+										if (!keystUniqRow_4
+												.contains(finder_tUniqRow_4)) {
+											KeyStruct_tUniqRow_4 new_tUniqRow_4 = new KeyStruct_tUniqRow_4();
 
-											row10 = null;
 											if (out8.StudyID == null) {
-												finder_tUniqRow_4.StudyID = null;
+												new_tUniqRow_4.StudyID = null;
 											} else {
-												finder_tUniqRow_4.StudyID = out8.StudyID
+												new_tUniqRow_4.StudyID = out8.StudyID
 														.toLowerCase();
 											}
 											if (out8.MetaID == null) {
-												finder_tUniqRow_4.MetaID = null;
+												new_tUniqRow_4.MetaID = null;
 											} else {
-												finder_tUniqRow_4.MetaID = out8.MetaID
+												new_tUniqRow_4.MetaID = out8.MetaID
 														.toLowerCase();
 											}
 											if (out8.VisitID == null) {
-												finder_tUniqRow_4.VisitID = null;
+												new_tUniqRow_4.VisitID = null;
 											} else {
-												finder_tUniqRow_4.VisitID = out8.VisitID
+												new_tUniqRow_4.VisitID = out8.VisitID
 														.toLowerCase();
 											}
-											finder_tUniqRow_4.hashCodeDirty = true;
-											if (!keystUniqRow_4
-													.contains(finder_tUniqRow_4)) {
-												KeyStruct_tUniqRow_4 new_tUniqRow_4 = new KeyStruct_tUniqRow_4();
 
-												if (out8.StudyID == null) {
-													new_tUniqRow_4.StudyID = null;
-												} else {
-													new_tUniqRow_4.StudyID = out8.StudyID
-															.toLowerCase();
-												}
-												if (out8.MetaID == null) {
-													new_tUniqRow_4.MetaID = null;
-												} else {
-													new_tUniqRow_4.MetaID = out8.MetaID
-															.toLowerCase();
-												}
-												if (out8.VisitID == null) {
-													new_tUniqRow_4.VisitID = null;
-												} else {
-													new_tUniqRow_4.VisitID = out8.VisitID
-															.toLowerCase();
-												}
-
-												keystUniqRow_4
-														.add(new_tUniqRow_4);
-												if (row10 == null) {
-													row10 = new row10Struct();
-												}
-												row10.StudyID = out8.StudyID;
-												row10.MetaID = out8.MetaID;
-												row10.VisitID = out8.VisitID;
-												row10.FormID = out8.FormID;
-												row10.QuestionID = out8.QuestionID;
-												row10.ItemID = out8.ItemID;
-												row10.ParentItem = out8.ParentItem;
-												row10.Name = out8.Name;
-												row10.VisitNo = out8.VisitNo;
-												row10.Sequence = out8.Sequence;
-												row10.hidden = out8.hidden;
-												row10.FormFamily = out8.FormFamily;
-												row10.AdditionalData = out8.AdditionalData;
-												row10.item_Datatype = out8.item_Datatype;
-												row10.HLEVEL = out8.HLEVEL;
-												nb_uniques_tUniqRow_4++;
-											} else {
-												nb_duplicates_tUniqRow_4++;
+											keystUniqRow_4.add(new_tUniqRow_4);
+											if (row10 == null) {
+												row10 = new row10Struct();
 											}
+											row10.StudyID = out8.StudyID;
+											row10.MetaID = out8.MetaID;
+											row10.VisitID = out8.VisitID;
+											row10.FormID = out8.FormID;
+											row10.QuestionID = out8.QuestionID;
+											row10.ItemID = out8.ItemID;
+											row10.ParentItem = out8.ParentItem;
+											row10.Name = out8.Name;
+											row10.VisitNo = out8.VisitNo;
+											row10.Sequence = out8.Sequence;
+											row10.hidden = out8.hidden;
+											row10.FormFamily = out8.FormFamily;
+											row10.AdditionalData = out8.AdditionalData;
+											row10.item_Datatype = out8.item_Datatype;
+											row10.HLEVEL = out8.HLEVEL;
+											nb_uniques_tUniqRow_4++;
+										} else {
+											nb_duplicates_tUniqRow_4++;
+										}
 
-											tos_count_tUniqRow_4++;
+										tos_count_tUniqRow_4++;
+
+										/**
+										 * [tUniqRow_4 main ] stop
+										 */
+										// Start of branch "row10"
+										if (row10 != null) {
 
 											/**
-											 * [tUniqRow_4 main ] stop
+											 * [tFileOutputDelimited_13 main ]
+											 * start
 											 */
-											// Start of branch "row10"
-											if (row10 != null) {
 
-												/**
-												 * [tFileOutputDelimited_13 main
-												 * ] start
-												 */
+											currentComponent = "tFileOutputDelimited_13";
 
-												currentComponent = "tFileOutputDelimited_13";
+											StringBuilder sb_tFileOutputDelimited_13 = new StringBuilder();
 
-												StringBuilder sb_tFileOutputDelimited_13 = new StringBuilder();
-
-												if (row10.StudyID != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.StudyID
-
-															);
-
-												}
+											if (row10.StudyID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.MetaID != null) {
+														row10.StudyID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.MetaID
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.VisitID != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.VisitID
-
-															);
-
-												}
+											if (row10.MetaID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.FormID != null) {
+														row10.MetaID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.FormID
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.QuestionID != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.QuestionID
-
-															);
-
-												}
+											if (row10.VisitID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.ItemID != null) {
+														row10.VisitID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.ItemID
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.ParentItem != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.ParentItem
-
-															);
-
-												}
+											if (row10.FormID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.Name != null) {
+														row10.FormID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.Name
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.VisitNo != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.VisitNo
-
-															);
-
-												}
+											if (row10.QuestionID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.Sequence != null) {
+														row10.QuestionID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.Sequence
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.hidden != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.hidden
-
-															);
-
-												}
+											if (row10.ItemID != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.FormFamily != null) {
+														row10.ItemID
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.FormFamily
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.AdditionalData != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.AdditionalData
-
-															);
-
-												}
+											if (row10.ParentItem != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
+														.append(
 
-												if (row10.item_Datatype != null) {
+														row10.ParentItem
 
-													sb_tFileOutputDelimited_13
-															.append(
+														);
 
-															row10.item_Datatype
+											}
 
-															);
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-												}
-
-												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_tFileOutputDelimited_13);
-
-												if (row10.HLEVEL != null) {
-
-													sb_tFileOutputDelimited_13
-															.append(
-
-															row10.HLEVEL
-
-															);
-
-												}
+											if (row10.Name != null) {
 
 												sb_tFileOutputDelimited_13
-														.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_13);
+														.append(
 
-												nb_line_tFileOutputDelimited_13++;
+														row10.Name
 
-												outtFileOutputDelimited_13
-														.write(sb_tFileOutputDelimited_13
-																.toString());
+														);
 
-												tos_count_tFileOutputDelimited_13++;
+											}
 
-												/**
-												 * [tFileOutputDelimited_13 main
-												 * ] stop
-												 */
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
 
-											} // End of branch "row10"
+											if (row10.VisitNo != null) {
 
-										} // End of branch "out8"
+												sb_tFileOutputDelimited_13
+														.append(
 
-									} // close loop of lookup 'row22' //
-										// G_TM_M_043
+														row10.VisitNo
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.Sequence != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.Sequence
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.hidden != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.hidden
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.FormFamily != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.FormFamily
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.AdditionalData != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.AdditionalData
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.item_Datatype != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.item_Datatype
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_tFileOutputDelimited_13);
+
+											if (row10.HLEVEL != null) {
+
+												sb_tFileOutputDelimited_13
+														.append(
+
+														row10.HLEVEL
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_13
+													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_13);
+
+											nb_line_tFileOutputDelimited_13++;
+
+											outtFileOutputDelimited_13
+													.write(sb_tFileOutputDelimited_13
+															.toString());
+
+											tos_count_tFileOutputDelimited_13++;
+
+											/**
+											 * [tFileOutputDelimited_13 main ]
+											 * stop
+											 */
+
+										} // End of branch "row10"
+
+									} // End of branch "out8"
 
 								} // close loop of lookup 'row15' // G_TM_M_043
 
@@ -6001,7 +6153,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_16:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_16:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_16:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_16 = /**
@@ -6821,17 +6973,17 @@ public class ODM_Create_Ontology implements TalendJob {
 										out9_tmp.MetaID = Temp3Visit.MetaID;
 										out9_tmp.VisitID = Temp3Visit.VisitID;
 										out9_tmp.FormID = row17.FormOID;
-										out9_tmp.QuestionID = null;
-										out9_tmp.ItemID = null;
-										out9_tmp.ParentItem = null;
+										out9_tmp.QuestionID = Temp3Visit.QuestionID;
+										out9_tmp.ItemID = Temp3Visit.ItemID;
+										out9_tmp.ParentItem = Temp3Visit.ParentItem;
 										out9_tmp.Name = row17.order + " "
 												+ FormNames.Name;
-										out9_tmp.VisitNo = null;
-										out9_tmp.Sequence = null;
-										out9_tmp.hidden = null;
-										out9_tmp.FormFamily = null;
-										out9_tmp.AdditionalData = null;
-										out9_tmp.item_Datatype = null;
+										out9_tmp.VisitNo = Temp3Visit.VisitNo;
+										out9_tmp.Sequence = Temp3Visit.Sequence;
+										out9_tmp.hidden = Temp3Visit.hidden;
+										out9_tmp.FormFamily = Temp3Visit.FormFamily;
+										out9_tmp.AdditionalData = Temp3Visit.AdditionalData;
+										out9_tmp.item_Datatype = Temp3Visit.item_Datatype;
 										out9_tmp.HLEVEL = 5;
 										out9 = out9_tmp;
 										// ###############################
@@ -8633,7 +8785,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_22:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_22:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_22:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_22 = /**
@@ -9558,12 +9710,12 @@ public class ODM_Create_Ontology implements TalendJob {
 												out10_tmp.Name = row13.order
 														+ " "
 														+ ItemGroupNames.Name;
-												out10_tmp.VisitNo = null;
-												out10_tmp.Sequence = null;
-												out10_tmp.hidden = null;
-												out10_tmp.FormFamily = null;
-												out10_tmp.AdditionalData = null;
-												out10_tmp.item_Datatype = null;
+												out10_tmp.VisitNo = temp4Forms.VisitNo;
+												out10_tmp.Sequence = temp4Forms.Sequence;
+												out10_tmp.hidden = temp4Forms.hidden;
+												out10_tmp.FormFamily = temp4Forms.FormFamily;
+												out10_tmp.AdditionalData = temp4Forms.AdditionalData;
+												out10_tmp.item_Datatype = temp4Forms.item_Datatype;
 												out10_tmp.HLEVEL = 6;
 												out10 = out10_tmp;
 											} // closing inner join bracket (2)
@@ -10476,8 +10628,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 	}
 
-	public static class out11Struct implements
-			routines.system.IPersistableRow<out11Struct> {
+	public static class asdStruct implements
+			routines.system.IPersistableRow<asdStruct> {
 		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
 
@@ -10772,7 +10924,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(out11Struct other) {
+		public int compareTo(asdStruct other) {
 
 			int returnValue = -1;
 
@@ -10805,6 +10957,686 @@ public class ODM_Create_Ontology implements TalendJob {
 
 	public static class row16Struct implements
 			routines.system.IPersistableRow<row16Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		public String order;
+
+		public String getOrder() {
+			return this.order;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Create_Ontology.length == 0) {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(
+						commonByteArray_IDRT52_ODM_Create_Ontology, 0, length,
+						utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+					this.HLEVEL = readInteger(dis);
+
+					this.order = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+				// String
+
+				writeString(this.order, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",order=" + order);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row16Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class out11Struct implements
+			routines.system.IPersistableRow<out11Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		public String order;
+
+		public String getOrder() {
+			return this.order;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Create_Ontology.length == 0) {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(
+						commonByteArray_IDRT52_ODM_Create_Ontology, 0, length,
+						utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+					this.HLEVEL = readInteger(dis);
+
+					this.order = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+				// String
+
+				writeString(this.order, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",order=" + order);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(out11Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class fromItemStruct implements
+			routines.system.IPersistableRow<fromItemStruct> {
 		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
 
@@ -10934,7 +11766,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row16Struct other) {
+		public int compareTo(fromItemStruct other) {
 
 			int returnValue = -1;
 
@@ -11311,11 +12143,14 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalResumeTicket = true;
 
 				tFileInputDelimited_15Process(globalMap);
+				tFileInputDelimited_23Process(globalMap);
 				tFileInputDelimited_16Process(globalMap);
 
 				row27Struct row27 = new row27Struct();
-				row16Struct row16 = new row16Struct();
+				fromItemStruct fromItem = new fromItemStruct();
 				out11Struct out11 = new out11Struct();
+				row16Struct row16 = new row16Struct();
+				asdStruct asd = new asdStruct();
 				row9Struct row9 = new row9Struct();
 
 				/**
@@ -11382,7 +12217,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_23:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_23:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_23:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_23 = /**
@@ -11543,6 +12378,58 @@ public class ODM_Create_Ontology implements TalendJob {
 					 */
 
 					/**
+					 * [tMap_29 begin ] start
+					 */
+
+					ok_Hash.put("tMap_29", false);
+					start_Hash.put("tMap_29", System.currentTimeMillis());
+					currentComponent = "tMap_29";
+
+					int tos_count_tMap_29 = 0;
+
+					// ###############################
+					// # Lookup's keys initialization
+
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct> tHash_Lookup_row14 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct>) globalMap
+							.get("tHash_Lookup_row14"));
+
+					row14Struct row14HashKey = new row14Struct();
+					row14Struct row14Default = new row14Struct();
+					// ###############################
+
+					// ###############################
+					// # Vars initialization
+					class Var__tMap_29__Struct {
+					}
+					Var__tMap_29__Struct Var__tMap_29 = new Var__tMap_29__Struct();
+					// ###############################
+
+					// ###############################
+					// # Outputs initialization
+					asdStruct asd_tmp = new asdStruct();
+					// ###############################
+
+					/**
+					 * [tMap_29 begin ] stop
+					 */
+
+					/**
+					 * [tJavaRow_10 begin ] start
+					 */
+
+					ok_Hash.put("tJavaRow_10", false);
+					start_Hash.put("tJavaRow_10", System.currentTimeMillis());
+					currentComponent = "tJavaRow_10";
+
+					int tos_count_tJavaRow_10 = 0;
+
+					int nb_line_tJavaRow_10 = 0;
+
+					/**
+					 * [tJavaRow_10 begin ] stop
+					 */
+
+					/**
 					 * [tMap_15 begin ] start
 					 */
 
@@ -11555,17 +12442,17 @@ public class ODM_Create_Ontology implements TalendJob {
 					// ###############################
 					// # Lookup's keys initialization
 
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row28Struct> tHash_Lookup_row28 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row28Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row28Struct>) globalMap
-							.get("tHash_Lookup_row28"));
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp5ItemGroupStruct> tHash_Lookup_fromTemp5ItemGroup = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp5ItemGroupStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp5ItemGroupStruct>) globalMap
+							.get("tHash_Lookup_fromTemp5ItemGroup"));
 
-					row28Struct row28HashKey = new row28Struct();
-					row28Struct row28Default = new row28Struct();
+					fromTemp5ItemGroupStruct fromTemp5ItemGroupHashKey = new fromTemp5ItemGroupStruct();
+					fromTemp5ItemGroupStruct fromTemp5ItemGroupDefault = new fromTemp5ItemGroupStruct();
 
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<itemNameStruct> tHash_Lookup_itemName = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<itemNameStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<itemNameStruct>) globalMap
-							.get("tHash_Lookup_itemName"));
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromItemNamesStruct> tHash_Lookup_fromItemNames = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromItemNamesStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromItemNamesStruct>) globalMap
+							.get("tHash_Lookup_fromItemNames"));
 
-					itemNameStruct itemNameHashKey = new itemNameStruct();
-					itemNameStruct itemNameDefault = new itemNameStruct();
+					fromItemNamesStruct fromItemNamesHashKey = new fromItemNamesStruct();
+					fromItemNamesStruct fromItemNamesDefault = new fromItemNamesStruct();
 					// ###############################
 
 					// ###############################
@@ -12124,9 +13011,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								// Code generated according to input schema and
 								// output schema
-								row16.ItemOID = row27.ItemOID.trim();
-								row16.ItemGroupOID = row27.ItemGroupOID.trim();
-								row16.hidden = row27.hidden.trim();
+								fromItem.ItemOID = row27.ItemOID.trim();
+								fromItem.ItemGroupOID = row27.ItemGroupOID
+										.trim();
+								fromItem.hidden = row27.hidden.trim();
 								if (row27.order == null) {
 									row27.order = "";
 								} else {
@@ -12134,7 +13022,7 @@ public class ODM_Create_Ontology implements TalendJob {
 										row27.order = "0" + row27.order.trim();
 									}
 								}
-								row16.order = row27.order.trim();
+								fromItem.order = row27.order.trim();
 
 								nb_line_tJavaRow_2++;
 
@@ -12161,142 +13049,125 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								(
 
-								!row16.hidden.equals("true")
+								!fromItem.hidden.equals("true")
 
 								)
 
 								) { // G_TM_M_280
 
 									// CALL close main tMap filter for table
-									// 'row16'
+									// 'fromItem'
 
 									// /////////////////////////////////////////////
-									// Starting Lookup Table "row28"
+									// Starting Lookup Table
+									// "fromTemp5ItemGroup"
 									// /////////////////////////////////////////////
 
-									boolean forceLooprow28 = false;
+									boolean forceLoopfromTemp5ItemGroup = false;
 
-									row28Struct row28ObjectFromLookup = null;
+									fromTemp5ItemGroupStruct fromTemp5ItemGroupObjectFromLookup = null;
 
 									if (!rejectedInnerJoin_tMap_15) { // G_TM_M_020
 
 										hasCasePrimitiveKeyWithNull_tMap_15 = false;
 
-										row28HashKey.QuestionID = row16.ItemGroupOID;
+										fromTemp5ItemGroupHashKey.QuestionID = fromItem.ItemGroupOID;
 
-										row28HashKey.hashCodeDirty = true;
+										fromTemp5ItemGroupHashKey.hashCodeDirty = true;
 
-										tHash_Lookup_row28.lookup(row28HashKey);
+										tHash_Lookup_fromTemp5ItemGroup
+												.lookup(fromTemp5ItemGroupHashKey);
 
-										if (!tHash_Lookup_row28.hasNext()) { // G_TM_M_090
+										if (!tHash_Lookup_fromTemp5ItemGroup
+												.hasNext()) { // G_TM_M_090
 
 											rejectedInnerJoin_tMap_15 = true;
 
-											forceLooprow28 = true;
+											forceLoopfromTemp5ItemGroup = true;
 
 										} // G_TM_M_090
 
 									} // G_TM_M_020
 
 									else { // G 20 - G 21
-										forceLooprow28 = true;
+										forceLoopfromTemp5ItemGroup = true;
 									} // G 21
 
-									row28Struct row28 = null;
+									fromTemp5ItemGroupStruct fromTemp5ItemGroup = null;
 
-									while ((tHash_Lookup_row28 != null && tHash_Lookup_row28
-											.hasNext()) || forceLooprow28) { // G_TM_M_043
+									while ((tHash_Lookup_fromTemp5ItemGroup != null && tHash_Lookup_fromTemp5ItemGroup
+											.hasNext())
+											|| forceLoopfromTemp5ItemGroup) { // G_TM_M_043
 
-										// CALL close loop of lookup 'row28'
+										// CALL close loop of lookup
+										// 'fromTemp5ItemGroup'
 
-										row28Struct fromLookup_row28 = null;
-										row28 = row28Default;
+										fromTemp5ItemGroupStruct fromLookup_fromTemp5ItemGroup = null;
+										fromTemp5ItemGroup = fromTemp5ItemGroupDefault;
 
-										if (!forceLooprow28) { // G 46
+										if (!forceLoopfromTemp5ItemGroup) { // G
+																			// 46
 
-											fromLookup_row28 = tHash_Lookup_row28
+											fromLookup_fromTemp5ItemGroup = tHash_Lookup_fromTemp5ItemGroup
 													.next();
 
-											if (fromLookup_row28 != null) {
-												row28 = fromLookup_row28;
+											if (fromLookup_fromTemp5ItemGroup != null) {
+												fromTemp5ItemGroup = fromLookup_fromTemp5ItemGroup;
 											}
 
 										} // G 46
 
-										forceLooprow28 = false;
+										forceLoopfromTemp5ItemGroup = false;
 
 										// /////////////////////////////////////////////
-										// Starting Lookup Table "itemName"
+										// Starting Lookup Table "fromItemNames"
 										// /////////////////////////////////////////////
 
-										boolean forceLoopitemName = false;
+										boolean forceLoopfromItemNames = false;
 
-										itemNameStruct itemNameObjectFromLookup = null;
+										fromItemNamesStruct fromItemNamesObjectFromLookup = null;
 
 										if (!rejectedInnerJoin_tMap_15) { // G_TM_M_020
 
 											hasCasePrimitiveKeyWithNull_tMap_15 = false;
 
-											itemNameHashKey.ItemGroupOID = row16.ItemOID;
+											fromItemNamesHashKey.ItemGroupOID = fromItem.ItemOID;
 
-											itemNameHashKey.hashCodeDirty = true;
+											fromItemNamesHashKey.hashCodeDirty = true;
 
-											tHash_Lookup_itemName
-													.lookup(itemNameHashKey);
-
-											if (!tHash_Lookup_itemName
-													.hasNext()) { // G_TM_M_090
-
-												rejectedInnerJoin_tMap_15 = true;
-
-											} // G_TM_M_090
+											tHash_Lookup_fromItemNames
+													.lookup(fromItemNamesHashKey);
 
 										} // G_TM_M_020
 
-										if (tHash_Lookup_itemName != null
-												&& tHash_Lookup_itemName
-														.getCount(itemNameHashKey) > 1) { // G
-																							// 071
+										if (tHash_Lookup_fromItemNames != null
+												&& tHash_Lookup_fromItemNames
+														.getCount(fromItemNamesHashKey) > 1) { // G
+																								// 071
 
-											// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'itemName' and it contains more one result from keys :  itemName.ItemGroupOID = '"
-											// + itemNameHashKey.ItemGroupOID +
-											// "'");
+											// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'fromItemNames' and it contains more one result from keys :  fromItemNames.ItemGroupOID = '"
+											// +
+											// fromItemNamesHashKey.ItemGroupOID
+											// + "'");
 										} // G 071
 
-										itemNameStruct itemName = null;
+										fromItemNamesStruct fromItemNames = null;
 
-										itemNameStruct fromLookup_itemName = null;
-										itemName = itemNameDefault;
+										fromItemNamesStruct fromLookup_fromItemNames = null;
+										fromItemNames = fromItemNamesDefault;
 
-										if (tHash_Lookup_itemName != null
-												&& tHash_Lookup_itemName
+										if (tHash_Lookup_fromItemNames != null
+												&& tHash_Lookup_fromItemNames
 														.hasNext()) { // G 099
 
-											fromLookup_itemName = tHash_Lookup_itemName
+											fromLookup_fromItemNames = tHash_Lookup_fromItemNames
 													.next();
 
 										} // G 099
 
-										if (fromLookup_itemName != null) {
-											itemName = fromLookup_itemName;
+										if (fromLookup_fromItemNames != null) {
+											fromItemNames = fromLookup_fromItemNames;
 										}
-
-										if (!rejectedInnerJoin_tMap_15 &&
-
-										!(
-
-										!row16.hidden.equals("true")
-
-										)
-
-										) { // G 016
-
-											fromLookup_itemName = null;
-											itemName = itemNameDefault;
-
-											rejectedInnerJoin_tMap_15 = true;
-
-										} // G 016
 
 										// ###############################
 										{ // start of Var scope
@@ -12313,35 +13184,24 @@ public class ODM_Create_Ontology implements TalendJob {
 											if (!rejectedInnerJoin_tMap_15) {
 
 												// # Output table : 'out11'
-												out11_tmp.StudyID = row28.StudyID;
-												out11_tmp.MetaID = row28.MetaID;
-												out11_tmp.VisitID = row28.VisitID;
-												out11_tmp.FormID = row28.FormID;
-												out11_tmp.QuestionID = row28.QuestionID;
-												out11_tmp.ItemID = row16.ItemOID;
-												out11_tmp.ParentItem = null;
-												out11_tmp.Name = StringHandling
-														.LEN(itemName.TransText) > 0 ? StringHandling
-														.LEN(row16.order) > 0 ? row16.order
-														+ " "
-														+ itemName.TransText
-																.trim()
-														: itemName.TransText
-																.trim()
-														: StringHandling
-																.LEN(row16.order) > 0 ? row16.order
-																+ " "
-																+ itemName.Name
-																		.trim()
-																: itemName.Name
-																		.trim();
-												out11_tmp.VisitNo = null;
-												out11_tmp.Sequence = null;
-												out11_tmp.hidden = null;
-												out11_tmp.FormFamily = itemName.codeList;
-												out11_tmp.AdditionalData = null;
-												out11_tmp.item_Datatype = itemName.dataType;
+												out11_tmp.StudyID = fromTemp5ItemGroup.StudyID;
+												out11_tmp.MetaID = fromTemp5ItemGroup.MetaID;
+												out11_tmp.VisitID = fromTemp5ItemGroup.VisitID;
+												out11_tmp.FormID = fromTemp5ItemGroup.FormID;
+												out11_tmp.QuestionID = fromTemp5ItemGroup.QuestionID;
+												out11_tmp.ItemID = fromItem.ItemOID;
+												out11_tmp.ParentItem = fromTemp5ItemGroup.ParentItem;
+												out11_tmp.Name = fromItemNames.TransText != null ? fromItemNames.TransText
+														: fromItemNames.Name;
+												out11_tmp.VisitNo = fromTemp5ItemGroup.VisitNo;
+												out11_tmp.Sequence = fromTemp5ItemGroup.Sequence;
+												out11_tmp.hidden = fromTemp5ItemGroup.hidden;
+												out11_tmp.FormFamily = fromTemp5ItemGroup.FormFamily;
+												out11_tmp.AdditionalData = fromTemp5ItemGroup.AdditionalData;
+												out11_tmp.item_Datatype = fromItemNames.dataType;
 												out11_tmp.HLEVEL = 7;
+												out11_tmp.order = fromItem.order != null ? fromItem.order
+														: "";
 												out11 = out11_tmp;
 											} // closing inner join bracket (2)
 												// ###############################
@@ -12359,364 +13219,506 @@ public class ODM_Create_Ontology implements TalendJob {
 										if (out11 != null) {
 
 											/**
-											 * [tUniqRow_3 main ] start
+											 * [tJavaRow_10 main ] start
 											 */
 
-											currentComponent = "tUniqRow_3";
+											currentComponent = "tJavaRow_10";
 
-											row9 = null;
-											if (out11.StudyID == null) {
-												finder_tUniqRow_3.StudyID = null;
-											} else {
-												finder_tUniqRow_3.StudyID = out11.StudyID
-														.toLowerCase();
-											}
-											if (out11.MetaID == null) {
-												finder_tUniqRow_3.MetaID = null;
-											} else {
-												finder_tUniqRow_3.MetaID = out11.MetaID
-														.toLowerCase();
-											}
-											if (out11.VisitID == null) {
-												finder_tUniqRow_3.VisitID = null;
-											} else {
-												finder_tUniqRow_3.VisitID = out11.VisitID
-														.toLowerCase();
-											}
-											if (out11.FormID == null) {
-												finder_tUniqRow_3.FormID = null;
-											} else {
-												finder_tUniqRow_3.FormID = out11.FormID
-														.toLowerCase();
-											}
-											if (out11.QuestionID == null) {
-												finder_tUniqRow_3.QuestionID = null;
-											} else {
-												finder_tUniqRow_3.QuestionID = out11.QuestionID
-														.toLowerCase();
-											}
-											if (out11.ItemID == null) {
-												finder_tUniqRow_3.ItemID = null;
-											} else {
-												finder_tUniqRow_3.ItemID = out11.ItemID
-														.toLowerCase();
-											}
-											finder_tUniqRow_3.hashCodeDirty = true;
-											if (!keystUniqRow_3
-													.contains(finder_tUniqRow_3)) {
-												KeyStruct_tUniqRow_3 new_tUniqRow_3 = new KeyStruct_tUniqRow_3();
+											row16.StudyID = out11.StudyID;
+											row16.MetaID = out11.MetaID;
+											row16.VisitID = out11.VisitID;
+											row16.FormID = out11.FormID;
+											row16.QuestionID = out11.QuestionID;
+											row16.ItemID = out11.ItemID;
+											row16.ParentItem = out11.ParentItem;
+											row16.Name = out11.Name;
+											row16.VisitNo = out11.VisitNo;
+											row16.Sequence = out11.Sequence;
+											row16.hidden = out11.hidden;
+											row16.FormFamily = out11.FormFamily;
+											row16.AdditionalData = out11.AdditionalData;
+											row16.item_Datatype = out11.item_Datatype;
+											row16.HLEVEL = out11.HLEVEL;
+											row16.order = out11.order;
 
-												if (out11.StudyID == null) {
-													new_tUniqRow_3.StudyID = null;
-												} else {
-													new_tUniqRow_3.StudyID = out11.StudyID
-															.toLowerCase();
-												}
-												if (out11.MetaID == null) {
-													new_tUniqRow_3.MetaID = null;
-												} else {
-													new_tUniqRow_3.MetaID = out11.MetaID
-															.toLowerCase();
-												}
-												if (out11.VisitID == null) {
-													new_tUniqRow_3.VisitID = null;
-												} else {
-													new_tUniqRow_3.VisitID = out11.VisitID
-															.toLowerCase();
-												}
-												if (out11.FormID == null) {
-													new_tUniqRow_3.FormID = null;
-												} else {
-													new_tUniqRow_3.FormID = out11.FormID
-															.toLowerCase();
-												}
-												if (out11.QuestionID == null) {
-													new_tUniqRow_3.QuestionID = null;
-												} else {
-													new_tUniqRow_3.QuestionID = out11.QuestionID
-															.toLowerCase();
-												}
-												if (out11.ItemID == null) {
-													new_tUniqRow_3.ItemID = null;
-												} else {
-													new_tUniqRow_3.ItemID = out11.ItemID
-															.toLowerCase();
-												}
+											nb_line_tJavaRow_10++;
 
-												keystUniqRow_3
-														.add(new_tUniqRow_3);
-												if (row9 == null) {
-													row9 = new row9Struct();
-												}
-												row9.StudyID = out11.StudyID;
-												row9.MetaID = out11.MetaID;
-												row9.VisitID = out11.VisitID;
-												row9.FormID = out11.FormID;
-												row9.QuestionID = out11.QuestionID;
-												row9.ItemID = out11.ItemID;
-												row9.ParentItem = out11.ParentItem;
-												row9.Name = out11.Name;
-												row9.VisitNo = out11.VisitNo;
-												row9.Sequence = out11.Sequence;
-												row9.hidden = out11.hidden;
-												row9.FormFamily = out11.FormFamily;
-												row9.AdditionalData = out11.AdditionalData;
-												row9.item_Datatype = out11.item_Datatype;
-												row9.HLEVEL = out11.HLEVEL;
-												nb_uniques_tUniqRow_3++;
-											} else {
-												nb_duplicates_tUniqRow_3++;
-											}
-
-											tos_count_tUniqRow_3++;
+											tos_count_tJavaRow_10++;
 
 											/**
-											 * [tUniqRow_3 main ] stop
+											 * [tJavaRow_10 main ] stop
 											 */
-											// Start of branch "row9"
-											if (row9 != null) {
+
+											/**
+											 * [tMap_29 main ] start
+											 */
+
+											currentComponent = "tMap_29";
+
+											boolean hasCasePrimitiveKeyWithNull_tMap_29 = false;
+
+											// ###############################
+											// # Input tables (lookups)
+											boolean rejectedInnerJoin_tMap_29 = false;
+											boolean mainRowRejected_tMap_29 = false;
+
+											// /////////////////////////////////////////////
+											// Starting Lookup Table "row14"
+											// /////////////////////////////////////////////
+
+											boolean forceLooprow14 = false;
+
+											row14Struct row14ObjectFromLookup = null;
+
+											if (!rejectedInnerJoin_tMap_29) { // G_TM_M_020
+
+												hasCasePrimitiveKeyWithNull_tMap_29 = false;
+
+												row14HashKey.ItemGroupOID = row16.ItemID;
+
+												row14HashKey.hashCodeDirty = true;
+
+												tHash_Lookup_row14
+														.lookup(row14HashKey);
+
+											} // G_TM_M_020
+
+											if (tHash_Lookup_row14 != null
+													&& tHash_Lookup_row14
+															.getCount(row14HashKey) > 1) { // G
+																							// 071
+
+												// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row14' and it contains more one result from keys :  row14.ItemGroupOID = '"
+												// + row14HashKey.ItemGroupOID +
+												// "'");
+											} // G 071
+
+											row14Struct row14 = null;
+
+											row14Struct fromLookup_row14 = null;
+											row14 = row14Default;
+
+											if (tHash_Lookup_row14 != null
+													&& tHash_Lookup_row14
+															.hasNext()) { // G
+																			// 099
+
+												fromLookup_row14 = tHash_Lookup_row14
+														.next();
+
+											} // G 099
+
+											if (fromLookup_row14 != null) {
+												row14 = fromLookup_row14;
+											}
+
+											// ###############################
+											{ // start of Var scope
+
+												// ###############################
+												// # Vars tables
+
+												Var__tMap_29__Struct Var = Var__tMap_29;// ###############################
+												// ###############################
+												// # Output tables
+
+												asd = null;
+
+												// # Output table : 'asd'
+												asd_tmp.StudyID = row16.StudyID;
+												asd_tmp.MetaID = row16.MetaID;
+												asd_tmp.VisitID = row16.VisitID;
+												asd_tmp.FormID = row16.FormID;
+												asd_tmp.QuestionID = row16.QuestionID;
+												asd_tmp.ItemID = row16.ItemID;
+												asd_tmp.ParentItem = row16.ParentItem;
+												asd_tmp.Name = StringHandling
+														.LEN(row16.order) > 0 ? row16.order
+														+ " " + row16.Name
+														: row16.Name;
+												asd_tmp.VisitNo = row16.VisitNo;
+												asd_tmp.Sequence = row16.Sequence;
+												asd_tmp.hidden = row16.hidden;
+												asd_tmp.FormFamily = row14.OID;
+												asd_tmp.AdditionalData = row16.AdditionalData;
+												asd_tmp.item_Datatype = row16.item_Datatype;
+												asd_tmp.HLEVEL = row16.HLEVEL;
+												asd = asd_tmp;
+												// ###############################
+
+											} // end of Var scope
+
+											rejectedInnerJoin_tMap_29 = false;
+
+											tos_count_tMap_29++;
+
+											/**
+											 * [tMap_29 main ] stop
+											 */
+											// Start of branch "asd"
+											if (asd != null) {
 
 												/**
-												 * [tFileOutputDelimited_23 main
-												 * ] start
+												 * [tUniqRow_3 main ] start
 												 */
 
-												currentComponent = "tFileOutputDelimited_23";
+												currentComponent = "tUniqRow_3";
 
-												StringBuilder sb_tFileOutputDelimited_23 = new StringBuilder();
+												row9 = null;
+												if (asd.StudyID == null) {
+													finder_tUniqRow_3.StudyID = null;
+												} else {
+													finder_tUniqRow_3.StudyID = asd.StudyID
+															.toLowerCase();
+												}
+												if (asd.MetaID == null) {
+													finder_tUniqRow_3.MetaID = null;
+												} else {
+													finder_tUniqRow_3.MetaID = asd.MetaID
+															.toLowerCase();
+												}
+												if (asd.VisitID == null) {
+													finder_tUniqRow_3.VisitID = null;
+												} else {
+													finder_tUniqRow_3.VisitID = asd.VisitID
+															.toLowerCase();
+												}
+												if (asd.FormID == null) {
+													finder_tUniqRow_3.FormID = null;
+												} else {
+													finder_tUniqRow_3.FormID = asd.FormID
+															.toLowerCase();
+												}
+												if (asd.QuestionID == null) {
+													finder_tUniqRow_3.QuestionID = null;
+												} else {
+													finder_tUniqRow_3.QuestionID = asd.QuestionID
+															.toLowerCase();
+												}
+												if (asd.ItemID == null) {
+													finder_tUniqRow_3.ItemID = null;
+												} else {
+													finder_tUniqRow_3.ItemID = asd.ItemID
+															.toLowerCase();
+												}
+												finder_tUniqRow_3.hashCodeDirty = true;
+												if (!keystUniqRow_3
+														.contains(finder_tUniqRow_3)) {
+													KeyStruct_tUniqRow_3 new_tUniqRow_3 = new KeyStruct_tUniqRow_3();
 
-												if (row9.StudyID != null) {
+													if (asd.StudyID == null) {
+														new_tUniqRow_3.StudyID = null;
+													} else {
+														new_tUniqRow_3.StudyID = asd.StudyID
+																.toLowerCase();
+													}
+													if (asd.MetaID == null) {
+														new_tUniqRow_3.MetaID = null;
+													} else {
+														new_tUniqRow_3.MetaID = asd.MetaID
+																.toLowerCase();
+													}
+													if (asd.VisitID == null) {
+														new_tUniqRow_3.VisitID = null;
+													} else {
+														new_tUniqRow_3.VisitID = asd.VisitID
+																.toLowerCase();
+													}
+													if (asd.FormID == null) {
+														new_tUniqRow_3.FormID = null;
+													} else {
+														new_tUniqRow_3.FormID = asd.FormID
+																.toLowerCase();
+													}
+													if (asd.QuestionID == null) {
+														new_tUniqRow_3.QuestionID = null;
+													} else {
+														new_tUniqRow_3.QuestionID = asd.QuestionID
+																.toLowerCase();
+													}
+													if (asd.ItemID == null) {
+														new_tUniqRow_3.ItemID = null;
+													} else {
+														new_tUniqRow_3.ItemID = asd.ItemID
+																.toLowerCase();
+													}
 
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.StudyID
-
-															);
-
+													keystUniqRow_3
+															.add(new_tUniqRow_3);
+													if (row9 == null) {
+														row9 = new row9Struct();
+													}
+													row9.StudyID = asd.StudyID;
+													row9.MetaID = asd.MetaID;
+													row9.VisitID = asd.VisitID;
+													row9.FormID = asd.FormID;
+													row9.QuestionID = asd.QuestionID;
+													row9.ItemID = asd.ItemID;
+													row9.ParentItem = asd.ParentItem;
+													row9.Name = asd.Name;
+													row9.VisitNo = asd.VisitNo;
+													row9.Sequence = asd.Sequence;
+													row9.hidden = asd.hidden;
+													row9.FormFamily = asd.FormFamily;
+													row9.AdditionalData = asd.AdditionalData;
+													row9.item_Datatype = asd.item_Datatype;
+													row9.HLEVEL = asd.HLEVEL;
+													nb_uniques_tUniqRow_3++;
+												} else {
+													nb_duplicates_tUniqRow_3++;
 												}
 
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.MetaID != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.MetaID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.VisitID != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.VisitID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.FormID != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.FormID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.QuestionID != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.QuestionID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.ItemID != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.ItemID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.ParentItem != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.ParentItem
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.Name != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.Name
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.VisitNo != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.VisitNo
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.Sequence != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.Sequence
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.hidden != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.hidden
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.FormFamily != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.FormFamily
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.AdditionalData != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.AdditionalData
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.item_Datatype != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.item_Datatype
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_tFileOutputDelimited_23);
-
-												if (row9.HLEVEL != null) {
-
-													sb_tFileOutputDelimited_23
-															.append(
-
-															row9.HLEVEL
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_23
-														.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_23);
-
-												nb_line_tFileOutputDelimited_23++;
-
-												outtFileOutputDelimited_23
-														.write(sb_tFileOutputDelimited_23
-																.toString());
-
-												tos_count_tFileOutputDelimited_23++;
+												tos_count_tUniqRow_3++;
 
 												/**
-												 * [tFileOutputDelimited_23 main
-												 * ] stop
+												 * [tUniqRow_3 main ] stop
 												 */
+												// Start of branch "row9"
+												if (row9 != null) {
 
-											} // End of branch "row9"
+													/**
+													 * [tFileOutputDelimited_23
+													 * main ] start
+													 */
+
+													currentComponent = "tFileOutputDelimited_23";
+
+													StringBuilder sb_tFileOutputDelimited_23 = new StringBuilder();
+
+													if (row9.StudyID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.StudyID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.MetaID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.MetaID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.VisitID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.VisitID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.FormID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.FormID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.QuestionID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.QuestionID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.ItemID != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.ItemID
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.ParentItem != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.ParentItem
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.Name != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.Name
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.VisitNo != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.VisitNo
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.Sequence != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.Sequence
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.hidden != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.hidden
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.FormFamily != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.FormFamily
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.AdditionalData != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.AdditionalData
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.item_Datatype != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.item_Datatype
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_tFileOutputDelimited_23);
+
+													if (row9.HLEVEL != null) {
+
+														sb_tFileOutputDelimited_23
+																.append(
+
+																row9.HLEVEL
+
+																);
+
+													}
+
+													sb_tFileOutputDelimited_23
+															.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_23);
+
+													nb_line_tFileOutputDelimited_23++;
+
+													outtFileOutputDelimited_23
+															.write(sb_tFileOutputDelimited_23
+																	.toString());
+
+													tos_count_tFileOutputDelimited_23++;
+
+													/**
+													 * [tFileOutputDelimited_23
+													 * main ] stop
+													 */
+
+												} // End of branch "row9"
+
+											} // End of branch "asd"
 
 										} // End of branch "out11"
 
-									} // close loop of lookup 'row28' //
-										// G_TM_M_043
+									} // close loop of lookup
+										// 'fromTemp5ItemGroup' // G_TM_M_043
 
 								} // G_TM_M_280 close main tMap filter for table
-									// 'row16'
+									// 'fromItem'
 
 							} // End of branch "row27"
 
@@ -12761,15 +13763,15 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					// ###############################
 					// # Lookup hashes releasing
-					if (tHash_Lookup_row28 != null) {
-						tHash_Lookup_row28.endGet();
+					if (tHash_Lookup_fromTemp5ItemGroup != null) {
+						tHash_Lookup_fromTemp5ItemGroup.endGet();
 					}
-					globalMap.remove("tHash_Lookup_row28");
+					globalMap.remove("tHash_Lookup_fromTemp5ItemGroup");
 
-					if (tHash_Lookup_itemName != null) {
-						tHash_Lookup_itemName.endGet();
+					if (tHash_Lookup_fromItemNames != null) {
+						tHash_Lookup_fromItemNames.endGet();
 					}
-					globalMap.remove("tHash_Lookup_itemName");
+					globalMap.remove("tHash_Lookup_fromItemNames");
 
 					// ###############################
 
@@ -12778,6 +13780,43 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					/**
 					 * [tMap_15 end ] stop
+					 */
+
+					/**
+					 * [tJavaRow_10 end ] start
+					 */
+
+					currentComponent = "tJavaRow_10";
+
+					globalMap.put("tJavaRow_10_NB_LINE", nb_line_tJavaRow_10);
+
+					ok_Hash.put("tJavaRow_10", true);
+					end_Hash.put("tJavaRow_10", System.currentTimeMillis());
+
+					/**
+					 * [tJavaRow_10 end ] stop
+					 */
+
+					/**
+					 * [tMap_29 end ] start
+					 */
+
+					currentComponent = "tMap_29";
+
+					// ###############################
+					// # Lookup hashes releasing
+					if (tHash_Lookup_row14 != null) {
+						tHash_Lookup_row14.endGet();
+					}
+					globalMap.remove("tHash_Lookup_row14");
+
+					// ###############################
+
+					ok_Hash.put("tMap_29", true);
+					end_Hash.put("tMap_29", System.currentTimeMillis());
+
+					/**
+					 * [tMap_29 end ] stop
 					 */
 
 					/**
@@ -12844,11 +13883,14 @@ public class ODM_Create_Ontology implements TalendJob {
 			throw new java.lang.Error(error);
 
 		} finally {
-			// free memory for "tMap_15"
-			globalMap.remove("tHash_Lookup_row28");
+			// free memory for "tMap_29"
+			globalMap.remove("tHash_Lookup_row14");
 
 			// free memory for "tMap_15"
-			globalMap.remove("tHash_Lookup_itemName");
+			globalMap.remove("tHash_Lookup_fromTemp5ItemGroup");
+
+			// free memory for "tMap_15"
+			globalMap.remove("tHash_Lookup_fromItemNames");
 
 		}
 
@@ -19066,7 +20108,7 @@ public class ODM_Create_Ontology implements TalendJob {
 							fid_tFileInputDelimited_17 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
 											.get("tCreateTemporaryFile_3_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+									"ISO-8859-15", "\t", "\n", true, 0, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -19715,7 +20757,7 @@ public class ODM_Create_Ontology implements TalendJob {
 							fid_tFileInputDelimited_18 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
 											.get("tCreateTemporaryFile_4_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+									"ISO-8859-15", "\t", "\n", true, 0, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -20350,7 +21392,7 @@ public class ODM_Create_Ontology implements TalendJob {
 					try {
 
 						Object filename_tFileInputDelimited_19 = ((String) globalMap
-								.get("tCreateTemporaryFile_5_FILEPATH"));
+								.get("tCreateTemporaryFile_16_FILEPATH"));
 						if (filename_tFileInputDelimited_19 instanceof java.io.InputStream) {
 
 							int footer_value_tFileInputDelimited_19 = 0, random_value_tFileInputDelimited_19 = -1;
@@ -20364,8 +21406,8 @@ public class ODM_Create_Ontology implements TalendJob {
 						try {
 							fid_tFileInputDelimited_19 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
-											.get("tCreateTemporaryFile_5_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+											.get("tCreateTemporaryFile_16_FILEPATH")),
+									"ISO-8859-15", "\t", "\n", true, 1, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -20920,7 +21962,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						}
 					} finally {
 						if (!((Object) (((String) globalMap
-								.get("tCreateTemporaryFile_5_FILEPATH"))) instanceof java.io.InputStream)) {
+								.get("tCreateTemporaryFile_16_FILEPATH"))) instanceof java.io.InputStream)) {
 							if (fid_tFileInputDelimited_19 != null) {
 								fid_tFileInputDelimited_19.close();
 							}
@@ -21017,7 +22059,7 @@ public class ODM_Create_Ontology implements TalendJob {
 							fid_tFileInputDelimited_20 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
 											.get("tCreateTemporaryFile_6_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+									"ISO-8859-15", "\t", "\n", true, 0, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -21670,7 +22712,7 @@ public class ODM_Create_Ontology implements TalendJob {
 							fid_tFileInputDelimited_21 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
 											.get("tCreateTemporaryFile_7_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+									"ISO-8859-15", "\t", "\n", true, 0, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -22325,7 +23367,7 @@ public class ODM_Create_Ontology implements TalendJob {
 							fid_tFileInputDelimited_22 = new org.talend.fileprocess.FileInputDelimited(
 									((String) globalMap
 											.get("tCreateTemporaryFile_12_FILEPATH")),
-									"ISO-8859-15", ";", "\n", true, 0, 0, -1,
+									"ISO-8859-15", "\t", "\n", true, 0, 0, -1,
 									-1, false);
 						} catch (java.lang.Exception e) {
 
@@ -23550,7 +24592,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_8 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_4_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -24058,7 +25100,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				// linked node: tMap_9 - inputs:(row21,row15,row22)
 				// outputs:(out8)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row22 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row22 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
 
 				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct> tHash_Lookup_row22 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
 						.<row22Struct> getLookup(matchingModeEnum_row22);
@@ -24100,7 +25142,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_11 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_8_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -24331,6 +25373,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.item_Datatype;
 		}
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		@Override
 		public int hashCode() {
 			if (this.hashCodeDirty) {
@@ -24382,6 +25430,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			other.FormFamily = this.FormFamily;
 			other.AdditionalData = this.AdditionalData;
 			other.item_Datatype = this.item_Datatype;
+			other.HLEVEL = this.HLEVEL;
 
 		}
 
@@ -24452,6 +25501,29 @@ public class ODM_Create_Ontology implements TalendJob {
 			}
 		}
 
+		private Integer readInteger(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		public void readKeysData(ObjectInputStream dis) {
 
 			synchronized (commonByteArrayLock_IDRT52_ODM_Create_Ontology) {
@@ -24518,6 +25590,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				this.item_Datatype = readString(dis, ois);
 
+				this.HLEVEL = readInteger(dis, ois);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 
@@ -24557,6 +25631,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.item_Datatype, dos, oos);
 
+				writeInteger(this.HLEVEL, dos, oos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -24582,6 +25658,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",FormFamily=" + FormFamily);
 			sb.append(",AdditionalData=" + AdditionalData);
 			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
 			sb.append("]");
 
 			return sb.toString();
@@ -24697,7 +25774,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				try {
 
 					Object filename_tFileInputDelimited_10 = ((String) globalMap
-							.get("tCreateTemporaryFile_5_FILEPATH"));
+							.get("tCreateTemporaryFile_16_FILEPATH"));
 					if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
 
 						int footer_value_tFileInputDelimited_10 = 0, random_value_tFileInputDelimited_10 = -1;
@@ -24711,8 +25788,8 @@ public class ODM_Create_Ontology implements TalendJob {
 					try {
 						fid_tFileInputDelimited_10 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
-										.get("tCreateTemporaryFile_5_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+										.get("tCreateTemporaryFile_16_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 1, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -24732,6 +25809,8 @@ public class ODM_Create_Ontology implements TalendJob {
 						try {
 
 							int columnIndexWithD_tFileInputDelimited_10 = 0;
+
+							String temp = "";
 
 							columnIndexWithD_tFileInputDelimited_10 = 0;
 
@@ -24803,6 +25882,21 @@ public class ODM_Create_Ontology implements TalendJob {
 							Temp3Visit.item_Datatype = fid_tFileInputDelimited_10
 									.get(columnIndexWithD_tFileInputDelimited_10);
 
+							columnIndexWithD_tFileInputDelimited_10 = 14;
+
+							temp = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+							if (temp.length() > 0) {
+
+								Temp3Visit.HLEVEL = ParserUtils
+										.parseTo_Integer(temp);
+
+							} else {
+
+								Temp3Visit.HLEVEL = null;
+
+							}
+
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_10 = true;
 
@@ -24864,6 +25958,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 							Temp3Visit_HashRow.item_Datatype = Temp3Visit.item_Datatype;
 
+							Temp3Visit_HashRow.HLEVEL = Temp3Visit.HLEVEL;
+
 							tHash_Lookup_Temp3Visit.put(Temp3Visit_HashRow);
 
 							tos_count_tAdvancedHash_Temp3Visit++;
@@ -24883,7 +25979,7 @@ public class ODM_Create_Ontology implements TalendJob {
 					}
 				} finally {
 					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_5_FILEPATH"))) instanceof java.io.InputStream)) {
+							.get("tCreateTemporaryFile_16_FILEPATH"))) instanceof java.io.InputStream)) {
 						if (fid_tFileInputDelimited_10 != null) {
 							fid_tFileInputDelimited_10.close();
 						}
@@ -25263,7 +26359,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_12 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_9_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -26443,7 +27539,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_12:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_12:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_12:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_12 = /**
@@ -28121,7 +29217,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_7 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_3_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -29007,6 +30103,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.OID;
 		}
 
+		public String StudyName;
+
+		public String getStudyName() {
+			return this.StudyName;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -29052,6 +30154,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.OID = readString(dis);
 
+					this.StudyName = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -29068,6 +30172,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.OID, dos);
 
+				// String
+
+				writeString(this.StudyName, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -29080,6 +30188,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("OID=" + OID);
+			sb.append(",StudyName=" + StudyName);
 			sb.append("]");
 
 			return sb.toString();
@@ -29208,7 +30317,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_9:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_9:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_9:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_9 = /**
@@ -29635,6 +30744,13 @@ public class ODM_Create_Ontology implements TalendJob {
 												"/ODM/Study"));
 						xTmp0_tFileInputXML_1
 								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_1);
+						org.dom4j.XPath xTmp1_tFileInputXML_1 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_1
+										.addDefaultNSPrefix(
+												"/GlobalVariables/StudyName/.",
+												"/ODM/Study"));
+						xTmp1_tFileInputXML_1
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_1);
 
 						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_1 : nodeList_tFileInputXML_1) {
 							nb_line_tFileInputXML_1++;
@@ -29683,6 +30799,48 @@ public class ODM_Create_Ontology implements TalendJob {
 									row1.OID = null;
 								} else {
 									row1.OID = str_tFileInputXML_1;
+								}
+								Object obj1_tFileInputXML_1 = xTmp1_tFileInputXML_1
+										.evaluate(temp_tFileInputXML_1);
+								if (obj1_tFileInputXML_1 == null) {
+									node_tFileInputXML_1 = null;
+									str_tFileInputXML_1 = "";
+
+								} else if (obj1_tFileInputXML_1 instanceof org.dom4j.Node) {
+									node_tFileInputXML_1 = (org.dom4j.Node) obj1_tFileInputXML_1;
+									str_tFileInputXML_1 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_1,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj1_tFileInputXML_1 instanceof String
+										|| obj1_tFileInputXML_1 instanceof Number) {
+									node_tFileInputXML_1 = temp_tFileInputXML_1;
+									str_tFileInputXML_1 = String
+											.valueOf(obj1_tFileInputXML_1);
+								} else if (obj1_tFileInputXML_1 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_1 = (java.util.List<org.dom4j.Node>) obj1_tFileInputXML_1;
+									node_tFileInputXML_1 = nodes_tFileInputXML_1
+											.size() > 0 ? nodes_tFileInputXML_1
+											.get(0) : null;
+									str_tFileInputXML_1 = node_tFileInputXML_1 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_1,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_1
+										.isDefNull(node_tFileInputXML_1)) {
+									row1.StudyName = null;
+								} else if (xml_api_tFileInputXML_1
+										.isEmpty(node_tFileInputXML_1)) {
+									row1.StudyName = "";
+								} else if (xml_api_tFileInputXML_1
+										.isMissing(node_tFileInputXML_1)) {
+									row1.StudyName = null;
+								} else {
+									row1.StudyName = str_tFileInputXML_1;
 								}
 
 							} catch (java.lang.Exception e) {
@@ -29741,7 +30899,8 @@ public class ODM_Create_Ontology implements TalendJob {
 									out5_tmp.QuestionID = null;
 									out5_tmp.ItemID = null;
 									out5_tmp.ParentItem = null;
-									out5_tmp.Name = row1.OID;
+									out5_tmp.Name = row1.StudyName != null ? row1.StudyName
+											: row1.OID;
 									out5_tmp.VisitNo = null;
 									out5_tmp.Sequence = null;
 									out5_tmp.hidden = null;
@@ -30703,7 +31862,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_13 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_6_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -31259,7 +32418,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_14 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_10_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -31397,8 +32556,9 @@ public class ODM_Create_Ontology implements TalendJob {
 		globalMap.put("tFileInputDelimited_14_SUBPROCESS_STATE", 1);
 	}
 
-	public static class row28Struct implements
-			routines.system.IPersistableComparableLookupRow<row28Struct> {
+	public static class fromTemp5ItemGroupStruct
+			implements
+			routines.system.IPersistableComparableLookupRow<fromTemp5ItemGroupStruct> {
 		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -31517,7 +32677,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final row28Struct other = (row28Struct) obj;
+			final fromTemp5ItemGroupStruct other = (fromTemp5ItemGroupStruct) obj;
 
 			if (this.QuestionID == null) {
 				if (other.QuestionID != null)
@@ -31528,7 +32688,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(row28Struct other) {
+		public void copyDataTo(fromTemp5ItemGroupStruct other) {
 
 			other.StudyID = this.StudyID;
 			other.MetaID = this.MetaID;
@@ -31547,7 +32707,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(row28Struct other) {
+		public void copyKeysDataTo(fromTemp5ItemGroupStruct other) {
 
 			other.QuestionID = this.QuestionID;
 
@@ -31752,7 +32912,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row28Struct other) {
+		public int compareTo(fromTemp5ItemGroupStruct other) {
 
 			int returnValue = -1;
 
@@ -31810,35 +32970,39 @@ public class ODM_Create_Ontology implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				row28Struct row28 = new row28Struct();
+				fromTemp5ItemGroupStruct fromTemp5ItemGroup = new fromTemp5ItemGroupStruct();
 
 				/**
-				 * [tAdvancedHash_row28 begin ] start
+				 * [tAdvancedHash_fromTemp5ItemGroup begin ] start
 				 */
 
-				ok_Hash.put("tAdvancedHash_row28", false);
-				start_Hash.put("tAdvancedHash_row28",
+				ok_Hash.put("tAdvancedHash_fromTemp5ItemGroup", false);
+				start_Hash.put("tAdvancedHash_fromTemp5ItemGroup",
 						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_row28";
+				currentComponent = "tAdvancedHash_fromTemp5ItemGroup";
 
-				int tos_count_tAdvancedHash_row28 = 0;
+				int tos_count_tAdvancedHash_fromTemp5ItemGroup = 0;
 
-				// connection name:row28
+				// connection name:fromTemp5ItemGroup
 				// source node:tFileInputDelimited_15 -
-				// inputs:(after_tFileInputXML_16) outputs:(row28,row28) |
-				// target node:tAdvancedHash_row28 - inputs:(row28) outputs:()
-				// linked node: tMap_15 - inputs:(row16,row28,itemName)
+				// inputs:(after_tFileInputXML_16)
+				// outputs:(fromTemp5ItemGroup,fromTemp5ItemGroup) | target
+				// node:tAdvancedHash_fromTemp5ItemGroup -
+				// inputs:(fromTemp5ItemGroup) outputs:()
+				// linked node: tMap_15 -
+				// inputs:(fromItem,fromTemp5ItemGroup,fromItemNames)
 				// outputs:(out11)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row28 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_fromTemp5ItemGroup = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
 
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row28Struct> tHash_Lookup_row28 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<row28Struct> getLookup(matchingModeEnum_row28);
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp5ItemGroupStruct> tHash_Lookup_fromTemp5ItemGroup = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<fromTemp5ItemGroupStruct> getLookup(matchingModeEnum_fromTemp5ItemGroup);
 
-				globalMap.put("tHash_Lookup_row28", tHash_Lookup_row28);
+				globalMap.put("tHash_Lookup_fromTemp5ItemGroup",
+						tHash_Lookup_fromTemp5ItemGroup);
 
 				/**
-				 * [tAdvancedHash_row28 begin ] stop
+				 * [tAdvancedHash_fromTemp5ItemGroup begin ] stop
 				 */
 
 				/**
@@ -31872,7 +33036,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_15 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_7_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -31883,91 +33047,91 @@ public class ODM_Create_Ontology implements TalendJob {
 					while (fid_tFileInputDelimited_15 != null
 							&& fid_tFileInputDelimited_15.nextRecord()) {
 
-						row28 = null;
+						fromTemp5ItemGroup = null;
 
-						row28 = null;
+						fromTemp5ItemGroup = null;
 
 						boolean whetherReject_tFileInputDelimited_15 = false;
-						row28 = new row28Struct();
+						fromTemp5ItemGroup = new fromTemp5ItemGroupStruct();
 						try {
 
 							int columnIndexWithD_tFileInputDelimited_15 = 0;
 
 							columnIndexWithD_tFileInputDelimited_15 = 0;
 
-							row28.StudyID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.StudyID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 1;
 
-							row28.MetaID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.MetaID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 2;
 
-							row28.VisitID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.VisitID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 3;
 
-							row28.FormID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.FormID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 4;
 
-							row28.QuestionID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.QuestionID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 5;
 
-							row28.ItemID = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.ItemID = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 6;
 
-							row28.ParentItem = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.ParentItem = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 7;
 
-							row28.Name = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.Name = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 8;
 
-							row28.VisitNo = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.VisitNo = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 9;
 
-							row28.Sequence = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.Sequence = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 10;
 
-							row28.hidden = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.hidden = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 11;
 
-							row28.FormFamily = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.FormFamily = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 12;
 
-							row28.AdditionalData = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.AdditionalData = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 							columnIndexWithD_tFileInputDelimited_15 = 13;
 
-							row28.item_Datatype = fid_tFileInputDelimited_15
+							fromTemp5ItemGroup.item_Datatype = fid_tFileInputDelimited_15
 									.get(columnIndexWithD_tFileInputDelimited_15);
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_15 = true;
 
 							System.err.println(e.getMessage());
-							row28 = null;
+							fromTemp5ItemGroup = null;
 
 						}
 
@@ -31985,54 +33149,55 @@ public class ODM_Create_Ontology implements TalendJob {
 						/**
 						 * [tFileInputDelimited_15 main ] stop
 						 */
-						// Start of branch "row28"
-						if (row28 != null) {
+						// Start of branch "fromTemp5ItemGroup"
+						if (fromTemp5ItemGroup != null) {
 
 							/**
-							 * [tAdvancedHash_row28 main ] start
+							 * [tAdvancedHash_fromTemp5ItemGroup main ] start
 							 */
 
-							currentComponent = "tAdvancedHash_row28";
+							currentComponent = "tAdvancedHash_fromTemp5ItemGroup";
 
-							row28Struct row28_HashRow = new row28Struct();
+							fromTemp5ItemGroupStruct fromTemp5ItemGroup_HashRow = new fromTemp5ItemGroupStruct();
 
-							row28_HashRow.StudyID = row28.StudyID;
+							fromTemp5ItemGroup_HashRow.StudyID = fromTemp5ItemGroup.StudyID;
 
-							row28_HashRow.MetaID = row28.MetaID;
+							fromTemp5ItemGroup_HashRow.MetaID = fromTemp5ItemGroup.MetaID;
 
-							row28_HashRow.VisitID = row28.VisitID;
+							fromTemp5ItemGroup_HashRow.VisitID = fromTemp5ItemGroup.VisitID;
 
-							row28_HashRow.FormID = row28.FormID;
+							fromTemp5ItemGroup_HashRow.FormID = fromTemp5ItemGroup.FormID;
 
-							row28_HashRow.QuestionID = row28.QuestionID;
+							fromTemp5ItemGroup_HashRow.QuestionID = fromTemp5ItemGroup.QuestionID;
 
-							row28_HashRow.ItemID = row28.ItemID;
+							fromTemp5ItemGroup_HashRow.ItemID = fromTemp5ItemGroup.ItemID;
 
-							row28_HashRow.ParentItem = row28.ParentItem;
+							fromTemp5ItemGroup_HashRow.ParentItem = fromTemp5ItemGroup.ParentItem;
 
-							row28_HashRow.Name = row28.Name;
+							fromTemp5ItemGroup_HashRow.Name = fromTemp5ItemGroup.Name;
 
-							row28_HashRow.VisitNo = row28.VisitNo;
+							fromTemp5ItemGroup_HashRow.VisitNo = fromTemp5ItemGroup.VisitNo;
 
-							row28_HashRow.Sequence = row28.Sequence;
+							fromTemp5ItemGroup_HashRow.Sequence = fromTemp5ItemGroup.Sequence;
 
-							row28_HashRow.hidden = row28.hidden;
+							fromTemp5ItemGroup_HashRow.hidden = fromTemp5ItemGroup.hidden;
 
-							row28_HashRow.FormFamily = row28.FormFamily;
+							fromTemp5ItemGroup_HashRow.FormFamily = fromTemp5ItemGroup.FormFamily;
 
-							row28_HashRow.AdditionalData = row28.AdditionalData;
+							fromTemp5ItemGroup_HashRow.AdditionalData = fromTemp5ItemGroup.AdditionalData;
 
-							row28_HashRow.item_Datatype = row28.item_Datatype;
+							fromTemp5ItemGroup_HashRow.item_Datatype = fromTemp5ItemGroup.item_Datatype;
 
-							tHash_Lookup_row28.put(row28_HashRow);
+							tHash_Lookup_fromTemp5ItemGroup
+									.put(fromTemp5ItemGroup_HashRow);
 
-							tos_count_tAdvancedHash_row28++;
+							tos_count_tAdvancedHash_fromTemp5ItemGroup++;
 
 							/**
-							 * [tAdvancedHash_row28 main ] stop
+							 * [tAdvancedHash_fromTemp5ItemGroup main ] stop
 							 */
 
-						} // End of branch "row28"
+						} // End of branch "fromTemp5ItemGroup"
 
 						/**
 						 * [tFileInputDelimited_15 end ] start
@@ -32063,18 +33228,19 @@ public class ODM_Create_Ontology implements TalendJob {
 				 */
 
 				/**
-				 * [tAdvancedHash_row28 end ] start
+				 * [tAdvancedHash_fromTemp5ItemGroup end ] start
 				 */
 
-				currentComponent = "tAdvancedHash_row28";
+				currentComponent = "tAdvancedHash_fromTemp5ItemGroup";
 
-				tHash_Lookup_row28.endPut();
+				tHash_Lookup_fromTemp5ItemGroup.endPut();
 
-				ok_Hash.put("tAdvancedHash_row28", true);
-				end_Hash.put("tAdvancedHash_row28", System.currentTimeMillis());
+				ok_Hash.put("tAdvancedHash_fromTemp5ItemGroup", true);
+				end_Hash.put("tAdvancedHash_fromTemp5ItemGroup",
+						System.currentTimeMillis());
 
 				/**
-				 * [tAdvancedHash_row28 end ] stop
+				 * [tAdvancedHash_fromTemp5ItemGroup end ] stop
 				 */
 
 			}// end the resume
@@ -32092,8 +33258,549 @@ public class ODM_Create_Ontology implements TalendJob {
 		globalMap.put("tFileInputDelimited_15_SUBPROCESS_STATE", 1);
 	}
 
-	public static class itemNameStruct implements
-			routines.system.IPersistableComparableLookupRow<itemNameStruct> {
+	public static class row14Struct implements
+			routines.system.IPersistableComparableLookupRow<row14Struct> {
+		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String OID;
+
+		public String getOID() {
+			return this.OID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String CodeListItem;
+
+		public String getCodeListItem() {
+			return this.CodeListItem;
+		}
+
+		public String TranslatedText;
+
+		public String getTranslatedText() {
+			return this.TranslatedText;
+		}
+
+		public String ItemGroupOID;
+
+		public String getItemGroupOID() {
+			return this.ItemGroupOID;
+		}
+
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime
+						* result
+						+ ((this.ItemGroupOID == null) ? 0 : this.ItemGroupOID
+								.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row14Struct other = (row14Struct) obj;
+
+			if (this.ItemGroupOID == null) {
+				if (other.ItemGroupOID != null)
+					return false;
+			} else if (!this.ItemGroupOID.equals(other.ItemGroupOID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row14Struct other) {
+
+			other.OID = this.OID;
+			other.Name = this.Name;
+			other.CodeListItem = this.CodeListItem;
+			other.TranslatedText = this.TranslatedText;
+			other.ItemGroupOID = this.ItemGroupOID;
+			other.Datatype = this.Datatype;
+
+		}
+
+		public void copyKeysDataTo(row14Struct other) {
+
+			other.ItemGroupOID = this.ItemGroupOID;
+
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_IDRT52_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_IDRT52_ODM_Create_Ontology.length == 0) {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_IDRT52_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_IDRT52_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(
+						commonByteArray_IDRT52_ODM_Create_Ontology, 0, length,
+						utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_IDRT52_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.ItemGroupOID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.ItemGroupOID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.OID = readString(dis, ois);
+
+				this.Name = readString(dis, ois);
+
+				this.CodeListItem = readString(dis, ois);
+
+				this.TranslatedText = readString(dis, ois);
+
+				this.Datatype = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.OID, dos, oos);
+
+				writeString(this.Name, dos, oos);
+
+				writeString(this.CodeListItem, dos, oos);
+
+				writeString(this.TranslatedText, dos, oos);
+
+				writeString(this.Datatype, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("OID=" + OID);
+			sb.append(",Name=" + Name);
+			sb.append(",CodeListItem=" + CodeListItem);
+			sb.append(",TranslatedText=" + TranslatedText);
+			sb.append(",ItemGroupOID=" + ItemGroupOID);
+			sb.append(",Datatype=" + Datatype);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row14Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.ItemGroupOID,
+					other.ItemGroupOID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_23Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_23_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				row14Struct row14 = new row14Struct();
+
+				/**
+				 * [tAdvancedHash_row14 begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_row14", false);
+				start_Hash.put("tAdvancedHash_row14",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_row14";
+
+				int tos_count_tAdvancedHash_row14 = 0;
+
+				// connection name:row14
+				// source node:tFileInputDelimited_23 -
+				// inputs:(after_tFileInputXML_16) outputs:(row14,row14) |
+				// target node:tAdvancedHash_row14 - inputs:(row14) outputs:()
+				// linked node: tMap_29 - inputs:(row16,row14) outputs:(asd)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row14 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct> tHash_Lookup_row14 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<row14Struct> getLookup(matchingModeEnum_row14);
+
+				globalMap.put("tHash_Lookup_row14", tHash_Lookup_row14);
+
+				/**
+				 * [tAdvancedHash_row14 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_23 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_23", false);
+				start_Hash.put("tFileInputDelimited_23",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_23";
+
+				int tos_count_tFileInputDelimited_23 = 0;
+
+				int nb_line_tFileInputDelimited_23 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_23 = null;
+				try {
+
+					Object filename_tFileInputDelimited_23 = context.folderMain
+							+ context.folderOutput + "codelist.csv";
+					if (filename_tFileInputDelimited_23 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_23 = 0, random_value_tFileInputDelimited_23 = -1;
+						if (footer_value_tFileInputDelimited_23 > 0
+								|| random_value_tFileInputDelimited_23 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_23 = new org.talend.fileprocess.FileInputDelimited(
+								context.folderMain + context.folderOutput
+										+ "codelist.csv", "ISO-8859-15", "\t",
+								"\n", true, 0, 0, -1, -1, false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_23 != null
+							&& fid_tFileInputDelimited_23.nextRecord()) {
+
+						row14 = null;
+
+						row14 = null;
+
+						boolean whetherReject_tFileInputDelimited_23 = false;
+						row14 = new row14Struct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_23 = 0;
+
+							columnIndexWithD_tFileInputDelimited_23 = 0;
+
+							row14.OID = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+							columnIndexWithD_tFileInputDelimited_23 = 1;
+
+							row14.Name = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+							columnIndexWithD_tFileInputDelimited_23 = 2;
+
+							row14.CodeListItem = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+							columnIndexWithD_tFileInputDelimited_23 = 3;
+
+							row14.TranslatedText = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+							columnIndexWithD_tFileInputDelimited_23 = 4;
+
+							row14.ItemGroupOID = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+							columnIndexWithD_tFileInputDelimited_23 = 5;
+
+							row14.Datatype = fid_tFileInputDelimited_23
+									.get(columnIndexWithD_tFileInputDelimited_23);
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_23 = true;
+
+							System.err.println(e.getMessage());
+							row14 = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_23 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_23 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_23";
+
+						tos_count_tFileInputDelimited_23++;
+
+						/**
+						 * [tFileInputDelimited_23 main ] stop
+						 */
+						// Start of branch "row14"
+						if (row14 != null) {
+
+							/**
+							 * [tAdvancedHash_row14 main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row14";
+
+							row14Struct row14_HashRow = new row14Struct();
+
+							row14_HashRow.OID = row14.OID;
+
+							row14_HashRow.Name = row14.Name;
+
+							row14_HashRow.CodeListItem = row14.CodeListItem;
+
+							row14_HashRow.TranslatedText = row14.TranslatedText;
+
+							row14_HashRow.ItemGroupOID = row14.ItemGroupOID;
+
+							row14_HashRow.Datatype = row14.Datatype;
+
+							tHash_Lookup_row14.put(row14_HashRow);
+
+							tos_count_tAdvancedHash_row14++;
+
+							/**
+							 * [tAdvancedHash_row14 main ] stop
+							 */
+
+						} // End of branch "row14"
+
+						/**
+						 * [tFileInputDelimited_23 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_23";
+
+					}
+				} finally {
+					if (!((Object) (context.folderMain + context.folderOutput + "codelist.csv") instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_23 != null) {
+							fid_tFileInputDelimited_23.close();
+						}
+					}
+					if (fid_tFileInputDelimited_23 != null) {
+						globalMap.put("tFileInputDelimited_23_NB_LINE",
+								fid_tFileInputDelimited_23.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_23", true);
+				end_Hash.put("tFileInputDelimited_23",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_23 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row14 end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row14";
+
+				tHash_Lookup_row14.endPut();
+
+				ok_Hash.put("tAdvancedHash_row14", true);
+				end_Hash.put("tAdvancedHash_row14", System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_row14 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw new java.lang.Error(error);
+
+		}
+
+		globalMap.put("tFileInputDelimited_23_SUBPROCESS_STATE", 1);
+	}
+
+	public static class fromItemNamesStruct
+			implements
+			routines.system.IPersistableComparableLookupRow<fromItemNamesStruct> {
 		final static byte[] commonByteArrayLock_IDRT52_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_IDRT52_ODM_Create_Ontology = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -32158,7 +33865,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final itemNameStruct other = (itemNameStruct) obj;
+			final fromItemNamesStruct other = (fromItemNamesStruct) obj;
 
 			if (this.ItemGroupOID == null) {
 				if (other.ItemGroupOID != null)
@@ -32169,7 +33876,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(itemNameStruct other) {
+		public void copyDataTo(fromItemNamesStruct other) {
 
 			other.ItemGroupOID = this.ItemGroupOID;
 			other.Name = this.Name;
@@ -32179,7 +33886,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(itemNameStruct other) {
+		public void copyKeysDataTo(fromItemNamesStruct other) {
 
 			other.ItemGroupOID = this.ItemGroupOID;
 
@@ -32339,7 +34046,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(itemNameStruct other) {
+		public int compareTo(fromItemNamesStruct other) {
 
 			int returnValue = -1;
 
@@ -32397,36 +34104,39 @@ public class ODM_Create_Ontology implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				itemNameStruct itemName = new itemNameStruct();
+				fromItemNamesStruct fromItemNames = new fromItemNamesStruct();
 
 				/**
-				 * [tAdvancedHash_itemName begin ] start
+				 * [tAdvancedHash_fromItemNames begin ] start
 				 */
 
-				ok_Hash.put("tAdvancedHash_itemName", false);
-				start_Hash.put("tAdvancedHash_itemName",
+				ok_Hash.put("tAdvancedHash_fromItemNames", false);
+				start_Hash.put("tAdvancedHash_fromItemNames",
 						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_itemName";
+				currentComponent = "tAdvancedHash_fromItemNames";
 
-				int tos_count_tAdvancedHash_itemName = 0;
+				int tos_count_tAdvancedHash_fromItemNames = 0;
 
-				// connection name:itemName
+				// connection name:fromItemNames
 				// source node:tFileInputDelimited_16 -
-				// inputs:(after_tFileInputXML_16) outputs:(itemName,itemName) |
-				// target node:tAdvancedHash_itemName - inputs:(itemName)
+				// inputs:(after_tFileInputXML_16)
+				// outputs:(fromItemNames,fromItemNames) | target
+				// node:tAdvancedHash_fromItemNames - inputs:(fromItemNames)
 				// outputs:()
-				// linked node: tMap_15 - inputs:(row16,row28,itemName)
+				// linked node: tMap_15 -
+				// inputs:(fromItem,fromTemp5ItemGroup,fromItemNames)
 				// outputs:(out11)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_itemName = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_fromItemNames = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
 
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<itemNameStruct> tHash_Lookup_itemName = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<itemNameStruct> getLookup(matchingModeEnum_itemName);
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromItemNamesStruct> tHash_Lookup_fromItemNames = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<fromItemNamesStruct> getLookup(matchingModeEnum_fromItemNames);
 
-				globalMap.put("tHash_Lookup_itemName", tHash_Lookup_itemName);
+				globalMap.put("tHash_Lookup_fromItemNames",
+						tHash_Lookup_fromItemNames);
 
 				/**
-				 * [tAdvancedHash_itemName begin ] stop
+				 * [tAdvancedHash_fromItemNames begin ] stop
 				 */
 
 				/**
@@ -32460,7 +34170,7 @@ public class ODM_Create_Ontology implements TalendJob {
 						fid_tFileInputDelimited_16 = new org.talend.fileprocess.FileInputDelimited(
 								((String) globalMap
 										.get("tCreateTemporaryFile_11_FILEPATH")),
-								"ISO-8859-15", ";", "\n", true, 0, 0, -1, -1,
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
 								false);
 					} catch (java.lang.Exception e) {
 
@@ -32471,46 +34181,46 @@ public class ODM_Create_Ontology implements TalendJob {
 					while (fid_tFileInputDelimited_16 != null
 							&& fid_tFileInputDelimited_16.nextRecord()) {
 
-						itemName = null;
+						fromItemNames = null;
 
-						itemName = null;
+						fromItemNames = null;
 
 						boolean whetherReject_tFileInputDelimited_16 = false;
-						itemName = new itemNameStruct();
+						fromItemNames = new fromItemNamesStruct();
 						try {
 
 							int columnIndexWithD_tFileInputDelimited_16 = 0;
 
 							columnIndexWithD_tFileInputDelimited_16 = 0;
 
-							itemName.ItemGroupOID = fid_tFileInputDelimited_16
+							fromItemNames.ItemGroupOID = fid_tFileInputDelimited_16
 									.get(columnIndexWithD_tFileInputDelimited_16);
 
 							columnIndexWithD_tFileInputDelimited_16 = 1;
 
-							itemName.Name = fid_tFileInputDelimited_16
+							fromItemNames.Name = fid_tFileInputDelimited_16
 									.get(columnIndexWithD_tFileInputDelimited_16);
 
 							columnIndexWithD_tFileInputDelimited_16 = 2;
 
-							itemName.TransText = fid_tFileInputDelimited_16
+							fromItemNames.TransText = fid_tFileInputDelimited_16
 									.get(columnIndexWithD_tFileInputDelimited_16);
 
 							columnIndexWithD_tFileInputDelimited_16 = 3;
 
-							itemName.dataType = fid_tFileInputDelimited_16
+							fromItemNames.dataType = fid_tFileInputDelimited_16
 									.get(columnIndexWithD_tFileInputDelimited_16);
 
 							columnIndexWithD_tFileInputDelimited_16 = 4;
 
-							itemName.codeList = fid_tFileInputDelimited_16
+							fromItemNames.codeList = fid_tFileInputDelimited_16
 									.get(columnIndexWithD_tFileInputDelimited_16);
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_16 = true;
 
 							System.err.println(e.getMessage());
-							itemName = null;
+							fromItemNames = null;
 
 						}
 
@@ -32528,36 +34238,37 @@ public class ODM_Create_Ontology implements TalendJob {
 						/**
 						 * [tFileInputDelimited_16 main ] stop
 						 */
-						// Start of branch "itemName"
-						if (itemName != null) {
+						// Start of branch "fromItemNames"
+						if (fromItemNames != null) {
 
 							/**
-							 * [tAdvancedHash_itemName main ] start
+							 * [tAdvancedHash_fromItemNames main ] start
 							 */
 
-							currentComponent = "tAdvancedHash_itemName";
+							currentComponent = "tAdvancedHash_fromItemNames";
 
-							itemNameStruct itemName_HashRow = new itemNameStruct();
+							fromItemNamesStruct fromItemNames_HashRow = new fromItemNamesStruct();
 
-							itemName_HashRow.ItemGroupOID = itemName.ItemGroupOID;
+							fromItemNames_HashRow.ItemGroupOID = fromItemNames.ItemGroupOID;
 
-							itemName_HashRow.Name = itemName.Name;
+							fromItemNames_HashRow.Name = fromItemNames.Name;
 
-							itemName_HashRow.TransText = itemName.TransText;
+							fromItemNames_HashRow.TransText = fromItemNames.TransText;
 
-							itemName_HashRow.dataType = itemName.dataType;
+							fromItemNames_HashRow.dataType = fromItemNames.dataType;
 
-							itemName_HashRow.codeList = itemName.codeList;
+							fromItemNames_HashRow.codeList = fromItemNames.codeList;
 
-							tHash_Lookup_itemName.put(itemName_HashRow);
+							tHash_Lookup_fromItemNames
+									.put(fromItemNames_HashRow);
 
-							tos_count_tAdvancedHash_itemName++;
+							tos_count_tAdvancedHash_fromItemNames++;
 
 							/**
-							 * [tAdvancedHash_itemName main ] stop
+							 * [tAdvancedHash_fromItemNames main ] stop
 							 */
 
-						} // End of branch "itemName"
+						} // End of branch "fromItemNames"
 
 						/**
 						 * [tFileInputDelimited_16 end ] start
@@ -32588,19 +34299,19 @@ public class ODM_Create_Ontology implements TalendJob {
 				 */
 
 				/**
-				 * [tAdvancedHash_itemName end ] start
+				 * [tAdvancedHash_fromItemNames end ] start
 				 */
 
-				currentComponent = "tAdvancedHash_itemName";
+				currentComponent = "tAdvancedHash_fromItemNames";
 
-				tHash_Lookup_itemName.endPut();
+				tHash_Lookup_fromItemNames.endPut();
 
-				ok_Hash.put("tAdvancedHash_itemName", true);
-				end_Hash.put("tAdvancedHash_itemName",
+				ok_Hash.put("tAdvancedHash_fromItemNames", true);
+				end_Hash.put("tAdvancedHash_fromItemNames",
 						System.currentTimeMillis());
 
 				/**
-				 * [tAdvancedHash_itemName end ] stop
+				 * [tAdvancedHash_fromItemNames end ] stop
 				 */
 
 			}// end the resume
@@ -33692,6 +35403,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.ItemGroupOID;
 		}
 
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -33745,6 +35462,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.ItemGroupOID = readString(dis);
 
+					this.Datatype = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -33777,6 +35496,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.ItemGroupOID, dos);
 
+				// String
+
+				writeString(this.Datatype, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -33793,6 +35516,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",CodeListItem=" + CodeListItem);
 			sb.append(",TranslatedText=" + TranslatedText);
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
+			sb.append(",Datatype=" + Datatype);
 			sb.append("]");
 
 			return sb.toString();
@@ -33861,6 +35585,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.TranslatedText;
 		}
 
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -33912,6 +35642,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.TranslatedText = readString(dis);
 
+					this.Datatype = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -33940,6 +35672,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.TranslatedText, dos);
 
+				// String
+
+				writeString(this.Datatype, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -33955,6 +35691,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",Name=" + Name);
 			sb.append(",CodeListItem=" + CodeListItem);
 			sb.append(",TranslatedText=" + TranslatedText);
+			sb.append(",Datatype=" + Datatype);
 			sb.append("]");
 
 			return sb.toString();
@@ -34023,6 +35760,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.TranslatedText;
 		}
 
+		public String Datatype;
+
+		public String getDatatype() {
+			return this.Datatype;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -34074,6 +35817,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.TranslatedText = readString(dis);
 
+					this.Datatype = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -34102,6 +35847,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.TranslatedText, dos);
 
+				// String
+
+				writeString(this.Datatype, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -34117,6 +35866,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",Name=" + Name);
 			sb.append(",CodeListItem=" + CodeListItem);
 			sb.append(",TranslatedText=" + TranslatedText);
+			sb.append(",Datatype=" + Datatype);
 			sb.append("]");
 
 			return sb.toString();
@@ -34246,7 +35996,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_34:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_34:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_34:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_34 = /**
@@ -34633,6 +36383,12 @@ public class ODM_Create_Ontology implements TalendJob {
 												"/ODM/Study/MetaDataVersion/CodeList/CodeListItem"));
 						xTmp3_tFileInputXML_29
 								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_29);
+						org.dom4j.XPath xTmp4_tFileInputXML_29 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_29
+										.addDefaultNSPrefix("../@DataType",
+												"/ODM/Study/MetaDataVersion/CodeList/CodeListItem"));
+						xTmp4_tFileInputXML_29
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_29);
 
 						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_29 : nodeList_tFileInputXML_29) {
 							nb_line_tFileInputXML_29++;
@@ -34808,6 +36564,48 @@ public class ODM_Create_Ontology implements TalendJob {
 								} else {
 									codeList.TranslatedText = str_tFileInputXML_29;
 								}
+								Object obj4_tFileInputXML_29 = xTmp4_tFileInputXML_29
+										.evaluate(temp_tFileInputXML_29);
+								if (obj4_tFileInputXML_29 == null) {
+									node_tFileInputXML_29 = null;
+									str_tFileInputXML_29 = "";
+
+								} else if (obj4_tFileInputXML_29 instanceof org.dom4j.Node) {
+									node_tFileInputXML_29 = (org.dom4j.Node) obj4_tFileInputXML_29;
+									str_tFileInputXML_29 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_29,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj4_tFileInputXML_29 instanceof String
+										|| obj4_tFileInputXML_29 instanceof Number) {
+									node_tFileInputXML_29 = temp_tFileInputXML_29;
+									str_tFileInputXML_29 = String
+											.valueOf(obj4_tFileInputXML_29);
+								} else if (obj4_tFileInputXML_29 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_29 = (java.util.List<org.dom4j.Node>) obj4_tFileInputXML_29;
+									node_tFileInputXML_29 = nodes_tFileInputXML_29
+											.size() > 0 ? nodes_tFileInputXML_29
+											.get(0) : null;
+									str_tFileInputXML_29 = node_tFileInputXML_29 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_29,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_29
+										.isDefNull(node_tFileInputXML_29)) {
+									codeList.Datatype = null;
+								} else if (xml_api_tFileInputXML_29
+										.isEmpty(node_tFileInputXML_29)) {
+									codeList.Datatype = "";
+								} else if (xml_api_tFileInputXML_29
+										.isMissing(node_tFileInputXML_29)) {
+									codeList.Datatype = null;
+								} else {
+									codeList.Datatype = str_tFileInputXML_29;
+								}
 
 							} catch (java.lang.Exception e) {
 								whetherReject_tFileInputXML_29 = true;
@@ -34905,13 +36703,21 @@ public class ODM_Create_Ontology implements TalendJob {
 									out1 = null;
 
 									// # Output table : 'out1'
-									out1_tmp.OID = codeList.OID;
-									out1_tmp.Name = codeList.Name;
-									out1_tmp.CodeListItem = codeList.CodeListItem;
-									out1_tmp.TranslatedText = codeList.TranslatedText;
-									out1_tmp.ItemGroupOID = outasd.ItemGroupOID;
-									out1 = out1_tmp;
-									// ###############################
+									// # Filter conditions
+									if (
+
+									outasd.ItemGroupOID != null
+
+									) {
+										out1_tmp.OID = codeList.OID;
+										out1_tmp.Name = codeList.Name;
+										out1_tmp.CodeListItem = codeList.CodeListItem;
+										out1_tmp.TranslatedText = codeList.TranslatedText;
+										out1_tmp.ItemGroupOID = outasd.ItemGroupOID;
+										out1_tmp.Datatype = codeList.Datatype;
+										out1 = out1_tmp;
+									} // closing filter/reject
+										// ###############################
 
 								} // end of Var scope
 
@@ -34990,6 +36796,19 @@ public class ODM_Create_Ontology implements TalendJob {
 										sb_tFileOutputDelimited_34.append(
 
 										out1.ItemGroupOID
+
+										);
+
+									}
+
+									sb_tFileOutputDelimited_34
+											.append(OUT_DELIM_tFileOutputDelimited_34);
+
+									if (out1.Datatype != null) {
+
+										sb_tFileOutputDelimited_34.append(
+
+										out1.Datatype
 
 										);
 
@@ -37228,7 +39047,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_21:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_21:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_21:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_21 = /**
@@ -37972,7 +39791,8 @@ public class ODM_Create_Ontology implements TalendJob {
 										row25.Name = out3.Name.trim();
 
 									if (out3.TransText != null)
-										row25.TransText = out3.TransText.trim();
+										row25.TransText = out3.TransText.trim()
+												.replaceAll("\n", " ");
 
 									if (out3.dataType != null)
 										row25.dataType = out3.dataType.trim();
@@ -38437,7 +40257,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_18:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_18:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_18:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_18 = /**
@@ -39229,7 +41049,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_19:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_19:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_19:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_19 = /**
@@ -40021,7 +41841,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				 * Start field
 				 * tFileOutputDelimited_20:FIELDSEPARATOR
 				 */
-				";"/** End field tFileOutputDelimited_20:FIELDSEPARATOR */
+				"\t"/** End field tFileOutputDelimited_20:FIELDSEPARATOR */
 				;
 
 				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_20 = /**
@@ -40742,7 +42562,7 @@ public class ODM_Create_Ontology implements TalendJob {
 								"", "", "", "");
 			}
 
-			tCreateTemporaryFile_13Process(globalMap);
+			tCreateTemporaryFile_16Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -40755,6 +42575,109 @@ public class ODM_Create_Ontology implements TalendJob {
 		}
 
 		globalMap.put("tLibraryLoad_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_16Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_16_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_16 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_16", false);
+				start_Hash.put("tCreateTemporaryFile_16",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_16";
+
+				int tos_count_tCreateTemporaryFile_16 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_16 = new java.io.File(
+						context.folderMain + context.folderTmp);
+				dir_tCreateTemporaryFile_16.mkdirs();
+				String name_tCreateTemporaryFile_16 = "talend_XXXX".replaceAll(
+						"XXXX", routines.TalendString.getAsciiRandomString(4)
+								.toUpperCase());
+				String suffix_tCreateTemporaryFile_16 = ("tmp".replaceAll(
+						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
+						"\\.", "");
+				java.io.File file_tCreateTemporaryFile_16 = new java.io.File(
+						dir_tCreateTemporaryFile_16,
+						name_tCreateTemporaryFile_16 + "."
+								+ suffix_tCreateTemporaryFile_16);
+				if (file_tCreateTemporaryFile_16.createNewFile()) {
+				}
+				globalMap.put("tCreateTemporaryFile_16_FILEPATH",
+						file_tCreateTemporaryFile_16.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_16 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_16 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_16";
+
+				tos_count_tCreateTemporaryFile_16++;
+
+				/**
+				 * [tCreateTemporaryFile_16 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_16 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_16";
+
+				ok_Hash.put("tCreateTemporaryFile_16", true);
+				end_Hash.put("tCreateTemporaryFile_16",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_16 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_16:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_13Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw new java.lang.Error(error);
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_16_SUBPROCESS_STATE", 1);
 	}
 
 	public String resuming_logs_dir_path = null;
@@ -41224,6 +43147,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1127749 characters generated by Talend Open Studio for Data Integration on
- * the August 7, 2013 3:47:46 PM CEST
+ * 1181609 characters generated by Talend Open Studio for Data Integration on
+ * the September 5, 2013 12:32:29 PM CEST
  ************************************************************************************************/

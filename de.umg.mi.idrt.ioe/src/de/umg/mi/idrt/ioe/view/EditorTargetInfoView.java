@@ -115,7 +115,7 @@ public class EditorTargetInfoView extends ViewPart {
 		_infoTable.setLinesVisible(true);
 
 		// _infoTable.getColumnCount().get
- 
+
 		// editor as mouse listener
 
 		final TableEditor editor = new TableEditor(_infoTable);

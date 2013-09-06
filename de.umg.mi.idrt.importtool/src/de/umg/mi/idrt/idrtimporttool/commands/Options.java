@@ -14,8 +14,6 @@ public class Options extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		System.out.println("OPTIONS");
-
 		return event;
 	}
 }

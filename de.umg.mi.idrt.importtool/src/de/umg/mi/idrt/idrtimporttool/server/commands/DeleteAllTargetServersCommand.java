@@ -18,10 +18,8 @@ public class DeleteAllTargetServersCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("adding server");
 		TreeViewer viewer = ServerView.getTargetServersViewer();
 
-		System.out.println("removing all servers");
 		ServerList.removeAll();
 		viewer.setContentProvider(new ServerContentProvider());
 

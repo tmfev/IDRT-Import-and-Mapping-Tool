@@ -37,7 +37,27 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
  *         www.mi.med.uni-goettingen.de
  */
 public class DBImportWizard extends Wizard {
+	
+	private Properties defaultProps;
+	private static Thread b;
+	private HashMap<String, String> contextMap;
+	protected WizardPageOne one;
 
+	public static DBWizardPageTwo two;
+	public static DBWizardPageThree three;
+	public boolean done = false;
+	public static boolean started = false;
+
+	private static String FOLDERCSV;
+
+	public static void setThree(DBWizardPageThree three) {
+		DBImportWizard.three = three;
+	}
+
+	public DBImportWizard() {
+		super();
+		setNeedsProgressMonitor(false);
+	}
 	public static DBWizardPageThree getThree() {
 		return three;
 	}
@@ -56,7 +76,6 @@ public class DBImportWizard extends Wizard {
 
 				@Override
 				public void run() {
-					//					closeBar("DB Import Failed!", 1);
 					Log.addLog(1, "DB Import Failed!");
 					MessageDialog
 					.openError(Display.getDefault().getActiveShell(),
@@ -75,13 +94,11 @@ public class DBImportWizard extends Wizard {
 
 		if (started) {
 			b.stop();
-			// progressBar.close();
 
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
-					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "DB Import Failed: " + error);
 					MessageDialog.openError(Display.getDefault()
 							.getActiveShell(), "Import Failed!",
@@ -111,27 +128,6 @@ public class DBImportWizard extends Wizard {
 		}
 	}
 
-	private Properties defaultProps;
-	private static Thread b;
-	private HashMap<String, String> contextMap;
-	protected WizardPageOne one;
-
-	public static DBWizardPageTwo two;
-	public static DBWizardPageThree three;
-	public boolean done = false;
-	public static boolean started = false;
-
-	private static String FOLDERCSV;
-
-	public static void setThree(DBWizardPageThree three) {
-		DBImportWizard.three = three;
-	}
-
-	public DBImportWizard() {
-		super();
-		setNeedsProgressMonitor(false);
-	}
-
 	@Override
 	public void addPages() {
 		one = new WizardPageOne();
@@ -149,7 +145,6 @@ public class DBImportWizard extends Wizard {
 			String fileName) {
 		try {
 			File file = new File(fileName);
-System.out.println("filename: " + file.getAbsolutePath());
 			CSVWriter writer = new CSVWriter(new FileWriter(file), ';');
 			String[] nextLine = new String[10];
 
@@ -166,9 +161,7 @@ System.out.println("filename: " + file.getAbsolutePath());
 			nextLine[k++] = "Server DatabaseType";
 			nextLine[k++] = "mssqlSchema";
 			writer.writeNext(nextLine);
-			System.out.println("TABLEMAP: " + ServerList.getTableMap());
 			for (int i = 0; i < exportConfigs.size(); i++) {
-				System.out.println(exportConfigs.get(i).getServer().getDatabaseType());
 				k = 0;
 				nextLine[k++] = exportConfigs.get(i).getServer().getName();
 				nextLine[k++] = exportConfigs.get(i).getServer().getIp();
@@ -195,7 +188,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 
 	@Override
 	public void dispose() {
-		System.out.println("disposing");
 		super.dispose();
 	}
 
@@ -207,7 +199,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			final boolean terms = DBWizardPageThree.getTerms();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPageThree.getCSVPath();
-			System.out.println("finish?");
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
@@ -230,8 +221,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 
 			for (File listOfInputFile : listOfInputFiles) {
 				if (listOfInputFile.getName().endsWith(".csv")) {
-					System.out.println("deleting input file: "
-							+ listOfInputFile.getName());
 					listOfInputFile.delete();
 				}
 			}
@@ -240,10 +229,10 @@ System.out.println("filename: " + file.getAbsolutePath());
 			defaultProps.load(new FileReader(properties));
 			HashMap<Server, HashMap<String, List<String>>> checkedTables = DBWizardPageTwo
 					.getCheckedTables();
-			System.out.println(checkedTables);
 			Iterator<Server> tableServerIterator = checkedTables.keySet()
 					.iterator();
 			List<ExportConfig> exportConfigs = new LinkedList<ExportConfig>();
+	
 			/**
 			 * Import all checked tables read from disc
 			 */
@@ -251,36 +240,34 @@ System.out.println("filename: " + file.getAbsolutePath());
 				Server currentServer = tableServerIterator.next();
 				String currentServerUniqueID = currentServer.getUniqueID()
 						.replaceAll(" ", "_");
-				System.out.println("currentserver: " + currentServerUniqueID);
 				HashMap<String, java.util.List<String>> schemaHashMap = checkedTables
 						.get(currentServer);
 				Iterator<String> schemaHashMapIterator = schemaHashMap.keySet()
 						.iterator();
 				while (schemaHashMapIterator.hasNext()) {
 					String currentSchema = schemaHashMapIterator.next();
-					System.out.println("currentSchema: " + currentSchema);
 					java.util.List<String> currentTables = schemaHashMap
 							.get(currentSchema);
 					Iterator<String> tablesTableIterator = currentTables
 							.iterator();
 					while (tablesTableIterator.hasNext()) {
 						String table = tablesTableIterator.next();
-						System.out.println("currenttable: " + table);
 						currentServer.setTable(table);
 						currentServer.setSchema(currentSchema);
-						// output = new
-						// File(FOLDERCSV+currentServerUniqueID+"_"+currentSchema+"_"+table+".csv");
-						System.out.println("after output");
-						// EXPORT DB --> TOS
-						// ExportDB.exportDB(currentServer, output);
-						System.out.println("table " + table + " created.");
 
 						bundle = Activator.getDefault().getBundle();
-						Path imgImportPath = new Path("/cfg/tables"); //$NON-NLS-1$
+						Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
 						url = FileLocator.find(bundle, imgImportPath,
 								Collections.EMPTY_MAP);
-						fileUrl = FileLocator.toFileURL(url);
-						File serverFile = new File(fileUrl.getPath());
+						URL fileUrl1 = null;
+						if (url != null) {
+							fileUrl1 = FileLocator.toFileURL(url);
+						}
+						File serverFile = new File(fileUrl1.getPath()+"/tables");
+						if (!serverFile.exists()) {
+							serverFile = new File(serverFile.getAbsolutePath());
+							serverFile.createNewFile();							
+						}
 						ObjectInputStream is = new ObjectInputStream(
 								new FileInputStream(serverFile));
 						@SuppressWarnings("unchecked")
@@ -297,14 +284,11 @@ System.out.println("filename: " + file.getAbsolutePath());
 						ExportConfig currentExportConfig = new ExportConfig(
 								currentServer, currentSchema, table);
 						exportConfigs.add(currentExportConfig);
-
 					}
 				}
 			}
 			contextMap = new HashMap<String, String>();
-
 			contextMap.put("DBHost", WizardPageOne.getIpText());
-//			defaultProps.setProperty("DBHost", WizardPageOne.getIpText());
 			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
 			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
 			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
@@ -347,7 +331,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			}
 
 			if (DBWizardPageThree.getSaveContext()) {
-				System.out.println("saving context");
 				defaultProps.store(new FileWriter(properties), "");
 			}
 
@@ -356,15 +339,11 @@ System.out.println("filename: " + file.getAbsolutePath());
 					Collections.EMPTY_MAP);
 			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
 
-			// String fileName ="C:/Desktop/export.csv";
 			String fileName = tmpURL2.getPath() + "exportConfig.csv";
-			System.out.println("ExportConfig FileName: " + fileName);
 			createDBExportConfigCSV(exportConfigs, fileName);
-//			defaultProps.setProperty("exportDBConfig", fileName);
-						contextMap.put("exportDBConfig", fileName);
+			contextMap.put("exportDBConfig", fileName);
 
-//			defaultProps.setProperty("folderCSV", FOLDERCSV);
-						contextMap.put("folderCSV", FOLDERCSV);
+			contextMap.put("folderCSV", FOLDERCSV);
 
 			Path miscPath = new Path("/misc/"); //$NON-NLS-1$
 			URL miscUrl = FileLocator.find(bundle, miscPath,
@@ -376,25 +355,15 @@ System.out.println("filename: " + file.getAbsolutePath());
 					"/")
 					+ "/";
 			contextMap.put("folderMain", miscPathReplaced);
-			//			defaultProps.setProperty("folderMainCSV", miscPathReplaced);
-
 			if (DBWizardPageThree.getTruncate()) {
-				System.out.println("truncating");
 				contextMap.put("truncateProject", "true");
-				//				defaultProps.setProperty("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");
-				//				defaultProps.setProperty("truncateProject", "false");
 			}
-
 			contextMap.put("datePattern", "yyyy-MM-dd");
-			//			defaultProps.setProperty("datePattern", "yyyy-MM-dd");
-
 			contextMap.put("pidgen", "false");
-			//			defaultProps.setProperty("pidgen", "false");
 
 			done = false;
-			System.out.println("creating b");
 			b = new Thread(new Runnable() {
 
 				@Override
@@ -402,7 +371,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 					started = true;
 					final long start = System.currentTimeMillis();
 					IDRTImport.setCompleteContext(contextMap);
-					// int exitCode = IDRTImport.runCSVImport();
 					int exitCode = IDRTImport.runDBImport(terms);
 					done = true;
 					StatusListener.setStatus(0, "", "");  
@@ -415,7 +383,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 
 							@Override
 							public void run() {
-								//								closeBar("DB Import Finished!", 0);
 								Log.addLog(0, "DB Import Finished!");
 								long end = System.currentTimeMillis();
 								long time = end - start;
@@ -431,8 +398,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 			});
 
 			if (!started) {
-				// progressBar = new AddProgressBar();
-				// progressBar.init();
 				b.start();
 			}
 
@@ -477,7 +442,6 @@ System.out.println("filename: " + file.getAbsolutePath());
 				rotatedOutput.writeNext(nextLine);
 			}
 			rotatedOutput.close();
-			System.out.println("writing cfg done");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
