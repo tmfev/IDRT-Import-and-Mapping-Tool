@@ -108,8 +108,14 @@
 			<xsl:attribute name="ItemOID"><xsl:value-of select="@ItemOID"></xsl:value-of></xsl:attribute>
 			<xsl:attribute name="IsNull"><xsl:value-of select="@IsNull"></xsl:value-of></xsl:attribute>
 			<!--<xsl:apply-templates select="node()|@*"/>-->
-			<xsl:value-of  select="normalize-space(.)"/>
-			<xsl:value-of select="normalize-space(@Value)"/>
+	<xsl:choose>
+				<xsl:when test="normalize-space(@Value) != '' ">			
+						<xsl:value-of select="normalize-space(@Value)"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of  select="normalize-space(.)"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:copy>
 	</xsl:template>
 </xsl:stylesheet>
