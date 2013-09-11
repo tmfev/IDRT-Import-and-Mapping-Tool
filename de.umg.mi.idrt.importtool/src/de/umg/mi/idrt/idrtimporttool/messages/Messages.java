@@ -11,6 +11,11 @@ public class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = "de.umg.mi.idrt.idrtimporttool.messages.messages"; //$NON-NLS-1$
 
+	public static String ServerView_ImportDatasourceServer;
+	public static String ServerView_ExportDatasourceServer;
+	public static String ServerView_DeleteDatasourceServer;
+	public static String ServerView_EditDatasourceServer;
+	public static String ServerView_AddDatasourceServer;
 	public static String ODMWizardPageTwo_ImportCodelists;
 	public static String ConfigMetaData_BiomaterialSic;
 	public static String ConfigMetaData_DownloadDate;

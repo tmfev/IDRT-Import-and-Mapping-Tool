@@ -506,9 +506,9 @@ public class CSVImportWizard extends Wizard {
 		}
 	}
 
-	public static CSVWizardPageThree getThree() {
-		return three;
-	}
+//	public static CSVWizardPageThree getThree() {
+//		return three;
+//	}
 
 	/**
 	 * Brutally kills the the import thread.

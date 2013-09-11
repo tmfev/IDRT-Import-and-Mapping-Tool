@@ -252,15 +252,16 @@ public class ServerView extends ViewPart {
 
 	public static void setLog(String time, String log) {
 		String old = logText.getText();
+		String newText;
 		if (!old.isEmpty()) {
-			String newText = time+"\t"+log + "\n"+ old;
+			 newText = time+"\t"+log + "\n"+ old;
 			logText.setText(newText);
 			logText.update();
 			logText.getParent().layout();
 			logText.getParent().redraw();
 		}
 		else {
-			String newText = time+"\t"+log;
+			 newText = time+"\t"+log;
 			logText.setText(newText);
 			logText.update();
 			logText.getParent().layout();
@@ -552,7 +553,6 @@ public class ServerView extends ViewPart {
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
-
 			parent = new Composite(parentComp, SWT.NONE);
 			parent.getShell().setMinimumSize(500, 200);
 			System.out.println("Current Version: "
@@ -681,13 +681,13 @@ public class ServerView extends ViewPart {
 
 			sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
 			sourceServerComposite.setLayout(new BorderLayout(0, 0));
-			sourceServerComposite.addDisposeListener(new DisposeListener() {
-
-				@Override
-				public void widgetDisposed(DisposeEvent e) {
-					sourceServerDisposed = true;
-				}
-			});
+//			sourceServerComposite.addDisposeListener(new DisposeListener() {
+//
+//				@Override
+//				public void widgetDisposed(DisposeEvent e) {
+//					sourceServerDisposed = true;
+//				}
+//			});
 			sourceTreeComp = new Composite(sourceServerComposite, SWT.NONE);
 			sourceTreeComp.setLayoutData(BorderLayout.CENTER);
 			sourceTreeComp.setLayout(new BorderLayout(0, 0));
@@ -1155,7 +1155,7 @@ public class ServerView extends ViewPart {
 			 */
 			MenuItem addSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 					SWT.PUSH);
-			addSourceServerMenuItem.setText(Messages.ServerView_AddServer);
+			addSourceServerMenuItem.setText(Messages.ServerView_AddDatasourceServer);
 			addSourceServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1170,7 +1170,7 @@ public class ServerView extends ViewPart {
 
 			MenuItem editSourceServerMenuItem = new MenuItem(
 					importSourceServerMenu, SWT.PUSH);
-			editSourceServerMenuItem.setText(Messages.ServerView_EditServer);
+			editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
 			editSourceServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1185,7 +1185,7 @@ public class ServerView extends ViewPart {
 
 			MenuItem deleteSourceServerMenuItem = new MenuItem(
 					importSourceServerMenu, SWT.PUSH);
-			deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteServer);
+			deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteDatasourceServer);
 			deleteSourceServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1201,7 +1201,7 @@ public class ServerView extends ViewPart {
 
 			MenuItem exportImportDBServerMenuItem = new MenuItem(
 					importSourceServerMenu, SWT.PUSH);
-			exportImportDBServerMenuItem.setText(Messages.ServerView_ExportServer);
+			exportImportDBServerMenuItem.setText(Messages.ServerView_ExportDatasourceServer);
 			exportImportDBServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1215,7 +1215,7 @@ public class ServerView extends ViewPart {
 			});
 			MenuItem importSourceServerMenuItem = new MenuItem(
 					importSourceServerMenu, SWT.PUSH);
-			importSourceServerMenuItem.setText(Messages.ServerView_ImportServer);
+			importSourceServerMenuItem.setText(Messages.ServerView_ImportDatasourceServer);
 			importSourceServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1255,6 +1255,9 @@ public class ServerView extends ViewPart {
 				sourceServerDisposed = true;
 				sourceServerComposite.dispose();
 			}
+			else {
+				sourceServerDisposed=false;
+			}
 
 			Composite showHideSourceServerButtonComp = new Composite(leftSideComposite, SWT.NONE);
 			showHideSourceServerButtonComp.setLayoutData(BorderLayout.SOUTH);
@@ -1282,7 +1285,7 @@ public class ServerView extends ViewPart {
 						labelSourceServer.setText(Messages.ServerView_SourceServer);
 
 						sourceServerViewer = new TreeViewer(sourceTreeComp,
-								SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL); // parent
+								SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 						sourceServerViewer.addDropSupport(operations,
 								transferTypes, new ServerDropTargetListener(
 										sourceServerViewer));
@@ -1554,7 +1557,7 @@ public class ServerView extends ViewPart {
 		importSourceServerMenu = new Menu(sourceServerViewer.getTree());
 		MenuItem addSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
-		addSourceServerMenuItem.setText(Messages.ServerView_AddServer);
+		addSourceServerMenuItem.setText(Messages.ServerView_AddDatasourceServer);
 		addSourceServerMenuItem.addSelectionListener(new SelectionListener() {
 			
 			@Override
@@ -1569,7 +1572,7 @@ public class ServerView extends ViewPart {
 
 		MenuItem editSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
-		editSourceServerMenuItem.setText(Messages.ServerView_EditServer);
+		editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
 		editSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
 			
@@ -1585,7 +1588,7 @@ public class ServerView extends ViewPart {
 
 		MenuItem deleteSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
-		deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteServer);
+		deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteDatasourceServer);
 		deleteSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
 			
@@ -1604,7 +1607,7 @@ public class ServerView extends ViewPart {
 
 		MenuItem exportSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
-		exportSourceServerMenuItem.setText(Messages.ServerView_ExportServer);
+		exportSourceServerMenuItem.setText(Messages.ServerView_ExportDatasourceServer);
 		exportSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
 			
@@ -1619,7 +1622,7 @@ public class ServerView extends ViewPart {
 		});
 		MenuItem importSourceServerMenuItem = new MenuItem(importSourceServerMenu,
 				SWT.PUSH);
-		importSourceServerMenuItem.setText(Messages.ServerView_ImportServer);
+		importSourceServerMenuItem.setText(Messages.ServerView_ImportDatasourceServer);
 		importSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
 			
