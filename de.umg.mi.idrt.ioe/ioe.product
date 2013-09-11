@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="I2B2ImportTool" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.0.0.3" useFeatures="true" includeLaunchers="true">
+<product name="IDRT Import Tool" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.0.0.3" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <text>

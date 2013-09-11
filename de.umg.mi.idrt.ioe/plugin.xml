@@ -29,10 +29,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="de.umg.mi.idrt.ioe.application"
-            name="I2B2ImportTool">
+            name="IDRT Import Tool">
          <property
                name="appName"
-               value="I2B2ImportTool">
+               value="IDRT Import Tool">
          </property>
          <property
                name="startupForegroundColor"
