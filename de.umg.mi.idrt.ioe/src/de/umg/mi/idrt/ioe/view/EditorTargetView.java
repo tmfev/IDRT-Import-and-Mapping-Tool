@@ -44,6 +44,10 @@ public class EditorTargetView extends ViewPart {
 		// Text text = new Text(this._composite, SWT.BORDER);
 		// text.setText("EditorTargetView2");
 		// setComposite();
+	
+		
+		
+	
 	}
 
 	@Override

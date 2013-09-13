@@ -129,6 +129,8 @@ public class TOSConnector {
 		return tos;
 
 	}
+	
+
 
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
@@ -157,6 +159,12 @@ public class TOSConnector {
 					+ " / " + tos.getContext().SQLCommand);
 
 		}
+	}
+	
+	public void runJob(){
+		
+		getConnection().runJobInTOS((getARGV()));
+		
 	}
 
 	public static void setContextVariable(String key, String value) {

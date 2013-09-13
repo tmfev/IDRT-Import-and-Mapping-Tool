@@ -15,6 +15,9 @@ public class MainPerspective implements IPerspectiveFactory {
 		layout.setEditorAreaVisible(false);
 		layout.setFixed(true);
 
+
+	    layout.addView("edu.goettingen.i2b2.importtool.view.EditorTargetView", IPageLayout.LEFT, 1.0f, editorArea);
+
 //		    layout.addView("edu.goettingen.i2b2.importtool.view.ServerView", IPageLayout.LEFT, 1.0f, editorArea);
 		
 		//layout.addStandaloneView(View.ID,  false, IPageLayout.LEFT, 1.0f, editorArea);

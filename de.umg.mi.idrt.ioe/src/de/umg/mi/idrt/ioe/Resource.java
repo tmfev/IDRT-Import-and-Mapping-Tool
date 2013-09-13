@@ -62,8 +62,7 @@ public class Resource {
 
 	public Resource() {
 		Debug.c("Resource");
-		URL i = Platform.getBundle("de.umg.mi.idrt.ioe").getEntry(
-				"/");
+		URL i = Platform.getBundle("de.umg.mi.idrt.ioe").getEntry("/");
 		URL url = null;
 		try {
 			url = FileLocator.toFileURL(i);
@@ -148,14 +147,10 @@ public class Resource {
 	}
 
 	/*
-	public Display getDisplay() {
-		return _display;
-	}
-
-	public void setDisplay(Display display) {
-		this._display = display;
-	}
-*/
+	 * public Display getDisplay() { return _display; }
+	 * 
+	 * public void setDisplay(Display display) { this._display = display; }
+	 */
 	public void addMessage(String message) {
 		this.addMessage(message, SystemMessage.MessageType.INFO,
 				SystemMessage.MessageLocation.MAIN);
@@ -306,6 +301,10 @@ public class Resource {
 			public final static String OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Source";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Target";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Attribute";
+
+			public class IEO {
+				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
+			}
 
 		}
 

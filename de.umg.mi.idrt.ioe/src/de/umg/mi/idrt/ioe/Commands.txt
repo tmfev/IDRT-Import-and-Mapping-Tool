@@ -1,3 +1,12 @@
 asdasd
 testaa
 check_ontology_empty | 
+
+
+
+
+#load_source_to_target
+
+#etlStagingI2B2ToTargetI2B2
+starts a ETL job that creates an ontologie in targetI2B2 by transforming the stagingI2B2 via the ieo transformation rules and copies and transforms the patient data ackordingly
+  

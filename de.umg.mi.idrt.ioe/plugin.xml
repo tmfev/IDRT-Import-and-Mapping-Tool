@@ -121,6 +121,11 @@
             id="edu.goettingen.i2b2.importtool.OTReadTarget"
             name="OTReadTarget">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.etlStagingI2B2ToTargetI2B2"
+            id="de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2"
+            name="etlStagingI2B2ToTargetI2B2">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -135,26 +140,34 @@
                   style="push"
                   tooltip="Load Ontology from 2i2b-DB ...">
             </command>
+         </menu>
+         <menu
+               label="targetI2B2Menu">
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="de.umg.mi.idrt.ioe.toolbar1">
             <command
-                  commandId="edu.goettingen.i2b2.importtool.OTWriteTarget"
-                  label=" - save target"
+                  commandId="de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2"
+                  icon="icons/command_obj.gif"
+                  label="etlStagingI2B2ToTargetI2B2"
                   style="push">
             </command>
             <command
                   commandId="edu.goettingen.i2b2.importtool.OTReadTarget"
+                  icon="icons/toc_open.gif"
                   label=" - load target"
                   style="push">
             </command>
-         </menu>
-      </menuContribution>
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.installationDialog.buttonbar">
-         <command
-               commandId="de.goettingen.i2b2.importtool.idrt.options"
-               id="opt"
-               label="options"
-               style="push">
-         </command>
+            <command
+                  commandId="edu.goettingen.i2b2.importtool.OTWriteTarget"
+                  icon="icons/save_edit.gif"
+                  label=" - save target"
+                  style="push">
+            </command>
+         </toolbar>
       </menuContribution>
    </extension>
    <extension
