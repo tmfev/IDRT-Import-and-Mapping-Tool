@@ -2,17 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-	<extension point="org.eclipse.ui.activities">
-	      <activity
-	            description="My RCP Activity"
-	            id="my.rcp.activity"
-	            name="MyRCP">
-	      </activity>
-	      <activityPatternBinding
-	            activityId="my.rcp.activity"
-	            pattern="org\.eclipse\.search/.*">
-	      </activityPatternBinding>
-	</extension>
 
    <extension
          id="application"
@@ -130,22 +119,6 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu">
-         <menu
-               label="Editor">
-            <command
-                  commandId="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
-                  label="Load Ontology from 2i2b-DB ..."
-                  style="push"
-                  tooltip="Load Ontology from 2i2b-DB ...">
-            </command>
-         </menu>
-         <menu
-               label="targetI2B2Menu">
-         </menu>
-      </menuContribution>
-      <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
                id="de.umg.mi.idrt.ioe.toolbar1">
@@ -166,6 +139,12 @@
                   icon="icons/save_edit.gif"
                   label=" - save target"
                   style="push">
+            </command>
+            <command
+                  commandId="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
+                  label="Load Ontology from 2i2b-DB ..."
+                  style="push"
+                  tooltip="Load Ontology from 2i2b-DB ...">
             </command>
          </toolbar>
       </menuContribution>
@@ -291,19 +270,4 @@
             name="%perspective.name.0">
       </perspective>
    </extension>
-   <extension
-         point="org.eclipse.ui.keywords">
-      <keyword
-            id="edu.goettingen.i2b2.importtool.keyword.I2B2.DATABASE_NAME"
-            label="%keyword.label">
-      </keyword>
-      <keyword
-            id="edu.goettingen.i2b2.importtool.keyword.I2B2.ONTOLOGYHEADPATH"
-            label="%keyword.label.0">
-      </keyword>
-      <keyword
-            id="edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE"
-            label="%keyword.label.1">
-      </keyword>
-      </extension>
 </plugin>
