@@ -6,7 +6,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardDialog;
 
-import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPageTwo;
+import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPage2;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AddSourceServerWizard;
 
@@ -20,19 +20,19 @@ public class AddSourceServerCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		TreeViewer viewer = ServerView.getSourceServerViewer();
-		if ((DBWizardPageTwo.getImportDBViewer() != null)
-				&& !DBWizardPageTwo.getImportDBViewer().getTree().isDisposed()) {
-			viewer = DBWizardPageTwo.getImportDBViewer();
+		if ((DBWizardPage2.getImportDBViewer() != null)
+				&& !DBWizardPage2.getImportDBViewer().getTree().isDisposed()) {
+			viewer = DBWizardPage2.getImportDBViewer();
 		}
 		WizardDialog wizardDialog = new WizardDialog(viewer.getControl()
 				.getShell(), new AddSourceServerWizard());
 		wizardDialog.open();
-		if (((DBWizardPageTwo.getImportDBViewer() != null) && !DBWizardPageTwo
+		if (((DBWizardPage2.getImportDBViewer() != null) && !DBWizardPage2
 				.getImportDBViewer().getTree().isDisposed())
 				|| !ServerView.getSourceServerViewer().getTree().isDisposed()) {
 			ServerView.refresh();
 		} else {
-			DBWizardPageTwo.refresh();
+			DBWizardPage2.refresh();
 		}
 		return viewer;
 	}

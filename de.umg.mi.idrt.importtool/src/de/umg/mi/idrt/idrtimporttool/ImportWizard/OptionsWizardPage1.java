@@ -31,7 +31,7 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class OptionsWizardPageOne extends WizardPage {
+public class OptionsWizardPage1 extends WizardPage {
 
 	private static Text txtPIDURL;
 	private static String pidURL;
@@ -78,7 +78,7 @@ public class OptionsWizardPageOne extends WizardPage {
 		return txtPIDURL.getText();
 	}
 
-	public OptionsWizardPageOne() {
+	public OptionsWizardPage1() {
 		super("Options");
 		setTitle("Options");
 		setDescription("Edit your Settings");

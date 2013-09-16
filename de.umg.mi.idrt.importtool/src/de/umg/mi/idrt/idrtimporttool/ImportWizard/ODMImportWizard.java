@@ -37,8 +37,8 @@ public class ODMImportWizard extends Wizard {
 
 	private HashMap<String, String> contextMap;
 
-	protected WizardPageOne one;
-	protected ODMWizardPageTwo two;
+	protected WizardPage1 one;
+	protected ODMWizardPage2 two;
 
 	public boolean done = false;
 	
@@ -110,8 +110,8 @@ public class ODMImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPageOne();
-		two = new ODMWizardPageTwo();
+		one = new WizardPage1();
+		two = new ODMWizardPage2();
 		addPage(one);
 		addPage(two);
 	}
@@ -119,8 +119,8 @@ public class ODMImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			final boolean cleanUp = ODMWizardPageTwo.getCleanUp();
-			final boolean terms = ODMWizardPageTwo.getTerms();
+			final boolean cleanUp = ODMWizardPage2.getCleanUp();
+			final boolean terms = ODMWizardPage2.getTerms();
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path path = new Path("/cfg/Default.properties"); 
 			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
@@ -134,20 +134,20 @@ public class ODMImportWizard extends Wizard {
 			/*
 			 * page 1
 			 */
-			contextMap.put("DBHost", WizardPageOne.getIpText()); 
-			defaultProps.setProperty("DBHost", WizardPageOne.getIpText()); 
+			contextMap.put("DBHost", WizardPage1.getIpText()); 
+			defaultProps.setProperty("DBHost", WizardPage1.getIpText()); 
 
-			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText()); 
-			contextMap.put("DBUsername", WizardPageOne.getDBUserText()); 
-			contextMap.put("DBInstance", WizardPageOne.getDBSIDText()); 
-			contextMap.put("DBPort", WizardPageOne.getPortText()); 
-			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText()); 
+			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText()); 
+			contextMap.put("DBUsername", WizardPage1.getDBUserText()); 
+			contextMap.put("DBInstance", WizardPage1.getDBSIDText()); 
+			contextMap.put("DBPort", WizardPage1.getPortText()); 
+			contextMap.put("DBSchema", WizardPage1.getDBSchemaText()); 
 
 			/*
 			 * page 2
 			 */
-			contextMap.put("folderODM", ODMWizardPageTwo.getFolderODMText()); 
-			defaultProps.setProperty("folderODM", ODMWizardPageTwo.getFolderODMText());
+			contextMap.put("folderODM", ODMWizardPage2.getFolderODMText()); 
+			defaultProps.setProperty("folderODM", ODMWizardPage2.getFolderODMText());
 			
 			Path miscPath = new Path("/misc/"); 
 			URL miscUrl = FileLocator.find(bundle, miscPath,
@@ -160,7 +160,7 @@ public class ODMImportWizard extends Wizard {
 
 			contextMap.put("folderMain", miscPathReplaced); 
 
-			if (ODMWizardPageTwo.getTerms()) {
+			if (ODMWizardPage2.getTerms()) {
 				/**
 				 * ST-Import
 				 */
@@ -189,14 +189,14 @@ public class ODMImportWizard extends Wizard {
 			}
 
 			
-			if (ODMWizardPageTwo.getCompleteCodelist()) {
+			if (ODMWizardPage2.getCompleteCodelist()) {
 				contextMap.put("importCodelist", "true");  
 				defaultProps.setProperty("importCodelist", "true");  
 			} else {
 				contextMap.put("importCodelist", "false");  
 				defaultProps.setProperty("importCodelist", "false");  
 			}
-			if (ODMWizardPageTwo.getIncludePids()) {
+			if (ODMWizardPage2.getIncludePids()) {
 				contextMap.put("includePids", "true");  
 				defaultProps.setProperty("includePids", "true");  
 			} else {
@@ -204,11 +204,11 @@ public class ODMImportWizard extends Wizard {
 				defaultProps.setProperty("includePids", "false");  
 			}
 
-			if (ODMWizardPageTwo.getSaveContext()) {
+			if (ODMWizardPage2.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), ""); 
 			}
 
-			if (ODMWizardPageTwo.getTruncate()) {
+			if (ODMWizardPage2.getTruncate()) {
 				contextMap.put("truncateProject", "true");  
 			} else {
 				contextMap.put("truncateProject", "false");  

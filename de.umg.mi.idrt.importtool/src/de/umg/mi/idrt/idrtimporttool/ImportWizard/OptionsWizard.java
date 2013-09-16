@@ -27,7 +27,7 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 public class OptionsWizard extends Wizard {
 
 	private Properties defaultProps;
-	protected OptionsWizardPageOne one;
+	protected OptionsWizardPage1 one;
 
 	public OptionsWizard() {
 		super();
@@ -36,7 +36,7 @@ public class OptionsWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new OptionsWizardPageOne();
+		one = new OptionsWizardPage1();
 		addPage(one);
 	}
 
@@ -53,21 +53,21 @@ public class OptionsWizard extends Wizard {
 			defaultProps.load(new FileReader(properties));
 
 			defaultProps.setProperty("PIDURL",
-					OptionsWizardPageOne.getTxtPIDURL());
-			defaultProps.setProperty("log", OptionsWizardPageOne.getTxtLog());
+					OptionsWizardPage1.getTxtPIDURL());
+			defaultProps.setProperty("log", OptionsWizardPage1.getTxtLog());
 			defaultProps.setProperty("sysoLog",
-					OptionsWizardPageOne.getSysoLog());
+					OptionsWizardPage1.getSysoLog());
 			defaultProps
-					.setProperty("filter", OptionsWizardPageOne.getFilter());
+					.setProperty("filter", OptionsWizardPage1.getFilter());
 			defaultProps.setProperty("sysoLogLoc",
-					OptionsWizardPageOne.getSysoLogPath());
+					OptionsWizardPage1.getSysoLogPath());
 			defaultProps.setProperty("guessRows",
-					OptionsWizardPageOne.getGuessRowtext());
+					OptionsWizardPage1.getGuessRowtext());
 			defaultProps.setProperty("hideTemp",
-					OptionsWizardPageOne.getHideTempTablesButton());
+					OptionsWizardPage1.getHideTempTablesButton());
 			defaultProps.store(new FileWriter(properties), "");
 			boolean restart = false;
-			if (OptionsWizardPageOne.getChanged()) {
+			if (OptionsWizardPage1.getChanged()) {
 				restart = MessageDialog
 						.openConfirm(Display.getDefault().getActiveShell(),
 								"Restart required",

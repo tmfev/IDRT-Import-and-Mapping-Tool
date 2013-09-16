@@ -33,7 +33,7 @@ import de.umg.mi.idrt.idrtimporttool.messages.Messages;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class ODMWizardPageTwo extends WizardPage {
+public class ODMWizardPage2 extends WizardPage {
 
 	private Composite container;
 	private static Text folderODMText;
@@ -103,7 +103,7 @@ public class ODMWizardPageTwo extends WizardPage {
 		return checkTruncate.getSelection();
 	}
 
-	public ODMWizardPageTwo() {
+	public ODMWizardPage2() {
 		super(Messages.ODMWizardPageTwo_ODMImportSettings);
 		setTitle(Messages.ODMWizardPageTwo_ODMImportSettings); 
 		setDescription(Messages.ODMWizardPageTwo_ODMImportSettings); 
@@ -164,7 +164,7 @@ public class ODMWizardPageTwo extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!folderODMText.getText().isEmpty()) {
-						ODMWizardPageTwo.this.setPageComplete(true);
+						ODMWizardPage2.this.setPageComplete(true);
 					}
 				}
 			});

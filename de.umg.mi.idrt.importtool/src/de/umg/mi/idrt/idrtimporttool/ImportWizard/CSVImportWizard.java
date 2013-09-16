@@ -48,9 +48,9 @@ public class CSVImportWizard extends Wizard {
 	private static Thread b;
 	private static Thread importThread;
 	private HashMap<String, String> contextMap;
-	protected WizardPageOne one;
-	protected CSVWizardPageTwo two;
-	public static CSVWizardPageThree three;
+	protected WizardPage1 one;
+	protected CSVWizardPage2 two;
+	public static CSVWizardPage3 three;
 	public static boolean started = false;
 
 	public CSVImportWizard() {
@@ -61,8 +61,8 @@ public class CSVImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPageOne();
-		two = new CSVWizardPageTwo();
+		one = new WizardPage1();
+		two = new CSVWizardPage2();
 		addPage(one);
 		addPage(two);
 	}
@@ -81,8 +81,8 @@ public class CSVImportWizard extends Wizard {
 
 	@Override
 	public boolean performCancel() {
-		if (CSVWizardPageThree.lastTable != null) {
-			CSVWizardPageThree.saveTable();
+		if (CSVWizardPage3.lastTable != null) {
+			CSVWizardPage3.saveTable();
 		}
 		return super.performCancel();
 	}
@@ -90,35 +90,35 @@ public class CSVImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
-		final String ipText = WizardPageOne.getIpText();
-		final String passwordText = WizardPageOne.getDBUserPasswordText();
-		final String dbUserText = WizardPageOne.getDBUserText();
-		final String dbSID = WizardPageOne.getDBSIDText();
-		final String dbPort = WizardPageOne.getPortText();
-		final String dbSchema = WizardPageOne.getDBSchemaText();
-		final boolean truncate = CSVWizardPageTwo.getTruncate();
-		final boolean cleanUp = CSVWizardPageTwo.getCleanUp();
-		final String pattern = CSVWizardPageTwo.getPattern();
-		final String quoteChar = CSVWizardPageTwo.getQuoteCharText();
-		final boolean usePIDGenerator = CSVWizardPageTwo.getUsePid();
+		final String ipText = WizardPage1.getIpText();
+		final String passwordText = WizardPage1.getDBUserPasswordText();
+		final String dbUserText = WizardPage1.getDBUserText();
+		final String dbSID = WizardPage1.getDBSIDText();
+		final String dbPort = WizardPage1.getPortText();
+		final String dbSchema = WizardPage1.getDBSchemaText();
+		final boolean truncate = CSVWizardPage2.getTruncate();
+		final boolean cleanUp = CSVWizardPage2.getCleanUp();
+		final String pattern = CSVWizardPage2.getPattern();
+		final String quoteChar = CSVWizardPage2.getQuoteCharText();
+		final boolean usePIDGenerator = CSVWizardPage2.getUsePid();
 
-		final boolean IDinCSVFile = CSVWizardPageTwo.getBtnRADIOCsvfile();
-		final boolean IDinExternalIDFile = CSVWizardPageTwo.getBtnRADIOIdfile();
+		final boolean IDinCSVFile = CSVWizardPage2.getBtnRADIOCsvfile();
+		final boolean IDinExternalIDFile = CSVWizardPage2.getBtnRADIOIdfile();
 
-		final String folderCSV = CSVWizardPageTwo.getFolderCSVText();
-		final char delim = CSVWizardPageThree.getDEFAULTDELIM();
+		final String folderCSV = CSVWizardPage2.getFolderCSVText();
+		final char delim = CSVWizardPage3.getDEFAULTDELIM();
 
-		final String externalIDFilePath = CSVWizardPageTwo
+		final String externalIDFilePath = CSVWizardPage2
 				.getExternalIDFilePath();
-		final boolean terms = CSVWizardPageTwo.getTerms();
-		final boolean save = CSVWizardPageTwo.getSaveContext();
+		final boolean terms = CSVWizardPage2.getTerms();
+		final boolean save = CSVWizardPage2.getSaveContext();
 
 		// saving the last table before import
-		CSVWizardPageThree.saveTable();
+		CSVWizardPage3.saveTable();
 
 		final List<String> configs = new LinkedList<String>();
 
-		HashMap<String, String> configMap = CSVWizardPageThree
+		HashMap<String, String> configMap = CSVWizardPage3
 				.getFileConfigMap();
 
 		Iterator<String> configIt = configMap.keySet().iterator();
@@ -559,7 +559,7 @@ public class CSVImportWizard extends Wizard {
 		StatusListener.notifyListener();
 	}
 
-	public static void setThree(CSVWizardPageThree three) {
+	public static void setThree(CSVWizardPage3 three) {
 		CSVImportWizard.three = three;
 	}
 

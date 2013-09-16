@@ -41,16 +41,16 @@ public class DBImportWizard extends Wizard {
 	private Properties defaultProps;
 	private static Thread b;
 	private HashMap<String, String> contextMap;
-	protected WizardPageOne one;
+	protected WizardPage1 one;
 
-	public static DBWizardPageTwo two;
-	public static DBWizardPageThree three;
+	public static DBWizardPage2 two;
+	public static DBWizardPage3 three;
 	public boolean done = false;
 	public static boolean started = false;
 
 	private static String FOLDERCSV;
 
-	public static void setThree(DBWizardPageThree three) {
+	public static void setThree(DBWizardPage3 three) {
 		DBImportWizard.three = three;
 	}
 
@@ -58,7 +58,7 @@ public class DBImportWizard extends Wizard {
 		super();
 		setNeedsProgressMonitor(false);
 	}
-	public static DBWizardPageThree getThree() {
+	public static DBWizardPage3 getThree() {
 		return three;
 	}
 
@@ -130,8 +130,8 @@ public class DBImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPageOne();
-		two = new DBWizardPageTwo();
+		one = new WizardPage1();
+		two = new DBWizardPage2();
 		addPage(one);
 		addPage(two);
 	}
@@ -195,10 +195,10 @@ public class DBImportWizard extends Wizard {
 	public boolean performFinish() {
 		try {
 
-			final boolean cleanUp = DBWizardPageThree.getCleanUp();
-			final boolean terms = DBWizardPageThree.getTerms();
+			final boolean cleanUp = DBWizardPage3.getCleanUp();
+			final boolean terms = DBWizardPage3.getTerms();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
-			FOLDERCSV = DBWizardPageThree.getCSVPath();
+			FOLDERCSV = DBWizardPage3.getCSVPath();
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
@@ -227,7 +227,7 @@ public class DBImportWizard extends Wizard {
 
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
-			HashMap<Server, HashMap<String, List<String>>> checkedTables = DBWizardPageTwo
+			HashMap<Server, HashMap<String, List<String>>> checkedTables = DBWizardPage2
 					.getCheckedTables();
 			Iterator<Server> tableServerIterator = checkedTables.keySet()
 					.iterator();
@@ -288,19 +288,19 @@ public class DBImportWizard extends Wizard {
 				}
 			}
 			contextMap = new HashMap<String, String>();
-			contextMap.put("DBHost", WizardPageOne.getIpText());
-			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
-			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
-			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
-			contextMap.put("DBPort", WizardPageOne.getPortText());
-			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText());
+			contextMap.put("DBHost", WizardPage1.getIpText());
+			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
+			contextMap.put("DBUsername", WizardPage1.getDBUserText());
+			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
+			contextMap.put("DBPort", WizardPage1.getPortText());
+			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
 
 
 			/**
 			 * page 2
 			 */
 			//
-			if (DBWizardPageThree.getTerms()) {
+			if (DBWizardPage3.getTerms()) {
 
 				/**
 				 * ST-Import
@@ -330,7 +330,7 @@ public class DBImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");
 			}
 
-			if (DBWizardPageThree.getSaveContext()) {
+			if (DBWizardPage3.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), "");
 			}
 
@@ -355,7 +355,7 @@ public class DBImportWizard extends Wizard {
 					"/")
 					+ "/";
 			contextMap.put("folderMain", miscPathReplaced);
-			if (DBWizardPageThree.getTruncate()) {
+			if (DBWizardPage3.getTruncate()) {
 				contextMap.put("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");

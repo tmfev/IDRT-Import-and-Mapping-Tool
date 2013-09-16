@@ -38,7 +38,7 @@ import de.umg.mi.idrt.idrtimporttool.messages.Messages;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class CSVWizardPageTwo extends WizardPage {
+public class CSVWizardPage2 extends WizardPage {
 
 	private Composite container;
 	private static Text folderCSVText;
@@ -132,7 +132,7 @@ public class CSVWizardPageTwo extends WizardPage {
 		return btnUsepid.getSelection();
 	}
 
-	public CSVWizardPageTwo() {
+	public CSVWizardPage2() {
 		super(Messages.CSVWizardPageTwo_CSVImportSettings);
 		setTitle(Messages.CSVWizardPageTwo_CSVImportSettings);
 		setDescription(Messages.CSVWizardPageTwo_CSVImportSettings);
@@ -243,7 +243,7 @@ public class CSVWizardPageTwo extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!folderCSVText.getText().isEmpty()) {
-						CSVWizardPageTwo.this.setPageComplete(true);
+						CSVWizardPage2.this.setPageComplete(true);
 					}
 				}
 			});
@@ -402,7 +402,7 @@ public class CSVWizardPageTwo extends WizardPage {
 
 	@Override
 	public IWizardPage getNextPage() {
-		CSVImportWizard.setThree(new CSVWizardPageThree());
+		CSVImportWizard.setThree(new CSVWizardPage3());
 		return CSVImportWizard.three;
 	}
 

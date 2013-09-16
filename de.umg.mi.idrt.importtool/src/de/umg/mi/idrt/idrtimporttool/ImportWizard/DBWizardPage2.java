@@ -83,7 +83,7 @@ import de.umg.mi.idrt.idrtimporttool.table.TableRow;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class DBWizardPageTwo extends WizardPage {
+public class DBWizardPage2 extends WizardPage {
 
 	private static List<TableRow> tableRows;// = new LinkedList<TableRow>();
 	private static List<TableItem> tableItems;
@@ -244,7 +244,7 @@ public class DBWizardPageTwo extends WizardPage {
 		serverViewer.refresh();
 	}
 
-	public DBWizardPageTwo() {
+	public DBWizardPage2() {
 		super("Source DB Settings");
 		setTitle("Source DB Settings");
 		// setDescription("Source DB Settings");
@@ -419,9 +419,9 @@ public class DBWizardPageTwo extends WizardPage {
 								public void widgetSelected(SelectionEvent event) {
 									item.setText(col, combo.getText());
 									combo.dispose();
-									DBWizardPageTwo.this
+									DBWizardPage2.this
 											.saveCurrentTableToDisc();
-									DBWizardPageTwo.this.checkTable();
+									DBWizardPage2.this.checkTable();
 
 								}
 							});
@@ -547,7 +547,7 @@ public class DBWizardPageTwo extends WizardPage {
 							"This will overwrite your current Config!\nContinue?");
 
 					if (cont) {
-						DBWizardPageTwo.this.clearMetaDataFromTable();
+						DBWizardPage2.this.clearMetaDataFromTable();
 
 						TableItem[] items = table.getItems();
 
@@ -604,7 +604,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 					if (cont) {
 						clearSingleTable();
-						DBWizardPageTwo.this.loadCurrentTableFromDB();
+						DBWizardPage2.this.loadCurrentTableFromDB();
 						table.redraw();
 						table.update();
 					}
@@ -640,7 +640,7 @@ public class DBWizardPageTwo extends WizardPage {
 							os.writeObject(tableMap);
 							os.flush();
 							os.close();
-							DBWizardPageTwo.this.loadCurrentTableFromDB();
+							DBWizardPage2.this.loadCurrentTableFromDB();
 							table.redraw();
 							table.update();
 						}
@@ -686,7 +686,7 @@ public class DBWizardPageTwo extends WizardPage {
 								false);
 					}
 					checkedTables.clear();
-					DBWizardPageTwo.this.getWizard().getContainer()
+					DBWizardPage2.this.getWizard().getContainer()
 							.updateButtons();
 					Object[] checkedElements = serverViewer
 							.getCheckedElements();
@@ -759,7 +759,7 @@ public class DBWizardPageTwo extends WizardPage {
 							// if (viewer.getTree().getSelection()[0].getData()
 							// instanceof ServerTable && server !=null){
 							if ((server != null) && (tableName != null)) {
-								DBWizardPageTwo.this.saveCurrentTableToDisc();
+								DBWizardPage2.this.saveCurrentTableToDisc();
 							}
 							// }
 							table.removeAll();
@@ -779,13 +779,13 @@ public class DBWizardPageTwo extends WizardPage {
 														.getParentItem()
 														.getParentItem()
 														.getText());
-										DBWizardPageTwo.this
+										DBWizardPage2.this
 												.loadCurrentTableFromDB();
 									}
 									// if (btnAutoLoadNSave.getSelection()){
 									if (serverViewer.getTree().getSelection()[0]
 											.getData() instanceof ServerTable) {
-										DBWizardPageTwo.this
+										DBWizardPage2.this
 												.loadCurrentTableFromDisc();
 										// }
 										// checkTable();
@@ -793,7 +793,7 @@ public class DBWizardPageTwo extends WizardPage {
 								} else {
 									tableName = null;
 								}
-								DBWizardPageTwo.this.checkTable();
+								DBWizardPage2.this.checkTable();
 							}
 						}
 					});
@@ -810,7 +810,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							DBWizardPageTwo.this.addSourceDBServer();
+							DBWizardPage2.this.addSourceDBServer();
 						}
 					});
 
@@ -826,7 +826,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							DBWizardPageTwo.this.editSourceServer();
+							DBWizardPage2.this.editSourceServer();
 						}
 					});
 
@@ -842,7 +842,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							DBWizardPageTwo.this.deleteSourceServer();
+							DBWizardPage2.this.deleteSourceServer();
 							if (serverViewer.getTree().getChildren() == null) {
 							}
 						}
@@ -861,7 +861,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							DBWizardPageTwo.this.exportSourceServer();
+							DBWizardPage2.this.exportSourceServer();
 						}
 					});
 			MenuItem importImportDBServerMenuItem = new MenuItem(
@@ -876,7 +876,7 @@ public class DBWizardPageTwo extends WizardPage {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
-							DBWizardPageTwo.this.importSourceServer();
+							DBWizardPage2.this.importSourceServer();
 						}
 					});
 			new MenuItem(importServerMenu, SWT.SEPARATOR);
@@ -994,7 +994,7 @@ public class DBWizardPageTwo extends WizardPage {
 	@Override
 	public IWizardPage getNextPage() {
 		saveCurrentTableToDisc();
-		DBImportWizard.setThree(new DBWizardPageThree());
+		DBImportWizard.setThree(new DBWizardPage3());
 		return DBImportWizard.three;
 	}
 
@@ -1225,7 +1225,7 @@ public class DBWizardPageTwo extends WizardPage {
 					.readObject();
 			is.close();
 
-			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPageTwo
+			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPage2
 					.getCheckedTables();
 			if (!tables.isEmpty()) {
 				Iterator<Server> tableServerIterator = tables.keySet()

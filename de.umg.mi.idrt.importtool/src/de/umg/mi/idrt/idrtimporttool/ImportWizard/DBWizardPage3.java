@@ -36,7 +36,7 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class DBWizardPageThree extends WizardPage {
+public class DBWizardPage3 extends WizardPage {
 
 	private Composite container;
 	private static Text folderMainText;
@@ -91,7 +91,7 @@ public class DBWizardPageThree extends WizardPage {
 		return checkTruncate.getSelection();
 	}
 
-	public DBWizardPageThree() {
+	public DBWizardPage3() {
 		super("DB Import Settings");
 		setTitle("DB Import Settings");
 		setWizard(DBImportCommand.getImpWiz());
@@ -182,7 +182,7 @@ public class DBWizardPageThree extends WizardPage {
 			list = new List(composite_1, SWT.BORDER | SWT.H_SCROLL
 					| SWT.V_SCROLL);
 			list.setBounds(5, 25, 276, 247);
-			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPageTwo
+			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPage2
 					.getCheckedTables();
 			if (tables != null) {
 				Iterator<Server> tableServerIterator = tables.keySet()
