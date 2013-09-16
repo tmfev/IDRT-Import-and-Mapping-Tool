@@ -35,6 +35,8 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -93,7 +95,9 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProv
  * 
  */
 public class ServerView extends ViewPart {
+	
 	public ServerView() {
+		
 	}
 	public static final String ID = "ImportIDRT.view";
 
@@ -161,7 +165,7 @@ public class ServerView extends ViewPart {
 				e1.printStackTrace();
 			}
 			//TODO READ LOG FROM DISC
-			logString=readLogFromDisc(5);
+			logString=readLogFromDisc(25);
 
 			parent = new Composite(parentComp, SWT.NONE);
 			parent.getShell().setMinimumSize(500, 200);
@@ -291,13 +295,7 @@ public class ServerView extends ViewPart {
 
 			sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
 			sourceServerComposite.setLayout(new BorderLayout(0, 0));
-			//			sourceServerComposite.addDisposeListener(new DisposeListener() {
-			//
-			//				@Override
-			//				public void widgetDisposed(DisposeEvent e) {
-			//					sourceServerDisposed = true;
-			//				}
-			//			});
+
 			sourceTreeComp = new Composite(sourceServerComposite, SWT.NONE);
 			sourceTreeComp.setLayoutData(BorderLayout.CENTER);
 			sourceTreeComp.setLayout(new BorderLayout(0, 0));
@@ -343,7 +341,6 @@ public class ServerView extends ViewPart {
 			 */
 			Label targetServerLabel = new Label(targetServercomposite, SWT.NONE);
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
-			//			targetServerLabel.setText(Messages.ServerView_TargetServer + " " + " NEW NEW NEW");
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
 			Tree targetServerTree = targetServerViewer.getTree();
@@ -1085,7 +1082,7 @@ public class ServerView extends ViewPart {
 					logText.getParent().layout();
 				}
 			});
-			logText.setText("");
+			logText.setText(logString);
 			infoBoxSash.setWeights(new int[] {2, 7});
 			btnExportLog.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1117,7 +1114,7 @@ public class ServerView extends ViewPart {
 					}
 				}
 			});
-			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
+//			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
 			sashForm.setWeights(new int[] { 2, 2 });
 		} catch (IOException e2) {
 			e2.printStackTrace();
