@@ -95,9 +95,9 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProv
  * 
  */
 public class ServerView extends ViewPart {
-	
+
 	public ServerView() {
-		
+
 	}
 	public static final String ID = "ImportIDRT.view";
 
@@ -361,7 +361,7 @@ public class ServerView extends ViewPart {
 				public void widgetSelected(SelectionEvent e) {
 
 					TreeItem selectedItem = (TreeItem) e.item;
-					String selectedItemString = selectedItem.getText();
+					final String selectedItemString = selectedItem.getText();
 					if (ServerList.isServer(selectedItemString)) {
 						String currentServerID = selectedItem.getText();
 						Server server = ServerList.getTargetServers().get(
@@ -375,38 +375,48 @@ public class ServerView extends ViewPart {
 					} else {
 						String parentServer = selectedItem.getParentItem()
 								.getText();
-						Server server = ServerList.getTargetServers().get(
+						final Server server = ServerList.getTargetServers().get(
 								parentServer);
 						labelIpCurrent.setText(server.getIp());
 						labelDBUserCurrent.setText(selectedItemString);
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText("..."); 
 						lblPatientsCurrent.setText("..."); 
-						Bundle bundle = Activator.getDefault().getBundle();
-						Path imgLoadingPath = new Path("/images/loading.png"); 
-						URL url = FileLocator.find(bundle, imgLoadingPath,
-								Collections.EMPTY_MAP);
 
-						try {
-							URL fileUrl = FileLocator.toFileURL(url);
-							File imgLoadingFile = new File(fileUrl.getPath());
-							Image imgLoading = new Image(parent.getDisplay(),
-									imgLoadingFile.getAbsolutePath());
 
-							//Displays "Loading..." while DB loads.
-							final Shell loadingShell = new Shell(SWT.ON_TOP);
-							loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
-							loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
-							loadingShell.setBackgroundImage(imgLoading);
-							loadingShell.open();
-							lblObservationsCurrent.setText(server
-									.getConcepts(selectedItemString));
-							lblPatientsCurrent.setText(server
-									.getPatients(selectedItemString));
-							loadingShell.close();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
+						//Displays "Loading..." while DB loads.
+
+						new Thread(new Runnable() {
+
+							@Override
+							public void run() {
+								Bundle bundle = Activator.getDefault().getBundle();
+								Path imgLoadingPath = new Path("/images/loading.png"); 
+								URL url = FileLocator.find(bundle, imgLoadingPath,
+										Collections.EMPTY_MAP);
+								URL fileUrl;
+								try {
+									fileUrl = FileLocator.toFileURL(url);
+
+									File imgLoadingFile = new File(fileUrl.getPath());
+									Image imgLoading = new Image(parent.getDisplay(),
+											imgLoadingFile.getAbsolutePath());
+									final Shell loadingShell = new Shell(SWT.NO_TRIM ); //SWT.ON_TOP
+									loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
+									loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
+									loadingShell.setBackgroundImage(imgLoading);
+									loadingShell.open();
+									lblObservationsCurrent.setText(server
+											.getConcepts(selectedItemString));
+									lblPatientsCurrent.setText(server
+											.getPatients(selectedItemString));
+									loadingShell.close();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						}).run();
+
 
 					}
 				}
@@ -1114,7 +1124,7 @@ public class ServerView extends ViewPart {
 					}
 				}
 			});
-//			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
+			//			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
 			sashForm.setWeights(new int[] { 2, 2 });
 		} catch (IOException e2) {
 			e2.printStackTrace();
