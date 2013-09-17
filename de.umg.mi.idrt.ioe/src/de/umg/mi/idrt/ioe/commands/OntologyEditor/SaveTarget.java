@@ -61,7 +61,7 @@ public class SaveTarget extends AbstractHandler {
 
 		try {
 			// TODO save target tmp file
-			
+
 			_writer = new CSVWriter(new FileWriter(tmpDataFile));
 			_writer.writeNext(fields);
 			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
@@ -79,11 +79,22 @@ public class SaveTarget extends AbstractHandler {
 		 */
 
 		TOSConnector tos = new TOSConnector();
-		int tosStatus = tos.writeTargetOntology("1", tmpDataFile);
+
+		tos.setContextVariable("Job", "write_target_ontology");
+		tos.setContextVariable("Var1", "1");
+		tos.setContextVariable("DataFile", tmpDataFile);
+
+		try {
+
+			tos.runJob();
+		} catch (Exception e) {
+			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
+					+ e.getMessage());
+			return 1;
+		}
 
 		// i2b2ImportTool.getMyOT().getOTTarget().setModel(newTreeModel2);
 		// i2b2ImportTool.getMyOT().getOTTarget().updateUI();
-
 
 		return null;
 	}

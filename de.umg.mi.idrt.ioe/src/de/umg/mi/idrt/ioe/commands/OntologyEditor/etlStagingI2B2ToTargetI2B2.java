@@ -38,7 +38,7 @@ public class etlStagingI2B2ToTargetI2B2 extends AbstractHandler {
 
 			tos.setContextVariable("Job", Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
 			tos.setContextVariable("SQLTable", "I2B2");
-		
+	
 			tos.runJob();
 
 		} catch (Exception e) {

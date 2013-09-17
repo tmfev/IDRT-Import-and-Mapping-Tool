@@ -5,6 +5,7 @@ import java.util.Date;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
@@ -68,7 +69,22 @@ public class TOSHandler {
 	}
 
 	public void status(String status) {
-		Console.error("Error in TOSConnector: " + status);
+		Console.error("TOS: " + status);
+		System.out.println("(syso) Error in TOSConnector: " + status);
+	}
+
+	public void statusSuccess(String status) {
+		Application
+				.getStatusView()
+				.addMessage(
+						new SystemMessage(
+								status,
+								SystemMessage.MessageType.SUCCESS));
+
+	}
+
+	public void statusError(String status) {
+		Console.error("TOS error: " + status);
 		System.out.println("(syso) Error in TOSConnector: " + status);
 	}
 
