@@ -33,8 +33,8 @@ public class P21ImportWizard extends Wizard {
 	private Properties defaultProps;
 	private static Thread b;
 	private HashMap<String, String> contextMap;
-	protected WizardPageOne one;
-	protected P21WizardPageTwo two;
+	protected WizardPage1 one;
+	protected P21WizardPage2 two;
 	public boolean done = false;
 	public static boolean started = false;
 	private static String CSVPath;
@@ -126,8 +126,8 @@ public class P21ImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPageOne();
-		two = new P21WizardPageTwo();
+		one = new WizardPage1();
+		two = new P21WizardPage2();
 		addPage(one);
 		addPage(two);
 	}
@@ -140,10 +140,10 @@ public class P21ImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			final boolean cleanUp = P21WizardPageTwo.getCleanUp();
-			final boolean terms = P21WizardPageTwo.getTerms();
+			final boolean cleanUp = P21WizardPage2.getCleanUp();
+			final boolean terms = P21WizardPage2.getTerms();
 			final Bundle bundle = Activator.getDefault().getBundle();
-			final String pattern = P21WizardPageTwo.getPattern(); 
+			final String pattern = P21WizardPage2.getPattern(); 
 			Path inputPath = new Path("/misc/input/"); //$NON-NLS-1$
 			URL inputURL = FileLocator.find(bundle, inputPath,
 					Collections.EMPTY_MAP);
@@ -170,12 +170,12 @@ public class P21ImportWizard extends Wizard {
 			/**
 			 * page 1
 			 */
-			contextMap.put("DBHost", WizardPageOne.getIpText());
-			contextMap.put("DBPassword", WizardPageOne.getDBUserPasswordText());
-			contextMap.put("DBUsername", WizardPageOne.getDBUserText());
-			contextMap.put("DBInstance", WizardPageOne.getDBSIDText());
-			contextMap.put("DBPort", WizardPageOne.getPortText());
-			contextMap.put("DBSchema", WizardPageOne.getDBSchemaText());
+			contextMap.put("DBHost", WizardPage1.getIpText());
+			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
+			contextMap.put("DBUsername", WizardPage1.getDBUserText());
+			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
+			contextMap.put("DBPort", WizardPage1.getPortText());
+			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
 
 			/**
 			 * page 2
@@ -199,10 +199,10 @@ public class P21ImportWizard extends Wizard {
 			String miscPathReplaced = misc.getAbsolutePath().replaceAll("\\\\",
 					"/")
 					+ "/";
-			version = P21WizardPageTwo.getP21VersionCombo();
-			p21inputFolderPath	= P21WizardPageTwo.getFolderCSVText();
+			version = P21WizardPage2.getP21VersionCombo();
+			p21inputFolderPath	= P21WizardPage2.getFolderCSVText();
 
-			if (P21WizardPageTwo.getTerms()) {
+			if (P21WizardPage2.getTerms()) {
 				/**
 				 * ST-Import
 				 */
@@ -228,18 +228,18 @@ public class P21ImportWizard extends Wizard {
 				defaultProps.setProperty("cleanUp", "false");
 				contextMap.put("cleanUp", "false");
 			}
-			contextMap.put("p21_input", P21WizardPageTwo.getFolderCSVText());
-			defaultProps.setProperty("p21_input", P21WizardPageTwo.getFolderCSVText());
+			contextMap.put("p21_input", P21WizardPage2.getFolderCSVText());
+			defaultProps.setProperty("p21_input", P21WizardPage2.getFolderCSVText());
 			
 			contextMap.put("datePattern", pattern);
 			defaultProps.setProperty("datePattern", pattern);
 			
 			contextMap.put("p21_output", CSVPath);
 
-			if (P21WizardPageTwo.getSaveContext()) {
+			if (P21WizardPage2.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), "");
 			}
-			if (P21WizardPageTwo.getTruncate()) {
+			if (P21WizardPage2.getTruncate()) {
 				contextMap.put("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");

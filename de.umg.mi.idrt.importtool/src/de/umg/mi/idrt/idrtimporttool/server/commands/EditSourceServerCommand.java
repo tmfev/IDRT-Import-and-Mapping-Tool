@@ -7,7 +7,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.TreeItem;
 
-import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPageTwo;
+import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPage2;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -23,9 +23,9 @@ public class EditSourceServerCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		TreeViewer viewer = ServerView.getSourceServerViewer();
-		if ((DBWizardPageTwo.getImportDBViewer() != null)
-				&& !DBWizardPageTwo.getImportDBViewer().getTree().isDisposed()) {
-			viewer = DBWizardPageTwo.getImportDBViewer();
+		if ((DBWizardPage2.getImportDBViewer() != null)
+				&& !DBWizardPage2.getImportDBViewer().getTree().isDisposed()) {
+			viewer = DBWizardPage2.getImportDBViewer();
 		}
 		if (viewer.getTree().getSelection().length > 0) {
 			TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
@@ -55,12 +55,12 @@ public class EditSourceServerCommand extends AbstractHandler {
 			}
 
 		}
-		if (((DBWizardPageTwo.getImportDBViewer() != null) && !DBWizardPageTwo
+		if (((DBWizardPage2.getImportDBViewer() != null) && !DBWizardPage2
 				.getImportDBViewer().getTree().isDisposed())
 				|| !ServerView.getSourceServerViewer().getTree().isDisposed()) {
 			ServerView.refresh();
 		} else {
-			DBWizardPageTwo.refresh();
+			DBWizardPage2.refresh();
 		}
 		viewer.refresh();
 		return viewer;

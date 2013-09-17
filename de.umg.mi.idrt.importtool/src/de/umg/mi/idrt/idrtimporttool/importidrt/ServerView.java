@@ -1,7 +1,10 @@
 package de.umg.mi.idrt.idrtimporttool.importidrt;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,6 +12,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.prefs.BackingStoreException;
@@ -30,6 +35,8 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -88,7 +95,9 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProv
  * 
  */
 public class ServerView extends ViewPart {
+
 	public ServerView() {
+
 	}
 	public static final String ID = "ImportIDRT.view";
 
@@ -99,6 +108,8 @@ public class ServerView extends ViewPart {
 	private Composite sourceTreeComp;
 	private Composite logButtonAndTextComposite;
 
+	private static File log;
+	private static String logString;
 	public static boolean stdImportStarted;
 	private static Button btnStop;
 	private static Composite parent;
@@ -139,420 +150,23 @@ public class ServerView extends ViewPart {
 	private static Properties defaultProps;
 	private static Text logText;
 
-	public static void updateStatus() {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				ServerView.setProgress((int) StatusListener.getPercentage());
-				ServerView.setProgressTop(StatusListener.getFile());
-				ServerView.setProgressBottom(""
-						+ StatusListener.getStatus());
-				ServerView.setSubProgressTitle(StatusListener.getSubStatus());
-				ServerView.setSubProgress((int) StatusListener.getSubPerc());
-			}
-		});
-	}
-
-	public static String getCsvPathSpecific() {
-		return csvPathSpecific;
-	}
-
-	public static String getCurrentSchema() {
-		if (targetServerViewer.getTree().getSelectionCount()<=0)
-			return targetServerViewer.getTree().getItem(0).getText();
-		else
-			return targetServerViewer.getTree().getSelection()[0].getText();
-	}
-
-	public static int getCurrentServerIndex() {
-		return selectedServerIndex;
-	}
-
-	public static String[] getCurrentServers() {
-		selectedServerIndex = 0;
-		TreeItem[] treeItems = targetServerViewer.getTree().getItems();
-		String[] serverNames = new String[treeItems.length];
-		for (int i = 0; i < treeItems.length; i++) {
-			serverNames[i] = treeItems[i].getText();
-			if (targetServerViewer.getTree().getSelectionCount() > 0) {
-				if (targetServerViewer.getTree().getSelection()[0].getParentItem() != null) {
-					if (treeItems[i].getText().equals(
-							targetServerViewer.getTree().getSelection()[0].getParentItem()
-							.getText())) {
-						selectedServerIndex = i;
-					}
-				} else if (targetServerViewer.getTree().getSelection()[0] != null) {
-					if (treeItems[i].getText().equals(
-							targetServerViewer.getTree().getSelection()[0].getText())) {
-						selectedServerIndex = i;
-					}
-				}
-			} else {
-				selectedServerIndex = 0;
-			}
-		}
-		return serverNames;
-	}
-
-	/**
-	 * @return the fileName
-	 */
-	public static String getFileName() {
-		return fileName;
-	}
-
-	public static TreeViewer getSourceServerViewer() {
-		return sourceServerViewer;
-	}
-
-	public static String getLogText() {
-		return null;
-	}
-
-	public static Composite getMainComposite() {
-		return parent;
-	}
-
-	public static String getSelectedServer() {
-		TreeViewer viewer = null;
-		viewer = ServerView.getTargetServersViewer();
-		if (viewer != null) {
-			if (viewer.getTree().getSelectionCount() > 0) {
-				if (viewer.getTree().getSelection()[0].getParentItem() != null) {
-					String serverUniqueName = viewer.getTree().getSelection()[0]
-							.getParentItem().getText();
-					return serverUniqueName;
-				}
-			}
-		}
-		return null;
-	}
-
-	public static TreeViewer getTargetServersViewer() {
-		return targetServerViewer;
-	}
-
-	private static boolean importStarted() {
-		return (ODMImportWizard.started || DBImportWizard.started || CSVImportWizard.started || P21ImportWizard.started || stdImportStarted);
-	}
-
-	/**
-	 * commands for target server
-	 */
-	public static void refresh() {
-		targetServerViewer.setContentProvider(new ServerContentProvider());
-		targetServerViewer.refresh();
-
-		if (!sourceServerViewer.getControl().isDisposed()) {
-			sourceServerViewer
-			.setContentProvider(new ServerSourceContentProvider());
-			sourceServerViewer.refresh();
-		}
-	}
-
-	public static void setLog(String time, String log) {
-		String old = logText.getText();
-		String newText;
-		if (!old.isEmpty()) {
-			 newText = time+"\t"+log + "\n"+ old;
-			logText.setText(newText);
-			logText.update();
-			logText.getParent().layout();
-			logText.getParent().redraw();
-		}
-		else {
-			 newText = time+"\t"+log;
-			logText.setText(newText);
-			logText.update();
-			logText.getParent().layout();
-			logText.getParent().redraw();
-		}
-	}
-
-	public static void setSubProgress(final int percentage) {
-		progressBar2.setSelection(percentage);
-	}
-
-	public static void setProgress(final int percentage) {
-		progressBar.setSelection(percentage);
-	}
-
-	public static void setSubProgressTitle(final String title) {
-		subProgressLabel.setText(title);
-	}
-
-	public static void setProgressBottom(final String string) {
-		if (progressBar.getSelection()>0) {
-			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
-					+ string);
-			Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-			progressLabelBottom.setForeground(color);
-		}
-		else
-			progressLabelBottom.setText("");
-	}
-
-	public static void setProgressTop(final String file) {
-		progressLabelTop.setText(file);
-		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-		progressLabelTop.setForeground(color);
-	}
-
-	public static String[] getFilenames() {
-		return filenames;
-	}
-
-	/**
-	 * Adds a TARGET server to the server list.
-	 */
-	private void addTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			targetServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.addServer",
-
-					null);
-			targetServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("addServer.command not found"); 
-		}
-	}
-	/**
-	 * Edits a TARGET server.
-	 */
-	private void editTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			targetServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.editServer", null); 
-			targetServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("editServer.command not found"); 
-		}
-	}
-	/**
-	 * Deletes a TARGET server from the server list. 
-	 * @see ServerList.
-	 */
-	private void deleteTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			targetServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.deleteServer", null); 
-			targetServerViewer.refresh();
-		} catch (Exception ex) {
-			throw new RuntimeException("deleteServer.command not found"); 
-		}
-	}
-	/**
-	 * Imports a TARGET server from disc.
-	 */
-	private void importTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.importServer", null); 
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("importServer.command not found"); 
-		}
-	}
-	/**
-	 * Exports a TARGET server to disc.
-	 */
-	private void exportTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.exportServer", null); 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
-		}
-	}
-
-	/**
-	 * Imports a SOURCE server.
-	 */
-	private void addSourceServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.addSourceServer", 
-					null);
-			sourceServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
-		}
-	}
-	/**
-	 * Edits a SOURCE server.
-	 */
-	private void editSourceServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.editSourceServer", 
-					null);
-			sourceServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
-		}
-	}
-
-	/**
-	 * Deletes a SOURCE server from the source server list.
-	 */
-	private void deleteSourceServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.deleteSourceServer", 
-					null);
-			sourceServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
-		}
-	}
-	/**
-	 * Imports a SOURCE server from disc.
-	 */
-	private void importSourceServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.importSourceServer", 
-					null);
-			sourceServerViewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
-		}
-	}
-	/**
-	 * Exports a SOURCE server to disc.
-	 */
-	private void exportSourceServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.exportSourceServer",
-					null);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
-		}
-	}
-
-	/**
-	 * Admin Control for the TARGET server/project.
-	 */
-	@SuppressWarnings("unused")
-	private void adminTargetServer() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.idrt.adminServer", null); 
-			// viewer.refresh();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("adminServer.command not found"); 
-		}
-	}
-
-	/**
-	 * Starts the CSV-Import.
-	 */
-	private void importCSV() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.CSVImport", null); 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("CSVImport.command not found"); 
-		}
-	}
-
-	/**
-	 * Starts the ODM-Import.
-	 */
-	private void importODM() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.ODMImport", null); 
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("ODMImport.command not found"); 
-		}
-	}
-
-	/**
-	 * Starts the DB-Import.
-	 */
-	private void importDB() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.DBImport", null); 
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("DBImport.command not found"); 
-		}
-	}
-
-	/**
-	 * Starts the P21-Import.
-	 */
-	private void importP21() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"de.goettingen.i2b2.importtool.P21Import", null); 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("DBImport.command not found"); 
-		}
-	}
-	private void loadOntology() {
-		IHandlerService handlerService = (IHandlerService) getSite()
-				.getService(IHandlerService.class);
-		try {
-			handlerService.executeCommand(
-					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
-		}
-	}
-
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
+
+			try {
+				Bundle bundle = Activator.getDefault().getBundle();
+				Path path = new Path("/log/log.log"); 
+				URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
+				URL fileUrl = FileLocator.toFileURL(url);
+				log = new File(fileUrl.getPath());	
+				logString = "";
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			//TODO READ LOG FROM DISC
+			logString=readLogFromDisc(25);
+
 			parent = new Composite(parentComp, SWT.NONE);
 			parent.getShell().setMinimumSize(500, 200);
 			System.out.println("Current Version: "
@@ -681,13 +295,7 @@ public class ServerView extends ViewPart {
 
 			sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
 			sourceServerComposite.setLayout(new BorderLayout(0, 0));
-//			sourceServerComposite.addDisposeListener(new DisposeListener() {
-//
-//				@Override
-//				public void widgetDisposed(DisposeEvent e) {
-//					sourceServerDisposed = true;
-//				}
-//			});
+
 			sourceTreeComp = new Composite(sourceServerComposite, SWT.NONE);
 			sourceTreeComp.setLayoutData(BorderLayout.CENTER);
 			sourceTreeComp.setLayout(new BorderLayout(0, 0));
@@ -733,7 +341,6 @@ public class ServerView extends ViewPart {
 			 */
 			Label targetServerLabel = new Label(targetServercomposite, SWT.NONE);
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
-			//			targetServerLabel.setText(Messages.ServerView_TargetServer + " " + " NEW NEW NEW");
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
 			Tree targetServerTree = targetServerViewer.getTree();
@@ -754,7 +361,7 @@ public class ServerView extends ViewPart {
 				public void widgetSelected(SelectionEvent e) {
 
 					TreeItem selectedItem = (TreeItem) e.item;
-					String selectedItemString = selectedItem.getText();
+					final String selectedItemString = selectedItem.getText();
 					if (ServerList.isServer(selectedItemString)) {
 						String currentServerID = selectedItem.getText();
 						Server server = ServerList.getTargetServers().get(
@@ -768,38 +375,48 @@ public class ServerView extends ViewPart {
 					} else {
 						String parentServer = selectedItem.getParentItem()
 								.getText();
-						Server server = ServerList.getTargetServers().get(
+						final Server server = ServerList.getTargetServers().get(
 								parentServer);
 						labelIpCurrent.setText(server.getIp());
 						labelDBUserCurrent.setText(selectedItemString);
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText("..."); 
 						lblPatientsCurrent.setText("..."); 
-						Bundle bundle = Activator.getDefault().getBundle();
-						Path imgLoadingPath = new Path("/images/loading.png"); 
-						URL url = FileLocator.find(bundle, imgLoadingPath,
-								Collections.EMPTY_MAP);
 
-						try {
-							URL fileUrl = FileLocator.toFileURL(url);
-							File imgLoadingFile = new File(fileUrl.getPath());
-							Image imgLoading = new Image(parent.getDisplay(),
-									imgLoadingFile.getAbsolutePath());
 
-							//Displays "Loading..." while DB loads.
-							final Shell loadingShell = new Shell(SWT.ON_TOP);
-							loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
-							loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
-							loadingShell.setBackgroundImage(imgLoading);
-							loadingShell.open();
-							lblObservationsCurrent.setText(server
-									.getConcepts(selectedItemString));
-							lblPatientsCurrent.setText(server
-									.getPatients(selectedItemString));
-							loadingShell.close();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
+						//Displays "Loading..." while DB loads.
+
+						new Thread(new Runnable() {
+
+							@Override
+							public void run() {
+								Bundle bundle = Activator.getDefault().getBundle();
+								Path imgLoadingPath = new Path("/images/loading.png"); 
+								URL url = FileLocator.find(bundle, imgLoadingPath,
+										Collections.EMPTY_MAP);
+								URL fileUrl;
+								try {
+									fileUrl = FileLocator.toFileURL(url);
+
+									File imgLoadingFile = new File(fileUrl.getPath());
+									Image imgLoading = new Image(parent.getDisplay(),
+											imgLoadingFile.getAbsolutePath());
+									final Shell loadingShell = new Shell(SWT.NO_TRIM ); //SWT.ON_TOP
+									loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
+									loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
+									loadingShell.setBackgroundImage(imgLoading);
+									loadingShell.open();
+									lblObservationsCurrent.setText(server
+											.getConcepts(selectedItemString));
+									lblPatientsCurrent.setText(server
+											.getPatients(selectedItemString));
+									loadingShell.close();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						}).run();
+
 
 					}
 				}
@@ -1329,7 +946,7 @@ public class ServerView extends ViewPart {
 
 			SashForm infoBoxSash = new SashForm(sashForm, SWT.VERTICAL);
 			infoBoxSash.setLayout(new FillLayout(SWT.VERTICAL));
-			
+
 			labelNameComposite = new Composite(infoBoxSash, SWT.NONE);
 			labelNameComposite.setLayout(new GridLayout(2, false));
 			labelNameComposite.pack();
@@ -1396,7 +1013,7 @@ public class ServerView extends ViewPart {
 			btnStop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 			btnStop.setEnabled(false);
 			btnStop.addSelectionListener(new SelectionListener() {
-				
+
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
@@ -1455,6 +1072,8 @@ public class ServerView extends ViewPart {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					logString="";
+					writeLog();
 					logText.setText("");
 				}
 			});
@@ -1473,7 +1092,7 @@ public class ServerView extends ViewPart {
 					logText.getParent().layout();
 				}
 			});
-			logText.setText("");
+			logText.setText(logString);
 			infoBoxSash.setWeights(new int[] {2, 7});
 			btnExportLog.addSelectionListener(new SelectionListener() {
 				@Override
@@ -1505,12 +1124,484 @@ public class ServerView extends ViewPart {
 					}
 				}
 			});
-			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
+			//			Log.addLog(0, Messages.ServerView_IDRTImportStarted);
 			sashForm.setWeights(new int[] { 2, 2 });
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
 	}
+
+	public static void updateStatus() {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				ServerView.setProgress((int) StatusListener.getPercentage());
+				ServerView.setProgressTop(StatusListener.getFile());
+				ServerView.setProgressBottom(""
+						+ StatusListener.getStatus());
+				ServerView.setSubProgressTitle(StatusListener.getSubStatus());
+				ServerView.setSubProgress((int) StatusListener.getSubPerc());
+			}
+		});
+	}
+
+	public static String getCsvPathSpecific() {
+		return csvPathSpecific;
+	}
+
+	public static String getCurrentSchema() {
+		if (targetServerViewer.getTree().getSelectionCount()<=0)
+			return targetServerViewer.getTree().getItem(0).getText();
+		else
+			return targetServerViewer.getTree().getSelection()[0].getText();
+	}
+
+	public static int getCurrentServerIndex() {
+		return selectedServerIndex;
+	}
+
+	public static String[] getCurrentServers() {
+		selectedServerIndex = 0;
+		TreeItem[] treeItems = targetServerViewer.getTree().getItems();
+		String[] serverNames = new String[treeItems.length];
+		for (int i = 0; i < treeItems.length; i++) {
+			serverNames[i] = treeItems[i].getText();
+			if (targetServerViewer.getTree().getSelectionCount() > 0) {
+				if (targetServerViewer.getTree().getSelection()[0].getParentItem() != null) {
+					if (treeItems[i].getText().equals(
+							targetServerViewer.getTree().getSelection()[0].getParentItem()
+							.getText())) {
+						selectedServerIndex = i;
+					}
+				} else if (targetServerViewer.getTree().getSelection()[0] != null) {
+					if (treeItems[i].getText().equals(
+							targetServerViewer.getTree().getSelection()[0].getText())) {
+						selectedServerIndex = i;
+					}
+				}
+			} else {
+				selectedServerIndex = 0;
+			}
+		}
+		return serverNames;
+	}
+
+	/**
+	 * @return the fileName
+	 */
+	public static String getFileName() {
+		return fileName;
+	}
+
+	public static TreeViewer getSourceServerViewer() {
+		return sourceServerViewer;
+	}
+
+	public static String getLogText() {
+		return null;
+	}
+
+	public static Composite getMainComposite() {
+		return parent;
+	}
+
+	public static String getSelectedServer() {
+		TreeViewer viewer = null;
+		viewer = ServerView.getTargetServersViewer();
+		if (viewer != null) {
+			if (viewer.getTree().getSelectionCount() > 0) {
+				if (viewer.getTree().getSelection()[0].getParentItem() != null) {
+					String serverUniqueName = viewer.getTree().getSelection()[0]
+							.getParentItem().getText();
+					return serverUniqueName;
+				}
+			}
+		}
+		return null;
+	}
+
+	public static TreeViewer getTargetServersViewer() {
+		return targetServerViewer;
+	}
+
+	private static boolean importStarted() {
+		return (ODMImportWizard.started || DBImportWizard.started || CSVImportWizard.started || P21ImportWizard.started || stdImportStarted);
+	}
+
+	/**
+	 * commands for target server
+	 */
+	public static void refresh() {
+		targetServerViewer.setContentProvider(new ServerContentProvider());
+		targetServerViewer.refresh();
+
+		if (!sourceServerViewer.getControl().isDisposed()) {
+			sourceServerViewer
+			.setContentProvider(new ServerSourceContentProvider());
+			sourceServerViewer.refresh();
+		}
+	}
+
+	public static void setLog(String newLog) {
+		String DATE_FORMAT_NOW = "dd.MM.yyyy - HH:mm:ss";
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+		String time = sdf.format(cal.getTime());
+		String old = logString;
+		if (!old.isEmpty()) {
+			logString =  time+"\t"+newLog + "\n" + old; 
+			logText.setText("");
+			logText.setText(logString);
+		}
+		else {
+			logString = time+"\t"+newLog;
+			logText.setText("");
+			logText.setText(logString);
+		}
+		writeLog();
+	}
+
+	private static void writeLog() {
+		BufferedWriter writer = null;
+		try{
+			writer = new BufferedWriter( new FileWriter(log));
+			writer.write(logString);
+
+		}
+		catch ( IOException e){
+		}
+		finally{
+			try {
+				if ( writer != null)
+					writer.close( );
+			}
+			catch ( IOException e) {
+			}
+		}
+	}
+
+	private static String readLogFromDisc(int lines){
+		try {
+			BufferedReader reader = new BufferedReader( new FileReader (log));
+
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+			String ls = System.getProperty("line.separator");
+			int counter=0;
+			while(counter<lines && (line = reader.readLine()) != null) {
+				stringBuilder.append(line);
+				stringBuilder.append(ls);
+				counter++;
+			}
+			return stringBuilder.toString();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	//	public static void setLog(String time, String log) {
+	//		String old = logText.getText();
+	//		String newText;
+	//		if (!old.isEmpty()) {
+	//			 newText = time+"\t"+log + "\n"+ old;
+	//			logText.setText(newText);
+	//			logText.update();
+	//			logText.getParent().layout();
+	//			logText.getParent().redraw();
+	//		}
+	//		else {
+	//			 newText = time+"\t"+log;
+	//			logText.setText(newText);
+	//			logText.update();
+	//			logText.getParent().layout();
+	//			logText.getParent().redraw();
+	//		}
+	//	}
+
+	public static void setSubProgress(final int percentage) {
+		progressBar2.setSelection(percentage);
+	}
+
+	public static void setProgress(final int percentage) {
+		progressBar.setSelection(percentage);
+	}
+
+	public static void setSubProgressTitle(final String title) {
+		subProgressLabel.setText(title);
+	}
+
+	public static void setProgressBottom(final String string) {
+		if (progressBar.getSelection()>0) {
+			progressLabelBottom.setText("" + progressBar.getSelection() + "% " 
+					+ string);
+			Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+			progressLabelBottom.setForeground(color);
+		}
+		else
+			progressLabelBottom.setText("");
+	}
+
+	public static void setProgressTop(final String file) {
+		progressLabelTop.setText(file);
+		Color color = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+		progressLabelTop.setForeground(color);
+	}
+
+	public static String[] getFilenames() {
+		return filenames;
+	}
+
+	/**
+	 * Adds a TARGET server to the server list.
+	 */
+	private void addTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			targetServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.addServer",
+
+					null);
+			targetServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("addServer.command not found"); 
+		}
+	}
+	/**
+	 * Edits a TARGET server.
+	 */
+	private void editTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			targetServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.editServer", null); 
+			targetServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("editServer.command not found"); 
+		}
+	}
+	/**
+	 * Deletes a TARGET server from the server list. 
+	 * @see ServerList.
+	 */
+	private void deleteTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			targetServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.deleteServer", null); 
+			targetServerViewer.refresh();
+		} catch (Exception ex) {
+			throw new RuntimeException("deleteServer.command not found"); 
+		}
+	}
+	/**
+	 * Imports a TARGET server from disc.
+	 */
+	private void importTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.importServer", null); 
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("importServer.command not found"); 
+		}
+	}
+	/**
+	 * Exports a TARGET server to disc.
+	 */
+	private void exportTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.exportServer", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
+		}
+	}
+
+	/**
+	 * Imports a SOURCE server.
+	 */
+	private void addSourceServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.addSourceServer", 
+					null);
+			sourceServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
+		}
+	}
+	/**
+	 * Edits a SOURCE server.
+	 */
+	private void editSourceServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.editSourceServer", 
+					null);
+			sourceServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
+		}
+	}
+
+	/**
+	 * Deletes a SOURCE server from the source server list.
+	 */
+	private void deleteSourceServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			sourceServerViewer = (TreeViewer) handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.deleteSourceServer", 
+					null);
+			sourceServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
+		}
+	}
+	/**
+	 * Imports a SOURCE server from disc.
+	 */
+	private void importSourceServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.importSourceServer", 
+					null);
+			sourceServerViewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
+		}
+	}
+	/**
+	 * Exports a SOURCE server to disc.
+	 */
+	private void exportSourceServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.exportSourceServer",
+					null);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
+		}
+	}
+
+	/**
+	 * Admin Control for the TARGET server/project.
+	 */
+	@SuppressWarnings("unused")
+	private void adminTargetServer() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.idrt.adminServer", null); 
+			// viewer.refresh();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("adminServer.command not found"); 
+		}
+	}
+
+	/**
+	 * Starts the CSV-Import.
+	 */
+	private void importCSV() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.CSVImport", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("CSVImport.command not found"); 
+		}
+	}
+
+	/**
+	 * Starts the ODM-Import.
+	 */
+	private void importODM() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.ODMImport", null); 
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("ODMImport.command not found"); 
+		}
+	}
+
+	/**
+	 * Starts the DB-Import.
+	 */
+	private void importDB() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.DBImport", null); 
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("DBImport.command not found"); 
+		}
+	}
+
+	/**
+	 * Starts the P21-Import.
+	 */
+	private void importP21() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.goettingen.i2b2.importtool.P21Import", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("DBImport.command not found"); 
+		}
+	}
+	private void loadOntology() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
+		}
+	}
+
 	public static void btnStopSetEnabled(final boolean enabled) {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
@@ -1559,11 +1650,11 @@ public class ServerView extends ViewPart {
 				SWT.PUSH);
 		addSourceServerMenuItem.setText(Messages.ServerView_AddDatasourceServer);
 		addSourceServerMenuItem.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				addSourceServer();
@@ -1575,11 +1666,11 @@ public class ServerView extends ViewPart {
 		editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
 		editSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				editSourceServer();
@@ -1591,11 +1682,11 @@ public class ServerView extends ViewPart {
 		deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteDatasourceServer);
 		deleteSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				deleteSourceServer();
@@ -1610,11 +1701,11 @@ public class ServerView extends ViewPart {
 		exportSourceServerMenuItem.setText(Messages.ServerView_ExportDatasourceServer);
 		exportSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				exportSourceServer();
@@ -1625,11 +1716,11 @@ public class ServerView extends ViewPart {
 		importSourceServerMenuItem.setText(Messages.ServerView_ImportDatasourceServer);
 		importSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				importSourceServer();
@@ -1641,18 +1732,18 @@ public class ServerView extends ViewPart {
 		refreshSourceServerMenuItem.setText(Messages.ServerView_Refresh);
 		refreshSourceServerMenuItem
 		.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-	
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				refresh();
 			}
 		});
 	}
-	
+
 	@Override
 	public void setFocus() {
 	}

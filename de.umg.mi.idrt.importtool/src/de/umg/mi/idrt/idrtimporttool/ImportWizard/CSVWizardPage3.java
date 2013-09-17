@@ -70,7 +70,7 @@ import org.eclipse.wb.swt.ResourceManager;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class CSVWizardPageThree extends WizardPage {
+public class CSVWizardPage3 extends WizardPage {
 
 	private static char QUOTECHAR='\"';
 	private Composite container;
@@ -164,7 +164,7 @@ public class CSVWizardPageThree extends WizardPage {
 	/**
 	 * Default Constructor
 	 */
-	public CSVWizardPageThree() {
+	public CSVWizardPage3() {
 		super(Messages.CSVWizardPageThree_CSVImportSettings);
 		setTitle(Messages.CSVWizardPageThree_CSVImportSettings); 
 		setWizard(CSVImportCommand.getWizard());
@@ -205,7 +205,7 @@ public class CSVWizardPageThree extends WizardPage {
 					imgConfigFile.getAbsolutePath());
 			final Image imgNoConfig = new Image(parent.getDisplay(),
 					imgNoConfigFile.getAbsolutePath());
-			csvFolder = CSVWizardPageTwo.getFolderCSVText();
+			csvFolder = CSVWizardPage2.getFolderCSVText();
 
 			File folder = new File(csvFolder);
 			File[] listOfFiles = folder.listFiles();
@@ -365,8 +365,8 @@ public class CSVWizardPageThree extends WizardPage {
 							});
 							// PID-Generator specific Metadata (e.g. bday, name, lastname...)
 						} else if ((column == 4)
-								&& CSVWizardPageTwo.getBtnRADIOCsvfile()
-								&& CSVWizardPageTwo.getUsePid()) {
+								&& CSVWizardPage2.getBtnRADIOCsvfile()
+								&& CSVWizardPage2.getUsePid()) {
 							final CCombo combo = new CCombo(table,
 									SWT.READ_ONLY);
 							String[] optionMetas = ConfigMetaData
@@ -500,8 +500,8 @@ public class CSVWizardPageThree extends WizardPage {
 			tblclmnMetadata.setText("Metadata"); 
 
 			// Display only if PID-Generator was selected
-			if (CSVWizardPageTwo.getBtnRADIOCsvfile()
-					&& CSVWizardPageTwo.getUsePid()) {
+			if (CSVWizardPage2.getBtnRADIOCsvfile()
+					&& CSVWizardPage2.getUsePid()) {
 				tblclmnPIDGen = new TableColumn(table, SWT.NONE);
 				tblclmnPIDGen.setWidth(100);
 				tblclmnPIDGen.setText("PID-Generator"); 

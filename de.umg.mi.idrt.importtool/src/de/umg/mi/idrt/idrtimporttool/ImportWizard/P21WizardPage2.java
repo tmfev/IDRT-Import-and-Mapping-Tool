@@ -35,7 +35,7 @@ import de.umg.mi.idrt.idrtimporttool.messages.Messages;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class P21WizardPageTwo extends WizardPage {
+public class P21WizardPage2 extends WizardPage {
 
 	public static boolean getCleanUp() {
 		return cleanUpBtn.getSelection();
@@ -123,7 +123,7 @@ public class P21WizardPageTwo extends WizardPage {
 
 	// private static Text csvSeperatorext;
 
-	public P21WizardPageTwo() {
+	public P21WizardPage2() {
 		super("P21 Import Settings");
 		setTitle("P21 Import Settings");
 		setDescription("P21 Import Settings");
@@ -185,7 +185,7 @@ public class P21WizardPageTwo extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!folderP21Text.getText().isEmpty()) {
-						P21WizardPageTwo.this.setPageComplete(true);
+						P21WizardPage2.this.setPageComplete(true);
 					}
 				}
 			});
@@ -249,7 +249,7 @@ public class P21WizardPageTwo extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					P21WizardPageTwo.this.getWizard().getContainer()
+					P21WizardPage2.this.getWizard().getContainer()
 							.updateButtons();
 				}
 			});

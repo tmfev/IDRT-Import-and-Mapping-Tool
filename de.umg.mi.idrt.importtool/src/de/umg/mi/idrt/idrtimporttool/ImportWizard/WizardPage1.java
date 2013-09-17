@@ -39,7 +39,7 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class WizardPageOne extends WizardPage {
+public class WizardPage1 extends WizardPage {
 
 	private static Text ipText;
 	private static Text PortText;
@@ -58,7 +58,7 @@ public class WizardPageOne extends WizardPage {
 	private static Label DBUserPassword;
 	private static Label DBUser;
 
-	public WizardPageOne() {
+	public WizardPage1() {
 		super("Target Database Setup");
 		setTitle("Target Database Setup");
 		setDescription("Please enter your target database connection data");
@@ -153,7 +153,7 @@ public class WizardPageOne extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!ipText.getText().isEmpty()) {
-						WizardPageOne.this.setPageComplete(true);
+						WizardPage1.this.setPageComplete(true);
 					}
 				}
 			});
@@ -178,7 +178,7 @@ public class WizardPageOne extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!PortText.getText().isEmpty()) {
-						WizardPageOne.this.setPageComplete(true);
+						WizardPage1.this.setPageComplete(true);
 					}
 				}
 			});
@@ -202,7 +202,7 @@ public class WizardPageOne extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!DBUserText.getText().isEmpty()) {
-						WizardPageOne.this.setPageComplete(true);
+						WizardPage1.this.setPageComplete(true);
 					}
 				}
 			});
@@ -229,7 +229,7 @@ public class WizardPageOne extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!DBUserPasswordText.getText().isEmpty()) {
-						WizardPageOne.this.setPageComplete(true);
+						WizardPage1.this.setPageComplete(true);
 					}
 				}
 			});
@@ -253,7 +253,7 @@ public class WizardPageOne extends WizardPage {
 				@Override
 				public void keyReleased(KeyEvent e) {
 					if (!DBSIDText.getText().isEmpty()) {
-						WizardPageOne.this.setPageComplete(true);
+						WizardPage1.this.setPageComplete(true);
 					}
 				}
 			});
