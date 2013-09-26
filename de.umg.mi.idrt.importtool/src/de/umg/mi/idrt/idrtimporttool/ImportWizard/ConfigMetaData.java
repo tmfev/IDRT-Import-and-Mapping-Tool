@@ -100,9 +100,7 @@ public class ConfigMetaData {
 		boolean startDate = false;
 		boolean endDate = false;
 
-		boolean imageSic = false;
-		boolean biomaterialSic = false;
-		boolean otherSic = false;
+		boolean objectID = false;
 		
 		for (TableItem item : items) {
 			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_PatientID)) { 
@@ -126,14 +124,8 @@ public class ConfigMetaData {
 			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_EndDate)) {
 				endDate = true;
 			}
-			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_ImageSic)) { 
-				imageSic = true;
-			}
-			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_BiomaterialSic)) {
-				biomaterialSic = true;
-			}
-			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_OtherSic)) { 
-				otherSic = true;
+			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_ObjectID)) {
+				objectID = true;
 			}
 		}
 		List<String> metaOptionList = new LinkedList<String>();
@@ -167,14 +159,8 @@ public class ConfigMetaData {
 		if (!endDate) {
 			metaOptionList.add(Messages.ConfigMetaData_EndDate);
 		}
-		if (!imageSic) {
-			metaOptionList.add(Messages.ConfigMetaData_ImageSic);
-		}
-		if (!biomaterialSic) {
-			metaOptionList.add(Messages.ConfigMetaData_BiomaterialSic);
-		}
-		if (!otherSic) {
-			metaOptionList.add(Messages.ConfigMetaData_OtherSic);
+		if (!objectID) {
+			metaOptionList.add(Messages.ConfigMetaData_ObjectID);
 		}
 		
 		metaOptionList.add("ignore");

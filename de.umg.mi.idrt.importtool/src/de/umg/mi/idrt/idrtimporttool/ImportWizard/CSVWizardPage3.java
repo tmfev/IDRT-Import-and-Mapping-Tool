@@ -176,6 +176,8 @@ public class CSVWizardPage3 extends WizardPage {
 			return Integer.parseInt(headLineText.getText());
 		}catch (Exception e) {
 			System.err.println("Error @ Config:Headline");
+			e.printStackTrace();
+			
 			return 0;
 		}
 	}
@@ -545,7 +547,7 @@ public class CSVWizardPage3 extends WizardPage {
 									char inputDelim = DEFAULTDELIM;
 									CSVReader reader = new CSVReader(
 											new FileReader(configFile),
-											DEFAULTDELIM);
+											inputDelim);
 									String[] testLine = reader.readNext();
 									reader.close();
 									if (testLine != null) {
@@ -564,10 +566,10 @@ public class CSVWizardPage3 extends WizardPage {
 														+ DEFAULTDELIM);
 											}
 										}
-										DEFAULTDELIM = inputDelim;
+//										DEFAULTDELIM = inputDelim;
 
 										reader = new CSVReader(new FileReader(
-												configFile), inputDelim);
+												configFile), inputDelim, QUOTECHAR);
 										String[] line1 = reader.readNext();
 										String[] line2 = reader.readNext();
 										String[] line3 = reader.readNext();
@@ -575,9 +577,15 @@ public class CSVWizardPage3 extends WizardPage {
 										String[] line5 = reader.readNext();
 										String[] line6 = reader.readNext();
 										//TODO read header line from config, pidgen?
-										System.out.println("READ: " + line6[1]);
+//										System.out.println("READ: " + line6[1]);
+										if (line6!=null) {
 										headLineText.setText(line6[1]);
 										oldHeadlineNumber = line6[1];
+										}
+										else {
+											headLineText.setText("0");
+											oldHeadlineNumber = "0";
+										}
 										headLineText.update();
 										headLineText.redraw();
 										reader.close();
@@ -627,7 +635,7 @@ public class CSVWizardPage3 extends WizardPage {
 													+ DEFAULTDELIM);
 										}
 									}
-									DEFAULTDELIM = inputDelim;
+//									DEFAULTDELIM = inputDelim;
 									String tmpElement = serverListViewer
 											.getTable().getSelection()[0]
 													.getText();
@@ -641,13 +649,14 @@ public class CSVWizardPage3 extends WizardPage {
 													.getText(), filename + ".cfg" 
 															+ extension);
 
+									headLineText.setText(""+getHeadLine());
 									reader = new CSVReader(new FileReader(
 											csvFolder
 											+ serverListViewer
 											.getTable()
 											.getSelection()[0]
 													.getText()),
-													inputDelim,'\"',getHeadLine()); //TODO QUOTECHAR, READLINE
+													inputDelim,'\"',getHeadLine());
 									String[] line1 = reader.readNext();
 									reader.close();
 									for (String element : line1) {
@@ -668,7 +677,7 @@ public class CSVWizardPage3 extends WizardPage {
 									try {
 										CSVWriter rotatedOutput = new CSVWriter(
 												new FileWriter(tmpTableFile),
-												DEFAULTDELIM);
+												inputDelim);
 
 										TableItem[] tableItems = table
 												.getItems();

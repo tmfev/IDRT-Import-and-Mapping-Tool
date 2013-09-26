@@ -161,6 +161,8 @@ public class ServerView extends ViewPart {
 				URL fileUrl = FileLocator.toFileURL(url);
 				log = new File(fileUrl.getPath());	
 				logString = "";
+				
+				//TODO if log.log !exists()->HANDLE IT
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

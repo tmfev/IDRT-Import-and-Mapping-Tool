@@ -17,13 +17,11 @@ public class Messages extends NLS {
 	public static String ServerView_EditDatasourceServer;
 	public static String ServerView_AddDatasourceServer;
 	public static String ODMWizardPageTwo_ImportCodelists;
-	public static String ConfigMetaData_BiomaterialSic;
+	public static String ConfigMetaData_ObjectID;
 	public static String ConfigMetaData_DownloadDate;
 	public static String ConfigMetaData_EncounterID;
 	public static String ConfigMetaData_EndDate;
-	public static String ConfigMetaData_ImageSic;
 	public static String ConfigMetaData_ImportDate;
-	public static String ConfigMetaData_OtherSic;
 	public static String ConfigMetaData_PatientID;
 	public static String ConfigMetaData_StartDate;
 	public static String ConfigMetaData_UpdateDate;
