@@ -154,7 +154,7 @@ public class TOSConnector {
 			Console.error(message);
 			Application.getStatusView().addErrorMessage(message);
 			Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
-					+ tos.getEndpoint() + " / " + tos.getException() + " / "
+					+ " / " + tos.getException() + " / "
 					+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
 					+ " / " + tos.getContext().SQLCommand);
 
