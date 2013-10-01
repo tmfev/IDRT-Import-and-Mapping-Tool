@@ -99,7 +99,6 @@ public class ConfigMetaData {
 		boolean downloadDate = false;
 		boolean startDate = false;
 		boolean endDate = false;
-
 		boolean objectID = false;
 		
 		for (TableItem item : items) {

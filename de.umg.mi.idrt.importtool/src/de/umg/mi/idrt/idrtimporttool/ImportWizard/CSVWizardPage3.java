@@ -72,7 +72,7 @@ import org.eclipse.wb.swt.ResourceManager;
  */
 public class CSVWizardPage3 extends WizardPage {
 
-	private static char QUOTECHAR='\"';
+	
 	private Composite container;
 	private static String csvFolder;
 	//	private static String mainPath = "";
@@ -99,7 +99,7 @@ public class CSVWizardPage3 extends WizardPage {
 	 */
 	private static Properties defaultProps;
 	private static char DEFAULTDELIM = ';';
-
+	private static char QUOTECHAR='\"';
 
 	private Composite buttonComposite;
 
@@ -555,6 +555,7 @@ public class CSVWizardPage3 extends WizardPage {
 										if (testLine.length == 1) {
 											System.err
 											.println("Wrong delimiter?"); 
+											System.err.println(inputDelim + "==" + DEFAULTDELIM);
 											if (inputDelim == DEFAULTDELIM) {
 												inputDelim = '\t';
 												System.err
@@ -562,7 +563,7 @@ public class CSVWizardPage3 extends WizardPage {
 											} else {
 												inputDelim = DEFAULTDELIM;
 												System.err
-												.println("Delimiter set to: " 
+												.println("DefDelimiter set to: " 
 														+ DEFAULTDELIM);
 											}
 										}
@@ -942,90 +943,9 @@ public class CSVWizardPage3 extends WizardPage {
 
 							nextLine = reader.readNext();
 							reader.close();
-							boolean foundPid = false;
-							boolean foundEnc = false;
-							boolean foundUpdate = false;
-							boolean foundImp = false;
-							boolean foundDownl = false;
-							boolean foundSource = false;
-							boolean foundStart = false;
-							boolean foundEnd = false;
-
-							for (int i = 0; i < nextLine.length; i++) {
-								if (!foundPid&& table.getItems()[i].getText(2).equals("Integer")&& (nextLine[i].toLowerCase().contains("patient")  
-										|| nextLine[i].toLowerCase().contains(
-												"pid") || nextLine[i].toLowerCase().contains( 
-														"pat_id"))) { 
-									table.getItems()[i].setText(3, "PatientID"); 
-
-									foundPid = true;
-									continue;
-								} else if (!foundEnc
-										&& table.getItems()[i].getText(2)
-										.equals("Integer") 
-										&& nextLine[i].toLowerCase().contains(
-												"encounter") 
-												|| nextLine[i].toLowerCase().contains(
-														"enc")|| nextLine[i].toLowerCase().contains( 
-																"kh-internes-kennzeichen") || nextLine[i].toLowerCase().contains(
-																		"fallnummer")) { 
-									table.getItems()[i].setText(3,
-											"EncounterID"); 
-									foundEnc = true;
-									continue;
-								} else if (!foundUpdate
-										&& table.getItems()[i].getText(2)
-										.equals("Date") 
-										&& nextLine[i].toLowerCase().contains(
-												"update")) { 
-									table.getItems()[i]
-											.setText(3, "UpdateDate"); 
-									foundUpdate = true;
-									continue;
-								} else if (!foundImp
-										&& table.getItems()[i].getText(2)
-										.equals("Date") 
-										&& nextLine[i].toLowerCase().contains(
-												"import")) { 
-									table.getItems()[i]
-											.setText(3, "ImportDate"); 
-									foundImp = true;
-									continue;
-								} else if (!foundDownl
-										&& table.getItems()[i].getText(2)
-										.equals("Date") 
-										&& nextLine[i].toLowerCase().contains(
-												"download")) { 
-									table.getItems()[i].setText(3,
-											"DownloadDate"); 
-									foundDownl = true;
-									continue;
-								} else if (!foundSource
-										&& nextLine[i].toLowerCase().contains(
-												"source")) { 
-									table.getItems()[i].setText(3,
-											"SourceSystem"); 
-									foundSource = true;
-									continue;
-								} else if (!foundStart
-										&& table.getItems()[i].getText(2)
-										.equals("Date") 
-										&& nextLine[i].toLowerCase().contains(
-												"start")) { 
-									table.getItems()[i].setText(3, "StartDate"); 
-									foundStart = true;
-									continue;
-								}
-								else if (!foundEnd
-										&& table.getItems()[i].getText(2)
-										.equals("Date")
-										&& nextLine[i].toLowerCase().contains(
-												"enddatum")) {
-									table.getItems()[i].setText(3, "EndDate");
-									foundEnd = true;
-									continue;
-								}
-							} 
+							
+							fillTable(table, nextLine);
+							
 							saveTable();
 						} catch (FileNotFoundException e1) {
 							e1.printStackTrace();
@@ -1046,7 +966,259 @@ public class CSVWizardPage3 extends WizardPage {
 			e1.printStackTrace();
 		}
 	}
+	public static Table fillTable(Table table, String[] nextLine) {
+		try {
 
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path schemaPath = new Path("/cfg/schema.csv"); 
+			URL schemaURL = FileLocator.find(bundle, schemaPath,
+					Collections.EMPTY_MAP);
+			URL	schemaURL2 = FileLocator.toFileURL(schemaURL);
+
+			File schemaFile = new File(schemaURL2.getPath());
+
+			char inputDelim = DEFAULTDELIM;
+			CSVReader reader = new CSVReader(
+					new FileReader(schemaFile),
+					inputDelim);
+			String[] testLine = reader.readNext();
+			reader.close();
+			
+			HashMap<Integer,String> patientIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> objectIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> encounterIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> downloadDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> importDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> startDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> updateDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> endDateMap = new HashMap<Integer, String>();
+			
+			
+			if (testLine != null) {
+
+				if (testLine.length == 1) {
+					System.err
+					.println("Wrong delimiter?"); 
+					if (inputDelim == DEFAULTDELIM) {
+						inputDelim = '\t';
+						System.err
+						.println("Delimiter set to: \\t"); 
+					} else {
+						inputDelim = DEFAULTDELIM;
+						System.err
+						.println("Delimiter set to: " 
+								+ DEFAULTDELIM);
+					}
+				}
+
+				reader = new CSVReader(new FileReader(
+						schemaFile), inputDelim, QUOTECHAR);
+
+				String [] schemaContent = reader.readNext();
+
+				
+				
+				int counter = 0;
+				while ((schemaContent = reader.readNext()) != null) {
+					if (schemaContent[0] != null && schemaContent[0].length()>0)
+						patientIDMap.put(counter, schemaContent[0]);
+					if (schemaContent[1] != null && schemaContent[1].length()>0)
+						objectIDMap.put(counter, schemaContent[1]);
+					if (schemaContent[2] != null && schemaContent[2].length()>0)
+						encounterIDMap.put(counter, schemaContent[2]);
+					if (schemaContent[3] != null && schemaContent[3].length()>0)
+						downloadDateMap.put(counter, schemaContent[3]);
+					if (schemaContent[4] != null && schemaContent[4].length()>0)
+						importDateMap.put(counter, schemaContent[4]);
+					if (schemaContent[5] != null && schemaContent[5].length()>0)
+						startDateMap.put(counter, schemaContent[5]);
+					if (schemaContent[6] != null && schemaContent[6].length()>0)
+						updateDateMap.put(counter, schemaContent[6]);
+					if (schemaContent[7] != null && schemaContent[7].length()>0)
+						endDateMap.put(counter, schemaContent[7]);
+					counter++;
+				}
+				//				System.out.println(objectIDMap);
+				//				System.out.println(encounterIDMap);
+				//				System.out.println(downloadDateMap);
+				//				System.out.println(importDateMap);
+				//				System.out.println(startDateMap);
+				//				System.out.println(updateDateMap);
+			}
+			int pidLocation = -1;
+			int pidWeight = 99999;
+			int objLocation = -1;
+			int objWeight = 99999;
+			int encLocation = -1;
+			int encWeight = 99999;
+			int dwnLocation = -1;
+			int dwnWeight = 99999;
+			int impLocation = -1;
+			int impWeight = 99999;
+			int srtLocation = -1;
+			int strWeight = 99999;
+			int updLocation = -1;
+			int updWeight = 99999;
+			int endLocation = -1;
+			int endWeight = 99999;
+			for (int i = 0; i < nextLine.length; i++) {
+				
+				
+				int pidmapSize = patientIDMap.size()-1;
+				int objmapSize = objectIDMap.size()-1;
+				int encmapSize = encounterIDMap.size()-1;
+				int dwnmapSize = downloadDateMap.size()-1;
+				int impmapSize = importDateMap.size()-1;
+				int srtmapSize = startDateMap.size()-1;
+				int updmapSize = updateDateMap.size()-1;
+				int endmapSize = endDateMap.size()-1;
+				
+				for (int i2 = pidmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
+						if (pidLocation>=0) {
+							if (i2 < pidWeight) {
+							table.getItems()[pidLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							pidWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							pidLocation = i;
+							pidWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = objmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
+						if (objLocation>=0) {
+							if (i2 < objWeight) {
+							table.getItems()[objLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							objWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							objLocation = i;
+							objWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = encmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
+						if (encLocation>=0) {
+							if (i2 < encWeight) {
+							table.getItems()[encLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							encWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							encLocation = i;
+							encWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = dwnmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
+						if (dwnLocation>=0) {
+							if (i2 < dwnWeight) {
+							table.getItems()[dwnLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							dwnWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							dwnLocation = i;
+							dwnWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = impmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
+						if (impLocation>=0) {
+							if (i2 < impWeight) {
+							table.getItems()[impLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							impWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							impLocation = i;
+							impWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = srtmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
+						if (srtLocation>=0) {
+							if (i2 < strWeight) {
+							table.getItems()[srtLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							strWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							srtLocation = i;
+							strWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = updmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
+						if (updLocation>=0) {
+							if (i2 < updWeight) {
+							table.getItems()[updLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							updWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							updLocation = i;
+							updWeight = i2;
+						}
+					}
+				}
+				
+				for (int i2 = endmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
+						if (endLocation>=0) {
+							if (i2 < endWeight) {
+							table.getItems()[endLocation].setText(3, "");
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							endWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							endLocation = i;
+							endWeight = i2;
+						}
+					}
+				}
+
+			}
+
+			return table;
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	/**
 	 * Clear all metadata from the current table.
 	 */
@@ -1090,7 +1262,7 @@ public class CSVWizardPage3 extends WizardPage {
 					+ serverListViewer.getTable().getSelection()[0].getText()),
 					inputDelim,QUOTECHAR,getHeadLine());
 
-			DEFAULTDELIM = inputDelim;
+//			DEFAULTDELIM = inputDelim;
 			TableItem[] items = table.getItems();
 			List<String> names = new LinkedList<String>();
 			for (TableItem item : items) {
@@ -1124,7 +1296,7 @@ public class CSVWizardPage3 extends WizardPage {
 			// Read File to generate new Config
 			File newConf = new File(csvFolder
 					+ serverListViewer.getTable().getSelection()[0].getText());
-			char inputDelim = ';';
+			char inputDelim = DEFAULTDELIM;
 			CSVReader reader = new CSVReader(new FileReader(newConf),
 					inputDelim,QUOTECHAR,getHeadLine());
 
@@ -1141,7 +1313,7 @@ public class CSVWizardPage3 extends WizardPage {
 			}
 			reader.close();
 			reader = new CSVReader(new FileReader(newConf), inputDelim,QUOTECHAR,getHeadLine());
-			DEFAULTDELIM = inputDelim;
+//			DEFAULTDELIM = inputDelim;
 			String[] line1 = reader.readNext();
 			for (String element : line1) {
 				final TableItem item = new TableItem(table, SWT.NONE);
