@@ -212,7 +212,11 @@ public class MyOntologyTree extends JPanel {
 		subRootNode.setTreePathLevel(0);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.I2B2ROOT);
-
+		subRootNode.getTargetNodeAttributes().setSourcePath("\\i2b2\\");
+		subRootNode.getTargetNodeAttributes().setChanged(false);
+		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
+		
+		
 		rootNode.add(subRootNode);
 
 		_ontologyTreeTarget.getNodeLists().addIDtoPaths(subRootNode.getID(),

@@ -8,6 +8,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
@@ -16,13 +17,10 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreatorTOS;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
-import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetView;
 
@@ -83,20 +81,64 @@ public class ReadTarget extends AbstractHandler {
 			try {
 				editorTargetView = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(Resource.ID.View.EDITOR_TARGET_VIEW);
 					
-								
+				
+				i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().removeAll();
+				
 				TOSConnector tos = new TOSConnector();
-				tos.readTargetOntology("1");
+				tos.setContextVariable("Job", "read_target_ontology");
+				tos.setContextVariable("Var1", "1");
+				tos.runJob();
 
+				Application.getEditorTargetView().getTreeViewer().getTree().update();
 				
 				//editorTargetView.getTreeViewer().getTree().clearAll(true);
 					
 				//i2b2ImportTool.getMyOT().getOTTarget().setModel(newTreeModel2);
 				//i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().updateUI();
+				/*
 				Application.getEditorTargetView().setSelection(editorTargetView.getI2B2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getRootNode());
 				Application.getEditorTargetView().getTreeViewer().expandAll();
 
+				Application.getEditorTargetView().getTreeViewer().refresh();
+				*/
 				
+				// add Target views as well
+				editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getActivePage()
+						.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
+				Activator.getDefault().getResource()
+						.setEditorTargetView(editorTargetView);
 
+				
+				Composite comp = editorTargetView.getComposite();
+				
+				comp.dispose();
+				
+				editorTargetView.clear();
+				
+				editorTargetView.setI2B2ImportTool(i2b2ImportTool);
+
+				OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
+						i2b2ImportTool.getMyOntologyTrees().getTargetTreeRoot());
+
+				i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
+						.setModel(newTreeModel2);
+				i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
+						.updateUI();
+
+				OntologyTree OTTarget = i2b2ImportTool.getMyOntologyTrees()
+						.getOntologyTreeTarget();
+
+
+
+				editorTargetView.setComposite(OTTarget);
+
+				EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
+						.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+						.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);
+				Activator.getDefault().getResource()
+						.setEditorTargetInfoView(editorTargetInfoView);
+				
 				
 				
 			} catch (PartInitException e) {

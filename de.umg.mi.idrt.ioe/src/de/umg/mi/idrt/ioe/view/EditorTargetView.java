@@ -15,6 +15,7 @@ import org.eclipse.wb.swt.ResourceManager;
 
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
+import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.SystemMessage;
@@ -88,7 +89,14 @@ public class EditorTargetView extends ViewPart {
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 		NodeDropListener nodeDropListener = new NodeDropListener(_treeViewer);
 		nodeDropListener.setMyOT(_i2b2ImportTool.getMyOntologyTrees());
-		_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
+		
+		try {
+			_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
+		} catch (Exception e2) {
+			Console.error("Could not initialize Drop in the editor target view.");
+		}
+		
+		
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeTarget());

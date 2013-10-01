@@ -22,22 +22,19 @@ public class etlStagingI2B2ToTargetI2B2 extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		String tmpDataFile = "C:/I2B2ImportProject/tmp_targettreesave.csv";
+		//String tmpDataFile = "C:/I2B2ImportProject/tmp_targettreesave.csv";
 
 		Console.info("Saving Target Ontology.");
-
 		
 		TOSConnector tos = new TOSConnector();
 		
-		TOSIDRTConnector connection = tos.getConnection();
 		
 		Console.info("TOSConnector: getOntology()");
-		//tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 
 		try {
 
 			tos.setContextVariable("Job", Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
-			tos.setContextVariable("SQLTable", "I2B2");
+			//tos.setContextVariable("SQLTable", "I2B2");
 	
 			tos.runJob();
 
