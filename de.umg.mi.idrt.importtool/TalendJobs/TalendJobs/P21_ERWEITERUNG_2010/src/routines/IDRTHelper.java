@@ -72,13 +72,13 @@ public class IDRTHelper {
 
 	private static int objectID = -1;
 
-	private static int discharge = -1;
-	private static int admission = -1;
+//	private static int discharge = -1;
+//	private static int admission = -1;
 	private static int DeathDay = -1;
 
 	private static int headline;
 
-	private String SourcesystemName;
+//	private String sourcesystemName;
 	//	private static String dbName = "I2B2IDRTDEMO.IDRTHelper";
 	private HashMap<Integer, IDRTItem> IDRTItemMap;
 	/**
@@ -98,7 +98,6 @@ public class IDRTHelper {
 
 
 	private static Connection con;
-	private static boolean emptyColumn = false;
 	private static char DEFAULTDELIM = ';';
 
 	public IDRTHelper(){
@@ -192,7 +191,7 @@ public class IDRTHelper {
 			String []dataType = CSVInput.readNext();
 			String []niceName = CSVInput.readNext();
 			String []configRow = CSVInput.readNext();
-			String []pidRow = CSVInput.readNext();
+			CSVInput.readNext(); //pidrow
 			String []headerRow = CSVInput.readNext();
 			
 			headline = Integer.parseInt(headerRow[1]);
@@ -218,7 +217,7 @@ public class IDRTHelper {
 				}
 				if (configRow[k].toLowerCase().equals("sourcesystem")){
 					Sourcesystem = k-1;
-					SourcesystemName = configRow[k];
+//					SourcesystemName = configRow[k];
 					System.out.println("Sourcesystem@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("encounterid")){
@@ -251,11 +250,11 @@ public class IDRTHelper {
 					System.out.println("DeathDay@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("admission")){
-					admission = k-1;
+//					admission = k-1;
 					System.out.println("admission@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("discharge")){
-					discharge = k-1;
+//					discharge = k-1;
 					System.out.println("discharge@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("ignore")){
@@ -398,7 +397,7 @@ public class IDRTHelper {
 			 * MODIFIERS
 			 */
 			if (objectID>=0) { 
-				System.out.println("GOING FOR MODIFIER");
+				System.out.println("GOING FOR MODIFIERS");
 				ontLine[ONT_HLEVEL] = "1";
 				if (objectID>=0) {
 					ontLine[ONT_NAME] = "Objects";	//TODO context variable
@@ -683,7 +682,6 @@ public class IDRTHelper {
 					 */
 					if (currentColumn.isEmpty()){
 						currentColumn = currentColumn+"_empty";
-						emptyColumn = true;
 					}
 					/**
 					 * skip PID Column
@@ -1044,7 +1042,6 @@ public class IDRTHelper {
 					 */
 					if (currentColumn.isEmpty()){
 						currentColumn = currentColumn+"_empty";
-						emptyColumn = true;
 					}
 					/**
 					 * skip PID Column

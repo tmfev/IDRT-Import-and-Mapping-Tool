@@ -259,7 +259,7 @@
       <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfout2">
         <mapperTableEntries name="itemID" expression="row13.itemID" type="id_String" nullable="true"/>
@@ -483,7 +483,7 @@
       <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="outt1">
         <mapperTableEntries name="itemID" expression="copyOfout2.itemID" type="id_String" nullable="true"/>
@@ -1859,7 +1859,7 @@
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="row1.itemID.equals(context.subjid)" type="id_Boolean"/>
         <mapperTableEntries name="var2" expression="row1.TransactionType.equals(&quot;Insert&quot;)||row1.TransactionType.isEmpty() " type="id_Boolean"/>
@@ -2120,7 +2120,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="32" posY="416">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.toLowerCase().trim().equals(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;float&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;integer&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().contains(&quot;date&quot;))&#xA;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;}&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xD;&#xA;output_row.name = input_row.name;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;float&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;integer&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;date&quot;))&#xA;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;}&#xA;else{&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;else{&#xA;hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;}&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xD;&#xA;output_row.name = input_row.name;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -2323,7 +2323,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="outt123.DataType.equals(&quot;float&quot;)" type="id_Boolean"/>
         <mapperTableEntries name="var2" expression="outt123.DataType.equals(&quot;integer&quot;)" type="id_Boolean"/>

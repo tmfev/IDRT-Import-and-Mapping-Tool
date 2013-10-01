@@ -577,7 +577,7 @@ public class CSVWizardPage3 extends WizardPage {
 										String[] line5 = reader.readNext();
 										String[] line6 = reader.readNext();
 										//TODO read header line from config, pidgen?
-//										System.out.println("READ: " + line6[1]);
+//										System.out.println("READ: " + line6[0]);
 										if (line6!=null) {
 										headLineText.setText(line6[1]);
 										oldHeadlineNumber = line6[1];
@@ -829,7 +829,7 @@ public class CSVWizardPage3 extends WizardPage {
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
 									inputDelim,QUOTECHAR,getHeadLine());
-							DEFAULTDELIM = inputDelim;
+//							DEFAULTDELIM = inputDelim;
 
 							nextLine = reader.readNext();
 
@@ -938,7 +938,7 @@ public class CSVWizardPage3 extends WizardPage {
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
 									inputDelim,QUOTECHAR,getHeadLine());
-							DEFAULTDELIM = inputDelim;
+//							DEFAULTDELIM = inputDelim;
 
 							nextLine = reader.readNext();
 							reader.close();

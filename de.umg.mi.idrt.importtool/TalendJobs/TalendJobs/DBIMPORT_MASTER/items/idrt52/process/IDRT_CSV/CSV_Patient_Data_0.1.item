@@ -364,9 +364,9 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="160">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;context.csvOutputCurrent++;&#xA;if(context.csvOutputCurrent%context.csvOutputMod==0){&#xA;StatusListener.setSubStatus((float)context.csvOutputCurrent/context.csvOutputRows*100,(int)((float)context.csvOutputCurrent/context.csvOutputRows*100)+&quot;% - Observations&quot;);&#xA;}&#xA;&#xA;output_row.PatientID = input_row.PatientID;&#xD;&#xA;output_row.EncounterID = input_row.EncounterID;&#xD;&#xA;output_row.ImportDate = input_row.ImportDate;&#xD;&#xA;output_row.UpdateDate = input_row.UpdateDate;&#xD;&#xA;output_row.DownloadDate = input_row.DownloadDate;&#xD;&#xA;output_row.Item = input_row.Item;&#xD;&#xA;output_row.Value = input_row.Value;&#xD;&#xA;output_row.NiceName = input_row.NiceName;&#xD;&#xA;output_row.SourceSystem = input_row.SourceSystem;&#xD;&#xA;output_row.uniqueID = input_row.uniqueID;&#xD;&#xA;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xA;&#xD;&#xA;if (input_row.DataType == null){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;&#xA;&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.toLowerCase().trim().equals(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Path.toLowerCase().contains(&quot;icd&quot;)){&#xA;&#x9;&#x9;System.out.println(&quot;ICD FOUND!&quot;);&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;float&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;integer&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;; &#xA;//output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#xA;}&#xA;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.StartDate = input_row.StartDate;&#xA;output_row.EndDate = input_row.EndDate;&#xA;output_row.instanceNum = input_row.instanceNum;&#xA;&#xA;output_row.sic = input_row.sic;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;context.csvOutputCurrent++;&#xA;if(context.csvOutputCurrent%context.csvOutputMod==0){&#xA;StatusListener.setSubStatus((float)context.csvOutputCurrent/context.csvOutputRows*100,(int)((float)context.csvOutputCurrent/context.csvOutputRows*100)+&quot;% - Observations&quot;);&#xA;}&#xA;&#xA;output_row.PatientID = input_row.PatientID;&#xD;&#xA;output_row.EncounterID = input_row.EncounterID;&#xD;&#xA;output_row.ImportDate = input_row.ImportDate;&#xD;&#xA;output_row.UpdateDate = input_row.UpdateDate;&#xD;&#xA;output_row.DownloadDate = input_row.DownloadDate;&#xD;&#xA;output_row.Item = input_row.Item;&#xD;&#xA;output_row.Value = input_row.Value;&#xD;&#xA;output_row.NiceName = input_row.NiceName;&#xD;&#xA;output_row.SourceSystem = input_row.SourceSystem;&#xD;&#xA;output_row.uniqueID = input_row.uniqueID;&#xD;&#xA;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xA;&#xD;&#xA;if (input_row.DataType == null){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;&#xA;&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.toLowerCase().trim().equals(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;float&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;integer&quot;))&#xA;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;//output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;; &#xA;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;}&#xA;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.StartDate = input_row.StartDate;&#xA;output_row.EndDate = input_row.EndDate;&#xA;output_row.instanceNum = input_row.instanceNum;&#xA;&#xA;output_row.sic = input_row.sic;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -394,7 +394,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="512" posY="416">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="480" posY="416">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_2"/>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
@@ -847,7 +847,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="256">
+  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="291">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_1"/>
     <elementParameter field="CHECK" name="REMOVE" value="true"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
@@ -860,7 +860,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="160">
+  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_2"/>
     <elementParameter field="CHECK" name="REMOVE" value="true"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
@@ -873,7 +873,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="64">
+  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_3"/>
     <elementParameter field="CHECK" name="REMOVE" value="true"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
@@ -886,7 +886,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="-128">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_3"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -982,7 +982,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tUnite" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="544" posY="-128">
+  <node componentName="tUnite" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUnite_1"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1004,7 +1004,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="-32">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="-32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_5"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;context.ontOutputCurrent++;&#xA;if(context.ontOutputCurrent%context.ontOutputMod==0){&#xA;StatusListener.setSubStatus((float)context.ontOutputCurrent/context.ontOutputRows*100,(int)((float)context.ontOutputCurrent/context.ontOutputRows*100)+&quot;% - Ontology&quot;);&#xA;}&#xD;&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xD;&#xA;output_row.Name = input_row.Name;&#xD;&#xA;output_row.Path = input_row.Path;&#xD;&#xA;output_row.DataType = input_row.DataType;&#xD;&#xA;output_row.Update_Date = input_row.Update_Date;&#xD;&#xA;output_row.Import_Date = input_row.Import_Date;&#xD;&#xA;output_row.Download_Date = input_row.Download_Date;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xD;&#xA;output_row.visual = input_row.visual;&#xD;&#xA;output_row.codeList = input_row.codeList;&#xD;&#xA;output_row.source = input_row.source;&#xD;&#xA;output_row.xml = input_row.xml;&#xD;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -1028,7 +1028,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="-128">
+  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUniqRow_3"/>
     <elementParameter field="TABLE" name="UNIQUE_KEY">
       <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
@@ -1125,7 +1125,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="896" posY="-128">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -1175,7 +1175,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="-32">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="-32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_4"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
@@ -1272,7 +1272,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="32">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="0">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_7"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
@@ -1379,7 +1379,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="-32">
+  <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="0">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_4"/>
     <elementParameter field="CHECK" name="REMOVE" value="true"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
