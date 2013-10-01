@@ -1,0 +1,8 @@
+PatientID	ObjectID	EncounterID	DownloadDate	ImportDate	StartDate	UpdateDate	EndDate
+patient_id	sample id	EncounterID	DownloadDate	ImportDate	StartDate	UpdateDate	EndDate
+PatientID	sample						
+pat_id	sample_id						
+pid	ObjectID						
+	object_id						
+	object						
+	biosample						

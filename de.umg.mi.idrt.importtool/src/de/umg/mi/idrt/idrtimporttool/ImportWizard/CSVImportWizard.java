@@ -70,7 +70,7 @@ public class CSVImportWizard extends Wizard {
 	//
 	@Override
 	public boolean canFinish() {
-		return (three != null);
+		return (three != null && three.isPageComplete());
 	}
 
 	@Override
