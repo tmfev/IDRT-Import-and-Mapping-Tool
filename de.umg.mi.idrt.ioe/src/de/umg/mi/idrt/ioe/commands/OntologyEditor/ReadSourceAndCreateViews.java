@@ -103,17 +103,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorSourceInfoView(editorSourceInfoView);
 
-			OntologyTreeNode treeRoot = i2b2ImportTool.getMyOntologyTrees()
-					.getTreeRoot();
-
-			OntologyTreeCreatorTOS creator = new OntologyTreeCreatorTOS(
-					i2b2ImportTool.getMyOntologyTrees(), "");
-
-			/*
-			creator.createMeta();
-			creator.createOntology();
-			creator.createPatientData();
-			*/
+			new OntologyTreeCreatorTOS(	i2b2ImportTool.getMyOntologyTrees(), "");
 
 			editorSourceView.setComposite();
 
@@ -125,19 +115,10 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 					.updateUI();
 
+			/*
 			OntologyTree OT = i2b2ImportTool.getMyOntologyTrees()
 					.getOntologyTreeSource();
-
-			if (OT != null) {
-				
-
-				// OT.addTreeSelectionListener(i2b2ImportTool.getMyOT());
-				// OT.addMouseListener(ma);
-				// Debug.d("# calling: setActive");
-				// i2b2ImportTool.getMyOT().getGUI().setActive(true);
-				// i2b2ImportTool.getMyOT().openNodes(i2b2ImportTool.getMyOT().getOT().getTreeRoot());
-			}
-
+			*/
 			// add Target views as well
 			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()
