@@ -26,6 +26,7 @@ import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class ReadSourceAndCreateViews extends AbstractHandler {
 
@@ -85,16 +86,19 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		// create the source i2b2-Ontology-Editor view
 		try {
-			editorSourceView = (EditorSourceView) PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage()
-					.showView(Resource.ID.View.EDITOR_SOURCE_VIEW);
+//			editorSourceView = (EditorSourceView) PlatformUI.getWorkbench()
+//					.getActiveWorkbenchWindow().getActivePage()
+//					.showView(Resource.ID.View.EDITOR_SOURCE_VIEW);
 
-			editorSourceView.setI2B2ImportTool(i2b2ImportTool);
-
-			Activator.getDefault().getResource()
-					.setI2B2ImportTool(editorSourceView.getI2B2ImportTool());
-			Activator.getDefault().getResource()
-					.setEditorSourceView(editorSourceView);
+//			editorSourceView.setI2B2ImportTool(i2b2ImportTool);
+			
+//			EditorSourceView.setI2B2ImportTool(i2b2ImportTool);
+			//TODO Added OntologyEditorView
+OntologyEditorView.setI2B2ImportTool(i2b2ImportTool);
+//			Activator.getDefault().getResource()
+//					.setI2B2ImportTool(editorSourceView.getI2B2ImportTool());
+//			Activator.getDefault().getResource()
+//					.setEditorSourceView(editorSourceView);
 
 			// create secondary views
 			EditorSourceInfoView editorSourceInfoView = (EditorSourceInfoView) PlatformUI
@@ -103,10 +107,20 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorSourceInfoView(editorSourceInfoView);
 
-			new OntologyTreeCreatorTOS(	i2b2ImportTool.getMyOntologyTrees(), "");
+//			OntologyTreeNode treeRoot = i2b2ImportTool.getMyOntologyTrees()
+//					.getTreeRoot();
 
-			editorSourceView.setComposite();
+			new OntologyTreeCreatorTOS(
+					i2b2ImportTool.getMyOntologyTrees(), "");
 
+			/*
+			creator.createMeta();
+			creator.createOntology();
+			creator.createPatientData();
+			*/
+
+//			editorSourceView.setComposite();
+			OntologyEditorView.setSourceContent();
 			OntologyTreeModel newTreeModel = new OntologyTreeModel(
 					i2b2ImportTool.getMyOntologyTrees().getTreeRoot());
 
@@ -115,24 +129,33 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 					.updateUI();
 
-			/*
 			OntologyTree OT = i2b2ImportTool.getMyOntologyTrees()
 					.getOntologyTreeSource();
-			*/
+
+			if (OT != null) {
+				
+
+				// OT.addTreeSelectionListener(i2b2ImportTool.getMyOT());
+				// OT.addMouseListener(ma);
+				// Debug.d("# calling: setActive");
+				// i2b2ImportTool.getMyOT().getGUI().setActive(true);
+				// i2b2ImportTool.getMyOT().openNodes(i2b2ImportTool.getMyOT().getOT().getTreeRoot());
+			}
+
 			// add Target views as well
-			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage()
-					.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
-			Activator.getDefault().getResource()
-					.setEditorTargetView(editorTargetView);
+//			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
+//					.getActiveWorkbenchWindow().getActivePage()
+//					.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
+//			Activator.getDefault().getResource()
+//					.setEditorTargetView(editorTargetView);
 
 			
 	
 			
-			editorTargetView.clear();
+//			editorTargetView.clear();
 			
-			editorTargetView.setI2B2ImportTool(editorSourceView
-					.getI2B2ImportTool());
+//			editorTargetView.setI2B2ImportTool(editorSourceView
+//					.getI2B2ImportTool());
 
 			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
 					i2b2ImportTool.getMyOntologyTrees().getTargetTreeRoot());
@@ -147,8 +170,9 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 
 
-			editorTargetView.setComposite(OTTarget);
-
+//			editorTargetView.setComposite(OTTarget);
+//TODO Ontology Editor
+			OntologyEditorView.setTargetContent(OTTarget);
 			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
 					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 					.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);

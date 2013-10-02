@@ -13,6 +13,8 @@ import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.view.EditorSourceView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
 /**
@@ -56,8 +58,12 @@ public class OntologyTreeCreator {
 		Console.info( "Creating an OT." );
 
 		//this._myOT = myOT;
-		this._myOT = Activator.getDefault().getResource().getEditorSourceView().getI2B2ImportTool().getMyOntologyTrees();
-		Activator.getDefault().getResource().getEditorSourceView().getI2B2ImportTool().setOTCreator(this);
+//		this._myOT = Activator.getDefault().getResource().getEditorSourceView().getI2B2ImportTool().getMyOntologyTrees();
+	_myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+
+	
+//	EditorSourceView.getI2B2ImportTool().setOTCreator(this);
+	OntologyEditorView.getI2b2ImportTool().setOTCreator(this);
 		initiate(myOT.getOntologyTreeSource(), myOT.getTreeRoot());
 	}
 	

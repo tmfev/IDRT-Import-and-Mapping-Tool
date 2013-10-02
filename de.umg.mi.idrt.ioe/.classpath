@@ -4,7 +4,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/"/>
 	<classpathentry exported="true" kind="lib" path="lib/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/idrt_truncate_tables_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/transformation_to_target_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/ojdbc5-11g.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/systemRoutines.jar"/>

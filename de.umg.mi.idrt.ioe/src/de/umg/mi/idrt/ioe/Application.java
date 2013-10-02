@@ -153,37 +153,37 @@ public class Application implements IApplication {
     	return view;
     }
 
-	public static EditorSourceView getEditorSourceView(){
-		EditorSourceView view = null;
+//	public static EditorSourceView getEditorSourceView(){
+//		EditorSourceView view = null;
+//	
+//		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
+//				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
+//		
+//			view = (EditorSourceView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.EDITOR_SOURCE_VIEW);
+//		}
+//
+//    	if (view == null){
+//    		view = Activator.getDefault().getResource().getEditorSourceView();
+//    	}
+//    	
+//    	return view;
+//    }
 	
-		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
-				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
-		
-			view = (EditorSourceView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.EDITOR_SOURCE_VIEW);
-		}
-
-    	if (view == null){
-    		view = Activator.getDefault().getResource().getEditorSourceView();
-    	}
-    	
-    	return view;
-    }
-	
-	public static EditorTargetView getEditorTargetView(){
-		EditorTargetView view = null;
-	
-		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
-				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
-		
-			view = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.EDITOR_TARGET_VIEW);
-		}
-
-    	if (view == null){
-    		view = Activator.getDefault().getResource().getEditorTargetView();
-    	}
-    	
-    	return view;
-    }
+//	public static EditorTargetView getEditorTargetView(){
+//		EditorTargetView view = null;
+//	
+//		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
+//				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
+//		
+//			view = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.EDITOR_TARGET_VIEW);
+//		}
+//
+//    	if (view == null){
+//    		view = Activator.getDefault().getResource().getEditorTargetView();
+//    	}
+//    	
+//    	return view;
+//    }
 	
 	public static EditorSourceInfoView getEditorSourceInfoView(){
 		EditorSourceInfoView view = null;

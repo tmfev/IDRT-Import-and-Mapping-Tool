@@ -9,6 +9,12 @@ public class TreeContentProvider implements ITreeContentProvider {
 	private OntologyTreeNode _treeRoot = null;
 	private OntologyTree _ot;
 
+	public TreeContentProvider() {
+		// TODO Auto-generated constructor stub
+	}
+		
+
+	
 	@Override
 	public Object[] getChildren(Object element) {
 		return ((OntologyTreeNode) element).getChildrenArray();
@@ -51,12 +57,8 @@ public class TreeContentProvider implements ITreeContentProvider {
 		} else if (inputElement instanceof ArrayList) {
 			System.out.println("Content provider ");
 			OntologyTreeNode node = new OntologyTreeNode("empty");
-			OntologyTreeNode node2 = new OntologyTreeNode("empty2");
-			// OntologyTreeNode[] nodes = new OntologyTreeNode[1]();
-			// nodes[0] = node;
 			ArrayList<OntologyTreeNode> list = new ArrayList<OntologyTreeNode>();
 			list.add(node);
-			// return (Object[])list;
 		} else {
 			System.out
 					.println("TreeContentProvider Error at getElements: inputElement is NOT instanceof OntologyTreeNode "

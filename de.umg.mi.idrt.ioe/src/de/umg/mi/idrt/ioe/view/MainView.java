@@ -10,7 +10,6 @@ import org.eclipse.ui.part.ViewPart;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.Resource.Global;
 
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -53,18 +52,14 @@ public class MainView extends ViewPart {
 
 	}
 
-
 	@Override
 	public void setFocus() {
-		// do nothing
-
 	}
 
 	public void setResource(Resource resource) {
 		this._resource = resource;
 	}
 
-	
 	public Resource getResource() {
 		return this._resource;
 	}

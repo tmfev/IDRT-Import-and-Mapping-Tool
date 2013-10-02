@@ -53,7 +53,8 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 					&& !view.getId().equals(Resource.ID.View.SERVER_VIEW))
 			{
 				Debug.d("closed View from previous session (ViewID:"+view.getId()+")");
-				view.getPage().hideView(view);
+				//TODO HIDE VIEWS
+//				view.getPage().hideView(view);
 			}
 		}
 

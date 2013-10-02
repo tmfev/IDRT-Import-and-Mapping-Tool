@@ -11,6 +11,7 @@ import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class CopySourceNodesToTarget extends AbstractHandler {
 
@@ -29,8 +30,7 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 		Console.info("Copying files from source \"" + sourceNodePath
 				+ "\" to target \"" + targetNodePath + "\"");
 
-		MyOntologyTree myOT = Activator.getDefault().getResource()
-				.getI2B2ImportTool().getMyOntologyTrees();
+		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 
 		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
 				.getNodeLists().getNodeByPath(sourceNodePath);
@@ -51,7 +51,8 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 
 			OntologyTreeNode newNode = myOT.copySourceNodeToTarget(sourceNode,
 					targetNode);
-			Application.getEditorTargetView().setSelection(newNode);
+//			Application.getEditorTargetView().setSelection(newNode);
+			OntologyEditorView.setSelection(newNode);
 
 		} else {
 			Console.error("Error while copying nodes: SourceNode (\""

@@ -33,7 +33,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 
 public class EditorSourceView extends ViewPart {
 
-	private I2B2ImportTool _i2b2ImportTool;
+	private static I2B2ImportTool _i2b2ImportTool;
 	private Composite _composite;
 
 	public EditorSourceView() {
@@ -52,11 +52,11 @@ public class EditorSourceView extends ViewPart {
 		// do nothing
 	}
 
-	public I2B2ImportTool setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
-		return _i2b2ImportTool = i2b2ImportTool;
+	public static void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
+		_i2b2ImportTool = i2b2ImportTool;
 	}
 
-	public I2B2ImportTool getI2B2ImportTool() {
+	public static I2B2ImportTool getI2B2ImportTool() {
 		return _i2b2ImportTool;
 	}
 
@@ -136,7 +136,7 @@ public class EditorSourceView extends ViewPart {
 				}
 			}
 		});
-
+		System.out.println("LENGTH: " + viewer.getTree().getItems().length);
 		this._composite.layout();
 	}
 

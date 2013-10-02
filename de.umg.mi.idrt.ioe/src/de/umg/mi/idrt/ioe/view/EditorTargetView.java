@@ -100,8 +100,6 @@ public class EditorTargetView extends ViewPart {
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeTarget());
-		// treeContentProvider.setViewTree(
-		// this._i2b2ImportTool.getMyOntologyTrees().getViewTreeTarget() );
 
 		_treeViewer.setContentProvider(treeContentProvider);
 		// viewer.setContentProvider(new TreeContentProvider());
@@ -231,7 +229,7 @@ public class EditorTargetView extends ViewPart {
 		return _treeViewer;
 	}
 
-	public void setSelection(OntologyTreeNode node) {
+	private void setSelection(OntologyTreeNode node) {
 		System.out.println("setSelection Target");
 		getTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTreeViewer().setSelection(new StructuredSelection(node), true);

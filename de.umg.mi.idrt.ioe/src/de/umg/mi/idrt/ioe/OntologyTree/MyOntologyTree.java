@@ -31,6 +31,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.ViewTree;
 
 /**
@@ -579,8 +580,8 @@ public class MyOntologyTree extends JPanel {
 						targetPath);
 				Application.executeCommand(command);
 				dialog.close();
-				Application.getEditorTargetView().getTreeViewer().expandAll();
-				Application.getEditorTargetView().getTreeViewer().refresh();
+				OntologyEditorView.getTreeViewer().expandAll();
+				OntologyEditorView.getTreeViewer().refresh();
 			}
 		});
 
@@ -686,8 +687,8 @@ public class MyOntologyTree extends JPanel {
 		dialog.pack();
 		dialog.open();
 
-		Application.getEditorTargetView().getTreeViewer().expandAll();
-		Application.getEditorTargetView().getTreeViewer().refresh();
+		OntologyEditorView.getTreeViewer().expandAll();
+		OntologyEditorView.getTreeViewer().refresh();
 
 	}
 }

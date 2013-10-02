@@ -11,6 +11,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreator;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Christian Bauer
@@ -34,19 +35,16 @@ public class TOSHandler {
 
 		// try to get the current ot from the view
 
-		if (Application.getEditorSourceView() == null) {
-			nullError = true;
-			System.out.println("Application.getEditorSourceView() == null");
-		} else if (Application.getEditorSourceView().getI2B2ImportTool() == null) {
+		 if (OntologyEditorView.getI2b2ImportTool() == null) {
 			nullError = true;
 			System.out
 					.println("Application.getEditorSourceView().getI2B2ImportTool() == null");
-		} else if (Application.getEditorSourceView().getI2B2ImportTool()
+		} else if (OntologyEditorView.getI2b2ImportTool()
 				.getMyOntologyTrees() == null) {
 			nullError = true;
 			System.out
 					.println("Application.getEditorSourceView().getI2B2ImportTool().getMyOT() == null");
-		} else if (Application.getEditorSourceView().getI2B2ImportTool()
+		} else if (OntologyEditorView.getI2b2ImportTool()
 				.getMyOntologyTrees().getOntologyTreeSource() == null) {
 			nullError = true;
 			System.out
@@ -60,10 +58,9 @@ public class TOSHandler {
 			return;
 		}
 
-		MyOntologyTree _myOT = Application.getEditorSourceView()
-				.getI2B2ImportTool().getMyOntologyTrees();
+		MyOntologyTree _myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		_ot = _myOT.getOntologyTreeSource();
-		_otCreator = Application.getEditorSourceView().getI2B2ImportTool()
+		_otCreator = OntologyEditorView.getI2b2ImportTool()
 				.getOTCreator();
 		_ontologyTreeTarget = _myOT.getOntologyTreeTarget();
 	}

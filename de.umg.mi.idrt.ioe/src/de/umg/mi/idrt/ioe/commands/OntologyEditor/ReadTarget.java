@@ -23,6 +23,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
 
@@ -89,7 +90,7 @@ public class ReadTarget extends AbstractHandler {
 				tos.setContextVariable("Var1", "1");
 				tos.runJob();
 
-				Application.getEditorTargetView().getTreeViewer().getTree().update();
+				OntologyEditorView.getTreeViewer().getTree().update();
 				
 				//editorTargetView.getTreeViewer().getTree().clearAll(true);
 					

@@ -201,5 +201,11 @@
             name="EditorTargetInfoView"
             restorable="true">
       </view>
+      <view
+            class="de.umg.mi.idrt.ioe.view.OntologyEditorView"
+            id="de.umg.mi.idrt.ioe.OntologyEditor"
+            name="Ontology Editor"
+            restorable="true">
+      </view>
    </extension>
 </plugin>

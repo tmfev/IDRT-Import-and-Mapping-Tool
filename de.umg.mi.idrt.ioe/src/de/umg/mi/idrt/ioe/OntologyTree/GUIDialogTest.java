@@ -24,6 +24,7 @@ import org.eclipse.wb.swt.ResourceManager;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
@@ -96,8 +97,8 @@ public class GUIDialogTest extends Dialog {
 			public void widgetSelected(SelectionEvent e) {
 
 				shell.close();
-				Application.getEditorTargetView().getTreeViewer().expandAll();
-				Application.getEditorTargetView().getTreeViewer().refresh();
+				OntologyEditorView.getTreeViewer().expandAll();
+				OntologyEditorView.getTreeViewer().refresh();
 			}
 		});
 		
