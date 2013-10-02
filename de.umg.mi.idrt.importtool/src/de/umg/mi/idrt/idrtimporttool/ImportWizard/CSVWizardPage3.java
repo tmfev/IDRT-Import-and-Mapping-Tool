@@ -30,8 +30,6 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseAdapter;
@@ -39,7 +37,6 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -178,12 +175,10 @@ public class CSVWizardPage3 extends WizardPage {
 			return Integer.parseInt(headLineText.getText());
 		}catch (Exception e) {
 			System.err.println("Error @ Config:Headline");
-			//			e.printStackTrace();
-
 			return 0;
 		}
 	}
-
+	
 	@Override
 	public void createControl(final Composite parent) {
 		try {
@@ -465,16 +460,11 @@ public class CSVWizardPage3 extends WizardPage {
 				}
 			});
 
-
 			serverListViewer.setLabelProvider(new LabelProvider() {
 				@Override
 				public Image getImage(Object element) {
 					String tmpElement = (String) element;
 					if (tmpElement.contains(".")) { 
-						String filename = tmpElement.substring(0,
-								tmpElement.lastIndexOf(".")); 
-						String extension = tmpElement.substring(tmpElement
-								.lastIndexOf(".")); 
 						if (!incompleteConfigs.contains(tmpElement)) { 
 							return imgHasConfig;
 						} else {
@@ -537,7 +527,6 @@ public class CSVWizardPage3 extends WizardPage {
 									saveTable();
 								}
 								
-
 								if (lastTable == null) {
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
