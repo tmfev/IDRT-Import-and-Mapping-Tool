@@ -28,6 +28,9 @@ public class DeleteNodeCommand extends AbstractHandler {
 				.getSelection();
 		OntologyTreeNode firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
+		if (firstElement==null) {
+			System.out.println("firstElementnull null!");
+		}
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
 				.getNodeLists().getNodeByPath(firstElement.getTreePath());

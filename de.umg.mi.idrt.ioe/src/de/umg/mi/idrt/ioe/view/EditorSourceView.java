@@ -78,8 +78,8 @@ public class EditorSourceView extends ViewPart {
 				viewer));
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 
-		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
-				.getOntologyTreeSource());
+//		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
+//				.getOntologyTreeSource());
 		
 		if (treeContentProvider.getRoot() == null) {
 			Console.error("EditorSourceView: TreeContentRoot is null.");

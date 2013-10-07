@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import java.util.Iterator;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.dnd.DragSourceEvent;
@@ -40,32 +42,35 @@ public class NodeDragListener implements DragSourceListener {
 		// Here you do the convertion to the type which is expected.
 		IStructuredSelection selection = (IStructuredSelection) viewer
 				.getSelection();
+		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+		while (nodeIterator.hasNext()) {
+			OntologyTreeNode firstElement = nodeIterator.next();
+			System.out.println("NEXT: " + firstElement.getName());
+			Console.info("firstElement dataType:"
+					+ selection.getFirstElement().getClass().getSimpleName());
 
-		Console.info("firstElement dataType:"
-				+ selection.getFirstElement().getClass().getSimpleName());
 
-		OntologyTreeNode firstElement = (OntologyTreeNode) selection
-				.getFirstElement();
+			if (OTNodeTransfer.getInstance().isSupportedType(event.dataType)) {
+				event.data = firstElement.getName();// firstElement.getShortDescription()
+				// +
+				event.doit=true;
+				// " " +
+				// firstElement.getLongDescription();
 
-		if (OTNodeTransfer.getInstance().isSupportedType(event.dataType)) {
-			event.data = firstElement.getName();// firstElement.getShortDescription()
-												// +
-			// " " +
-			// firstElement.getLongDescription();
+			}
 
+			if (firstElement != null
+					&& firstElement.getOntologyCellAttributes() != null) {
+				event.data = firstElement.getOntologyCellAttributes()
+						.getC_FULLNAME();
+				Console.info("... dragged the node with the treePath of \""
+						+ firstElement.getTreePath() + "\"");
+				event.doit=true;
+			} else {
+				event.data = "";
+				Console.info("... dragged nothing");
+			}
 		}
-
-		if (firstElement != null
-				&& firstElement.getOntologyCellAttributes() != null) {
-			event.data = firstElement.getOntologyCellAttributes()
-					.getC_FULLNAME();
-			Console.info("... dragged the node with the treePath of \""
-					+ firstElement.getTreePath() + "\"");
-		} else {
-			event.data = "";
-			Console.info("... dragged nothing");
-		}
-
 	}
 
 	@Override
@@ -78,43 +83,29 @@ public class NodeDragListener implements DragSourceListener {
 
 		Console.info(" - number of elements:" + selection.size());
 
-		OntologyTreeNode node = (OntologyTreeNode) selection.getFirstElement();
+		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+		while (nodeIterator.hasNext()) {
+			OntologyTreeNode node = nodeIterator.next();
+			System.out.println("NEXT2: " + node.getName());
+			//		OntologyTreeNode node = (OntologyTreeNode) selection.getFirstElement();
 
-		if (node != null)
-			Console.info(" - node.getNodeType(): " + node.getNodeType());
-
-		if (node == null) {
-
-			Console.info(" - node is null");
-
-		} else if (NodeType.I2B2ROOT.equals(node.getNodeType())) {
-			event.doit = false;
-			Application
-					.getStatusView()
-					.addMessage(
-							new SystemMessage(
-									"The user entity tried to drag the node \'"
-											+ node.getName()
-											+ "\', but thats not even possible at all.",
-									SystemMessage.MessageType.ERROR,
-									SystemMessage.MessageLocation.MAIN));
-		} else if (selection.size() > 1) {
-
-			Application
-					.getStatusView()
-					.addMessage(
-							new SystemMessage(
-									"The user entity is trying to drag multiple nodes. Just the first selection will be used and the other"
-											+ (selection.size() == 2 ? " node"
-													: " "
-															+ (selection.size() - 1)
-															+ " nodes")
-											+ " will be ignored for now.",
-									SystemMessage.MessageType.INFO,
-									SystemMessage.MessageLocation.MAIN));
-
+			if (node != null) {
+				Console.info(" - node.getNodeType(): " + node.getNodeType());
+				event.doit=true;
+			}
+			if (NodeType.I2B2ROOT.equals(node.getNodeType())) {
+				event.doit = false;
+				Application
+				.getStatusView()
+				.addMessage(
+						new SystemMessage(
+								"The user entity tried to drag the node \'"
+										+ node.getName()
+										+ "\', but thats not even possible at all.",
+										SystemMessage.MessageType.ERROR,
+										SystemMessage.MessageLocation.MAIN));
+			} 
 		}
-
 	}
 
 }

@@ -88,7 +88,7 @@ public class EditorTargetView extends ViewPart {
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 		NodeDropListener nodeDropListener = new NodeDropListener(_treeViewer);
-		nodeDropListener.setMyOT(_i2b2ImportTool.getMyOntologyTrees());
+//		nodeDropListener.setMyOT(_i2b2ImportTool.getMyOntologyTrees());
 		
 		try {
 			_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
@@ -97,11 +97,11 @@ public class EditorTargetView extends ViewPart {
 		}
 		
 		
-		TreeContentProvider treeContentProvider = new TreeContentProvider();
-		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
-				.getOntologyTreeTarget());
+//		TreeContentProvider treeContentProvider = new TreeContentProvider();
+//		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
+//				.getOntologyTreeTarget());
 
-		_treeViewer.setContentProvider(treeContentProvider);
+//		_treeViewer.setContentProvider(treeContentProvider);
 		// viewer.setContentProvider(new TreeContentProvider());
 		_treeViewer.setLabelProvider(new ViewTableLabelProvider(_treeViewer));
 		// viewer.setInput(ContentProviderTree.INSTANCE.getModel());

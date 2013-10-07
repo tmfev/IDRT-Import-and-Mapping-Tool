@@ -12,6 +12,7 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Christian Bauer
@@ -25,7 +26,7 @@ import de.umg.mi.idrt.ioe.Resource;
 
 public class NodeDropListener extends ViewerDropAdapter {
 
-	private MyOntologyTree myOT = null;
+	private MyOntologyTree myOT;
 	private final Viewer viewer;
 	private OntologyTreeNode sourceNode = null;
 	private OntologyTreeNode targetNode = null;
@@ -83,6 +84,8 @@ public class NodeDropListener extends ViewerDropAdapter {
 	// viewer by calling its setInput method.
 	@Override
 	public boolean performDrop(Object data) {
+		myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		
 		Console.info("Dropped performed with data:");
 		// Console.info(" - selectedObjectClass: " +
 		// this..getSelectedObject().getClass().getSimpleName());
@@ -108,18 +111,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 						+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
 								.size());
 
-		/*
-		 * ActionCommand command2 = new
-		 * ActionCommand(Resource.ID.OntologyTreeEditor.Command.EXPORT);
-		 * command2.addParameter(Resource.ID.Command.
-		 * EXPORT_ATTRIBUTE_RESTRICT_NUMBER_OF_PATIENTS, Integer.valueOf(2));
-		 * command2
-		 * .addParameter(Resource.ID.Command.EXPORT_ATTRIBUTE_NUMBER_OF_PATIENTS
-		 * , "3");
-		 * 
-		 * Application.executeCommand(command2);
-		 */
-
 		Console.info("OTCOPY:");
 
 		Console.info(" - things to copy: SourceNode (\""
@@ -127,22 +118,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 				+ targetNode.getTreePath() + "\") ");
 
 		myOT.dropCommandCopyNodes(data.toString(), targetNode.getTreePath());
-
-		// OTNode sourceNode = this.myOT.getOT().getNodeLists().getNodeByPath(
-		// data.toString() );
-
-		/*
-		 * 
-		 * if ( sourceNode != null ){ Console.info("sourceNode found:" +
-		 * sourceNode.getName()); this.myOT.copySourceNodeToTarget(sourceNode,
-		 * targetNode); //targetNode.get
-		 * //myOT.getOTTarget().getTreeViewer().expandToLevel(targetNode,
-		 * level); } else {
-		 * Console.info("Eorr in NodeDropListener: SourceNode (\"" +
-		 * data.toString() + "\") not found."); }
-		 */
-
-		// fileSelectionButton.setFocus();
 
 		viewer.refresh();
 
@@ -156,7 +131,4 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 	}
 
-	public void setMyOT(MyOntologyTree myOT) {
-		this.myOT = myOT;
-	}
 }
