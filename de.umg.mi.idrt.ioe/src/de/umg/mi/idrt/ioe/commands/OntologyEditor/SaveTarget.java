@@ -14,6 +14,7 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class SaveTarget extends AbstractHandler {
@@ -31,9 +32,8 @@ public class SaveTarget extends AbstractHandler {
 		OntologyTree ontologyTreeTarget = null;
 
 		try {
-			ontologyTreeTarget = Activator.getDefault().getResource()
-					.getI2B2ImportTool().getMyOntologyTrees()
-					.getOntologyTreeTarget();
+			ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
+					.getMyOntologyTrees().getOntologyTreeTarget();
 		} catch (java.lang.NullPointerException e) {
 			Console.error(
 					"Coudn't save the Target-Tree, because nothing has been loaded so far.",

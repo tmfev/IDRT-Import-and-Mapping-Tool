@@ -27,7 +27,7 @@ public class TOSHandler {
 	OntologyTree _ot = null;
 
 	private OntologyTree _ontologyTreeTarget;
-	private OntologyTreeCreator _otCreator;
+
 
 	public TOSHandler() {
 
@@ -60,14 +60,15 @@ public class TOSHandler {
 
 		MyOntologyTree _myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		_ot = _myOT.getOntologyTreeSource();
+		/*
 		_otCreator = OntologyEditorView.getI2b2ImportTool()
 				.getOTCreator();
+		*/
 		_ontologyTreeTarget = _myOT.getOntologyTreeTarget();
 	}
 
 	public void status(String status) {
-		Console.error("TOS: " + status);
-		System.out.println("(syso) Error in TOSConnector: " + status);
+		Console.info("TOS: " + status);
 	}
 
 	public void statusSuccess(String status) {
@@ -81,11 +82,16 @@ public class TOSHandler {
 	}
 
 	public void statusError(String status) {
-		Console.error("TOS error: " + status);
-		System.out.println("(syso) Error in TOSConnector: " + status);
+		Console.error("TOS error:" + status);
+		Application
+		.getStatusView()
+		.addMessage(
+				new SystemMessage(
+						status,
+						SystemMessage.MessageType.ERROR));
 	}
 
-	public void getOntology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
+	public void addi2b2OntologyItemToTree(int C_HLEVEL, String C_FULLNAME, String C_NAME,
 			String C_SYNONYM_CD, String C_VISUALATTRIBUTES, int C_TOTALNUM,
 			String C_BASECODE, String C_METADATAXML, String C_FACTTABLECOLUMN,
 			String C_TABLENAME, String C_COLUMNNAME, String C_COLUMNDATATYPE,
@@ -123,7 +129,7 @@ public class TOSHandler {
 
 	}
 
-	public void getOntologyDimensions(boolean isConceptDimension,
+	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,
 			String dimensionPath, String dimensionCD, String nameChar,
 			String dimensionBlob, Date updateDate, Date downloadDate,
 			Date importDate, String sourcesysteCD, String uploadID) {
