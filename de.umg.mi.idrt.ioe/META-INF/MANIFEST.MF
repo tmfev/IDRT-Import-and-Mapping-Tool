@@ -63,7 +63,8 @@ Bundle-ClassPath: .,
  lib/idrt_jdbc_upload_1_0.jar,
  lib/idrt_truncate_tables_0_1.jar,
  lib/transformation_to_target_0_1.jar,
- TalendJobs/
+ TalendJobs/,
+ lib/
 Import-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
  de.goettingen.i2b2.importtool.idrt.StatusListener,
