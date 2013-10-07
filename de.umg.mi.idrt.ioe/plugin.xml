@@ -159,13 +159,6 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
-            class="de.umg.mi.idrt.ioe.view.MainView"
-            id="edu.goettingen.i2b2.importtool.view.MainView"
-            name="%view.name"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
             class="de.umg.mi.idrt.ioe.view.StatusView"
             id="edu.goettingen.i2b2.importtool.view.StatusView"
             name="%view.name.0"

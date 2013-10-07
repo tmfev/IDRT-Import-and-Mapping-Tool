@@ -25,7 +25,6 @@ import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetView;
-import de.umg.mi.idrt.ioe.view.MainView;
 import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -35,7 +34,6 @@ public class Resource {
 	public static final String IMAGE_PATH = "/images/";
 	public static final String ICO_WORKING = ICON_PATH + "working.png";
 	public static final String ICO_NOT_WORKING = ICON_PATH + "not_working.png";
-	public MainView _mainView = null;
 	public StatusView _statusView = null;
 	public OntologyView _ontologyView = null;
 	public I2B2ImportTool _i2b2ImportTool = null;
@@ -86,14 +84,6 @@ public class Resource {
 
 	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
 		this._i2b2ImportTool = i2b2ImportTool;
-	}
-
-	public MainView getMainView() {
-		return _mainView;
-	}
-
-	public void setMainView(MainView mainView) {
-		this._mainView = mainView;
 	}
 
 	public StatusView getStatusView() {

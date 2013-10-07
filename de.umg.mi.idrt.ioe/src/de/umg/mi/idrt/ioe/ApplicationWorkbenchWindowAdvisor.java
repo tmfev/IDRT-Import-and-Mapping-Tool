@@ -48,8 +48,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		IViewReference[] views = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();//.showView("edu.goettingen.i2b2.importtool.view.OntologyView");
 		for (int x = 0; x < views.length; x++){
 			IViewReference view = views[x];
-			if (!view.getId().equals(Resource.ID.View.MAIN_VIEW)
-					&& !view.getId().equals(Resource.ID.View.STATUS_VIEW) 
+			if (!view.getId().equals(Resource.ID.View.STATUS_VIEW) 
 					&& !view.getId().equals(Resource.ID.View.SERVER_VIEW))
 			{
 				Debug.d("closed View from previous session (ViewID:"+view.getId()+")");

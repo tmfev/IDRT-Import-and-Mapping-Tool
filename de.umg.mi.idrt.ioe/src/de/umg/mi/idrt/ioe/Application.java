@@ -1,26 +1,15 @@
 package de.umg.mi.idrt.ioe;
 
-
-import de.umg.mi.idrt.ioe.OntologyTree.ServerPreferences;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetView;
-import de.umg.mi.idrt.ioe.view.MainView;
 import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Properties;
 
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.ParameterizedCommand;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
@@ -29,7 +18,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
-
 
 /**
  * This class controls all aspects  of the application's execution
@@ -45,9 +33,7 @@ public class Application implements IApplication {
 
 	HashMap<String,javax.swing.JComponent> exportDialogComponents = new HashMap<String,javax.swing.JComponent>();
 
-	//TODO check if needed
 	private Display _display;
-	
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
@@ -117,23 +103,6 @@ public class Application implements IApplication {
     		view = Activator.getDefault().getResource().getStatusView();
     	}
 
-    	return view;
-    }
-	
-	//doc
-	public static MainView getMainView(){
-		MainView view = null;
-	
-		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
-				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
-			view = (de.umg.mi.idrt.ioe.view.MainView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.MAIN_VIEW);
-		}
-
-    	if (view == null){
-    		//Debug.dn("MainView",view);
-    		view = Activator.getDefault().getResource().getMainView();
-    	}
-    	
     	return view;
     }
 	
@@ -243,7 +212,7 @@ public class Application implements IApplication {
 	
 	//doc
 	public static Resource getResource(){
-		return (getMainView() != null) ? getMainView().getResource() : null;
+		return Activator.getDefault().getResource();
 	}
 
 	//doc

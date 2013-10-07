@@ -157,8 +157,8 @@ public class OntologyEditorView extends ViewPart {
 		//		nodeDropListener.setMyOT(i2b2ImportTool.getMyOntologyTrees());
 
 		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
-		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-				targetTreeViewer));
+//		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
+//				targetTreeViewer));
 		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
 
 			@Override
