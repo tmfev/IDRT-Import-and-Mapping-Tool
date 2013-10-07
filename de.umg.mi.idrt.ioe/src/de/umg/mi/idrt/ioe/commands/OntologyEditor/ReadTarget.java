@@ -74,7 +74,9 @@ public class ReadTarget extends AbstractHandler {
 				 });
 			} catch (InvocationTargetException e) {
 				Console.error(e);
+				e.printStackTrace();
 			} catch (InterruptedException e) {
+				e.printStackTrace();
 				Console.error(e);
 			} 
 

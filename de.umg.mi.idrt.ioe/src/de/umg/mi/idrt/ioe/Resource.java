@@ -1053,6 +1053,7 @@ public class Resource {
 				((IPersistentPreferenceStore) store).save();
 			} catch (IOException e) {
 				Console.error(e);
+				e.printStackTrace();
 			}
 		}
 

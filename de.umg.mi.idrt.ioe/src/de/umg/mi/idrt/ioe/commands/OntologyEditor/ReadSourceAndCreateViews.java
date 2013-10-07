@@ -80,8 +80,10 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			});
 		} catch (InvocationTargetException e) {
 			Console.error(e);
+			e.printStackTrace();
 		} catch (InterruptedException e) {
 			Console.error(e);
+			e.printStackTrace();
 		}
 
 		// create the source i2b2-Ontology-Editor view
@@ -181,6 +183,7 @@ OntologyEditorView.setI2B2ImportTool(i2b2ImportTool);
 
 		} catch (PartInitException e) {
 			Console.error(e.toString());
+			e.printStackTrace();
 		}
 
 		return null;

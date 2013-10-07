@@ -96,6 +96,7 @@ public class I2B2ImportTool extends JFrame implements TreeSelectionListener,
 					        	Thread.sleep(500);
 							} catch (InterruptedException e) {
 								Console.error(e);
+								e.printStackTrace();
 							}
 							monitor.worked(1);
 			         }
@@ -105,8 +106,10 @@ public class I2B2ImportTool extends JFrame implements TreeSelectionListener,
 			 });
 		} catch (InvocationTargetException e) {
 			Console.error(e);
+			e.printStackTrace();
 		} catch (InterruptedException e) {
 			Console.error(e);
+			e.printStackTrace();
 		} 
 		
 		return;
@@ -137,6 +140,7 @@ public class I2B2ImportTool extends JFrame implements TreeSelectionListener,
 		        	Thread.sleep(500);
 				} catch (InterruptedException e) {
 					Console.error(e);
+					e.printStackTrace();
 				}
 				monitor.worked(2);
 				counter++;

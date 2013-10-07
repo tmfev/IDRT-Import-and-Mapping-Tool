@@ -110,6 +110,7 @@ public class ActionCommand {
 			return Integer.valueOf(value);
 		} catch (NumberFormatException e) {
 			Console.error(e);
+			e.printStackTrace();
 		}
 
 		return value;
@@ -171,6 +172,7 @@ public class ActionCommand {
 			Debug.d(" ... noooooo :(");
 			Console.error("Could not convert an integer action parameter.");
 			Console.error(e);
+			e.printStackTrace();
 		}
 		return 0;
 	}
@@ -187,6 +189,7 @@ public class ActionCommand {
 		} catch (NumberFormatException e) {
 			Console.error("Could not convert a string action parameter.");
 			Console.error(e);
+			e.printStackTrace();
 		}
 		return "";
 	}

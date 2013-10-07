@@ -1,11 +1,13 @@
 package de.umg.mi.idrt.idrtimporttool.server.Settings;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 
 /**
@@ -44,6 +46,8 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 	@Override
 	public boolean performDrop(Object data) {
 		Server draggedServer = ServerList.getTargetServers().get(data);
+		
+		if (draggedServer != null) {
 		Server newServer = new Server("copy of " + draggedServer.getUniqueID(),
 				draggedServer.getIp(), draggedServer.getPort(),
 				draggedServer.getUser(), draggedServer.getPassword(),
@@ -52,6 +56,10 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 		ServerList.addSourceServer(newServer);
 		TreeViewer viewer = ServerView.getSourceServerViewer();
 		viewer.refresh();
+		}
+		else {
+			MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+			}
 		return false;
 	}
 

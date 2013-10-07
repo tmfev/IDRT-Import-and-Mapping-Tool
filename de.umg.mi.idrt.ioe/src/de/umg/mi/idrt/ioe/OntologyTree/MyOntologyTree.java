@@ -17,7 +17,10 @@ import javax.swing.tree.TreePath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.MouseTrackAdapter;
+import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -552,34 +555,17 @@ public class MyOntologyTree extends JPanel {
 		//		System.out.println(" - shell is null? "+ (shell == null ? "true" : "false"));
 
 
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				final Shell dialog = new Shell(Application.getShell(), SWT.NONE | SWT.ON_TOP //SWT.APPLICATION_MODAL
+//		new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+				final Shell dialog = new Shell(Application.getShell(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 						| SWT.TOOL);
-				dialog.addFocusListener(new FocusListener() {
-
-					@Override
-					public void focusLost(FocusEvent e) {
-						// TODO Auto-generated method stub
-						System.out.println("lost");
-					}
-
-					@Override
-					public void focusGained(FocusEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-				});
 				dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
 						.getCursorLocation());
-
 				final Composite actionMenu = new Composite(dialog, SWT.NONE);
-
 				actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
-
+				
 				Button btnInsert = new Button(actionMenu, SWT.NONE);
 				btnInsert.setImage(ResourceManager.getPluginImage(
 						"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
@@ -674,8 +660,8 @@ public class MyOntologyTree extends JPanel {
 				actionMenu.pack();
 				dialog.pack();
 				dialog.open();
-			}
-		}).run();
+//			}
+//		}).run();
 
 
 	}

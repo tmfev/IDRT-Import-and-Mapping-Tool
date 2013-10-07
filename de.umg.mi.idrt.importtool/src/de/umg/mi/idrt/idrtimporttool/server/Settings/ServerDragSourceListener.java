@@ -30,12 +30,19 @@ public class ServerDragSourceListener implements DragSourceListener {
 		try {
 			IStructuredSelection selection = (IStructuredSelection) viewer
 					.getSelection();
-			Server server = (Server) selection.getFirstElement();
 
-			if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
-				event.data = server.getUniqueID();
+			if (selection.getFirstElement() instanceof Server) {
+				Server server = (Server) selection.getFirstElement();
+				System.out.println(server.getName());
+				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+					event.data = server.getUniqueID();
+				}
+			}
+			else {
+				event.data = selection.getFirstElement();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			MessageDialog.openError(viewer.getControl().getShell(), "Failure",
 					"You cannot drop this target here.");
 		}

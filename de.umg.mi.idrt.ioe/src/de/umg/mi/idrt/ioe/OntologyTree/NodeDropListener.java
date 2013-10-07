@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.swt.SWT;
@@ -43,37 +44,44 @@ public class NodeDropListener extends ViewerDropAdapter {
 	public void drop(DropTargetEvent event) {
 		int location = this.determineLocation(event);
 		// String target = (String) determineTarget(event);
+		if (event.item.getData() instanceof OntologyTreeNode) {
+			OntologyTreeNode treeNode = (OntologyTreeNode) event.item.getData();
 
-		String translatedLocation = "";
-		Console.info("getDate: "
-				+ ((OntologyTreeNode) event.item.getData()).getName());
-		event.item.getData();
+			String translatedLocation = "";
 
-		targetNode = (OntologyTreeNode) determineTarget(event);
+			Console.info("getDate: "
+					+ (treeNode.getName()));
 
-		switch (location) {
-		case 1:
-			translatedLocation = "Dropped before the target ";
-			break;
-		case 2:
-			translatedLocation = "Dropped after the target ";
-			break;
-		case 3:
-			translatedLocation = "Dropped on the target ";
-			break;
-		case 4:
-			translatedLocation = "Dropped into nothing ";
-			break;
+			event.item.getData();
+
+			targetNode = (OntologyTreeNode) determineTarget(event);
+
+			switch (location) {
+			case 1:
+				translatedLocation = "Dropped before the target ";
+				break;
+			case 2:
+				translatedLocation = "Dropped after the target ";
+				break;
+			case 3:
+				translatedLocation = "Dropped on the target ";
+				break;
+			case 4:
+				translatedLocation = "Dropped into nothing ";
+				break;
+			}
+
+			Console.info(translatedLocation);
+
+			if (location != 4) {
+				Console.info("The drop was done on the element: "
+						+ targetNode.getName());
+
+				/* copy nodes */
+			}
 		}
-
-		Console.info(translatedLocation);
-
-		if (location != 4) {
-			Console.info("The drop was done on the element: "
-					+ targetNode.getName());
-
-			/* copy nodes */
-
+		else {
+			MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 		}
 		super.drop(event);
 	}
@@ -85,7 +93,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 	@Override
 	public boolean performDrop(Object data) {
 		myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		
+
 		Console.info("Dropped performed with data:");
 		// Console.info(" - selectedObjectClass: " +
 		// this..getSelectedObject().getClass().getSimpleName());
@@ -107,9 +115,9 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - data size?: "
 				+ this.myOT.getVieTreeSource().stringPathToViewTreeNode.size());
 		System.out
-				.println(" - data size2?: "
-						+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
-								.size());
+		.println(" - data size2?: "
+				+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
+				.size());
 
 		Console.info("OTCOPY:");
 

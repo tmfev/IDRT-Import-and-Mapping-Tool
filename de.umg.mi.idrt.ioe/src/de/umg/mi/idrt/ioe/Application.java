@@ -287,6 +287,7 @@ public class Application implements IApplication {
 					handlerService.executeCommand(parameterizedCommand, null);
 				} catch (Exception e) {
 					Console.error(e);
+					e.printStackTrace();
 				}
 			} else
 				Debug.e("handlerService == null");

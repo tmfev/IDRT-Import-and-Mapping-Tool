@@ -129,7 +129,6 @@ public class CSVImportWizard extends Wizard {
 		}
 
 		importThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				try {

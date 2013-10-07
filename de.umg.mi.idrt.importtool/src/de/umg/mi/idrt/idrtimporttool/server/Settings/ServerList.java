@@ -39,21 +39,11 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
  */
 public class ServerList {
 
-	// final private transient static String password =
-	// "jeLaengerJeBesserPasswort";
-	// final private transient static byte [] salt = { (byte) 0xc9, (byte)
-	// 0xc9,(byte) 0xc9,(byte) 0xc9,(byte) 0xc9,(byte) 0xc9,(byte) 0xc9,(byte)
-	// 0xc9};
 	final static int iterations = 3;
-	// private static sun.misc.BASE64Encoder encoder = new
-	// sun.misc.BASE64Encoder();
-	// private static sun.misc.BASE64Decoder decoder = new
-	// sun.misc.BASE64Decoder();
 	private static Connection connect = null;
 	private static HashMap<String, Server> servers = new HashMap<String, Server>();
 	private static HashMap<String, Server> importDBServers = new HashMap<String, Server>();
 	private static HashMap<String, ServerTable> tableMap;
-	// private static Preferences prefsRoot = Preferences.userRoot();
 	private static Statement statement = null;
 	private static ResultSet resultSet = null;
 	private static File serverFile;
@@ -61,6 +51,7 @@ public class ServerList {
 	private static Properties defaultProps;
 	private static String[] USERROLES = { "USER", "EDITOR", "DATA_PROT",
 		"DATA_OBFSC", "DATA_LDS", "DATA_DEID", "DATA_AGG" };
+	
 
 	public static void addSourceServer(Server loadServer) {
 		if (!servers.containsKey(loadServer.getUniqueID())) {
@@ -486,9 +477,11 @@ public class ServerList {
 							.executeQuery("select username from all_users");
 	
 					users = getResultSet(resultSet, server);
+					
 				} else {
 					users = new HashSet<String>();
 					users.add(server.getUser());
+					System.out.println(server.getUser() + " " + server.getName());
 				}
 			}
 			else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
@@ -914,21 +907,6 @@ public class ServerList {
 				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
 			}
 			i2b2User.setLastQuery(null);
-//			if (project != null) {
-//				if (!project.toLowerCase().startsWith("i2b2")) {
-//					project = "i2b2" + project;
-//				}
-//				resultSet = statement
-//						.executeQuery("select * from (select create_date from "
-//								+ project
-//								+ ".qt_query_master where user_id='"
-//								+ user
-//								+ "' order by create_date desc) where rownum <=1");
-//
-//				while (resultSet.next()) {
-//					i2b2User.setLastQuery(resultSet.getTimestamp("create_date"));
-//				}
-//			}
 			resultSet = statement
 					.executeQuery("select *from i2b2pm.pm_user_data where user_id='"
 							+ user + "'");
