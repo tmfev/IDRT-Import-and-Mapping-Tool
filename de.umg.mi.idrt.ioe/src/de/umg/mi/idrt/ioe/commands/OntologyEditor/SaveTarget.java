@@ -1,10 +1,18 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Collections;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.osgi.framework.Bundle;
 
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
@@ -24,7 +32,31 @@ public class SaveTarget extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		String tmpDataFile = "C:/I2B2ImportProject/tmp_targettreesave.csv";
+		String stringPath = "";
+		// file code by bb
+		try {
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path path = new Path("/" + Resource.Files.TEMP_FOLDER + "/"); //$NON-NLS-1$
+			URL url = FileLocator.find(bundle, path,
+					Collections.EMPTY_MAP);
+		
+			URL miscFileUrl = FileLocator.toFileURL(url);
+			File misc = new File(miscFileUrl.getPath());
+			System.out.println("fx1: " + url.getPath());
+			System.out.println("fx2: " + misc.getAbsolutePath());
+			stringPath = misc.getAbsolutePath().replaceAll("\\\\", "/") + "/" + Resource.Files.TEMP_TOS_CONNECTOR_FILE;
+		
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+			
+	
+
+		// absolutePath = "C:/I2B2ImportProject/iletree.csv";
 
 		Console.info("Saving Target Ontology.");
 
@@ -62,7 +94,7 @@ public class SaveTarget extends AbstractHandler {
 		try {
 			// TODO save target tmp file
 
-			_writer = new CSVWriter(new FileWriter(tmpDataFile));
+			_writer = new CSVWriter(new FileWriter(stringPath));
 			_writer.writeNext(fields);
 			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
 					.getTreeRoot().getFirstChild()));
@@ -80,9 +112,9 @@ public class SaveTarget extends AbstractHandler {
 
 		TOSConnector tos = new TOSConnector();
 
-		tos.setContextVariable("Job", "write_target_ontology");
-		tos.setContextVariable("Var1", "1");
-		tos.setContextVariable("DataFile", tmpDataFile);
+		TOSConnector.setContextVariable("Job", "write_target_ontology");
+		tos.setContextVariable("Var1", "1"); // target ontology id
+		tos.setContextVariable("DataFile", stringPath);
 
 		try {
 
@@ -92,9 +124,6 @@ public class SaveTarget extends AbstractHandler {
 					+ e.getMessage());
 			return 1;
 		}
-
-		// i2b2ImportTool.getMyOT().getOTTarget().setModel(newTreeModel2);
-		// i2b2ImportTool.getMyOT().getOTTarget().updateUI();
 
 		return null;
 	}

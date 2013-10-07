@@ -146,21 +146,20 @@ public class Resource {
 		this._editorTargetInfoView = editorTargetInfoView;
 	}
 
-	/*
-	 * public Display getDisplay() { return _display; }
-	 * 
-	 * public void setDisplay(Display display) { this._display = display; }
-	 */
-	public void addMessage(String message) {
-		this.addMessage(message, SystemMessage.MessageType.INFO,
-				SystemMessage.MessageLocation.MAIN);
-	}
+
 
 	public static void addMessage(String message,
 			SystemMessage.MessageType messageType,
 			SystemMessage.MessageLocation messageLocation) {
 		Application.getStatusView().addMessage(message, messageType,
 				messageLocation);
+	}
+	
+	public class Files {
+		
+		public static final String TEMP_FOLDER = "temp";
+		public static final String TEMP_TOS_CONNECTOR_FILE = "temp_TOS_COnnector_file.csv";
+		
 	}
 
 	public class OntologyTree {
