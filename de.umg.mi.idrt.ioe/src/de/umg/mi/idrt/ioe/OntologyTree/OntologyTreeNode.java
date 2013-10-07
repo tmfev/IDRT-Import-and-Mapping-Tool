@@ -23,7 +23,6 @@ import de.umg.mi.idrt.ioe.Resource;
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 
-
 	/**
 	 * a list of this nodes children for the use in a swt tree viewer
 	 */
@@ -93,6 +92,11 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		setName("No_Name");
 	}
 
+	
+	@Override
+	public boolean isRoot() {
+		return super.isRoot();
+	}
 	/**
 	 * Sets the name attribute for this node.
 	 * 
@@ -278,7 +282,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * @return the name
 	 */
 	public String toString() {
-		return this._name;
+		return this._name + " " + this._treePath;
 	}
 
 	/* ******************************

@@ -540,15 +540,13 @@ public class MyOntologyTree extends JPanel {
 
 	}
 
-	public void dropCommandCopyNodes(final String sourcePath,
-			final String targetPath) {
+	public void dropCommandCopyNodes(final String sourcePath, final String targetPath) {
 
 		// createPopupMenu();
 
 		System.out.println("createPopupMenu():");
 		Shell shell = Application.getShell();
-		System.out.println(" - shell is null? "
-				+ (shell == null ? "true" : "false"));
+		System.out.println(" - shell is null? "+ (shell == null ? "true" : "false"));
 
 		final Shell dialog = new Shell(shell, SWT.APPLICATION_MODAL | SWT.NONE
 				| SWT.TOOL);
@@ -580,8 +578,8 @@ public class MyOntologyTree extends JPanel {
 						targetPath);
 				Application.executeCommand(command);
 				dialog.close();
-				OntologyEditorView.getTreeViewer().expandAll();
-				OntologyEditorView.getTreeViewer().refresh();
+				OntologyEditorView.getTargetTreeViewer().expandAll();
+				OntologyEditorView.getTargetTreeViewer().refresh();
 			}
 		});
 
@@ -605,9 +603,7 @@ public class MyOntologyTree extends JPanel {
 				 * 
 				 * actionMenu.pack();
 				 */
-
 			}
-
 		});
 
 		Button btnCombine = new Button(actionMenu, SWT.NONE);
@@ -652,43 +648,4 @@ public class MyOntologyTree extends JPanel {
 		return this.viewTreeTarget;
 	}
 
-	public void createPopupMenu() {
-		System.out.println("createPopupMenu():");
-		Shell shell = Application.getShell();
-		System.out.println(" - shell is null? "
-				+ (shell == null ? "true" : "false"));
-
-		final Shell dialog = new Shell(shell, SWT.APPLICATION_MODAL | SWT.NONE
-				| SWT.ON_TOP);
-
-		dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
-				.getCursorLocation());
-
-		Composite actionMenu = new Composite(dialog, SWT.NONE);
-
-		actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(2, false));
-
-		Button btnInsert = new Button(actionMenu, SWT.NONE);
-		btnInsert.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
-		btnInsert.setBounds(0, 0, 75, 25);
-		btnInsert.setText("insert nodes here");
-
-		Button btnCombine = new Button(actionMenu, SWT.NONE);
-		btnCombine.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
-				false, 1, 1));
-		btnCombine.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool",
-				"images/format-indent-more.png"));
-		btnCombine.setBounds(0, 0, 75, 25);
-		btnCombine.setText("combine nodes here");
-
-		actionMenu.pack();
-		dialog.pack();
-		dialog.open();
-
-		OntologyEditorView.getTreeViewer().expandAll();
-		OntologyEditorView.getTreeViewer().refresh();
-
-	}
 }

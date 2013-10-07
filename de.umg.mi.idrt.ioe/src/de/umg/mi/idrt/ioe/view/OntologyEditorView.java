@@ -3,6 +3,8 @@ package de.umg.mi.idrt.ioe.view;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.swt.SWT;
@@ -10,12 +12,16 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuAdapter;
 import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FillLayout;
 
+import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
@@ -30,6 +36,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import swing2swt.layout.BorderLayout;
+import org.eclipse.swt.widgets.Label;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -47,26 +55,39 @@ public class OntologyEditorView extends ViewPart {
 		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
 	}
 
+	private static TreeViewer sourceTreeViewer;
 	private static Composite sourceComposite;
 	private static Composite targetComposite;
 	private static Composite mainComposite;
 	private static SashForm sash;
-	
-	private static TreeViewer _treeViewer = null;
-	
+
+	private static TreeViewer targetTreeViewer;
+	private Label lblSource;
+	private Label lblTarget;
+	private static IHandlerService handlerService;
+
 	public OntologyEditorView() {
 	}
 
 	@Override
 	public void createPartControl(Composite parent) {
-		
+		handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
 		mainComposite = parent;
 		sash = new SashForm(mainComposite, SWT.NONE);
 		sourceComposite = new Composite(sash, SWT.NONE);
-		sourceComposite.setLayout(new FillLayout());
+		sourceComposite.setLayout(new BorderLayout(0, 0));
+
+		lblSource = new Label(sourceComposite, SWT.NONE);
+		lblSource.setLayoutData(BorderLayout.NORTH);
+		lblSource.setText("Staging i2b2");
 		targetComposite = new Composite(sash, SWT.NONE);
-		targetComposite.setLayout(new FillLayout());
-		
+		targetComposite.setLayout(new BorderLayout(0, 0));
+
+		lblTarget = new Label(targetComposite, SWT.NONE);
+		lblTarget.setLayoutData(BorderLayout.NORTH);
+		lblTarget.setText("Target i2b2");
+
 	}
 	public static void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
 		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
@@ -74,55 +95,88 @@ public class OntologyEditorView extends ViewPart {
 	@Override
 	public void setFocus() {
 	}
-	
+
 	public static void setTargetContent(OntologyTree oTTarget) {
-		_treeViewer = new TreeViewer(targetComposite, SWT.MULTI
+		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
-		NodeDropListener nodeDropListener = new NodeDropListener(_treeViewer);
+		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
 		nodeDropListener.setMyOT(i2b2ImportTool.getMyOntologyTrees());
-		
+
 		try {
-			_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
+			targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
 		} catch (Exception e2) {
 			Console.error("Could not initialize Drop in the editor target view.");
 		}
-		
-		
+
+
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeTarget());
 
-		_treeViewer.setContentProvider(treeContentProvider);
-		// viewer.setContentProvider(new TreeContentProvider());
-		_treeViewer.setLabelProvider(new ViewTableLabelProvider(_treeViewer));
-		// viewer.setInput(ContentProviderTree.INSTANCE.getModel());
-		// ContentProviderTree contentProviderTree = new ContentProviderTree(
-		// _i2b2ImportTool.getMyOT().getOT() );
-		// viewer.setInput(ContentProviderTree.INSTANCE.getModel());
-		_treeViewer.setInput(new OTtoTreeContentProvider().getModel());
-
-		_treeViewer.expandToLevel(8);
+		targetTreeViewer.setContentProvider(treeContentProvider);
+		targetTreeViewer.setLabelProvider(new ViewTableLabelProvider(targetTreeViewer));
+		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
+		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if (e.keyCode == SWT.DEL) {
+					System.out.println("DELETE");
+					deleteNode();
+				}
+			}
+		});
+		targetTreeViewer.expandToLevel(8);
 
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
-				.setTreeViewer(_treeViewer);
+		.setTreeViewer(targetTreeViewer);
 
-		// final Menu menu = new Menu(viewer.getTree())
-		final Menu menu = getContextMenu(_treeViewer.getTree());
-		_treeViewer.getTree().setMenu(menu);
+		Menu menu = new Menu(targetTreeViewer.getTree());
+
+		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
+		mntmInsert.setImage(ResourceManager.getPluginImage(
+				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
+		mntmInsert.setText("Insert");
+
+		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
+		mntmCombine.setImage(ResourceManager.getPluginImage(
+				"edu.goettingen.i2b2.importtool",
+				"images/format-indent-more.png"));
+		mntmCombine.setText("Combine");
+
+		MenuItem mntmDelete = new MenuItem(menu, SWT.PUSH);
+		mntmDelete.setText("Delete Item");
+		mntmDelete.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				deleteNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		targetTreeViewer.getTree().setMenu(menu);
 		menu.addMenuListener(new MenuAdapter() {
 			public void menuShown(MenuEvent e) {
 			}
 		});
 
-		_treeViewer.getTree().addSelectionListener(new SelectionAdapter() {
-
+		targetTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-
 				if (e.item == null || e.item.getData() == null) {
-					System.out
-							.println("WidgetSelected but no known node found!");
+					System.out.println("WidgetSelected but no known node found!");
 					return;
 				}
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
@@ -130,7 +184,7 @@ public class OntologyEditorView extends ViewPart {
 				if (node != null) {
 
 					Activator.getDefault().getResource()
-							.getEditorTargetInfoView().setNode(node);
+					.getEditorTargetInfoView().setNode(node);
 
 					Application.getStatusView().addMessage(
 							new SystemMessage("Target selection changed to \'"
@@ -139,12 +193,12 @@ public class OntologyEditorView extends ViewPart {
 									SystemMessage.MessageLocation.MAIN));
 				} else {
 					Application
-							.getStatusView()
-							.addMessage(
-									new SystemMessage(
-											"Target selection changed but new selection isnt' any know kind of node..",
-											SystemMessage.MessageType.ERROR,
-											SystemMessage.MessageLocation.MAIN));
+					.getStatusView()
+					.addMessage(
+							new SystemMessage(
+									"Target selection changed but new selection isnt' any know kind of node..",
+									SystemMessage.MessageType.ERROR,
+									SystemMessage.MessageLocation.MAIN));
 				}
 			}
 		});
@@ -153,47 +207,41 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSourceContent() {
-		TreeViewer sourceTreeViewer = new TreeViewer(sourceComposite, SWT.MULTI | SWT.H_SCROLL
+		sourceTreeViewer = new TreeViewer(sourceComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 		sourceTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
 				sourceTreeViewer));
-		
+
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeSource());
-		
+
 		sourceTreeViewer.setContentProvider(treeContentProvider);		
 		sourceTreeViewer.setLabelProvider(new ViewTableLabelProvider(sourceTreeViewer));
 
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
-		
+
 		sourceTreeViewer.setInput(oTreeContent.getModel());
 		sourceTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
-			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
-						.setTreeViewer(sourceTreeViewer);
+		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
+		.setTreeViewer(sourceTreeViewer);
 
 		sourceTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 
 			public void widgetSelected(SelectionEvent e) {
-
-				// ViewTableNode viewNode = (ViewTableNode) e.item.item;
 				if (e.item == null || e.item.getData() == null) {
 					Console.error("WidgetSelected but no known node found!");
 					return;
 				}
-
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
-
 				if (node != null) {
-
 					Activator.getDefault().getResource()
 					.getEditorSourceInfoView().setNode(node);
-
 					Application.getStatusView().addMessage(
 							new SystemMessage("Selection changed to \'"
 									+ node.getName() + "\'.",
@@ -214,33 +262,53 @@ public class OntologyEditorView extends ViewPart {
 		mainComposite.layout();
 		System.out.println("LENGTH: " + sourceTreeViewer.getTree().getItems().length);
 	}
-	private static Menu getContextMenu(Composite composite) {
 
-		Menu menu = new Menu(composite);
-		// editorTargetView.setMenu(menu);
 
-		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
-		mntmInsert.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
-		mntmInsert.setText("Insert");
-
-		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
-		mntmCombine.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool",
-				"images/format-indent-more.png"));
-		mntmCombine.setText("Combine");
-
-		return menu;
+	//	private Menu getContextMenu(Composite composite) {
+	//
+	//		Menu menu = new Menu(composite);
+	//
+	//		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
+	//		mntmInsert.setImage(ResourceManager.getPluginImage(
+	//				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
+	//		mntmInsert.setText("Insert");
+	//
+	//		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
+	//		mntmCombine.setImage(ResourceManager.getPluginImage(
+	//				"edu.goettingen.i2b2.importtool",
+	//				"images/format-indent-more.png"));
+	//		mntmCombine.setText("Combine");
+	//		
+	//		MenuItem mntmDelete = new MenuItem(menu, SWT.PUSH);
+	//		mntmDelete.setText("Delete Item");
+	//		mntmDelete.addSelectionListener(new SelectionListener() {
+	//			
+	//			@Override
+	//			public void widgetSelected(SelectionEvent e) {
+	//				deleteNode();
+	//			}
+	//			
+	//			@Override
+	//			public void widgetDefaultSelected(SelectionEvent e) {
+	//				
+	//			}
+	//		});
+	//		
+	//		return menu;
+	//	}
+	public static TreeViewer getTargetTreeViewer() {
+		return targetTreeViewer;
 	}
-	public static TreeViewer getTreeViewer() {
-		return _treeViewer;
+
+	private static void deleteNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
 	}
 	
 	public static void setSelection(OntologyTreeNode node) {
 		System.out.println("setSelection Target");
-		getTreeViewer().expandToLevel(node, node.getTreePathLevel());
-		getTreeViewer().setSelection(new StructuredSelection(node), true);
-		getTreeViewer().refresh();
+		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
+		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
+		getTargetTreeViewer().refresh();
 		Application.getEditorTargetInfoView().setNode(node);
 	}
 }

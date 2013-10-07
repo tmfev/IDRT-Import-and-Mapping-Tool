@@ -57,7 +57,7 @@ public class I2B2ImportTool extends JFrame implements TreeSelectionListener,
 				SystemMessage.MessageLocation.MAIN));
 	}
 
-	private void setMyOT (MyOntologyTree myOT){
+	public void setMyOT (MyOntologyTree myOT){
 		this.myOT = myOT;
 	}
 	

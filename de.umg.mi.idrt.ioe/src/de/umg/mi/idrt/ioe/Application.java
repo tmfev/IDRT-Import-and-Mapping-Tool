@@ -266,8 +266,10 @@ public class Application implements IApplication {
 			try {
 				handlerService.executeCommand(commandID, null);
 			} catch(NotHandledException ne){
+				ne.printStackTrace();
 				Debug.d("NotHandledException while executing command \"" + commandID + "\"");
 			} catch (Exception e) {
+				e.printStackTrace();
 				Console.error(e, true);
 			}
 		}
