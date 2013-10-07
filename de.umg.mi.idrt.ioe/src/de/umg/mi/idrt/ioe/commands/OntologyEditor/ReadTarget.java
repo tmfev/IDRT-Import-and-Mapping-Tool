@@ -90,7 +90,7 @@ public class ReadTarget extends AbstractHandler {
 				tos.setContextVariable("Var1", "1");
 				tos.runJob();
 
-				OntologyEditorView.getTreeViewer().getTree().update();
+				OntologyEditorView.getTargetTreeViewer().getTree().update();
 				
 				//editorTargetView.getTreeViewer().getTree().clearAll(true);
 					

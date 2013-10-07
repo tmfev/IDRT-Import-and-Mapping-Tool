@@ -47,9 +47,8 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info("getDate: "
 				+ ((OntologyTreeNode) event.item.getData()).getName());
 		event.item.getData();
-		OntologyTreeNode targetNode = (OntologyTreeNode) determineTarget(event);
 
-		this.targetNode = targetNode;
+		targetNode = (OntologyTreeNode) determineTarget(event);
 
 		switch (location) {
 		case 1:
@@ -145,7 +144,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 		// fileSelectionButton.setFocus();
 
-		this.viewer.refresh();
+		viewer.refresh();
 
 		return false;
 	}

@@ -115,6 +115,11 @@
             id="de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2"
             name="etlStagingI2B2ToTargetI2B2">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.DeleteNodeCommand"
+            id="de.umg.mi.idrt.ioe.deletenode"
+            name="DeleteNode">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

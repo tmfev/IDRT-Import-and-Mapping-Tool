@@ -97,8 +97,8 @@ public class GUIDialogTest extends Dialog {
 			public void widgetSelected(SelectionEvent e) {
 
 				shell.close();
-				OntologyEditorView.getTreeViewer().expandAll();
-				OntologyEditorView.getTreeViewer().refresh();
+				OntologyEditorView.getTargetTreeViewer().expandAll();
+				OntologyEditorView.getTargetTreeViewer().refresh();
 			}
 		});
 		
