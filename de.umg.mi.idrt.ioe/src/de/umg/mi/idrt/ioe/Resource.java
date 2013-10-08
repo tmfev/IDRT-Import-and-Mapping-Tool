@@ -20,7 +20,6 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.LevelAndPath;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
