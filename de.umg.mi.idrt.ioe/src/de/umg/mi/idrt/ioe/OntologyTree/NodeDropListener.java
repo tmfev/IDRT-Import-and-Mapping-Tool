@@ -37,9 +37,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 		this.viewer = viewer;
 	}
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	@Override
 	public void drop(DropTargetEvent event) {
 		int location = this.determineLocation(event);

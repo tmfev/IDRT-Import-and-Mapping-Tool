@@ -39,8 +39,18 @@ import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
+
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Text;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -69,6 +79,16 @@ public class OntologyEditorView extends ViewPart {
 	private static Label lblSource;
 	private static Label lblTarget;
 	private static DropTargetListener dropListener;
+	private static Composite composite;
+	private static Composite composite_1;
+	private static Composite composite_2;
+	private static Button btnNewVersion;
+	private static Composite composite_3;
+	private static Label lblVersion;
+	private static Label label;
+	private static Label lblNameText;
+	private static Label lblVersionText;
+	private static Label label_1;
 
 	public OntologyEditorView() {
 	}
@@ -100,11 +120,13 @@ public class OntologyEditorView extends ViewPart {
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else {
+
 					IHandlerService handlerService = (IHandlerService) getSite()
 							.getService(IHandlerService.class);
 					try {
 						handlerService.executeCommand(
 								"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
+						setTargetNameVersion((String)event.data, "0");
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
@@ -126,39 +148,80 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 		dropTarget.addDropListener(dropListener);
+
+
+
+
 	}
-
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public static void init() {
-
 		System.out.println("INIT!");
-		mainComposite.getChildren()[0].dispose();
 
-		sash = new SashForm(mainComposite, SWT.NONE);
+
+//		Shell shell = new Shell();
+//		shell.setSize(683, 451);
+//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//		mainComposite = new Composite(shell, SWT.NONE);
+//		mainComposite.setLayout(new BorderLayout(0, 0));
+
+		mainComposite.getChildren()[0].dispose();
+		composite = new Composite(mainComposite, SWT.NONE);
+		composite.setLayout(new BorderLayout(0, 0));
+
+		sash = new SashForm(composite, SWT.NONE);
 		sourceComposite = new Composite(sash, SWT.NONE);
 		sourceComposite.setLayout(new BorderLayout(0, 0));
-		lblSource = new Label(sourceComposite, SWT.NONE);
-		lblSource.setLayoutData(BorderLayout.NORTH);
-		lblSource.setText("Staging i2b2");
 		targetComposite = new Composite(sash, SWT.NONE);
 		targetComposite.setLayout(new BorderLayout(0, 0));
-
-		lblTarget = new Label(targetComposite, SWT.NONE);
-		lblTarget.setLayoutData(BorderLayout.NORTH);
-		lblTarget.setText("Target i2b2");
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
 
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
-
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
 
 		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
-		//		nodeDropListener.setMyOT(i2b2ImportTool.getMyOntologyTrees());
+
+		composite_2 = new Composite(targetComposite, SWT.NONE);
+		composite_2.setLayoutData(BorderLayout.NORTH);
+		composite_2.setLayout(new GridLayout(6, true));
+
+		lblTarget = new Label(composite_2, SWT.NONE);
+		lblTarget.setText("Target i2b2");
+
+		label = new Label(composite_2, SWT.SEPARATOR);
+		GridData gd_label = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_label.heightHint = 20;
+		label.setLayoutData(gd_label);
+		System.out.println("lblTarget: " + lblTarget.getBounds());
+
+		lblNameText = new Label(composite_2, SWT.NONE);
+
+		lblVersion = new Label(composite_2, SWT.NONE);
+		lblVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblVersion.setText("Version:");
+
+		lblVersionText = new Label(composite_2, SWT.NONE);
+		btnNewVersion = new Button(composite_2, SWT.NONE);
+		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/plus16.png"));
+		btnNewVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
+		btnNewVersion.setToolTipText("New Version");
+		btnNewVersion.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				incrementVersion();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
 
 		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
-//		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-//				targetTreeViewer));
 		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
 
 			@Override
@@ -206,8 +269,19 @@ public class OntologyEditorView extends ViewPart {
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		sourceTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
 				sourceTreeViewer));
+
+		composite_3 = new Composite(sourceComposite, SWT.NONE);
+		composite_3.setLayoutData(BorderLayout.NORTH);
+		lblSource = new Label(composite_3, SWT.NONE);
+		lblSource.setSize(215, 15);
+		lblSource.setText("Staging i2b2");
+		sash.setWeights(new int[] {331, 333});
+
+		composite_1 = new Composite(composite, SWT.NONE);
+		composite_1.setLayoutData(BorderLayout.NORTH);
+		composite_1.setLayout(new GridLayout(1, false));
 		sourceTreeViewer.addDropSupport(operations, transferTypes,dropListener);
-			
+
 
 		sourceTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -236,6 +310,20 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 		init = true;
+	}
+
+	private static void incrementVersion() {
+		int version = Integer.parseInt(lblVersionText.getText());
+		version++;
+		lblVersionText.setText(""+version);
+		composite_2.layout();
+	}
+
+	public static void setTargetNameVersion(String name, String version) {
+		System.out.println("SETTING: " + name + " " + version);
+		lblNameText.setText(name);
+		lblVersionText.setText(version);
+		composite_2.layout();
 	}
 
 	public static void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
