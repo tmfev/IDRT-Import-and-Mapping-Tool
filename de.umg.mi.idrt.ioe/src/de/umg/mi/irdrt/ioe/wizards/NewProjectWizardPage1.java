@@ -5,6 +5,8 @@ import java.util.Calendar;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
@@ -31,9 +33,6 @@ public class NewProjectWizardPage1 extends WizardPage {
 	public void createControl(Composite parent) {
 		Composite comp = new Composite(parent, SWT.NULL);
 
-
-
-		setControl(comp);
 		comp.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		Composite composite = new Composite(comp, SWT.NONE);
@@ -45,7 +44,16 @@ public class NewProjectWizardPage1 extends WizardPage {
 
 		nameText = new Text(composite, SWT.BORDER);
 		nameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
+		nameText.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+					if (!nameText.getText().isEmpty())
+						setPageComplete(true);
+					else
+						setPageComplete(false);
+			}
+		});
 		Label lblDescription = new Label(composite, SWT.NONE);
 		lblDescription.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 2));
 		lblDescription.setText("Description:");
@@ -65,9 +73,25 @@ public class NewProjectWizardPage1 extends WizardPage {
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 		String time = sdf.format(cal.getTime());
 		dateText.setText(time);
+		setControl(comp);
+		setPageComplete(false);
+	}
+	public static String getNameText() {
+		return nameText.getText();
 	}
 	
+	@Override
+	public boolean isPageComplete() {
+		return !nameText.getText().isEmpty();
+	}
 	protected static boolean isComplete() {
 		return !nameText.getText().isEmpty();
+	}
+	public static String getCreated() {
+		return dateText.getText();
+	}
+
+	public static String getDescriptionText() {
+		return descrText.getText();
 	}
 }

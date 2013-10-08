@@ -32,8 +32,9 @@ public class SaveTarget extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
+		Console.info("Saving Target Ontology.");
+		
 		String stringPath = "";
-		// file code by bb
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path path = new Path("/" + Resource.Files.TEMP_FOLDER + "/"); //$NON-NLS-1$
@@ -42,21 +43,17 @@ public class SaveTarget extends AbstractHandler {
 		
 			URL miscFileUrl = FileLocator.toFileURL(url);
 			File misc = new File(miscFileUrl.getPath());
-			System.out.println("fx1: " + url.getPath());
-			System.out.println("fx2: " + misc.getAbsolutePath());
 			stringPath = misc.getAbsolutePath().replaceAll("\\\\", "/") + "/" + Resource.Files.TEMP_TOS_CONNECTOR_FILE;
 		
 			
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException  e) {
 			e.printStackTrace();
+			stringPath = "C:\tmp.csv";
 		} catch (IOException e) {
 			e.printStackTrace();
+			stringPath = "C:\tmp.csv";
 		}
 
-			
-	
-
-		// absolutePath = "C:/I2B2ImportProject/iletree.csv";
 
 		Console.info("Saving Target Ontology.");
 
@@ -99,7 +96,8 @@ public class SaveTarget extends AbstractHandler {
 			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
 					.getTreeRoot().getFirstChild()));
 			_writer.close();
-
+			
+			
 		} catch (IOException e) {
 			Console.error(e.toString());
 		}

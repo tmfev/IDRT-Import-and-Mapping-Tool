@@ -24,9 +24,6 @@ public class NewProjectWizard extends Wizard {
 		// addPage(two);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#canFinish()
-	 */
 	@Override
 	public boolean canFinish() {
 		return NewProjectWizardPage1.isComplete();
@@ -34,6 +31,13 @@ public class NewProjectWizard extends Wizard {
 	
 	@Override
 	public boolean performFinish() {
+		
+		System.out.println("Creating New Project:");
+		System.out.println("Name: " + NewProjectWizardPage1.getNameText());
+		System.out.println("Descr.: " + NewProjectWizardPage1.getDescriptionText());
+		System.out.println("Created: " + NewProjectWizardPage1.getCreated());
+		
+		//TODO DB Access
 		return true;
 	}
 

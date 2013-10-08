@@ -1,13 +1,14 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 import org.eclipse.core.commands.AbstractHandler;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.wizard.WizardDialog;
 import de.umg.mi.irdrt.ioe.wizards.*;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class NewProjectCommand extends AbstractHandler {
+public class NewProjectCommand extends AbstractHandler{
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

@@ -9,6 +9,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
+		
         super(configurer);
     }
 
