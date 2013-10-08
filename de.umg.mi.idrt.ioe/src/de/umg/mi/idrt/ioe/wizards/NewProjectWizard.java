@@ -1,4 +1,4 @@
-package de.umg.mi.irdrt.ioe.wizards;
+package de.umg.mi.idrt.ioe.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
 
