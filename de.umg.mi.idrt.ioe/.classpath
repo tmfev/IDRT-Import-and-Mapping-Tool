@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry exported="true" kind="lib" path="lib/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/"/>
 	<classpathentry exported="true" kind="lib" path="lib/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/idrt_truncate_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/ojdbc5-11g.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/systemRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/talend-db-oracle-timestamptz.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/userRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/xdb.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/lib/xmlparserv2.jar"/>
 	<classpathentry kind="lib" path="lib/cdatetime-0.14.0.jar"/>
 	<classpathentry kind="lib" path="lib/classpath.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.5.jar"/>
