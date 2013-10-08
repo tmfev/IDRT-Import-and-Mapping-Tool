@@ -65,6 +65,7 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
+               id="file.id"
                label="File">
             <command
                   commandId="org.eclipse.ui.file.exit"
