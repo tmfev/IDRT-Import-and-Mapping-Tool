@@ -40,6 +40,8 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 public class ServerList {
 
 	final static int iterations = 3;
+	private static HashMap<String, String> userServer= new HashMap<String, String>();
+
 	private static Connection connect = null;
 	private static HashMap<String, Server> servers = new HashMap<String, Server>();
 	private static HashMap<String, Server> importDBServers = new HashMap<String, Server>();
@@ -51,7 +53,7 @@ public class ServerList {
 	private static Properties defaultProps;
 	private static String[] USERROLES = { "USER", "EDITOR", "DATA_PROT",
 		"DATA_OBFSC", "DATA_LDS", "DATA_DEID", "DATA_AGG" };
-	
+
 
 	public static void addSourceServer(Server loadServer) {
 		if (!servers.containsKey(loadServer.getUniqueID())) {
@@ -290,97 +292,97 @@ public class ServerList {
 						}
 
 					}
-						resultSet = statement
-								.executeQuery("select view_name from dba_views where owner ='"
-										+ user.getName() + "'");
-						while (resultSet.next()) {
-							String table = resultSet.getString("view_name");
-							ServerTable newTable = new ServerTable(server,
-									user.getName(), table);
-							tables.add(newTable);
-						}
-						connect.close();
-						return tables;
-					} else {
-						resultSet = statement
-								.executeQuery("select table_name, temporary, secondary from user_tables");
-	
-						while (resultSet.next()) {
-							String table = resultSet.getString("table_name");
-							Boolean temp = resultSet.getString("temporary").equals("Y");
-							Boolean secondary = resultSet.getString("secondary")
-									.equals("Y");
-	
-							if (defaultProps.getProperty("hideTemp").equals("true")) {
-								if (!temp && !secondary) {
-									ServerTable newTable = new ServerTable(server,
-											user.getName(), table);
-									tables.add(newTable);
-								}
-							} else {
+					resultSet = statement
+							.executeQuery("select view_name from dba_views where owner ='"
+									+ user.getName() + "'");
+					while (resultSet.next()) {
+						String table = resultSet.getString("view_name");
+						ServerTable newTable = new ServerTable(server,
+								user.getName(), table);
+						tables.add(newTable);
+					}
+					connect.close();
+					return tables;
+				} else {
+					resultSet = statement
+							.executeQuery("select table_name, temporary, secondary from user_tables");
+
+					while (resultSet.next()) {
+						String table = resultSet.getString("table_name");
+						Boolean temp = resultSet.getString("temporary").equals("Y");
+						Boolean secondary = resultSet.getString("secondary")
+								.equals("Y");
+
+						if (defaultProps.getProperty("hideTemp").equals("true")) {
+							if (!temp && !secondary) {
 								ServerTable newTable = new ServerTable(server,
 										user.getName(), table);
 								tables.add(newTable);
 							}
-						}
-	
-						resultSet = statement
-								.executeQuery("select view_name from user_views");
-						while (resultSet.next()) {
-							String table = resultSet.getString("view_name");
+						} else {
 							ServerTable newTable = new ServerTable(server,
 									user.getName(), table);
 							tables.add(newTable);
 						}
 					}
-				}
-				else if (user.getServer().getDatabaseType().equalsIgnoreCase("mysql")) {
+
 					resultSet = statement
-							.executeQuery("use " + user.getName());
-					resultSet = statement
-							.executeQuery("show tables");
+							.executeQuery("select view_name from user_views");
 					while (resultSet.next()) {
-						String table = resultSet.getString(1);
+						String table = resultSet.getString("view_name");
 						ServerTable newTable = new ServerTable(server,
 								user.getName(), table);
 						tables.add(newTable);
 					}
 				}
-				else if(user.getServer().getDatabaseType().equalsIgnoreCase("mssql")) {
-					statement.execute("use " + user.getName());
-						resultSet = statement
-								.executeQuery("select * from information_schema.tables;");
-						while (resultSet.next()) {
-							String table = resultSet.getString("table_name");
-							String schema = resultSet.getString("table_schema");
-								ServerTable newTable = new ServerTable(server,
-										user.getName(), table);
-								newTable.setDatabaseSchema(schema);
-								tables.add(newTable);
-								tableMap.put(table, newTable);
-						}
-	
-	//					resultSet = statement
-	//							.executeQuery("SELECT name FROM sysobjects WHERE xtype = 'v'");
-	//					while (resultSet.next()) {
-	//						String table = resultSet.getString("name");
-	//						ServerTable newTable = new ServerTable(server,
-	//								user.getName(), table);
-	//						tables.add(newTable);
-	//					}
-				}
-				connect.close();
-				return tables;
-	
-	
-				// return tables;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
-			return null;
+			else if (user.getServer().getDatabaseType().equalsIgnoreCase("mysql")) {
+				resultSet = statement
+						.executeQuery("use " + user.getName());
+				resultSet = statement
+						.executeQuery("show tables");
+				while (resultSet.next()) {
+					String table = resultSet.getString(1);
+					ServerTable newTable = new ServerTable(server,
+							user.getName(), table);
+					tables.add(newTable);
+				}
+			}
+			else if(user.getServer().getDatabaseType().equalsIgnoreCase("mssql")) {
+				statement.execute("use " + user.getName());
+				resultSet = statement
+						.executeQuery("select * from information_schema.tables;");
+				while (resultSet.next()) {
+					String table = resultSet.getString("table_name");
+					String schema = resultSet.getString("table_schema");
+					ServerTable newTable = new ServerTable(server,
+							user.getName(), table);
+					newTable.setDatabaseSchema(schema);
+					tables.add(newTable);
+					tableMap.put(table, newTable);
+				}
+
+				//					resultSet = statement
+				//							.executeQuery("SELECT name FROM sysobjects WHERE xtype = 'v'");
+				//					while (resultSet.next()) {
+				//						String table = resultSet.getString("name");
+				//						ServerTable newTable = new ServerTable(server,
+				//								user.getName(), table);
+				//						tables.add(newTable);
+				//					}
+			}
+			connect.close();
+			return tables;
+
+
+			// return tables;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		return null;
+	}
 
 	/**
 	 * @return the tableMap
@@ -390,70 +392,70 @@ public class ServerList {
 	}
 
 	/**
-		 * Returns DBImport Users
-		 * 
-		 * @param server
-		 * @return users form DBImport
-		 */
-		public static List<User> getUsersSourceServer(Server server) {
-			try {
-				DriverManager.setLoginTimeout(1);
-				connect = server.getConnection();
-	
-				statement = connect.createStatement();
-				List<User> userList = new LinkedList<User>();
-	
-				if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
-					if (server.getUser().toLowerCase().equals("system")) {
-						// Result set get the result of the SQL query
-						resultSet = statement
-								.executeQuery("select username from all_users");
-	
-						while (resultSet.next()) {
-							String user = resultSet.getString("username");
-							User newUser = new User(user, server);
-							userList.add(newUser);
-						}
-					} else {
-						User newUser = new User(server.getUser(), server);
-						userList.add(newUser);
-					}
-				}
-				else if (server.getDatabaseType().equalsIgnoreCase("mysql")){
-	
+	 * Returns DBImport Users
+	 * 
+	 * @param server
+	 * @return users form DBImport
+	 */
+	public static List<User> getUsersSourceServer(Server server) {
+		try {
+			DriverManager.setLoginTimeout(1);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			List<User> userList = new LinkedList<User>();
+
+			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+				if (server.getUser().toLowerCase().equals("system")) {
+					// Result set get the result of the SQL query
 					resultSet = statement
-							.executeQuery("show databases");
-	
+							.executeQuery("select username from all_users");
+
 					while (resultSet.next()) {
-						String user = resultSet.getString("Database");
+						String user = resultSet.getString("username");
 						User newUser = new User(user, server);
 						userList.add(newUser);
 					}
+				} else {
+					User newUser = new User(server.getUser(), server);
+					userList.add(newUser);
 				}
-				else if (server.getDatabaseType().equalsIgnoreCase("mssql")){
-	
-						//SELECT * FROM sys.databases
-						resultSet = statement
-								.executeQuery("SELECT * FROM sys.databases");
-	
-						while (resultSet.next()) {
-							String user = resultSet.getString("name");
-							User newUser = new User(user, server);
-							userList.add(newUser);
-						}
-	//					User newUser = new User(server.getUser(), server);
-	//					userList.add(newUser);
-				}
-	
-				connect.close();
-				return userList;
-			} catch (SQLException e) {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error", e.getMessage());
-				e.printStackTrace();
 			}
-			return null;
+			else if (server.getDatabaseType().equalsIgnoreCase("mysql")){
+
+				resultSet = statement
+						.executeQuery("show databases");
+
+				while (resultSet.next()) {
+					String user = resultSet.getString("Database");
+					User newUser = new User(user, server);
+					userList.add(newUser);
+				}
+			}
+			else if (server.getDatabaseType().equalsIgnoreCase("mssql")){
+
+				//SELECT * FROM sys.databases
+				resultSet = statement
+						.executeQuery("SELECT * FROM sys.databases");
+
+				while (resultSet.next()) {
+					String user = resultSet.getString("name");
+					User newUser = new User(user, server);
+					userList.add(newUser);
+				}
+				//					User newUser = new User(server.getUser(), server);
+				//					userList.add(newUser);
+			}
+
+			connect.close();
+			return userList;
+		} catch (SQLException e) {
+			MessageDialog.openError(Display.getDefault()
+					.getActiveShell(), "Error", e.getMessage());
+			e.printStackTrace();
 		}
+		return null;
+	}
 
 	/**
 	 * returns all i2b2 projects
@@ -467,42 +469,47 @@ public class ServerList {
 		try {
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
-	
-			statement = connect.createStatement();
-			// Result set get the result of the SQL query
-			HashSet<String> users;
-			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
-				if (server.getUser().toLowerCase().equals("system")) {
+
+			if (connect!=null) {
+				statement = connect.createStatement();
+				// Result set get the result of the SQL query
+				HashSet<String> users;
+				if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+					if (server.getUser().toLowerCase().equals("system")) {
+						resultSet = statement
+								.executeQuery("select username from all_users");
+
+						users = getResultSet(resultSet, server);
+
+					} else {
+						users = new HashSet<String>();
+						users.add(server.getUser());
+						System.out.println(server.getUser() + " " + server.getName());
+					}
+				}
+				else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
 					resultSet = statement
-							.executeQuery("select username from all_users");
-	
+							.executeQuery("show databases");
+
 					users = getResultSet(resultSet, server);
-					
-				} else {
+				}
+				else {
 					users = new HashSet<String>();
 					users.add(server.getUser());
-					System.out.println(server.getUser() + " " + server.getName());
 				}
+				connect.close();
+				return users;
+			}else {
+					return null;
+				}
+			} catch (SQLException e) {
+				MessageDialog.openError(Display.getDefault()
+						.getActiveShell(), "Error", e.getMessage());
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+				return null;
 			}
-			else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
-				resultSet = statement
-						.executeQuery("show databases");
-	
-				users = getResultSet(resultSet, server);
-			}
-			else {
-				users = new HashSet<String>();
-				users.add(server.getUser());
-			}
-			connect.close();
-			return users;
-		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		}
+
 	}
 
 	private static HashSet<String> getResultSet(ResultSet resultSet,
@@ -540,14 +547,7 @@ public class ServerList {
 			while (resultSet.next()) {
 				String user = resultSet.getString("Database");
 
-				//				if (defaultProps.getProperty("filter").equals("true")) {
-				//					if (user.startsWith("I2B2")
-				//							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
 				users.add(user);
-				//					}
-				//				} else {
-				//					users.add(user);
-				//				}
 			}
 		}
 		else {
@@ -564,6 +564,10 @@ public class ServerList {
 				}
 			}	
 		}
+		//TODO HERE
+		for (String user : users) {
+			userServer.put(user, server.getName());
+		}
 		return users;
 	}
 
@@ -574,6 +578,10 @@ public class ServerList {
 	 */
 	public static HashMap<String, Server> getTargetServers() {
 		return servers;
+	}
+
+	public static HashMap<String,String> getUserServer(){
+		return userServer;
 	}
 
 	public static boolean getManager(Server server, String username,

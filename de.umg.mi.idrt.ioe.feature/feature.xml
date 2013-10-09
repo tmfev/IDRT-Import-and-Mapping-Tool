@@ -185,13 +185,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.core.databinding.property"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.ant"
          download-size="0"
          install-size="0"
@@ -354,21 +347,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.jface.databinding"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.osgi.services.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.databinding"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -390,13 +369,6 @@
 
    <plugin
          id="com.ibm.icu"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.databinding.observable"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -461,6 +433,27 @@
 
    <plugin
          id="org.eclipse.core.filesystem"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.databinding.beans"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.databinding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.databinding.observable"
          download-size="0"
          install-size="0"
          version="0.0.0"

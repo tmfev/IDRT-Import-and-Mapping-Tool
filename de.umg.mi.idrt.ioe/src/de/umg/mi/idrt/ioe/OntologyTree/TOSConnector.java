@@ -22,6 +22,7 @@ import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Christian Bauer
@@ -100,6 +101,9 @@ public class TOSConnector {
 						+ currentServer.getName() + "(\""
 						+ currentServer.getSchema() + "\")\" for db query.");
 
+				currentServer.setSchema(schema);
+				OntologyEditorView.setCurrentServer(currentServer);
+			
 				Console.info("currentSchema:" + schema);
 				Console.info("sid: " + currentServer.getSID());
 				System.out
@@ -267,6 +271,13 @@ public class TOSConnector {
 		}
 		return 0;
 
+	}
+
+	/**
+	 * 
+	 */
+	public static int uploadProject() {
+		return 0;
 	}
 
 }

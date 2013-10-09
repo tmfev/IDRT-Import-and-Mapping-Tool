@@ -3,15 +3,8 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.IHandler;
-import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.widgets.TreeItem;
-
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
-import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AddServerWizard;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;

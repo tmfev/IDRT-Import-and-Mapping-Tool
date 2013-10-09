@@ -130,6 +130,11 @@
             id="de.umg.mi.idrt.ioe.newProject"
             name="newProject">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.UploadProjectCommand"
+            id="de.umg.mi.idrt.ioe.uploadProject"
+            name="uploadProject">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
