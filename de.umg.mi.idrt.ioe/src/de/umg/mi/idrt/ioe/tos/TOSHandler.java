@@ -30,8 +30,8 @@ public class TOSHandler {
 	
 	
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
-	public static final String TableIEOTarget = "ioe_target";
-	public static final String TableIEOTargetProject = "ioe_target_project";
+	public static final String TableIEOTarget = 		"ioe_target";
+	public static final String TableIEOTargetProject =  "ioe_target_project";
 
 
 	public TOSHandler() {
