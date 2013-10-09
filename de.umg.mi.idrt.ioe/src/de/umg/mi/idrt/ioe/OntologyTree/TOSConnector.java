@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -291,7 +292,17 @@ public class TOSConnector {
 		return 0;
 
 	}
-
+	/**
+	 * Sets all context-variables.
+	 * @param contexts The contexts to set.
+	 */
+	public static void setCompleteContext(HashMap<String, String> contexts) {
+		Iterator<String> contextsIt = contexts.keySet().iterator();
+		while (contextsIt.hasNext()) {
+			String nextKey = contextsIt.next();
+			setContextVariable(nextKey, contexts.get(nextKey));
+		}
+	}
 	/**
 	 * 
 	 */
