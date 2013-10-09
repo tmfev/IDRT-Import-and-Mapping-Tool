@@ -63,8 +63,7 @@ public class SaveTarget extends AbstractHandler {
 		try {
 			ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
 					.getMyOntologyTrees().getOntologyTreeTarget();
-		} catch (java.lang.NullPointerException e) {	
-			e.printStackTrace();
+		} catch (java.lang.NullPointerException e) {
 			Console.error(
 					"Coudn't save the Target-Tree, because nothing has been loaded so far.",
 					e);
@@ -100,7 +99,6 @@ public class SaveTarget extends AbstractHandler {
 			
 			
 		} catch (IOException e) {
-			e.printStackTrace();
 			Console.error(e.toString());
 		}
 
@@ -117,10 +115,9 @@ public class SaveTarget extends AbstractHandler {
 		tos.setContextVariable("DataFile", stringPath);
 
 		try {
-			int exit = tos.runJob();
-			System.out.println("!!!EXIT: " + exit);
+
+			tos.runJob();
 		} catch (Exception e) {
-			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
 			return 1;

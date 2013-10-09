@@ -106,11 +106,11 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - data this.myOT?: "
 				+ (this.myOT == null ? "isNull" : "is NOT null"));
 		Console.info(" - data this.myOT.getViewTree()?: "
-				+ (this.myOT.getViewTreeSource() == null ? "isNull"
+				+ (this.myOT.getVieTreeSource() == null ? "isNull"
 						: "is NOT null"));
 
 		Console.info(" - data size?: "
-				+ this.myOT.getViewTreeSource().stringPathToViewTreeNode.size());
+				+ this.myOT.getVieTreeSource().stringPathToViewTreeNode.size());
 		System.out
 		.println(" - data size2?: "
 				+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
