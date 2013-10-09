@@ -27,11 +27,17 @@ public class TOSHandler {
 	OntologyTree _ot = null;
 
 	private OntologyTree _ontologyTreeTarget;
+	
+	
+	public static final String TableIEOTargetOntology = "ioe_target_ontology";
+	public static final String TableIEOTarget = "ioe_target";
+	public static final String TableIEOTargetProject = "ioe_target_project";
 
 
 	public TOSHandler() {
 
 		boolean nullError = false;
+
 
 		// try to get the current ot from the view
 
@@ -67,11 +73,11 @@ public class TOSHandler {
 		_ontologyTreeTarget = _myOT.getOntologyTreeTarget();
 	}
 
-	public void status(String status) {
+	public static void status(String status) {
 		Console.info("TOS: " + status);
 	}
 
-	public void statusSuccess(String status) {
+	public static void statusSuccess(String status) {
 		Application
 				.getStatusView()
 				.addMessage(
@@ -81,7 +87,7 @@ public class TOSHandler {
 
 	}
 
-	public void statusError(String status) {
+	public  static void statusError(String status) {
 		Console.error("TOS error:" + status);
 		Application
 		.getStatusView()
