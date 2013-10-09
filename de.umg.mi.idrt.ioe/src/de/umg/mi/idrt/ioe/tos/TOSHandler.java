@@ -23,6 +23,10 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 
 public class TOSHandler {
+	
+	public static String TableIEOTargetOntology = "ioe_target_ontology";
+	public static String TableIEOTarget = "ioe_target";
+	public static String TableIEOTargetProject = "ioe_target_project";
 
 	OntologyTree _ot = null;
 
@@ -67,11 +71,11 @@ public class TOSHandler {
 		_ontologyTreeTarget = _myOT.getOntologyTreeTarget();
 	}
 
-	public void status(String status) {
+	public static void status(String status) {
 		Console.info("TOS: " + status);
 	}
 
-	public void statusSuccess(String status) {
+	public static void statusSuccess(String status) {
 		Application
 				.getStatusView()
 				.addMessage(
@@ -81,7 +85,7 @@ public class TOSHandler {
 
 	}
 
-	public void statusError(String status) {
+	public static void statusError(String status) {
 		Console.error("TOS error:" + status);
 		Application
 		.getStatusView()
