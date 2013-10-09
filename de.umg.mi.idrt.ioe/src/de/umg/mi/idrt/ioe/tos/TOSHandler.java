@@ -24,7 +24,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TOSHandler {
 
-	OntologyTree _ot = null;
+	OntologyTree _ontologyTreeSource = null;
 
 	private OntologyTree _ontologyTreeTarget;
 	
@@ -64,13 +64,8 @@ public class TOSHandler {
 			return;
 		}
 
-		MyOntologyTree _myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		_ot = _myOT.getOntologyTreeSource();
-		/*
-		_otCreator = OntologyEditorView.getI2b2ImportTool()
-				.getOTCreator();
-		*/
-		_ontologyTreeTarget = _myOT.getOntologyTreeTarget();
+		_ontologyTreeSource = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource();
+		_ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget();
 	}
 
 	public static void status(String status) {
@@ -107,20 +102,7 @@ public class TOSHandler {
 			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
 			String C_SYMBOL) {
 
-		if (_ot == null)
-			System.out.println("_ot == null!!");
-
-		// System.out.println("C_METADATAXML: ");
-		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
-		// System.out.println(" - link2: " + C_METADATAXML != null ?
-		// String.valueOf(C_METADATAXML) : "<null>");
-
-		if (C_HLEVEL < 3) {
-			System.out.println(" node " + C_NAME + " ");
-			System.out.println("   -> " + C_HLEVEL + " -> " + C_FULLNAME);
-		}
-
-		OntologyTreeNode node = _ot.addNodeByPath(C_FULLNAME, C_NAME);
+		OntologyTreeNode node = _ontologyTreeSource.addNodeByPath(C_FULLNAME, C_NAME);
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
 		node.setOntologyCellAttributes(C_HLEVEL, C_FULLNAME, C_NAME,
 				C_SYNONYM_CD, C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE,

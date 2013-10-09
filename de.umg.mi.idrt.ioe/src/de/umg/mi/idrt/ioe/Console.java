@@ -46,7 +46,6 @@ public class Console {
 	
 	public static void error(String text){
 		Debug.e("#ERROR: " + text);
-
 	}
 	
 	public static void error(String text, boolean dialog){
@@ -67,7 +66,6 @@ public class Console {
 	public static void error(Exception exception, boolean dialog){
 		exception.printStackTrace();
 		error(exception.getLocalizedMessage(), dialog);
-		
 	}
 	
 	

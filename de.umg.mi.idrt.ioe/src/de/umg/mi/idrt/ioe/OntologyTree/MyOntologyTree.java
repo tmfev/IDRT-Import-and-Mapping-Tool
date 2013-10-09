@@ -212,13 +212,14 @@ public class MyOntologyTree extends JPanel {
 
 		// OTNode targetNode = new OTNode( "TargetOntology" );
 
-		OntologyTreeNode subRootNode = new OntologyTreeNode("Target-Ontology");
-
+		OntologyTreeNode subRootNode = new OntologyTreeNode("");
 		subRootNode.setID("i2b2");
+		subRootNode.setName("Ontology");
 		subRootNode.setTreePath("\\i2b2\\");
 		subRootNode.setTreePathLevel(0);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.I2B2ROOT);
+		subRootNode.getTargetNodeAttributes().setName("Ontology");
 		subRootNode.getTargetNodeAttributes().setSourcePath("\\i2b2\\");
 		subRootNode.getTargetNodeAttributes().setChanged(false);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
@@ -666,7 +667,7 @@ public class MyOntologyTree extends JPanel {
 
 	}
 
-	public ViewTree getVieTreeSource() {
+	public ViewTree getViewTreeSource() {
 		return this.viewTreeSource;
 	}
 

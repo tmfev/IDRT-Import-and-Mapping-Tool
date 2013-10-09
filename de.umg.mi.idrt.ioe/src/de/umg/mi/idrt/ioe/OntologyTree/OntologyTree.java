@@ -33,6 +33,7 @@ public class OntologyTree extends JTree {
 
 		treeRoot.setTreePath("\\");
 		treeRoot.setTreePathLevel(-1);
+		
 
 		getSelectionModel().setSelectionMode(
 				TreeSelectionModel.SINGLE_TREE_SELECTION);

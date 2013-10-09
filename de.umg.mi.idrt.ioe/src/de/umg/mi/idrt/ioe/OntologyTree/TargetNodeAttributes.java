@@ -2,8 +2,10 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 
 public class TargetNodeAttributes {
 
+	int sourceLevel = -1;
 	String sourcePath = "";
 	String name = "";
+	String sourceDimension = "";
 	String nodeType = "";
 	String startDateSource = "";
 	String endDateSource = "";
@@ -33,6 +35,18 @@ public class TargetNodeAttributes {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getSourceDimension() {
+		return sourceDimension;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setSourceDimension(String sourceDimension) {
+		this.sourceDimension = sourceDimension;
 	}
 	/**
 	 * @return the nodeType
