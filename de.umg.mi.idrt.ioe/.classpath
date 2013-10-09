@@ -11,10 +11,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/gallery-0.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/grid-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ojdbc5-11g.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ojdbc6-11g.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ojdbc6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/OpenCSV.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/passwordCrypt.jar"/>
@@ -23,13 +19,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/swingextensions-0.1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swt_win64.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swt-grouplayout.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/systemRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/talend_file_enhanced_20070724.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/talend-oracle-timestamptz.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/talendcsv.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/tns.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/userRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/xdb.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/dom4j-1.6.1.jar"/>
