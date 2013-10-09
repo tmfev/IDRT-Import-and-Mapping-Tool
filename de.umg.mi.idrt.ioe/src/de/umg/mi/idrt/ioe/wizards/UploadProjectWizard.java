@@ -16,8 +16,8 @@ import org.osgi.framework.Bundle;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage2;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage3;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.WizardPage1;
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -89,7 +89,7 @@ public class UploadProjectWizard extends Wizard {
 					URL url = FileLocator.find(bundle, path,
 							Collections.EMPTY_MAP);
 					URL fileUrl = null;
-					Path outputPath = new Path("/misc/output/"); //$NON-NLS-1$
+					Path outputPath = new Path("/temp/"); //$NON-NLS-1$
 					URL outputURL = FileLocator.find(bundle, outputPath,
 							Collections.EMPTY_MAP);
 					URL outputURL2 = FileLocator.toFileURL(outputURL);
@@ -102,9 +102,9 @@ public class UploadProjectWizard extends Wizard {
 
 					contextMap = new HashMap<String, String>();
 
-					contextMap.put("folderMain",outputFolder.getAbsolutePath());
+					contextMap.put("folderMain",outputFolder.getAbsolutePath().replaceAll("\\\\", "/"));
 					contextMap.put("folderOutput","/output");
-					
+					System.out.println(outputFolder.getAbsolutePath().replaceAll("\\\\", "/")+"/output/");
 					/**
 					 * page 1
 					 */
@@ -114,6 +114,8 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_TargetI2B2_Instance", targetDBSID);
 					contextMap.put("DB_TargetI2B2_Port", targetDBPort);
 					contextMap.put("DB_TargetI2B2_Schema", targetDBSchema);
+					contextMap.put("DB_TargetI2B2_jdbcurl","jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
+					contextMap.put("DB_TargetI2B2_sqlclassname","oracle.jdbc.driver.OracleDriver");
 					
 					contextMap.put("DB_StagingI2B2_Host", stagingIPText);
 					contextMap.put("DB_StagingI2B2_Password", stagingPasswordText);
@@ -121,6 +123,10 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_Instance", stagingDBSID);
 					contextMap.put("DB_StagingI2B2_Port", stagingDBPort);
 					contextMap.put("DB_StagingI2B2_Schema", stagingDBSchema);
+					contextMap.put("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
+					contextMap.put("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+					
+					
 					System.out.println("TARGET:");
 					System.out.println(targetIPText);
 					System.out.println(targetPasswordText);
@@ -156,6 +162,8 @@ public class UploadProjectWizard extends Wizard {
 					} else {
 						contextMap.put("truncateProject", "false");
 					}
+					
+					TOSConnector.setCompleteContext(contextMap);
 					int exitCode = TOSConnector.uploadProject();
 					System.out.println("job finshed: " + exitCode);
 					

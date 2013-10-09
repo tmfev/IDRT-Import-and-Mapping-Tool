@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.Bundle;
 
-import tos.transformation_to_target_0_1.Transformation_to_target;
+
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -274,13 +274,32 @@ public class TOSConnector {
 		return 0;
 
 	}
+	
+	
+	public static int uploadProject() {
+		
+		setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
+		
+		try {
+			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+			tos.runJobInTOS((getARGV()));
+		} catch (Exception e) {
+			Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
+					+ e.getMessage());
+			return 1;
+		}
+		return 0;
+
+	}
 
 	/**
 	 * 
 	 */
+	/*
 	public static int uploadProject() {
 		Transformation_to_target transform = new Transformation_to_target();
 		 return transform.runJobInTOS(getARGV());
 	}
+	*/
 
 }

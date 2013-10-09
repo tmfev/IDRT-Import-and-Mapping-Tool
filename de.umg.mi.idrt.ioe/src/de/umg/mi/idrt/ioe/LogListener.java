@@ -70,9 +70,7 @@ public class LogListener implements ILogListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
-    
     
     public static String getStackTraceAsString(Throwable exception){
 
