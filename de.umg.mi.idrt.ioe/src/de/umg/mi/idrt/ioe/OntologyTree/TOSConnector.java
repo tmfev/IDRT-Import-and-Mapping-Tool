@@ -15,6 +15,8 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.Bundle;
 
+import tos.transformation_to_target_0_1.Transformation_to_target;
+
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -277,7 +279,8 @@ public class TOSConnector {
 	 * 
 	 */
 	public static int uploadProject() {
-		return 0;
+		Transformation_to_target transform = new Transformation_to_target();
+		 return transform.runJobInTOS(getARGV());
 	}
 
 }

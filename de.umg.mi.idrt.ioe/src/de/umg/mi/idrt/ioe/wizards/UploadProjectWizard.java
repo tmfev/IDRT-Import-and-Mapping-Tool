@@ -156,8 +156,8 @@ public class UploadProjectWizard extends Wizard {
 					} else {
 						contextMap.put("truncateProject", "false");
 					}
-					
-					TOSConnector.uploadProject();
+					int exitCode = TOSConnector.uploadProject();
+					System.out.println("job finshed: " + exitCode);
 					
 				}catch (Exception e) {
 					e.printStackTrace();
