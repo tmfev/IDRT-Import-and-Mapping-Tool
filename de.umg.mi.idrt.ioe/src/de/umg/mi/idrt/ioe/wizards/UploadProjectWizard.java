@@ -102,8 +102,8 @@ public class UploadProjectWizard extends Wizard {
 
 					contextMap = new HashMap<String, String>();
 
-					contextMap.put("folderMain",outputFolder.getAbsolutePath().replaceAll("\\\\", "/"));
-					contextMap.put("folderOutput","/output");
+					contextMap.put("folderMain",outputFolder.getAbsolutePath().replaceAll("\\\\", "/")+"/");
+					contextMap.put("folderOutput","/output/");
 					System.out.println(outputFolder.getAbsolutePath().replaceAll("\\\\", "/")+"/output/");
 					/**
 					 * page 1

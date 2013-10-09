@@ -91,11 +91,11 @@ public class TOSConnector {
 			// defaultProps.getProperty("schema");
 			String serverUniqueName = ServerView.getSelectedServer();
 			Console.info(serverUniqueName);
-			Server currentServer = null;
-			if (serverUniqueName != null) {
-				currentServer = ServerList.getTargetServers().get(
-						serverUniqueName);
-			}
+			Server currentServer = OntologyEditorView.getCurrentServer();
+//			if (serverUniqueName != null) {
+//				currentServer = ServerList.getTargetServers().get(
+//						serverUniqueName);
+//			}
 
 			Console.info("Current server: " + currentServer.toString());
 
@@ -106,11 +106,11 @@ public class TOSConnector {
 
 				currentServer.setSchema(schema);
 				OntologyEditorView.setCurrentServer(currentServer);
-			
+
 				Console.info("currentSchema:" + schema);
 				Console.info("sid: " + currentServer.getSID());
 				System.out
-						.println("OracleUsername: " + currentServer.getUser());
+				.println("OracleUsername: " + currentServer.getUser());
 
 				setContextVariable("OracleHost", currentServer.getIp());
 				setContextVariable("OraclePort", currentServer.getPort());
@@ -125,10 +125,11 @@ public class TOSConnector {
 
 				Application.getStatusView().addMessage(
 						"i2b2 project \"" + schema
-								+ "\"selected via ServerView.");
+						+ "\"selected via ServerView.");
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin: " + e.getMessage());
 			Debug.e("TOS-Error: " + tos.getErrorCode());
 		}
@@ -136,7 +137,7 @@ public class TOSConnector {
 		return tos;
 
 	}
-	
+
 
 
 	public void getOntology() {
@@ -156,6 +157,7 @@ public class TOSConnector {
 			tos.runJobInTOS((getARGV()));
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			String message = "Error while using a TOS-plugin with function getOntology(): "
 					+ e.getMessage();
 			Console.error(message);
@@ -167,11 +169,11 @@ public class TOSConnector {
 
 		}
 	}
-	
-	public void runJob(){
-		
-		getConnection().runJobInTOS((getARGV()));
-		
+
+	public int runJob(){
+
+		return getConnection().runJobInTOS((getARGV()));
+
 	}
 
 	public static void setContextVariable(String key, String value) {
@@ -205,8 +207,10 @@ public class TOSConnector {
 
 		try {
 			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
+			int exitcode = tos.runJobInTOS((getARGV()));
+			System.out.println("EXIT: " + exitcode);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
 			return 1;
@@ -224,6 +228,7 @@ public class TOSConnector {
 			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			tos.runJobInTOS((getARGV()));
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
 					+ e.getMessage());
 		}
@@ -248,7 +253,7 @@ public class TOSConnector {
 			}
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
 
@@ -266,8 +271,10 @@ public class TOSConnector {
 
 		try {
 			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
+			int exit = tos.runJobInTOS((getARGV()));
+			System.out.println("EXIT1: " + exit);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
 					+ e.getMessage());
 			return 1;
@@ -275,21 +282,15 @@ public class TOSConnector {
 		return 0;
 
 	}
-	
-	
+
+
 	public static int uploadProject() {
-		
+
 		setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
-		
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-					+ e.getMessage());
-			return 1;
-		}
-		return 0;
+		int exitCode = 0;
+		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+		exitCode = tos.runJobInTOS((getARGV()));
+		return exitCode;
 
 	}
 	/**
@@ -311,6 +312,6 @@ public class TOSConnector {
 		Transformation_to_target transform = new Transformation_to_target();
 		 return transform.runJobInTOS(getARGV());
 	}
-	*/
+	 */
 
 }
