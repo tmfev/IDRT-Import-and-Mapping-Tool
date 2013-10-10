@@ -17,6 +17,7 @@ import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage2;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage3;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.WizardPage1;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
@@ -64,8 +65,9 @@ public class UploadProjectWizard extends Wizard {
 		final String targetDBPort = UploadProjectWizardPage1.getPortText();
 		final String targetDBSchema = UploadProjectWizardPage1.getDBSchemaText();
 		
-		
-		Server currentServer = OntologyEditorView.getCurrentServer();
+		String targetUser = ServerList.getUserServer().get(OntologyEditorView.getSourceSchemaName());
+		Server currentServer = ServerList.getTargetServers().get(targetUser);
+		currentServer.setSchema(OntologyEditorView.getSourceSchemaName());
 		final String stagingIPText = currentServer.getIp();
 		final String stagingPasswordText = currentServer.getPassword();
 		final String stagingDBUserText = currentServer.getUser();

@@ -703,6 +703,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static String getSourceSchemaName() {
+		System.out.println("souirce schema; " + sourceSchema);
 		return sourceSchema;
 	}
 
