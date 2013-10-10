@@ -117,6 +117,7 @@ public class SaveTarget extends AbstractHandler {
 		try {
 
 			tos.runJob();
+			OntologyEditorView.setNotYetSaved(false);
 		} catch (Exception e) {
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
@@ -126,7 +127,7 @@ public class SaveTarget extends AbstractHandler {
 		return null;
 	}
 
-	public void writeNode(OntologyTreeNode node) {
+	private void writeNode(OntologyTreeNode node) {
 
 		String[] fields = new String[9];
 		fields[0] = "1";

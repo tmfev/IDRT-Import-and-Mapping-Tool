@@ -141,31 +141,40 @@ public class TOSConnector {
 
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
-		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 
-		try {
+				try {
 
-			setContextVariable("Job", "ontology");
-			setContextVariable("SQLTable", "I2B2");
-			/*
-			 * setContextVariable("SQLCommand",
-			 * "SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL > 0 ORDER BY C_HLEVEL ASC"
-			 * );
-			 */
+					setContextVariable("Job", "ontology");
+					setContextVariable("SQLTable", "I2B2");
+					/*
+					 * setContextVariable("SQLCommand",
+					 * "SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL > 0 ORDER BY C_HLEVEL ASC"
+					 * );
+					 */
 
-			tos.runJobInTOS((getARGV()));
+					tos.runJobInTOS((getARGV()));
 
-		} catch (Exception e) {
-			String message = "Error while using a TOS-plugin with function getOntology(): "
-					+ e.getMessage();
-			Console.error(message);
-			Application.getStatusView().addErrorMessage(message);
-			Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
-					+ " / " + tos.getException() + " / "
-					+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
-					+ " / " + tos.getContext().SQLCommand);
+				} catch (Exception e) {
+					String message = "Error while using a TOS-plugin with function getOntology(): "
+							+ e.getMessage();
+					Console.error(message);
+					Application.getStatusView().addErrorMessage(message);
+					Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
+							+ " / " + tos.getException() + " / "
+							+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
+							+ " / " + tos.getContext().SQLCommand);
 
-		}
+				}
+			}
+		}).run();
+	
 	}
 	
 	public void runJob(){
@@ -217,16 +226,24 @@ public class TOSConnector {
 
 	public static void readTargetOntology(String targetID) {
 
-		setContextVariable("Job", "read_target_ontology");
-		setContextVariable("Var1", "1");
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				setContextVariable("Job", "read_target_ontology");
+				setContextVariable("Var1", "1");
 
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
-					+ e.getMessage());
-		}
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+		
 
 	}
 

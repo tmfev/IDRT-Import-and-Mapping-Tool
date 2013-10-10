@@ -1,7 +1,5 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.awt.Color;
-
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -9,7 +7,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -21,15 +18,12 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.DropTargetListener;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuAdapter;
 import org.eclipse.swt.events.MenuEvent;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -47,19 +41,17 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
+import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
+
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TreeItem;
 
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.core.databinding.DataBindingContext;
@@ -80,6 +72,21 @@ public class OntologyEditorView extends ViewPart {
 		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
 	}
 
+	private static boolean notYetSaved = true;
+	/**
+	 * @return the notYetSaved
+	 */
+	public static boolean isNotYetSaved() {
+		return notYetSaved;
+	}
+
+	/**
+	 * @param notYetSaved the notYetSaved to set
+	 */
+	public static void setNotYetSaved(boolean notYetSaved) {
+		OntologyEditorView.notYetSaved = notYetSaved;
+	}
+
 	private static boolean init = false;
 	private static TreeViewer sourceTreeViewer;
 	private static TreeViewer targetTreeViewer;
@@ -88,6 +95,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite mainComposite;
 	private static SashForm sash;
 
+	private static String sourceSchema;
 
 	private static Server currentServer;
 	private static Label lblSource;
@@ -108,7 +116,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_5;
 	private static SashForm composite_1;
 	private static Composite composite_6;
-	private static DropTarget dropTarget_1;
+	private static Button btnCancel;
 
 	public OntologyEditorView() {
 	}
@@ -145,6 +153,7 @@ public class OntologyEditorView extends ViewPart {
 				}
 				else {
 					try {
+						setSourceSchemaName((String)event.data);
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 					} catch (Exception ex) {
@@ -168,7 +177,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 		dropTarget.addDropListener(dropListenerSource);
-		
+
 		dropListenerTarget = new DropTargetListener() {
 
 			@Override
@@ -209,13 +218,13 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void init() {
 		System.out.println("INIT!");
-//TODO HERE
-		
-//				Shell shell = new Shell();
-//				shell.setSize(844, 536);
-//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//				mainComposite = new Composite(shell, SWT.NONE);
-//				mainComposite.setLayout(new BorderLayout(0, 0));
+		//TODO HERE
+
+//						Shell shell = new Shell();
+//						shell.setSize(844, 536);
+//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//						mainComposite = new Composite(shell, SWT.NONE);
+//						mainComposite.setLayout(new BorderLayout(0, 0));
 
 		mainComposite.getChildren()[0].dispose();
 		composite = new Composite(mainComposite, SWT.NONE);
@@ -314,10 +323,10 @@ public class OntologyEditorView extends ViewPart {
 
 
 		composite_3 = new Composite(composite_1, SWT.NONE);
-		composite_3.setLayout(new GridLayout(2, false));
+		composite_3.setLayout(new GridLayout(3, false));
 		composite_3.setSize(828,66);
 		composite_3.addControlListener(new ControlListener() {
-			
+
 			@Override
 			public void controlResized(ControlEvent e) {
 				sash.setWeights(composite_1.getWeights());
@@ -331,12 +340,29 @@ public class OntologyEditorView extends ViewPart {
 		DropTarget dropTarget5 = new DropTarget(composite_3, operations);
 		dropTarget5.setTransfer(transferTypes);
 		dropTarget5.addDropListener(dropListenerSource);
-		
+
 		composite_6 = new Composite(composite_3, SWT.NONE);
 		composite_6.setLayout(new GridLayout(1, false));
 		lblSource = new Label(composite_6, SWT.NONE);
 		lblSource.setText("Staging i2b2");
 		new Label(composite_3, SWT.NONE);
+		
+		btnCancel = new Button(composite_3, SWT.NONE);
+		btnCancel.setText("CANCEL");
+		btnCancel.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+			ReadTarget.killImport();	
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+//		new Label(composite_3, SWT.NONE);
 		composite_5 = new Composite(composite_3, SWT.NONE);
 		composite_5.setLayout(new GridLayout(2, false));
 		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
@@ -350,17 +376,18 @@ public class OntologyEditorView extends ViewPart {
 		btnMinimizeAll.setSize(28, 26);
 		btnMinimizeAll.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/collapseall.gif"));
 		btnMinimizeAll.setToolTipText("Collapse All");
+		new Label(composite_3, SWT.NONE);
+		new Label(composite_3, SWT.NONE);
+		new Label(composite_3, SWT.NONE);
 
 		composite_2 = new Composite(composite_1, SWT.NONE);
 		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
-		//		composite_2.setSize(413, 77);
 		composite_2.setLayout(new GridLayout(4, false));
-		
+
 		DropTarget dropTarget4 = new DropTarget(composite_2, operations);
 		dropTarget4.setTransfer(transferTypes);
 		dropTarget4.addDropListener(dropListenerTarget);
-		
-		
+
 		lblVersion = new Label(composite_2, SWT.NONE);
 		lblVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblVersion.setText("Version:");
@@ -387,16 +414,29 @@ public class OntologyEditorView extends ViewPart {
 		btnGo.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 		btnGo.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-next.png"));
 		btnGo.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (!getTargetSchemaName().isEmpty() && !getTargetSchemaName().startsWith("Drop Target"))
+				OntologyTree ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
+						.getMyOntologyTrees().getOntologyTreeTarget();
+				OntologyTreeNode bla = ((OntologyTreeNode) ontologyTreeTarget
+						.getTreeRoot().getFirstChild());
+				System.out.println("childCount: " + bla.getChildCount());
+				if (bla.getChildCount()>0 && isNotYetSaved()) {
+					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
+							"do you want to save it first?");
+					if (confirm)
+					{
+						//save target
+						Application.executeCommand("edu.goettingen.i2b2.importtool.OTWriteTarget");
+					}
+				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
 		composite_4 = new Composite(composite_2, SWT.NONE);
@@ -407,7 +447,7 @@ public class OntologyEditorView extends ViewPart {
 		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
 		dropTarget3.setTransfer(transferTypes);
 		dropTarget3.addDropListener(dropListenerTarget);
-		
+
 		btnExpandAllSource = new Button(composite_4, SWT.NONE);
 		btnExpandAllSource.setSize(28, 26);
 		btnExpandAllSource.setToolTipText("Expand All");
@@ -425,11 +465,11 @@ public class OntologyEditorView extends ViewPart {
 		lblNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		lblNameText.setText("Drop Target i2b2 here!");
 		lblNameText.setEditable(false);
-		
+
 		DropTarget dropTarget = new DropTarget(lblNameText, operations);
 		dropTarget.setTransfer(transferTypes);
 		dropTarget.addDropListener(dropListenerTarget);
-		
+
 
 		DropTarget dropTarget2 = new DropTarget(lblTarget, operations);
 		dropTarget2.setTransfer(transferTypes);
@@ -653,9 +693,17 @@ public class OntologyEditorView extends ViewPart {
 		//TODO GET VERSION
 		return "0";
 	}
-	
+
 	public static String getTargetSchemaName() {
 		return lblNameText.getText();
+	}
+
+	public static void setSourceSchemaName(String schema) {
+		sourceSchema=schema;
+	}
+
+	public static String getSourceSchemaName() {
+		return sourceSchema;
 	}
 
 	/**
@@ -667,4 +715,5 @@ public class OntologyEditorView extends ViewPart {
 	public static Server getCurrentServer() {
 		return currentServer;
 	}
+
 }

@@ -12,8 +12,6 @@ public class TreeContentProvider implements ITreeContentProvider {
 	public TreeContentProvider() {
 		// TODO Auto-generated constructor stub
 	}
-		
-
 	
 	@Override
 	public Object[] getChildren(Object element) {

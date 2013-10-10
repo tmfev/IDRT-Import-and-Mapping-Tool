@@ -76,8 +76,21 @@ public class UploadProjectWizardPage1 extends WizardPage {
 			File properties = new File(fileUrl.getPath());
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
-
+			Server currentServer;
 			String serverUniqueName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
+		
+			
+			if (serverUniqueName==null) {
+				currentServer = OntologyEditorView.getCurrentServer();
+				System.out.println(currentServer.toString());
+				serverUniqueName = ServerList.getUserServer().get(OntologyEditorView.getSourceSchemaName());
+				System.out.println("null -> " + serverUniqueName);
+				schema = OntologyEditorView.getSourceSchemaName();
+			}
+			else {
+				schema = OntologyEditorView.getTargetSchemaName();
+				currentServer = ServerList.getTargetServers().get(serverUniqueName);
+			}
 			container = new Composite(parent, SWT.NULL);
 			GridLayout layout = new GridLayout(2, true);
 			container.setLayout(layout);
@@ -85,19 +98,19 @@ public class UploadProjectWizardPage1 extends WizardPage {
 			uniqueID.setText("Unique Identifier");
 
 			comboDB = new Combo(container, SWT.NONE);
-			schema = ServerView.getCurrentSchema();
-			comboDB.setItems(ServerView.getCurrentServers());
 			
+			comboDB.setItems(ServerView.getCurrentServers());
+
 			int a = 0;
 			for (String servers : comboDB.getItems()) {
-				
+
 				if (servers.equals(serverUniqueName)) {
 					comboDB.select(a);
 					break;
 				}
 				a++;
 			}
-			Server currentServer = ServerList.getTargetServers().get(serverUniqueName);
+
 			comboDB.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
 			comboDB.addSelectionListener(new SelectionListener() {
@@ -241,15 +254,15 @@ public class UploadProjectWizardPage1 extends WizardPage {
 				}
 			});
 
-			
-			
+
+
 			Label DBSchema = new Label(container, SWT.FILL | SWT.CENTER);
 			DBSchema.setText("DB Schema");
 
 			comboUser = new Combo(container, SWT.NONE);
 			DBTypeLabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			DBTypeLabel.setText("DB Type");
-			
+
 			DBTypeCombo = new Combo(container, SWT.READ_ONLY);
 			DBIntegratedSecurity = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			DBMSSQLUseWinAuth = new Button(container, SWT.CHECK);
@@ -302,7 +315,7 @@ public class UploadProjectWizardPage1 extends WizardPage {
 					int i = 0;
 					while (it.hasNext()) {
 						userList[i] = it.next();
-						if (OntologyEditorView.getTargetSchemaName().equals(userList[i])) {
+						if (schema.equals(userList[i])) {
 							selectedUserIndex = i;
 						}
 						i++;
@@ -314,18 +327,18 @@ public class UploadProjectWizardPage1 extends WizardPage {
 				comboUser.setItems(userList);
 			}
 			comboUser.select(selectedUserIndex);
-//			int i2 = 0;
-//			System.out.println("finding: " + OntologyEditorView.getTargetServerName());
-//			for (String item : comboDB.getItems()) {
-//				System.out.println("checking item: " + item);
-//				if (item.equals(OntologyEditorView.getTargetServerName())) {
-//					System.out.println("TRUE: " + item);
-//					i2++;
-//					break;
-//				}
-//				
-//			}
-//			System.out.println("item @ " + i2 + " " + comboDB.getItem(i2));
+			//			int i2 = 0;
+			//			System.out.println("finding: " + OntologyEditorView.getTargetServerName());
+			//			for (String item : comboDB.getItems()) {
+			//				System.out.println("checking item: " + item);
+			//				if (item.equals(OntologyEditorView.getTargetServerName())) {
+			//					System.out.println("TRUE: " + item);
+			//					i2++;
+			//					break;
+			//				}
+			//				
+			//			}
+			//			System.out.println("item @ " + i2 + " " + comboDB.getItem(i2));
 			comboUser.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
 
@@ -366,7 +379,7 @@ public class UploadProjectWizardPage1 extends WizardPage {
 
 			new Label(container, SWT.NONE);
 			new Label(container, SWT.NONE);
-			
+
 			setPageComplete(true);
 
 		} catch (FileNotFoundException e1) {

@@ -76,6 +76,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 				/* copy nodes */
 			}
+			OntologyEditorView.setNotYetSaved(true);
 		}
 		else {
 			MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
