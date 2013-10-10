@@ -209,7 +209,8 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void init() {
 		System.out.println("INIT!");
-
+//TODO HERE
+		
 //				Shell shell = new Shell();
 //				shell.setSize(844, 536);
 //				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -316,7 +317,7 @@ public class OntologyEditorView extends ViewPart {
 		composite_3.setLayout(new GridLayout(2, false));
 		composite_3.setSize(828,66);
 		composite_3.addControlListener(new ControlListener() {
-
+			
 			@Override
 			public void controlResized(ControlEvent e) {
 				sash.setWeights(composite_1.getWeights());
@@ -327,6 +328,10 @@ public class OntologyEditorView extends ViewPart {
 			public void controlMoved(ControlEvent e) {
 			}
 		});
+		DropTarget dropTarget5 = new DropTarget(composite_3, operations);
+		dropTarget5.setTransfer(transferTypes);
+		dropTarget5.addDropListener(dropListenerSource);
+		
 		composite_6 = new Composite(composite_3, SWT.NONE);
 		composite_6.setLayout(new GridLayout(1, false));
 		lblSource = new Label(composite_6, SWT.NONE);
@@ -350,6 +355,12 @@ public class OntologyEditorView extends ViewPart {
 		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 		//		composite_2.setSize(413, 77);
 		composite_2.setLayout(new GridLayout(4, false));
+		
+		DropTarget dropTarget4 = new DropTarget(composite_2, operations);
+		dropTarget4.setTransfer(transferTypes);
+		dropTarget4.addDropListener(dropListenerTarget);
+		
+		
 		lblVersion = new Label(composite_2, SWT.NONE);
 		lblVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblVersion.setText("Version:");
@@ -392,6 +403,11 @@ public class OntologyEditorView extends ViewPart {
 		composite_4.setLayout(new GridLayout(4, false));
 		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 
+
+		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
+		dropTarget3.setTransfer(transferTypes);
+		dropTarget3.addDropListener(dropListenerTarget);
+		
 		btnExpandAllSource = new Button(composite_4, SWT.NONE);
 		btnExpandAllSource.setSize(28, 26);
 		btnExpandAllSource.setToolTipText("Expand All");
