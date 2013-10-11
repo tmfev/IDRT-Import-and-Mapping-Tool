@@ -302,6 +302,15 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public List<OntologyTreeNode> getChildren() {
 		return this._children;
 	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.tree.DefaultMutableTreeNode#getChildAfter(javax.swing.tree.TreeNode)
+	 */
+	@Override
+	public OntologyTreeNode getChildAfter(TreeNode aChild) {
+		// TODO Auto-generated method stub
+		return (OntologyTreeNode)super.getChildAfter(aChild);
+	}
 
 	/*
 	 * 

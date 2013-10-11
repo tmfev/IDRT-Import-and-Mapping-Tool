@@ -140,6 +140,11 @@
             id="de.umg.mi.idrt.ioe.addNode"
             name="addNode">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddItemCommand"
+            id="de.umg.mi.idrt.ioe.addItem"
+            name="addItem">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

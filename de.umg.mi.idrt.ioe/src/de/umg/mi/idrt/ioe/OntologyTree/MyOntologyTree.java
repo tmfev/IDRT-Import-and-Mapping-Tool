@@ -222,6 +222,7 @@ public class MyOntologyTree extends JPanel {
 		subRootNode.getTargetNodeAttributes().setSourcePath("\\i2b2\\");
 		subRootNode.getTargetNodeAttributes().setChanged(false);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
+		subRootNode.getTargetNodeAttributes().setName("i2b2");
 
 
 		rootNode.add(subRootNode);

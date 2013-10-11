@@ -28,8 +28,8 @@ public class DeleteNodeCommand extends AbstractHandler {
 		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
 				.getNodeLists().getNodeByPath(firstElement.getTreePath());
 
-		TargetNodeAttributes attributes = targetNode.getTargetNodeAttributes();
-		String visual = attributes.getVisualattribute();
+//		TargetNodeAttributes attributes = targetNode.getTargetNodeAttributes();
+//		String visual = attributes.getVisualattribute();
 
 //		if (!visual.equalsIgnoreCase("lae")) {
 			OntologyEditorView.setNotYetSaved(true);

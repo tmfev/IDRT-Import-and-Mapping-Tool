@@ -1,11 +1,25 @@
 package de.umg.mi.idrt.ioe.view;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ColumnViewer;
+import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
 import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.jface.viewers.TreeViewerEditor;
+import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
@@ -94,6 +108,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite targetComposite;
 	private static Composite mainComposite;
 	private static SashForm sash;
+	private static OntologyTreeNode currentTargetNode;
 
 	private static String sourceSchema;
 
@@ -117,7 +132,7 @@ public class OntologyEditorView extends ViewPart {
 	private static SashForm composite_1;
 	private static Composite composite_6;
 	private static Button btnCancel;
-
+	private static TreeViewerColumn column;
 	public OntologyEditorView() {
 	}
 
@@ -224,11 +239,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-//						Shell shell = new Shell();
-//						shell.setSize(844, 536);
-//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//						mainComposite = new Composite(shell, SWT.NONE);
-//						mainComposite.setLayout(new BorderLayout(0, 0));
+		//						Shell shell = new Shell();
+		//						shell.setSize(844, 536);
+		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//						mainComposite = new Composite(shell, SWT.NONE);
+		//						mainComposite.setLayout(new BorderLayout(0, 0));
 
 		mainComposite.getChildren()[0].dispose();
 		composite = new Composite(mainComposite, SWT.NONE);
@@ -254,6 +269,54 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
 
+		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighter(targetTreeViewer));
+		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
+			protected boolean isEditorActivationEvent(
+					ColumnViewerEditorActivationEvent event) {
+				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
+						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
+						|| (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
+						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
+			}
+		};
+
+		TreeViewerEditor.create(targetTreeViewer, focusCellManager, actSupport, ColumnViewerEditor.TABBING_HORIZONTAL
+				| ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
+				| ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+
+		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree());
+		targetComposite.layout();
+//		targetComposite.pack();
+		column = new TreeViewerColumn(targetTreeViewer, SWT.NONE);
+		System.out.println(targetTreeViewer.getControl().getSize().x);
+		column.getColumn().setMoveable(true);
+		column.getColumn().setText("Column 1");
+		column.setLabelProvider(new ColumnLabelProvider() {
+
+			public String getText(Object element) {
+				return "Column 1 => " + element.toString();
+			}
+
+		});
+		column.setEditingSupport(new EditingSupport(targetTreeViewer) {
+			protected boolean canEdit(Object element) {
+				return true;
+			}
+
+			protected CellEditor getCellEditor(Object element) {
+				return textCellEditor;
+			}
+
+			protected Object getValue(Object element) {
+				return ((OntologyTreeNode) element).getName();
+			}
+
+			protected void setValue(Object element, Object value) {
+				((OntologyTreeNode) element).getTargetNodeAttributes().setName((String)value);
+				((OntologyTreeNode) element).setName((String)value);
+				targetTreeViewer.update(element, null);
+			}
+		});
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
@@ -282,6 +345,7 @@ public class OntologyEditorView extends ViewPart {
 					return;
 				}
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
+				setCurrentTargetNode(node);
 				if (node != null) {
 					Activator.getDefault().getResource()
 					.getEditorTargetInfoView().setNode(node);
@@ -313,7 +377,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 
-		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
+//		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 
 
 		sourceTreeViewer = new TreeViewer(sourceComposite, SWT.MULTI | SWT.H_SCROLL
@@ -350,23 +414,23 @@ public class OntologyEditorView extends ViewPart {
 		lblSource = new Label(composite_6, SWT.NONE);
 		lblSource.setText("Staging i2b2");
 		new Label(composite_3, SWT.NONE);
-		
+
 		btnCancel = new Button(composite_3, SWT.NONE);
 		btnCancel.setText("CANCEL");
 		btnCancel.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-			ReadTarget.killImport();	
+				ReadTarget.killImport();	
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-//		new Label(composite_3, SWT.NONE);
+		//		new Label(composite_3, SWT.NONE);
 		composite_5 = new Composite(composite_3, SWT.NONE);
 		composite_5.setLayout(new GridLayout(2, false));
 		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
@@ -610,16 +674,61 @@ public class OntologyEditorView extends ViewPart {
 
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
-		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
-		mntmInsert.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
-		mntmInsert.setText("Insert");
+		//		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
+		//		mntmInsert.setImage(ResourceManager.getPluginImage(
+		//				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
+		//		mntmInsert.setText("Insert");
 
-		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
-		mntmCombine.setImage(ResourceManager.getPluginImage(
-				"edu.goettingen.i2b2.importtool",
-				"images/format-indent-more.png"));
-		mntmCombine.setText("Combine");
+		//		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
+		//		mntmCombine.setImage(ResourceManager.getPluginImage(
+		//				"edu.goettingen.i2b2.importtool",
+		//				"images/format-indent-more.png"));
+		//		mntmCombine.setText("Combine");
+
+		MenuItem mntmAddItem = new MenuItem(menu, SWT.PUSH);
+		mntmAddItem.setText("Add Item");
+		mntmAddItem.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				addItem();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		
+		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
+		mntmAddNode.setText("Add Folder");
+		mntmAddNode.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				addNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
+		MenuItem mntmRenameNode = new MenuItem(menu, SWT.PUSH);
+		mntmRenameNode.setText("Rename");
+		mntmRenameNode.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				renameNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
 
 		MenuItem mntmDelete = new MenuItem(menu, SWT.PUSH);
 		mntmDelete.setText("Delete Item");
@@ -640,28 +749,15 @@ public class OntologyEditorView extends ViewPart {
 			public void menuShown(MenuEvent e) {
 			}
 		});
-		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
-		mntmAddNode.setText("Add Folder");
-		mntmAddNode.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				addNode();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
 		targetTreeViewer.getTree().setMenu(menu);
 		menu.addMenuListener(new MenuAdapter() {
 			public void menuShown(MenuEvent e) {
 			}
 		});
-
 		targetComposite.layout();
 		mainComposite.layout();
+		column.getColumn().setWidth(targetComposite.getBounds().width-5);
 	}
 
 	public static void setSourceContent() {
@@ -696,6 +792,13 @@ public class OntologyEditorView extends ViewPart {
 	}
 	private static void addNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
+	}
+	private static void addItem() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
+	}
+	private static void renameNode() {
+		//		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
+		System.err.println("NYI");
 	}
 
 	private static void deleteNode() {
@@ -740,6 +843,16 @@ public class OntologyEditorView extends ViewPart {
 	}
 	public static Server getStagingServer() {
 		return currentStagingServer;
+	}
+
+	public static void setCurrentTargetNode(OntologyTreeNode node) {
+		System.out.println("setting targetnode");
+		currentTargetNode = node;
+	}
+
+	public static OntologyTreeNode getCurrentTargetNode() {
+		System.out.println("getting target node");
+		return currentTargetNode;
 	}
 
 }

@@ -4,8 +4,14 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+
+import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -15,33 +21,34 @@ public class AddNodeCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("Adding Node");
+		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
+
+		
+		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
+
+		subRootNode.setID("new Node");
+		subRootNode.setTreePath("\\i2b2\\newNode\\");
+		subRootNode.setTreePathLevel(1);
+		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
+		subRootNode.setNodeType(NodeType.ITEMGROUP);
+		subRootNode.getTargetNodeAttributes().setSourcePath("");
+		subRootNode.getTargetNodeAttributes().setChanged(true);
+		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
+		subRootNode.setName("New Node");
+		currentNode.add(subRootNode);
+
 
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
-				.getSelection();
-		OntologyTreeNode firstElement = (OntologyTreeNode) selection
-				.getFirstElement();
-		if (firstElement==null) {
-			System.out.println("firstElementnull null!");
-		}
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
-				.getNodeLists().getNodeByPath(firstElement.getTreePath());
-
-		TargetNodeAttributes attributes = targetNode.getTargetNodeAttributes();
-		String visual = attributes.getVisualattribute();
-
-			OntologyEditorView.setNotYetSaved(true);
-			if (targetNode != null && !targetNode.getParent().isRoot()) {
-				OntologyTreeNode node = new OntologyTreeNode("new Folder");
-				node.setName("NAME");
-				node.setID(targetNode.getID());
-				node.setIsVisable(true);
-				node.setTreePath(targetNode.getTreePath());
-				myOT.getOntologyTreeTarget().getNodeLists().add(node);
-				myOT.getOntologyTreeTarget().getNodeLists().addOTNode("\\path", node);
-			}
+		targetTreeViewer.expandToLevel(subRootNode, 10);
+		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
+		targetTreeViewer.editElement(subRootNode, 0);
+		
 		targetTreeViewer.refresh();
+		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		OntologyTreeNode test = (OntologyTreeNode) myOT.getTargetTreeRoot().getNextNode();
+
+		System.out.println(test.getName());
+		
 		return null;
 	}
 }
