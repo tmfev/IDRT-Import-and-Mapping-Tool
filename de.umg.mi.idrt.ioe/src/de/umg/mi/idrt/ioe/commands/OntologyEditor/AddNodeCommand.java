@@ -10,11 +10,11 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class DeleteNodeCommand extends AbstractHandler {
+public class AddNodeCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("Deleting Node");
+		System.out.println("Adding Node");
 
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
@@ -31,21 +31,16 @@ public class DeleteNodeCommand extends AbstractHandler {
 		TargetNodeAttributes attributes = targetNode.getTargetNodeAttributes();
 		String visual = attributes.getVisualattribute();
 
-//		if (!visual.equalsIgnoreCase("lae")) {
 			OntologyEditorView.setNotYetSaved(true);
 			if (targetNode != null && !targetNode.getParent().isRoot()) {
-				targetNode.removeFromParent();
-				myOT.getOntologyTreeTarget()
-				.getNodeLists().removeNode(targetNode);
+				OntologyTreeNode node = new OntologyTreeNode("new Folder");
+				node.setName("NAME");
+				node.setID(targetNode.getID());
+				node.setIsVisable(true);
+				node.setTreePath(targetNode.getTreePath());
+				myOT.getOntologyTreeTarget().getNodeLists().add(node);
+				myOT.getOntologyTreeTarget().getNodeLists().addOTNode("\\path", node);
 			}
-			else {
-				targetNode.removeAllChildren();
-				System.err.println("Cannot remove root node.\n Removing all children instead.");
-			}
-//		}
-//		else {
-//			System.err.println("Cannot delete leafs!");
-//		}
 		targetTreeViewer.refresh();
 		return null;
 	}

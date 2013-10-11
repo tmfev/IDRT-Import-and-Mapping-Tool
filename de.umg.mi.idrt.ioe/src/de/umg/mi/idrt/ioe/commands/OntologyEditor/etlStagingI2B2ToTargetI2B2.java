@@ -17,7 +17,7 @@ public class etlStagingI2B2ToTargetI2B2 extends AbstractHandler {
 		super();
 	}
 
-	private ExecutionEvent _event;
+	private ExecutionEvent event;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

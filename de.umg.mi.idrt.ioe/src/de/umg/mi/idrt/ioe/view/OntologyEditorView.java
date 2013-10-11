@@ -97,10 +97,10 @@ public class OntologyEditorView extends ViewPart {
 
 	private static String sourceSchema;
 
-	private static Server currentServer;
+	private static Server currentStagingServer;
 	private static Label lblSource;
 	private static Label lblTarget;
-	private static DropTargetListener dropListenerSource;
+	private static DropTargetListener dropListenerStaging;
 	private static DropTargetListener dropListenerTarget;
 	private static Composite composite;
 	private static Composite composite_2;
@@ -124,18 +124,18 @@ public class OntologyEditorView extends ViewPart {
 	@Override
 	public void createPartControl(final Composite parent) {
 		mainComposite = parent;
-		Label _label = new Label(mainComposite, SWT.LEFT);
-		_label.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		_label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
+		Label label = new Label(mainComposite, SWT.LEFT);
+		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
+		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
 				"images/IDRT_ME.gif"));
 		final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
 		final Transfer[] transferTypes = new Transfer[] { TextTransfer
 				.getInstance() };
 
-		DropTarget dropTarget = new DropTarget(_label, operations);
+		DropTarget dropTarget = new DropTarget(label, operations);
 		dropTarget.setTransfer(transferTypes);
 
-		dropListenerSource = new DropTargetListener() {
+		dropListenerStaging = new DropTargetListener() {
 
 			@Override
 			public void dropAccept(DropTargetEvent event) {
@@ -153,7 +153,11 @@ public class OntologyEditorView extends ViewPart {
 				}
 				else {
 					try {
-						setSourceSchemaName((String)event.data);
+						String schema = (String)event.data;
+						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
+						stagingServer.setSchema(schema);
+						setStagingServer(stagingServer);
+						setStagingSchemaName((String)event.data);
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 					} catch (Exception ex) {
@@ -176,7 +180,7 @@ public class OntologyEditorView extends ViewPart {
 			public void dragEnter(DropTargetEvent event) {
 			}
 		};
-		dropTarget.addDropListener(dropListenerSource);
+		dropTarget.addDropListener(dropListenerStaging);
 
 		dropListenerTarget = new DropTargetListener() {
 
@@ -339,7 +343,7 @@ public class OntologyEditorView extends ViewPart {
 		});
 		DropTarget dropTarget5 = new DropTarget(composite_3, operations);
 		dropTarget5.setTransfer(transferTypes);
-		dropTarget5.addDropListener(dropListenerSource);
+		dropTarget5.addDropListener(dropListenerStaging);
 
 		composite_6 = new Composite(composite_3, SWT.NONE);
 		composite_6.setLayout(new GridLayout(1, false));
@@ -523,7 +527,7 @@ public class OntologyEditorView extends ViewPart {
 		sourceTreeViewer.addDoubleClickListener(doubleClickListener);
 
 		sash.setWeights(new int[] {1, 1});
-		sourceTreeViewer.addDropSupport(operations, transferTypes, dropListenerSource);
+		sourceTreeViewer.addDropSupport(operations, transferTypes, dropListenerStaging);
 
 		sourceTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -636,7 +640,25 @@ public class OntologyEditorView extends ViewPart {
 			public void menuShown(MenuEvent e) {
 			}
 		});
+		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
+		mntmAddNode.setText("Add Folder");
+		mntmAddNode.addSelectionListener(new SelectionListener() {
 
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				addNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		targetTreeViewer.getTree().setMenu(menu);
+		menu.addMenuListener(new MenuAdapter() {
+			public void menuShown(MenuEvent e) {
+			}
+		});
 
 		targetComposite.layout();
 		mainComposite.layout();
@@ -672,6 +694,9 @@ public class OntologyEditorView extends ViewPart {
 	public static TreeViewer getTargetTreeViewer() {
 		return targetTreeViewer;
 	}
+	private static void addNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
+	}
 
 	private static void deleteNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
@@ -698,23 +723,23 @@ public class OntologyEditorView extends ViewPart {
 		return lblNameText.getText();
 	}
 
-	public static void setSourceSchemaName(String schema) {
+	public static void setStagingSchemaName(String schema) {
 		sourceSchema=schema;
 	}
 
-	public static String getSourceSchemaName() {
-		System.out.println("souirce schema; " + sourceSchema);
+	public static String getStagingSchemaName() {
 		return sourceSchema;
 	}
 
 	/**
-	 * @param currentServer
+	 * @param currentStagingServer
 	 */
-	public static void setCurrentServer(Server currentServer2) {
-		currentServer=currentServer2;
+	public static void setStagingServer(Server currentServer2) {
+		System.out.println("setting staging server to: " + currentServer2.toString());
+		currentStagingServer=currentServer2;
 	}
-	public static Server getCurrentServer() {
-		return currentServer;
+	public static Server getStagingServer() {
+		return currentStagingServer;
 	}
 
 }

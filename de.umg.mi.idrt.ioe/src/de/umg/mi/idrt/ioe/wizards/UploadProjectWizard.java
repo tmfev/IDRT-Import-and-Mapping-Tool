@@ -65,9 +65,9 @@ public class UploadProjectWizard extends Wizard {
 		final String targetDBPort = UploadProjectWizardPage1.getPortText();
 		final String targetDBSchema = UploadProjectWizardPage1.getDBSchemaText();
 		
-		String targetUser = ServerList.getUserServer().get(OntologyEditorView.getSourceSchemaName());
+		String targetUser = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
 		Server currentServer = ServerList.getTargetServers().get(targetUser);
-		currentServer.setSchema(OntologyEditorView.getSourceSchemaName());
+		currentServer.setSchema(OntologyEditorView.getStagingSchemaName());
 		final String stagingIPText = currentServer.getIp();
 		final String stagingPasswordText = currentServer.getPassword();
 		final String stagingDBUserText = currentServer.getUser();

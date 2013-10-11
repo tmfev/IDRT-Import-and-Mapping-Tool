@@ -92,7 +92,7 @@ private static int exit;
 			
 //			String serverUniqueName = OntologyEditorView.getCurrentServer().;
 			
-			Server currentServer = OntologyEditorView.getCurrentServer();
+			Server currentServer = OntologyEditorView.getStagingServer();
 //			String serverUniqueName = ServerView.getSelectedServer();
 			Console.info(currentServer.getSchema());
 //			if (serverUniqueName != null) {

@@ -81,11 +81,11 @@ public class UploadProjectWizardPage1 extends WizardPage {
 		
 			
 			if (serverUniqueName==null) {
-				currentServer = OntologyEditorView.getCurrentServer();
+				currentServer = OntologyEditorView.getStagingServer();
 				System.out.println(currentServer.toString());
-				serverUniqueName = ServerList.getUserServer().get(OntologyEditorView.getSourceSchemaName());
+				serverUniqueName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
 				System.out.println("null -> " + serverUniqueName);
-				schema = OntologyEditorView.getSourceSchemaName();
+				schema = OntologyEditorView.getStagingSchemaName();
 			}
 			else {
 				schema = OntologyEditorView.getTargetSchemaName();
