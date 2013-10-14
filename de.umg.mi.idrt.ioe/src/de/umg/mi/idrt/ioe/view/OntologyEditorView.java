@@ -1,5 +1,9 @@
 package de.umg.mi.idrt.ioe.view;
 
+import java.io.File;
+import java.net.URL;
+import java.util.Collections;
+
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -52,14 +56,17 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
 
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeColumn;
 
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.widgets.Label;
@@ -69,6 +76,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.osgi.framework.Bundle;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -133,6 +143,20 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_6;
 	private static Button btnCancel;
 	private static TreeViewerColumn column;
+	/**
+	 * @return the column
+	 */
+	public static TreeViewerColumn getTargetTreeViewerColumn() {
+		return column;
+	}
+
+	/**
+	 * @param column the column to set
+	 */
+	public static void setColumn(TreeViewerColumn column) {
+		OntologyEditorView.column = column;
+	}
+
 	public OntologyEditorView() {
 	}
 
@@ -237,6 +261,9 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void init() {
 		System.out.println("INIT!");
+		
+		
+		
 		//TODO HERE
 
 		//						Shell shell = new Shell();
@@ -244,7 +271,38 @@ public class OntologyEditorView extends ViewPart {
 		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
 		//						mainComposite = new Composite(shell, SWT.NONE);
 		//						mainComposite.setLayout(new BorderLayout(0, 0));
+		
+		
+		try {
+		Bundle bundle = Activator.getDefault().getBundle();
+		Path tmpPath = new Path("/temp/output/");
+		URL tmpURL = FileLocator.find(bundle, tmpPath,
+				Collections.EMPTY_MAP);
 
+		if (tmpURL==null) {
+			Path miscPath = new Path("/temp/"); 
+			URL miscURL = FileLocator.find(bundle, miscPath,
+					Collections.EMPTY_MAP);
+			URL miscURL2 = FileLocator.toFileURL(miscURL);
+			File file = new File(miscURL2.getPath()+"/output/");
+			file.mkdir();
+			tmpURL = FileLocator.find(bundle, tmpPath,
+					Collections.EMPTY_MAP);
+		}
+
+		URL tmpURL2 = FileLocator.toFileURL(tmpURL);
+		File folder = new File(tmpURL2.getPath());
+		File[] listOfFiles = folder.listFiles();
+
+		for (File listOfFile : listOfFiles) {
+			if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
+				System.out.println(listOfFile.getName() + " deleted");
+				listOfFile.delete();
+			}
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		mainComposite.getChildren()[0].dispose();
 		composite = new Composite(mainComposite, SWT.NONE);
 		composite.setLayout(new BorderLayout(0, 0));
@@ -264,6 +322,8 @@ public class OntologyEditorView extends ViewPart {
 			public void controlMoved(ControlEvent e) {
 			}
 		});
+
+		//TODO
 		targetComposite = new Composite(sash, SWT.NONE);
 		targetComposite.setLayout(new BorderLayout(0, 0));
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
@@ -271,12 +331,12 @@ public class OntologyEditorView extends ViewPart {
 
 		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighter(targetTreeViewer));
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
-			protected boolean isEditorActivationEvent(
-					ColumnViewerEditorActivationEvent event) {
+			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
 				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
-						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
+//						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
 						|| (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
-						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
+						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC
+						|| (event.keyCode == SWT.F2);
 			}
 		};
 
@@ -286,7 +346,7 @@ public class OntologyEditorView extends ViewPart {
 
 		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree());
 		targetComposite.layout();
-//		targetComposite.pack();
+		//		targetComposite.pack();
 		column = new TreeViewerColumn(targetTreeViewer, SWT.NONE);
 		System.out.println(targetTreeViewer.getControl().getSize().x);
 		column.getColumn().setMoveable(true);
@@ -320,6 +380,12 @@ public class OntologyEditorView extends ViewPart {
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
+		
+		
+		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
+				targetTreeViewer));
+		
+		
 		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
 
 		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
@@ -377,13 +443,13 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 
-//		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
+				targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 
 
 		sourceTreeViewer = new TreeViewer(sourceComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		sourceTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-				sourceTreeViewer));
+				sourceTreeViewer,1));
 
 		composite_1 = new SashForm(composite, SWT.SMOOTH);
 		composite_1.setLayoutData(BorderLayout.NORTH);
@@ -685,6 +751,23 @@ public class OntologyEditorView extends ViewPart {
 		//				"images/format-indent-more.png"));
 		//		mntmCombine.setText("Combine");
 
+	
+
+		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
+		mntmAddNode.setText("Add Folder");
+		mntmAddNode.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				addNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		
 		MenuItem mntmAddItem = new MenuItem(menu, SWT.PUSH);
 		mntmAddItem.setText("Add Item");
 		mntmAddItem.addSelectionListener(new SelectionListener() {
@@ -700,36 +783,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 		
-		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
-		mntmAddNode.setText("Add Folder");
-		mntmAddNode.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				addNode();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
-		MenuItem mntmRenameNode = new MenuItem(menu, SWT.PUSH);
-		mntmRenameNode.setText("Rename");
-		mntmRenameNode.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				renameNode();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
 		MenuItem mntmDelete = new MenuItem(menu, SWT.PUSH);
 		mntmDelete.setText("Delete Item");
 		mntmDelete.addSelectionListener(new SelectionListener() {
@@ -744,6 +797,22 @@ public class OntologyEditorView extends ViewPart {
 
 			}
 		});
+		
+		MenuItem mntmRenameNode = new MenuItem(menu, SWT.PUSH);
+		mntmRenameNode.setText("Rename");
+		mntmRenameNode.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				renameNode();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		
 		targetTreeViewer.getTree().setMenu(menu);
 		menu.addMenuListener(new MenuAdapter() {
 			public void menuShown(MenuEvent e) {
@@ -797,8 +866,8 @@ public class OntologyEditorView extends ViewPart {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
 	}
 	private static void renameNode() {
-		//		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
-		System.err.println("NYI");
+		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
+
 	}
 
 	private static void deleteNode() {
@@ -846,12 +915,10 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setCurrentTargetNode(OntologyTreeNode node) {
-		System.out.println("setting targetnode");
 		currentTargetNode = node;
 	}
 
 	public static OntologyTreeNode getCurrentTargetNode() {
-		System.out.println("getting target node");
 		return currentTargetNode;
 	}
 

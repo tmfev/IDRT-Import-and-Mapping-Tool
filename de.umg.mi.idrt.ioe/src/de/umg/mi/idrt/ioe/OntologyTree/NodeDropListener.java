@@ -1,6 +1,9 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import javax.swing.JTree;
+
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.swt.SWT;
@@ -41,7 +44,11 @@ public class NodeDropListener extends ViewerDropAdapter {
 	public void drop(DropTargetEvent event) {
 		int location = this.determineLocation(event);
 		// String target = (String) determineTarget(event);
-		if (event.item.getData() instanceof OntologyTreeNode) {
+		if (event.item == null) {
+			System.out.println("Null");
+			targetNode = null;
+		}
+		else if(event.item.getData() instanceof OntologyTreeNode) {
 			OntologyTreeNode treeNode = (OntologyTreeNode) event.item.getData();
 
 			String translatedLocation = "";
@@ -52,7 +59,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 			event.item.getData();
 
 			targetNode = (OntologyTreeNode) determineTarget(event);
-
+			System.out.println("TargetNodeName: " + targetNode.getName());
 			switch (location) {
 			case 1:
 				translatedLocation = "Dropped before the target ";
@@ -102,6 +109,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 			Console.info(" - targetNode: " + targetNode.getName());
 		} else {
 			Console.info(" - targetNode is Null!");
+			targetNode = myOT.getSubRootNode();
 		}
 
 		Console.info(" - data this.myOT?: "
@@ -122,9 +130,20 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - things to copy: SourceNode (\""
 				+ data.toString() + "\") or TargetNode (\""
 				+ targetNode.getTreePath() + "\") ");
+		System.out.println("data.toString(): " + data.toString());
+		//		myOT.dropCommandCopyNodes(data.toString(), targetNode.getTreePath());
 
-		myOT.dropCommandCopyNodes(data.toString(), targetNode.getTreePath());
-
+		sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(data.toString());
+		if (sourceNode == null) {
+			System.out.println("MOVE");
+			sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(data.toString());
+			OntologyTreeNode node =	myOT.moveTargetNode(sourceNode, targetNode);
+			OntologyEditorView.getTargetTreeViewer().setExpandedState(node,
+					true);
+		}else {
+			System.out.println("COPY");
+			myOT.dropCommandCopyNodes(sourceNode.getTreePath(), targetNode.getTreePath());
+		}
 		viewer.refresh();
 
 		return false;

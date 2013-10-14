@@ -75,7 +75,7 @@ public class EditorSourceView extends ViewPart {
 
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 		viewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-				viewer));
+				viewer,0));
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 
 //		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()

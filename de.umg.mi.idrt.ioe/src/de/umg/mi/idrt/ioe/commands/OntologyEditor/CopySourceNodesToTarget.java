@@ -4,8 +4,6 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import de.umg.mi.idrt.ioe.Activator;
-import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
@@ -34,7 +32,6 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 
 		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
 				.getNodeLists().getNodeByPath(sourceNodePath);
-
 		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
 				.getNodeLists().getNodeByPath(targetNodePath);
 
@@ -45,14 +42,15 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 
 		Debug.dd(" - nodeLists: "
 				+ myOT.getOntologyTreeTarget().getNodeLists().stringPathToNode
-						.keySet().toString());
+				.keySet().toString());
 
 		if (sourceNode != null && targetNode != null) {
 
 			OntologyTreeNode newNode = myOT.copySourceNodeToTarget(sourceNode,
 					targetNode);
-//			Application.getEditorTargetView().setSelection(newNode);
 			OntologyEditorView.setSelection(newNode);
+			OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode,
+					true);
 
 		} else {
 			Console.error("Error while copying nodes: SourceNode (\""
@@ -61,7 +59,6 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 					+ ") and TargetNode (\"" + targetNodePath + "\") "
 					+ (targetNode != null ? "found" : "NOT found") + ".");
 		}
-
 		return null;
 	}
 

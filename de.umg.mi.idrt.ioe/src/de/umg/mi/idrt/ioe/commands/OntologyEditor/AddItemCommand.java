@@ -17,42 +17,38 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class AddNodeCommand extends AbstractHandler {
+public class AddItemCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("Adding Node");
+		System.out.println("Adding Item");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
 		
-		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
+		OntologyTreeNode subRootNode = new OntologyTreeNode("New Item");
 
-		subRootNode.setID("new Node");
-		subRootNode.setTreePath("\\i2b2\\newNode\\");
+		subRootNode.setID("new Item");
+		subRootNode.setTreePath("\\i2b2\\newItem\\");
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-		subRootNode.setNodeType(NodeType.ITEMGROUP);
+		subRootNode.setNodeType(NodeType.ITEM);
 		subRootNode.getTargetNodeAttributes().setSourcePath("");
 		subRootNode.getTargetNodeAttributes().setChanged(true);
-		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
-		subRootNode.setName("New Node");
+		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");
+		subRootNode.setName("New Item");
 		currentNode.add(subRootNode);
+
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);
-		OntologyEditorView.setCurrentTargetNode(subRootNode);
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
-		
-	
-		
+		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);
 		targetTreeViewer.refresh();
+		
 		OntologyTreeNode test = (OntologyTreeNode) myOT.getTargetTreeRoot().getNextNode();
-
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);
-		
 		System.out.println(test.getName());
 		
 		return null;

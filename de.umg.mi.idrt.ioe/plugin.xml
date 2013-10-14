@@ -145,6 +145,11 @@
             id="de.umg.mi.idrt.ioe.addItem"
             name="addItem">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.RenameNodeCommand"
+            id="de.umg.mi.idrt.ioe.renameNode"
+            name="renameNode">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
