@@ -76,23 +76,23 @@ public class EditorSourceView extends ViewPart {
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 		viewer.addDragSupport(operations, transferTypes, new NodeDragListener(
 				viewer,0));
-		TreeContentProvider treeContentProvider = new TreeContentProvider();
+//		TreeContentProvider treeContentProvider = new TreeContentProvider();
 
 //		treeContentProvider.setOT(this._i2b2ImportTool.getMyOntologyTrees()
 //				.getOntologyTreeSource());
 		
-		if (treeContentProvider.getRoot() == null) {
-			Console.error("EditorSourceView: TreeContentRoot is null.");
-			_composite.getChildren()[0].dispose();
-			Label label = new Label(_composite, SWT.SHADOW_NONE);
-			String message = "Error while reading or creating source tree. Please visit the LOG-File-World of despair.";
-			label.setText(message);
-			_composite.pack();
-			Application.getStatusView().addErrorMessage(message);
-			return;
-		}
-
-		viewer.setContentProvider(treeContentProvider);
+//		if (treeContentProvider.getRoot() == null) {
+//			Console.error("EditorSourceView: TreeContentRoot is null.");
+//			_composite.getChildren()[0].dispose();
+//			Label label = new Label(_composite, SWT.SHADOW_NONE);
+//			String message = "Error while reading or creating source tree. Please visit the LOG-File-World of despair.";
+//			label.setText(message);
+//			_composite.pack();
+//			Application.getStatusView().addErrorMessage(message);
+//			return;
+//		}
+//
+//		viewer.setContentProvider(treeContentProvider);
 		viewer.setLabelProvider(new ViewTableLabelProvider(viewer));
 
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();

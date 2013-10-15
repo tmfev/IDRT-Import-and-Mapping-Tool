@@ -7,7 +7,6 @@ import java.util.Collections;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
@@ -15,15 +14,14 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
@@ -45,6 +43,7 @@ import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Point;
 
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -62,11 +61,9 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
 
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TreeColumn;
 
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.widgets.Label;
@@ -266,11 +263,11 @@ public class OntologyEditorView extends ViewPart {
 		
 		//TODO HERE
 
-		//						Shell shell = new Shell();
-		//						shell.setSize(844, 536);
-		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//						mainComposite = new Composite(shell, SWT.NONE);
-		//						mainComposite.setLayout(new BorderLayout(0, 0));
+//								Shell shell = new Shell();
+//								shell.setSize(844, 536);
+//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//								mainComposite = new Composite(shell, SWT.NONE);
+//								mainComposite.setLayout(new BorderLayout(0, 0));
 		
 		
 		try {
@@ -354,7 +351,7 @@ public class OntologyEditorView extends ViewPart {
 		column.setLabelProvider(new ColumnLabelProvider() {
 
 			public String getText(Object element) {
-				return "Column 1 => " + element.toString();
+				return "- " + element.toString();
 			}
 
 		});
@@ -450,7 +447,7 @@ public class OntologyEditorView extends ViewPart {
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		sourceTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
 				sourceTreeViewer,1));
-
+		sourceTreeViewer.setSorter(new ViewerSorter());
 		composite_1 = new SashForm(composite, SWT.SMOOTH);
 		composite_1.setLayoutData(BorderLayout.NORTH);
 		composite_1.setLayout(new GridLayout(2, false));
@@ -609,7 +606,6 @@ public class OntologyEditorView extends ViewPart {
 		dropTarget2.setTransfer(transferTypes);
 		dropTarget2.addDropListener(dropListenerTarget);
 
-		System.out.println("lblTarget: " + lblTarget.getBounds());
 		btnCollapseAllTarget.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -920,6 +916,9 @@ public class OntologyEditorView extends ViewPart {
 
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
+	}
+	public static Point getTargetCompositePoint() {
+		return targetComposite.getLocation();
 	}
 
 }

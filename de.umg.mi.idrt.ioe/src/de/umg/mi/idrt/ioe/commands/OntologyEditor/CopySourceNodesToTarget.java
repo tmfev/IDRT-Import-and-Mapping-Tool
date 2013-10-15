@@ -35,15 +35,6 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
 				.getNodeLists().getNodeByPath(targetNodePath);
 
-		Debug.dd(" - sourceNode: "
-				+ (sourceNode != null ? "found" : "NOT found"));
-		Debug.dd(" - targetNode: "
-				+ (targetNode != null ? "found" : "NOT found"));
-
-		Debug.dd(" - nodeLists: "
-				+ myOT.getOntologyTreeTarget().getNodeLists().stringPathToNode
-				.keySet().toString());
-
 		if (sourceNode != null && targetNode != null) {
 
 			OntologyTreeNode newNode = myOT.copySourceNodeToTarget(sourceNode,

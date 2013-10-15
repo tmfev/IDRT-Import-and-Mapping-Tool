@@ -11,6 +11,7 @@ import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class SetTargetAttribute extends AbstractHandler {
 
@@ -39,7 +40,7 @@ public class SetTargetAttribute extends AbstractHandler {
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH:" + targetNodePath);
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:" + attribute);
 
-		MyOntologyTree myOT = Activator.getDefault().getResource().getI2B2ImportTool()
+		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool()
 				.getMyOntologyTrees();
 
 		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource().getNodeLists()

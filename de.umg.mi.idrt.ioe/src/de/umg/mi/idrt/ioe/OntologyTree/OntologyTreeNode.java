@@ -288,7 +288,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	/* ******************************
 	 * /* functions for the swt tree /* *****************************
 	 */
-	public ListIterator getChild() {
+	public ListIterator<OntologyTreeNode> getChild() {
 		return this._children.listIterator();
 	}
 
@@ -308,7 +308,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	@Override
 	public OntologyTreeNode getChildAfter(TreeNode aChild) {
-		// TODO Auto-generated method stub
 		return (OntologyTreeNode)super.getChildAfter(aChild);
 	}
 
@@ -511,6 +510,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		super.add(child);
 		/* adding stuff the child now */
 		
+		this.getChildren().add(child);
 		child.setTreePath( this.getTreePath() + child.getID() + "\\"  );
 		child.setTreePathLevel( this.getTreePathLevel() + 1 );
 		

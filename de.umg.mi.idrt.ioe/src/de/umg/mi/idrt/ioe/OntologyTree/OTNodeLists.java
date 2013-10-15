@@ -12,6 +12,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.PathAndID;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
 public class OTNodeLists {
@@ -52,9 +53,6 @@ public class OTNodeLists {
 		}
 		
 		public OntologyTreeNode addOTNode( String i2b2Path, OntologyTreeNode node ){
-			
-
-			
 			OntologyTreeNode parentNode = null;
 			PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
 
@@ -191,7 +189,6 @@ public class OTNodeLists {
 		}
 		
 		public void removeNode(OntologyTreeNode node){
-			
 			iDtoNodes.remove(node.getID());
 			stringPathToNode.remove(node.getTreePath());
 			iDtoStringPaths.remove(node.getID());

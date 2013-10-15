@@ -7,6 +7,9 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.TransferHandler;
@@ -14,15 +17,27 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
+
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.ResourceManager;
 import de.umg.mi.idrt.ioe.ActionCommand;
@@ -56,7 +71,6 @@ public class MyOntologyTree extends JPanel {
 	// private tree components
 	private OntologyTreeNode sourceRootNode = null;
 	private OntologyTreeNode targetRootNode = null;
-
 	private OntologyTreeNode subRootNode;
 
 	/**
@@ -492,7 +506,7 @@ public class MyOntologyTree extends JPanel {
 		else {
 			System.out.println("sourceNode.getOntologyCellAttributes() == null");
 		}
-		
+
 		System.out.println("newnode: " + newNode.getTargetNodeAttributes().getVisualattribute());
 
 		targetNode.add(newNode);
@@ -511,25 +525,17 @@ public class MyOntologyTree extends JPanel {
 	}
 
 	/* OT Commands */
-	public OntologyTreeNode copySourceNodeToTarget(OntologyTreeNode sourceNode,
-			OntologyTreeNode targetNode) {
+	public OntologyTreeNode copySourceNodeToTarget(final OntologyTreeNode sourceNode,
+			final OntologyTreeNode targetNode) {
 		if (sourceNode != null) {
-			System.out.println("- do:" + sourceNode.getName() + " -> "
-					+ targetNode.getName() + "!");
 
-			OntologyTreeNode newNode = new OntologyTreeNode(
+			final OntologyTreeNode newNode = new OntologyTreeNode(
 					sourceNode.getName());
 
 			newNode.setID(sourceNode.getID());
 			newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
-			/*
-			 * copy attriubutes
-			 */
-
 			if (sourceNode.getOntologyCellAttributes() != null) {
-				System.out.println(sourceNode.getOntologyCellAttributes()
-						.getC_VISUALATTRIBUTES());
 				newNode.getTargetNodeAttributes().setSourcePath(
 						sourceNode.getOntologyCellAttributes().getC_FULLNAME());
 
@@ -543,18 +549,104 @@ public class MyOntologyTree extends JPanel {
 				System.out.println("sourceNode.getOntologyCellAttributes() == null");
 			}
 
-			targetNode.add(newNode);
-
-			this.getOntologyTreeTarget().getNodeLists().add(newNode);
-
-			if (sourceNode.hasChildren()) {
-				for (int x = 0; x < sourceNode.getChildCount(); x++) {
-					OntologyTreeNode child = (OntologyTreeNode) sourceNode
-							.getChildAt(x);
-					copySourceNodeToTarget(child, newNode);
+			newNode.setTreePath( targetNode.getTreePath() + newNode.getID() + "\\"  );
+			newNode.setTreePathLevel( targetNode.getTreePathLevel() + 1 );
+			System.out.println("newnode: " + newNode.getTreePath());
+			OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
+			if (testNode==null) {
+				System.out.println("TESTNODE NULL");
+				targetNode.add(newNode);
+				this.getOntologyTreeTarget().getNodeLists().add(newNode);
+				if (sourceNode.hasChildren()) {
+					for (int x = 0; x < sourceNode.getChildCount(); x++) {
+						OntologyTreeNode child = (OntologyTreeNode) sourceNode
+								.getChildAt(x);
+						copySourceNodeToTarget(child, newNode);
+					}
 				}
 			}
+			else {
+				boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node already exists in the target ontology!\nDo you want to rename the Path?");
+				if (confirm) {
+					//TODO
+					Display display = Application.getDisplay().getActiveShell().getDisplay();
+					Application.getOntologyView().getSite().getShell();
 
+					Point pt = display.getCursorLocation();
+
+					Monitor [] monitors = display.getMonitors();
+					for (int i= 0; i<monitors.length; i++) {
+						if (monitors [i].getBounds().contains(pt)) {
+							Rectangle rect = monitors [i].getClientArea();
+							pt.x=rect.x;
+							pt.y=rect.y;
+							break;
+
+						}
+
+					}
+
+					final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
+							| SWT.TOOL);
+					dialog.setLocation(pt.x+Application.getOntologyView().getViewSite().getShell().getSize().x/2,Application.getOntologyView().getViewSite().getShell().getSize().y/2+pt.y);
+					final Composite actionMenu = new Composite(dialog, SWT.NONE);
+					actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
+
+					System.out.println("NEWNODE ID " +newNode.getID());
+					final Text text = new Text(actionMenu, SWT.NONE);
+					final String oldID = newNode.getID();
+					text.setText(oldID+"_2");
+
+					Button btnOK = new Button(actionMenu,SWT.PUSH);
+					btnOK.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png"));
+					btnOK.setToolTipText("OK");
+					btnOK.addSelectionListener(new SelectionListener() {
+
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							String newID = text.getText();
+							newNode.setID(newID);
+
+							String oldTreePath = newNode.getTreePath();
+							String newTreePath = oldTreePath.replace(oldID, newID);
+							newNode.setTreePath(newTreePath);
+							OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
+							if (testNode==null) {
+								dialog.close();
+								targetNode.add(newNode);
+								getOntologyTreeTarget().getNodeLists().add(newNode);
+								if (sourceNode.hasChildren()) {
+									for (int x = 0; x < sourceNode.getChildCount(); x++) {
+										OntologyTreeNode child = (OntologyTreeNode) sourceNode
+												.getChildAt(x);
+										copySourceNodeToTarget(child, newNode);
+									}
+								}
+							
+							}
+							else {
+								dialog.close();
+								MessageDialog.openError(Application.getShell(), "Cannot Add Node!", "This Node is already present!\nPlease choose an unique name!");
+							}
+						
+						}
+
+						@Override
+						public void widgetDefaultSelected(SelectionEvent e) {
+
+						}
+					});
+
+					actionMenu.pack();
+					dialog.pack();
+					dialog.open();
+
+					while (!dialog.isDisposed ()) {
+						if (!display.readAndDispatch ()) display.sleep ();
+					}
+				}
+			}
+			//			}
 			return newNode;
 		}
 		return null;
@@ -603,21 +695,10 @@ public class MyOntologyTree extends JPanel {
 		}
 
 	}
-	
+
 
 	public void dropCommandCopyNodes(final String sourcePath, final String targetPath) {
 
-		// createPopupMenu();
-
-		System.out.println("createPopupMenu():");
-		//		Shell shell = Application.getShell();
-		//		System.out.println(" - shell is null? "+ (shell == null ? "true" : "false"));
-
-
-		//		new Thread(new Runnable() {
-		//
-		//			@Override
-		//			public void run() {
 		final Shell dialog = new Shell(Application.getShell(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 				| SWT.TOOL);
 		dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
@@ -629,12 +710,13 @@ public class MyOntologyTree extends JPanel {
 		btnInsert.setImage(ResourceManager.getPluginImage(
 				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
 		btnInsert.setBounds(0, 0, 75, 25);
-		btnInsert.setText("insert nodes here");
+		btnInsert.setText("Insert Nodes");
 		btnInsert.addSelectionListener(new SelectionAdapter() {
 			// SelectionAdapter Methode
 			public void widgetSelected(SelectionEvent e) {
 				// appletString = "Button eins geklickt"; //später wird dieser
 				// String in einem Label dargestellt
+				dialog.close();
 				ActionCommand command = new ActionCommand(
 						Resource.ID.Command.OTCOPY);
 				command.addParameter(
@@ -644,34 +726,12 @@ public class MyOntologyTree extends JPanel {
 						Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
 						targetPath);
 				Application.executeCommand(command);
-				dialog.close();
-//				OntologyEditorView.getTargetTreeViewer().expandAll();
+
+				//				OntologyEditorView.getTargetTreeViewer().expandAll();
 				OntologyEditorView.getTargetTreeViewer().refresh();
 			}
 		});
 
-		btnInsert.addMouseTrackListener(new MouseTrackAdapter() {
-
-			@Override
-			public void mouseHover(org.eclipse.swt.events.MouseEvent e) {
-				// TODO Auto-generated method stub
-
-				System.out.println(" ... hovering ...");
-
-				/*
-				 * Composite composite = new Composite(actionMenu, SWT.NONE);
-				 * composite.setBackground(SWTResourceManager.getColor(SWT.
-				 * COLOR_TITLE_BACKGROUND_GRADIENT));
-				 * 
-				 * Label lblInsertTest = new Label(composite, SWT.NONE);
-				 * lblInsertTest.setBounds(0, 0, 55, 15);
-				 * lblInsertTest.setText("insert Test"); new Label(actionMenu,
-				 * SWT.NONE);
-				 * 
-				 * actionMenu.pack();
-				 */
-			}
-		});
 
 		Button btnCombine = new Button(actionMenu, SWT.NONE);
 		btnCombine.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
@@ -680,10 +740,11 @@ public class MyOntologyTree extends JPanel {
 				"edu.goettingen.i2b2.importtool",
 				"images/format-indent-more.png"));
 		btnCombine.setBounds(0, 0, 75, 25);
-		btnCombine.setText("combine nodes here");
+		btnCombine.setText("Combine Nodes");
 		btnCombine.addSelectionListener(new SelectionAdapter() {
 			// SelectionAdapter Methode
 			public void widgetSelected(SelectionEvent e) {
+				dialog.close();
 				ActionCommand command = new ActionCommand(
 						Resource.ID.Command.OTSETTARGETATTRIBUTE);
 				command.addParameter(
@@ -696,7 +757,7 @@ public class MyOntologyTree extends JPanel {
 						Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
 						"startDateSource");
 				Application.executeCommand(command);
-				dialog.close();
+
 
 			}
 		});
@@ -725,7 +786,7 @@ public class MyOntologyTree extends JPanel {
 
 	}
 
-	public ViewTree getVieTreeSource() {
+	public ViewTree getViewTreeSource() {
 		return this.viewTreeSource;
 	}
 
