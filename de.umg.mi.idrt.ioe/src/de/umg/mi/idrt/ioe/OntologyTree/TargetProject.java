@@ -29,20 +29,6 @@ public class TargetProject {
 
 	}
 
-	/**
-	 * @return the selectedTarget
-	 */
-	public Target getSelectedTarget() {
-		return selectedTarget;
-	}
-
-	/**
-	 * @param selectedTarget
-	 *            the selectedTarget to set
-	 */
-	public void setSelectedTarget(Target selectedTarget) {
-		this.selectedTarget = selectedTarget;
-	}
 
 	/**
 	 * @return the highestVersion
@@ -140,7 +126,8 @@ public class TargetProject {
 	}
 	
 	public void add(Target target){
-		list.add(target.getTargetID(), target);
+		list.add(target);
+
 	}
 
 	public boolean isEmpty() {

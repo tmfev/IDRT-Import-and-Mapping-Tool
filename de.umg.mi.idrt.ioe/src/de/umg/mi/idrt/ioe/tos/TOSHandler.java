@@ -161,7 +161,7 @@ public class TOSHandler {
 
 	}
 
-	public static TargetProject  addTargetProjectToTargetProjects(int id,
+	public static void  addTargetProjectToTargetProjects(int id,
 			String name, String description) {
 
 		TargetProject targetProject = new TargetProject();
@@ -169,10 +169,16 @@ public class TOSHandler {
 		targetProject.setName(name);
 		targetProject.setDescription(description);
 		
-		return targetProject;
+		OntologyTreeTargetRootNode targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView
+				.getI2b2ImportTool().getMyOntologyTrees()
+				.getOntologyTreeTarget().getRootNode());
+
+		TargetProjects targetProjects = targetRootNode.getTargetProjects();
+		targetProjects.add(targetProject);
+		
 	}
 
-	public static Target addTargetVersionToTargeProject(int targetID,
+	public static void addTargetVersionToTargeProject(int targetID,
 			int targetProjectID, int version, Date created, Date lastModified,
 			String targetDBSchema) {
 
@@ -185,6 +191,7 @@ public class TOSHandler {
 		target.setTargetDBSchema(targetDBSchema);
 		OntologyTreeTargetRootNode targetRootNode = new OntologyTreeTargetRootNode(
 				"");
+		
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView
 				.getI2b2ImportTool().getMyOntologyTrees()
 				.getOntologyTreeTarget().getRootNode());
@@ -192,7 +199,6 @@ public class TOSHandler {
 		TargetProjects targetProjects = targetRootNode.getTargetProjects();
 		targetProjects.addTarget(target);
 
-		return target;
 	}
 
 }

@@ -68,6 +68,7 @@ private static int exit;
 			// the
 			// editors
 
+			
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);

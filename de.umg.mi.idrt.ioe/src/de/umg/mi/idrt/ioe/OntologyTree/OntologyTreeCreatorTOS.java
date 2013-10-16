@@ -19,9 +19,12 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
+import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
+import de.umg.mi.idrt.ioe.Resource;
 
 
 /**
@@ -48,6 +51,13 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 		super(myOT);
 		_filename = filename;
 		System.out.println("OTCreatorTOS");
+		
+		
+		// loading the ieo target project into the target ontology tree
+		ActionCommand command = new ActionCommand(
+				Resource.ID.Command.IEO.LOADTARGETPROJECTS);
+		Application.executeCommand(command);
+		
 
 		try {
 			// create a new db connector via TOS
