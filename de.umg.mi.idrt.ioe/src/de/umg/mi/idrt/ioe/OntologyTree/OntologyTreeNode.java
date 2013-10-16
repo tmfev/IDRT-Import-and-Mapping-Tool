@@ -23,6 +23,8 @@ import de.umg.mi.idrt.ioe.Resource;
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 
+	
+	private boolean highlighted=false;
 	/**
 	 * a list of this nodes children for the use in a swt tree viewer
 	 */
@@ -514,7 +516,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		child.setTreePath( this.getTreePath() + child.getID() + "\\"  );
 		child.setTreePathLevel( this.getTreePathLevel() + 1 );
 		
-		
 	}
 
 	public class Path<Integer, String> {
@@ -745,5 +746,13 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 			Console.error("Could not get ID from Path, because path is too damn short.");
 			return "";
 		}
+	}
+
+	/**
+	 * @param b
+	 */
+	public void setHighlight(boolean b) {
+		highlighted = b;
+		
 	}
 }

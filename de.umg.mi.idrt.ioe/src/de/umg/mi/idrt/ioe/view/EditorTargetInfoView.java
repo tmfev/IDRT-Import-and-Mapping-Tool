@@ -2,6 +2,7 @@ package de.umg.mi.idrt.ioe.view;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
@@ -179,6 +180,14 @@ public class EditorTargetInfoView extends ViewPart {
 					
 					// Source Path
 					if (row == 0) {
+						String path = item.getText(1);
+						OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+//						node.set
+						node.setHighlight(true);
+						
+						System.out.println(node.getName());
+//						ISelection selection = new 
+//						OntologyEditorView.getStagingTreeViewer().setSelection(selection);
 						System.out.println("Editor: Source Path");
 						final Text text = new Text(_infoTable, SWT.NONE);
 
@@ -536,175 +545,6 @@ public class EditorTargetInfoView extends ViewPart {
 		addValueItem(items, row++,
 				String.valueOf(attributes.getVisualattribute()));
 
-		/*
-		 * TableItem item = new TableItem (_infoTable, SWT.NONE); item.setText
-		 * (2, String.valueOf( attributes.getC_HLEVEL() ) ); item = new
-		 * TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"C_FULLNAME", attributes.getC_FULLNAME()}); item = new TableItem
-		 * (_infoTable, SWT.NONE); item.setText (new String[] {"C_NAME",
-		 * attributes.getC_NAME()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_SYNONYM_CD",
-		 * attributes.getC_SYNONYM_CD()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_VISUALATTRIBUTES",
-		 * attributes.getC_VISUALATTRIBUTES()}); item = new TableItem
-		 * (_infoTable, SWT.NONE); item.setText (new String[] {"C_TOTALNUM",
-		 * String.valueOf( attributes.getC_TOTALNUM() )}); item = new TableItem
-		 * (_infoTable, SWT.NONE); item.setText (new String[] {"C_BASECODE",
-		 * attributes.getC_BASECODE()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_METADATAXML",
-		 * String.valueOf( attributes.getC_METADATAXML() )}); item = new
-		 * TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"C_FACTTABLECOLUMN", attributes.getC_FACTTABLECOLUMN()}); item = new
-		 * TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"C_TABLENAME", attributes.getC_TABLENAME()}); item = new TableItem
-		 * (_infoTable, SWT.NONE); item.setText (new String[] {"C_COLUMNNAME",
-		 * attributes.getC_COLUMNNAME()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_COLUMNDATATYPE",
-		 * attributes.getC_COLUMNDATATYPE()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_OPERATOR",
-		 * attributes.getC_OPERATOR()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_DIMCODE",
-		 * attributes.getC_DIMCODE()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_COMMENT", String.valueOf(
-		 * attributes.getC_COMMENT() )}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_TOOLTIP",
-		 * attributes.getC_TOOLTIP()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"M_APPLIED_PATH",
-		 * attributes.getM_APPLIED_PATH()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"UPDATE_DATE", String.valueOf(
-		 * attributes.getUPDATE_DATE() )}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"DOWNLOAD_DATE",
-		 * String.valueOf( attributes.getDOWNLOAD_DATE() )}); item = new
-		 * TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"IMPORT_DATE", String.valueOf( attributes.getIMPORT_DATE() )}); item
-		 * = new TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"SOURCESYSTEM_CD", attributes.getSOURCESYSTEM_CD()}); item = new
-		 * TableItem (_infoTable, SWT.NONE); item.setText (new String[]
-		 * {"VALUETYPE_CD", attributes.getVALUETYPE_CD()}); item = new TableItem
-		 * (_infoTable, SWT.NONE); item.setText (new String[] {"M_EXCLUSIVE_CD",
-		 * attributes.getM_EXCLUSION_CD()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_PATH",
-		 * attributes.getC_PATH()}); item = new TableItem (_infoTable,
-		 * SWT.NONE); item.setText (new String[] {"C_SYMBOL",
-		 * attributes.getC_SYMBOL()});
-		 */
-
-		// _infoTable.getColumn(1)
-
-		/*
-		 * 
-		 * // recreate bottom-label if ( _itemNode == null ){
-		 * 
-		 * disposeChildren(_editorComposite);
-		 * 
-		 * Group grpLabel = new Group(_editorComposite, SWT.NONE);
-		 * grpLabel.setText("label"); grpLabel.setLayout(new GridLayout(2,
-		 * false));
-		 * 
-		 * //_bottomLabel = new Label(grpLabel, SWT.NONE);
-		 * //_bottomLabel.setText("New Label"); }
-		 * 
-		 * if ( _itemNode != null ){
-		 * 
-		 * path = _itemNode.getTreePath(); name = _itemNode.getName(); nodeType
-		 * = _itemNode.getNodeType().toString();
-		 * 
-		 * 
-		 * 
-		 * bottomLabel = "ItemNode";
-		 * 
-		 * disposeChildren(_editorComposite);
-		 * 
-		 * _editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
-		 * true, false, 1, 1)); _editorComposite.setLayout(new
-		 * FillLayout(SWT.VERTICAL));
-		 * 
-		 * NodeEditorCompositeInteger bottomComposite = new
-		 * NodeEditorCompositeInteger(this._editorComposite, SWT.NONE);
-		 * 
-		 * }
-		 * 
-		 * if ( _node != null ) {
-		 * 
-		 * //if ( _node.getNodeType().equals(NodeType.ANSWER) ){ // _node =
-		 * (OTNode)_node.getParent(); // if (
-		 * _node.getNodeType().equals(NodeType.ANSWER) ){ // _node =
-		 * (OTNode)_node.getParent(); // if (
-		 * _node.getNodeType().equals(NodeType.ANSWER) ){ // _node =
-		 * (OTNode)_node.getParent(); // } // } //}
-		 * 
-		 * path = _node.getTreePath(); name = _node.getName(); nodeType =
-		 * _node.getNodeType().toString(); importPath = _node.getImportPath();
-		 * treePath = _node.getTreePath(); i2b2Path = _node.getI2B2Path();
-		 * i2b2Level = String.valueOf(_node.getLevel()); if (
-		 * _node.isAdditionalData() ){ OTNode additionalDataParent =
-		 * _node.getAdditionalDataParentNode();
-		 * 
-		 * if ( _node.isAdditionDataParent() ) { additionalDataParentNodePath =
-		 * "*"; } else if ( additionalDataParent != null ){
-		 * additionalDataParentNodePath = additionalDataParent.getImportPath();
-		 * } } additionalDataParentNodePath = ( _node != null &&
-		 * _node.hastAdditionalDataParentNode() ) ?
-		 * _node.getAdditionalDataParentNode().getImportPath() : "-";
-		 * 
-		 * bottomLabel = "Node";
-		 * 
-		 * } else { path = ">"; name = "Name"; nodeType = "Type";
-		 * 
-		 * bottomLabel = "nothing"; }
-		 * 
-		 * if (_node != null){ i2b2Info = _node.getLevel() + "|" +
-		 * _node.getI2B2Path();
-		 * 
-		 * //Console.info("checkID2");
-		 * //_checkboxIsVisible.setSelection(_node.isVisable());
-		 * //_checkboxIsVisible.update(); }
-		 */
-
-		/*
-		 * _infoLabelPath.setText(path); _infoLabelPath.update();
-		 * _infoLabelName.setText(name); _infoLabelName.update();
-		 * //_infoLabelI2B2InfoData.setText(i2b2Info);
-		 * //_infoLabelI2B2InfoData.update(); if (nodeType != null)
-		 * _infoLabelNodeType.setText(nodeType + ( ( (
-		 * (nodeType.equals(NodeType.ITEM.toString() ) && _itemNode != null ) )
-		 * ? " (" + _itemNode.getDataType() + ")" : "") ));
-		 * 
-		 * _infoLabelNodeType.update();
-		 * _infoLabelImportPathData.setText(importPath);
-		 * _infoLabelImportPathData.update();
-		 * _infoLabelTreePathData.setText(treePath);
-		 * _infoLabelTreePathData.update();
-		 * _infoLabelI2B2PathData.setText(i2b2Path);
-		 * _infoLabelI2B2PathData.update();
-		 * _infoLabelI2B2LevelData.setText(i2b2Level);
-		 * _infoLabelI2B2LevelData.update();
-		 * _infoLabelAdditionalDataParentPathData
-		 * .setText(additionalDataParentNodePath);
-		 * _infoLabelAdditionalDataParentPathData.update();
-		 * 
-		 * _infoLabelNodeType.getParent().layout();
-		 * 
-		 * // only edit if there is a active instance if
-		 * (!_bottomLabel.isDisposed()){ _bottomLabel.setText(bottomLabel);
-		 * _bottomLabel.update();
-		 * 
-		 * }
-		 */
-
-		// _editorComposite.dispose();
-		// _editorComposite = new
-		// NodeEditorCompositeInteger(this._editorComposite, SWT.NONE);
-
-		/*
-		 * Label _bottomLabel2 = new Label(_editorComposite, SWT.NONE);
-		 * _bottomLabel2.setText("New Label2 (XX)"); _bottomLabel2.update();
-		 */
-
-		// _editorComposite.update();
-		// _editorComposite.layout();
-
-		_editorComposite.update();
 		_editorComposite.layout();
 
 		_parent.layout();

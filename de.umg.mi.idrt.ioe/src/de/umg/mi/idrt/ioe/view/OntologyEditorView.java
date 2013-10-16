@@ -109,9 +109,9 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	private static boolean init = false;
-	private static TreeViewer sourceTreeViewer;
+	private static TreeViewer stagingTreeViewer;
 	private static TreeViewer targetTreeViewer;
-	private static Composite sourceComposite;
+	private static Composite stagingComposite;
 	private static Composite targetComposite;
 	private static Composite mainComposite;
 	private static SashForm sash;
@@ -305,9 +305,9 @@ public class OntologyEditorView extends ViewPart {
 		composite.setLayout(new BorderLayout(0, 0));
 
 		sash = new SashForm(composite, SWT.NONE);
-		sourceComposite = new Composite(sash, SWT.NONE);
-		sourceComposite.setLayout(new BorderLayout(0, 0));
-		sourceComposite.addControlListener(new ControlListener() {
+		stagingComposite = new Composite(sash, SWT.NONE);
+		stagingComposite.setLayout(new BorderLayout(0, 0));
+		stagingComposite.addControlListener(new ControlListener() {
 
 			@Override
 			public void controlResized(ControlEvent e) {
@@ -443,11 +443,11 @@ public class OntologyEditorView extends ViewPart {
 				targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 
 
-		sourceTreeViewer = new TreeViewer(sourceComposite, SWT.MULTI | SWT.H_SCROLL
+		stagingTreeViewer = new TreeViewer(stagingComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		sourceTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-				sourceTreeViewer,1));
-		sourceTreeViewer.setSorter(new ViewerSorter());
+		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
+				stagingTreeViewer,1));
+		stagingTreeViewer.setSorter(new ViewerSorter());
 		composite_1 = new SashForm(composite, SWT.SMOOTH);
 		composite_1.setLayoutData(BorderLayout.NORTH);
 		composite_1.setLayout(new GridLayout(2, false));
@@ -632,7 +632,7 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				sourceTreeViewer.collapseAll();
+				stagingTreeViewer.collapseAll();
 			}
 
 			@Override
@@ -643,19 +643,19 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				sourceTreeViewer.expandAll();
+				stagingTreeViewer.expandAll();
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
-		sourceTreeViewer.addDoubleClickListener(doubleClickListener);
+		stagingTreeViewer.addDoubleClickListener(doubleClickListener);
 
 		sash.setWeights(new int[] {1, 1});
-		sourceTreeViewer.addDropSupport(operations, transferTypes, dropListenerStaging);
+		stagingTreeViewer.addDropSupport(operations, transferTypes, dropListenerStaging);
 
-		sourceTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
+		stagingTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item == null || e.item.getData() == null) {
 					Console.error("WidgetSelected but no known node found!");
@@ -830,31 +830,35 @@ public class OntologyEditorView extends ViewPart {
 		if (!init) {
 			init();
 		}
-		sourceTreeViewer.getTree().removeAll();
+		stagingTreeViewer.getTree().removeAll();
 		TreeContentProvider treeContentProvider = new TreeContentProvider();
 
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeSource());
 
-		sourceTreeViewer.setContentProvider(treeContentProvider);		
-		sourceTreeViewer.setLabelProvider(new ViewTableLabelProvider(sourceTreeViewer));
-
+		stagingTreeViewer.setContentProvider(treeContentProvider);		
+//		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider(stagingTreeViewer));
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
-		sourceTreeViewer.setInput(oTreeContent.getModel());
-		sourceTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
+		stagingTreeViewer.setInput(oTreeContent.getModel());
+		stagingTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
-		.setTreeViewer(sourceTreeViewer);
+		.setTreeViewer(stagingTreeViewer);
 
 
-		sourceComposite.layout();
+		stagingComposite.layout();
 		mainComposite.layout();
 	}
 
 	public static TreeViewer getTargetTreeViewer() {
 		return targetTreeViewer;
 	}
+	public static TreeViewer getStagingTreeViewer() {
+		return stagingTreeViewer;
+	}
+	
 	private static void addNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
 	}
