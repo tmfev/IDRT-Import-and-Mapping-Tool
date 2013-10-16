@@ -30,23 +30,18 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 
-		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
-				.getNodeLists().getNodeByPath(sourceNodePath);
+//		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
+//				.getNodeLists().getNodeByPath(sourceNodePath);
 		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
 				.getNodeLists().getNodeByPath(targetNodePath);
+System.out.println("targetNodePath "+targetNodePath);
+		if (targetNode != null) {
 
-		if (sourceNode != null && targetNode != null) {
-
-			OntologyTreeNode newNode = myOT.copySourceNodeToTarget(sourceNode,
-					targetNode);
-			OntologyEditorView.setSelection(newNode);
-			OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode,
-					true);
+			myOT.copySourceNodeToTarget(null,targetNode);
 
 		} else {
-			Console.error("Error while copying nodes: SourceNode (\""
+			System.err.println("Error while copying nodes: SourceNode (\""
 					+ sourceNodePath + "\") "
-					+ (sourceNode != null ? "found" : "NOT found")
 					+ ") and TargetNode (\"" + targetNodePath + "\") "
 					+ (targetNode != null ? "found" : "NOT found") + ".");
 		}

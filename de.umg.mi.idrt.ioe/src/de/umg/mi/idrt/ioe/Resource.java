@@ -294,6 +294,8 @@ public class Resource {
 
 			public class IEO {
 				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
+				public final static String LOADTARGETPROJECTS = "de.umg.mi.idrt.ioe.LoadTargetProjects";
+				
 			}
 
 		}

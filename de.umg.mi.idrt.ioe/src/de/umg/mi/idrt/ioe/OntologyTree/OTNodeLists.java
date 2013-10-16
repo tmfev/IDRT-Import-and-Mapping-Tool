@@ -188,6 +188,14 @@ public class OTNodeLists {
 			return this.stringPathToViewTreeNode.get(path);
 		}
 		
+		public void removeAll() {
+			iDtoNodes.clear();
+			stringPathToNode.clear();
+			iDtoStringPaths.clear();
+			stringPathToItemStatus.clear();
+			stringPathToViewTreeNode.clear();
+		}
+		
 		public void removeNode(OntologyTreeNode node){
 			iDtoNodes.remove(node.getID());
 			stringPathToNode.remove(node.getTreePath());

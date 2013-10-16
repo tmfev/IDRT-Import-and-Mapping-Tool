@@ -53,7 +53,7 @@ public class TreeContentProvider implements ITreeContentProvider {
 						.println("TreeContentProvider Error at getElements: has no parent");
 			}
 		} else if (inputElement instanceof ArrayList) {
-			System.out.println("Content provider ");
+//			System.out.println("Content provider ");
 			OntologyTreeNode node = new OntologyTreeNode("empty");
 			ArrayList<OntologyTreeNode> list = new ArrayList<OntologyTreeNode>();
 			list.add(node);

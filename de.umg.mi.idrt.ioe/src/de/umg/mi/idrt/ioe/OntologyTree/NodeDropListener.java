@@ -1,8 +1,12 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import java.awt.datatransfer.Transferable;
+import java.util.Iterator;
+
 import javax.swing.JTree;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
@@ -31,15 +35,13 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class NodeDropListener extends ViewerDropAdapter {
 
 	private MyOntologyTree myOT;
-	private final Viewer stagingTreeViewer;
-	private final Viewer targetTreeViewer;
+	private final Viewer viewer;
 	private OntologyTreeNode sourceNode = null;
 	private OntologyTreeNode targetNode = null;
 
-	public NodeDropListener(Viewer stagingTreeViewer, TreeViewer targetTreeViewer) {
-		super(stagingTreeViewer);
-		this.stagingTreeViewer = stagingTreeViewer;
-		this.targetTreeViewer=targetTreeViewer;
+	public NodeDropListener(Viewer viewer) {
+		super(viewer);
+		this.viewer = viewer;
 		setExpandEnabled(true);
 	}
 
@@ -52,11 +54,12 @@ public class NodeDropListener extends ViewerDropAdapter {
 		return 3;
 	}
 
-	
+
 	@Override
 	public void drop(DropTargetEvent event) {
-//		int location = this.determineLocation(event);
+		//		int location = this.determineLocation(event);
 		// String target = (String) determineTarget(event);
+		OntologyEditorView.setNotYetSaved(true);
 		if (event.item == null) {
 			System.out.println("Null");
 			targetNode = null;
@@ -80,65 +83,45 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 	@Override
 	public boolean performDrop(Object data) {
-		myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 
-		Console.info("Dropped performed with data:");
-		Console.info(" - data: " + data.getClass().getSimpleName());
-		Console.info(" - data_toString: " + (String) data.toString());
+		
+		
+			String path = data.toString();
+			myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 
-		if (this.targetNode != null) {
-			Console.info(" - targetNode: " + targetNode.getName());
-		} else {
-			Console.info(" - targetNode is Null!");
-			targetNode = myOT.getSubRootNode();
-		}
+			Console.info("Dropped performed with data:");
+			Console.info(" - data: " + data.getClass().getSimpleName());
+			Console.info(" - data_toString: " + (String) path);
 
-		Console.info(" - data this.myOT?: "
-				+ (this.myOT == null ? "isNull" : "is NOT null"));
-		Console.info(" - data this.myOT.getViewTree()?: "
-				+ (this.myOT.getViewTreeSource() == null ? "isNull"
-						: "is NOT null"));
+			if (this.targetNode != null) {
+				Console.info(" - targetNode: " + targetNode.getName());
+			} else {
+				Console.info(" - targetNode is Null!");
+				targetNode = myOT.getSubRootNode();
+			}
 
-		Console.info(" - data size?: "
-				+ this.myOT.getViewTreeSource().stringPathToViewTreeNode.size());
-		System.out
-		.println(" - data size2?: "
-				+ this.myOT.getViewTreeTarget().stringPathToViewTreeNode
-				.size());
+			Console.info(" - things to copy: SourceNode (\""
+					+ path + "\") or TargetNode (\""
+					+ targetNode.getTreePath() + "\") ");
 
-		Console.info("OTCOPY:");
+			sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+//			if (sourceNode == null) {
+//				System.out.println("MOVE");
+//				sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
+//				OntologyTreeNode node2 =	myOT.moveTargetNode(sourceNode, targetNode);
+//
+//				if (node2 != null)
+//					OntologyEditorView.getTargetTreeViewer().setExpandedState(node2,
+//							true);
+//			}
+//			else
+				if (data.toString().equals("abc")){
+				System.out.println("COPY");
+				myOT.dropCommandCopyNodes(targetNode.getTreePath());
+//				System.out.println("TARGET TREE PATH: " + sourceNode.getTreePath() + " " + sourceNode.getLevel());
 
-		Console.info(" - things to copy: SourceNode (\""
-				+ data.toString() + "\") or TargetNode (\""
-				+ targetNode.getTreePath() + "\") ");
-		System.out.println("data.toString(): " + data.toString());
-		//		myOT.dropCommandCopyNodes(data.toString(), targetNode.getTreePath());
-
-		sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(data.toString());
-		if (sourceNode == null) {
-			System.out.println("MOVE");
-			sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(data.toString());
-			OntologyTreeNode node =	myOT.moveTargetNode(sourceNode, targetNode);
-			
-			if (node != null)
-			OntologyEditorView.getTargetTreeViewer().setExpandedState(node,
-					true);
-		}
-		else {
-			System.out.println("COPY");
-			myOT.dropCommandCopyNodes(sourceNode.getTreePath(), targetNode.getTreePath());
-			System.out.println("TARGET TREE PATH: " + sourceNode.getTreePath() + " " + sourceNode.getLevel());
-			OntologyTreeNode node = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(sourceNode.getTreePath());
-			if (node == null)
-			System.out.println("NODE NULL");
-			else
-				System.out.println("NODE NOT NULL");
-			
-//			OTNodeLists.listNodeByPath();
-//			OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().gets
-			
-		}
-		stagingTreeViewer.refresh();
+			}
+		viewer.refresh();
 
 		return false;
 	}
