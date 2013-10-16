@@ -24,6 +24,7 @@ import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -34,7 +35,7 @@ public class Resource {
 	public static final String ICO_WORKING = ICON_PATH + "working.png";
 	public static final String ICO_NOT_WORKING = ICON_PATH + "not_working.png";
 	public StatusView _statusView = null;
-	public OntologyView _ontologyView = null;
+	public OntologyEditorView _ontologyView = null;
 	public I2B2ImportTool _i2b2ImportTool = null;
 	public Display _display = null;
 	public String TEXT_FILE = "cfg/english.lf";
@@ -93,11 +94,11 @@ public class Resource {
 		this._statusView = statusView;
 	}
 
-	public OntologyView getOntologyView() {
+	public OntologyEditorView getOntologyView() {
 		return _ontologyView;
 	}
 
-	public void setOntologyView(OntologyView ontologyView) {
+	public void setOntologyView(OntologyEditorView ontologyView) {
 		this._ontologyView = ontologyView;
 	}
 
@@ -250,7 +251,7 @@ public class Resource {
 			public final static String STATUS_VIEW = "edu.goettingen.i2b2.importtool.view.StatusView";
 			public final static String SERVER_VIEW = "de.umg.mi.idrt.importtool.ServerView";
 
-			public final static String ONTOLOGY_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyView";
+			public final static String ONTOLOGY_VIEW = "de.umg.mi.idrt.ioe.OntologyEditor";
 			public final static String ONTOLOGY_NODEEDITOR_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyNodeEditorView";
 			public final static String ONTOLOGY_ANSWERSPREVIEW_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyAnswersPreviewView";
 			public final static String ONTOLOGY_ANSWERSTEMPLATES_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyAnswersTemplatesView";

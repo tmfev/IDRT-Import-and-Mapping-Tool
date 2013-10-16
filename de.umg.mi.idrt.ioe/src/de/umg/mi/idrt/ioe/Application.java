@@ -2,6 +2,7 @@ package de.umg.mi.idrt.ioe;
 
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -107,12 +108,12 @@ public class Application implements IApplication {
     }
 	
 	//doc
-	public static OntologyView getOntologyView(){
-		OntologyView view = null;
+	public static OntologyEditorView getOntologyView(){
+		OntologyEditorView view = null;
 	
 		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
 				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null){
-			view = (OntologyView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.ONTOLOGY_VIEW);
+			view = (OntologyEditorView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(Resource.ID.View.ONTOLOGY_VIEW);
 		}
 
     	if (view == null){

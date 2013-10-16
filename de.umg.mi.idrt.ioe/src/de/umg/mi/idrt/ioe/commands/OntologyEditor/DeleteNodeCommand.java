@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
+import java.util.Iterator;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -21,29 +23,27 @@ public class DeleteNodeCommand extends AbstractHandler {
 				.getSelection();
 		OntologyTreeNode firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
-		if (firstElement==null) {
-			System.out.println("firstElementnull null!");
-		}
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
-				.getNodeLists().getNodeByPath(firstElement.getTreePath());
 
-		TargetNodeAttributes attributes = targetNode.getTargetNodeAttributes();
-		String visual = attributes.getVisualattribute();
+		OntologyEditorView.setNotYetSaved(true);
 
-		if (!visual.equalsIgnoreCase("lae")) {
-			if (targetNode != null && !targetNode.getParent().isRoot()) {
-				targetNode.removeFromParent();
+		if (firstElement != null && !firstElement.getParent().isRoot()) {
+
+			Iterator<OntologyTreeNode> it = firstElement.getChildrenIterator();
+			while(it.hasNext()) {
+				OntologyTreeNode tn = it.next();
+				System.out.println("REMOVUING: " + tn.getName());
 				myOT.getOntologyTreeTarget()
-				.getNodeLists().removeNode(targetNode);
+				.getNodeLists().removeNode(tn);
+				tn.removeFromParent();
 			}
-			else {
-				targetNode.removeAllChildren();
-				System.err.println("Cannot remove root node.\n Removing all children instead.");
-			}
+			firstElement.removeFromParent();
+			myOT.getOntologyTreeTarget()
+			.getNodeLists().removeNode(firstElement);
 		}
 		else {
-			System.err.println("Cannot delete leafs!");
+			firstElement.removeAllChildren();
+			System.err.println("Cannot remove root node.\n Removing all children instead.");
 		}
 		targetTreeViewer.refresh();
 		return null;

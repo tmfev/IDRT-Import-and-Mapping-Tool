@@ -31,7 +31,7 @@ public class TOSHandler {
 	OntologyTree _ot = null;
 
 	private OntologyTree _ontologyTreeTarget;
-
+	
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
 	public static final String TableIEOTarget = "ioe_target";
 	public static final String TableIEOTargetProject = "ioe_target_project";
@@ -41,8 +41,7 @@ public class TOSHandler {
 		boolean nullError = false;
 
 		// try to get the current ot from the view
-
-		if (OntologyEditorView.getI2b2ImportTool() == null) {
+		 if (OntologyEditorView.getI2b2ImportTool() == null) {
 			nullError = true;
 			System.out
 					.println("Application.getEditorSourceView().getI2B2ImportTool() == null");

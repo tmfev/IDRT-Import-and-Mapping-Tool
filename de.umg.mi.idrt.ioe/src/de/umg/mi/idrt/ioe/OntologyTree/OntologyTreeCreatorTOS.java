@@ -50,10 +50,20 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 		System.out.println("OTCreatorTOS");
 
 		try {
-
 			// create a new db connector via TOS
-			TOSConnector tos = new TOSConnector();
-			tos.getOntology();
+			
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					System.out.println("STARTING tos.getOntology();");
+					// TODO Auto-generated method stub
+					TOSConnector tos = new TOSConnector();
+					tos.getOntology();
+					System.out.println("FINISHED tos.getOntology();");
+				}
+			}).run();
+			
 
 			try {
 

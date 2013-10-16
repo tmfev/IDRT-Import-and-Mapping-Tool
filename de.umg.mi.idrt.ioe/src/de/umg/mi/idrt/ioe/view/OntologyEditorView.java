@@ -3,7 +3,6 @@ package de.umg.mi.idrt.ioe.view;
 import java.io.File;
 import java.net.URL;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
@@ -903,6 +902,7 @@ public class OntologyEditorView extends ViewPart {
 		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
 
 	}
+
 
 	private static void deleteNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");

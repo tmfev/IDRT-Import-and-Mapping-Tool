@@ -41,7 +41,6 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Debug.d("Loading the i2b2-Ontology-Editor.");
 		Console.info("Loading the i2b2-Ontology-Editor.");
-
 		// init
 		EditorSourceView editorSourceView = null;
 		EditorTargetView editorTargetView = null;
@@ -65,26 +64,26 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			return null;
 		}
 
-		ProgressMonitorDialog dialog = new ProgressMonitorDialog(
-				Application.getShell());
-		// move variables to fields to be used in the dialog
+//		ProgressMonitorDialog dialog = new ProgressMonitorDialog(
+//				Application.getShell());
+//		// move variables to fields to be used in the dialog
 		_event = event;
-
-		try {
-
-			dialog.run(true, true, new IRunnableWithProgress() {
-				public void run(IProgressMonitor monitor) {
-
-					monitor.done();
-				}
-			});
-		} catch (InvocationTargetException e) {
-			Console.error(e);
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			Console.error(e);
-			e.printStackTrace();
-		}
+//
+//		try {
+//
+//			dialog.run(true, true, new IRunnableWithProgress() {
+//				public void run(IProgressMonitor monitor) {
+//
+//					monitor.done();
+//				}
+//			});
+//		} catch (InvocationTargetException e) {
+//			Console.error(e);
+//			e.printStackTrace();
+//		} catch (InterruptedException e) {
+//			Console.error(e);
+//			e.printStackTrace();
+//		}
 
 		// create the source i2b2-Ontology-Editor view
 		try {

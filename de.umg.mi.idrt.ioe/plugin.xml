@@ -136,11 +136,6 @@
             name="uploadProject">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadTargetProjects"
-            id="de.umg.mi.idrt.ioe.LoadTargetProjects"
-            name="LoadTargetProjects">
-      </command>
-      <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddNodeCommand"
             id="de.umg.mi.idrt.ioe.addNode"
             name="addNode">

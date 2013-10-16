@@ -46,8 +46,6 @@ class ViewTableLabelProvider extends LabelProvider {
 				
 			}
 			
-			
-			
 			if ( visualAttributeFull != null && !visualAttributeFull.isEmpty()) {
 
 				String visualAttribute = visualAttributeFull.substring(0, 1);
@@ -74,18 +72,10 @@ class ViewTableLabelProvider extends LabelProvider {
 		}
 
 		if (element instanceof OntologyTreeNode) {
-
-			/*
-			 * return
-			 * PlatformUI.getWorkbench().getSharedImages()//.getImage(Resource
-			 * .OntologyTree.ICON_ANSWERGROUP);
-			 * .getImage(ISharedImages.IMG_OBJ_FOLDER);
-			 */
-
 			return GUITools.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-
 		}
 		return PlatformUI.getWorkbench().getSharedImages()
 				.getImage(ISharedImages.IMG_OBJ_FILE);
 	}
+	
 }

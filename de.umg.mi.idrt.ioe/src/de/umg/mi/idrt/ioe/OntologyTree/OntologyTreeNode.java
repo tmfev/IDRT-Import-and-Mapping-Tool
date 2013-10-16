@@ -23,6 +23,8 @@ import de.umg.mi.idrt.ioe.Resource;
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 
+	
+	private boolean highlighted=false;
 	/**
 	 * a list of this nodes children for the use in a swt tree viewer
 	 */
@@ -288,7 +290,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	/* ******************************
 	 * /* functions for the swt tree /* *****************************
 	 */
-	public ListIterator getChild() {
+	public ListIterator<OntologyTreeNode> getChild() {
 		return this._children.listIterator();
 	}
 
@@ -301,6 +303,14 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	public List<OntologyTreeNode> getChildren() {
 		return this._children;
+	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.tree.DefaultMutableTreeNode#getChildAfter(javax.swing.tree.TreeNode)
+	 */
+	@Override
+	public OntologyTreeNode getChildAfter(TreeNode aChild) {
+		return (OntologyTreeNode)super.getChildAfter(aChild);
 	}
 
 	/*
@@ -502,9 +512,9 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		super.add(child);
 		/* adding stuff the child now */
 		
+		this.getChildren().add(child);
 		child.setTreePath( this.getTreePath() + child.getID() + "\\"  );
 		child.setTreePathLevel( this.getTreePathLevel() + 1 );
-		
 		
 	}
 
@@ -736,5 +746,13 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 			Console.error("Could not get ID from Path, because path is too damn short.");
 			return "";
 		}
+	}
+
+	/**
+	 * @param b
+	 */
+	public void setHighlight(boolean b) {
+		highlighted = b;
+		
 	}
 }
