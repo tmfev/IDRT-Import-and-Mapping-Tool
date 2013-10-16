@@ -63,6 +63,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
@@ -632,7 +633,16 @@ public class OntologyEditorView extends ViewPart {
 		lblNameText = new Text(composite_4, SWT.NONE);
 		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
 		lblNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		lblNameText.setText("Drop Target i2b2 here!");
+		
+		
+		
+		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
+			setTargetNameVersion( ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getTargetDBSchema(), "2" );
+		
+		} else {
+			lblNameText.setText("Drop Target i2b2 here!");
+		}
+			
 		lblNameText.setEditable(false);
 
 		DropTarget dropTarget = new DropTarget(lblNameText, operations);
