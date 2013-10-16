@@ -31,13 +31,15 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class NodeDropListener extends ViewerDropAdapter {
 
 	private MyOntologyTree myOT;
-	private final Viewer viewer;
+	private final Viewer stagingTreeViewer;
+	private final Viewer targetTreeViewer;
 	private OntologyTreeNode sourceNode = null;
 	private OntologyTreeNode targetNode = null;
 
-	public NodeDropListener(Viewer viewer) {
-		super(viewer);
-		this.viewer = viewer;
+	public NodeDropListener(Viewer stagingTreeViewer, TreeViewer targetTreeViewer) {
+		super(stagingTreeViewer);
+		this.stagingTreeViewer = stagingTreeViewer;
+		this.targetTreeViewer=targetTreeViewer;
 		setExpandEnabled(true);
 	}
 
@@ -136,7 +138,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 //			OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().gets
 			
 		}
-		viewer.refresh();
+		stagingTreeViewer.refresh();
 
 		return false;
 	}

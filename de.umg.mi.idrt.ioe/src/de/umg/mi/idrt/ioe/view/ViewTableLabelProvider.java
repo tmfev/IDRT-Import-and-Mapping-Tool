@@ -63,7 +63,7 @@ class ViewTableLabelProvider extends LabelProvider {
 					return GUITools
 							.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
 
-				System.out.println("nothing?!?");
+//				System.out.println("nothing?!?");
 
 			}
 			// System.out.println("null!");

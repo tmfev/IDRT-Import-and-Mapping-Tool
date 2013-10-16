@@ -182,9 +182,9 @@ public class EditorTargetInfoView extends ViewPart {
 					if (row == 0) {
 						String path = item.getText(1);
 						OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-//						node.set
-						node.setHighlight(true);
-						
+System.out.println("NODE SELECTED: " + node.getName());
+						node.setHighlighted(true);
+//						OntologyEditorView.getStagingTreeViewer().getLabelProvider().
 						System.out.println(node.getName());
 //						ISelection selection = new 
 //						OntologyEditorView.getStagingTreeViewer().setSelection(selection);

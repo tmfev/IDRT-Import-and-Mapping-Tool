@@ -87,14 +87,14 @@ public class EditorTargetView extends ViewPart {
 
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
-		NodeDropListener nodeDropListener = new NodeDropListener(_treeViewer);
+//		NodeDropListener nodeDropListener = new NodeDropListener(_treeViewer);
 //		nodeDropListener.setMyOT(_i2b2ImportTool.getMyOntologyTrees());
 		
-		try {
-			_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
-		} catch (Exception e2) {
-			Console.error("Could not initialize Drop in the editor target view.");
-		}
+//		try {
+//			_treeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
+//		} catch (Exception e2) {
+//			Console.error("Could not initialize Drop in the editor target view.");
+//		}
 		
 		
 //		TreeContentProvider treeContentProvider = new TreeContentProvider();

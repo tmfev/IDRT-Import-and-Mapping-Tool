@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
+
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -41,6 +43,8 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuAdapter;
 import org.eclipse.swt.events.MenuEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -68,6 +72,7 @@ import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeItem;
 
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.widgets.Label;
@@ -120,7 +125,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite mainComposite;
 	private static SashForm sash;
 	private static OntologyTreeNode currentTargetNode;
-
+	private static OntologyTreeNode sourceNode;
 	private static String sourceSchema;
 
 	private static Server currentStagingServer;
@@ -417,7 +422,7 @@ public class OntologyEditorView extends ViewPart {
 				targetTreeViewer));
 		
 		
-		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
+		NodeDropListener nodeDropListener = new NodeDropListener(stagingTreeViewer,targetTreeViewer);
 
 		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
 		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
@@ -523,7 +528,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -762,7 +766,46 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new ViewTableLabelProvider(targetTreeViewer));
 		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
-
+		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
+			
+			@Override
+			public void mouseHover(MouseEvent arg0) {
+				//TODO
+				System.out.println("hover");
+				if (sourceNode!=null)
+				sourceNode.setHighlighted(false);
+				Point p = new Point(arg0.x,arg0.y);
+				TreeItem a = targetTreeViewer.getTree().getItem(p);
+				if (a!=null) {
+				OntologyTreeNode node = (OntologyTreeNode) a.getData();
+				
+				System.out.println("T "+node.getName());
+				String path = node.getTargetNodeAttributes().getSourcePath();
+				sourceNode = OntologyEditorView.getI2b2ImportTool()
+						.getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
+				sourceNode.setHighlighted(true);
+				}
+				stagingTreeViewer.refresh();
+			}
+			
+			@Override
+			public void mouseExit(MouseEvent arg0) {
+				if (sourceNode!=null) {
+				sourceNode.setHighlighted(false);
+				stagingTreeViewer.refresh();
+			}
+			}
+			
+			@Override
+			public void mouseEnter(MouseEvent arg0) {
+				if (sourceNode!=null) {
+				sourceNode.setHighlighted(false);
+				stagingTreeViewer.refresh();
+				}
+			
+			}
+		});
 		targetTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
@@ -872,7 +915,7 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer.setContentProvider(treeContentProvider);		
 //		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
-		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider(stagingTreeViewer));
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
 		stagingTreeViewer.setInput(oTreeContent.getModel());

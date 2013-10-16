@@ -25,11 +25,9 @@ import de.umg.mi.idrt.ioe.view.OTNodeTransfer;
 public class NodeDragListener implements DragSourceListener {
 
 	private final TreeViewer viewer;
-	private int source;
 
 	public NodeDragListener(TreeViewer viewer,int source) {
 		this.viewer = viewer;
-		this.source = source;
 	}
 
 	@Override
@@ -40,12 +38,6 @@ public class NodeDragListener implements DragSourceListener {
 	@Override
 	public void dragSetData(DragSourceEvent event) {
 		Console.info("dragSetData");
-		if (source == 1 ) {
-			System.out.println("SOURCEVIEWER");
-		}
-		else if (source == 2) {
-			System.out.println("TARGETVIEWER");
-		}
 		// Here you do the convertion to the type which is expected.
 		IStructuredSelection selection = (IStructuredSelection) viewer
 				.getSelection();
