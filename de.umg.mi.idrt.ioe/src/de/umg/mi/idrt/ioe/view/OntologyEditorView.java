@@ -928,6 +928,7 @@ public class OntologyEditorView extends ViewPart {
 
 	public static String getTargetSchemaName() {
 		return lblNameText.getText();
+		
 	}
 
 	public static void setStagingSchemaName(String schema) {
