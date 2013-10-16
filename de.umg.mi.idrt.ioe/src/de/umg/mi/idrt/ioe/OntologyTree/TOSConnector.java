@@ -55,7 +55,7 @@ private static int exit;
 
 		try {
 			tos = new tos.tosidrtconnector_0_4.TOSIDRTConnector();
-
+			
 			contextName = "Default";
 
 			// trying to get the server-data from the currently selected server
