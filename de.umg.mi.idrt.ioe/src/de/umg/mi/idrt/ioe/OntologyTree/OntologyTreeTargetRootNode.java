@@ -24,8 +24,7 @@ import de.umg.mi.idrt.ioe.Resource;
  */
 public class OntologyTreeTargetRootNode extends OntologyTreeNode {
 
-	private Target target = null;
-	private TargetProject targetProject = null;
+
 	
 	private TargetProjects targetProjects = new TargetProjects();
 

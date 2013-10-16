@@ -95,7 +95,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			
 //			EditorSourceView.setI2B2ImportTool(i2b2ImportTool);
 			//TODO Added OntologyEditorView
-OntologyEditorView.setI2B2ImportTool(i2b2ImportTool);
+			OntologyEditorView.setI2B2ImportTool(i2b2ImportTool);
 //			Activator.getDefault().getResource()
 //					.setI2B2ImportTool(editorSourceView.getI2B2ImportTool());
 //			Activator.getDefault().getResource()

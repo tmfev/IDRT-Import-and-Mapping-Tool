@@ -10,6 +10,7 @@ public class TargetProjects {
 	int highestTargetID = -1;
 	int highestTargetProject = -1;
 	TargetProject selectedTargetProject = null;
+	Target selectedTarget = null;
 	
 
 	public TargetProjects() {
@@ -57,6 +58,21 @@ public class TargetProjects {
 	public void setHighestTargetProject(int highestTargetProject) {
 		this.highestTargetProject = highestTargetProject;
 	}
+	
+	/**
+	 * @return the selectedTarget
+	 */
+	public Target getSelectedTarget() {
+		return selectedTarget;
+	}
+
+	/**
+	 * @param selectedTarget
+	 *            the selectedTarget to set
+	 */
+	public void setSelectedTarget(Target selectedTarget) {
+		this.selectedTarget = selectedTarget;
+	}
 
 	public TargetProject getTargetProjectByID(int id) {
 		for (TargetProject tmpTargetProject : list) {
@@ -92,7 +108,13 @@ public class TargetProjects {
 	}
 	
 	public void addTarget(Target target){
-		this.getTargetProjectByID(target.getTargetProjectID()).add(target);
+		TargetProject targetProject = this.getTargetProjectByID(target.getTargetProjectID());
+		targetProject.add(target);
+		
+		if (this.getSelectedTarget() == null || target.getLastModified().after(this.getSelectedTarget().getLastModified())){
+			this.setSelectedTarget(target);
+			this.setSelectedTargetProject(targetProject);
+		}
 	}
 
 	public boolean isEmpty(){

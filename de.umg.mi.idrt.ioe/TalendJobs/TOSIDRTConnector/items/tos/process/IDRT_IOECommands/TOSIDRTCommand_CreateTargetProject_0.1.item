@@ -106,7 +106,7 @@
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="TOSHandler.status(&quot;Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
-    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="System.out.println(&quot;---------------&quot;);&#xA;System.out.println(&quot;TargetProjectID: &quot; + targetProjectsInput.TargetProjectID);&#xA;System.out.println(&quot;Name: &quot; + targetProjectsInput.Name);&#xA;System.out.println(&quot;Description: &quot; + targetProjectsInput.Description);&#xA;&#xA;&#xA;//context.currentTargetProjectID = targetProjectsInput.TargetProjectID;&#xA;TOSHandler.addTargetProjectToTargetProjects(targetProjectsInput.TargetProjectID, targetProjectsInput.Name, targetProjectsInput.Description);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="System.out.println(&quot;---------------&quot;);&#xA;System.out.println(&quot;TargetProjectID: &quot; + targetProjectsInput.TargetProjectID);&#xA;System.out.println(&quot;Name: &quot; + targetProjectsInput.Name);&#xA;System.out.println(&quot;Description: &quot; + targetProjectsInput.Description);&#xA;&#xA;&#xA;context.currentTargetProjectID = targetProjectsInput.TargetProjectID;&#xA;TOSHandler.addTargetProjectToTargetProjects(targetProjectsInput.TargetProjectID, targetProjectsInput.Name, targetProjectsInput.Description);&#xA;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_END" value="TOSHandler.status(&quot;/End: Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>
@@ -151,7 +151,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from &quot; + context.OracleSchema + &quot;.&quot; + context.TableIEOTarget + &quot; WHERE TARGETPROJECT_ID=&quot; + context.currentTargetProjectID + &quot; ORDER BY VERSION ASC&quot; "/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from &quot; + context.OracleSchema + &quot;.&quot; + context.TableIEOTarget + &quot; WHERE TARGETPROJECT_ID = &quot; + context.currentTargetProjectID + &quot; ORDER BY VERSION ASC&quot; "/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
