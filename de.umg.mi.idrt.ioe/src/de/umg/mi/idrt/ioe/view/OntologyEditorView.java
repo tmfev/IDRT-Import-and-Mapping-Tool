@@ -3,6 +3,7 @@ package de.umg.mi.idrt.ioe.view;
 import java.io.File;
 import java.net.URL;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
@@ -871,7 +872,7 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer.setContentProvider(treeContentProvider);		
 //		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
-		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
 		stagingTreeViewer.setInput(oTreeContent.getModel());
