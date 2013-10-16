@@ -2,8 +2,10 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.Collections;
 
@@ -91,7 +93,10 @@ public class SaveTarget extends AbstractHandler {
 		try {
 			// TODO save target tmp file
 
-			_writer = new CSVWriter(new FileWriter(stringPath));
+			CSVWriter writer = new CSVWriter(new OutputStreamWriter(
+                    new FileOutputStream(stringPath), "UTF-8"),
+                    ';', '\'');
+
 			_writer.writeNext(fields);
 			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
 					.getTreeRoot().getFirstChild()));
@@ -117,6 +122,7 @@ public class SaveTarget extends AbstractHandler {
 		try {
 
 			tos.runJob();
+			OntologyEditorView.setNotYetSaved(false);
 		} catch (Exception e) {
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
@@ -126,7 +132,7 @@ public class SaveTarget extends AbstractHandler {
 		return null;
 	}
 
-	public void writeNode(OntologyTreeNode node) {
+	private void writeNode(OntologyTreeNode node) {
 
 		String[] fields = new String[9];
 		fields[0] = "1";

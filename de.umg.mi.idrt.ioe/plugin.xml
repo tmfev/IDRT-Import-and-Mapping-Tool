@@ -135,6 +135,26 @@
             id="de.umg.mi.idrt.ioe.uploadProject"
             name="uploadProject">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadTargetProjects"
+            id="de.umg.mi.idrt.ioe.LoadTargetProjects"
+            name="LoadTargetProjects">
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddNodeCommand"
+            id="de.umg.mi.idrt.ioe.addNode"
+            name="addNode">
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddItemCommand"
+            id="de.umg.mi.idrt.ioe.addItem"
+            name="addItem">
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.RenameNodeCommand"
+            id="de.umg.mi.idrt.ioe.renameNode"
+            name="renameNode">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -166,6 +186,11 @@
                   label="Load Ontology from 2i2b-DB ..."
                   style="push"
                   tooltip="Load Ontology from 2i2b-DB ...">
+            </command>
+            <command
+                  commandId="de.umg.mi.idrt.ioe.LoadTargetProjects"
+                  label="LoadTargetProjects"
+                  style="push">
             </command>
          </toolbar>
       </menuContribution>

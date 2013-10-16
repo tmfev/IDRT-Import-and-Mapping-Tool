@@ -39,7 +39,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class TOSConnector {
 
 	public static String DEFAULT_CONTEXTNAME = "Default";
-
+private static int exit;
 	private static String contextName;
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
@@ -87,15 +87,18 @@ public class TOSConnector {
 				e1.printStackTrace();
 			}
 
-			String schema = ServerView.getCurrentSchema();
+//			String schema = ServerView.getCurrentSchema();
 			// defaultProps.getProperty("schema");
-			String serverUniqueName = ServerView.getSelectedServer();
-			Console.info(serverUniqueName);
-			Server currentServer = null;
-			if (serverUniqueName != null) {
-				currentServer = ServerList.getTargetServers().get(
-						serverUniqueName);
-			}
+			
+//			String serverUniqueName = OntologyEditorView.getCurrentServer().;
+			
+			Server currentServer = OntologyEditorView.getStagingServer();
+//			String serverUniqueName = ServerView.getSelectedServer();
+			Console.info(currentServer.getSchema());
+//			if (serverUniqueName != null) {
+//				currentServer = ServerList.getTargetServers().get(
+//						serverUniqueName);
+//			}
 
 			Console.info("Current server: " + currentServer.toString());
 
@@ -104,10 +107,10 @@ public class TOSConnector {
 						+ currentServer.getName() + "(\""
 						+ currentServer.getSchema() + "\")\" for db query.");
 
-				currentServer.setSchema(schema);
-				OntologyEditorView.setCurrentServer(currentServer);
+//				currentServer.setSchema(schema);
+//				OntologyEditorView.setCurrentServer(currentServer);
 			
-				Console.info("currentSchema:" + schema);
+				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
 				System.out
 						.println("OracleUsername: " + currentServer.getUser());
@@ -121,10 +124,10 @@ public class TOSConnector {
 				setContextVariable("OracleDB", currentServer.getSID());
 				// setContextVariable("Job", "ontology");
 				setContextVariable("SQLTable", currentServer.getTable());
-				setContextVariable("OracleSchema", schema);
+				setContextVariable("OracleSchema", currentServer.getSchema());
 
 				Application.getStatusView().addMessage(
-						"i2b2 project \"" + schema
+						"i2b2 project \"" + currentServer.getSchema()
 								+ "\"selected via ServerView.");
 			}
 
@@ -141,31 +144,40 @@ public class TOSConnector {
 
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
-		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 
-		try {
+				try {
 
-			setContextVariable("Job", "ontology");
-			setContextVariable("SQLTable", "I2B2");
-			/*
-			 * setContextVariable("SQLCommand",
-			 * "SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL > 0 ORDER BY C_HLEVEL ASC"
-			 * );
-			 */
+					setContextVariable("Job", "ontology");
+					setContextVariable("SQLTable", "I2B2");
+					/*
+					 * setContextVariable("SQLCommand",
+					 * "SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL > 0 ORDER BY C_HLEVEL ASC"
+					 * );
+					 */
 
-			tos.runJobInTOS((getARGV()));
+					tos.runJobInTOS((getARGV()));
 
-		} catch (Exception e) {
-			String message = "Error while using a TOS-plugin with function getOntology(): "
-					+ e.getMessage();
-			Console.error(message);
-			Application.getStatusView().addErrorMessage(message);
-			Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
-					+ " / " + tos.getException() + " / "
-					+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
-					+ " / " + tos.getContext().SQLCommand);
+				} catch (Exception e) {
+					String message = "Error while using a TOS-plugin with function getOntology(): "
+							+ e.getMessage();
+					Console.error(message);
+					Application.getStatusView().addErrorMessage(message);
+					Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
+							+ " / " + tos.getException() + " / "
+							+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
+							+ " / " + tos.getContext().SQLCommand);
 
-		}
+				}
+			}
+		}).run();
+	
 	}
 	
 	public void runJob(){
@@ -217,21 +229,26 @@ public class TOSConnector {
 
 	public static void readTargetOntology(String targetID) {
 
-		setContextVariable("Job", "read_target_ontology");
-		setContextVariable("Var1", "1");
-
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
-					+ e.getMessage());
-		}
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				setContextVariable("Job", "read_target_ontology");
+				setContextVariable("Var1", "1");
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+		
 
 	}
 
 	public static boolean checkOntology() {
-
 		setContextVariable("Job", "check_ontology_empty");
 		setContextVariable("Var1", "1");
 
@@ -258,38 +275,51 @@ public class TOSConnector {
 
 	}
 
-	public static int loadSourceToTarget(String targetID, String tmpDataFile) {
+	public static int loadSourceToTarget(String targetID, final String tmpDataFile) {
 
-		setContextVariable("Job", "load_source_to_target");
-		setContextVariable("Var1", "1");
-		setContextVariable("DataFile", tmpDataFile);
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				setContextVariable("Job", "load_source_to_target");
+				setContextVariable("Var1", "1");
+				setContextVariable("DataFile", tmpDataFile);
 
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
-					+ e.getMessage());
-			return 1;
-		}
-		return 0;
-
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					exit =	tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					e.printStackTrace();
+					Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+		
+		return exit;
 	}
 	
 	
 	public static int uploadProject() {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
+				
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					exit = tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
+							+ e.getMessage());
+				}
+			}
+		}).run();
 		
-		setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
-		
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-					+ e.getMessage());
-			return 1;
-		}
-		return 0;
+		return exit;
 
 	}
 	/**
@@ -303,14 +333,5 @@ public class TOSConnector {
 			setContextVariable(nextKey, contexts.get(nextKey));
 		}
 	}
-	/**
-	 * 
-	 */
-	/*
-	public static int uploadProject() {
-		Transformation_to_target transform = new Transformation_to_target();
-		 return transform.runJobInTOS(getARGV());
-	}
-	*/
 
 }
