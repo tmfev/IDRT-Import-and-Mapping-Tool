@@ -1,22 +1,11 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.util.Collections;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.osgi.framework.Bundle;
-
-import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -28,18 +17,16 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import au.com.bytecode.opencsv.CSVWriter;
 
-public class SaveTarget extends AbstractHandler {
+public class SaveTargetProject extends AbstractHandler {
 
 	CSVWriter _writer = null;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		Console.info("Saving Target Ontology.");
+		Console.info("Saving TargetProject ...");
 		
-		String stringPath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
-		
-		Console.info("Saving Target Ontology.");
+		String tempFilePath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 
 		// init
 		OntologyTree ontologyTreeTarget = null;
@@ -49,13 +36,13 @@ public class SaveTarget extends AbstractHandler {
 					.getMyOntologyTrees().getOntologyTreeTarget();
 		} catch (java.lang.NullPointerException e) {
 			Console.error(
-					"Coudn't save the Target-Tree, because nothing has been loaded so far.",
+					"Coudn't save the Target Project, because nothing has been loaded so far.",
 					e);
 			Application
 					.getStatusView()
 					.addMessage(
 							new SystemMessage(
-									"Coudn't save the Target-Tree, because nothing has been loaded so far. (I could also be wrong about that and just the saving failed to load the already active target ontology.)",
+									"Coudn't save the Target Project, because nothing has been loaded so far. (I could also be wrong about that and just the saving failed to load the already active target ontology.)",
 									SystemMessage.MessageType.ERROR));
 			return null;
 		}
@@ -75,9 +62,10 @@ public class SaveTarget extends AbstractHandler {
 		try {
 			// TODO save target tmp file
 
-			_writer = new CSVWriter(new OutputStreamWriter(
-                    new FileOutputStream(stringPath), "UTF-8"),
-                    ';');
+			CSVWriter writer = new CSVWriter(new OutputStreamWriter(
+                    new FileOutputStream(tempFilePath), "UTF-8"),
+                    ';', '\'');
+
 			_writer.writeNext(fields);
 			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
 					.getTreeRoot().getFirstChild()));
@@ -88,17 +76,12 @@ public class SaveTarget extends AbstractHandler {
 			Console.error(e.toString());
 		}
 
-		/*
-		 * editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
-		 * .getActiveWorkbenchWindow().getActivePage()
-		 * .showView(Resource.ID.View.EDITOR_TARGET_VIEW);
-		 */
-
 		TOSConnector tos = new TOSConnector();
 
-		TOSConnector.setContextVariable("Job", "write_target_ontology");
-		tos.setContextVariable("Var1", "1"); // target ontology id
-		tos.setContextVariable("DataFile", stringPath);
+		TOSConnector.setContextVariable("Job", "save_target_project");
+		tos.setContextVariable("Var1", "1"); // target project id
+		tos.setContextVariable("Var2", "1"); // target id
+		tos.setContextVariable("DataFile", tempFilePath);
 
 		try {
 

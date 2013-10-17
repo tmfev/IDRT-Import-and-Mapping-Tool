@@ -148,7 +148,8 @@ public class Resource {
 	public class Files {
 		
 		public static final String TEMP_FOLDER = "temp";
-		public static final String TEMP_TOS_CONNECTOR_FILE = "temp_TOS_COnnector_file.csv";
+		public static final String TEMP_TOS_CONNECTOR_FILE = "temp_TOS_Connector_file.csv";
+	
 		
 	}
 
