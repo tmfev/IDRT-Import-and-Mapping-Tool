@@ -298,9 +298,6 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void init() {
 		System.out.println("INIT!");
-		
-		
-		
 		//TODO HERE
 
 //								Shell shell = new Shell();
@@ -418,7 +415,7 @@ public class OntologyEditorView extends ViewPart {
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
 		
-		
+		//TODO DND
 		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
 				targetTreeViewer));
 		
@@ -780,7 +777,6 @@ public class OntologyEditorView extends ViewPart {
 			
 			@Override
 			public void mouseHover(MouseEvent arg0) {
-				//TODO
 				if (sourceNode!=null)
 				sourceNode.setHighlighted(false);
 				Point p = new Point(arg0.x,arg0.y);
@@ -788,11 +784,11 @@ public class OntologyEditorView extends ViewPart {
 				if (a!=null) {
 				OntologyTreeNode node = (OntologyTreeNode) a.getData();
 				
-				System.out.println("T "+node.getName());
+//				System.out.println("T "+node.getName());
 				String path = node.getTargetNodeAttributes().getSourcePath();
 				sourceNode = OntologyEditorView.getI2b2ImportTool()
 						.getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
+//				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
 				sourceNode.setHighlighted(true);
 				}
 				stagingTreeViewer.refresh();

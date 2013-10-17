@@ -60,6 +60,7 @@ public class SaveTarget extends AbstractHandler {
 			return null;
 		}
 
+		System.out.println("Saving to: " + stringPath);
 		String[] fields = new String[9];
 
 		fields[0] = Resource.I2B2.NODE.TARGET.TARGET_ID;
