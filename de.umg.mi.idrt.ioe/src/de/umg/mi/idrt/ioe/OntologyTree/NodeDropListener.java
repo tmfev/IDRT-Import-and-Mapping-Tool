@@ -103,8 +103,9 @@ public class NodeDropListener extends ViewerDropAdapter {
 			Console.info(" - things to copy: SourceNode (\""
 					+ path + "\") or TargetNode (\""
 					+ targetNode.getTreePath() + "\") ");
-
+System.out.println(path);
 			sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+//			System.out.println(sourceNode.getName());
 //			if (sourceNode == null) {
 //				System.out.println("MOVE");
 //				sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
@@ -119,8 +120,16 @@ public class NodeDropListener extends ViewerDropAdapter {
 				System.out.println("COPY");
 				myOT.dropCommandCopyNodes(targetNode.getTreePath());
 //				System.out.println("TARGET TREE PATH: " + sourceNode.getTreePath() + " " + sourceNode.getLevel());
-
 			}
+				else {
+					System.out.println("MOVE");
+					sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
+					OntologyTreeNode node2 =	myOT.moveTargetNode(sourceNode, targetNode);
+	
+					if (node2 != null)
+						OntologyEditorView.getTargetTreeViewer().setExpandedState(node2,
+								true);
+				}
 		viewer.refresh();
 
 		return false;
