@@ -63,7 +63,6 @@ public class Resource {
 		URL url = null;
 		try {
 			url = FileLocator.toFileURL(i);
-			// Debug.d("!HERE" + url.getPath());
 		} catch (IOException e) {
 			Console.error(e.toString() + " @Resource Code1");
 		}
@@ -507,7 +506,6 @@ public class Resource {
 
 		// i2b2 paths already have the last backslash
 		public static String addToI2B2Path(String path, String newID) {
-			// Debug.d("addAnswerForParentPath:" + path + "   -- " + newID);
 			if (path.endsWith("\\"))
 				return path + newID;
 			else
@@ -554,8 +552,6 @@ public class Resource {
 		public static String addItemToConecptCode(String oldConceptCode,
 				String newItem) {
 
-			// Debug.d("addItemToConecptCode:" + oldConceptCode + "#" + newItem
-			// + " -->  " + oldConceptCode.replace(
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
 			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
@@ -571,8 +567,6 @@ public class Resource {
 		public static String replaceValueFromConecptCode(String oldConceptCode,
 				String newItem) {
 
-			// Debug.d("addItemToConecptCode:" + oldConceptCode + "#" + newItem
-			// + " -->  " + oldConceptCode.replace(
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
 			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
@@ -1013,7 +1007,6 @@ public class Resource {
 				lastImportedFiles.size();
 				((IPersistentPreferenceStore) store).save();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
