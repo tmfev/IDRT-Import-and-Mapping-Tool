@@ -13,7 +13,10 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
+import de.umg.mi.idrt.ioe.OntologyTree.Target;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -32,43 +35,49 @@ public class SaveTargetProject extends AbstractHandler {
 		OntologyTree ontologyTreeTarget = null;
 
 		try {
-			ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
-					.getMyOntologyTrees().getOntologyTreeTarget();
-		} catch (java.lang.NullPointerException e) {
-			Console.error(
-					"Coudn't save the Target Project, because nothing has been loaded so far.",
-					e);
-			Application
-					.getStatusView()
-					.addMessage(
-							new SystemMessage(
-									"Coudn't save the Target Project, because nothing has been loaded so far. (I could also be wrong about that and just the saving failed to load the already active target ontology.)",
-									SystemMessage.MessageType.ERROR));
-			return null;
-		}
-
-		String[] fields = new String[9];
-
-		fields[0] = Resource.I2B2.NODE.TARGET.TARGET_ID;
-		fields[1] = Resource.I2B2.NODE.TARGET.TREE_LEVEL;
-		fields[2] = Resource.I2B2.NODE.TARGET.TREE_PATH;
-		fields[3] = Resource.I2B2.NODE.TARGET.SOURCE_PATH;
-		fields[4] = Resource.I2B2.NODE.TARGET.NAME;
-		fields[5] = Resource.I2B2.NODE.TARGET.CHANGED;
-		fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_SOURCE_PATH;
-		fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_SOURCE_PATH;
-		fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE;
-
-		try {
 			// TODO save target tmp file
 
-			CSVWriter writer = new CSVWriter(new OutputStreamWriter(
+			_writer = new CSVWriter(new OutputStreamWriter(
                     new FileOutputStream(tempFilePath), "UTF-8"),
-                    ';', '\'');
+                    ';');
+			
+			String[] fields = new String[6];
+
+			fields[0] = "TARGETPROJECT_ID";
+			fields[1] = "TARGET_ID";
+			fields[2] = "NAME";
+			fields[3] = "DESCRIPTION";
+			fields[4] = "VERSION";
+			fields[5] = "TARGET_DB_SCHEMA";
+			_writer.writeNext(fields);
+			
+			OntologyTreeTargetRootNode targetTreeRoot = (OntologyTreeTargetRootNode) ((OntologyTreeNode) ontologyTreeTarget.getTreeRoot());
+			
+			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
+			Target target = null;
+			
+			if (targetProject == null || targetTreeRoot.getTargetProjects().getSelectedTarget() == null ){
+				Console.error("No TargetInstance and/or TargetVersion available to save.");
+				return null;
+			} else {
+				target = targetTreeRoot.getTargetProjects().getSelectedTarget();
+			}
+			
+			
+				
+					
+			fields = new String[6];
+			
+			fields[0] = String.valueOf(targetProject.getTargetProjectID());
+			fields[1] = String.valueOf(target.getTargetID());
+			fields[2] = targetProject.getName();
+			fields[3] = targetProject.getDescription();
+			fields[4] = String.valueOf(target.getVersion());
+			fields[5] = target.getTargetDBSchema();
 
 			_writer.writeNext(fields);
-			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
-					.getTreeRoot().getFirstChild()));
+			
+			
 			_writer.close();
 			
 			
