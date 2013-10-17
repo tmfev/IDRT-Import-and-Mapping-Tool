@@ -1,7 +1,8 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.swt.SWT;
@@ -10,13 +11,16 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.part.ViewPart;
-
-import de.umg.mi.idrt.ioe.*;
-
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.part.ViewPart;
+
+import de.umg.mi.idrt.ioe.Activator;
+import de.umg.mi.idrt.ioe.Application;
+import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.Debug;
+import de.umg.mi.idrt.ioe.SystemMessage;
 
 public class StatusView extends ViewPart {
 	Composite _parent = null;

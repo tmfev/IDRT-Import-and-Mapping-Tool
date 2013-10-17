@@ -1,20 +1,13 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 
-import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import de.umg.mi.idrt.ioe.Activator;
-import de.umg.mi.idrt.ioe.Application;
-import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
@@ -22,7 +15,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
@@ -65,7 +57,6 @@ public class ReadTarget extends AbstractHandler {
 
 		// create the main ontology view
 //		EditorTargetView editorSourceView;
-		EditorTargetView editorTargetView;
 
 
 //		ProgressMonitorDialog dialog = new ProgressMonitorDialog(Application.getShell());
@@ -93,7 +84,7 @@ public class ReadTarget extends AbstractHandler {
 
 
 		try {
-			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(Resource.ID.View.EDITOR_TARGET_VIEW);
+//			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(Resource.ID.View.EDITOR_TARGET_VIEW);
 
 
 			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().removeAll();
@@ -125,20 +116,20 @@ public class ReadTarget extends AbstractHandler {
 			 */
 
 			// add Target views as well
-			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage()
-					.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
-			Activator.getDefault().getResource()
-			.setEditorTargetView(editorTargetView);
+//			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
+//					.getActiveWorkbenchWindow().getActivePage()
+//					.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
+//			Activator.getDefault().getResource()
+//			.setEditorTargetView(editorTargetView);
 
 
-			Composite comp = editorTargetView.getComposite();
+//			Composite comp = editorTargetView.getComposite();
 
-			comp.dispose();
-
-			editorTargetView.clear();
-
-			editorTargetView.setI2B2ImportTool(i2b2ImportTool);
+//			comp.dispose();
+//
+//			editorTargetView.clear();
+//
+//			editorTargetView.setI2B2ImportTool(i2b2ImportTool);
 
 			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
 					i2b2ImportTool.getMyOntologyTrees().getTargetTreeRoot());
@@ -153,7 +144,7 @@ public class ReadTarget extends AbstractHandler {
 
 
 
-			editorTargetView.setComposite(OTTarget);
+//			editorTargetView.setComposite(OTTarget);
 
 			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
 					.getWorkbench().getActiveWorkbenchWindow().getActivePage()

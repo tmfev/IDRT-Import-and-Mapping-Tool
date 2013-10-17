@@ -4,16 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 
-import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 

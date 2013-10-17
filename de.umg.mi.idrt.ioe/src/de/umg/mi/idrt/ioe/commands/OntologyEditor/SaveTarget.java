@@ -1,22 +1,14 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.util.Collections;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.osgi.framework.Bundle;
 
-import de.umg.mi.idrt.ioe.Activator;
+import au.com.bytecode.opencsv.CSVWriter;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -26,7 +18,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import au.com.bytecode.opencsv.CSVWriter;
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

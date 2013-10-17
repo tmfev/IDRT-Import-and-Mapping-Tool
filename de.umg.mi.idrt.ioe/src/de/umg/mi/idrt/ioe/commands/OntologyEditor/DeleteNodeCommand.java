@@ -1,16 +1,13 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
-import java.util.Iterator;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OTNodeLists;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class DeleteNodeCommand extends AbstractHandler {
@@ -28,7 +25,6 @@ public class DeleteNodeCommand extends AbstractHandler {
 		firstElement.removeAllChildren();
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		if (!(firstElement ==myOT.getSubRootNode())) {
-			System.out.println("!ROOT");
 			firstElement.removeFromParent();
 		}
 		targetTreeViewer.refresh();

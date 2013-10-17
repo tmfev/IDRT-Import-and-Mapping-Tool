@@ -1,9 +1,9 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 	import org.eclipse.jface.viewers.CellEditor;
-	import org.eclipse.jface.viewers.EditingSupport;
-	import org.eclipse.jface.viewers.TableViewer;
-	import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TextCellEditor;
 
 
 	public class TextEditingSupport extends EditingSupport {

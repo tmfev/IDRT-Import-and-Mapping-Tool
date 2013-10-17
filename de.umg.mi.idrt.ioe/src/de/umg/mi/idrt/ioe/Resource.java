@@ -12,7 +12,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Properties;
+
 import javax.swing.JComponent;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
@@ -21,11 +23,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.IHandlerService;
 
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
 public class Resource {
@@ -44,9 +43,9 @@ public class Resource {
 	public String test = "test0";
 
 	private ActionCommand _actionCommand;
-	private EditorSourceView _editorSourceView;
+//	private EditorSourceView _editorSourceView;
 	private EditorSourceInfoView _editorSourceInfoView;
-	private EditorTargetView _editorTargetView;
+//	private EditorTargetView _editorTargetView;
 	private EditorTargetInfoView _editorTargetInfoView;
 	public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
 	public final static String COLOR_INFO_HTML = "C8C8E6";
@@ -102,13 +101,13 @@ public class Resource {
 		this._ontologyView = ontologyView;
 	}
 
-	public EditorSourceView getEditorSourceView() {
-		return _editorSourceView;
-	}
-
-	public void setEditorSourceView(EditorSourceView editorSourceView) {
-		this._editorSourceView = editorSourceView;
-	}
+//	public EditorSourceView getEditorSourceView() {
+//		return _editorSourceView;
+//	}
+//
+//	public void setEditorSourceView(EditorSourceView editorSourceView) {
+//		this._editorSourceView = editorSourceView;
+//	}
 
 	public EditorSourceInfoView getEditorSourceInfoView() {
 		return _editorSourceInfoView;
@@ -119,13 +118,13 @@ public class Resource {
 		this._editorSourceInfoView = editorSourceInfoView;
 	}
 
-	public EditorTargetView getEditorTargetView() {
-		return _editorTargetView;
-	}
-
-	public void setEditorTargetView(EditorTargetView editorTargetView) {
-		this._editorTargetView = editorTargetView;
-	}
+//	public EditorTargetView getEditorTargetView() {
+//		return _editorTargetView;
+//	}
+//
+//	public void setEditorTargetView(EditorTargetView editorTargetView) {
+//		this._editorTargetView = editorTargetView;
+//	}
 
 	public EditorTargetInfoView getEditorTargetInfoView() {
 		return _editorTargetInfoView;

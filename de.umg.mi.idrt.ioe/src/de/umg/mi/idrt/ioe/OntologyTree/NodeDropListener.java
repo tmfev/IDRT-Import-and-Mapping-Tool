@@ -1,25 +1,13 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.awt.datatransfer.Transferable;
-import java.util.Iterator;
-
-import javax.swing.JTree;
-
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
 
-import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**

@@ -1,17 +1,10 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.util.Iterator;
-
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 
-import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.SystemMessage;
-import de.umg.mi.idrt.ioe.view.OTNodeTransfer;
 
 /**
  * @author Christian Bauer

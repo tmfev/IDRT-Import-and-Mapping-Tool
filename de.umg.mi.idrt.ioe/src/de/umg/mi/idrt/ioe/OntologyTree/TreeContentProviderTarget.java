@@ -1,7 +1,6 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
