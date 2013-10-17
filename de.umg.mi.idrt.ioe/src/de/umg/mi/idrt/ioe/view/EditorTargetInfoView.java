@@ -43,11 +43,11 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 
 /**
- * @author Christian Bauer
- *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
- *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
- * 
- * 
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ *         main class managing and giving access to the source and target trees
  */
 
 public class EditorTargetInfoView extends ViewPart {

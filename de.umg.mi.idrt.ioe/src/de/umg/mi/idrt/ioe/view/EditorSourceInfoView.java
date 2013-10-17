@@ -34,7 +34,13 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-
+/**
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ *         main class managing and giving access to the source and target trees
+ */
 public class EditorSourceInfoView extends ViewPart {
 
 	private I2B2ImportTool _i2b2ImportTool = null;

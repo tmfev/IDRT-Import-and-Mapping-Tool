@@ -24,10 +24,10 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 
 /**
- * @author Christian Bauer
- *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
- *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
- * 
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
  *         main view for the eio source, a drag and drop tree
  */
 

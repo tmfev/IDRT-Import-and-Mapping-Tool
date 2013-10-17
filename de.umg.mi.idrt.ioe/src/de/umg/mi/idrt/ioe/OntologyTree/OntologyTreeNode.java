@@ -13,15 +13,15 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-
 /**
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ * 
  * This is the generic node class for the ontology tree. It holds some basic
  * informations like name, stringpath, nodetype and the visual attribute for
  * I2B2.
- * 
- * @author Christian Bauer
- * @author Baum_Benjamin
- * @version 0.9
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 

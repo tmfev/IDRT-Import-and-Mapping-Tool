@@ -380,9 +380,7 @@ public class OntologyEditorView extends ViewPart {
 
 		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree());
 		targetComposite.layout();
-		//		targetComposite.pack();
 		column = new TreeViewerColumn(targetTreeViewer, SWT.NONE);
-		System.out.println(targetTreeViewer.getControl().getSize().x);
 		column.getColumn().setMoveable(true);
 		column.getColumn().setText("Column 1");
 		column.setLabelProvider(new ColumnLabelProvider() {
@@ -771,7 +769,7 @@ public class OntologyEditorView extends ViewPart {
 				.getOntologyTreeTarget());
 
 		targetTreeViewer.setContentProvider(treeContentProvider);
-		targetTreeViewer.setLabelProvider(new ViewTableLabelProvider(targetTreeViewer));
+		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
 		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
 			
@@ -920,12 +918,49 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer.setContentProvider(treeContentProvider);		
 //		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
-		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
 		stagingTreeViewer.setInput(oTreeContent.getModel());
 		stagingTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
-
+//		stagingTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
+//			
+//			@Override
+//			public void mouseHover(MouseEvent arg0) {
+//				if (sourceNode!=null)
+//				sourceNode.setHighlighted(false);
+//				Point p = new Point(arg0.x,arg0.y);
+//				TreeItem a = stagingTreeViewer.getTree().getItem(p);
+//				if (a!=null) {
+//				OntologyTreeNode node = (OntologyTreeNode) a.getData();
+//				
+////				System.out.println("T "+node.getName());
+//				String path = node.getTargetNodeAttributes().getSourcePath();
+//				sourceNode = OntologyEditorView.getI2b2ImportTool()
+//						.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
+////				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
+//				sourceNode.setHighlighted(true);
+//				}
+//				targetTreeViewer.refresh();
+//			}
+//			
+//			@Override
+//			public void mouseExit(MouseEvent arg0) {
+//				if (sourceNode!=null) {
+//				sourceNode.setHighlighted(false);
+//				targetTreeViewer.refresh();
+//			}
+//			}
+//			
+//			@Override
+//			public void mouseEnter(MouseEvent arg0) {
+//				if (sourceNode!=null) {
+//				sourceNode.setHighlighted(false);
+//				stagingTreeViewer.refresh();
+//				}
+//			
+//			}
+//		});
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 		.setTreeViewer(stagingTreeViewer);
 
