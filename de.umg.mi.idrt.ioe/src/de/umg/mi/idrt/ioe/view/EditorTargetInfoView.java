@@ -78,8 +78,8 @@ public class EditorTargetInfoView extends ViewPart {
 		Label lblNodeInfosDeluxe = new Label(parent, SWT.NONE);
 		lblNodeInfosDeluxe.setText("node infos deluxe");
 
-		
-		
+
+
 		_editorComposite = new Composite(parent, SWT.NONE);
 		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
@@ -170,60 +170,19 @@ public class EditorTargetInfoView extends ViewPart {
 
 					row = _infoTable.getSelectionIndex();
 					final int col = 1;
+					String path = item.getText(1);
+					final OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+					System.out.println(_node.getName() +" selected!");
+					System.out.println("sourcepath: " + _node.getTargetNodeAttributes().getSourcePath());
 
-					
 					Console.info("row = " + row + " / col = " + col);
-					
-					// Source Path
-					if (row == 0) {
-						String path = item.getText(1);
-						OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-System.out.println("NODE SELECTED: " + node.getName());
-						node.setHighlighted(true);
-//						OntologyEditorView.getStagingTreeViewer().getLabelProvider().
-						System.out.println(node.getName());
-//						ISelection selection = new 
-//						OntologyEditorView.getStagingTreeViewer().setSelection(selection);
-						System.out.println("Editor: Source Path");
-						final Text text = new Text(_infoTable, SWT.NONE);
-
-						text.setForeground(item.getForeground());
-						text.setText(item.getText(1));
-						// item.getText(0));
-						//text.setForeground(item.getForeground());
-						text.selectAll();
-						text.setFocus();
-						editor.minimumWidth = text.getBounds().width;
-						editor.setEditor(text, item, col);
-
-						text.addModifyListener(new ModifyListener() {
-							@Override
-							public void modifyText(ModifyEvent event) {
-								Console.info("ModifyListener: modifyText");
-								item.setText(col, text.getText());
-							}
-						});
-						text.addFocusListener(new FocusListener() {
-							@Override
-							public void focusGained(FocusEvent e) {
-								Console.info("FocusListener: focusGained");
-							}
-
-							@Override
-							public void focusLost(FocusEvent e) {
-								Console.info("FocusListener: focusLost");
-								item.setText(col, text.getText());
-								text.dispose();
-							}
-						});
-
-					}
 
 					// The "nice name" of the column.
 					if (row == 1) {
 						final Text text = new Text(_infoTable, SWT.NONE);
 						text.setForeground(item.getForeground());
-						text.setText(item.getText(col));
+//						text.setText(item.getText(col));
+						text.setText(_node.getName());
 						text.setForeground(item.getForeground());
 						text.selectAll();
 						text.setFocus();
@@ -234,6 +193,9 @@ System.out.println("NODE SELECTED: " + node.getName());
 							@Override
 							public void modifyText(ModifyEvent event) {
 								item.setText(col, text.getText());
+								_node.getTargetNodeAttributes().setName(text.getText());
+								_node.setName(text.getText());
+								OntologyEditorView.getTargetTreeViewer().update(_node, null);
 							}
 						});
 						text.addFocusListener(new FocusListener() {
@@ -436,8 +398,8 @@ System.out.println("NODE SELECTED: " + node.getName());
 	}
 
 	public void setNode(OntologyTreeNode node) {// , List<String> answersList,
-												// MyOntologyTreeItemLists
-												// itemLists){
+		// MyOntologyTreeItemLists
+		// itemLists){
 		// Debug.f("setNode",this);
 		// Console.info("setting node");
 		System.out.println("setting node (" + node.getName() + ")");

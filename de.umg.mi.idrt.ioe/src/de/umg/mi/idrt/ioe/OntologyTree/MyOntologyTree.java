@@ -877,11 +877,21 @@ public class MyOntologyTree extends JPanel {
 				// SelectionAdapter Methode
 				public void widgetSelected(SelectionEvent e) {
 					dialog.close();
+					
+					//TODO
+
+					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+							.getSelection();
+					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+					OntologyTreeNode node = nodeIterator.next();
+//					while (nodeIterator.hasNext()) {
+//						OntologyTreeNode node = nodeIterator.next();
+//					}
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
-							"");
+							node.getTreePath());
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
 							targetPath);
