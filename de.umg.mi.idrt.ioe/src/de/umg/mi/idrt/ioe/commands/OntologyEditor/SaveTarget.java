@@ -21,12 +21,18 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import au.com.bytecode.opencsv.CSVWriter;
-
+/**
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ */
 public class SaveTarget extends AbstractHandler {
 
 	CSVWriter _writer = null;
@@ -36,27 +42,8 @@ public class SaveTarget extends AbstractHandler {
 
 		Console.info("Saving Target Ontology.");
 		
-		String stringPath = "";
-		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/" + Resource.Files.TEMP_FOLDER + "/"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, path,
-					Collections.EMPTY_MAP);
+		String stringPath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 		
-			URL miscFileUrl = FileLocator.toFileURL(url);
-			File misc = new File(miscFileUrl.getPath());
-			stringPath = misc.getAbsolutePath().replaceAll("\\\\", "/") + "/" + Resource.Files.TEMP_TOS_CONNECTOR_FILE;
-		
-			
-		} catch (FileNotFoundException  e) {
-			e.printStackTrace();
-			stringPath = "C:\tmp.csv";
-		} catch (IOException e) {
-			e.printStackTrace();
-			stringPath = "C:\tmp.csv";
-		}
-
-
 		Console.info("Saving Target Ontology.");
 
 		// init
