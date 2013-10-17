@@ -3,9 +3,12 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+
+import au.com.bytecode.opencsv.CSVWriter;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -18,7 +21,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import au.com.bytecode.opencsv.CSVWriter;
 
 public class SaveTargetProject extends AbstractHandler {
 

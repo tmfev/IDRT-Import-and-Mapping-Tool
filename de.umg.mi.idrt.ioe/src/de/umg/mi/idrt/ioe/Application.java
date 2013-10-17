@@ -1,11 +1,5 @@
 package de.umg.mi.idrt.ioe;
 
-import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.view.OntologyView;
-import de.umg.mi.idrt.ioe.view.StatusView;
-
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -19,6 +13,11 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
+
+import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
+import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
  * This class controls all aspects  of the application's execution

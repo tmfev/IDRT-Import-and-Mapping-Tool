@@ -1,17 +1,5 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
-
-import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.Resource;
 
 /**
  * This is the special node class for the ontology tree. It holds some basic

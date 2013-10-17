@@ -5,8 +5,9 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.tree.TreeNode;
-
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -25,10 +26,6 @@ import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.ViewPart;
-import org.eclipse.wb.swt.ResourceManager;
-import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
@@ -49,7 +46,21 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.part.ViewPart;
+import org.eclipse.wb.swt.ResourceManager;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.osgi.framework.Bundle;
 
+import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
@@ -64,28 +75,10 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
-import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
-
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TreeItem;
-
-import swing2swt.layout.BorderLayout;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.osgi.framework.Bundle;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -362,7 +355,7 @@ public class OntologyEditorView extends ViewPart {
 		targetComposite.setLayout(new BorderLayout(0, 0));
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
 				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-
+		targetTreeViewer.setSorter(new ViewerSorter());
 		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighter(targetTreeViewer));
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
 			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
@@ -380,9 +373,7 @@ public class OntologyEditorView extends ViewPart {
 
 		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree());
 		targetComposite.layout();
-		//		targetComposite.pack();
 		column = new TreeViewerColumn(targetTreeViewer, SWT.NONE);
-		System.out.println(targetTreeViewer.getControl().getSize().x);
 		column.getColumn().setMoveable(true);
 		column.getColumn().setText("Column 1");
 		column.setLabelProvider(new ColumnLabelProvider() {
@@ -771,7 +762,7 @@ public class OntologyEditorView extends ViewPart {
 				.getOntologyTreeTarget());
 
 		targetTreeViewer.setContentProvider(treeContentProvider);
-		targetTreeViewer.setLabelProvider(new ViewTableLabelProvider(targetTreeViewer));
+		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
 		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
 			
@@ -920,12 +911,49 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer.setContentProvider(treeContentProvider);		
 //		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
-		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
 		stagingTreeViewer.setInput(oTreeContent.getModel());
 		stagingTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
-
+//		stagingTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
+//			
+//			@Override
+//			public void mouseHover(MouseEvent arg0) {
+//				if (sourceNode!=null)
+//				sourceNode.setHighlighted(false);
+//				Point p = new Point(arg0.x,arg0.y);
+//				TreeItem a = stagingTreeViewer.getTree().getItem(p);
+//				if (a!=null) {
+//				OntologyTreeNode node = (OntologyTreeNode) a.getData();
+//				
+////				System.out.println("T "+node.getName());
+//				String path = node.getTargetNodeAttributes().getSourcePath();
+//				sourceNode = OntologyEditorView.getI2b2ImportTool()
+//						.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
+////				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
+//				sourceNode.setHighlighted(true);
+//				}
+//				targetTreeViewer.refresh();
+//			}
+//			
+//			@Override
+//			public void mouseExit(MouseEvent arg0) {
+//				if (sourceNode!=null) {
+//				sourceNode.setHighlighted(false);
+//				targetTreeViewer.refresh();
+//			}
+//			}
+//			
+//			@Override
+//			public void mouseEnter(MouseEvent arg0) {
+//				if (sourceNode!=null) {
+//				sourceNode.setHighlighted(false);
+//				stagingTreeViewer.refresh();
+//				}
+//			
+//			}
+//		});
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 		.setTreeViewer(stagingTreeViewer);
 

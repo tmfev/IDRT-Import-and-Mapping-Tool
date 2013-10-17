@@ -1,13 +1,8 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
-import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
@@ -17,15 +12,12 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreatorTOS;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreatorTOS;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class ReadSourceAndCreateViews extends AbstractHandler {
@@ -42,8 +34,8 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		Debug.d("Loading the i2b2-Ontology-Editor.");
 		Console.info("Loading the i2b2-Ontology-Editor.");
 		// init
-		EditorSourceView editorSourceView = null;
-		EditorTargetView editorTargetView = null;
+//		EditorSourceView editorSourceView = null;
+//		EditorTargetView editorTargetView = null;
 
 		// creating new main tool
 		I2B2ImportTool i2b2ImportTool = new I2B2ImportTool(null);

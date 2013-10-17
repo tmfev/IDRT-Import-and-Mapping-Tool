@@ -3,7 +3,7 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import tos.tosidrtconnector_0_4.TOSIDRTConnector;
+
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;

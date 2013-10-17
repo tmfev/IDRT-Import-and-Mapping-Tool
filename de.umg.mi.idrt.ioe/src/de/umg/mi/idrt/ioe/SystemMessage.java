@@ -3,16 +3,8 @@ package de.umg.mi.idrt.ioe;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.net.URL;
 
-import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
-import javax.swing.border.LineBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 public class SystemMessage {
 

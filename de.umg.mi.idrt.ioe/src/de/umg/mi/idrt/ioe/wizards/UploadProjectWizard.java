@@ -13,9 +13,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.Wizard;
 import org.osgi.framework.Bundle;
 
-import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage2;
-import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVWizardPage3;
-import de.umg.mi.idrt.idrtimporttool.ImportWizard.WizardPage1;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;

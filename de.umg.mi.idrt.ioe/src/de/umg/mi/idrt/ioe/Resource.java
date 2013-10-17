@@ -12,7 +12,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Properties;
+
 import javax.swing.JComponent;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
@@ -21,11 +23,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.IHandlerService;
 
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
-import de.umg.mi.idrt.ioe.view.EditorSourceView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.view.OntologyView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
 public class Resource {
@@ -44,9 +43,9 @@ public class Resource {
 	public String test = "test0";
 
 	private ActionCommand _actionCommand;
-	private EditorSourceView _editorSourceView;
+//	private EditorSourceView _editorSourceView;
 	private EditorSourceInfoView _editorSourceInfoView;
-	private EditorTargetView _editorTargetView;
+//	private EditorTargetView _editorTargetView;
 	private EditorTargetInfoView _editorTargetInfoView;
 	public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
 	public final static String COLOR_INFO_HTML = "C8C8E6";
@@ -64,7 +63,6 @@ public class Resource {
 		URL url = null;
 		try {
 			url = FileLocator.toFileURL(i);
-			// Debug.d("!HERE" + url.getPath());
 		} catch (IOException e) {
 			Console.error(e.toString() + " @Resource Code1");
 		}
@@ -102,13 +100,13 @@ public class Resource {
 		this._ontologyView = ontologyView;
 	}
 
-	public EditorSourceView getEditorSourceView() {
-		return _editorSourceView;
-	}
-
-	public void setEditorSourceView(EditorSourceView editorSourceView) {
-		this._editorSourceView = editorSourceView;
-	}
+//	public EditorSourceView getEditorSourceView() {
+//		return _editorSourceView;
+//	}
+//
+//	public void setEditorSourceView(EditorSourceView editorSourceView) {
+//		this._editorSourceView = editorSourceView;
+//	}
 
 	public EditorSourceInfoView getEditorSourceInfoView() {
 		return _editorSourceInfoView;
@@ -119,13 +117,13 @@ public class Resource {
 		this._editorSourceInfoView = editorSourceInfoView;
 	}
 
-	public EditorTargetView getEditorTargetView() {
-		return _editorTargetView;
-	}
-
-	public void setEditorTargetView(EditorTargetView editorTargetView) {
-		this._editorTargetView = editorTargetView;
-	}
+//	public EditorTargetView getEditorTargetView() {
+//		return _editorTargetView;
+//	}
+//
+//	public void setEditorTargetView(EditorTargetView editorTargetView) {
+//		this._editorTargetView = editorTargetView;
+//	}
 
 	public EditorTargetInfoView getEditorTargetInfoView() {
 		return _editorTargetInfoView;
@@ -508,7 +506,6 @@ public class Resource {
 
 		// i2b2 paths already have the last backslash
 		public static String addToI2B2Path(String path, String newID) {
-			// Debug.d("addAnswerForParentPath:" + path + "   -- " + newID);
 			if (path.endsWith("\\"))
 				return path + newID;
 			else
@@ -555,8 +552,6 @@ public class Resource {
 		public static String addItemToConecptCode(String oldConceptCode,
 				String newItem) {
 
-			// Debug.d("addItemToConecptCode:" + oldConceptCode + "#" + newItem
-			// + " -->  " + oldConceptCode.replace(
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
 			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
@@ -572,8 +567,6 @@ public class Resource {
 		public static String replaceValueFromConecptCode(String oldConceptCode,
 				String newItem) {
 
-			// Debug.d("addItemToConecptCode:" + oldConceptCode + "#" + newItem
-			// + " -->  " + oldConceptCode.replace(
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
 			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
 			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
@@ -1014,7 +1007,6 @@ public class Resource {
 				lastImportedFiles.size();
 				((IPersistentPreferenceStore) store).save();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

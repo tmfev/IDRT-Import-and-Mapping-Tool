@@ -3,7 +3,6 @@ package de.umg.mi.idrt.ioe.view;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;

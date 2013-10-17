@@ -1,16 +1,8 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.awt.Color;
-import java.util.Random;
-
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -18,16 +10,11 @@ import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.wb.swt.ResourceManager;
-
-import de.umg.mi.idrt.ioe.ActionCommand;
-import de.umg.mi.idrt.ioe.Application;
-import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-
-import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.ResourceManager;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class GUIDialogTest extends Dialog {
 

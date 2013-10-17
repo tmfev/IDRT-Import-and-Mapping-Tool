@@ -1,8 +1,6 @@
 package de.umg.mi.idrt.ioe.view;
 
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -14,14 +12,16 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import de.umg.mi.idrt.ioe.GUITools;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
-
+/**
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ */
 class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 
-	private final TreeViewer viewer;
 
-	StyledViewTableLabelProvider(TreeViewer viewer) {
-
-		this.viewer = viewer;
+	StyledViewTableLabelProvider() {
 	}
 
 	/* (non-Javadoc)
@@ -31,14 +31,14 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 	public void update(ViewerCell cell) {
 		Object element = cell.getElement();
 		OntologyTreeNode otNode = ((OntologyTreeNode) element);
-//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
-//		cell.setBackground(color);
+		//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
+		//		cell.setBackground(color);
 		if (otNode.isHighlighted()) {
 			Color color = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
 			cell.setBackground(color);	
 		}
 		else {
-//			Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
+			//			Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 			cell.setBackground(null);	
 		}
 		cell.setText(otNode.getName());
@@ -73,8 +73,6 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 				else if ("L".equals(visualAttribute))
 					cell.setImage(GUITools
 							.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-
-
 			}
 		}
 		super.update(cell);
@@ -102,7 +100,6 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 			} else if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET.equals( otNode.getType() ) && otNode.getTargetNodeAttributes() != null ) {
 				visualAttributeFull = otNode.getTargetNodeAttributes()
 						.getVisualattribute();
-
 			}
 
 			if ( visualAttributeFull != null && !visualAttributeFull.isEmpty()) {
@@ -122,8 +119,6 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					return GUITools
 							.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
 
-//				System.out.println("nothing?!?");
-
 			}
 			// System.out.println("null!");
 			return GUITools
@@ -131,16 +126,7 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 		}
 
 		if (element instanceof OntologyTreeNode) {
-
-			/*
-			 * return
-			 * PlatformUI.getWorkbench().getSharedImages()//.getImage(Resource
-			 * .OntologyTree.ICON_ANSWERGROUP);
-			 * .getImage(ISharedImages.IMG_OBJ_FOLDER);
-			 */
-
 			return GUITools.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-
 		}
 		return PlatformUI.getWorkbench().getSharedImages()
 				.getImage(ISharedImages.IMG_OBJ_FILE);
