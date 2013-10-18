@@ -48,20 +48,20 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 
 public class EditorTargetInfoView extends ViewPart {
 
-	private I2B2ImportTool _i2b2ImportTool = null;
-	private Resource _resource = null;
-	private String _text = "";
-	private Composite parentPane;
+	private static I2B2ImportTool _i2b2ImportTool = null;
+	private static Resource _resource = null;
+	private static String _text = "";
+	private static Composite parentPane;
 
-	OntologyTreeNode _node = null;
-	private Composite _editorComposite;
-	private Composite _parent;
-	private Table _infoTable;
-	private TableColumn infoTableDBColumn;
-	private TableColumn infoTableValue;
-	private TableItem tableItem;
-	private TableCursor tableCursor;
-	private TableViewer viewer;
+	private static OntologyTreeNode _node = null;
+	private static Composite _editorComposite;
+	private static Composite _parent;
+	private static Table _infoTable;
+	private static TableColumn infoTableDBColumn;
+	private static TableColumn infoTableValue;
+	private static TableItem tableItem;
+	private static TableCursor tableCursor;
+	private static TableViewer viewer;
 
 	public EditorTargetInfoView() {
 
@@ -92,13 +92,13 @@ public class EditorTargetInfoView extends ViewPart {
 		parentPane = parent.getParent();
 	}
 
-	private TableItem addColumItem(String text) {
+	private static TableItem addColumItem(String text) {
 		TableItem item = new TableItem(_infoTable, SWT.NONE);
 		item.setText(new String[] { text, "" });
 		return item;
 	}
 
-	private void createTable() {
+	private static void createTable() {
 
 		if (_infoTable != null)
 			return;
@@ -397,7 +397,7 @@ public class EditorTargetInfoView extends ViewPart {
 		refresh();
 	}
 
-	public void setNode(OntologyTreeNode node) {// , List<String> answersList,
+	public static void setNode(OntologyTreeNode node) {// , List<String> answersList,
 		// MyOntologyTreeItemLists
 		// itemLists){
 		// Debug.f("setNode",this);
@@ -423,8 +423,7 @@ public class EditorTargetInfoView extends ViewPart {
 		return this._resource;
 	}
 
-	public void refresh() {
-		Debug.f("refresh", this);
+	public static void refresh() {
 
 		// Editor von Benjamin aus CSVWizard klauen
 
@@ -464,7 +463,7 @@ public class EditorTargetInfoView extends ViewPart {
 		}
 	}
 
-	public TableItem addValueItem(TableItem[] items, int row, String value) {
+	public static TableItem addValueItem(TableItem[] items, int row, String value) {
 		if (items[row] == null) {
 			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
 					+ row + ".");
@@ -475,8 +474,8 @@ public class EditorTargetInfoView extends ViewPart {
 		return item;
 	}
 
-	public void executeRefresh() {
-		System.out.println("executeRefresh for text:\"" + this._node.getName()
+	public static void executeRefresh() {
+		System.out.println("executeRefresh for text:\"" + _node.getName()
 				+ "\"");
 
 		if (parentPane == null) {
