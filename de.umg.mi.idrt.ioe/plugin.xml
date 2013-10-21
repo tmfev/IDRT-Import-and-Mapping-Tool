@@ -118,7 +118,12 @@
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.DeleteNodeCommand"
             id="de.umg.mi.idrt.ioe.deletenode"
-            name="DeleteNode">
+            name="deleteNode">
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.HideNodeCommand"
+            id="de.umg.mi.idrt.ioe.hideNode"
+            name="hideNode">
       </command>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.IncrementVersionCommand"
@@ -155,6 +160,11 @@
             id="de.umg.mi.idrt.ioe.LoadTargetProjects"
             name="LoadTargetProjects">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.SaveTargetProject"
+            id="de.umg.mi.idrt.ioe.SaveTargetProject"
+            name="SaveTargetProject">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -190,6 +200,11 @@
             <command
                   commandId="de.umg.mi.idrt.ioe.LoadTargetProjects"
                   label="LoadTargetProjects"
+                  style="push">
+            </command>
+            <command
+                  commandId="de.umg.mi.idrt.ioe.SaveTargetProject"
+                  label="SaveTargetProject"
                   style="push">
             </command>
          </toolbar>
