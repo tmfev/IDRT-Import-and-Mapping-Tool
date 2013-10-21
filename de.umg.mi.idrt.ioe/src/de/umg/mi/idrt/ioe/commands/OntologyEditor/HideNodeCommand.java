@@ -11,7 +11,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class DeleteNodeCommand extends AbstractHandler {
+public class HideNodeCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -22,14 +22,18 @@ public class DeleteNodeCommand extends AbstractHandler {
 		OntologyTreeNode firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
 		OntologyEditorView.setNotYetSaved(true);
+		String visual = firstElement.getTargetNodeAttributes().getVisualattribute();
 
-		firstElement.removeAllChildren();
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		if (!(firstElement ==myOT.getSubRootNode())) {
-			firstElement.removeFromParent();
-		}
-		EditorTargetInfoView.setNode(firstElement.getParent());
+		if (visual.equalsIgnoreCase("LAE"))
+			firstElement.getTargetNodeAttributes().setVisualattributes("LHE");
+		else if (visual.equalsIgnoreCase("FAE"))
+			firstElement.getTargetNodeAttributes().setVisualattributes("FHE");
+		else if (visual.equalsIgnoreCase("FHE"))
+			firstElement.getTargetNodeAttributes().setVisualattributes("FAE");
+		else if (visual.equalsIgnoreCase("LHE"))
+			firstElement.getTargetNodeAttributes().setVisualattributes("LAE");
 		targetTreeViewer.refresh();
+		EditorTargetInfoView.refresh();
 		return null;
 	}
 

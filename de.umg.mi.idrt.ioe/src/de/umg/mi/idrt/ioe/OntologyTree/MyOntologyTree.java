@@ -29,9 +29,15 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.ResourceManager;
 
@@ -519,8 +525,8 @@ public class MyOntologyTree extends JPanel {
 
 	/* OT Commands */
 	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
-//		System.out.println("TARGET: " + targetNode.getName());
-//		System.out.println("ÜARENT: " + targetNode.getParent().getName());
+		//		System.out.println("TARGET: " + targetNode.getName());
+		//		System.out.println("ÜARENT: " + targetNode.getParent().getName());
 		if (sourceNode==null) {
 
 			int minLevel = Integer.MAX_VALUE;
@@ -779,34 +785,37 @@ public class MyOntologyTree extends JPanel {
 	/* OT Commands */
 	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
 			OntologyTreeNode targetNode, String attribute) {
-
-//		System.out.println("------");
-//		System.out.println("setTargetAttributesAsSourcePath:");
+		System.out.println("setting attribute: " + attribute);
+		//		System.out.println("------");
+		//		System.out.println("setTargetAttributesAsSourcePath:");
 
 		if (sourceNode != null) {
 			System.out.println(" - do:" + sourceNode.getName() + " -> "
 					+ targetNode.getName() + "!");
 
-//			System.out.println(" - attribute: " + attribute);
-//			System.out
-//			.println(" - sourceNodePath: " + sourceNode.getTreePath());
-//			System.out
-//			.println(" - targetNode.startDateSource: "
-//					+ targetNode.getTargetNodeAttributes()
-//					.getStartDateSource());
-			setTargetAttribute(targetNode, "startDateSource",
+			//			System.out.println(" - attribute: " + attribute);
+			//			System.out
+			//			.println(" - sourceNodePath: " + sourceNode.getTreePath());
+			//			System.out
+			//			.println(" - targetNode.startDateSource: "
+			//					+ targetNode.getTargetNodeAttributes()
+			//					.getStartDateSource());
+			setTargetAttribute(targetNode, attribute,
 					sourceNode.getTreePath());
-//			System.out
-//			.println(" - targetNode.startDateSource (after): "
-//					+ targetNode.getTargetNodeAttributes()
-//					.getStartDateSource());
+			//			System.out
+			//			.println(" - targetNode.startDateSource (after): "
+			//					+ targetNode.getTargetNodeAttributes()
+			//					.getStartDateSource());
 		}
 	}
 
 	public void setTargetAttribute(OntologyTreeNode targetNode,
 			String attribute, String value) {
 
-		targetNode.getTargetNodeAttributes().setStartDateSourcePath(value);
+		if (attribute.equals("startDateSource"))
+			targetNode.getTargetNodeAttributes().setStartDateSourcePath(value);
+		else if (attribute.equals("endDateSource"))
+			targetNode.getTargetNodeAttributes().setEndDateSourcePath(value);
 
 		if (targetNode.hasChildren()) {
 
@@ -837,19 +846,109 @@ public class MyOntologyTree extends JPanel {
 					| SWT.TOOL);
 			dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
 					.getCursorLocation());
+			
 			final Composite actionMenu = new Composite(dialog, SWT.NONE);
 			actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
 
-			Button btnInsert = new Button(actionMenu, SWT.NONE);
-			btnInsert.setImage(ResourceManager.getPluginImage(
-					"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
-			btnInsert.setBounds(0, 0, 75, 25);
-			btnInsert.setText("Insert Nodes");
-			btnInsert.addSelectionListener(new SelectionAdapter() {
+			
+			/**
+			 * Menu for Combine Actions
+			 */
+			final Menu menu = new Menu(dialog, SWT.POP_UP);
+			
+			//Set StartDate
+			MenuItem startMenuItem = new MenuItem(menu, SWT.PUSH);
+			startMenuItem.setText("Add as Start Date");
+			startMenuItem.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetSelected(SelectionEvent arg0) {
+					dialog.close();
+					System.out.println("STARTDATE CLICKED");
+					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+							.getSelection();
+					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+					OntologyTreeNode node = nodeIterator.next();
+					ActionCommand command = new ActionCommand(
+							Resource.ID.Command.OTSETTARGETATTRIBUTE);
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
+							node.getTreePath());
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
+							targetPath);
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
+							"startDateSource");
+					Application.executeCommand(command);
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+			//Set EndDate
+			MenuItem endMenuItem =  new MenuItem(menu, SWT.PUSH);
+			endMenuItem.setText("Add as End Date");
+			endMenuItem.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetSelected(SelectionEvent arg0) {
+					// TODO Auto-generated method stub
+					dialog.close();
+					System.out.println("ENDDATE CLICKED");
+					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+							.getSelection();
+					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+					OntologyTreeNode node = nodeIterator.next();
+					//					while (nodeIterator.hasNext()) {
+					//						OntologyTreeNode node = nodeIterator.next();
+					//					}
+					ActionCommand command = new ActionCommand(
+							Resource.ID.Command.OTSETTARGETATTRIBUTE);
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
+							node.getTreePath());
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
+							targetPath);
+					command.addParameter(
+							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
+							"endDateSource");
+					Application.executeCommand(command);
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+
+				}
+			});
+			new MenuItem(menu, SWT.SEPARATOR);
+			
+			//Merge Ontologies (ICD10 etc)
+			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.PUSH);
+			mergeOntMenuItem.setText("Merge with Standard Ontology");
+			mergeOntMenuItem.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent arg0) {
+					System.err.println("NYI");
+					dialog.close();
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+			
+			final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
+			toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
+
+			ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
+			tltmInsertNodes.setText("Insert Nodes");
+			tltmInsertNodes.addSelectionListener(new SelectionAdapter() {
 				// SelectionAdapter Methode
 				public void widgetSelected(SelectionEvent e) {
-					// appletString = "Button eins geklickt"; //später wird dieser
-					// String in einem Label dargestellt
 					dialog.close();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTCOPY);
@@ -860,41 +959,33 @@ public class MyOntologyTree extends JPanel {
 							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
 							targetPath);
 					Application.executeCommand(command);
-
+					System.out.println("INSERT CLICKED");
 					OntologyEditorView.getTargetTreeViewer().refresh();
 				}
 			});
+			final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
+			tltmCombine.setText("Combine Nodes");
 
-			Button btnCombine = new Button(actionMenu, SWT.NONE);
-			btnCombine.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
-					false, 1, 1));
-			btnCombine.setImage(ResourceManager.getPluginImage(
-					"edu.goettingen.i2b2.importtool",
-					"images/format-indent-more.png"));
-			btnCombine.setBounds(0, 0, 75, 25);
-			btnCombine.setText("Combine Nodes");
-			btnCombine.addSelectionListener(new SelectionAdapter() {
-				// SelectionAdapter Methode
-				public void widgetSelected(SelectionEvent e) {
-					dialog.close();
-					ActionCommand command = new ActionCommand(
-							Resource.ID.Command.OTSETTARGETATTRIBUTE);
-					command.addParameter(
-							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
-							"");
-					command.addParameter(
-							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
-							targetPath);
-					command.addParameter(
-							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
-							"startDateSource");
-					Application.executeCommand(command);
+			tltmCombine.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					if(event.detail == SWT.ARROW) {
+						Rectangle bounds = tltmCombine.getBounds();
+						Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
+						menu.setLocation(point);
+						menu.setVisible(true);
+					}
+					else {
+						Rectangle bounds = tltmCombine.getBounds();
+						Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
+						menu.setLocation(point);
+						menu.setVisible(true);
+					}
 				}
 			});
-			Button cancel = new Button(actionMenu,SWT.PUSH);
-			cancel.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
-			cancel.setToolTipText("Cancel");
-			cancel.addSelectionListener(new SelectionListener() {
+
+			ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
+			tltmCancel.setText("Cancel");
+			tltmCancel.addSelectionListener(new SelectionListener() {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -909,7 +1000,9 @@ public class MyOntologyTree extends JPanel {
 
 			actionMenu.pack();
 			dialog.pack();
+
 			dialog.open();
+
 		}
 	}
 
