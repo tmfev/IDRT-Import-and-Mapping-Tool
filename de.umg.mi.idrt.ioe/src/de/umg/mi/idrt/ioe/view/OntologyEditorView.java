@@ -298,8 +298,6 @@ public class OntologyEditorView extends ViewPart {
 		//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
 		//								mainComposite = new Composite(shell, SWT.NONE);
 		//								mainComposite.setLayout(new BorderLayout(0, 0));
-
-
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -350,7 +348,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		//TODO
 		targetComposite = new Composite(sash, SWT.NONE);
 		targetComposite.setLayout(new BorderLayout(0, 0));
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
@@ -406,11 +403,8 @@ public class OntologyEditorView extends ViewPart {
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
-
-		//TODO DND
 		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
 				targetTreeViewer));
-
 
 		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
 
@@ -439,8 +433,7 @@ public class OntologyEditorView extends ViewPart {
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
 				setCurrentTargetNode(node);
 				if (node != null) {
-					Activator.getDefault().getResource()
-					.getEditorTargetInfoView().setNode(node);
+					EditorTargetInfoView.setNode(node);
 
 					Application.getStatusView().addMessage(
 							new SystemMessage("Target selection changed to \'"
@@ -471,11 +464,9 @@ public class OntologyEditorView extends ViewPart {
 
 		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 
-
 		stagingTreeViewer = new TreeViewer(stagingComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(
-				stagingTreeViewer,1));
+		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener());
 		stagingTreeViewer.setSorter(new ViewerSorter());
 		composite_1 = new SashForm(composite, SWT.SMOOTH);
 		composite_1.setLayoutData(BorderLayout.NORTH);
@@ -762,6 +753,7 @@ public class OntologyEditorView extends ViewPart {
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeTarget());
 
+		
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
@@ -781,6 +773,7 @@ public class OntologyEditorView extends ViewPart {
 					sourceNode = OntologyEditorView.getI2b2ImportTool()
 							.getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
 					//				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
+					if (sourceNode != null)
 					sourceNode.setHighlighted(true);
 				}
 				stagingTreeViewer.refresh();
@@ -810,19 +803,24 @@ public class OntologyEditorView extends ViewPart {
 
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
-		//		MenuItem mntmInsert = new MenuItem(menu, SWT.PUSH);
-		//		mntmInsert.setImage(ResourceManager.getPluginImage(
-		//				"edu.goettingen.i2b2.importtool", "images/edit-copy.png"));
-		//		mntmInsert.setText("Insert");
+		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+		mntmgetChildren.setText("getChildren");
+		mntmgetChildren.addSelectionListener(new SelectionListener() {
 
-		//		MenuItem mntmCombine = new MenuItem(menu, SWT.PUSH);
-		//		mntmCombine.setImage(ResourceManager.getPluginImage(
-		//				"edu.goettingen.i2b2.importtool",
-		//				"images/format-indent-more.png"));
-		//		mntmCombine.setText("Combine");
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+				for (OntologyTreeNode nnode : node.getChildren())
+					System.out.println(nnode.getName());
+			}
 
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
 
+			}
+		});
 
+		
 		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
 		mntmAddNode.setText("Add Folder");
 		mntmAddNode.addSelectionListener(new SelectionListener() {
@@ -1009,11 +1007,10 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSelection(OntologyTreeNode node) {
-		System.out.println("setSelection Target");
 		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
-		Application.getEditorTargetInfoView().setNode(node);
+		EditorTargetInfoView.setNode(node);
 	}
 	protected static DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
@@ -1027,7 +1024,6 @@ public class OntologyEditorView extends ViewPart {
 
 	public static String getTargetSchemaName() {
 		return lblNameText.getText();
-
 	}
 
 	public static void setStagingSchemaName(String schema) {
@@ -1066,5 +1062,4 @@ public class OntologyEditorView extends ViewPart {
 				.getFirstElement();
 		return firstElement;
 	}
-
 }

@@ -27,7 +27,7 @@ public class I2B2ImportTool extends JFrame implements TreeSelectionListener,
 	public String programmTitle = "";
 	protected Properties properties = new Properties();
 	private boolean _alreadyParsed = false;
-	public MyOntologyTree myOT = null;
+	private MyOntologyTree myOT = null;
 	private UserMessage userMessage = new UserMessage();
 	private String importFile;
 	private File importInputDir;

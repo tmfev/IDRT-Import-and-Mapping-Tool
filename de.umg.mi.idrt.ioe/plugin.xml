@@ -212,6 +212,11 @@
                   label="LoadTargetProjects"
                   style="push">
             </command>
+            <command
+                  commandId="de.umg.mi.idrt.ioe.SaveTargetProject"
+                  label="SaveTargetProject"
+                  style="push">
+            </command>
          </toolbar>
       </menuContribution>
       <menuContribution

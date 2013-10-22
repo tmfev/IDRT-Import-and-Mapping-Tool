@@ -22,7 +22,6 @@ public class ActionCommand {
 		Map<String, String> parameters = event.getParameters();
 		Iterator<String> parametersIterator = parameters.keySet().iterator();
 		String parameterKey = "";
-		String value = "";
 		while (parametersIterator.hasNext()) {
 			parameterKey = parametersIterator.next();
 			_params.put(parameterKey,

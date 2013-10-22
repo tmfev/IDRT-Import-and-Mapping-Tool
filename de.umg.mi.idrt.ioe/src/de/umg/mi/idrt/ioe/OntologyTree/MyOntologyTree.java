@@ -752,18 +752,15 @@ public class MyOntologyTree extends JPanel {
 										copySourceNodeToTarget(child, newNode);
 									}
 								}
-
 							}
 							else {
 								dialog.close();
 								MessageDialog.openError(Application.getShell(), "Cannot Add Node!", "This Node is already present!\nPlease choose an unique name!");
 							}
-
 						}
 
 						@Override
 						public void widgetDefaultSelected(SelectionEvent e) {
-
 						}
 					});
 
@@ -867,8 +864,7 @@ public class MyOntologyTree extends JPanel {
 					System.out.println("STARTDATE CLICKED");
 					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 							.getSelection();
-					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-					OntologyTreeNode node = nodeIterator.next();
+					OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
@@ -894,16 +890,11 @@ public class MyOntologyTree extends JPanel {
 
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
-					// TODO Auto-generated method stub
 					dialog.close();
 					System.out.println("ENDDATE CLICKED");
 					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 							.getSelection();
-					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-					OntologyTreeNode node = nodeIterator.next();
-					//					while (nodeIterator.hasNext()) {
-					//						OntologyTreeNode node = nodeIterator.next();
-					//					}
+					OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
@@ -932,8 +923,29 @@ public class MyOntologyTree extends JPanel {
 				
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
-					System.err.println("NYI");
+					//TODO IMPLEMENT
 					dialog.close();
+//					ActionCommand command = new ActionCommand(
+//							Resource.ID.Command.OTCOPY);
+//					command.addParameter(
+//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
+//							"");
+//					command.addParameter(
+//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+//							targetPath);
+//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
+//					Application.executeCommand(command);
+//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
+					
+					System.out.println("COPY DONE");
+					
+					System.out.println(Resource.ID.Command.COMBINENODE);
+					ActionCommand command2 = new ActionCommand(
+							Resource.ID.Command.COMBINENODE);
+					command2.addParameter(
+							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+							targetPath);
+					Application.executeCommand(command2);
 				}
 				
 				@Override
@@ -947,7 +959,6 @@ public class MyOntologyTree extends JPanel {
 			ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
 			tltmInsertNodes.setText("Insert Nodes");
 			tltmInsertNodes.addSelectionListener(new SelectionAdapter() {
-				// SelectionAdapter Methode
 				public void widgetSelected(SelectionEvent e) {
 					dialog.close();
 					ActionCommand command = new ActionCommand(
@@ -958,7 +969,9 @@ public class MyOntologyTree extends JPanel {
 					command.addParameter(
 							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
 							targetPath);
+					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
 					Application.executeCommand(command);
+					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
 					System.out.println("INSERT CLICKED");
 					OntologyEditorView.getTargetTreeViewer().refresh();
 				}
@@ -968,23 +981,16 @@ public class MyOntologyTree extends JPanel {
 
 			tltmCombine.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
-					if(event.detail == SWT.ARROW) {
 						Rectangle bounds = tltmCombine.getBounds();
 						Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
 						menu.setLocation(point);
 						menu.setVisible(true);
-					}
-					else {
-						Rectangle bounds = tltmCombine.getBounds();
-						Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
-						menu.setLocation(point);
-						menu.setVisible(true);
-					}
 				}
 			});
 
 			ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
 			tltmCancel.setText("Cancel");
+			tltmCancel.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/terminate_co.gif"));
 			tltmCancel.addSelectionListener(new SelectionListener() {
 
 				@Override
@@ -1000,9 +1006,7 @@ public class MyOntologyTree extends JPanel {
 
 			actionMenu.pack();
 			dialog.pack();
-
 			dialog.open();
-
 		}
 	}
 

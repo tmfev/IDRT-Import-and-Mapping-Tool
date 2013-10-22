@@ -57,10 +57,9 @@ public class OTNodeLists {
 		public OntologyTreeNode addOTNode( String i2b2Path, OntologyTreeNode node ){
 			OntologyTreeNode parentNode = null;
 			PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
-
 			
 			if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 400 == 0 ){
-				System.out.println("addOTNode #" + stringPathToNode.size() +" " + node.getName() + "  -> " + i2b2Path + " || " + pathAndID.getParentPath() + " -> " + pathAndID.getID());
+//				System.out.println("addOTNode #" + stringPathToNode.size() +" " + node.getName() + "  -> " + i2b2Path + " || " + pathAndID.getParentPath() + " -> " + pathAndID.getID());
 			}
 		
 			if ( pathAndID.getParentPath().isEmpty() ){
@@ -75,7 +74,7 @@ public class OTNodeLists {
 			} else {
 				parentNode = this.getNodeByPath( pathAndID.getParentPath() );
 				if (parentNode == null){
-					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
+//					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
 					return null;
 				}
 			}
