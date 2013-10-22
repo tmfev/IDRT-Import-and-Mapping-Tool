@@ -53,7 +53,7 @@ public class EditorTargetInfoView extends ViewPart {
 	private static String _text = "";
 	private static Composite parentPane;
 
-	private static OntologyTreeNode _node;
+	private static OntologyTreeNode _node = null;
 	private static Composite _editorComposite;
 	private static Composite _parent;
 	private static Table _infoTable;
@@ -402,7 +402,7 @@ public class EditorTargetInfoView extends ViewPart {
 		// itemLists){
 		// Debug.f("setNode",this);
 		// Console.info("setting node");
-//		System.out.println("setting node (" + node.getName() + ")");
+		System.out.println("setting node (" + node.getName() + ")");
 		_node = node;
 		refresh();
 	}
@@ -469,15 +469,14 @@ public class EditorTargetInfoView extends ViewPart {
 					+ row + ".");
 			return null;
 		}
-		
 		TableItem item = items[row];
 		item.setText(1, value != null && !value.equals("null") ? value : "");
 		return item;
 	}
 
 	public static void executeRefresh() {
-//		System.out.println("executeRefresh for text:\"" + _node.getName()
-//				+ "\"");
+		System.out.println("executeRefresh for text:\"" + _node.getName()
+				+ "\"");
 
 		if (parentPane == null) {
 			Debug.e("no pane avaible @OntologyNodeEditorView");

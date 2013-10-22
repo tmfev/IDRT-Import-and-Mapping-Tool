@@ -290,7 +290,6 @@ public class Resource {
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Target";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Attribute";
 			public final static String DELETENODE = "de.umg.mi.idrt.ioe.deletenode";
-			public final static String COMBINENODE = "de.umg.mi.idrt.ioe.combineNodes";
 
 			public class IEO {
 				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";

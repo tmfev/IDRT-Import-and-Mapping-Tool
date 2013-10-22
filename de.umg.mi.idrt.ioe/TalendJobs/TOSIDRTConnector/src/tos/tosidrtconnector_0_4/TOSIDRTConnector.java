@@ -41,11 +41,6 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
 
-//the import part of tJavaFlex_1
-
-//the import part of tJava_3
-//import java.util.List;
-
 //the import part of tLibraryLoad_1
 import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
@@ -69,6 +64,11 @@ import routines.TOSHandler2;
 //import java.util.List;
 
 //the import part of tJava_2
+//import java.util.List;
+
+//the import part of tJavaFlex_1
+
+//the import part of tJava_3
 //import java.util.List;
 
 //the import part of tJavaFlex_3
@@ -546,44 +546,14 @@ public class TOSIDRTConnector implements TalendJob {
 		}
 	}
 
-	public void tOracleInput_1_error(java.lang.Exception exception,
+	public void tPrejob_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleInput_1", System.currentTimeMillis());
+		end_Hash.put("tPrejob_1", System.currentTimeMillis());
 
 		status = "failure";
 
-		tOracleInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJavaFlex_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-
-		try {
-
-			errorCode = null;
-			tJava_3Process(globalMap);
-			if (!"failure".equals(status)) {
-				status = "end";
-			}
-
-		} catch (java.lang.Exception e) {
-			e.printStackTrace();
-		}
-
-		tOracleInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJava_3_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_3", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_3_onSubJobError(exception, errorComponent, globalMap);
+		tPrejob_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tLibraryLoad_1_error(java.lang.Exception exception,
@@ -712,6 +682,46 @@ public class TOSIDRTConnector implements TalendJob {
 		status = "failure";
 
 		tJava_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tOracleInput_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tOracleInput_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tOracleInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJavaFlex_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
+
+		try {
+
+			errorCode = null;
+			tJava_3Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+
+		} catch (java.lang.Exception e) {
+			e.printStackTrace();
+		}
+
+		tOracleInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tOracleInput_5_error(java.lang.Exception exception,
@@ -1067,38 +1077,7 @@ public class TOSIDRTConnector implements TalendJob {
 		tJava_11_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tPrejob_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tPrejob_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tPrejob_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tMap_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tMap_2", System.currentTimeMillis());
-
-		status = "failure";
-
-		tMap_2_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tOracleInput_1_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tJava_3_onSubJobError(java.lang.Exception exception,
+	public void tPrejob_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1231,6 +1210,28 @@ public class TOSIDRTConnector implements TalendJob {
 	}
 
 	public void tJava_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tOracleInput_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_3_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1517,1088 +1518,9 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tPrejob_1_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
+	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tMap_2_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public static class dbrowStruct implements
-			routines.system.IPersistableRow<dbrowStruct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
-
-		public BigDecimal C_HLEVEL;
-
-		public BigDecimal getC_HLEVEL() {
-			return this.C_HLEVEL;
-		}
-
-		public String C_FULLNAME;
-
-		public String getC_FULLNAME() {
-			return this.C_FULLNAME;
-		}
-
-		public String C_NAME;
-
-		public String getC_NAME() {
-			return this.C_NAME;
-		}
-
-		public String C_SYNONYM_CD;
-
-		public String getC_SYNONYM_CD() {
-			return this.C_SYNONYM_CD;
-		}
-
-		public String C_VISUALATTRIBUTES;
-
-		public String getC_VISUALATTRIBUTES() {
-			return this.C_VISUALATTRIBUTES;
-		}
-
-		public Integer C_TOTALNUM;
-
-		public Integer getC_TOTALNUM() {
-			return this.C_TOTALNUM;
-		}
-
-		public String C_BASECODE;
-
-		public String getC_BASECODE() {
-			return this.C_BASECODE;
-		}
-
-		public String C_METADATAXML;
-
-		public String getC_METADATAXML() {
-			return this.C_METADATAXML;
-		}
-
-		public String C_FACTTABLECOLUMN;
-
-		public String getC_FACTTABLECOLUMN() {
-			return this.C_FACTTABLECOLUMN;
-		}
-
-		public String C_TABLENAME;
-
-		public String getC_TABLENAME() {
-			return this.C_TABLENAME;
-		}
-
-		public String C_COLUMNNAME;
-
-		public String getC_COLUMNNAME() {
-			return this.C_COLUMNNAME;
-		}
-
-		public String C_COLUMNDATATYPE;
-
-		public String getC_COLUMNDATATYPE() {
-			return this.C_COLUMNDATATYPE;
-		}
-
-		public String C_OPERATOR;
-
-		public String getC_OPERATOR() {
-			return this.C_OPERATOR;
-		}
-
-		public String C_DIMCODE;
-
-		public String getC_DIMCODE() {
-			return this.C_DIMCODE;
-		}
-
-		public String C_COMMENT;
-
-		public String getC_COMMENT() {
-			return this.C_COMMENT;
-		}
-
-		public String C_TOOLTIP;
-
-		public String getC_TOOLTIP() {
-			return this.C_TOOLTIP;
-		}
-
-		public String M_APPLIED_PATH;
-
-		public String getM_APPLIED_PATH() {
-			return this.M_APPLIED_PATH;
-		}
-
-		public java.util.Date UPDATE_DATE;
-
-		public java.util.Date getUPDATE_DATE() {
-			return this.UPDATE_DATE;
-		}
-
-		public java.util.Date DOWNLOAD_DATE;
-
-		public java.util.Date getDOWNLOAD_DATE() {
-			return this.DOWNLOAD_DATE;
-		}
-
-		public java.util.Date IMPORT_DATE;
-
-		public java.util.Date getIMPORT_DATE() {
-			return this.IMPORT_DATE;
-		}
-
-		public String SOURCESYSTEM_CD;
-
-		public String getSOURCESYSTEM_CD() {
-			return this.SOURCESYSTEM_CD;
-		}
-
-		public String VALUETYPE_CD;
-
-		public String getVALUETYPE_CD() {
-			return this.VALUETYPE_CD;
-		}
-
-		public String M_EXCLUSION_CD;
-
-		public String getM_EXCLUSION_CD() {
-			return this.M_EXCLUSION_CD;
-		}
-
-		public String C_PATH;
-
-		public String getC_PATH() {
-			return this.C_PATH;
-		}
-
-		public String C_SYMBOL;
-
-		public String getC_SYMBOL() {
-			return this.C_SYMBOL;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTConnector.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTConnector.length == 0) {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_TOSIDRTConnector, 0, length);
-				strReturn = new String(commonByteArray_TOS_TOSIDRTConnector, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTConnector) {
-
-				try {
-
-					int length = 0;
-
-					this.C_HLEVEL = (BigDecimal) dis.readObject();
-
-					this.C_FULLNAME = readString(dis);
-
-					this.C_NAME = readString(dis);
-
-					this.C_SYNONYM_CD = readString(dis);
-
-					this.C_VISUALATTRIBUTES = readString(dis);
-
-					this.C_TOTALNUM = readInteger(dis);
-
-					this.C_BASECODE = readString(dis);
-
-					this.C_METADATAXML = readString(dis);
-
-					this.C_FACTTABLECOLUMN = readString(dis);
-
-					this.C_TABLENAME = readString(dis);
-
-					this.C_COLUMNNAME = readString(dis);
-
-					this.C_COLUMNDATATYPE = readString(dis);
-
-					this.C_OPERATOR = readString(dis);
-
-					this.C_DIMCODE = readString(dis);
-
-					this.C_COMMENT = readString(dis);
-
-					this.C_TOOLTIP = readString(dis);
-
-					this.M_APPLIED_PATH = readString(dis);
-
-					this.UPDATE_DATE = readDate(dis);
-
-					this.DOWNLOAD_DATE = readDate(dis);
-
-					this.IMPORT_DATE = readDate(dis);
-
-					this.SOURCESYSTEM_CD = readString(dis);
-
-					this.VALUETYPE_CD = readString(dis);
-
-					this.M_EXCLUSION_CD = readString(dis);
-
-					this.C_PATH = readString(dis);
-
-					this.C_SYMBOL = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				} catch (ClassNotFoundException eCNFE) {
-					throw new RuntimeException(eCNFE);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// BigDecimal
-
-				dos.writeObject(this.C_HLEVEL);
-
-				// String
-
-				writeString(this.C_FULLNAME, dos);
-
-				// String
-
-				writeString(this.C_NAME, dos);
-
-				// String
-
-				writeString(this.C_SYNONYM_CD, dos);
-
-				// String
-
-				writeString(this.C_VISUALATTRIBUTES, dos);
-
-				// Integer
-
-				writeInteger(this.C_TOTALNUM, dos);
-
-				// String
-
-				writeString(this.C_BASECODE, dos);
-
-				// String
-
-				writeString(this.C_METADATAXML, dos);
-
-				// String
-
-				writeString(this.C_FACTTABLECOLUMN, dos);
-
-				// String
-
-				writeString(this.C_TABLENAME, dos);
-
-				// String
-
-				writeString(this.C_COLUMNNAME, dos);
-
-				// String
-
-				writeString(this.C_COLUMNDATATYPE, dos);
-
-				// String
-
-				writeString(this.C_OPERATOR, dos);
-
-				// String
-
-				writeString(this.C_DIMCODE, dos);
-
-				// String
-
-				writeString(this.C_COMMENT, dos);
-
-				// String
-
-				writeString(this.C_TOOLTIP, dos);
-
-				// String
-
-				writeString(this.M_APPLIED_PATH, dos);
-
-				// java.util.Date
-
-				writeDate(this.UPDATE_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.DOWNLOAD_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.IMPORT_DATE, dos);
-
-				// String
-
-				writeString(this.SOURCESYSTEM_CD, dos);
-
-				// String
-
-				writeString(this.VALUETYPE_CD, dos);
-
-				// String
-
-				writeString(this.M_EXCLUSION_CD, dos);
-
-				// String
-
-				writeString(this.C_PATH, dos);
-
-				// String
-
-				writeString(this.C_SYMBOL, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("C_HLEVEL=" + String.valueOf(C_HLEVEL));
-			sb.append(",C_FULLNAME=" + C_FULLNAME);
-			sb.append(",C_NAME=" + C_NAME);
-			sb.append(",C_SYNONYM_CD=" + C_SYNONYM_CD);
-			sb.append(",C_VISUALATTRIBUTES=" + C_VISUALATTRIBUTES);
-			sb.append(",C_TOTALNUM=" + String.valueOf(C_TOTALNUM));
-			sb.append(",C_BASECODE=" + C_BASECODE);
-			sb.append(",C_METADATAXML=" + C_METADATAXML);
-			sb.append(",C_FACTTABLECOLUMN=" + C_FACTTABLECOLUMN);
-			sb.append(",C_TABLENAME=" + C_TABLENAME);
-			sb.append(",C_COLUMNNAME=" + C_COLUMNNAME);
-			sb.append(",C_COLUMNDATATYPE=" + C_COLUMNDATATYPE);
-			sb.append(",C_OPERATOR=" + C_OPERATOR);
-			sb.append(",C_DIMCODE=" + C_DIMCODE);
-			sb.append(",C_COMMENT=" + C_COMMENT);
-			sb.append(",C_TOOLTIP=" + C_TOOLTIP);
-			sb.append(",M_APPLIED_PATH=" + M_APPLIED_PATH);
-			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
-			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
-			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
-			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
-			sb.append(",VALUETYPE_CD=" + VALUETYPE_CD);
-			sb.append(",M_EXCLUSION_CD=" + M_EXCLUSION_CD);
-			sb.append(",C_PATH=" + C_PATH);
-			sb.append(",C_SYMBOL=" + C_SYMBOL);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(dbrowStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tOracleInput_1Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tOracleInput_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				dbrowStruct dbrow = new dbrowStruct();
-
-				/**
-				 * [tJavaFlex_1 begin ] start
-				 */
-
-				ok_Hash.put("tJavaFlex_1", false);
-				start_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-				currentComponent = "tJavaFlex_1";
-
-				int tos_count_tJavaFlex_1 = 0;
-
-				System.out
-						.println("TOS: Starting Talend-Job \"ontology\" as TOS-Code.");
-
-				int number_of_ontology_items = 0;
-
-				/**
-				 * [tJavaFlex_1 begin ] stop
-				 */
-
-				/**
-				 * [tOracleInput_1 begin ] start
-				 */
-
-				ok_Hash.put("tOracleInput_1", false);
-				start_Hash.put("tOracleInput_1", System.currentTimeMillis());
-				currentComponent = "tOracleInput_1";
-
-				int tos_count_tOracleInput_1 = 0;
-
-				int nb_line_tOracleInput_1 = 0;
-				java.sql.Connection conn_tOracleInput_1 = null;
-				conn_tOracleInput_1 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_2");
-				if (null == conn_tOracleInput_1) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleInput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					conn_tOracleInput_1 = dataSources_tOracleInput_1.get("")
-							.getConnection();
-					// globalMap.put("conn_tOracleConnection_2",
-					// conn_tOracleInput_1);
-				}
-				if (((oracle.jdbc.OracleConnection) conn_tOracleInput_1)
-						.getSessionTimeZone() == null) {
-					java.sql.Statement stmtGetTZ_tOracleInput_1 = conn_tOracleInput_1
-							.createStatement();
-					java.sql.ResultSet rsGetTZ_tOracleInput_1 = stmtGetTZ_tOracleInput_1
-							.executeQuery("select sessiontimezone from dual");
-					String sessionTimezone_tOracleInput_1 = java.util.TimeZone
-							.getDefault().getID();
-					while (rsGetTZ_tOracleInput_1.next()) {
-						sessionTimezone_tOracleInput_1 = rsGetTZ_tOracleInput_1
-								.getString(1);
-					}
-					((oracle.jdbc.OracleConnection) conn_tOracleInput_1)
-							.setSessionTimeZone(sessionTimezone_tOracleInput_1);
-				}
-
-				java.sql.Statement stmt_tOracleInput_1 = conn_tOracleInput_1
-						.createStatement();
-
-				String dbquery_tOracleInput_1 = context.SQLCommand;
-
-				globalMap.put("tOracleInput_1_QUERY", dbquery_tOracleInput_1);
-
-				java.sql.ResultSet rs_tOracleInput_1 = stmt_tOracleInput_1
-						.executeQuery(dbquery_tOracleInput_1);
-				java.sql.ResultSetMetaData rsmd_tOracleInput_1 = rs_tOracleInput_1
-						.getMetaData();
-				int colQtyInRs_tOracleInput_1 = rsmd_tOracleInput_1
-						.getColumnCount();
-
-				String tmpContent_tOracleInput_1 = null;
-				int column_index_tOracleInput_1 = 1;
-				while (rs_tOracleInput_1.next()) {
-					nb_line_tOracleInput_1++;
-
-					column_index_tOracleInput_1 = 1;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_HLEVEL = null;
-					} else {
-
-						if (rs_tOracleInput_1
-								.getObject(column_index_tOracleInput_1) != null) {
-							dbrow.C_HLEVEL = rs_tOracleInput_1
-									.getBigDecimal(column_index_tOracleInput_1);
-						} else {
-
-							throw new RuntimeException(
-									"Null value in non-Nullable column");
-						}
-
-					}
-					column_index_tOracleInput_1 = 2;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_FULLNAME = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_FULLNAME = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_FULLNAME = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 3;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_NAME = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_NAME = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_NAME = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 4;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_SYNONYM_CD = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_SYNONYM_CD = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_SYNONYM_CD = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 5;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_VISUALATTRIBUTES = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_VISUALATTRIBUTES = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_VISUALATTRIBUTES = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 6;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_TOTALNUM = null;
-					} else {
-
-						if (rs_tOracleInput_1
-								.getObject(column_index_tOracleInput_1) != null) {
-							dbrow.C_TOTALNUM = rs_tOracleInput_1
-									.getInt(column_index_tOracleInput_1);
-						} else {
-
-							dbrow.C_TOTALNUM = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 7;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_BASECODE = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_BASECODE = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_BASECODE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 8;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_METADATAXML = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_METADATAXML = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_METADATAXML = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 9;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_FACTTABLECOLUMN = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_FACTTABLECOLUMN = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_FACTTABLECOLUMN = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 10;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_TABLENAME = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_TABLENAME = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_TABLENAME = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 11;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_COLUMNNAME = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_COLUMNNAME = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_COLUMNNAME = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 12;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_COLUMNDATATYPE = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_COLUMNDATATYPE = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_COLUMNDATATYPE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 13;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_OPERATOR = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_OPERATOR = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_OPERATOR = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 14;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_DIMCODE = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_DIMCODE = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_DIMCODE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 15;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_COMMENT = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_COMMENT = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_COMMENT = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 16;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_TOOLTIP = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_TOOLTIP = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_TOOLTIP = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 17;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.M_APPLIED_PATH = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.M_APPLIED_PATH = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.M_APPLIED_PATH = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 18;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.UPDATE_DATE = null;
-					} else {
-
-						if (rs_tOracleInput_1
-								.getTimestamp(column_index_tOracleInput_1) != null) {
-							dbrow.UPDATE_DATE = new java.util.Date(
-									rs_tOracleInput_1.getTimestamp(
-											column_index_tOracleInput_1)
-											.getTime());
-						} else {
-							dbrow.UPDATE_DATE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 19;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.DOWNLOAD_DATE = null;
-					} else {
-
-						if (rs_tOracleInput_1
-								.getTimestamp(column_index_tOracleInput_1) != null) {
-							dbrow.DOWNLOAD_DATE = new java.util.Date(
-									rs_tOracleInput_1.getTimestamp(
-											column_index_tOracleInput_1)
-											.getTime());
-						} else {
-							dbrow.DOWNLOAD_DATE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 20;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.IMPORT_DATE = null;
-					} else {
-
-						if (rs_tOracleInput_1
-								.getTimestamp(column_index_tOracleInput_1) != null) {
-							dbrow.IMPORT_DATE = new java.util.Date(
-									rs_tOracleInput_1.getTimestamp(
-											column_index_tOracleInput_1)
-											.getTime());
-						} else {
-							dbrow.IMPORT_DATE = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 21;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.SOURCESYSTEM_CD = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.SOURCESYSTEM_CD = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.SOURCESYSTEM_CD = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 22;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.VALUETYPE_CD = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.VALUETYPE_CD = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.VALUETYPE_CD = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 23;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.M_EXCLUSION_CD = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.M_EXCLUSION_CD = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.M_EXCLUSION_CD = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 24;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_PATH = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_PATH = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_PATH = null;
-						}
-
-					}
-					column_index_tOracleInput_1 = 25;
-
-					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
-						dbrow.C_SYMBOL = null;
-					} else {
-
-						tmpContent_tOracleInput_1 = rs_tOracleInput_1
-								.getString(column_index_tOracleInput_1);
-						if (tmpContent_tOracleInput_1 != null) {
-							dbrow.C_SYMBOL = tmpContent_tOracleInput_1;
-						} else {
-							dbrow.C_SYMBOL = null;
-						}
-
-					}
-
-					/**
-					 * [tOracleInput_1 begin ] stop
-					 */
-					/**
-					 * [tOracleInput_1 main ] start
-					 */
-
-					currentComponent = "tOracleInput_1";
-
-					tos_count_tOracleInput_1++;
-
-					/**
-					 * [tOracleInput_1 main ] stop
-					 */
-
-					/**
-					 * [tJavaFlex_1 main ] start
-					 */
-
-					currentComponent = "tJavaFlex_1";
-
-					TOSHandler.addi2b2OntologyItemToTree(dbrow.C_HLEVEL
-							.intValue(), dbrow.C_FULLNAME, dbrow.C_NAME,
-							dbrow.C_SYNONYM_CD, dbrow.C_VISUALATTRIBUTES,
-							Relational.ISNULL(dbrow.C_TOTALNUM) ? 0
-									: dbrow.C_TOTALNUM.intValue(),
-							dbrow.C_BASECODE, dbrow.C_METADATAXML,
-							dbrow.C_FACTTABLECOLUMN, dbrow.C_TABLENAME,
-							dbrow.C_COLUMNNAME, dbrow.C_COLUMNDATATYPE,
-							dbrow.C_OPERATOR, dbrow.C_DIMCODE, dbrow.C_COMMENT,
-							dbrow.C_TOOLTIP, dbrow.M_APPLIED_PATH,
-							dbrow.UPDATE_DATE, dbrow.DOWNLOAD_DATE,
-							dbrow.IMPORT_DATE, dbrow.SOURCESYSTEM_CD,
-							dbrow.VALUETYPE_CD, dbrow.M_EXCLUSION_CD,
-							dbrow.C_PATH, dbrow.C_SYMBOL);
-					number_of_ontology_items++;
-
-					tos_count_tJavaFlex_1++;
-
-					/**
-					 * [tJavaFlex_1 main ] stop
-					 */
-
-					/**
-					 * [tOracleInput_1 end ] start
-					 */
-
-					currentComponent = "tOracleInput_1";
-
-				}
-				stmt_tOracleInput_1.close();
-
-				globalMap.put("tOracleInput_1_NB_LINE", nb_line_tOracleInput_1);
-
-				ok_Hash.put("tOracleInput_1", true);
-				end_Hash.put("tOracleInput_1", System.currentTimeMillis());
-
-				/**
-				 * [tOracleInput_1 end ] stop
-				 */
-
-				/**
-				 * [tJavaFlex_1 end ] start
-				 */
-
-				currentComponent = "tJavaFlex_1";
-
-				System.out.println("TOS: Ontology read with "
-						+ number_of_ontology_items + " items.");
-
-				ok_Hash.put("tJavaFlex_1", true);
-				end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-
-				/**
-				 * [tJavaFlex_1 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tOracleInput_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_3Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_3_SUBPROCESS_STATE", 0);
+		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -2617,44 +1539,42 @@ public class TOSIDRTConnector implements TalendJob {
 				globalResumeTicket = true;
 
 				/**
-				 * [tJava_3 begin ] start
+				 * [tPrejob_1 begin ] start
 				 */
 
-				ok_Hash.put("tJava_3", false);
-				start_Hash.put("tJava_3", System.currentTimeMillis());
-				currentComponent = "tJava_3";
+				ok_Hash.put("tPrejob_1", false);
+				start_Hash.put("tPrejob_1", System.currentTimeMillis());
+				currentComponent = "tPrejob_1";
 
-				int tos_count_tJava_3 = 0;
-
-				context.ErrorMessage = "Error while getting data from to the db.";
-				((TOSHandler) context.TOSHandler).status(context.ErrorMessage);
-				System.out.println(context.ErrorMessage);
+				int tos_count_tPrejob_1 = 0;
 
 				/**
-				 * [tJava_3 begin ] stop
+				 * [tPrejob_1 begin ] stop
 				 */
 				/**
-				 * [tJava_3 main ] start
+				 * [tPrejob_1 main ] start
 				 */
 
-				currentComponent = "tJava_3";
+				currentComponent = "tPrejob_1";
 
-				tos_count_tJava_3++;
+				tos_count_tPrejob_1++;
 
 				/**
-				 * [tJava_3 main ] stop
+				 * [tPrejob_1 main ] stop
 				 */
 				/**
-				 * [tJava_3 end ] start
+				 * [tPrejob_1 end ] start
 				 */
 
-				currentComponent = "tJava_3";
+				currentComponent = "tPrejob_1";
 
-				ok_Hash.put("tJava_3", true);
-				end_Hash.put("tJava_3", System.currentTimeMillis());
+				ok_Hash.put("tPrejob_1", true);
+				end_Hash.put("tPrejob_1", System.currentTimeMillis());
+
+				tLibraryLoad_1Process(globalMap);
 
 				/**
-				 * [tJava_3 end ] stop
+				 * [tPrejob_1 end ] stop
 				 */
 
 			}// end the resume
@@ -2669,7 +1589,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tJava_3_SUBPROCESS_STATE", 1);
+		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tLibraryLoad_1Process(
@@ -3807,6 +2727,1139 @@ public class TOSIDRTConnector implements TalendJob {
 		}
 
 		globalMap.put("tJava_2_SUBPROCESS_STATE", 1);
+	}
+
+	public static class dbrowStruct implements
+			routines.system.IPersistableRow<dbrowStruct> {
+		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
+		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
+
+		public BigDecimal C_HLEVEL;
+
+		public BigDecimal getC_HLEVEL() {
+			return this.C_HLEVEL;
+		}
+
+		public String C_FULLNAME;
+
+		public String getC_FULLNAME() {
+			return this.C_FULLNAME;
+		}
+
+		public String C_NAME;
+
+		public String getC_NAME() {
+			return this.C_NAME;
+		}
+
+		public String C_SYNONYM_CD;
+
+		public String getC_SYNONYM_CD() {
+			return this.C_SYNONYM_CD;
+		}
+
+		public String C_VISUALATTRIBUTES;
+
+		public String getC_VISUALATTRIBUTES() {
+			return this.C_VISUALATTRIBUTES;
+		}
+
+		public Integer C_TOTALNUM;
+
+		public Integer getC_TOTALNUM() {
+			return this.C_TOTALNUM;
+		}
+
+		public String C_BASECODE;
+
+		public String getC_BASECODE() {
+			return this.C_BASECODE;
+		}
+
+		public String C_METADATAXML;
+
+		public String getC_METADATAXML() {
+			return this.C_METADATAXML;
+		}
+
+		public String C_FACTTABLECOLUMN;
+
+		public String getC_FACTTABLECOLUMN() {
+			return this.C_FACTTABLECOLUMN;
+		}
+
+		public String C_TABLENAME;
+
+		public String getC_TABLENAME() {
+			return this.C_TABLENAME;
+		}
+
+		public String C_COLUMNNAME;
+
+		public String getC_COLUMNNAME() {
+			return this.C_COLUMNNAME;
+		}
+
+		public String C_COLUMNDATATYPE;
+
+		public String getC_COLUMNDATATYPE() {
+			return this.C_COLUMNDATATYPE;
+		}
+
+		public String C_OPERATOR;
+
+		public String getC_OPERATOR() {
+			return this.C_OPERATOR;
+		}
+
+		public String C_DIMCODE;
+
+		public String getC_DIMCODE() {
+			return this.C_DIMCODE;
+		}
+
+		public String C_COMMENT;
+
+		public String getC_COMMENT() {
+			return this.C_COMMENT;
+		}
+
+		public String C_TOOLTIP;
+
+		public String getC_TOOLTIP() {
+			return this.C_TOOLTIP;
+		}
+
+		public String M_APPLIED_PATH;
+
+		public String getM_APPLIED_PATH() {
+			return this.M_APPLIED_PATH;
+		}
+
+		public java.util.Date UPDATE_DATE;
+
+		public java.util.Date getUPDATE_DATE() {
+			return this.UPDATE_DATE;
+		}
+
+		public java.util.Date DOWNLOAD_DATE;
+
+		public java.util.Date getDOWNLOAD_DATE() {
+			return this.DOWNLOAD_DATE;
+		}
+
+		public java.util.Date IMPORT_DATE;
+
+		public java.util.Date getIMPORT_DATE() {
+			return this.IMPORT_DATE;
+		}
+
+		public String SOURCESYSTEM_CD;
+
+		public String getSOURCESYSTEM_CD() {
+			return this.SOURCESYSTEM_CD;
+		}
+
+		public String VALUETYPE_CD;
+
+		public String getVALUETYPE_CD() {
+			return this.VALUETYPE_CD;
+		}
+
+		public String M_EXCLUSION_CD;
+
+		public String getM_EXCLUSION_CD() {
+			return this.M_EXCLUSION_CD;
+		}
+
+		public String C_PATH;
+
+		public String getC_PATH() {
+			return this.C_PATH;
+		}
+
+		public String C_SYMBOL;
+
+		public String getC_SYMBOL() {
+			return this.C_SYMBOL;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_TOSIDRTConnector.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_TOSIDRTConnector.length == 0) {
+						commonByteArray_TOS_TOSIDRTConnector = new byte[1024];
+					} else {
+						commonByteArray_TOS_TOSIDRTConnector = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_TOSIDRTConnector, 0, length);
+				strReturn = new String(commonByteArray_TOS_TOSIDRTConnector, 0,
+						length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private java.util.Date readDate(ObjectInputStream dis)
+				throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(dis.readLong());
+			}
+			return dateReturn;
+		}
+
+		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
+				throws IOException {
+			if (date1 == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeLong(date1.getTime());
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_TOSIDRTConnector) {
+
+				try {
+
+					int length = 0;
+
+					this.C_HLEVEL = (BigDecimal) dis.readObject();
+
+					this.C_FULLNAME = readString(dis);
+
+					this.C_NAME = readString(dis);
+
+					this.C_SYNONYM_CD = readString(dis);
+
+					this.C_VISUALATTRIBUTES = readString(dis);
+
+					this.C_TOTALNUM = readInteger(dis);
+
+					this.C_BASECODE = readString(dis);
+
+					this.C_METADATAXML = readString(dis);
+
+					this.C_FACTTABLECOLUMN = readString(dis);
+
+					this.C_TABLENAME = readString(dis);
+
+					this.C_COLUMNNAME = readString(dis);
+
+					this.C_COLUMNDATATYPE = readString(dis);
+
+					this.C_OPERATOR = readString(dis);
+
+					this.C_DIMCODE = readString(dis);
+
+					this.C_COMMENT = readString(dis);
+
+					this.C_TOOLTIP = readString(dis);
+
+					this.M_APPLIED_PATH = readString(dis);
+
+					this.UPDATE_DATE = readDate(dis);
+
+					this.DOWNLOAD_DATE = readDate(dis);
+
+					this.IMPORT_DATE = readDate(dis);
+
+					this.SOURCESYSTEM_CD = readString(dis);
+
+					this.VALUETYPE_CD = readString(dis);
+
+					this.M_EXCLUSION_CD = readString(dis);
+
+					this.C_PATH = readString(dis);
+
+					this.C_SYMBOL = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				} catch (ClassNotFoundException eCNFE) {
+					throw new RuntimeException(eCNFE);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// BigDecimal
+
+				dos.writeObject(this.C_HLEVEL);
+
+				// String
+
+				writeString(this.C_FULLNAME, dos);
+
+				// String
+
+				writeString(this.C_NAME, dos);
+
+				// String
+
+				writeString(this.C_SYNONYM_CD, dos);
+
+				// String
+
+				writeString(this.C_VISUALATTRIBUTES, dos);
+
+				// Integer
+
+				writeInteger(this.C_TOTALNUM, dos);
+
+				// String
+
+				writeString(this.C_BASECODE, dos);
+
+				// String
+
+				writeString(this.C_METADATAXML, dos);
+
+				// String
+
+				writeString(this.C_FACTTABLECOLUMN, dos);
+
+				// String
+
+				writeString(this.C_TABLENAME, dos);
+
+				// String
+
+				writeString(this.C_COLUMNNAME, dos);
+
+				// String
+
+				writeString(this.C_COLUMNDATATYPE, dos);
+
+				// String
+
+				writeString(this.C_OPERATOR, dos);
+
+				// String
+
+				writeString(this.C_DIMCODE, dos);
+
+				// String
+
+				writeString(this.C_COMMENT, dos);
+
+				// String
+
+				writeString(this.C_TOOLTIP, dos);
+
+				// String
+
+				writeString(this.M_APPLIED_PATH, dos);
+
+				// java.util.Date
+
+				writeDate(this.UPDATE_DATE, dos);
+
+				// java.util.Date
+
+				writeDate(this.DOWNLOAD_DATE, dos);
+
+				// java.util.Date
+
+				writeDate(this.IMPORT_DATE, dos);
+
+				// String
+
+				writeString(this.SOURCESYSTEM_CD, dos);
+
+				// String
+
+				writeString(this.VALUETYPE_CD, dos);
+
+				// String
+
+				writeString(this.M_EXCLUSION_CD, dos);
+
+				// String
+
+				writeString(this.C_PATH, dos);
+
+				// String
+
+				writeString(this.C_SYMBOL, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("C_HLEVEL=" + String.valueOf(C_HLEVEL));
+			sb.append(",C_FULLNAME=" + C_FULLNAME);
+			sb.append(",C_NAME=" + C_NAME);
+			sb.append(",C_SYNONYM_CD=" + C_SYNONYM_CD);
+			sb.append(",C_VISUALATTRIBUTES=" + C_VISUALATTRIBUTES);
+			sb.append(",C_TOTALNUM=" + String.valueOf(C_TOTALNUM));
+			sb.append(",C_BASECODE=" + C_BASECODE);
+			sb.append(",C_METADATAXML=" + C_METADATAXML);
+			sb.append(",C_FACTTABLECOLUMN=" + C_FACTTABLECOLUMN);
+			sb.append(",C_TABLENAME=" + C_TABLENAME);
+			sb.append(",C_COLUMNNAME=" + C_COLUMNNAME);
+			sb.append(",C_COLUMNDATATYPE=" + C_COLUMNDATATYPE);
+			sb.append(",C_OPERATOR=" + C_OPERATOR);
+			sb.append(",C_DIMCODE=" + C_DIMCODE);
+			sb.append(",C_COMMENT=" + C_COMMENT);
+			sb.append(",C_TOOLTIP=" + C_TOOLTIP);
+			sb.append(",M_APPLIED_PATH=" + M_APPLIED_PATH);
+			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
+			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
+			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
+			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
+			sb.append(",VALUETYPE_CD=" + VALUETYPE_CD);
+			sb.append(",M_EXCLUSION_CD=" + M_EXCLUSION_CD);
+			sb.append(",C_PATH=" + C_PATH);
+			sb.append(",C_SYMBOL=" + C_SYMBOL);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(dbrowStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tOracleInput_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tOracleInput_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				dbrowStruct dbrow = new dbrowStruct();
+
+				/**
+				 * [tJavaFlex_1 begin ] start
+				 */
+
+				ok_Hash.put("tJavaFlex_1", false);
+				start_Hash.put("tJavaFlex_1", System.currentTimeMillis());
+				currentComponent = "tJavaFlex_1";
+
+				int tos_count_tJavaFlex_1 = 0;
+
+				System.out
+						.println("TOS: Starting Talend-Job \"ontology\" as TOS-Code.");
+
+				int number_of_ontology_items = 0;
+
+				/**
+				 * [tJavaFlex_1 begin ] stop
+				 */
+
+				/**
+				 * [tOracleInput_1 begin ] start
+				 */
+
+				ok_Hash.put("tOracleInput_1", false);
+				start_Hash.put("tOracleInput_1", System.currentTimeMillis());
+				currentComponent = "tOracleInput_1";
+
+				int tos_count_tOracleInput_1 = 0;
+
+				int nb_line_tOracleInput_1 = 0;
+				java.sql.Connection conn_tOracleInput_1 = null;
+				conn_tOracleInput_1 = (java.sql.Connection) globalMap
+						.get("conn_tOracleConnection_2");
+				if (null == conn_tOracleInput_1) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleInput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					conn_tOracleInput_1 = dataSources_tOracleInput_1.get("")
+							.getConnection();
+					// globalMap.put("conn_tOracleConnection_2",
+					// conn_tOracleInput_1);
+				}
+				if (((oracle.jdbc.OracleConnection) conn_tOracleInput_1)
+						.getSessionTimeZone() == null) {
+					java.sql.Statement stmtGetTZ_tOracleInput_1 = conn_tOracleInput_1
+							.createStatement();
+					java.sql.ResultSet rsGetTZ_tOracleInput_1 = stmtGetTZ_tOracleInput_1
+							.executeQuery("select sessiontimezone from dual");
+					String sessionTimezone_tOracleInput_1 = java.util.TimeZone
+							.getDefault().getID();
+					while (rsGetTZ_tOracleInput_1.next()) {
+						sessionTimezone_tOracleInput_1 = rsGetTZ_tOracleInput_1
+								.getString(1);
+					}
+					((oracle.jdbc.OracleConnection) conn_tOracleInput_1)
+							.setSessionTimeZone(sessionTimezone_tOracleInput_1);
+				}
+
+				java.sql.Statement stmt_tOracleInput_1 = conn_tOracleInput_1
+						.createStatement();
+
+				String dbquery_tOracleInput_1 = context.SQLCommand;
+
+				globalMap.put("tOracleInput_1_QUERY", dbquery_tOracleInput_1);
+
+				java.sql.ResultSet rs_tOracleInput_1 = stmt_tOracleInput_1
+						.executeQuery(dbquery_tOracleInput_1);
+				java.sql.ResultSetMetaData rsmd_tOracleInput_1 = rs_tOracleInput_1
+						.getMetaData();
+				int colQtyInRs_tOracleInput_1 = rsmd_tOracleInput_1
+						.getColumnCount();
+
+				String tmpContent_tOracleInput_1 = null;
+				int column_index_tOracleInput_1 = 1;
+				while (rs_tOracleInput_1.next()) {
+					nb_line_tOracleInput_1++;
+
+					column_index_tOracleInput_1 = 1;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_HLEVEL = null;
+					} else {
+
+						if (rs_tOracleInput_1
+								.getObject(column_index_tOracleInput_1) != null) {
+							dbrow.C_HLEVEL = rs_tOracleInput_1
+									.getBigDecimal(column_index_tOracleInput_1);
+						} else {
+
+							throw new RuntimeException(
+									"Null value in non-Nullable column");
+						}
+
+					}
+					column_index_tOracleInput_1 = 2;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_FULLNAME = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_FULLNAME = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_FULLNAME = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 3;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_NAME = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_NAME = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_NAME = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 4;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_SYNONYM_CD = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_SYNONYM_CD = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_SYNONYM_CD = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 5;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_VISUALATTRIBUTES = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_VISUALATTRIBUTES = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_VISUALATTRIBUTES = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 6;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_TOTALNUM = null;
+					} else {
+
+						if (rs_tOracleInput_1
+								.getObject(column_index_tOracleInput_1) != null) {
+							dbrow.C_TOTALNUM = rs_tOracleInput_1
+									.getInt(column_index_tOracleInput_1);
+						} else {
+
+							dbrow.C_TOTALNUM = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 7;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_BASECODE = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_BASECODE = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_BASECODE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 8;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_METADATAXML = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_METADATAXML = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_METADATAXML = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 9;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_FACTTABLECOLUMN = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_FACTTABLECOLUMN = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_FACTTABLECOLUMN = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 10;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_TABLENAME = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_TABLENAME = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_TABLENAME = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 11;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_COLUMNNAME = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_COLUMNNAME = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_COLUMNNAME = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 12;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_COLUMNDATATYPE = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_COLUMNDATATYPE = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_COLUMNDATATYPE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 13;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_OPERATOR = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_OPERATOR = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_OPERATOR = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 14;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_DIMCODE = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_DIMCODE = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_DIMCODE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 15;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_COMMENT = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_COMMENT = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_COMMENT = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 16;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_TOOLTIP = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_TOOLTIP = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_TOOLTIP = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 17;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.M_APPLIED_PATH = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.M_APPLIED_PATH = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.M_APPLIED_PATH = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 18;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.UPDATE_DATE = null;
+					} else {
+
+						if (rs_tOracleInput_1
+								.getTimestamp(column_index_tOracleInput_1) != null) {
+							dbrow.UPDATE_DATE = new java.util.Date(
+									rs_tOracleInput_1.getTimestamp(
+											column_index_tOracleInput_1)
+											.getTime());
+						} else {
+							dbrow.UPDATE_DATE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 19;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.DOWNLOAD_DATE = null;
+					} else {
+
+						if (rs_tOracleInput_1
+								.getTimestamp(column_index_tOracleInput_1) != null) {
+							dbrow.DOWNLOAD_DATE = new java.util.Date(
+									rs_tOracleInput_1.getTimestamp(
+											column_index_tOracleInput_1)
+											.getTime());
+						} else {
+							dbrow.DOWNLOAD_DATE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 20;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.IMPORT_DATE = null;
+					} else {
+
+						if (rs_tOracleInput_1
+								.getTimestamp(column_index_tOracleInput_1) != null) {
+							dbrow.IMPORT_DATE = new java.util.Date(
+									rs_tOracleInput_1.getTimestamp(
+											column_index_tOracleInput_1)
+											.getTime());
+						} else {
+							dbrow.IMPORT_DATE = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 21;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.SOURCESYSTEM_CD = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.SOURCESYSTEM_CD = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.SOURCESYSTEM_CD = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 22;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.VALUETYPE_CD = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.VALUETYPE_CD = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.VALUETYPE_CD = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 23;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.M_EXCLUSION_CD = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.M_EXCLUSION_CD = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.M_EXCLUSION_CD = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 24;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_PATH = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_PATH = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_PATH = null;
+						}
+
+					}
+					column_index_tOracleInput_1 = 25;
+
+					if (colQtyInRs_tOracleInput_1 < column_index_tOracleInput_1) {
+						dbrow.C_SYMBOL = null;
+					} else {
+
+						tmpContent_tOracleInput_1 = rs_tOracleInput_1
+								.getString(column_index_tOracleInput_1);
+						if (tmpContent_tOracleInput_1 != null) {
+							dbrow.C_SYMBOL = tmpContent_tOracleInput_1;
+						} else {
+							dbrow.C_SYMBOL = null;
+						}
+
+					}
+
+					/**
+					 * [tOracleInput_1 begin ] stop
+					 */
+					/**
+					 * [tOracleInput_1 main ] start
+					 */
+
+					currentComponent = "tOracleInput_1";
+
+					tos_count_tOracleInput_1++;
+
+					/**
+					 * [tOracleInput_1 main ] stop
+					 */
+
+					/**
+					 * [tJavaFlex_1 main ] start
+					 */
+
+					currentComponent = "tJavaFlex_1";
+
+					TOSHandler.addi2b2OntologyItemToTree(dbrow.C_HLEVEL
+							.intValue(), dbrow.C_FULLNAME, dbrow.C_NAME,
+							dbrow.C_SYNONYM_CD, dbrow.C_VISUALATTRIBUTES,
+							Relational.ISNULL(dbrow.C_TOTALNUM) ? 0
+									: dbrow.C_TOTALNUM.intValue(),
+							dbrow.C_BASECODE, dbrow.C_METADATAXML,
+							dbrow.C_FACTTABLECOLUMN, dbrow.C_TABLENAME,
+							dbrow.C_COLUMNNAME, dbrow.C_COLUMNDATATYPE,
+							dbrow.C_OPERATOR, dbrow.C_DIMCODE, dbrow.C_COMMENT,
+							dbrow.C_TOOLTIP, dbrow.M_APPLIED_PATH,
+							dbrow.UPDATE_DATE, dbrow.DOWNLOAD_DATE,
+							dbrow.IMPORT_DATE, dbrow.SOURCESYSTEM_CD,
+							dbrow.VALUETYPE_CD, dbrow.M_EXCLUSION_CD,
+							dbrow.C_PATH, dbrow.C_SYMBOL);
+					number_of_ontology_items++;
+
+					tos_count_tJavaFlex_1++;
+
+					/**
+					 * [tJavaFlex_1 main ] stop
+					 */
+
+					/**
+					 * [tOracleInput_1 end ] start
+					 */
+
+					currentComponent = "tOracleInput_1";
+
+				}
+				stmt_tOracleInput_1.close();
+
+				globalMap.put("tOracleInput_1_NB_LINE", nb_line_tOracleInput_1);
+
+				ok_Hash.put("tOracleInput_1", true);
+				end_Hash.put("tOracleInput_1", System.currentTimeMillis());
+
+				/**
+				 * [tOracleInput_1 end ] stop
+				 */
+
+				/**
+				 * [tJavaFlex_1 end ] start
+				 */
+
+				currentComponent = "tJavaFlex_1";
+
+				System.out.println("TOS: Ontology read with "
+						+ number_of_ontology_items + " items.");
+
+				ok_Hash.put("tJavaFlex_1", true);
+				end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
+
+				/**
+				 * [tJavaFlex_1 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tOracleInput_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_3Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_3 begin ] start
+				 */
+
+				ok_Hash.put("tJava_3", false);
+				start_Hash.put("tJava_3", System.currentTimeMillis());
+				currentComponent = "tJava_3";
+
+				int tos_count_tJava_3 = 0;
+
+				context.ErrorMessage = "Error while getting data from to the db.";
+				((TOSHandler) context.TOSHandler).status(context.ErrorMessage);
+				System.out.println(context.ErrorMessage);
+
+				/**
+				 * [tJava_3 begin ] stop
+				 */
+				/**
+				 * [tJava_3 main ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				tos_count_tJava_3++;
+
+				/**
+				 * [tJava_3 main ] stop
+				 */
+				/**
+				 * [tJava_3 end ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				ok_Hash.put("tJava_3", true);
+				end_Hash.put("tJava_3", System.currentTimeMillis());
+
+				/**
+				 * [tJava_3 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 1);
 	}
 
 	public static class conceptDimensionStruct implements
@@ -10027,194 +10080,6 @@ public class TOSIDRTConnector implements TalendJob {
 		globalMap.put("tJava_11_SUBPROCESS_STATE", 1);
 	}
 
-	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tPrejob_1 begin ] start
-				 */
-
-				ok_Hash.put("tPrejob_1", false);
-				start_Hash.put("tPrejob_1", System.currentTimeMillis());
-				currentComponent = "tPrejob_1";
-
-				int tos_count_tPrejob_1 = 0;
-
-				/**
-				 * [tPrejob_1 begin ] stop
-				 */
-				/**
-				 * [tPrejob_1 main ] start
-				 */
-
-				currentComponent = "tPrejob_1";
-
-				tos_count_tPrejob_1++;
-
-				/**
-				 * [tPrejob_1 main ] stop
-				 */
-				/**
-				 * [tPrejob_1 end ] start
-				 */
-
-				currentComponent = "tPrejob_1";
-
-				ok_Hash.put("tPrejob_1", true);
-				end_Hash.put("tPrejob_1", System.currentTimeMillis());
-
-				tLibraryLoad_1Process(globalMap);
-
-				/**
-				 * [tPrejob_1 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tMap_2Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tMap_2_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tMap_2 begin ] start
-				 */
-
-				ok_Hash.put("tMap_2", false);
-				start_Hash.put("tMap_2", System.currentTimeMillis());
-				currentComponent = "tMap_2";
-
-				int tos_count_tMap_2 = 0;
-
-				// ###############################
-				// # Lookup's keys initialization
-				// ###############################
-
-				// ###############################
-				// # Vars initialization
-				class Var__tMap_2__Struct {
-				}
-				Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
-				// ###############################
-
-				// ###############################
-				// # Outputs initialization
-				// ###############################
-
-				/**
-				 * [tMap_2 begin ] stop
-				 */
-				/**
-				 * [tMap_2 main ] start
-				 */
-
-				currentComponent = "tMap_2";
-
-				boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
-
-				// ###############################
-				// # Input tables (lookups)
-				boolean rejectedInnerJoin_tMap_2 = false;
-				boolean mainRowRejected_tMap_2 = false;
-
-				// ###############################
-				{ // start of Var scope
-
-					// ###############################
-					// # Vars tables
-
-					Var__tMap_2__Struct Var = Var__tMap_2;// ###############################
-					// ###############################
-					// # Output tables
-
-					// ###############################
-
-				} // end of Var scope
-
-				rejectedInnerJoin_tMap_2 = false;
-
-				tos_count_tMap_2++;
-
-				/**
-				 * [tMap_2 main ] stop
-				 */
-				/**
-				 * [tMap_2 end ] start
-				 */
-
-				currentComponent = "tMap_2";
-
-				// ###############################
-				// # Lookup hashes releasing
-				// ###############################
-
-				ok_Hash.put("tMap_2", true);
-				end_Hash.put("tMap_2", System.currentTimeMillis());
-
-				/**
-				 * [tMap_2 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tMap_2_SUBPROCESS_STATE", 1);
-	}
-
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -10596,6 +10461,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 297691 characters generated by Talend Open Studio for Data Integration on the
- * 16. Oktober 2013 13:48:34 MESZ
+ * 294288 characters generated by Talend Open Studio for Data Integration on the
+ * 22. Oktober 2013 15:18:08 MESZ
  ************************************************************************************************/

@@ -3,7 +3,7 @@
   <TalendMetadata:GenericSchemaConnection xmi:id="_d0clcCqSEeOfMeL2lyOGsQ" name="repository.metadataGenericSchema" dataPackage="_d0clcSqSEeOfMeL2lyOGsQ"/>
   <TalendMetadata:GenericPackage xmi:id="_d0clcSqSEeOfMeL2lyOGsQ" name="repository.metadataGenericSchema" dataManager="_d0clcCqSEeOfMeL2lyOGsQ">
     <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_d0clciqSEeOfMeL2lyOGsQ" name="IOE_TARGET" id="_PsyHMCqSEeOfMeL2lyOGsQ" comment="IOE_TARGET" label="IOE_TARGET">
-      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_d0clcyqSEeOfMeL2lyOGsQ" name="TARGET_ID" label="TARGET_ID" talendType="id_Integer"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_d0clcyqSEeOfMeL2lyOGsQ" name="TARGET_ID" label="TARGET_ID" talendType="id_Integer" key="true"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_d0cldCqSEeOfMeL2lyOGsQ" name="TARGETPROJECT_ID" label="TARGETPROJECT_ID" talendType="id_Integer"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_d0cldSqSEeOfMeL2lyOGsQ" name="VERSION" label="VERSION" talendType="id_Integer"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_d0cldiqSEeOfMeL2lyOGsQ" name="CREATED" label="CREATED" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>

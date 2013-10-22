@@ -53,7 +53,10 @@ public class SaveTargetProject extends AbstractHandler {
 			fields[5] = "TARGET_DB_SCHEMA";
 			_writer.writeNext(fields);
 			
-			OntologyTreeTargetRootNode targetTreeRoot = (OntologyTreeTargetRootNode) ((OntologyTreeNode) ontologyTreeTarget.getTreeRoot());
+			
+			
+			
+			OntologyTreeTargetRootNode targetTreeRoot = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot());
 			
 			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
 			Target target = null;
@@ -65,9 +68,12 @@ public class SaveTargetProject extends AbstractHandler {
 				target = targetTreeRoot.getTargetProjects().getSelectedTarget();
 			}
 			
+			System.out.println("selected Target to save:");
+			System.out.println(" - " + String.valueOf(targetProject.getTargetProjectID()));
+			System.out.println(" - " + String.valueOf(target.getTargetID()));
+			System.out.println(" - " + targetProject.getName());
+			System.out.println(" - " + target.getTargetDBSchema());
 			
-				
-					
 			fields = new String[6];
 			
 			fields[0] = String.valueOf(targetProject.getTargetProjectID());
