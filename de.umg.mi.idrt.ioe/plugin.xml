@@ -160,6 +160,21 @@
             id="de.umg.mi.idrt.ioe.LoadTargetProjects"
             name="LoadTargetProjects">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand"
+            id="de.umg.mi.idrt.ioe.combineNodes"
+            name="combineNodes">
+         <commandParameter
+               id="edu.goettingen.i2b2.importtool.command.OTCopy.Target"
+               name="TargetNodeName"
+               optional="true">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.SaveTargetProject"
+            id="de.umg.mi.idrt.ioe.SaveTargetProject"
+            name="SaveTargetProject">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
