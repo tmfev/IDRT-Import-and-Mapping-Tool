@@ -28,7 +28,9 @@ public class DeleteNodeCommand extends AbstractHandler {
 		if (!(firstElement ==myOT.getSubRootNode())) {
 			firstElement.removeFromParent();
 		}
-		EditorTargetInfoView.setNode(firstElement.getParent());
+//		if (firstElement.getParent() != myOT.getSubRootNode()) {
+//		EditorTargetInfoView.setNode(firstElement.getParent());
+//		}
 		targetTreeViewer.refresh();
 		return null;
 	}

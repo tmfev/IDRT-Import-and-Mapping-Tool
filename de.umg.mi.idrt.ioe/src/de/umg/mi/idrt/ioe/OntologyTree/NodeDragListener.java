@@ -17,10 +17,8 @@ import de.umg.mi.idrt.ioe.Console;
 
 public class NodeDragListener implements DragSourceListener {
 
-	private final TreeViewer viewer;
 
-	public NodeDragListener(TreeViewer viewer,int source) {
-		this.viewer = viewer;
+	public NodeDragListener() {
 	}
 
 	@Override
@@ -32,7 +30,7 @@ public class NodeDragListener implements DragSourceListener {
 	public void dragSetData(DragSourceEvent event) {
 		Console.info("dragSetData");
 		event.doit=true;
-		event.data="abc";
+		event.data="stagingTreeViewer";
 		// Here you do the convertion to the type which is expected.
 //		IStructuredSelection selection = (IStructuredSelection) viewer
 //				.getSelection();

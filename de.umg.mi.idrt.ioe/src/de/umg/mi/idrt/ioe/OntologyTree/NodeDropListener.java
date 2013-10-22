@@ -81,7 +81,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 				+ targetNode.getTreePath() + "\") ");
 		System.out.println(path);
 		sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-		if (data.toString().equals("abc")){
+		if (data.toString().equals("stagingTreeViewer")){
 			myOT.dropCommandCopyNodes(targetNode.getTreePath(),dropOperation);
 		}
 		else {
