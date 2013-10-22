@@ -31,6 +31,8 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 	public void update(ViewerCell cell) {
 		Object element = cell.getElement();
 		OntologyTreeNode otNode = ((OntologyTreeNode) element);
+		Color hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+		Color activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
 		//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 		//		cell.setBackground(color);
 		if (otNode.isHighlighted()) {
@@ -40,6 +42,10 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 		else {
 			//			Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 			cell.setBackground(null);	
+		}
+		String visual = otNode.getTargetNodeAttributes().getVisualattribute();
+		if (visual.toLowerCase().contains("h")) {
+
 		}
 		cell.setText(otNode.getName());
 
@@ -56,7 +62,7 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 						.getVisualattribute();
 
 			}
-
+			//			System.out.println("visualAttributeFull: " + visualAttributeFull);
 			if ( visualAttributeFull != null && !visualAttributeFull.isEmpty()) {
 
 				String visualAttribute = visualAttributeFull.substring(0, 1);
@@ -73,63 +79,14 @@ class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 				else if ("L".equals(visualAttribute))
 					cell.setImage(GUITools
 							.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
+				String hidden =  visualAttributeFull.substring(1, 2);
+
+				if (hidden.toLowerCase().equals("h"))
+					cell.setForeground(hiddenColor);
+				else
+					cell.setForeground(activeColor);
 			}
 		}
 		super.update(cell);
 	}
-
-	public String getText(Object element) {
-		OntologyTreeNode node = (OntologyTreeNode) element;
-		return node.getName();
-	}
-
-	public Image getImage(Object element) {
-
-		OntologyTreeNode otNode = ((OntologyTreeNode) element);
-
-		if (otNode == null) {
-			return null;
-		} else if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE.equals( otNode.getType() ) || 
-				Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET.equals( otNode.getType() ) ) {
-
-			String visualAttributeFull = "";
-
-			if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE.equals( otNode.getType() ) && otNode.getOntologyCellAttributes() != null) {
-				visualAttributeFull = otNode.getOntologyCellAttributes()
-						.getC_VISUALATTRIBUTES();
-			} else if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET.equals( otNode.getType() ) && otNode.getTargetNodeAttributes() != null ) {
-				visualAttributeFull = otNode.getTargetNodeAttributes()
-						.getVisualattribute();
-			}
-
-			if ( visualAttributeFull != null && !visualAttributeFull.isEmpty()) {
-
-				String visualAttribute = visualAttributeFull.substring(0, 1);
-
-				if ("F".equals(visualAttribute))
-					return GUITools
-							.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-				else if ("C".equals(visualAttribute))
-					return GUITools
-							.getImage(Resource.OntologyTree.VISIBILITY_ICON_CA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-				else if ("M".equals(visualAttribute))
-					return GUITools
-							.getImage(Resource.OntologyTree.VISIBILITY_ICON_MA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-				else if ("L".equals(visualAttribute))
-					return GUITools
-							.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-
-			}
-			// System.out.println("null!");
-			return GUITools
-					.getImage(Resource.OntologyTree.ITEMSTATUS_ICON_UNCHECKED);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-		}
-
-		if (element instanceof OntologyTreeNode) {
-			return GUITools.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA);// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-		}
-		return PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJ_FILE);
-	}
-
 }

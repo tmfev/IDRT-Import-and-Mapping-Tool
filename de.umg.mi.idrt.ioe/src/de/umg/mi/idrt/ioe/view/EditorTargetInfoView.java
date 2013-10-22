@@ -48,20 +48,20 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 
 public class EditorTargetInfoView extends ViewPart {
 
-	private I2B2ImportTool _i2b2ImportTool = null;
-	private Resource _resource = null;
-	private String _text = "";
-	private Composite parentPane;
+	private static I2B2ImportTool _i2b2ImportTool = null;
+	private static Resource _resource = null;
+	private static String _text = "";
+	private static Composite parentPane;
 
-	OntologyTreeNode _node = null;
-	private Composite _editorComposite;
-	private Composite _parent;
-	private Table _infoTable;
-	private TableColumn infoTableDBColumn;
-	private TableColumn infoTableValue;
-	private TableItem tableItem;
-	private TableCursor tableCursor;
-	private TableViewer viewer;
+	private static OntologyTreeNode _node = null;
+	private static Composite _editorComposite;
+	private static Composite _parent;
+	private static Table _infoTable;
+	private static TableColumn infoTableDBColumn;
+	private static TableColumn infoTableValue;
+	private static TableItem tableItem;
+	private static TableCursor tableCursor;
+	private static TableViewer viewer;
 
 	public EditorTargetInfoView() {
 
@@ -78,8 +78,8 @@ public class EditorTargetInfoView extends ViewPart {
 		Label lblNodeInfosDeluxe = new Label(parent, SWT.NONE);
 		lblNodeInfosDeluxe.setText("node infos deluxe");
 
-		
-		
+
+
 		_editorComposite = new Composite(parent, SWT.NONE);
 		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
@@ -92,13 +92,13 @@ public class EditorTargetInfoView extends ViewPart {
 		parentPane = parent.getParent();
 	}
 
-	private TableItem addColumItem(String text) {
+	private static TableItem addColumItem(String text) {
 		TableItem item = new TableItem(_infoTable, SWT.NONE);
 		item.setText(new String[] { text, "" });
 		return item;
 	}
 
-	private void createTable() {
+	private static void createTable() {
 
 		if (_infoTable != null)
 			return;
@@ -170,60 +170,19 @@ public class EditorTargetInfoView extends ViewPart {
 
 					row = _infoTable.getSelectionIndex();
 					final int col = 1;
+					String path = item.getText(1);
+					final OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+					System.out.println(_node.getName() +" selected!");
+					System.out.println("sourcepath: " + _node.getTargetNodeAttributes().getSourcePath());
 
-					
 					Console.info("row = " + row + " / col = " + col);
-					
-					// Source Path
-					if (row == 0) {
-						String path = item.getText(1);
-						OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-System.out.println("NODE SELECTED: " + node.getName());
-						node.setHighlighted(true);
-//						OntologyEditorView.getStagingTreeViewer().getLabelProvider().
-						System.out.println(node.getName());
-//						ISelection selection = new 
-//						OntologyEditorView.getStagingTreeViewer().setSelection(selection);
-						System.out.println("Editor: Source Path");
-						final Text text = new Text(_infoTable, SWT.NONE);
-
-						text.setForeground(item.getForeground());
-						text.setText(item.getText(1));
-						// item.getText(0));
-						//text.setForeground(item.getForeground());
-						text.selectAll();
-						text.setFocus();
-						editor.minimumWidth = text.getBounds().width;
-						editor.setEditor(text, item, col);
-
-						text.addModifyListener(new ModifyListener() {
-							@Override
-							public void modifyText(ModifyEvent event) {
-								Console.info("ModifyListener: modifyText");
-								item.setText(col, text.getText());
-							}
-						});
-						text.addFocusListener(new FocusListener() {
-							@Override
-							public void focusGained(FocusEvent e) {
-								Console.info("FocusListener: focusGained");
-							}
-
-							@Override
-							public void focusLost(FocusEvent e) {
-								Console.info("FocusListener: focusLost");
-								item.setText(col, text.getText());
-								text.dispose();
-							}
-						});
-
-					}
 
 					// The "nice name" of the column.
 					if (row == 1) {
 						final Text text = new Text(_infoTable, SWT.NONE);
 						text.setForeground(item.getForeground());
-						text.setText(item.getText(col));
+//						text.setText(item.getText(col));
+						text.setText(_node.getName());
 						text.setForeground(item.getForeground());
 						text.selectAll();
 						text.setFocus();
@@ -234,6 +193,9 @@ System.out.println("NODE SELECTED: " + node.getName());
 							@Override
 							public void modifyText(ModifyEvent event) {
 								item.setText(col, text.getText());
+								_node.getTargetNodeAttributes().setName(text.getText());
+								_node.setName(text.getText());
+								OntologyEditorView.getTargetTreeViewer().update(_node, null);
 							}
 						});
 						text.addFocusListener(new FocusListener() {
@@ -435,9 +397,9 @@ System.out.println("NODE SELECTED: " + node.getName());
 		refresh();
 	}
 
-	public void setNode(OntologyTreeNode node) {// , List<String> answersList,
-												// MyOntologyTreeItemLists
-												// itemLists){
+	public static void setNode(OntologyTreeNode node) {// , List<String> answersList,
+		// MyOntologyTreeItemLists
+		// itemLists){
 		// Debug.f("setNode",this);
 		// Console.info("setting node");
 		System.out.println("setting node (" + node.getName() + ")");
@@ -461,8 +423,7 @@ System.out.println("NODE SELECTED: " + node.getName());
 		return this._resource;
 	}
 
-	public void refresh() {
-		Debug.f("refresh", this);
+	public static void refresh() {
 
 		// Editor von Benjamin aus CSVWizard klauen
 
@@ -502,7 +463,7 @@ System.out.println("NODE SELECTED: " + node.getName());
 		}
 	}
 
-	public TableItem addValueItem(TableItem[] items, int row, String value) {
+	public static TableItem addValueItem(TableItem[] items, int row, String value) {
 		if (items[row] == null) {
 			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
 					+ row + ".");
@@ -513,8 +474,8 @@ System.out.println("NODE SELECTED: " + node.getName());
 		return item;
 	}
 
-	public void executeRefresh() {
-		System.out.println("executeRefresh for text:\"" + this._node.getName()
+	public static void executeRefresh() {
+		System.out.println("executeRefresh for text:\"" + _node.getName()
 				+ "\"");
 
 		if (parentPane == null) {

@@ -8,6 +8,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class RenameNodeCommand extends AbstractHandler {
@@ -23,6 +24,8 @@ public class RenameNodeCommand extends AbstractHandler {
 				.getFirstElement();
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(firstElement, 0);
+		EditorTargetInfoView.setNode(firstElement);
+		EditorTargetInfoView.refresh();
 		return null;
 	}
 }
