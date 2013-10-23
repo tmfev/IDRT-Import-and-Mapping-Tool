@@ -189,6 +189,7 @@ public class Resource {
 				+ "itemstatus-unchecked2.png";
 
 		public static final String ONTOLOGYTREE_ROOTNODE_NAME = "Source";
+		public static final String LINK_ICON = IMAGE_PATH + "arrow.gif";
 	}
 
 	public class ODM {

@@ -239,14 +239,12 @@ public class MyOntologyTree extends JPanel {
 		// OTNode targetNode = new OTNode( "TargetOntology" );
 
 		subRootNode = new OntologyTreeNode("Target-Ontology");
-		System.out.println("NEW SUBROOTNODE");
-
 		subRootNode.setID("i2b2");
 		subRootNode.setTreePath("\\i2b2\\");
 		subRootNode.setTreePathLevel(0);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.I2B2ROOT);
-		subRootNode.getTargetNodeAttributes().setSourcePath("\\i2b2\\");
+		subRootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
 		subRootNode.getTargetNodeAttributes().setChanged(false);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.getTargetNodeAttributes().setName("i2b2");
@@ -495,7 +493,7 @@ public class MyOntologyTree extends JPanel {
 		 */
 
 		if (sourceNode.getOntologyCellAttributes() != null) {
-			newNode.getTargetNodeAttributes().setSourcePath(
+			newNode.getTargetNodeAttributes().addStagingPath(
 					sourceNode.getTargetNodeAttributes().getSourcePath());
 
 			newNode.getTargetNodeAttributes().setVisualattributes(
@@ -553,7 +551,7 @@ public class MyOntologyTree extends JPanel {
 					newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
 					if (sourceNode1.getOntologyCellAttributes() != null) {
-						newNode.getTargetNodeAttributes().setSourcePath(
+						newNode.getTargetNodeAttributes().addStagingPath(
 								sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
 
 						newNode.getTargetNodeAttributes().setVisualattributes(
@@ -670,7 +668,7 @@ public class MyOntologyTree extends JPanel {
 			newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
 			if (sourceNode.getOntologyCellAttributes() != null) {
-				newNode.getTargetNodeAttributes().setSourcePath(
+				newNode.getTargetNodeAttributes().addStagingPath(
 						sourceNode.getOntologyCellAttributes().getC_FULLNAME());
 
 				newNode.getTargetNodeAttributes().setVisualattributes(

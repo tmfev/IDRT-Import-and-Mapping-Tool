@@ -3,6 +3,7 @@ package de.umg.mi.idrt.ioe.view;
 import java.io.File;
 import java.net.URL;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -74,10 +75,12 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
-import de.umg.mi.idrt.ioe.OntologyTree.TreeContentProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
 
 public class OntologyEditorView extends ViewPart {
@@ -111,6 +114,7 @@ public class OntologyEditorView extends ViewPart {
 		OntologyEditorView.notYetSaved = notYetSaved;
 	}
 
+	private static OntologyTreeSubNode sourceSubNode;
 	private static boolean init = false;
 	private static TreeViewer stagingTreeViewer;
 	private static TreeViewer targetTreeViewer;
@@ -119,7 +123,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite mainComposite;
 	private static SashForm sash;
 	private static OntologyTreeNode currentTargetNode;
-	private static OntologyTreeNode sourceNode;
+	private static HashSet<OntologyTreeNode> highlightedStagingNodes;
 	private static String sourceSchema;
 
 	private static Server currentStagingServer;
@@ -163,6 +167,7 @@ public class OntologyEditorView extends ViewPart {
 	@Override
 	public void createPartControl(final Composite parent) {
 		mainComposite = parent;
+		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
 		Label label = new Label(mainComposite, SWT.LEFT);
 		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
@@ -426,28 +431,31 @@ public class OntologyEditorView extends ViewPart {
 
 		targetTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
+
 				if (e.item == null || e.item.getData() == null) {
 					System.out.println("WidgetSelected but no known node found!");
 					return;
 				}
-				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
-				setCurrentTargetNode(node);
-				if (node != null) {
-					EditorTargetInfoView.setNode(node);
+				if (e.item.getData() instanceof OntologyTreeNode) {
+					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
+					setCurrentTargetNode(node);
+					if (node != null) {
+						EditorTargetInfoView.setNode(node);
 
-					Application.getStatusView().addMessage(
-							new SystemMessage("Target selection changed to \'"
-									+ node.getName() + "\'.",
-									SystemMessage.MessageType.SUCCESS,
-									SystemMessage.MessageLocation.MAIN));
-				} else {
-					Application
-					.getStatusView()
-					.addMessage(
-							new SystemMessage(
-									"Target selection changed but new selection isnt' any know kind of node..",
-									SystemMessage.MessageType.ERROR,
-									SystemMessage.MessageLocation.MAIN));
+						Application.getStatusView().addMessage(
+								new SystemMessage("Target selection changed to \'"
+										+ node.getName() + "\'.",
+										SystemMessage.MessageType.SUCCESS,
+										SystemMessage.MessageLocation.MAIN));
+					} else {
+						Application
+						.getStatusView()
+						.addMessage(
+								new SystemMessage(
+										"Target selection changed but new selection isnt' any know kind of node..",
+										SystemMessage.MessageType.ERROR,
+										SystemMessage.MessageLocation.MAIN));
+					}
 				}
 			}
 		});
@@ -498,20 +506,20 @@ public class OntologyEditorView extends ViewPart {
 		lblSource.setText("Staging i2b2");
 		new Label(composite_3, SWT.NONE);
 
-		btnCancel = new Button(composite_3, SWT.NONE);
-		btnCancel.setText("CANCEL");
-		btnCancel.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				ReadTarget.killImport();	
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-
-			}
-		});
+		//		btnCancel = new Button(composite_3, SWT.NONE);
+		//		btnCancel.setText("CANCEL");
+		//		btnCancel.addSelectionListener(new SelectionListener() {
+		//
+		//			@Override
+		//			public void widgetSelected(SelectionEvent arg0) {
+		//				ReadTarget.killImport();	
+		//			}
+		//
+		//			@Override
+		//			public void widgetDefaultSelected(SelectionEvent arg0) {
+		//
+		//			}
+		//		});
 		//		new Label(composite_3, SWT.NONE);
 		composite_5 = new Composite(composite_3, SWT.NONE);
 		composite_5.setLayout(new GridLayout(2, false));
@@ -749,49 +757,65 @@ public class OntologyEditorView extends ViewPart {
 	public static void setTargetContent(OntologyTree oTTarget) {
 		targetTreeViewer.getTree().removeAll();
 
-		TreeContentProvider treeContentProvider = new TreeContentProvider();
+		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeTarget());
 
-		
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
-		targetTreeViewer.setInput(new OTtoTreeContentProvider().getModel());
+		targetTreeViewer.setInput(new OTtoTreeContentProvider().getTargetModel());
 		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
 
 			@Override
 			public void mouseHover(MouseEvent arg0) {
-				if (sourceNode!=null)
-					sourceNode.setHighlighted(false);
+				if (highlightedStagingNodes!=null) {
+					for (OntologyTreeNode node : highlightedStagingNodes) {
+						node.setHighlighted(false);
+					}
+					highlightedStagingNodes.clear();
+				}
+
 				Point p = new Point(arg0.x,arg0.y);
 				TreeItem a = targetTreeViewer.getTree().getItem(p);
 				if (a!=null) {
-					OntologyTreeNode node = (OntologyTreeNode) a.getData();
+					if (a.getData() instanceof OntologyTreeNode) {
+						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 
-					//				System.out.println("T "+node.getName());
-					String path = node.getTargetNodeAttributes().getSourcePath();
-					sourceNode = OntologyEditorView.getI2b2ImportTool()
-							.getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-					//				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
-					if (sourceNode != null)
-					sourceNode.setHighlighted(true);
+						//				System.out.println("T "+node.getName());
+						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
+							if (subNode.getStagingParentNode()!=null) {
+								highlightedStagingNodes.add(subNode.getStagingParentNode());
+								subNode.getStagingParentNode().setHighlighted(true);
+							}
+						}
+					}
+					else if (a.getData() instanceof OntologyTreeSubNode) {
+						OntologyTreeSubNode subNode = (OntologyTreeSubNode) a.getData();
+						if (subNode.getStagingParentNode()!=null) {
+							highlightedStagingNodes.add(subNode.getStagingParentNode());
+							subNode.getStagingParentNode().setHighlighted(true);
+						}
+					}
 				}
+				//TODO
+
 				stagingTreeViewer.refresh();
 			}
 
 			@Override
 			public void mouseExit(MouseEvent arg0) {
-				if (sourceNode!=null) {
-					sourceNode.setHighlighted(false);
-					stagingTreeViewer.refresh();
+				for (OntologyTreeNode node : highlightedStagingNodes) {
+					node.setHighlighted(false);
 				}
+				highlightedStagingNodes.clear();
+				stagingTreeViewer.refresh();
 			}
 
 			@Override
 			public void mouseEnter(MouseEvent arg0) {
-				if (sourceNode!=null) {
-					sourceNode.setHighlighted(false);
-					stagingTreeViewer.refresh();
+				for (OntologyTreeNode node : highlightedStagingNodes) {
+					node.setHighlighted(false);
+					highlightedStagingNodes.remove(node);
 				}
 
 			}
@@ -803,24 +827,24 @@ public class OntologyEditorView extends ViewPart {
 
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
-		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
-		mntmgetChildren.setText("getChildren");
-		mntmgetChildren.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
-				for (OntologyTreeNode nnode : node.getChildren())
-					System.out.println(nnode.getName());
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
+				MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+				mntmgetChildren.setText("getChildren");
+				mntmgetChildren.addSelectionListener(new SelectionListener() {
 		
+					@Override
+					public void widgetSelected(SelectionEvent event) {
+						OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+						for (OntologyTreeNode nnode : node.getChildren())
+							System.out.println(nnode.getName());
+					}
+		
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+		
+					}
+				});
+
+
 		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
 		mntmAddNode.setText("Add Folder");
 		mntmAddNode.addSelectionListener(new SelectionListener() {
@@ -923,59 +947,18 @@ public class OntologyEditorView extends ViewPart {
 			init();
 		}
 		stagingTreeViewer.getTree().removeAll();
-		TreeContentProvider treeContentProvider = new TreeContentProvider();
+		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
 				.getOntologyTreeSource());
 
-		stagingTreeViewer.setContentProvider(treeContentProvider);		
-		//		stagingTreeViewer.setLabelProvider(new ViewTableLabelProvider(stagingTreeViewer));
+		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
-		OTtoTreeContentProvider oTreeContent = new OTtoTreeContentProvider();
 
-		stagingTreeViewer.setInput(oTreeContent.getModel());
+		stagingTreeViewer.setInput(new OTtoTreeContentProvider().getStagingModel());
 		stagingTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
-		//		stagingTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
-		//			
-		//			@Override
-		//			public void mouseHover(MouseEvent arg0) {
-		//				if (sourceNode!=null)
-		//				sourceNode.setHighlighted(false);
-		//				Point p = new Point(arg0.x,arg0.y);
-		//				TreeItem a = stagingTreeViewer.getTree().getItem(p);
-		//				if (a!=null) {
-		//				OntologyTreeNode node = (OntologyTreeNode) a.getData();
-		//				
-		////				System.out.println("T "+node.getName());
-		//				String path = node.getTargetNodeAttributes().getSourcePath();
-		//				sourceNode = OntologyEditorView.getI2b2ImportTool()
-		//						.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
-		////				System.out.println("S "+sourceNode.getName() + " high: " + sourceNode.isHighlighted());
-		//				sourceNode.setHighlighted(true);
-		//				}
-		//				targetTreeViewer.refresh();
-		//			}
-		//			
-		//			@Override
-		//			public void mouseExit(MouseEvent arg0) {
-		//				if (sourceNode!=null) {
-		//				sourceNode.setHighlighted(false);
-		//				targetTreeViewer.refresh();
-		//			}
-		//			}
-		//			
-		//			@Override
-		//			public void mouseEnter(MouseEvent arg0) {
-		//				if (sourceNode!=null) {
-		//				sourceNode.setHighlighted(false);
-		//				stagingTreeViewer.refresh();
-		//				}
-		//			
-		//			}
-		//		});
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 		.setTreeViewer(stagingTreeViewer);
-
 
 		stagingComposite.layout();
 		mainComposite.layout();

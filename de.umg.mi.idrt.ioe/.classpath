@@ -18,7 +18,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/gallery-0.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/grid-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar" sourcepath="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar" sourcepath="/de.umg.mi.idrt.importtool/lib/swing2swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/passwordCrypt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/pgroup-1.0.0.jar"/>

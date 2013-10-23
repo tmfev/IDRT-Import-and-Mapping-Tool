@@ -93,14 +93,18 @@ public class CombineNodesCommand extends AbstractHandler {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
 						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
-						node.getTargetNodeAttributes().setSourcePath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+						node.getTargetNodeAttributes().removeAllStagingPaths();
+						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+						
 						found = true;
 						break;
 					}
 				}
 			}
 			if (!found) {
-				node.getTargetNodeAttributes().setSourcePath(perfectPath+node.getID()+"\\");
+				System.out.println("not found: " + node.getID() + " " +perfectPath+node.getID()+"\\");
+				node.getTargetNodeAttributes().removeAllStagingPaths();
+				node.getTargetNodeAttributes().addStagingPath(perfectPath+node.getID()+"\\");
 			}
 		}
 	}
@@ -129,6 +133,7 @@ public class CombineNodesCommand extends AbstractHandler {
 			if (found)
 				break;
 		}
+		System.out.println("perfectPath: " + perfectPath);
 	}
 
 	private void getnewTargetNodes(OntologyTreeNode child){

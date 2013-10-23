@@ -6,7 +6,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 
+import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -15,22 +18,29 @@ public class DeleteNodeCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-
+		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
 				.getSelection();
 		OntologyTreeNode firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
 		OntologyEditorView.setNotYetSaved(true);
-
-		firstElement.removeAllChildren();
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		if (!(firstElement ==myOT.getSubRootNode())) {
+
 			firstElement.removeFromParent();
 		}
-//		if (firstElement.getParent() != myOT.getSubRootNode()) {
-//		EditorTargetInfoView.setNode(firstElement.getParent());
-//		}
+		else {
+			firstElement.removeFromParent();
+			firstElement.getChildren().clear();
+			myOT.getOntologyTreeTarget()
+			.getNodeLists().add(firstElement);
+			//			editorTargetView.setComposite(OTTarget);
+			//TODO Ontology Editor
+			//			firstElement.removeFromParent();
+						for (OntologyTreeNode node : firstElement.getChildren()) {
+							firstElement.remove(node);
+						}
+		}
 		targetTreeViewer.refresh();
 		return null;
 	}
