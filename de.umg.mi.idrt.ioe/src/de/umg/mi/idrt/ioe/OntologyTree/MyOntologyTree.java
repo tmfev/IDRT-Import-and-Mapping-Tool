@@ -493,8 +493,6 @@ public class MyOntologyTree extends JPanel {
 		 */
 
 		if (sourceNode.getOntologyCellAttributes() != null) {
-			
-			
 			newNode.getTargetNodeAttributes().setSubNodeList((
 					sourceNode.getTargetNodeAttributes().getSubNodeList()));
 

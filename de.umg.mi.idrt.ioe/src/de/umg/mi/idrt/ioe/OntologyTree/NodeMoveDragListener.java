@@ -4,6 +4,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
+import org.eclipse.swt.dnd.TextTransfer;
 
 /**
  * @author Christian Bauer
@@ -16,8 +17,8 @@ import org.eclipse.swt.dnd.DragSourceListener;
 
 public class NodeMoveDragListener implements DragSourceListener {
 
+	private static OntologyTreeSubNode subNode;
 	private final TreeViewer viewer;
-	private OntologyTreeNode firstElement;
 
 	public NodeMoveDragListener(TreeViewer viewer) {
 		this.viewer = viewer;
@@ -26,8 +27,7 @@ public class NodeMoveDragListener implements DragSourceListener {
 	@Override
 	public void dragFinished(DragSourceEvent event) {
 		System.out.println("dragFinished");
-		System.out.println("event.doit: " + event.doit);
-//		firstElement.removeFromParent();
+		//		firstElement.removeFromParent();
 		viewer.refresh();
 	}
 
@@ -36,21 +36,42 @@ public class NodeMoveDragListener implements DragSourceListener {
 		System.out.println("dragSetData");
 		IStructuredSelection selection = (IStructuredSelection) viewer
 				.getSelection();
-		firstElement = (OntologyTreeNode) selection
-				.getFirstElement();
-
-		event.data = firstElement.getTreePath();
-		event.doit=true;
+		System.out.println("selection.getClass(): " + selection.getClass());
+		if (selection.getFirstElement() instanceof OntologyTreeNode) {
+			OntologyTreeNode firstElement = (OntologyTreeNode) selection
+					.getFirstElement();
+			//TODO
+			if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+				event.data = firstElement.getTreePath();
+			}
+		}
+		else if (selection.getFirstElement() instanceof OntologyTreeSubNode) {
+			setSubNode((OntologyTreeSubNode) selection
+					.getFirstElement());
+			event.data = "subNode";
+		}
 	}
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
-		IStructuredSelection selection = (IStructuredSelection) viewer
-				.getSelection();
-		OntologyTreeNode firstElement = (OntologyTreeNode) selection
-				.getFirstElement();
-		System.out.println("DRAGGED: " + firstElement.getName());
-		event.doit=true;
+		System.out.println("@dragStart");
+		//		IStructuredSelection selection = (IStructuredSelection) viewer
+		//				.getSelection();
+		//		
+		//		if (selection instanceof OntologyTreeNode) {
+		//		OntologyTreeNode firstElement = (OntologyTreeNode) selection
+		//				.getFirstElement();
+		//		System.out.println("DRAGGED: " + firstElement.getName());
+		//		event.doit=true;
+		//		}
+	}
+
+	public static OntologyTreeSubNode getSubNode() {
+		return subNode;
+	}
+
+	public void setSubNode(OntologyTreeSubNode subNode) {
+		this.subNode = subNode;
 	}
 
 }

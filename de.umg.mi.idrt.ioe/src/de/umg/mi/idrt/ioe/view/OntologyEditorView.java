@@ -355,8 +355,8 @@ public class OntologyEditorView extends ViewPart {
 
 		targetComposite = new Composite(sash, SWT.NONE);
 		targetComposite.setLayout(new BorderLayout(0, 0));
-		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI
-				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		targetTreeViewer.setSorter(new ViewerSorter());
 		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighter(targetTreeViewer));
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
