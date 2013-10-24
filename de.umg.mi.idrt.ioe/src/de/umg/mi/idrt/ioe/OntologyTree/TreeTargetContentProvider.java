@@ -34,7 +34,12 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
+		if (element instanceof OntologyTreeNode)
 		return ((OntologyTreeNode) element).getParent();
+		else if (element instanceof OntologyTreeSubNode)
+			return ((OntologyTreeSubNode)element).getParent();
+		else
+			return null;
 	}
 
 	@Override

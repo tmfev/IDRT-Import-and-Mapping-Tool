@@ -156,8 +156,8 @@ public class MyOntologyTree extends JPanel {
 				"OntologyTreeSourceRootNode");
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
-		rootNode.setTreePathLevel(-1);
 		rootNode.setNodeType(NodeType.ROOT);
+		rootNode.setTreePathLevel(-1);
 
 		_ontologyTreeSource = new OntologyTree(rootNode);
 
@@ -493,8 +493,10 @@ public class MyOntologyTree extends JPanel {
 		 */
 
 		if (sourceNode.getOntologyCellAttributes() != null) {
-			newNode.getTargetNodeAttributes().addStagingPath(
-					sourceNode.getTargetNodeAttributes().getSourcePath());
+			
+			
+			newNode.getTargetNodeAttributes().setSubNodeList((
+					sourceNode.getTargetNodeAttributes().getSubNodeList()));
 
 			newNode.getTargetNodeAttributes().setVisualattributes(
 					sourceNode.getTargetNodeAttributes().getVisualattribute());

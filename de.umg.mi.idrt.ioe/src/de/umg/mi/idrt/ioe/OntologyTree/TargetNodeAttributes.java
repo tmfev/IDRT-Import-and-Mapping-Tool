@@ -19,6 +19,10 @@ public class TargetNodeAttributes {
 		setParent(parent);
 	}
 
+	public boolean removeSubNode(OntologyTreeSubNode subNode) {
+		return this.subNodeList.remove(subNode);
+	}
+
 	/**
 	 * @return the subNodeList
 	 */
@@ -49,18 +53,34 @@ public class TargetNodeAttributes {
 	 *            the sourcePath to set
 	 */
 	public void addStagingPath(String stagingPath) {
-		OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
-		subNode.setStagingPath(stagingPath);
-		if (OntologyEditorView.getI2b2ImportTool()!=null) {
-			OntologyTreeNode stagingNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
-			if (stagingNode!=null) {
-			subNode.setStagingName(stagingNode.getName());
-		
+		if (!subNodeListContains(stagingPath)) {
+			OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
+			subNode.setStagingPath(stagingPath);
+			if (OntologyEditorView.getI2b2ImportTool()!=null) {
+				OntologyTreeNode stagingNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
+				if (stagingNode==null) {
+					stagingNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
+				}
+				if (stagingNode != null)
+					subNode.setStagingName(stagingNode.getName());
+				else
+					subNode.setStagingName("empty");
+			}
+			subNodeList.add(subNode);
+			this.sourcePath = stagingPath;
+		}
+
+	}
+
+	private boolean subNodeListContains(String pathToChek) {
+		boolean found = false;
+		for (OntologyTreeSubNode subNode : this.subNodeList) {
+			if (subNode.getStagingPath().equals(pathToChek)) {
+				found = true;
+				break;
 			}
 		}
-		subNodeList.add(subNode);
-		this.sourcePath = stagingPath;
-
+		return found;
 	}
 
 	/**
@@ -169,7 +189,7 @@ public class TargetNodeAttributes {
 	 * 
 	 */
 	public void removeAllStagingPaths() {
-			subNodeList.clear();
+		subNodeList.clear();
 	}
 
 }

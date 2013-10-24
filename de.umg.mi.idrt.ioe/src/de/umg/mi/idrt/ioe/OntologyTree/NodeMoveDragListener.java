@@ -17,7 +17,7 @@ import org.eclipse.swt.dnd.DragSourceListener;
 public class NodeMoveDragListener implements DragSourceListener {
 
 	private final TreeViewer viewer;
-private OntologyTreeNode firstElement;
+	private OntologyTreeNode firstElement;
 
 	public NodeMoveDragListener(TreeViewer viewer) {
 		this.viewer = viewer;
@@ -26,8 +26,8 @@ private OntologyTreeNode firstElement;
 	@Override
 	public void dragFinished(DragSourceEvent event) {
 		System.out.println("dragFinished");
-		firstElement.removeFromParent();
-//		viewer.expandAll();
+		System.out.println("event.doit: " + event.doit);
+//		firstElement.removeFromParent();
 		viewer.refresh();
 	}
 
@@ -38,26 +38,19 @@ private OntologyTreeNode firstElement;
 				.getSelection();
 		firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
+
 		event.data = firstElement.getTreePath();
 		event.doit=true;
-
 	}
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
-
-
 		IStructuredSelection selection = (IStructuredSelection) viewer
 				.getSelection();
 		OntologyTreeNode firstElement = (OntologyTreeNode) selection
 				.getFirstElement();
 		System.out.println("DRAGGED: " + firstElement.getName());
-		if (firstElement != null) {
-			event.doit=true;
-		}
-		else {
-			event.doit = false;
-		}
+		event.doit=true;
 	}
 
 }

@@ -47,6 +47,9 @@ public class DeleteNodeCommand extends AbstractHandler {
 		}
 		else if (selection.getFirstElement() instanceof OntologyTreeSubNode) {
 			OntologyTreeSubNode subNode = (OntologyTreeSubNode) selection.getFirstElement();
+			System.out.println("from: " + subNode.getParent().getName());
+			subNode.getParent().getTargetNodeAttributes().removeSubNode(subNode);
+			
 			System.err.println("NYI");
 		}
 		targetTreeViewer.refresh();

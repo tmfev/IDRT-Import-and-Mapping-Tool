@@ -18,11 +18,15 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 	private OntologyTreeNode stagingParentNode;
 
 	public OntologyTreeSubNode(OntologyTreeNode parent) { //, String sourcePath
+		
 		if (parent != null) {
 			if (parent.getTargetNodeAttributes().getSourcePath() != null)
 				this.setStagingPath(parent.getTargetNodeAttributes().getSourcePath());
 		
 		this.parent = parent;
+		}
+		else {
+			System.err.println("Parent null");
 		}
 		//		System.out.println(this.parent.getName() + " " + this.getSourcePath());
 	}
@@ -47,8 +51,13 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 
 	public void setStagingPath(String sourcePath) {
 		this.stagingPath = sourcePath;
-		if (OntologyEditorView.getI2b2ImportTool()!=null)
-			this.setStagingParentNode(OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(sourcePath));
+		if (OntologyEditorView.getI2b2ImportTool()!=null) {
+			OntologyTreeNode parentNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(sourcePath);
+			if (parentNode == null) {
+				parentNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(sourcePath);
+			}
+			this.setStagingParentNode(parentNode);
+		}
 	}
 
 	public String getStagingName() {

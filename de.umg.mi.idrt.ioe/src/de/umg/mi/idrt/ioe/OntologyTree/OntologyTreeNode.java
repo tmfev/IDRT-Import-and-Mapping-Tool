@@ -104,6 +104,11 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		//		treeSubChildren.add(new OntologyTreeSubNode(this));
 	}
 
+	@Override
+	public boolean isLeaf() {
+		return this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l");
+	}
+
 	/**
 	 * 155: * Adds a new child node to this node and sets this node as the
 	 * parent of 156: * the child node. The child node must not be an ancestor
@@ -125,15 +130,15 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	}
 
-	public void convertVisualAttributesToModifier() {
-
-		String visualAttribute = getVisualattribute();
-		visualAttribute = visualAttribute.replaceAll("F", "D");
-		visualAttribute = visualAttribute.replaceAll("L", "R");
-		setVisualattribute(visualAttribute);
-		return;
-
-	}
+	//	public void convertVisualAttributesToModifier() {
+	//
+	//		String visualAttribute = getVisualattribute();
+	//		visualAttribute = visualAttribute.replaceAll("F", "D");
+	//		visualAttribute = visualAttribute.replaceAll("L", "R");
+	//		setVisualattribute(visualAttribute);
+	//		return;
+	//
+	//	}
 
 	/* ******************************
 	 * /* functions for the swt tree /* *****************************
@@ -249,7 +254,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	public TargetNodeAttributes getTargetNodeAttributes() {
 		if (this.targetNodeAttributes==null)
-			this.targetNodeAttributes = new TargetNodeAttributes(getParent());
+			this.targetNodeAttributes = new TargetNodeAttributes(this);
 		return this.targetNodeAttributes;
 	}
 
@@ -280,9 +285,9 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * 
 	 * @return the visual attribute
 	 */
-	public String getVisualattribute() {
-		return this.visualattribute;
-	}
+	//	public String getVisualattribute() {
+	//		return this.visualattribute;
+	//	}
 
 	public boolean hasChildren() {
 		//		if (this.getChildCount() > 0)
@@ -583,9 +588,9 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * @param visualattribute
 	 *            the basecode
 	 */
-	public void setVisualattribute(String visualattribute) {
-		this.visualattribute = visualattribute;
-	}
+	//	public void setVisualattribute(String visualattribute) {
+	//		this.visualattribute = visualattribute;
+	//	}
 
 	/**
 	 * Returns the name of the node (for use by the JTree render functions

@@ -28,7 +28,7 @@ public class AddItemCommand extends AbstractHandler {
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.ITEM);
-		subRootNode.getTargetNodeAttributes().addStagingPath("");
+//		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setChanged(true);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");
 		subRootNode.setName("New Item");
@@ -36,7 +36,7 @@ public class AddItemCommand extends AbstractHandler {
 
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-		targetTreeViewer.expandToLevel(subRootNode, 10);
+//		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
 		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);

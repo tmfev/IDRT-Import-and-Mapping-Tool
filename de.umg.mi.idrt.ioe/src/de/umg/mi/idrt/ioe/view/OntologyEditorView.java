@@ -798,7 +798,6 @@ public class OntologyEditorView extends ViewPart {
 					}
 				}
 				//TODO
-
 				stagingTreeViewer.refresh();
 			}
 
