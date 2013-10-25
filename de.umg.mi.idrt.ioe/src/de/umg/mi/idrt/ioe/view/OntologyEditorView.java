@@ -231,7 +231,7 @@ public class OntologyEditorView extends ViewPart {
 						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
 						stagingServer.setSchema(schema);
 						setStagingServer(stagingServer);
-						setStagingSchemaName((String)event.data);
+						setStagingSchemaName(schema);
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 					} catch (Exception ex) {
@@ -381,7 +381,7 @@ public class OntologyEditorView extends ViewPart {
 		column.setLabelProvider(new ColumnLabelProvider() {
 
 			public String getText(Object element) {
-				return "- " + element.toString();
+				return element.toString();
 			}
 
 		});
@@ -1030,13 +1030,14 @@ public class OntologyEditorView extends ViewPart {
 	public static void setCurrentTargetNode(OntologyTreeNode node) {
 		currentTargetNode = node;
 	}
-
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
 	}
+	
 	public static Point getTargetCompositePoint() {
 		return targetComposite.getLocation();
 	}
+	
 	private static OntologyTreeNode getCurrentNode() {
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
 				.getSelection();

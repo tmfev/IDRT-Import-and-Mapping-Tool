@@ -16,6 +16,7 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 /**
@@ -98,7 +99,6 @@ public class SaveTarget extends AbstractHandler {
 		tos.setContextVariable("DataFile", stringPath);
 
 		try {
-
 			tos.runJob();
 			OntologyEditorView.setNotYetSaved(false);
 		} catch (Exception e) {
@@ -112,19 +112,22 @@ public class SaveTarget extends AbstractHandler {
 
 	private void writeNode(OntologyTreeNode node) {
 
+		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
+		
 		String[] fields = new String[9];
+		
 		fields[0] = "1";
-		fields[1] = String.valueOf(node.getTreePathLevel());
-		fields[2] = node.getTreePath();
-		fields[3] = node.getTargetNodeAttributes().getSourcePath();
-		fields[4] = node.getTargetNodeAttributes().getName();
-		fields[5] = node.getTargetNodeAttributes().getChanged();
-		fields[6] = node.getTargetNodeAttributes().getStartDateSource();
-		fields[7] = node.getTargetNodeAttributes().getEndDateSource();
-		fields[8] = node.getTargetNodeAttributes().getVisualattribute();
+		fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
+		fields[2] = subNode.getParent().getTreePath();
+		fields[3] = subNode.getStagingPath();
+		fields[4] = subNode.getParent().getTargetNodeAttributes().getName();
+		fields[5] = subNode.getParent().getTargetNodeAttributes().getChanged();
+		fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
+		fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
+		fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
 
 		_writer.writeNext(fields);
-
+		}
 		for (int x = 0; x < node.getChildCount(); x++) {
 			writeNode((OntologyTreeNode) node.getChildAt(x));
 		}

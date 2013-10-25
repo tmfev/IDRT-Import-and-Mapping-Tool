@@ -49,7 +49,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 		OntologyEditorView.setNotYetSaved(true);
 
 		if (event.item == null) {
-			System.err.println("event.item == null");
 			event.item = OntologyEditorView.getTargetTreeViewer().getTree();
 			targetNode = myOT.getSubRootNode();
 			event.item.setData(targetNode);
@@ -58,7 +57,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 			targetNode = (OntologyTreeNode) determineTarget(event);
 			if (((OntologyTreeNode)targetNode).isLeaf()) {
-				System.err.println("TARGET IS LEAF!\nAddSourcePath NYI!");
 				OntologyEditorView.setNotYetSaved(true);
 				super.drop(event);
 			}
@@ -95,9 +93,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 		if (data.toString().equals("stagingTreeViewer")){
 			if (targetNode instanceof OntologyTreeNode) {
 				if (targetNode.isLeaf()) {
-					System.err.println("NYI Is LEAF");	
-					if (sourceNode == null)
-						System.out.println("NULL");
 					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(sourceNode.getTreePath());
 				}
 				else {
@@ -111,7 +106,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 		}
 		else if (data.toString().equals("subNode")) {
 			OntologyTreeSubNode subNode = NodeMoveDragListener.getSubNode();
-			System.out.println("STAGING PATH " +subNode.getStagingPath());
 
 			if (targetNode instanceof OntologyTreeNode) {
 				((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(subNode.getStagingPath());
