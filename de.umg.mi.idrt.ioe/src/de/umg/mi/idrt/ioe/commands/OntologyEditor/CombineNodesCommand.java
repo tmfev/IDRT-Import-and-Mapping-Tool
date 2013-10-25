@@ -115,12 +115,14 @@ public class CombineNodesCommand extends AbstractHandler {
 			//			System.out.println("CHECKING " + node.getName());
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
+				System.out.println("nodeToCheck id: " + nodeToCheck.getID());
 				Pattern p = Pattern.compile("[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?");
 				Matcher m = p.matcher(nodeToCheck.getID());
 				if (m.find()) {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
 						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
+						System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
 						perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
 						System.out.println(perfectPath);
 						found = true;

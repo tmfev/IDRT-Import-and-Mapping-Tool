@@ -826,23 +826,22 @@ public class OntologyEditorView extends ViewPart {
 
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
-				MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
-				mntmgetChildren.setText("getChildren");
-				mntmgetChildren.addSelectionListener(new SelectionListener() {
-		
-					@Override
-					public void widgetSelected(SelectionEvent event) {
-						OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
-						for (OntologyTreeNode nnode : node.getChildren())
-							System.out.println(nnode.getName());
-					}
-		
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {
-		
-					}
-				});
+		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+		mntmgetChildren.setText("getChildren");
+		mntmgetChildren.addSelectionListener(new SelectionListener() {
 
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+				for (OntologyTreeNode nnode : node.getChildren())
+					System.out.println(nnode.getName());
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
 
 		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
 		mntmAddNode.setText("Add Folder");
@@ -875,8 +874,6 @@ public class OntologyEditorView extends ViewPart {
 		});
 
 		new MenuItem(menu, SWT.SEPARATOR);
-
-		//		targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 
 		MenuItem mntmHideItem = new MenuItem(menu, SWT.PUSH);
 		mntmHideItem.setText("Hide/Activate");
@@ -1033,11 +1030,11 @@ public class OntologyEditorView extends ViewPart {
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
 	}
-	
+
 	public static Point getTargetCompositePoint() {
 		return targetComposite.getLocation();
 	}
-	
+
 	private static OntologyTreeNode getCurrentNode() {
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
 				.getSelection();
