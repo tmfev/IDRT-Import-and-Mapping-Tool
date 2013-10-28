@@ -124,6 +124,7 @@ public class TOSHandler {
 
 		if (C_HLEVEL == 0) {
 			node.setNodeType(NodeType.I2B2ROOT);
+			_ot.setStagingRootNode(node);
 		}
 
 	}
@@ -143,7 +144,7 @@ public class TOSHandler {
 		OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
 				name);
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-		node.getTargetNodeAttributes().setSourcePath(sourcePath);
+		node.getTargetNodeAttributes().addStagingPath(sourcePath);
 		node.getTargetNodeAttributes().setName(name);
 		node.getTargetNodeAttributes()
 				.setChanged((changed == 0 ? true : false));
@@ -198,6 +199,16 @@ public class TOSHandler {
 		TargetProjects targetProjects = targetRootNode.getTargetProjects();
 		targetProjects.addTarget(target);
 
+	}
+	
+	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
+		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+
+		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
+		targetProjects.getSelectedTarget().setTargetID(targetID);
+		targetProjects.getSelectedTarget().setVersion(version);
+		targetProjects.getSelectedTargetProject().setTargetProjectID(targetProjectID);
+	
 	}
 
 }
