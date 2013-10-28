@@ -33,6 +33,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	private List<OntologyTreeNode> children;
 
+
+
 	/**
 	 * the name of the node
 	 */
@@ -76,19 +78,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	/**
 	 * specific attributes for different kind of nodes
 	 */
-	private OntologyCellAttributes ontologyCellAttributes = new OntologyCellAttributes();
-	private TargetNodeAttributes targetNodeAttributes = new TargetNodeAttributes();
-
-	/**
-	 * Creates a generic ontology tree node.
-	 * 
-	 * @param name
-	 *            the name of the new node
-	 */
-	public OntologyTreeNode(String name) {
-		this.children = new ArrayList<OntologyTreeNode>();
-		setName(name);
-	}
+	private OntologyCellAttributes ontologyCellAttributes;
+	private TargetNodeAttributes targetNodeAttributes;
 
 	/**
 	 * Creates a generic ontology tree node.
@@ -98,217 +89,24 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		setName("No_Name");
 	}
 
-
 	/**
-	 * Sets the name attribute for this node.
+	 * Creates a generic ontology tree node.
 	 * 
 	 * @param name
-	 *            the name of the node
+	 *            the name of the new node
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public OntologyTreeNode(String name) {
+		this.children = new ArrayList<OntologyTreeNode>();
+
+		this.ontologyCellAttributes= new OntologyCellAttributes();
+		this.setName(name);
+		//		this.treeSubChildren = new ArrayList<OntologyTreeSubNode>();
+		//		treeSubChildren.add(new OntologyTreeSubNode(this));
 	}
 
-	/**
-	 * Returns the name of this node.
-	 * 
-	 * @return the name of the node
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public void setTreePath(String treePath) {
-		this.treePath = treePath;
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public String getTreePath() {
-		return this.treePath;
-	}
-
-	/**
-	 * Sets the level attribute for this node.
-	 * 
-	 * @param treePathLevel
-	 *            the level of this node in a tree
-	 */
-	public void setTreePathLevel(int treePathLevel) {
-		this.treePathLevel = treePathLevel;
-	}
-
-	/**
-	 * Sets the level attribute for this node by converting a string to int
-	 * first.
-	 * 
-	 * @param treePathLevel
-	 *            the level of this node in a tree
-	 */
-	public void setTreePathLevel(String treePathLevel) {
-		try {
-			setTreePathLevel(Integer.valueOf(treePathLevel));
-		} catch (NumberFormatException e) {
-			Console.error(
-					"Couldn't convert an i2b2-level-string to an an integer.",
-					e);
-			setTreePathLevel(99);
-		}
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public int getTreePathLevel() {
-		return treePathLevel;
-	}
-
-	/**
-	 * Sets the visual attribute (key to connect items and user data) for I2B2.
-	 * 
-	 * @param visualattribute
-	 *            the basecode
-	 */
-	public void setVisualattribute(String visualattribute) {
-		this.visualattribute = visualattribute;
-	}
-
-	/**
-	 * Returns visual attribute.
-	 * 
-	 * @return the visual attribute
-	 */
-	public String getVisualattribute() {
-		return this.visualattribute;
-	}
-
-	/**
-	 * Sets node type.
-	 * 
-	 * @param nodeType
-	 *            the node type
-	 */
-	public void setNodeType(NodeType nodeType) {
-		this.nodeType = nodeType;
-	}
-
-	/**
-	 * Returns the node type.
-	 * 
-	 * @return the node type
-	 */
-	public NodeType getNodeType() {
-		return this.nodeType;
-	}
-
-	/**
-	 * Sets the ID of this node.
-	 * 
-	 * @param id
-	 *            the ID
-	 */
-	public void setID(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * Returns the ID of this node.
-	 * 
-	 * @return the ID
-	 */
-	public String getID() {
-		return this.id;
-	}
-
-	/**
-	 * Sets the visibility option for this node and possible children
-	 * 
-	 * @param isVisable
-	 *            the value of the visibility
-	 * @param setChilden
-	 *            true if also all children should change the visibility value
-	 */
-	public void setIsVisable(boolean isVisable, boolean setChilden) {
-		setIsVisable(isVisable);
-		if (setChilden == true && this.getChildCount() > 0) {
-			Debug.d("* setVisibility ("
-					+ (isVisable == true ? "true" : "false") + ") for "
-					+ this.getChildCount() + " children");
-			for (int x = 0; x < this.getChildCount(); x++) {
-				((OntologyTreeNode) this.getChildAt(x)).setIsVisable(isVisable,
-						setChilden);
-			}
-		}
-		// this.updateI2B2Values();
-	}
-
-	public void setIsVisable(String isVisableString, boolean setChilden) {
-		try {
-			setIsVisable(Boolean.valueOf(isVisableString), setChilden);
-		} catch (Exception e) {
-			Console.error("Couldn't convert an isVisable-string to a boolean.",
-					e);
-			setIsVisable(true, setChilden);
-		}
-	}
-
-	public void setIsVisable(boolean isVisable) {
-		this.isVisible = isVisable;
-	}
-
-	/**
-	 * Returns the status of the visibility of this node.
-	 * 
-	 * @return the visibility
-	 */
-	public boolean isVisable() {
-		return this.isVisible;
-	}
-
-	/**
-	 * Returns the name of the node (for use by the JTree render functions
-	 * only).
-	 * 
-	 * @return the name
-	 */
-	public String toString() {
-		return this.name + " " + this.treePath;
-	}
-
-	/* ******************************
-	 * /* functions for the swt tree /* *****************************
-	 */
-	public ListIterator<OntologyTreeNode> getChild() {
-		return this.children.listIterator();
-	}
-
-	public Iterator<OntologyTreeNode> getChildrenIterator() {
-		if (this.children != null) {
-			return (Iterator<OntologyTreeNode>) this.children.iterator();
-		}
-		return null;
-	}
-
-	public List<OntologyTreeNode> getChildren() {
-		return this.children;
-	}
-
-	/* (non-Javadoc)
-	 * @see javax.swing.tree.DefaultMutableTreeNode#getChildAfter(javax.swing.tree.TreeNode)
-	 */
 	@Override
-	public OntologyTreeNode getChildAfter(TreeNode aChild) {
-		return (OntologyTreeNode)super.getChildAfter(aChild);
+	public boolean isLeaf() {
+		return this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l");
 	}
 
 	/**
@@ -331,6 +129,187 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		/* adding stuff the child now */
 
 	}
+
+	//	public void convertVisualAttributesToModifier() {
+	//
+	//		String visualAttribute = getVisualattribute();
+	//		visualAttribute = visualAttribute.replaceAll("F", "D");
+	//		visualAttribute = visualAttribute.replaceAll("L", "R");
+	//		setVisualattribute(visualAttribute);
+	//		return;
+	//
+	//	}
+
+	/* ******************************
+	 * /* functions for the swt tree /* *****************************
+	 */
+	public ListIterator<OntologyTreeNode> getChild() {
+		return this.children.listIterator();
+	}
+
+
+	/* (non-Javadoc)
+	 * @see javax.swing.tree.DefaultMutableTreeNode#getChildAfter(javax.swing.tree.TreeNode)
+	 */
+	@Override
+	public OntologyTreeNode getChildAfter(TreeNode aChild) {
+		return (OntologyTreeNode)super.getChildAfter(aChild);
+	}
+
+	public List<OntologyTreeNode> getChildren() {
+		return this.children;
+	}
+
+	public Object[] getChildrenArray() {
+
+		List<OntologyTreeNode> children = new ArrayList<OntologyTreeNode>();
+
+		// System.out.println("getChildrenArray for \"" +
+		// this.getOntologyCellAttributes().getC_FULLNAME() + "\" ChildCount \""
+		// + getChildCount() + "\"");
+
+		if (this.getChildCount() > 0) {
+
+			// System.out.println(" .. do children");
+
+			Iterator<OntologyTreeNode> it = this.getChildrenIterator();
+
+			int i = 0;
+
+			for (int x = 0; x < this.getChildCount(); x++) {
+				// System.out.println(" ... while " + i++);
+				OntologyTreeNode tmpChild = (OntologyTreeNode) this.getChildAt(x);
+				children.add(tmpChild);
+				tmpChild.getChildrenArray();
+			}
+
+			return children.toArray();
+		} else
+			return null;
+
+	}
+
+	public Iterator<OntologyTreeNode> getChildrenIterator() {
+		if (this.children != null) {
+			return (Iterator<OntologyTreeNode>) this.children.iterator();
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the ID of this node.
+	 * 
+	 * @return the ID
+	 */
+	public String getID() {
+		return this.id;
+	}
+
+	public String getIDFromPath(String path) {
+
+		if (path.length() > 2) {
+			// System.out.print("path1: " + path);
+			path = path.substring(0, path.length() - 1);
+			// System.out.print(" | path 2: " + path );
+			if (path.lastIndexOf("\\") + 1 < path.length()) {
+				return path
+						.substring(path.lastIndexOf("\\") + 1, path.length());
+			} else {
+				Console.error("Could not get ID from Path, because shortend path is too damn short already.");
+				return path;
+			}
+
+		} else {
+			Console.error("Could not get ID from Path, because path is too damn short.");
+			return "";
+		}
+	}
+
+	/**
+	 * Returns the name of this node.
+	 * 
+	 * @return the name of the node
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * Returns the node type.
+	 * 
+	 * @return the node type
+	 */
+	public NodeType getNodeType() {
+		return this.nodeType;
+	}
+
+	public OntologyCellAttributes getOntologyCellAttributes() {
+		return ontologyCellAttributes;
+	}
+
+	public OntologyTreeNode getParent() {
+		return (OntologyTreeNode) super.getParent();
+	}
+
+
+	public TargetNodeAttributes getTargetNodeAttributes() {
+		if (this.targetNodeAttributes==null)
+			this.targetNodeAttributes = new TargetNodeAttributes(this);
+		return this.targetNodeAttributes;
+	}
+
+	/**
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
+	 */
+	public String getTreePath() {
+		return this.treePath;
+	}
+
+	/**
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
+	 */
+	public int getTreePathLevel() {
+		return treePathLevel;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	/**
+	 * Returns visual attribute.
+	 * 
+	 * @return the visual attribute
+	 */
+	//	public String getVisualattribute() {
+	//		return this.visualattribute;
+	//	}
+
+	public boolean hasChildren() {
+		//		if (this.getChildCount() > 0)
+		//			return true;
+		//		else
+		//			return false;
+		return this.getChildren().size()>0;
+	}
+
+	public boolean isHighlighted() {
+		return highlighted;
+	}
+
+	/**
+	 * Returns the status of the visibility of this node.
+	 * 
+	 * @return the visibility
+	 */
+	public boolean isVisable() {
+		return this.isVisible;
+	}
+
 	//	@Override
 	public void remove(OntologyTreeNode aChild) {
 		// TODO Auto-generated method stub
@@ -349,16 +328,34 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 			MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
 			node.removeAllChildren();
+			node.getChildren().clear();
 		}
-		super.removeAllChildren();
 	}
 
 	@Override
 	public void removeFromParent() {
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
-		this.getParent().getChildren().remove(this);
+		this.removeAllChildren();
+		if (this != myOT.getSubRootNode())
+			this.getParent().getChildren().remove(this);
 		super.removeFromParent();
+	}
+
+	public void setHighlighted(boolean highlighted) {
+		this.highlighted = highlighted;
+	}
+
+	public void setI2B2Ontology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
+			String C_SYNONYM_CD, String C_VISUALATTRIBUTES, int C_TOTALNUM,
+			String C_BASECODE, Object C_METADATAXML, String C_FACTTABLECOLUMN,
+			String C_TABLENAME, String C_COLUMNNAME, String C_COLUMNDATATYPE,
+			String C_OPERATOR, String C_DIMCODE, String C_COMMENT,
+			String C_TOOLTIP, String M_APPLIED_PATH, String UPDATE_DATE,
+			String DOWNLOAD_DATE, String IMPORT_DATE, String SOURCESYSTEM_CD,
+			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
+			String C_SYMBOL) {
+
 	}
 
 	/*
@@ -385,72 +382,61 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * !_additionalDataParentNodeImportPath.isEmpty() ? true : false; }
 	 */
 
-	public void convertVisualAttributesToModifier() {
-
-		String visualAttribute = getVisualattribute();
-		visualAttribute = visualAttribute.replaceAll("F", "D");
-		visualAttribute = visualAttribute.replaceAll("L", "R");
-		setVisualattribute(visualAttribute);
-		return;
-
+	/**
+	 * Sets the ID of this node.
+	 * 
+	 * @param id
+	 *            the ID
+	 */
+	public void setID(String id) {
+		this.id = id;
 	}
 
-	public OntologyTreeNode getParent() {
-		return (OntologyTreeNode) super.getParent();
+	public void setIsVisable(boolean isVisable) {
+		this.isVisible = isVisable;
 	}
 
-	public void setI2B2Ontology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
-			String C_SYNONYM_CD, String C_VISUALATTRIBUTES, int C_TOTALNUM,
-			String C_BASECODE, Object C_METADATAXML, String C_FACTTABLECOLUMN,
-			String C_TABLENAME, String C_COLUMNNAME, String C_COLUMNDATATYPE,
-			String C_OPERATOR, String C_DIMCODE, String C_COMMENT,
-			String C_TOOLTIP, String M_APPLIED_PATH, String UPDATE_DATE,
-			String DOWNLOAD_DATE, String IMPORT_DATE, String SOURCESYSTEM_CD,
-			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
-			String C_SYMBOL) {
-
+	/**
+	 * Sets the visibility option for this node and possible children
+	 * 
+	 * @param isVisable
+	 *            the value of the visibility
+	 * @param setChilden
+	 *            true if also all children should change the visibility value
+	 */
+	public void setIsVisable(boolean isVisable, boolean setChilden) {
+		setIsVisable(isVisable);
+		if (setChilden == true && this.getChildCount() > 0) {
+			Debug.d("* setVisibility ("
+					+ (isVisable == true ? "true" : "false") + ") for "
+					+ this.getChildCount() + " children");
+			for (int x = 0; x < this.getChildCount(); x++) {
+				((OntologyTreeNode) this.getChildAt(x)).setIsVisable(isVisable,
+						setChilden);
+			}
+		}
+		// this.updateI2B2Values();
 	}
 
 
-	public OntologyCellAttributes getOntologyCellAttributes() {
-		return ontologyCellAttributes;
+	public void setIsVisable(String isVisableString, boolean setChilden) {
+		try {
+			setIsVisable(Boolean.valueOf(isVisableString), setChilden);
+		} catch (Exception e) {
+			Console.error("Couldn't convert an isVisable-string to a boolean.",
+					e);
+			setIsVisable(true, setChilden);
+		}
 	}
 
-	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
-			String C_NAME, String C_SYNONYM_CD, String C_VISUALATTRIBUTES,
-			int C_TOTALNUM, String C_BASECODE, Object C_METADATAXML,
-			String C_FACTTABLECOLUMN, String C_TABLENAME, String C_COLUMNNAME,
-			String C_COLUMNDATATYPE, String C_OPERATOR, String C_DIMCODE,
-			Object C_COMMENT, String C_TOOLTIP, String M_APPLIED_PATH,
-			Date UPDATE_DATE, Date DOWNLOAD_DATE, Date IMPORT_DATE,
-			String SOURCESYSTEM_CD, String VALUETYPE_CD, String M_EXCLUSION_CD,
-			String C_PATH, String C_SYMBOL) {
-		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
-		ontologyCellAttributes.setC_HLEVEL(C_HLEVEL);
-		ontologyCellAttributes.setC_FULLNAME(C_FULLNAME);
-		ontologyCellAttributes.setC_NAME(C_NAME);
-		ontologyCellAttributes.setC_SYNONYM_CD(C_SYNONYM_CD);
-		ontologyCellAttributes.setC_VISUALATTRIBUTES(C_VISUALATTRIBUTES);
-		ontologyCellAttributes.setC_TOTALNUM(C_TOTALNUM);
-		ontologyCellAttributes.setC_BASECODE(C_BASECODE);
-		ontologyCellAttributes.setC_METADATAXML(C_METADATAXML);
-		ontologyCellAttributes.setC_FACTTABLECOLUMN(C_FACTTABLECOLUMN);
-		ontologyCellAttributes.setC_TABLENAME(C_TABLENAME);
-		ontologyCellAttributes.setC_COLUMNNAME(C_COLUMNNAME);
-		ontologyCellAttributes.setC_COLUMNDATATYPE(C_COLUMNDATATYPE);
-		ontologyCellAttributes.setC_OPERATOR(C_OPERATOR);
-		ontologyCellAttributes.setC_DIMCODE(C_DIMCODE);
-		ontologyCellAttributes.setC_COMMENT(C_COMMENT);
-		ontologyCellAttributes.setC_TOOLTIP(C_TOOLTIP);
-		ontologyCellAttributes.setM_APPLIED_PATH(M_APPLIED_PATH);
-		ontologyCellAttributes.setUPDATE_DATE(UPDATE_DATE);
-		ontologyCellAttributes.setDOWNLOAD_DATE(DOWNLOAD_DATE);
-		ontologyCellAttributes.setIMPORT_DATE(IMPORT_DATE);
-		ontologyCellAttributes.setSOURCESYSTEM_CD(SOURCESYSTEM_CD);
-		ontologyCellAttributes.setVALUETYPE_CD(VALUETYPE_CD);
-		ontologyCellAttributes.setM_EXCLUSION_CD(M_EXCLUSION_CD);
-		ontologyCellAttributes.setC_PATH(C_PATH);
-		ontologyCellAttributes.setC_SYMBOL(C_SYMBOL);
+	/**
+	 * Sets the name attribute for this node.
+	 * 
+	 * @param name
+	 *            the name of the node
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/*
@@ -492,53 +478,51 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * ); return null; } return x; }
 	 */
 
-	public Object[] getChildrenArray() {
-
-		List<OntologyTreeNode> children = new ArrayList<OntologyTreeNode>();
-
-		// System.out.println("getChildrenArray for \"" +
-		// this.getOntologyCellAttributes().getC_FULLNAME() + "\" ChildCount \""
-		// + getChildCount() + "\"");
-
-		if (this.getChildCount() > 0) {
-
-			// System.out.println(" .. do children");
-
-			Iterator<OntologyTreeNode> it = this.getChildrenIterator();
-
-			int i = 0;
-
-			for (int x = 0; x < this.getChildCount(); x++) {
-				// System.out.println(" ... while " + i++);
-				OntologyTreeNode tmpChild = (OntologyTreeNode) this.getChildAt(x);
-				children.add(tmpChild);
-				tmpChild.getChildrenArray();
-			}
-
-			return children.toArray();
-		} else
-			return null;
-
+	/**
+	 * Sets node type.
+	 * 
+	 * @param nodeType
+	 *            the node type
+	 */
+	public void setNodeType(NodeType nodeType) {
+		this.nodeType = nodeType;
 	}
 
-	public boolean hasChildren() {
-		//		if (this.getChildCount() > 0)
-		//			return true;
-		//		else
-		//			return false;
-		return this.getChildren().size()>0;
-	}
-
-	public TargetNodeAttributes getTargetNodeAttributes() {
-		return this.targetNodeAttributes;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getType() {
-		return this.type;
+	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
+			String C_NAME, String C_SYNONYM_CD, String C_VISUALATTRIBUTES,
+			int C_TOTALNUM, String C_BASECODE, Object C_METADATAXML,
+			String C_FACTTABLECOLUMN, String C_TABLENAME, String C_COLUMNNAME,
+			String C_COLUMNDATATYPE, String C_OPERATOR, String C_DIMCODE,
+			Object C_COMMENT, String C_TOOLTIP, String M_APPLIED_PATH,
+			Date UPDATE_DATE, Date DOWNLOAD_DATE, Date IMPORT_DATE,
+			String SOURCESYSTEM_CD, String VALUETYPE_CD, String M_EXCLUSION_CD,
+			String C_PATH, String C_SYMBOL) {
+		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
+		ontologyCellAttributes.setC_HLEVEL(C_HLEVEL);
+		ontologyCellAttributes.setC_FULLNAME(C_FULLNAME);
+		ontologyCellAttributes.setC_NAME(C_NAME);
+		ontologyCellAttributes.setC_SYNONYM_CD(C_SYNONYM_CD);
+		ontologyCellAttributes.setC_VISUALATTRIBUTES(C_VISUALATTRIBUTES);
+		ontologyCellAttributes.setC_TOTALNUM(C_TOTALNUM);
+		ontologyCellAttributes.setC_BASECODE(C_BASECODE);
+		ontologyCellAttributes.setC_METADATAXML(C_METADATAXML);
+		ontologyCellAttributes.setC_FACTTABLECOLUMN(C_FACTTABLECOLUMN);
+		ontologyCellAttributes.setC_TABLENAME(C_TABLENAME);
+		ontologyCellAttributes.setC_COLUMNNAME(C_COLUMNNAME);
+		ontologyCellAttributes.setC_COLUMNDATATYPE(C_COLUMNDATATYPE);
+		ontologyCellAttributes.setC_OPERATOR(C_OPERATOR);
+		ontologyCellAttributes.setC_DIMCODE(C_DIMCODE);
+		ontologyCellAttributes.setC_COMMENT(C_COMMENT);
+		ontologyCellAttributes.setC_TOOLTIP(C_TOOLTIP);
+		ontologyCellAttributes.setM_APPLIED_PATH(M_APPLIED_PATH);
+		ontologyCellAttributes.setUPDATE_DATE(UPDATE_DATE);
+		ontologyCellAttributes.setDOWNLOAD_DATE(DOWNLOAD_DATE);
+		ontologyCellAttributes.setIMPORT_DATE(IMPORT_DATE);
+		ontologyCellAttributes.setSOURCESYSTEM_CD(SOURCESYSTEM_CD);
+		ontologyCellAttributes.setVALUETYPE_CD(VALUETYPE_CD);
+		ontologyCellAttributes.setM_EXCLUSION_CD(M_EXCLUSION_CD);
+		ontologyCellAttributes.setC_PATH(C_PATH);
+		ontologyCellAttributes.setC_SYMBOL(C_SYMBOL);
 	}
 
 	public void setTreeAttributes() {
@@ -557,31 +541,64 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	}
 
-	public String getIDFromPath(String path) {
+	/**
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
+	 */
+	public void setTreePath(String treePath) {
+		this.treePath = treePath;
+	}
 
-		if (path.length() > 2) {
-			// System.out.print("path1: " + path);
-			path = path.substring(0, path.length() - 1);
-			// System.out.print(" | path 2: " + path );
-			if (path.lastIndexOf("\\") + 1 < path.length()) {
-				return path
-						.substring(path.lastIndexOf("\\") + 1, path.length());
-			} else {
-				Console.error("Could not get ID from Path, because shortend path is too damn short already.");
-				return path;
-			}
+	/**
+	 * Sets the level attribute for this node.
+	 * 
+	 * @param treePathLevel
+	 *            the level of this node in a tree
+	 */
+	public void setTreePathLevel(int treePathLevel) {
+		this.treePathLevel = treePathLevel;
+	}
 
-		} else {
-			Console.error("Could not get ID from Path, because path is too damn short.");
-			return "";
+	/**
+	 * Sets the level attribute for this node by converting a string to int
+	 * first.
+	 * 
+	 * @param treePathLevel
+	 *            the level of this node in a tree
+	 */
+	public void setTreePathLevel(String treePathLevel) {
+		try {
+			setTreePathLevel(Integer.valueOf(treePathLevel));
+		} catch (NumberFormatException e) {
+			Console.error(
+					"Couldn't convert an i2b2-level-string to an an integer.",
+					e);
+			setTreePathLevel(99);
 		}
 	}
 
-	public boolean isHighlighted() {
-		return highlighted;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public void setHighlighted(boolean highlighted) {
-		this.highlighted = highlighted;
+	/**
+	 * Sets the visual attribute (key to connect items and user data) for I2B2.
+	 * 
+	 * @param visualattribute
+	 *            the basecode
+	 */
+	//	public void setVisualattribute(String visualattribute) {
+	//		this.visualattribute = visualattribute;
+	//	}
+
+	/**
+	 * Returns the name of the node (for use by the JTree render functions
+	 * only).
+	 * 
+	 * @return the name
+	 */
+	public String toString() {
+		return this.name + " " + this.treePath;
 	}
 }
