@@ -84,12 +84,13 @@ public class TOSConnector {
 			}
 
 			//			String schema = ServerView.getCurrentSchema();
+			// String schema = ServerView.getCurrentSchema();
 			// defaultProps.getProperty("schema");
 
 			//			String serverUniqueName = OntologyEditorView.getCurrentServer().;
+			// String serverUniqueName = OntologyEditorView.getCurrentServer().;
 
 			Server currentServer = OntologyEditorView.getStagingServer();
-			//			String serverUniqueName = ServerView.getSelectedServer();
 			Console.info(currentServer.getSchema());
 			//			if (serverUniqueName != null) {
 			//				currentServer = ServerList.getTargetServers().get(
@@ -163,9 +164,6 @@ public class TOSConnector {
 		return tos;
 
 	}
-
-
-
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
 
@@ -205,7 +203,7 @@ public class TOSConnector {
 
 	}
 
-	public void runJob(){
+	public void runJob() {
 
 		getConnection().runJobInTOS((getARGV()));
 
@@ -270,7 +268,6 @@ public class TOSConnector {
 			}
 		}).run();
 
-
 	}
 
 	public static boolean checkOntology() {
@@ -325,7 +322,6 @@ public class TOSConnector {
 
 		return exit;
 	}
-
 
 	public static int uploadProject() {
 		new Thread(new Runnable() {

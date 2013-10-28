@@ -21,10 +21,10 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
  * 			Department of Medical Informatics Goettingen 
  * 			www.mi.med.uni-goettingen.de
  */
-class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
+public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 
 
-	StyledViewTableLabelProvider() {
+	public StyledViewTableLabelProvider() {
 	}
 
 	/* (non-Javadoc)

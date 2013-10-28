@@ -9,6 +9,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import au.com.bytecode.opencsv.CSVWriter;
+import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -16,8 +17,10 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
@@ -28,16 +31,34 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class SaveTarget extends AbstractHandler {
 
 	CSVWriter _writer = null;
-
+	String targetID = "0";
+	
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
+		
+		
+		ActionCommand command0  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT);
+		Application.executeCommand(command0);
+		
+		
 		Console.info("Saving Target Ontology.");
 		
 		String stringPath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 		
-		Console.info("Saving Target Ontology.");
+		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
 
+		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){
+			System.out.println(" *  targetProjects.getSelectedTarget():" + (  targetProjects.getSelectedTarget() == null ? "isNull" : "isNotNull" ));
+			// System.out.println(" *  targetProjects.getSelectedTarget().getTargetID():" + (  targetProjects.getSelectedTarget().getTargetID()  ));
+			
+			targetID = String.valueOf( targetProjects.getSelectedTarget().getTargetID() );
+		} else {
+			Console.error("Coud not read a TargetID, so saving will be done with TargetID=0.");
+		}
+		
+		
 		// init
 		OntologyTree ontologyTreeTarget = null;
 
@@ -115,8 +136,8 @@ public class SaveTarget extends AbstractHandler {
 		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
 		
 		String[] fields = new String[9];
-		
-		fields[0] = "1";
+
+		fields[0] = targetID;
 		fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
 		fields[2] = subNode.getParent().getTreePath();
 		fields[3] = subNode.getStagingPath();
@@ -125,8 +146,7 @@ public class SaveTarget extends AbstractHandler {
 		fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
 		fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
 		fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
-
-		_writer.writeNext(fields);
+			_writer.writeNext(fields);
 		}
 		for (int x = 0; x < node.getChildCount(); x++) {
 			writeNode((OntologyTreeNode) node.getChildAt(x));

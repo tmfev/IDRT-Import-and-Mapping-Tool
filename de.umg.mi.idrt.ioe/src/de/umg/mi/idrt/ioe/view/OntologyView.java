@@ -18,7 +18,7 @@ public class OntologyView extends ViewPart {
 
 	private I2B2ImportTool _i2b2ImportTool;
 	private Composite _composite;
-
+	
 	public OntologyView() {
 	}
 
@@ -33,7 +33,7 @@ public class OntologyView extends ViewPart {
 
 	@Override
 	public void setFocus() {
-
+		
 	}
 	
 	/*

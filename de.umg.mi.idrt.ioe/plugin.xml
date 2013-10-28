@@ -102,7 +102,7 @@
       </command>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.SaveTarget"
-            id="edu.goettingen.i2b2.importtool.OTWriteTarget"
+            id="de.umg.mi.idrt.ioe.SaveTarget"
             name="Save Target">
       </command>
       <command
@@ -126,9 +126,9 @@
             name="hideNode">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.IncrementVersionCommand"
-            id="de.umg.mi.idrt.ioe.incrementVersion"
-            name="incrementVersion">
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.IncrementTargetVersion"
+            id="de.umg.mi.idrt.ioe.IncrementTargetVersion"
+            name="IncrementTargetVersion">
       </command>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.NewProjectCommand"
@@ -196,7 +196,7 @@
                   style="push">
             </command>
             <command
-                  commandId="edu.goettingen.i2b2.importtool.OTWriteTarget"
+                  commandId="de.umg.mi.idrt.ioe.SaveTarget"
                   icon="icons/save_edit.gif"
                   label=" - save target"
                   style="push">

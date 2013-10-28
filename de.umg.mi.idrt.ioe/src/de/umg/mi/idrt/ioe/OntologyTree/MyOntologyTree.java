@@ -174,8 +174,8 @@ public class MyOntologyTree extends JPanel {
 
 		getOntologyTreeSource().updateUI();
 
-		expandTreePaths(new TreePath(
-				((OntologyTreeNode) _ontologyTreeSource.getTreeRoot())));
+		//		expandTreePaths(new TreePath(
+		//				((OntologyTreeNode) _ontologyTreeSource.getTreeRoot())));
 
 		// adding mouse adapter
 		MouseAdapter ma = new MouseAdapter() {
@@ -410,24 +410,24 @@ public class MyOntologyTree extends JPanel {
 		return this._ontologyTreeSource.getItemLists();
 	}
 
-	protected void expandTreePaths(TreePath path) {
-		this._ontologyTreeSource.expandPath(path);
-		final Object node = path.getLastPathComponent();
-		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
-
-		for (int index = 0; index < n; index++) {
-			final Object child = this._ontologyTreeSource.getModel().getChild(
-					node, index);
-			OntologyTreeNode treeNode = (OntologyTreeNode) child;
-			/*
-			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
-			 * item, leaf it closed and return return; }
-			 */
-			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
-				expandTreePaths(path.pathByAddingChild(child));
-			}
-		}
-	}
+	//	protected void expandTreePaths(TreePath path) {
+	//		this._ontologyTreeSource.expandPath(path);
+	//		final Object node = path.getLastPathComponent();
+	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
+	//
+	//		for (int index = 0; index < n; index++) {
+	//			final Object child = this._ontologyTreeSource.getModel().getChild(
+	//					node, index);
+	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
+	//			/*
+	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
+	//			 * item, leaf it closed and return return; }
+	//			 */
+	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
+	//				expandTreePaths(path.pathByAddingChild(child));
+	//			}
+	//		}
+	//	}
 
 	public OntologyTree getOntologyTreeSource() {
 		return this._ontologyTreeSource;
@@ -522,6 +522,7 @@ public class MyOntologyTree extends JPanel {
 	}
 
 	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target) {
+		//TODO
 
 		final OntologyTreeNode node = new OntologyTreeNode(source);
 		node.getTargetNodeAttributes().setVisualattributes(source.getOntologyCellAttributes().getC_VISUALATTRIBUTES());
@@ -531,6 +532,7 @@ public class MyOntologyTree extends JPanel {
 		node.setTreePath(target.getTreePath() + node.getID() + "\\");
 		node.setTreePathLevel(target.getTreePathLevel() + 1);
 		node.getTargetNodeAttributes().setName(node.getName());
+
 		OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool()
 				.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(node.getTreePath());
 		if (testNode==null) {
@@ -555,7 +557,6 @@ public class MyOntologyTree extends JPanel {
 						pt.x=rect.x;
 						pt.y=rect.y;
 						break;
-
 					}
 				}
 
@@ -617,7 +618,7 @@ public class MyOntologyTree extends JPanel {
 
 
 		//		System.out.println("added t: " + target.getName() + " n: " + node.getName());
-		
+
 	}
 
 
@@ -790,7 +791,6 @@ public class MyOntologyTree extends JPanel {
 
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
-					//TODO IMPLEMENT
 					dialog.close();
 					//					ActionCommand command = new ActionCommand(
 					//							Resource.ID.Command.OTCOPY);
