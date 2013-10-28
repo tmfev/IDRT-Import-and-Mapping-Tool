@@ -17,7 +17,7 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 	private boolean highlighted;
 	private OntologyTreeNode stagingParentNode;
 
-	public OntologyTreeSubNode(OntologyTreeNode parent) { //, String sourcePath
+	public OntologyTreeSubNode(OntologyTreeNode parent) {
 		
 		if (parent != null) {
 			if (parent.getTargetNodeAttributes().getSourcePath() != null)
@@ -28,7 +28,6 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 		else {
 			System.err.println("Parent null");
 		}
-		//		System.out.println(this.parent.getName() + " " + this.getSourcePath());
 	}
 
 	/**
