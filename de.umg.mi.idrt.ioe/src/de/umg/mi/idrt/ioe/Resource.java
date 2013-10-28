@@ -189,6 +189,7 @@ public class Resource {
 				+ "itemstatus-unchecked2.png";
 
 		public static final String ONTOLOGYTREE_ROOTNODE_NAME = "Source";
+		public static final String LINK_ICON = IMAGE_PATH + "arrow.gif";
 	}
 
 	public class ODM {
@@ -295,6 +296,9 @@ public class Resource {
 			public class IEO {
 				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
 				public final static String LOADTARGETPROJECTS = "de.umg.mi.idrt.ioe.LoadTargetProjects";
+				public final static String SAVETARGETPROJECT = "de.umg.mi.idrt.ioe.SaveTargetProject";
+				public final static String SAVETARGET = "de.umg.mi.idrt.ioe.SaveTarget";
+				public final static String INCREMENTTARGETVERSION = "de.umg.mi.idrt.ioe.IncrementTargetVersion";
 				
 			}
 
