@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
+
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -22,6 +24,7 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
@@ -64,6 +67,7 @@ import org.osgi.framework.Bundle;
 import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
@@ -234,6 +238,8 @@ public class OntologyEditorView extends ViewPart {
 						setStagingSchemaName(schema);
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
+						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));
+						
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
@@ -559,7 +565,10 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				incrementVersion();
+				//incrementVersion();
+				ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.INCREMENTTARGETVERSION);
+				Application.executeCommand(command);
+				
 			}
 
 			@Override
@@ -625,8 +634,6 @@ public class OntologyEditorView extends ViewPart {
 		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
 		lblNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-
-
 		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
 			setTargetNameVersion( ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getTargetDBSchema(), "2" );
 
@@ -656,11 +663,14 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
+		
 		btnExpandAllSource.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				targetComposite.setRedraw(false);
 				targetTreeViewer.expandAll();
+				targetComposite.setRedraw(true);
 			}
 
 			@Override
@@ -682,7 +692,9 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				stagingComposite.setRedraw(false);
 				stagingTreeViewer.expandAll();
+				stagingComposite.setRedraw(true);
 			}
 
 			@Override
@@ -736,13 +748,27 @@ public class OntologyEditorView extends ViewPart {
 		version++;
 		lblVersionText.setText(""+version);
 		composite_2.layout();
+		
+
+	}
+	
+	public static void incrementVersionRefresh() {
+
+		lblVersionText.setText( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
+		composite_2.layout();
+		
+
 	}
 
 	public static void setTargetNameVersion(String name, String version) {
 		System.out.println("SETTING: " + name + " " + version);
-		lblNameText.setText(name);
+		lblNameText.setText(""+name);
 		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblVersionText.setText(version);
+		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
+		((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
+		//((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf(version));
+		
 		composite_2.layout();
 	}
 	public static void setTargetNameVersion(String version) {
@@ -836,8 +862,12 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
-				for (OntologyTreeNode nnode : node.getChildren())
+				for (OntologyTreeNode nnode : node.getChildren()) {
 					System.out.println(nnode.getName());
+				}
+				for (TreeNode path : node.getPath()) {
+					System.out.println("path: " + path.toString());
+				}
 			}
 
 			@Override
@@ -941,7 +971,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSourceContent() {
-
+long time =System.currentTimeMillis();
 		if (!init) {
 			init();
 		}
@@ -955,12 +985,13 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 
 		stagingTreeViewer.setInput(new OTtoTreeContentProvider().getStagingModel());
-		stagingTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
+		stagingTreeViewer.expandToLevel(2);
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 		.setTreeViewer(stagingTreeViewer);
 
 		stagingComposite.layout();
 		mainComposite.layout();
+		System.out.println(System.currentTimeMillis()-time +"ms");
 	}
 
 	public static TreeViewer getTargetTreeViewer() {
@@ -1000,8 +1031,15 @@ public class OntologyEditorView extends ViewPart {
 		return bindingContext;
 	}
 	private String getLatestVersion(String string) {
-		//TODO GET VERSION
-		return "0";
+
+		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
+			return String.valueOf( ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion() ) ;
+
+		} else {
+			return "0";
+		}
+		
+
 	}
 
 	public static String getTargetSchemaName() {
