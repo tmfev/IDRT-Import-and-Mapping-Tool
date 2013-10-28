@@ -35,7 +35,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class TOSConnector {
 
 	public static String DEFAULT_CONTEXTNAME = "Default";
-private static int exit;
+	private static int exit;
 	private static String contextName;
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
@@ -51,7 +51,7 @@ private static int exit;
 
 		try {
 			tos = new tos.tosidrtconnector_0_4.TOSIDRTConnector();
-			
+
 			contextName = "Default";
 
 			// trying to get the server-data from the currently selected server
@@ -64,7 +64,6 @@ private static int exit;
 			// the
 			// editors
 
-			
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
 			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
@@ -84,18 +83,18 @@ private static int exit;
 				e1.printStackTrace();
 			}
 
-//			String schema = ServerView.getCurrentSchema();
+			// String schema = ServerView.getCurrentSchema();
 			// defaultProps.getProperty("schema");
-			
-//			String serverUniqueName = OntologyEditorView.getCurrentServer().;
-			
+
+			// String serverUniqueName = OntologyEditorView.getCurrentServer().;
+
 			Server currentServer = OntologyEditorView.getStagingServer();
-//			String serverUniqueName = ServerView.getSelectedServer();
+			// String serverUniqueName = ServerView.getSelectedServer();
 			Console.info(currentServer.getSchema());
-//			if (serverUniqueName != null) {
-//				currentServer = ServerList.getTargetServers().get(
-//						serverUniqueName);
-//			}
+			// if (serverUniqueName != null) {
+			// currentServer = ServerList.getTargetServers().get(
+			// serverUniqueName);
+			// }
 
 			Console.info("Current server: " + currentServer.toString());
 
@@ -104,9 +103,9 @@ private static int exit;
 						+ currentServer.getName() + "(\""
 						+ currentServer.getSchema() + "\")\" for db query.");
 
-//				currentServer.setSchema(schema);
-//				OntologyEditorView.setCurrentServer(currentServer);
-			
+				// currentServer.setSchema(schema);
+				// OntologyEditorView.setCurrentServer(currentServer);
+
 				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
 				System.out
@@ -119,13 +118,38 @@ private static int exit;
 				setContextVariable("OraclePassword",
 						currentServer.getPassword());
 				setContextVariable("OracleDB", currentServer.getSID());
-				// setContextVariable("Job", "ontology");
 				setContextVariable("SQLTable", currentServer.getTable());
 				setContextVariable("OracleSchema", currentServer.getSchema());
 
-				Application.getStatusView().addMessage(
-						"i2b2 project \"" + currentServer.getSchema()
-								+ "\"selected via ServerView.");
+				//
+
+				//setContextVariable("OracleHost", currentServer.getIp());
+				//setContextVariable("OraclePort", currentServer.getPort());
+				//setContextVariable("OracleSid", currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_Username",
+						currentServer.getUser());
+				setContextVariable("DB_StagingI2B2_Password",
+						currentServer.getPassword());
+				setContextVariable("DB_StagingI2B2_Schema",
+						currentServer.getSchema());
+				
+				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+
+				
+				
+				setContextVariable("TableIEOTargetOntology", "IOE_TARGET_ONTOLOGY");
+				setContextVariable("TableIEOTarget", "IOE_TARGET");
+				setContextVariable("TableIEOTargetProject", "IOE_TARGET_PROJECT");
+
+				
+				//
+
+				/*
+				 * Application.getStatusView().addMessage( "i2b2 project \"" +
+				 * currentServer.getSchema() + "\"selected via ServerView.");
+				 */
+
 			}
 
 		} catch (Exception e) {
@@ -136,14 +160,12 @@ private static int exit;
 		return tos;
 
 	}
-	
-
 
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
-		
+
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -168,19 +190,20 @@ private static int exit;
 					Application.getStatusView().addErrorMessage(message);
 					Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
 							+ " / " + tos.getException() + " / "
-							+ tos.getStatus() + " / " + tos.getExceptionStackTrace()
-							+ " / " + tos.getContext().SQLCommand);
+							+ tos.getStatus() + " / "
+							+ tos.getExceptionStackTrace() + " / "
+							+ tos.getContext().SQLCommand);
 
 				}
 			}
 		}).run();
-	
+
 	}
-	
-	public void runJob(){
-		
+
+	public void runJob() {
+
 		getConnection().runJobInTOS((getARGV()));
-		
+
 	}
 
 	public static void setContextVariable(String key, String value) {
@@ -227,7 +250,7 @@ private static int exit;
 	public static void readTargetOntology(String targetID) {
 
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				setContextVariable("Job", "read_target_ontology");
@@ -241,7 +264,6 @@ private static int exit;
 				}
 			}
 		}).run();
-		
 
 	}
 
@@ -272,10 +294,11 @@ private static int exit;
 
 	}
 
-	public static int loadSourceToTarget(String targetID, final String tmpDataFile) {
+	public static int loadSourceToTarget(String targetID,
+			final String tmpDataFile) {
 
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -285,7 +308,7 @@ private static int exit;
 
 				try {
 					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-					exit =	tos.runJobInTOS((getARGV()));
+					exit = tos.runJobInTOS((getARGV()));
 				} catch (Exception e) {
 					e.printStackTrace();
 					Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
@@ -293,19 +316,18 @@ private static int exit;
 				}
 			}
 		}).run();
-		
+
 		return exit;
 	}
-	
-	
+
 	public static int uploadProject() {
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
-				
+
 				try {
 					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 					exit = tos.runJobInTOS((getARGV()));
@@ -315,13 +337,16 @@ private static int exit;
 				}
 			}
 		}).run();
-		
+
 		return exit;
 
 	}
+
 	/**
 	 * Sets all context-variables.
-	 * @param contexts The contexts to set.
+	 * 
+	 * @param contexts
+	 *            The contexts to set.
 	 */
 	public static void setCompleteContext(HashMap<String, String> contexts) {
 		Iterator<String> contextsIt = contexts.keySet().iterator();

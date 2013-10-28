@@ -21,6 +21,8 @@ public class OntologyTree extends JTree {
 	private String importDate = "";
 	private TreeViewer treeViewer = null;
 	private OntologyTreeNode _lastActiveNode;
+	
+	private OntologyTreeNode stagingRootNode;
 
 	// naked constructor for serialization
 	public OntologyTree() {
@@ -335,5 +337,17 @@ public class OntologyTree extends JTree {
 		this.getNodeLists().removeNode(node);
 		
 		
+	}
+
+	/**
+	 * @param node
+	 */
+	public void setStagingRootNode(OntologyTreeNode node) {
+		stagingRootNode = node;
+		
+	}
+	
+	public OntologyTreeNode getStagingRootNode() {
+		return stagingRootNode;
 	}
 }

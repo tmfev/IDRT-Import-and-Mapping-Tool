@@ -156,8 +156,8 @@ public class MyOntologyTree extends JPanel {
 				"OntologyTreeSourceRootNode");
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
-		rootNode.setTreePathLevel(-1);
 		rootNode.setNodeType(NodeType.ROOT);
+		rootNode.setTreePathLevel(-1);
 
 		_ontologyTreeSource = new OntologyTree(rootNode);
 
@@ -239,14 +239,12 @@ public class MyOntologyTree extends JPanel {
 		// OTNode targetNode = new OTNode( "TargetOntology" );
 
 		subRootNode = new OntologyTreeNode("Target-Ontology");
-		System.out.println("NEW SUBROOTNODE");
-
 		subRootNode.setID("i2b2");
 		subRootNode.setTreePath("\\i2b2\\");
 		subRootNode.setTreePathLevel(0);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.I2B2ROOT);
-		subRootNode.getTargetNodeAttributes().setSourcePath("\\i2b2\\");
+		subRootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
 		subRootNode.getTargetNodeAttributes().setChanged(false);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.getTargetNodeAttributes().setName("i2b2");
@@ -495,8 +493,8 @@ public class MyOntologyTree extends JPanel {
 		 */
 
 		if (sourceNode.getOntologyCellAttributes() != null) {
-			newNode.getTargetNodeAttributes().setSourcePath(
-					sourceNode.getTargetNodeAttributes().getSourcePath());
+			newNode.getTargetNodeAttributes().setSubNodeList((
+					sourceNode.getTargetNodeAttributes().getSubNodeList()));
 
 			newNode.getTargetNodeAttributes().setVisualattributes(
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
@@ -523,268 +521,137 @@ public class MyOntologyTree extends JPanel {
 		return newNode;
 	}
 
-	/* OT Commands */
-	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
-		//		System.out.println("TARGET: " + targetNode.getName());
-		//		System.out.println("ÜARENT: " + targetNode.getParent().getName());
-		if (sourceNode==null) {
+	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target) {
 
-			int minLevel = Integer.MAX_VALUE;
+		final OntologyTreeNode node = new OntologyTreeNode(source);
+		node.getTargetNodeAttributes().setVisualattributes(source.getOntologyCellAttributes().getC_VISUALATTRIBUTES());
+		node.getTargetNodeAttributes().addStagingPath(source.getTreePath());
+		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
-			IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
-					.getSelection();
-			Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-			while (nodeIterator.hasNext()) {
-				final OntologyTreeNode sourceNode1 = nodeIterator.next();
-
-				if (minLevel > sourceNode1.getTreePathLevel())
-					minLevel = sourceNode1.getTreePathLevel();
-			}
-			nodeIterator = selection.iterator();
-			while (nodeIterator.hasNext()) {
-				final OntologyTreeNode sourceNode1 = nodeIterator.next();
-
-				if (sourceNode1.getTreePathLevel() == minLevel){
-
-					final OntologyTreeNode newNode = new OntologyTreeNode(
-							sourceNode1.getName());
-
-					newNode.setID(sourceNode1.getID());
-					newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-
-					if (sourceNode1.getOntologyCellAttributes() != null) {
-						newNode.getTargetNodeAttributes().setSourcePath(
-								sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
-
-						newNode.getTargetNodeAttributes().setVisualattributes(
-								sourceNode1.getOntologyCellAttributes()
-								.getC_VISUALATTRIBUTES());
-						newNode.getTargetNodeAttributes().setName(sourceNode1.getName());
-						newNode.getTargetNodeAttributes().setChanged(true);
-					}
-					else {
-						System.out.println("sourceNode.getOntologyCellAttributes() == null");
-					}
-
-					newNode.setTreePath( targetNode.getTreePath() + newNode.getID() + "\\"  );
-					newNode.setTreePathLevel( targetNode.getTreePathLevel() + 1 );
-					OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
-					if (testNode==null) {
-						targetNode.add(newNode);
-						this.getOntologyTreeTarget().getNodeLists().add(newNode);
-						if (sourceNode1.hasChildren()) {
-							for (OntologyTreeNode child : sourceNode1.getChildren()) {
-								copySourceNodeToTarget(child, newNode);
-							}
-						}
-					}
-					else {
-						boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node already exists in the target ontology!\nDo you want to rename the Path?");
-						if (confirm) {
-							Display display = Application.getDisplay().getActiveShell().getDisplay();
-							Application.getOntologyView().getSite().getShell();
-
-							Point pt = display.getCursorLocation();
-
-							Monitor [] monitors = display.getMonitors();
-							for (int i= 0; i<monitors.length; i++) {
-								if (monitors [i].getBounds().contains(pt)) {
-									Rectangle rect = monitors [i].getClientArea();
-									pt.x=rect.x;
-									pt.y=rect.y;
-									break;
-
-								}
-							}
-
-							final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
-									| SWT.TOOL);
-							dialog.setLocation(pt.x+Application.getOntologyView().getViewSite().getShell().getSize().x/2,Application.getOntologyView().getViewSite().getShell().getSize().y/2+pt.y);
-							final Composite actionMenu = new Composite(dialog, SWT.NONE);
-							actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
-
-							final Text text = new Text(actionMenu, SWT.NONE);
-							final String oldID = newNode.getID();
-							text.setText(oldID+"_2");
-
-							Button btnOK = new Button(actionMenu,SWT.PUSH);
-							btnOK.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png"));
-							btnOK.setToolTipText("OK");
-							btnOK.addSelectionListener(new SelectionListener() {
-
-								@Override
-								public void widgetSelected(SelectionEvent e) {
-									String newID = text.getText();
-									newNode.setID(newID);
-
-									String oldTreePath = newNode.getTreePath();
-									String newTreePath = oldTreePath.replace(oldID, newID);
-									newNode.setTreePath(newTreePath);
-									OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
-									if (testNode==null) {
-										dialog.close();
-										targetNode.add(newNode);
-										getOntologyTreeTarget().getNodeLists().add(newNode);
-										if (sourceNode1.hasChildren()) {
-											for (int x = 0; x < sourceNode1.getChildCount(); x++) {
-												OntologyTreeNode child = (OntologyTreeNode) sourceNode1
-														.getChildAt(x);
-												copySourceNodeToTarget(child, newNode);
-											}
-										}
-
-									}
-									else {
-										dialog.close();
-										MessageDialog.openError(Application.getShell(), "Cannot Add Node!", "This Node is already present!\nPlease choose an unique name!");
-									}
-
-								}
-
-								@Override
-								public void widgetDefaultSelected(SelectionEvent e) {
-
-								}
-							});
-
-							actionMenu.pack();
-							dialog.pack();
-							dialog.open();
-
-							while (!dialog.isDisposed ()) {
-								if (!display.readAndDispatch ()) display.sleep ();
-							}
-						}
-					}
-					OntologyEditorView.setSelection(newNode);
-					OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode,
-							true);
-				}
+		node.setTreePath(target.getTreePath() + node.getID() + "\\");
+		node.setTreePathLevel(target.getTreePathLevel() + 1);
+		node.getTargetNodeAttributes().setName(node.getName());
+		OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool()
+				.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(node.getTreePath());
+		if (testNode==null) {
+			target.add(node);
+			this.getOntologyTreeTarget().getNodeLists().add(node);
+			for (OntologyTreeNode child : source.getChildren()) {
+				deepCopy(child, node);
 			}
 		}
 		else {
-			final OntologyTreeNode newNode = new OntologyTreeNode(
-					sourceNode.getName());
+			boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node already exists in the target ontology!\nDo you want to rename the Path?");
+			if (confirm) {
+				Display display = Application.getDisplay().getActiveShell().getDisplay();
+				Application.getOntologyView().getSite().getShell();
 
-			newNode.setID(sourceNode.getID());
-			newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
+				Point pt = display.getCursorLocation();
 
-			if (sourceNode.getOntologyCellAttributes() != null) {
-				newNode.getTargetNodeAttributes().setSourcePath(
-						sourceNode.getOntologyCellAttributes().getC_FULLNAME());
+				Monitor [] monitors = display.getMonitors();
+				for (int i= 0; i<monitors.length; i++) {
+					if (monitors [i].getBounds().contains(pt)) {
+						Rectangle rect = monitors [i].getClientArea();
+						pt.x=rect.x;
+						pt.y=rect.y;
+						break;
 
-				newNode.getTargetNodeAttributes().setVisualattributes(
-						sourceNode.getOntologyCellAttributes()
-						.getC_VISUALATTRIBUTES());
-				newNode.getTargetNodeAttributes().setName(sourceNode.getName());
-				newNode.getTargetNodeAttributes().setChanged(true);
-			}
-			else {
-				System.out.println("sourceNode.getOntologyCellAttributes() == null");
-			}
-
-			newNode.setTreePath( targetNode.getTreePath() + newNode.getID() + "\\"  );
-			newNode.setTreePathLevel( targetNode.getTreePathLevel() + 1 );
-			OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
-			if (testNode==null) {
-				targetNode.add(newNode);
-				this.getOntologyTreeTarget().getNodeLists().add(newNode);
-				if (sourceNode.hasChildren()) {
-					for (int x = 0; x < sourceNode.getChildCount(); x++) {
-						OntologyTreeNode child = (OntologyTreeNode) sourceNode
-								.getChildAt(x);
-						copySourceNodeToTarget(child, newNode);
 					}
 				}
-			}
-			else {
-				boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node already exists in the target ontology!\nDo you want to rename the Path?");
-				if (confirm) {
-					Display display = Application.getDisplay().getActiveShell().getDisplay();
-					Application.getOntologyView().getSite().getShell();
 
-					Point pt = display.getCursorLocation();
+				final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
+						| SWT.TOOL);
+				dialog.setLocation(pt.x+Application.getOntologyView().getViewSite().getShell().getSize().x/2,Application.getOntologyView().getViewSite().getShell().getSize().y/2+pt.y);
+				final Composite actionMenu = new Composite(dialog, SWT.NONE);
+				actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
 
-					Monitor [] monitors = display.getMonitors();
-					for (int i= 0; i<monitors.length; i++) {
-						if (monitors [i].getBounds().contains(pt)) {
-							Rectangle rect = monitors [i].getClientArea();
-							pt.x=rect.x;
-							pt.y=rect.y;
-							break;
+				final Text text = new Text(actionMenu, SWT.NONE);
+				final String oldID = node.getID();
+				text.setText(oldID+"_2");
 
+				Button btnOK = new Button(actionMenu,SWT.PUSH);
+				btnOK.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png"));
+				btnOK.setToolTipText("OK");
+				btnOK.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						String newID = text.getText();
+						node.setID(newID);
+
+						String oldTreePath = node.getTreePath();
+						String newTreePath = oldTreePath.replace(oldID, newID);
+						node.setTreePath(newTreePath);
+						OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees()
+								.getOntologyTreeTarget().getNodeLists().getNodeByPath(node.getTreePath());
+						if (testNode==null) {
+							dialog.close();
+							target.add(node);
+							getOntologyTreeTarget().getNodeLists().add(node);
+							for (OntologyTreeNode child : source.getChildren()) {
+								deepCopy(child, node);
+							}
+						}
+						else {
+							dialog.close();
+							MessageDialog.openError(Application.getShell(), "Cannot Add Node!", "This Node is already present!\nPlease choose an unique name!");
 						}
 
 					}
 
-					final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
-							| SWT.TOOL);
-					dialog.setLocation(pt.x+Application.getOntologyView().getViewSite().getShell().getSize().x/2,Application.getOntologyView().getViewSite().getShell().getSize().y/2+pt.y);
-					final Composite actionMenu = new Composite(dialog, SWT.NONE);
-					actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
 
-					final Text text = new Text(actionMenu, SWT.NONE);
-					final String oldID = newNode.getID();
-					text.setText(oldID+"_2");
-
-					Button btnOK = new Button(actionMenu,SWT.PUSH);
-					btnOK.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png"));
-					btnOK.setToolTipText("OK");
-					btnOK.addSelectionListener(new SelectionListener() {
-
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							String newID = text.getText();
-							newNode.setID(newID);
-
-							String oldTreePath = newNode.getTreePath();
-							String newTreePath = oldTreePath.replace(oldID, newID);
-							newNode.setTreePath(newTreePath);
-							OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(newNode.getTreePath());
-							if (testNode==null) {
-								dialog.close();
-								targetNode.add(newNode);
-								getOntologyTreeTarget().getNodeLists().add(newNode);
-								if (sourceNode.hasChildren()) {
-									for (int x = 0; x < sourceNode.getChildCount(); x++) {
-										OntologyTreeNode child = (OntologyTreeNode) sourceNode
-												.getChildAt(x);
-										copySourceNodeToTarget(child, newNode);
-									}
-								}
-							}
-							else {
-								dialog.close();
-								MessageDialog.openError(Application.getShell(), "Cannot Add Node!", "This Node is already present!\nPlease choose an unique name!");
-							}
-						}
-
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
-					});
-
-					actionMenu.pack();
-					dialog.pack();
-					dialog.open();
-
-					while (!dialog.isDisposed ()) {
-						if (!display.readAndDispatch ()) display.sleep ();
 					}
+				});
+
+				actionMenu.pack();
+				dialog.pack();
+				dialog.open();
+
+				while (!dialog.isDisposed ()) {
+					if (!display.readAndDispatch ()) display.sleep ();
 				}
 			}
-			OntologyEditorView.setSelection(newNode);
-			OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode,
-					true);
 		}
+
+
+		//		System.out.println("added t: " + target.getName() + " n: " + node.getName());
+		
+	}
+
+
+	/* OT Commands */
+	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
+		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+				.getSelection();
+		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+
+		int minLevel = Integer.MAX_VALUE;
+
+		while (nodeIterator.hasNext()) {
+			final OntologyTreeNode sourceNode1 = nodeIterator.next();
+
+			if (minLevel > sourceNode1.getTreePathLevel())
+				minLevel = sourceNode1.getTreePathLevel();
+		}
+		nodeIterator = selection.iterator();
+
+		while (nodeIterator.hasNext()) {
+			final OntologyTreeNode sourceNode1 = nodeIterator.next();
+			if (sourceNode1.getTreePathLevel() == minLevel){
+				deepCopy(sourceNode1, targetNode);
+			}
+		}
+		OntologyEditorView.setSelection(targetNode);
+		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
+				true);
 	}
 
 	/* OT Commands */
 	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
 			OntologyTreeNode targetNode, String attribute) {
 		System.out.println("setting attribute: " + attribute);
-		//		System.out.println("------");
-		//		System.out.println("setTargetAttributesAsSourcePath:");
 
 		if (sourceNode != null) {
 			System.out.println(" - do:" + sourceNode.getName() + " -> "
@@ -843,16 +710,16 @@ public class MyOntologyTree extends JPanel {
 					| SWT.TOOL);
 			dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
 					.getCursorLocation());
-			
+
 			final Composite actionMenu = new Composite(dialog, SWT.NONE);
 			actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
 
-			
+
 			/**
 			 * Menu for Combine Actions
 			 */
 			final Menu menu = new Menu(dialog, SWT.POP_UP);
-			
+
 			//Set StartDate
 			MenuItem startMenuItem = new MenuItem(menu, SWT.PUSH);
 			startMenuItem.setText("Add as Start Date");
@@ -915,30 +782,30 @@ public class MyOntologyTree extends JPanel {
 				}
 			});
 			new MenuItem(menu, SWT.SEPARATOR);
-			
+
 			//Merge Ontologies (ICD10 etc)
 			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.PUSH);
 			mergeOntMenuItem.setText("Merge with Standard Ontology");
 			mergeOntMenuItem.addSelectionListener(new SelectionListener() {
-				
+
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
 					//TODO IMPLEMENT
 					dialog.close();
-//					ActionCommand command = new ActionCommand(
-//							Resource.ID.Command.OTCOPY);
-//					command.addParameter(
-//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-//							"");
-//					command.addParameter(
-//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-//							targetPath);
-//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
-//					Application.executeCommand(command);
-//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
-					
+					//					ActionCommand command = new ActionCommand(
+					//							Resource.ID.Command.OTCOPY);
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
+					//							"");
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
+					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
+					//					Application.executeCommand(command);
+					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
+
 					System.out.println("COPY DONE");
-					
+
 					System.out.println(Resource.ID.Command.COMBINENODE);
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
@@ -947,12 +814,12 @@ public class MyOntologyTree extends JPanel {
 							targetPath);
 					Application.executeCommand(command2);
 				}
-				
+
 				@Override
 				public void widgetDefaultSelected(SelectionEvent arg0) {
 				}
 			});
-			
+
 			final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
 			toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
 
@@ -981,10 +848,10 @@ public class MyOntologyTree extends JPanel {
 
 			tltmCombine.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
-						Rectangle bounds = tltmCombine.getBounds();
-						Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
-						menu.setLocation(point);
-						menu.setVisible(true);
+					Rectangle bounds = tltmCombine.getBounds();
+					Point point = toolBar.toDisplay(bounds.x, bounds.y + bounds.height);
+					menu.setLocation(point);
+					menu.setVisible(true);
 				}
 			});
 

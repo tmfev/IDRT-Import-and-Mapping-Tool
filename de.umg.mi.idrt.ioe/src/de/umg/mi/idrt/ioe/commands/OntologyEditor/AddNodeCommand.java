@@ -19,7 +19,6 @@ public class AddNodeCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("Adding Node");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
-
 		
 		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
 
@@ -28,7 +27,7 @@ public class AddNodeCommand extends AbstractHandler {
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.setNodeType(NodeType.ITEMGROUP);
-		subRootNode.getTargetNodeAttributes().setSourcePath("");
+		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setChanged(true);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.setName("New Node");
@@ -37,7 +36,7 @@ public class AddNodeCommand extends AbstractHandler {
 		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);
 		OntologyEditorView.setCurrentTargetNode(subRootNode);
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-		targetTreeViewer.expandToLevel(subRootNode, 10);
+//		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
 		

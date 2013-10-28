@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.view;
 
+import java.util.ArrayList;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -36,6 +38,7 @@ import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 
 /**
@@ -181,7 +184,7 @@ public class EditorTargetInfoView extends ViewPart {
 					if (row == 1) {
 						final Text text = new Text(_infoTable, SWT.NONE);
 						text.setForeground(item.getForeground());
-//						text.setText(item.getText(col));
+						//						text.setText(item.getText(col));
 						text.setText(_node.getName());
 						text.setForeground(item.getForeground());
 						text.selectAll();
@@ -402,7 +405,7 @@ public class EditorTargetInfoView extends ViewPart {
 		// itemLists){
 		// Debug.f("setNode",this);
 		// Console.info("setting node");
-//		System.out.println("setting node (" + node.getName() + ")");
+		//		System.out.println("setting node (" + node.getName() + ")");
 		_node = node;
 		refresh();
 	}
@@ -469,15 +472,15 @@ public class EditorTargetInfoView extends ViewPart {
 					+ row + ".");
 			return null;
 		}
-		
+
 		TableItem item = items[row];
 		item.setText(1, value != null && !value.equals("null") ? value : "");
 		return item;
 	}
 
 	public static void executeRefresh() {
-//		System.out.println("executeRefresh for text:\"" + _node.getName()
-//				+ "\"");
+		//		System.out.println("executeRefresh for text:\"" + _node.getName()
+		//				+ "\"");
 
 		if (parentPane == null) {
 			Debug.e("no pane avaible @OntologyNodeEditorView");
@@ -491,8 +494,12 @@ public class EditorTargetInfoView extends ViewPart {
 		TableItem[] items = _infoTable.getItems();
 
 		int row = 0;
+		ArrayList<String> stagingPathList = new ArrayList<String>();
+		for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
+			stagingPathList.add(subNode.getStagingPath());
+		}
 
-		addValueItem(items, row++, String.valueOf(attributes.getSourcePath()));
+		addValueItem(items, row++, stagingPathList.toString());
 		addValueItem(items, row++, String.valueOf(_node.getName()));
 		addValueItem(items, row++,
 				String.valueOf(attributes.isChanged() == true ? "true" : false));

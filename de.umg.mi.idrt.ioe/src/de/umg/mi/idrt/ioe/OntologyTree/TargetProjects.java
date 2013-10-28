@@ -111,7 +111,12 @@ public class TargetProjects {
 		TargetProject targetProject = this.getTargetProjectByID(target.getTargetProjectID());
 		targetProject.add(target);
 		
-		if (this.getSelectedTarget() == null || target.getLastModified().after(this.getSelectedTarget().getLastModified())){
+		
+		System.out.println("this.getSelectedTarget() == null:" + ( this.getSelectedTarget() == null ? "true" : "false") );
+		
+		if (this.getSelectedTarget() == null || 
+				( target.getLastModified() != null && target.getLastModified().after(this.getSelectedTarget().getLastModified()))){
+			System.out.println("Setting new selectedTarget:" + target.getLastModified() + "|" + target.getTargetDBSchema() );
 			this.setSelectedTarget(target);
 			this.setSelectedTargetProject(targetProject);
 		}
@@ -119,6 +124,20 @@ public class TargetProjects {
 
 	public boolean isEmpty(){
 		return list.isEmpty();
+	}
+	
+	public Target incrementVersion(Target target){
+		
+		System.out.println("WHAT? target.getTargetDBSchema(): " + ( target.getTargetDBSchema() == null ? "isNull" : "isNotNull" + target.getTargetDBSchema() ));
+		System.out.println("WHAT? target.getTargetProjectID(): " + ( target.getTargetProjectID() < -11 ? "isNull" : "isNotNull" + target.getTargetProjectID() ));
+		
+		
+		Target newTarget = new Target();
+		newTarget.setTargetDBSchema(target.getTargetDBSchema());
+		newTarget.setTargetProjectID(target.getTargetProjectID());
+		newTarget.setVersion(-1);
+		addTarget(newTarget);
+		return newTarget;
 	}
 
 }

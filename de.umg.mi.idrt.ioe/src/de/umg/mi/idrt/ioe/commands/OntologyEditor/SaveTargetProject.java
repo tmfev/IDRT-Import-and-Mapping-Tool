@@ -36,9 +36,11 @@ public class SaveTargetProject extends AbstractHandler {
 		// init
 		OntologyTree ontologyTreeTarget = null;
 
+		System.out.println("* t1");
+		
 		try {
 			// TODO save target tmp file
-
+			System.out.println("* t2");
 			_writer = new CSVWriter(new OutputStreamWriter(
                     new FileOutputStream(tempFilePath), "UTF-8"),
                     ';');
@@ -53,13 +55,19 @@ public class SaveTargetProject extends AbstractHandler {
 			fields[5] = "TARGET_DB_SCHEMA";
 			_writer.writeNext(fields);
 			
-			
+			System.out.println("* t3");
 			
 			
 			OntologyTreeTargetRootNode targetTreeRoot = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot());
 			
 			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
 			Target target = null;
+			System.out.println("* t4");
+			System.out.println("targetProject == null: " + ( targetProject == null ? "isNull" : "isNotNull" ) );
+			System.out.println("target == null: " + ( targetTreeRoot.getTargetProjects().getSelectedTarget() == null ? "isNull" : "isNotNull" ) );
+			System.out.println("targetTreeRoot.getTargetProjects() == null: " + ( targetTreeRoot.getTargetProjects() == null ? "isNull" : "isNotNull" ) );
+			System.out.println("targetTreeRoot.getTargetProjects().getSelectedTarget() == null: " + ( targetTreeRoot.getTargetProjects().getSelectedTarget() == null ? "isNull" : "isNotNull" ) );
+			
 			
 			if (targetProject == null || targetTreeRoot.getTargetProjects().getSelectedTarget() == null ){
 				Console.error("No TargetInstance and/or TargetVersion available to save.");
@@ -95,9 +103,7 @@ public class SaveTargetProject extends AbstractHandler {
 
 		TOSConnector tos = new TOSConnector();
 
-		TOSConnector.setContextVariable("Job", "save_target_project");
-		tos.setContextVariable("Var1", "1"); // target project id
-		tos.setContextVariable("Var2", "1"); // target id
+		TOSConnector.setContextVariable("Job", "SaveTargetProjects");
 		tos.setContextVariable("DataFile", tempFilePath);
 
 		try {

@@ -22,14 +22,10 @@ public class etlStagingI2B2ToTargetI2B2 extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		//String tmpDataFile = "C:/I2B2ImportProject/tmp_targettreesave.csv";
-
-		Console.info("Saving Target Ontology.");
+		Console.info("ETL StagingI2B2 to TargetI2B2.");
 		
 		TOSConnector tos = new TOSConnector();
 		
-		
-		Console.info("TOSConnector: getOntology()");
 
 		try {
 
@@ -39,11 +35,10 @@ public class etlStagingI2B2ToTargetI2B2 extends AbstractHandler {
 			tos.runJob();
 
 		} catch (Exception e) {
-			String message = "Error while using a TOS-plugin with function getOntology(): "
+			Console.error(e);
+			String message = "Error while using a TOS-plugin with function ETL StagingI2B2 to TargetI2B2: "
 					+ e.getMessage();
-			Console.error(message);
 			Application.getStatusView().addErrorMessage(message);
-			Console.info("TOS-Error2: ");
 
 		}
 		

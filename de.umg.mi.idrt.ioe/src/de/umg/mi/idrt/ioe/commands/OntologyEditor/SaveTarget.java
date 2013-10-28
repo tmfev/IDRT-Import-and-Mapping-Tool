@@ -134,6 +134,8 @@ public class SaveTarget extends AbstractHandler {
 
 	private void writeNode(OntologyTreeNode node) {
 
+		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
+		
 		String[] fields = new String[9];
 		fields[0] = targetID;
 		fields[1] = String.valueOf(node.getTreePathLevel());
@@ -146,7 +148,7 @@ public class SaveTarget extends AbstractHandler {
 		fields[8] = node.getTargetNodeAttributes().getVisualattribute();
 
 		_writer.writeNext(fields);
-
+		}
 		for (int x = 0; x < node.getChildCount(); x++) {
 			writeNode((OntologyTreeNode) node.getChildAt(x));
 		}

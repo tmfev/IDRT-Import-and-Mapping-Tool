@@ -8,6 +8,8 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
@@ -30,13 +32,13 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 
 		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
 
-//		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
-//				.getNodeLists().getNodeByPath(sourceNodePath);
-		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
-				.getNodeLists().getNodeByPath(targetNodePath);
-System.out.println("targetNodePath "+targetNodePath);
+		//		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource()
+		//				.getNodeLists().getNodeByPath(sourceNodePath);
+//		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget()
+//				.getNodeLists().getNodeByPath(targetNodePath);
+		OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
+		System.out.println("targetNodePath "+targetNodePath);
 		if (targetNode != null) {
-
 			myOT.copySourceNodeToTarget(null,targetNode);
 
 		} else {
