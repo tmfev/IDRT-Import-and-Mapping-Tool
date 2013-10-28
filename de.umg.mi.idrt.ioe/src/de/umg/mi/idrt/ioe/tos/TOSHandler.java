@@ -27,7 +27,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TOSHandler {
 
-	OntologyTree _ot = null;
+	static OntologyTree _ot = null;
 
 	private OntologyTree _ontologyTreeTarget;
 	
@@ -97,11 +97,11 @@ public class TOSHandler {
 			Date IMPORT_DATE, String SOURCESYSTEM_CD, String VALUETYPE_CD,
 			String M_EXCLUSION_CD, String C_PATH, String C_SYMBOL) {
 
-		OntologyTree _ot = OntologyEditorView.getI2b2ImportTool()
-				.getMyOntologyTrees().getOntologyTreeSource();
+		
 
 		if (_ot == null)
-			System.out.println("_ot == null!!");
+			_ot = OntologyEditorView.getI2b2ImportTool()
+			.getMyOntologyTrees().getOntologyTreeSource();
 
 		// System.out.println("C_METADATAXML: ");
 		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
@@ -199,6 +199,16 @@ public class TOSHandler {
 		TargetProjects targetProjects = targetRootNode.getTargetProjects();
 		targetProjects.addTarget(target);
 
+	}
+	
+	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
+		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+
+		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
+		targetProjects.getSelectedTarget().setTargetID(targetID);
+		targetProjects.getSelectedTarget().setVersion(version);
+		targetProjects.getSelectedTargetProject().setTargetProjectID(targetProjectID);
+	
 	}
 
 }
