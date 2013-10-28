@@ -575,8 +575,11 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				
+				
 				OntologyTree ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
 						.getMyOntologyTrees().getOntologyTreeTarget();
+				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getTreeRoot()).getName());
 				OntologyTreeNode bla = ((OntologyTreeNode) ontologyTreeTarget
 						.getTreeRoot().getFirstChild());
 				System.out.println("childCount: " + bla.getChildCount());

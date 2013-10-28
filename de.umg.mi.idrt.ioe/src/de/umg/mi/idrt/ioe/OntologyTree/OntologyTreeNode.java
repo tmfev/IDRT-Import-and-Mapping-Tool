@@ -103,6 +103,17 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		//		this.treeSubChildren = new ArrayList<OntologyTreeSubNode>();
 		//		treeSubChildren.add(new OntologyTreeSubNode(this));
 	}
+	
+	/**
+	 * Copy Constructor
+	 * @param node
+	 */
+	public OntologyTreeNode (OntologyTreeNode node) {
+		this.children = new ArrayList<OntologyTreeNode>();
+		this.ontologyCellAttributes= node.getOntologyCellAttributes();
+		this.setName(node.getName());
+		this.setID(node.getID());
+	}
 
 	@Override
 	public boolean isLeaf() {

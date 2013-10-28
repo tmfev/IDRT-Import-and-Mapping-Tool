@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import java.util.Iterator;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -29,7 +31,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 	private MyOntologyTree myOT;
 	private final Viewer viewer;
 	private OntologyTreeNode sourceNode = null;
-	private DefaultMutableTreeNode targetNode = null;
+	private static DefaultMutableTreeNode targetNode = null;
 
 	public NodeDropListener(Viewer viewer) {
 		super(viewer);
@@ -84,16 +86,16 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - data: " + data.getClass().getSimpleName());
 		Console.info(" - data_toString: " + (String) path);
 
-		sourceNode = myOT.getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-		if (sourceNode == null) {
-			IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
-					.getSelection();
-			sourceNode = (OntologyTreeNode) selection.getFirstElement();
-		}
+		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+				.getSelection();
 		if (data.toString().equals("stagingTreeViewer")){
 			if (targetNode instanceof OntologyTreeNode) {
 				if (targetNode.isLeaf()) {
-					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(sourceNode.getTreePath());
+					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+					while (nodeIterator.hasNext()) {
+						OntologyTreeNode node = nodeIterator.next();
+					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(node.getTreePath());
+					}
 				}
 				else {
 					myOT.dropCommandCopyNodes(((OntologyTreeNode) targetNode).getTreePath(),dropOperation);
@@ -101,7 +103,11 @@ public class NodeDropListener extends ViewerDropAdapter {
 			}
 			else if (targetNode instanceof OntologyTreeSubNode) {
 				OntologyTreeSubNode subNode = (OntologyTreeSubNode)targetNode;
-				subNode.getParent().getTargetNodeAttributes().addStagingPath(sourceNode.getTreePath());
+				Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+				while (nodeIterator.hasNext()) {
+					OntologyTreeNode node = nodeIterator.next();
+					subNode.getParent().getTargetNodeAttributes().addStagingPath(node.getTreePath());
+				}
 			}
 		}
 		else if (data.toString().equals("subNode")) {
@@ -158,5 +164,9 @@ public class NodeDropListener extends ViewerDropAdapter {
 			TransferData transferType) {
 		dropOperation = operation;
 		return true;
+	}
+
+	public static DefaultMutableTreeNode getTargetNode() {
+		return targetNode;
 	}
 }
