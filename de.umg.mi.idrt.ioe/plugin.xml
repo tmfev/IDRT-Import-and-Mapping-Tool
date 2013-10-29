@@ -62,7 +62,7 @@
       </category>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadSourceAndCreateViews"
-            id			  ="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
+            id="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
             name="Load from i2b2DB ...">
       </command>
       <command

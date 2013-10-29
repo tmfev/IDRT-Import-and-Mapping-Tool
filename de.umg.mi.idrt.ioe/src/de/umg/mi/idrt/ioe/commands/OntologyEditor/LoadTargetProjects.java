@@ -80,14 +80,13 @@ public class LoadTargetProjects extends AbstractHandler {
 				
 				
 			}
-			System.out.println("Refreshing the GUI");
+			
 			//updateing the gui
 			OntologyEditorView.incrementVersionRefresh();
 			//targetProjects.getSelectedTarget()
 			
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			String message = "Error while using a TOS-plugin for job \"LoadTargetProjects\": "
 					+ e.getMessage();
 			Console.error(message);

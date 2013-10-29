@@ -56,42 +56,11 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			return null;
 		}
 
-//		ProgressMonitorDialog dialog = new ProgressMonitorDialog(
-//				Application.getShell());
-//		// move variables to fields to be used in the dialog
 		_event = event;
-//
-//		try {
-//
-//			dialog.run(true, true, new IRunnableWithProgress() {
-//				public void run(IProgressMonitor monitor) {
-//
-//					monitor.done();
-//				}
-//			});
-//		} catch (InvocationTargetException e) {
-//			Console.error(e);
-//			e.printStackTrace();
-//		} catch (InterruptedException e) {
-//			Console.error(e);
-//			e.printStackTrace();
-//		}
 
 		// create the source i2b2-Ontology-Editor view
 		try {
-//			editorSourceView = (EditorSourceView) PlatformUI.getWorkbench()
-//					.getActiveWorkbenchWindow().getActivePage()
-//					.showView(Resource.ID.View.EDITOR_SOURCE_VIEW);
-
-//			editorSourceView.setI2B2ImportTool(i2b2ImportTool);
-			
-//			EditorSourceView.setI2B2ImportTool(i2b2ImportTool);
-			//TODO Added OntologyEditorView
 			OntologyEditorView.setI2B2ImportTool(i2b2ImportTool);
-//			Activator.getDefault().getResource()
-//					.setI2B2ImportTool(editorSourceView.getI2B2ImportTool());
-//			Activator.getDefault().getResource()
-//					.setEditorSourceView(editorSourceView);
 
 			// create secondary views
 			EditorSourceInfoView editorSourceInfoView = (EditorSourceInfoView) PlatformUI
@@ -99,9 +68,6 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 					.showView(Resource.ID.View.EDITOR_SOURCE_INFO_VIEW);
 			Activator.getDefault().getResource()
 					.setEditorSourceInfoView(editorSourceInfoView);
-
-//			OntologyTreeNode treeRoot = i2b2ImportTool.getMyOntologyTrees()
-//					.getTreeRoot();
 
 			new OntologyTreeCreatorTOS(
 					i2b2ImportTool.getMyOntologyTrees(), "");
@@ -128,27 +94,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			if (OT != null) {
 				
 
-				// OT.addTreeSelectionListener(i2b2ImportTool.getMyOT());
-				// OT.addMouseListener(ma);
-				// Debug.d("# calling: setActive");
-				// i2b2ImportTool.getMyOT().getGUI().setActive(true);
-				// i2b2ImportTool.getMyOT().openNodes(i2b2ImportTool.getMyOT().getOT().getTreeRoot());
 			}
-
-			// add Target views as well
-//			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench()
-//					.getActiveWorkbenchWindow().getActivePage()
-//					.showView(Resource.ID.View.EDITOR_TARGET_VIEW);
-//			Activator.getDefault().getResource()
-//					.setEditorTargetView(editorTargetView);
-
-			
-	
-			
-//			editorTargetView.clear();
-			
-//			editorTargetView.setI2B2ImportTool(editorSourceView
-//					.getI2B2ImportTool());
 
 			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
 					i2b2ImportTool.getMyOntologyTrees().getTargetTreeRoot());
@@ -162,8 +108,6 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 					.getOntologyTreeTarget();
 
 
-
-//			editorTargetView.setComposite(OTTarget);
 //TODO Ontology Editor
 			OntologyEditorView.setTargetContent(OTTarget);
 			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI

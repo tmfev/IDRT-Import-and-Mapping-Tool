@@ -2,6 +2,7 @@ package de.umg.mi.idrt.ioe.tos;
 
 import java.util.Date;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -30,7 +31,7 @@ public class TOSHandler {
 	static OntologyTree _ot = null;
 
 	private OntologyTree _ontologyTreeTarget;
-	
+
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
 	public static final String TableIEOTarget = "ioe_target";
 	public static final String TableIEOTargetProject = "ioe_target_project";
@@ -40,25 +41,25 @@ public class TOSHandler {
 		boolean nullError = false;
 
 		// try to get the current ot from the view
-		 if (OntologyEditorView.getI2b2ImportTool() == null) {
+		if (OntologyEditorView.getI2b2ImportTool() == null) {
 			nullError = true;
 			System.out
-					.println("Application.getEditorSourceView().getI2B2ImportTool() == null");
+			.println("Application.getEditorSourceView().getI2B2ImportTool() == null");
 		} else if (OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees() == null) {
 			nullError = true;
 			System.out
-					.println("Application.getEditorSourceView().getI2B2ImportTool().getMyOT() == null");
+			.println("Application.getEditorSourceView().getI2B2ImportTool().getMyOT() == null");
 		} else if (OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees()
 				.getOntologyTreeSource() == null) {
 			nullError = true;
 			System.out
-					.println("Application.getEditorSourceView().getI2B2ImportTool().getMyOT().getOT() == null");
+			.println("Application.getEditorSourceView().getI2B2ImportTool().getMyOT().getOT() == null");
 		}
 
 		if (nullError == true) {
 			Console.error("Could not find a working OntologyTree to add data.");
 			System.out
-					.println("Could not find a working OntologyTree to add data.");
+			.println("Could not find a working OntologyTree to add data.");
 			return;
 		}
 
@@ -86,7 +87,31 @@ public class TOSHandler {
 		Application.getStatusView().addMessage(
 				new SystemMessage(status, SystemMessage.MessageType.ERROR));
 	}
+	public static void addi2b2OntologyItemToTree(OntologyItem item) {
+		if (_ot == null)
+			_ot = OntologyEditorView.getI2b2ImportTool()
+			.getMyOntologyTrees().getOntologyTreeSource();
 
+		// System.out.println("C_METADATAXML: ");
+		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
+		// System.out.println(" - link2: " + C_METADATAXML != null ?
+		// String.valueOf(C_METADATAXML) : "<null>");
+
+		if (item.getC_HLEVEL() < 3) {
+			System.out.println(" node " + item.getC_NAME() + " ");
+			System.out.println("   -> " + item.getC_HLEVEL() + " -> " + item.getC_FULLNAME());
+		}
+
+		if (item.getC_HLEVEL() == 0) {
+			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+		}
+		else {
+			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+		}
+
+	}
+
+	@Deprecated
 	public static void addi2b2OntologyItemToTree(int C_HLEVEL,
 			String C_FULLNAME, String C_NAME, String C_SYNONYM_CD,
 			String C_VISUALATTRIBUTES, int C_TOTALNUM, String C_BASECODE,
@@ -97,7 +122,6 @@ public class TOSHandler {
 			Date IMPORT_DATE, String SOURCESYSTEM_CD, String VALUETYPE_CD,
 			String M_EXCLUSION_CD, String C_PATH, String C_SYMBOL) {
 
-		
 
 		if (_ot == null)
 			_ot = OntologyEditorView.getI2b2ImportTool()
@@ -113,19 +137,19 @@ public class TOSHandler {
 			System.out.println("   -> " + C_HLEVEL + " -> " + C_FULLNAME);
 		}
 
-		OntologyTreeNode node = _ot.addNodeByPath(C_FULLNAME, C_NAME);
-		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
-		node.setOntologyCellAttributes(C_HLEVEL, C_FULLNAME, C_NAME,
-				C_SYNONYM_CD, C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE,
-				C_METADATAXML, C_FACTTABLECOLUMN, C_TABLENAME, C_COLUMNNAME,
-				C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, C_TOOLTIP,
-				M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE,
-				SOURCESYSTEM_CD, VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
-
-		if (C_HLEVEL == 0) {
-			node.setNodeType(NodeType.I2B2ROOT);
-			_ot.setStagingRootNode(node);
-		}
+		//		OntologyTreeNode node = _ot.addNodeByPath(C_FULLNAME, C_NAME);
+		//		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
+		//		node.setOntologyCellAttributes(C_HLEVEL, C_FULLNAME, C_NAME,
+		//				C_SYNONYM_CD, C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE,
+		//				C_METADATAXML, C_FACTTABLECOLUMN, C_TABLENAME, C_COLUMNNAME,
+		//				C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, C_TOOLTIP,
+		//				M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE,
+		//				SOURCESYSTEM_CD, VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
+		//
+		//		if (C_HLEVEL == 0) {
+		//			node.setNodeType(NodeType.I2B2ROOT);
+		//			_ot.setStagingRootNode(node);
+		//		}
 
 	}
 
@@ -141,17 +165,17 @@ public class TOSHandler {
 			String startdateSourcePath, String enddateSourcePath,
 			String visualattributes) {
 
-		OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
-				name);
-		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-		node.getTargetNodeAttributes().addStagingPath(sourcePath);
-		node.getTargetNodeAttributes().setName(name);
-		node.getTargetNodeAttributes()
-				.setChanged((changed == 0 ? true : false));
-		node.getTargetNodeAttributes().setStartDateSourcePath(
-				startdateSourcePath);
-		node.getTargetNodeAttributes().setEndDateSourcePath(enddateSourcePath);
-		node.getTargetNodeAttributes().setVisualattributes(visualattributes);
+		//		OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
+		//				name);
+		//		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
+		//		node.getTargetNodeAttributes().addStagingPath(sourcePath);
+		//		node.getTargetNodeAttributes().setName(name);
+		//		node.getTargetNodeAttributes()
+		//				.setChanged((changed == 0 ? true : false));
+		//		node.getTargetNodeAttributes().setStartDateSourcePath(
+		//				startdateSourcePath);
+		//		node.getTargetNodeAttributes().setEndDateSourcePath(enddateSourcePath);
+		//		node.getTargetNodeAttributes().setVisualattributes(visualattributes);
 
 	}
 
@@ -168,14 +192,14 @@ public class TOSHandler {
 		targetProject.setTargetProjectID(id);
 		targetProject.setName(name);
 		targetProject.setDescription(description);
-		
+
 		OntologyTreeTargetRootNode targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView
 				.getI2b2ImportTool().getMyOntologyTrees()
 				.getOntologyTreeTarget().getRootNode());
 
 		TargetProjects targetProjects = targetRootNode.getTargetProjects();
 		targetProjects.add(targetProject);
-		
+
 	}
 
 	public static void addTargetVersionToTargeProject(int targetID,
@@ -191,7 +215,7 @@ public class TOSHandler {
 		target.setTargetDBSchema(targetDBSchema);
 		OntologyTreeTargetRootNode targetRootNode = new OntologyTreeTargetRootNode(
 				"");
-		
+
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView
 				.getI2b2ImportTool().getMyOntologyTrees()
 				.getOntologyTreeTarget().getRootNode());
@@ -200,7 +224,7 @@ public class TOSHandler {
 		targetProjects.addTarget(target);
 
 	}
-	
+
 	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
 		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
 
@@ -208,7 +232,7 @@ public class TOSHandler {
 		targetProjects.getSelectedTarget().setTargetID(targetID);
 		targetProjects.getSelectedTarget().setVersion(version);
 		targetProjects.getSelectedTargetProject().setTargetProjectID(targetProjectID);
-	
+
 	}
 
 }

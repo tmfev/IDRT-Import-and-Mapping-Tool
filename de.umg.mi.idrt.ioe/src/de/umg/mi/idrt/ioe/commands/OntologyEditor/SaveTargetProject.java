@@ -25,7 +25,6 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class SaveTargetProject extends AbstractHandler {
 
 	CSVWriter _writer = null;
-	Target target = null;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -60,7 +59,7 @@ public class SaveTargetProject extends AbstractHandler {
 			OntologyTreeTargetRootNode targetTreeRoot = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot());
 			
 			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
-			//Target target = null;
+			Target target = null;
 			
 			if (targetProject == null || targetTreeRoot.getTargetProjects().getSelectedTarget() == null ){
 				Console.error("No TargetInstance and/or TargetVersion available to save.");
@@ -96,7 +95,7 @@ public class SaveTargetProject extends AbstractHandler {
 
 		TOSConnector tos = new TOSConnector();
 
-		TOSConnector.setContextVariable("Job", "SaveTargetProjects");
+		TOSConnector.setContextVariable("Job", "save_target_project");
 		tos.setContextVariable("Var1", "1"); // target project id
 		tos.setContextVariable("Var2", "1"); // target id
 		tos.setContextVariable("DataFile", tempFilePath);
@@ -117,7 +116,7 @@ public class SaveTargetProject extends AbstractHandler {
 	private void writeNode(OntologyTreeNode node) {
 
 		String[] fields = new String[9];
-		fields[0] = String.valueOf(target.getTargetID());
+		fields[0] = "1";
 		fields[1] = String.valueOf(node.getTreePathLevel());
 		fields[2] = node.getTreePath();
 		fields[3] = node.getTargetNodeAttributes().getSourcePath();

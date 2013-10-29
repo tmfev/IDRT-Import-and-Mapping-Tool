@@ -50,6 +50,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -57,6 +58,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -65,6 +67,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.Bundle;
 
 import swing2swt.layout.BorderLayout;
+import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.ActionCommand;
@@ -74,6 +78,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
@@ -86,6 +91,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
+import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -151,6 +157,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_6;
 	private static Button btnCancel;
 	private static TreeViewerColumn column;
+	private static Button btnLoad;
 	/**
 	 * @return the column
 	 */
@@ -304,11 +311,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-		//								Shell shell = new Shell();
-		//								shell.setSize(844, 536);
-		//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//								mainComposite = new Composite(shell, SWT.NONE);
-		//								mainComposite.setLayout(new BorderLayout(0, 0));
+//										Shell shell = new Shell();
+//										shell.setSize(844, 536);
+//										shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//										mainComposite = new Composite(shell, SWT.NONE);
+//										mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -510,6 +517,31 @@ public class OntologyEditorView extends ViewPart {
 		composite_6.setLayout(new GridLayout(1, false));
 		lblSource = new Label(composite_6, SWT.NONE);
 		lblSource.setText("Staging i2b2");
+		
+		btnLoad = new Button(composite_3, SWT.NONE);
+		btnLoad.setText("load");
+		btnLoad.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				OntologyTree ot = OntologyEditorView.getI2b2ImportTool()
+						.getMyOntologyTrees().getOntologyTreeSource();
+//				ot.getNodeLists().removeAll();
+//				stagingTreeViewer.getTree().removeAll();
+				OntologyEditorView.getI2b2ImportTool()
+				.getMyOntologyTrees().initiate();
+				for (OntologyItem ont : Server.getOntology()) {
+					System.out.println("ADDING: " +ont.getC_FULLNAME());
+					TOSHandler.addi2b2OntologyItemToTree(ont);
+				}
+				stagingTreeViewer.refresh();
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				
+			}
+		});
 		new Label(composite_3, SWT.NONE);
 
 		//		btnCancel = new Button(composite_3, SWT.NONE);
@@ -540,9 +572,6 @@ public class OntologyEditorView extends ViewPart {
 		btnMinimizeAll.setSize(28, 26);
 		btnMinimizeAll.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/collapseall.gif"));
 		btnMinimizeAll.setToolTipText("Collapse All");
-		new Label(composite_3, SWT.NONE);
-		new Label(composite_3, SWT.NONE);
-		new Label(composite_3, SWT.NONE);
 
 		composite_2 = new Composite(composite_1, SWT.NONE);
 		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));

@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 import de.umi.mi.passwordcrypt.PasswordCrypt;
 
@@ -16,6 +18,7 @@ import de.umi.mi.passwordcrypt.PasswordCrypt;
  */
 public class Server implements Serializable {
 
+	private static LinkedHashSet<OntologyItem> ontology;
 	private static String ORACLEDRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static String MYSQLDRIVER = "com.mysql.jdbc.Driver";
@@ -155,6 +158,55 @@ public class Server implements Serializable {
 			return concepts;
 		}
 		return concepts;
+	}
+	
+	public void getOntology(String user) {
+		//TODO
+		try {
+			System.out.println("user: " + user);
+			ontology = new LinkedHashSet<OntologyItem>();
+			DriverManager.setLoginTimeout(2);
+			Connection connect = getConnection();
+			Statement statement = connect.createStatement();
+			ResultSet resultSet = statement
+					.executeQuery("select * from " + user
+							+ ".i2b2 order by c_hlevel, c_fullname asc");
+			
+			long time = System.currentTimeMillis();
+			while (resultSet.next()) {
+				OntologyItem item = new OntologyItem(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+						resultSet.getString(4),resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7),
+						resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11),
+						resultSet.getString(12),resultSet.getString(13),resultSet.getString(14),resultSet.getString(15),
+						resultSet.getString(16),resultSet.getString(17),resultSet.getDate(18),resultSet.getDate(19),
+						resultSet.getDate(20),resultSet.getString(21),resultSet.getString(22),resultSet.getString(23),
+						resultSet.getString(24),resultSet.getString(25));
+				ontology.add(item);
+				if (ontology.size()%1000==0) {
+					
+					System.out.println(System.currentTimeMillis()-time+ "ms "+ontology.size() + " items in array");
+					time = System.currentTimeMillis();
+				}
+			}			
+			connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("Not a valid i2b2 project: No Concepts found!");
+		}
+	}
+
+	/**
+	 * @return the ontology
+	 */
+	public static LinkedHashSet<OntologyItem> getOntology() {
+		return ontology;
+	}
+
+	/**
+	 * @param ontology the ontology to set
+	 */
+	public static void setOntology(LinkedHashSet<OntologyItem> ontology) {
+		Server.ontology = ontology;
 	}
 
 	public String getIp() {
