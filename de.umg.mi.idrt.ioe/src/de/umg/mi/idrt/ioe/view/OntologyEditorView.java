@@ -754,8 +754,14 @@ public class OntologyEditorView extends ViewPart {
 	
 	public static void incrementVersionRefresh() {
 
-		lblVersionText.setText( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
-		composite_2.layout();
+		
+		if ( lblVersionText != null ){
+			lblVersionText.setText( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
+			composite_2.layout();
+		} else {
+			Console.error("lblVersionText is null, so don't refresh the version number");
+			
+		}
 		
 
 	}

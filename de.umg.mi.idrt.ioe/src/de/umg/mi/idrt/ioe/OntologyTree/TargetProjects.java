@@ -121,4 +121,16 @@ public class TargetProjects {
 		return list.isEmpty();
 	}
 
+	public Target incrementVersion(Target target) {
+		
+		Target newTarget = new Target();
+		newTarget.setTargetProjectID(target.getTargetProjectID());
+		newTarget.setTargetDBSchema(target.getTargetDBSchema());
+		newTarget.setVersion(-1);
+		newTarget.setTargetID(-1);
+		return newTarget;
+		// TODO Auto-generated method stub
+		
+	}
+
 }
