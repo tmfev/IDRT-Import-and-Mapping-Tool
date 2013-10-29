@@ -59,7 +59,7 @@ public class LoadTargetProjects extends AbstractHandler {
 				newData = true;
 				
 			}
-			
+
 			if ( targetProjects.getSelectedTarget() == null ){
 				System.out.println("Loading: no Target -> creating new one");
 				Target target = new Target();
