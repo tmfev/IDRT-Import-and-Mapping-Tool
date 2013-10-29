@@ -8,6 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.jface.viewers.TreeViewer;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 
@@ -21,7 +22,7 @@ public class OntologyTree extends JTree {
 	private String importDate = "";
 	private TreeViewer treeViewer = null;
 	private OntologyTreeNode _lastActiveNode;
-	
+
 	private OntologyTreeNode stagingRootNode;
 
 	// naked constructor for serialization
@@ -68,7 +69,7 @@ public class OntologyTree extends JTree {
 		}
 	}
 
-	
+
 	/**
 	 * addNode: creates a new childnode of the type OTNode
 	 * 
@@ -88,7 +89,7 @@ public class OntologyTree extends JTree {
 
 		return node;
 	}
-	*/
+	 */
 
 	/**
 	 * addNode: creates a new childnode of the type OTNode
@@ -111,7 +112,7 @@ public class OntologyTree extends JTree {
 		this.getNodeLists().add(id, parentnode.getTreePath(), node);
 		return node;
 	}
-	
+
 	public OntologyTreeNode addNode(OntologyTreeNode parentnode, String id, String name, String path, int level) {
 		System.out.print("Adding node:" + name);
 		OntologyTreeNode node = new OntologyTreeNode(name);
@@ -141,24 +142,31 @@ public class OntologyTree extends JTree {
 		}
 	}
 
-	public OntologyTreeNode addNodeByPath(String i2b2Path, String name) {
+	public void addNodeByPath(String i2b2Path, String name, String source, OntologyItem item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
-
 		node.setID( node.getIDFromPath( i2b2Path ) );
-		
-		OntologyTreeNode parentNode = this.getNodeLists().addOTNode(i2b2Path, node);
-
-		node.setTreeAttributes();
-
-		if (parentNode != null) {
-			parentNode.add(node);
-		} else {
+		try {
+			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
+		}catch (Exception e) {
+//			e.printStackTrace();
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}
-
-		return node;
+		node.setTreeAttributes();
+		node.setType(source);
+		node.setOntologyCellAttributes(item);
+		if (type != null) {
+			setStagingRootNode(node);
+		}
+		//		else {
+		//			if (parentNode != null) {
+		//				parentNode.add(node);
+		//			} else {
+		//				Console.error("Could not add node \"" + name
+		//						+ "\" to the tree, because there is no parent node for it.");
+		//			}
+		//		}
 	}
 
 	public OntologyTreeNode getRootNode() {
@@ -233,10 +241,10 @@ public class OntologyTree extends JTree {
 
 	public String deconvertAlphanumericPIDfromNumber(String pidString) {
 
-		
+
 		if (pidString.length() % 3 != 0) {
 			System.err
-					.println("@deconvertAlphanumericPIDfromNumber length%3 != 0");
+			.println("@deconvertAlphanumericPIDfromNumber length%3 != 0");
 			return "";
 		}
 
@@ -295,7 +303,7 @@ public class OntologyTree extends JTree {
 		}
 
 	}
-	
+
 	/**
 	 * @param activeItemNode
 	 *            the activeItemNode to set
@@ -310,33 +318,33 @@ public class OntologyTree extends JTree {
 	public OntologyTreeNode getActiveNode() {
 		return _lastActiveNode;
 	}
-	
+
 	public void deleteNode(String i2b2Path){
-		
+
 		OntologyTreeNode node = getNodeLists().getNodeByPath(i2b2Path);
-		
+
 		if (node == null || node.getParent() == null ) {
 			Console.error("Could not delete node because there is no node or no parent node for it.");
 			return;
 		}
-	
+
 		deleteNode(node);
-		
-				
+
+
 	}
-	
-	
+
+
 	public void deleteNode( OntologyTreeNode node ){
-		
+
 		for ( int x = 0; x < node.getChildCount(); x ++ ){
-		
+
 			deleteNode( (OntologyTreeNode) node.getChildAt(x) );
-			
+
 		}
-		
+
 		this.getNodeLists().removeNode(node);
-		
-		
+
+
 	}
 
 	/**
@@ -344,9 +352,9 @@ public class OntologyTree extends JTree {
 	 */
 	public void setStagingRootNode(OntologyTreeNode node) {
 		stagingRootNode = node;
-		
+
 	}
-	
+
 	public OntologyTreeNode getStagingRootNode() {
 		return stagingRootNode;
 	}

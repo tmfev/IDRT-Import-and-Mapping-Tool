@@ -10,6 +10,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
@@ -499,6 +500,35 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.nodeType = nodeType;
 	}
 
+	public void setOntologyCellAttributes(OntologyItem item) {
+		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
+		ontologyCellAttributes.setC_HLEVEL(item.getC_HLEVEL());
+		ontologyCellAttributes.setC_FULLNAME(item.getC_FULLNAME());
+		ontologyCellAttributes.setC_NAME(item.getC_NAME());
+		ontologyCellAttributes.setC_SYNONYM_CD(item.getC_SYNONYM_CD());
+		ontologyCellAttributes.setC_VISUALATTRIBUTES(item.getC_VISUALATTRIBUTES());
+		ontologyCellAttributes.setC_TOTALNUM(item.getC_TOTALNUM());
+		ontologyCellAttributes.setC_BASECODE(item.getC_BASECODE());
+		ontologyCellAttributes.setC_METADATAXML(item.getC_METADATAXML());
+		ontologyCellAttributes.setC_FACTTABLECOLUMN(item.getC_FACTTABLECOLUMN());
+		ontologyCellAttributes.setC_TABLENAME(item.getC_TABLENAME());
+		ontologyCellAttributes.setC_COLUMNNAME(item.getC_COLUMNNAME());
+		ontologyCellAttributes.setC_COLUMNDATATYPE(item.getC_COLUMNDATATYPE());
+		ontologyCellAttributes.setC_OPERATOR(item.getC_OPERATOR());
+		ontologyCellAttributes.setC_DIMCODE(item.getC_DIMCODE());
+		ontologyCellAttributes.setC_COMMENT(item.getC_COMMENT());
+		ontologyCellAttributes.setC_TOOLTIP(item.getC_TOOLTIP());
+		ontologyCellAttributes.setM_APPLIED_PATH(item.getM_APPLIED_PATH());
+		ontologyCellAttributes.setUPDATE_DATE(item.getUPDATE_DATE());
+		ontologyCellAttributes.setDOWNLOAD_DATE(item.getDOWNLOAD_DATE());
+		ontologyCellAttributes.setIMPORT_DATE(item.getIMPORT_DATE());
+		ontologyCellAttributes.setSOURCESYSTEM_CD(item.getSOURCESYSTEM_CD());
+		ontologyCellAttributes.setVALUETYPE_CD(item.getVALUETYPE_CD());
+		ontologyCellAttributes.setM_EXCLUSION_CD(item.getM_EXCLUSION_CD());
+		ontologyCellAttributes.setC_PATH(item.getC_PATH());
+		ontologyCellAttributes.setC_SYMBOL(item.getC_SYMBOL());
+	}
+	
 	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
 			String C_NAME, String C_SYNONYM_CD, String C_VISUALATTRIBUTES,
 			int C_TOTALNUM, String C_BASECODE, Object C_METADATAXML,

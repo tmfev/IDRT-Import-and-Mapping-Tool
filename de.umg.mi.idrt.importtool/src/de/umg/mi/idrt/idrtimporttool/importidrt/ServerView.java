@@ -684,6 +684,21 @@ public class ServerView extends ViewPart {
 					refresh();
 				}
 			});
+			
+			new MenuItem(mainMenu, SWT.SEPARATOR);
+			MenuItem ontServerMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			ontServerMenuItem.setText("loadont(beta)");
+			ontServerMenuItem.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					Server server = ServerList.getTargetServers().get(labelNameCurrent.getText());
+					server.getOntology(labelDBUserCurrent.getText());
+				}
+			});
 
 
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION

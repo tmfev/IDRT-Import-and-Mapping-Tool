@@ -4,7 +4,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_loadtargetprojects_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/transformation_to_target_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/items/"/>

@@ -32,7 +32,12 @@ public class OTNodeLists {
 
 
 	public void add( OntologyTreeNode node ){
-
+		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
+			long newTime = System.currentTimeMillis();
+			
+			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
+			time = newTime;
+		}
 		this.addIDtoPaths( node.getID(), node.getTreePath() );
 		this.addNodeByID( node.getID(), node );
 
@@ -77,7 +82,7 @@ public class OTNodeLists {
 		} else {
 			parentNode = this.getNodeByPath( pathAndID.getParentPath() );
 			if (parentNode == null){
-				//					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
+									Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
 				return null;
 			}
 		}
