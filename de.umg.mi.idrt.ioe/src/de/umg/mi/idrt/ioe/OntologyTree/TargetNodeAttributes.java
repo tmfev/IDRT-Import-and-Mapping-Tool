@@ -53,6 +53,10 @@ public class TargetNodeAttributes {
 	 *            the sourcePath to set
 	 */
 	public void addStagingPath(String stagingPath) {
+		if (stagingPath.startsWith("\\\\"))
+			stagingPath=stagingPath.substring(1); //removes wrong "\" from beginning of path
+		if (!stagingPath.endsWith("\\"))
+			stagingPath=stagingPath+"\\";
 		if (!subNodeListContains(stagingPath)) {
 			OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
 			subNode.setStagingPath(stagingPath);
@@ -64,7 +68,7 @@ public class TargetNodeAttributes {
 				if (stagingNode != null)
 					subNode.setStagingName(stagingNode.getName());
 				else
-					subNode.setStagingName("empty");
+					subNode.setStagingName("not found");
 			}
 			subNodeList.add(subNode);
 			this.sourcePath = stagingPath;

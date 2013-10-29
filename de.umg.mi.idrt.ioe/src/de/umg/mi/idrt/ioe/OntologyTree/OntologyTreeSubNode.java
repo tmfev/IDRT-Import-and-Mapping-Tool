@@ -50,6 +50,7 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 
 	public void setStagingPath(String sourcePath) {
 		this.stagingPath = sourcePath;
+		
 		if (OntologyEditorView.getI2b2ImportTool()!=null) {
 			OntologyTreeNode parentNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(sourcePath);
 			if (parentNode == null) {
