@@ -174,7 +174,11 @@ public class Resource {
 				+ "i2b2_la.jpg";
 		public static final String VISIBILITY_ICON_LI = IMAGE_PATH
 				+ "i2b2_li.gif";
-
+		public static final String VISIBILITY_ICON_DA = IMAGE_PATH
+				+ "i2b2_da.gif";
+		public static final String VISIBILITY_ICON_RA = IMAGE_PATH
+				+ "i2b2_ra.gif";
+		
 		public static final String ITEMSTATUS_ICON_UNCHECKED = IMAGE_PATH
 				+ "itemstatus-unchecked.png";
 		public static final String ITEMSTATUS_ICON_CHECKED_BY_AUTOMATION_UNSURE = IMAGE_PATH

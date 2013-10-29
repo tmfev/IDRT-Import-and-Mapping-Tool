@@ -45,7 +45,7 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) {
 		if (element instanceof OntologyTreeNode)
-			return ((OntologyTreeNode) element).getChildCount() > 0 || ((OntologyTreeNode) element).getTargetNodeAttributes()!=null;
+			return ((OntologyTreeNode) element).getChildCount() > 0 || ((OntologyTreeNode) element).getTargetNodeAttributes().getSubNodeList().size()>0;
 			else
 				return false;
 	}
