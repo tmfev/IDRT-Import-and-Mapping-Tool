@@ -183,7 +183,6 @@ public class Server implements Serializable {
 						resultSet.getString(24),resultSet.getString(25));
 				ontology.add(item);
 				if (ontology.size()%1000==0) {
-					
 					System.out.println(System.currentTimeMillis()-time+ "ms "+ontology.size() + " items in array");
 					time = System.currentTimeMillis();
 				}

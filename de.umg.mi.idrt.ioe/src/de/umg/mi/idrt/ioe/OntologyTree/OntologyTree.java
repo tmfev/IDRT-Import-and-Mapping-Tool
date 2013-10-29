@@ -141,7 +141,28 @@ public class OntologyTree extends JTree {
 			return null;
 		}
 	}
-
+	/**
+	 * @param item
+	 * @param ontologySource
+	 * @param object
+	 */
+	public void addModifierNodeByPath(OntologyItem item, String ontologySource, NodeType nodeType) {
+		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME());
+		String path = item.getM_APPLIED_PATH().substring(0, item.getM_APPLIED_PATH().length()-1)+item.getC_FULLNAME();
+		node.setID( node.getIDFromPath( item.getC_FULLNAME() ) );
+		try {
+			this.getNodeLists().addOTNode(path, node).add(node);
+		}catch (Exception e) {
+			Console.error("Could not add node \"" + item.getC_NAME()
+					+ "\" to the tree, because there is no parent node for it.");
+		}
+		node.setTreeAttributes();
+		node.setType(ontologySource);
+		node.setOntologyCellAttributes(item);
+		if (nodeType != null) {
+			setStagingRootNode(node);
+		}
+	}
 	public void addNodeByPath(String i2b2Path, String name, String source, OntologyItem item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
@@ -149,7 +170,7 @@ public class OntologyTree extends JTree {
 		try {
 			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 		}catch (Exception e) {
-//			e.printStackTrace();
+			//			e.printStackTrace();
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}
@@ -358,4 +379,6 @@ public class OntologyTree extends JTree {
 	public OntologyTreeNode getStagingRootNode() {
 		return stagingRootNode;
 	}
+
+
 }

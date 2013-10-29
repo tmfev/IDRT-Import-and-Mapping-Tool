@@ -106,7 +106,12 @@ public class TOSHandler {
 			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
 		}
 		else {
+			if (item.getM_APPLIED_PATH().equals("@"))
 			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				//TODO IMPLEMENT MODIFIER
+				_ot.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+			}
 		}
 
 	}

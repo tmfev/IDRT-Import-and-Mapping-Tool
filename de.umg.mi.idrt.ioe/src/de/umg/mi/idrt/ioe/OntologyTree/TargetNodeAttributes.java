@@ -73,7 +73,6 @@ public class TargetNodeAttributes {
 			subNodeList.add(subNode);
 			this.sourcePath = stagingPath;
 		}
-
 	}
 
 	private boolean subNodeListContains(String pathToChek) {

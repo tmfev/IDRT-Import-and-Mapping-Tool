@@ -84,6 +84,13 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					else if ("L".equals(visualAttribute))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
+					else if ("D".equals(visualAttribute))
+						cell.setImage(GUITools
+								.getImage(Resource.OntologyTree.VISIBILITY_ICON_DA));
+					else if ("R".equals(visualAttribute))
+						cell.setImage(GUITools
+								.getImage(Resource.OntologyTree.VISIBILITY_ICON_RA));
+					
 					String hidden =  visualAttributeFull.substring(1, 2);
 
 					if (hidden.toLowerCase().equals("h"))
