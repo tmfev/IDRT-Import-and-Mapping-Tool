@@ -178,6 +178,8 @@ public class Resource {
 				+ "i2b2_da.gif";
 		public static final String VISIBILITY_ICON_RA = IMAGE_PATH
 				+ "i2b2_ra.gif";
+		public static final String SHOW_SUB_NODES = IMAGE_PATH
+				+ "showSubNodes.gif";
 		
 		public static final String ITEMSTATUS_ICON_UNCHECKED = IMAGE_PATH
 				+ "itemstatus-unchecked.png";

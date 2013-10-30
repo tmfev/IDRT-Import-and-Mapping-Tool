@@ -6,6 +6,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 import de.umg.mi.idrt.ioe.view.OTtoTreeContentProvider;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TreeTargetContentProvider implements ITreeContentProvider {
 
@@ -45,7 +46,9 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) {
 		if (element instanceof OntologyTreeNode)
-			return ((OntologyTreeNode) element).getChildCount() > 0 || ((OntologyTreeNode) element).getTargetNodeAttributes().getSubNodeList().size()>0;
+		{
+			return ((OntologyEditorView.isShowSubNodes()||!((OntologyTreeNode) element).isLeaf())&&(((OntologyTreeNode) element).getChildCount() > 0 || ((OntologyTreeNode) element).getTargetNodeAttributes().getSubNodeList().size()>0));
+		}
 			else
 				return false;
 	}
