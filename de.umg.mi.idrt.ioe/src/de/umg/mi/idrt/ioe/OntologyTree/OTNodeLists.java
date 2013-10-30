@@ -34,7 +34,7 @@ public class OTNodeLists {
 	public void add( OntologyTreeNode node ){
 		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
 			long newTime = System.currentTimeMillis();
-			
+
 			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
 			time = newTime;
 		}
@@ -65,7 +65,7 @@ public class OTNodeLists {
 
 		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
 			long newTime = System.currentTimeMillis();
-			
+
 			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + i2b2Path + " || " + pathAndID.getParentPath() + " -> " + pathAndID.getID());
 			time = newTime;
 		}
@@ -82,8 +82,14 @@ public class OTNodeLists {
 		} else {
 			parentNode = this.getNodeByPath( pathAndID.getParentPath() );
 			if (parentNode == null){
-									Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
-				return null;
+				String path = pathAndID.getParentPath().substring(0, pathAndID.getParentPath().length()-1);
+				node.setID(path.substring(path.lastIndexOf("\\")+1,path.length()));
+				path = path.substring(0,path.lastIndexOf("\\"))+"\\";
+				parentNode =  this.getNodeByPath(path);
+				if (parentNode == null) {
+					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
+					return null;
+				}
 			}
 		}
 

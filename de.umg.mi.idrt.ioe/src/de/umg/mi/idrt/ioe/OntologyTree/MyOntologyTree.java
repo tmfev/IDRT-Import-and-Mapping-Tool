@@ -543,7 +543,7 @@ public class MyOntologyTree extends JPanel {
 			}
 		}
 		else {
-			boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node already exists in the target ontology!\nDo you want to rename the Path?");
+			boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node "+ node.getID() +" already exists in the target ontology!\nDo you want to rename the Path?");
 			if (confirm) {
 				Display display = Application.getDisplay().getActiveShell().getDisplay();
 				Application.getOntologyView().getSite().getShell();

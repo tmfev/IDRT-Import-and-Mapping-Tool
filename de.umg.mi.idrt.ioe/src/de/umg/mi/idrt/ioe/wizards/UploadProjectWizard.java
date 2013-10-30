@@ -27,7 +27,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class UploadProjectWizard extends Wizard {
 
-	protected UploadProjectWizardPage1 one;
+//	protected UploadProjectWizardPage1 one;
 	protected UploadProjectWizardPage2 two;
 
 	private Properties defaultProps;
@@ -41,9 +41,9 @@ public class UploadProjectWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new UploadProjectWizardPage1();
+//		one = new UploadProjectWizardPage1();
 		two = new UploadProjectWizardPage2();
-		addPage(one);
+//		addPage(one);
 		addPage(two);
 	}
 
@@ -55,15 +55,21 @@ public class UploadProjectWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
-		final String targetIPText = UploadProjectWizardPage1.getIpText();
-		final String targetPasswordText = UploadProjectWizardPage1.getDBUserPasswordText();
-		final String targetDBUserText = UploadProjectWizardPage1.getDBUserText();
-		final String targetDBSID = UploadProjectWizardPage1.getDBSIDText();
-		final String targetDBPort = UploadProjectWizardPage1.getPortText();
-		final String targetDBSchema = UploadProjectWizardPage1.getDBSchemaText();
+
 		
-		String targetUser = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
-		Server currentServer = ServerList.getTargetServers().get(targetUser);
+		String stagingServerName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
+		System.out.println("TARGETNAME: " + OntologyEditorView.getTargetSchemaName());
+		Server stagingServer = ServerList.getTargetServers().get(stagingServerName);
+		final String targetIPText = stagingServer.getIp();
+		final String targetPasswordText = stagingServer.getPassword();
+		final String targetDBUserText = stagingServer.getUser();
+		final String targetDBSID = stagingServer.getSID();
+		final String targetDBPort = stagingServer.getPort();
+		final String targetDBSchema = OntologyEditorView.getTargetSchemaName();
+		
+		System.out.println("STAGINGNAME: " + OntologyEditorView.getStagingSchemaName());
+		String targetServerName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
+		Server currentServer = ServerList.getTargetServers().get(targetServerName);
 		currentServer.setSchema(OntologyEditorView.getStagingSchemaName());
 		final String stagingIPText = currentServer.getIp();
 		final String stagingPasswordText = currentServer.getPassword();
