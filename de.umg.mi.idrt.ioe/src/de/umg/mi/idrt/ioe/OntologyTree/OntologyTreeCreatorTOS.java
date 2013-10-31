@@ -56,22 +56,22 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 				public void run() {
 					System.out.println("STARTING tos.getOntology();");
 					// TODO Auto-generated method stub
-//					TOSConnector tos = new TOSConnector();
-//					tos.getOntology();
+					TOSConnector tos = new TOSConnector();
+					tos.getOntology();
 					
-					Server server = ServerList.getTargetServers().get(ServerView.getSelectedServer());
-					server.getOntology(ServerView.getCurrentSchema());
-					int counter = 0;
-					long time = System.currentTimeMillis();
-					for (OntologyItem ont : Server.getOntology()) {
-						counter++;
-						if (counter%1000==0) {
-							System.out.println(System.currentTimeMillis()-time + "ms " + counter + " nodes added!");
-						time = System.currentTimeMillis();	
-						}
-//						System.out.println("ADDING: " +ont.getC_FULLNAME());
-						TOSHandler.addi2b2OntologyItemToTree(ont);
-					}
+//					Server server = ServerList.getTargetServers().get(ServerView.getSelectedServer());
+//					server.getOntology(ServerView.getCurrentSchema());
+//					int counter = 0;
+//					long time = System.currentTimeMillis();
+//					for (OntologyItem ont : Server.getOntology()) {
+//						counter++;
+//						if (counter%1000==0) {
+//							System.out.println(System.currentTimeMillis()-time + "ms " + counter + " nodes added!");
+//						time = System.currentTimeMillis();	
+//						}
+////						System.out.println("ADDING: " +ont.getC_FULLNAME());
+//						TOSHandler.addi2b2OntologyItemToTree(ont);
+//					}
 //					OntologyEditorView.getStagingTreeViewer().refresh();
 					
 					System.out.println("FINISHED tos.getOntology();");

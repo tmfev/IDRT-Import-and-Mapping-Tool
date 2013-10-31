@@ -61,6 +61,7 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// unused
+		System.out.println("changed");
 	}
 
 	@Override

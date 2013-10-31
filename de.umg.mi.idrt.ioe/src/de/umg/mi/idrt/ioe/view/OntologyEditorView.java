@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -24,7 +23,6 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TextCellEditor;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
@@ -50,7 +48,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -58,7 +55,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -67,8 +63,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.Bundle;
 
 import swing2swt.layout.BorderLayout;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.ActionCommand;
@@ -78,7 +72,6 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
@@ -90,8 +83,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
-import de.umg.mi.idrt.ioe.commands.OntologyEditor.ReadTarget;
-import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
@@ -124,8 +115,22 @@ public class OntologyEditorView extends ViewPart {
 		OntologyEditorView.notYetSaved = notYetSaved;
 	}
 
+	private static OntologyTreeNode currentStagingNode;
+	/**
+	 * @return the currentStagingNode
+	 */
+	public static OntologyTreeNode getCurrentStagingNode() {
+		return currentStagingNode;
+	}
+
+	/**
+	 * @param currentStagingNode the currentStagingNode to set
+	 */
+	public static void setCurrentStagingNode(OntologyTreeNode currentStagingNode) {
+		OntologyEditorView.currentStagingNode = currentStagingNode;
+	}
+
 	private static boolean showSubNodes = true;
-	private static OntologyTreeSubNode sourceSubNode;
 	private static boolean init = false;
 	private static TreeViewer stagingTreeViewer;
 	private static TreeViewer targetTreeViewer;
@@ -156,7 +161,6 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_5;
 	private static SashForm composite_1;
 	private static Composite composite_6;
-	private static Button btnCancel;
 	private static TreeViewerColumn column;
 	private static Button btnShowSubNodes;
 	/**
@@ -312,11 +316,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-		//										Shell shell = new Shell();
-		//										shell.setSize(844, 536);
-		//										shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//										mainComposite = new Composite(shell, SWT.NONE);
-		//										mainComposite.setLayout(new BorderLayout(0, 0));
+		//												Shell shell = new Shell();
+		//												shell.setSize(844, 536);
+		//												shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//												mainComposite = new Composite(shell, SWT.NONE);
+		//												mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -424,7 +428,6 @@ public class OntologyEditorView extends ViewPart {
 
 		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
 				targetTreeViewer));
-
 		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
 
 		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
@@ -490,6 +493,37 @@ public class OntologyEditorView extends ViewPart {
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener());
 		stagingTreeViewer.setSorter(new ViewerSorter());
+		stagingTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+
+				if (e.item == null || e.item.getData() == null) {
+					System.out.println("WidgetSelected but no known node found!");
+					return;
+				}
+				if (e.item.getData() instanceof OntologyTreeNode) {
+					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
+					setCurrentStagingNode(node);
+					if (node != null) {
+						EditorTargetInfoView.setNode(node);
+
+						Application.getStatusView().addMessage(
+								new SystemMessage("Staging selection changed to \'"
+										+ node.getName() + "\'.",
+										SystemMessage.MessageType.SUCCESS,
+										SystemMessage.MessageLocation.MAIN));
+					} else {
+						Application
+						.getStatusView()
+						.addMessage(
+								new SystemMessage(
+										"Target selection changed but new selection isnt' any know kind of node..",
+										SystemMessage.MessageType.ERROR,
+										SystemMessage.MessageLocation.MAIN));
+					}
+				}
+			}
+		});
+
 		composite_1 = new SashForm(composite, SWT.SMOOTH);
 		composite_1.setLayoutData(BorderLayout.NORTH);
 		composite_1.setLayout(new GridLayout(2, false));
@@ -552,7 +586,7 @@ public class OntologyEditorView extends ViewPart {
 
 		composite_2 = new Composite(composite_1, SWT.NONE);
 		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
-		composite_2.setLayout(new GridLayout(4, false));
+		composite_2.setLayout(new GridLayout(6, false));
 
 		DropTarget dropTarget4 = new DropTarget(composite_2, operations);
 		dropTarget4.setTransfer(transferTypes);
@@ -604,7 +638,7 @@ public class OntologyEditorView extends ViewPart {
 					if (confirm)
 					{
 						//save target
-						Application.executeCommand("edu.goettingen.i2b2.importtool.OTWriteTarget");
+						Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
 					}
 				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
@@ -617,7 +651,7 @@ public class OntologyEditorView extends ViewPart {
 		});
 		composite_4 = new Composite(composite_2, SWT.NONE);
 		composite_4.setLayout(new GridLayout(5, false));
-		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
+		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 6, 1));
 
 
 		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
@@ -640,7 +674,6 @@ public class OntologyEditorView extends ViewPart {
 				collapseAllLeafs(getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode(), showSubNodes);
 				targetTreeViewer.refresh();
 				targetComposite.setRedraw(true);
-
 			}
 
 			@Override
@@ -925,7 +958,7 @@ public class OntologyEditorView extends ViewPart {
 
 			}
 		});
-
+		new MenuItem(menu, SWT.SEPARATOR);
 		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
 		mntmAddNode.setText("Add Folder");
 		mntmAddNode.addSelectionListener(new SelectionListener() {
@@ -957,7 +990,41 @@ public class OntologyEditorView extends ViewPart {
 		});
 
 		new MenuItem(menu, SWT.SEPARATOR);
+		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
+		mntmExpandChildren.setText("Expand All Children");
+		mntmExpandChildren.addSelectionListener(new SelectionListener() {
 
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+				targetComposite.setRedraw(false);
+				expandTargetChildren(node, true);
+				targetComposite.setRedraw(true);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		MenuItem mntmCollapseChildren = new MenuItem(menu, SWT.PUSH);
+		mntmCollapseChildren.setText("Collapse All Children");
+		mntmCollapseChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+				targetComposite.setRedraw(false);
+				expandTargetChildren(node, false);
+				targetComposite.setRedraw(true);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		new MenuItem(menu, SWT.SEPARATOR);
 		MenuItem mntmHideItem = new MenuItem(menu, SWT.PUSH);
 		mntmHideItem.setText("Hide/Activate");
 
@@ -1039,6 +1106,52 @@ public class OntologyEditorView extends ViewPart {
 		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
 		.setTreeViewer(stagingTreeViewer);
 
+		Menu menu = new Menu(stagingTreeViewer.getTree());
+
+		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
+		mntmExpandChildren.setText("Expand All Children");
+		mntmExpandChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+						stagingComposite.setRedraw(false);
+						
+						expandStagingChildren(node, true);
+						stagingComposite.setRedraw(true);
+					}
+				}).run();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+		MenuItem mntmCollapseChildren = new MenuItem(menu, SWT.PUSH);
+		mntmCollapseChildren.setText("Collapse All Children");
+		mntmCollapseChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+				stagingComposite.setRedraw(false);
+				expandStagingChildren(node, false);
+				stagingComposite.setRedraw(true);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
+		stagingTreeViewer.getTree().setMenu(menu);
 		stagingComposite.layout();
 		mainComposite.layout();
 		System.out.println(System.currentTimeMillis()-time +"ms");
@@ -1049,6 +1162,21 @@ public class OntologyEditorView extends ViewPart {
 	}
 	public static TreeViewer getStagingTreeViewer() {
 		return stagingTreeViewer;
+	}
+	
+	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
+
+		for (OntologyTreeNode child : node.getChildren())
+			expandTargetChildren(child,state);
+		targetTreeViewer.setExpandedState(node, state);
+
+	}
+	
+	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
+
+		for (OntologyTreeNode child : node.getChildren())
+			expandStagingChildren(child,state);
+		stagingTreeViewer.setExpandedState(node, state);
 	}
 
 	private static void addNode() {
@@ -1133,13 +1261,5 @@ public class OntologyEditorView extends ViewPart {
 
 	public static Point getTargetCompositePoint() {
 		return targetComposite.getLocation();
-	}
-
-	private static OntologyTreeNode getCurrentNode() {
-		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
-				.getSelection();
-		OntologyTreeNode firstElement = (OntologyTreeNode) selection
-				.getFirstElement();
-		return firstElement;
 	}
 }
