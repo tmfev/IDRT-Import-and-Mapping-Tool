@@ -671,7 +671,7 @@ public class OntologyEditorView extends ViewPart {
 				else
 					btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/hideSubNodes.gif"));
 				targetComposite.setRedraw(false);
-				collapseAllLeafs(getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode(), showSubNodes);
+				collapseAllLeafs(showSubNodes);
 				targetTreeViewer.refresh();
 				targetComposite.setRedraw(true);
 			}
@@ -944,13 +944,7 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
-				for (OntologyTreeNode nnode : node.getChildren()) {
-					System.out.println(nnode.getName());
-				}
-				for (TreeNode path : node.getPath()) {
-					System.out.println("path: " + path.toString());
-				}
+
 			}
 
 			@Override
@@ -1114,14 +1108,14 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				
+
 				new Thread(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 						stagingComposite.setRedraw(false);
-						
+
 						expandStagingChildren(node, true);
 						stagingComposite.setRedraw(true);
 					}
@@ -1167,7 +1161,7 @@ public class OntologyEditorView extends ViewPart {
 	public static TreeViewer getStagingTreeViewer() {
 		return stagingTreeViewer;
 	}
-	
+
 	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
 
 		for (OntologyTreeNode child : node.getChildren())
@@ -1175,7 +1169,7 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.setExpandedState(node, state);
 
 	}
-	
+
 	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
 
 		for (OntologyTreeNode child : node.getChildren())
@@ -1236,12 +1230,12 @@ public class OntologyEditorView extends ViewPart {
 		return sourceSchema;
 	}
 
-	private static void collapseAllLeafs(OntologyTreeNode node, boolean state) {
+	private static void collapseAllLeafs(boolean state) {
 
-		for (OntologyTreeNode child: node.getChildren()) {
-			collapseAllLeafs(child,state);
-			if (child.isLeaf())
-				targetTreeViewer.setExpandedState(child, state);
+		for (Object child : (targetTreeViewer.getExpandedElements())) {
+			for (OntologyTreeNode node2 : ((OntologyTreeNode)child).getChildren())
+				if (((OntologyTreeNode)node2).isLeaf())
+					targetTreeViewer.setExpandedState((OntologyTreeNode)node2, state);
 		}
 	}
 
