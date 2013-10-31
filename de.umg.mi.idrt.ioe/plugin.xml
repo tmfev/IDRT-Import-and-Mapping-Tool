@@ -131,9 +131,9 @@
             name="IncrementTargetVersion">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.NewProjectCommand"
-            id="de.umg.mi.idrt.ioe.newProject"
-            name="newProject">
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.NewInstanceCommand"
+            id="de.umg.mi.idrt.ioe.newInstance"
+            name="newInstance">
       </command>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.UploadProjectCommand"
@@ -228,8 +228,8 @@
          <menu
                label="Target i2b2">
             <command
-                  commandId="de.umg.mi.idrt.ioe.newProject"
-                  label="New Project..."
+                  commandId="de.umg.mi.idrt.ioe.newInstance"
+                  label="New Instance..."
                   style="push">
             </command>
             <command

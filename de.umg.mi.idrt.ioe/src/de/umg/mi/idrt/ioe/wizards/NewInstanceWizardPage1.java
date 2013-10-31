@@ -19,15 +19,15 @@ import org.eclipse.swt.widgets.Text;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class NewProjectWizardPage1 extends WizardPage {
-	private static Text nameText;
-	private static Text descrText;
-	private static Text dateText;
+public class NewInstanceWizardPage1 extends WizardPage {
+	private Text nameText;
+	private Text descrText;
+	private Text dateText;
 
-	public NewProjectWizardPage1() {
-		super("New Project");
-		setTitle("New Project");
-		setDescription("Create a new i2b2 project");
+	public NewInstanceWizardPage1() {
+		super("New Instance");
+		setTitle("New Instance");
+		setDescription("Create a new i2b2 Target Instance");
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class NewProjectWizardPage1 extends WizardPage {
 		setControl(comp);
 		setPageComplete(false);
 	}
-	public static String getNameText() {
+	public String getNameText() {
 		return nameText.getText();
 	}
 	
@@ -85,14 +85,14 @@ public class NewProjectWizardPage1 extends WizardPage {
 	public boolean isPageComplete() {
 		return !nameText.getText().isEmpty();
 	}
-	protected static boolean isComplete() {
+	protected boolean isComplete() {
 		return !nameText.getText().isEmpty();
 	}
-	public static String getCreated() {
+	public String getCreated() {
 		return dateText.getText();
 	}
 
-	public static String getDescriptionText() {
+	public String getDescriptionText() {
 		return descrText.getText();
 	}
 }

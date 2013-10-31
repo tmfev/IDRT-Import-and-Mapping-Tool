@@ -6,15 +6,15 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.wizard.WizardDialog;
 
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.wizards.NewProjectWizard;
+import de.umg.mi.idrt.ioe.wizards.NewInstanceWizard;
 
-public class NewProjectCommand extends AbstractHandler{
+public class NewInstanceCommand extends AbstractHandler{
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		if (OntologyEditorView.isInit()) {
-			WizardDialog wizardDialog = new WizardDialog(OntologyEditorView.getTargetTreeViewer().getControl().getShell(), new NewProjectWizard());
+			WizardDialog wizardDialog = new WizardDialog(OntologyEditorView.getTargetTreeViewer().getControl().getShell(), new NewInstanceWizard());
 			wizardDialog.open();
 		}
 		return null;

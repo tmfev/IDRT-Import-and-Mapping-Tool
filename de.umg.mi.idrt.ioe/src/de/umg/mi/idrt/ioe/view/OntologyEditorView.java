@@ -48,6 +48,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -55,6 +56,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -156,7 +158,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Label lblVersionText;
 	private static Button btnGo;
 	private static Button btnCollapseAllTarget;
-	private static Button btnExpandAllSource;
+	private static Button btnExpandAllTarget;
 	private static Composite composite_4;
 	private static Composite composite_5;
 	private static SashForm composite_1;
@@ -316,11 +318,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-		//												Shell shell = new Shell();
-		//												shell.setSize(844, 536);
-		//												shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//												mainComposite = new Composite(shell, SWT.NONE);
-		//												mainComposite.setLayout(new BorderLayout(0, 0));
+//														Shell shell = new Shell();
+//														shell.setSize(844, 536);
+//														shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//														mainComposite = new Composite(shell, SWT.NONE);
+//														mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -574,10 +576,10 @@ public class OntologyEditorView extends ViewPart {
 		composite_5.setLayout(new GridLayout(2, false));
 		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
 
-		Button btnExpandAll = new Button(composite_5, SWT.FLAT);
-		btnExpandAll.setSize(28, 26);
-		btnExpandAll.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
-		btnExpandAll.setToolTipText("Expand All");
+		Button btnExpandAllStaging = new Button(composite_5, SWT.FLAT);
+		btnExpandAllStaging.setSize(28, 26);
+		btnExpandAllStaging.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
+		btnExpandAllStaging.setToolTipText("Expand All");
 
 		Button btnMinimizeAll = new Button(composite_5, SWT.NONE);
 		btnMinimizeAll.setSize(28, 26);
@@ -681,10 +683,10 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		btnExpandAllSource = new Button(composite_4, SWT.NONE);
-		btnExpandAllSource.setSize(28, 26);
-		btnExpandAllSource.setToolTipText("Expand All");
-		btnExpandAllSource.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
+		btnExpandAllTarget = new Button(composite_4, SWT.NONE);
+		btnExpandAllTarget.setSize(28, 26);
+		btnExpandAllTarget.setToolTipText("Expand All");
+		btnExpandAllTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
 
 		btnCollapseAllTarget = new Button(composite_4, SWT.NONE);
 		btnCollapseAllTarget.setSize(28, 26);
@@ -727,12 +729,23 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		btnExpandAllSource.addSelectionListener(new SelectionListener() {
+		btnExpandAllTarget.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				targetComposite.setRedraw(false);
-				targetTreeViewer.expandAll();
+				int items = getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNumberOfItemNodes();
+				if (items>5000) {
+					boolean confirm = MessageDialog.openConfirm(mainComposite.getShell(), "Continue?", "The Target Tree contains " + items
+							+ " items.\nExpanding the Tree will take some time.");
+					if (confirm) {
+								targetTreeViewer.expandAll();
+					}
+				}
+				else {
+					targetTreeViewer.expandAll();
+				}
+				
 				targetComposite.setRedraw(true);
 			}
 
@@ -751,12 +764,21 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
-		btnExpandAll.addSelectionListener(new SelectionListener() {
+		btnExpandAllStaging.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				stagingComposite.setRedraw(false);
-				stagingTreeViewer.expandAll();
+				int items = getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNumberOfItemNodes();
+				if (items>5000) {
+					boolean confirm = MessageDialog.openConfirm(mainComposite.getShell(), "Continue?", "The Staging Tree contains " + items
+							+ " items.\nExpanding the Tree will take some time.");
+					if (confirm)
+						stagingTreeViewer.expandAll();
+				}
+				else {
+					stagingTreeViewer.expandAll();
+				}
 				stagingComposite.setRedraw(true);
 			}
 
@@ -990,6 +1012,8 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
+				
+				
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
 				expandTargetChildren(node, true);
