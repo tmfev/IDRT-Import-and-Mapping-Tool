@@ -87,36 +87,35 @@ public class TOSHandler {
 		Application.getStatusView().addMessage(
 				new SystemMessage(status, SystemMessage.MessageType.ERROR));
 	}
-	public static void addi2b2OntologyItemToTree(OntologyItem item) {
-		if (_ot == null)
-			_ot = OntologyEditorView.getI2b2ImportTool()
-			.getMyOntologyTrees().getOntologyTreeSource();
-
-		// System.out.println("C_METADATAXML: ");
-		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
-		// System.out.println(" - link2: " + C_METADATAXML != null ?
-		// String.valueOf(C_METADATAXML) : "<null>");
-
-		if (item.getC_HLEVEL() < 3) {
-			System.out.println(" node " + item.getC_NAME() + " ");
-			System.out.println("   -> " + item.getC_HLEVEL() + " -> " + item.getC_FULLNAME());
-		}
-
-		if (item.getC_HLEVEL() == 0) {
-			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
-		}
-		else {
-			if (item.getM_APPLIED_PATH().equals("@"))
-			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-			else {
-				//TODO IMPLEMENT MODIFIER
-				_ot.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+		public static void addi2b2OntologyItemToTree(OntologyItem item) {
+			if (_ot == null)
+				_ot = OntologyEditorView.getI2b2ImportTool()
+				.getMyOntologyTrees().getOntologyTreeSource();
+	
+			// System.out.println("C_METADATAXML: ");
+			// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
+			// System.out.println(" - link2: " + C_METADATAXML != null ?
+			// String.valueOf(C_METADATAXML) : "<null>");
+	
+			if (item.getC_HLEVEL() < 3) {
+				System.out.println(" node " + item.getC_NAME() + " ");
+				System.out.println("   -> " + item.getC_HLEVEL() + " -> " + item.getC_FULLNAME());
 			}
+	
+			if (item.getC_HLEVEL() == 0) {
+				_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+			}
+			else {
+				if (item.getM_APPLIED_PATH().equals("@"))
+				_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+				else {
+					//TODO IMPLEMENT MODIFIER
+					_ot.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+				}
+			}
+	
 		}
 
-	}
-
-	@Deprecated
 	public static void addi2b2OntologyItemToTree(int C_HLEVEL,
 			String C_FULLNAME, String C_NAME, String C_SYNONYM_CD,
 			String C_VISUALATTRIBUTES, int C_TOTALNUM, String C_BASECODE,
@@ -126,6 +125,12 @@ public class TOSHandler {
 			String M_APPLIED_PATH, Date UPDATE_DATE, Date DOWNLOAD_DATE,
 			Date IMPORT_DATE, String SOURCESYSTEM_CD, String VALUETYPE_CD,
 			String M_EXCLUSION_CD, String C_PATH, String C_SYMBOL) {
+
+		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
+				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
+				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
+				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
+				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
 
 
 		if (_ot == null)
@@ -142,20 +147,16 @@ public class TOSHandler {
 			System.out.println("   -> " + C_HLEVEL + " -> " + C_FULLNAME);
 		}
 
-		//		OntologyTreeNode node = _ot.addNodeByPath(C_FULLNAME, C_NAME);
-		//		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
-		//		node.setOntologyCellAttributes(C_HLEVEL, C_FULLNAME, C_NAME,
-		//				C_SYNONYM_CD, C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE,
-		//				C_METADATAXML, C_FACTTABLECOLUMN, C_TABLENAME, C_COLUMNNAME,
-		//				C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, C_TOOLTIP,
-		//				M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE,
-		//				SOURCESYSTEM_CD, VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
-		//
-		//		if (C_HLEVEL == 0) {
-		//			node.setNodeType(NodeType.I2B2ROOT);
-		//			_ot.setStagingRootNode(node);
-		//		}
-
+		if (C_HLEVEL == 0) {
+			_ot.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+		}
+		else {
+			if (item.getM_APPLIED_PATH().equals("@"))
+			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				_ot.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+			}
+		}
 	}
 
 	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,

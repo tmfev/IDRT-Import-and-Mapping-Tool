@@ -1,12 +1,12 @@
 package de.umg.mi.idrt.idrtimporttool.importidrt;
 
-import idrt52.csv_master_0_1.CSV_MASTER;
-import idrt52.dbimport_master_0_1.DBIMPORT_MASTER;
-import idrt52.idrt_stdterm_0_1.IDRT_STDTERM;
-import idrt52.idrt_transformation_0_5.IDRT_TRANSFORMATION;
-import idrt52.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
-import idrt52.odm_master_0_1.ODM_MASTER;
-import idrt52.server_freelocks_0_1.SERVER_FreeLocks;
+import tos.csv_master_0_1.CSV_MASTER;
+import tos.dbimport_master_0_1.DBIMPORT_MASTER;
+import tos.idrt_stdterm_0_1.IDRT_STDTERM;
+import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
+import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
+import tos.odm_master_0_1.ODM_MASTER;
+import tos.server_freelocks_0_1.SERVER_FreeLocks;
 
 import java.io.File;
 import java.io.IOException;

@@ -1114,6 +1114,18 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+						stagingComposite.setRedraw(false);
+						
+						expandStagingChildren(node, true);
+						stagingComposite.setRedraw(true);
+					}
+				}).run();
 				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 				stagingComposite.setRedraw(false);
 				expandStagingChildren(node, true);
