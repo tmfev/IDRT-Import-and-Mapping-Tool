@@ -941,13 +941,13 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM &quot; + context.DB_StagingI2B2_Schema +&quot;.I2B2 ORDER BY C_HLEVEL, C_NAME ASC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM &quot; + context.DB_StagingI2B2_Schema +&quot;.I2B2 ORDER BY C_HLEVEL, C_FULLNAME ASC&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="true"/>
     <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
@@ -1037,7 +1037,7 @@
   <node componentName="tJavaFlex" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="832" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_1"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
-    <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
+    <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="System.out.println(&quot;TOS: Starting Talend-Job \&quot;ontology\&quot; as TOS-Code.&quot;);&#xA;&#xA;int number_of_ontology_items = 0;&#xA;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="TOSHandler.addi2b2OntologyItemToTree(dbrow.C_HLEVEL.intValue(),&#xA;dbrow.C_FULLNAME,dbrow.C_NAME, dbrow.C_SYNONYM_CD, dbrow.C_VISUALATTRIBUTES, Relational.ISNULL(dbrow.C_TOTALNUM) ? 0 : dbrow.C_TOTALNUM.intValue(), dbrow.C_BASECODE, dbrow.C_METADATAXML, dbrow.C_FACTTABLECOLUMN, dbrow.C_TABLENAME, dbrow.C_COLUMNNAME, dbrow.C_COLUMNDATATYPE, dbrow.C_OPERATOR, dbrow.C_DIMCODE, dbrow.C_COMMENT, dbrow.C_TOOLTIP, dbrow.M_APPLIED_PATH, dbrow.UPDATE_DATE, dbrow.DOWNLOAD_DATE, dbrow.IMPORT_DATE, dbrow.SOURCESYSTEM_CD, dbrow.VALUETYPE_CD, dbrow.M_EXCLUSION_CD, dbrow.C_PATH, dbrow.C_SYMBOL);&#xA;number_of_ontology_items++;&#xA;&#xA;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_END" value="System.out.println(&quot;TOS: Ontology read with &quot; + number_of_ontology_items + &quot; items.&quot;); &#xA;"/>
