@@ -95,9 +95,9 @@ public class SaveTargetProject extends AbstractHandler {
 
 		TOSConnector tos = new TOSConnector();
 
-		TOSConnector.setContextVariable("Job", "save_target_project");
-		tos.setContextVariable("Var1", "1"); // target project id
-		tos.setContextVariable("Var2", "1"); // target id
+		TOSConnector.setContextVariable("Job", "SaveTargetProjects");
+		//tos.setContextVariable("Var1", "1"); // target project id
+		//tos.setContextVariable("Var2", "1"); // target id
 		tos.setContextVariable("DataFile", tempFilePath);
 
 		try {

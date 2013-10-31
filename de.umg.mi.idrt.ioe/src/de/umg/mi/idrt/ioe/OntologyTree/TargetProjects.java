@@ -121,4 +121,10 @@ public class TargetProjects {
 		return list.isEmpty();
 	}
 
+	public Target incrementVersion(Target oldTarget) {
+		Target newTarget = new Target();
+		newTarget.setTargetProjectID(oldTarget.getTargetProjectID());
+		return newTarget;
+	}
+
 }

@@ -46,9 +46,9 @@ public class IncrementTargetVersion extends AbstractHandler {
 		System.out.println("--------- " + targetProjects.getSelectedTarget().getTargetProjectID() + "               - " + targetProjects.getSelectedTarget().getTargetID() + "        - " + targetProjects.getSelectedTarget().getVersion() + "       |");
 		
 		
-//		Target newTarget = targetProjects.incrementVersion(targetProjects.getSelectedTarget());
-//		
-//		targetProjects.setSelectedTarget(newTarget);
+		Target newTarget = targetProjects.incrementVersion(targetProjects.getSelectedTarget());
+		
+		targetProjects.setSelectedTarget(newTarget);
 		
 		System.out.println("-/B------ targetProjectID - targetID - Version |");
 		System.out.println("--------- " + targetProjects.getSelectedTarget().getTargetProjectID() + "               - " + targetProjects.getSelectedTarget().getTargetID() + "        - " + targetProjects.getSelectedTarget().getVersion() + "       |");
