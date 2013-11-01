@@ -38,6 +38,8 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuAdapter;
@@ -48,6 +50,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -55,6 +58,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -83,39 +87,97 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
+import org.eclipse.swt.widgets.Combo;
 
 public class OntologyEditorView extends ViewPart {
 	private static I2B2ImportTool i2b2ImportTool;
-	/**
-	 * @return the i2b2ImportTool
-	 */
-	public static I2B2ImportTool getI2b2ImportTool() {
-		return i2b2ImportTool;
-	}
-
-	/**
-	 * @param i2b2ImportTool the i2b2ImportTool to set
-	 */
-	public static void setI2b2ImportTool(I2B2ImportTool i2b2ImportTool) {
-		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
-	}
-
 	private static boolean notYetSaved = true;
-	/**
-	 * @return the notYetSaved
-	 */
-	public static boolean isNotYetSaved() {
-		return notYetSaved;
-	}
-
-	/**
-	 * @param notYetSaved the notYetSaved to set
-	 */
-	public static void setNotYetSaved(boolean notYetSaved) {
-		OntologyEditorView.notYetSaved = notYetSaved;
-	}
 
 	private static OntologyTreeNode currentStagingNode;
+
+	private static boolean showSubNodes = true;
+	private static boolean init = false;
+
+	private static TreeViewer stagingTreeViewer;
+
+	private static TreeViewer targetTreeViewer;
+	private static Composite stagingComposite;
+
+	private static Composite targetComposite;
+
+	private static Composite mainComposite;
+	private static SashForm sash;
+	private static OntologyTreeNode currentTargetNode;
+	private static HashSet<OntologyTreeNode> highlightedStagingNodes;
+	private static String sourceSchema;
+	private static Server currentStagingServer;
+	private static Label lblSource;
+	private static DropTargetListener dropListenerStaging;
+	private static DropTargetListener dropListenerTarget;
+	private static Composite composite;
+	private static Composite composite_2;
+
+	private static Button btnNewVersion;
+	private static Composite composite_3;
+	private static Label lblVersion;
+	private static Button btnGo;
+	private static Button btnCollapseAllTarget;
+	private static Button btnExpandAllTarget;
+	private static Composite composite_4;
+	private static Composite composite_5;
+	private static SashForm composite_1;
+	private static Composite composite_6;
+	private static TreeViewerColumn column;
+	private static Button btnShowSubNodes;
+	private static Combo versionCombo;
+	private static Button btnEdit;
+	private static Label lblProject;
+	private static Text lblTargetName;
+	private static String oldSelectedVersion;
+
+
+
+	private static void addItem() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
+	}
+	private static void addNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
+	}
+	public static void addVersionName(String name) {
+		boolean contains = false;
+		for (String item : versionCombo.getItems())
+		{
+			if (item.equals(name))
+				contains = true;
+		}
+		if (!contains)
+			versionCombo.add(name);
+	}
+	private static void collapseAllLeafs(boolean state) {
+
+		for (Object child : (targetTreeViewer.getExpandedElements())) {
+			for (OntologyTreeNode node2 : ((OntologyTreeNode)child).getChildren())
+				if (((OntologyTreeNode)node2).isLeaf())
+					targetTreeViewer.setExpandedState((OntologyTreeNode)node2, state);
+		}
+	}
+	private static void deleteNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
+	}
+	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
+
+		for (OntologyTreeNode child : node.getChildren())
+			expandStagingChildren(child,state);
+		stagingTreeViewer.setExpandedState(node, state);
+	}
+	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
+
+		for (OntologyTreeNode child : node.getChildren())
+			expandTargetChildren(child,state);
+		targetTreeViewer.setExpandedState(node, state);
+
+	}
+
 	/**
 	 * @return the currentStagingNode
 	 */
@@ -123,46 +185,40 @@ public class OntologyEditorView extends ViewPart {
 		return currentStagingNode;
 	}
 
-	/**
-	 * @param currentStagingNode the currentStagingNode to set
-	 */
-	public static void setCurrentStagingNode(OntologyTreeNode currentStagingNode) {
-		OntologyEditorView.currentStagingNode = currentStagingNode;
+	public static OntologyTreeNode getCurrentTargetNode() {
+		return currentTargetNode;
 	}
 
-	private static boolean showSubNodes = true;
-	private static boolean init = false;
-	private static TreeViewer stagingTreeViewer;
-	private static TreeViewer targetTreeViewer;
-	private static Composite stagingComposite;
-	private static Composite targetComposite;
-	private static Composite mainComposite;
-	private static SashForm sash;
-	private static OntologyTreeNode currentTargetNode;
-	private static HashSet<OntologyTreeNode> highlightedStagingNodes;
-	private static String sourceSchema;
+	/**
+	 * @return the i2b2ImportTool
+	 */
+	public static I2B2ImportTool getI2b2ImportTool() {
+		return i2b2ImportTool;
+	}
+	public static String getStagingSchemaName() {
+		return sourceSchema;
+	}
 
-	private static Server currentStagingServer;
-	private static Label lblSource;
-	private static Label lblTarget;
-	private static DropTargetListener dropListenerStaging;
-	private static DropTargetListener dropListenerTarget;
-	private static Composite composite;
-	private static Composite composite_2;
-	private static Button btnNewVersion;
-	private static Composite composite_3;
-	private static Label lblVersion;
-	private static Text lblNameText;
-	private static Label lblVersionText;
-	private static Button btnGo;
-	private static Button btnCollapseAllTarget;
-	private static Button btnExpandAllSource;
-	private static Composite composite_4;
-	private static Composite composite_5;
-	private static SashForm composite_1;
-	private static Composite composite_6;
-	private static TreeViewerColumn column;
-	private static Button btnShowSubNodes;
+	public static Server getStagingServer() {
+		return currentStagingServer;
+	}
+
+	public static TreeViewer getStagingTreeViewer() {
+		return stagingTreeViewer;
+	}
+
+	public static Point getTargetCompositePoint() {
+		return targetComposite.getLocation();
+	}
+
+	public static String getTargetSchemaName() {
+		//		return lblNameText.getText();
+		return "";
+	}
+
+	public static TreeViewer getTargetTreeViewer() {
+		return targetTreeViewer;
+	}
 	/**
 	 * @return the column
 	 */
@@ -170,145 +226,24 @@ public class OntologyEditorView extends ViewPart {
 		return column;
 	}
 
-	/**
-	 * @param column the column to set
-	 */
-	public static void setColumn(TreeViewerColumn column) {
-		OntologyEditorView.column = column;
+	private static void hideNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.hideNode");
 	}
+	public static void incrementVersionRefresh() {
 
-	public OntologyEditorView() {
-	}
 
-	@Override
-	public void createPartControl(final Composite parent) {
-		mainComposite = parent;
-		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
-		Label label = new Label(mainComposite, SWT.LEFT);
-		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
-				"images/IDRT_ME.gif"));
+		if ( versionCombo != null ){
+			versionCombo.add( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
+			versionCombo.setText( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
+			composite_2.layout();
+		} else {
+			Console.error("versionCombo is null, so don't refresh the version number");
 
-		System.out.println("################# Debug #######");
-		TargetProjects targetProjects = new TargetProjects();
-
-		TargetProject targetProject1 = new TargetProject();
-		targetProject1.setTargetProjectID(1);
-		targetProject1.setName("TargetProject1Name");
-		targetProject1.setDescription("TargetProject1Desc");
-
-		TargetProject targetProject2 = new TargetProject();
-		targetProject2.setTargetProjectID(3);
-		targetProject2.setName("TargetProject2Name");
-		targetProject2.setDescription("TargetProject2Desc");
-
-		targetProjects.add(targetProject1);
-		targetProjects.add(targetProject2);
-
-		System.out.println("TargetProjects:");
-		List<TargetProject> list = targetProjects.getTargetProjectsList();
-		for ( TargetProject tmpTargetProject : list ){
-			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
 		}
-		System.out.println("---");
-		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
 
 
-
-
-		//targetProjects.getSelectedTargetProject()
-
-		final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
-		final Transfer[] transferTypes = new Transfer[] { TextTransfer
-				.getInstance() };
-
-		DropTarget dropTarget = new DropTarget(label, operations);
-		dropTarget.setTransfer(transferTypes);
-
-		dropListenerStaging = new DropTargetListener() {
-
-			@Override
-			public void dropAccept(DropTargetEvent event) {
-			}
-
-			@Override
-			public void drop(DropTargetEvent event) {
-				System.out.println("DROPPED! " + event.data);
-				if (ServerList.getTargetServers().containsKey(event.data) ) {
-					System.out.println("SERVER!");
-					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
-				}
-				else if (((String)(event.data)).startsWith("\\i2b2")) {
-					//do nothing
-				}
-				else {
-					try {
-						String schema = (String)event.data;
-						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
-						stagingServer.setSchema(schema);
-						setStagingServer(stagingServer);
-						setStagingSchemaName(schema);
-						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
-						setTargetNameVersion(getLatestVersion((String)(event.data)));
-						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));
-
-					} catch (Exception ex) {
-						ex.printStackTrace();
-						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
-					}
-				}
-			}
-
-			@Override
-			public void dragOver(DropTargetEvent event) {
-			}
-			@Override
-			public void dragOperationChanged(DropTargetEvent event) {
-			}
-			@Override
-			public void dragLeave(DropTargetEvent event) {
-			}
-			@Override
-			public void dragEnter(DropTargetEvent event) {
-			}
-		};
-		dropTarget.addDropListener(dropListenerStaging);
-
-		dropListenerTarget = new DropTargetListener() {
-
-			@Override
-			public void dropAccept(DropTargetEvent event) {
-			}
-
-			@Override
-			public void drop(DropTargetEvent event) {
-				System.out.println("DROPPED! " + event.data);
-				if (ServerList.getTargetServers().containsKey(event.data) ) {
-					System.out.println("SERVER!");
-					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
-				}
-				else if (((String)(event.data)).startsWith("\\i2b2")) {
-					//do nothing
-				}
-				else {
-					setTargetNameVersion((String)event.data, getLatestVersion((String)(event.data)));
-				}
-			}
-
-			@Override
-			public void dragOver(DropTargetEvent event) {
-			}
-			@Override
-			public void dragOperationChanged(DropTargetEvent event) {
-			}
-			@Override
-			public void dragLeave(DropTargetEvent event) {
-			}
-			@Override
-			public void dragEnter(DropTargetEvent event) {
-			}
-		};
 	}
+
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -316,11 +251,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-		//												Shell shell = new Shell();
-		//												shell.setSize(844, 536);
-		//												shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//												mainComposite = new Composite(shell, SWT.NONE);
-		//												mainComposite.setLayout(new BorderLayout(0, 0));
+		//						Shell shell = new Shell();
+		//						shell.setSize(844, 536);
+		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//						mainComposite = new Composite(shell, SWT.NONE);
+		//						mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -361,13 +296,13 @@ public class OntologyEditorView extends ViewPart {
 		stagingComposite.addControlListener(new ControlListener() {
 
 			@Override
-			public void controlResized(ControlEvent e) {
-				composite_1.setWeights(sash.getWeights());
-				composite_1.layout();
+			public void controlMoved(ControlEvent e) {
 			}
 
 			@Override
-			public void controlMoved(ControlEvent e) {
+			public void controlResized(ControlEvent e) {
+				composite_1.setWeights(sash.getWeights());
+				composite_1.layout();
 			}
 		});
 
@@ -434,15 +369,15 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
 
 			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-
-			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.DEL) {
 					System.out.println("DELETE");
 					deleteNode();
 				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
 			}
 		});
 
@@ -535,13 +470,13 @@ public class OntologyEditorView extends ViewPart {
 		composite_3.addControlListener(new ControlListener() {
 
 			@Override
-			public void controlResized(ControlEvent e) {
-				sash.setWeights(composite_1.getWeights());
-				sash.layout();
+			public void controlMoved(ControlEvent e) {
 			}
 
 			@Override
-			public void controlMoved(ControlEvent e) {
+			public void controlResized(ControlEvent e) {
+				sash.setWeights(composite_1.getWeights());
+				sash.layout();
 			}
 		});
 		DropTarget dropTarget5 = new DropTarget(composite_3, operations);
@@ -574,10 +509,10 @@ public class OntologyEditorView extends ViewPart {
 		composite_5.setLayout(new GridLayout(2, false));
 		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
 
-		Button btnExpandAll = new Button(composite_5, SWT.FLAT);
-		btnExpandAll.setSize(28, 26);
-		btnExpandAll.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
-		btnExpandAll.setToolTipText("Expand All");
+		Button btnExpandAllStaging = new Button(composite_5, SWT.FLAT);
+		btnExpandAllStaging.setSize(28, 26);
+		btnExpandAllStaging.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
+		btnExpandAllStaging.setToolTipText("Expand All");
 
 		Button btnMinimizeAll = new Button(composite_5, SWT.NONE);
 		btnMinimizeAll.setSize(28, 26);
@@ -591,17 +526,71 @@ public class OntologyEditorView extends ViewPart {
 		DropTarget dropTarget4 = new DropTarget(composite_2, operations);
 		dropTarget4.setTransfer(transferTypes);
 		dropTarget4.addDropListener(dropListenerTarget);
-
 		lblVersion = new Label(composite_2, SWT.NONE);
 		lblVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblVersion.setText("Version:");
-		lblVersionText = new Label(composite_2, SWT.NONE);
-		lblVersionText.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		versionCombo = new Combo(composite_2, SWT.NONE);
+		versionCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		versionCombo.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				//stoe old selection
+				oldSelectedVersion = versionCombo.getText();
+			}
+		});
+		versionCombo.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				// TODO IMPLEMENT
+				if (!oldSelectedVersion.equals(versionCombo.getText())){
+					oldSelectedVersion = versionCombo.getText();
+					System.err.println("NYI");
+					MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		btnEdit = new Button(composite_2, SWT.NONE);
+		btnEdit.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/format-justify-fill.png"));
+		btnEdit.setText("edit");
+		btnEdit.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				//TODO IMPLEMENT
+				System.err.println("NYI");
+				MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
+			}
+		});
+
 		btnNewVersion = new Button(composite_2, SWT.NONE);
+		btnNewVersion.setText("new");
 		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/plus16.png"));
 		btnNewVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		btnNewVersion.setToolTipText("New Version");
 		btnNewVersion.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -610,17 +599,68 @@ public class OntologyEditorView extends ViewPart {
 				Application.executeCommand(command);
 
 			}
+		});
+		composite_4 = new Composite(composite_2, SWT.NONE);
+		composite_4.setLayout(new GridLayout(6, false));
+		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 9, 1));
+
+
+		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
+		dropTarget3.setTransfer(transferTypes);
+		dropTarget3.addDropListener(dropListenerTarget);
+
+		btnShowSubNodes = new Button(composite_4, SWT.NONE);
+		btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/showSubNodes.gif"));
+		btnShowSubNodes.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				//TODO btnShowSubNodes
+				showSubNodes = !showSubNodes;
+				if (showSubNodes)
+					btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/showSubNodes.gif"));
+				else
+					btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/hideSubNodes.gif"));
+				targetComposite.setRedraw(false);
+				collapseAllLeafs(showSubNodes);
+				targetTreeViewer.refresh();
+				targetComposite.setRedraw(true);
+			}
+		});
+
+		btnExpandAllTarget = new Button(composite_4, SWT.NONE);
+		btnExpandAllTarget.setSize(28, 26);
+		btnExpandAllTarget.setToolTipText("Expand All");
+		btnExpandAllTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
+
+		btnCollapseAllTarget = new Button(composite_4, SWT.NONE);
+		btnCollapseAllTarget.setSize(28, 26);
+		btnCollapseAllTarget.setToolTipText("Collapse All");
+		btnCollapseAllTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/collapseall.gif"));
+
+		lblProject = new Label(composite_4, SWT.NONE);
+		lblProject.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblProject.setText("Target Project:");
+
+		lblTargetName = new Text(composite_4, SWT.NONE);
+		lblTargetName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
+		lblTargetName.setEditable(false);
+
+		btnGo = new Button(composite_4, SWT.NONE);
+		btnGo.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
+		btnGo.setText("upload");
+		btnGo.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-next.png"));
+		btnGo.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 
 			}
-		});
-
-		btnGo = new Button(composite_2, SWT.NONE);
-		btnGo.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
-		btnGo.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-next.png"));
-		btnGo.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -643,125 +683,85 @@ public class OntologyEditorView extends ViewPart {
 				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
 			}
+		});
+
+		btnCollapseAllTarget.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
-		});
-		composite_4 = new Composite(composite_2, SWT.NONE);
-		composite_4.setLayout(new GridLayout(5, false));
-		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 6, 1));
-
-
-		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
-		dropTarget3.setTransfer(transferTypes);
-		dropTarget3.addDropListener(dropListenerTarget);
-
-		btnShowSubNodes = new Button(composite_4, SWT.NONE);
-		btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/showSubNodes.gif"));
-		btnShowSubNodes.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				//TODO btnShowSubNodes
-				showSubNodes = !showSubNodes;
-				if (showSubNodes)
-					btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/showSubNodes.gif"));
-				else
-					btnShowSubNodes.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/hideSubNodes.gif"));
-				targetComposite.setRedraw(false);
-				collapseAllLeafs(showSubNodes);
-				targetTreeViewer.refresh();
-				targetComposite.setRedraw(true);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		btnExpandAllSource = new Button(composite_4, SWT.NONE);
-		btnExpandAllSource.setSize(28, 26);
-		btnExpandAllSource.setToolTipText("Expand All");
-		btnExpandAllSource.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/expandall.gif"));
-
-		btnCollapseAllTarget = new Button(composite_4, SWT.NONE);
-		btnCollapseAllTarget.setSize(28, 26);
-		btnCollapseAllTarget.setToolTipText("Collapse All");
-		btnCollapseAllTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/collapseall.gif"));
-
-		lblTarget = new Label(composite_4, SWT.NONE);
-		lblTarget.setText("Target i2b2 Project:");
-		lblNameText = new Text(composite_4, SWT.NONE);
-		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
-		lblNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
-			setTargetNameVersion( ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getTargetDBSchema(), "2" );
-
-		} else {
-			lblNameText.setText("Drop Target i2b2 here!");
-		}
-
-		lblNameText.setEditable(false);
-
-		DropTarget dropTarget = new DropTarget(lblNameText, operations);
-		dropTarget.setTransfer(transferTypes);
-		dropTarget.addDropListener(dropListenerTarget);
-
-
-		DropTarget dropTarget2 = new DropTarget(lblTarget, operations);
-		dropTarget2.setTransfer(transferTypes);
-		dropTarget2.addDropListener(dropListenerTarget);
-
-		btnCollapseAllTarget.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				targetTreeViewer.collapseAll();
 			}
+		});
+
+		btnExpandAllTarget.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-		});
-
-		btnExpandAllSource.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				targetComposite.setRedraw(false);
-				targetTreeViewer.expandAll();
+				int items = getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNumberOfItemNodes();
+				if (items>5000) {
+					boolean confirm = MessageDialog.openConfirm(mainComposite.getShell(), "Continue?", "The Target Tree contains " + items
+							+ " items.\nExpanding the Tree will take some time.");
+					if (confirm) {
+						targetTreeViewer.expandAll();
+					}
+				}
+				else {
+					targetTreeViewer.expandAll();
+				}
+
 				targetComposite.setRedraw(true);
 			}
+		});
+
+		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
+			setTargetNameVersion( ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getTargetDBSchema(), "2" );
+
+		} else {
+			lblTargetName.setText("Drop Target i2b2 here!");
+			//			lblN
+			//			lblNameText.
+			//			lblNameText.setText("Drop Target i2b2 here!");
+		}
+		btnMinimizeAll.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-		});
-		btnMinimizeAll.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				stagingTreeViewer.collapseAll();
 			}
+		});
+		btnExpandAllStaging.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-		});
-		btnExpandAll.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				stagingComposite.setRedraw(false);
-				stagingTreeViewer.expandAll();
+				int items = getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNumberOfItemNodes();
+				if (items>5000) {
+					boolean confirm = MessageDialog.openConfirm(mainComposite.getShell(), "Continue?", "The Staging Tree contains " + items
+							+ " items.\nExpanding the Tree will take some time.");
+					if (confirm)
+						stagingTreeViewer.expandAll();
+				}
+				else {
+					stagingTreeViewer.expandAll();
+				}
 				stagingComposite.setRedraw(true);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 		stagingTreeViewer.addDoubleClickListener(doubleClickListener);
@@ -799,18 +799,10 @@ public class OntologyEditorView extends ViewPart {
 		initDataBindings();
 	}
 
-	/**
-	 * @return the showSubNodes
-	 */
-	public static boolean isShowSubNodes() {
-		return showSubNodes;
-	}
-
-	/**
-	 * @param showSubNodes the showSubNodes to set
-	 */
-	public static void setShowSubNodes(boolean showSubNodes) {
-		OntologyEditorView.showSubNodes = showSubNodes;
+	protected static DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		return bindingContext;
 	}
 
 	/**
@@ -819,51 +811,154 @@ public class OntologyEditorView extends ViewPart {
 	public static boolean isInit() {
 		return init;
 	}
+	/**
+	 * @return the notYetSaved
+	 */
+	public static boolean isNotYetSaved() {
+		return notYetSaved;
+	}
 
-	public static void incrementVersion() {
-		int version = Integer.parseInt(lblVersionText.getText());
-		version++;
-		lblVersionText.setText(""+version);
-		composite_2.layout();
+	/**
+	 * @return the showSubNodes
+	 */
+	public static boolean isShowSubNodes() {
+		return showSubNodes;
+	}
 
+	private static void renameNode() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
 
 	}
 
-	public static void incrementVersionRefresh() {
-
-
-		if ( lblVersionText != null ){
-			lblVersionText.setText( "" + ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().getVersion());
-			composite_2.layout();
-		} else {
-			Console.error("lblVersionText is null, so don't refresh the version number");
-
-		}
-
-
+	/**
+	 * @param column the column to set
+	 */
+	public static void setColumn(TreeViewerColumn column) {
+		OntologyEditorView.column = column;
+	}
+	/**
+	 * @param currentStagingNode the currentStagingNode to set
+	 */
+	public static void setCurrentStagingNode(OntologyTreeNode currentStagingNode) {
+		OntologyEditorView.currentStagingNode = currentStagingNode;
+	}
+	public static void setCurrentTargetNode(OntologyTreeNode node) {
+		currentTargetNode = node;
 	}
 
-	public static void setTargetNameVersion(String name, String version) {
-		System.out.println("SETTING: " + name + " " + version);
-		lblNameText.setText(""+name);
-		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
-		lblVersionText.setText(version);
-		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
-		((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
-		//((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf(version));
-
-		composite_2.layout();
+	/**
+	 * @param i2b2ImportTool the i2b2ImportTool to set
+	 */
+	public static void setI2b2ImportTool(I2B2ImportTool i2b2ImportTool) {
+		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
 	}
-	public static void setTargetNameVersion(String version) {
-		lblVersionText.setText(version);
-		composite_2.layout();
-	}
-
 	public static void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
 		OntologyEditorView.i2b2ImportTool = i2b2ImportTool;
 	}
-	@Override
-	public void setFocus() {
+
+	/**
+	 * @param notYetSaved the notYetSaved to set
+	 */
+	public static void setNotYetSaved(boolean notYetSaved) {
+		OntologyEditorView.notYetSaved = notYetSaved;
+	}
+	public static void setSelection(OntologyTreeNode node) {
+		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
+		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
+		getTargetTreeViewer().refresh();
+		EditorTargetInfoView.setNode(node);
+	}
+	/**
+	 * @param showSubNodes the showSubNodes to set
+	 */
+	public static void setShowSubNodes(boolean showSubNodes) {
+		OntologyEditorView.showSubNodes = showSubNodes;
+	}
+
+	public static void setSourceContent() {
+		long time =System.currentTimeMillis();
+		if (!init) {
+			init();
+		}
+		stagingTreeViewer.getTree().removeAll();
+		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
+
+		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
+				.getOntologyTreeSource());
+
+		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
+
+		stagingTreeViewer.setInput(new OTtoTreeContentProvider().getStagingModel());
+		stagingTreeViewer.expandToLevel(2);
+		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
+		.setTreeViewer(stagingTreeViewer);
+
+		Menu menu = new Menu(stagingTreeViewer.getTree());
+
+		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
+		mntmExpandChildren.setText("Expand All Children");
+		mntmExpandChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+						stagingComposite.setRedraw(false);
+
+						expandStagingChildren(node, true);
+						stagingComposite.setRedraw(true);
+					}
+				}).run();
+				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+				stagingComposite.setRedraw(false);
+				expandStagingChildren(node, true);
+				stagingComposite.setRedraw(true);
+			}
+		});
+		MenuItem mntmCollapseChildren = new MenuItem(menu, SWT.PUSH);
+		mntmCollapseChildren.setText("Collapse All Children");
+		mntmCollapseChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
+				stagingComposite.setRedraw(false);
+				expandStagingChildren(node, false);
+				stagingComposite.setRedraw(true);
+			}
+		});
+
+		stagingTreeViewer.getTree().setMenu(menu);
+		stagingComposite.layout();
+		mainComposite.layout();
+		System.out.println(System.currentTimeMillis()-time +"ms");
+	}
+
+	public static void setStagingSchemaName(String schema) {
+		sourceSchema=schema;
+	}
+
+	/**
+	 * @param currentStagingServer
+	 */
+	public static void setStagingServer(Server currentServer2) {
+		System.out.println("setting staging server to: " + currentServer2.toString());
+		currentStagingServer=currentServer2;
 	}
 
 	public static void setTargetContent(OntologyTree oTTarget) {
@@ -877,6 +972,24 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OTtoTreeContentProvider().getTargetModel());
 		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
+
+			@Override
+			public void mouseEnter(MouseEvent arg0) {
+				for (OntologyTreeNode node : highlightedStagingNodes) {
+					node.setHighlighted(false);
+					highlightedStagingNodes.remove(node);
+				}
+
+			}
+
+			@Override
+			public void mouseExit(MouseEvent arg0) {
+				for (OntologyTreeNode node : highlightedStagingNodes) {
+					node.setHighlighted(false);
+				}
+				highlightedStagingNodes.clear();
+				stagingTreeViewer.refresh();
+			}
 
 			@Override
 			public void mouseHover(MouseEvent arg0) {
@@ -912,24 +1025,6 @@ public class OntologyEditorView extends ViewPart {
 				//TODO
 				stagingTreeViewer.refresh();
 			}
-
-			@Override
-			public void mouseExit(MouseEvent arg0) {
-				for (OntologyTreeNode node : highlightedStagingNodes) {
-					node.setHighlighted(false);
-				}
-				highlightedStagingNodes.clear();
-				stagingTreeViewer.refresh();
-			}
-
-			@Override
-			public void mouseEnter(MouseEvent arg0) {
-				for (OntologyTreeNode node : highlightedStagingNodes) {
-					node.setHighlighted(false);
-					highlightedStagingNodes.remove(node);
-				}
-
-			}
 		});
 		targetTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
@@ -943,12 +1038,12 @@ public class OntologyEditorView extends ViewPart {
 		mntmgetChildren.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
+			public void widgetDefaultSelected(SelectionEvent e) {
 
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent event) {
 
 			}
 		});
@@ -958,13 +1053,13 @@ public class OntologyEditorView extends ViewPart {
 		mntmAddNode.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
-				addNode();
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void widgetSelected(SelectionEvent event) {
+				addNode();
 			}
 		});
 
@@ -973,13 +1068,13 @@ public class OntologyEditorView extends ViewPart {
 		mntmAddItem.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
-				addItem();
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void widgetSelected(SelectionEvent event) {
+				addItem();
 			}
 		});
 
@@ -989,16 +1084,18 @@ public class OntologyEditorView extends ViewPart {
 		mntmExpandChildren.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent event) {
+
+
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
 				expandTargetChildren(node, true);
 				targetComposite.setRedraw(true);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 		});
 		MenuItem mntmCollapseChildren = new MenuItem(menu, SWT.PUSH);
@@ -1006,16 +1103,16 @@ public class OntologyEditorView extends ViewPart {
 		mntmCollapseChildren.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent event) {
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
 				expandTargetChildren(node, false);
 				targetComposite.setRedraw(true);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1025,13 +1122,13 @@ public class OntologyEditorView extends ViewPart {
 		mntmHideItem.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
-				hideNode();
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void widgetSelected(SelectionEvent event) {
+				hideNode();
 			}
 		});
 
@@ -1040,13 +1137,13 @@ public class OntologyEditorView extends ViewPart {
 		mntmDelete.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
-				deleteNode();
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void widgetSelected(SelectionEvent event) {
+				deleteNode();
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1055,13 +1152,13 @@ public class OntologyEditorView extends ViewPart {
 		mntmRenameNode.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
-				renameNode();
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void widgetSelected(SelectionEvent event) {
+				renameNode();
 			}
 		});
 
@@ -1081,131 +1178,164 @@ public class OntologyEditorView extends ViewPart {
 		column.getColumn().setWidth(targetComposite.getBounds().width-5);
 	}
 
-	public static void setSourceContent() {
-		long time =System.currentTimeMillis();
-		if (!init) {
-			init();
+	public static void setTargetNameVersion(String version) {
+		versionCombo.add(version);
+		versionCombo.setText(version);
+		composite_2.layout();
+	}
+	public static void setTargetNameVersion(String name, String version) {
+		System.out.println("SETTING: " + name + " " + version);
+		if (name != null) {
+			lblTargetName.setText(name);
+			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		}
-		stagingTreeViewer.getTree().removeAll();
-		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
+		else {
+			lblTargetName.setText("Drop i2b2 target here!");
+			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		}
+		//		lblNameText.setText(""+name);
+		//		lblNameText.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		versionCombo.add(version);
+		versionCombo.setText(version);
+		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
+		((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
+		//((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf(version));
 
-		treeContentProvider.setOT(i2b2ImportTool.getMyOntologyTrees()
-				.getOntologyTreeSource());
+		composite_2.layout();
+	}
 
-		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
-		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
+	public OntologyEditorView() {
+	}
+	@Override
+	public void createPartControl(final Composite parent) {
+		mainComposite = parent;
+		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
+		Label label = new Label(mainComposite, SWT.LEFT);
+		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
+		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
+				"images/IDRT_ME.gif"));
 
-		stagingTreeViewer.setInput(new OTtoTreeContentProvider().getStagingModel());
-		stagingTreeViewer.expandToLevel(2);
-		i2b2ImportTool.getMyOntologyTrees().getOntologyTreeSource()
-		.setTreeViewer(stagingTreeViewer);
+		System.out.println("################# Debug #######");
+		TargetProjects targetProjects = new TargetProjects();
 
-		Menu menu = new Menu(stagingTreeViewer.getTree());
+		TargetProject targetProject1 = new TargetProject();
+		targetProject1.setTargetProjectID(1);
+		targetProject1.setName("TargetProject1Name");
+		targetProject1.setDescription("TargetProject1Desc");
 
-		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
-		mntmExpandChildren.setText("Expand All Children");
-		mntmExpandChildren.addSelectionListener(new SelectionListener() {
+		TargetProject targetProject2 = new TargetProject();
+		targetProject2.setTargetProjectID(3);
+		targetProject2.setName("TargetProject2Name");
+		targetProject2.setDescription("TargetProject2Desc");
+
+		targetProjects.add(targetProject1);
+		targetProjects.add(targetProject2);
+
+		System.out.println("TargetProjects:");
+		List<TargetProject> list = targetProjects.getTargetProjectsList();
+		for ( TargetProject tmpTargetProject : list ){
+			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
+		}
+		System.out.println("---");
+		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
+
+
+
+
+		//targetProjects.getSelectedTargetProject()
+
+		final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
+		final Transfer[] transferTypes = new Transfer[] { TextTransfer
+				.getInstance() };
+
+		DropTarget dropTarget = new DropTarget(label, operations);
+		dropTarget.setTransfer(transferTypes);
+
+		dropListenerStaging = new DropTargetListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent event) {
+			public void dragEnter(DropTargetEvent event) {
+			}
 
-				new Thread(new Runnable() {
+			@Override
+			public void dragLeave(DropTargetEvent event) {
+			}
 
-					@Override
-					public void run() {
-						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
-						stagingComposite.setRedraw(false);
+			@Override
+			public void dragOperationChanged(DropTargetEvent event) {
+			}
+			@Override
+			public void dragOver(DropTargetEvent event) {
+			}
+			@Override
+			public void drop(DropTargetEvent event) {
+				System.out.println("DROPPED! " + event.data);
+				if (ServerList.getTargetServers().containsKey(event.data) ) {
+					System.out.println("SERVER!");
+					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+				}
+				else if (((String)(event.data)).startsWith("\\i2b2")) {
+					//do nothing
+				}
+				else {
+					try {
+						String schema = (String)event.data;
+						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
+						stagingServer.setSchema(schema);
+						setStagingServer(stagingServer);
+						setStagingSchemaName(schema);
+						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
+						setTargetNameVersion(getLatestVersion((String)(event.data)));
+						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));
 
-						expandStagingChildren(node, true);
-						stagingComposite.setRedraw(true);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
 					}
-				}).run();
-				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
-				stagingComposite.setRedraw(false);
-				expandStagingChildren(node, true);
-				stagingComposite.setRedraw(true);
+				}
+			}
+			@Override
+			public void dropAccept(DropTargetEvent event) {
+			}
+		};
+		dropTarget.addDropListener(dropListenerStaging);
+
+		dropListenerTarget = new DropTargetListener() {
+
+			@Override
+			public void dragEnter(DropTargetEvent event) {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-		MenuItem mntmCollapseChildren = new MenuItem(menu, SWT.PUSH);
-		mntmCollapseChildren.setText("Collapse All Children");
-		mntmCollapseChildren.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
-				stagingComposite.setRedraw(false);
-				expandStagingChildren(node, false);
-				stagingComposite.setRedraw(true);
+			public void dragLeave(DropTargetEvent event) {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
+			public void dragOperationChanged(DropTargetEvent event) {
 			}
-		});
-
-		stagingTreeViewer.getTree().setMenu(menu);
-		stagingComposite.layout();
-		mainComposite.layout();
-		System.out.println(System.currentTimeMillis()-time +"ms");
+			@Override
+			public void dragOver(DropTargetEvent event) {
+			}
+			@Override
+			public void drop(DropTargetEvent event) {
+				System.out.println("DROPPED! " + event.data);
+				if (ServerList.getTargetServers().containsKey(event.data) ) {
+					System.out.println("SERVER!");
+					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+				}
+				else if (((String)(event.data)).startsWith("\\i2b2")) {
+					//do nothing
+				}
+				else {
+					setTargetNameVersion((String)event.data, getLatestVersion((String)(event.data)));
+				}
+			}
+			@Override
+			public void dropAccept(DropTargetEvent event) {
+			}
+		};
 	}
 
-	public static TreeViewer getTargetTreeViewer() {
-		return targetTreeViewer;
-	}
-	public static TreeViewer getStagingTreeViewer() {
-		return stagingTreeViewer;
-	}
-
-	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
-
-		for (OntologyTreeNode child : node.getChildren())
-			expandTargetChildren(child,state);
-		targetTreeViewer.setExpandedState(node, state);
-
-	}
-
-	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
-
-		for (OntologyTreeNode child : node.getChildren())
-			expandStagingChildren(child,state);
-		stagingTreeViewer.setExpandedState(node, state);
-	}
-
-	private static void addNode() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
-	}
-	private static void addItem() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
-	}
-	private static void renameNode() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
-
-	}
-
-	private static void hideNode() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.hideNode");
-	}
-	private static void deleteNode() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
-	}
-
-	public static void setSelection(OntologyTreeNode node) {
-		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
-		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
-		getTargetTreeViewer().refresh();
-		EditorTargetInfoView.setNode(node);
-	}
-	protected static DataBindingContext initDataBindings() {
-		DataBindingContext bindingContext = new DataBindingContext();
-		//
-		return bindingContext;
-	}
 	private String getLatestVersion(String string) {
 
 		if (  ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects().getSelectedTarget() != null ){ 
@@ -1217,47 +1347,7 @@ public class OntologyEditorView extends ViewPart {
 
 
 	}
-
-	public static String getTargetSchemaName() {
-		return lblNameText.getText();
-	}
-
-	public static void setStagingSchemaName(String schema) {
-		sourceSchema=schema;
-	}
-
-	public static String getStagingSchemaName() {
-		return sourceSchema;
-	}
-
-	private static void collapseAllLeafs(boolean state) {
-
-		for (Object child : (targetTreeViewer.getExpandedElements())) {
-			for (OntologyTreeNode node2 : ((OntologyTreeNode)child).getChildren())
-				if (((OntologyTreeNode)node2).isLeaf())
-					targetTreeViewer.setExpandedState((OntologyTreeNode)node2, state);
-		}
-	}
-
-	/**
-	 * @param currentStagingServer
-	 */
-	public static void setStagingServer(Server currentServer2) {
-		System.out.println("setting staging server to: " + currentServer2.toString());
-		currentStagingServer=currentServer2;
-	}
-	public static Server getStagingServer() {
-		return currentStagingServer;
-	}
-
-	public static void setCurrentTargetNode(OntologyTreeNode node) {
-		currentTargetNode = node;
-	}
-	public static OntologyTreeNode getCurrentTargetNode() {
-		return currentTargetNode;
-	}
-
-	public static Point getTargetCompositePoint() {
-		return targetComposite.getLocation();
+	@Override
+	public void setFocus() {
 	}
 }

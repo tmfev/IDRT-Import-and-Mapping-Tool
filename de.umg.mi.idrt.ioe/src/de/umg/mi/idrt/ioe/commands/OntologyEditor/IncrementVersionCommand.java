@@ -10,7 +10,7 @@ public class IncrementVersionCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		OntologyEditorView.incrementVersion();
+//		OntologyEditorView.incrementVersion();
 		return null;
 	}
 }

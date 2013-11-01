@@ -7,18 +7,18 @@ import org.eclipse.jface.wizard.Wizard;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class NewProjectWizard extends Wizard {
+public class NewInstanceWizard extends Wizard {
 
-	protected NewProjectWizardPage1 one;
+	protected NewInstanceWizardPage1 one;
 
-	public NewProjectWizard() {
+	public NewInstanceWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 
 	@Override
 	public void addPages() {
-		one = new NewProjectWizardPage1();
+		one = new NewInstanceWizardPage1();
 		// two = new CSVWizardPageTwo();
 		addPage(one);
 		// addPage(two);
@@ -26,16 +26,16 @@ public class NewProjectWizard extends Wizard {
 
 	@Override
 	public boolean canFinish() {
-		return NewProjectWizardPage1.isComplete();
+		return one.isComplete();
 	}
 	
 	@Override
 	public boolean performFinish() {
 		
-		System.out.println("Creating New Project:");
-		System.out.println("Name: " + NewProjectWizardPage1.getNameText());
-		System.out.println("Descr.: " + NewProjectWizardPage1.getDescriptionText());
-		System.out.println("Created: " + NewProjectWizardPage1.getCreated());
+		System.out.println("Creating New Instance:");
+		System.out.println("Name: " + one.getNameText());
+		System.out.println("Descr.: " + one.getDescriptionText());
+		System.out.println("Created: " + one.getCreated());
 		
 		//TODO DB Access
 		return true;
