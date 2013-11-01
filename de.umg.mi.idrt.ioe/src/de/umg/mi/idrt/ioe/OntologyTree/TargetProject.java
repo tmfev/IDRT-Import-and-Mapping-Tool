@@ -28,8 +28,7 @@ public class TargetProject {
 	public TargetProject() {
 
 	}
-
-
+	
 	/**
 	 * @return the highestVersion
 	 */
