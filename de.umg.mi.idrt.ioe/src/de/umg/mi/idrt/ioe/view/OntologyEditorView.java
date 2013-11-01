@@ -252,11 +252,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		//TODO HERE
 
-		//		Shell shell = new Shell();
-		//		shell.setSize(844, 536);
-		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//		mainComposite = new Composite(shell, SWT.NONE);
-		//		mainComposite.setLayout(new BorderLayout(0, 0));
+//				Shell shell = new Shell();
+//				shell.setSize(844, 536);
+//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//				mainComposite = new Composite(shell, SWT.NONE);
+//				mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -525,7 +525,25 @@ public class OntologyEditorView extends ViewPart {
 		//		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 		composite_7 = new Composite(composite_2, SWT.NONE);
 		composite_7.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		composite_7.setLayout(new GridLayout(6, false));
+		composite_7.setLayout(new GridLayout(7, false));
+		
+				btnEdit = new Button(composite_7, SWT.NONE);
+				btnEdit.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/format-justify-fill.png"));
+				btnEdit.setText("edit");
+				btnEdit.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent arg0) {
+					}
+
+					@Override
+					public void widgetSelected(SelectionEvent arg0) {
+						//TODO IMPLEMENT
+						Application.executeCommand("de.umg.mi.idrt.ioe.editInstance");
+//						System.err.println("NYI");
+//						MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
+					}
+				});
 
 
 		lblInstance = new Label(composite_7, SWT.NONE);
@@ -544,10 +562,6 @@ public class OntologyEditorView extends ViewPart {
 		gd_versionCombo.widthHint = 20;
 		versionCombo.setLayoutData(gd_versionCombo);
 
-		btnEdit = new Button(composite_7, SWT.NONE);
-		btnEdit.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/format-justify-fill.png"));
-		btnEdit.setText("edit");
-
 		btnNewVersion = new Button(composite_7, SWT.NONE);
 		btnNewVersion.setText("new");
 		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/plus16.png"));
@@ -565,19 +579,6 @@ public class OntologyEditorView extends ViewPart {
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.INCREMENTTARGETVERSION);
 				Application.executeCommand(command);
 
-			}
-		});
-		btnEdit.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				//TODO IMPLEMENT
-				System.err.println("NYI");
-				MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
 			}
 		});
 		versionCombo.addFocusListener(new FocusListener() {
@@ -841,8 +842,14 @@ public class OntologyEditorView extends ViewPart {
 		return bindingContext;
 	}
 
-	public static void setInstance(String name) {
+	public static void setInstance(String name, String description) {
 		instanceName.setText(name);
+		((OntologyTreeTargetRootNode)getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode()).getTargetProjects().getSelectedTargetProject().setName(name);
+		((OntologyTreeTargetRootNode)getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode()).getTargetProjects().getSelectedTargetProject().setDescription(description);
+	}
+	
+	public static TargetProject getInstance() {
+		return ((OntologyTreeTargetRootNode)getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode()).getTargetProjects().getSelectedTargetProject();
 	}
 
 	/**
@@ -1215,7 +1222,8 @@ public class OntologyEditorView extends ViewPart {
 		});
 		//TODO
 		setInstance(((OntologyTreeTargetRootNode)getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget()
-				.getRootNode()).getTargetProjects().getSelectedTargetProject().getName());
+				.getRootNode()).getTargetProjects().getSelectedTargetProject().getName(),((OntologyTreeTargetRootNode)getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget()
+						.getRootNode()).getTargetProjects().getSelectedTargetProject().getDescription());
 
 		versionCombo.removeAll();
 		targetComposite.layout();

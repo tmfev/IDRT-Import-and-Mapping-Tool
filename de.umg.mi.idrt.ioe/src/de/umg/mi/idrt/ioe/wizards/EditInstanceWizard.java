@@ -9,18 +9,18 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class NewInstanceWizard extends Wizard {
+public class EditInstanceWizard extends Wizard {
 
-	protected NewInstanceWizardPage1 one;
+	protected EditInstanceWizardPage1 one;
 
-	public NewInstanceWizard() {
+	public EditInstanceWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 
 	@Override
 	public void addPages() {
-		one = new NewInstanceWizardPage1();
+		one = new EditInstanceWizardPage1();
 		// two = new CSVWizardPageTwo();
 		addPage(one);
 		// addPage(two);
