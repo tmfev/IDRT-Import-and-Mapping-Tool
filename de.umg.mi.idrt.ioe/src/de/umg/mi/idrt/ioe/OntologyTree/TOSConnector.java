@@ -122,9 +122,7 @@ public class TOSConnector {
 				setContextVariable("SQLTable", currentServer.getTable());
 				setContextVariable("OracleSchema", currentServer.getSchema());
 
-				Application.getStatusView().addMessage(
-						"i2b2 project \"" + currentServer.getSchema()
-						+ "\"selected via ServerView.");
+		
 				//
 
 				//setContextVariable("OracleHost", currentServer.getIp());
