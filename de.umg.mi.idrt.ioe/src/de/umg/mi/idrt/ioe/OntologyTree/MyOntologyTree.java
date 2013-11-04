@@ -96,10 +96,7 @@ public class MyOntologyTree extends JPanel {
 		super(new GridLayout(1, 0));
 		initiate();
 
-		Application.getStatusView().addMessage(
-				new SystemMessage(Application.getResource().getText(
-						"MyOT.INITIALIZED"), SystemMessage.MessageType.SUCCESS,
-						SystemMessage.MessageLocation.MAIN));
+		
 	}
 
 	/**
