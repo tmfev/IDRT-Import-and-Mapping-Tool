@@ -287,11 +287,11 @@ public class EditorTargetInfoView extends ViewPart {
 
 		infoTableDBColumn = new TableColumn(_infoTable, SWT.NONE);
 		infoTableDBColumn.setWidth(170);
-		infoTableDBColumn.setText("column");
+		infoTableDBColumn.setText("Attribute");
 
 		infoTableValue = new TableColumn(_infoTable, SWT.NONE);
 		infoTableValue.setWidth(600);
-		infoTableValue.setText("value");
+		infoTableValue.setText("Value");
 		// infoTableValue.
 
 		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_PATH);
@@ -305,8 +305,7 @@ public class EditorTargetInfoView extends ViewPart {
 		// createTableViewerColumn(Resource.I2B2.NODE.TARGET.SOURCE_PATH,
 		// bounds[0], 0);
 
-		tableItem = new TableItem(_infoTable, SWT.NONE);
-		tableItem.setText("New TableItem");
+
 
 		//tableCursor = new TableCursor(_infoTable, SWT.NONE);
 
