@@ -447,7 +447,7 @@ public class OntologyEditorView extends ViewPart {
 						EditorTargetInfoView.setNode(node);
 
 						Application.getStatusView().addMessage(
-								new SystemMessage("Staging selection changed to \'"
+								new SystemMessage("Staging selection changed to 1 \'"
 										+ node.getName() + "\'.",
 										SystemMessage.MessageType.SUCCESS,
 										SystemMessage.MessageLocation.MAIN));
@@ -814,11 +814,6 @@ public class OntologyEditorView extends ViewPart {
 				if (node != null) {
 					Activator.getDefault().getResource()
 					.getEditorSourceInfoView().setNode(node);
-					Application.getStatusView().addMessage(
-							new SystemMessage("Selection changed to \'"
-									+ node.getName() + "\'.",
-									SystemMessage.MessageType.SUCCESS,
-									SystemMessage.MessageLocation.MAIN));
 				} else {
 					Application
 					.getStatusView()
