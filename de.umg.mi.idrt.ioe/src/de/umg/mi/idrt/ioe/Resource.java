@@ -57,24 +57,7 @@ public class Resource {
 	public final static String COLOR_SUCCESS_HTML = "50FC4A";
 	public final static Color COLOR_SUCCESS = new Color(80, 252, 74);
 
-	public Resource() {
-		Debug.c("Resource");
-		URL i = Platform.getBundle("de.umg.mi.idrt.ioe").getEntry("/");
-		URL url = null;
-		try {
-			url = FileLocator.toFileURL(i);
-		} catch (IOException e) {
-			Console.error(e.toString() + " @Resource Code1");
-		}
 
-		try {
-			TEXT.load(new FileInputStream(url.getPath() + this.TEXT_FILE));
-		} catch (FileNotFoundException e) {
-			Console.error(e.toString() + " @Resource Code2");
-		} catch (IOException e) {
-			Console.error(e.toString() + " @Resource Code3");
-		}
-	}
 
 	public I2B2ImportTool getI2B2ImportTool() {
 		return _i2b2ImportTool;
@@ -972,93 +955,5 @@ public class Resource {
 		_actionCommand = null;
 	}
 
-	public Settings getSettings() {
-		return SETTINGS;
-	}
-
-	public static class Settings {
-
-		public String DB_NAME = "db_name_string";
-		private LinkedList<String> lastImportedFiles = new LinkedList<String>();
-
-		public void setDatabaseName(String dbName) {
-			DB_NAME = dbName;
-		}
-
-		public String getDatabaseName() {
-			return DB_NAME;
-		}
-
-		public void addLastOpenedFile(String filename) {
-			Debug.d("addingFile", filename);
-			// remove filename if already in the list
-			if (lastImportedFiles.contains(filename)) {
-				lastImportedFiles.remove(filename);
-				Debug.d("- removed", filename);
-			}
-
-			lastImportedFiles.addFirst(filename);
-
-			// delete
-			if (lastImportedFiles.size() > 5) {
-				Debug.d("- removed>5", filename);
-				lastImportedFiles.removeLast();
-			}
-
-			try {
-				IPreferenceStore store = Activator.getDefault()
-						.getPreferenceStore();
-				int x = 0;
-				Activator
-						.getDefault()
-						.getPreferenceStore()
-						.setValue(
-								Resource.ID.Variables.Preferences.LAST_IMPORTED_FILE,
-								filename);
-				// TODO add support for different savefiles
-				lastImportedFiles.size();
-				((IPersistentPreferenceStore) store).save();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-		}
-
-		public String getLastOpenedFile() {
-			return Activator
-					.getDefault()
-					.getPreferenceStore()
-					.getString(
-							Resource.ID.Variables.Preferences.LAST_IMPORTED_FILE);
-		}
-
-		public String getLastOpenedFilesAt(int i) {
-			if (lastImportedFiles.size() < i)
-				return "";
-			return lastImportedFiles.get(i);
-		}
-
-		public static String get(String id) {
-			return Activator.getDefault().getPreferenceStore().getString(id);
-		}
-
-		public void set(String id, String value) {
-			try {
-				IPreferenceStore store = Activator.getDefault()
-						.getPreferenceStore();
-				Activator.getDefault().getPreferenceStore().setValue(id, value);
-				((IPersistentPreferenceStore) store).save();
-			} catch (IOException e) {
-				Console.error(e);
-				e.printStackTrace();
-			}
-		}
-
-	}
-
-	public static IHandlerService getHandlerService() {
-		return (IHandlerService) Activator.getDefault().getWorkbench()
-				.getService(IHandlerService.class);
-	}
 
 }
