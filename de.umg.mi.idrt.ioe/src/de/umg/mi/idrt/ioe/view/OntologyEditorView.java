@@ -445,12 +445,6 @@ public class OntologyEditorView extends ViewPart {
 					setCurrentStagingNode(node);
 					if (node != null) {
 						EditorTargetInfoView.setNode(node);
-
-						Application.getStatusView().addMessage(
-								new SystemMessage("Staging selection changed to 1 \'"
-										+ node.getName() + "\'.",
-										SystemMessage.MessageType.SUCCESS,
-										SystemMessage.MessageLocation.MAIN));
 					} else {
 						Application
 						.getStatusView()
