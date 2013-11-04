@@ -535,12 +535,8 @@ public class EditorTargetInfoView extends ViewPart {
 			TableItem[] items = _infoTable.getItems();
 
 			int row = 0;
-			ArrayList<String> stagingPathList = new ArrayList<String>();
-			for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
-				stagingPathList.add(subNode.getStagingPath());
-			}
 
-			addValueItem(items, row++, stagingPathList.toString());
+			addValueItem(items, row++, node.getStagingPath());
 
 			addValueItem(items, row++, String.valueOf(node.getStagingName()));
 			addValueItem(items, row++,
