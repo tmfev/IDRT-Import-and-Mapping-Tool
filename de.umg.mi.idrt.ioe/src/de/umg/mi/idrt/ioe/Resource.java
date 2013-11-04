@@ -119,12 +119,6 @@ public class Resource {
 
 
 
-	public static void addMessage(String message,
-			SystemMessage.MessageType messageType,
-			SystemMessage.MessageLocation messageLocation) {
-		Application.getStatusView().addMessage(message, messageType,
-				messageLocation);
-	}
 	
 	public class Files {
 		
@@ -810,13 +804,9 @@ public class Resource {
 			try {
 				this.PROPERTIES.store(new FileOutputStream(
 						Global.CONFIGURATION_FILE), null);
-				Resource.addMessage("Properties saved.",
-						SystemMessage.MessageType.SUCCESS,
-						SystemMessage.MessageLocation.MAIN);
+				
 			} catch (IOException e) {
-				Resource.addMessage("Error in writing properties to file. ("
-						+ e.toString() + ")", SystemMessage.MessageType.ERROR,
-						SystemMessage.MessageLocation.MAIN);
+			
 			}
 		}
 

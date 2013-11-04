@@ -15,7 +15,7 @@ public class SystemMessage {
 	MessageLooks messageLooks = new MessageLooks(MessageType.INFO);
 	boolean isDialogMessage = false;
 
-	public SystemMessage() {
+	private SystemMessage() {
 
 		// this.reset();
 	}
