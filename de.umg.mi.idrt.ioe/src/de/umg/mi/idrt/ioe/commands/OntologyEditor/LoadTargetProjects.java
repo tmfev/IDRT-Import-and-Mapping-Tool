@@ -75,6 +75,8 @@ public class LoadTargetProjects extends AbstractHandler {
 			
 			if ( newData == true ){
 				Console.info("Saving new create TargetInstance/TargetVersion.");
+				Application.getStatusView().addMessage(
+						"While loading the i2b2 staging project a new target instance has been created.");
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT);
 				Application.executeCommand(command);
 				
