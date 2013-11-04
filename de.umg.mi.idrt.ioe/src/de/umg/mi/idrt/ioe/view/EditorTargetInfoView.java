@@ -2,6 +2,8 @@ package de.umg.mi.idrt.ioe.view;
 
 import java.util.ArrayList;
 
+import javax.swing.tree.MutableTreeNode;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -56,7 +58,7 @@ public class EditorTargetInfoView extends ViewPart {
 	private static String _text = "";
 	private static Composite parentPane;
 
-	private static OntologyTreeNode _node;
+	private static MutableTreeNode _node;
 	private static Composite _editorComposite;
 	private static Composite _parent;
 	private static Table _infoTable;
@@ -126,158 +128,159 @@ public class EditorTargetInfoView extends ViewPart {
 
 			@Override
 			public void mouseDown(MouseEvent event) {
+				if (_node instanceof OntologyTreeNode) {
+					
+					final OntologyTreeNode treeNode = (OntologyTreeNode) _node;
+					Console.info("Mouse pressed in the target info view ... (mouseDown)");
 
-				Console.info("Mouse pressed in the target info view ... (mouseDown)");
+					Control old = editor.getEditor();
+					if (old != null) {
+						old.dispose();
+					}
+					Point pt = new Point(event.x, event.y);
 
-				Control old = editor.getEditor();
-				if (old != null) {
-					old.dispose();
-				}
-				Point pt = new Point(event.x, event.y);
+					Console.info(" ... at position: " + event.x + "/" + event.y
+							+ "!");
 
-				Console.info(" ... at position: " + event.x + "/" + event.y
-						+ "!");
+					final TableItem item = _infoTable.getItem(pt);
 
-				final TableItem item = _infoTable.getItem(pt);
+					Console.info((item != null ? " ... the item " + item.getText()
+							+ " was found at this position"
+							: " ... no item was found at this position"));
 
-				Console.info((item != null ? " ... the item " + item.getText()
-						+ " was found at this position"
-						: " ... no item was found at this position"));
+					if (item != null) {
+						int column = -1;
+						int row = -1;
 
-				if (item != null) {
-					int column = -1;
-					int row = -1;
+						for (int i = 0, n = _infoTable.getColumnCount(); i < n; i++) {
+							Rectangle rect = item.getBounds(i);
+							System.out.println("position1: " + rect.height + "/"
+									+ rect.width + "!");
 
-					for (int i = 0, n = _infoTable.getColumnCount(); i < n; i++) {
-						Rectangle rect = item.getBounds(i);
-						System.out.println("position1: " + rect.height + "/"
-								+ rect.width + "!");
-
-						if (rect.contains(pt)) {
-							column = i;
-							break;
+							if (rect.contains(pt)) {
+								column = i;
+								break;
+							}
 						}
-					}
 
-					// detect the row where the mouse was clicked
-					for (int i = 0, n = _infoTable.getItemCount(); i < n; i++) {
-						Rectangle rect = item.getBounds(i);
-						if (rect.contains(pt)) {
-							row = i;
-							break;
+						// detect the row where the mouse was clicked
+						for (int i = 0, n = _infoTable.getItemCount(); i < n; i++) {
+							Rectangle rect = item.getBounds(i);
+							if (rect.contains(pt)) {
+								row = i;
+								break;
+							}
 						}
+
+						System.out.println("position2: " + column + "/" + row + "("
+								+ _infoTable.getSelectionIndex() + ")!");
+
+						row = _infoTable.getSelectionIndex();
+						final int col = 1;
+						String path = item.getText(1);
+						final OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+
+						Console.info("row = " + row + " / col = " + col);
+
+						// The "nice name" of the column.
+						if (row == 1) {
+							final Text text = new Text(_infoTable, SWT.NONE);
+							text.setForeground(item.getForeground());
+							//						text.setText(item.getText(col));
+							text.setText(treeNode.getName());
+							text.setForeground(item.getForeground());
+							text.selectAll();
+							text.setFocus();
+							editor.minimumWidth = text.getBounds().width;
+							editor.setEditor(text, item, col);
+
+							text.addModifyListener(new ModifyListener() {
+								@Override
+								public void modifyText(ModifyEvent event) {
+									item.setText(col, text.getText());
+									treeNode.getTargetNodeAttributes().setName(text.getText());
+									treeNode.setName(text.getText());
+									OntologyEditorView.getTargetTreeViewer().update(treeNode, null);
+								}
+							});
+							text.addFocusListener(new FocusListener() {
+								@Override
+								public void focusGained(FocusEvent e) {
+								}
+
+								@Override
+								public void focusLost(FocusEvent e) {
+									item.setText(col, text.getText());
+									text.dispose();
+								}
+							});
+							// Datatype of the column
+						} else if (column == 112) {
+							final CCombo combo = new CCombo(_infoTable,
+									SWT.READ_ONLY);
+
+							/*
+							 * for (String element : ConfigMetaData.optionsData) {
+							 * combo.add(element); }
+							 * combo.setText(item.getText(column));
+							 * combo.select(combo.indexOf(item.getText(column)));
+							 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
+							 * SWT.DEFAULT).x; combo.setFocus();
+							 * editor.setEditor(combo, item, column);
+							 */
+							/*
+							 * final int col = column;
+							 * combo.addSelectionListener(new SelectionAdapter() {
+							 * 
+							 * @Override public void widgetSelected(SelectionEvent
+							 * event) { item.setText(col, combo.getText());
+							 * combo.dispose(); } });
+							 */
+							// i2b2 Metadata of the column (e.g. patient id)
+						} else if (column == 113) {
+							/*
+							 * String[] optionMetas = ConfigMetaData.getMetaCombo(
+							 * table.getItems(), item.getText(column)); final CCombo
+							 * combo = new CCombo(table, SWT.READ_ONLY); for (String
+							 * optionMeta : optionMetas) { combo.add(optionMeta); }
+							 * combo.select(combo.indexOf(item.getText(column)));
+							 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
+							 * SWT.DEFAULT).x; combo.setFocus();
+							 * editor.setEditor(combo, item, column); final int col
+							 * = column; combo.addSelectionListener(new
+							 * SelectionAdapter() {
+							 * 
+							 * @Override public void widgetSelected(SelectionEvent
+							 * event) { item.setText(col, combo.getText());
+							 * combo.dispose(); // checkTable(); } });
+							 */
+							// PID-Generator specific Metadata (e.g. bday, name,
+							// lastname...)
+							/*
+							 * } else if ((column == 4) &&
+							 * CSVWizardPageTwo.getBtnRADIOCsvfile() &&
+							 * CSVWizardPageTwo.getUsePid()) { final CCombo combo =
+							 * new CCombo(table, SWT.READ_ONLY); String[]
+							 * optionMetas = ConfigMetaData .getMetaComboPIDGen(
+							 * table.getItems(), item.getText(column)); for (String
+							 * optionMeta : optionMetas) { combo.add(optionMeta); }
+							 * combo.select(combo.indexOf(item.getText(column)));
+							 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
+							 * SWT.DEFAULT).x; combo.setFocus();
+							 * editor.setEditor(combo, item, column);
+							 * 
+							 * final int col = column;
+							 * combo.addSelectionListener(new SelectionAdapter() {
+							 * 
+							 * @Override public void widgetSelected(SelectionEvent
+							 * event) { item.setText(col, combo.getText()); if
+							 * (!combo.getText().isEmpty()) { item.setText(col - 1,
+							 * "ignore"); } else { item.setText(col - 1, ""); }
+							 * combo.dispose(); } });
+							 */
+						}
+
 					}
-
-					System.out.println("position2: " + column + "/" + row + "("
-							+ _infoTable.getSelectionIndex() + ")!");
-
-					row = _infoTable.getSelectionIndex();
-					final int col = 1;
-					String path = item.getText(1);
-					final OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
-					System.out.println(_node.getName() +" selected!");
-					System.out.println("sourcepath: " + _node.getTargetNodeAttributes().getSourcePath());
-
-					Console.info("row = " + row + " / col = " + col);
-
-					// The "nice name" of the column.
-					if (row == 1) {
-						final Text text = new Text(_infoTable, SWT.NONE);
-						text.setForeground(item.getForeground());
-						//						text.setText(item.getText(col));
-						text.setText(_node.getName());
-						text.setForeground(item.getForeground());
-						text.selectAll();
-						text.setFocus();
-						editor.minimumWidth = text.getBounds().width;
-						editor.setEditor(text, item, col);
-
-						text.addModifyListener(new ModifyListener() {
-							@Override
-							public void modifyText(ModifyEvent event) {
-								item.setText(col, text.getText());
-								_node.getTargetNodeAttributes().setName(text.getText());
-								_node.setName(text.getText());
-								OntologyEditorView.getTargetTreeViewer().update(_node, null);
-							}
-						});
-						text.addFocusListener(new FocusListener() {
-							@Override
-							public void focusGained(FocusEvent e) {
-							}
-
-							@Override
-							public void focusLost(FocusEvent e) {
-								item.setText(col, text.getText());
-								text.dispose();
-							}
-						});
-						// Datatype of the column
-					} else if (column == 112) {
-						final CCombo combo = new CCombo(_infoTable,
-								SWT.READ_ONLY);
-
-						/*
-						 * for (String element : ConfigMetaData.optionsData) {
-						 * combo.add(element); }
-						 * combo.setText(item.getText(column));
-						 * combo.select(combo.indexOf(item.getText(column)));
-						 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
-						 * SWT.DEFAULT).x; combo.setFocus();
-						 * editor.setEditor(combo, item, column);
-						 */
-						/*
-						 * final int col = column;
-						 * combo.addSelectionListener(new SelectionAdapter() {
-						 * 
-						 * @Override public void widgetSelected(SelectionEvent
-						 * event) { item.setText(col, combo.getText());
-						 * combo.dispose(); } });
-						 */
-						// i2b2 Metadata of the column (e.g. patient id)
-					} else if (column == 113) {
-						/*
-						 * String[] optionMetas = ConfigMetaData.getMetaCombo(
-						 * table.getItems(), item.getText(column)); final CCombo
-						 * combo = new CCombo(table, SWT.READ_ONLY); for (String
-						 * optionMeta : optionMetas) { combo.add(optionMeta); }
-						 * combo.select(combo.indexOf(item.getText(column)));
-						 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
-						 * SWT.DEFAULT).x; combo.setFocus();
-						 * editor.setEditor(combo, item, column); final int col
-						 * = column; combo.addSelectionListener(new
-						 * SelectionAdapter() {
-						 * 
-						 * @Override public void widgetSelected(SelectionEvent
-						 * event) { item.setText(col, combo.getText());
-						 * combo.dispose(); // checkTable(); } });
-						 */
-						// PID-Generator specific Metadata (e.g. bday, name,
-						// lastname...)
-						/*
-						 * } else if ((column == 4) &&
-						 * CSVWizardPageTwo.getBtnRADIOCsvfile() &&
-						 * CSVWizardPageTwo.getUsePid()) { final CCombo combo =
-						 * new CCombo(table, SWT.READ_ONLY); String[]
-						 * optionMetas = ConfigMetaData .getMetaComboPIDGen(
-						 * table.getItems(), item.getText(column)); for (String
-						 * optionMeta : optionMetas) { combo.add(optionMeta); }
-						 * combo.select(combo.indexOf(item.getText(column)));
-						 * editor.minimumWidth = combo.computeSize( SWT.DEFAULT,
-						 * SWT.DEFAULT).x; combo.setFocus();
-						 * editor.setEditor(combo, item, column);
-						 * 
-						 * final int col = column;
-						 * combo.addSelectionListener(new SelectionAdapter() {
-						 * 
-						 * @Override public void widgetSelected(SelectionEvent
-						 * event) { item.setText(col, combo.getText()); if
-						 * (!combo.getText().isEmpty()) { item.setText(col - 1,
-						 * "ignore"); } else { item.setText(col - 1, ""); }
-						 * combo.dispose(); } });
-						 */
-					}
-
 				}
 			}
 		});
@@ -291,11 +294,11 @@ public class EditorTargetInfoView extends ViewPart {
 		infoTableValue.setText("value");
 		// infoTableValue.
 
-		addColumItem(Resource.I2B2.NODE.TARGET.SOURCE_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.NAME);
-		addColumItem(Resource.I2B2.NODE.TARGET.CHANGED);
-		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_SOURCE_PATH);
-		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_SOURCE_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION);
+		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE);
 
 		// TableViewerColumn col =
@@ -400,7 +403,7 @@ public class EditorTargetInfoView extends ViewPart {
 		refresh();
 	}
 
-	public static void setNode(OntologyTreeNode node) {// , List<String> answersList,
+	public static void setNode(MutableTreeNode node) {// , List<String> answersList,
 		// MyOntologyTreeItemLists
 		// itemLists){
 		// Debug.f("setNode",this);
@@ -487,33 +490,68 @@ public class EditorTargetInfoView extends ViewPart {
 			return;
 		}
 
-		createTable();
+		if (_node instanceof OntologyTreeNode) {
+			OntologyTreeNode node = (OntologyTreeNode)_node;
 
-		TargetNodeAttributes attributes = _node.getTargetNodeAttributes();
 
-		TableItem[] items = _infoTable.getItems();
 
-		int row = 0;
-		ArrayList<String> stagingPathList = new ArrayList<String>();
-		for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
-			stagingPathList.add(subNode.getStagingPath());
+			createTable();
+
+			TargetNodeAttributes attributes = node.getTargetNodeAttributes();
+
+			TableItem[] items = _infoTable.getItems();
+
+			int row = 0;
+			ArrayList<String> stagingPathList = new ArrayList<String>();
+			for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
+				stagingPathList.add(subNode.getStagingPath());
+			}
+
+			addValueItem(items, row++, stagingPathList.toString());
+
+			addValueItem(items, row++, String.valueOf(node.getName()));
+			addValueItem(items, row++,
+					String.valueOf(attributes.isChanged() == true ? "true" : false));
+			addValueItem(items, row++,
+					String.valueOf(attributes.getStartDateSource()));
+			addValueItem(items, row++,
+					String.valueOf(attributes.getEndDateSource()));
+			addValueItem(items, row++,
+					String.valueOf(attributes.getVisualattribute()));
+
+			_editorComposite.layout();
+
+			_parent.layout();
 		}
+		else if (_node instanceof OntologyTreeSubNode) {
+			OntologyTreeSubNode node = (OntologyTreeSubNode)_node;
 
-		addValueItem(items, row++, stagingPathList.toString());
-		addValueItem(items, row++, String.valueOf(_node.getName()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.isChanged() == true ? "true" : false));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getStartDateSource()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getEndDateSource()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getVisualattribute()));
 
-		_editorComposite.layout();
 
-		_parent.layout();
+			createTable();
 
+			TargetNodeAttributes attributes = node.getParent().getTargetNodeAttributes();
+
+			TableItem[] items = _infoTable.getItems();
+
+			int row = 0;
+
+			addValueItem(items, row++, node.getStagingPath());
+
+			addValueItem(items, row++, String.valueOf(node.getStagingName()));
+			addValueItem(items, row++,
+					String.valueOf(attributes.isChanged() == true ? "true" : false));
+			addValueItem(items, row++,
+					String.valueOf(node.getTargetSubNodeAttributes().getStartDateSource()));
+			addValueItem(items, row++,
+					String.valueOf(node.getTargetSubNodeAttributes().getEndDateSource()));
+			addValueItem(items, row++,
+					String.valueOf(attributes.getVisualattribute()));
+
+			_editorComposite.layout();
+
+			_parent.layout();
+		}
 	}
 
 	public Composite getComposite() {
