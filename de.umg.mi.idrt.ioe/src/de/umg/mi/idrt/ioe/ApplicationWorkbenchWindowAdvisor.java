@@ -57,7 +57,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 			}
 		}
 
-		Application.getStatusView().addMessage("RCP initialized.");
+		Application.getStatusView().addMessage("IDRT Import Tool started.");
 	}
 
 
