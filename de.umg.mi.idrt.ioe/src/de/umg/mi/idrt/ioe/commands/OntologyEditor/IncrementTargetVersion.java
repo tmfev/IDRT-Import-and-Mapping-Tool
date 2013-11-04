@@ -75,6 +75,9 @@ public class IncrementTargetVersion extends AbstractHandler {
 		System.out.println("-/6------ targetProjectID - targetID - Version |");
 		System.out.println("--------- " + targetProjects.getSelectedTarget().getTargetProjectID() + "               - " + targetProjects.getSelectedTarget().getTargetID() + "        - " + targetProjects.getSelectedTarget().getVersion() + "       |");
 		
+		Application.getStatusView().addMessage(
+				"A new version of this i2b2 staging project has been created.");
+		
 		
 		return null;
 	}
