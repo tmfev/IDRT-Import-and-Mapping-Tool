@@ -108,6 +108,10 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorTargetInfoView(editorTargetInfoView);
 
+			
+			Application.getStatusView().addMessage(
+					"The i2b2 staging project has been loaded.");
+			
 		} catch (PartInitException e) {
 			Console.error(e.toString());
 			e.printStackTrace();
