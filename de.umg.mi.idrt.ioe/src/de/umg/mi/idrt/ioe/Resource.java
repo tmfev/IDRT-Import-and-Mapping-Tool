@@ -39,7 +39,7 @@ public class Resource {
 	public Display _display = null;
 	public String TEXT_FILE = "cfg/english.lf";
 	public Properties TEXT = new Properties();
-	public Settings SETTINGS = new Settings();
+	
 	public String test = "test0";
 
 	private ActionCommand _actionCommand;
