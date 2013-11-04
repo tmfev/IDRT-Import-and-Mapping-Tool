@@ -443,11 +443,11 @@ public class Resource {
 				public final static String TARGET_ID = "TARGET_ID";
 				public final static String TREE_LEVEL = "TREE_LEVEL";
 				public final static String TREE_PATH = "TREE_PATH";
-				public final static String SOURCE_PATH = "SOURCE_PATH";
+				public final static String STAGING_PATH = "SOURCE_PATH";
+				public final static String STAGING_DIMENSION = "SOURCE_DIMENSION";
 				public final static String NAME = "NAME";
-				public final static String STARTDATE_SOURCE_PATH = "STARTDATE_SOURCE_PATH";
-				public final static String ENDDATE_SOURCE_PATH = "ENDDATE_SOURCE_PATH";
-				public final static String CHANGED = "CHANGED";
+				public final static String STARTDATE_STAGING_PATH = "STARTDATE_STAGING_PATH";
+				public final static String ENDDATE_STAGING_PATH = "ENDDATE_SOURCE_PATH";
 				public final static String VISUALATTRIBUTE = "VISUALATTRIBUTE";
 
 			}

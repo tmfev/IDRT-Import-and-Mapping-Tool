@@ -244,11 +244,11 @@ public class InfoView extends ViewPart {
 		infoTableValue.setText("value");
 		// infoTableValue.
 
-		addColumItem(Resource.I2B2.NODE.TARGET.SOURCE_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.NAME);
-		addColumItem(Resource.I2B2.NODE.TARGET.CHANGED);
-		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_SOURCE_PATH);
-		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_SOURCE_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION);
+		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
+		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE);
 
 		targetNodeComposite.layout();

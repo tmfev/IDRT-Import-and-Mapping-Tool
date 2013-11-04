@@ -1,5 +1,9 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
+import java.util.Iterator;
+
+import javax.swing.tree.MutableTreeNode;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -23,36 +27,38 @@ public class DeleteNodeCommand extends AbstractHandler {
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
 				.getSelection();
+		System.out.println("SELECTION SIZE: " +selection.size());
 
-		if (selection.getFirstElement() instanceof OntologyTreeNode) {
-			OntologyTreeNode firstElement = (OntologyTreeNode) selection
-					.getFirstElement();
-			OntologyEditorView.setNotYetSaved(true);
-			if (!(firstElement ==myOT.getSubRootNode())) {
-
-				firstElement.removeFromParent();
-			}
-			else {
-				firstElement.removeFromParent();
-				firstElement.getChildren().clear();
-				myOT.getOntologyTreeTarget()
-				.getNodeLists().add(firstElement);
-				//			editorTargetView.setComposite(OTTarget);
-				//TODO Ontology Editor
-				//			firstElement.removeFromParent();
-				for (OntologyTreeNode node : firstElement.getChildren()) {
-					firstElement.remove(node);
+		Iterator<MutableTreeNode> nodeIterator = selection.iterator();
+		
+		while (nodeIterator.hasNext()) {
+			MutableTreeNode mNode = nodeIterator.next();
+			if ( mNode instanceof OntologyTreeNode) {
+				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				OntologyEditorView.setNotYetSaved(true);
+				if (!(node ==myOT.getSubRootNode())) {
+					node.removeFromParent();
+				}
+				else {
+					node.removeFromParent();
+					node.getChildren().clear();
+					myOT.getOntologyTreeTarget()
+					.getNodeLists().add(node);
+					//			editorTargetView.setComposite(OTTarget);
+					//TODO Ontology Editor
+					//			firstElement.removeFromParent();
+					for (OntologyTreeNode child : node.getChildren()) {
+						node.remove(child);
+					}
 				}
 			}
+			else if (mNode instanceof OntologyTreeSubNode) {
+				OntologyTreeSubNode subNode = (OntologyTreeSubNode) mNode;
+				subNode.getParent().getTargetNodeAttributes().removeSubNode(subNode);
+			}
+			targetTreeViewer.refresh();
 		}
-		else if (selection.getFirstElement() instanceof OntologyTreeSubNode) {
-			OntologyTreeSubNode subNode = (OntologyTreeSubNode) selection.getFirstElement();
-			System.out.println("from: " + subNode.getParent().getName());
-			subNode.getParent().getTargetNodeAttributes().removeSubNode(subNode);
-			
-			System.err.println("NYI");
-		}
-		targetTreeViewer.refresh();
+
 		return null;
 
 	}

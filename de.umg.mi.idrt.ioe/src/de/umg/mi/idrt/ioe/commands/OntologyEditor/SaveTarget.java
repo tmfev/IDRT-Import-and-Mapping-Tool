@@ -78,17 +78,17 @@ public class SaveTarget extends AbstractHandler {
 			return null;
 		}
 
-		System.out.println("Saving to: " + stringPath);
+		
 		String[] fields = new String[9];
 
 		fields[0] = Resource.I2B2.NODE.TARGET.TARGET_ID;
 		fields[1] = Resource.I2B2.NODE.TARGET.TREE_LEVEL;
 		fields[2] = Resource.I2B2.NODE.TARGET.TREE_PATH;
-		fields[3] = Resource.I2B2.NODE.TARGET.SOURCE_PATH;
+		fields[3] = Resource.I2B2.NODE.TARGET.STAGING_PATH;
+		fields[5] = Resource.I2B2.NODE.TARGET.STAGING_DIMENSION;
 		fields[4] = Resource.I2B2.NODE.TARGET.NAME;
-		fields[5] = Resource.I2B2.NODE.TARGET.CHANGED;
-		fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_SOURCE_PATH;
-		fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_SOURCE_PATH;
+		fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH;
+		fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH;
 		fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE;
 
 		try {
@@ -141,8 +141,8 @@ public class SaveTarget extends AbstractHandler {
 		fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
 		fields[2] = subNode.getParent().getTreePath();
 		fields[3] = subNode.getStagingPath();
-		fields[4] = subNode.getParent().getTargetNodeAttributes().getName();
-		fields[5] = subNode.getParent().getTargetNodeAttributes().getChanged();
+		fields[4] = subNode.getParent().getTargetNodeAttributes().getDimension().toString();
+		fields[5] = subNode.getParent().getTargetNodeAttributes().getName();
 		fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
 		fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
 		fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();

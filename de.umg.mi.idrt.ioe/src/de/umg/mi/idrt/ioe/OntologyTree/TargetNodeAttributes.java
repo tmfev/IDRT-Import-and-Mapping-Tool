@@ -7,13 +7,13 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TargetNodeAttributes {
 
-	private String sourcePath = "";
-	private String name = "";
-	//private String nodeType = "";
-	private String startDateSource = "";
-	private String endDateSource = "";
-	private String visualattribute = "";
-	private Dimension dimension = Dimension.CONCEPT_DIMENSION;
+	String sourcePath = "";
+	String name = "";
+	String nodeType = "";
+	String startDateSource = "";
+	String endDateSource = "";
+	String visualattribute = "";
+	Dimension dimension = Dimension.CONCEPT_DIMENSION;
 	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
 	public TargetNodeAttributes(OntologyTreeNode parent) {

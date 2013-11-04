@@ -153,7 +153,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CREATE TABLE &quot;+ context.OracleSchema + &quot;.&quot; + context.TableIEOTargetOntology + &quot;&#xD;&#xA;  (&#xD;&#xA;    TARGET_ID            INTEGER,&#xD;&#xA;  TREE_LEVEL            INTEGER,&#xD;&#xA;    TREE_PATH             VARCHAR(3500),&#xD;&#xA;    SOURCE_LEVEL          INTEGER,&#xD;&#xA;    SOURCE_PATH           VARCHAR(3500),&#xD;&#xA;    SOURCE_DIMENSION     VARCHAR(1000),&#xD;&#xA;    \&quot;NAME\&quot;  VARCHAR(1000),&#xD;&#xA;    CHANGED               VARCHAR(10),&#xD;&#xA;    STARTDATE_SOURCE_PATH VARCHAR(3500),&#xD;&#xA;    ENDDATE_SOURCE_PATH  VARCHAR(3500),&#xD;&#xA;    VISUALATTRIBUTES     VARCHAR(300)&#xD;&#xA;  )&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CREATE TABLE &quot;+ context.OracleSchema + &quot;.&quot; + context.TableIEOTargetOntology + &quot;&#xD;&#xA;  (&#xD;&#xA;    TARGET_ID            INTEGER,&#xD;&#xA;  TREE_LEVEL            INTEGER,&#xD;&#xA;    TREE_PATH             VARCHAR(3500),&#xD;&#xA;    STAGING_PATH           VARCHAR(3500),&#xD;&#xA;    STAGING_DIMENSION     VARCHAR(1000),&#xD;&#xA;    \&quot;NAME\&quot;  VARCHAR(1000),&#xD;&#xA;    STARTDATE_STAGING_PATH VARCHAR(3500),&#xD;&#xA;    ENDDATE_STAGING_PATH  VARCHAR(3500),&#xD;&#xA;    VISUALATTRIBUTES     VARCHAR(300)&#xD;&#xA;  )&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
@@ -165,7 +165,7 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="LABEL" value="createIOTableONTOLOGY"/>
+    <elementParameter field="TEXT" name="LABEL" value="createIOTableOntology"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -363,7 +363,7 @@
     <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="237;201;122"/>
   </note>
-  <note opaque="true" posX="480" posY="128" sizeHeight="129" sizeWidth="769" text="create IEO taböes">
+  <note opaque="true" posX="480" posY="128" sizeHeight="161" sizeWidth="769" text="create IEO taböes">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;255"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
@@ -378,7 +378,7 @@
     <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="237;201;122"/>
   </note>
-  <note opaque="true" posX="64" posY="-192" sizeHeight="225" sizeWidth="1217" text="Initiation.&#xD;&#xA;&#xD;&#xA;">
+  <note opaque="true" posX="64" posY="-192" sizeHeight="225" sizeWidth="1217" text="Initialization.&#xD;&#xA;&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="223;223;223"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>

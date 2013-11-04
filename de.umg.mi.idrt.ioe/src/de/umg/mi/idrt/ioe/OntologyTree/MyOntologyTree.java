@@ -623,21 +623,33 @@ public class MyOntologyTree extends JPanel {
 				.getSelection();
 		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
 
-		int minLevel = Integer.MAX_VALUE;
 
-		while (nodeIterator.hasNext()) {
-			final OntologyTreeNode sourceNode1 = nodeIterator.next();
+		if (!targetNode.isLeaf()) {
+			int minLevel = Integer.MAX_VALUE;
 
-			if (minLevel > sourceNode1.getTreePathLevel())
-				minLevel = sourceNode1.getTreePathLevel();
-		}
-		nodeIterator = selection.iterator();
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
 
-		while (nodeIterator.hasNext()) {
-			final OntologyTreeNode sourceNode1 = nodeIterator.next();
-			if (sourceNode1.getTreePathLevel() == minLevel){
-				deepCopy(sourceNode1, targetNode);
+				if (minLevel > sourceNode1.getTreePathLevel())
+					minLevel = sourceNode1.getTreePathLevel();
 			}
+			nodeIterator = selection.iterator();
+
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+				if (sourceNode1.getTreePathLevel() == minLevel){
+					deepCopy(sourceNode1, targetNode);
+				}
+			}
+
+		}
+		else {
+			//TODO
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+				targetNode.getTargetNodeAttributes().addStagingPath(sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
+			}
+
 		}
 		OntologyEditorView.setSelection(targetNode);
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
@@ -653,30 +665,26 @@ public class MyOntologyTree extends JPanel {
 			System.out.println(" - do:" + sourceNode.getName() + " -> "
 					+ targetNode.getName() + "!");
 
-			//			System.out.println(" - attribute: " + attribute);
-			//			System.out
-			//			.println(" - sourceNodePath: " + sourceNode.getTreePath());
-			//			System.out
-			//			.println(" - targetNode.startDateSource: "
-			//					+ targetNode.getTargetNodeAttributes()
-			//					.getStartDateSource());
 			setTargetAttribute(targetNode, attribute,
-					sourceNode.getTreePath());
-			//			System.out
-			//			.println(" - targetNode.startDateSource (after): "
-			//					+ targetNode.getTargetNodeAttributes()
-			//					.getStartDateSource());
+					sourceNode.getOntologyCellAttributes().getC_FULLNAME());
 		}
 	}
 
 	public void setTargetAttribute(OntologyTreeNode targetNode,
 			String attribute, String value) {
 
-		if (attribute.equals("startDateSource"))
+		if (attribute.equals("startDateSource")) {
 			targetNode.getTargetNodeAttributes().setStartDateSourcePath(value);
-		else if (attribute.equals("endDateSource"))
+			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
+				sub.getTargetSubNodeAttributes().setStartDateSourcePath(value);
+			}
+		}
+		else if (attribute.equals("endDateSource")) {
 			targetNode.getTargetNodeAttributes().setEndDateSourcePath(value);
-
+			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
+				sub.getTargetSubNodeAttributes().setEndDateSourcePath(value);
+			}
+		}
 		if (targetNode.hasChildren()) {
 
 			for (int x = 0; x < targetNode.getChildCount(); x++) {
@@ -687,16 +695,16 @@ public class MyOntologyTree extends JPanel {
 		}
 	}
 
-	public void dropCommandCopyNodes(final String targetPath, int dropOperation) {
+	public void dropCommandCopyNodes(int dropOperation) {
 		if (dropOperation == 1) {
 			ActionCommand command = new ActionCommand(
 					Resource.ID.Command.OTCOPY);
 			command.addParameter(
 					Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
 					"");
-			command.addParameter(
-					Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					targetPath);
+			//			command.addParameter(
+			//					Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+			//					targetPath);
 			Application.executeCommand(command);
 
 			OntologyEditorView.getTargetTreeViewer().refresh();
@@ -725,17 +733,19 @@ public class MyOntologyTree extends JPanel {
 				public void widgetSelected(SelectionEvent arg0) {
 					dialog.close();
 					System.out.println("STARTDATE CLICKED");
+
 					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 							.getSelection();
 					OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
+					System.out.println(node.getOntologyCellAttributes().getC_FULLNAME());
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
-							node.getTreePath());
-					command.addParameter(
-							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
-							targetPath);
+							node.getOntologyCellAttributes().getC_FULLNAME());
+					//					command.addParameter(
+					//							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
 							"startDateSource");
@@ -762,10 +772,10 @@ public class MyOntologyTree extends JPanel {
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
-							node.getTreePath());
-					command.addParameter(
-							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
-							targetPath);
+							node.getOntologyCellAttributes().getC_FULLNAME());
+					//					command.addParameter(
+					//							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
 							"endDateSource");
@@ -804,9 +814,9 @@ public class MyOntologyTree extends JPanel {
 					System.out.println(Resource.ID.Command.COMBINENODE);
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
-					command2.addParameter(
-							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-							targetPath);
+					//					command2.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
 					Application.executeCommand(command2);
 				}
 
@@ -825,12 +835,12 @@ public class MyOntologyTree extends JPanel {
 					dialog.close();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTCOPY);
-					command.addParameter(
-							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-							"");
-					command.addParameter(
-							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-							targetPath);
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
+					//							"");
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
 					Application.executeCommand(command);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);

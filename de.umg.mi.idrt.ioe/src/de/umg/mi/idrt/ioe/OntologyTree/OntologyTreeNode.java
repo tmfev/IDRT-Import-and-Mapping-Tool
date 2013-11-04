@@ -82,6 +82,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private OntologyCellAttributes ontologyCellAttributes;
 	private TargetNodeAttributes targetNodeAttributes;
 
+	
+	
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
@@ -642,4 +644,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public String toString() {
 		return this.name + " " + this.treePath;
 	}
+
+
 }

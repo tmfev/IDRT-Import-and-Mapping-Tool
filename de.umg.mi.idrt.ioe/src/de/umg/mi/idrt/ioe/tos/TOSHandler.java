@@ -10,6 +10,7 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
@@ -165,26 +166,29 @@ public class TOSHandler {
 		// implement in main program
 	}
 
-	public void readTargetOntology(int treeLevel, String treePath,
-			String sourcePath, String name, int changed,
-			String startdateSourcePath, String enddateSourcePath,
-			String visualattributes) {
+	public void addTargetOntologyItemToTree(
+			int treeLevel, 
+			String treePath,
+			String stagingPath,
+			String stagingDimension,
+			String name,
+			String startdateStagingPath,
+			String enddateStagingPath,
+			String visualattributes){
 
 		
-		System.out.println("");
-		
-		//		OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
-		//				name);
-		//		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-		//		node.getTargetNodeAttributes().addStagingPath(sourcePath);
-		//		node.getTargetNodeAttributes().setName(name);
-		//		node.getTargetNodeAttributes()
-		//				.setChanged((changed == 0 ? true : false));
-		//		node.getTargetNodeAttributes().setStartDateSourcePath(
-		//				startdateSourcePath);
-		//		node.getTargetNodeAttributes().setEndDateSourcePath(enddateSourcePath);
-		//		node.getTargetNodeAttributes().setVisualattributes(visualattributes);
-		
+		System.out.println("->" + treeLevel + ":" + treePath);
+		/*
+			OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
+						name, name);
+				node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
+				node.getTargetNodeAttributes().addStagingPath(stagingPath);
+				node.getTargetNodeAttributes().setName(name);
+					node.getTargetNodeAttributes().setStartDateSourcePath(
+							startdateStagingPath);
+				node.getTargetNodeAttributes().setEndDateSourcePath(enddateStagingPath);
+				node.getTargetNodeAttributes().setVisualattributes(visualattributes);
+		*/
 		/*
 		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
 				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 

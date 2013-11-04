@@ -131,9 +131,9 @@ public class OntologyTree extends JTree {
 		OntologyTreeNode node = new OntologyTreeNode(name);
 		this.getNodeLists().add(itemID, parentPath, node);
 		OntologyTreeNode parent = getNodeLists().getNodeByPath(parentPath);
-		parent.add(node);
-		node.setTreeAttributes();
 		if (parent != null) {
+			parent.add(node);
+			node.setTreeAttributes();
 			return parent;
 		} else {
 			Debug.e("Couldn't add Node because there was no parent node found with the path \""

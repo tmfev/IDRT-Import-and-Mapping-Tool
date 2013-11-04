@@ -963,21 +963,10 @@ public class TOSIDRTConnector implements TalendJob {
 				globalMap);
 	}
 
-	public void tMap_1_error(java.lang.Exception exception,
+	public void tJDBCOutput_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tMap_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tOracleOutput_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tOracleOutput_1", System.currentTimeMillis());
+		end_Hash.put("tJDBCOutput_1", System.currentTimeMillis());
 
 		try {
 
@@ -1035,14 +1024,14 @@ public class TOSIDRTConnector implements TalendJob {
 		tJava_5_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleRow_1_error(java.lang.Exception exception,
+	public void tJDBCRow_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleRow_1", System.currentTimeMillis());
+		end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
 
 		status = "failure";
 
-		tOracleRow_1_onSubJobError(exception, errorComponent, globalMap);
+		tJDBCRow_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJDBCInput_3_error(java.lang.Exception exception,
@@ -1356,7 +1345,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tOracleRow_1_onSubJobError(java.lang.Exception exception,
+	public void tJDBCRow_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1899,42 +1888,48 @@ public class TOSIDRTConnector implements TalendJob {
 				 * context.JDBCDriver = "oracle.jdbc.driver.OracleDriver";
 				 */
 
-				System.out.println("TOS: ----initial vars-----");
-				System.out.println(" - context.OracleHost: \""
-						+ context.OracleHost + "\"");
-				System.out.println(" - context.OraclePort: \""
-						+ context.OraclePort + "\"");
-				System.out.println(" - context.OracleUsername: \""
-						+ context.OracleUsername + "\"");
-				System.out.println(" - context.OracleSID(DB): \""
-						+ context.OracleDB + "\"");
-				System.out.println(" - context.OracleSchema: \""
-						+ context.OracleSchema + "\"");
-				System.out.println(" - context.Job: \"" + context.Job + "\"");
-				System.out.println(" - context.SQLTable: \"" + context.SQLTable
-						+ "\"");
-				System.out.println(" - context.SQLCommand: \""
-						+ context.SQLCommand + "\"");
-				System.out.println(" - context.SQLTable2: \""
-						+ context.SQLTable2 + "\"");
-				System.out.println(" - context.SQLCommand2: \""
-						+ context.SQLCommand2 + "\"");
-				System.out.println(" - context.Var1: \"" + context.Var1 + "\"");
-				System.out.println(" - context.Var2: \"" + context.Var2 + "\"");
-				System.out.println(" - context.Var3: \"" + context.Var3 + "\"");
-				System.out.println(" - context.DataFile: \"" + context.DataFile
-						+ "\"");
-				System.out.println(" - context.TableIEOTargetOntology_test: \""
-						+ context.TableIEOTargetOntology + "\"");
-
-				System.out.println(" - context.DB_StagingI2B2_jdbcurl: \""
-						+ context.DB_StagingI2B2_jdbcurl + "\"");
-				System.out.println(" - context.DB_StagingI2B2_sqlclassname: \""
-						+ context.DB_StagingI2B2_sqlclassname + "\"");
-				System.out.println(" - context.DB_StagingI2B2_Username: \""
-						+ context.DB_StagingI2B2_Username + "\"");
-				System.out.println(" - context.DB_StagingI2B2_Password: \""
-						+ context.DB_StagingI2B2_Password + "\"");
+				/*
+				 * System.out.println("TOS: ----initial vars-----");
+				 * System.out.println
+				 * (" - context.OracleHost: \""+context.OracleHost+"\"");
+				 * System.
+				 * out.println(" - context.OraclePort: \""+context.OraclePort
+				 * +"\"");
+				 * System.out.println(" - context.OracleUsername: \""+context
+				 * .OracleUsername+"\"");
+				 * System.out.println(" - context.OracleSID(DB): \""
+				 * +context.OracleDB+"\"");
+				 * System.out.println(" - context.OracleSchema: \""
+				 * +context.OracleSchema+"\"");
+				 * System.out.println(" - context.Job: \""+context.Job+"\"");
+				 * System
+				 * .out.println(" - context.SQLTable: \""+context.SQLTable+
+				 * "\"");
+				 * System.out.println(" - context.SQLCommand: \""+context.
+				 * SQLCommand+"\"");
+				 * System.out.println(" - context.SQLTable2: \""
+				 * +context.SQLTable2+"\"");
+				 * System.out.println(" - context.SQLCommand2: \""
+				 * +context.SQLCommand2+"\"");
+				 * System.out.println(" - context.Var1: \""+context.Var1+"\"");
+				 * System.out.println(" - context.Var2: \""+context.Var2+"\"");
+				 * System.out.println(" - context.Var3: \""+context.Var3+"\"");
+				 * System
+				 * .out.println(" - context.DataFile: \""+context.DataFile+
+				 * "\"");
+				 * System.out.println(" - context.TableIEOTargetOntology_test: \""
+				 * +context.TableIEOTargetOntology +"\"");
+				 * 
+				 * System.out.println(" - context.DB_StagingI2B2_jdbcurl: \""+
+				 * context.DB_StagingI2B2_jdbcurl+"\"");
+				 * System.out.println(" - context.DB_StagingI2B2_sqlclassname: \""
+				 * +context.DB_StagingI2B2_sqlclassname+"\"");
+				 * System.out.println
+				 * (" - context.DB_StagingI2B2_Username: \""+context
+				 * .DB_StagingI2B2_Username+"\"");
+				 * System.out.println(" - context.DB_StagingI2B2_Password: \""
+				 * +context.DB_StagingI2B2_Password+"\"");
+				 */
 
 				/*
 				 * context.TableIEOTargetOntology =
@@ -2415,20 +2410,10 @@ public class TOSIDRTConnector implements TalendJob {
 				}
 
 				System.out.println("TOS: ----actual vars-----");
-				System.out.println(" - context.OracleSchema: \""
-						+ context.OracleSchema + "\"");
+				System.out.println(" - context.DB_StagingI2B2_Username: \""
+						+ context.DB_StagingI2B2_Username + "\"");
 				System.out.println(" - context.Job: \"" + context.Job + "\"");
-				System.out.println(" - context.SQLTable: \"" + context.SQLTable
-						+ "\"");
-				System.out.println(" - context.SQLCommand: \""
-						+ context.SQLCommand + "\"");
-				System.out.println(" - context.SQLTable2: \""
-						+ context.SQLTable2 + "\"");
-				System.out.println(" - context.SQLCommand2: \""
-						+ context.SQLCommand2 + "\"");
 				System.out.println(" - context.Var1: \"" + context.Var1 + "\"");
-				System.out.println(" - context.Var2: \"" + context.Var2 + "\"");
-				System.out.println(" - context.Var3: \"" + context.Var3 + "\"");
 				System.out.println(" - context.DataFile: \"" + context.DataFile
 						+ "\"");
 
@@ -2474,7 +2459,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				if (context.Job.equals("delete_target_ontology")) {
 
-					tOracleRow_1Process(globalMap);
+					tJDBCRow_1Process(globalMap);
 				}
 
 				if (context.Job.equals("read_target_ontology")
@@ -4038,7 +4023,7 @@ public class TOSIDRTConnector implements TalendJob {
 				ok_Hash.put("tJava_4", true);
 				end_Hash.put("tJava_4", System.currentTimeMillis());
 
-				tOracleRow_1Process(globalMap);
+				tJDBCRow_1Process(globalMap);
 
 				/**
 				 * [tJava_4 end ] stop
@@ -4091,10 +4076,16 @@ public class TOSIDRTConnector implements TalendJob {
 			return this.TREE_PATH;
 		}
 
-		public String SOURCE_PATH;
+		public String STAGING_PATH;
 
-		public String getSOURCE_PATH() {
-			return this.SOURCE_PATH;
+		public String getSTAGING_PATH() {
+			return this.STAGING_PATH;
+		}
+
+		public String STAGING_DIMENSION;
+
+		public String getSTAGING_DIMENSION() {
+			return this.STAGING_DIMENSION;
 		}
 
 		public String NAME;
@@ -4103,22 +4094,16 @@ public class TOSIDRTConnector implements TalendJob {
 			return this.NAME;
 		}
 
-		public String CHANGED;
+		public String STARTDATE_STAGING_PATH;
 
-		public String getCHANGED() {
-			return this.CHANGED;
+		public String getSTARTDATE_STAGING_PATH() {
+			return this.STARTDATE_STAGING_PATH;
 		}
 
-		public String STARTDATE_SOURCE_PATH;
+		public String ENDDATE_STAGING_PATH;
 
-		public String getSTARTDATE_SOURCE_PATH() {
-			return this.STARTDATE_SOURCE_PATH;
-		}
-
-		public String ENDDATE_SOURCE_PATH;
-
-		public String getENDDATE_SOURCE_PATH() {
-			return this.ENDDATE_SOURCE_PATH;
+		public String getENDDATE_STAGING_PATH() {
+			return this.ENDDATE_STAGING_PATH;
 		}
 
 		public String VISUALATTRIBUTES;
@@ -4196,15 +4181,15 @@ public class TOSIDRTConnector implements TalendJob {
 
 					this.TREE_PATH = readString(dis);
 
-					this.SOURCE_PATH = readString(dis);
+					this.STAGING_PATH = readString(dis);
+
+					this.STAGING_DIMENSION = readString(dis);
 
 					this.NAME = readString(dis);
 
-					this.CHANGED = readString(dis);
+					this.STARTDATE_STAGING_PATH = readString(dis);
 
-					this.STARTDATE_SOURCE_PATH = readString(dis);
-
-					this.ENDDATE_SOURCE_PATH = readString(dis);
+					this.ENDDATE_STAGING_PATH = readString(dis);
 
 					this.VISUALATTRIBUTES = readString(dis);
 
@@ -4234,7 +4219,11 @@ public class TOSIDRTConnector implements TalendJob {
 
 				// String
 
-				writeString(this.SOURCE_PATH, dos);
+				writeString(this.STAGING_PATH, dos);
+
+				// String
+
+				writeString(this.STAGING_DIMENSION, dos);
 
 				// String
 
@@ -4242,15 +4231,11 @@ public class TOSIDRTConnector implements TalendJob {
 
 				// String
 
-				writeString(this.CHANGED, dos);
+				writeString(this.STARTDATE_STAGING_PATH, dos);
 
 				// String
 
-				writeString(this.STARTDATE_SOURCE_PATH, dos);
-
-				// String
-
-				writeString(this.ENDDATE_SOURCE_PATH, dos);
+				writeString(this.ENDDATE_STAGING_PATH, dos);
 
 				// String
 
@@ -4270,11 +4255,11 @@ public class TOSIDRTConnector implements TalendJob {
 			sb.append("TARGET_ID=" + String.valueOf(TARGET_ID));
 			sb.append(",TREE_LEVEL=" + String.valueOf(TREE_LEVEL));
 			sb.append(",TREE_PATH=" + TREE_PATH);
-			sb.append(",SOURCE_PATH=" + SOURCE_PATH);
+			sb.append(",STAGING_PATH=" + STAGING_PATH);
+			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
 			sb.append(",NAME=" + NAME);
-			sb.append(",CHANGED=" + CHANGED);
-			sb.append(",STARTDATE_SOURCE_PATH=" + STARTDATE_SOURCE_PATH);
-			sb.append(",ENDDATE_SOURCE_PATH=" + ENDDATE_SOURCE_PATH);
+			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
+			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
 			sb.append("]");
 
@@ -4285,231 +4270,6 @@ public class TOSIDRTConnector implements TalendJob {
 		 * Compare keys
 		 */
 		public int compareTo(tmpRowStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class iRow1Struct implements
-			routines.system.IPersistableRow<iRow1Struct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
-
-		public String TARGET_ID;
-
-		public String getTARGET_ID() {
-			return this.TARGET_ID;
-		}
-
-		public String TREE_LEVEL;
-
-		public String getTREE_LEVEL() {
-			return this.TREE_LEVEL;
-		}
-
-		public String TREE_PATH;
-
-		public String getTREE_PATH() {
-			return this.TREE_PATH;
-		}
-
-		public String SOURCE_PATH;
-
-		public String getSOURCE_PATH() {
-			return this.SOURCE_PATH;
-		}
-
-		public String NAME;
-
-		public String getNAME() {
-			return this.NAME;
-		}
-
-		public String CHANGED;
-
-		public String getCHANGED() {
-			return this.CHANGED;
-		}
-
-		public String STARTDATE_PATH;
-
-		public String getSTARTDATE_PATH() {
-			return this.STARTDATE_PATH;
-		}
-
-		public String ENDDATE_PATH;
-
-		public String getENDDATE_PATH() {
-			return this.ENDDATE_PATH;
-		}
-
-		public String VISUALATTRIBUTE;
-
-		public String getVISUALATTRIBUTE() {
-			return this.VISUALATTRIBUTE;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTConnector.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTConnector.length == 0) {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_TOSIDRTConnector, 0, length);
-				strReturn = new String(commonByteArray_TOS_TOSIDRTConnector, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTConnector) {
-
-				try {
-
-					int length = 0;
-
-					this.TARGET_ID = readString(dis);
-
-					this.TREE_LEVEL = readString(dis);
-
-					this.TREE_PATH = readString(dis);
-
-					this.SOURCE_PATH = readString(dis);
-
-					this.NAME = readString(dis);
-
-					this.CHANGED = readString(dis);
-
-					this.STARTDATE_PATH = readString(dis);
-
-					this.ENDDATE_PATH = readString(dis);
-
-					this.VISUALATTRIBUTE = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.TARGET_ID, dos);
-
-				// String
-
-				writeString(this.TREE_LEVEL, dos);
-
-				// String
-
-				writeString(this.TREE_PATH, dos);
-
-				// String
-
-				writeString(this.SOURCE_PATH, dos);
-
-				// String
-
-				writeString(this.NAME, dos);
-
-				// String
-
-				writeString(this.CHANGED, dos);
-
-				// String
-
-				writeString(this.STARTDATE_PATH, dos);
-
-				// String
-
-				writeString(this.ENDDATE_PATH, dos);
-
-				// String
-
-				writeString(this.VISUALATTRIBUTE, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("TARGET_ID=" + TARGET_ID);
-			sb.append(",TREE_LEVEL=" + TREE_LEVEL);
-			sb.append(",TREE_PATH=" + TREE_PATH);
-			sb.append(",SOURCE_PATH=" + SOURCE_PATH);
-			sb.append(",NAME=" + NAME);
-			sb.append(",CHANGED=" + CHANGED);
-			sb.append(",STARTDATE_PATH=" + STARTDATE_PATH);
-			sb.append(",ENDDATE_PATH=" + ENDDATE_PATH);
-			sb.append(",VISUALATTRIBUTE=" + VISUALATTRIBUTE);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(iRow1Struct other) {
 
 			int returnValue = -1;
 
@@ -4561,100 +4321,76 @@ public class TOSIDRTConnector implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				iRow1Struct iRow1 = new iRow1Struct();
 				tmpRowStruct tmpRow = new tmpRowStruct();
 
 				/**
-				 * [tOracleOutput_1 begin ] start
+				 * [tJDBCOutput_1 begin ] start
 				 */
 
-				ok_Hash.put("tOracleOutput_1", false);
-				start_Hash.put("tOracleOutput_1", System.currentTimeMillis());
-				currentComponent = "tOracleOutput_1";
+				ok_Hash.put("tJDBCOutput_1", false);
+				start_Hash.put("tJDBCOutput_1", System.currentTimeMillis());
+				currentComponent = "tJDBCOutput_1";
 
-				int tos_count_tOracleOutput_1 = 0;
+				int tos_count_tJDBCOutput_1 = 0;
 
-				int nb_line_tOracleOutput_1 = 0;
-				int nb_line_update_tOracleOutput_1 = 0;
-				int nb_line_inserted_tOracleOutput_1 = 0;
-				int nb_line_deleted_tOracleOutput_1 = 0;
-				int nb_line_rejected_tOracleOutput_1 = 0;
-
-				int tmp_batchUpdateCount_tOracleOutput_1 = 0;
-
-				int deletedCount_tOracleOutput_1 = 0;
-				int updatedCount_tOracleOutput_1 = 0;
-				int insertedCount_tOracleOutput_1 = 0;
-				int rejectedCount_tOracleOutput_1 = 0;
-
-				boolean whetherReject_tOracleOutput_1 = false;
-
-				java.sql.Connection conn_tOracleOutput_1 = null;
-
-				// optional table
-				String dbschema_tOracleOutput_1 = null;
-				String tableName_tOracleOutput_1 = null;
-				dbschema_tOracleOutput_1 = (String) globalMap
-						.get("dbschema_tOracleConnection_2");
-				conn_tOracleOutput_1 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_2");
-				if (null == conn_tOracleOutput_1) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleOutput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					conn_tOracleOutput_1 = dataSources_tOracleOutput_1.get("")
-							.getConnection();
+				int updateKeyCount_tJDBCOutput_1 = 0;
+				if (updateKeyCount_tJDBCOutput_1 < 1) {
+					throw new RuntimeException(
+							"For update, Schema must have a key");
 				}
-				int batchSize_tOracleOutput_1 = 10000;
-				int batchSizeCounter_tOracleOutput_1 = 0;
 
-				int count_tOracleOutput_1 = 0;
+				int nb_line_tJDBCOutput_1 = 0;
+				int nb_line_update_tJDBCOutput_1 = 0;
+				int nb_line_inserted_tJDBCOutput_1 = 0;
+				int nb_line_deleted_tJDBCOutput_1 = 0;
+				int nb_line_rejected_tJDBCOutput_1 = 0;
 
-				if (dbschema_tOracleOutput_1 == null
-						|| dbschema_tOracleOutput_1.trim().length() == 0) {
-					tableName_tOracleOutput_1 = "ioe_target_ontology";
+				int tmp_batchUpdateCount_tJDBCOutput_1 = 0;
+
+				int deletedCount_tJDBCOutput_1 = 0;
+				int updatedCount_tJDBCOutput_1 = 0;
+				int insertedCount_tJDBCOutput_1 = 0;
+				int rejectedCount_tJDBCOutput_1 = 0;
+
+				boolean whetherReject_tJDBCOutput_1 = false;
+
+				java.sql.Connection connection_tJDBCOutput_1 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCOutput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCOutput_1) {
+					connection_tJDBCOutput_1 = dataSources_tJDBCOutput_1
+							.get("").getConnection();
 				} else {
-					tableName_tOracleOutput_1 = dbschema_tOracleOutput_1 + "."
-							+ "ioe_target_ontology";
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+					String connectionString_tJDBCOutput_1 = context.DB_StagingI2B2_jdbcurl;
+					connection_tJDBCOutput_1 = java.sql.DriverManager
+							.getConnection(connectionString_tJDBCOutput_1,
+									context.DB_StagingI2B2_Username,
+									context.DB_StagingI2B2_Password);
 				}
-				String insert_tOracleOutput_1 = "INSERT INTO "
-						+ tableName_tOracleOutput_1
-						+ " (TARGET_ID,TREE_LEVEL,TREE_PATH,SOURCE_PATH,NAME,CHANGED,STARTDATE_SOURCE_PATH,ENDDATE_SOURCE_PATH,VISUALATTRIBUTES) VALUES (?,?,?,?,?,?,?,?,?)";
+				connection_tJDBCOutput_1.setAutoCommit(false);
+				int commitEvery_tJDBCOutput_1 = 10000;
+				int commitCounter_tJDBCOutput_1 = 0;
+				int batchSize_tJDBCOutput_1 = 10000;
+				int batchSizeCounter_tJDBCOutput_1 = 0;
 
-				java.sql.PreparedStatement pstmt_tOracleOutput_1 = conn_tOracleOutput_1
-						.prepareStatement(insert_tOracleOutput_1);
-
-				/**
-				 * [tOracleOutput_1 begin ] stop
-				 */
-
-				/**
-				 * [tMap_1 begin ] start
-				 */
-
-				ok_Hash.put("tMap_1", false);
-				start_Hash.put("tMap_1", System.currentTimeMillis());
-				currentComponent = "tMap_1";
-
-				int tos_count_tMap_1 = 0;
-
-				// ###############################
-				// # Lookup's keys initialization
-				// ###############################
-
-				// ###############################
-				// # Vars initialization
-				class Var__tMap_1__Struct {
-				}
-				Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
-				// ###############################
-
-				// ###############################
-				// # Outputs initialization
-				tmpRowStruct tmpRow_tmp = new tmpRowStruct();
-				// ###############################
+				java.sql.PreparedStatement pstmt_tJDBCOutput_1 = connection_tJDBCOutput_1
+						.prepareStatement("SELECT COUNT(1) FROM "
+								+ "OE_TARGET_ONTOLOGY" + " WHERE ");
+				String insert_tJDBCOutput_1 = "INSERT INTO "
+						+ "OE_TARGET_ONTOLOGY"
+						+ " (TARGET_ID,TREE_LEVEL,TREE_PATH,STAGING_PATH,STAGING_DIMENSION,NAME,STARTDATE_STAGING_PATH,ENDDATE_STAGING_PATH,VISUALATTRIBUTES) VALUES (?,?,?,?,?,?,?,?,?)";
+				java.sql.PreparedStatement pstmtInsert_tJDBCOutput_1 = connection_tJDBCOutput_1
+						.prepareStatement(insert_tJDBCOutput_1);
+				String update_tJDBCOutput_1 = "UPDATE "
+						+ "OE_TARGET_ONTOLOGY"
+						+ " SET TARGET_ID = ?,TREE_LEVEL = ?,TREE_PATH = ?,STAGING_PATH = ?,STAGING_DIMENSION = ?,NAME = ?,STARTDATE_STAGING_PATH = ?,ENDDATE_STAGING_PATH = ?,VISUALATTRIBUTES = ? WHERE ";
+				java.sql.PreparedStatement pstmtUpdate_tJDBCOutput_1 = connection_tJDBCOutput_1
+						.prepareStatement(update_tJDBCOutput_1);
 
 				/**
-				 * [tMap_1 begin ] stop
+				 * [tJDBCOutput_1 begin ] stop
 				 */
 
 				/**
@@ -4856,10 +4592,10 @@ public class TOSIDRTConnector implements TalendJob {
 							break;
 						}
 
-						iRow1 = null;
+						tmpRow = null;
 
 						boolean whetherReject_tFileInputDelimited_1 = false;
-						iRow1 = new iRow1Struct();
+						tmpRow = new tmpRowStruct();
 						try {
 
 							if (rowtFileInputDelimited_1.length == 1
@@ -4872,23 +4608,23 @@ public class TOSIDRTConnector implements TalendJob {
 																					// is
 																					// '\n'
 
-								iRow1.TARGET_ID = null;
+								tmpRow.TARGET_ID = null;
 
-								iRow1.TREE_LEVEL = null;
+								tmpRow.TREE_LEVEL = null;
 
-								iRow1.TREE_PATH = null;
+								tmpRow.TREE_PATH = null;
 
-								iRow1.SOURCE_PATH = null;
+								tmpRow.STAGING_PATH = null;
 
-								iRow1.NAME = null;
+								tmpRow.STAGING_DIMENSION = null;
 
-								iRow1.CHANGED = null;
+								tmpRow.NAME = null;
 
-								iRow1.STARTDATE_PATH = null;
+								tmpRow.STARTDATE_STAGING_PATH = null;
 
-								iRow1.ENDDATE_PATH = null;
+								tmpRow.ENDDATE_STAGING_PATH = null;
 
-								iRow1.VISUALATTRIBUTE = null;
+								tmpRow.VISUALATTRIBUTES = null;
 
 							} else {
 
@@ -4899,90 +4635,106 @@ public class TOSIDRTConnector implements TalendJob {
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.TARGET_ID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+											.length() > 0) {
+
+										tmpRow.TARGET_ID = ParserUtils
+												.parseTo_Integer(rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]);
+
+									} else {
+										tmpRow.TARGET_ID = null;
+									}
 
 								} else {
-									iRow1.TARGET_ID = null;
+									tmpRow.TARGET_ID = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 1;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.TREE_LEVEL = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+											.length() > 0) {
+
+										tmpRow.TREE_LEVEL = ParserUtils
+												.parseTo_Integer(rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]);
+
+									} else {
+										tmpRow.TREE_LEVEL = null;
+									}
 
 								} else {
-									iRow1.TREE_LEVEL = null;
+									tmpRow.TREE_LEVEL = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 2;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.TREE_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.TREE_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.TREE_PATH = null;
+									tmpRow.TREE_PATH = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 3;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.SOURCE_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.STAGING_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.SOURCE_PATH = null;
+									tmpRow.STAGING_PATH = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 4;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.NAME = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.STAGING_DIMENSION = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.NAME = null;
+									tmpRow.STAGING_DIMENSION = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 5;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.CHANGED = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.NAME = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.CHANGED = null;
+									tmpRow.NAME = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 6;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.STARTDATE_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.STARTDATE_STAGING_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.STARTDATE_PATH = null;
+									tmpRow.STARTDATE_STAGING_PATH = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 7;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.ENDDATE_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.ENDDATE_STAGING_PATH = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.ENDDATE_PATH = null;
+									tmpRow.ENDDATE_STAGING_PATH = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_1 = 8;
 
 								if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-									iRow1.VISUALATTRIBUTE = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+									tmpRow.VISUALATTRIBUTES = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 								} else {
-									iRow1.VISUALATTRIBUTE = null;
+									tmpRow.VISUALATTRIBUTES = null;
 								}
 
 							}
@@ -4991,7 +4743,7 @@ public class TOSIDRTConnector implements TalendJob {
 							whetherReject_tFileInputDelimited_1 = true;
 
 							System.err.println(e.getMessage());
-							iRow1 = null;
+							tmpRow = null;
 
 						}
 
@@ -5009,162 +4761,207 @@ public class TOSIDRTConnector implements TalendJob {
 						/**
 						 * [tFileInputDelimited_1 main ] stop
 						 */
-						// Start of branch "iRow1"
-						if (iRow1 != null) {
+						// Start of branch "tmpRow"
+						if (tmpRow != null) {
 
 							/**
-							 * [tMap_1 main ] start
+							 * [tJDBCOutput_1 main ] start
 							 */
 
-							currentComponent = "tMap_1";
+							currentComponent = "tJDBCOutput_1";
 
-							boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+							whetherReject_tJDBCOutput_1 = false;
 
-							// ###############################
-							// # Input tables (lookups)
-							boolean rejectedInnerJoin_tMap_1 = false;
-							boolean mainRowRejected_tMap_1 = false;
-
-							// ###############################
-							{ // start of Var scope
-
-								// ###############################
-								// # Vars tables
-
-								Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
-								// ###############################
-								// # Output tables
-
-								tmpRow = null;
-
-								// # Output table : 'tmpRow'
-								tmpRow_tmp.TARGET_ID = Integer
-										.parseInt(iRow1.TARGET_ID);
-								tmpRow_tmp.TREE_LEVEL = Integer
-										.parseInt(iRow1.TREE_LEVEL);
-								tmpRow_tmp.TREE_PATH = iRow1.TREE_PATH;
-								tmpRow_tmp.SOURCE_PATH = iRow1.SOURCE_PATH;
-								tmpRow_tmp.NAME = iRow1.NAME;
-								tmpRow_tmp.CHANGED = iRow1.CHANGED;
-								tmpRow_tmp.STARTDATE_SOURCE_PATH = iRow1.STARTDATE_PATH;
-								tmpRow_tmp.ENDDATE_SOURCE_PATH = iRow1.ENDDATE_PATH;
-								tmpRow_tmp.VISUALATTRIBUTES = iRow1.VISUALATTRIBUTE;
-								tmpRow = tmpRow_tmp;
-								// ###############################
-
-							} // end of Var scope
-
-							rejectedInnerJoin_tMap_1 = false;
-
-							tos_count_tMap_1++;
-
-							/**
-							 * [tMap_1 main ] stop
-							 */
-							// Start of branch "tmpRow"
-							if (tmpRow != null) {
-
-								/**
-								 * [tOracleOutput_1 main ] start
-								 */
-
-								currentComponent = "tOracleOutput_1";
-
-								whetherReject_tOracleOutput_1 = false;
+							java.sql.ResultSet rs_tJDBCOutput_1 = pstmt_tJDBCOutput_1
+									.executeQuery();
+							int checkCount_tJDBCOutput_1 = -1;
+							while (rs_tJDBCOutput_1.next()) {
+								checkCount_tJDBCOutput_1 = rs_tJDBCOutput_1
+										.getInt(1);
+							}
+							if (checkCount_tJDBCOutput_1 > 0) {
 								if (tmpRow.TARGET_ID == null) {
-									pstmt_tOracleOutput_1.setNull(1,
+									pstmtUpdate_tJDBCOutput_1.setNull(1,
 											java.sql.Types.INTEGER);
 								} else {
-									pstmt_tOracleOutput_1.setInt(1,
+									pstmtUpdate_tJDBCOutput_1.setInt(1,
 											tmpRow.TARGET_ID);
 								}
 
 								if (tmpRow.TREE_LEVEL == null) {
-									pstmt_tOracleOutput_1.setNull(2,
+									pstmtUpdate_tJDBCOutput_1.setNull(2,
 											java.sql.Types.INTEGER);
 								} else {
-									pstmt_tOracleOutput_1.setInt(2,
+									pstmtUpdate_tJDBCOutput_1.setInt(2,
 											tmpRow.TREE_LEVEL);
 								}
 
 								if (tmpRow.TREE_PATH == null) {
-									pstmt_tOracleOutput_1.setNull(3,
+									pstmtUpdate_tJDBCOutput_1.setNull(3,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(3,
+									pstmtUpdate_tJDBCOutput_1.setString(3,
 											tmpRow.TREE_PATH);
 								}
 
-								if (tmpRow.SOURCE_PATH == null) {
-									pstmt_tOracleOutput_1.setNull(4,
+								if (tmpRow.STAGING_PATH == null) {
+									pstmtUpdate_tJDBCOutput_1.setNull(4,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(4,
-											tmpRow.SOURCE_PATH);
+									pstmtUpdate_tJDBCOutput_1.setString(4,
+											tmpRow.STAGING_PATH);
+								}
+
+								if (tmpRow.STAGING_DIMENSION == null) {
+									pstmtUpdate_tJDBCOutput_1.setNull(5,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtUpdate_tJDBCOutput_1.setString(5,
+											tmpRow.STAGING_DIMENSION);
 								}
 
 								if (tmpRow.NAME == null) {
-									pstmt_tOracleOutput_1.setNull(5,
+									pstmtUpdate_tJDBCOutput_1.setNull(6,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(5,
+									pstmtUpdate_tJDBCOutput_1.setString(6,
 											tmpRow.NAME);
 								}
 
-								if (tmpRow.CHANGED == null) {
-									pstmt_tOracleOutput_1.setNull(6,
+								if (tmpRow.STARTDATE_STAGING_PATH == null) {
+									pstmtUpdate_tJDBCOutput_1.setNull(7,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(6,
-											tmpRow.CHANGED);
+									pstmtUpdate_tJDBCOutput_1.setString(7,
+											tmpRow.STARTDATE_STAGING_PATH);
 								}
 
-								if (tmpRow.STARTDATE_SOURCE_PATH == null) {
-									pstmt_tOracleOutput_1.setNull(7,
+								if (tmpRow.ENDDATE_STAGING_PATH == null) {
+									pstmtUpdate_tJDBCOutput_1.setNull(8,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(7,
-											tmpRow.STARTDATE_SOURCE_PATH);
-								}
-
-								if (tmpRow.ENDDATE_SOURCE_PATH == null) {
-									pstmt_tOracleOutput_1.setNull(8,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tOracleOutput_1.setString(8,
-											tmpRow.ENDDATE_SOURCE_PATH);
+									pstmtUpdate_tJDBCOutput_1.setString(8,
+											tmpRow.ENDDATE_STAGING_PATH);
 								}
 
 								if (tmpRow.VISUALATTRIBUTES == null) {
-									pstmt_tOracleOutput_1.setNull(9,
+									pstmtUpdate_tJDBCOutput_1.setNull(9,
 											java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tOracleOutput_1.setString(9,
+									pstmtUpdate_tJDBCOutput_1.setString(9,
 											tmpRow.VISUALATTRIBUTES);
 								}
 
 								try {
-									insertedCount_tOracleOutput_1 = insertedCount_tOracleOutput_1
-											+ pstmt_tOracleOutput_1
+									updatedCount_tJDBCOutput_1 = updatedCount_tJDBCOutput_1
+											+ pstmtUpdate_tJDBCOutput_1
 													.executeUpdate();
-									nb_line_tOracleOutput_1++;
-								} catch (java.lang.Exception e_tOracleOutput_1) {
-									whetherReject_tOracleOutput_1 = true;
-									throw (e_tOracleOutput_1);
+								} catch (java.lang.Exception e) {
+									whetherReject_tJDBCOutput_1 = true;
+									System.err.print(e.getMessage());
+								}
+							} else {
+								if (tmpRow.TARGET_ID == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(1,
+											java.sql.Types.INTEGER);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setInt(1,
+											tmpRow.TARGET_ID);
 								}
 
-								if (!whetherReject_tOracleOutput_1) {
+								if (tmpRow.TREE_LEVEL == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(2,
+											java.sql.Types.INTEGER);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setInt(2,
+											tmpRow.TREE_LEVEL);
 								}
 
-								tos_count_tOracleOutput_1++;
+								if (tmpRow.TREE_PATH == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(3,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(3,
+											tmpRow.TREE_PATH);
+								}
 
-								/**
-								 * [tOracleOutput_1 main ] stop
-								 */
+								if (tmpRow.STAGING_PATH == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(4,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(4,
+											tmpRow.STAGING_PATH);
+								}
 
-							} // End of branch "tmpRow"
+								if (tmpRow.STAGING_DIMENSION == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(5,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(5,
+											tmpRow.STAGING_DIMENSION);
+								}
 
-						} // End of branch "iRow1"
+								if (tmpRow.NAME == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(6,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(6,
+											tmpRow.NAME);
+								}
+
+								if (tmpRow.STARTDATE_STAGING_PATH == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(7,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(7,
+											tmpRow.STARTDATE_STAGING_PATH);
+								}
+
+								if (tmpRow.ENDDATE_STAGING_PATH == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(8,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(8,
+											tmpRow.ENDDATE_STAGING_PATH);
+								}
+
+								if (tmpRow.VISUALATTRIBUTES == null) {
+									pstmtInsert_tJDBCOutput_1.setNull(9,
+											java.sql.Types.VARCHAR);
+								} else {
+									pstmtInsert_tJDBCOutput_1.setString(9,
+											tmpRow.VISUALATTRIBUTES);
+								}
+
+								try {
+									insertedCount_tJDBCOutput_1 = insertedCount_tJDBCOutput_1
+											+ pstmtInsert_tJDBCOutput_1
+													.executeUpdate();
+								} catch (java.lang.Exception e) {
+									whetherReject_tJDBCOutput_1 = true;
+									System.err.print(e.getMessage());
+								}
+							}
+							nb_line_tJDBCOutput_1++;
+							if (!whetherReject_tJDBCOutput_1) {
+							}
+							if (batchSize_tJDBCOutput_1 <= batchSizeCounter_tJDBCOutput_1) {
+
+							}
+
+							commitCounter_tJDBCOutput_1++;
+							if (commitEvery_tJDBCOutput_1 <= commitCounter_tJDBCOutput_1) {
+								connection_tJDBCOutput_1.commit();
+								commitCounter_tJDBCOutput_1 = 0;
+							}
+
+							tos_count_tJDBCOutput_1++;
+
+							/**
+							 * [tJDBCOutput_1 main ] stop
+							 */
+
+						} // End of branch "tmpRow"
 
 						/**
 						 * [tFileInputDelimited_1 end ] start
@@ -5196,61 +4993,57 @@ public class TOSIDRTConnector implements TalendJob {
 				 */
 
 				/**
-				 * [tMap_1 end ] start
+				 * [tJDBCOutput_1 end ] start
 				 */
 
-				currentComponent = "tMap_1";
+				currentComponent = "tJDBCOutput_1";
 
-				// ###############################
-				// # Lookup hashes releasing
-				// ###############################
+				if (pstmtUpdate_tJDBCOutput_1 != null) {
 
-				ok_Hash.put("tMap_1", true);
-				end_Hash.put("tMap_1", System.currentTimeMillis());
+					pstmtUpdate_tJDBCOutput_1.close();
 
-				/**
-				 * [tMap_1 end ] stop
-				 */
+				}
+				if (pstmtInsert_tJDBCOutput_1 != null) {
 
-				/**
-				 * [tOracleOutput_1 end ] start
-				 */
+					pstmtInsert_tJDBCOutput_1.close();
 
-				currentComponent = "tOracleOutput_1";
+				}
+				if (pstmt_tJDBCOutput_1 != null) {
 
-				if (pstmt_tOracleOutput_1 != null) {
-
-					pstmt_tOracleOutput_1.close();
+					pstmt_tJDBCOutput_1.close();
 
 				}
 
-				nb_line_deleted_tOracleOutput_1 = nb_line_deleted_tOracleOutput_1
-						+ deletedCount_tOracleOutput_1;
-				nb_line_update_tOracleOutput_1 = nb_line_update_tOracleOutput_1
-						+ updatedCount_tOracleOutput_1;
-				nb_line_inserted_tOracleOutput_1 = nb_line_inserted_tOracleOutput_1
-						+ insertedCount_tOracleOutput_1;
-				nb_line_rejected_tOracleOutput_1 = nb_line_rejected_tOracleOutput_1
-						+ rejectedCount_tOracleOutput_1;
+				connection_tJDBCOutput_1.commit();
 
-				globalMap.put("tOracleOutput_1_NB_LINE",
-						nb_line_tOracleOutput_1);
-				globalMap.put("tOracleOutput_1_NB_LINE_UPDATED",
-						nb_line_update_tOracleOutput_1);
-				globalMap.put("tOracleOutput_1_NB_LINE_INSERTED",
-						nb_line_inserted_tOracleOutput_1);
-				globalMap.put("tOracleOutput_1_NB_LINE_DELETED",
-						nb_line_deleted_tOracleOutput_1);
-				globalMap.put("tOracleOutput_1_NB_LINE_REJECTED",
-						nb_line_rejected_tOracleOutput_1);
+				connection_tJDBCOutput_1.close();
 
-				ok_Hash.put("tOracleOutput_1", true);
-				end_Hash.put("tOracleOutput_1", System.currentTimeMillis());
+				nb_line_deleted_tJDBCOutput_1 = nb_line_deleted_tJDBCOutput_1
+						+ deletedCount_tJDBCOutput_1;
+				nb_line_update_tJDBCOutput_1 = nb_line_update_tJDBCOutput_1
+						+ updatedCount_tJDBCOutput_1;
+				nb_line_inserted_tJDBCOutput_1 = nb_line_inserted_tJDBCOutput_1
+						+ insertedCount_tJDBCOutput_1;
+				nb_line_rejected_tJDBCOutput_1 = nb_line_rejected_tJDBCOutput_1
+						+ rejectedCount_tJDBCOutput_1;
+
+				globalMap.put("tJDBCOutput_1_NB_LINE", nb_line_tJDBCOutput_1);
+				globalMap.put("tJDBCOutput_1_NB_LINE_UPDATED",
+						nb_line_update_tJDBCOutput_1);
+				globalMap.put("tJDBCOutput_1_NB_LINE_INSERTED",
+						nb_line_inserted_tJDBCOutput_1);
+				globalMap.put("tJDBCOutput_1_NB_LINE_DELETED",
+						nb_line_deleted_tJDBCOutput_1);
+				globalMap.put("tJDBCOutput_1_NB_LINE_REJECTED",
+						nb_line_rejected_tJDBCOutput_1);
+
+				ok_Hash.put("tJDBCOutput_1", true);
+				end_Hash.put("tJDBCOutput_1", System.currentTimeMillis());
 
 				tJava_5Process(globalMap);
 
 				/**
-				 * [tOracleOutput_1 end ] stop
+				 * [tJDBCOutput_1 end ] stop
 				 */
 
 			}// end the resume
@@ -5593,13 +5386,13 @@ public class TOSIDRTConnector implements TalendJob {
 				int tos_count_tJava_5 = 0;
 
 				((TOSHandler) context.TOSHandler)
-						.status("tOracleOutput_1_NB_LINE_INSERTED: "
+						.status("tJDBCOutput_1_NB_LINE_INSERTED: "
 								+ ((Integer) globalMap
-										.get("tOracleOutput_1_NB_LINE_INSERTED")));
+										.get("tJDBCOutput_1_NB_LINE_INSERTED")));
 
 				context.StatusMessage = "Target I2B2 ontology saved ("
 						+ ((Integer) globalMap
-								.get("tOracleOutput_1_NB_LINE_INSERTED"))
+								.get("tJDBCOutput_1_NB_LINE_INSERTED"))
 						+ " lines).";
 
 				((TOSHandler) context.TOSHandler)
@@ -5657,10 +5450,9 @@ public class TOSIDRTConnector implements TalendJob {
 		globalMap.put("tJava_5_SUBPROCESS_STATE", 1);
 	}
 
-	public void tOracleRow_1Process(
-			final java.util.Map<String, Object> globalMap)
+	public void tJDBCRow_1Process(final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tOracleRow_1_SUBPROCESS_STATE", 0);
+		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -5679,71 +5471,92 @@ public class TOSIDRTConnector implements TalendJob {
 				globalResumeTicket = true;
 
 				/**
-				 * [tOracleRow_1 begin ] start
+				 * [tJDBCRow_1 begin ] start
 				 */
 
-				ok_Hash.put("tOracleRow_1", false);
-				start_Hash.put("tOracleRow_1", System.currentTimeMillis());
-				currentComponent = "tOracleRow_1";
+				ok_Hash.put("tJDBCRow_1", false);
+				start_Hash.put("tJDBCRow_1", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_1";
 
-				int tos_count_tOracleRow_1 = 0;
+				int tos_count_tJDBCRow_1 = 0;
 
-				java.sql.Connection conn_tOracleRow_1 = null;
-				conn_tOracleRow_1 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_2");
-				if (null == conn_tOracleRow_1) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleRow_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					conn_tOracleRow_1 = dataSources_tOracleRow_1.get("")
+				java.sql.Connection connection_tJDBCRow_1 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCRow_1) {
+					connection_tJDBCRow_1 = dataSources_tJDBCRow_1.get("")
 							.getConnection();
+				} else {
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+					String connectionString_tJDBCRow_1 = context.DB_StagingI2B2_jdbcurl;
+					connection_tJDBCRow_1 = java.sql.DriverManager
+							.getConnection(connectionString_tJDBCRow_1,
+									context.DB_StagingI2B2_Username,
+									context.DB_StagingI2B2_Password);
 				}
 
-				java.sql.Statement stmt_tOracleRow_1 = conn_tOracleRow_1
+				connection_tJDBCRow_1.setAutoCommit(false);
+				int commitEvery_tJDBCRow_1 = 10000;
+				int commitCounter_tJDBCRow_1 = 0;
+
+				java.sql.Statement stmt_tJDBCRow_1 = connection_tJDBCRow_1
 						.createStatement();
-				String query_tOracleRow_1 = "";
-				boolean whetherReject_tOracleRow_1 = false;
+				String query_tJDBCRow_1 = "";
+				boolean whetherReject_tJDBCRow_1 = false;
 
 				/**
-				 * [tOracleRow_1 begin ] stop
+				 * [tJDBCRow_1 begin ] stop
 				 */
 				/**
-				 * [tOracleRow_1 main ] start
+				 * [tJDBCRow_1 main ] start
 				 */
 
-				currentComponent = "tOracleRow_1";
+				currentComponent = "tJDBCRow_1";
 
-				query_tOracleRow_1 = "DELETE FROM " + context.OracleSchema
-						+ ".ioe_target_ontology  WHERE target_id = '"
-						+ context.Var1 + "'";
-				whetherReject_tOracleRow_1 = false;
-
-				globalMap.put("tOracleRow_1_QUERY", query_tOracleRow_1);
+				query_tJDBCRow_1 = "DELETE FROM "
+						+ context.DB_StagingI2B2_Schema
+						+ ".  WHERE target_id = '" + context.TargetID + "'";
+				whetherReject_tJDBCRow_1 = false;
+				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
 				try {
-					stmt_tOracleRow_1.execute(query_tOracleRow_1);
+					stmt_tJDBCRow_1.execute(query_tJDBCRow_1);
 
 				} catch (java.lang.Exception e) {
-					whetherReject_tOracleRow_1 = true;
+					whetherReject_tJDBCRow_1 = true;
 					System.err.print(e.getMessage());
 				}
 
-				tos_count_tOracleRow_1++;
+				commitCounter_tJDBCRow_1++;
+				if (commitEvery_tJDBCRow_1 <= commitCounter_tJDBCRow_1) {
+					connection_tJDBCRow_1.commit();
+					commitCounter_tJDBCRow_1 = 0;
+				}
+
+				tos_count_tJDBCRow_1++;
 
 				/**
-				 * [tOracleRow_1 main ] stop
+				 * [tJDBCRow_1 main ] stop
 				 */
 				/**
-				 * [tOracleRow_1 end ] start
+				 * [tJDBCRow_1 end ] start
 				 */
 
-				currentComponent = "tOracleRow_1";
+				currentComponent = "tJDBCRow_1";
 
-				stmt_tOracleRow_1.close();
+				stmt_tJDBCRow_1.close();
+				if (commitEvery_tJDBCRow_1 > commitCounter_tJDBCRow_1) {
+					connection_tJDBCRow_1.commit();
+					commitCounter_tJDBCRow_1 = 0;
+				}
 
-				ok_Hash.put("tOracleRow_1", true);
-				end_Hash.put("tOracleRow_1", System.currentTimeMillis());
+				connection_tJDBCRow_1.close();
+
+				ok_Hash.put("tJDBCRow_1", true);
+				end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
 
 				/**
-				 * [tOracleRow_1 end ] stop
+				 * [tJDBCRow_1 end ] stop
 				 */
 
 			}// end the resume
@@ -5758,7 +5571,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tOracleRow_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 1);
 	}
 
 	public static class rTargetOntologyStruct implements
@@ -5766,15 +5579,15 @@ public class TOSIDRTConnector implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
 
-		public String TARGET_ID;
+		public Integer TARGET_ID;
 
-		public String getTARGET_ID() {
+		public Integer getTARGET_ID() {
 			return this.TARGET_ID;
 		}
 
-		public String TREE_LEVEL;
+		public Integer TREE_LEVEL;
 
-		public String getTREE_LEVEL() {
+		public Integer getTREE_LEVEL() {
 			return this.TREE_LEVEL;
 		}
 
@@ -5784,10 +5597,16 @@ public class TOSIDRTConnector implements TalendJob {
 			return this.TREE_PATH;
 		}
 
-		public String SOURCE_PATH;
+		public String STAGING_PATH;
 
-		public String getSOURCE_PATH() {
-			return this.SOURCE_PATH;
+		public String getSTAGING_PATH() {
+			return this.STAGING_PATH;
+		}
+
+		public String STAGING_DIMENSION;
+
+		public String getSTAGING_DIMENSION() {
+			return this.STAGING_DIMENSION;
 		}
 
 		public String NAME;
@@ -5796,28 +5615,44 @@ public class TOSIDRTConnector implements TalendJob {
 			return this.NAME;
 		}
 
-		public String CHANGED;
+		public String STARTDATE_STAGING_PATH;
 
-		public String getCHANGED() {
-			return this.CHANGED;
+		public String getSTARTDATE_STAGING_PATH() {
+			return this.STARTDATE_STAGING_PATH;
 		}
 
-		public String STARTDATE_SOURCE_PATH;
+		public String ENDDATE_STAGING_PATH;
 
-		public String getSTARTDATE_SOURCE_PATH() {
-			return this.STARTDATE_SOURCE_PATH;
+		public String getENDDATE_STAGING_PATH() {
+			return this.ENDDATE_STAGING_PATH;
 		}
 
-		public String ENDDATE_SOURCE_PATH;
+		public String VISUALATTRIBUTES;
 
-		public String getENDDATE_SOURCE_PATH() {
-			return this.ENDDATE_SOURCE_PATH;
+		public String getVISUALATTRIBUTES() {
+			return this.VISUALATTRIBUTES;
 		}
 
-		public String VISUALATTRIBUTE;
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
 
-		public String getVISUALATTRIBUTE() {
-			return this.VISUALATTRIBUTE;
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
 		}
 
 		private String readString(ObjectInputStream dis) throws IOException {
@@ -5861,23 +5696,23 @@ public class TOSIDRTConnector implements TalendJob {
 
 					int length = 0;
 
-					this.TARGET_ID = readString(dis);
+					this.TARGET_ID = readInteger(dis);
 
-					this.TREE_LEVEL = readString(dis);
+					this.TREE_LEVEL = readInteger(dis);
 
 					this.TREE_PATH = readString(dis);
 
-					this.SOURCE_PATH = readString(dis);
+					this.STAGING_PATH = readString(dis);
+
+					this.STAGING_DIMENSION = readString(dis);
 
 					this.NAME = readString(dis);
 
-					this.CHANGED = readString(dis);
+					this.STARTDATE_STAGING_PATH = readString(dis);
 
-					this.STARTDATE_SOURCE_PATH = readString(dis);
+					this.ENDDATE_STAGING_PATH = readString(dis);
 
-					this.ENDDATE_SOURCE_PATH = readString(dis);
-
-					this.VISUALATTRIBUTE = readString(dis);
+					this.VISUALATTRIBUTES = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -5891,13 +5726,13 @@ public class TOSIDRTConnector implements TalendJob {
 		public void writeData(ObjectOutputStream dos) {
 			try {
 
-				// String
+				// Integer
 
-				writeString(this.TARGET_ID, dos);
+				writeInteger(this.TARGET_ID, dos);
 
-				// String
+				// Integer
 
-				writeString(this.TREE_LEVEL, dos);
+				writeInteger(this.TREE_LEVEL, dos);
 
 				// String
 
@@ -5905,7 +5740,11 @@ public class TOSIDRTConnector implements TalendJob {
 
 				// String
 
-				writeString(this.SOURCE_PATH, dos);
+				writeString(this.STAGING_PATH, dos);
+
+				// String
+
+				writeString(this.STAGING_DIMENSION, dos);
 
 				// String
 
@@ -5913,19 +5752,15 @@ public class TOSIDRTConnector implements TalendJob {
 
 				// String
 
-				writeString(this.CHANGED, dos);
+				writeString(this.STARTDATE_STAGING_PATH, dos);
 
 				// String
 
-				writeString(this.STARTDATE_SOURCE_PATH, dos);
+				writeString(this.ENDDATE_STAGING_PATH, dos);
 
 				// String
 
-				writeString(this.ENDDATE_SOURCE_PATH, dos);
-
-				// String
-
-				writeString(this.VISUALATTRIBUTE, dos);
+				writeString(this.VISUALATTRIBUTES, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -5938,15 +5773,15 @@ public class TOSIDRTConnector implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("TARGET_ID=" + TARGET_ID);
-			sb.append(",TREE_LEVEL=" + TREE_LEVEL);
+			sb.append("TARGET_ID=" + String.valueOf(TARGET_ID));
+			sb.append(",TREE_LEVEL=" + String.valueOf(TREE_LEVEL));
 			sb.append(",TREE_PATH=" + TREE_PATH);
-			sb.append(",SOURCE_PATH=" + SOURCE_PATH);
+			sb.append(",STAGING_PATH=" + STAGING_PATH);
+			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
 			sb.append(",NAME=" + NAME);
-			sb.append(",CHANGED=" + CHANGED);
-			sb.append(",STARTDATE_SOURCE_PATH=" + STARTDATE_SOURCE_PATH);
-			sb.append(",ENDDATE_SOURCE_PATH=" + ENDDATE_SOURCE_PATH);
-			sb.append(",VISUALATTRIBUTE=" + VISUALATTRIBUTE);
+			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
+			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
+			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
 			sb.append("]");
 
 			return sb.toString();
@@ -6083,10 +5918,10 @@ public class TOSIDRTConnector implements TalendJob {
 						rTargetOntology.TARGET_ID = null;
 					} else {
 
-						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
-								.getString(column_index_tJDBCInput_3);
-						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.TARGET_ID = tmpContent_tJDBCInput_3;
+						if (rs_tJDBCInput_3
+								.getObject(column_index_tJDBCInput_3) != null) {
+							rTargetOntology.TARGET_ID = rs_tJDBCInput_3
+									.getInt(column_index_tJDBCInput_3);
 						} else {
 							rTargetOntology.TARGET_ID = null;
 						}
@@ -6101,10 +5936,10 @@ public class TOSIDRTConnector implements TalendJob {
 						rTargetOntology.TREE_LEVEL = null;
 					} else {
 
-						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
-								.getString(column_index_tJDBCInput_3);
-						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.TREE_LEVEL = tmpContent_tJDBCInput_3;
+						if (rs_tJDBCInput_3
+								.getObject(column_index_tJDBCInput_3) != null) {
+							rTargetOntology.TREE_LEVEL = rs_tJDBCInput_3
+									.getInt(column_index_tJDBCInput_3);
 						} else {
 							rTargetOntology.TREE_LEVEL = null;
 						}
@@ -6134,22 +5969,40 @@ public class TOSIDRTConnector implements TalendJob {
 					column_index_tJDBCInput_3 = 4;
 
 					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
-						rTargetOntology.SOURCE_PATH = null;
+						rTargetOntology.STAGING_PATH = null;
 					} else {
 
 						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
 								.getString(column_index_tJDBCInput_3);
 						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.SOURCE_PATH = tmpContent_tJDBCInput_3;
+							rTargetOntology.STAGING_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							rTargetOntology.SOURCE_PATH = null;
+							rTargetOntology.STAGING_PATH = null;
 						}
 
 						if (rs_tJDBCInput_3.wasNull()) {
-							rTargetOntology.SOURCE_PATH = null;
+							rTargetOntology.STAGING_PATH = null;
 						}
 					}
 					column_index_tJDBCInput_3 = 5;
+
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.STAGING_DIMENSION = null;
+					} else {
+
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.STAGING_DIMENSION = tmpContent_tJDBCInput_3;
+						} else {
+							rTargetOntology.STAGING_DIMENSION = null;
+						}
+
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.STAGING_DIMENSION = null;
+						}
+					}
+					column_index_tJDBCInput_3 = 6;
 
 					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
 						rTargetOntology.NAME = null;
@@ -6167,76 +6020,58 @@ public class TOSIDRTConnector implements TalendJob {
 							rTargetOntology.NAME = null;
 						}
 					}
-					column_index_tJDBCInput_3 = 6;
-
-					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
-						rTargetOntology.CHANGED = null;
-					} else {
-
-						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
-								.getString(column_index_tJDBCInput_3);
-						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.CHANGED = tmpContent_tJDBCInput_3;
-						} else {
-							rTargetOntology.CHANGED = null;
-						}
-
-						if (rs_tJDBCInput_3.wasNull()) {
-							rTargetOntology.CHANGED = null;
-						}
-					}
 					column_index_tJDBCInput_3 = 7;
 
 					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
-						rTargetOntology.STARTDATE_SOURCE_PATH = null;
+						rTargetOntology.STARTDATE_STAGING_PATH = null;
 					} else {
 
 						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
 								.getString(column_index_tJDBCInput_3);
 						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.STARTDATE_SOURCE_PATH = tmpContent_tJDBCInput_3;
+							rTargetOntology.STARTDATE_STAGING_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							rTargetOntology.STARTDATE_SOURCE_PATH = null;
+							rTargetOntology.STARTDATE_STAGING_PATH = null;
 						}
 
 						if (rs_tJDBCInput_3.wasNull()) {
-							rTargetOntology.STARTDATE_SOURCE_PATH = null;
+							rTargetOntology.STARTDATE_STAGING_PATH = null;
 						}
 					}
 					column_index_tJDBCInput_3 = 8;
 
 					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
-						rTargetOntology.ENDDATE_SOURCE_PATH = null;
+						rTargetOntology.ENDDATE_STAGING_PATH = null;
 					} else {
 
 						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
 								.getString(column_index_tJDBCInput_3);
 						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.ENDDATE_SOURCE_PATH = tmpContent_tJDBCInput_3;
+							rTargetOntology.ENDDATE_STAGING_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							rTargetOntology.ENDDATE_SOURCE_PATH = null;
+							rTargetOntology.ENDDATE_STAGING_PATH = null;
 						}
 
 						if (rs_tJDBCInput_3.wasNull()) {
-							rTargetOntology.ENDDATE_SOURCE_PATH = null;
+							rTargetOntology.ENDDATE_STAGING_PATH = null;
 						}
 					}
 					column_index_tJDBCInput_3 = 9;
 
 					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
-						rTargetOntology.VISUALATTRIBUTE = null;
+						rTargetOntology.VISUALATTRIBUTES = null;
 					} else {
 
 						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
 								.getString(column_index_tJDBCInput_3);
 						if (tmpContent_tJDBCInput_3 != null) {
-							rTargetOntology.VISUALATTRIBUTE = tmpContent_tJDBCInput_3;
+							rTargetOntology.VISUALATTRIBUTES = tmpContent_tJDBCInput_3;
 						} else {
-							rTargetOntology.VISUALATTRIBUTE = null;
+							rTargetOntology.VISUALATTRIBUTES = null;
 						}
 
 						if (rs_tJDBCInput_3.wasNull()) {
-							rTargetOntology.VISUALATTRIBUTE = null;
+							rTargetOntology.VISUALATTRIBUTES = null;
 						}
 					}
 
@@ -6261,14 +6096,16 @@ public class TOSIDRTConnector implements TalendJob {
 
 					currentComponent = "tJavaFlex_7";
 
-					((TOSHandler) context.TOSHandler).readTargetOntology(
-							Integer.parseInt(rTargetOntology.TREE_LEVEL),
-							rTargetOntology.TREE_PATH,
-							rTargetOntology.SOURCE_PATH, rTargetOntology.NAME,
-							Integer.parseInt(rTargetOntology.CHANGED),
-							rTargetOntology.STARTDATE_SOURCE_PATH,
-							rTargetOntology.ENDDATE_SOURCE_PATH,
-							rTargetOntology.VISUALATTRIBUTE);
+					((TOSHandler) context.TOSHandler)
+							.addTargetOntologyItemToTree(
+									rTargetOntology.TREE_LEVEL,
+									rTargetOntology.TREE_PATH,
+									rTargetOntology.STAGING_PATH,
+									rTargetOntology.STAGING_DIMENSION,
+									rTargetOntology.NAME,
+									rTargetOntology.STARTDATE_STAGING_PATH,
+									rTargetOntology.ENDDATE_STAGING_PATH,
+									rTargetOntology.VISUALATTRIBUTES);
 
 					tos_count_tJavaFlex_7++;
 
@@ -7821,6 +7658,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 223942 characters generated by Talend Open Studio for Data Integration on the
- * 1. November 2013 14:55:04 MEZ
+ * 220831 characters generated by Talend Open Studio for Data Integration on the
+ * 4. November 2013 17:36:59 MEZ
  ************************************************************************************************/
