@@ -179,7 +179,7 @@
   <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_3"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_2"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
     <elementParameter field="TABLE" name="DRIVER_JAR"/>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
@@ -215,7 +215,7 @@
   <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_4"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_2"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
     <elementParameter field="TABLE" name="DRIVER_JAR"/>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>

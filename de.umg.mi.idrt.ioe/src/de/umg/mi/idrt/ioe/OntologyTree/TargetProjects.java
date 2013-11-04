@@ -124,6 +124,7 @@ public class TargetProjects {
 	public Target incrementVersion(Target oldTarget) {
 		Target newTarget = new Target();
 		newTarget.setTargetProjectID(oldTarget.getTargetProjectID());
+		newTarget.setTargetDBSchema(oldTarget.getTargetDBSchema());
 		return newTarget;
 	}
 

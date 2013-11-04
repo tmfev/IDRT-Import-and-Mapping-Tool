@@ -30,10 +30,6 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 
 	File _ontologyFile = null;
 
-	private InputStream _ontologyStream;
-	private InputStream _metaStream;
-	private InputStream _patientStream;
-	private InputStream _patientDataStream;
 
 	public OntologyTreeCreatorTOS ( MyOntologyTree myOT, String filename ){
 		super(myOT);
@@ -47,6 +43,7 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 		Application.executeCommand(command);
 		
 
+		// loading the staging i2b2 ontology
 		try {
 			// create a new db connector via TOS
 			
@@ -78,13 +75,15 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 				}
 			}).run();
 			
-
+			// loading the target ontology from the selected target
 			try {
 
-
+				ActionCommand command2 = new ActionCommand(
+						Resource.ID.Command.IEO.LOADTARGETONTOLOGY);
+				Application.executeCommand(command2);
 
 			} catch ( Exception e ) {
-				Console.error("", e);
+				Console.error("Could not load the target ontology.", e);
 			}
 
 		} catch ( Exception e ) {
@@ -93,139 +92,6 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 
 	}
 
-	/**
-	 * This method create the ontology.
-	 * 
-	 * @version 1.0
-	 */
-	public void createOntology(){
-		System.out.println("createOntology()");
-		
-		
-
-
-	}
-
-	public void createMeta(){
-		System.out.println("createMeta()");
-
-		/*
-
-		   try {
-
-	        	List<String> list = null;
-
-	        	String strFile = "C:\\I2B2ImportProject\\Eclipse\\output\\save_meta.csv";
-
-	        	//create BufferedReader to read csv file
-	        	//BufferedReader br = new BufferedReader( new FileReader(strFile));
-	        	BufferedReader br = new BufferedReader( new InputStreamReader( _metaStream ) );
-	        	int lineNumber = 0;
-
-
-                String strLine = "";
-				//read comma separated file line by line
-                while( (strLine  = br.readLine()) != null ) {
-
-                		list = new ArrayList<String>();
-                        lineNumber++;
-
-                        String[] split = strLine.split(";", -1);
-
-                        // gather all the columns in list for easy access  
-                        for (String item:split) { 
-                            list.add(item);
-                         }
-
-                        // use functions to populate the tree depending on 
-                        if (lineNumber > 1) {
-                        	//this.getMyOT().getOT().getTreeRoot().setOriginalFileName(list.get(0));
-                        }
-                }
-
-                br.close();
-
-        } catch(Exception e) {
-                System.out.println("Exception while reading csv file: " + e);                  
-        }
-
-		 */
-
-	}
-
-	public void createPatientData(){
-		System.out.println("createPatientData");
-
-		/*
-
-			try {
-
-	        	List<String> list = null;
-
-	        	//String strFile = "C:\\I2B2ImportProject\\Eclipse\\output\\save_patient_data.csv";
-
-	        	//create BufferedReader to read csv file
-	        	//BufferedReader br = new BufferedReader( new FileReader(strFile));
-	        	BufferedReader br = new BufferedReader( new InputStreamReader( _patientDataStream ) );
-	        	String strLine = "";
-	        	int lineNumber = 0;
-
-	        	String patientID = "";
-	        	OntologyTreePatient patientNode = null;
-	        	 XMLGregorianCalendar xmlDate = null;
-
-	             //read comma separated file line by line
-	             while( ( strLine = br.readLine()) != null ) {
-
-	             		list = new ArrayList<String>();
-	                     lineNumber++;
-	                     System.out.println("  create patient #" + lineNumber);
-	                     String[] split = strLine.split(";", -1);
-
-	                     // gather all the columns in list for easy access  
-	                     for (String item:split) { 
-	                    	 System.out.println("i:"+ item);
-	                         list.add(item);
-	                      }
-
-	                     // use functions to populate the tree depending on 
-	                     if (lineNumber > 1) {
-	                    	 System.out.println("x1");
-	                    	 patientID = list.get(0);
-	                    	 patientNode = this.addPatient(patientID, patientID, "meta");
-	                    	 patientNode.setI2B2ID(Long.valueOf(list.get(1)));
-
-	                    	 System.out.println("x2");
-	                    	 if (!list.get(12).isEmpty())
-	                    		 xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(list.get(12));
-	                    	 else
-	                    		 xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar());
-	                    	 System.out.println("x2b");
-	                    	 addPatientAnswer(
-	                    			 list.get(3),
-	                    			 patientNode,
-	                    			 list.get(7),
-	                    			 list.get(7),
-	                    			 xmlDate,
-	                    			 list.get(12),
-	                    			 true,
-	                    			 "",
-	                    			 ""); //TODO
-
-	                    	System.out.println("x3");
-
-	                     }
-             }
-
-             br.close();
-
-     } catch(Exception e) {
-             System.out.println("Exception while reading csv file: " + e);                  
-     }
-
-		 */
-
-	}
 
 
 }

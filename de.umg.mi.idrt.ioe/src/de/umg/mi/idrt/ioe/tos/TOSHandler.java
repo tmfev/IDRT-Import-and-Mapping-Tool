@@ -10,7 +10,6 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
@@ -171,6 +170,9 @@ public class TOSHandler {
 			String startdateSourcePath, String enddateSourcePath,
 			String visualattributes) {
 
+		
+		System.out.println("");
+		
 		//		OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
 		//				name);
 		//		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
@@ -182,7 +184,40 @@ public class TOSHandler {
 		//				startdateSourcePath);
 		//		node.getTargetNodeAttributes().setEndDateSourcePath(enddateSourcePath);
 		//		node.getTargetNodeAttributes().setVisualattributes(visualattributes);
+		
+		/*
+		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
+				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
+				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
+				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
+				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
 
+
+		if (_ot == null)
+			_ot = OntologyEditorView.getI2b2ImportTool()
+			.getMyOntologyTrees().getOntologyTreeSource();
+
+		// System.out.println("C_METADATAXML: ");
+		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
+		// System.out.println(" - link2: " + C_METADATAXML != null ?
+		// String.valueOf(C_METADATAXML) : "<null>");
+
+		if (C_HLEVEL < 3) {
+			System.out.println(" node " + C_NAME + " ");
+			System.out.println("   -> " + C_HLEVEL + " -> " + C_FULLNAME);
+		}
+
+		if (C_HLEVEL == 0) {
+			_ot.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+		}
+		else {
+			if (item.getM_APPLIED_PATH().equals("@"))
+			_ot.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				_ot.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+			}
+		}
+		*/
 	}
 
 	public void writeTargetOntology(int targetID, String treeNodePath,

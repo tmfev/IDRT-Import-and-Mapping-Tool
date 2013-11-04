@@ -57,18 +57,12 @@ import de.umg.mi.idrt.ioe.tos.TOSHandler;
 //import java.util.List;
 import routines.TOSHandler2;
 
-//the import part of tJava_1
-//import java.util.List;
-
 //the import part of tJava_2
 //import java.util.List;
 
 //the import part of tJavaFlex_1
 
 //the import part of tJava_3
-//import java.util.List;
-
-//the import part of tJavaRow_1
 //import java.util.List;
 
 //the import part of tJava_4
@@ -291,6 +285,18 @@ public class TOSIDRTConnector implements TalendJob {
 
 			}
 
+			if (JDBC_URL != null) {
+
+				this.setProperty("JDBC_URL", JDBC_URL.toString());
+
+			}
+
+			if (JDBCDriver != null) {
+
+				this.setProperty("JDBCDriver", JDBCDriver.toString());
+
+			}
+
 			if (Job != null) {
 
 				this.setProperty("Job", Job.toString());
@@ -380,6 +386,12 @@ public class TOSIDRTConnector implements TalendJob {
 
 				this.setProperty("TableIEOTargetProject",
 						TableIEOTargetProject.toString());
+
+			}
+
+			if (TargetID != null) {
+
+				this.setProperty("TargetID", TargetID.toString());
 
 			}
 
@@ -523,6 +535,18 @@ public class TOSIDRTConnector implements TalendJob {
 			return this.IfValue;
 		}
 
+		public String JDBC_URL;
+
+		public String getJDBC_URL() {
+			return this.JDBC_URL;
+		}
+
+		public String JDBCDriver;
+
+		public String getJDBCDriver() {
+			return this.JDBCDriver;
+		}
+
 		public String Job;
 
 		public String getJob() {
@@ -611,6 +635,12 @@ public class TOSIDRTConnector implements TalendJob {
 
 		public String getTableIEOTargetProject() {
 			return this.TableIEOTargetProject;
+		}
+
+		public Integer TargetID;
+
+		public Integer getTargetID() {
+			return this.TargetID;
 		}
 
 		public Object TOSHandler;
@@ -822,36 +852,6 @@ public class TOSIDRTConnector implements TalendJob {
 		tJDBCConnection_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleConnection_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tOracleConnection_2", System.currentTimeMillis());
-
-		try {
-
-			errorCode = null;
-			tJava_1Process(globalMap);
-			if (!"failure".equals(status)) {
-				status = "end";
-			}
-
-		} catch (java.lang.Exception e) {
-			e.printStackTrace();
-		}
-
-		tOracleConnection_2_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJava_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tRunJob_4_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -912,24 +912,14 @@ public class TOSIDRTConnector implements TalendJob {
 		tJava_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleInput_8_error(java.lang.Exception exception,
+	public void tJDBCInput_2_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleInput_8", System.currentTimeMillis());
+		end_Hash.put("tJDBCInput_2", System.currentTimeMillis());
 
 		status = "failure";
 
-		tOracleInput_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJavaRow_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJavaRow_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tOracleInput_8_onSubJobError(exception, errorComponent, globalMap);
+		tJDBCInput_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tDie_1_error(java.lang.Exception exception,
@@ -1055,14 +1045,14 @@ public class TOSIDRTConnector implements TalendJob {
 		tOracleRow_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleInput_7_error(java.lang.Exception exception,
+	public void tJDBCInput_3_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleInput_7", System.currentTimeMillis());
+		end_Hash.put("tJDBCInput_3", System.currentTimeMillis());
 
 		status = "failure";
 
-		tOracleInput_7_onSubJobError(exception, errorComponent, globalMap);
+		tJDBCInput_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJavaFlex_7_error(java.lang.Exception exception,
@@ -1072,7 +1062,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		status = "failure";
 
-		tOracleInput_7_onSubJobError(exception, errorComponent, globalMap);
+		tJDBCInput_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJava_8_error(java.lang.Exception exception,
@@ -1222,29 +1212,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tOracleConnection_2_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tJava_1_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
 	public void tRunJob_4_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1289,7 +1256,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tOracleInput_8_onSubJobError(java.lang.Exception exception,
+	public void tJDBCInput_2_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1400,7 +1367,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tOracleInput_7_onSubJobError(java.lang.Exception exception,
+	public void tJDBCInput_3_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -2119,132 +2086,6 @@ public class TOSIDRTConnector implements TalendJob {
 						"", "");
 			}
 
-			tOracleConnection_2Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tOracleConnection_2Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tOracleConnection_2_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tOracleConnection_2 begin ] start
-				 */
-
-				ok_Hash.put("tOracleConnection_2", false);
-				start_Hash.put("tOracleConnection_2",
-						System.currentTimeMillis());
-				currentComponent = "tOracleConnection_2";
-
-				int tos_count_tOracleConnection_2 = 0;
-
-				String url_tOracleConnection_2 = "jdbc:oracle:thin:@"
-						+ context.OracleHost + ":" + context.OraclePort + ":"
-						+ context.OracleDB;
-				globalMap.put("connectionType_" + "tOracleConnection_2",
-						"ORACLE_SID");
-
-				String userName_tOracleConnection_2 = context.OracleUsername;
-				String password_tOracleConnection_2 = context.OraclePassword;
-
-				java.sql.Connection conn_tOracleConnection_2 = null;
-
-				if ((null == globalMap.get(KEY_DB_DATASOURCES))
-						|| "".equals("")) {
-
-					java.lang.Class.forName("oracle.jdbc.OracleDriver");
-
-					conn_tOracleConnection_2 = java.sql.DriverManager
-							.getConnection(url_tOracleConnection_2,
-									userName_tOracleConnection_2,
-									password_tOracleConnection_2);
-					globalMap.put("conn_tOracleConnection_2",
-							conn_tOracleConnection_2);
-				}
-				if (null != conn_tOracleConnection_2) {
-
-					conn_tOracleConnection_2.setAutoCommit(true);
-				}
-				globalMap.put("host_" + "tOracleConnection_2",
-						context.OracleHost);
-				globalMap.put("port_" + "tOracleConnection_2",
-						context.OraclePort);
-				globalMap.put("dbname_" + "tOracleConnection_2",
-						context.OracleDB);
-
-				globalMap.put("conn_" + "tOracleConnection_2",
-						conn_tOracleConnection_2);
-				globalMap.put("dbschema_" + "tOracleConnection_2",
-						context.OracleSchema);
-				globalMap.put("username_" + "tOracleConnection_2",
-						context.OracleUsername);
-				globalMap.put("password_" + "tOracleConnection_2",
-						context.OraclePassword);
-
-				/**
-				 * [tOracleConnection_2 begin ] stop
-				 */
-				/**
-				 * [tOracleConnection_2 main ] start
-				 */
-
-				currentComponent = "tOracleConnection_2";
-
-				tos_count_tOracleConnection_2++;
-
-				/**
-				 * [tOracleConnection_2 main ] stop
-				 */
-				/**
-				 * [tOracleConnection_2 end ] start
-				 */
-
-				currentComponent = "tOracleConnection_2";
-
-				ok_Hash.put("tOracleConnection_2", true);
-				end_Hash.put("tOracleConnection_2", System.currentTimeMillis());
-
-				/**
-				 * [tOracleConnection_2 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tOracleConnection_2:OnSubjobOk",
-						"", Thread.currentThread().getId() + "", "", "", "",
-						"", "");
-			}
-
 			tRunJob_4Process(globalMap);
 
 		} catch (java.lang.Exception e) {
@@ -2257,84 +2098,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tOracleConnection_2_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_1Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJava_1 begin ] start
-				 */
-
-				ok_Hash.put("tJava_1", false);
-				start_Hash.put("tJava_1", System.currentTimeMillis());
-				currentComponent = "tJava_1";
-
-				int tos_count_tJava_1 = 0;
-
-				((TOSHandler) context.TOSHandler)
-						.status("Error while connection to the db. (Oracle)");
-				System.out
-						.println("Error while connection to the db. (Oracle)");
-
-				/**
-				 * [tJava_1 begin ] stop
-				 */
-				/**
-				 * [tJava_1 main ] start
-				 */
-
-				currentComponent = "tJava_1";
-
-				tos_count_tJava_1++;
-
-				/**
-				 * [tJava_1 main ] stop
-				 */
-				/**
-				 * [tJava_1 end ] start
-				 */
-
-				currentComponent = "tJava_1";
-
-				ok_Hash.put("tJava_1", true);
-				end_Hash.put("tJava_1", System.currentTimeMillis());
-
-				/**
-				 * [tJava_1 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJava_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tRunJob_4Process(final java.util.Map<String, Object> globalMap)
@@ -2459,6 +2223,9 @@ public class TOSIDRTConnector implements TalendJob {
 				parentContextMap_tRunJob_4.put("ErrorMessage",
 						context.ErrorMessage);
 				parentContextMap_tRunJob_4.put("IfValue", context.IfValue);
+				parentContextMap_tRunJob_4.put("JDBC_URL", context.JDBC_URL);
+				parentContextMap_tRunJob_4
+						.put("JDBCDriver", context.JDBCDriver);
 				parentContextMap_tRunJob_4.put("Job", context.Job);
 				parentContextMap_tRunJob_4.put("OracleDB", context.OracleDB);
 				parentContextMap_tRunJob_4
@@ -2485,6 +2252,7 @@ public class TOSIDRTConnector implements TalendJob {
 						context.TableIEOTargetOntology);
 				parentContextMap_tRunJob_4.put("TableIEOTargetProject",
 						context.TableIEOTargetProject);
+				parentContextMap_tRunJob_4.put("TargetID", context.TargetID);
 				parentContextMap_tRunJob_4
 						.put("TOSHandler", context.TOSHandler);
 
@@ -2615,18 +2383,6 @@ public class TOSIDRTConnector implements TalendJob {
 				 * ;
 				 */
 
-				if (context.OracleSchema.isEmpty()) {
-					System.out
-							.println("TOS: No context.OracleSchema set. Using \"i2b2idrt\" now.");
-					context.OracleSchema = "i2b2idrt";
-				}
-
-				if (context.SQLTable.isEmpty()) {
-					System.out
-							.println("TOS: No SQLTable set. Using \"i2b2idrt\" now.");
-					context.SQLTable = "i2b2idrt";
-				}
-
 				boolean sqlCommandIsEmpty = StringHandling
 						.LEN(context.SQLCommand) < 1;
 
@@ -2704,9 +2460,10 @@ public class TOSIDRTConnector implements TalendJob {
 					tJDBCInput_1Process(globalMap);
 				}
 
-				if (context.Job.equals("check_ontology_empty")) {
+				if (context.Job.equals("check_ontology_empty")
+						|| context.Job.equals("CheckOntology")) {
 
-					tOracleInput_8Process(globalMap);
+					tJDBCInput_2Process(globalMap);
 				}
 
 				if (context.Job.equals("add_target_ontology")
@@ -2720,9 +2477,10 @@ public class TOSIDRTConnector implements TalendJob {
 					tOracleRow_1Process(globalMap);
 				}
 
-				if (context.Job.equals("read_target_ontology")) {
+				if (context.Job.equals("read_target_ontology")
+						|| context.Job.equals("LoadTargetOntology")) {
 
-					tOracleInput_7Process(globalMap);
+					tJDBCInput_3Process(globalMap);
 				}
 
 				if (context.Job.equals("etlStagingI2B2ToTargetI2B2")) {
@@ -3923,131 +3681,10 @@ public class TOSIDRTConnector implements TalendJob {
 		globalMap.put("tJava_3_SUBPROCESS_STATE", 1);
 	}
 
-	public static class checkStruct implements
-			routines.system.IPersistableRow<checkStruct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
-
-		public String ontologyCount;
-
-		public String getOntologyCount() {
-			return this.ontologyCount;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTConnector.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTConnector.length == 0) {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTConnector = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_TOSIDRTConnector, 0, length);
-				strReturn = new String(commonByteArray_TOS_TOSIDRTConnector, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTConnector) {
-
-				try {
-
-					int length = 0;
-
-					this.ontologyCount = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.ontologyCount, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("ontologyCount=" + ontologyCount);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(checkStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tOracleInput_8Process(
+	public void tJDBCInput_2Process(
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tOracleInput_8_SUBPROCESS_STATE", 0);
+		globalMap.put("tJDBCInput_2_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -4065,175 +3702,90 @@ public class TOSIDRTConnector implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				checkStruct check = new checkStruct();
-
 				/**
-				 * [tJavaRow_1 begin ] start
+				 * [tJDBCInput_2 begin ] start
 				 */
 
-				ok_Hash.put("tJavaRow_1", false);
-				start_Hash.put("tJavaRow_1", System.currentTimeMillis());
-				currentComponent = "tJavaRow_1";
+				ok_Hash.put("tJDBCInput_2", false);
+				start_Hash.put("tJDBCInput_2", System.currentTimeMillis());
+				currentComponent = "tJDBCInput_2";
 
-				int tos_count_tJavaRow_1 = 0;
+				int tos_count_tJDBCInput_2 = 0;
 
-				int nb_line_tJavaRow_1 = 0;
-
-				/**
-				 * [tJavaRow_1 begin ] stop
-				 */
-
-				/**
-				 * [tOracleInput_8 begin ] start
-				 */
-
-				ok_Hash.put("tOracleInput_8", false);
-				start_Hash.put("tOracleInput_8", System.currentTimeMillis());
-				currentComponent = "tOracleInput_8";
-
-				int tos_count_tOracleInput_8 = 0;
-
-				int nb_line_tOracleInput_8 = 0;
-				java.sql.Connection conn_tOracleInput_8 = null;
-				conn_tOracleInput_8 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_2");
-				if (null == conn_tOracleInput_8) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleInput_8 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+				int nb_line_tJDBCInput_2 = 0;
+				java.sql.Connection conn_tJDBCInput_2 = null;
+				conn_tJDBCInput_2 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_1");
+				if (null == conn_tJDBCInput_2) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCInput_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
 							.get(KEY_DB_DATASOURCES);
-					conn_tOracleInput_8 = dataSources_tOracleInput_8.get("")
+					conn_tJDBCInput_2 = dataSources_tJDBCInput_2.get("")
 							.getConnection();
-					// globalMap.put("conn_tOracleConnection_2",
-					// conn_tOracleInput_8);
-				}
-				if (((oracle.jdbc.OracleConnection) conn_tOracleInput_8)
-						.getSessionTimeZone() == null) {
-					java.sql.Statement stmtGetTZ_tOracleInput_8 = conn_tOracleInput_8
-							.createStatement();
-					java.sql.ResultSet rsGetTZ_tOracleInput_8 = stmtGetTZ_tOracleInput_8
-							.executeQuery("select sessiontimezone from dual");
-					String sessionTimezone_tOracleInput_8 = java.util.TimeZone
-							.getDefault().getID();
-					while (rsGetTZ_tOracleInput_8.next()) {
-						sessionTimezone_tOracleInput_8 = rsGetTZ_tOracleInput_8
-								.getString(1);
-					}
-					((oracle.jdbc.OracleConnection) conn_tOracleInput_8)
-							.setSessionTimeZone(sessionTimezone_tOracleInput_8);
+					// globalMap.put("conn_tJDBCConnection_1",
+					// conn_tJDBCInput_2);
 				}
 
-				java.sql.Statement stmt_tOracleInput_8 = conn_tOracleInput_8
+				java.sql.Statement stmt_tJDBCInput_2 = conn_tJDBCInput_2
 						.createStatement();
 
-				String dbquery_tOracleInput_8 = "Select COUNT(C_FULLNAME) from "
-						+ context.OracleSchema + ".i2b2";
+				String dbquery_tJDBCInput_2 = "Select C_FULLNAME from "
+						+ context.DB_StagingI2B2_Schema + ".i2b2";
 
-				globalMap.put("tOracleInput_8_QUERY", dbquery_tOracleInput_8);
+				globalMap.put("tJDBCInput_2_QUERY", dbquery_tJDBCInput_2);
 
-				java.sql.ResultSet rs_tOracleInput_8 = stmt_tOracleInput_8
-						.executeQuery(dbquery_tOracleInput_8);
-				java.sql.ResultSetMetaData rsmd_tOracleInput_8 = rs_tOracleInput_8
+				java.sql.ResultSet rs_tJDBCInput_2 = stmt_tJDBCInput_2
+						.executeQuery(dbquery_tJDBCInput_2);
+				java.sql.ResultSetMetaData rsmd_tJDBCInput_2 = rs_tJDBCInput_2
 						.getMetaData();
-				int colQtyInRs_tOracleInput_8 = rsmd_tOracleInput_8
+				int colQtyInRs_tJDBCInput_2 = rsmd_tJDBCInput_2
 						.getColumnCount();
 
-				String tmpContent_tOracleInput_8 = null;
-				int column_index_tOracleInput_8 = 1;
-				while (rs_tOracleInput_8.next()) {
-					nb_line_tOracleInput_8++;
-
-					column_index_tOracleInput_8 = 1;
-
-					if (colQtyInRs_tOracleInput_8 < column_index_tOracleInput_8) {
-						check.ontologyCount = null;
-					} else {
-
-						tmpContent_tOracleInput_8 = rs_tOracleInput_8
-								.getString(column_index_tOracleInput_8);
-						if (tmpContent_tOracleInput_8 != null) {
-							check.ontologyCount = tmpContent_tOracleInput_8;
-						} else {
-							check.ontologyCount = null;
-						}
-
-					}
+				String tmpContent_tJDBCInput_2 = null;
+				int column_index_tJDBCInput_2 = 1;
+				while (rs_tJDBCInput_2.next()) {
+					nb_line_tJDBCInput_2++;
 
 					/**
-					 * [tOracleInput_8 begin ] stop
+					 * [tJDBCInput_2 begin ] stop
 					 */
 					/**
-					 * [tOracleInput_8 main ] start
+					 * [tJDBCInput_2 main ] start
 					 */
 
-					currentComponent = "tOracleInput_8";
+					currentComponent = "tJDBCInput_2";
 
-					tos_count_tOracleInput_8++;
+					tos_count_tJDBCInput_2++;
 
 					/**
-					 * [tOracleInput_8 main ] stop
+					 * [tJDBCInput_2 main ] stop
 					 */
-
 					/**
-					 * [tJavaRow_1 main ] start
+					 * [tJDBCInput_2 end ] start
 					 */
 
-					currentComponent = "tJavaRow_1";
-
-					System.out.println("count: " + check.ontologyCount);
-					if (Integer.valueOf(check.ontologyCount) > 1) {
-						context.IfValue = true;
-					} else {
-						context.IfValue = false;
-					}
-
-					nb_line_tJavaRow_1++;
-
-					tos_count_tJavaRow_1++;
-
-					/**
-					 * [tJavaRow_1 main ] stop
-					 */
-
-					/**
-					 * [tOracleInput_8 end ] start
-					 */
-
-					currentComponent = "tOracleInput_8";
+					currentComponent = "tJDBCInput_2";
 
 				}
-				stmt_tOracleInput_8.close();
+				rs_tJDBCInput_2.close();
+				stmt_tJDBCInput_2.close();
 
-				globalMap.put("tOracleInput_8_NB_LINE", nb_line_tOracleInput_8);
+				globalMap.put("tJDBCInput_2_NB_LINE", nb_line_tJDBCInput_2);
 
-				ok_Hash.put("tOracleInput_8", true);
-				end_Hash.put("tOracleInput_8", System.currentTimeMillis());
+				ok_Hash.put("tJDBCInput_2", true);
+				end_Hash.put("tJDBCInput_2", System.currentTimeMillis());
 
-				/**
-				 * [tOracleInput_8 end ] stop
-				 */
-
-				/**
-				 * [tJavaRow_1 end ] start
-				 */
-
-				currentComponent = "tJavaRow_1";
-
-				globalMap.put("tJavaRow_1_NB_LINE", nb_line_tJavaRow_1);
-
-				ok_Hash.put("tJavaRow_1", true);
-				end_Hash.put("tJavaRow_1", System.currentTimeMillis());
-
-				if (context.IfValue) {
+				if (((Integer) globalMap.get("tJDBCInput_2_NB_LINE")) > 1) {
 
 					tDie_1Process(globalMap);
 				}
 
-				if (!context.IfValue) {
+				if (true /* meaning else */) {
 
 					tDie_2Process(globalMap);
 				}
 
 				/**
-				 * [tJavaRow_1 end ] stop
+				 * [tJDBCInput_2 end ] stop
 				 */
 
 			}// end the resume
@@ -4248,7 +3800,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tOracleInput_8_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCInput_2_SUBPROCESS_STATE", 1);
 	}
 
 	public void tDie_1Process(final java.util.Map<String, Object> globalMap)
@@ -4291,9 +3843,14 @@ public class TOSIDRTConnector implements TalendJob {
 				currentComponent = "tDie_1";
 
 				globalMap.put("tDie_1_DIE_PRIORITY", 3);
-				System.err.println("its good");
-				globalMap.put("tDie_1_DIE_MESSAGE", "its good");
-				globalMap.put("tDie_1_DIE_MESSAGES", "its good");
+				System.err
+						.println("Checking the i2b2 database for an existing ontology ... success.");
+				globalMap
+						.put("tDie_1_DIE_MESSAGE",
+								"Checking the i2b2 database for an existing ontology ... success.");
+				globalMap
+						.put("tDie_1_DIE_MESSAGES",
+								"Checking the i2b2 database for an existing ontology ... success.");
 				currentComponent = "tDie_1";
 				status = "failure";
 				errorCode = new Integer(0);
@@ -4376,9 +3933,14 @@ public class TOSIDRTConnector implements TalendJob {
 				currentComponent = "tDie_2";
 
 				globalMap.put("tDie_2_DIE_PRIORITY", 3);
-				System.err.println("no ontology");
-				globalMap.put("tDie_2_DIE_MESSAGE", "no ontology");
-				globalMap.put("tDie_2_DIE_MESSAGES", "no ontology");
+				System.err
+						.println("Checking the i2b2 database for an existing ontology ... no ontology found.");
+				globalMap
+						.put("tDie_2_DIE_MESSAGE",
+								"Checking the i2b2 database for an existing ontology ... no ontology found.");
+				globalMap
+						.put("tDie_2_DIE_MESSAGES",
+								"Checking the i2b2 database for an existing ontology ... no ontology found.");
 				currentComponent = "tDie_2";
 				status = "failure";
 				errorCode = new Integer(10);
@@ -6199,8 +5761,8 @@ public class TOSIDRTConnector implements TalendJob {
 		globalMap.put("tOracleRow_1_SUBPROCESS_STATE", 1);
 	}
 
-	public static class output1Struct implements
-			routines.system.IPersistableRow<output1Struct> {
+	public static class rTargetOntologyStruct implements
+			routines.system.IPersistableRow<rTargetOntologyStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTConnector = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTConnector = new byte[0];
 
@@ -6393,7 +5955,7 @@ public class TOSIDRTConnector implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(output1Struct other) {
+		public int compareTo(rTargetOntologyStruct other) {
 
 			int returnValue = -1;
 
@@ -6424,10 +5986,10 @@ public class TOSIDRTConnector implements TalendJob {
 
 	}
 
-	public void tOracleInput_7Process(
+	public void tJDBCInput_3Process(
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tOracleInput_7_SUBPROCESS_STATE", 0);
+		globalMap.put("tJDBCInput_3_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -6445,7 +6007,7 @@ public class TOSIDRTConnector implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				output1Struct output1 = new output1Struct();
+				rTargetOntologyStruct rTargetOntology = new rTargetOntologyStruct();
 
 				/**
 				 * [tJavaFlex_7 begin ] start
@@ -6457,221 +6019,240 @@ public class TOSIDRTConnector implements TalendJob {
 
 				int tos_count_tJavaFlex_7 = 0;
 
-				System.out.println("TOS: Starting Talend-Job as TOS-Code.");
+				TOSHandler.status("Starting TOS-Job \"LoadTargetOntology\".");
 
 				/**
 				 * [tJavaFlex_7 begin ] stop
 				 */
 
 				/**
-				 * [tOracleInput_7 begin ] start
+				 * [tJDBCInput_3 begin ] start
 				 */
 
-				ok_Hash.put("tOracleInput_7", false);
-				start_Hash.put("tOracleInput_7", System.currentTimeMillis());
-				currentComponent = "tOracleInput_7";
+				ok_Hash.put("tJDBCInput_3", false);
+				start_Hash.put("tJDBCInput_3", System.currentTimeMillis());
+				currentComponent = "tJDBCInput_3";
 
-				int tos_count_tOracleInput_7 = 0;
+				int tos_count_tJDBCInput_3 = 0;
 
-				int nb_line_tOracleInput_7 = 0;
-				java.sql.Connection conn_tOracleInput_7 = null;
-				conn_tOracleInput_7 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_2");
-				if (null == conn_tOracleInput_7) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleInput_7 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					conn_tOracleInput_7 = dataSources_tOracleInput_7.get("")
+				int nb_line_tJDBCInput_3 = 0;
+				java.sql.Connection conn_tJDBCInput_3 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCInput_3 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCInput_3) {
+					conn_tJDBCInput_3 = dataSources_tJDBCInput_3.get("")
 							.getConnection();
-					// globalMap.put("conn_tOracleConnection_2",
-					// conn_tOracleInput_7);
-				}
-				if (((oracle.jdbc.OracleConnection) conn_tOracleInput_7)
-						.getSessionTimeZone() == null) {
-					java.sql.Statement stmtGetTZ_tOracleInput_7 = conn_tOracleInput_7
-							.createStatement();
-					java.sql.ResultSet rsGetTZ_tOracleInput_7 = stmtGetTZ_tOracleInput_7
-							.executeQuery("select sessiontimezone from dual");
-					String sessionTimezone_tOracleInput_7 = java.util.TimeZone
-							.getDefault().getID();
-					while (rsGetTZ_tOracleInput_7.next()) {
-						sessionTimezone_tOracleInput_7 = rsGetTZ_tOracleInput_7
-								.getString(1);
-					}
-					((oracle.jdbc.OracleConnection) conn_tOracleInput_7)
-							.setSessionTimeZone(sessionTimezone_tOracleInput_7);
+				} else {
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+
+					String url_tJDBCInput_3 = context.DB_StagingI2B2_jdbcurl;
+					String dbUser_tJDBCInput_3 = context.DB_StagingI2B2_Username;
+					String dbPwd_tJDBCInput_3 = context.DB_StagingI2B2_Password;
+					conn_tJDBCInput_3 = java.sql.DriverManager.getConnection(
+							url_tJDBCInput_3, dbUser_tJDBCInput_3,
+							dbPwd_tJDBCInput_3);
 				}
 
-				java.sql.Statement stmt_tOracleInput_7 = conn_tOracleInput_7
+				java.sql.Statement stmt_tJDBCInput_3 = conn_tJDBCInput_3
 						.createStatement();
 
-				String dbquery_tOracleInput_7 = "SELECT * FROM "
-						+ context.OracleSchema + "."
+				String dbquery_tJDBCInput_3 = "SELECT * FROM "
+						+ context.DB_StagingI2B2_Schema + "."
 						+ context.TableIEOTargetOntology
-						+ " ORDER BY TREE_LEVEL ASC";
+						+ " WHERE TARGET_ID = '" + context.TargetID
+						+ "' ORDER BY TREE_LEVEL ASC";
 
-				globalMap.put("tOracleInput_7_QUERY", dbquery_tOracleInput_7);
+				globalMap.put("tJDBCInput_3_QUERY", dbquery_tJDBCInput_3);
 
-				java.sql.ResultSet rs_tOracleInput_7 = stmt_tOracleInput_7
-						.executeQuery(dbquery_tOracleInput_7);
-				java.sql.ResultSetMetaData rsmd_tOracleInput_7 = rs_tOracleInput_7
+				java.sql.ResultSet rs_tJDBCInput_3 = stmt_tJDBCInput_3
+						.executeQuery(dbquery_tJDBCInput_3);
+				java.sql.ResultSetMetaData rsmd_tJDBCInput_3 = rs_tJDBCInput_3
 						.getMetaData();
-				int colQtyInRs_tOracleInput_7 = rsmd_tOracleInput_7
+				int colQtyInRs_tJDBCInput_3 = rsmd_tJDBCInput_3
 						.getColumnCount();
 
-				String tmpContent_tOracleInput_7 = null;
-				int column_index_tOracleInput_7 = 1;
-				while (rs_tOracleInput_7.next()) {
-					nb_line_tOracleInput_7++;
+				String tmpContent_tJDBCInput_3 = null;
+				int column_index_tJDBCInput_3 = 1;
+				while (rs_tJDBCInput_3.next()) {
+					nb_line_tJDBCInput_3++;
 
-					column_index_tOracleInput_7 = 1;
+					column_index_tJDBCInput_3 = 1;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.TARGET_ID = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.TARGET_ID = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.TARGET_ID = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.TARGET_ID = tmpContent_tJDBCInput_3;
 						} else {
-							output1.TARGET_ID = null;
+							rTargetOntology.TARGET_ID = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.TARGET_ID = null;
+						}
 					}
-					column_index_tOracleInput_7 = 2;
+					column_index_tJDBCInput_3 = 2;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.TREE_LEVEL = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.TREE_LEVEL = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.TREE_LEVEL = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.TREE_LEVEL = tmpContent_tJDBCInput_3;
 						} else {
-							output1.TREE_LEVEL = null;
+							rTargetOntology.TREE_LEVEL = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.TREE_LEVEL = null;
+						}
 					}
-					column_index_tOracleInput_7 = 3;
+					column_index_tJDBCInput_3 = 3;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.TREE_PATH = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.TREE_PATH = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.TREE_PATH = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.TREE_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							output1.TREE_PATH = null;
+							rTargetOntology.TREE_PATH = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.TREE_PATH = null;
+						}
 					}
-					column_index_tOracleInput_7 = 4;
+					column_index_tJDBCInput_3 = 4;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.SOURCE_PATH = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.SOURCE_PATH = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.SOURCE_PATH = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.SOURCE_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							output1.SOURCE_PATH = null;
+							rTargetOntology.SOURCE_PATH = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.SOURCE_PATH = null;
+						}
 					}
-					column_index_tOracleInput_7 = 5;
+					column_index_tJDBCInput_3 = 5;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.NAME = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.NAME = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.NAME = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.NAME = tmpContent_tJDBCInput_3;
 						} else {
-							output1.NAME = null;
+							rTargetOntology.NAME = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.NAME = null;
+						}
 					}
-					column_index_tOracleInput_7 = 6;
+					column_index_tJDBCInput_3 = 6;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.CHANGED = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.CHANGED = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.CHANGED = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.CHANGED = tmpContent_tJDBCInput_3;
 						} else {
-							output1.CHANGED = null;
+							rTargetOntology.CHANGED = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.CHANGED = null;
+						}
 					}
-					column_index_tOracleInput_7 = 7;
+					column_index_tJDBCInput_3 = 7;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.STARTDATE_SOURCE_PATH = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.STARTDATE_SOURCE_PATH = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.STARTDATE_SOURCE_PATH = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.STARTDATE_SOURCE_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							output1.STARTDATE_SOURCE_PATH = null;
+							rTargetOntology.STARTDATE_SOURCE_PATH = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.STARTDATE_SOURCE_PATH = null;
+						}
 					}
-					column_index_tOracleInput_7 = 8;
+					column_index_tJDBCInput_3 = 8;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.ENDDATE_SOURCE_PATH = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.ENDDATE_SOURCE_PATH = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.ENDDATE_SOURCE_PATH = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.ENDDATE_SOURCE_PATH = tmpContent_tJDBCInput_3;
 						} else {
-							output1.ENDDATE_SOURCE_PATH = null;
+							rTargetOntology.ENDDATE_SOURCE_PATH = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.ENDDATE_SOURCE_PATH = null;
+						}
 					}
-					column_index_tOracleInput_7 = 9;
+					column_index_tJDBCInput_3 = 9;
 
-					if (colQtyInRs_tOracleInput_7 < column_index_tOracleInput_7) {
-						output1.VISUALATTRIBUTE = null;
+					if (colQtyInRs_tJDBCInput_3 < column_index_tJDBCInput_3) {
+						rTargetOntology.VISUALATTRIBUTE = null;
 					} else {
 
-						tmpContent_tOracleInput_7 = rs_tOracleInput_7
-								.getString(column_index_tOracleInput_7);
-						if (tmpContent_tOracleInput_7 != null) {
-							output1.VISUALATTRIBUTE = tmpContent_tOracleInput_7;
+						tmpContent_tJDBCInput_3 = rs_tJDBCInput_3
+								.getString(column_index_tJDBCInput_3);
+						if (tmpContent_tJDBCInput_3 != null) {
+							rTargetOntology.VISUALATTRIBUTE = tmpContent_tJDBCInput_3;
 						} else {
-							output1.VISUALATTRIBUTE = null;
+							rTargetOntology.VISUALATTRIBUTE = null;
 						}
 
+						if (rs_tJDBCInput_3.wasNull()) {
+							rTargetOntology.VISUALATTRIBUTE = null;
+						}
 					}
 
 					/**
-					 * [tOracleInput_7 begin ] stop
+					 * [tJDBCInput_3 begin ] stop
 					 */
 					/**
-					 * [tOracleInput_7 main ] start
+					 * [tJDBCInput_3 main ] start
 					 */
 
-					currentComponent = "tOracleInput_7";
+					currentComponent = "tJDBCInput_3";
 
-					tos_count_tOracleInput_7++;
+					tos_count_tJDBCInput_3++;
 
 					/**
-					 * [tOracleInput_7 main ] stop
+					 * [tJDBCInput_3 main ] stop
 					 */
 
 					/**
@@ -6681,12 +6262,13 @@ public class TOSIDRTConnector implements TalendJob {
 					currentComponent = "tJavaFlex_7";
 
 					((TOSHandler) context.TOSHandler).readTargetOntology(
-							Integer.parseInt(output1.TREE_LEVEL),
-							output1.TREE_PATH, output1.SOURCE_PATH,
-							output1.NAME, Integer.parseInt(output1.CHANGED),
-							output1.STARTDATE_SOURCE_PATH,
-							output1.ENDDATE_SOURCE_PATH,
-							output1.VISUALATTRIBUTE);
+							Integer.parseInt(rTargetOntology.TREE_LEVEL),
+							rTargetOntology.TREE_PATH,
+							rTargetOntology.SOURCE_PATH, rTargetOntology.NAME,
+							Integer.parseInt(rTargetOntology.CHANGED),
+							rTargetOntology.STARTDATE_SOURCE_PATH,
+							rTargetOntology.ENDDATE_SOURCE_PATH,
+							rTargetOntology.VISUALATTRIBUTE);
 
 					tos_count_tJavaFlex_7++;
 
@@ -6695,21 +6277,24 @@ public class TOSIDRTConnector implements TalendJob {
 					 */
 
 					/**
-					 * [tOracleInput_7 end ] start
+					 * [tJDBCInput_3 end ] start
 					 */
 
-					currentComponent = "tOracleInput_7";
+					currentComponent = "tJDBCInput_3";
 
 				}
-				stmt_tOracleInput_7.close();
+				rs_tJDBCInput_3.close();
+				stmt_tJDBCInput_3.close();
 
-				globalMap.put("tOracleInput_7_NB_LINE", nb_line_tOracleInput_7);
+				conn_tJDBCInput_3.close();
 
-				ok_Hash.put("tOracleInput_7", true);
-				end_Hash.put("tOracleInput_7", System.currentTimeMillis());
+				globalMap.put("tJDBCInput_3_NB_LINE", nb_line_tJDBCInput_3);
+
+				ok_Hash.put("tJDBCInput_3", true);
+				end_Hash.put("tJDBCInput_3", System.currentTimeMillis());
 
 				/**
-				 * [tOracleInput_7 end ] stop
+				 * [tJDBCInput_3 end ] stop
 				 */
 
 				/**
@@ -6739,7 +6324,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tOracleInput_7_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCInput_3_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJava_8Process(final java.util.Map<String, Object> globalMap)
@@ -6941,6 +6526,9 @@ public class TOSIDRTConnector implements TalendJob {
 				parentContextMap_tRunJob_1.put("ErrorMessage",
 						context.ErrorMessage);
 				parentContextMap_tRunJob_1.put("IfValue", context.IfValue);
+				parentContextMap_tRunJob_1.put("JDBC_URL", context.JDBC_URL);
+				parentContextMap_tRunJob_1
+						.put("JDBCDriver", context.JDBCDriver);
 				parentContextMap_tRunJob_1.put("Job", context.Job);
 				parentContextMap_tRunJob_1.put("OracleDB", context.OracleDB);
 				parentContextMap_tRunJob_1
@@ -6967,6 +6555,7 @@ public class TOSIDRTConnector implements TalendJob {
 						context.TableIEOTargetOntology);
 				parentContextMap_tRunJob_1.put("TableIEOTargetProject",
 						context.TableIEOTargetProject);
+				parentContextMap_tRunJob_1.put("TargetID", context.TargetID);
 				parentContextMap_tRunJob_1
 						.put("TOSHandler", context.TOSHandler);
 
@@ -7245,6 +6834,9 @@ public class TOSIDRTConnector implements TalendJob {
 				parentContextMap_tRunJob_2.put("ErrorMessage",
 						context.ErrorMessage);
 				parentContextMap_tRunJob_2.put("IfValue", context.IfValue);
+				parentContextMap_tRunJob_2.put("JDBC_URL", context.JDBC_URL);
+				parentContextMap_tRunJob_2
+						.put("JDBCDriver", context.JDBCDriver);
 				parentContextMap_tRunJob_2.put("Job", context.Job);
 				parentContextMap_tRunJob_2.put("OracleDB", context.OracleDB);
 				parentContextMap_tRunJob_2
@@ -7271,6 +6863,7 @@ public class TOSIDRTConnector implements TalendJob {
 						context.TableIEOTargetOntology);
 				parentContextMap_tRunJob_2.put("TableIEOTargetProject",
 						context.TableIEOTargetProject);
+				parentContextMap_tRunJob_2.put("TargetID", context.TargetID);
 				parentContextMap_tRunJob_2
 						.put("TOSHandler", context.TOSHandler);
 
@@ -7549,6 +7142,9 @@ public class TOSIDRTConnector implements TalendJob {
 				parentContextMap_tRunJob_3.put("ErrorMessage",
 						context.ErrorMessage);
 				parentContextMap_tRunJob_3.put("IfValue", context.IfValue);
+				parentContextMap_tRunJob_3.put("JDBC_URL", context.JDBC_URL);
+				parentContextMap_tRunJob_3
+						.put("JDBCDriver", context.JDBCDriver);
 				parentContextMap_tRunJob_3.put("Job", context.Job);
 				parentContextMap_tRunJob_3.put("OracleDB", context.OracleDB);
 				parentContextMap_tRunJob_3
@@ -7575,6 +7171,7 @@ public class TOSIDRTConnector implements TalendJob {
 						context.TableIEOTargetOntology);
 				parentContextMap_tRunJob_3.put("TableIEOTargetProject",
 						context.TableIEOTargetProject);
+				parentContextMap_tRunJob_3.put("TargetID", context.TargetID);
 				parentContextMap_tRunJob_3
 						.put("TOSHandler", context.TOSHandler);
 
@@ -7686,7 +7283,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 				((TOSHandler) context.TOSHandler)
 						.status("Error while connection to the db. (JDBC)");
-				System.out.println("Error while connection to the db. (JDBC)");
 
 				/**
 				 * [tJava_11 begin ] stop
@@ -7886,6 +7482,8 @@ public class TOSIDRTConnector implements TalendJob {
 			} catch (NumberFormatException e) {
 				context.IfValue = null;
 			}
+			context.JDBC_URL = (String) context.getProperty("JDBC_URL");
+			context.JDBCDriver = (String) context.getProperty("JDBCDriver");
 			context.Job = (String) context.getProperty("Job");
 			context.OracleDB = (String) context.getProperty("OracleDB");
 			context.OracleHost = (String) context.getProperty("OracleHost");
@@ -7907,6 +7505,12 @@ public class TOSIDRTConnector implements TalendJob {
 					.getProperty("TableIEOTargetOntology");
 			context.TableIEOTargetProject = (String) context
 					.getProperty("TableIEOTargetProject");
+			try {
+				context.TargetID = routines.system.ParserUtils
+						.parseTo_Integer(context.getProperty("TargetID"));
+			} catch (NumberFormatException e) {
+				context.TargetID = null;
+			}
 			context.TOSHandler = (Object) context.getProperty("TOSHandler");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
@@ -7998,6 +7602,13 @@ public class TOSIDRTConnector implements TalendJob {
 			if (parentContextMap.containsKey("IfValue")) {
 				context.IfValue = (Boolean) parentContextMap.get("IfValue");
 			}
+			if (parentContextMap.containsKey("JDBC_URL")) {
+				context.JDBC_URL = (String) parentContextMap.get("JDBC_URL");
+			}
+			if (parentContextMap.containsKey("JDBCDriver")) {
+				context.JDBCDriver = (String) parentContextMap
+						.get("JDBCDriver");
+			}
 			if (parentContextMap.containsKey("Job")) {
 				context.Job = (String) parentContextMap.get("Job");
 			}
@@ -8053,6 +7664,9 @@ public class TOSIDRTConnector implements TalendJob {
 			if (parentContextMap.containsKey("TableIEOTargetProject")) {
 				context.TableIEOTargetProject = (String) parentContextMap
 						.get("TableIEOTargetProject");
+			}
+			if (parentContextMap.containsKey("TargetID")) {
+				context.TargetID = (Integer) parentContextMap.get("TargetID");
 			}
 			if (parentContextMap.containsKey("TOSHandler")) {
 				context.TOSHandler = (Object) parentContextMap
@@ -8207,6 +7821,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 233932 characters generated by Talend Open Studio for Data Integration on the
- * 31. Oktober 2013 12:11:01 MEZ
+ * 223942 characters generated by Talend Open Studio for Data Integration on the
+ * 1. November 2013 14:55:04 MEZ
  ************************************************************************************************/

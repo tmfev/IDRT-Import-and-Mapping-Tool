@@ -28,14 +28,13 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 	private ExecutionEvent _event;
 
-	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Debug.d("Loading the i2b2-Ontology-Editor.");
+
 		Console.info("Loading the i2b2-Ontology-Editor.");
 		// init
-//		EditorSourceView editorSourceView = null;
-//		EditorTargetView editorTargetView = null;
+		// EditorSourceView editorSourceView = null;
+		// EditorTargetView editorTargetView = null;
 
 		// creating new main tool
 		I2B2ImportTool i2b2ImportTool = new I2B2ImportTool(null);
@@ -43,16 +42,13 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		Debug.dd("I2B2ImportTool isNull1?:"
 				+ (i2b2ImportTool == null ? "true" : "false"));
 
-	
 		// check if the ontology table has more than 1 item
 		if (TOSConnector.checkOntology() == true) {
 			Console.info("Ontology found in the i2b2 source table.");
 		} else {
-			Console.error("Console: No ontology found in the i2b2 source table. Abort loading the editor.");
-			Application
-					.getStatusView()
-					.addErrorMessage(
-							"No ontology found in the i2b2 source table. Abort loading the editor.");
+			String errorMessage = "No ontology found in the i2b2 source table. Abort loading the editor.";
+			Console.error(errorMessage);
+			Application.getStatusView().addErrorMessage(errorMessage);
 			return null;
 		}
 
@@ -69,16 +65,14 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorSourceInfoView(editorSourceInfoView);
 
-			new OntologyTreeCreatorTOS(
-					i2b2ImportTool.getMyOntologyTrees(), "");
+			new OntologyTreeCreatorTOS(i2b2ImportTool.getMyOntologyTrees(), "");
 
 			/*
-			creator.createMeta();
-			creator.createOntology();
-			creator.createPatientData();
-			*/
+			 * creator.createMeta(); creator.createOntology();
+			 * creator.createPatientData();
+			 */
 
-//			editorSourceView.setComposite();
+			// editorSourceView.setComposite();
 			OntologyEditorView.setSourceContent();
 			OntologyTreeModel newTreeModel = new OntologyTreeModel(
 					i2b2ImportTool.getMyOntologyTrees().getTreeRoot());
@@ -92,7 +86,6 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 					.getOntologyTreeSource();
 
 			if (OT != null) {
-				
 
 			}
 
@@ -107,8 +100,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			OntologyTree OTTarget = i2b2ImportTool.getMyOntologyTrees()
 					.getOntologyTreeTarget();
 
-
-//TODO Ontology Editor
+			// TODO Ontology Editor
 			OntologyEditorView.setTargetContent(OTTarget);
 			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
 					.getWorkbench().getActiveWorkbenchWindow().getActivePage()

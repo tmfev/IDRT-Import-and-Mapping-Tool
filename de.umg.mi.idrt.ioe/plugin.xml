@@ -175,6 +175,16 @@
             id="de.umg.mi.idrt.ioe.SaveTargetProject"
             name="SaveTargetProject">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadTargetOntology"
+            id="de.umg.mi.idrt.ioe.LoadTargetOntology"
+            name="LoadTargetOntology">
+      </command>
+            <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.EditInstanceCommand"
+            id="de.umg.mi.idrt.ioe.editInstance"
+            name="editInstance">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

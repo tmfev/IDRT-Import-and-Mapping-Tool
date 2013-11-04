@@ -22,6 +22,14 @@ import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+  */
+
 public class SaveTargetProject extends AbstractHandler {
 
 	CSVWriter _writer = null;
@@ -113,6 +121,7 @@ public class SaveTargetProject extends AbstractHandler {
 		return null;
 	}
 
+	/*
 	private void writeNode(OntologyTreeNode node) {
 
 		String[] fields = new String[9];
@@ -133,5 +142,6 @@ public class SaveTargetProject extends AbstractHandler {
 		}
 
 	}
+	*/
 
 }

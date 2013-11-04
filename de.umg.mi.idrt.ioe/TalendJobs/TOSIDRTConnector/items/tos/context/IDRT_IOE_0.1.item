@@ -21,4 +21,5 @@
   <contextParameter comment="" name="TableIEOTargetProject" prompt="TableIEOTargetProject?" promptNeeded="false" type="id_String" value="&quot;ioe_target_project&quot;"/>
   <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" type="id_String" value="null"/>
   <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" type="id_String" value="null"/>
+  <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" type="id_Integer" value=""/>
 </talendfile:ContextType>
