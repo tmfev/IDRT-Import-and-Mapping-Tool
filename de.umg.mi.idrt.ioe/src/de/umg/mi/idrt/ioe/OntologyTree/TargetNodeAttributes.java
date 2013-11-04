@@ -1,21 +1,23 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TargetNodeAttributes {
 
-	String sourcePath = "";
-	String name = "";
-	String nodeType = "";
-	String startDateSource = "";
-	String endDateSource = "";
-	String visualattribute = "";
-	private HashSet<OntologyTreeSubNode> subNodeList;
+	private String sourcePath = "";
+	private String name = "";
+	//private String nodeType = "";
+	private String startDateSource = "";
+	private String endDateSource = "";
+	private String visualattribute = "";
+	private Dimension dimension = Dimension.CONCEPT_DIMENSION;
+	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
 	public TargetNodeAttributes(OntologyTreeNode parent) {
-		subNodeList = new HashSet<OntologyTreeSubNode>();
+		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
 		setParent(parent);
 	}
 
@@ -26,15 +28,15 @@ public class TargetNodeAttributes {
 	/**
 	 * @return the subNodeList
 	 */
-	public HashSet<OntologyTreeSubNode> getSubNodeList() {
+	public LinkedHashSet<OntologyTreeSubNode> getSubNodeList() {
 		return subNodeList;
 	}
 
 	/**
-	 * @param subNodeList the subNodeList to set
+	 * @param hashSet the subNodeList to set
 	 */
-	public void setSubNodeList(HashSet<OntologyTreeSubNode> subNodeList) {
-		this.subNodeList = subNodeList;
+	public void setSubNodeList(LinkedHashSet<OntologyTreeSubNode> hashSet) {
+		this.subNodeList = hashSet;
 	}
 
 	private OntologyTreeNode parent;
@@ -101,21 +103,22 @@ public class TargetNodeAttributes {
 		this.name = name;
 	}
 
-	/**
-	 * @return the nodeType
-	 */
-	public String getNodeType() {
-		return nodeType;
-	}
-
-	/**
-	 * @param nodeType
-	 *            the nodeType to set
-	 */
-	public void setNodeType(String nodeType) {
-		this.nodeType = nodeType;
-	}
-
+//
+//	/**
+//	 * @return the nodeType
+//	 */
+//	public String getNodeType() {
+//		return nodeType;
+//	}
+//
+//	/**
+//	 * @param nodeType
+//	 *            the nodeType to set
+//	 */
+//	public void setNodeType(String nodeType) {
+//		this.nodeType = nodeType;
+//	}
+	
 	/**
 	 * @return the startDateSource
 	 */
@@ -193,6 +196,20 @@ public class TargetNodeAttributes {
 	 */
 	public void removeAllStagingPaths() {
 		subNodeList.clear();
+	}
+	
+	/**
+	 * @return the dimension
+	 */
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	/**
+	 * @param dimension the dimension to set
+	 */
+	public void setDimension(Dimension dimension) {
+		this.dimension = dimension;
 	}
 
 }
