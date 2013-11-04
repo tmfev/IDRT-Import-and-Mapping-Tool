@@ -89,28 +89,33 @@ public class NodeDropListener extends ViewerDropAdapter {
 		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 				.getSelection();
 		if (data.toString().equals("stagingTreeViewer")){
+			System.out.println("data = stagingTreeViewer");
 			if (targetNode instanceof OntologyTreeNode) {
 				if (targetNode.isLeaf()) {
-					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-					while (nodeIterator.hasNext()) {
-						OntologyTreeNode node = nodeIterator.next();
-					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(node.getTreePath());
-					}
+					myOT.dropCommandCopyNodes(dropOperation);
+					//TODO Add as Start/End Date
+//					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+//					while (nodeIterator.hasNext()) {
+//						OntologyTreeNode node = nodeIterator.next();
+//					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(node.getTreePath());
+//					}
 				}
 				else {
-					myOT.dropCommandCopyNodes(((OntologyTreeNode) targetNode).getTreePath(),dropOperation);
+					myOT.dropCommandCopyNodes(dropOperation);
 				}
 			}
 			else if (targetNode instanceof OntologyTreeSubNode) {
-				OntologyTreeSubNode subNode = (OntologyTreeSubNode)targetNode;
-				Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-				while (nodeIterator.hasNext()) {
-					OntologyTreeNode node = nodeIterator.next();
-					subNode.getParent().getTargetNodeAttributes().addStagingPath(node.getTreePath());
-				}
+				myOT.dropCommandCopyNodes(dropOperation);
+//				OntologyTreeSubNode subNode = (OntologyTreeSubNode)targetNode;
+//				Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+//				while (nodeIterator.hasNext()) {
+//					OntologyTreeNode node = nodeIterator.next();
+//					subNode.getParent().getTargetNodeAttributes().addStagingPath(node.getTreePath());
+//				}
 			}
 		}
 		else if (data.toString().equals("subNode")) {
+			System.out.println("data = subnode");
 			OntologyTreeSubNode subNode = NodeMoveDragListener.getSubNode();
 
 			if (targetNode instanceof OntologyTreeNode) {

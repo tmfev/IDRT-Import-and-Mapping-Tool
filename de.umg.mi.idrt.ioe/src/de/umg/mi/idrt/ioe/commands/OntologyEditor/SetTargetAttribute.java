@@ -9,7 +9,9 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class SetTargetAttribute extends AbstractHandler {
@@ -45,38 +47,45 @@ public class SetTargetAttribute extends AbstractHandler {
 		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource().getNodeLists()
 				.getNodeByPath(sourceNodePath);
 
-		OntologyTreeNode targetNode = myOT.getOntologyTreeTarget().getNodeLists()
-				.getNodeByPath(targetNodePath);
+		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
+			OntologyTreeNode targetNode =  (OntologyTreeNode) NodeDropListener.getTargetNode();
 
-		System.out.println(" - sourceNode: "
-				+ (sourceNode != null ? "found" : "NOT found"));
-		System.out.println(" - targetNode: "
-				+ (targetNode != null ? "found" : "NOT found"));
+			System.out.println(" - sourceNode: "
+					+ (sourceNode != null ? "found" : "NOT found"));
+			System.out.println(" - targetNode: "
+					+ (targetNode != null ? "found" : "NOT found"));
 
-		System.out.println(" - nodeLists: "
-				+ myOT.getOntologyTreeTarget().getNodeLists().stringPathToNode.keySet()
-						.toString());
+			//		System.out.println(" - nodeLists: "
+			//				+ myOT.getOntologyTreeTarget().getNodeLists().stringPathToNode.keySet()
+			//						.toString());
 
-		// myOT.getOTTarget().printTree();
+			// myOT.getOTTarget().printTree();
 
-		if (sourceNode != null && targetNode != null) {
-			System.out.println("sourceNode found:" + sourceNode.getName());
-			myOT.setTargetAttributesAsSourcePath(sourceNode, targetNode, attribute);
-			
-			
-			
-			Application.getEditorTargetInfoView().setNode( targetNode );
-			
-			Application.getEditorTargetInfoView().refresh();
-			
-			//Application.getEditorTargetView().getTreeViewer().refresh();
+			if (sourceNode != null && targetNode != null) {
+				System.out.println("sourceNode found:" + sourceNode.getName());
+				myOT.setTargetAttributesAsSourcePath(sourceNode, targetNode, attribute);
 
-		} else {
-			Console.error("Error while combining nodes: SourceNode (\""
-					+ sourceNodePath + "\") and/or TargetNode (\""
-					+ targetNodePath + "\") not found.");
+
+
+				Application.getEditorTargetInfoView().setNode( targetNode );
+
+				Application.getEditorTargetInfoView().refresh();
+
+				//Application.getEditorTargetView().getTreeViewer().refresh();
+
+			} else {
+				Console.error("Error while combining nodes: SourceNode (\""
+						+ sourceNodePath + "\") and/or TargetNode (\""
+						+ targetNodePath + "\") not found.");
+			}
 		}
-
+		else if (NodeDropListener.getTargetNode() instanceof OntologyTreeSubNode) {
+			OntologyTreeSubNode subNode = (OntologyTreeSubNode) NodeDropListener.getTargetNode();
+			if (attribute.equals("startDateSource"))
+				subNode.getTargetSubNodeAttributes().setStartDateSourcePath(sourceNodePath);
+			else if (attribute.equals("endDateSource"))
+				subNode.getTargetSubNodeAttributes().setEndDateSourcePath(sourceNodePath);
+		}
 		return null;
 	}
 

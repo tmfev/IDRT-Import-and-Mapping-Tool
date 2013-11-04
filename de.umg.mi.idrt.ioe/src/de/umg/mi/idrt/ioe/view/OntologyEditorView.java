@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -322,7 +323,7 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		targetTreeViewer.setSorter(new ViewerSorter());
-		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighter(targetTreeViewer));
+		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighterForMultiselection(targetTreeViewer));
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
 			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
 				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
@@ -332,14 +333,15 @@ public class OntologyEditorView extends ViewPart {
 						|| (event.keyCode == SWT.F2);
 			}
 		};
-
+		
 		TreeViewerEditor.create(targetTreeViewer, focusCellManager, actSupport, ColumnViewerEditor.TABBING_HORIZONTAL
 				| ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
 				| ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
-		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree());
+		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree(),SWT.NONE);
 		targetComposite.layout();
-		column = new TreeViewerColumn(targetTreeViewer, SWT.NONE);
+		column = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		column.getColumn().setMoveable(true);
 		column.getColumn().setText("Column 1");
 		column.setLabelProvider(new ColumnLabelProvider() {
@@ -404,22 +406,14 @@ public class OntologyEditorView extends ViewPart {
 					setCurrentTargetNode(node);
 					if (node != null) {
 						EditorTargetInfoView.setNode(node);
-
-						Application.getStatusView().addMessage(
-								new SystemMessage("Target selection changed to \'"
-										+ node.getName() + "\'.",
-										SystemMessage.MessageType.SUCCESS,
-										SystemMessage.MessageLocation.MAIN));
-					} else {
-						Application
-						.getStatusView()
-						.addMessage(
-								new SystemMessage(
-										"Target selection changed but new selection isnt' any know kind of node..",
-										SystemMessage.MessageType.ERROR,
-										SystemMessage.MessageLocation.MAIN));
 					}
 				}
+				else if (e.item.getData() instanceof OntologyTreeSubNode) {
+					OntologyTreeSubNode subNode = (OntologyTreeSubNode) e.item.getData();
+					setCurrentTargetNode(subNode.getParent());
+					EditorTargetInfoView.setNode(subNode);
+				}
+					
 			}
 		});
 		IDoubleClickListener doubleClickListener = new IDoubleClickListener() {
@@ -1086,12 +1080,20 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
+//				targetTreeViewer.getSelection()
+				
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-
+				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer.getSelection();
+				OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
+				Iterator<OntologyTreeSubNode> it = node.getTargetNodeAttributes().getSubNodeList().iterator();
+				
+				while (it.hasNext()) {
+					OntologyTreeSubNode subNode = it.next();
+					System.out.println(subNode.getParent().getName() + " " + subNode.getStagingName() + " " + subNode.getTargetSubNodeAttributes().getStartDateSource() + " " + subNode.getTargetSubNodeAttributes().getEndDateSource());
+				}
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);

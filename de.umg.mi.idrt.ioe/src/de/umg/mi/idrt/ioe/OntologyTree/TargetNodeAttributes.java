@@ -1,6 +1,7 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
@@ -12,10 +13,10 @@ public class TargetNodeAttributes {
 	String startDateSource = "";
 	String endDateSource = "";
 	String visualattribute = "";
-	private HashSet<OntologyTreeSubNode> subNodeList;
+	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
 	public TargetNodeAttributes(OntologyTreeNode parent) {
-		subNodeList = new HashSet<OntologyTreeSubNode>();
+		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
 		setParent(parent);
 	}
 
@@ -26,15 +27,15 @@ public class TargetNodeAttributes {
 	/**
 	 * @return the subNodeList
 	 */
-	public HashSet<OntologyTreeSubNode> getSubNodeList() {
+	public LinkedHashSet<OntologyTreeSubNode> getSubNodeList() {
 		return subNodeList;
 	}
 
 	/**
-	 * @param subNodeList the subNodeList to set
+	 * @param hashSet the subNodeList to set
 	 */
-	public void setSubNodeList(HashSet<OntologyTreeSubNode> subNodeList) {
-		this.subNodeList = subNodeList;
+	public void setSubNodeList(LinkedHashSet<OntologyTreeSubNode> hashSet) {
+		this.subNodeList = hashSet;
 	}
 
 	private OntologyTreeNode parent;
