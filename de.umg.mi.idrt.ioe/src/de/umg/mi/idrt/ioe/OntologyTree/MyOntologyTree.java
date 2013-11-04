@@ -615,12 +615,7 @@ public class MyOntologyTree extends JPanel {
 				}
 			}
 		}
-
-
-		//		System.out.println("added t: " + target.getName() + " n: " + node.getName());
-
 	}
-
 
 	/* OT Commands */
 	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {

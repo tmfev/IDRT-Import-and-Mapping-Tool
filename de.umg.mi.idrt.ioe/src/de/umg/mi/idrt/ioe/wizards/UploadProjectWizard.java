@@ -17,6 +17,7 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
@@ -131,6 +132,7 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
 					contextMap.put("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 					
+					contextMap.put("TargetID",""+ ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getTargetRootNode()).getTargetProjects().getSelectedTarget().getTargetID());
 					
 					System.out.println("TARGET:");
 					System.out.println(targetIPText);
