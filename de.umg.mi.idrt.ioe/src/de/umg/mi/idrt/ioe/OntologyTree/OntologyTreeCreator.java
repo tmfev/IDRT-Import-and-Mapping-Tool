@@ -63,7 +63,7 @@ public class OntologyTreeCreator {
 
 	
 //	EditorSourceView.getI2B2ImportTool().setOTCreator(this);
-	OntologyEditorView.getI2b2ImportTool().setOTCreator(this);
+	//OntologyEditorView.getI2b2ImportTool().setOTCreator(this);
 		initiate(myOT.getOntologyTreeSource(), myOT.getTreeRoot());
 	}
 	

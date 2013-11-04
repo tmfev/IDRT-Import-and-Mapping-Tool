@@ -80,9 +80,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 		// createInfoGroup();
 
-		Label lblNodeInfosDeluxe = new Label(parent, SWT.NONE);
-		lblNodeInfosDeluxe.setText("node infos deluxe");
-
+		
 
 
 		_editorComposite = new Composite(parent, SWT.NONE);
@@ -116,7 +114,7 @@ public class EditorTargetInfoView extends ViewPart {
 		_infoTable.setHeaderVisible(true);
 		_infoTable.setLinesVisible(true);
 
-		// _infoTable.getColumnCount().get
+		// _infoTable.getnCount().get
 
 		// editor as mouse listener
 
