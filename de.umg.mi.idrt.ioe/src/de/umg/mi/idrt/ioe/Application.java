@@ -14,7 +14,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -41,7 +41,7 @@ public class Application implements IApplication {
 		this._display = PlatformUI.createDisplay();
 		
 		
-		OntologyEditorView.setMyOntologyTree( new MyOntologyTree() );
+		OntologyEditorView.setMyOntologyTree( new MyOntologyTrees() );
 		
 		Activator.getDefault().createResource();
 		

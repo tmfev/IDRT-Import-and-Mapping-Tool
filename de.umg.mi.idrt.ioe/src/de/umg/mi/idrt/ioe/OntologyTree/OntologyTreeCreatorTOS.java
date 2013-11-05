@@ -31,7 +31,7 @@ public class OntologyTreeCreatorTOS extends OntologyTreeCreator {
 	File _ontologyFile = null;
 
 
-	public OntologyTreeCreatorTOS ( MyOntologyTree myOT, String filename ){
+	public OntologyTreeCreatorTOS ( MyOntologyTrees myOT, String filename ){
 		super(myOT);
 		_filename = filename;
 		System.out.println("OTCreatorTOS");

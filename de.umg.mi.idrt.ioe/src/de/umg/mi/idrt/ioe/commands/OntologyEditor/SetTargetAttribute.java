@@ -8,7 +8,7 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
@@ -41,7 +41,7 @@ public class SetTargetAttribute extends AbstractHandler {
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH:" + targetNodePath);
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:" + attribute);
 
-		MyOntologyTree myOT = OntologyEditorView.getMyOntologyTree();
+		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 
 		OntologyTreeNode stagingNode = OntologyEditorView.getOntologyStagingTree().getNodeLists()
 				.getNodeByPath(stagingNodePath);

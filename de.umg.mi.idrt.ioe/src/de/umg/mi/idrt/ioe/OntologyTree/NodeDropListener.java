@@ -28,7 +28,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class NodeDropListener extends ViewerDropAdapter {
 
 	private int dropOperation;
-	private MyOntologyTree myOT;
+	private MyOntologyTrees myOT;
 	private final Viewer viewer;
 	private OntologyTreeNode sourceNode = null;
 	private static DefaultMutableTreeNode targetNode = null;

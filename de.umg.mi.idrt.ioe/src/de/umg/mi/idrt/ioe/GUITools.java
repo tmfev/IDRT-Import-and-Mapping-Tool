@@ -6,7 +6,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.wb.swt.ResourceManager;
 
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 
 
 /**

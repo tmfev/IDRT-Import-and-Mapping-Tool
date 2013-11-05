@@ -59,7 +59,7 @@ import de.umg.mi.idrt.ioe.view.ViewTree;
  *         main class managing and giving access to the source and target trees
  */
 
-public class MyOntologyTree extends JPanel {
+public class MyOntologyTrees extends JPanel {
 
 	private static final long serialVersionUID = -7345913467371670611L;
 
@@ -77,7 +77,7 @@ public class MyOntologyTree extends JPanel {
 	 * The MyontolgoyTree class imports data, creates and manages a tree and
 	 * exports this tree to I2B2.
 	 */
-	public MyOntologyTree() {
+	public MyOntologyTrees() {
 		super(new GridLayout(1, 0));
 		
 		System.out.println("CREATING THE MYONTOLOGYTREE!");

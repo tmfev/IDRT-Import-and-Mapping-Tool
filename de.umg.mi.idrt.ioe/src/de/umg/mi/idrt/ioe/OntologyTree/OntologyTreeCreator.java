@@ -26,7 +26,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class OntologyTreeCreator {
 	
-	public MyOntologyTree _myOT	= null;
+	public MyOntologyTrees _myOT	= null;
 	public OntologyTree ontologyStagingTree		= null;
 	public OntologyTreeNode ontologyStagingTreeRootNode = null;
 	public int _numberOfItems				= 0;
@@ -53,7 +53,7 @@ public class OntologyTreeCreator {
 	
 		
 	public OntologyTreeCreator (
-				MyOntologyTree myOntologyTree){
+				MyOntologyTrees myOntologyTree){
 		
 		Console.info( "Creating an OT." );
 
@@ -345,7 +345,7 @@ public class OntologyTreeCreator {
 		return this.ontologyStagingTree;
 	}
 	
-	public MyOntologyTree getMyOT(){
+	public MyOntologyTrees getMyOT(){
 		
 		
 		return this._myOT;

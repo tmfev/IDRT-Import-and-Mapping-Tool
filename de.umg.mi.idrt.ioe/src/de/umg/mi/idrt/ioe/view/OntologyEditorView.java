@@ -75,7 +75,7 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeMoveDragListener;
@@ -92,7 +92,7 @@ import org.eclipse.swt.widgets.Combo;
 
 public class OntologyEditorView extends ViewPart {
 	
-	private static MyOntologyTree myOntologyTree;
+	private static MyOntologyTrees myOntologyTree;
 
 	private static boolean notYetSaved = true;
 
@@ -1386,11 +1386,11 @@ public class OntologyEditorView extends ViewPart {
 	
 	
 
-	public static void setMyOntologyTree (MyOntologyTree myOT){
+	public static void setMyOntologyTree (MyOntologyTrees myOT){
 		myOntologyTree = myOT;
 	}
 	
-	public static MyOntologyTree getMyOntologyTree(){
+	public static MyOntologyTrees getMyOntologyTree(){
 		return myOntologyTree;
 	}
 	
