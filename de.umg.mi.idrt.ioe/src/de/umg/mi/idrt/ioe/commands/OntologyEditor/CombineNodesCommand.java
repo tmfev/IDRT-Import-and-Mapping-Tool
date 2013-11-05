@@ -37,8 +37,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		System.out.println("INSERT CLICKED");
 		OntologyEditorView.getTargetTreeViewer().refresh();
 
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		OTNodeLists otNodes = myOT.getOntologyTreeTarget().getNodeLists();
+		OTNodeLists otNodes = OntologyEditorView.getOntologyTargetTree().getNodeLists();
 		final OntologyTreeNode targetNode = otNodes.getNodeByPath(sourceNodePath);
 
 		System.out.println(targetNode.getName());

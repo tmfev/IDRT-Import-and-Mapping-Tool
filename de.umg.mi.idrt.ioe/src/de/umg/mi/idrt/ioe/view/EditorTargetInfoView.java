@@ -37,7 +37,6 @@ import org.eclipse.ui.part.ViewPart;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
@@ -53,7 +52,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 
 public class EditorTargetInfoView extends ViewPart {
 
-	private static I2B2ImportTool _i2b2ImportTool = null;
 	private static Resource _resource = null;
 	private static String _text = "";
 	private static Composite parentPane;
@@ -176,7 +174,7 @@ public class EditorTargetInfoView extends ViewPart {
 						row = _infoTable.getSelectionIndex();
 						final int col = 1;
 						String path = item.getText(1);
-						final OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+						final OntologyTreeNode node = OntologyEditorView.getOntologyStagingTree().getNodeLists().getNodeByPath(path);
 
 						Console.info("row = " + row + " / col = " + col);
 
@@ -408,14 +406,6 @@ public class EditorTargetInfoView extends ViewPart {
 		//		System.out.println("setting node (" + node.getName() + ")");
 		_node = node;
 		refresh();
-	}
-
-	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
-		this._i2b2ImportTool = i2b2ImportTool;
-	}
-
-	public I2B2ImportTool getI2B2ImportTool() {
-		return this._i2b2ImportTool;
 	}
 
 	public void setResource(Resource resource) {

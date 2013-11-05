@@ -62,10 +62,10 @@ public class TargetNodeAttributes {
 		if (!subNodeListContains(stagingPath)) {
 			OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
 			subNode.setStagingPath(stagingPath);
-			if (OntologyEditorView.getI2b2ImportTool()!=null) {
-				OntologyTreeNode stagingNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
+			if (OntologyEditorView.getMyOntologyTree()!=null) {
+				OntologyTreeNode stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
 				if (stagingNode==null) {
-					stagingNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
+					stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
 				}
 				if (stagingNode != null)
 					subNode.setStagingName(stagingNode.getName());

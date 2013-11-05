@@ -94,6 +94,8 @@ public class MyOntologyTree extends JPanel {
 	 */
 	public MyOntologyTree() {
 		super(new GridLayout(1, 0));
+		
+		System.out.println("CREATING THE MYONTOLOGYTREE!");
 		initiate();
 
 		
@@ -530,8 +532,7 @@ public class MyOntologyTree extends JPanel {
 		node.setTreePathLevel(target.getTreePathLevel() + 1);
 		node.getTargetNodeAttributes().setName(node.getName());
 
-		OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool()
-				.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(node.getTreePath());
+		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
 		if (testNode==null) {
 			target.add(node);
 			this.getOntologyTreeTarget().getNodeLists().add(node);
@@ -580,8 +581,7 @@ public class MyOntologyTree extends JPanel {
 						String oldTreePath = node.getTreePath();
 						String newTreePath = oldTreePath.replace(oldID, newID);
 						node.setTreePath(newTreePath);
-						OntologyTreeNode testNode =	OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees()
-								.getOntologyTreeTarget().getNodeLists().getNodeByPath(node.getTreePath());
+						OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
 						if (testNode==null) {
 							dialog.close();
 							target.add(node);

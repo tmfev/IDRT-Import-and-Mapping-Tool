@@ -8,7 +8,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import de.umg.mi.idrt.ioe.Activator;
-import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
@@ -44,16 +43,14 @@ public class ReadTarget extends AbstractHandler {
 
 		System.out.println("OEReadTarget -> execute");
 
-		I2B2ImportTool i2b2ImportTool = new I2B2ImportTool(null);
-
-		OntologyTreeNode treeRoot = i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath("\\i2b2\\");
+		OntologyTreeNode treeRoot = OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath("\\i2b2\\");
 
 
 		if ( treeRoot == null ){
 			System.out.println("getOTTarget treeRoot is null!");
 		} 
 
-		System.out.println("I2B2ImportTool isNull1?:" + (i2b2ImportTool == null ? "true" : "false") );
+
 
 		// create the main ontology view
 //		EditorTargetView editorSourceView;
@@ -87,7 +84,7 @@ public class ReadTarget extends AbstractHandler {
 //			editorTargetView = (EditorTargetView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(Resource.ID.View.EDITOR_TARGET_VIEW);
 
 
-			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget().removeAll();
+			OntologyEditorView.getOntologyTargetTree().removeAll();
 
 
 			readTargetOntThread = new Thread(new Runnable() {
@@ -132,15 +129,14 @@ public class ReadTarget extends AbstractHandler {
 //			editorTargetView.setI2B2ImportTool(i2b2ImportTool);
 
 			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
-					i2b2ImportTool.getMyOntologyTrees().getTargetTreeRoot());
+					OntologyEditorView.getOntologyTargetTree().getRootNode());
 
-			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
+			OntologyEditorView.getOntologyTargetTree()
 			.setModel(newTreeModel2);
-			i2b2ImportTool.getMyOntologyTrees().getOntologyTreeTarget()
+			OntologyEditorView.getOntologyTargetTree()
 			.updateUI();
 
-			OntologyTree OTTarget = i2b2ImportTool.getMyOntologyTrees()
-					.getOntologyTreeTarget();
+			OntologyTree ontologyTargetTree = OntologyEditorView.getOntologyTargetTree();
 
 
 

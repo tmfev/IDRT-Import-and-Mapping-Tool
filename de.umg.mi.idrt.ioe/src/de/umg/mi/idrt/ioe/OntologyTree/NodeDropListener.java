@@ -47,7 +47,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 	@Override
 	public void drop(DropTargetEvent event) {
 		System.out.println("@drop(event)");
-		myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		myOT = OntologyEditorView.getMyOntologyTree();
 		OntologyEditorView.setNotYetSaved(true);
 
 		if (event.item == null) {

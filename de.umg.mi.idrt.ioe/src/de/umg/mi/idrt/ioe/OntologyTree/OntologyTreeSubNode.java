@@ -55,10 +55,10 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 	public void setStagingPath(String sourcePath) {
 		this.stagingPath = sourcePath;
 		
-		if (OntologyEditorView.getI2b2ImportTool()!=null) {
-			OntologyTreeNode parentNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(sourcePath);
+		if (OntologyEditorView.getMyOntologyTree() !=null) {
+			OntologyTreeNode parentNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getNodeByPath(sourcePath);
 			if (parentNode == null) {
-				parentNode = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getNodeLists().getNodeByPath(sourcePath);
+				parentNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeTarget().getNodeLists().getNodeByPath(sourcePath);
 			}
 			this.setStagingParentNode(parentNode);
 		}

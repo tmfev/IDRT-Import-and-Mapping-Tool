@@ -339,7 +339,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void removeAllChildren() {
 
 		for (OntologyTreeNode node : getChildren()) {
-			MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+			MyOntologyTree myOT = OntologyEditorView.getMyOntologyTree();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
 			node.removeAllChildren();
 			node.getChildren().clear();
@@ -348,7 +348,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	@Override
 	public void removeFromParent() {
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		MyOntologyTree myOT = OntologyEditorView.getMyOntologyTree();
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
 		if (this != myOT.getSubRootNode())

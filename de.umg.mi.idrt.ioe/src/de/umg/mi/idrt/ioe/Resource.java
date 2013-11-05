@@ -35,7 +35,7 @@ public class Resource {
 	public static final String ICO_NOT_WORKING = ICON_PATH + "not_working.png";
 	public StatusView _statusView = null;
 	public OntologyEditorView _ontologyView = null;
-	public I2B2ImportTool _i2b2ImportTool = null;
+
 	public Display _display = null;
 	public String TEXT_FILE = "cfg/english.lf";
 	public Properties TEXT = new Properties();
@@ -58,14 +58,6 @@ public class Resource {
 	public final static Color COLOR_SUCCESS = new Color(80, 252, 74);
 
 
-
-	public I2B2ImportTool getI2B2ImportTool() {
-		return _i2b2ImportTool;
-	}
-
-	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
-		this._i2b2ImportTool = i2b2ImportTool;
-	}
 
 	public StatusView getStatusView() {
 		return _statusView;
@@ -732,7 +724,6 @@ public class Resource {
 		public String ONTOLOGYHEADPATH = "\\i2b2";
 		public boolean DELETE_OLD_ENTRIES = true;
 		public boolean CREATE_ONE_SQL_FILE = true;
-		public I2B2ImportTool I2B2ImportTool;
 		public String DATABASE_URL = "";
 		public String DATABASE_USERNAME = "";
 

@@ -31,13 +31,11 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 //		Console.info("Copying files from source \"" + sourceNodePath
 //				+ "\" to target \"" + targetNodePath + "\"");
 
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-
 		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
 			OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
 //			System.out.println("targetNodePath "+targetNodePath);
 			if (targetNode != null) {
-				myOT.copySourceNodeToTarget(null,targetNode);
+				OntologyEditorView.getMyOntologyTree().copySourceNodeToTarget(null,targetNode);
 
 			} else {
 //				System.err.println("Error while copying nodes: SourceNode (\""
@@ -49,7 +47,7 @@ public class CopySourceNodesToTarget extends AbstractHandler {
 		else if (NodeDropListener.getTargetNode() instanceof OntologyTreeSubNode) {
 			OntologyTreeSubNode subNode = (OntologyTreeSubNode) NodeDropListener.getTargetNode();
 			System.out.println("DROPPED ON SUBNODE");
-			myOT.copySourceNodeToTarget(null,subNode.getParent());
+			OntologyEditorView.getMyOntologyTree().copySourceNodeToTarget(null,subNode.getParent());
 		}
 		return null;
 	}
