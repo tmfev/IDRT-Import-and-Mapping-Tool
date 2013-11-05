@@ -64,29 +64,14 @@ public class MyOntologyTree extends JPanel {
 	private static final long serialVersionUID = -7345913467371670611L;
 
 	// jTree components
-	private OntologyTree _ontologyTreeSource = null;
-	private OntologyTree _ontologyTreeTarget = null;
+	public OntologyTree _ontologyTreeSource = null;
+	private OntologyTree ontologyTargetTree = null;
 	private ViewTree viewTreeSource = null;
 	private ViewTree viewTreeTarget = null;
 
 	// private tree components
 	private OntologyTreeNode sourceRootNode = null;
 	private OntologyTreeNode targetRootNode = null;
-	private OntologyTreeNode subRootNode;
-
-	/**
-	 * @return the subRootNode
-	 */
-	public OntologyTreeNode getSubRootNode() {
-		return subRootNode;
-	}
-
-	/**
-	 * @param subRootNode the subRootNode to set
-	 */
-	public void setSubRootNode(OntologyTreeNode subRootNode) {
-		this.subRootNode = subRootNode;
-	}
 
 	/**
 	 * The MyontolgoyTree class imports data, creates and manages a tree and
@@ -222,42 +207,43 @@ public class MyOntologyTree extends JPanel {
 		rootNode.setTreePathLevel(-1);
 		rootNode.setNodeType(NodeType.ROOT);
 
-		this._ontologyTreeTarget = new OntologyTree(rootNode);
+		ontologyTargetTree = new OntologyTree(rootNode);
 
-		_ontologyTreeTarget.getNodeLists().addIDtoPaths(rootNode.getID(),
+		ontologyTargetTree.getNodeLists().addIDtoPaths(rootNode.getID(),
 				rootNode.getTreePath());
-		_ontologyTreeTarget.getNodeLists().addNodeByID(rootNode.getID(),
+		ontologyTargetTree.getNodeLists().addNodeByID(rootNode.getID(),
 				rootNode);
-		_ontologyTreeTarget.getNodeLists().addNodyByPath(
+		ontologyTargetTree.getNodeLists().addNodyByPath(
 				rootNode.getTreePath(), rootNode);
-		_ontologyTreeTarget.getNodeLists().setNodeStatusByPath(
+		ontologyTargetTree.getNodeLists().setNodeStatusByPath(
 				rootNode.getTreePath(), ItemStatus.UNCHECKED);
 
 		this.setTargetRootNode(rootNode);
 
-		// OTNode targetNode = new OTNode( "TargetOntology" );
+		OntologyTreeNode targetOntologyi2b2RootNode = new OntologyTreeNode("Target-Ontology");
+		targetOntologyi2b2RootNode.setID("i2b2");
+		targetOntologyi2b2RootNode.setTreePath("\\i2b2\\");
+		targetOntologyi2b2RootNode.setTreePathLevel(0);
+		targetOntologyi2b2RootNode.setType(TYPE.ONTOLOGY_TARGET);
+		targetOntologyi2b2RootNode.setNodeType(NodeType.I2B2ROOT);
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setChanged(false);
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setVisualattributes("FAE");
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setName("i2b2");
 
-		subRootNode = new OntologyTreeNode("Target-Ontology");
-		subRootNode.setID("i2b2");
-		subRootNode.setTreePath("\\i2b2\\");
-		subRootNode.setTreePathLevel(0);
-		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-		subRootNode.setNodeType(NodeType.I2B2ROOT);
-		subRootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
-		subRootNode.getTargetNodeAttributes().setChanged(false);
-		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
-		subRootNode.getTargetNodeAttributes().setName("i2b2");
+		rootNode.add(targetOntologyi2b2RootNode);
 
-		rootNode.add(subRootNode);
-
-		_ontologyTreeTarget.getNodeLists().addIDtoPaths(subRootNode.getID(),
-				subRootNode.getTreePath());
-		_ontologyTreeTarget.getNodeLists().addNodeByID(subRootNode.getID(),
-				subRootNode);
-		_ontologyTreeTarget.getNodeLists().addNodyByPath(
-				subRootNode.getTreePath(), subRootNode);
-		_ontologyTreeTarget.getNodeLists().setNodeStatusByPath(
-				subRootNode.getTreePath(), ItemStatus.UNCHECKED);
+		ontologyTargetTree.setI2B2RootNode(targetOntologyi2b2RootNode);
+		
+		
+		ontologyTargetTree.getNodeLists().addIDtoPaths(targetOntologyi2b2RootNode.getID(),
+				targetOntologyi2b2RootNode.getTreePath());
+		ontologyTargetTree.getNodeLists().addNodeByID(targetOntologyi2b2RootNode.getID(),
+				targetOntologyi2b2RootNode);
+		ontologyTargetTree.getNodeLists().addNodyByPath(
+				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
+		ontologyTargetTree.getNodeLists().setNodeStatusByPath(
+				targetOntologyi2b2RootNode.getTreePath(), ItemStatus.UNCHECKED);
 
 		// set some options
 		OntologyTreeModel OTModel = new OntologyTreeModel(
@@ -355,10 +341,10 @@ public class MyOntologyTree extends JPanel {
 		};
 
 		// set custom renderer and listener
-		if (this._ontologyTreeTarget != null) {
+		if (this.ontologyTargetTree != null) {
 
 			// this.OTTarget.addTreeSelectionListener(this);
-			this._ontologyTreeTarget.addMouseListener(ma);
+			this.ontologyTargetTree.addMouseListener(ma);
 		}
 
 		this.viewTreeTarget = new ViewTree();
@@ -388,11 +374,11 @@ public class MyOntologyTree extends JPanel {
 
 	public OntologyTreeNode getTargetTreeRoot() {
 
-		if (this._ontologyTreeTarget == null) {
+		if (this.ontologyTargetTree == null) {
 			Console.error("OTTarget is null while trying to get the tree root!");
 			return null;
 		}
-		return this._ontologyTreeTarget.getTreeRoot();
+		return this.ontologyTargetTree.getTreeRoot();
 	}
 
 	public OntologyTreeNode getStudyNode() {
@@ -433,7 +419,7 @@ public class MyOntologyTree extends JPanel {
 	}
 
 	public OntologyTree getOntologyTreeTarget() {
-		return this._ontologyTreeTarget;
+		return this.ontologyTargetTree;
 	}
 
 	public String createLongStringID(int id) {
@@ -886,4 +872,5 @@ public class MyOntologyTree extends JPanel {
 	public ViewTree getViewTreeTarget() {
 		return this.viewTreeTarget;
 	}
+
 }

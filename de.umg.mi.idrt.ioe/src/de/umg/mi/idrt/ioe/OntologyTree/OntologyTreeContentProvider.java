@@ -9,13 +9,13 @@ public class OntologyTreeContentProvider {
 	
 	public List<OntologyTreeNode> getTargetModel(){
 		List<OntologyTreeNode> list2 = new ArrayList<OntologyTreeNode>();
-		list2.add(OntologyEditorView.getMyOntologyTree().getSubRootNode());
+		list2.add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
 		return list2;
 	}
 	
 	public List<OntologyTreeNode> getStagingModel(){
 		List<OntologyTreeNode> list2 = new ArrayList<OntologyTreeNode>();
-		list2.add(OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getStagingRootNode());
+		list2.add(OntologyEditorView.getOntologyStagingTree().getI2B2RootNode());
 		return list2;
 	}
 	

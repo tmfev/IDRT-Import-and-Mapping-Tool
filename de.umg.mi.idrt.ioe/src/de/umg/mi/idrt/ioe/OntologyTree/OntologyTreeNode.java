@@ -351,7 +351,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		MyOntologyTree myOT = OntologyEditorView.getMyOntologyTree();
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
-		if (this != myOT.getSubRootNode())
+		if (this != myOT._ontologyTreeSource.getI2B2RootNode())
 			this.getParent().getChildren().remove(this);
 		super.removeFromParent();
 	}

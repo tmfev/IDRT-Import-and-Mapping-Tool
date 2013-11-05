@@ -52,7 +52,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 
 		if (event.item == null) {
 			event.item = OntologyEditorView.getTargetTreeViewer().getTree();
-			targetNode = myOT.getSubRootNode();
+			targetNode = myOT._ontologyTreeSource.getI2B2RootNode();
 			event.item.setData(targetNode);
 		}
 		if(event.item.getData() instanceof OntologyTreeNode) {
@@ -129,7 +129,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 		}
 		else if (targetNode instanceof OntologyTreeNode){
 			sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
-			if (myOT.getSubRootNode() == sourceNode || sourceNode.getParent() == (OntologyTreeNode)targetNode)
+			if (myOT._ontologyTreeSource.getI2B2RootNode() == sourceNode || sourceNode.getParent() == (OntologyTreeNode)targetNode)
 				System.err.println("SOURCE IS ROOT || TARGET IS PARENT");
 			else {
 				if (sourceNode.getTreePath() != ((OntologyTreeNode) targetNode).getTreePath()) {
