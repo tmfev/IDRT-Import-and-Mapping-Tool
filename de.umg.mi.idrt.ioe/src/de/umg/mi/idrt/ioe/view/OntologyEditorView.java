@@ -51,14 +51,17 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -145,6 +148,8 @@ public class OntologyEditorView extends ViewPart {
 	private static Button btnClearTargetProject;
 	private static Composite composite_8;
 	private static Text text;
+	private static Label label_1;
+	private static Button btnClearSearch;
 
 
 
@@ -297,11 +302,11 @@ public class OntologyEditorView extends ViewPart {
 		
 		//TODO HERE
 
-		//						Shell shell = new Shell();
-		//						shell.setSize(844, 536);
-		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//						mainComposite = new Composite(shell, SWT.NONE);
-		//						mainComposite.setLayout(new BorderLayout(0, 0));
+//								Shell shell = new Shell();
+//								shell.setSize(844, 536);
+//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//								mainComposite = new Composite(shell, SWT.NONE);
+//								mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -468,7 +473,11 @@ public class OntologyEditorView extends ViewPart {
 
 		composite_8 = new Composite(stagingComposite, SWT.NONE);
 		composite_8.setLayoutData(BorderLayout.NORTH);
-		composite_8.setLayout(new GridLayout(1, false));
+		composite_8.setLayout(new GridLayout(3, false));
+		
+		label_1 = new Label(composite_8, SWT.NONE);
+		label_1.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/tsearch_obj.gif"));
+		label_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 
 		text = new Text(composite_8, SWT.BORDER);
 		text.setBounds(0, 0, 76, 21);
@@ -482,7 +491,6 @@ public class OntologyEditorView extends ViewPart {
 					@Override
 					public void run() {
 						int size = getOntologyStagingTree().getNodeLists().getNumberOfItemNodes();
-						System.out.println(size + " items");
 						if (text.getText().isEmpty()) {
 							unmarkAllNodes(getOntologyStagingTree().getRootNode());	
 						}
@@ -498,6 +506,24 @@ public class OntologyEditorView extends ViewPart {
 				}).run();
 			}
 		});
+		btnClearSearch = new Button(composite_8, SWT.NO_BACKGROUND);
+		btnClearSearch.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
+		btnClearSearch.setToolTipText("Clear Search");
+		btnClearSearch.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			text.setText("");
+//			text.notifyListeners(SWT.Modify, new Event());
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+			}
+		});
+		
+		
 		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener());
 		stagingTreeViewer.setSorter(new ViewerSorter());
 		stagingTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
