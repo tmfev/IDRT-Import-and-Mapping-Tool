@@ -93,6 +93,17 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	}
 
 	/**
+	 * Copy Constructor
+	 * @param node
+	 */
+	public OntologyTreeNode (OntologyTreeNode node) {
+		this.children = new ArrayList<OntologyTreeNode>();
+		this.ontologyCellAttributes= node.getOntologyCellAttributes();
+		this.setName(node.getName());
+		this.setID(node.getID());
+	}
+	
+	/**
 	 * Creates a generic ontology tree node.
 	 * 
 	 * @param name
@@ -105,22 +116,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.setName(name);
 		//		this.treeSubChildren = new ArrayList<OntologyTreeSubNode>();
 		//		treeSubChildren.add(new OntologyTreeSubNode(this));
-	}
-	
-	/**
-	 * Copy Constructor
-	 * @param node
-	 */
-	public OntologyTreeNode (OntologyTreeNode node) {
-		this.children = new ArrayList<OntologyTreeNode>();
-		this.ontologyCellAttributes= node.getOntologyCellAttributes();
-		this.setName(node.getName());
-		this.setID(node.getID());
-	}
-
-	@Override
-	public boolean isLeaf() {
-		return this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l");
 	}
 
 	/**
@@ -144,6 +139,13 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	}
 
+	/* ******************************
+	 * /* functions for the swt tree /* *****************************
+	 */
+	public ListIterator<OntologyTreeNode> getChild() {
+		return this.children.listIterator();
+	}
+
 	//	public void convertVisualAttributesToModifier() {
 	//
 	//		String visualAttribute = getVisualattribute();
@@ -154,14 +156,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	//
 	//	}
 
-	/* ******************************
-	 * /* functions for the swt tree /* *****************************
-	 */
-	public ListIterator<OntologyTreeNode> getChild() {
-		return this.children.listIterator();
-	}
-
-
 	/* (non-Javadoc)
 	 * @see javax.swing.tree.DefaultMutableTreeNode#getChildAfter(javax.swing.tree.TreeNode)
 	 */
@@ -169,6 +163,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public OntologyTreeNode getChildAfter(TreeNode aChild) {
 		return (OntologyTreeNode)super.getChildAfter(aChild);
 	}
+
 
 	public List<OntologyTreeNode> getChildren() {
 		return this.children;
@@ -265,12 +260,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return (OntologyTreeNode) super.getParent();
 	}
 
-
 	public TargetNodeAttributes getTargetNodeAttributes() {
 		if (this.targetNodeAttributes==null)
 			this.targetNodeAttributes = new TargetNodeAttributes(this);
 		return this.targetNodeAttributes;
 	}
+
 
 	/**
 	 * Returns the path to this node as a string.
@@ -315,6 +310,15 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return highlighted;
 	}
 
+	@Override
+	public boolean isLeaf() {
+		return this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l");
+	}
+
+	public boolean isSearchResult() {
+		return searchResult;
+	}
+
 	/**
 	 * Returns the status of the visibility of this node.
 	 * 
@@ -351,25 +355,13 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
-		if (this != myOT._ontologyTreeSource.getI2B2RootNode())
+		if (this != OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())
 			this.getParent().getChildren().remove(this);
 		super.removeFromParent();
 	}
 
 	public void setHighlighted(boolean highlighted) {
 		this.highlighted = highlighted;
-	}
-
-	public void setI2B2Ontology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
-			String C_SYNONYM_CD, String C_VISUALATTRIBUTES, int C_TOTALNUM,
-			String C_BASECODE, Object C_METADATAXML, String C_FACTTABLECOLUMN,
-			String C_TABLENAME, String C_COLUMNNAME, String C_COLUMNDATATYPE,
-			String C_OPERATOR, String C_DIMCODE, String C_COMMENT,
-			String C_TOOLTIP, String M_APPLIED_PATH, String UPDATE_DATE,
-			String DOWNLOAD_DATE, String IMPORT_DATE, String SOURCESYSTEM_CD,
-			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
-			String C_SYMBOL) {
-
 	}
 
 	/*
@@ -396,6 +388,18 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * !_additionalDataParentNodeImportPath.isEmpty() ? true : false; }
 	 */
 
+	public void setI2B2Ontology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
+			String C_SYNONYM_CD, String C_VISUALATTRIBUTES, int C_TOTALNUM,
+			String C_BASECODE, Object C_METADATAXML, String C_FACTTABLECOLUMN,
+			String C_TABLENAME, String C_COLUMNNAME, String C_COLUMNDATATYPE,
+			String C_OPERATOR, String C_DIMCODE, String C_COMMENT,
+			String C_TOOLTIP, String M_APPLIED_PATH, String UPDATE_DATE,
+			String DOWNLOAD_DATE, String IMPORT_DATE, String SOURCESYSTEM_CD,
+			String VALUETYPE_CD, String M_EXCLUSION_CD, String C_PATH,
+			String C_SYMBOL) {
+
+	}
+
 	/**
 	 * Sets the ID of this node.
 	 * 
@@ -409,6 +413,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void setIsVisable(boolean isVisable) {
 		this.isVisible = isVisable;
 	}
+
 
 	/**
 	 * Sets the visibility option for this node and possible children
@@ -432,7 +437,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		// this.updateI2B2Values();
 	}
 
-
 	public void setIsVisable(String isVisableString, boolean setChilden) {
 		try {
 			setIsVisable(Boolean.valueOf(isVisableString), setChilden);
@@ -441,16 +445,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 					e);
 			setIsVisable(true, setChilden);
 		}
-	}
-
-	/**
-	 * Sets the name attribute for this node.
-	 * 
-	 * @param name
-	 *            the name of the node
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/*
@@ -493,6 +487,16 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 
 	/**
+	 * Sets the name attribute for this node.
+	 * 
+	 * @param name
+	 *            the name of the node
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
 	 * Sets node type.
 	 * 
 	 * @param nodeType
@@ -500,35 +504,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	public void setNodeType(NodeType nodeType) {
 		this.nodeType = nodeType;
-	}
-
-	public void setOntologyCellAttributes(OntologyItem item) {
-		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
-		ontologyCellAttributes.setC_HLEVEL(item.getC_HLEVEL());
-		ontologyCellAttributes.setC_FULLNAME(item.getC_FULLNAME());
-		ontologyCellAttributes.setC_NAME(item.getC_NAME());
-		ontologyCellAttributes.setC_SYNONYM_CD(item.getC_SYNONYM_CD());
-		ontologyCellAttributes.setC_VISUALATTRIBUTES(item.getC_VISUALATTRIBUTES());
-		ontologyCellAttributes.setC_TOTALNUM(item.getC_TOTALNUM());
-		ontologyCellAttributes.setC_BASECODE(item.getC_BASECODE());
-		ontologyCellAttributes.setC_METADATAXML(item.getC_METADATAXML());
-		ontologyCellAttributes.setC_FACTTABLECOLUMN(item.getC_FACTTABLECOLUMN());
-		ontologyCellAttributes.setC_TABLENAME(item.getC_TABLENAME());
-		ontologyCellAttributes.setC_COLUMNNAME(item.getC_COLUMNNAME());
-		ontologyCellAttributes.setC_COLUMNDATATYPE(item.getC_COLUMNDATATYPE());
-		ontologyCellAttributes.setC_OPERATOR(item.getC_OPERATOR());
-		ontologyCellAttributes.setC_DIMCODE(item.getC_DIMCODE());
-		ontologyCellAttributes.setC_COMMENT(item.getC_COMMENT());
-		ontologyCellAttributes.setC_TOOLTIP(item.getC_TOOLTIP());
-		ontologyCellAttributes.setM_APPLIED_PATH(item.getM_APPLIED_PATH());
-		ontologyCellAttributes.setUPDATE_DATE(item.getUPDATE_DATE());
-		ontologyCellAttributes.setDOWNLOAD_DATE(item.getDOWNLOAD_DATE());
-		ontologyCellAttributes.setIMPORT_DATE(item.getIMPORT_DATE());
-		ontologyCellAttributes.setSOURCESYSTEM_CD(item.getSOURCESYSTEM_CD());
-		ontologyCellAttributes.setVALUETYPE_CD(item.getVALUETYPE_CD());
-		ontologyCellAttributes.setM_EXCLUSION_CD(item.getM_EXCLUSION_CD());
-		ontologyCellAttributes.setC_PATH(item.getC_PATH());
-		ontologyCellAttributes.setC_SYMBOL(item.getC_SYMBOL());
 	}
 	
 	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
@@ -568,6 +543,39 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		ontologyCellAttributes.setC_SYMBOL(C_SYMBOL);
 	}
 
+	public void setOntologyCellAttributes(OntologyItem item) {
+		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
+		ontologyCellAttributes.setC_HLEVEL(item.getC_HLEVEL());
+		ontologyCellAttributes.setC_FULLNAME(item.getC_FULLNAME());
+		ontologyCellAttributes.setC_NAME(item.getC_NAME());
+		ontologyCellAttributes.setC_SYNONYM_CD(item.getC_SYNONYM_CD());
+		ontologyCellAttributes.setC_VISUALATTRIBUTES(item.getC_VISUALATTRIBUTES());
+		ontologyCellAttributes.setC_TOTALNUM(item.getC_TOTALNUM());
+		ontologyCellAttributes.setC_BASECODE(item.getC_BASECODE());
+		ontologyCellAttributes.setC_METADATAXML(item.getC_METADATAXML());
+		ontologyCellAttributes.setC_FACTTABLECOLUMN(item.getC_FACTTABLECOLUMN());
+		ontologyCellAttributes.setC_TABLENAME(item.getC_TABLENAME());
+		ontologyCellAttributes.setC_COLUMNNAME(item.getC_COLUMNNAME());
+		ontologyCellAttributes.setC_COLUMNDATATYPE(item.getC_COLUMNDATATYPE());
+		ontologyCellAttributes.setC_OPERATOR(item.getC_OPERATOR());
+		ontologyCellAttributes.setC_DIMCODE(item.getC_DIMCODE());
+		ontologyCellAttributes.setC_COMMENT(item.getC_COMMENT());
+		ontologyCellAttributes.setC_TOOLTIP(item.getC_TOOLTIP());
+		ontologyCellAttributes.setM_APPLIED_PATH(item.getM_APPLIED_PATH());
+		ontologyCellAttributes.setUPDATE_DATE(item.getUPDATE_DATE());
+		ontologyCellAttributes.setDOWNLOAD_DATE(item.getDOWNLOAD_DATE());
+		ontologyCellAttributes.setIMPORT_DATE(item.getIMPORT_DATE());
+		ontologyCellAttributes.setSOURCESYSTEM_CD(item.getSOURCESYSTEM_CD());
+		ontologyCellAttributes.setVALUETYPE_CD(item.getVALUETYPE_CD());
+		ontologyCellAttributes.setM_EXCLUSION_CD(item.getM_EXCLUSION_CD());
+		ontologyCellAttributes.setC_PATH(item.getC_PATH());
+		ontologyCellAttributes.setC_SYMBOL(item.getC_SYMBOL());
+	}
+
+	public void setSearchResult(boolean searchResult) {
+		this.searchResult = searchResult;
+	}
+
 	public void setTreeAttributes() {
 
 		if (this.parent == null) {
@@ -602,6 +610,16 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	}
 
 	/**
+	 * Sets the visual attribute (key to connect items and user data) for I2B2.
+	 * 
+	 * @param visualattribute
+	 *            the basecode
+	 */
+	//	public void setVisualattribute(String visualattribute) {
+	//		this.visualattribute = visualattribute;
+	//	}
+
+	/**
 	 * Sets the level attribute for this node by converting a string to int
 	 * first.
 	 * 
@@ -624,16 +642,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	}
 
 	/**
-	 * Sets the visual attribute (key to connect items and user data) for I2B2.
-	 * 
-	 * @param visualattribute
-	 *            the basecode
-	 */
-	//	public void setVisualattribute(String visualattribute) {
-	//		this.visualattribute = visualattribute;
-	//	}
-
-	/**
 	 * Returns the name of the node (for use by the JTree render functions
 	 * only).
 	 * 
@@ -641,14 +649,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	public String toString() {
 		return this.name + " " + this.treePath;
-	}
-
-	public boolean isSearchResult() {
-		return searchResult;
-	}
-
-	public void setSearchResult(boolean searchResult) {
-		this.searchResult = searchResult;
 	}
 
 

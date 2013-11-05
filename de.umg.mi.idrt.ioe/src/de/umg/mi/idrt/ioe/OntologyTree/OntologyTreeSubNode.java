@@ -41,6 +41,37 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 		return parent;
 	}
 
+	public String getStagingName() {
+		return stagingName;
+	}
+
+	public OntologyTreeNode getStagingParentNode() {
+		return stagingParentNode;
+	}
+
+	public String getStagingPath() {
+		return stagingPath;
+	}
+
+	public TargetSubNodeAttributes getTargetSubNodeAttributes() {
+		return targetSubNodeAttributes;
+	}
+
+	public boolean isHighlighted() {
+		return this.highlighted;
+	}
+
+	public void setEndDate(String endDateStagingPath) {
+		this.targetSubNodeAttributes.setEndDateSourcePath(endDateStagingPath);
+	}
+	/**
+	 * @param b
+	 */
+	public void setHighlighted(boolean b) {
+		this.highlighted = b;
+
+	}
+
 	/**
 	 * @param parent the parent to set
 	 */
@@ -48,8 +79,12 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 		this.parent = parent;
 	}
 
-	public String getStagingPath() {
-		return stagingPath;
+	public void setStagingName(String stagingName) {
+		this.stagingName = stagingName;
+	}
+
+	public void setStagingParentNode(OntologyTreeNode stagingParentNode) {
+		this.stagingParentNode = stagingParentNode;
 	}
 
 	public void setStagingPath(String sourcePath) {
@@ -63,47 +98,12 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 			this.setStagingParentNode(parentNode);
 		}
 	}
-
-	public String getStagingName() {
-		return stagingName;
-	}
-
-	public void setStagingName(String stagingName) {
-		this.stagingName = stagingName;
-	}
-
-	/**
-	 * @param b
-	 */
-	public void setHighlighted(boolean b) {
-		this.highlighted = b;
-
-	}
-	public boolean isHighlighted() {
-		return this.highlighted;
-	}
-
-	public OntologyTreeNode getStagingParentNode() {
-		return stagingParentNode;
-	}
-
-	public void setStagingParentNode(OntologyTreeNode stagingParentNode) {
-		this.stagingParentNode = stagingParentNode;
-	}
-
-	public TargetSubNodeAttributes getTargetSubNodeAttributes() {
-		return targetSubNodeAttributes;
-	}
-
-	public void setTargetNodeAttributes(TargetSubNodeAttributes targetSubNodeAttributes) {
-		this.targetSubNodeAttributes = targetSubNodeAttributes;
-	}
 	
 	public void setStartDate(String startDateStagingPath) {
 		this.targetSubNodeAttributes.setStartDateSourcePath(startDateStagingPath);
 	}
-	public void setEndDate(String endDateStagingPath) {
-		this.targetSubNodeAttributes.setEndDateSourcePath(endDateStagingPath);
+	public void setTargetNodeAttributes(TargetSubNodeAttributes targetSubNodeAttributes) {
+		this.targetSubNodeAttributes = targetSubNodeAttributes;
 	}
 
 }

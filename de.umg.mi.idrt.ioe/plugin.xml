@@ -51,11 +51,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.SystemExit"
-            id="edu.goettingen.i2b2.importtool.commands.SystemExit"
-            name="%command.name.0">
-      </command>
       <category
             id="edu.goettingen.i2b2.importtool.OntologyEditor"
             name="OntologyEditor">
@@ -67,7 +62,7 @@
       </command>
       <command
             id="edu.goettingen.i2b2.importtool.command.OTCopy"
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.CopySourceNodesToTarget"
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.CopyStagingNodesToTarget"
             name="OTCopy">
          <commandParameter
                id="edu.goettingen.i2b2.importtool.command.OTCopy.Source"
@@ -111,7 +106,7 @@
             name="OTReadTarget">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.etlStagingI2B2ToTargetI2B2"
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.etlStaginToTargetI2B2"
             id="de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2"
             name="etlStagingI2B2ToTargetI2B2">
       </command>
@@ -141,7 +136,7 @@
             name="uploadProject">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddNodeCommand"
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddFolderCommand"
             id="de.umg.mi.idrt.ioe.addNode"
             name="addNode">
       </command>

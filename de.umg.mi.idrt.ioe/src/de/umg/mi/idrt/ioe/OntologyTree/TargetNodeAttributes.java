@@ -16,38 +16,13 @@ public class TargetNodeAttributes {
 	Dimension dimension = Dimension.CONCEPT_DIMENSION;
 	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
-	public TargetNodeAttributes(OntologyTreeNode parent) {
-		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
-		setParent(parent);
-	}
-
-	public boolean removeSubNode(OntologyTreeSubNode subNode) {
-		return this.subNodeList.remove(subNode);
-	}
-
-	/**
-	 * @return the subNodeList
-	 */
-	public LinkedHashSet<OntologyTreeSubNode> getSubNodeList() {
-		return subNodeList;
-	}
-
-	/**
-	 * @param hashSet the subNodeList to set
-	 */
-	public void setSubNodeList(LinkedHashSet<OntologyTreeSubNode> hashSet) {
-		this.subNodeList = hashSet;
-	}
-
 	private OntologyTreeNode parent;
 
 	boolean changed = false;
 
-	/**
-	 * @return the sourcePath
-	 */
-	public String getSourcePath() {
-		return sourcePath;
+	public TargetNodeAttributes(OntologyTreeNode parent) {
+		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
+		setParent(parent);
 	}
 
 	/**
@@ -77,15 +52,22 @@ public class TargetNodeAttributes {
 		}
 	}
 
-	private boolean subNodeListContains(String pathToChek) {
-		boolean found = false;
-		for (OntologyTreeSubNode subNode : this.subNodeList) {
-			if (subNode.getStagingPath().equals(pathToChek)) {
-				found = true;
-				break;
-			}
-		}
-		return found;
+	public String getChanged() {
+		return changed ? "0" : "1";
+	}
+
+	/**
+	 * @return the dimension
+	 */
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	/**
+	 * @return the endDateSource
+	 */
+	public String getEndDateSource() {
+		return endDateSource;
 	}
 
 	/**
@@ -95,12 +77,22 @@ public class TargetNodeAttributes {
 		return name;
 	}
 
+	public OntologyTreeNode getParent() {
+		return parent;
+	}
+
 	/**
-	 * @param name
-	 *            the name to set
+	 * @return the sourcePath
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public String getSourcePath() {
+		return sourcePath;
+	}
+
+	/**
+	 * @return the startDateSource
+	 */
+	public String getStartDateSource() {
+		return startDateSource;
 	}
 
 //
@@ -120,25 +112,50 @@ public class TargetNodeAttributes {
 //	}
 	
 	/**
-	 * @return the startDateSource
+	 * @return the subNodeList
 	 */
-	public String getStartDateSource() {
-		return startDateSource;
+	public LinkedHashSet<OntologyTreeSubNode> getSubNodeList() {
+		return subNodeList;
 	}
 
 	/**
-	 * @param startDateSource
-	 *            the startDateSource to set
+	 * @return the visualattribute
 	 */
-	public void setStartDateSourcePath(String startDateSource) {
-		this.startDateSource = startDateSource;
+	public String getVisualattribute() {
+		return visualattribute;
 	}
 
 	/**
-	 * @return the endDateSource
+	 * @return the changed
 	 */
-	public String getEndDateSource() {
-		return endDateSource;
+	public boolean isChanged() {
+		return changed;
+	}
+
+	/**
+	 * 
+	 */
+	public void removeAllStagingPaths() {
+		subNodeList.clear();
+	}
+
+	public boolean removeSubNode(OntologyTreeSubNode subNode) {
+		return this.subNodeList.remove(subNode);
+	}
+
+	/**
+	 * @param changed
+	 *            the changed to set
+	 */
+	public void setChanged(boolean changed) {
+		this.changed = changed;
+	}
+
+	/**
+	 * @param dimension the dimension to set
+	 */
+	public void setDimension(Dimension dimension) {
+		this.dimension = dimension;
 	}
 
 	/**
@@ -150,12 +167,32 @@ public class TargetNodeAttributes {
 	}
 
 	/**
-	 * @return the visualattribute
+	 * @param name
+	 *            the name to set
 	 */
-	public String getVisualattribute() {
-		return visualattribute;
+	public void setName(String name) {
+		this.name = name;
 	}
 
+	public void setParent(OntologyTreeNode parent) {
+		this.parent = parent;
+	}
+
+	/**
+	 * @param startDateSource
+	 *            the startDateSource to set
+	 */
+	public void setStartDateSourcePath(String startDateSource) {
+		this.startDateSource = startDateSource;
+	}
+
+	/**
+	 * @param hashSet the subNodeList to set
+	 */
+	public void setSubNodeList(LinkedHashSet<OntologyTreeSubNode> hashSet) {
+		this.subNodeList = hashSet;
+	}
+	
 	/**
 	 * @param visualattribute
 	 *            the visualattribute to set
@@ -164,52 +201,15 @@ public class TargetNodeAttributes {
 		this.visualattribute = visualattribute;
 	}
 
-	/**
-	 * @return the changed
-	 */
-	public boolean isChanged() {
-		return changed;
-	}
-
-	/**
-	 * @param changed
-	 *            the changed to set
-	 */
-	public void setChanged(boolean changed) {
-		this.changed = changed;
-	}
-
-	public String getChanged() {
-		return changed ? "0" : "1";
-	}
-
-	public OntologyTreeNode getParent() {
-		return parent;
-	}
-
-	public void setParent(OntologyTreeNode parent) {
-		this.parent = parent;
-	}
-
-	/**
-	 * 
-	 */
-	public void removeAllStagingPaths() {
-		subNodeList.clear();
-	}
-	
-	/**
-	 * @return the dimension
-	 */
-	public Dimension getDimension() {
-		return dimension;
-	}
-
-	/**
-	 * @param dimension the dimension to set
-	 */
-	public void setDimension(Dimension dimension) {
-		this.dimension = dimension;
+	private boolean subNodeListContains(String pathToChek) {
+		boolean found = false;
+		for (OntologyTreeSubNode subNode : this.subNodeList) {
+			if (subNode.getStagingPath().equals(pathToChek)) {
+				found = true;
+				break;
+			}
+		}
+		return found;
 	}
 
 }

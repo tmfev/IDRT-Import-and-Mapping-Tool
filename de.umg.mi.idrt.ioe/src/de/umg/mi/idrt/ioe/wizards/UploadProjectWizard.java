@@ -16,7 +16,9 @@ import org.osgi.framework.Bundle;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
+import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -170,9 +172,10 @@ public class UploadProjectWizard extends Wizard {
 						contextMap.put("truncateProject", "false");
 					}
 					
-					TOSConnector.setCompleteContext(contextMap);
-					int exitCode = TOSConnector.uploadProject();
-					System.out.println("job finshed: " + exitCode);
+					Application.executeCommand(Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
+//					TOSConnector.setCompleteContext(contextMap);
+//					int exitCode = TOSConnector.uploadProject();
+//					System.out.println("job finshed: " + exitCode);
 					
 				}catch (Exception e) {
 					e.printStackTrace();

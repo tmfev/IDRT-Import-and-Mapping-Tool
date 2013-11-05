@@ -10,19 +10,29 @@ public class TreeContentProviderTarget implements ITreeContentProvider {
 	private ViewTreeNode treeRoot = null;
 	private OntologyTree _ot;
 
-	@Override
-	public Object[] getChildren(Object element) {
-		return ((ViewTreeNode) element).getChildren().toArray();
-	}
+	public void convertNode(ViewTreeNode parentNode) {
 
-	@Override
-	public Object getParent(Object element) {
-		return ((ViewTreeNode) element).getParent();
-	}
+		OntologyTreeNode otParentNode = parentNode.getOTNode();
 
-	@Override
-	public boolean hasChildren(Object element) {
-		return ((ViewTreeNode) element).hasChildren();
+		if (otParentNode.getChildCount() > 0) {
+			Iterator<OntologyTreeNode> it = otParentNode.getChildrenIterator();
+
+			if (it == null) {
+				System.out.println("Iterator is Null or something!");
+				return;
+			}
+
+			while (it.hasNext()) {
+				OntologyTreeNode tempOTNode = it.next();
+				ViewTreeNode tmpNode = new ViewTreeNode(parentNode,
+						tempOTNode, tempOTNode.getName());
+				convertNode(tmpNode);
+			}
+		} else {
+			// nothing, because there are no children
+			//System.out.println("convertNode: has no children");
+		}
+
 	}
 
 	@Override
@@ -31,8 +41,8 @@ public class TreeContentProviderTarget implements ITreeContentProvider {
 	}
 
 	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// unused
+	public Object[] getChildren(Object element) {
+		return ((ViewTreeNode) element).getChildren().toArray();
 	}
 
 	@Override
@@ -74,37 +84,27 @@ public class TreeContentProviderTarget implements ITreeContentProvider {
 		return new Object[] { returnNode };
 	}
 
+	@Override
+	public Object getParent(Object element) {
+		return ((ViewTreeNode) element).getParent();
+	}
+
 	public ViewTreeNode getRoot() {
 		return treeRoot;
 	}
 
-	public void setOT(OntologyTree ot) {
-		this._ot = ot;
+	@Override
+	public boolean hasChildren(Object element) {
+		return ((ViewTreeNode) element).hasChildren();
+	}
+
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// unused
 	}
 
 
-	public void convertNode(ViewTreeNode parentNode) {
-
-		OntologyTreeNode otParentNode = parentNode.getOTNode();
-
-		if (otParentNode.getChildCount() > 0) {
-			Iterator<OntologyTreeNode> it = otParentNode.getChildrenIterator();
-
-			if (it == null) {
-				System.out.println("Iterator is Null or something!");
-				return;
-			}
-
-			while (it.hasNext()) {
-				OntologyTreeNode tempOTNode = it.next();
-				ViewTreeNode tmpNode = new ViewTreeNode(parentNode,
-						tempOTNode, tempOTNode.getName());
-				convertNode(tmpNode);
-			}
-		} else {
-			// nothing, because there are no children
-			//System.out.println("convertNode: has no children");
-		}
-
+	public void setOT(OntologyTree ot) {
+		this._ot = ot;
 	}
 }

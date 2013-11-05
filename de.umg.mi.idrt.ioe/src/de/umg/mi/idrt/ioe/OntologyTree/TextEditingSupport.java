@@ -16,13 +16,13 @@ import org.eclipse.jface.viewers.TextCellEditor;
 	  }
 
 	  @Override
-	  protected CellEditor getCellEditor(Object element) {
-	    return new TextCellEditor(viewer.getTable());
+	  protected boolean canEdit(Object element) {
+	    return true;
 	  }
 
 	  @Override
-	  protected boolean canEdit(Object element) {
-	    return true;
+	  protected CellEditor getCellEditor(Object element) {
+	    return new TextCellEditor(viewer.getTable());
 	  }
 
 	  @Override

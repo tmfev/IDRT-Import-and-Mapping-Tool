@@ -38,6 +38,119 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
         hookListener(viewer);
     }
 
+    @Override
+    protected void focusCellChanged(ViewerCell newCell, ViewerCell oldCell) {
+        super.focusCellChanged(newCell, oldCell);
+
+        // Redraw new area
+        if (newCell != null) {
+            Rectangle rect = newCell.getBounds();
+            int x = newCell.getColumnIndex() == 0 ? 0 : rect.x;
+            int width = newCell.getColumnIndex() == 0 ? rect.x + rect.width : rect.width;
+            // 1 is a fix for Linux-GTK
+            newCell.getControl().redraw(x, rect.y - 1, width, rect.height + 1, true);
+        }
+
+        if (oldCell != null) {
+            Rectangle rect = oldCell.getBounds();
+            int x = oldCell.getColumnIndex() == 0 ? 0 : rect.x;
+            int width = oldCell.getColumnIndex() == 0 ? rect.x + rect.width : rect.width;
+            // 1 is a fix for Linux-GTK
+            oldCell.getControl().redraw(x, rect.y - 1, width, rect.height + 1, true);
+        }
+    }
+ 
+    /**
+     * The color to use when rendering the background of the selected cell when the control has the input focus
+     * @param cell the cell which is colored
+     * @return the color or <code>null</code> to use the default
+     */
+    protected Color getSelectedCellBackgroundColor(ViewerCell cell) {
+    	Device dev = new Device() {
+			
+			@Override
+			public void internal_dispose_GC(int hDC, GCData data) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public int internal_new_GC(GCData data) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		};
+		Color col = new Color(dev,203,232,246);
+		return col;
+//        return cell.getItem().getDisplay().getSystemColor(new Color(dev,203,232,246));
+    }
+  
+    /**
+     * The color to use when rendering the background of the selected cell when the control has <b>no</b> input focus
+     * @param cell the cell which is colored
+     * @return the color or <code>null</code> to use the same used when control has focus
+     * @since 3.4
+     */
+    protected Color getSelectedCellBackgroundColorNoFocus(ViewerCell cell) {
+        return null;
+    }
+
+    /**
+     * The color to use when rendering the foreground (=text) of the selected cell when the control has the input focus
+     * @param cell the cell which is colored
+     * @return the color or <code>null</code> to use the default
+     */
+    protected Color getSelectedCellForegroundColor(ViewerCell cell) {
+        return null;
+    }
+
+    /**
+     * The color to use when rendering the foreground (=text) of the selected cell when the control has <b>no</b> input
+     * focus
+     * @param cell the cell which is colored
+     * @return the color or <code>null</code> to use the same used when control has focus
+     * @since 3.4
+     */
+    protected Color getSelectedCellForegroundColorNoFocus(ViewerCell cell) {
+        return null;
+    }
+
+    private void hookListener(final ColumnViewer viewer) {
+
+        Listener listener = new Listener() {
+
+            public void handleEvent(Event event) {
+                if ((event.detail & SWT.SELECTED) > 0) {
+                    ViewerCell focusCell = getFocusCell();
+
+                    try {
+                        Method m = viewer.getClass().getDeclaredMethod("getViewerRowFromItem", Widget.class);
+                        boolean access = m.isAccessible();
+                        if (!access) {
+                            m.setAccessible(true);
+                        }
+                        ViewerRow row = (ViewerRow) m.invoke(viewer, event.item);
+                        m.setAccessible(access);
+                        
+                        Assert.isNotNull(row,
+                                "Internal structure invalid. Item without associated row is not possible."); //$NON-NLS-1$
+
+                        ViewerCell cell = row.getCell(event.index);
+
+                        if (focusCell != null && cell.equals(focusCell)) {
+                            markFocusedCell(event, cell);
+                        }
+                    } catch (Exception e) {
+                        LOGGER.error(e.getLocalizedMessage(), e);
+                    }
+
+                }
+            }
+
+        };
+        viewer.getControl().addListener(SWT.EraseItem, listener);
+    }
+
     private void markFocusedCell(Event event, ViewerCell cell) {
         Color background = (cell.getControl().isFocusControl()) ? getSelectedCellBackgroundColor(cell)
                 : getSelectedCellBackgroundColorNoFocus(cell);
@@ -74,97 +187,6 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
             event.detail &= ~SWT.SELECTED;
         }
     }
- 
-    private void hookListener(final ColumnViewer viewer) {
-
-        Listener listener = new Listener() {
-
-            public void handleEvent(Event event) {
-                if ((event.detail & SWT.SELECTED) > 0) {
-                    ViewerCell focusCell = getFocusCell();
-
-                    try {
-                        Method m = viewer.getClass().getDeclaredMethod("getViewerRowFromItem", Widget.class);
-                        boolean access = m.isAccessible();
-                        if (!access) {
-                            m.setAccessible(true);
-                        }
-                        ViewerRow row = (ViewerRow) m.invoke(viewer, event.item);
-                        m.setAccessible(access);
-                        
-                        Assert.isNotNull(row,
-                                "Internal structure invalid. Item without associated row is not possible."); //$NON-NLS-1$
-
-                        ViewerCell cell = row.getCell(event.index);
-
-                        if (focusCell != null && cell.equals(focusCell)) {
-                            markFocusedCell(event, cell);
-                        }
-                    } catch (Exception e) {
-                        LOGGER.error(e.getLocalizedMessage(), e);
-                    }
-
-                }
-            }
-
-        };
-        viewer.getControl().addListener(SWT.EraseItem, listener);
-    }
-  
-    /**
-     * The color to use when rendering the background of the selected cell when the control has the input focus
-     * @param cell the cell which is colored
-     * @return the color or <code>null</code> to use the default
-     */
-    protected Color getSelectedCellBackgroundColor(ViewerCell cell) {
-    	Device dev = new Device() {
-			
-			@Override
-			public int internal_new_GC(GCData data) {
-				// TODO Auto-generated method stub
-				return 0;
-			}
-			
-			@Override
-			public void internal_dispose_GC(int hDC, GCData data) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-		Color col = new Color(dev,203,232,246);
-		return col;
-//        return cell.getItem().getDisplay().getSystemColor(new Color(dev,203,232,246));
-    }
-
-    /**
-     * The color to use when rendering the foreground (=text) of the selected cell when the control has the input focus
-     * @param cell the cell which is colored
-     * @return the color or <code>null</code> to use the default
-     */
-    protected Color getSelectedCellForegroundColor(ViewerCell cell) {
-        return null;
-    }
-
-    /**
-     * The color to use when rendering the foreground (=text) of the selected cell when the control has <b>no</b> input
-     * focus
-     * @param cell the cell which is colored
-     * @return the color or <code>null</code> to use the same used when control has focus
-     * @since 3.4
-     */
-    protected Color getSelectedCellForegroundColorNoFocus(ViewerCell cell) {
-        return null;
-    }
-
-    /**
-     * The color to use when rendering the background of the selected cell when the control has <b>no</b> input focus
-     * @param cell the cell which is colored
-     * @return the color or <code>null</code> to use the same used when control has focus
-     * @since 3.4
-     */
-    protected Color getSelectedCellBackgroundColorNoFocus(ViewerCell cell) {
-        return null;
-    }
 
     /**
      * Controls whether the whole cell or only the text-area is highlighted
@@ -174,27 +196,5 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
      */
     protected boolean onlyTextHighlighting(ViewerCell cell) {
         return false;
-    }
-
-    @Override
-    protected void focusCellChanged(ViewerCell newCell, ViewerCell oldCell) {
-        super.focusCellChanged(newCell, oldCell);
-
-        // Redraw new area
-        if (newCell != null) {
-            Rectangle rect = newCell.getBounds();
-            int x = newCell.getColumnIndex() == 0 ? 0 : rect.x;
-            int width = newCell.getColumnIndex() == 0 ? rect.x + rect.width : rect.width;
-            // 1 is a fix for Linux-GTK
-            newCell.getControl().redraw(x, rect.y - 1, width, rect.height + 1, true);
-        }
-
-        if (oldCell != null) {
-            Rectangle rect = oldCell.getBounds();
-            int x = oldCell.getColumnIndex() == 0 ? 0 : rect.x;
-            int width = oldCell.getColumnIndex() == 0 ? rect.x + rect.width : rect.width;
-            // 1 is a fix for Linux-GTK
-            oldCell.getControl().redraw(x, rect.y - 1, width, rect.height + 1, true);
-        }
     }
 }

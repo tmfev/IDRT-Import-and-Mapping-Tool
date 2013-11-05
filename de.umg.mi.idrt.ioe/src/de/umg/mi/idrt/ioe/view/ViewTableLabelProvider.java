@@ -26,12 +26,6 @@ class ViewTableLabelProvider extends LabelProvider {
 	}
 
 	@Override
-	public String getText(Object element) {
-		OntologyTreeNode node = (OntologyTreeNode) element;
-		return node.getName();
-	}
-
-	@Override
 	public Image getImage(Object element) {
 
 		OntologyTreeNode otNode = ((OntologyTreeNode) element);
@@ -82,6 +76,12 @@ class ViewTableLabelProvider extends LabelProvider {
 		}
 		return PlatformUI.getWorkbench().getSharedImages()
 				.getImage(ISharedImages.IMG_OBJ_FILE);
+	}
+
+	@Override
+	public String getText(Object element) {
+		OntologyTreeNode node = (OntologyTreeNode) element;
+		return node.getName();
 	}
 	
 }

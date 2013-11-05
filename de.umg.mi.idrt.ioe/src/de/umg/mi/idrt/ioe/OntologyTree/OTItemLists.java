@@ -26,16 +26,11 @@ public class OTItemLists {
 			this.setItemStatusByPath( stringPath, ItemStatus.UNCHECKED);
 		}
 		
-		public void addNodyByPath( String stringPath, OntologyTreeNode node ){
-			this.stringPathToNode.put( stringPath, node );
-		}
-		
-		public Iterator<Entry<String, OntologyTreeNode>> getPathToNodeIterator () {
-			return this.stringPathToNode.entrySet().iterator();
-		}
-		
-		public OntologyTreeNode getItemNodeByPath( String stringPath ) {
-			return stringPathToNode.get( stringPath );
+		public void addIDtoPaths( String itemID, String stringPath ) {
+			if( !iDtoStringPaths.containsKey( itemID ) ) {
+				iDtoStringPaths.put( itemID, new ArrayList<String>() );
+			} 
+			iDtoStringPaths.get( itemID ).add( stringPath );
 		}
 		
 		public void addNodeByID( String itemID, OntologyTreeNode node ) {
@@ -45,35 +40,32 @@ public class OTItemLists {
 			iDtoNodes.get( itemID ).add( node );
 		}
 		
-		public List<OntologyTreeNode> getNodesByID( String itemID ) {
-			return this.iDtoNodes.get( itemID );
+		public void addNodyByPath( String stringPath, OntologyTreeNode node ){
+			this.stringPathToNode.put( stringPath, node );
 		}
 		
 		public Iterator<Entry<String, List<OntologyTreeNode>>> getIDtoNodesIterator() {
 			return this.iDtoNodes.entrySet().iterator();
 		}
 		
+		public OntologyTreeNode getItemNodeByPath( String stringPath ) {
+			return stringPathToNode.get( stringPath );
+		}
+		
+		public ItemStatus getItemStatusByPath(String stringPath){
+			return stringPathToItemStatus.get(stringPath);
+		}
+		
+		public List<OntologyTreeNode> getNodesByID( String itemID ) {
+			return this.iDtoNodes.get( itemID );
+		}
+		
 		public int getNumberOfIDtoNodes() {
 			return this.iDtoNodes.size();
 		}
 		
-		public void addIDtoPaths( String itemID, String stringPath ) {
-			if( !iDtoStringPaths.containsKey( itemID ) ) {
-				iDtoStringPaths.put( itemID, new ArrayList<String>() );
-			} 
-			iDtoStringPaths.get( itemID ).add( stringPath );
-		}
-		
-		public void setItemStatusByPath( String stringPath, ItemStatus itemStauts ){
-			this.stringPathToItemStatus.put( stringPath, itemStauts );
-		}
-		
-		public List<String> getPathsByID( String itemID ) {
-			
-			if ( this.iDtoStringPaths.containsKey( itemID ) ) {
-				return this.iDtoStringPaths.get( itemID );
-			} else
-				return null;
+		public int getNumberOfItemNodes(){
+			return stringPathToNode.size();
 		}
 		
 		public int getNumberOfNodesByID( String itemID ) {
@@ -100,12 +92,20 @@ public class OTItemLists {
 			return counter;
 		}
 		
-		public int getNumberOfItemNodes(){
-			return stringPathToNode.size();
+		public List<String> getPathsByID( String itemID ) {
+			
+			if ( this.iDtoStringPaths.containsKey( itemID ) ) {
+				return this.iDtoStringPaths.get( itemID );
+			} else
+				return null;
 		}
 		
-		public ItemStatus getItemStatusByPath(String stringPath){
-			return stringPathToItemStatus.get(stringPath);
+		public Iterator<Entry<String, OntologyTreeNode>> getPathToNodeIterator () {
+			return this.stringPathToNode.entrySet().iterator();
+		}
+		
+		public void setItemStatusByPath( String stringPath, ItemStatus itemStauts ){
+			this.stringPathToItemStatus.put( stringPath, itemStauts );
 		}
 		
 

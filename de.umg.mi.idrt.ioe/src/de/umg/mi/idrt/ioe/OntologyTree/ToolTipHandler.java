@@ -212,6 +212,18 @@ public class ToolTipHandler implements MouseMoveListener
 		});
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.events.MouseMoveListener#mouseMove(org.eclipse.swt.events.MouseEvent)
+	 */
+	public void mouseMove (MouseEvent event)
+	{
+		Point pt = new Point(event.x, event.y);
+		pt = ((Control)event.widget).toDisplay (pt);
+		
+		if (tipShell.isVisible() && !pt.equals (this.tipPosition))
+			tipShell.setVisible(false);
+	}
+
 	/**
 	 * Sets the location for a hovering shell
 	 * 
@@ -229,17 +241,5 @@ public class ToolTipHandler implements MouseMoveListener
 		shellBounds.y = Math.max(Math.min(position.y + 16,
 			displayBounds.height - shellBounds.height), 0);
 		shell.setBounds(shellBounds);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.eclipse.swt.events.MouseMoveListener#mouseMove(org.eclipse.swt.events.MouseEvent)
-	 */
-	public void mouseMove (MouseEvent event)
-	{
-		Point pt = new Point(event.x, event.y);
-		pt = ((Control)event.widget).toDisplay (pt);
-		
-		if (tipShell.isVisible() && !pt.equals (this.tipPosition))
-			tipShell.setVisible(false);
 	}
 }

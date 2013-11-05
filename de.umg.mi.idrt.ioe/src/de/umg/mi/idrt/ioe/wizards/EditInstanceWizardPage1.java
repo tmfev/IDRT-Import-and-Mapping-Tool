@@ -80,22 +80,22 @@ public class EditInstanceWizardPage1 extends WizardPage {
 		setControl(comp);
 		setPageComplete(false);
 	}
-	public String getNameText() {
-		return nameText.getText();
+	public String getCreated() {
+		return dateText.getText();
 	}
 	
-	@Override
-	public boolean isPageComplete() {
-		return !nameText.getText().isEmpty();
+	public String getDescriptionText() {
+		return descrText.getText();
+	}
+	public String getNameText() {
+		return nameText.getText();
 	}
 	protected boolean isComplete() {
 		return !nameText.getText().isEmpty();
 	}
-	public String getCreated() {
-		return dateText.getText();
-	}
 
-	public String getDescriptionText() {
-		return descrText.getText();
+	@Override
+	public boolean isPageComplete() {
+		return !nameText.getText().isEmpty();
 	}
 }

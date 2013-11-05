@@ -20,6 +20,14 @@ import org.eclipse.swt.dnd.TextTransfer;
 public class NodeMoveDragListener implements DragSourceListener {
 
 	private static OntologyTreeSubNode subNode;
+	public static OntologyTreeSubNode getSubNode() {
+		return subNode;
+	}
+
+	public static void setSubNode(OntologyTreeSubNode subNode2) {
+		subNode = subNode2;
+	}
+
 	private final TreeViewer viewer;
 
 	public NodeMoveDragListener(TreeViewer viewer) {
@@ -54,14 +62,6 @@ public class NodeMoveDragListener implements DragSourceListener {
 	@Override
 	public void dragStart(DragSourceEvent event) {
 		System.out.println("@dragStart");
-	}
-
-	public static OntologyTreeSubNode getSubNode() {
-		return subNode;
-	}
-
-	public static void setSubNode(OntologyTreeSubNode subNode2) {
-		subNode = subNode2;
 	}
 
 }

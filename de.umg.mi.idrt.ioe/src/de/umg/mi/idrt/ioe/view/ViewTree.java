@@ -18,5 +18,4 @@ public class ViewTree {
 	public ViewTreeNode getViewTreeNode(String path){
 		return this.stringPathToViewTreeNode.get(path);
 	}
-	
 }

@@ -36,24 +36,6 @@ public class GUIDialogTest extends Dialog {
 	}
 
 	/**
-	 * Open the dialog.
-	 * 
-	 * @return the result
-	 */
-	public Object open() {
-		createContents();
-		shell.open();
-		shell.layout();
-		Display display = getParent().getDisplay();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-		return result;
-	}
-
-	/**
 	 * Create contents of the dialog.
 	 */
 	private void createContents() {
@@ -171,5 +153,23 @@ public class GUIDialogTest extends Dialog {
 		composite.setBounds(10, 0, 89, 97);
 		shell.open();
 
+	}
+
+	/**
+	 * Open the dialog.
+	 * 
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
 	}
 }

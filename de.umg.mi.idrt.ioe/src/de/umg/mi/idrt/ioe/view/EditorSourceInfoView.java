@@ -52,6 +52,124 @@ public class EditorSourceInfoView extends ViewPart {
 		
 	}
 
+	private TableItem addColumItem( String text ){
+		TableItem item = new TableItem (_infoTable, SWT.NONE);
+		item.setText (new String[] { text, "" });
+		return item;
+	}
+	
+	public TableItem addValueItem( TableItem[] items, int row, String value ){
+		if (items[row] == null){
+			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"+row+".");
+			return null;
+		}
+		TableItem item = items[row];
+		item.setText (1, value != null && !value.equals("null") ? value : "" );
+
+		return item;
+	}
+
+	private JButton createButton(String label, String command) {
+
+		JButton button = new JButton();
+		if (!label.isEmpty())
+			button.setText(label);
+		button.setVerticalAlignment(AbstractButton.BOTTOM);
+		button.setActionCommand(command);
+		//button.addActionListener(this.myOntologyTree);
+		// button.setLabel( label );
+
+		// button.setPreferredSize( button.getPreferredSize() );
+		// button.setMaximumSize( new Dimension(10,3) );
+		button.setVisible(true);
+
+		return button;
+	}
+	
+
+
+	private JPanel createItemPanel() {
+
+		JPanel itemPanel = new JPanel();
+		itemPanel.setBackground(Color.LIGHT_GRAY);
+		//itemPanel.setLayout(getStandardGridBagLayout());
+		itemPanel.setSize(new Dimension(1000, 500));
+		// itemPanel.setPreferredSize( new Dimension ( 900, 200 ) );
+
+		return itemPanel;
+	}
+
+	private JComboBox createJComboBox(String name, String value, int type) {
+
+		String[] pattern = null;
+		String selected = "";
+		int size = 0;
+
+		if (type == 1) // month
+			size = 12;
+		else if (type == 2) // days
+			size = 31;
+		else
+			size = 1;
+
+		if (type < 3) {
+			pattern = new String[size];
+			for (int x = 0; x < size; x++) {
+				pattern[x] = String.valueOf(x + 1);
+			}
+		} else if (type == 3) {
+			// groups
+
+			// add value to pattern
+			if (value != null) {
+				if (value != "10" && value != "50" && value != "100"
+						&& value != "1000" && value != "10" && value != "10"
+						&& value != "10") {
+					pattern = new String[] { value, "10", "50", "100", "1000" };
+				}
+
+			}
+
+			// set selected value to 10
+			if (value == null)
+				value = "10";
+		}
+
+		JComboBox jComboBox = new JComboBox(pattern);
+		jComboBox.setName(name);
+		jComboBox.setSelectedItem(value);
+		jComboBox.setPrototypeDisplayValue("XXXX");
+		jComboBox.setMaximumSize(jComboBox.getPreferredSize());
+
+		if (type == 3)
+			jComboBox.setEditable(true);
+
+		// add this object to the session array
+		//((Object) this.editorFields).put(name, jComboBox);
+
+		return jComboBox;
+	}
+	
+	private JLabel createJLabel(String text) {
+
+		return new JLabel(text);
+	}
+	
+	private JPanel createOneButtonPanel(String text, String label,
+			String actionCommand, Color bgColor) {
+
+		JPanel jPanel = new JPanel();
+		jPanel = this.createItemPanel();
+
+		JButton suggestionCreateLeafs = createButton(label, actionCommand);
+
+		jPanel.add(createJLabel(text));
+		jPanel.add(suggestionCreateLeafs);
+
+		return jPanel;
+	}
+	
+	
 	@Override
 	public void createPartControl(Composite parent) {
 
@@ -76,12 +194,8 @@ public class EditorSourceInfoView extends ViewPart {
 		parentPane = parent.getParent();
 	}
 	
-	private TableItem addColumItem( String text ){
-		TableItem item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] { text, "" });
-		return item;
-	}
-
+	
+	
 	private void createTable() {
 		
 		if (_infoTable != null)
@@ -127,107 +241,6 @@ public class EditorSourceInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_SYMBOL);
 		addColumItem("DebugTreeInfo");
 
-	}
-	
-
-
-	private boolean hasNode() {
-		if (_node != null)
-			return true;
-		else
-			return false;
-	}
-
-	@Override
-	public void setFocus() {
-
-	}
-	
-	public void setComposite(String text){
-		Debug.f("setComposite",this);
-		
-		this._text = text;
-		refresh();
-	}
-	
-	public void setComposite(Composite pane){
-		Debug.f("setComposite",this);
-		
-		refresh();
-	}
-	
-	
-	public void setNode(OntologyTreeNode node){//, List<String> answersList, MyOntologyTreeItemLists itemLists){
-		//Debug.f("setNode",this);
-		//Console.info("setting node");
-		System.out.println("setting node ("+node.getName()+")");
-		_node = node;
-		refresh();
-	}
-	
-	
-	
-	public void setResource(Resource resource){
-		this._resource = resource;
-	}
-	
-	public Resource getResource(){
-		return this._resource;
-	}
-	
-	public void refresh(){
-		Debug.f("refresh",this);
-		System.out.println("refreseh!");
-		Display display = Display.getCurrent();
-		
-		if(display == null) {
-		    // Bad, no display for this thread => we are not in (a) UI thread
-		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
-			Debug.e("no display");
-
-			if (PlatformUI.getWorkbench().getDisplay() != null){
-				Debug.d("display by PlatformUI");
-				System.out.println("display by PlatformUI");
-				PlatformUI.getWorkbench().getDisplay().syncExec(
-					  new Runnable() {
-					    public void run(){
-					    	executeRefresh();
-					    }
-					  });
-			} else if (Application.getDisplay() != null){
-				Debug.d("display by Acitvator");
-				System.out.println("display by Acitvator");
-				Application.getDisplay().syncExec(
-						  new Runnable() {
-						    public void run(){
-						    	executeRefresh();
-						    }
-						  });
-			} else {
-				Debug.e("no Display (final)");
-				System.out.println("no Display (final)");
-			}
-		} else {
-			System.out.println("display else");
-			  new Runnable() {
-				    public void run(){
-				    	System.out.println("... execute");
-				    	executeRefresh();
-				    }
-				  };
-			executeRefresh();
-		}
-	}
-	
-	public TableItem addValueItem( TableItem[] items, int row, String value ){
-		if (items[row] == null){
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"+row+".");
-			return null;
-		}
-		TableItem item = items[row];
-		item.setText (1, value != null && !value.equals("null") ? value : "" );
-
-		return item;
 	}
 	
 	public void executeRefresh(){
@@ -486,6 +499,61 @@ public class EditorSourceInfoView extends ViewPart {
 		
 	}
 	
+	public Resource getResource(){
+		return this._resource;
+	}
+	
+	private boolean hasNode() {
+		if (_node != null)
+			return true;
+		else
+			return false;
+	}
+	
+	public void refresh(){
+		Debug.f("refresh",this);
+		System.out.println("refreseh!");
+		Display display = Display.getCurrent();
+		
+		if(display == null) {
+		    // Bad, no display for this thread => we are not in (a) UI thread
+		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
+			Debug.e("no display");
+
+			if (PlatformUI.getWorkbench().getDisplay() != null){
+				Debug.d("display by PlatformUI");
+				System.out.println("display by PlatformUI");
+				PlatformUI.getWorkbench().getDisplay().syncExec(
+					  new Runnable() {
+					    public void run(){
+					    	executeRefresh();
+					    }
+					  });
+			} else if (Application.getDisplay() != null){
+				Debug.d("display by Acitvator");
+				System.out.println("display by Acitvator");
+				Application.getDisplay().syncExec(
+						  new Runnable() {
+						    public void run(){
+						    	executeRefresh();
+						    }
+						  });
+			} else {
+				Debug.e("no Display (final)");
+				System.out.println("no Display (final)");
+			}
+		} else {
+			System.out.println("display else");
+			  new Runnable() {
+				    public void run(){
+				    	System.out.println("... execute");
+				    	executeRefresh();
+				    }
+				  };
+			executeRefresh();
+		}
+	}
+	
 	/*
 	
 	private JPanel createCreateLeafsNumberPanel(OntologyTreeItemNode node) {
@@ -539,103 +607,35 @@ public class EditorSourceInfoView extends ViewPart {
 	
 	*/
 	
-	private JPanel createOneButtonPanel(String text, String label,
-			String actionCommand, Color bgColor) {
-
-		JPanel jPanel = new JPanel();
-		jPanel = this.createItemPanel();
-
-		JButton suggestionCreateLeafs = createButton(label, actionCommand);
-
-		jPanel.add(createJLabel(text));
-		jPanel.add(suggestionCreateLeafs);
-
-		return jPanel;
+	public void setComposite(Composite pane){
+		Debug.f("setComposite",this);
+		
+		refresh();
 	}
 	
-	private JPanel createItemPanel() {
-
-		JPanel itemPanel = new JPanel();
-		itemPanel.setBackground(Color.LIGHT_GRAY);
-		//itemPanel.setLayout(getStandardGridBagLayout());
-		itemPanel.setSize(new Dimension(1000, 500));
-		// itemPanel.setPreferredSize( new Dimension ( 900, 200 ) );
-
-		return itemPanel;
+	public void setComposite(String text){
+		Debug.f("setComposite",this);
+		
+		this._text = text;
+		refresh();
 	}
 	
-	private JLabel createJLabel(String text) {
+	@Override
+	public void setFocus() {
 
-		return new JLabel(text);
 	}
 	
-	private JButton createButton(String label, String command) {
-
-		JButton button = new JButton();
-		if (!label.isEmpty())
-			button.setText(label);
-		button.setVerticalAlignment(AbstractButton.BOTTOM);
-		button.setActionCommand(command);
-		//button.addActionListener(this.myOntologyTree);
-		// button.setLabel( label );
-
-		// button.setPreferredSize( button.getPreferredSize() );
-		// button.setMaximumSize( new Dimension(10,3) );
-		button.setVisible(true);
-
-		return button;
+	public void setNode(OntologyTreeNode node){//, List<String> answersList, MyOntologyTreeItemLists itemLists){
+		//Debug.f("setNode",this);
+		//Console.info("setting node");
+		System.out.println("setting node ("+node.getName()+")");
+		_node = node;
+		refresh();
 	}
 
 
-	private JComboBox createJComboBox(String name, String value, int type) {
-
-		String[] pattern = null;
-		String selected = "";
-		int size = 0;
-
-		if (type == 1) // month
-			size = 12;
-		else if (type == 2) // days
-			size = 31;
-		else
-			size = 1;
-
-		if (type < 3) {
-			pattern = new String[size];
-			for (int x = 0; x < size; x++) {
-				pattern[x] = String.valueOf(x + 1);
-			}
-		} else if (type == 3) {
-			// groups
-
-			// add value to pattern
-			if (value != null) {
-				if (value != "10" && value != "50" && value != "100"
-						&& value != "1000" && value != "10" && value != "10"
-						&& value != "10") {
-					pattern = new String[] { value, "10", "50", "100", "1000" };
-				}
-
-			}
-
-			// set selected value to 10
-			if (value == null)
-				value = "10";
-		}
-
-		JComboBox jComboBox = new JComboBox(pattern);
-		jComboBox.setName(name);
-		jComboBox.setSelectedItem(value);
-		jComboBox.setPrototypeDisplayValue("XXXX");
-		jComboBox.setMaximumSize(jComboBox.getPreferredSize());
-
-		if (type == 3)
-			jComboBox.setEditable(true);
-
-		// add this object to the session array
-		//((Object) this.editorFields).put(name, jComboBox);
-
-		return jComboBox;
+	public void setResource(Resource resource){
+		this._resource = resource;
 	}
 	
 	

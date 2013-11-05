@@ -51,46 +51,10 @@ public class Target {
 	 */
 	private String targetDBSchema = "";
 
-	/**
-	 * @return the targetID
-	 */
-	public int getTargetID() {
-		return targetID;
-	}
-
-	/**
-	 * @param targetID the targetID to set
-	 */
-	public void setTargetID(int targetID) {
-		this.targetID = targetID;
-	}
-
-	/**
-	 * @return the targetProject
-	 */
-	public int getTargetProjectID() {
-		return targetProjectID;
-	}
-
-	/**
-	 * @param targetProject the targetProject to set
-	 */
-	public void setTargetProjectID(int targetProjectID) {
-		this.targetProjectID = targetProjectID;
-	}
-
-	/**
-	 * @return the version
-	 */
-	public int getVersion() {
-		return version;
-	}
-
-	/**
-	 * @param version the version to set
-	 */
-	public void setVersion(int version) {
-		this.version = version;
+	public Target (){
+	
+		
+		
 	}
 
 	/**
@@ -101,38 +65,10 @@ public class Target {
 	}
 
 	/**
-	 * @param created the created to set
-	 */
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	/**
 	 * @return the last_modified
 	 */
 	public Date getLastModified() {
 		return lastModified;
-	}
-
-	/**
-	 * @param lastModified the last_modified to set
-	 */
-	public void setLastModified(Date lastModified) {
-		this.lastModified = lastModified;
-	}
-
-	/**
-	 * @return the userID
-	 */
-	public String getUserID() {
-		return userID;
-	}
-
-	/**
-	 * @param userID the userID to set
-	 */
-	public void setUserID(String userID) {
-		this.userID = userID;
 	}
 
 	/**
@@ -143,16 +79,80 @@ public class Target {
 	}
 
 	/**
+	 * @return the targetID
+	 */
+	public int getTargetID() {
+		return targetID;
+	}
+
+	/**
+	 * @return the targetProject
+	 */
+	public int getTargetProjectID() {
+		return targetProjectID;
+	}
+
+	/**
+	 * @return the userID
+	 */
+	public String getUserID() {
+		return userID;
+	}
+
+	/**
+	 * @return the version
+	 */
+	public int getVersion() {
+		return version;
+	}
+
+	/**
+	 * @param created the created to set
+	 */
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	/**
+	 * @param lastModified the last_modified to set
+	 */
+	public void setLastModified(Date lastModified) {
+		this.lastModified = lastModified;
+	}
+
+	/**
 	 * @param targetDBSchema the targetDBSchema to set
 	 */
 	public void setTargetDBSchema(String targetDBSchema) {
 		this.targetDBSchema = targetDBSchema;
 	}
+
+	/**
+	 * @param targetID the targetID to set
+	 */
+	public void setTargetID(int targetID) {
+		this.targetID = targetID;
+	}
+
+	/**
+	 * @param targetProject the targetProject to set
+	 */
+	public void setTargetProjectID(int targetProjectID) {
+		this.targetProjectID = targetProjectID;
+	}
+
+	/**
+	 * @param userID the userID to set
+	 */
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
 	
-	public Target (){
-	
-		
-		
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(int version) {
+		this.version = version;
 	}
 	
 

@@ -44,49 +44,14 @@ public class StatusView extends ViewPart {
 
 	}
 
-	@Override
-	public void createPartControl(Composite parent) {
-		// parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		_parent = parent;
-
-		_table = new Table(parent, SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
-
-		TableLayout tlayout = new TableLayout();
-		tlayout.addColumnData(new ColumnWeightData(100));
-		_table.setLayout(tlayout);
-
-		_tableColumn = new TableColumn(_table, SWT.NONE);
-		_tableColumn.setResizable(false);
-		_tableColumn.setText("time");
-		_tableColumn.setResizable(true);
-
-		_tableColumn2 = new TableColumn(_table, SWT.NONE);
-		_tableColumn2.setResizable(false);
-		_tableColumn2.setText("message");
-
-		/*
-		 * TableColumnLayout tableColumnLayout = new TableColumnLayout();
-		 * tableColumnLayout.setColumnData(_tableColumn, new
-		 * ColumnWeightData(300));
-		 */
-
-		_colorInfo = new Color(Display.getCurrent(), 255, 255, 255);
-		_colorSuccess = new Color(Display.getCurrent(), 204, 251, 196);
-		_colorError = new Color(Display.getCurrent(), 255, 228, 225);
-
-		/*
-		 * TableItem tableItem = new TableItem(_table, SWT.NONE);
-		 * tableItem.setText("New TableItem");
-		 * tableItem.setBackground(_colorError);
-		 */
-
-		// this.addMessage("program started");
-		refresh();
+	public void addErrorMessage(String message) {
+		addMessage(new SystemMessage(message, SystemMessage.MessageType.ERROR,
+				SystemMessage.MessageLocation.MAIN));
 	}
 
-	@Override
-	public void setFocus() {
-		Application.getStatusView();
+	public void addMessage(String message) {
+		addMessage(new SystemMessage(message, SystemMessage.MessageType.INFO,
+				SystemMessage.MessageLocation.MAIN));
 	}
 
 	/*
@@ -100,22 +65,6 @@ public class StatusView extends ViewPart {
 
 	public void addMessage(String message, SystemMessage.MessageType messageType) {
 		addMessage(new SystemMessage(message, messageType,
-				SystemMessage.MessageLocation.MAIN));
-	}
-
-	public void addMessage(String message) {
-		addMessage(new SystemMessage(message, SystemMessage.MessageType.INFO,
-				SystemMessage.MessageLocation.MAIN));
-	}
-
-	public void addErrorMessage(String message) {
-		addMessage(new SystemMessage(message, SystemMessage.MessageType.ERROR,
-				SystemMessage.MessageLocation.MAIN));
-	}
-
-	public void addSuccsessMessage(String message) {
-		addMessage(new SystemMessage(message,
-				SystemMessage.MessageType.SUCCESS,
 				SystemMessage.MessageLocation.MAIN));
 	}
 
@@ -166,11 +115,62 @@ public class StatusView extends ViewPart {
 		});
 	}
 
+	public void addSuccsessMessage(String message) {
+		addMessage(new SystemMessage(message,
+				SystemMessage.MessageType.SUCCESS,
+				SystemMessage.MessageLocation.MAIN));
+	}
+
+	@Override
+	public void createPartControl(Composite parent) {
+		// parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		_parent = parent;
+
+		_table = new Table(parent, SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
+
+		TableLayout tlayout = new TableLayout();
+		tlayout.addColumnData(new ColumnWeightData(100));
+		_table.setLayout(tlayout);
+
+		_tableColumn = new TableColumn(_table, SWT.NONE);
+		_tableColumn.setResizable(false);
+		_tableColumn.setText("time");
+		_tableColumn.setResizable(true);
+
+		_tableColumn2 = new TableColumn(_table, SWT.NONE);
+		_tableColumn2.setResizable(false);
+		_tableColumn2.setText("message");
+
+		/*
+		 * TableColumnLayout tableColumnLayout = new TableColumnLayout();
+		 * tableColumnLayout.setColumnData(_tableColumn, new
+		 * ColumnWeightData(300));
+		 */
+
+		_colorInfo = new Color(Display.getCurrent(), 255, 255, 255);
+		_colorSuccess = new Color(Display.getCurrent(), 204, 251, 196);
+		_colorError = new Color(Display.getCurrent(), 255, 228, 225);
+
+		/*
+		 * TableItem tableItem = new TableItem(_table, SWT.NONE);
+		 * tableItem.setText("New TableItem");
+		 * tableItem.setBackground(_colorError);
+		 */
+
+		// this.addMessage("program started");
+		refresh();
+	}
+
 	public void refresh() {
 
 		_tableColumn.pack();
 		_tableColumn2.pack();
 		// _table.update();
+	}
+
+	@Override
+	public void setFocus() {
+		Application.getStatusView();
 	}
 
 	public void update() {

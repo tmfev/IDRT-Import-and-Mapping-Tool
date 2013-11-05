@@ -22,21 +22,21 @@ public class ReadTarget extends AbstractHandler {
 
 	public static Thread readTargetOntThread;
 	
+	public static Thread getReadTargetOntThread() {
+		return readTargetOntThread;
+	}
+	
 	public static void killImport() {
 		System.out.println("killing");
 		readTargetOntThread.stop();
 		System.out.println("killed");
 	}
 	
-	public static Thread getReadTargetOntThread() {
-		return readTargetOntThread;
-	}
-	
+	private ExecutionEvent _event;
+
 	public ReadTarget(){
 		super();
 	}
-
-	private ExecutionEvent _event;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

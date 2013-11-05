@@ -64,7 +64,7 @@ public class MyOntologyTrees extends JPanel {
 	private static final long serialVersionUID = -7345913467371670611L;
 
 	// jTree components
-	public OntologyTree _ontologyTreeSource = null;
+	private OntologyTree ontologyTreeSource = null;
 	private OntologyTree ontologyTargetTree = null;
 	private ViewTree viewTreeSource = null;
 	private ViewTree viewTreeTarget = null;
@@ -86,51 +86,47 @@ public class MyOntologyTrees extends JPanel {
 		
 	}
 
-	/**
-	 * Sets and/or resets the basic variables for this object.
-	 * 
-	 */
-	public void initiate() {
-		Console.info("Initiating source and target Tree.");
-		this.createOntologyTreeSource();
-		this.createOntologyTreeTarget();
+	/* OT Commands */
+	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
+		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
+				.getSelection();
+		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
+
+
+		if (!targetNode.isLeaf()) {
+			int minLevel = Integer.MAX_VALUE;
+
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+
+				if (minLevel > sourceNode1.getTreePathLevel())
+					minLevel = sourceNode1.getTreePathLevel();
+			}
+			nodeIterator = selection.iterator();
+
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+				if (sourceNode1.getTreePathLevel() == minLevel){
+					deepCopy(sourceNode1, targetNode);
+				}
+			}
+
+		}
+		else {
+			//TODO
+			while (nodeIterator.hasNext()) {
+				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+				targetNode.getTargetNodeAttributes().addStagingPath(sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
+			}
+
+		}
+		OntologyEditorView.setSelection(targetNode);
+		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
+				true);
 	}
 
-	/**
-	 * Does things when something in the jTree has been selected.
-	 * 
-	 * @param event
-	 *            the event
-	 * @return void
-	 */
-	public void valueChanged(TreeSelectionEvent event) {
-		String message = "";
-
-		OntologyTreeNode node = (OntologyTreeNode) this._ontologyTreeSource
-				.getLastSelectedPathComponent();
-
-		// DEL set active node for value changed
-		// Application.getResource().setActiveNode(node);
-		// Activator.getDefault().getResource().setActiveNode(node);
-
-		if (node != null) {
-
-			Activator.getDefault().getResource().getEditorSourceInfoView()
-			.setNode(node);
-
-			message = "Selection in source tree changed to \'" + node.getName()
-					+ "\'.";
-
-			Application.getStatusView().addMessage(
-					new SystemMessage(message,
-							SystemMessage.MessageType.SUCCESS));
-
-		} else {
-			// do nothing if the node is null or no NodeType is set
-			message = "Selection in source tree changed, but the the new selection isn't a node.";
-		}
-
-		Console.info(message);
+	public String createLongStringID(int id) {
+		return String.format("%08d", id);
 	}
 
 	public void createOntologyTreeSource() {
@@ -143,18 +139,18 @@ public class MyOntologyTrees extends JPanel {
 		rootNode.setNodeType(NodeType.ROOT);
 		rootNode.setTreePathLevel(-1);
 
-		_ontologyTreeSource = new OntologyTree(rootNode);
+		ontologyTreeSource = new OntologyTree(rootNode);
 
-		_ontologyTreeSource.getNodeLists().add(rootNode.getID(),
+		ontologyTreeSource.getNodeLists().add(rootNode.getID(),
 				rootNode.getTreePath(), rootNode);
 
 		setSourceRootNode(rootNode);
 
-		_ontologyTreeSource.setDragEnabled(true);
-		_ontologyTreeSource.setAutoscrolls(true);
-		_ontologyTreeSource.setRootVisible(false);
+		ontologyTreeSource.setDragEnabled(true);
+		ontologyTreeSource.setAutoscrolls(true);
+		ontologyTreeSource.setRootVisible(false);
 
-		_ontologyTreeSource.setTransferHandler(new OTTransferHandler());
+		ontologyTreeSource.setTransferHandler(new OTTransferHandler());
 
 		getOntologyTreeSource().updateUI();
 
@@ -163,6 +159,17 @@ public class MyOntologyTrees extends JPanel {
 
 		// adding mouse adapter
 		MouseAdapter ma = new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger())
+					myPopupEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
+				if (e.isPopupTrigger())
+					myPopupEvent(e);
+			}
+
 			private void myPopupEvent(MouseEvent e) {
 				int x = e.getX();
 				int y = e.getY();
@@ -174,23 +181,12 @@ public class MyOntologyTrees extends JPanel {
 				OT.setSelectionPath(path);
 
 			}
-
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
 		};
 
 		// set custom listener
-		if (this._ontologyTreeSource != null) {
+		if (this.ontologyTreeSource != null) {
 			// this.OT.addTreeSelectionListener(this);
-			this._ontologyTreeSource.addMouseListener(ma);
+			this.ontologyTreeSource.addMouseListener(ma);
 		}
 
 		this.viewTreeSource = new ViewTree();
@@ -316,6 +312,17 @@ public class MyOntologyTrees extends JPanel {
 
 		// adding mouse adapter
 		MouseAdapter ma = new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger())
+					myPopupEvent(e);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
+				if (e.isPopupTrigger())
+					myPopupEvent(e);
+			}
+
 			private void myPopupEvent(MouseEvent e) {
 				int x = e.getX();
 				int y = e.getY();
@@ -326,17 +333,6 @@ public class MyOntologyTrees extends JPanel {
 
 				OTTarget.setSelectionPath(path);
 
-			}
-
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
 			}
 		};
 
@@ -357,154 +353,6 @@ public class MyOntologyTrees extends JPanel {
 	 * 
 	 * ****************************************************
 	 */
-
-	/**
-	 * getTreeRoot: return the tree root object for this instance
-	 * 
-	 * @return this tree root
-	 */
-
-	public OntologyTreeNode getTreeRoot() {
-
-		if (this._ontologyTreeSource == null)
-			Console.error("OT is null while trying to get the tree root!");
-
-		return this._ontologyTreeSource.getTreeRoot();
-	}
-
-	public OntologyTreeNode getTargetTreeRoot() {
-
-		if (this.ontologyTargetTree == null) {
-			Console.error("OTTarget is null while trying to get the tree root!");
-			return null;
-		}
-		return this.ontologyTargetTree.getTreeRoot();
-	}
-
-	public OntologyTreeNode getStudyNode() {
-		return this._ontologyTreeSource.getRootNode();
-	}
-
-	/**
-	 * Returns the instance of the MyOTItemLists object.
-	 * 
-	 * @return the MyOTItemLists object
-	 */
-
-	public OTItemLists getItemLists() {
-		return this._ontologyTreeSource.getItemLists();
-	}
-
-	//	protected void expandTreePaths(TreePath path) {
-	//		this._ontologyTreeSource.expandPath(path);
-	//		final Object node = path.getLastPathComponent();
-	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
-	//
-	//		for (int index = 0; index < n; index++) {
-	//			final Object child = this._ontologyTreeSource.getModel().getChild(
-	//					node, index);
-	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
-	//			/*
-	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
-	//			 * item, leaf it closed and return return; }
-	//			 */
-	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
-	//				expandTreePaths(path.pathByAddingChild(child));
-	//			}
-	//		}
-	//	}
-
-	public OntologyTree getOntologyTreeSource() {
-		return this._ontologyTreeSource;
-	}
-
-	public OntologyTree getOntologyTreeTarget() {
-		return this.ontologyTargetTree;
-	}
-
-	public String createLongStringID(int id) {
-		return String.format("%08d", id);
-	}
-
-	public String getVisitFromStringPath(String stringPath) {
-		String[] split = stringPath.split("/");
-		if (split[2] != null) {
-			return split[2].toString();
-		}
-
-		return "";
-	}
-
-	/**
-	 * @param _lastActiveNode
-	 *            the activeItemNode to set
-	 */
-	public void setSourceRootNode(OntologyTreeNode sourceRootNode) {
-		this.sourceRootNode = sourceRootNode;
-	}
-
-	/**
-	 * @return the activeItemNode
-	 */
-	public OntologyTreeNode getSourceRootNode() {
-		return sourceRootNode;
-	}
-
-	/**
-	 * @param _lastActiveNode
-	 *            the activeItemNode to set
-	 */
-	public void setTargetRootNode(OntologyTreeNode targetRootNode) {
-		this.targetRootNode = targetRootNode;
-	}
-
-	/**
-	 * @return the activeItemNode
-	 */
-	public OntologyTreeNode getTargetRootNode() {
-		return targetRootNode;
-	}
-
-	public OntologyTreeNode moveTargetNode(OntologyTreeNode sourceNode,
-			OntologyTreeNode targetNode) {
-		OntologyTreeNode newNode = new OntologyTreeNode(
-				sourceNode.getName());
-
-		newNode.setID(sourceNode.getID());
-		newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-
-		/*
-		 * copy attriubutes
-		 */
-
-		if (sourceNode.getOntologyCellAttributes() != null) {
-			newNode.getTargetNodeAttributes().setSubNodeList((
-					sourceNode.getTargetNodeAttributes().getSubNodeList()));
-
-			newNode.getTargetNodeAttributes().setVisualattributes(
-					sourceNode.getTargetNodeAttributes().getVisualattribute());
-			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
-			newNode.getTargetNodeAttributes().setChanged(true);
-		}
-		else {
-			System.out.println("sourceNode.getOntologyCellAttributes() == null");
-		}
-
-
-		targetNode.add(newNode);
-		OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode, true);
-		OntologyEditorView.getTargetTreeViewer().refresh();
-		this.getOntologyTreeTarget().getNodeLists().add(newNode);
-
-		if (sourceNode.hasChildren()) {
-			for (int x = 0; x < sourceNode.getChildCount(); x++) {
-				OntologyTreeNode child = (OntologyTreeNode) sourceNode
-						.getChildAt(x);
-				moveTargetNode(child, newNode);
-			}
-		}
-		return newNode;
-	}
 
 	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target) {
 		//TODO
@@ -560,6 +408,11 @@ public class MyOntologyTrees extends JPanel {
 				btnOK.addSelectionListener(new SelectionListener() {
 
 					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+
+					}
+
+					@Override
 					public void widgetSelected(SelectionEvent e) {
 						String newID = text.getText();
 						node.setID(newID);
@@ -582,11 +435,6 @@ public class MyOntologyTrees extends JPanel {
 						}
 
 					}
-
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {
-
-					}
 				});
 
 				actionMenu.pack();
@@ -596,84 +444,6 @@ public class MyOntologyTrees extends JPanel {
 				while (!dialog.isDisposed ()) {
 					if (!display.readAndDispatch ()) display.sleep ();
 				}
-			}
-		}
-	}
-
-	/* OT Commands */
-	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
-		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
-				.getSelection();
-		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-
-
-		if (!targetNode.isLeaf()) {
-			int minLevel = Integer.MAX_VALUE;
-
-			while (nodeIterator.hasNext()) {
-				final OntologyTreeNode sourceNode1 = nodeIterator.next();
-
-				if (minLevel > sourceNode1.getTreePathLevel())
-					minLevel = sourceNode1.getTreePathLevel();
-			}
-			nodeIterator = selection.iterator();
-
-			while (nodeIterator.hasNext()) {
-				final OntologyTreeNode sourceNode1 = nodeIterator.next();
-				if (sourceNode1.getTreePathLevel() == minLevel){
-					deepCopy(sourceNode1, targetNode);
-				}
-			}
-
-		}
-		else {
-			//TODO
-			while (nodeIterator.hasNext()) {
-				final OntologyTreeNode sourceNode1 = nodeIterator.next();
-				targetNode.getTargetNodeAttributes().addStagingPath(sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
-			}
-
-		}
-		OntologyEditorView.setSelection(targetNode);
-		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
-				true);
-	}
-
-	/* OT Commands */
-	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
-			OntologyTreeNode targetNode, String attribute) {
-		System.out.println("setting attribute: " + attribute);
-
-		if (sourceNode != null) {
-			System.out.println(" - do:" + sourceNode.getName() + " -> "
-					+ targetNode.getName() + "!");
-
-			setTargetAttribute(targetNode, attribute,
-					sourceNode.getOntologyCellAttributes().getC_FULLNAME());
-		}
-	}
-
-	public void setTargetAttribute(OntologyTreeNode targetNode,
-			String attribute, String value) {
-
-		if (attribute.equals("startDateSource")) {
-			targetNode.getTargetNodeAttributes().setStartDateSourcePath(value);
-			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
-				sub.getTargetSubNodeAttributes().setStartDateSourcePath(value);
-			}
-		}
-		else if (attribute.equals("endDateSource")) {
-			targetNode.getTargetNodeAttributes().setEndDateSourcePath(value);
-			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
-				sub.getTargetSubNodeAttributes().setEndDateSourcePath(value);
-			}
-		}
-		if (targetNode.hasChildren()) {
-
-			for (int x = 0; x < targetNode.getChildCount(); x++) {
-				OntologyTreeNode child = (OntologyTreeNode) targetNode
-						.getChildAt(x);
-				setTargetAttribute(child, attribute, value);
 			}
 		}
 	}
@@ -713,6 +483,10 @@ public class MyOntologyTrees extends JPanel {
 			startMenuItem.addSelectionListener(new SelectionListener() {
 
 				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+
+				@Override
 				public void widgetSelected(SelectionEvent arg0) {
 					dialog.close();
 					System.out.println("STARTDATE CLICKED");
@@ -734,15 +508,16 @@ public class MyOntologyTrees extends JPanel {
 							"startDateSource");
 					Application.executeCommand(command);
 				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
-				}
 			});
 			//Set EndDate
 			MenuItem endMenuItem =  new MenuItem(menu, SWT.PUSH);
 			endMenuItem.setText("Add as End Date");
 			endMenuItem.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+
+				}
 
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
@@ -764,11 +539,6 @@ public class MyOntologyTrees extends JPanel {
 							"endDateSource");
 					Application.executeCommand(command);
 				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
-
-				}
 			});
 			new MenuItem(menu, SWT.SEPARATOR);
 
@@ -776,6 +546,10 @@ public class MyOntologyTrees extends JPanel {
 			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.PUSH);
 			mergeOntMenuItem.setText("Merge with Standard Ontology");
 			mergeOntMenuItem.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
 
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
@@ -801,10 +575,6 @@ public class MyOntologyTrees extends JPanel {
 					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
 					//							targetPath);
 					Application.executeCommand(command2);
-				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
 				}
 			});
 
@@ -849,13 +619,13 @@ public class MyOntologyTrees extends JPanel {
 			tltmCancel.addSelectionListener(new SelectionListener() {
 
 				@Override
-				public void widgetSelected(SelectionEvent e) {
-					dialog.close();
+				public void widgetDefaultSelected(SelectionEvent e) {
+
 				}
 
 				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-
+				public void widgetSelected(SelectionEvent e) {
+					dialog.close();
 				}
 			});
 
@@ -865,12 +635,242 @@ public class MyOntologyTrees extends JPanel {
 		}
 	}
 
+	/**
+	 * Returns the instance of the MyOTItemLists object.
+	 * 
+	 * @return the MyOTItemLists object
+	 */
+
+	public OTItemLists getItemLists() {
+		return this.ontologyTreeSource.getItemLists();
+	}
+
+	public OntologyTree getOntologyTreeSource() {
+		return this.ontologyTreeSource;
+	}
+
+	//	protected void expandTreePaths(TreePath path) {
+	//		this._ontologyTreeSource.expandPath(path);
+	//		final Object node = path.getLastPathComponent();
+	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
+	//
+	//		for (int index = 0; index < n; index++) {
+	//			final Object child = this._ontologyTreeSource.getModel().getChild(
+	//					node, index);
+	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
+	//			/*
+	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
+	//			 * item, leaf it closed and return return; }
+	//			 */
+	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
+	//				expandTreePaths(path.pathByAddingChild(child));
+	//			}
+	//		}
+	//	}
+
+	public OntologyTree getOntologyTreeTarget() {
+		return this.ontologyTargetTree;
+	}
+
+	/**
+	 * @return the activeItemNode
+	 */
+	public OntologyTreeNode getSourceRootNode() {
+		return sourceRootNode;
+	}
+
+	public OntologyTreeNode getStudyNode() {
+		return this.ontologyTreeSource.getRootNode();
+	}
+
+	/**
+	 * @return the activeItemNode
+	 */
+	public OntologyTreeNode getTargetRootNode() {
+		return targetRootNode;
+	}
+
+	public OntologyTreeNode getTargetTreeRoot() {
+
+		if (this.ontologyTargetTree == null) {
+			Console.error("OTTarget is null while trying to get the tree root!");
+			return null;
+		}
+		return this.ontologyTargetTree.getTreeRoot();
+	}
+
+	/**
+	 * getTreeRoot: return the tree root object for this instance
+	 * 
+	 * @return this tree root
+	 */
+
+	public OntologyTreeNode getTreeRoot() {
+
+		if (this.ontologyTreeSource == null)
+			Console.error("OT is null while trying to get the tree root!");
+
+		return this.ontologyTreeSource.getTreeRoot();
+	}
+
 	public ViewTree getViewTreeSource() {
 		return this.viewTreeSource;
 	}
 
 	public ViewTree getViewTreeTarget() {
 		return this.viewTreeTarget;
+	}
+
+	public String getVisitFromStringPath(String stringPath) {
+		String[] split = stringPath.split("/");
+		if (split[2] != null) {
+			return split[2].toString();
+		}
+
+		return "";
+	}
+
+	/**
+	 * Sets and/or resets the basic variables for this object.
+	 * 
+	 */
+	public void initiate() {
+		Console.info("Initiating source and target Tree.");
+		this.createOntologyTreeSource();
+		this.createOntologyTreeTarget();
+	}
+
+	public OntologyTreeNode moveTargetNode(OntologyTreeNode sourceNode,
+			OntologyTreeNode targetNode) {
+		OntologyTreeNode newNode = new OntologyTreeNode(
+				sourceNode.getName());
+
+		newNode.setID(sourceNode.getID());
+		newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
+
+		/*
+		 * copy attriubutes
+		 */
+
+		if (sourceNode.getOntologyCellAttributes() != null) {
+			newNode.getTargetNodeAttributes().setSubNodeList((
+					sourceNode.getTargetNodeAttributes().getSubNodeList()));
+
+			newNode.getTargetNodeAttributes().setVisualattributes(
+					sourceNode.getTargetNodeAttributes().getVisualattribute());
+			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
+			newNode.getTargetNodeAttributes().setChanged(true);
+		}
+		else {
+			System.out.println("sourceNode.getOntologyCellAttributes() == null");
+		}
+
+
+		targetNode.add(newNode);
+		OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode, true);
+		OntologyEditorView.getTargetTreeViewer().refresh();
+		this.getOntologyTreeTarget().getNodeLists().add(newNode);
+
+		if (sourceNode.hasChildren()) {
+			for (int x = 0; x < sourceNode.getChildCount(); x++) {
+				OntologyTreeNode child = (OntologyTreeNode) sourceNode
+						.getChildAt(x);
+				moveTargetNode(child, newNode);
+			}
+		}
+		return newNode;
+	}
+
+	/**
+	 * @param _lastActiveNode
+	 *            the activeItemNode to set
+	 */
+	public void setSourceRootNode(OntologyTreeNode sourceRootNode) {
+		this.sourceRootNode = sourceRootNode;
+	}
+
+	public void setTargetAttribute(OntologyTreeNode targetNode,
+			String attribute, String value) {
+
+		if (attribute.equals("startDateSource")) {
+			targetNode.getTargetNodeAttributes().setStartDateSourcePath(value);
+			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
+				sub.getTargetSubNodeAttributes().setStartDateSourcePath(value);
+			}
+		}
+		else if (attribute.equals("endDateSource")) {
+			targetNode.getTargetNodeAttributes().setEndDateSourcePath(value);
+			for (OntologyTreeSubNode sub : targetNode.getTargetNodeAttributes().getSubNodeList()) {
+				sub.getTargetSubNodeAttributes().setEndDateSourcePath(value);
+			}
+		}
+		if (targetNode.hasChildren()) {
+
+			for (int x = 0; x < targetNode.getChildCount(); x++) {
+				OntologyTreeNode child = (OntologyTreeNode) targetNode
+						.getChildAt(x);
+				setTargetAttribute(child, attribute, value);
+			}
+		}
+	}
+
+	/* OT Commands */
+	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
+			OntologyTreeNode targetNode, String attribute) {
+		System.out.println("setting attribute: " + attribute);
+
+		if (sourceNode != null) {
+			System.out.println(" - do:" + sourceNode.getName() + " -> "
+					+ targetNode.getName() + "!");
+
+			setTargetAttribute(targetNode, attribute,
+					sourceNode.getOntologyCellAttributes().getC_FULLNAME());
+		}
+	}
+
+	/**
+	 * @param _lastActiveNode
+	 *            the activeItemNode to set
+	 */
+	public void setTargetRootNode(OntologyTreeNode targetRootNode) {
+		this.targetRootNode = targetRootNode;
+	}
+
+	/**
+	 * Does things when something in the jTree has been selected.
+	 * 
+	 * @param event
+	 *            the event
+	 * @return void
+	 */
+	public void valueChanged(TreeSelectionEvent event) {
+		String message = "";
+
+		OntologyTreeNode node = (OntologyTreeNode) this.ontologyTreeSource
+				.getLastSelectedPathComponent();
+
+		// DEL set active node for value changed
+		// Application.getResource().setActiveNode(node);
+		// Activator.getDefault().getResource().setActiveNode(node);
+
+		if (node != null) {
+
+			Activator.getDefault().getResource().getEditorSourceInfoView()
+			.setNode(node);
+
+			message = "Selection in source tree changed to \'" + node.getName()
+					+ "\'.";
+
+			Application.getStatusView().addMessage(
+					new SystemMessage(message,
+							SystemMessage.MessageType.SUCCESS));
+
+		} else {
+			// do nothing if the node is null or no NodeType is set
+			message = "Selection in source tree changed, but the the new selection isn't a node.";
+		}
+
+		Console.info(message);
 	}
 
 }

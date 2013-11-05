@@ -4,6 +4,32 @@ import de.umg.mi.idrt.ioe.Debug;
 
 public class i2b2Tools {
 
+	public static String convertAlphanumericPIDtoNumber(String pid) {
+		// Debug.f("convertAlphanumericPIDtoNumber", this);
+		String newString = "";
+		String tmpString = "";
+
+		byte[] bytes = pid.getBytes();
+		for (int x = 0; x < bytes.length; x++) {
+
+			byte byte2 = bytes[x];
+			tmpString = String.valueOf(byte2);
+			Debug.d("**** " + bytes[x] + " -1:'" + tmpString + "'");
+			if (tmpString.length() == 3) {
+				// nothing
+			} else if (tmpString.length() == 2) {
+				tmpString = "0" + tmpString;
+			} else if (tmpString.length() == 1) {
+				tmpString = "00" + tmpString;
+			} else {
+				Debug.d("**** ###FEHLER convert");
+			}
+			newString += tmpString;
+			Debug.d("**** " + bytes[x] + " -2:'" + tmpString + "'");
+		}
+		return newString;
+	}
+
 	/**
 	 * This method converts PIDs with alphanumeric chracters to integer-only
 	 * PIDs by replacing alphabetic characters with ascii-code
@@ -37,32 +63,6 @@ public class i2b2Tools {
 		}
 
 		return 0;
-	}
-
-	public static String convertAlphanumericPIDtoNumber(String pid) {
-		// Debug.f("convertAlphanumericPIDtoNumber", this);
-		String newString = "";
-		String tmpString = "";
-
-		byte[] bytes = pid.getBytes();
-		for (int x = 0; x < bytes.length; x++) {
-
-			byte byte2 = bytes[x];
-			tmpString = String.valueOf(byte2);
-			Debug.d("**** " + bytes[x] + " -1:'" + tmpString + "'");
-			if (tmpString.length() == 3) {
-				// nothing
-			} else if (tmpString.length() == 2) {
-				tmpString = "0" + tmpString;
-			} else if (tmpString.length() == 1) {
-				tmpString = "00" + tmpString;
-			} else {
-				Debug.d("**** ###FEHLER convert");
-			}
-			newString += tmpString;
-			Debug.d("**** " + bytes[x] + " -2:'" + tmpString + "'");
-		}
-		return newString;
 	}
 
 	public String deconvertAlphanumericPIDfromNumber(String pidString) {

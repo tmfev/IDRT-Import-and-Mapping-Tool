@@ -18,6 +18,11 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
+	public void dispose() {
+		// unused
+	}
+
+	@Override
 	public Object[] getChildren(Object element) {
 		if (element instanceof OntologyTreeNode) {
 			//			System.out.println("TREENODE");
@@ -33,6 +38,18 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
+	public Object[] getElements(Object inputElement) {
+		return model.getTargetModel().toArray();
+	}
+	//		if (inputElement instanceof ArrayList) {
+	//			//			System.out.println("Content provider ");
+	//		} else {
+	//			System.out
+	//			.println("TreeContentProvider Error at getElements: inputElement is NOT instanceof OntologyTreeNode "
+	//					+ inputElement.getClass().getSimpleName());
+	//		}
+
+	@Override
 	public Object getParent(Object element) {
 		if (element instanceof OntologyTreeNode)
 		return ((OntologyTreeNode) element).getParent();
@@ -40,6 +57,10 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 			return ((OntologyTreeSubNode)element).getParent();
 		else
 			return null;
+	}
+
+	public OntologyTreeNode getRoot() {
+		return _treeRoot;
 	}
 
 	@Override
@@ -51,29 +72,6 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 			else
 				return false;
 	}
-
-	@Override
-	public void dispose() {
-		// unused
-	}
-
-	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// unused
-		System.out.println("changed");
-	}
-
-	@Override
-	public Object[] getElements(Object inputElement) {
-		return model.getTargetModel().toArray();
-	}
-	//		if (inputElement instanceof ArrayList) {
-	//			//			System.out.println("Content provider ");
-	//		} else {
-	//			System.out
-	//			.println("TreeContentProvider Error at getElements: inputElement is NOT instanceof OntologyTreeNode "
-	//					+ inputElement.getClass().getSimpleName());
-	//		}
 
 	//		if (((OntologyTreeNode) _ot.getRootNode()).getChildCount() > 0) {
 	//			System.out.println("IF?");
@@ -90,8 +88,10 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 	//
 	//	}
 
-	public OntologyTreeNode getRoot() {
-		return _treeRoot;
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// unused
+		System.out.println("changed");
 	}
 
 	public void setOntologyTree(OntologyTree ot) {

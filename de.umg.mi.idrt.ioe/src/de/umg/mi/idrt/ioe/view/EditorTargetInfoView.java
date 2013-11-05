@@ -26,7 +26,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -66,36 +65,21 @@ public class EditorTargetInfoView extends ViewPart {
 	private static TableCursor tableCursor;
 	private static TableViewer viewer;
 
-	public EditorTargetInfoView() {
-
-	}
-
-	@Override
-	public void createPartControl(Composite parent) {
-
-		_parent = parent;
-		parent.setLayout(new GridLayout(1, false));
-
-		// createInfoGroup();
-
-		
-
-
-		_editorComposite = new Composite(parent, SWT.NONE);
-		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
-				false, 1, 1));
-		_editorComposite.setLayout(new FillLayout(SWT.VERTICAL));
-
-		createTable();
-
-		// item.setImage (image);
-
-		parentPane = parent.getParent();
-	}
-
 	private static TableItem addColumItem(String text) {
 		TableItem item = new TableItem(_infoTable, SWT.NONE);
 		item.setText(new String[] { text, "" });
+		return item;
+	}
+
+	public static TableItem addValueItem(TableItem[] items, int row, String value) {
+		if (items[row] == null) {
+			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
+					+ row + ".");
+			return null;
+		}
+
+		TableItem item = items[row];
+		item.setText(1, value != null && !value.equals("null") ? value : "");
 		return item;
 	}
 
@@ -307,167 +291,6 @@ public class EditorTargetInfoView extends ViewPart {
 
 	}
 
-	private void createViewer(Composite parent) {
-		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
-		createColumns(parent, viewer);
-		final Table table = viewer.getTable();
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		viewer.setContentProvider(new ArrayContentProvider());
-		// Get the content for the viewer, setInput will call getElements in the
-		// contentProvider
-		// viewer.setInput(ModelProvider.INSTANCE.getPersons());
-		// Make the selection available to other views
-		getSite().setSelectionProvider(viewer);
-
-		// Layout the viewer
-		GridData gridData = new GridData();
-		gridData.verticalAlignment = GridData.FILL;
-		gridData.horizontalSpan = 2;
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.grabExcessVerticalSpace = true;
-		gridData.horizontalAlignment = GridData.FILL;
-		viewer.getControl().setLayoutData(gridData);
-	}
-
-	private TableViewerColumn createTableViewerColumn(String title, int bound,
-			final int colNumber) {
-		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer,
-				SWT.NONE);
-		final TableColumn column = viewerColumn.getColumn();
-		column.setText(title);
-		column.setWidth(bound);
-		column.setResizable(true);
-		column.setMoveable(true);
-		// column.addSelectionListener(getSelectionAdapter(column, colNumber));
-		return viewerColumn;
-	}
-
-	private void createColumns(final Composite parent, final TableViewer viewer) {
-		String[] titles = { "First name", "Last name", "Gender", "Married" };
-		int[] bounds = { 100, 100, 100, 100 };
-
-		// First column is for the first name
-		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
-		col.setLabelProvider(new ColumnLabelProvider() {
-			@Override
-			public String getText(Object element) {
-				// Person p = (Person) element;
-				// return p.getFirstName();
-				return "firstname";
-			}
-		});
-
-		/*
-		 * @Override public Image getImage(Object element) { if (((Person)
-		 * element).isMarried()) { return CHECKED; } else { return UNCHECKED; }
-		 * }
-		 */
-		// });
-
-	}
-
-	public TableViewer getViewer() {
-		return viewer;
-	}
-
-	private boolean hasNode() {
-		if (_node != null)
-			return true;
-		else
-			return false;
-	}
-
-	@Override
-	public void setFocus() {
-
-	}
-
-	public void setComposite(String text) {
-		Debug.f("setComposite", this);
-
-		this._text = text;
-		refresh();
-	}
-
-	public void setComposite(Composite pane) {
-		Debug.f("setComposite", this);
-
-		refresh();
-	}
-
-	public static void setNode(MutableTreeNode node) {// , List<String> answersList,
-		// MyOntologyTreeItemLists
-		// itemLists){
-		// Debug.f("setNode",this);
-		// Console.info("setting node");
-		//		System.out.println("setting node (" + node.getName() + ")");
-		_node = node;
-		refresh();
-	}
-
-	public void setResource(Resource resource) {
-		this._resource = resource;
-	}
-
-	public Resource getResource() {
-		return this._resource;
-	}
-
-	public static void refresh() {
-
-		// Editor von Benjamin aus CSVWizard klauen
-
-		Display display = Display.getCurrent();
-
-		if (display == null) {
-			// Bad, no display for this thread => we are not in (a) UI thread
-			// display.syncExec(new Runnable() {void run() { gc = new
-			// GC(display);}});
-			Debug.e("no display");
-
-			if (PlatformUI.getWorkbench().getDisplay() != null) {
-				Debug.d("display by PlatformUI");
-				PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-					public void run() {
-						executeRefresh();
-					}
-				});
-
-			} else if (Application.getDisplay() != null) {
-				Debug.d("display by Acitvator");
-				Application.getDisplay().syncExec(new Runnable() {
-					public void run() {
-						executeRefresh();
-					}
-				});
-			} else {
-				Debug.e("no Display (final)");
-			}
-		} else {
-			new Runnable() {
-				public void run() {
-					executeRefresh();
-				}
-			};
-			executeRefresh();
-		}
-	}
-
-	public static TableItem addValueItem(TableItem[] items, int row, String value) {
-		if (items[row] == null) {
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
-					+ row + ".");
-			return null;
-		}
-
-		TableItem item = items[row];
-		item.setText(1, value != null && !value.equals("null") ? value : "");
-		return item;
-	}
-
 	public static void executeRefresh() {
 		//		System.out.println("executeRefresh for text:\"" + _node.getName()
 		//				+ "\"");
@@ -541,7 +364,183 @@ public class EditorTargetInfoView extends ViewPart {
 		}
 	}
 
+	public static void refresh() {
+
+		// Editor von Benjamin aus CSVWizard klauen
+
+		Display display = Display.getCurrent();
+
+		if (display == null) {
+			// Bad, no display for this thread => we are not in (a) UI thread
+			// display.syncExec(new Runnable() {void run() { gc = new
+			// GC(display);}});
+			Debug.e("no display");
+
+			if (PlatformUI.getWorkbench().getDisplay() != null) {
+				Debug.d("display by PlatformUI");
+				PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+					public void run() {
+						executeRefresh();
+					}
+				});
+
+			} else if (Application.getDisplay() != null) {
+				Debug.d("display by Acitvator");
+				Application.getDisplay().syncExec(new Runnable() {
+					public void run() {
+						executeRefresh();
+					}
+				});
+			} else {
+				Debug.e("no Display (final)");
+			}
+		} else {
+			new Runnable() {
+				public void run() {
+					executeRefresh();
+				}
+			};
+			executeRefresh();
+		}
+	}
+
+	public static void setNode(MutableTreeNode node) {// , List<String> answersList,
+		// MyOntologyTreeItemLists
+		// itemLists){
+		// Debug.f("setNode",this);
+		// Console.info("setting node");
+		//		System.out.println("setting node (" + node.getName() + ")");
+		_node = node;
+		refresh();
+	}
+
+	public EditorTargetInfoView() {
+
+	}
+
+	private void createColumns(final Composite parent, final TableViewer viewer) {
+		String[] titles = { "First name", "Last name", "Gender", "Married" };
+		int[] bounds = { 100, 100, 100, 100 };
+
+		// First column is for the first name
+		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
+		col.setLabelProvider(new ColumnLabelProvider() {
+			@Override
+			public String getText(Object element) {
+				// Person p = (Person) element;
+				// return p.getFirstName();
+				return "firstname";
+			}
+		});
+
+		/*
+		 * @Override public Image getImage(Object element) { if (((Person)
+		 * element).isMarried()) { return CHECKED; } else { return UNCHECKED; }
+		 * }
+		 */
+		// });
+
+	}
+
+	@Override
+	public void createPartControl(Composite parent) {
+
+		_parent = parent;
+		parent.setLayout(new GridLayout(1, false));
+
+		// createInfoGroup();
+
+		
+
+
+		_editorComposite = new Composite(parent, SWT.NONE);
+		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
+		_editorComposite.setLayout(new FillLayout(SWT.VERTICAL));
+
+		createTable();
+
+		// item.setImage (image);
+
+		parentPane = parent.getParent();
+	}
+
+	private TableViewerColumn createTableViewerColumn(String title, int bound,
+			final int colNumber) {
+		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer,
+				SWT.NONE);
+		final TableColumn column = viewerColumn.getColumn();
+		column.setText(title);
+		column.setWidth(bound);
+		column.setResizable(true);
+		column.setMoveable(true);
+		// column.addSelectionListener(getSelectionAdapter(column, colNumber));
+		return viewerColumn;
+	}
+
+	private void createViewer(Composite parent) {
+		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
+		createColumns(parent, viewer);
+		final Table table = viewer.getTable();
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		viewer.setContentProvider(new ArrayContentProvider());
+		// Get the content for the viewer, setInput will call getElements in the
+		// contentProvider
+		// viewer.setInput(ModelProvider.INSTANCE.getPersons());
+		// Make the selection available to other views
+		getSite().setSelectionProvider(viewer);
+
+		// Layout the viewer
+		GridData gridData = new GridData();
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.horizontalSpan = 2;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		viewer.getControl().setLayoutData(gridData);
+	}
+
 	public Composite getComposite() {
 		return _editorComposite;
+	}
+
+	public Resource getResource() {
+		return this._resource;
+	}
+
+	public TableViewer getViewer() {
+		return viewer;
+	}
+
+	private boolean hasNode() {
+		if (_node != null)
+			return true;
+		else
+			return false;
+	}
+
+	public void setComposite(Composite pane) {
+		Debug.f("setComposite", this);
+
+		refresh();
+	}
+
+	public void setComposite(String text) {
+		Debug.f("setComposite", this);
+
+		this._text = text;
+		refresh();
+	}
+
+	@Override
+	public void setFocus() {
+
+	}
+
+	public void setResource(Resource resource) {
+		this._resource = resource;
 	}
 }

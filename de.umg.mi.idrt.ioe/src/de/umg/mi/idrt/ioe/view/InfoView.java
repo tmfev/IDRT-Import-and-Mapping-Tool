@@ -4,19 +4,7 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.TableCursor;
@@ -29,14 +17,22 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.part.ViewPart;
 
-import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
-import org.eclipse.swt.layout.GridLayout;
 
 public class InfoView extends ViewPart {
 
@@ -56,6 +52,46 @@ public class InfoView extends ViewPart {
 	public InfoView() {
 	}
 
+	private TableItem addColumItem(String text) {
+		TableItem item = new TableItem(_infoTable, SWT.NONE);
+		item.setText(new String[] { text, "" });
+		return item;
+	}
+
+	public TableItem addValueItem(TableItem[] items, int row, String value) {
+		if (items[row] == null) {
+			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
+					+ row + ".");
+			return null;
+		}
+		TableItem item = items[row];
+		item.setText(1, value != null && !value.equals("null") ? value : "");
+		return item;
+	}
+	private void createColumns(final Composite parent, final TableViewer viewer) {
+		String[] titles = { "First name", "Last name", "Gender", "Married" };
+		int[] bounds = { 100, 100, 100, 100 };
+
+		// First column is for the first name
+		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
+		col.setLabelProvider(new ColumnLabelProvider() {
+			@Override
+			public String getText(Object element) {
+				// Person p = (Person) element;
+				// return p.getFirstName();
+				return "firstname";
+			}
+		});
+
+		/*
+		 * @Override public Image getImage(Object element) { if (((Person)
+		 * element).isMarried()) { return CHECKED; } else { return UNCHECKED; }
+		 * }
+		 */
+		// });
+
+	}
+	
 	@Override
 	public void createPartControl(Composite parent) {
 		
@@ -71,10 +107,7 @@ public class InfoView extends ViewPart {
 		sashForm.setWeights(new int[] {1, 1});
 		createTable();
 	}
-
-	@Override
-	public void setFocus() {
-	}
+	
 	private void createTable() {
 
 		if (_infoTable != null)
@@ -252,13 +285,20 @@ public class InfoView extends ViewPart {
 
 		targetNodeComposite.layout();
 	}
-	
-	private TableItem addColumItem(String text) {
-		TableItem item = new TableItem(_infoTable, SWT.NONE);
-		item.setText(new String[] { text, "" });
-		return item;
+
+	private TableViewerColumn createTableViewerColumn(String title, int bound,
+			final int colNumber) {
+		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer,
+				SWT.NONE);
+		final TableColumn column = viewerColumn.getColumn();
+		column.setText(title);
+		column.setWidth(bound);
+		column.setResizable(true);
+		column.setMoveable(true);
+		// column.addSelectionListener(getSelectionAdapter(column, colNumber));
+		return viewerColumn;
 	}
-	
+
 	private void createViewer(Composite parent) {
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
@@ -284,45 +324,44 @@ public class InfoView extends ViewPart {
 		viewer.getControl().setLayoutData(gridData);
 	}
 
-	private TableViewerColumn createTableViewerColumn(String title, int bound,
-			final int colNumber) {
-		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer,
-				SWT.NONE);
-		final TableColumn column = viewerColumn.getColumn();
-		column.setText(title);
-		column.setWidth(bound);
-		column.setResizable(true);
-		column.setMoveable(true);
-		// column.addSelectionListener(getSelectionAdapter(column, colNumber));
-		return viewerColumn;
-	}
-
-	private void createColumns(final Composite parent, final TableViewer viewer) {
-		String[] titles = { "First name", "Last name", "Gender", "Married" };
-		int[] bounds = { 100, 100, 100, 100 };
-
-		// First column is for the first name
-		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
-		col.setLabelProvider(new ColumnLabelProvider() {
-			@Override
-			public String getText(Object element) {
-				// Person p = (Person) element;
-				// return p.getFirstName();
-				return "firstname";
-			}
-		});
-
-		/*
-		 * @Override public Image getImage(Object element) { if (((Person)
-		 * element).isMarried()) { return CHECKED; } else { return UNCHECKED; }
-		 * }
-		 */
-		// });
-
+	public Resource getResource() {
+		return this._resource;
 	}
 
 	public TableViewer getViewer() {
 		return viewer;
+	}
+
+	public void refresh() {
+		System.out.println("executeRefresh for text:\"" + this._node.getName()
+				+ "\"");
+
+		if (parentPane == null) {
+			Debug.e("no pane avaible @OntologyNodeEditorView");
+			return;
+		}
+
+		createTable();
+
+		TargetNodeAttributes attributes = _node.getTargetNodeAttributes();
+
+		TableItem[] items = _infoTable.getItems();
+
+		int row = 0;
+
+		addValueItem(items, row++, String.valueOf(attributes.getSourcePath()));
+		addValueItem(items, row++, String.valueOf(_node.getName()));
+		addValueItem(items, row++,
+				String.valueOf(attributes.isChanged() == true ? "true" : false));
+		addValueItem(items, row++,
+				String.valueOf(attributes.getStartDateSource()));
+		addValueItem(items, row++,
+				String.valueOf(attributes.getEndDateSource()));
+		addValueItem(items, row++,
+				String.valueOf(attributes.getVisualattribute()));
+		composite.layout();
+		targetNodeComposite.layout();
+
 	}
 
 	public void setComposite(Composite pane) {
@@ -331,22 +370,8 @@ public class InfoView extends ViewPart {
 		refresh();
 	}
 
-	public void setNode(OntologyTreeNode node) {// , List<String> answersList,
-												// MyOntologyTreeItemLists
-												// itemLists){
-		// Debug.f("setNode",this);
-		// Console.info("setting node");
-		System.out.println("setting node (" + node.getName() + ")");
-		_node = node;
-		refresh();
-	}
-
-	public void setResource(Resource resource) {
-		this._resource = resource;
-	}
-
-	public Resource getResource() {
-		return this._resource;
+	@Override
+	public void setFocus() {
 	}
 
 //	public void refresh() {
@@ -390,47 +415,18 @@ public class InfoView extends ViewPart {
 //		}
 //	}
 
-	public TableItem addValueItem(TableItem[] items, int row, String value) {
-		if (items[row] == null) {
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
-					+ row + ".");
-			return null;
-		}
-		TableItem item = items[row];
-		item.setText(1, value != null && !value.equals("null") ? value : "");
-		return item;
+	public void setNode(OntologyTreeNode node) {// , List<String> answersList,
+												// MyOntologyTreeItemLists
+												// itemLists){
+		// Debug.f("setNode",this);
+		// Console.info("setting node");
+		System.out.println("setting node (" + node.getName() + ")");
+		_node = node;
+		refresh();
 	}
 
-	public void refresh() {
-		System.out.println("executeRefresh for text:\"" + this._node.getName()
-				+ "\"");
-
-		if (parentPane == null) {
-			Debug.e("no pane avaible @OntologyNodeEditorView");
-			return;
-		}
-
-		createTable();
-
-		TargetNodeAttributes attributes = _node.getTargetNodeAttributes();
-
-		TableItem[] items = _infoTable.getItems();
-
-		int row = 0;
-
-		addValueItem(items, row++, String.valueOf(attributes.getSourcePath()));
-		addValueItem(items, row++, String.valueOf(_node.getName()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.isChanged() == true ? "true" : false));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getStartDateSource()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getEndDateSource()));
-		addValueItem(items, row++,
-				String.valueOf(attributes.getVisualattribute()));
-		composite.layout();
-		targetNodeComposite.layout();
-
+	public void setResource(Resource resource) {
+		this._resource = resource;
 	}
 	
 }

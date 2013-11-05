@@ -52,6 +52,12 @@ public class OntologyTreeCreator {
 	private IProgressMonitor _mainProgressMonitor;
 	
 		
+	public OntologyTreeCreator (){
+		Console.info( "Creating an OT (2)." );
+
+		initiate(null, null);
+	}
+	
 	public OntologyTreeCreator (
 				MyOntologyTrees myOntologyTree){
 		
@@ -67,61 +73,33 @@ public class OntologyTreeCreator {
 		initiate(myOntologyTree.getOntologyTreeSource(), myOntologyTree.getTreeRoot());
 	}
 	
-	public OntologyTreeCreator (){
-		Console.info( "Creating an OT (2)." );
-
-		initiate(null, null);
+	public void addConceptDimensionProgress(){
+		_counter++;
+		getProgressMonitor().subTask("Adding ConceptDimensionElement " + _counter + " out of "+this.getAccurateNumberOfElements()+".");
+		if (getProgressMonitor().isCanceled()){
+			Debug.e("addConceptDimensionProgress isCanceled");
+		}
 	}
 	
-	public void initiate(OntologyTree OT,
-			OntologyTreeNode treeRoot){
-
-		ontologyStagingTree = this._myOT.getOntologyTreeSource();
-		ontologyStagingTreeRootNode = this.ontologyStagingTree.getRootNode();
-		
-		//_OT = OT;
-		//_OTRoot = treeRoot;
-
-		if ( ontologyStagingTree == null ){
-			
-			
-			
-		
-			
-			//this._myOT.createOT(Resource.OntologyTree.ONTOLOGYTREE_ROOTNODE_NAME, _OTRoot);
-			
-			//_OT = _myOT.getOT();
-			//_OTRoot = _OT.getTreeRoot();
+	
+	public void addCounterElement(){
+		this.counterFullNumberOfElements++;
+	}
+	
+	public void addCounterItem(){
+		Console.infoLine(".");
+		this.counterFullNumberOfItems++;
+		if(this._mainProgressMonitor.isCanceled()){
+			Debug.d("isCanceled! @addCounterItem");
 		}
 		
-		//this._myOT.createOT(Resource.OntologyTree.ONTOLOGYTREE_ROOTNODE_NAME, _myOT.getSourceRootNode());
-
-		SimpleDateFormat sdf = new SimpleDateFormat( "dd. MMMM yyyy", new Locale("en"));
-	    _importdate=sdf.format(new Date());
 	}
 	
-	
-	public void doIt(){
-		createOntology();
-		createPatientDimension();
-		createConceptDimension();
-		createObservationFact();
-	}
-	
-	public void createOntology(){
-		
-	}
-	
-	public void createPatientDimension(){
-	
-	}
-	
-	public void createConceptDimension(){
-	
-	}
-	
-	public void createObservationFact(){
-	
+	private OntologyTreeNode addItemGroupNode(OntologyTreeNode parentNode, String name,
+			String fullname, String basecode, String id, int order,
+			boolean isMandatory, boolean isReferenceData) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	/**
@@ -162,88 +140,6 @@ public class OntologyTreeCreator {
 
 		return this.addItemGroupNode( parentNode, name, fullname, basecode, id, order, isMandatory, isReferenceData );
 	}
-
-	private OntologyTreeNode addItemGroupNode(OntologyTreeNode parentNode, String name,
-			String fullname, String basecode, String id, int order,
-			boolean isMandatory, boolean isReferenceData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setItemDataID(  String id, String itemID, String basecode0 ){
-		basecode0 += id;
-		itemID = id.trim();
-		return;
-	}
-	
-	public XMLGregorianCalendar createXMLDate(int year, int month, int day) {
-		XMLGregorianCalendar xmlDate = null;
-		try {
-			xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar();
-			xmlDate.setYear(year);
-			xmlDate.setMonth(month);
-			xmlDate.setDay(day);
-		} catch (DatatypeConfigurationException e) {
-			e.printStackTrace();
-			Debug.e("xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar();", this);
-		}
-		return xmlDate;
-	}
-		
-
-	public int getNumberOfItems() {
-		return _numberOfItems;
-	}
-
-	public void setNumberOfItems(int numberOfItems) {
-		this._numberOfItems = numberOfItems;
-	}
-
-	public int getNumberOfEstimatedPatients() {
-		return _numberOfPatients;
-	}
-
-	public void setNumberOfEstimatedPatients(int numberOfPatients) {
-		this._numberOfPatients = numberOfPatients;
-	}
-	
-	public void patientAdded(){
-		//getProgressMonitor().worked(1);
-		_counter++;
-		getProgressMonitor().subTask("finding patients:  trying possible candidate " + _counter + " out of "+this.getNumberOfEstimatedPatients()+"");
-		if (getProgressMonitor().isCanceled()){
-			Debug.e("patientAdded isCanceled");
-		}
-	}
-	
-	public void noPatientAdded(){
-		//getProgressMonitor().worked(1);
-		_counter++;
-		getProgressMonitor().subTask("finding patients:  trying possible candidate " + _counter + " out of "+this.getNumberOfEstimatedPatients()+" (†)");
-		if (getProgressMonitor().isCanceled()){
-			Debug.e("patientAdded isCanceled");
-		}
-	}
-	
-	public void itemNodeAdded(){
-		//getProgressMonitor().worked(1);
-		_counter++;
-		if (getProgressMonitor() != null){
-			getProgressMonitor().subTask("Adding ItemNode " + _counter + " out of ~"+this.getNumberOfItems()+".");
-			if (getProgressMonitor().isCanceled()){
-				Debug.e("itemNodeAdded isCanceled");
-			}
-		}
-		
-	}
-	
-	public void addConceptDimensionProgress(){
-		_counter++;
-		getProgressMonitor().subTask("Adding ConceptDimensionElement " + _counter + " out of "+this.getAccurateNumberOfElements()+".");
-		if (getProgressMonitor().isCanceled()){
-			Debug.e("addConceptDimensionProgress isCanceled");
-		}
-	}
 	
 	public void addObservationFactProgress(){
 		_counter++;
@@ -261,59 +157,157 @@ public class OntologyTreeCreator {
 		}
 		getMainProgressMonitor().worked(1);
 	}
-
-	public IProgressMonitor getProgressMonitor() {
-		return _progressMonitor;
+	
+	/**
+	 * Convert a Path to an ConceptCode
+	 * 
+	 * @param	path	the Path
+	 * 
+	 * return	the ConceptCode
+	 * 
+	 */
+	protected String convertPathToConceptCode(String path){
+		return path.replace("\\", "|");
 	}
 
-	public void setProgressMonitor(IProgressMonitor _progressMonitor) {
-		this._counter = 0;
-		this._progressMonitor = _progressMonitor;
+	public void createConceptDimension(){
+	
+	}
+
+	public void createObservationFact(){
+	
 	}
 	
-	public void addCounterItem(){
-		Console.infoLine(".");
-		this.counterFullNumberOfItems++;
-		if(this._mainProgressMonitor.isCanceled()){
-			Debug.d("isCanceled! @addCounterItem");
-		}
+	public void createOntology(){
 		
 	}
+		
+
+	public void createPatientDimension(){
 	
-	public void addCounterElement(){
-		this.counterFullNumberOfElements++;
+	}
+
+	public XMLGregorianCalendar createXMLDate(int year, int month, int day) {
+		XMLGregorianCalendar xmlDate = null;
+		try {
+			xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+			xmlDate.setYear(year);
+			xmlDate.setMonth(month);
+			xmlDate.setDay(day);
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+			Debug.e("xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar();", this);
+		}
+		return xmlDate;
+	}
+
+	public void doIt(){
+		createOntology();
+		createPatientDimension();
+		createConceptDimension();
+		createObservationFact();
+	}
+
+	public int getAccurateNumberOfElements(){
+		return this.counterFullNumberOfItems;
 	}
 	
 	public int getAccurateNumberOfItems(){
 		return this.counterFullNumberOfItems;
 	}
 	
-	public int getAccurateNumberOfElements(){
-		return this.counterFullNumberOfItems;
-	}
-	
-	public void setMainProgressMonitor(IProgressMonitor mainProgressMonitor){
-		this._mainProgressMonitor = mainProgressMonitor;
+	protected int getIntFromString(String integer){
+		
+		try {
+			return Integer.valueOf(integer);
+		} catch (NumberFormatException e) {
+			Console.error( "Coudn't convert String (\"" + integer + "\") to Integer.", e );
+		}
+		
+		return 0;
 	}
 	
 	public IProgressMonitor getMainProgressMonitor(){
 		return this._mainProgressMonitor;
 	}
-
 	
-	
-	/*
-	 * simple OT output for debuging
-	 * 
-	 */
-	
-	public void printTree(OntologyTreeNode startNode){
-		Console.info("------ printing tree ------");
-		printNode(startNode, 1);
+	public MyOntologyTrees getMyOT(){
+		
+		
+		return this._myOT;
 	}
 	
-	public void printTree(){
-		printTree(ontologyStagingTree.getRootNode());
+	public int getNumberOfEstimatedPatients() {
+		return _numberOfPatients;
+	}
+
+	public int getNumberOfItems() {
+		return _numberOfItems;
+	}
+
+	public OntologyTree getOT(){
+		return this.ontologyStagingTree;
+	}
+	
+	public IProgressMonitor getProgressMonitor() {
+		return _progressMonitor;
+	}
+	
+	public void initiate(OntologyTree OT,
+			OntologyTreeNode treeRoot){
+
+		ontologyStagingTree = this._myOT.getOntologyTreeSource();
+		ontologyStagingTreeRootNode = this.ontologyStagingTree.getRootNode();
+		
+		//_OT = OT;
+		//_OTRoot = treeRoot;
+
+		if ( ontologyStagingTree == null ){
+			
+			
+			
+		
+			
+			//this._myOT.createOT(Resource.OntologyTree.ONTOLOGYTREE_ROOTNODE_NAME, _OTRoot);
+			
+			//_OT = _myOT.getOT();
+			//_OTRoot = _OT.getTreeRoot();
+		}
+		
+		//this._myOT.createOT(Resource.OntologyTree.ONTOLOGYTREE_ROOTNODE_NAME, _myOT.getSourceRootNode());
+
+		SimpleDateFormat sdf = new SimpleDateFormat( "dd. MMMM yyyy", new Locale("en"));
+	    _importdate=sdf.format(new Date());
+	}
+	
+	public void itemNodeAdded(){
+		//getProgressMonitor().worked(1);
+		_counter++;
+		if (getProgressMonitor() != null){
+			getProgressMonitor().subTask("Adding ItemNode " + _counter + " out of ~"+this.getNumberOfItems()+".");
+			if (getProgressMonitor().isCanceled()){
+				Debug.e("itemNodeAdded isCanceled");
+			}
+		}
+		
+	}
+	
+	public void noPatientAdded(){
+		//getProgressMonitor().worked(1);
+		_counter++;
+		getProgressMonitor().subTask("finding patients:  trying possible candidate " + _counter + " out of "+this.getNumberOfEstimatedPatients()+" (†)");
+		if (getProgressMonitor().isCanceled()){
+			Debug.e("patientAdded isCanceled");
+		}
+	}
+	
+	public void patientAdded(){
+		//getProgressMonitor().worked(1);
+		_counter++;
+		getProgressMonitor().subTask("finding patients:  trying possible candidate " + _counter + " out of "+this.getNumberOfEstimatedPatients()+"");
+		if (getProgressMonitor().isCanceled()){
+			Debug.e("patientAdded isCanceled");
+		}
 	}
 	
 	public void printNode(OntologyTreeNode node, int depth){
@@ -338,17 +332,41 @@ public class OntologyTreeCreator {
 
 		
 	}
+
 	
 	
+	/*
+	 * simple OT output for debuging
+	 * 
+	 */
 	
-	public OntologyTree getOT(){
-		return this.ontologyStagingTree;
+	public void printTree(){
+		printTree(ontologyStagingTree.getRootNode());
 	}
 	
-	public MyOntologyTrees getMyOT(){
-		
-		
-		return this._myOT;
+	public void printTree(OntologyTreeNode startNode){
+		Console.info("------ printing tree ------");
+		printNode(startNode, 1);
+	}
+	
+	protected boolean searchForSpecialItem ( String specialName ){
+			
+		if ( !specialName.isEmpty() && specialName.equals( Resource.Import.ODM_SDSVAR_PATIENTID ) ){
+			return true;
+		} 
+		return false;
+	}
+	
+	
+	
+	public void setItemDataID(  String id, String itemID, String basecode0 ){
+		basecode0 += id;
+		itemID = id.trim();
+		return;
+	}
+	
+	public void setMainProgressMonitor(IProgressMonitor mainProgressMonitor){
+		this._mainProgressMonitor = mainProgressMonitor;
 	}
 
 	
@@ -360,36 +378,18 @@ public class OntologyTreeCreator {
 	
 	
 	
-	/**
-	 * Convert a Path to an ConceptCode
-	 * 
-	 * @param	path	the Path
-	 * 
-	 * return	the ConceptCode
-	 * 
-	 */
-	protected String convertPathToConceptCode(String path){
-		return path.replace("\\", "|");
+	public void setNumberOfEstimatedPatients(int numberOfPatients) {
+		this._numberOfPatients = numberOfPatients;
 	}
 	
 
 	
-	protected int getIntFromString(String integer){
-		
-		try {
-			return Integer.valueOf(integer);
-		} catch (NumberFormatException e) {
-			Console.error( "Coudn't convert String (\"" + integer + "\") to Integer.", e );
-		}
-		
-		return 0;
+	public void setNumberOfItems(int numberOfItems) {
+		this._numberOfItems = numberOfItems;
 	}
 
-	protected boolean searchForSpecialItem ( String specialName ){
-			
-		if ( !specialName.isEmpty() && specialName.equals( Resource.Import.ODM_SDSVAR_PATIENTID ) ){
-			return true;
-		} 
-		return false;
+	public void setProgressMonitor(IProgressMonitor _progressMonitor) {
+		this._counter = 0;
+		this._progressMonitor = _progressMonitor;
 	}
 }

@@ -26,6 +26,19 @@ import de.umg.mi.idrt.ioe.Debug;
 public class OTTargetNode extends DefaultMutableTreeNode implements
 		Serializable {
 
+	public class Path<Integer, String> {
+
+		public final Integer level;
+		public final String path;
+
+		public Path(Integer paramLevel, String paramPath) {
+
+			this.level = paramLevel;
+			this.path = paramPath;
+
+		}
+	}
+
 	/**
 	 * the name of the node
 	 */
@@ -46,12 +59,12 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 	 */
 	private transient NodeType _nodeType;
 
+	// i2b2 specific data
+
 	/**
 	 * the ID of this node
 	 */
 	private transient String _id = "";
-
-	// i2b2 specific data
 
 	/**
 	 * the path to this node in an i2b2 export
@@ -91,9 +104,13 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 	private HashMap<String, HashMap<String, String>> _additionalData = null;
 
 	private boolean _isAdditionDataParent = false;
-
 	private List<ConceptDimensionAttributes> _conceptDimensions = new ArrayList();
+
 	private List<ModifierDimensionAttributes> _modifierDimensions = new ArrayList();
+
+	public OTTargetNode() {
+		setName("No_Name");
+	}
 
 	/**
 	 * Creates a generic ontology tree node.
@@ -105,269 +122,21 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 		setName(name);
 	}
 
-	public OTTargetNode() {
-		setName("No_Name");
-	}
-
 	/**
-	 * Sets the name attribute for this node.
-	 * 
-	 * @param name
-	 *            the name of the node
+	 * 155: * Adds a new child node to this node and sets this node as the
+	 * parent of 156: * the child node. The child node must not be an ancestor
+	 * of this node. 157: * If the tree uses the {@link DefaultTreeModel}, you
+	 * must subsequently 158: * call {@link DefaultTreeModel#reload(TreeNode)}.
+	 * 159: * 160: * @param child the child node (<code>null</code> not
+	 * permitted). 161: * 162: * @throws IllegalStateException if
+	 * {@link #getAllowsChildren()} returns 163: * <code>false</code>. 164: * @throws
+	 * IllegalArgumentException if {@link #isNodeAncestor} returns 165: *
+	 * <code>true</code>. 166: * @throws IllegalArgumentException if
+	 * <code>child</code> is 167: * <code>null</code>. 168:
 	 */
-	public void setName(String name) {
+	public void add(OTTargetNode child) {
+		super.add(child);
 
-		this._name = name;
-
-	}
-
-	/**
-	 * Returns the name of this node.
-	 * 
-	 * @return the name of the node
-	 */
-	public String getName() {
-		return this._name;
-	}
-
-	/**
-	 * Sets the import path attribute for this node. Which is defined by
-	 * original import files structure. *
-	 * 
-	 * @param sourcePath
-	 *            the path to this node in the originial document
-	 */
-	public void setsourcePath(String sourcePath) {
-		this._sourcePath = sourcePath;
-	}
-
-	/**
-	 * Returns the import path of this node
-	 * 
-	 * @return the path
-	 */
-	public String getsourcePath() {
-		return this._sourcePath;
-	}
-
-	/**
-	 * Sets the stringpath attribute for this node. Which will define the
-	 * hierarchy in I2B2 and is also used by MyOntologyTree to quickly finde
-	 * nodes in the ontologyTree.
-	 * 
-	 * @param stringpath
-	 *            the path to this node in a tree
-	 */
-	public void setTreePath(String treePath) {
-		this._treePath = treePath;
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public String getI2B2Path() {
-		return this._i2b2Path;
-	}
-
-	/**
-	 * Sets the stringpath attribute for this node. Which will define the
-	 * hierarchy in I2B2 and is also used by MyOntologyTree to quickly finde
-	 * nodes in the ontologyTree.
-	 * 
-	 * @param stringpath
-	 *            the path to this node in a tree
-	 */
-	public void setI2B2Path(String i2b2Path) {
-		this._i2b2Path = i2b2Path;
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public String getTreePath() {
-		return this._treePath;
-	}
-
-	/**
-	 * Sets the level attribute for this node.
-	 * 
-	 * @param i2b2Level
-	 *            the level of this node in a tree
-	 */
-	public void setI2B2Level(int i2b2Level) {
-		this._i2b2Level = i2b2Level;
-	}
-
-	/**
-	 * Sets the level attribute for this node by converting a string to int
-	 * first.
-	 * 
-	 * @param i2b2Level
-	 *            the level of this node in a tree
-	 */
-	public void setI2B2Level(String i2b2LevelString) {
-		try {
-			setI2B2Level(Integer.valueOf(i2b2LevelString));
-		} catch (NumberFormatException e) {
-			Console.error(
-					"Couldn't convert an i2b2-level-string to an an integer.",
-					e);
-			setI2B2Level(99);
-		}
-	}
-
-	/**
-	 * Returns the path to this node as a string.
-	 * 
-	 * @return the path
-	 */
-	public int getLevel() {
-		return this._i2b2Level;
-	}
-
-	/**
-	 * Sets the ConceptCode (key to connect items and user data) for I2B2.
-	 * 
-	 * @param conceptCode
-	 *            the conceptCode
-	 */
-	public void setConceptCode(String conceptCode) {
-		this._conceptCode = conceptCode;
-	}
-
-	/**
-	 * Returns the ConceptCode.
-	 * 
-	 * @return the conceptCode
-	 */
-	public String getConceptCode() {
-		return this._conceptCode;
-	}
-
-	/**
-	 * Sets the visual attribute (key to connect items and user data) for I2B2.
-	 * 
-	 * @param visualattribute
-	 *            the basecode
-	 */
-	public void setVisualattribute(String visualattribute) {
-		this._visualattribute = visualattribute;
-	}
-
-	/**
-	 * Returns visual attribute.
-	 * 
-	 * @return the visual attribute
-	 */
-	public String getVisualattribute() {
-		return this._visualattribute;
-	}
-
-	/**
-	 * Sets node type.
-	 * 
-	 * @param nodeType
-	 *            the node type
-	 */
-	public void setNodeType(NodeType nodeType) {
-		this._nodeType = nodeType;
-	}
-
-	/**
-	 * Returns the node type.
-	 * 
-	 * @return the node type
-	 */
-	public NodeType getNodeType() {
-		return this._nodeType;
-	}
-
-	/**
-	 * Sets the ID of this node.
-	 * 
-	 * @param id
-	 *            the ID
-	 */
-	public void setID(String id) {
-		this._id = id;
-	}
-
-	/**
-	 * Returns the ID of this node.
-	 * 
-	 * @return the ID
-	 */
-	public String getID() {
-		return this._id;
-	}
-
-	/**
-	 * Returns the name of the node (for use by the JTree render functions
-	 * only).
-	 * 
-	 * @return the name
-	 */
-	public String toString() {
-		return this._name;
-	}
-
-	public ListIterator getChild() {
-		return this.children.listIterator();
-	}
-
-	public Iterator<OTTargetNode> getChildren() {
-		if (this.children != null) {
-			return (Iterator<OTTargetNode>) this.children.iterator();
-		}
-		return null;
-	}
-
-	/**
-	 * @param _repeating
-	 *            the _repeating to set
-	 */
-	public void setRepeating(boolean _repeating) {
-		this._repeating = _repeating;
-	}
-
-	/**
-	 * @return the _repeating
-	 */
-	public boolean isRepeating() {
-		return _repeating;
-	}
-
-	/**
-	 * @return the _repeating
-	 */
-	public String isRepeatingYesOrNo() {
-		return (_repeating == true) ? "Yes" : "No";
-	}
-
-	/**
-	 * @param _repeating
-	 *            the _repeating to set
-	 */
-	public void setIsReferenceData(boolean _isReferenceData) {
-		this._isReferenceData = _isReferenceData;
-	}
-
-	/**
-	 * @return the _isReferenceData
-	 */
-	public boolean isReferenceData() {
-		return _isReferenceData;
-	}
-
-	/**
-	 * @return the _isReferenceData as a 'Yes' or 'No' string
-	 */
-	public String isReferenceDataYesOrNo() {
-		return (_isReferenceData == true) ? "Yes" : "No";
 	}
 
 	/**
@@ -387,17 +156,32 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 		idToData.put(_id, _additionalData);
 	}
 
-	/**
-	 * @return the _additionalData
-	 */
-	public String getAdditionalData(String patientID, String _id) {
+	public OTTargetNode addAnswerNode(String name) {
+		// TODO OTupdate needs implementation
+		return null;
+	}
 
-		if (_additionalData != null && _additionalData.get(patientID) != null
-				&& _additionalData.get(patientID).get(_id) != null) {
-			return _additionalData.get(patientID).get(_id);
-		} else {
-			return "noBarcodeID";
-		}
+	public ConceptDimensionAttributes addConceptDimension() {
+
+		ConceptDimensionAttributes tmpConecptCell = new ConceptDimensionAttributes();
+		_conceptDimensions.add(tmpConecptCell);
+		return tmpConecptCell;
+	}
+
+	public ModifierDimensionAttributes addModifierDimension() {
+
+		ModifierDimensionAttributes tmpModifierCell = new ModifierDimensionAttributes();
+		_modifierDimensions.add(tmpModifierCell);
+		return tmpModifierCell;
+	}
+
+	public void convertVisualAttributesToModifier() {
+
+		String visualAttribute = getVisualattribute();
+		visualAttribute = visualAttribute.replaceAll("F", "D");
+		visualAttribute = visualAttribute.replaceAll("L", "R");
+		setVisualattribute(visualAttribute);
+		return;
 
 	}
 
@@ -415,45 +199,135 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 
 	}
 
-	public void updateI2B2Values() {
+	public String escapeForSql(String string) {
+		// Debug.d("* export:isString");
+		if (string == null) {
+			return "";
+		} else {
+			// replaces ' with ''
+			// string = StringEscapeUtils.escapeSql( string );
+			string = string.replaceAll("&", "'||chr(38)||'");
+			string = string.replaceAll("Ä", "'||chr(196)||'");
+			string = string.replaceAll("ä", "'||chr(228)||'");
+			string = string.replaceAll("Ö", "'||chr(214)||'");
+			string = string.replaceAll("ö", "'||chr(246)||'");
+			string = string.replaceAll("Ü", "'||chr(220)||'");
+			string = string.replaceAll("ü", "'||chr(252)||'");
+			string = string.replaceAll("ß", "'||chr(252)||'");
+			string = string.replaceAll("ÃŒ", "'||chr(252)||'");
 
-		// delete all the childrens i2b2values
-		// deleteI2B2ValuesFromChildren();
+			// string.replaceAll("ö", "'ö");
+			// string.replaceAll("ü", "'ü");
+			// string.replaceAll("ß", "'ß");
+			return string;
+		}
+	}
 
-		Debug.d("updateStringPath for " + this.getName());
+	/**
+	 * @return the _additionalData
+	 */
+	public String getAdditionalData(String patientID, String _id) {
 
-		String path = "";
-		String additionalPath = "";
-		String parentPath = "";
-		int level = 0;
-		int parentLevel = 0;
-
-		Path<Integer, String> parentValues = this
-				.getI2B2ValuesFromParents(this);
-		parentPath = parentValues.path;
-		parentLevel = parentValues.level;
-
-		additionalPath = this.getID();
-
-		if (additionalPath == null || additionalPath.isEmpty()) {
-			additionalPath = this.getName();
+		if (_additionalData != null && _additionalData.get(patientID) != null
+				&& _additionalData.get(patientID).get(_id) != null) {
+			return _additionalData.get(patientID).get(_id);
+		} else {
+			return "noBarcodeID";
 		}
 
-		path = parentPath + "\\" + additionalPath;
-		level = parentLevel + 1;
+	}
 
-		this.setI2B2Path(path);
-		this.setI2B2Level(level);
+	public OTTargetNode getAdditionalDataParentNode() {
 
-		Debug.d(" .. stringPath isVisable with level:" + level + " stringPath:"
-				+ path);
+		if (this.isAdditionDataParent()) {
+			return this;
+		} else if (this.isAdditionalData() == false) {
+			return null;
+		} else {
+			return ((OTTargetNode) getParent()).getAdditionalDataParentNode();
+		}
 
-		if (this.getChildCount() > 0) {
-			Debug.d(">>>>childCount = " + this.getChildCount());
-			for (int x = 0; x < this.getChildCount(); x++) {
-				((OTTargetNode) this.getChildAt(x)).updateI2B2Values();
+	}
+
+	public int getAdditionalDataType() {
+		return _additionalDataType;
+	}
+
+	public Object getAnswerAt(int x) {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	public int getAnswerCount() {
+		// TODO OTupdate needs implementation
+		return 0;
+	}
+
+	public ListIterator getChild() {
+		return this.children.listIterator();
+	}
+
+	public OTTargetNode getChildByID(String id) {
+
+		for (int x = 0; x < this.getChildCount(); x++) {
+			OTTargetNode childNode = (OTTargetNode) this.getChildAt(x);
+			if (childNode.getID().equals(id)) {
+				return childNode;
 			}
 		}
+		return null;
+	}
+
+	public Iterator<OTTargetNode> getChildren() {
+		if (this.children != null) {
+			return (Iterator<OTTargetNode>) this.children.iterator();
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the ConceptCode.
+	 * 
+	 * @return the conceptCode
+	 */
+	public String getConceptCode() {
+		return this._conceptCode;
+	}
+
+	public Object getConceptDimensionAt(int x) {
+		if (getNumberOfConceptDimensions() < x) {
+			Console.error("Error while getting concept dimension attributes for a node: requestet list element is greater than list size.");
+			return null;
+		}
+		return x;
+	}
+
+	public Object getDataSourceHigh() {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	public Object getDataSourceLow() {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	public String getDataType() {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	public int getI2B2Level() {
+		return this._i2b2Level;
+	}
+
+	/**
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
+	 */
+	public String getI2B2Path() {
+		return this._i2b2Path;
 	}
 
 	public Path<Integer, String> getI2B2ValuesFromParents(OTTargetNode oNode) {
@@ -481,6 +355,125 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 			return getI2B2ValuesFromParents(parentNode);
 		}
 
+	}
+
+	/**
+	 * Returns the ID of this node.
+	 * 
+	 * @return the ID
+	 */
+	public String getID() {
+		return this._id;
+	}
+
+	public String getItemNodeChildValueByID(String id) {
+		OTTargetNode itemNode = (OTTargetNode) this.getChildByID(id);
+		// TODO MyOntologyNode
+		/*
+		 * if (itemNode != null && itemNode.getAnswerAt(0) != null){ return
+		 * itemNode.getAnswerAt(0).toString(); }
+		 */
+		return "";
+	}
+
+	public Object getItemValue() {
+		// TODO OTupdate needs implementation
+		return null;
+	}
+
+	/**
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
+	 */
+	public int getLevel() {
+		return this._i2b2Level;
+	}
+
+	public Object getModifierDimensionAt(int x) {
+		if (getNumberOfModifierDimensions() < x) {
+			Console.error("Error while getting modifier dimension attributes for a node: requestet list element is greater than list size.");
+			return null;
+		}
+		return x;
+	}
+
+	/**
+	 * Returns the name of this node.
+	 * 
+	 * @return the name of the node
+	 */
+	public String getName() {
+		return this._name;
+	}
+
+	public OTTargetNode getNextItemNode() {
+		// TODO OTupdate needs implementation
+		return null;
+	}
+
+	public OTTargetNode getNextUncheckedItemNode() {
+		// TODO OTupdate needs implementation
+		return null;
+	}
+
+	/**
+	 * Returns the node type.
+	 * 
+	 * @return the node type
+	 */
+	public NodeType getNodeType() {
+		return this._nodeType;
+	}
+
+	public int getNumberOfConceptDimensions() {
+		return _conceptDimensions.size();
+	}
+
+	public int getNumberOfModifierDimensions() {
+		return _modifierDimensions.size();
+	}
+
+	public OntologyCellAttributes getOntologyCellAttributes() {
+		return _ontologyCellAttributes;
+	}
+
+	public OTTargetNode getParent() {
+		return (OTTargetNode) super.getParent();
+	}
+
+	public OTTargetNode getPreviousItemNode() {
+		// TODO OTupdate needs implementation
+		return null;
+	}
+
+	public String getQuestion() {
+		// TODO OTupdate needs implementation
+		return null;
+	}
+
+	/**
+	 * Returns the import path of this node
+	 * 
+	 * @return the path
+	 */
+	public String getsourcePath() {
+		return this._sourcePath;
+	}
+
+	public Path getStringPathFromParents() {
+
+		HashMap<Integer, String> parentValues = new HashMap<Integer, String>();
+		OTTargetNode parentNode = (OTTargetNode) this.getParent();
+		if (parentNode != null
+				&& parentNode.getClass().getName() != "OntologyTreeODMNode") {
+			// parentValues.put(parentNode.getLevel(),
+			// parentNode.getStringPath());
+			// return parentValues;
+			return new Path(parentNode.getLevel(), parentNode.getTreePath());
+		}
+
+		return null;
 	}
 
 	/*
@@ -541,134 +534,18 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 
 	}
 
-	public Path getStringPathFromParents() {
-
-		HashMap<Integer, String> parentValues = new HashMap<Integer, String>();
-		OTTargetNode parentNode = (OTTargetNode) this.getParent();
-		if (parentNode != null
-				&& parentNode.getClass().getName() != "OntologyTreeODMNode") {
-			// parentValues.put(parentNode.getLevel(),
-			// parentNode.getStringPath());
-			// return parentValues;
-			return new Path(parentNode.getLevel(), parentNode.getTreePath());
-		}
-
-		return null;
-	}
-
-	public void setStringPathForChildren(int fatherLevel,
-			String fatherStringPath) {
-
-		// HashMap<Integer, String> values = new HashMap<Integer,String>();
-
-		String path = "";
-		int level = 0;
-
-		path = fatherStringPath + "\\"
-				+ (!this.getID().isEmpty() ? this.getID() : this.getName());
-		level = fatherLevel + 1;
-
-		this.setTreePath(path);
-		this.setI2B2Level(level);
-
-		// this.setStringPath(fatherStringPath);
-		// this.setLevel(fatherLevel);
-
-		Debug.d(2, "ChangePath for Node\"" + this.getClass().getName()
-				+ "\"  oldPath:" + this.getTreePath() + " &newPath:" + path);
-
-		return;
-	}
-
-	public String escapeForSql(String string) {
-		// Debug.d("* export:isString");
-		if (string == null) {
-			return "";
-		} else {
-			// replaces ' with ''
-			// string = StringEscapeUtils.escapeSql( string );
-			string = string.replaceAll("&", "'||chr(38)||'");
-			string = string.replaceAll("Ä", "'||chr(196)||'");
-			string = string.replaceAll("ä", "'||chr(228)||'");
-			string = string.replaceAll("Ö", "'||chr(214)||'");
-			string = string.replaceAll("ö", "'||chr(246)||'");
-			string = string.replaceAll("Ü", "'||chr(220)||'");
-			string = string.replaceAll("ü", "'||chr(252)||'");
-			string = string.replaceAll("ß", "'||chr(252)||'");
-			string = string.replaceAll("ÃŒ", "'||chr(252)||'");
-
-			// string.replaceAll("ö", "'ö");
-			// string.replaceAll("ü", "'ü");
-			// string.replaceAll("ß", "'ß");
-			return string;
-		}
-	}
-
-	public OTTargetNode getChildByID(String id) {
-
-		for (int x = 0; x < this.getChildCount(); x++) {
-			OTTargetNode childNode = (OTTargetNode) this.getChildAt(x);
-			if (childNode.getID().equals(id)) {
-				return childNode;
-			}
-		}
-		return null;
-	}
-
-	public String getItemNodeChildValueByID(String id) {
-		OTTargetNode itemNode = (OTTargetNode) this.getChildByID(id);
-		// TODO MyOntologyNode
-		/*
-		 * if (itemNode != null && itemNode.getAnswerAt(0) != null){ return
-		 * itemNode.getAnswerAt(0).toString(); }
-		 */
-		return "";
-	}
-
 	/**
-	 * 155: * Adds a new child node to this node and sets this node as the
-	 * parent of 156: * the child node. The child node must not be an ancestor
-	 * of this node. 157: * If the tree uses the {@link DefaultTreeModel}, you
-	 * must subsequently 158: * call {@link DefaultTreeModel#reload(TreeNode)}.
-	 * 159: * 160: * @param child the child node (<code>null</code> not
-	 * permitted). 161: * 162: * @throws IllegalStateException if
-	 * {@link #getAllowsChildren()} returns 163: * <code>false</code>. 164: * @throws
-	 * IllegalArgumentException if {@link #isNodeAncestor} returns 165: *
-	 * <code>true</code>. 166: * @throws IllegalArgumentException if
-	 * <code>child</code> is 167: * <code>null</code>. 168:
+	 * Returns the path to this node as a string.
+	 * 
+	 * @return the path
 	 */
-	public void add(OTTargetNode child) {
-		super.add(child);
-
+	public String getTreePath() {
+		return this._treePath;
 	}
 
-	public class Path<Integer, String> {
-
-		public final Integer level;
-		public final String path;
-
-		public Path(Integer paramLevel, String paramPath) {
-
-			this.level = paramLevel;
-			this.path = paramPath;
-
-		}
-	}
-
-	public void setAdditionalData(int additionalDataType) {
-		_additionalDataType = additionalDataType;
-	}
-
-	public int getAdditionalDataType() {
-		return _additionalDataType;
-	}
-
-	public boolean isAdditionalData() {
-		return _additionalDataType == 0 ? false : true;
-	}
-
-	public boolean isAdditionDataChild() {
-		return isAdditionalData() && !isAdditionDataParent();
+	public int getTreeRow() {
+		// TODO OTupdate needs implementation
+		return 0;
 	}
 
 	/*
@@ -695,55 +572,6 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 	 * !_additionalDataParentNodesourcePath.isEmpty() ? true : false; }
 	 */
 
-	public void setIsAdditionDataParent(boolean isAdditionDataParent) {
-		_isAdditionDataParent = isAdditionDataParent;
-	}
-
-	public boolean isAdditionDataParent() {
-		return _isAdditionDataParent;
-	}
-
-	public OTTargetNode getAdditionalDataParentNode() {
-
-		if (this.isAdditionDataParent()) {
-			return this;
-		} else if (this.isAdditionalData() == false) {
-			return null;
-		} else {
-			return ((OTTargetNode) getParent()).getAdditionalDataParentNode();
-		}
-
-	}
-
-	public boolean hastAdditionalDataParentNode() {
-		return (getAdditionalDataParentNode() != null) ? true : false;
-	}
-
-	public void convertVisualAttributesToModifier() {
-
-		String visualAttribute = getVisualattribute();
-		visualAttribute = visualAttribute.replaceAll("F", "D");
-		visualAttribute = visualAttribute.replaceAll("L", "R");
-		setVisualattribute(visualAttribute);
-		return;
-
-	}
-
-	/**
-	 * @return the isVisitNode
-	 */
-	public boolean isVisitNode() {
-		return _isVisitNode;
-	}
-
-	/**
-	 * @param isVisitNode
-	 *            the isVisitNode to set
-	 */
-	public void setIsVisitNode(boolean isVisitNode) {
-		this._isVisitNode = isVisitNode;
-	}
-
 	public OTTargetNode getVisitNode() {
 
 		if (this.isVisitNode()) {
@@ -757,12 +585,163 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 
 	}
 
-	public OTTargetNode getParent() {
-		return (OTTargetNode) super.getParent();
+	/**
+	 * Returns visual attribute.
+	 * 
+	 * @return the visual attribute
+	 */
+	public String getVisualattribute() {
+		return this._visualattribute;
 	}
 
-	public int getI2B2Level() {
-		return this._i2b2Level;
+	public boolean hasCodeList() {
+		// TODO OTupdate needs implementation
+		return false;
+	}
+
+	public boolean hasConceptDimension() {
+		if (getNumberOfConceptDimensions() > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean hasDimensions() {
+		if (hasConceptDimension())
+			return true;
+		else if (hasModifierDimension())
+			return true;
+		else
+			return false;
+	}
+
+	public boolean hasModifierDimension() {
+		if (getNumberOfModifierDimensions() > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean hastAdditionalDataParentNode() {
+		return (getAdditionalDataParentNode() != null) ? true : false;
+	}
+
+	public boolean isAdditionalData() {
+		return _additionalDataType == 0 ? false : true;
+	}
+
+	public boolean isAdditionDataChild() {
+		return isAdditionalData() && !isAdditionDataParent();
+	}
+
+	public boolean isAdditionDataParent() {
+		return _isAdditionDataParent;
+	}
+
+	public boolean isAnswerGroup() {
+		// TODO OTupdate needs implementation
+		return false;
+	}
+
+
+	public boolean isChecked() {
+		// TODO OTupdate needs implementation
+		return false;
+	}
+
+	/**
+	 * @return the _isReferenceData
+	 */
+	public boolean isReferenceData() {
+		return _isReferenceData;
+	}
+
+	/**
+	 * @return the _isReferenceData as a 'Yes' or 'No' string
+	 */
+	public String isReferenceDataYesOrNo() {
+		return (_isReferenceData == true) ? "Yes" : "No";
+	}
+
+	/**
+	 * @return the _repeating
+	 */
+	public boolean isRepeating() {
+		return _repeating;
+	}
+
+	/**
+	 * @return the _repeating
+	 */
+	public String isRepeatingYesOrNo() {
+		return (_repeating == true) ? "Yes" : "No";
+	}
+
+	/**
+	 * @return the isVisitNode
+	 */
+	public boolean isVisitNode() {
+		return _isVisitNode;
+	}
+
+	public void setAdditionalData(int additionalDataType) {
+		_additionalDataType = additionalDataType;
+	}
+
+	public void setChecked(boolean b, OTTargetNode treeRoot) {
+		// TODO OTupdate needs implementation
+	}
+
+	public void setCodeListID(String codeListRef) {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * Sets the ConceptCode (key to connect items and user data) for I2B2.
+	 * 
+	 * @param conceptCode
+	 *            the conceptCode
+	 */
+	public void setConceptCode(String conceptCode) {
+		this._conceptCode = conceptCode;
+	}
+
+	public Object setDataSourceHigh(Object x) {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	public Object setDataSourceLow(Object x) {
+		// TODO OTupdate needs implementation
+		return "";
+	}
+
+	/**
+	 * Sets the level attribute for this node.
+	 * 
+	 * @param i2b2Level
+	 *            the level of this node in a tree
+	 */
+	public void setI2B2Level(int i2b2Level) {
+		this._i2b2Level = i2b2Level;
+	}
+
+	/**
+	 * Sets the level attribute for this node by converting a string to int
+	 * first.
+	 * 
+	 * @param i2b2Level
+	 *            the level of this node in a tree
+	 */
+	public void setI2B2Level(String i2b2LevelString) {
+		try {
+			setI2B2Level(Integer.valueOf(i2b2LevelString));
+		} catch (NumberFormatException e) {
+			Console.error(
+					"Couldn't convert an i2b2-level-string to an an integer.",
+					e);
+			setI2B2Level(99);
+		}
 	}
 
 	public void setI2B2Ontology(int C_HLEVEL, String C_FULLNAME, String C_NAME,
@@ -778,115 +757,76 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 		// toDO add i2b2 ontology to default node
 	}
 
-
-	public String getDataType() {
-		// TODO OTupdate needs implementation
-		return "";
+	/**
+	 * Sets the stringpath attribute for this node. Which will define the
+	 * hierarchy in I2B2 and is also used by MyOntologyTree to quickly finde
+	 * nodes in the ontologyTree.
+	 * 
+	 * @param stringpath
+	 *            the path to this node in a tree
+	 */
+	public void setI2B2Path(String i2b2Path) {
+		this._i2b2Path = i2b2Path;
 	}
 
-	public boolean hasCodeList() {
-		// TODO OTupdate needs implementation
-		return false;
+	/**
+	 * Sets the ID of this node.
+	 * 
+	 * @param id
+	 *            the ID
+	 */
+	public void setID(String id) {
+		this._id = id;
 	}
 
-	public int getAnswerCount() {
-		// TODO OTupdate needs implementation
-		return 0;
-	}
-
-	public Object getAnswerAt(int x) {
-		// TODO OTupdate needs implementation
-		return "";
-	}
-
-	public Object setDataSourceLow(Object x) {
-		// TODO OTupdate needs implementation
-		return "";
-	}
-
-	public Object setDataSourceHigh(Object x) {
-		// TODO OTupdate needs implementation
-		return "";
-	}
-
-	public Object getDataSourceLow() {
-		// TODO OTupdate needs implementation
-		return "";
-	}
-
-	public Object getDataSourceHigh() {
-		// TODO OTupdate needs implementation
-		return "";
-	}
-
-	public boolean isChecked() {
-		// TODO OTupdate needs implementation
-		return false;
-	}
-
-	public OTTargetNode addAnswerNode(String name) {
-		// TODO OTupdate needs implementation
-		return null;
-	}
-
-	public Object getItemValue() {
-		// TODO OTupdate needs implementation
-		return null;
-	}
-
-	public void setItemValue(Object itemValue) {
-		// TODO OTupdate needs implementation
-	}
-
-	public boolean isAnswerGroup() {
-		// TODO OTupdate needs implementation
-		return false;
+	public void setIsAdditionDataParent(boolean isAdditionDataParent) {
+		_isAdditionDataParent = isAdditionDataParent;
 	}
 
 	public void setIsAnswerGroup(boolean b) {
 		// TODO OTupdate needs implementation
 	}
 
-	public void setChecked(boolean b, OTTargetNode treeRoot) {
+	/**
+	 * @param _repeating
+	 *            the _repeating to set
+	 */
+	public void setIsReferenceData(boolean _isReferenceData) {
+		this._isReferenceData = _isReferenceData;
+	}
+
+	/**
+	 * @param isVisitNode
+	 *            the isVisitNode to set
+	 */
+	public void setIsVisitNode(boolean isVisitNode) {
+		this._isVisitNode = isVisitNode;
+	}
+
+	public void setItemValue(Object itemValue) {
 		// TODO OTupdate needs implementation
 	}
 
-	public String getQuestion() {
-		// TODO OTupdate needs implementation
-		return null;
-	}
+	/**
+	 * Sets the name attribute for this node.
+	 * 
+	 * @param name
+	 *            the name of the node
+	 */
+	public void setName(String name) {
 
-	public int getTreeRow() {
-		// TODO OTupdate needs implementation
-		return 0;
-	}
-
-	public OTTargetNode getNextItemNode() {
-		// TODO OTupdate needs implementation
-		return null;
-	}
-
-	public OTTargetNode getNextUncheckedItemNode() {
-		// TODO OTupdate needs implementation
-		return null;
-	}
-
-	public OTTargetNode getPreviousItemNode() {
-		// TODO OTupdate needs implementation
-		return null;
-	}
-
-	public void setText(String trim) {
-		// TODO Auto-generated method stub
+		this._name = name;
 
 	}
 
-	public void setCodeListID(String codeListRef) {
-		// TODO Auto-generated method stub
-	}
-
-	public OntologyCellAttributes getOntologyCellAttributes() {
-		return _ontologyCellAttributes;
+	/**
+	 * Sets node type.
+	 * 
+	 * @param nodeType
+	 *            the node type
+	 */
+	public void setNodeType(NodeType nodeType) {
+		this._nodeType = nodeType;
 	}
 
 	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
@@ -925,64 +865,124 @@ public class OTTargetNode extends DefaultMutableTreeNode implements
 		_ontologyCellAttributes.setC_SYMBOL(C_SYMBOL);
 	}
 
-	public boolean hasConceptDimension() {
-		if (getNumberOfConceptDimensions() > 0)
-			return true;
-		else
-			return false;
+	/**
+	 * @param _repeating
+	 *            the _repeating to set
+	 */
+	public void setRepeating(boolean _repeating) {
+		this._repeating = _repeating;
 	}
 
-	public boolean hasModifierDimension() {
-		if (getNumberOfModifierDimensions() > 0)
-			return true;
-		else
-			return false;
+	/**
+	 * Sets the import path attribute for this node. Which is defined by
+	 * original import files structure. *
+	 * 
+	 * @param sourcePath
+	 *            the path to this node in the originial document
+	 */
+	public void setsourcePath(String sourcePath) {
+		this._sourcePath = sourcePath;
 	}
 
-	public boolean hasDimensions() {
-		if (hasConceptDimension())
-			return true;
-		else if (hasModifierDimension())
-			return true;
-		else
-			return false;
+	public void setStringPathForChildren(int fatherLevel,
+			String fatherStringPath) {
+
+		// HashMap<Integer, String> values = new HashMap<Integer,String>();
+
+		String path = "";
+		int level = 0;
+
+		path = fatherStringPath + "\\"
+				+ (!this.getID().isEmpty() ? this.getID() : this.getName());
+		level = fatherLevel + 1;
+
+		this.setTreePath(path);
+		this.setI2B2Level(level);
+
+		// this.setStringPath(fatherStringPath);
+		// this.setLevel(fatherLevel);
+
+		Debug.d(2, "ChangePath for Node\"" + this.getClass().getName()
+				+ "\"  oldPath:" + this.getTreePath() + " &newPath:" + path);
+
+		return;
 	}
 
-	public ConceptDimensionAttributes addConceptDimension() {
+	public void setText(String trim) {
+		// TODO Auto-generated method stub
 
-		ConceptDimensionAttributes tmpConecptCell = new ConceptDimensionAttributes();
-		_conceptDimensions.add(tmpConecptCell);
-		return tmpConecptCell;
 	}
 
-	public int getNumberOfConceptDimensions() {
-		return _conceptDimensions.size();
+	/**
+	 * Sets the stringpath attribute for this node. Which will define the
+	 * hierarchy in I2B2 and is also used by MyOntologyTree to quickly finde
+	 * nodes in the ontologyTree.
+	 * 
+	 * @param stringpath
+	 *            the path to this node in a tree
+	 */
+	public void setTreePath(String treePath) {
+		this._treePath = treePath;
 	}
 
-	public Object getConceptDimensionAt(int x) {
-		if (getNumberOfConceptDimensions() < x) {
-			Console.error("Error while getting concept dimension attributes for a node: requestet list element is greater than list size.");
-			return null;
+	/**
+	 * Sets the visual attribute (key to connect items and user data) for I2B2.
+	 * 
+	 * @param visualattribute
+	 *            the basecode
+	 */
+	public void setVisualattribute(String visualattribute) {
+		this._visualattribute = visualattribute;
+	}
+
+	/**
+	 * Returns the name of the node (for use by the JTree render functions
+	 * only).
+	 * 
+	 * @return the name
+	 */
+	public String toString() {
+		return this._name;
+	}
+
+	public void updateI2B2Values() {
+
+		// delete all the childrens i2b2values
+		// deleteI2B2ValuesFromChildren();
+
+		Debug.d("updateStringPath for " + this.getName());
+
+		String path = "";
+		String additionalPath = "";
+		String parentPath = "";
+		int level = 0;
+		int parentLevel = 0;
+
+		Path<Integer, String> parentValues = this
+				.getI2B2ValuesFromParents(this);
+		parentPath = parentValues.path;
+		parentLevel = parentValues.level;
+
+		additionalPath = this.getID();
+
+		if (additionalPath == null || additionalPath.isEmpty()) {
+			additionalPath = this.getName();
 		}
-		return x;
-	}
 
-	public ModifierDimensionAttributes addModifierDimension() {
+		path = parentPath + "\\" + additionalPath;
+		level = parentLevel + 1;
 
-		ModifierDimensionAttributes tmpModifierCell = new ModifierDimensionAttributes();
-		_modifierDimensions.add(tmpModifierCell);
-		return tmpModifierCell;
-	}
+		this.setI2B2Path(path);
+		this.setI2B2Level(level);
 
-	public int getNumberOfModifierDimensions() {
-		return _modifierDimensions.size();
-	}
+		Debug.d(" .. stringPath isVisable with level:" + level + " stringPath:"
+				+ path);
 
-	public Object getModifierDimensionAt(int x) {
-		if (getNumberOfModifierDimensions() < x) {
-			Console.error("Error while getting modifier dimension attributes for a node: requestet list element is greater than list size.");
-			return null;
+		if (this.getChildCount() > 0) {
+			Debug.d(">>>>childCount = " + this.getChildCount());
+			for (int x = 0; x < this.getChildCount(); x++) {
+				((OTTargetNode) this.getChildAt(x)).updateI2B2Values();
+			}
 		}
-		return x;
 	}
 }

@@ -21,8 +21,28 @@ public class OTNodeTransfer extends ByteArrayTransfer {
 
 	private static OTNodeTransfer instance = new OTNodeTransfer();
 
+	public static byte[] getBytes(Object obj) throws IOException {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		oos.writeObject(obj);
+		oos.close();
+		bos.close();
+		return bos.toByteArray();
+	}
+
 	public static OTNodeTransfer getInstance() {
 		return instance;
+	}
+
+	public static Object getObject(byte[] bs) throws IOException,
+			ClassNotFoundException {
+		Object obj;
+		ByteArrayInputStream bis = new ByteArrayInputStream(bs);
+		ObjectInputStream ois = new ObjectInputStream(bis);
+		obj = ois.readObject();
+		ois.close();
+		bis.close();
+		return obj;
 	}
 
 	@Override
@@ -71,26 +91,6 @@ public class OTNodeTransfer extends ByteArrayTransfer {
 		if (object == null || !(object instanceof ViewTreeNode))
 			return false;
 		return super.validate(object);
-	}
-
-	public static byte[] getBytes(Object obj) throws IOException {
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(bos);
-		oos.writeObject(obj);
-		oos.close();
-		bos.close();
-		return bos.toByteArray();
-	}
-
-	public static Object getObject(byte[] bs) throws IOException,
-			ClassNotFoundException {
-		Object obj;
-		ByteArrayInputStream bis = new ByteArrayInputStream(bs);
-		ObjectInputStream ois = new ObjectInputStream(bis);
-		obj = ois.readObject();
-		ois.close();
-		bis.close();
-		return obj;
 	}
 
 }

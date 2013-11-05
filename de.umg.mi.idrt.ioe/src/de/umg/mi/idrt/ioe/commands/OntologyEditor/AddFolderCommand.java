@@ -13,7 +13,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class AddNodeCommand extends AbstractHandler {
+public class AddFolderCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

@@ -27,48 +27,10 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @return the cONCEPT_PATH
+	 * @return the c_VISUALATTRIBUTES
 	 */
-	public String getCONCEPT_PATH() {
-		return CONCEPT_PATH;
-	}
-
-	/**
-	 * @param CONCEPT_PATH
-	 *            the cONCEPT_PATH to set
-	 */
-	public void setCONCEPT_PATH(String cONCEPT_PATH) {
-		CONCEPT_PATH = cONCEPT_PATH;
-	}
-
-	/**
-	 * @return the CONCEPT_CD
-	 */
-	public String getCONCEPT_CD() {
-		return CONCEPT_CD;
-	}
-
-	/**
-	 * @param CONCEPT_CD
-	 *            the CONCEPT_CD to set
-	 */
-	public void setCONCEPT_CD(String CONCEPT_CD) {
-		CONCEPT_CD = CONCEPT_CD;
-	}
-
-	/**
-	 * @return the nAME_CHAR
-	 */
-	public String getNAME_CHAR() {
-		return NAME_CHAR;
-	}
-
-	/**
-	 * @param nAME_CHAR
-	 *            the nAME_CHAR to set
-	 */
-	public void setNAME_CHAR(String nAME_CHAR) {
-		NAME_CHAR = nAME_CHAR;
+	public String getC_VISUALATTRIBUTES() {
+		return C_VISUALATTRIBUTES;
 	}
 
 	/**
@@ -79,18 +41,59 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @param cONCEPT_BLOB
-	 *            the cONCEPT_BLOB to set
+	 * @return the CONCEPT_CD
 	 */
-	public void setCONCEPT_BLOB(String cONCEPT_BLOB) {
-		CONCEPT_BLOB = cONCEPT_BLOB;
+	public String getCONCEPT_CD() {
+		return CONCEPT_CD;
 	}
 
 	/**
-	 * @return the c_VISUALATTRIBUTES
+	 * @return the cONCEPT_PATH
 	 */
-	public String getC_VISUALATTRIBUTES() {
-		return C_VISUALATTRIBUTES;
+	public String getCONCEPT_PATH() {
+		return CONCEPT_PATH;
+	}
+
+	/**
+	 * @return the dOWNLOAD_DATE
+	 */
+	public String getDOWNLOAD_DATE() {
+		return DOWNLOAD_DATE;
+	}
+
+	/**
+	 * @return the iMPORT_DATE
+	 */
+	public String getIMPORT_DATE() {
+		return IMPORT_DATE;
+	}
+
+	/**
+	 * @return the nAME_CHAR
+	 */
+	public String getNAME_CHAR() {
+		return NAME_CHAR;
+	}
+
+	/**
+	 * @return the sOURCESYSTEM_CD
+	 */
+	public String getSOURCESYSTEM_CD() {
+		return SOURCESYSTEM_CD;
+	}
+
+	/**
+	 * @return the uPDATE_DATE
+	 */
+	public String getUPDATE_DATE() {
+		return UPDATE_DATE;
+	}
+
+	/**
+	 * @return the uPLOAD_ID
+	 */
+	public String getUPLOAD_ID() {
+		return UPLOAD_ID;
 	}
 
 	/**
@@ -102,25 +105,27 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @return the uPDATE_DATE
+	 * @param cONCEPT_BLOB
+	 *            the cONCEPT_BLOB to set
 	 */
-	public String getUPDATE_DATE() {
-		return UPDATE_DATE;
+	public void setCONCEPT_BLOB(String cONCEPT_BLOB) {
+		CONCEPT_BLOB = cONCEPT_BLOB;
 	}
 
 	/**
-	 * @param uPDATE_DATE
-	 *            the uPDATE_DATE to set
+	 * @param CONCEPT_CD
+	 *            the CONCEPT_CD to set
 	 */
-	public void setUPDATE_DATE(String uPDATE_DATE) {
-		UPDATE_DATE = uPDATE_DATE;
+	public void setCONCEPT_CD(String CONCEPT_CD) {
+		CONCEPT_CD = CONCEPT_CD;
 	}
 
 	/**
-	 * @return the dOWNLOAD_DATE
+	 * @param CONCEPT_PATH
+	 *            the cONCEPT_PATH to set
 	 */
-	public String getDOWNLOAD_DATE() {
-		return DOWNLOAD_DATE;
+	public void setCONCEPT_PATH(String cONCEPT_PATH) {
+		CONCEPT_PATH = cONCEPT_PATH;
 	}
 
 	/**
@@ -132,13 +137,6 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @return the iMPORT_DATE
-	 */
-	public String getIMPORT_DATE() {
-		return IMPORT_DATE;
-	}
-
-	/**
 	 * @param iMPORT_DATE
 	 *            the iMPORT_DATE to set
 	 */
@@ -147,10 +145,11 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @return the sOURCESYSTEM_CD
+	 * @param nAME_CHAR
+	 *            the nAME_CHAR to set
 	 */
-	public String getSOURCESYSTEM_CD() {
-		return SOURCESYSTEM_CD;
+	public void setNAME_CHAR(String nAME_CHAR) {
+		NAME_CHAR = nAME_CHAR;
 	}
 
 	/**
@@ -162,10 +161,11 @@ public class ConceptDimensionAttributes {
 	}
 
 	/**
-	 * @return the uPLOAD_ID
+	 * @param uPDATE_DATE
+	 *            the uPDATE_DATE to set
 	 */
-	public String getUPLOAD_ID() {
-		return UPLOAD_ID;
+	public void setUPDATE_DATE(String uPDATE_DATE) {
+		UPDATE_DATE = uPDATE_DATE;
 	}
 
 	/**

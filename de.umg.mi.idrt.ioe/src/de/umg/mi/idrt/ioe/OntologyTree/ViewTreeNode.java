@@ -26,26 +26,23 @@ public class ViewTreeNode {
 		}
 	}
 
-	public ViewTreeNode getParent() {
-		return parent;
+	public void addChild(ViewTreeNode child) {
+		if (child.getParent() != null) {
+			((ViewTreeNode) child.getParent()).children.remove(child);
+		}
+		child.setParent(this);
+		children.add(child);
 	}
 
-	public void setParent(ViewTreeNode parent) {
-		this.parent = parent;
+	private ViewTreeNode convertToViewTreeNode(Object obj) {
+		if (obj instanceof ViewTreeNode) {
+			return (ViewTreeNode) obj;
+		}
+		return null;
 	}
 
 	public Collection<ViewTreeNode> getChildren() {
 		return new ArrayList<ViewTreeNode>(children);
-	}
-
-	public boolean hasChildren() {
-		return children.size() > 0;
-	}
-
-	public void setChildren(Collection<ViewTreeNode> newChildren) {
-		if (newChildren != null) {
-			children = new ArrayList<ViewTreeNode>(newChildren);
-		}
 	}
 
 	public String getName() {
@@ -56,21 +53,12 @@ public class ViewTreeNode {
 		return otNode;
 	}
 
-	public boolean isRoot() {
-		return parent == null ? true : false;
+	public ViewTreeNode getParent() {
+		return parent;
 	}
 
-	public void addChild(ViewTreeNode child) {
-		if (child.getParent() != null) {
-			((ViewTreeNode) child.getParent()).children.remove(child);
-		}
-		child.setParent(this);
-		children.add(child);
-	}
-
-	public void removeChild(ViewTreeNode node) {
-		children.remove(node);
-		node.setParent(null);
+	public boolean hasChildren() {
+		return children.size() > 0;
 	}
 
 	public void insertAfter(Object targetObj) {
@@ -116,11 +104,8 @@ public class ViewTreeNode {
 		this.setParent(target.parent);
 	}
 
-	private ViewTreeNode convertToViewTreeNode(Object obj) {
-		if (obj instanceof ViewTreeNode) {
-			return (ViewTreeNode) obj;
-		}
-		return null;
+	public boolean isRoot() {
+		return parent == null ? true : false;
 	}
 
 	/**
@@ -138,6 +123,21 @@ public class ViewTreeNode {
 		// ensure that object state has not been corrupted or tampered with
 		// maliciously
 		// validateState();
+	}
+
+	public void removeChild(ViewTreeNode node) {
+		children.remove(node);
+		node.setParent(null);
+	}
+
+	public void setChildren(Collection<ViewTreeNode> newChildren) {
+		if (newChildren != null) {
+			children = new ArrayList<ViewTreeNode>(newChildren);
+		}
+	}
+
+	public void setParent(ViewTreeNode parent) {
+		this.parent = parent;
 	}
 
 	/**

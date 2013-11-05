@@ -14,7 +14,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class CopySourceNodesToTarget extends AbstractHandler {
+public class CopyStagingNodesToTarget extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

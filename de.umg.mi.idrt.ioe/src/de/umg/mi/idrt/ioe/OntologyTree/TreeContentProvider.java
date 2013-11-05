@@ -14,19 +14,26 @@ public class TreeContentProvider implements ITreeContentProvider {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public Object[] getChildren(Object element) {
-		return ((OntologyTreeNode) element).getChildrenArray();
-	}
-
-	@Override
-	public Object getParent(Object element) {
-		return ((OntologyTreeNode) element).getParent();
-	}
-
-	@Override
-	public boolean hasChildren(Object element) {
-		return ((OntologyTreeNode) element).getChildCount() > 0;
+	public void convertNode(OntologyTreeNode parentNode) {
+		/*
+		 * OTNode otParentNode = parentNode.getOTNode();
+		 * 
+		 * if (otParentNode.getChildCount() > 0) { Iterator<OTNode> it =
+		 * otParentNode.getChildren();
+		 * 
+		 * if (it == null) {
+		 * System.out.println("Iterator is Null or something!"); return; }
+		 * 
+		 * while (it.hasNext()) { OTNode tempOTNode = it.next(); OTNode tmpNode
+		 * = new OTNode(parentNode, tempOTNode, tempOTNode.getName());
+		 * System.out.println("addNode: " +
+		 * tempOTNode.getOntologyCellAttributes().getC_FULLNAME());
+		 * this._viewTree
+		 * .addOTNode(tempOTNode.getOntologyCellAttributes().getC_FULLNAME(),
+		 * tmpNode); convertNode(tmpNode); } } else { // nothing, because there
+		 * are no children //System.out.println("convertNode: has no children");
+		 * }
+		 */
 	}
 
 	@Override
@@ -35,8 +42,8 @@ public class TreeContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// unused
+	public Object[] getChildren(Object element) {
+		return ((OntologyTreeNode) element).getChildrenArray();
 	}
 
 	@Override
@@ -78,35 +85,28 @@ public class TreeContentProvider implements ITreeContentProvider {
 
 	}
 
+	@Override
+	public Object getParent(Object element) {
+		return ((OntologyTreeNode) element).getParent();
+	}
+
 	public OntologyTreeNode getRoot() {
 		return _treeRoot;
+	}
+
+	@Override
+	public boolean hasChildren(Object element) {
+		return ((OntologyTreeNode) element).getChildCount() > 0;
+	}
+
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// unused
 	}
 
 	public void setOT(OntologyTree ot) {
 		this._ot = ot;
 		this._treeRoot = ot.getTreeRoot();
-	}
-
-	public void convertNode(OntologyTreeNode parentNode) {
-		/*
-		 * OTNode otParentNode = parentNode.getOTNode();
-		 * 
-		 * if (otParentNode.getChildCount() > 0) { Iterator<OTNode> it =
-		 * otParentNode.getChildren();
-		 * 
-		 * if (it == null) {
-		 * System.out.println("Iterator is Null or something!"); return; }
-		 * 
-		 * while (it.hasNext()) { OTNode tempOTNode = it.next(); OTNode tmpNode
-		 * = new OTNode(parentNode, tempOTNode, tempOTNode.getName());
-		 * System.out.println("addNode: " +
-		 * tempOTNode.getOntologyCellAttributes().getC_FULLNAME());
-		 * this._viewTree
-		 * .addOTNode(tempOTNode.getOntologyCellAttributes().getC_FULLNAME(),
-		 * tmpNode); convertNode(tmpNode); } } else { // nothing, because there
-		 * are no children //System.out.println("convertNode: has no children");
-		 * }
-		 */
 	}
 
 }

@@ -29,84 +29,6 @@ public class TargetProject {
 
 	}
 	
-	/**
-	 * @return the highestVersion
-	 */
-	public int getHighestVersion() {
-		return highestTargetVersion;
-	}
-
-	/**
-	 * @param highestVersion
-	 *            the highestVersion to set
-	 */
-	public void setHighestVersion(int highestVersion) {
-		this.highestTargetVersion = highestVersion;
-	}
-
-	/**
-	 * @return the targetProject
-	 */
-	public int getTargetProjectID() {
-		return targetProjectID;
-	}
-
-	/**
-	 * @param targetProject
-	 *            the targetProject to set
-	 */
-	public void setTargetProjectID(int targetProjectID) {
-		this.targetProjectID = targetProjectID;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description
-	 *            the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void createNewTargetVersion() {
-		java.util.Date today = new java.util.Date();
-		java.sql.Date date = new java.sql.Date(today.getTime());
-
-		Target target = new Target();
-
-		target.setTargetProjectID(this.getTargetProjectID());
-		target.setCreated(date);
-		target.setLastModified(date);
-		target.setVersion(this.getHighestVersion() + 1);
-		this.setHighestVersion(target.getVersion());
-
-	}
-
-	public List<Target> getTargetsList() {
-		return list;
-	}
-
 	public Target add(int targetID, int targetProjectID, int version,
 			Date created, Date lastModified, String targetDBSchema) {
 
@@ -123,13 +45,91 @@ public class TargetProject {
 		list.add(targetID, target);
 		return target;
 	}
-	
+
 	public void add(Target target){
 		list.add(target);
 
 	}
 
+	public void createNewTargetVersion() {
+		java.util.Date today = new java.util.Date();
+		java.sql.Date date = new java.sql.Date(today.getTime());
+
+		Target target = new Target();
+
+		target.setTargetProjectID(this.getTargetProjectID());
+		target.setCreated(date);
+		target.setLastModified(date);
+		target.setVersion(this.getHighestVersion() + 1);
+		this.setHighestVersion(target.getVersion());
+
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @return the highestVersion
+	 */
+	public int getHighestVersion() {
+		return highestTargetVersion;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return the targetProject
+	 */
+	public int getTargetProjectID() {
+		return targetProjectID;
+	}
+
+	public List<Target> getTargetsList() {
+		return list;
+	}
+
 	public boolean isEmpty() {
 		return list.isEmpty();
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @param highestVersion
+	 *            the highestVersion to set
+	 */
+	public void setHighestVersion(int highestVersion) {
+		this.highestTargetVersion = highestVersion;
+	}
+	
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param targetProject
+	 *            the targetProject to set
+	 */
+	public void setTargetProjectID(int targetProjectID) {
+		this.targetProjectID = targetProjectID;
 	}
 }

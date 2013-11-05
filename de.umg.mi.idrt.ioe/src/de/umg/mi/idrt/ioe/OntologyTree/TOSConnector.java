@@ -39,9 +39,49 @@ public class TOSConnector {
 	private static String contextName;
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
-	public TOSConnector() {
+	public static boolean checkOntology() {
+		setContextVariable("Job", "check_ontology_empty");
+		setContextVariable("Var1", "1");
 
-		Console.info("TOSConnector: establising a TOS connection");
+		boolean hasOntology = false;
+
+		try {
+
+			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+
+			tos.runJobInTOS((getARGV()));
+
+			if (tos.getErrorCode() == 0) {
+				hasOntology = true;
+			}
+
+		} catch (Exception e) {
+
+			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
+					+ e.getMessage());
+
+		}
+
+		return hasOntology;
+
+	}
+
+	public static void deleteTargetOntologyFull() {
+
+		setContextVariable("Job", "delete_target_ontology");
+
+	}
+	public static String[] getARGV() {
+		List<String> parameters = new ArrayList<String>();
+		if (contextName != null) {
+			parameters.add("--context=" + contextName);
+		}
+		for (String key : contextVariables.keySet()) {
+			parameters.add("--context_param");
+			parameters.add(key + "=" + contextVariables.get(key));
+		}
+
+		return (String[]) parameters.toArray(new String[0]);
 	}
 
 	public static tos.tosidrtconnector_0_4.TOSIDRTConnector getConnection() {
@@ -162,6 +202,116 @@ public class TOSConnector {
 		return tos;
 
 	}
+
+	public static int loadSourceToTarget(String targetID,
+			final String tmpDataFile) {
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				setContextVariable("Job", "load_source_to_target");
+				setContextVariable("Var1", "1");
+				setContextVariable("DataFile", tmpDataFile);
+
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					exit = tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					e.printStackTrace();
+					Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+
+		return exit;
+	}
+
+	public static void readTargetOntology(String targetID) {
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				setContextVariable("Job", "read_target_ontology");
+				setContextVariable("Var1", "1");
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+
+	}
+
+	/**
+	 * Sets all context-variables.
+	 * 
+	 * @param contexts
+	 *            The contexts to set.
+	 */
+	public static void setCompleteContext(HashMap<String, String> contexts) {
+		Iterator<String> contextsIt = contexts.keySet().iterator();
+		while (contextsIt.hasNext()) {
+			String nextKey = contextsIt.next();
+			setContextVariable(nextKey, contexts.get(nextKey));
+		}
+	}
+
+	public static void setContextVariable(String key, String value) {
+		contextVariables.put(key, value);
+	}
+
+	public static int uploadProject() {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
+
+				try {
+					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					exit = tos.runJobInTOS((getARGV()));
+				} catch (Exception e) {
+					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
+							+ e.getMessage());
+				}
+			}
+		}).run();
+
+		return exit;
+
+	}
+
+	public static int writeTargetOntology(String targetID, String tmpDataFile) {
+
+		setContextVariable("Job", "write_target_ontology");
+		setContextVariable("Var1", "1");
+		setContextVariable("DataFile", tmpDataFile);
+
+		try {
+			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+			tos.runJobInTOS((getARGV()));
+		} catch (Exception e) {
+			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
+					+ e.getMessage());
+			return 1;
+		}
+		return 0;
+
+	}
+
+	public TOSConnector() {
+
+		Console.info("TOSConnector: establising a TOS connection");
+	}
+
 	public void getOntology() {
 		Console.info("TOSConnector: getOntology()");
 
@@ -205,156 +355,6 @@ public class TOSConnector {
 
 		getConnection().runJobInTOS((getARGV()));
 
-	}
-
-	public static void setContextVariable(String key, String value) {
-		contextVariables.put(key, value);
-	}
-
-	public static String[] getARGV() {
-		List<String> parameters = new ArrayList<String>();
-		if (contextName != null) {
-			parameters.add("--context=" + contextName);
-		}
-		for (String key : contextVariables.keySet()) {
-			parameters.add("--context_param");
-			parameters.add(key + "=" + contextVariables.get(key));
-		}
-
-		return (String[]) parameters.toArray(new String[0]);
-	}
-
-	public static void deleteTargetOntologyFull() {
-
-		setContextVariable("Job", "delete_target_ontology");
-
-	}
-
-	public static int writeTargetOntology(String targetID, String tmpDataFile) {
-
-		setContextVariable("Job", "write_target_ontology");
-		setContextVariable("Var1", "1");
-		setContextVariable("DataFile", tmpDataFile);
-
-		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			tos.runJobInTOS((getARGV()));
-		} catch (Exception e) {
-			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
-					+ e.getMessage());
-			return 1;
-		}
-		return 0;
-
-	}
-
-	public static void readTargetOntology(String targetID) {
-
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				setContextVariable("Job", "read_target_ontology");
-				setContextVariable("Var1", "1");
-				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-					tos.runJobInTOS((getARGV()));
-				} catch (Exception e) {
-					Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
-							+ e.getMessage());
-				}
-			}
-		}).run();
-
-	}
-
-	public static boolean checkOntology() {
-		setContextVariable("Job", "check_ontology_empty");
-		setContextVariable("Var1", "1");
-
-		boolean hasOntology = false;
-
-		try {
-
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-
-			tos.runJobInTOS((getARGV()));
-
-			if (tos.getErrorCode() == 0) {
-				hasOntology = true;
-			}
-
-		} catch (Exception e) {
-
-			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
-					+ e.getMessage());
-
-		}
-
-		return hasOntology;
-
-	}
-
-	public static int loadSourceToTarget(String targetID,
-			final String tmpDataFile) {
-
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				setContextVariable("Job", "load_source_to_target");
-				setContextVariable("Var1", "1");
-				setContextVariable("DataFile", tmpDataFile);
-
-				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-					exit = tos.runJobInTOS((getARGV()));
-				} catch (Exception e) {
-					e.printStackTrace();
-					Console.error("Error while using a TOS-plugin with function loadSourceToTarget(): "
-							+ e.getMessage());
-				}
-			}
-		}).run();
-
-		return exit;
-	}
-
-	public static int uploadProject() {
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
-
-				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-					exit = tos.runJobInTOS((getARGV()));
-				} catch (Exception e) {
-					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-							+ e.getMessage());
-				}
-			}
-		}).run();
-
-		return exit;
-
-	}
-
-	/**
-	 * Sets all context-variables.
-	 * 
-	 * @param contexts
-	 *            The contexts to set.
-	 */
-	public static void setCompleteContext(HashMap<String, String> contexts) {
-		Iterator<String> contextsIt = contexts.keySet().iterator();
-		while (contextsIt.hasNext()) {
-			String nextKey = contextsIt.next();
-			setContextVariable(nextKey, contexts.get(nextKey));
-		}
 	}
 
 }

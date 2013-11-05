@@ -15,21 +15,50 @@ import de.umg.mi.idrt.ioe.Debug;
 
 public class OntologyTree extends JTree {
 
-	private OntologyTreeNode treeRoot = new OntologyTreeNode();
+	public static String convertAlphanumericPIDtoNumber(String pid) {
+		String newString = "";
+		String tmpString = "";
+
+		byte[] bytes = null;
+		try {
+			bytes = pid.getBytes("UTF-8");
+			for (int x = 0; x < bytes.length; x++) {
+				tmpString = String.valueOf(bytes[x]);
+				if (tmpString.length() == 3) {
+					// nothing
+				} else if (tmpString.length() == 2) {
+					tmpString = "0" + tmpString;
+				}
+				newString = newString + tmpString;
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return "";
+		}
+		return newString;
+	}
 	
+	private OntologyTreeNode treeRoot = new OntologyTreeNode();
 	private OTItemLists itemLists = new OTItemLists();
 	private OTNodeLists nodeLists = new OTNodeLists();
 	private OntologyTreeNode firstItemNode = null;
 	private String importDate = "";
 	private TreeViewer treeViewer = null;
-	private OntologyTreeNode _lastActiveNode;
 
+
+	private OntologyTreeNode _lastActiveNode;
 
 	OntologyTreeNode i2b2RootNode;
 
 	// naked constructor for serialization
 	public OntologyTree() {
 
+	}
+
+	public OntologyTree(OntologyTreeModel treeModel) {
+		super();
+		this.setModel(treeModel);
+		this.treeRoot = (OntologyTreeNode) treeModel.getRoot();
 	}
 
 	public OntologyTree(OntologyTreeNode treeRoot) {
@@ -46,28 +75,26 @@ public class OntologyTree extends JTree {
 
 	}
 
-	public OntologyTree(OntologyTreeModel treeModel) {
-		super();
-		this.setModel(treeModel);
-		this.treeRoot = (OntologyTreeNode) treeModel.getRoot();
-	}
-
-	public void initilize() {
-
-		OntologyTreeModel OTModel = new OntologyTreeModel(this.getTreeRoot());
-		setModel(OTModel);
-		setEditable(true);
-
-	}
-
-	public OntologyTreeNode getTreeRoot() {
-
-		if (this.treeRoot != null) {
-			return this.treeRoot;
-
-		} else {
-			Debug.e("treeRoot == null");
-			return null;
+	/**
+	 * @param item
+	 * @param ontologySource
+	 * @param object
+	 */
+	public void addModifierNodeByPath(OntologyItem item, String ontologySource, NodeType nodeType) {
+		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME());
+		String path = item.getM_APPLIED_PATH().substring(0, item.getM_APPLIED_PATH().length()-1)+item.getC_FULLNAME();
+		node.setID( node.getIDFromPath( item.getC_FULLNAME() ) );
+		try {
+			this.getNodeLists().addOTNode(path, node).add(node);
+		}catch (Exception e) {
+//			Console.error("Could not add node \"" + item.getC_NAME()
+//					+ "\" to the tree, because there is no parent node for it.");
+		}
+		node.setTreeAttributes();
+		node.setType(ontologySource);
+		node.setOntologyCellAttributes(item);
+		if (nodeType != null) {
+			setI2B2RootNode(node);
 		}
 	}
 
@@ -143,29 +170,6 @@ public class OntologyTree extends JTree {
 			return null;
 		}
 	}
-	/**
-	 * @param item
-	 * @param ontologySource
-	 * @param object
-	 */
-	public void addModifierNodeByPath(OntologyItem item, String ontologySource, NodeType nodeType) {
-		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME());
-		String path = item.getM_APPLIED_PATH().substring(0, item.getM_APPLIED_PATH().length()-1)+item.getC_FULLNAME();
-		node.setID( node.getIDFromPath( item.getC_FULLNAME() ) );
-		try {
-			this.getNodeLists().addOTNode(path, node).add(node);
-		}catch (Exception e) {
-//			Console.error("Could not add node \"" + item.getC_NAME()
-//					+ "\" to the tree, because there is no parent node for it.");
-		}
-		node.setTreeAttributes();
-		node.setType(ontologySource);
-		node.setOntologyCellAttributes(item);
-		if (nodeType != null) {
-			setI2B2RootNode(node);
-		}
-	}
-	
 	public void addNodeByPath(String i2b2Path, String name, String source, OntologyItem item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
@@ -192,75 +196,9 @@ public class OntologyTree extends JTree {
 		//			}
 		//		}
 	}
-
-	public OntologyTreeNode getRootNode() {
-
-		if (this.getTreeRoot() != null) {
-			return this.getTreeRoot();
-		}
-		return null;
-	}
-
-	public OTItemLists getItemLists() {
-		return this.itemLists;
-	}
-
-	public OTNodeLists getNodeLists() {
-		return this.nodeLists;
-	}
-
-	public void setFirstItemNode(OntologyTreeNode firstItemNode) {
-		this.firstItemNode = firstItemNode;
-	}
-
-	public OntologyTreeNode getFirstItemNode() {
-		return this.firstItemNode;
-	}
-
-	/**
-	 * setImportDate: set the local importDate variable
-	 * 
-	 * @param importDate
-	 *            the importDate as a string
-	 */
-	public void setImportDate(String importDate) {
-		this.importDate = importDate;
-	}
-
-	/**
-	 * getImportDate: returns the local importDate variable
-	 * 
-	 * @return String
-	 */
-	public String getImportDate() {
-		return this.importDate;
-	}
-
+	
 	public String createSQLDateFromXMLDate(XMLGregorianCalendar xmlDate) {
 		return xmlDate.toString();
-	}
-
-	public static String convertAlphanumericPIDtoNumber(String pid) {
-		String newString = "";
-		String tmpString = "";
-
-		byte[] bytes = null;
-		try {
-			bytes = pid.getBytes("UTF-8");
-			for (int x = 0; x < bytes.length; x++) {
-				tmpString = String.valueOf(bytes[x]);
-				if (tmpString.length() == 3) {
-					// nothing
-				} else if (tmpString.length() == 2) {
-					tmpString = "0" + tmpString;
-				}
-				newString = newString + tmpString;
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return "";
-		}
-		return newString;
 	}
 
 	public String deconvertAlphanumericPIDfromNumber(String pidString) {
@@ -280,6 +218,100 @@ public class OntologyTree extends JTree {
 		return byteString;
 	}
 
+	public void deleteNode( OntologyTreeNode node ){
+
+		for ( int x = 0; x < node.getChildCount(); x ++ ){
+
+			deleteNode( (OntologyTreeNode) node.getChildAt(x) );
+
+		}
+
+		this.getNodeLists().removeNode(node);
+
+
+	}
+
+	public void deleteNode(String i2b2Path){
+
+		OntologyTreeNode node = getNodeLists().getNodeByPath(i2b2Path);
+
+		if (node == null || node.getParent() == null ) {
+			Console.error("Could not delete node because there is no node or no parent node for it.");
+			return;
+		}
+
+		deleteNode(node);
+
+
+	}
+
+	/**
+	 * @return the activeItemNode
+	 */
+	public OntologyTreeNode getActiveNode() {
+		return _lastActiveNode;
+	}
+
+	public OntologyTreeNode getFirstItemNode() {
+		return this.firstItemNode;
+	}
+
+	/**
+	 * @param myOntologyTree TODO
+	 * @return the subRootNode
+	 */
+	public OntologyTreeNode getI2B2RootNode() {
+		return i2b2RootNode;
+	}
+
+	/**
+	 * getImportDate: returns the local importDate variable
+	 * 
+	 * @return String
+	 */
+	public String getImportDate() {
+		return this.importDate;
+	}
+
+	public OTItemLists getItemLists() {
+		return this.itemLists;
+	}
+
+	public OTNodeLists getNodeLists() {
+		return this.nodeLists;
+	}
+
+	public OntologyTreeNode getRootNode() {
+
+		if (this.getTreeRoot() != null) {
+			return this.getTreeRoot();
+		}
+		return null;
+	}
+
+	public OntologyTreeNode getTreeRoot() {
+
+		if (this.treeRoot != null) {
+			return this.treeRoot;
+
+		} else {
+			Debug.e("treeRoot == null");
+			return null;
+		}
+	}
+
+	public TreeViewer getTreeViewer() {
+		return this.treeViewer;
+	}
+
+	public void initilize() {
+
+		OntologyTreeModel OTModel = new OntologyTreeModel(this.getTreeRoot());
+		setModel(OTModel);
+		setEditable(true);
+
+	}
+
 	public boolean isTrue(String bool) {
 		if (bool.equals("true")) {
 			return true;
@@ -290,20 +322,6 @@ public class OntologyTree extends JTree {
 					+ "\" to boolean.");
 			return false;
 		}
-	}
-
-	public void setTreeViewer(TreeViewer treeViewer) {
-		this.treeViewer = treeViewer;
-	}
-
-	public TreeViewer getTreeViewer() {
-		return this.treeViewer;
-	}
-
-	public void printTree() {
-		System.out.println("--------------");
-		System.out.println(" printTree:   ");
-		printNode(this.getRootNode(), 2);
 	}
 
 	public void printNode(OntologyTreeNode node, int level) {
@@ -328,6 +346,12 @@ public class OntologyTree extends JTree {
 
 	}
 
+	public void printTree() {
+		System.out.println("--------------");
+		System.out.println(" printTree:   ");
+		printNode(this.getRootNode(), 2);
+	}
+
 	/**
 	 * @param activeItemNode
 	 *            the activeItemNode to set
@@ -336,49 +360,10 @@ public class OntologyTree extends JTree {
 		this._lastActiveNode = lastActiveNode;
 	}
 
-	/**
-	 * @return the activeItemNode
-	 */
-	public OntologyTreeNode getActiveNode() {
-		return _lastActiveNode;
+	public void setFirstItemNode(OntologyTreeNode firstItemNode) {
+		this.firstItemNode = firstItemNode;
 	}
 
-	public void deleteNode(String i2b2Path){
-
-		OntologyTreeNode node = getNodeLists().getNodeByPath(i2b2Path);
-
-		if (node == null || node.getParent() == null ) {
-			Console.error("Could not delete node because there is no node or no parent node for it.");
-			return;
-		}
-
-		deleteNode(node);
-
-
-	}
-
-
-	public void deleteNode( OntologyTreeNode node ){
-
-		for ( int x = 0; x < node.getChildCount(); x ++ ){
-
-			deleteNode( (OntologyTreeNode) node.getChildAt(x) );
-
-		}
-
-		this.getNodeLists().removeNode(node);
-
-
-	}
-
-
-	/**
-	 * @param myOntologyTree TODO
-	 * @return the subRootNode
-	 */
-	public OntologyTreeNode getI2B2RootNode() {
-		return i2b2RootNode;
-	}
 
 	/**
 	 * @param myOntologyTree TODO
@@ -386,6 +371,21 @@ public class OntologyTree extends JTree {
 	 */
 	public void setI2B2RootNode(OntologyTreeNode tmpi2b2RootNode) {
 		i2b2RootNode = tmpi2b2RootNode;
+	}
+
+
+	/**
+	 * setImportDate: set the local importDate variable
+	 * 
+	 * @param importDate
+	 *            the importDate as a string
+	 */
+	public void setImportDate(String importDate) {
+		this.importDate = importDate;
+	}
+
+	public void setTreeViewer(TreeViewer treeViewer) {
+		this.treeViewer = treeViewer;
 	}
 
 

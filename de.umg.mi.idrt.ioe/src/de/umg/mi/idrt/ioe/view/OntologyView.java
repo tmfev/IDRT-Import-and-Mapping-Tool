@@ -32,7 +32,34 @@ public class OntologyView extends ViewPart {
 	}
 
 	@Override
-	public void setFocus() {
+	public void dispose(){
+		super.dispose();
+		
+		
+		/*
+		if (_i2b2ImportTool != null && _i2b2ImportTool.getMyOntologyTree() != null){
+			_i2b2ImportTool.getMyOntologyTree().initiate();
+		}
+		*/
+		
+		//IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();		
+		//IWorkbenchPage page = IWorkbench.getInstance().getActiveWorkbenchWindow().getActivePage();
+
+		//TODO check perspective
+		/*
+		
+		Perspective perspective = (Perspective) page.getPerspective();
+		//get the reference for your viewId
+		IViewReference ref = page.findViewReference(Resource.ID.View.ONTOLOGY_NODEEDITOR_VIEW);
+		//release the view
+		perspective.getViewFactory().releaseView(ref);
+		
+		ref = page.findViewReference(Resource.ID.View.ONTOLOGY_ANSWERSPREVIEW_VIEW);
+		//release the view
+		perspective.getViewFactory().releaseView(ref);
+		*/
+
+		
 		
 	}
 	
@@ -84,34 +111,7 @@ public class OntologyView extends ViewPart {
 	}
 	
 	@Override
-	public void dispose(){
-		super.dispose();
-		
-		
-		/*
-		if (_i2b2ImportTool != null && _i2b2ImportTool.getMyOntologyTree() != null){
-			_i2b2ImportTool.getMyOntologyTree().initiate();
-		}
-		*/
-		
-		//IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();		
-		//IWorkbenchPage page = IWorkbench.getInstance().getActiveWorkbenchWindow().getActivePage();
-
-		//TODO check perspective
-		/*
-		
-		Perspective perspective = (Perspective) page.getPerspective();
-		//get the reference for your viewId
-		IViewReference ref = page.findViewReference(Resource.ID.View.ONTOLOGY_NODEEDITOR_VIEW);
-		//release the view
-		perspective.getViewFactory().releaseView(ref);
-		
-		ref = page.findViewReference(Resource.ID.View.ONTOLOGY_ANSWERSPREVIEW_VIEW);
-		//release the view
-		perspective.getViewFactory().releaseView(ref);
-		*/
-
-		
+	public void setFocus() {
 		
 	}
 

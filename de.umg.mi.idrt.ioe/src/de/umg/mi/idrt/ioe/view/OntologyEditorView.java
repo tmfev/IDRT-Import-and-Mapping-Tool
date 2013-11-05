@@ -18,7 +18,6 @@ import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.EditingSupport;
-import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -52,15 +51,14 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
@@ -90,7 +88,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
-import org.eclipse.swt.widgets.Combo;
 
 public class OntologyEditorView extends ViewPart {
 	
@@ -220,10 +217,21 @@ public class OntologyEditorView extends ViewPart {
 		//return OntologyEditorView.getTargetProjects().getSelectedTargetProject();
 	}
 
+	public static MyOntologyTrees getMyOntologyTree(){
+		return myOntologyTree;
+	}
+
+	public static OntologyTree getOntologyStagingTree(){
+		return myOntologyTree.getOntologyTreeSource();
+	}
+
+	public static OntologyTree getOntologyTargetTree(){
+		return myOntologyTree.getOntologyTreeTarget();
+	}
+
 	public static String getStagingSchemaName() {
 		return sourceSchema;
 	}
-
 	public static Server getStagingServer() {
 		return currentStagingServer;
 	}
@@ -231,10 +239,14 @@ public class OntologyEditorView extends ViewPart {
 	public static TreeViewer getStagingTreeViewer() {
 		return stagingTreeViewer;
 	}
-
 	public static Point getTargetCompositePoint() {
 		return targetComposite.getLocation();
 	}
+
+	public static TargetProjects getTargetProjects(){
+		return ((OntologyTreeTargetRootNode)getOntologyTargetTree().getTreeRoot()).getTargetProjects();
+	}
+
 	public static String getTargetSchemaName() {
 		return lblTargetName.getText();
 		//		return "";
@@ -243,12 +255,21 @@ public class OntologyEditorView extends ViewPart {
 	public static TreeViewer getTargetTreeViewer() {
 		return targetTreeViewer;
 	}
+
 	/**
 	 * @return the column
 	 */
 	public static TreeViewerColumn getTargetTreeViewerColumn() {
 		return column;
 	}
+
+	//	private static void markParent(OntologyTreeNode node) {
+	//		System.out.println("marking " + node.getName());
+	//		node.setSearchResult(true);
+	//		stagingTreeViewer.setExpandedState(node, true);
+	//		if (node.getParent()!=null)
+	//		markParent(node.getParent());
+	//	}
 
 	private static void hideNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.hideNode");
@@ -266,48 +287,11 @@ public class OntologyEditorView extends ViewPart {
 		}
 	}
 
-	private static void markNodes(OntologyTreeNode node, String text) {
-
-		for (OntologyTreeNode child : node.getChildren()) {
-			markNodes(child, text);
-		}
-		if (node.getName().toLowerCase().contains(text.toLowerCase())) {
-			//			markParent(node);
-			node.setSearchResult(true);
-			//			stagingTreeViewer.
-			while (node.getParent()!=null) {
-				node = node.getParent();
-				stagingTreeViewer.setExpandedState(node, true);
-			}
-		}
-		else {
-			node.setSearchResult(false);
-			//			stagingTreeViewer.setExpandedState(node, false);
-		}
-	}
-
-	private static void unmarkAllNodes(OntologyTreeNode node) {
-
-		for (OntologyTreeNode child : node.getChildren()) 
-			unmarkAllNodes(child);
-		node.setSearchResult(false);
-	}
-
-	//	private static void markParent(OntologyTreeNode node) {
-	//		System.out.println("marking " + node.getName());
-	//		node.setSearchResult(true);
-	//		stagingTreeViewer.setExpandedState(node, true);
-	//		if (node.getParent()!=null)
-	//		markParent(node.getParent());
-	//	}
-
 	/**
 	 * @wbp.parser.entryPoint
 	 */
 	public static void init() {
 		System.out.println("INIT!");
-		
-		
 		
 		//TODO HERE
 
@@ -390,8 +374,8 @@ public class OntologyEditorView extends ViewPart {
 		targetComposite.layout();
 		column = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		column.getColumn().setMoveable(true);
-		column.getColumn().setText("Column 1");
+		column.getColumn().setMoveable(false);
+//		column.getColumn().setText("");
 		column.setLabelProvider(new ColumnLabelProvider() {
 
 			public String getText(Object element) {
@@ -897,7 +881,6 @@ public class OntologyEditorView extends ViewPart {
 		init = true;
 		initDataBindings();
 	}
-
 	protected static DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
@@ -910,6 +893,7 @@ public class OntologyEditorView extends ViewPart {
 	public static boolean isInit() {
 		return init;
 	}
+
 	/**
 	 * @return the notYetSaved
 	 */
@@ -923,11 +907,30 @@ public class OntologyEditorView extends ViewPart {
 	public static boolean isShowSubNodes() {
 		return showSubNodes;
 	}
+	private static void markNodes(OntologyTreeNode node, String text) {
 
+		for (OntologyTreeNode child : node.getChildren()) {
+			markNodes(child, text);
+		}
+		if (node.getName().toLowerCase().contains(text.toLowerCase())) {
+			//			markParent(node);
+			node.setSearchResult(true);
+			//			stagingTreeViewer.
+			while (node.getParent()!=null) {
+				node = node.getParent();
+				stagingTreeViewer.setExpandedState(node, true);
+			}
+		}
+		else {
+			node.setSearchResult(false);
+			//			stagingTreeViewer.setExpandedState(node, false);
+		}
+	}
 	private static void renameNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
 
 	}
+
 
 	/**
 	 * @param column the column to set
@@ -945,18 +948,23 @@ public class OntologyEditorView extends ViewPart {
 		currentTargetNode = node;
 	}
 
-
 	public static void setInstance(String name, String description) {
 		instanceName.setText(name);
 		OntologyEditorView.getTargetProjects().getSelectedTargetProject().setName(name);
 		OntologyEditorView.getTargetProjects().getSelectedTargetProject().setDescription(description);
 	}
+
+	public static void setMyOntologyTree (MyOntologyTrees myOT){
+		myOntologyTree = myOT;
+	}
+
 	/**
 	 * @param notYetSaved the notYetSaved to set
 	 */
 	public static void setNotYetSaved(boolean notYetSaved) {
 		OntologyEditorView.notYetSaved = notYetSaved;
 	}
+
 	public static void setSelection(OntologyTreeNode node) {
 		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
@@ -1050,6 +1058,8 @@ public class OntologyEditorView extends ViewPart {
 	public static void setStagingSchemaName(String schema) {
 		sourceSchema=schema;
 	}
+
+	
 
 	/**
 	 * @param currentStagingServer
@@ -1286,12 +1296,13 @@ public class OntologyEditorView extends ViewPart {
 		mainComposite.layout();
 		column.getColumn().setWidth(targetComposite.getBounds().width-5);
 	}
-
 	public static void setTargetNameVersion(String version) {
 		addVersionName(version);
 		versionCombo.setText(version);
 		composite_2.layout();
 	}
+	
+	
 
 	public static void setTargetNameVersion(String name, String version) {
 		System.out.println("SETTING: " + name + " " + version);
@@ -1311,9 +1322,14 @@ public class OntologyEditorView extends ViewPart {
 
 		composite_2.layout();
 	}
-
 	
+	private static void unmarkAllNodes(OntologyTreeNode node) {
 
+		for (OntologyTreeNode child : node.getChildren()) 
+			unmarkAllNodes(child);
+		node.setSearchResult(false);
+	}
+	
 	@Override
 	public void createPartControl(final Composite parent) {
 		mainComposite = parent;
@@ -1443,7 +1459,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 	}
-
+	
 	private String getLatestVersion(String string) {
 
 		if (  getTargetProjects().getSelectedTarget() != null ){ 
@@ -1453,29 +1469,8 @@ public class OntologyEditorView extends ViewPart {
 			return "0";
 		}
 	}
+	
 	@Override
 	public void setFocus() {
-	}
-	
-	
-
-	public static void setMyOntologyTree (MyOntologyTrees myOT){
-		myOntologyTree = myOT;
-	}
-	
-	public static MyOntologyTrees getMyOntologyTree(){
-		return myOntologyTree;
-	}
-	
-	public static OntologyTree getOntologyStagingTree(){
-		return myOntologyTree.getOntologyTreeSource();
-	}
-	
-	public static OntologyTree getOntologyTargetTree(){
-		return myOntologyTree.getOntologyTreeTarget();
-	}
-	
-	public static TargetProjects getTargetProjects(){
-		return ((OntologyTreeTargetRootNode)getOntologyTargetTree().getTreeRoot()).getTargetProjects();
 	}
 }

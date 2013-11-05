@@ -31,22 +31,15 @@ public class OTRootNode extends OntologyTreeNode  {
 	
 	private HashMap<String,String> _attributesMap = new HashMap<String,String>();
 	
-	public OTRootNode (String name){
-		super(name);
-		
-		initiate();
-	}
-	
 	public OTRootNode (){
 		super();
 		initiate();
 	}
 	
-	private void initiate(){
-		this.setNodeType(NodeType.META);
-		this.setID("odm");
-		if (this.getName() != null && this.getName().isEmpty())
-			this.setName("ODM");
+	public OTRootNode (String name){
+		super(name);
+		
+		initiate();
 	}
 	
 	public void addAttribute(String name, String value){
@@ -59,10 +52,27 @@ public class OTRootNode extends OntologyTreeNode  {
 		}
 	}
 	
+	/**
+	 * Adds an unchecked Child to this node.
+	 *
+	 */
+	public void addUncheckedChild () {
+		this._uncheckedChildren++;
+	}
+	
 	public Iterator<Entry<String, String>> getAttributesIterator(){
 		return _attributesMap.entrySet().iterator();
 	}
 	
+	/**
+	 * @return the creationDateTime
+	 */
+	public String getCreationDateTime() {
+		if(creationDateTime != null)
+			return creationDateTime;
+		else
+			return "";
+	}
 	/**
 	 * @return the description
 	 */
@@ -71,12 +81,6 @@ public class OTRootNode extends OntologyTreeNode  {
 			return description;
 		else
 			return "";
-	}
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 	/**
@@ -89,19 +93,36 @@ public class OTRootNode extends OntologyTreeNode  {
 			return "";
 	}
 	/**
-	 * @return the creationDateTime
+	 * @return the originalFileName
 	 */
-	public String getCreationDateTime() {
-		if(creationDateTime != null)
-			return creationDateTime;
+	public String getOriginalFileName() {
+		return _originalFileName;
+	}
+	/**
+	 * @return the sourceSystem
+	 */
+	public String getSourceSystem() {
+		if(sourceSystem != null)
+			return sourceSystem;
 		else
 			return "";
 	}
 	/**
-	 * @param creationDateTime the creationDateTime to set
+	 * @return the sourceSystemVersion
 	 */
-	public void setCreationDateTime(String creationDateTime) {
-		this.creationDateTime = creationDateTime;
+	public String getSourceSystemVersion() {
+		if(sourceSystemVersion != null)
+			return sourceSystemVersion;
+		else
+			return "";
+	}
+	/**
+	 * Returns the number of unchecked children of this node.
+	 *
+	 * @return	the number of unchecked children
+	 */
+	public int getUncheckedChildren () {
+		return (int)this._uncheckedChildren;
 	}
 	/**
 
@@ -114,41 +135,31 @@ public class OTRootNode extends OntologyTreeNode  {
 		else
 			return "";
 	}
-	/**
-	 * @param Uploader the Uploader to set
-	 */
-	public void setUploader(String originator) {
-		this.originator = originator;
+	private void initiate(){
+		this.setNodeType(NodeType.META);
+		this.setID("odm");
+		if (this.getName() != null && this.getName().isEmpty())
+			this.setName("ODM");
 	}
 	/**
-	 * @return the sourceSystem
+	 * Removes an unchecked Child to this node.
+	 *
 	 */
-	public String getSourceSystem() {
-		if(sourceSystem != null)
-			return sourceSystem;
-		else
-			return "";
+	public void removeUncheckedChild () {
+		this._uncheckedChildren--;
 	}
 	/**
-	 * @param sourceSystem the sourceSystem to set
+	 * @param creationDateTime the creationDateTime to set
 	 */
-	public void setSourceSystem(String sourceSystem) {
-		this.sourceSystem = sourceSystem;
+	public void setCreationDateTime(String creationDateTime) {
+		this.creationDateTime = creationDateTime;
 	}
+
 	/**
-	 * @return the sourceSystemVersion
+	 * @param description the description to set
 	 */
-	public String getSourceSystemVersion() {
-		if(sourceSystemVersion != null)
-			return sourceSystemVersion;
-		else
-			return "";
-	}
-	/**
-	 * @param sourceSystemVersion the sourceSystemVersion to set
-	 */
-	public void setSourceSystemVersion(String sourceSystemVersion) {
-		this.sourceSystemVersion = sourceSystemVersion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	/**
@@ -164,37 +175,26 @@ public class OTRootNode extends OntologyTreeNode  {
 		_originalFileName = originalFileName;
 	}
 
-	/**
-	 * @return the originalFileName
-	 */
-	public String getOriginalFileName() {
-		return _originalFileName;
-	}
-
 	
 	
 	/**
-	 * Returns the number of unchecked children of this node.
-	 *
-	 * @return	the number of unchecked children
+	 * @param sourceSystem the sourceSystem to set
 	 */
-	public int getUncheckedChildren () {
-		return (int)this._uncheckedChildren;
+	public void setSourceSystem(String sourceSystem) {
+		this.sourceSystem = sourceSystem;
 	}
 	
 	/**
-	 * Adds an unchecked Child to this node.
-	 *
+	 * @param sourceSystemVersion the sourceSystemVersion to set
 	 */
-	public void addUncheckedChild () {
-		this._uncheckedChildren++;
+	public void setSourceSystemVersion(String sourceSystemVersion) {
+		this.sourceSystemVersion = sourceSystemVersion;
 	}
 	
 	/**
-	 * Removes an unchecked Child to this node.
-	 *
+	 * @param Uploader the Uploader to set
 	 */
-	public void removeUncheckedChild () {
-		this._uncheckedChildren--;
+	public void setUploader(String originator) {
+		this.originator = originator;
 	}
 }

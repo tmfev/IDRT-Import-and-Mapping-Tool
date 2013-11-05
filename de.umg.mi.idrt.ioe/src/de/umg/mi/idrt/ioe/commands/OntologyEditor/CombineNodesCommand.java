@@ -76,38 +76,6 @@ public class CombineNodesCommand extends AbstractHandler {
 		EditorTargetInfoView.refresh();
 		return null;
 	}
-	/**
-	 * @param oldTreeNodeList2
-	 * @param newTreeNodeList2
-	 */
-	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
-		//TODO MAGICALLY MERGE		
-		for (OntologyTreeNode node : newTreeNodeList2) {
-			//			System.out.println("CHECKING " + node.getName());
-			boolean found = false;
-			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
-				Pattern p = Pattern.compile("[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?");
-				Matcher m = p.matcher(nodeToCheck.getID());
-				if (m.find()) {
-					String icd = m.group();
-					if (node.getID().contains(icd)) {
-						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
-						node.getTargetNodeAttributes().removeAllStagingPaths();
-						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
-						
-						found = true;
-						break;
-					}
-				}
-			}
-			if (!found) {
-				System.out.println("not found: " + node.getID() + " " +perfectPath+node.getID()+"\\");
-				node.getTargetNodeAttributes().removeAllStagingPaths();
-				node.getTargetNodeAttributes().addStagingPath(perfectPath+node.getID()+"\\");
-			}
-		}
-	}
-
 	private void generatePerfectPath(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
 		//TODO MAGICALLY MERGE		
 		for (OntologyTreeNode node : newTreeNodeList2) {
@@ -147,12 +115,44 @@ public class CombineNodesCommand extends AbstractHandler {
 			}
 		}
 	}
+
 	private void getOldTargetNodes(OntologyTreeNode child){
 		if (child.hasChildren()) {
 			for (OntologyTreeNode child2 : child.getChildren()) {
 				getOldTargetNodes(child2);
 				if (child2.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l"))
 					oldTreeNodeList.add(child2);
+			}
+		}
+	}
+	/**
+	 * @param oldTreeNodeList2
+	 * @param newTreeNodeList2
+	 */
+	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
+		//TODO MAGICALLY MERGE		
+		for (OntologyTreeNode node : newTreeNodeList2) {
+			//			System.out.println("CHECKING " + node.getName());
+			boolean found = false;
+			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
+				Pattern p = Pattern.compile("[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?");
+				Matcher m = p.matcher(nodeToCheck.getID());
+				if (m.find()) {
+					String icd = m.group();
+					if (node.getID().contains(icd)) {
+						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
+						node.getTargetNodeAttributes().removeAllStagingPaths();
+						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+						
+						found = true;
+						break;
+					}
+				}
+			}
+			if (!found) {
+				System.out.println("not found: " + node.getID() + " " +perfectPath+node.getID()+"\\");
+				node.getTargetNodeAttributes().removeAllStagingPaths();
+				node.getTargetNodeAttributes().addStagingPath(perfectPath+node.getID()+"\\");
 			}
 		}
 	}

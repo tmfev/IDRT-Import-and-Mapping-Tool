@@ -21,11 +21,11 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class ReadSourceAndCreateViews extends AbstractHandler {
 
+	private ExecutionEvent _event;
+
 	public ReadSourceAndCreateViews() {
 		super();
 	}
-
-	private ExecutionEvent _event;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

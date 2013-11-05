@@ -10,8 +10,8 @@ import org.eclipse.swt.widgets.Shell;
  */
 public interface IToolTipEditor
 {
-	Control getToolTipControl();
 	Shell getShell();
-	String getToolTipTitle(Point pt);
+	Control getToolTipControl();
 	String getToolTipText(Point pt);
+	String getToolTipTitle(Point pt);
 }

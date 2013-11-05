@@ -18,6 +18,17 @@ public class TargetSubNodeAttributes {
 	}
 
 	/**
+	 * @return the endDateSource
+	 */
+	public String getEndDateSource() {
+		return endDateSource;
+	}
+
+	public OntologyTreeSubNode getParent() {
+		return parent;
+	}
+
+	/**
 	 * @return the sourcePath
 	 */
 	public String getSourcePath() {
@@ -32,21 +43,6 @@ public class TargetSubNodeAttributes {
 	}
 
 	/**
-	 * @param startDateSource
-	 *            the startDateSource to set
-	 */
-	public void setStartDateSourcePath(String startDateSource) {
-		this.startDateSource = startDateSource;
-	}
-
-	/**
-	 * @return the endDateSource
-	 */
-	public String getEndDateSource() {
-		return endDateSource;
-	}
-
-	/**
 	 * @param endDateSource
 	 *            the endDateSource to set
 	 */
@@ -56,14 +52,18 @@ public class TargetSubNodeAttributes {
 
 
 
-	public OntologyTreeSubNode getParent() {
-		return parent;
+	public void setParent(OntologyTreeSubNode parent) {
+		this.parent = parent;
 	}
 
 
 
-	public void setParent(OntologyTreeSubNode parent) {
-		this.parent = parent;
+	/**
+	 * @param startDateSource
+	 *            the startDateSource to set
+	 */
+	public void setStartDateSourcePath(String startDateSource) {
+		this.startDateSource = startDateSource;
 	}
 
 }

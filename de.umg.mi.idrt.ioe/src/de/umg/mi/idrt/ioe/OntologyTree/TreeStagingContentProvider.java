@@ -17,6 +17,11 @@ public class TreeStagingContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
+	public void dispose() {
+		// unused
+	}
+
+	@Override
 	public Object[] getChildren(Object element) {
 		if (element instanceof OntologyTreeNode) {
 //			System.out.println("TREENODE");
@@ -26,26 +31,6 @@ public class TreeStagingContentProvider implements ITreeContentProvider {
 		}
 		else
 			return null;
-	}
-
-	@Override
-	public Object getParent(Object element) {
-		return ((OntologyTreeNode) element).getParent();
-	}
-
-	@Override
-	public boolean hasChildren(Object element) {
-		return ((OntologyTreeNode) element).getChildCount() > 0;
-	}
-
-	@Override
-	public void dispose() {
-		// unused
-	}
-
-	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// unused
 	}
 
 	@Override
@@ -59,6 +44,20 @@ public class TreeStagingContentProvider implements ITreeContentProvider {
 	//			.println("TreeContentProvider Error at getElements: inputElement is NOT instanceof OntologyTreeNode "
 	//					+ inputElement.getClass().getSimpleName());
 	//		}
+
+	@Override
+	public Object getParent(Object element) {
+		return ((OntologyTreeNode) element).getParent();
+	}
+
+	public OntologyTreeNode getRoot() {
+		return _treeRoot;
+	}
+
+	@Override
+	public boolean hasChildren(Object element) {
+		return ((OntologyTreeNode) element).getChildCount() > 0;
+	}
 
 	//		if (((OntologyTreeNode) _ot.getRootNode()).getChildCount() > 0) {
 	//			System.out.println("IF?");
@@ -75,8 +74,9 @@ public class TreeStagingContentProvider implements ITreeContentProvider {
 	//
 	//	}
 
-	public OntologyTreeNode getRoot() {
-		return _treeRoot;
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// unused
 	}
 
 	public void setOT(OntologyTree ot) {
