@@ -27,7 +27,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 
-
+	private boolean searchResult = false;
 	private boolean highlighted=false;
 	/**
 	 * a list of this nodes children for the use in a swt tree viewer
@@ -339,7 +339,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void removeAllChildren() {
 
 		for (OntologyTreeNode node : getChildren()) {
-			MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+			MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
 			node.removeAllChildren();
 			node.getChildren().clear();
@@ -348,10 +348,10 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	@Override
 	public void removeFromParent() {
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
-		if (this != myOT.getSubRootNode())
+		if (this != myOT._ontologyTreeSource.getI2B2RootNode())
 			this.getParent().getChildren().remove(this);
 		super.removeFromParent();
 	}
@@ -579,9 +579,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 			this.setTreePath(((OntologyTreeNode) parent).getTreePath() + "\\" + this.id);
 			this.setTreePathLevel(((OntologyTreeNode) parent).getTreePathLevel() + 1);
-
 		}
-
 	}
 
 	/**
@@ -643,6 +641,14 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	public String toString() {
 		return this.name + " " + this.treePath;
+	}
+
+	public boolean isSearchResult() {
+		return searchResult;
+	}
+
+	public void setSearchResult(boolean searchResult) {
+		this.searchResult = searchResult;
 	}
 
 

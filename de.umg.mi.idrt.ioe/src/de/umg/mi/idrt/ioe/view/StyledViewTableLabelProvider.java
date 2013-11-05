@@ -7,6 +7,7 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -42,6 +43,10 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 			//		cell.setBackground(color);
 			if (otNode.isHighlighted()) {
 				Color color = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
+				cell.setBackground(color);	
+			}
+			if (otNode.isSearchResult()) {
+				Color color = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
 				cell.setBackground(color);	
 			}
 			else {

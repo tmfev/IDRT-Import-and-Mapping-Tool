@@ -5,16 +5,15 @@ import java.util.ArrayList;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import de.umg.mi.idrt.ioe.view.OTtoTreeContentProvider;
 
 public class TreeStagingContentProvider implements ITreeContentProvider {
 
 	private OntologyTreeNode _treeRoot = null;
 	private OntologyTree _ot;
-	private OTtoTreeContentProvider model;
+	private OntologyTreeContentProvider model;
 	public TreeStagingContentProvider() {
 		// TODO Auto-generated constructor stub
-		model = new OTtoTreeContentProvider();
+		model = new OntologyTreeContentProvider();
 	}
 
 	@Override
