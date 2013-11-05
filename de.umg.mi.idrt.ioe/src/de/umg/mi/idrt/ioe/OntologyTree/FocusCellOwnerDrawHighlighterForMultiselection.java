@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.ioe.view;
+package de.umg.mi.idrt.ioe.OntologyTree;
 import java.lang.reflect.Method;
 
 import org.apache.log4j.Logger;

@@ -27,7 +27,6 @@ public class AddItemCommand extends AbstractHandler {
 		subRootNode.setTreePath("\\i2b2\\newItem\\");
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-		subRootNode.setNodeType(NodeType.ITEM);
 //		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setChanged(true);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");

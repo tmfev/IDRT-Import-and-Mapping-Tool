@@ -30,7 +30,6 @@ public class TOSHandler {
 
 	static OntologyTree ontologyStagingTree = null;
 
-	private OntologyTree ontologyTargetTree = null;
 
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
 	public static final String TableIEOTarget = "ioe_target";
@@ -64,7 +63,6 @@ public class TOSHandler {
 		/*
 		 * _otCreator = OntologyEditorView.getI2b2ImportTool() .getOTCreator();
 		 */
-		ontologyTargetTree = OntologyEditorView.getOntologyTargetTree();
 	}
 
 	public static void status(String status) {
@@ -171,6 +169,8 @@ public class TOSHandler {
 
 		
 		System.out.println("->" + treeLevel + ":" + treePath);
+		
+		
 		/*
 			OntologyTreeNode node = _ontologyTreeTarget.addNodeByPath(treePath,
 						name, name);

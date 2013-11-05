@@ -75,6 +75,7 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.OntologyTree.FocusCellOwnerDrawHighlighterForMultiselection;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDragListener;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
@@ -84,6 +85,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
+import de.umg.mi.idrt.ioe.OntologyTree.StyledViewTableLabelProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
@@ -990,8 +992,6 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.getTree().removeAll();
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
-		treeContentProvider.setOntologyTree(OntologyEditorView.getOntologyStagingTree());
-
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 
@@ -1073,7 +1073,6 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.getTree().removeAll();
 
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
-		treeContentProvider.setOntologyTree(getOntologyTargetTree());
 
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());

@@ -26,7 +26,6 @@ public class AddFolderCommand extends AbstractHandler {
 		subRootNode.setTreePath("\\i2b2\\newNode\\");
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-		subRootNode.setNodeType(NodeType.ITEMGROUP);
 		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setChanged(true);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");

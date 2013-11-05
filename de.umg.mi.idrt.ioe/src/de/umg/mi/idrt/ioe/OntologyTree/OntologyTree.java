@@ -39,8 +39,7 @@ public class OntologyTree extends JTree {
 	}
 	
 	private OntologyTreeNode treeRoot = new OntologyTreeNode();
-	private OTItemLists itemLists = new OTItemLists();
-	private OTNodeLists nodeLists = new OTNodeLists();
+	private OntologyTreeNodeList nodeLists = new OntologyTreeNodeList();
 	private OntologyTreeNode firstItemNode = null;
 	private String importDate = "";
 	private TreeViewer treeViewer = null;
@@ -273,11 +272,7 @@ public class OntologyTree extends JTree {
 		return this.importDate;
 	}
 
-	public OTItemLists getItemLists() {
-		return this.itemLists;
-	}
-
-	public OTNodeLists getNodeLists() {
+	public OntologyTreeNodeList getNodeLists() {
 		return this.nodeLists;
 	}
 

@@ -256,30 +256,9 @@
       </view>
       <view
             allowMultiple="false"
-            class="de.umg.mi.idrt.ioe.view.OntologyView"
-            id="edu.goettingen.i2b2.importtool.view.OntologyView"
-            name="%view.name.1"
-            restorable="false">
-      </view>
-      <view
-            allowMultiple="false"
-            class="de.umg.mi.idrt.ioe.view.EditorSourceView"
-            id="edu.goettingen.i2b2.importtool.view.EditorSourceView"
-            name="EditorSourceView"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
             class="de.umg.mi.idrt.ioe.view.EditorSourceInfoView"
             id="edu.goettingen.i2b2.importtool.view.EditorSourceInfoView"
             name="EditorSourceInfoView"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
-            class="de.umg.mi.idrt.ioe.view.EditorTargetView"
-            id="edu.goettingen.i2b2.importtool.view.EditorTargetView"
-            name="EditorTargetView"
             restorable="true">
       </view>
       <view

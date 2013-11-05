@@ -1,6 +1,5 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;

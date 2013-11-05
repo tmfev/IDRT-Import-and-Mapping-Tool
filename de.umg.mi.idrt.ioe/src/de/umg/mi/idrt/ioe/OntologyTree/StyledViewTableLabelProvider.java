@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.ioe.view;
+package de.umg.mi.idrt.ioe.OntologyTree;
 
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.ViewerCell;
@@ -8,8 +8,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.umg.mi.idrt.ioe.GUITools;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 

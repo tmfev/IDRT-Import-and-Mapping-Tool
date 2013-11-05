@@ -30,7 +30,6 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class UploadProjectWizard extends Wizard {
 
-//	protected UploadProjectWizardPage1 one;
 	protected UploadProjectWizardPage2 two;
 
 	private Properties defaultProps;
@@ -44,9 +43,7 @@ public class UploadProjectWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-//		one = new UploadProjectWizardPage1();
 		two = new UploadProjectWizardPage2();
-//		addPage(one);
 		addPage(two);
 	}
 
@@ -57,11 +54,8 @@ public class UploadProjectWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-
-
 		
 		String stagingServerName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
-		System.out.println("TARGETNAME: " + OntologyEditorView.getTargetSchemaName());
 		Server stagingServer = ServerList.getTargetServers().get(stagingServerName);
 		final String targetIPText = stagingServer.getIp();
 		final String targetPasswordText = stagingServer.getPassword();
@@ -70,7 +64,6 @@ public class UploadProjectWizard extends Wizard {
 		final String targetDBPort = stagingServer.getPort();
 		final String targetDBSchema = OntologyEditorView.getTargetSchemaName();
 		
-		System.out.println("STAGINGNAME: " + OntologyEditorView.getStagingSchemaName());
 		String targetServerName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
 		Server currentServer = ServerList.getTargetServers().get(targetServerName);
 		currentServer.setSchema(OntologyEditorView.getStagingSchemaName());
@@ -136,21 +129,6 @@ public class UploadProjectWizard extends Wizard {
 					
 					contextMap.put("TargetID",""+ OntologyEditorView.getTargetProjects().getSelectedTarget().getTargetID());
 					
-					System.out.println("TARGET:");
-					System.out.println(targetIPText);
-					System.out.println(targetPasswordText);
-					System.out.println(targetDBUserText);
-					System.out.println(targetDBSID);
-					System.out.println(targetDBPort);
-					System.out.println(targetDBSchema);
-					System.out.println();
-					System.out.println("STAGING:");
-					System.out.println(stagingIPText);
-					System.out.println(stagingPasswordText);
-					System.out.println(stagingDBUserText);
-					System.out.println(stagingDBSID);
-					System.out.println(stagingDBPort);
-					System.out.println(stagingDBSchema);
 					/**
 					 * page 2
 					 */

@@ -49,7 +49,6 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.view.ViewTree;
 
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
@@ -59,15 +58,11 @@ import de.umg.mi.idrt.ioe.view.ViewTree;
  *         main class managing and giving access to the source and target trees
  */
 
-public class MyOntologyTrees extends JPanel {
-
-	private static final long serialVersionUID = -7345913467371670611L;
+public class MyOntologyTrees{
 
 	// jTree components
 	private OntologyTree ontologyTreeSource = null;
 	private OntologyTree ontologyTargetTree = null;
-	private ViewTree viewTreeSource = null;
-	private ViewTree viewTreeTarget = null;
 
 	// private tree components
 	private OntologyTreeNode sourceRootNode = null;
@@ -78,9 +73,8 @@ public class MyOntologyTrees extends JPanel {
 	 * exports this tree to I2B2.
 	 */
 	public MyOntologyTrees() {
-		super(new GridLayout(1, 0));
+//		super(new GridLayout(1, 0));
 		
-		System.out.println("CREATING THE MYONTOLOGYTREE!");
 		initiate();
 
 		
@@ -136,7 +130,7 @@ public class MyOntologyTrees extends JPanel {
 				"OntologyTreeSourceRootNode");
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
-		rootNode.setNodeType(NodeType.ROOT);
+		rootNode.setNodeType(NodeType.TREEROOT);
 		rootNode.setTreePathLevel(-1);
 
 		ontologyTreeSource = new OntologyTree(rootNode);
@@ -149,8 +143,6 @@ public class MyOntologyTrees extends JPanel {
 		ontologyTreeSource.setDragEnabled(true);
 		ontologyTreeSource.setAutoscrolls(true);
 		ontologyTreeSource.setRootVisible(false);
-
-		ontologyTreeSource.setTransferHandler(new OTTransferHandler());
 
 		getOntologyTreeSource().updateUI();
 
@@ -189,7 +181,6 @@ public class MyOntologyTrees extends JPanel {
 			this.ontologyTreeSource.addMouseListener(ma);
 		}
 
-		this.viewTreeSource = new ViewTree();
 
 	}
 
@@ -201,18 +192,12 @@ public class MyOntologyTrees extends JPanel {
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
 		rootNode.setTreePathLevel(-1);
-		rootNode.setNodeType(NodeType.ROOT);
+		rootNode.setNodeType(NodeType.TREEROOT);
 
 		ontologyTargetTree = new OntologyTree(rootNode);
 
-		ontologyTargetTree.getNodeLists().addIDtoPaths(rootNode.getID(),
-				rootNode.getTreePath());
-		ontologyTargetTree.getNodeLists().addNodeByID(rootNode.getID(),
-				rootNode);
 		ontologyTargetTree.getNodeLists().addNodyByPath(
 				rootNode.getTreePath(), rootNode);
-		ontologyTargetTree.getNodeLists().setNodeStatusByPath(
-				rootNode.getTreePath(), ItemStatus.UNCHECKED);
 
 		this.setTargetRootNode(rootNode);
 
@@ -232,14 +217,8 @@ public class MyOntologyTrees extends JPanel {
 		ontologyTargetTree.setI2B2RootNode(targetOntologyi2b2RootNode);
 		
 		
-		ontologyTargetTree.getNodeLists().addIDtoPaths(targetOntologyi2b2RootNode.getID(),
-				targetOntologyi2b2RootNode.getTreePath());
-		ontologyTargetTree.getNodeLists().addNodeByID(targetOntologyi2b2RootNode.getID(),
-				targetOntologyi2b2RootNode);
 		ontologyTargetTree.getNodeLists().addNodyByPath(
 				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
-		ontologyTargetTree.getNodeLists().setNodeStatusByPath(
-				targetOntologyi2b2RootNode.getTreePath(), ItemStatus.UNCHECKED);
 
 		// set some options
 		OntologyTreeModel OTModel = new OntologyTreeModel(
@@ -342,8 +321,6 @@ public class MyOntologyTrees extends JPanel {
 			// this.OTTarget.addTreeSelectionListener(this);
 			this.ontologyTargetTree.addMouseListener(ma);
 		}
-
-		this.viewTreeTarget = new ViewTree();
 
 	}
 
@@ -641,10 +618,6 @@ public class MyOntologyTrees extends JPanel {
 	 * @return the MyOTItemLists object
 	 */
 
-	public OTItemLists getItemLists() {
-		return this.ontologyTreeSource.getItemLists();
-	}
-
 	public OntologyTree getOntologyTreeSource() {
 		return this.ontologyTreeSource;
 	}
@@ -711,14 +684,6 @@ public class MyOntologyTrees extends JPanel {
 			Console.error("OT is null while trying to get the tree root!");
 
 		return this.ontologyTreeSource.getTreeRoot();
-	}
-
-	public ViewTree getViewTreeSource() {
-		return this.viewTreeSource;
-	}
-
-	public ViewTree getViewTreeTarget() {
-		return this.viewTreeTarget;
 	}
 
 	public String getVisitFromStringPath(String stringPath) {

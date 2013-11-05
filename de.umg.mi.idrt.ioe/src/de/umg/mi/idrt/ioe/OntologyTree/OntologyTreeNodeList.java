@@ -17,16 +17,11 @@ import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.PathAndID;
  * 			Department of Medical Informatics Goettingen 
  * 			www.mi.med.uni-goettingen.de
  */
-public class OTNodeLists {
+public class OntologyTreeNodeList {
 	private long time;
-	private Map<String, List<OntologyTreeNode>> iDtoNodes = new TreeMap<String, List<OntologyTreeNode>>();
-	public Map<String, OntologyTreeNode> stringPathToNode	= new HashMap<String, OntologyTreeNode>();
-	private Map<String, List<String>> iDtoStringPaths		= new TreeMap<String, List<String>>();
-	private Map<String, ItemStatus> stringPathToItemStatus		= new TreeMap<String, ItemStatus>();
+	private Map<String, OntologyTreeNode> stringPathToNode	= new HashMap<String, OntologyTreeNode>();
 
-	public Map<String, ViewTreeNode> stringPathToViewTreeNode	= new TreeMap<String, ViewTreeNode>();
-
-	public OTNodeLists(){
+	public OntologyTreeNodeList(){
 
 	}
 
@@ -38,41 +33,16 @@ public class OTNodeLists {
 			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
 			time = newTime;
 		}
-		this.addIDtoPaths( node.getID(), node.getTreePath() );
-		this.addNodeByID( node.getID(), node );
-
 		this.addNodyByPath( node.getTreePath(), node );
-		this.setNodeStatusByPath( node.getTreePath(), ItemStatus.UNCHECKED);
 	}
 
 	public void add( String itemID, String stringPath, OntologyTreeNode node ){
-
-		this.addIDtoPaths( itemID, stringPath );
-		this.addNodeByID( itemID, node );
 
 		//this.addNodyByPath( stringPath, node );
 		if ( !"\\".equals(stringPath))
 			this.addNodyByPath( stringPath + "\\" + itemID, node );
 		else
 			this.addNodyByPath( "\\", node );
-
-		this.setNodeStatusByPath( stringPath, ItemStatus.UNCHECKED);
-	}
-
-	public void addIDtoPaths( String itemID, String stringPath ) {
-		if( !iDtoStringPaths.containsKey( itemID ) ) {
-			iDtoStringPaths.put( itemID, new ArrayList<String>() );
-		} 
-		iDtoStringPaths.get( itemID ).add( stringPath );
-	}
-
-
-
-	public void addNodeByID( String itemID, OntologyTreeNode node ) {
-		if( !iDtoNodes.containsKey( itemID ) ) {
-			iDtoNodes.put( itemID, new ArrayList<OntologyTreeNode>() );
-		} 
-		iDtoNodes.get( itemID ).add( node );
 	}
 
 	public void addNodyByPath( String stringPath, OntologyTreeNode node ){
@@ -113,11 +83,7 @@ public class OTNodeLists {
 			}
 		}
 
-		this.addIDtoPaths( pathAndID.getID(), i2b2Path );
-		this.addNodeByID( pathAndID.getID(), node );
 		this.addNodyByPath( i2b2Path, node );
-		this.setNodeStatusByPath( i2b2Path, ItemStatus.UNCHECKED);
-
 
 		node.setTreePath( i2b2Path );
 		if ( parentNode != null )
@@ -126,69 +92,17 @@ public class OTNodeLists {
 		return parentNode;
 	}
 
-	public void addViewTreeNode(String path, ViewTreeNode node){
-		this.stringPathToViewTreeNode.put(path, node);
-	}
-
-	public Iterator<Entry<String, List<OntologyTreeNode>>> getIDtoNodesIterator() {
-		return this.iDtoNodes.entrySet().iterator();
-	}
 
 	public OntologyTreeNode getNodeByPath( String stringPath ) {
 		return stringPathToNode.get( stringPath );
-	}
-
-	public List<OntologyTreeNode> getNodesByID( String itemID ) {
-		return this.iDtoNodes.get( itemID );
-	}
-
-	public ItemStatus getNodeStatusByPath(String stringPath){
-		return stringPathToItemStatus.get(stringPath);
 	}
 
 	public int getNumberOfItemNodes(){
 		return stringPathToNode.size();
 	}
 
-	public int getNumberOfNodesByID( String itemID ) {
-
-		List<String> itemList = this.getPathsByID( itemID );
-
-		if( itemList!= null )
-			return itemList.size();
-		return 0;            
-	}
-
-	public int getNumberOfUncheckedItems(){
-
-		Iterator<ItemStatus> iterator = this.stringPathToItemStatus.values().iterator();
-		int counter = 0;
-
-		while(iterator.hasNext()){
-			ItemStatus status = iterator.next();
-			if (status.equals(ItemStatus.UNCHECKED)){
-				counter++;
-			}
-		}
-
-		return counter;
-	}
-
-	public List<String> getPathsByID( String itemID ) {
-
-		if ( this.iDtoStringPaths.containsKey( itemID ) ) {
-			return this.iDtoStringPaths.get( itemID );
-		} else
-			return null;
-	}
-
 	public Iterator<Entry<String, OntologyTreeNode>> getPathToNodeIterator () {
 		return this.stringPathToNode.entrySet().iterator();
-	}
-
-
-	public ViewTreeNode getViewTreeNode(String path){
-		return this.stringPathToViewTreeNode.get(path);
 	}
 
 	public void listNodeByPath(){
@@ -200,25 +114,10 @@ public class OTNodeLists {
 	}
 
 	public void removeAll() {
-		iDtoNodes.clear();
 		stringPathToNode.clear();
-		iDtoStringPaths.clear();
-		stringPathToItemStatus.clear();
-		stringPathToViewTreeNode.clear();
 	}
 
 	public void removeNode(OntologyTreeNode node){
-		iDtoNodes.remove(node.getID());
 		stringPathToNode.remove(node.getTreePath());
-		iDtoStringPaths.remove(node.getID());
-		stringPathToItemStatus.remove(node.getTreePath());
-		stringPathToViewTreeNode.remove(node.getTreePath());
-
-	}
-
-	public void setNodeStatusByPath( String stringPath, ItemStatus itemStauts ){
-		this.stringPathToItemStatus.put( stringPath, itemStauts );
 	}
 }
-
-

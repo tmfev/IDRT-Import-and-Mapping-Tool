@@ -15,7 +15,7 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
-import de.umg.mi.idrt.ioe.OntologyTree.OTNodeLists;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNodeList;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -37,7 +37,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		System.out.println("INSERT CLICKED");
 		OntologyEditorView.getTargetTreeViewer().refresh();
 
-		OTNodeLists otNodes = OntologyEditorView.getOntologyTargetTree().getNodeLists();
+		OntologyTreeNodeList otNodes = OntologyEditorView.getOntologyTargetTree().getNodeLists();
 		final OntologyTreeNode targetNode = otNodes.getNodeByPath(sourceNodePath);
 
 		System.out.println(targetNode.getName());
