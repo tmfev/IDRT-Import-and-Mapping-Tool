@@ -37,7 +37,7 @@ public class OntologyTree extends JTree {
 		}
 		return newString;
 	}
-	
+
 	private OntologyTreeNode treeRoot = new OntologyTreeNode();
 	private OntologyTreeNodeList nodeLists = new OntologyTreeNodeList();
 	private OntologyTreeNode firstItemNode = null;
@@ -86,8 +86,8 @@ public class OntologyTree extends JTree {
 		try {
 			this.getNodeLists().addOTNode(path, node).add(node);
 		}catch (Exception e) {
-//			Console.error("Could not add node \"" + item.getC_NAME()
-//					+ "\" to the tree, because there is no parent node for it.");
+			//			Console.error("Could not add node \"" + item.getC_NAME()
+			//					+ "\" to the tree, because there is no parent node for it.");
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);
@@ -182,7 +182,8 @@ public class OntologyTree extends JTree {
 		}
 		node.setTreeAttributes();
 		node.setType(source);
-		node.setOntologyCellAttributes(item);
+		if (item != null)
+			node.setOntologyCellAttributes(item);
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
@@ -195,7 +196,7 @@ public class OntologyTree extends JTree {
 		//			}
 		//		}
 	}
-	
+
 	public String createSQLDateFromXMLDate(XMLGregorianCalendar xmlDate) {
 		return xmlDate.toString();
 	}
