@@ -495,14 +495,14 @@ public class OntologyEditorView extends ViewPart {
 
 					@Override
 					public void run() {
-						int size = getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNumberOfItemNodes();
+						int size = getOntologyStagingTree().getNodeLists().getNumberOfItemNodes();
 						System.out.println(size + " items");
 						if (text.getText().isEmpty()) {
-							unmarkAllNodes(getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getRootNode());	
+							unmarkAllNodes(getOntologyStagingTree().getRootNode());	
 						}
 						else {
 							if (size<1000 || text.getText().length()>=3) {
-								markNodes(getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getRootNode(),text.getText());
+								markNodes(getOntologyStagingTree().getRootNode(),text.getText());
 							}
 						}
 						stagingTreeViewer.refresh();
