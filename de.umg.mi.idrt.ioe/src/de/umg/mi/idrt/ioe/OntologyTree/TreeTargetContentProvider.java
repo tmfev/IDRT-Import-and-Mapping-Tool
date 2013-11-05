@@ -5,17 +5,16 @@ import java.util.ArrayList;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import de.umg.mi.idrt.ioe.view.OTtoTreeContentProvider;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TreeTargetContentProvider implements ITreeContentProvider {
 
 	private OntologyTreeNode _treeRoot = null;
 	private OntologyTree _ot;
-	private OTtoTreeContentProvider model;
+	private OntologyTreeContentProvider model;
 	public TreeTargetContentProvider() {
 		// TODO Auto-generated constructor stub
-		model = new OTtoTreeContentProvider();
+		model = new OntologyTreeContentProvider();
 	}
 
 	@Override
@@ -95,7 +94,7 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 		return _treeRoot;
 	}
 
-	public void setOT(OntologyTree ot) {
+	public void setOntologyTree(OntologyTree ot) {
 		this._ot = ot;
 		this._treeRoot = ot.getTreeRoot();
 	}

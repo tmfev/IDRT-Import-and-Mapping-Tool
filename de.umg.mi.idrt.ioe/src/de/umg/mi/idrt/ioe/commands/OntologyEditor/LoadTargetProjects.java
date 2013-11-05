@@ -47,7 +47,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			
 			boolean newData = false;
 			
-			TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+			TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 			if ( targetProjects.getSelectedTargetProject() == null ){
 				System.out.println("Loading: no TargetProjec -> creating new one");

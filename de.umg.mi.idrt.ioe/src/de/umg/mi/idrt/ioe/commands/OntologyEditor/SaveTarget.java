@@ -47,7 +47,7 @@ public class SaveTarget extends AbstractHandler {
 		
 		String stringPath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 		
-		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){
 			System.out.println(" *  targetProjects.getSelectedTarget():" + (  targetProjects.getSelectedTarget() == null ? "isNull" : "isNotNull" ));
@@ -63,8 +63,7 @@ public class SaveTarget extends AbstractHandler {
 		OntologyTree ontologyTreeTarget = null;
 
 		try {
-			ontologyTreeTarget = OntologyEditorView.getI2b2ImportTool()
-					.getMyOntologyTrees().getOntologyTreeTarget();
+			ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 		} catch (java.lang.NullPointerException e) {
 			Console.error(
 					"Coudn't save the Target-Tree, because nothing has been loaded so far.",

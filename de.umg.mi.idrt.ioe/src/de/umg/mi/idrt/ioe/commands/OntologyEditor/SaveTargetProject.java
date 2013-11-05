@@ -63,7 +63,7 @@ public class SaveTargetProject extends AbstractHandler {
 			
 			
 			
-			OntologyTreeTargetRootNode targetTreeRoot = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot());
+			OntologyTreeTargetRootNode targetTreeRoot = (OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode();
 			
 			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
 			Target target = null;

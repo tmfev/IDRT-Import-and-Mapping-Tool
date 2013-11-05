@@ -8,7 +8,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -32,8 +32,7 @@ public class AddNodeCommand extends AbstractHandler {
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.setName("New Node");
 		currentNode.add(subRootNode);
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
-		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);
+		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		OntologyEditorView.setCurrentTargetNode(subRootNode);
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 //		targetTreeViewer.expandToLevel(subRootNode, 10);
@@ -43,7 +42,7 @@ public class AddNodeCommand extends AbstractHandler {
 	
 		
 		targetTreeViewer.refresh();
-		OntologyTreeNode test = (OntologyTreeNode) myOT.getTargetTreeRoot().getNextNode();
+		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
 
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);

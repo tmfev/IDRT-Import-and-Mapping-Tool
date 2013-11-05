@@ -8,7 +8,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -34,15 +34,15 @@ public class AddItemCommand extends AbstractHandler {
 		subRootNode.setName("New Item");
 		currentNode.add(subRootNode);
 
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		//MyOntologyTree myOT = OntologyEditorView.getSelf().getMyOntologyTree();
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 //		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
-		myOT.getOntologyTreeTarget().getNodeLists().add(subRootNode);
+		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		targetTreeViewer.refresh();
 		
-		OntologyTreeNode test = (OntologyTreeNode) myOT.getTargetTreeRoot().getNextNode();
+		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getTreeRoot().getNextNode();
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);
 		System.out.println(test.getName());

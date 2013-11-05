@@ -26,9 +26,9 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class OntologyTreeCreator {
 	
-	public MyOntologyTree _myOT	= null;
-	public OntologyTree _OT		= null;
-	public OntologyTreeNode _OTRoot = null;
+	public MyOntologyTrees _myOT	= null;
+	public OntologyTree ontologyStagingTree		= null;
+	public OntologyTreeNode ontologyStagingTreeRootNode = null;
 	public int _numberOfItems				= 0;
 	public int _numberOfPatients			= 0;
 	int _counter							= 0;
@@ -53,18 +53,18 @@ public class OntologyTreeCreator {
 	
 		
 	public OntologyTreeCreator (
-				MyOntologyTree myOT){
+				MyOntologyTrees myOntologyTree){
 		
 		Console.info( "Creating an OT." );
 
 		//this._myOT = myOT;
 //		this._myOT = Activator.getDefault().getResource().getEditorSourceView().getI2B2ImportTool().getMyOntologyTrees();
-	_myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+	_myOT = OntologyEditorView.getMyOntologyTree();
 
 	
 //	EditorSourceView.getI2B2ImportTool().setOTCreator(this);
 	//OntologyEditorView.getI2b2ImportTool().setOTCreator(this);
-		initiate(myOT.getOntologyTreeSource(), myOT.getTreeRoot());
+		initiate(myOntologyTree.getOntologyTreeSource(), myOntologyTree.getTreeRoot());
 	}
 	
 	public OntologyTreeCreator (){
@@ -76,13 +76,13 @@ public class OntologyTreeCreator {
 	public void initiate(OntologyTree OT,
 			OntologyTreeNode treeRoot){
 
-		_OT = this._myOT.getOntologyTreeSource();
-		_OTRoot = this._OT.getRootNode();
+		ontologyStagingTree = this._myOT.getOntologyTreeSource();
+		ontologyStagingTreeRootNode = this.ontologyStagingTree.getRootNode();
 		
 		//_OT = OT;
 		//_OTRoot = treeRoot;
 
-		if ( _OT == null ){
+		if ( ontologyStagingTree == null ){
 			
 			
 			
@@ -313,7 +313,7 @@ public class OntologyTreeCreator {
 	}
 	
 	public void printTree(){
-		printTree(_OT.getRootNode());
+		printTree(ontologyStagingTree.getRootNode());
 	}
 	
 	public void printNode(OntologyTreeNode node, int depth){
@@ -342,10 +342,10 @@ public class OntologyTreeCreator {
 	
 	
 	public OntologyTree getOT(){
-		return this._OT;
+		return this.ontologyStagingTree;
 	}
 	
-	public MyOntologyTree getMyOT(){
+	public MyOntologyTrees getMyOT(){
 		
 		
 		return this._myOT;

@@ -8,7 +8,7 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
@@ -20,7 +20,7 @@ public class SetTargetAttribute extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Debug.f("execute", this);
 
-		String sourceNodePath = event
+		String stagingNodePath = event
 				.getParameter(Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH);
 		String targetNodePath = event
 				.getParameter(Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH);
@@ -32,26 +32,25 @@ public class SetTargetAttribute extends AbstractHandler {
 		System.out.println(" - Paras size: " + event.getParameters().size());
 
 		System.out.println(" - OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH:"
-				+ sourceNodePath);
+				+ stagingNodePath);
 		System.out.println(" - OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH:"
 				+ targetNodePath);
 		System.out.println(" - OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:"
 				+ attribute);
-		Debug.d("OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH:" + sourceNodePath);
+		Debug.d("OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH:" + stagingNodePath);
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH:" + targetNodePath);
 		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:" + attribute);
 
-		MyOntologyTree myOT = OntologyEditorView.getI2b2ImportTool()
-				.getMyOntologyTrees();
+		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 
-		OntologyTreeNode sourceNode = myOT.getOntologyTreeSource().getNodeLists()
-				.getNodeByPath(sourceNodePath);
+		OntologyTreeNode stagingNode = OntologyEditorView.getOntologyStagingTree().getNodeLists()
+				.getNodeByPath(stagingNodePath);
 
 		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
 			OntologyTreeNode targetNode =  (OntologyTreeNode) NodeDropListener.getTargetNode();
 
 			System.out.println(" - sourceNode: "
-					+ (sourceNode != null ? "found" : "NOT found"));
+					+ (stagingNode != null ? "found" : "NOT found"));
 			System.out.println(" - targetNode: "
 					+ (targetNode != null ? "found" : "NOT found"));
 
@@ -61,9 +60,9 @@ public class SetTargetAttribute extends AbstractHandler {
 
 			// myOT.getOTTarget().printTree();
 
-			if (sourceNode != null && targetNode != null) {
-				System.out.println("sourceNode found:" + sourceNode.getName());
-				myOT.setTargetAttributesAsSourcePath(sourceNode, targetNode, attribute);
+			if (stagingNode != null && targetNode != null) {
+				System.out.println("sourceNode found:" + stagingNode.getName());
+				myOT.setTargetAttributesAsSourcePath(stagingNode, targetNode, attribute);
 
 
 
@@ -74,17 +73,17 @@ public class SetTargetAttribute extends AbstractHandler {
 				//Application.getEditorTargetView().getTreeViewer().refresh();
 
 			} else {
-				Console.error("Error while combining nodes: SourceNode (\""
-						+ sourceNodePath + "\") and/or TargetNode (\""
+				Console.error("Error while combining nodes: Staging (\""
+						+ stagingNodePath + "\") and/or TargetNode (\""
 						+ targetNodePath + "\") not found.");
 			}
 		}
 		else if (NodeDropListener.getTargetNode() instanceof OntologyTreeSubNode) {
 			OntologyTreeSubNode subNode = (OntologyTreeSubNode) NodeDropListener.getTargetNode();
 			if (attribute.equals("startDateSource"))
-				subNode.getTargetSubNodeAttributes().setStartDateSourcePath(sourceNodePath);
+				subNode.getTargetSubNodeAttributes().setStartDateSourcePath(stagingNodePath);
 			else if (attribute.equals("endDateSource"))
-				subNode.getTargetSubNodeAttributes().setEndDateSourcePath(sourceNodePath);
+				subNode.getTargetSubNodeAttributes().setEndDateSourcePath(stagingNodePath);
 		}
 		return null;
 	}

@@ -33,14 +33,13 @@ import org.eclipse.swt.graphics.Rectangle;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
 import org.eclipse.swt.layout.GridLayout;
 
 public class InfoView extends ViewPart {
-	private I2B2ImportTool _i2b2ImportTool = null;
+
 	private Resource _resource = null;
 	private String _text = "";
 	private Composite parentPane;
@@ -152,7 +151,7 @@ public class InfoView extends ViewPart {
 					// Source Path
 					if (row == 0) {
 						String path = item.getText(1);
-						OntologyTreeNode node = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeSource().getNodeLists().getNodeByPath(path);
+						OntologyTreeNode node = OntologyEditorView.getOntologyStagingTree().getNodeLists().getNodeByPath(path);
 						System.out.println("NODE SELECTED: " + node.getName());
 						node.setHighlighted(true);
 //						OntologyEditorView.getStagingTreeViewer().getLabelProvider().
@@ -340,14 +339,6 @@ public class InfoView extends ViewPart {
 		System.out.println("setting node (" + node.getName() + ")");
 		_node = node;
 		refresh();
-	}
-
-	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool) {
-		this._i2b2ImportTool = i2b2ImportTool;
-	}
-
-	public I2B2ImportTool getI2B2ImportTool() {
-		return this._i2b2ImportTool;
 	}
 
 	public void setResource(Resource resource) {

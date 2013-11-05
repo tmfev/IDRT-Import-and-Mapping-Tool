@@ -25,7 +25,6 @@ import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.I2B2ImportTool;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -38,7 +37,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
  */
 public class EditorSourceInfoView extends ViewPart {
 
-	private I2B2ImportTool _i2b2ImportTool = null;
 	private Resource _resource = null;
 	private String _text = ""; 
 	private Composite parentPane;
@@ -168,14 +166,6 @@ public class EditorSourceInfoView extends ViewPart {
 	}
 	
 	
-	
-	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool){
-		this._i2b2ImportTool = i2b2ImportTool;
-	}
-	
-	public I2B2ImportTool getI2B2ImportTool(){
-		return this._i2b2ImportTool;
-	}
 	
 	public void setResource(Resource resource){
 		this._resource = resource;

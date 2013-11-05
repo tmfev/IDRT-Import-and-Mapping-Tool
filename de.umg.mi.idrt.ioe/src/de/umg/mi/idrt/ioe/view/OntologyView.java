@@ -12,11 +12,11 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.I2B2ImportTool;
+
 
 public class OntologyView extends ViewPart {
 
-	private I2B2ImportTool _i2b2ImportTool;
+
 	private Composite _composite;
 	
 	public OntologyView() {
@@ -36,19 +36,6 @@ public class OntologyView extends ViewPart {
 		
 	}
 	
-	/*
-	public I2B2ImportTool initI2B2ImportTool(){
-		return _i2b2ImportTool = new I2B2ImportTool(null);
-	}
-	*/
-	
-	public I2B2ImportTool setI2B2ImportTool(I2B2ImportTool i2b2ImportTool){
-		return _i2b2ImportTool = i2b2ImportTool;
-	}
-	
-	public I2B2ImportTool getI2B2ImportTool(){
-		return _i2b2ImportTool;
-	}
 	
 	public void setComposite(){
 		Debug.f("setComposite",this);

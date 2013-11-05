@@ -34,7 +34,7 @@ public class LoadTargetOntology extends AbstractHandler {
 		
 		TOSConnector tos = new TOSConnector();
 		
-		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		Target target = null;
 		

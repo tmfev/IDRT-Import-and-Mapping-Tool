@@ -16,6 +16,7 @@ import de.umg.mi.idrt.ioe.Debug;
 public class OntologyTree extends JTree {
 
 	private OntologyTreeNode treeRoot = new OntologyTreeNode();
+	
 	private OTItemLists itemLists = new OTItemLists();
 	private OTNodeLists nodeLists = new OTNodeLists();
 	private OntologyTreeNode firstItemNode = null;
@@ -23,7 +24,8 @@ public class OntologyTree extends JTree {
 	private TreeViewer treeViewer = null;
 	private OntologyTreeNode _lastActiveNode;
 
-	private OntologyTreeNode stagingRootNode;
+
+	OntologyTreeNode i2b2RootNode;
 
 	// naked constructor for serialization
 	public OntologyTree() {
@@ -160,9 +162,10 @@ public class OntologyTree extends JTree {
 		node.setType(ontologySource);
 		node.setOntologyCellAttributes(item);
 		if (nodeType != null) {
-			setStagingRootNode(node);
+			setI2B2RootNode(node);
 		}
 	}
+	
 	public void addNodeByPath(String i2b2Path, String name, String source, OntologyItem item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
@@ -178,7 +181,7 @@ public class OntologyTree extends JTree {
 		node.setType(source);
 		node.setOntologyCellAttributes(item);
 		if (type != null) {
-			setStagingRootNode(node);
+			setI2B2RootNode(node);
 		}
 		//		else {
 		//			if (parentNode != null) {
@@ -368,16 +371,21 @@ public class OntologyTree extends JTree {
 
 	}
 
-	/**
-	 * @param node
-	 */
-	public void setStagingRootNode(OntologyTreeNode node) {
-		stagingRootNode = node;
 
+	/**
+	 * @param myOntologyTree TODO
+	 * @return the subRootNode
+	 */
+	public OntologyTreeNode getI2B2RootNode() {
+		return i2b2RootNode;
 	}
 
-	public OntologyTreeNode getStagingRootNode() {
-		return stagingRootNode;
+	/**
+	 * @param myOntologyTree TODO
+	 * @param i2b2RootNode the subRootNode to set
+	 */
+	public void setI2B2RootNode(OntologyTreeNode tmpi2b2RootNode) {
+		i2b2RootNode = tmpi2b2RootNode;
 	}
 
 

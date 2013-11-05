@@ -28,7 +28,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class NodeDropListener extends ViewerDropAdapter {
 
 	private int dropOperation;
-	private MyOntologyTree myOT;
+	private MyOntologyTrees myOT;
 	private final Viewer viewer;
 	private OntologyTreeNode sourceNode = null;
 	private static DefaultMutableTreeNode targetNode = null;
@@ -47,12 +47,12 @@ public class NodeDropListener extends ViewerDropAdapter {
 	@Override
 	public void drop(DropTargetEvent event) {
 		System.out.println("@drop(event)");
-		myOT = OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees();
+		myOT = OntologyEditorView.getMyOntologyTree();
 		OntologyEditorView.setNotYetSaved(true);
 
 		if (event.item == null) {
 			event.item = OntologyEditorView.getTargetTreeViewer().getTree();
-			targetNode = myOT.getSubRootNode();
+			targetNode = myOT._ontologyTreeSource.getI2B2RootNode();
 			event.item.setData(targetNode);
 		}
 		if(event.item.getData() instanceof OntologyTreeNode) {
@@ -129,7 +129,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 		}
 		else if (targetNode instanceof OntologyTreeNode){
 			sourceNode = myOT.getOntologyTreeTarget().getNodeLists().getNodeByPath(path);
-			if (myOT.getSubRootNode() == sourceNode || sourceNode.getParent() == (OntologyTreeNode)targetNode)
+			if (myOT._ontologyTreeSource.getI2B2RootNode() == sourceNode || sourceNode.getParent() == (OntologyTreeNode)targetNode)
 				System.err.println("SOURCE IS ROOT || TARGET IS PARENT");
 			else {
 				if (sourceNode.getTreePath() != ((OntologyTreeNode) targetNode).getTreePath()) {

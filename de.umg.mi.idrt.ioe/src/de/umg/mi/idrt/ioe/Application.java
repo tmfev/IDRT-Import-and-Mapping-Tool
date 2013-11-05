@@ -14,6 +14,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -27,8 +28,6 @@ import de.umg.mi.idrt.ioe.view.StatusView;
  */
 public class Application implements IApplication {
 	
-	private I2B2ImportTool _i2b2ImportTool = null;
-		
 	protected Properties properties = new Properties();
 
 	HashMap<String,javax.swing.JComponent> exportDialogComponents = new HashMap<String,javax.swing.JComponent>();
@@ -40,6 +39,9 @@ public class Application implements IApplication {
 	 */
 	public Object start(IApplicationContext context) throws Exception {
 		this._display = PlatformUI.createDisplay();
+		
+		
+		OntologyEditorView.setMyOntologyTree( new MyOntologyTrees() );
 		
 		Activator.getDefault().createResource();
 		
@@ -85,10 +87,7 @@ public class Application implements IApplication {
 
 	}
 	
-	//doc
-	public I2B2ImportTool getMain(){
-		return this._i2b2ImportTool;
-	}
+	
 	
 	//doc
 	public static StatusView getStatusView(){
@@ -187,23 +186,6 @@ public class Application implements IApplication {
     	return view;
     }
 
-	/**
-	 * Sets the main program link.
-	 * 
-	 * @param i2b2ImportTool the i2b2ImportTool
-	 */
- 	public void setI2B2ImportTool(I2B2ImportTool i2b2ImportTool){
- 		this._i2b2ImportTool = i2b2ImportTool;
- 	}
- 	
- 	/**
-	 * Gets the main program link.
-	 * 
-	 * @return returns the i2b2ImportTool
-	 */
- 	public I2B2ImportTool getI2B2ImportTool(){
- 		return this._i2b2ImportTool;
- 	}
  	
  	//doc
 	public void setResource(Resource resource){

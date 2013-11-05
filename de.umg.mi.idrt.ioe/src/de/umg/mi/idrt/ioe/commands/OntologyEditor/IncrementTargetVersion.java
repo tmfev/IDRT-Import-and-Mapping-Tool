@@ -19,7 +19,7 @@ public class IncrementTargetVersion extends AbstractHandler {
 		
 		System.out.println("Command: IncrementTargetVersion");
 		
-		TargetProjects targetProjects = ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTreeTarget().getTreeRoot()).getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		
 		System.out.println("------------------------------");
