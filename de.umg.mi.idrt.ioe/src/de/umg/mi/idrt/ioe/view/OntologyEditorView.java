@@ -147,8 +147,8 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_7;
 	private static Button btnClearTargetProject;
 	private static Composite composite_8;
-	private static Text text;
-	private static Label label_1;
+	private static Text searchText;
+	private static Label searchImage;
 	private static Button btnClearSearch;
 
 
@@ -475,13 +475,13 @@ public class OntologyEditorView extends ViewPart {
 		composite_8.setLayoutData(BorderLayout.NORTH);
 		composite_8.setLayout(new GridLayout(3, false));
 		
-		label_1 = new Label(composite_8, SWT.NONE);
-		label_1.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/tsearch_obj.gif"));
-		label_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		searchImage = new Label(composite_8, SWT.NONE);
+		searchImage.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/tsearch_obj.gif"));
+		searchImage.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 
-		text = new Text(composite_8, SWT.BORDER);
-		text.setBounds(0, 0, 76, 21);
-		text.addModifyListener(new ModifyListener() {
+		searchText = new Text(composite_8, SWT.BORDER);
+		searchText.setBounds(0, 0, 76, 21);
+		searchText.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -491,12 +491,12 @@ public class OntologyEditorView extends ViewPart {
 					@Override
 					public void run() {
 						int size = getOntologyStagingTree().getNodeLists().getNumberOfItemNodes();
-						if (text.getText().isEmpty()) {
+						if (searchText.getText().isEmpty()) {
 							unmarkAllNodes(getOntologyStagingTree().getRootNode());	
 						}
 						else {
-							if (size<1000 || text.getText().length()>=3) {
-								markNodes(getOntologyStagingTree().getRootNode(),text.getText());
+							if (size<1000 || searchText.getText().length()>=3) {
+								markNodes(getOntologyStagingTree().getRootNode(),searchText.getText());
 							}
 						}
 						stagingTreeViewer.refresh();
@@ -513,7 +513,7 @@ public class OntologyEditorView extends ViewPart {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-			text.setText("");
+			searchText.setText("");
 //			text.notifyListeners(SWT.Modify, new Event());
 			}
 			

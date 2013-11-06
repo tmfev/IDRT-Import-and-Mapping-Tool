@@ -153,15 +153,28 @@ public class ServerView extends ViewPart {
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
-
+			Bundle bundle = Activator.getDefault().getBundle();
 			try {
-				Bundle bundle = Activator.getDefault().getBundle();
+
 				Path path = new Path("/log/log.log"); 
 				URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
+				if (url==null) {
+					Path miscPath = new Path("."); 
+					URL miscURL = FileLocator.find(bundle, miscPath,
+							Collections.EMPTY_MAP);
+					URL miscURL2 = FileLocator.toFileURL(miscURL);
+					File file = new File(miscURL2.getPath()+"/log/");
+					file.mkdir();
+					file = new File(miscURL2.getPath()+"/log/log.log");
+					file.createNewFile();
+					url = FileLocator.find(bundle, path,
+							Collections.EMPTY_MAP);
+				}
+
 				URL fileUrl = FileLocator.toFileURL(url);
 				log = new File(fileUrl.getPath());	
 				logString = "";
-				
+
 				//TODO if log.log !exists()->HANDLE IT
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -175,8 +188,6 @@ public class ServerView extends ViewPart {
 					+ Activator.getDefault().getBundle().getVersion()
 					.toString());
 
-			Bundle bundle = Activator.getDefault().getBundle();
-
 			// Remove tmp files
 
 			Path tmpPath = new Path("/misc/tmp/");
@@ -184,11 +195,19 @@ public class ServerView extends ViewPart {
 					Collections.EMPTY_MAP);
 
 			if (tmpURL==null) {
-				Path miscPath = new Path("/misc/"); 
+				Path miscPath = new Path("."); 
 				URL miscURL = FileLocator.find(bundle, miscPath,
 						Collections.EMPTY_MAP);
 				URL miscURL2 = FileLocator.toFileURL(miscURL);
-				File file = new File(miscURL2.getPath()+"/tmp/");
+				File file = new File(miscURL2.getPath()+"/misc/");
+				System.out.println(file.getAbsolutePath());
+				boolean mkdir = file.mkdir();
+				System.out.println(mkdir);
+				miscPath = new Path("/misc/"); 
+				miscURL = FileLocator.find(bundle, miscPath,
+						Collections.EMPTY_MAP);
+				miscURL2 = FileLocator.toFileURL(miscURL);
+				file = new File(miscURL2.getPath()+"/tmp/");
 				file.mkdir();
 				tmpURL = FileLocator.find(bundle, tmpPath,
 						Collections.EMPTY_MAP);
@@ -684,7 +703,7 @@ public class ServerView extends ViewPart {
 					refresh();
 				}
 			});
-			
+
 			new MenuItem(mainMenu, SWT.SEPARATOR);
 			MenuItem ontServerMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			ontServerMenuItem.setText("loadont(beta)");
@@ -702,20 +721,20 @@ public class ServerView extends ViewPart {
 
 
 			// TODO REMOVE COMMENTATION FOR ADMINISTRATION
-//												new MenuItem(mainMenu, SWT.SEPARATOR);
-//												MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//												adminMenuItem.setText("Administration");
-//												adminMenuItem.addSelectionListener(new SelectionListener() {
-//													@Override
-//													public void widgetSelected(SelectionEvent e) {
-//														adminTargetServer();
-//													}
-//									
-//													@Override
-//													public void widgetDefaultSelected(SelectionEvent e) {
-//									
-//													}
-//												});
+			//												new MenuItem(mainMenu, SWT.SEPARATOR);
+			//												MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//												adminMenuItem.setText("Administration");
+			//												adminMenuItem.addSelectionListener(new SelectionListener() {
+			//													@Override
+			//													public void widgetSelected(SelectionEvent e) {
+			//														adminTargetServer();
+			//													}
+			//									
+			//													@Override
+			//													public void widgetDefaultSelected(SelectionEvent e) {
+			//									
+			//													}
+			//												});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
