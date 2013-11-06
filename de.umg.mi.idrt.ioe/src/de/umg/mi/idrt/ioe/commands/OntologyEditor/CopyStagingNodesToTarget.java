@@ -18,18 +18,7 @@ public class CopyStagingNodesToTarget extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Debug.f("execute", this);
-
-//		String sourceNodePath = event
-//				.getParameter(Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH);
-//		String targetNodePath = event
-//				.getParameter(Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH);
-
-		Debug.d("CopySourceNodesToTarget: ");
-//		Debug.dd("COPY_ATTRIBUTE_SOURCE_NODE_PATH:" + sourceNodePath);
-//		Debug.dd("COPY_ATTRIBUTE_TARGET_NODE_PATH:" + targetNodePath);
-//		Console.info("Copying files from source \"" + sourceNodePath
-//				+ "\" to target \"" + targetNodePath + "\"");
+		
 
 		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
 			OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
