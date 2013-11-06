@@ -548,9 +548,9 @@ public class MyOntologyTrees{
 					System.out.println(Resource.ID.Command.COMBINENODE);
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
-					//					command2.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
+//										command2.addParameter(
+//												Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+//												targetPath);
 					Application.executeCommand(command2);
 				}
 			});

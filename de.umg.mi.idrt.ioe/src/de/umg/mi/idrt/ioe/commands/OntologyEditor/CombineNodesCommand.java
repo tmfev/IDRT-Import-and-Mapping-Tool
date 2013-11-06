@@ -15,12 +15,15 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
+import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNodeList;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class CombineNodesCommand extends AbstractHandler {
+	
+	private static String OPSREGEX = "[135689]{1}\\-[a-z0-9]{3}\\.[a-z0-9]+";
 	private List<OntologyTreeNode> oldTreeNodeList;
 	private List<OntologyTreeNode> newTreeNodeList;
 	private String perfectPath;
@@ -31,15 +34,13 @@ public class CombineNodesCommand extends AbstractHandler {
 		perfectPath = "NOT FOUND YET";
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		OntologyEditorView.setNotYetSaved(true);
-		String sourceNodePath = event
-				.getParameter(Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH);
-		System.out.println(sourceNodePath);
 		System.out.println("INSERT CLICKED");
 		OntologyEditorView.getTargetTreeViewer().refresh();
 
-		OntologyTreeNodeList otNodes = OntologyEditorView.getOntologyTargetTree().getNodeLists();
-		final OntologyTreeNode targetNode = otNodes.getNodeByPath(sourceNodePath);
-
+		
+		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
+		final OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
+		
 		System.out.println(targetNode.getName());
 		getOldTargetNodes(targetNode);
 		for (OntologyTreeNode node : oldTreeNodeList) {
@@ -66,7 +67,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		getnewTargetNodes(targetNode);
 
 		for (OntologyTreeNode node : newTreeNodeList) {
-			System.out.println("Next new leaf: " + node.getName());
+//			System.out.println("Next new leaf: " + node.getName());
 		}
 
 		generatePerfectPath(oldTreeNodeList, newTreeNodeList);
@@ -75,6 +76,10 @@ public class CombineNodesCommand extends AbstractHandler {
 		targetTreeViewer.refresh();
 		EditorTargetInfoView.refresh();
 		return null;
+		}
+		else {
+			return null;
+		}
 	}
 	private void generatePerfectPath(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
 		//TODO MAGICALLY MERGE		
@@ -89,11 +94,26 @@ public class CombineNodesCommand extends AbstractHandler {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
 						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
-						System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
+//						System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
 						perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
-						System.out.println(perfectPath);
+//						System.out.println(perfectPath);
 						found = true;
 						break;
+					}
+				}
+				else {
+					p = Pattern.compile(OPSREGEX);
+					m = p.matcher(nodeToCheck.getID());
+					if (m.find()) {
+						String ops = m.group();
+						if (node.getID().contains(ops)) {
+							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
+//							System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
+							perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
+//							System.out.println(perfectPath);
+							found = true;
+							break;
+						}
 					}
 				}
 				if (found)
@@ -140,17 +160,31 @@ public class CombineNodesCommand extends AbstractHandler {
 				if (m.find()) {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
-						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
+						System.out.println("ICD: " + node.getID() + " IN " + nodeToCheck.getID());
 						node.getTargetNodeAttributes().removeAllStagingPaths();
 						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
-						
 						found = true;
 						break;
 					}
 				}
+				else {
+					 p = Pattern.compile(OPSREGEX);
+					 m = p.matcher(nodeToCheck.getID());
+					if (m.find()) {
+						String icd = m.group();
+						if (node.getID().contains(icd)) {
+							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
+							node.getTargetNodeAttributes().removeAllStagingPaths();
+							node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+							
+							found = true;
+							break;
+						}
+					}
+				}
 			}
 			if (!found) {
-				System.out.println("not found: " + node.getID() + " " +perfectPath+node.getID()+"\\");
+//				System.out.println("not found: " + node.getID() + " " +perfectPath+node.getID()+"\\");
 				node.getTargetNodeAttributes().removeAllStagingPaths();
 				node.getTargetNodeAttributes().addStagingPath(perfectPath+node.getID()+"\\");
 			}

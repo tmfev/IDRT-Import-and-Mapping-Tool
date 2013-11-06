@@ -176,7 +176,7 @@ public class OntologyTree extends JTree {
 		try {
 			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 		}catch (Exception e) {
-			//			e.printStackTrace();
+//						e.printStackTrace();
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}

@@ -32,6 +32,7 @@ public class DeleteNodeCommand extends AbstractHandler {
 		while (nodeIterator.hasNext()) {
 			MutableTreeNode mNode = nodeIterator.next();
 			if ( mNode instanceof OntologyTreeNode) {
+				
 				OntologyTreeNode node = (OntologyTreeNode) mNode;
 				OntologyEditorView.setNotYetSaved(true);
 				if (!(node ==OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {

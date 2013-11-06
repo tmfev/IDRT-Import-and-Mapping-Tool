@@ -40,29 +40,30 @@ public class TOSConnector {
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
 	public static boolean checkOntology() {
-		setContextVariable("Job", "check_ontology_empty");
-		setContextVariable("Var1", "1");
+//		setContextVariable("Job", "check_ontology_empty");
+//		setContextVariable("Var1", "1");
+//
+//		boolean hasOntology = false;
+//
+//		try {
+//
+//			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+//
+//			tos.runJobInTOS((getARGV()));
+//
+//			if (tos.getErrorCode() == 0) {
+//				hasOntology = true;
+//			}
+//
+//		} catch (Exception e) {
+//
+//			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
+//					+ e.getMessage());
+//
+//		}
 
-		boolean hasOntology = false;
-
-		try {
-
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-
-			tos.runJobInTOS((getARGV()));
-
-			if (tos.getErrorCode() == 0) {
-				hasOntology = true;
-			}
-
-		} catch (Exception e) {
-
-			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
-					+ e.getMessage());
-
-		}
-
-		return hasOntology;
+//		return hasOntology;
+		return true;
 
 	}
 

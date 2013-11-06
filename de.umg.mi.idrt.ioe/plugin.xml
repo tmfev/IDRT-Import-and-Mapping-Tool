@@ -43,10 +43,6 @@
                name="windowImages"
                value="images/answergroup.gif">
          </property>
-         <property
-               name="aboutText"
-               value="i2b2 import tool&#x0A;-----------------&#x0A;&#x0A;(ver 0.9.2)&#x0A;&#x0A;&#x0A;ver 0.9.1&#x0A;- a lot">
-         </property>
       </product>
    </extension>
    <extension
