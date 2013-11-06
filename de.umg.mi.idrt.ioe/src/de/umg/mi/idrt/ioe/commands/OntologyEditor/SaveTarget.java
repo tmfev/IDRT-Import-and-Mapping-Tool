@@ -84,11 +84,11 @@ public class SaveTarget extends AbstractHandler {
 		fields[1] = Resource.I2B2.NODE.TARGET.TREE_LEVEL;
 		fields[2] = Resource.I2B2.NODE.TARGET.TREE_PATH;
 		fields[3] = Resource.I2B2.NODE.TARGET.STAGING_PATH;
-		fields[5] = Resource.I2B2.NODE.TARGET.STAGING_DIMENSION;
-		fields[4] = Resource.I2B2.NODE.TARGET.NAME;
+		fields[4] = Resource.I2B2.NODE.TARGET.STAGING_DIMENSION;
+		fields[5] = Resource.I2B2.NODE.TARGET.NAME;
 		fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH;
 		fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH;
-		fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE;
+		fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES;
 
 		try {
 			// TODO save target tmp file
@@ -114,8 +114,9 @@ public class SaveTarget extends AbstractHandler {
 
 		TOSConnector tos = new TOSConnector();
 
-		TOSConnector.setContextVariable("Job", "write_target_ontology");
-		tos.setContextVariable("Var1", "1"); // target ontology id
+		TOSConnector.setContextVariable("Job", Resource.ID.Command.TOS.WRITE_TARGET_ONTOLOGY);
+		//tos.setContextVariable("Var1", "1"); // target ontology id
+		tos.setContextVariable("TargetID", targetID);
 		tos.setContextVariable("DataFile", stringPath);
 
 		try {

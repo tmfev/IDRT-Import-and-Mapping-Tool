@@ -87,7 +87,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;&#xA;// INNER JOIN I2B2KFO179.i2b2 ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE ORDER BY concept_dimension.CONCEPT_PATH ASC&#xA;/*&#xA;context.Job = &quot;ontology&quot;;&#xA;context.SQLTable = &quot;i2b2&quot;;&#xA;context.SQLCommand = &quot;SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL &lt; 10 ORDER BY C_HLEVEL ASC&quot;;&#xA;//context.Job = &quot;ontology_dimensions&quot;;&#xA;//context.SQLTable = &quot;concept_dimension&quot;;&#xA;//context.SQLCommand = &quot;SELECT * FROM I2B2KFO179.concept_dimension FULL OUTER JOIN I2B2KFO179.modifier_dimension ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE &quot;;&#xA;*/&#xA;&#xA;&#xA;&#xA;&#xA;boolean sqlCommandIsEmpty = StringHandling.LEN(context.SQLCommand) &lt; 1;&#xA;&#xA;if ( context.Job.isEmpty() ){&#xA;&#x9;context.Job = &quot;ontology&quot;;&#xA;&#x9;System.out.println(&quot;TOS: context.Job is empty. Set to \&quot;ontology\&quot; now.&quot;);&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL, C_NAME ASC&quot;;&#xA;} else if ( context.Job.equals(&quot;ontology&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}  else if ( context.Job.equals(&quot;ontology_dimensions&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}&#xA;&#xA;&#xA;&#xA;if ( context.DataFile == null || &quot;null&quot;.equals(context.DataFile) ){&#xA;&#x9;context.DataFile = &quot;&quot;;&#xA;}&#xA;&#xA;&#xA;&#xA;System.out.println(&quot;TOS: ----actual vars-----&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Username: \&quot;&quot;+context.DB_StagingI2B2_Username+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Job: \&quot;&quot;+context.Job+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Var1: \&quot;&quot;+context.Var1+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DataFile: \&quot;&quot;+context.DataFile+&quot;\&quot;&quot;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;&#xA;// INNER JOIN I2B2KFO179.i2b2 ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE ORDER BY concept_dimension.CONCEPT_PATH ASC&#xA;/*&#xA;context.Job = &quot;ontology&quot;;&#xA;context.SQLTable = &quot;i2b2&quot;;&#xA;context.SQLCommand = &quot;SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL &lt; 10 ORDER BY C_HLEVEL ASC&quot;;&#xA;//context.Job = &quot;ontology_dimensions&quot;;&#xA;//context.SQLTable = &quot;concept_dimension&quot;;&#xA;//context.SQLCommand = &quot;SELECT * FROM I2B2KFO179.concept_dimension FULL OUTER JOIN I2B2KFO179.modifier_dimension ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE &quot;;&#xA;*/&#xA;&#xA;System.out.println(&quot;Error2: &quot; + ((String)globalMap.get(&quot;tJDBCConnection_1_ERROR_MESSAGE&quot;)) );&#xA;&#xA;&#xA;boolean sqlCommandIsEmpty = StringHandling.LEN(context.SQLCommand) &lt; 1;&#xA;&#xA;if ( context.Job.isEmpty() ){&#xA;&#x9;context.Job = &quot;ontology&quot;;&#xA;&#x9;System.out.println(&quot;TOS: context.Job is empty. Set to \&quot;ontology\&quot; now.&quot;);&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL, C_NAME ASC&quot;;&#xA;} else if ( context.Job.equals(&quot;ontology&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}  else if ( context.Job.equals(&quot;ontology_dimensions&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}&#xA;&#xA;&#xA;&#xA;if ( context.DataFile == null || &quot;null&quot;.equals(context.DataFile) ){&#xA;&#x9;context.DataFile = &quot;&quot;;&#xA;}&#xA;&#xA;&#xA;&#xA;System.out.println(&quot;TOS: ----actual vars-----&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Schema: \&quot;&quot;+context.DB_StagingI2B2_Schema+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Username: \&quot;&quot;+context.DB_StagingI2B2_Username+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Job: \&quot;&quot;+context.Job+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Var1: \&quot;&quot;+context.Var1+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DataFile: \&quot;&quot;+context.DataFile+&quot;\&quot;&quot;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="javaInitiateVars"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -129,7 +129,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="896" posY="576">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_1"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -185,7 +185,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" label="OE_TARGET_ONTOLOGY" name="tFileInputDelimited_1">
+    <metadata connector="FLOW" label="IOE_TARGET_ONTOLOGY" name="tFileInputDelimited_1">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -196,7 +196,7 @@
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
     </metadata>
-    <metadata connector="REJECT" label="OE_TARGET_ONTOLOGY" name="REJECT">
+    <metadata connector="REJECT" label="IOE_TARGET_ONTOLOGY" name="REJECT">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -210,7 +210,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1056" posY="576">
+  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCOutput_1"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -222,11 +222,11 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_sqlclassname"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;OE_TARGET_ONTOLOGY&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetOntology"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:SCHEMA_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - OE_TARGET_ONTOLOGY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA_FLOW:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - IOE_TARGET_ONTOLOGY"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
@@ -290,7 +290,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" label="OE_TARGET_ONTOLOGY" name="tJDBCOutput_1">
+    <metadata connector="FLOW" label="IOE_TARGET_ONTOLOGY" name="tJDBCOutput_1">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -301,7 +301,7 @@
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
     </metadata>
-    <metadata connector="REJECT" label="OE_TARGET_ONTOLOGY" name="REJECT">
+    <metadata connector="REJECT" label="IOE_TARGET_ONTOLOGY" name="REJECT">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -327,8 +327,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1248" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="((TOSHandler)context.TOSHandler).status(&quot;tJDBCOutput_1_NB_LINE_INSERTED: &quot; + ((Integer)globalMap.get(&quot;tJDBCOutput_1_NB_LINE_INSERTED&quot;)));&#xA;&#xA;context.StatusMessage = &quot;Target I2B2 ontology saved (&quot; + ((Integer)globalMap.get(&quot;tJDBCOutput_1_NB_LINE_INSERTED&quot;)) + &quot; lines).&quot;;&#xA;&#xA;((TOSHandler)context.TOSHandler).statusSuccess(context.StatusMessage);&#xA;System.out.println(context.StatusMessage);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="((TOSHandler)context.TOSHandler).status(&quot;tJDBCOutput_1_NB_LINE_INSERTED: &quot; + ((Integer)globalMap.get(&quot;tJDBCOutput_1_NB_LINE_INSERTED&quot;)));&#xA;&#xA;context.StatusMessage = &quot;Target I2B2 ontology saved (&quot; + ((Integer)globalMap.get(&quot;tJDBCOutput_1_NB_LINE_INSERTED&quot;)) + &quot; lines).&quot;;&#xA;&#xA;((TOSHandler)context.TOSHandler).statusSuccess(context.StatusMessage);&#xA;System.out.println(context.StatusMessage);&#xA;&#xA;&#xA;System.out.println(&quot;Error1: &quot; + ((String)globalMap.get(&quot;tJDBCInput_1_ERROR_MESSAGE&quot;)) );"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="&#xA;&#xA;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -602,7 +602,7 @@
     <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_mS8yMD8fEeOPSaQJVHzooQ - i2b2"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;i2b2&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;I2B2&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
@@ -760,7 +760,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;Select C_FULLNAME from &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;Select C_FULLNAME from &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2&quot; "/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -795,8 +795,8 @@
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - OE_TARGET_ONTOLOGY"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;OE_TARGET_ONTOLOGY&quot;"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - IOE_TARGET_ONTOLOGY"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="context.TableIEOTargetOntology"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
@@ -835,7 +835,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" label="OE_TARGET_ONTOLOGY" name="tJDBCInput_3">
+    <metadata connector="FLOW" label="IOE_TARGET_ONTOLOGY" name="tJDBCInput_3">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -851,7 +851,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_7"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - OE_TARGET_ONTOLOGY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - IOE_TARGET_ONTOLOGY"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="TOSHandler.status(&quot;Starting TOS-Job \&quot;LoadTargetOntology\&quot;.&quot;);&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="&#xA;((TOSHandler)context.TOSHandler).addTargetOntologyItemToTree(&#xA;&#x9;&#x9;&#x9;rTargetOntology.TREE_LEVEL, &#xA;&#x9;&#x9;&#x9;rTargetOntology.TREE_PATH,&#xA;&#x9;&#x9;&#x9;rTargetOntology.STAGING_PATH,&#xA;&#x9;&#x9;&#x9;rTargetOntology.STAGING_DIMENSION,&#xA;&#x9;&#x9;&#x9;rTargetOntology.NAME,&#xA;&#x9;&#x9;&#x9;rTargetOntology.STARTDATE_STAGING_PATH,&#xA;&#x9;&#x9;&#x9;rTargetOntology.ENDDATE_STAGING_PATH,&#xA;&#x9;&#x9;&#x9;rTargetOntology.VISUALATTRIBUTES);&#xA;"/>
@@ -865,7 +865,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" label="OE_TARGET_ONTOLOGY" name="tJavaFlex_7">
+    <metadata connector="FLOW" label="IOE_TARGET_ONTOLOGY" name="tJavaFlex_7">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TREE_LEVEL" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
@@ -888,11 +888,11 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_sqlclassname"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetOntology"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.  WHERE target_id = '&quot; + context.TargetID + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetOntology + &quot;  WHERE target_id = '&quot; + context.TargetID + &quot;'&quot;"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
@@ -904,11 +904,50 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TEXT" name="LABEL" value="dbDeleteTargetOntology"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJDBCRow_1"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="832" posY="576">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value=""/>
+    <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR">
+      <elementValue elementRef="JAR_NAME" value="ojdbc14-9i.jar"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_sqlclassname"/>
+    <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
+    <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetOntology"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DELETE FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetOntology + &quot;  WHERE target_id = '&quot; + context.TargetID + &quot;'&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TEXT" name="LABEL" value="dbDeleteTargetOntology"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJDBCRow_2"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -929,7 +968,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If8"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_2" target="tJava_4">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Job.equals(&quot;add_target_ontology&quot;)&#xA;||&#xA;context.Job.equals(&quot;write_target_ontology&quot;)&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Job.equals(&quot;add_target_ontology&quot;)&#xA;||&#xA;context.Job.equals(&quot;WriteTargetOntology&quot;)&#xA;"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4"/>
   </connection>
@@ -1014,13 +1053,9 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tFileInputDelimited_1">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tJDBCRow_2">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tJDBCRow_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tJava_12">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -1213,7 +1248,11 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="rTargetOntology"/>
   </connection>
-  <note opaque="false" posX="0" posY="128" sizeHeight="833" sizeWidth="1673" text="Doing all the work ...&#xD;&#xA;">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCRow_2" offsetLabelX="0" offsetLabelY="0" source="tJDBCRow_2" target="tFileInputDelimited_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk10"/>
+  </connection>
+  <note opaque="false" posX="32" posY="64" sizeHeight="833" sizeWidth="1673" text="Doing all the work ...&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
@@ -1332,6 +1371,21 @@
     <elementParameter field="CHECK" name="FONT_BOLD" value="true"/>
     <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="128;128;128"/>
+  </note>
+  <note opaque="true" posX="1312" posY="-448" sizeHeight="193" sizeWidth="289" text="Commands:&#xD;&#xA;WriteTargetOntology&#xD;&#xA;">
+    <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
+    <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
+    <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
+    <elementParameter field="RADIO" name="NOTETXT_RIGHT" value="false"/>
+    <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
+    <elementParameter field="RADIO" name="NOTELABEL_CENTER" value="false"/>
+    <elementParameter field="RADIO" name="NOTETXT_TOP" value="true"/>
+    <elementParameter field="RADIO" name="NOTETXT_BOTTOM" value="false"/>
+    <elementParameter field="TEXT" name="NOTE_FONT" value="Time New Roman"/>
+    <elementParameter field="TEXT" name="FONT_SIZE" value="10"/>
+    <elementParameter field="CHECK" name="FONT_BOLD" value="false"/>
+    <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
+    <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="237;201;122"/>
   </note>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLibraryLoad_1"/>
@@ -1485,6 +1539,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
   </subjob>

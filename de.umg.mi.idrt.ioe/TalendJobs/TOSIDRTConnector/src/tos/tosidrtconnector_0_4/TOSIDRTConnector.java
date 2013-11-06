@@ -75,7 +75,6 @@ import routines.TOSHandler2;
 //import java.util.List;
 
 //the import part of tJava_5
-//import java.util.List;
 
 //the import part of tJavaFlex_7
 
@@ -952,6 +951,16 @@ public class TOSIDRTConnector implements TalendJob {
 		tJava_4_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tJDBCRow_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCRow_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1279,6 +1288,17 @@ public class TOSIDRTConnector implements TalendJob {
 	}
 
 	public void tJava_4_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCRow_2_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -2378,6 +2398,10 @@ public class TOSIDRTConnector implements TalendJob {
 				 * ;
 				 */
 
+				System.out.println("Error2: "
+						+ ((String) globalMap
+								.get("tJDBCConnection_1_ERROR_MESSAGE")));
+
 				boolean sqlCommandIsEmpty = StringHandling
 						.LEN(context.SQLCommand) < 1;
 
@@ -2410,6 +2434,8 @@ public class TOSIDRTConnector implements TalendJob {
 				}
 
 				System.out.println("TOS: ----actual vars-----");
+				System.out.println(" - context.DB_StagingI2B2_Schema: \""
+						+ context.DB_StagingI2B2_Schema + "\"");
 				System.out.println(" - context.DB_StagingI2B2_Username: \""
 						+ context.DB_StagingI2B2_Username + "\"");
 				System.out.println(" - context.Job: \"" + context.Job + "\"");
@@ -2452,7 +2478,7 @@ public class TOSIDRTConnector implements TalendJob {
 				}
 
 				if (context.Job.equals("add_target_ontology")
-						|| context.Job.equals("write_target_ontology")) {
+						|| context.Job.equals("WriteTargetOntology")) {
 
 					tJava_4Process(globalMap);
 				}
@@ -4023,8 +4049,6 @@ public class TOSIDRTConnector implements TalendJob {
 				ok_Hash.put("tJava_4", true);
 				end_Hash.put("tJava_4", System.currentTimeMillis());
 
-				tJDBCRow_1Process(globalMap);
-
 				/**
 				 * [tJava_4 end ] stop
 				 */
@@ -4036,6 +4060,143 @@ public class TOSIDRTConnector implements TalendJob {
 						"CONNECTION:SUBJOB_OK:tJava_4:OnSubjobOk", "", Thread
 								.currentThread().getId() + "", "", "", "", "",
 						"");
+			}
+
+			tJDBCRow_2Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_2 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_2", false);
+				start_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_2";
+
+				int tos_count_tJDBCRow_2 = 0;
+
+				java.sql.Connection connection_tJDBCRow_2 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCRow_2) {
+					connection_tJDBCRow_2 = dataSources_tJDBCRow_2.get("")
+							.getConnection();
+				} else {
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+					String connectionString_tJDBCRow_2 = context.DB_StagingI2B2_jdbcurl;
+					connection_tJDBCRow_2 = java.sql.DriverManager
+							.getConnection(connectionString_tJDBCRow_2,
+									context.DB_StagingI2B2_Username,
+									context.DB_StagingI2B2_Password);
+				}
+
+				connection_tJDBCRow_2.setAutoCommit(false);
+				int commitEvery_tJDBCRow_2 = 10000;
+				int commitCounter_tJDBCRow_2 = 0;
+
+				java.sql.Statement stmt_tJDBCRow_2 = connection_tJDBCRow_2
+						.createStatement();
+				String query_tJDBCRow_2 = "";
+				boolean whetherReject_tJDBCRow_2 = false;
+
+				/**
+				 * [tJDBCRow_2 begin ] stop
+				 */
+				/**
+				 * [tJDBCRow_2 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				query_tJDBCRow_2 = "DELETE FROM "
+						+ context.DB_StagingI2B2_Schema + "."
+						+ context.TableIEOTargetOntology
+						+ "  WHERE target_id = '" + context.TargetID + "'";
+				whetherReject_tJDBCRow_2 = false;
+				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
+				try {
+					stmt_tJDBCRow_2.execute(query_tJDBCRow_2);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_2 = true;
+					System.err.print(e.getMessage());
+				}
+
+				if (!whetherReject_tJDBCRow_2) {
+				}
+				commitCounter_tJDBCRow_2++;
+				if (commitEvery_tJDBCRow_2 <= commitCounter_tJDBCRow_2) {
+					connection_tJDBCRow_2.commit();
+					commitCounter_tJDBCRow_2 = 0;
+				}
+
+				tos_count_tJDBCRow_2++;
+
+				/**
+				 * [tJDBCRow_2 main ] stop
+				 */
+				/**
+				 * [tJDBCRow_2 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				stmt_tJDBCRow_2.close();
+				if (commitEvery_tJDBCRow_2 > commitCounter_tJDBCRow_2) {
+					connection_tJDBCRow_2.commit();
+					commitCounter_tJDBCRow_2 = 0;
+				}
+
+				connection_tJDBCRow_2.close();
+
+				ok_Hash.put("tJDBCRow_2", true);
+				end_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCRow_2 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tJDBCRow_2:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
 			}
 
 			tFileInputDelimited_1Process(globalMap);
@@ -4050,7 +4211,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 		}
 
-		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 1);
 	}
 
 	public static class tmpRowStruct implements
@@ -4333,12 +4494,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 				int tos_count_tJDBCOutput_1 = 0;
 
-				int updateKeyCount_tJDBCOutput_1 = 0;
-				if (updateKeyCount_tJDBCOutput_1 < 1) {
-					throw new RuntimeException(
-							"For update, Schema must have a key");
-				}
-
 				int nb_line_tJDBCOutput_1 = 0;
 				int nb_line_update_tJDBCOutput_1 = 0;
 				int nb_line_inserted_tJDBCOutput_1 = 0;
@@ -4375,19 +4530,13 @@ public class TOSIDRTConnector implements TalendJob {
 				int batchSize_tJDBCOutput_1 = 10000;
 				int batchSizeCounter_tJDBCOutput_1 = 0;
 
-				java.sql.PreparedStatement pstmt_tJDBCOutput_1 = connection_tJDBCOutput_1
-						.prepareStatement("SELECT COUNT(1) FROM "
-								+ "OE_TARGET_ONTOLOGY" + " WHERE ");
 				String insert_tJDBCOutput_1 = "INSERT INTO "
-						+ "OE_TARGET_ONTOLOGY"
+						+ context.DB_StagingI2B2_Schema
+						+ "."
+						+ context.TableIEOTargetOntology
 						+ " (TARGET_ID,TREE_LEVEL,TREE_PATH,STAGING_PATH,STAGING_DIMENSION,NAME,STARTDATE_STAGING_PATH,ENDDATE_STAGING_PATH,VISUALATTRIBUTES) VALUES (?,?,?,?,?,?,?,?,?)";
-				java.sql.PreparedStatement pstmtInsert_tJDBCOutput_1 = connection_tJDBCOutput_1
+				java.sql.PreparedStatement pstmt_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement(insert_tJDBCOutput_1);
-				String update_tJDBCOutput_1 = "UPDATE "
-						+ "OE_TARGET_ONTOLOGY"
-						+ " SET TARGET_ID = ?,TREE_LEVEL = ?,TREE_PATH = ?,STAGING_PATH = ?,STAGING_DIMENSION = ?,NAME = ?,STARTDATE_STAGING_PATH = ?,ENDDATE_STAGING_PATH = ?,VISUALATTRIBUTES = ? WHERE ";
-				java.sql.PreparedStatement pstmtUpdate_tJDBCOutput_1 = connection_tJDBCOutput_1
-						.prepareStatement(update_tJDBCOutput_1);
 
 				/**
 				 * [tJDBCOutput_1 begin ] stop
@@ -4771,181 +4920,113 @@ public class TOSIDRTConnector implements TalendJob {
 							currentComponent = "tJDBCOutput_1";
 
 							whetherReject_tJDBCOutput_1 = false;
-
-							java.sql.ResultSet rs_tJDBCOutput_1 = pstmt_tJDBCOutput_1
-									.executeQuery();
-							int checkCount_tJDBCOutput_1 = -1;
-							while (rs_tJDBCOutput_1.next()) {
-								checkCount_tJDBCOutput_1 = rs_tJDBCOutput_1
-										.getInt(1);
-							}
-							if (checkCount_tJDBCOutput_1 > 0) {
-								if (tmpRow.TARGET_ID == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(1,
-											java.sql.Types.INTEGER);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setInt(1,
-											tmpRow.TARGET_ID);
-								}
-
-								if (tmpRow.TREE_LEVEL == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(2,
-											java.sql.Types.INTEGER);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setInt(2,
-											tmpRow.TREE_LEVEL);
-								}
-
-								if (tmpRow.TREE_PATH == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(3,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(3,
-											tmpRow.TREE_PATH);
-								}
-
-								if (tmpRow.STAGING_PATH == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(4,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(4,
-											tmpRow.STAGING_PATH);
-								}
-
-								if (tmpRow.STAGING_DIMENSION == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(5,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(5,
-											tmpRow.STAGING_DIMENSION);
-								}
-
-								if (tmpRow.NAME == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(6,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(6,
-											tmpRow.NAME);
-								}
-
-								if (tmpRow.STARTDATE_STAGING_PATH == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(7,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(7,
-											tmpRow.STARTDATE_STAGING_PATH);
-								}
-
-								if (tmpRow.ENDDATE_STAGING_PATH == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(8,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(8,
-											tmpRow.ENDDATE_STAGING_PATH);
-								}
-
-								if (tmpRow.VISUALATTRIBUTES == null) {
-									pstmtUpdate_tJDBCOutput_1.setNull(9,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtUpdate_tJDBCOutput_1.setString(9,
-											tmpRow.VISUALATTRIBUTES);
-								}
-
-								try {
-									updatedCount_tJDBCOutput_1 = updatedCount_tJDBCOutput_1
-											+ pstmtUpdate_tJDBCOutput_1
-													.executeUpdate();
-								} catch (java.lang.Exception e) {
-									whetherReject_tJDBCOutput_1 = true;
-									System.err.print(e.getMessage());
-								}
+							if (tmpRow.TARGET_ID == null) {
+								pstmt_tJDBCOutput_1.setNull(1,
+										java.sql.Types.INTEGER);
 							} else {
-								if (tmpRow.TARGET_ID == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(1,
-											java.sql.Types.INTEGER);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setInt(1,
-											tmpRow.TARGET_ID);
-								}
-
-								if (tmpRow.TREE_LEVEL == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(2,
-											java.sql.Types.INTEGER);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setInt(2,
-											tmpRow.TREE_LEVEL);
-								}
-
-								if (tmpRow.TREE_PATH == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(3,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(3,
-											tmpRow.TREE_PATH);
-								}
-
-								if (tmpRow.STAGING_PATH == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(4,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(4,
-											tmpRow.STAGING_PATH);
-								}
-
-								if (tmpRow.STAGING_DIMENSION == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(5,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(5,
-											tmpRow.STAGING_DIMENSION);
-								}
-
-								if (tmpRow.NAME == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(6,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(6,
-											tmpRow.NAME);
-								}
-
-								if (tmpRow.STARTDATE_STAGING_PATH == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(7,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(7,
-											tmpRow.STARTDATE_STAGING_PATH);
-								}
-
-								if (tmpRow.ENDDATE_STAGING_PATH == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(8,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(8,
-											tmpRow.ENDDATE_STAGING_PATH);
-								}
-
-								if (tmpRow.VISUALATTRIBUTES == null) {
-									pstmtInsert_tJDBCOutput_1.setNull(9,
-											java.sql.Types.VARCHAR);
-								} else {
-									pstmtInsert_tJDBCOutput_1.setString(9,
-											tmpRow.VISUALATTRIBUTES);
-								}
-
-								try {
-									insertedCount_tJDBCOutput_1 = insertedCount_tJDBCOutput_1
-											+ pstmtInsert_tJDBCOutput_1
-													.executeUpdate();
-								} catch (java.lang.Exception e) {
-									whetherReject_tJDBCOutput_1 = true;
-									System.err.print(e.getMessage());
-								}
+								pstmt_tJDBCOutput_1.setInt(1, tmpRow.TARGET_ID);
 							}
+
+							if (tmpRow.TREE_LEVEL == null) {
+								pstmt_tJDBCOutput_1.setNull(2,
+										java.sql.Types.INTEGER);
+							} else {
+								pstmt_tJDBCOutput_1
+										.setInt(2, tmpRow.TREE_LEVEL);
+							}
+
+							if (tmpRow.TREE_PATH == null) {
+								pstmt_tJDBCOutput_1.setNull(3,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(3,
+										tmpRow.TREE_PATH);
+							}
+
+							if (tmpRow.STAGING_PATH == null) {
+								pstmt_tJDBCOutput_1.setNull(4,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(4,
+										tmpRow.STAGING_PATH);
+							}
+
+							if (tmpRow.STAGING_DIMENSION == null) {
+								pstmt_tJDBCOutput_1.setNull(5,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(5,
+										tmpRow.STAGING_DIMENSION);
+							}
+
+							if (tmpRow.NAME == null) {
+								pstmt_tJDBCOutput_1.setNull(6,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(6, tmpRow.NAME);
+							}
+
+							if (tmpRow.STARTDATE_STAGING_PATH == null) {
+								pstmt_tJDBCOutput_1.setNull(7,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(7,
+										tmpRow.STARTDATE_STAGING_PATH);
+							}
+
+							if (tmpRow.ENDDATE_STAGING_PATH == null) {
+								pstmt_tJDBCOutput_1.setNull(8,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(8,
+										tmpRow.ENDDATE_STAGING_PATH);
+							}
+
+							if (tmpRow.VISUALATTRIBUTES == null) {
+								pstmt_tJDBCOutput_1.setNull(9,
+										java.sql.Types.VARCHAR);
+							} else {
+								pstmt_tJDBCOutput_1.setString(9,
+										tmpRow.VISUALATTRIBUTES);
+							}
+
+							pstmt_tJDBCOutput_1.addBatch();
 							nb_line_tJDBCOutput_1++;
+
+							batchSizeCounter_tJDBCOutput_1++;
 							if (!whetherReject_tJDBCOutput_1) {
 							}
 							if (batchSize_tJDBCOutput_1 <= batchSizeCounter_tJDBCOutput_1) {
+								int[] status_tJDBCOutput_1 = null;
+								int countSum_tJDBCOutput_1 = 0;
+								try {
+									batchSizeCounter_tJDBCOutput_1 = 0;
+									status_tJDBCOutput_1 = pstmt_tJDBCOutput_1
+											.executeBatch();
+									for (int countEach_tJDBCOutput_1 : status_tJDBCOutput_1) {
+										countSum_tJDBCOutput_1 += (countEach_tJDBCOutput_1 < 0 ? 0
+												: countEach_tJDBCOutput_1);
+									}
+								} catch (java.sql.BatchUpdateException e) {
+
+									for (int countEach_tJDBCOutput_1 : e
+											.getUpdateCounts()) {
+										countSum_tJDBCOutput_1 += (countEach_tJDBCOutput_1 < 0 ? 0
+												: countEach_tJDBCOutput_1);
+									}
+									System.err.println(e.getMessage());
+
+								}
+								try {
+									tmp_batchUpdateCount_tJDBCOutput_1 = pstmt_tJDBCOutput_1
+											.getUpdateCount();
+								} catch (java.sql.SQLException e) {
+
+								}
+								tmp_batchUpdateCount_tJDBCOutput_1 = tmp_batchUpdateCount_tJDBCOutput_1 > countSum_tJDBCOutput_1 ? tmp_batchUpdateCount_tJDBCOutput_1
+										: countSum_tJDBCOutput_1;
+
+								insertedCount_tJDBCOutput_1 += tmp_batchUpdateCount_tJDBCOutput_1;
 
 							}
 
@@ -4998,14 +5079,39 @@ public class TOSIDRTConnector implements TalendJob {
 
 				currentComponent = "tJDBCOutput_1";
 
-				if (pstmtUpdate_tJDBCOutput_1 != null) {
+				int[] status_tJDBCOutput_1 = null;
+				int countSum_tJDBCOutput_1 = 0;
+				try {
+					if (pstmt_tJDBCOutput_1 != null
+							&& batchSizeCounter_tJDBCOutput_1 > 0) {
+						status_tJDBCOutput_1 = pstmt_tJDBCOutput_1
+								.executeBatch();
+						for (int countEach_tJDBCOutput_1 : status_tJDBCOutput_1) {
+							countSum_tJDBCOutput_1 += (countEach_tJDBCOutput_1 < 0 ? 0
+									: countEach_tJDBCOutput_1);
+						}
+					}
+				} catch (java.sql.BatchUpdateException e) {
 
-					pstmtUpdate_tJDBCOutput_1.close();
+					for (int countEach_tJDBCOutput_1 : e.getUpdateCounts()) {
+						countSum_tJDBCOutput_1 += (countEach_tJDBCOutput_1 < 0 ? 0
+								: countEach_tJDBCOutput_1);
+					}
+					System.out.println(e.getMessage());
 
 				}
-				if (pstmtInsert_tJDBCOutput_1 != null) {
+				if (pstmt_tJDBCOutput_1 != null
+						&& batchSizeCounter_tJDBCOutput_1 > 0) {
+					try {
+						tmp_batchUpdateCount_tJDBCOutput_1 = pstmt_tJDBCOutput_1
+								.getUpdateCount();
+					} catch (java.sql.SQLException e) {
 
-					pstmtInsert_tJDBCOutput_1.close();
+					}
+					tmp_batchUpdateCount_tJDBCOutput_1 = tmp_batchUpdateCount_tJDBCOutput_1 > countSum_tJDBCOutput_1 ? tmp_batchUpdateCount_tJDBCOutput_1
+							: countSum_tJDBCOutput_1;
+
+					insertedCount_tJDBCOutput_1 += tmp_batchUpdateCount_tJDBCOutput_1;
 
 				}
 				if (pstmt_tJDBCOutput_1 != null) {
@@ -5399,6 +5505,11 @@ public class TOSIDRTConnector implements TalendJob {
 						.statusSuccess(context.StatusMessage);
 				System.out.println(context.StatusMessage);
 
+				System.out
+						.println("Error1: "
+								+ ((String) globalMap
+										.get("tJDBCInput_1_ERROR_MESSAGE")));
+
 				/**
 				 * [tJava_5 begin ] stop
 				 */
@@ -5515,8 +5626,9 @@ public class TOSIDRTConnector implements TalendJob {
 				currentComponent = "tJDBCRow_1";
 
 				query_tJDBCRow_1 = "DELETE FROM "
-						+ context.DB_StagingI2B2_Schema
-						+ ".  WHERE target_id = '" + context.TargetID + "'";
+						+ context.DB_StagingI2B2_Schema + "."
+						+ context.TableIEOTargetOntology
+						+ "  WHERE target_id = '" + context.TargetID + "'";
 				whetherReject_tJDBCRow_1 = false;
 				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
 				try {
@@ -7658,6 +7770,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 220831 characters generated by Talend Open Studio for Data Integration on the
- * 4. November 2013 17:36:59 MEZ
+ * 224359 characters generated by Talend Open Studio for Data Integration on the
+ * 6. November 2013 16:28:28 MEZ
  ************************************************************************************************/

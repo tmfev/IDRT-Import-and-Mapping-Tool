@@ -279,7 +279,7 @@ public class EditorTargetInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION);
 		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);
-		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE);
+		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES);
 
 		// TableViewerColumn col =
 		// createTableViewerColumn(Resource.I2B2.NODE.TARGET.SOURCE_PATH,

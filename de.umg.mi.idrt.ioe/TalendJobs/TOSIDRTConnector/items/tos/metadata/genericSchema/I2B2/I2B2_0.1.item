@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010">
+  <TalendMetadata:GenericSchemaConnection xmi:id="_mTI_cD8fEeOPSaQJVHzooQ" name="connectionLabel" comment="connectionComment" label="connectionLabel" dataPackage="_mTI_cT8fEeOPSaQJVHzooQ" mappingTypeUsed="true" mappingTypeId="oracle_id"/>
+  <TalendMetadata:GenericPackage xmi:id="_mTI_cT8fEeOPSaQJVHzooQ" dataManager="_mTI_cD8fEeOPSaQJVHzooQ">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_mTI_cj8fEeOPSaQJVHzooQ" name="i2b2" label="i2b2">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_cz8fEeOPSaQJVHzooQ" name="C_HLEVEL" id="0" label="C_HLEVEL" length="22" sourceType="" talendType="id_BigDecimal" nullable="false">
+        <initialValue xmi:id="_mTI_dD8fEeOPSaQJVHzooQ" body=""/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_dT8fEeOPSaQJVHzooQ" name="C_FULLNAME" id="1" label="C_FULLNAME" length="3500" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_dj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_dz8fEeOPSaQJVHzooQ" name="C_NAME" id="2" label="C_NAME" length="2000" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_eD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_eT8fEeOPSaQJVHzooQ" name="C_SYNONYM_CD" id="3" label="C_SYNONYM_CD" length="1" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_ej8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_ez8fEeOPSaQJVHzooQ" name="C_VISUALATTRIBUTES" id="4" label="C_VISUALATTRIBUTES" length="3" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_fD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_fT8fEeOPSaQJVHzooQ" name="C_TOTALNUM" id="5" label="C_TOTALNUM" length="22" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_mTI_fj8fEeOPSaQJVHzooQ" body=""/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_fz8fEeOPSaQJVHzooQ" name="C_BASECODE" id="6" label="C_BASECODE" length="3500" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTI_gD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_gT8fEeOPSaQJVHzooQ" name="C_METADATAXML" id="7" label="C_METADATAXML" sourceType="VARCHAR2" talendType="id_String">
+        <initialValue xmi:id="_mTI_gj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_gz8fEeOPSaQJVHzooQ" name="C_FACTTABLECOLUMN" id="8" label="C_FACTTABLECOLUMN" length="50" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_hD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_hT8fEeOPSaQJVHzooQ" name="C_TABLENAME" id="9" label="C_TABLENAME" length="50" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_hj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_hz8fEeOPSaQJVHzooQ" name="C_COLUMNNAME" id="10" label="C_COLUMNNAME" length="50" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTI_iD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTI_iT8fEeOPSaQJVHzooQ" name="C_COLUMNDATATYPE" id="11" label="C_COLUMNDATATYPE" length="50" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTJmgD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmgT8fEeOPSaQJVHzooQ" name="C_OPERATOR" id="12" label="C_OPERATOR" length="10" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTJmgj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmgz8fEeOPSaQJVHzooQ" name="C_DIMCODE" id="13" label="C_DIMCODE" length="3500" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTJmhD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmhT8fEeOPSaQJVHzooQ" name="C_COMMENT" id="14" label="C_COMMENT" sourceType="VARCHAR2" talendType="id_String">
+        <initialValue xmi:id="_mTJmhj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmhz8fEeOPSaQJVHzooQ" name="C_TOOLTIP" id="15" label="C_TOOLTIP" length="900" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmiD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmiT8fEeOPSaQJVHzooQ" name="M_APPLIED_PATH" id="16" label="M_APPLIED_PATH" length="700" sourceType="" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_mTJmij8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmiz8fEeOPSaQJVHzooQ" name="UPDATE_DATE" id="17" label="UPDATE_DATE" sourceType="" talendType="id_Date" nullable="false" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_mTJmjD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmjT8fEeOPSaQJVHzooQ" name="DOWNLOAD_DATE" id="18" label="DOWNLOAD_DATE" sourceType="" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_mTJmjj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmjz8fEeOPSaQJVHzooQ" name="IMPORT_DATE" id="19" label="IMPORT_DATE" sourceType="" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_mTJmkD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmkT8fEeOPSaQJVHzooQ" name="SOURCESYSTEM_CD" id="20" label="SOURCESYSTEM_CD" length="50" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmkj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmkz8fEeOPSaQJVHzooQ" name="VALUETYPE_CD" id="21" label="VALUETYPE_CD" length="50" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmlD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmlT8fEeOPSaQJVHzooQ" name="M_EXCLUSION_CD" id="22" label="M_EXCLUSION_CD" length="25" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmlj8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmlz8fEeOPSaQJVHzooQ" name="C_PATH" id="23" label="C_PATH" length="700" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmmD8fEeOPSaQJVHzooQ"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_mTJmmT8fEeOPSaQJVHzooQ" name="C_SYMBOL" id="24" label="C_SYMBOL" length="50" sourceType="" talendType="id_String">
+        <initialValue xmi:id="_mTJmmj8fEeOPSaQJVHzooQ"/>
+      </feature>
+    </ownedElement>
+  </TalendMetadata:GenericPackage>
+</xmi:XMI>

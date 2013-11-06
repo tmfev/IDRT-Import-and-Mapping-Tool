@@ -281,7 +281,7 @@ public class InfoView extends ViewPart {
 		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION);
 		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);
-		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTE);
+		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES);
 
 		targetNodeComposite.layout();
 	}
