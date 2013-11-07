@@ -29,7 +29,14 @@ public class TargetProjects {
 		TargetProject targetProject = this.getTargetProjectByID(target.getTargetProjectID());
 		targetProject.add(target);
 		
+		/*
+		if ( this.getSelectedTarget() != null )
+			System.out.println("#addTarget compare " + target.getLastModified() + " _after_ " + this.getSelectedTarget().getLastModified() );
+		else 
+			System.out.println("#addTarget compare " + target.getLastModified() + " _after_ null" );
+		*/
 		if (this.getSelectedTarget() == null || target.getLastModified().after(this.getSelectedTarget().getLastModified())){
+			//System.out.println("#--> yes. set selected!");
 			this.setSelectedTarget(target);
 			this.setSelectedTargetProject(targetProject);
 		}

@@ -163,9 +163,8 @@ public class TOSHandler {
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 
-//		OntologyItem item = null;
 		OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,null,null);
-		//		}
+
 	}
 
 	public void writeTargetOntology(int targetID, String treeNodePath,
@@ -182,10 +181,7 @@ public class TOSHandler {
 		targetProject.setName(name);
 		targetProject.setDescription(description);
 
-		OntologyTreeTargetRootNode targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
-
-		TargetProjects targetProjects = targetRootNode.getTargetProjects();
-		targetProjects.add(targetProject);
+		OntologyEditorView.getTargetProjects().add(targetProject);
 
 	}
 
