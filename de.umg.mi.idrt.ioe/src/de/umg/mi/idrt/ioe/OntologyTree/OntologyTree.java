@@ -217,6 +217,7 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
 		node.getTargetNodeAttributes().setEndDateSourcePath(item.getEnddateStagingPath());
 		node.getTargetNodeAttributes().setStartDateSourcePath(item.getStartdateStagingPath());
+		node.getTargetNodeAttributes().setName(item.getName());
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
