@@ -19,7 +19,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class LoadTargetOntology extends AbstractHandler {
 
-	
+
 	public LoadTargetOntology(){
 		super();
 	}
@@ -30,18 +30,29 @@ public class LoadTargetOntology extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		Console.info("Command: LoadTargetOntology");
-		
+
 		TOSConnector tos = new TOSConnector();
-	
+		//Clears the TargetOntologyTree
+		if (OntologyEditorView.getTargetTreeViewer()!=null) {
+			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().removeFromParent();
+			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren().clear();
+			OntologyEditorView.getOntologyTargetTree()
+			.getNodeLists().add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
+			for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
+				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
+			}
+
+		}
+
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		if (targetProjects.getSelectedTarget() == null || targetProjects.getSelectedTargetProject() == null ){
 			Console.error("Can not load target ontology, because no target is selected.");
 			return null;
 		}
-		
+
 		Target target = targetProjects.getSelectedTarget();
-		
+
 		try {
 			tos.setContextVariable("Job", "LoadTargetOntology");
 			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
@@ -56,9 +67,9 @@ public class LoadTargetOntology extends AbstractHandler {
 
 
 		}
-		
-		
-		
+
+
+
 		return null;
 	}
 }
