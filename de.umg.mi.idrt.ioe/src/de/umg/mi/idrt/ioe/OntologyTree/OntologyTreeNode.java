@@ -583,7 +583,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 					+ "\", because he has no parents (ErrorCode: BruceWayne01).");
 
 		} else {
-			System.out.println("parent treepath: " +((OntologyTreeNode) parent).getTreePath());
 			this.setTreePath(((OntologyTreeNode) parent).getTreePath() + this.id + "\\");
 			this.setTreePathLevel(((OntologyTreeNode) parent).getTreePathLevel() + 1);
 		}

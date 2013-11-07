@@ -28,10 +28,10 @@ public class OntologyTreeNodeList {
 
 	public void add( OntologyTreeNode node ){
 //		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
-			long newTime = System.currentTimeMillis();
+//			long newTime = System.currentTimeMillis();
 
-			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
-			time = newTime;
+//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
+//			time = newTime;
 //		}
 		this.addNodyByPath( node.getTreePath(), node );
 	}
@@ -71,13 +71,11 @@ System.err.println("Could not add node \"" + node.getName() +"\", because no par
 			 */
 		} else {
 			parentNode = this.getNodeByPath( pathAndID.getParentPath() );
-			System.out.println(" pathAndID.getParentPath()" +  pathAndID.getParentPath());
 			if (parentNode == null){
 				String path = pathAndID.getParentPath().substring(0, pathAndID.getParentPath().length()-1);
 				node.setID(path.substring(path.lastIndexOf("\\")+1,path.length()));
 				path = path.substring(0,path.lastIndexOf("\\"))+"\\";
 				parentNode =  this.getNodeByPath(path);
-				System.out.println("!!! " +parentNode.getTreePath() + " " + parentNode.getName());
 				if (parentNode == null) {
 					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
 					return null;
@@ -108,7 +106,6 @@ System.err.println("Could not add node \"" + node.getName() +"\", because no par
 	}
 
 	public void listNodeByPath(){
-		System.out.println(" Path to Nodes:");
 		for (String path : stringPathToNode.keySet()){
 			System.out.println("  - " + path);
 		}

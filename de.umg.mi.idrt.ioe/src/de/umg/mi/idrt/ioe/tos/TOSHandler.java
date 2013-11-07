@@ -160,7 +160,6 @@ public class TOSHandler {
 		
 //		System.out.println("ADDING ITEM TO TARGET");
 //		System.out.println("->" + treeLevel + ":" + treePath + ":" + stagingDimension);
-System.out.println(treePath);
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 

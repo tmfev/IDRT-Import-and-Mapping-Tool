@@ -204,9 +204,6 @@ public class OntologyTree extends JTree {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
 		node.setID( node.getIDFromPath( i2b2Path ) );
-		System.out.println("node id: " +node.getID());
-		System.out.println("node ame: " + node.getName());
-		System.out.println("node path: "+ node.getTreePath());
 		try {
 			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 		}catch (Exception e) {
@@ -214,7 +211,6 @@ public class OntologyTree extends JTree {
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}
-		System.out.println("first: "+ node.getTreePath());
 		node.setTreeAttributes();
 		node.setType(source);
 		node.getTargetNodeAttributes().setVisualattributes(item.getVisualattributes());
@@ -224,8 +220,6 @@ public class OntologyTree extends JTree {
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
-		
-		System.out.println("now: " + node.getTreePath());
 		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
 	}
 
@@ -364,9 +358,6 @@ public class OntologyTree extends JTree {
 				bridge = " ";
 
 		}
-
-		System.out.println(bridge + " " + node.getName() + " ("
-				+ node.getTreePath() + ")");
 
 		for (int y = 0; y < node.getChildCount(); y++) {
 			printNode((OntologyTreeNode) node.getChildAt(y), level++);

@@ -25,7 +25,6 @@ public class DeleteNodeCommand extends AbstractHandler {
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
 		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
 				.getSelection();
-		System.out.println("SELECTION SIZE: " +selection.size());
 
 		Iterator<MutableTreeNode> nodeIterator = selection.iterator();
 		
@@ -36,7 +35,6 @@ public class DeleteNodeCommand extends AbstractHandler {
 				OntologyTreeNode node = (OntologyTreeNode) mNode;
 				OntologyEditorView.setNotYetSaved(true);
 				if (!(node ==OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {
-					System.out.println("REMOVEING " + node.getTreePath());
 					node.removeFromParent();
 				}
 				else {

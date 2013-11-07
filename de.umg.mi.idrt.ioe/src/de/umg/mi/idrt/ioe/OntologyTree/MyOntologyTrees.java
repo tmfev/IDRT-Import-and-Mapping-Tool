@@ -472,7 +472,6 @@ public class MyOntologyTrees{
 					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 							.getSelection();
 					OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
-					System.out.println(node.getOntologyCellAttributes().getC_FULLNAME());
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
@@ -546,7 +545,6 @@ public class MyOntologyTrees{
 
 					System.out.println("COPY DONE");
 
-					System.out.println(Resource.ID.Command.COMBINENODE);
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
 //										command2.addParameter(
@@ -783,12 +781,7 @@ public class MyOntologyTrees{
 	/* OT Commands */
 	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
 			OntologyTreeNode targetNode, String attribute) {
-		System.out.println("setting attribute: " + attribute);
-
 		if (sourceNode != null) {
-			System.out.println(" - do:" + sourceNode.getName() + " -> "
-					+ targetNode.getName() + "!");
-
 			setTargetAttribute(targetNode, attribute,
 					sourceNode.getOntologyCellAttributes().getC_FULLNAME());
 		}
