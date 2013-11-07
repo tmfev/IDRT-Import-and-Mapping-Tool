@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package tos.tosidrtcommand_loadtargetprojects_0_1;
+package tos.tosidrtcommand_deletetarget_0_1;
 
 import routines.IIT;
 import routines.DataOperation;
@@ -47,30 +47,24 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
 
-//the import part of tJavaFlex_1
-//import java.util.List;
-
-//the import part of tJava_2
-//import java.util.List;
-
-//the import part of tJavaFlex_3
-//import java.util.List;
-
 //the import part of tLibraryLoad_1
 import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
 //the import part of tJava_1
 //import java.util.List;
 
+//the import part of tJava_2
+//import java.util.List;
+
 @SuppressWarnings("unused")
 /**
- * Job: TOSIDRTCommand_LoadTargetProjects Purpose: <br>
+ * Job: TOSIDRTCommand_DeleteTarget Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
  * @version 5.3.1.r104014
  * @status 
  */
-public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
+public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 	public final Object obj = new Object();
 
@@ -605,7 +599,7 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 	}
 
 	private final String jobVersion = "0.1";
-	private final String jobName = "TOSIDRTCommand_LoadTargetProjects";
+	private final String jobName = "TOSIDRTCommand_DeleteTarget";
 	private final String projectName = "TOS";
 	public Integer errorCode = null;
 	private String currentComponent = "";
@@ -691,7 +685,7 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 				} else {
 					e.printStackTrace();
 					e.printStackTrace(errorMessagePS);
-					TOSIDRTCommand_LoadTargetProjects.this.exception = e;
+					TOSIDRTCommand_DeleteTarget.this.exception = e;
 				}
 			}
 			if (!(e instanceof TalendException)) {
@@ -699,7 +693,7 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 					for (java.lang.reflect.Method m : this.getClass()
 							.getEnclosingClass().getMethods()) {
 						if (m.getName().compareTo(currentComponent + "_error") == 0) {
-							m.invoke(TOSIDRTCommand_LoadTargetProjects.this,
+							m.invoke(TOSIDRTCommand_DeleteTarget.this,
 									new Object[] { e, currentComponent,
 											globalMap });
 							break;
@@ -719,66 +713,6 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 				}
 			}
 		}
-	}
-
-	public void tJDBCConnection_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCConnection_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJDBCInput_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJDBCInput_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJavaFlex_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJava_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_2", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJDBCInput_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJDBCInput_2", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJavaFlex_3_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJavaFlex_3", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tPrejob_1_error(java.lang.Exception exception,
@@ -811,26 +745,44 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 		tJava_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tJDBCConnection_1_onSubJobError(java.lang.Exception exception,
+	public void tJava_2_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
+		end_Hash.put("tJava_2", System.currentTimeMillis());
 
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
+		status = "failure";
 
+		tJava_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tJDBCInput_1_onSubJobError(java.lang.Exception exception,
+	public void tDie_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
+		end_Hash.put("tDie_1", System.currentTimeMillis());
 
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
+		status = "failure";
 
+		tDie_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCRow_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCRow_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCRow_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCRow_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tPrejob_1_onSubJobError(java.lang.Exception exception,
@@ -866,1153 +818,48 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 
 	}
 
-	public void tJDBCConnection_1Process(
-			final java.util.Map<String, Object> globalMap)
+	public void tJava_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 0);
 
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJDBCConnection_1 begin ] start
-				 */
-
-				ok_Hash.put("tJDBCConnection_1", false);
-				start_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
-				currentComponent = "tJDBCConnection_1";
-
-				int tos_count_tJDBCConnection_1 = 0;
-
-				String url_tJDBCConnection_1 = context.DB_StagingI2B2_jdbcurl;
-
-				String userName_tJDBCConnection_1 = context.DB_StagingI2B2_Username;
-				String password_tJDBCConnection_1 = context.DB_StagingI2B2_Password;
-
-				java.sql.Connection conn_tJDBCConnection_1 = null;
-
-				if ((null == globalMap.get(KEY_DB_DATASOURCES))
-						|| "".equals("")) {
-
-					java.lang.Class
-							.forName(context.DB_StagingI2B2_sqlclassname);
-
-					conn_tJDBCConnection_1 = java.sql.DriverManager
-							.getConnection(url_tJDBCConnection_1,
-									userName_tJDBCConnection_1,
-									password_tJDBCConnection_1);
-					globalMap.put("conn_tJDBCConnection_1",
-							conn_tJDBCConnection_1);
-				}
-				if (null != conn_tJDBCConnection_1) {
-
-					conn_tJDBCConnection_1.setAutoCommit(false);
-				}
-
-				globalMap.put("conn_tJDBCConnection_1", conn_tJDBCConnection_1);
-				globalMap.put("url_tJDBCConnection_1", url_tJDBCConnection_1);
-				// globalMap.put("user_tJDBCConnection_1",
-				// userName_tJDBCConnection_1);
-				// globalMap.put("pass_tJDBCConnection_1",
-				// password_tJDBCConnection_1);
-
-				/**
-				 * [tJDBCConnection_1 begin ] stop
-				 */
-				/**
-				 * [tJDBCConnection_1 main ] start
-				 */
-
-				currentComponent = "tJDBCConnection_1";
-
-				tos_count_tJDBCConnection_1++;
-
-				/**
-				 * [tJDBCConnection_1 main ] stop
-				 */
-				/**
-				 * [tJDBCConnection_1 end ] start
-				 */
-
-				currentComponent = "tJDBCConnection_1";
-
-				ok_Hash.put("tJDBCConnection_1", true);
-				end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
-
-				/**
-				 * [tJDBCConnection_1 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJDBCConnection_1:OnSubjobOk",
-						"", Thread.currentThread().getId() + "", "", "", "",
-						"", "");
-			}
-
-			tJDBCInput_1Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 1);
-	}
-
-	public static class targetInputStruct implements
-			routines.system.IPersistableRow<targetInputStruct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[0];
-		protected static final int DEFAULT_HASHCODE = 1;
-		protected static final int PRIME = 31;
-		protected int hashCode = DEFAULT_HASHCODE;
-		public boolean hashCodeDirty = true;
-
-		public String loopKey;
-
-		public Integer TARGET_ID;
-
-		public Integer getTARGET_ID() {
-			return this.TARGET_ID;
-		}
-
-		public Integer TARGETPROJECT_ID;
-
-		public Integer getTARGETPROJECT_ID() {
-			return this.TARGETPROJECT_ID;
-		}
-
-		public Integer VERSION;
-
-		public Integer getVERSION() {
-			return this.VERSION;
-		}
-
-		public java.util.Date CREATED;
-
-		public java.util.Date getCREATED() {
-			return this.CREATED;
-		}
-
-		public java.util.Date LAST_MODIFIED;
-
-		public java.util.Date getLAST_MODIFIED() {
-			return this.LAST_MODIFIED;
-		}
-
-		public String USER_ID;
-
-		public String getUSER_ID() {
-			return this.USER_ID;
-		}
-
-		public String TARGET_DB_SCHEMA;
-
-		public String getTARGET_DB_SCHEMA() {
-			return this.TARGET_DB_SCHEMA;
-		}
-
-		@Override
-		public int hashCode() {
-			if (this.hashCodeDirty) {
-				final int prime = PRIME;
-				int result = DEFAULT_HASHCODE;
-
-				result = prime
-						* result
-						+ ((this.TARGET_ID == null) ? 0 : this.TARGET_ID
-								.hashCode());
-
-				this.hashCode = result;
-				this.hashCodeDirty = false;
-			}
-			return this.hashCode;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final targetInputStruct other = (targetInputStruct) obj;
-
-			if (this.TARGET_ID == null) {
-				if (other.TARGET_ID != null)
-					return false;
-			} else if (!this.TARGET_ID.equals(other.TARGET_ID))
-				return false;
-
-			return true;
-		}
-
-		public void copyDataTo(targetInputStruct other) {
-
-			other.TARGET_ID = this.TARGET_ID;
-			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
-			other.VERSION = this.VERSION;
-			other.CREATED = this.CREATED;
-			other.LAST_MODIFIED = this.LAST_MODIFIED;
-			other.USER_ID = this.USER_ID;
-			other.TARGET_DB_SCHEMA = this.TARGET_DB_SCHEMA;
-
-		}
-
-		public void copyKeysDataTo(targetInputStruct other) {
-
-			other.TARGET_ID = this.TARGET_ID;
-
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_LoadTargetProjects) {
-
-				try {
-
-					int length = 0;
-
-					this.TARGET_ID = readInteger(dis);
-
-					this.TARGETPROJECT_ID = readInteger(dis);
-
-					this.VERSION = readInteger(dis);
-
-					this.CREATED = readDate(dis);
-
-					this.LAST_MODIFIED = readDate(dis);
-
-					this.USER_ID = readString(dis);
-
-					this.TARGET_DB_SCHEMA = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.TARGET_ID, dos);
-
-				// Integer
-
-				writeInteger(this.TARGETPROJECT_ID, dos);
-
-				// Integer
-
-				writeInteger(this.VERSION, dos);
-
-				// java.util.Date
-
-				writeDate(this.CREATED, dos);
-
-				// java.util.Date
-
-				writeDate(this.LAST_MODIFIED, dos);
-
-				// String
-
-				writeString(this.USER_ID, dos);
-
-				// String
-
-				writeString(this.TARGET_DB_SCHEMA, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("TARGET_ID=" + String.valueOf(TARGET_ID));
-			sb.append(",TARGETPROJECT_ID=" + String.valueOf(TARGETPROJECT_ID));
-			sb.append(",VERSION=" + String.valueOf(VERSION));
-			sb.append(",CREATED=" + String.valueOf(CREATED));
-			sb.append(",LAST_MODIFIED=" + String.valueOf(LAST_MODIFIED));
-			sb.append(",USER_ID=" + USER_ID);
-			sb.append(",TARGET_DB_SCHEMA=" + TARGET_DB_SCHEMA);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(targetInputStruct other) {
-
-			int returnValue = -1;
-
-			returnValue = checkNullsAndCompare(this.TARGET_ID, other.TARGET_ID);
-			if (returnValue != 0) {
-				return returnValue;
-			}
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
 	}
 
-	public static class targetProjectsInputStruct implements
-			routines.system.IPersistableRow<targetProjectsInputStruct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[0];
-
-		public Integer TargetProjectID;
-
-		public Integer getTargetProjectID() {
-			return this.TargetProjectID;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String Description;
-
-		public String getDescription() {
-			return this.Description;
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_LoadTargetProjects,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_LoadTargetProjects) {
-
-				try {
-
-					int length = 0;
-
-					this.TargetProjectID = readInteger(dis);
-
-					this.Name = readString(dis);
-
-					this.Description = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.TargetProjectID, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.Description, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("TargetProjectID=" + String.valueOf(TargetProjectID));
-			sb.append(",Name=" + Name);
-			sb.append(",Description=" + Description);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(targetProjectsInputStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tJDBCInput_1Process(
-			final java.util.Map<String, Object> globalMap)
+	public void tDie_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tJDBCInput_1_SUBPROCESS_STATE", 0);
 
-		final boolean execStat = this.execStat;
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
+	}
 
-		try {
+	public void tJDBCRow_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
 
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
-				targetProjectsInputStruct targetProjectsInput = new targetProjectsInputStruct();
-				targetInputStruct targetInput = new targetInputStruct();
+	}
 
-				/**
-				 * [tJavaFlex_1 begin ] start
-				 */
+	public void tJDBCRow_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
 
-				int NB_ITERATE_tJava_2 = 0; // for statistics
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
-				ok_Hash.put("tJavaFlex_1", false);
-				start_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-				currentComponent = "tJavaFlex_1";
-
-				int tos_count_tJavaFlex_1 = 0;
-
-				TOSHandler.status("Doing loop \"loading target projects\"...");
-
-				/**
-				 * [tJavaFlex_1 begin ] stop
-				 */
-
-				/**
-				 * [tJDBCInput_1 begin ] start
-				 */
-
-				ok_Hash.put("tJDBCInput_1", false);
-				start_Hash.put("tJDBCInput_1", System.currentTimeMillis());
-				currentComponent = "tJDBCInput_1";
-
-				int tos_count_tJDBCInput_1 = 0;
-
-				int nb_line_tJDBCInput_1 = 0;
-				java.sql.Connection conn_tJDBCInput_1 = null;
-				conn_tJDBCInput_1 = (java.sql.Connection) globalMap
-						.get("conn_tJDBCConnection_1");
-				if (null == conn_tJDBCInput_1) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCInput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					conn_tJDBCInput_1 = dataSources_tJDBCInput_1.get("")
-							.getConnection();
-					// globalMap.put("conn_tJDBCConnection_1",
-					// conn_tJDBCInput_1);
-				}
-
-				java.sql.Statement stmt_tJDBCInput_1 = conn_tJDBCInput_1
-						.createStatement();
-
-				String dbquery_tJDBCInput_1 = "select * from "
-						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetProject;
-
-				globalMap.put("tJDBCInput_1_QUERY", dbquery_tJDBCInput_1);
-
-				java.sql.ResultSet rs_tJDBCInput_1 = stmt_tJDBCInput_1
-						.executeQuery(dbquery_tJDBCInput_1);
-				java.sql.ResultSetMetaData rsmd_tJDBCInput_1 = rs_tJDBCInput_1
-						.getMetaData();
-				int colQtyInRs_tJDBCInput_1 = rsmd_tJDBCInput_1
-						.getColumnCount();
-
-				String tmpContent_tJDBCInput_1 = null;
-				int column_index_tJDBCInput_1 = 1;
-				while (rs_tJDBCInput_1.next()) {
-					nb_line_tJDBCInput_1++;
-
-					column_index_tJDBCInput_1 = 1;
-
-					if (colQtyInRs_tJDBCInput_1 < column_index_tJDBCInput_1) {
-						targetProjectsInput.TargetProjectID = null;
-					} else {
-
-						if (rs_tJDBCInput_1
-								.getObject(column_index_tJDBCInput_1) != null) {
-							targetProjectsInput.TargetProjectID = rs_tJDBCInput_1
-									.getInt(column_index_tJDBCInput_1);
-						} else {
-							targetProjectsInput.TargetProjectID = null;
-						}
-
-						if (rs_tJDBCInput_1.wasNull()) {
-							targetProjectsInput.TargetProjectID = null;
-						}
-					}
-					column_index_tJDBCInput_1 = 2;
-
-					if (colQtyInRs_tJDBCInput_1 < column_index_tJDBCInput_1) {
-						targetProjectsInput.Name = null;
-					} else {
-
-						tmpContent_tJDBCInput_1 = rs_tJDBCInput_1
-								.getString(column_index_tJDBCInput_1);
-						if (tmpContent_tJDBCInput_1 != null) {
-							targetProjectsInput.Name = tmpContent_tJDBCInput_1;
-						} else {
-							targetProjectsInput.Name = null;
-						}
-
-						if (rs_tJDBCInput_1.wasNull()) {
-							targetProjectsInput.Name = null;
-						}
-					}
-					column_index_tJDBCInput_1 = 3;
-
-					if (colQtyInRs_tJDBCInput_1 < column_index_tJDBCInput_1) {
-						targetProjectsInput.Description = null;
-					} else {
-
-						tmpContent_tJDBCInput_1 = rs_tJDBCInput_1
-								.getString(column_index_tJDBCInput_1);
-						if (tmpContent_tJDBCInput_1 != null) {
-							targetProjectsInput.Description = tmpContent_tJDBCInput_1;
-						} else {
-							targetProjectsInput.Description = null;
-						}
-
-						if (rs_tJDBCInput_1.wasNull()) {
-							targetProjectsInput.Description = null;
-						}
-					}
-
-					/**
-					 * [tJDBCInput_1 begin ] stop
-					 */
-					/**
-					 * [tJDBCInput_1 main ] start
-					 */
-
-					currentComponent = "tJDBCInput_1";
-
-					tos_count_tJDBCInput_1++;
-
-					/**
-					 * [tJDBCInput_1 main ] stop
-					 */
-
-					/**
-					 * [tJavaFlex_1 main ] start
-					 */
-
-					currentComponent = "tJavaFlex_1";
-
-					System.out.println("---------------");
-					System.out.println("TargetProjectID: "
-							+ targetProjectsInput.TargetProjectID);
-					System.out.println("Name: " + targetProjectsInput.Name);
-					System.out.println("Description: "
-							+ targetProjectsInput.Description);
-
-					context.currentTargetProjectID = targetProjectsInput.TargetProjectID;
-					TOSHandler.addTargetProjectToTargetProjects(
-							targetProjectsInput.TargetProjectID,
-							targetProjectsInput.Name,
-							targetProjectsInput.Description);
-
-					tos_count_tJavaFlex_1++;
-
-					/**
-					 * [tJavaFlex_1 main ] stop
-					 */
-					NB_ITERATE_tJava_2++;
-					iterateLoop++;
-
-					/**
-					 * [tJava_2 begin ] start
-					 */
-
-					int NB_ITERATE_tJDBCInput_2 = 0; // for statistics
-
-					ok_Hash.put("tJava_2", false);
-					start_Hash.put("tJava_2", System.currentTimeMillis());
-					currentComponent = "tJava_2";
-
-					int tos_count_tJava_2 = 0;
-
-					/**
-					 * [tJava_2 begin ] stop
-					 */
-					/**
-					 * [tJava_2 main ] start
-					 */
-
-					currentComponent = "tJava_2";
-
-					tos_count_tJava_2++;
-
-					/**
-					 * [tJava_2 main ] stop
-					 */
-					NB_ITERATE_tJDBCInput_2++;
-					iterateLoop++;
-
-					/**
-					 * [tJavaFlex_3 begin ] start
-					 */
-
-					ok_Hash.put("tJavaFlex_3", false);
-					start_Hash.put("tJavaFlex_3", System.currentTimeMillis());
-					currentComponent = "tJavaFlex_3";
-
-					int tos_count_tJavaFlex_3 = 0;
-
-					TOSHandler
-							.status("Doing loop \"loading target versions\"...");
-
-					/**
-					 * [tJavaFlex_3 begin ] stop
-					 */
-
-					/**
-					 * [tJDBCInput_2 begin ] start
-					 */
-
-					ok_Hash.put("tJDBCInput_2", false);
-					start_Hash.put("tJDBCInput_2", System.currentTimeMillis());
-					currentComponent = "tJDBCInput_2";
-
-					int tos_count_tJDBCInput_2 = 0;
-
-					int nb_line_tJDBCInput_2 = 0;
-					java.sql.Connection conn_tJDBCInput_2 = null;
-					conn_tJDBCInput_2 = (java.sql.Connection) globalMap
-							.get("conn_tJDBCConnection_1");
-					if (null == conn_tJDBCInput_2) {
-						java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCInput_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-								.get(KEY_DB_DATASOURCES);
-						conn_tJDBCInput_2 = dataSources_tJDBCInput_2.get("")
-								.getConnection();
-						// globalMap.put("conn_tJDBCConnection_1",
-						// conn_tJDBCInput_2);
-					}
-
-					java.sql.Statement stmt_tJDBCInput_2 = conn_tJDBCInput_2
-							.createStatement();
-
-					String dbquery_tJDBCInput_2 = "select * from "
-							+ context.DB_StagingI2B2_Schema + "."
-							+ context.TableIEOTarget
-							+ " WHERE TARGETPROJECT_ID = "
-							+ context.currentTargetProjectID
-							+ " ORDER BY  VERSION ASC";
-
-					globalMap.put("tJDBCInput_2_QUERY", dbquery_tJDBCInput_2);
-
-					java.sql.ResultSet rs_tJDBCInput_2 = stmt_tJDBCInput_2
-							.executeQuery(dbquery_tJDBCInput_2);
-					java.sql.ResultSetMetaData rsmd_tJDBCInput_2 = rs_tJDBCInput_2
-							.getMetaData();
-					int colQtyInRs_tJDBCInput_2 = rsmd_tJDBCInput_2
-							.getColumnCount();
-
-					String tmpContent_tJDBCInput_2 = null;
-					int column_index_tJDBCInput_2 = 1;
-					while (rs_tJDBCInput_2.next()) {
-						nb_line_tJDBCInput_2++;
-
-						column_index_tJDBCInput_2 = 1;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.TARGET_ID = null;
-						} else {
-
-							if (rs_tJDBCInput_2
-									.getObject(column_index_tJDBCInput_2) != null) {
-								targetInput.TARGET_ID = rs_tJDBCInput_2
-										.getInt(column_index_tJDBCInput_2);
-							} else {
-								targetInput.TARGET_ID = null;
-							}
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.TARGET_ID = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 2;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.TARGETPROJECT_ID = null;
-						} else {
-
-							if (rs_tJDBCInput_2
-									.getObject(column_index_tJDBCInput_2) != null) {
-								targetInput.TARGETPROJECT_ID = rs_tJDBCInput_2
-										.getInt(column_index_tJDBCInput_2);
-							} else {
-								targetInput.TARGETPROJECT_ID = null;
-							}
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.TARGETPROJECT_ID = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 3;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.VERSION = null;
-						} else {
-
-							if (rs_tJDBCInput_2
-									.getObject(column_index_tJDBCInput_2) != null) {
-								targetInput.VERSION = rs_tJDBCInput_2
-										.getInt(column_index_tJDBCInput_2);
-							} else {
-								targetInput.VERSION = null;
-							}
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.VERSION = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 4;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.CREATED = null;
-						} else {
-
-							java.util.Date date_tJDBCInput_2 = null;
-							try {
-								date_tJDBCInput_2 = rs_tJDBCInput_2
-										.getTimestamp(column_index_tJDBCInput_2);
-							} catch (java.lang.Exception e) {
-								date_tJDBCInput_2 = rs_tJDBCInput_2
-										.getDate(column_index_tJDBCInput_2);
-							}
-							targetInput.CREATED = date_tJDBCInput_2;
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.CREATED = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 5;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.LAST_MODIFIED = null;
-						} else {
-
-							java.util.Date date_tJDBCInput_2 = null;
-							try {
-								date_tJDBCInput_2 = rs_tJDBCInput_2
-										.getTimestamp(column_index_tJDBCInput_2);
-							} catch (java.lang.Exception e) {
-								date_tJDBCInput_2 = rs_tJDBCInput_2
-										.getDate(column_index_tJDBCInput_2);
-							}
-							targetInput.LAST_MODIFIED = date_tJDBCInput_2;
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.LAST_MODIFIED = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 6;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.USER_ID = null;
-						} else {
-
-							tmpContent_tJDBCInput_2 = rs_tJDBCInput_2
-									.getString(column_index_tJDBCInput_2);
-							if (tmpContent_tJDBCInput_2 != null) {
-								targetInput.USER_ID = tmpContent_tJDBCInput_2;
-							} else {
-								targetInput.USER_ID = null;
-							}
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.USER_ID = null;
-							}
-						}
-						column_index_tJDBCInput_2 = 7;
-
-						if (colQtyInRs_tJDBCInput_2 < column_index_tJDBCInput_2) {
-							targetInput.TARGET_DB_SCHEMA = null;
-						} else {
-
-							tmpContent_tJDBCInput_2 = rs_tJDBCInput_2
-									.getString(column_index_tJDBCInput_2);
-							if (tmpContent_tJDBCInput_2 != null) {
-								targetInput.TARGET_DB_SCHEMA = tmpContent_tJDBCInput_2;
-							} else {
-								targetInput.TARGET_DB_SCHEMA = null;
-							}
-
-							if (rs_tJDBCInput_2.wasNull()) {
-								targetInput.TARGET_DB_SCHEMA = null;
-							}
-						}
-
-						/**
-						 * [tJDBCInput_2 begin ] stop
-						 */
-						/**
-						 * [tJDBCInput_2 main ] start
-						 */
-
-						currentComponent = "tJDBCInput_2";
-
-						tos_count_tJDBCInput_2++;
-
-						/**
-						 * [tJDBCInput_2 main ] stop
-						 */
-
-						/**
-						 * [tJavaFlex_3 main ] start
-						 */
-
-						currentComponent = "tJavaFlex_3";
-
-						System.out.println("  >---------------");
-						System.out.println("   TARGET_ID: "
-								+ targetInput.TARGET_ID);
-						System.out.println("   TARGETPROJECT_ID: "
-								+ targetInput.TARGETPROJECT_ID);
-						System.out
-								.println("   VERSION: " + targetInput.VERSION);
-						System.out.println("   LAST_MODIFIED:"
-								+ targetInput.LAST_MODIFIED);
-						System.out.println("   LAST_MODIFIED:"
-								+ targetInput.LAST_MODIFIED);
-
-						TOSHandler.addTargetVersionToTargeProject(
-								targetInput.TARGET_ID,
-								targetInput.TARGETPROJECT_ID,
-								targetInput.VERSION, targetInput.CREATED,
-								targetInput.LAST_MODIFIED,
-								targetInput.TARGET_DB_SCHEMA);
-
-						tos_count_tJavaFlex_3++;
-
-						/**
-						 * [tJavaFlex_3 main ] stop
-						 */
-
-						/**
-						 * [tJDBCInput_2 end ] start
-						 */
-
-						currentComponent = "tJDBCInput_2";
-
-					}
-					rs_tJDBCInput_2.close();
-					stmt_tJDBCInput_2.close();
-
-					globalMap.put("tJDBCInput_2_NB_LINE", nb_line_tJDBCInput_2);
-
-					ok_Hash.put("tJDBCInput_2", true);
-					end_Hash.put("tJDBCInput_2", System.currentTimeMillis());
-
-					/**
-					 * [tJDBCInput_2 end ] stop
-					 */
-
-					/**
-					 * [tJavaFlex_3 end ] start
-					 */
-
-					currentComponent = "tJavaFlex_3";
-
-					TOSHandler
-							.status("/END: Doing loop \"loading target versions\"...");
-
-					ok_Hash.put("tJavaFlex_3", true);
-					end_Hash.put("tJavaFlex_3", System.currentTimeMillis());
-
-					/**
-					 * [tJavaFlex_3 end ] stop
-					 */
-
-					/**
-					 * [tJava_2 end ] start
-					 */
-
-					currentComponent = "tJava_2";
-
-					ok_Hash.put("tJava_2", true);
-					end_Hash.put("tJava_2", System.currentTimeMillis());
-
-					/**
-					 * [tJava_2 end ] stop
-					 */
-
-					/**
-					 * [tJDBCInput_1 end ] start
-					 */
-
-					currentComponent = "tJDBCInput_1";
-
-				}
-				rs_tJDBCInput_1.close();
-				stmt_tJDBCInput_1.close();
-
-				globalMap.put("tJDBCInput_1_NB_LINE", nb_line_tJDBCInput_1);
-
-				ok_Hash.put("tJDBCInput_1", true);
-				end_Hash.put("tJDBCInput_1", System.currentTimeMillis());
-
-				/**
-				 * [tJDBCInput_1 end ] stop
-				 */
-
-				/**
-				 * [tJavaFlex_1 end ] start
-				 */
-
-				currentComponent = "tJavaFlex_1";
-
-				TOSHandler
-						.status("/End: Doing loop \"loading target projects\"...");
-
-				ok_Hash.put("tJavaFlex_1", true);
-				end_Hash.put("tJavaFlex_1", System.currentTimeMillis());
-
-				/**
-				 * [tJavaFlex_1 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJDBCInput_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap)
@@ -2202,7 +1049,7 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 
 				int tos_count_tJava_1 = 0;
 
-				TOSHandler.status("Doing TOS-Job \"LoadTargetProjects\"...");
+				TOSHandler.status("Doing TOS-Job \"DeleteTarget\"...");
 
 				/**
 				 * [tJava_1 begin ] stop
@@ -2246,6 +1093,451 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 		globalMap.put("tJava_1_SUBPROCESS_STATE", 1);
 	}
 
+	public void tJava_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_2 begin ] start
+				 */
+
+				ok_Hash.put("tJava_2", false);
+				start_Hash.put("tJava_2", System.currentTimeMillis());
+				currentComponent = "tJava_2";
+
+				int tos_count_tJava_2 = 0;
+
+				// context.TargetProjectID = input_row.TARGETPROJECT_ID != null
+				// ? input_row.TARGETPROJECT_ID : -1;
+				context.TargetID = context.TargetID != null ? context.TargetID
+						: -1;
+				// context.Version = input_row.VERSION != null ?
+				// input_row.VERSION : -1;
+
+				/**
+				 * [tJava_2 begin ] stop
+				 */
+				/**
+				 * [tJava_2 main ] start
+				 */
+
+				currentComponent = "tJava_2";
+
+				tos_count_tJava_2++;
+
+				/**
+				 * [tJava_2 main ] stop
+				 */
+				/**
+				 * [tJava_2 end ] start
+				 */
+
+				currentComponent = "tJava_2";
+
+				ok_Hash.put("tJava_2", true);
+				end_Hash.put("tJava_2", System.currentTimeMillis());
+
+				if (context.TargetID == -1) {
+
+					tDie_1Process(globalMap);
+				}
+
+				/**
+				 * [tJava_2 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_2:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCRow_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_2_SUBPROCESS_STATE", 1);
+	}
+
+	public void tDie_1Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tDie_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tDie_1 begin ] start
+				 */
+
+				ok_Hash.put("tDie_1", false);
+				start_Hash.put("tDie_1", System.currentTimeMillis());
+				currentComponent = "tDie_1";
+
+				int tos_count_tDie_1 = 0;
+
+				/**
+				 * [tDie_1 begin ] stop
+				 */
+				/**
+				 * [tDie_1 main ] start
+				 */
+
+				currentComponent = "tDie_1";
+
+				globalMap.put("tDie_1_DIE_PRIORITY", 3);
+				System.err
+						.println("Checking the i2b2 database for an existing ontology ... no ontology found.");
+				globalMap
+						.put("tDie_1_DIE_MESSAGE",
+								"Checking the i2b2 database for an existing ontology ... no ontology found.");
+				globalMap
+						.put("tDie_1_DIE_MESSAGES",
+								"Checking the i2b2 database for an existing ontology ... no ontology found.");
+				currentComponent = "tDie_1";
+				status = "failure";
+				errorCode = new Integer(10);
+				globalMap.put("tDie_1_DIE_CODE", errorCode);
+
+				if (true) {
+					throw new TDieException();
+				}
+
+				tos_count_tDie_1++;
+
+				/**
+				 * [tDie_1 main ] stop
+				 */
+				/**
+				 * [tDie_1 end ] start
+				 */
+
+				currentComponent = "tDie_1";
+
+				ok_Hash.put("tDie_1", true);
+				end_Hash.put("tDie_1", System.currentTimeMillis());
+
+				/**
+				 * [tDie_1 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tDie_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_1Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_1", false);
+				start_Hash.put("tJDBCRow_1", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_1";
+
+				int tos_count_tJDBCRow_1 = 0;
+
+				java.sql.Connection connection_tJDBCRow_1 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCRow_1) {
+					connection_tJDBCRow_1 = dataSources_tJDBCRow_1.get("")
+							.getConnection();
+				} else {
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+					String connectionString_tJDBCRow_1 = context.DB_StagingI2B2_jdbcurl;
+					connection_tJDBCRow_1 = java.sql.DriverManager
+							.getConnection(connectionString_tJDBCRow_1,
+									context.DB_StagingI2B2_Username,
+									context.DB_StagingI2B2_Password);
+				}
+
+				connection_tJDBCRow_1.setAutoCommit(false);
+				int commitEvery_tJDBCRow_1 = 10000;
+				int commitCounter_tJDBCRow_1 = 0;
+
+				java.sql.Statement stmt_tJDBCRow_1 = connection_tJDBCRow_1
+						.createStatement();
+				String query_tJDBCRow_1 = "";
+				boolean whetherReject_tJDBCRow_1 = false;
+
+				/**
+				 * [tJDBCRow_1 begin ] stop
+				 */
+				/**
+				 * [tJDBCRow_1 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_1";
+
+				query_tJDBCRow_1 = "DELETE FROM "
+						+ context.DB_StagingI2B2_Schema + "."
+						+ context.TableIEOTargetOntology
+						+ "  WHERE target_id = '" + context.TargetID + "'";
+				whetherReject_tJDBCRow_1 = false;
+				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
+				try {
+					stmt_tJDBCRow_1.execute(query_tJDBCRow_1);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_1 = true;
+					System.err.print(e.getMessage());
+				}
+
+				if (!whetherReject_tJDBCRow_1) {
+				}
+				commitCounter_tJDBCRow_1++;
+				if (commitEvery_tJDBCRow_1 <= commitCounter_tJDBCRow_1) {
+					connection_tJDBCRow_1.commit();
+					commitCounter_tJDBCRow_1 = 0;
+				}
+
+				tos_count_tJDBCRow_1++;
+
+				/**
+				 * [tJDBCRow_1 main ] stop
+				 */
+				/**
+				 * [tJDBCRow_1 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_1";
+
+				stmt_tJDBCRow_1.close();
+				if (commitEvery_tJDBCRow_1 > commitCounter_tJDBCRow_1) {
+					connection_tJDBCRow_1.commit();
+					commitCounter_tJDBCRow_1 = 0;
+				}
+
+				connection_tJDBCRow_1.close();
+
+				ok_Hash.put("tJDBCRow_1", true);
+				end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCRow_1 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tJDBCRow_1:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tJDBCRow_2Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_2 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_2", false);
+				start_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_2";
+
+				int tos_count_tJDBCRow_2 = 0;
+
+				java.sql.Connection connection_tJDBCRow_2 = null;
+				java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != dataSources_tJDBCRow_2) {
+					connection_tJDBCRow_2 = dataSources_tJDBCRow_2.get("")
+							.getConnection();
+				} else {
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+					String connectionString_tJDBCRow_2 = context.DB_StagingI2B2_jdbcurl;
+					connection_tJDBCRow_2 = java.sql.DriverManager
+							.getConnection(connectionString_tJDBCRow_2,
+									context.DB_StagingI2B2_Username,
+									context.DB_StagingI2B2_Password);
+				}
+
+				connection_tJDBCRow_2.setAutoCommit(false);
+				int commitEvery_tJDBCRow_2 = 10000;
+				int commitCounter_tJDBCRow_2 = 0;
+
+				java.sql.Statement stmt_tJDBCRow_2 = connection_tJDBCRow_2
+						.createStatement();
+				String query_tJDBCRow_2 = "";
+				boolean whetherReject_tJDBCRow_2 = false;
+
+				/**
+				 * [tJDBCRow_2 begin ] stop
+				 */
+				/**
+				 * [tJDBCRow_2 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				query_tJDBCRow_2 = "DELETE FROM "
+						+ context.DB_StagingI2B2_Schema + "."
+						+ context.TableIEOTarget + "  WHERE target_id = '"
+						+ context.TargetID + "'";
+				whetherReject_tJDBCRow_2 = false;
+				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
+				try {
+					stmt_tJDBCRow_2.execute(query_tJDBCRow_2);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_2 = true;
+					System.err.print(e.getMessage());
+				}
+
+				commitCounter_tJDBCRow_2++;
+				if (commitEvery_tJDBCRow_2 <= commitCounter_tJDBCRow_2) {
+					connection_tJDBCRow_2.commit();
+					commitCounter_tJDBCRow_2 = 0;
+				}
+
+				tos_count_tJDBCRow_2++;
+
+				/**
+				 * [tJDBCRow_2 main ] stop
+				 */
+				/**
+				 * [tJDBCRow_2 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				stmt_tJDBCRow_2.close();
+				if (commitEvery_tJDBCRow_2 > commitCounter_tJDBCRow_2) {
+					connection_tJDBCRow_2.commit();
+					commitCounter_tJDBCRow_2 = 0;
+				}
+
+				connection_tJDBCRow_2.close();
+
+				ok_Hash.put("tJDBCRow_2", true);
+				end_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCRow_2 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -2284,9 +1576,9 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 	public String status = "";
 
 	public static void main(String[] args) {
-		final TOSIDRTCommand_LoadTargetProjects TOSIDRTCommand_LoadTargetProjectsClass = new TOSIDRTCommand_LoadTargetProjects();
+		final TOSIDRTCommand_DeleteTarget TOSIDRTCommand_DeleteTargetClass = new TOSIDRTCommand_DeleteTarget();
 
-		int exitCode = TOSIDRTCommand_LoadTargetProjectsClass.runJobInTOS(args);
+		int exitCode = TOSIDRTCommand_DeleteTargetClass.runJobInTOS(args);
 		System.exit(exitCode);
 	}
 
@@ -2335,9 +1627,9 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 			// call job/subjob with an existing context, like:
 			// --context=production. if without this parameter, there will use
 			// the default context instead.
-			java.io.InputStream inContext = TOSIDRTCommand_LoadTargetProjects.class
+			java.io.InputStream inContext = TOSIDRTCommand_DeleteTarget.class
 					.getClassLoader().getResourceAsStream(
-							"tos/tosidrtcommand_loadtargetprojects_0_1/contexts/"
+							"tos/tosidrtcommand_deletetarget_0_1/contexts/"
 									+ contextStr + ".properties");
 			if (isDefaultContext && inContext == null) {
 
@@ -2634,14 +1926,14 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 
 		try {
 			errorCode = null;
-			tJDBCConnection_1Process(globalMap);
+			tJava_2Process(globalMap);
 			if (!"failure".equals(status)) {
 				status = "end";
 			}
-		} catch (TalendException e_tJDBCConnection_1) {
+		} catch (TalendException e_tJava_2) {
 
-			e_tJDBCConnection_1.printStackTrace();
-			globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", -1);
+			e_tJava_2.printStackTrace();
+			globalMap.put("tJava_2_SUBPROCESS_STATE", -1);
 
 		}
 
@@ -2658,7 +1950,7 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 		if (false) {
 			System.out
 					.println((endUsedMemory - startUsedMemory)
-							+ " bytes memory increase when running : TOSIDRTCommand_LoadTargetProjects");
+							+ " bytes memory increase when running : TOSIDRTCommand_DeleteTarget");
 		}
 
 		int returnCode = 0;
@@ -2754,6 +2046,6 @@ public class TOSIDRTCommand_LoadTargetProjects implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 77715 characters generated by Talend Open Studio for Data Integration on the
- * 7. November 2013 17:16:36 MEZ
+ * 57128 characters generated by Talend Open Studio for Data Integration on the
+ * 7. November 2013 17:16:37 MEZ
  ************************************************************************************************/

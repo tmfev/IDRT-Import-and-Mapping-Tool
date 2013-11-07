@@ -146,5 +146,24 @@ public class TargetProjects {
 		
 		
 	}
+	
+
+	public Target getTargetByVersion(int version) {
+		
+		for (Target tmpTarget : getSelectedTargetProject().getTargetsList()) {
+			if (tmpTarget.getVersion() == version)
+				return tmpTarget;
+		}
+		return null;
+	}
+	
+	public Target getTargetByID(int id) {
+		
+		for (Target tmpTarget : getSelectedTargetProject().getTargetsList()) {
+			if (tmpTarget.getTargetID() == id)
+				return tmpTarget;
+		}
+		return null;
+	}
 
 }

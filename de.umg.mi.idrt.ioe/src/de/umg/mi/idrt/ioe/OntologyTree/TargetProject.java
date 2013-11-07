@@ -135,4 +135,9 @@ public class TargetProject {
 	public void clear() {
 		this.list.clear();
 	}
+	
+	public void removeTarget(Target target){
+		this.list.remove(target);
+	}
+
 }

@@ -373,7 +373,7 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
   </connection>
-  <note opaque="false" posX="64" posY="64" sizeHeight="321" sizeWidth="1217" text="Loading Target Projects">
+  <note opaque="false" posX="64" posY="64" sizeHeight="321" sizeWidth="1217" text="Loading all target projects&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>

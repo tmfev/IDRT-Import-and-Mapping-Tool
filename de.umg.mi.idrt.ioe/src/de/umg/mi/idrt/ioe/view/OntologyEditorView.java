@@ -319,6 +319,19 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
+	
+	
+	public static void removeFromVersionCombo(String version) {
+		
+		if ( versionCombo != null ){
+			versionCombo.remove(version);
+			composite_2.layout();
+		} else {
+			Console.error("versionCombo is null, so don't remove an entry from it");
+		}
+	}
+	
+	
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
 		int size = nodeLists.getNumberOfItemNodes();
 		if (text.isEmpty()) {
@@ -717,7 +730,21 @@ public class OntologyEditorView extends ViewPart {
 		btnNewVersion.setText("new");
 		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/plus16.png"));
 		btnNewVersion.setToolTipText("New Version");
-		new Label(composite_7, SWT.NONE);
+		Button saveProject = new Button(composite_7, SWT.PUSH);
+		saveProject.setText("save");
+		saveProject.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "icons/save_edit.gif"));
+		saveProject.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				Application.executeCommand(Resource.ID.Command.IEO.SAVETARGET);
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
 		btnNewVersion.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -733,6 +760,9 @@ public class OntologyEditorView extends ViewPart {
 
 			}
 		});
+		
+		
+		
 		versionCombo.addFocusListener(new FocusListener() {
 
 			@Override
