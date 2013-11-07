@@ -97,7 +97,8 @@ public class SaveTarget extends AbstractHandler {
                     new FileOutputStream(stringPath), "UTF-8"),
                     ';');
 			_writer.writeNext(fields);
-			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget.getI2B2RootNode()));
+			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget
+					.getTreeRoot().getFirstChild()));
 			_writer.close();
 			
 			

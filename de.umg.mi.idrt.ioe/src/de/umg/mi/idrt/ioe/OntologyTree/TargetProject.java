@@ -132,6 +132,10 @@ public class TargetProject {
 		this.targetProjectID = targetProjectID;
 	}
 	
+	public void removeTarget(Target target){
+		this.list.remove(target);
+	}
+	
 	public void clear() {
 		this.list.clear();
 	}

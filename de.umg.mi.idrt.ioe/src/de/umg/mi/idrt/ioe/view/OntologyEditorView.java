@@ -830,13 +830,6 @@ public class OntologyEditorView extends ViewPart {
 					actionMenu.pack();
 					dialog.pack();
 					dialog.open();
-					
-					
-					
-					// if yes do:
-					
-					
-					
 				}
 			}
 		});

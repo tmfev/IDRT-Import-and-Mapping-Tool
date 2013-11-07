@@ -2,14 +2,13 @@ package de.umg.mi.idrt.ioe.tos;
 
 import java.util.Date;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyItem;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyItemTarget;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
@@ -157,16 +156,15 @@ public class TOSHandler {
 			String startdateStagingPath,
 			String enddateStagingPath,
 			String visualattributes){
-		
-//		System.out.println("ADDING ITEM TO TARGET");
-//		System.out.println("->" + treeLevel + ":" + treePath + ":" + stagingDimension);
+
+		System.out.println("ADDING ITEM TO TARGET");
+		System.out.println("->" + treeLevel + ":" + treePath);
+
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
-		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
-				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes);
-		if (treeLevel!=0) {
-			OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
-		}
+
+		OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,null,null);
+
 	}
 
 	public void writeTargetOntology(int targetID, String treeNodePath,

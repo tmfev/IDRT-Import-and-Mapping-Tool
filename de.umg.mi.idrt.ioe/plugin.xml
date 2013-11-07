@@ -289,5 +289,15 @@
             id="de.umg.mi.idrt.ioe.editInstance"
             name="editInstance">
       </command>
+            <command
+                  defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.DeleteTarget"
+                  id="de.umg.mi.idrt.ioe.DeleteTarget"
+                  name="DeleteTarget">
+               <commandParameter
+                     id="de.umg.mi.idrt.ioe.DeleteTargetAttribute.TargetID"
+                     name="TargetID"
+                     optional="true">
+               </commandParameter>
+            </command>
    </extension>
 </plugin>

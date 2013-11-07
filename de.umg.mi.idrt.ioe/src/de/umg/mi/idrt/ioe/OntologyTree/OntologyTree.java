@@ -8,9 +8,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.jface.viewers.TreeViewer;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
 public class OntologyTree extends JTree {
@@ -86,9 +86,8 @@ public class OntologyTree extends JTree {
 		try {
 			this.getNodeLists().addOTNode(path, node).add(node);
 		}catch (Exception e) {
-			System.err.println("no parent");
-						Console.error("Could not add node \"" + item.getC_NAME()
-								+ "\" to the tree, because there is no parent node for it.");
+			//			Console.error("Could not add node \"" + item.getC_NAME()
+			//					+ "\" to the tree, because there is no parent node for it.");
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);
@@ -185,9 +184,6 @@ public class OntologyTree extends JTree {
 		node.setType(source);
 		if (item != null)
 			node.setOntologyCellAttributes(item);
-		else {
-			node.getTargetNodeAttributes().setVisualattributes(item.getC_VISUALATTRIBUTES());
-		}
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
@@ -199,29 +195,6 @@ public class OntologyTree extends JTree {
 		//						+ "\" to the tree, because there is no parent node for it.");
 		//			}
 		//		}
-	}
-	public void addNodeByPath(String i2b2Path, String name, String source, OntologyItemTarget item, NodeType type) {
-
-		OntologyTreeNode node = new OntologyTreeNode(name);
-		node.setID( node.getIDFromPath( i2b2Path ) );
-		try {
-			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
-		}catch (Exception e) {
-//						e.printStackTrace();
-			Console.error("Could not add node \"" + name
-					+ "\" to the tree, because there is no parent node for it.");
-		}
-		node.setTreeAttributes();
-		node.setType(source);
-		node.getTargetNodeAttributes().setVisualattributes(item.getVisualattributes());
-		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
-		node.getTargetNodeAttributes().setEndDateSourcePath(item.getEnddateStagingPath());
-		node.getTargetNodeAttributes().setStartDateSourcePath(item.getStartdateStagingPath());
-		node.getTargetNodeAttributes().setName(item.getName());
-		if (type != null) {
-			setI2B2RootNode(node);
-		}
-		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
 	}
 
 	public String createSQLDateFromXMLDate(XMLGregorianCalendar xmlDate) {
@@ -359,6 +332,9 @@ public class OntologyTree extends JTree {
 				bridge = " ";
 
 		}
+
+		System.out.println(bridge + " " + node.getName() + " ("
+				+ node.getTreePath() + ")");
 
 		for (int y = 0; y < node.getChildCount(); y++) {
 			printNode((OntologyTreeNode) node.getChildAt(y), level++);
