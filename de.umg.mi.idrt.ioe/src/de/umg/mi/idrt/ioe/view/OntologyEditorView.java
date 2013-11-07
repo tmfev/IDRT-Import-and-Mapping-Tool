@@ -938,8 +938,7 @@ public class OntologyEditorView extends ViewPart {
 
 				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getTreeRoot()).getName());
-				OntologyTreeNode bla = ((OntologyTreeNode) ontologyTreeTarget
-						.getTreeRoot().getFirstChild());
+				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
 				System.out.println("childCount: " + bla.getChildCount());
 				if (bla.getChildCount()>0 && isNotYetSaved()) {
 					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
