@@ -1630,6 +1630,8 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
+			
+			//TODO 
 			handlerService.executeCommand(
 					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
 		} catch (Exception ex) {

@@ -6,6 +6,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
@@ -32,6 +35,12 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		Console.info("Loading the i2b2-Ontology-Editor.");
 
+		System.out.println(ServerView.getCurrentSchema());
+		Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(ServerView.getCurrentSchema()));
+		
+		stagingServer.setSchema(ServerView.getCurrentSchema());
+		OntologyEditorView.setStagingServer(stagingServer);
+		OntologyEditorView.setStagingSchemaName(ServerView.getCurrentSchema());
 		// check if the ontology table has more than 1 item
 		if (TOSConnector.checkOntology() == true) {
 			Console.info("Ontology found in the i2b2 source table.");
