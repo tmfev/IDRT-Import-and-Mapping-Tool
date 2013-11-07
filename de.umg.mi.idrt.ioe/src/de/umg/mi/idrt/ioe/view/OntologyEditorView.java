@@ -171,8 +171,12 @@ public class OntologyEditorView extends ViewPart {
 			if (item.equals(name))
 				contains = true;
 		}
-		if (!contains)
+		if (!contains) {
 			versionCombo.add(name);
+			versionCombo.setText(name);
+//			System.out.println("added " + name);
+		}
+		
 	}
 	public static void clearTargetName(){
 		lblTargetName.setText("Drop i2b2 target here!");
@@ -287,14 +291,18 @@ public class OntologyEditorView extends ViewPart {
 		Application.executeCommand("de.umg.mi.idrt.ioe.hideNode");
 	}
 
-	public static void incrementVersionRefresh() {
-
-
+	public static void refreshVersionCombo() {
+		System.out.println("REFRESH");
 		if ( versionCombo != null ){
-			versionCombo.add( "" + getTargetProjects().getSelectedTarget().getVersion());
-			versionCombo.setText( "" + getTargetProjects().getSelectedTarget().getVersion());
+			versionCombo.removeAll();
+			versionCombo.setText("");
+				for (int i = 0; i<getTargetProjects().getSelectedTargetProject().getTargetsList().size();i++) {
+					addVersionName("" + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
+//					System.out.println(i + " " + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion() + " " +getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getTargetDBSchema());
+				}
 			composite_2.layout();
 		} else {
+			System.err.println("versionCombo null");
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
@@ -317,11 +325,11 @@ public class OntologyEditorView extends ViewPart {
 
 		//TODO HERE
 
-//		Shell shell = new Shell();
-//		shell.setSize(844, 536);
-//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//		mainComposite = new Composite(shell, SWT.NONE);
-//		mainComposite.setLayout(new BorderLayout(0, 0));
+		//		Shell shell = new Shell();
+		//		shell.setSize(844, 536);
+		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//		mainComposite = new Composite(shell, SWT.NONE);
+		//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -1054,10 +1062,8 @@ public class OntologyEditorView extends ViewPart {
 		if (!init) {
 			init();
 		}
-
-
-
 		stagingTreeViewer.getTree().removeAll();
+		
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
@@ -1120,6 +1126,7 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.getTree().setMenu(menu);
 		stagingComposite.layout();
 		mainComposite.layout();
+		refreshVersionCombo();
 		System.out.println(System.currentTimeMillis()-time +"ms");
 	}
 
@@ -1358,11 +1365,13 @@ public class OntologyEditorView extends ViewPart {
 		//TODO
 		setInstance(getTargetProjects().getSelectedTargetProject().getName(),getTargetProjects().getSelectedTargetProject().getDescription());
 
-		versionCombo.removeAll();
+//		versionCombo.removeAll();
 		targetComposite.layout();
 		mainComposite.layout();
 		column.getColumn().setWidth(targetComposite.getBounds().width-5);
+		refreshVersionCombo();
 	}
+	
 	public static void setTargetNameVersion(String version) {
 		addVersionName(version);
 		versionCombo.setText(version);
@@ -1382,8 +1391,8 @@ public class OntologyEditorView extends ViewPart {
 			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		}
 
-		addVersionName(version);
-		versionCombo.setText(version);
+//		addVersionName(version);
+//		versionCombo.setText(version);
 		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
 		getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
 
@@ -1469,12 +1478,15 @@ public class OntologyEditorView extends ViewPart {
 					//do nothing
 				}
 				else {
+					if (OntologyEditorView.getTargetProjects().getSelectedTargetProject() != null)
+					OntologyEditorView.getTargetProjects().getSelectedTargetProject().clear();
 					try {
 						String schema = (String)event.data;
 						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
 						stagingServer.setSchema(schema);
 						setStagingServer(stagingServer);
 						setStagingSchemaName(schema);
+						//TODO
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTargetTree().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));

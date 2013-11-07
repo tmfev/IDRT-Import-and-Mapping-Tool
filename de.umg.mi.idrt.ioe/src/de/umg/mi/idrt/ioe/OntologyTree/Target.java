@@ -2,6 +2,8 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.Date;
 
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+
 
 /**
  * This is the special node class for the ontology tree. It holds some basic

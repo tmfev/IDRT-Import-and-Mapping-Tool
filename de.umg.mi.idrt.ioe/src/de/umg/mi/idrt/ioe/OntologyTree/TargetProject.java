@@ -48,7 +48,6 @@ public class TargetProject {
 
 	public void add(Target target){
 		list.add(target);
-
 	}
 
 	public void createNewTargetVersion() {
@@ -131,5 +130,9 @@ public class TargetProject {
 	 */
 	public void setTargetProjectID(int targetProjectID) {
 		this.targetProjectID = targetProjectID;
+	}
+	
+	public void clear() {
+		this.list.clear();
 	}
 }

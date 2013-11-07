@@ -24,6 +24,8 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class CombineNodesCommand extends AbstractHandler {
 	
 	private static String OPSREGEX = "[135689]{1}\\-[a-z0-9]{3}\\.[a-z0-9]+";
+	private static String ICDREGEX = "[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?";
+	
 	private List<OntologyTreeNode> oldTreeNodeList;
 	private List<OntologyTreeNode> newTreeNodeList;
 	private String perfectPath;
@@ -88,7 +90,7 @@ public class CombineNodesCommand extends AbstractHandler {
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
 				System.out.println("nodeToCheck id: " + nodeToCheck.getID());
-				Pattern p = Pattern.compile("[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?");
+				Pattern p = Pattern.compile(ICDREGEX);
 				Matcher m = p.matcher(nodeToCheck.getID());
 				if (m.find()) {
 					String icd = m.group();
@@ -152,10 +154,9 @@ public class CombineNodesCommand extends AbstractHandler {
 	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
 		//TODO MAGICALLY MERGE		
 		for (OntologyTreeNode node : newTreeNodeList2) {
-			//			System.out.println("CHECKING " + node.getName());
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
-				Pattern p = Pattern.compile("[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?");
+				Pattern p = Pattern.compile(ICDREGEX);
 				Matcher m = p.matcher(nodeToCheck.getID());
 				if (m.find()) {
 					String icd = m.group();
@@ -176,7 +177,6 @@ public class CombineNodesCommand extends AbstractHandler {
 							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
 							node.getTargetNodeAttributes().removeAllStagingPaths();
 							node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
-							
 							found = true;
 							break;
 						}

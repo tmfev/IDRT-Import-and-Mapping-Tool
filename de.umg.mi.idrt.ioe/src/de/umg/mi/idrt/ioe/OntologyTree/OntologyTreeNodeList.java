@@ -30,7 +30,7 @@ public class OntologyTreeNodeList {
 		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
 			long newTime = System.currentTimeMillis();
 
-			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
+//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
 			time = newTime;
 		}
 		this.addNodyByPath( node.getTreePath(), node );
@@ -53,12 +53,12 @@ public class OntologyTreeNodeList {
 		OntologyTreeNode parentNode = null;
 		PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
 
-		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
-			long newTime = System.currentTimeMillis();
-
-			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + i2b2Path + " || " + pathAndID.getParentPath() + " -> " + pathAndID.getID());
-			time = newTime;
-		}
+//		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
+//			long newTime = System.currentTimeMillis();
+//
+//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + i2b2Path + " || " + pathAndID.getParentPath() + " -> " + pathAndID.getID());
+//			time = newTime;
+//		}
 
 		if ( pathAndID.getParentPath().isEmpty() ){
 			Console.error("Could not add node \"" + node.getName() +"\", because no parent path was given.");

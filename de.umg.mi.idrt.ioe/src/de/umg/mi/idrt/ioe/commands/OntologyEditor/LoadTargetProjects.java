@@ -84,7 +84,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			}
 			
 			//updateing the gui
-			OntologyEditorView.incrementVersionRefresh();
+//			OntologyEditorView.refreshVersionCombo();
 			//targetProjects.getSelectedTarget()
 			
 

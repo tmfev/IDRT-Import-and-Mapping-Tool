@@ -27,37 +27,27 @@ public class LoadTargetOntology extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
-	
 
 		Console.info("Command: LoadTargetOntology");
 		
 		TOSConnector tos = new TOSConnector();
-		
+	
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
-		Target target = null;
-		
 		if (targetProjects.getSelectedTarget() == null || targetProjects.getSelectedTargetProject() == null ){
 			Console.error("Can not load target ontology, because no target is selected.");
 			return null;
 		}
 		
-		target = targetProjects.getSelectedTarget();
+		Target target = targetProjects.getSelectedTarget();
 		
-	
-
 		try {
-
 			tos.setContextVariable("Job", "LoadTargetOntology");
 			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
 			//tos.setContextVariable("SQLTable", "I2B2");
-	
 			tos.runJob();
-			
-			
-
 		} catch (Exception e) {
+			e.printStackTrace();
 			String message = "Error while using a TOS-plugin for job \"LoadTargetOntology\": "
 					+ e.getMessage();
 			Console.error(message);

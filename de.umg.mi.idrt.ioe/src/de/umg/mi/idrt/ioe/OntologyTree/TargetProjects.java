@@ -92,6 +92,7 @@ public class TargetProjects {
 		Target newTarget = new Target();
 		newTarget.setTargetProjectID(oldTarget.getTargetProjectID());
 		newTarget.setTargetDBSchema(oldTarget.getTargetDBSchema());
+		this.getSelectedTargetProject().add(newTarget);
 		return newTarget;
 	}
 
