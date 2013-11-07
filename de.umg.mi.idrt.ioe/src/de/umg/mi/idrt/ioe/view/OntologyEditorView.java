@@ -785,7 +785,6 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent arg0) {
 				// TODO IMPLEMENT
 				if (!oldSelectedVersion.equals(versionCombo.getText())){
-					oldSelectedVersion = versionCombo.getText();
 					final Shell dialog = new Shell(Application.getDisplay(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 							| SWT.TOOL);
 					
@@ -845,6 +844,7 @@ public class OntologyEditorView extends ViewPart {
 					actionMenu.pack();
 					dialog.pack();
 					dialog.open();
+					oldSelectedVersion = versionCombo.getText();
 				}
 			}
 		});

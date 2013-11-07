@@ -30,7 +30,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowCoolBar(false);
 		configurer.setShowStatusLine(false);
 		configurer.setShowPerspectiveBar(false);
-		configurer.setShowProgressIndicator(true);
+		configurer.setShowProgressIndicator(false);
 		//configurer.setShowPerspectiveBar(true);
 
 		IPreferenceStore apiStore = PlatformUI.getPreferenceStore();
