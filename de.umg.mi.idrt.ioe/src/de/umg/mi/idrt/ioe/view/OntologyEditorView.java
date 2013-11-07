@@ -819,9 +819,17 @@ public class OntologyEditorView extends ViewPart {
 
 					tltmCombine.addListener(SWT.Selection, new Listener() {
 						public void handleEvent(Event event) {
+							
 							dialog.close();
+							
 							System.out.println("Delete Version clicked");
-							//TODO
+							ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.DELETETARGET);
+							command.addParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
+							Application.executeCommand(command);
+							
+							
+							
+							
 						}
 					});
 

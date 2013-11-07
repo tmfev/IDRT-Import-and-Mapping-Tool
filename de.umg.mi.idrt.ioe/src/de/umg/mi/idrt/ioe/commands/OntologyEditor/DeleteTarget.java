@@ -43,6 +43,8 @@ public class DeleteTarget extends AbstractHandler {
 			TOSConnector.setContextVariable("Job",
 					Resource.ID.Command.TOS.DELETE_TARGET);
 			tos.setContextVariable("TargetID", targetID);
+			
+			tos.runJob();
 		} catch (Exception e) {
 			Console.error("Could not delete the Target Ontology with the TargetID="
 					+ targetID
