@@ -250,7 +250,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;System.out.println(&quot;Existed! >&quot; + context.TableIEOTargetOntology + &quot;>>&quot; +  context.DB_StagingI2B2_Schema);&#xA;&#xA;System.out.println(&quot;Error0: &quot; + ((String)globalMap.get(&quot;tJDBCRow_1_ERROR_MESSAGE&quot;)) );&#xA;System.out.println(&quot;Error0: &quot; + ((String)globalMap.get(&quot;tJDBCConnection_1_ERROR_MESSAGE&quot;)) );"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;System.out.println(&quot;Existed! >&quot; + context.TableIEOTargetOntology + &quot;>>&quot; +  context.DB_StagingI2B2_Schema);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="statusIOEExisted"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>

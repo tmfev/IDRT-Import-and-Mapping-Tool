@@ -21,8 +21,12 @@ public class DeleteTarget extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		String targetID = event
 				.getParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID);
+		
+		Target targetOld = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( targetID ));
+		
+		
 		Console.info("Deleting Target Ontology with the TargetID="
-				+ targetID
+				+ targetOld.getTargetID() + " and Version=" + targetOld.getVersion()
 				+ " of the TargetProject with ID="
 				+ OntologyEditorView.getTargetProjects()
 						.getSelectedTargetProject().getTargetProjectID() + " ");
@@ -42,7 +46,7 @@ public class DeleteTarget extends AbstractHandler {
 			TOSConnector tos = new TOSConnector();
 			TOSConnector.setContextVariable("Job",
 					Resource.ID.Command.TOS.DELETE_TARGET);
-			tos.setContextVariable("TargetID", targetID);
+			tos.setContextVariable("TargetID", String.valueOf(targetOld.getTargetID()));
 			
 			tos.runJob();
 		} catch (Exception e) {
@@ -56,9 +60,9 @@ public class DeleteTarget extends AbstractHandler {
 		}
 		
 		// deleting the target from the target projects object and the gui drop down menu
-		Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
-		OntologyEditorView.removeFromVersionCombo(String.valueOf( oldTarget.getVersion() ));
-		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(oldTarget);
+		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
+		OntologyEditorView.removeFromVersionCombo(String.valueOf( targetOld.getVersion() ));
+		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetOld);
 		
 	
 		return 0;

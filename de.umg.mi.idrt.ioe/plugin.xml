@@ -242,6 +242,11 @@
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadTargetOntology"
             id="de.umg.mi.idrt.ioe.LoadTargetOntology"
             name="LoadTargetOntology">
+         <commandParameter
+               id="de.umg.mi.idrt.ioe.LoadTargetOntologyAttribute.Version"
+               name="LoadTargetOntologyAttribute.Version"
+               optional="true">
+         </commandParameter>
       </command>
             <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.EditInstanceCommand"

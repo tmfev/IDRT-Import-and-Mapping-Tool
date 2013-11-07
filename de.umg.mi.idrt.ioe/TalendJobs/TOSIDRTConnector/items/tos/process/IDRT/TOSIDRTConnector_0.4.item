@@ -87,7 +87,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;&#xA;// INNER JOIN I2B2KFO179.i2b2 ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE ORDER BY concept_dimension.CONCEPT_PATH ASC&#xA;/*&#xA;context.Job = &quot;ontology&quot;;&#xA;context.SQLTable = &quot;i2b2&quot;;&#xA;context.SQLCommand = &quot;SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL &lt; 10 ORDER BY C_HLEVEL ASC&quot;;&#xA;//context.Job = &quot;ontology_dimensions&quot;;&#xA;//context.SQLTable = &quot;concept_dimension&quot;;&#xA;//context.SQLCommand = &quot;SELECT * FROM I2B2KFO179.concept_dimension FULL OUTER JOIN I2B2KFO179.modifier_dimension ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE &quot;;&#xA;*/&#xA;&#xA;System.out.println(&quot;Error2: &quot; + ((String)globalMap.get(&quot;tJDBCConnection_1_ERROR_MESSAGE&quot;)) );&#xA;&#xA;&#xA;boolean sqlCommandIsEmpty = StringHandling.LEN(context.SQLCommand) &lt; 1;&#xA;&#xA;if ( context.Job.isEmpty() ){&#xA;&#x9;context.Job = &quot;ontology&quot;;&#xA;&#x9;System.out.println(&quot;TOS: context.Job is empty. Set to \&quot;ontology\&quot; now.&quot;);&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL, C_NAME ASC&quot;;&#xA;} else if ( context.Job.equals(&quot;ontology&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}  else if ( context.Job.equals(&quot;ontology_dimensions&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}&#xA;&#xA;&#xA;&#xA;if ( context.DataFile == null || &quot;null&quot;.equals(context.DataFile) ){&#xA;&#x9;context.DataFile = &quot;&quot;;&#xA;}&#xA;&#xA;&#xA;&#xA;System.out.println(&quot;TOS: ----actual vars-----&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Schema: \&quot;&quot;+context.DB_StagingI2B2_Schema+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Username: \&quot;&quot;+context.DB_StagingI2B2_Username+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Job: \&quot;&quot;+context.Job+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Var1: \&quot;&quot;+context.Var1+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DataFile: \&quot;&quot;+context.DataFile+&quot;\&quot;&quot;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;&#xA;// INNER JOIN I2B2KFO179.i2b2 ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE ORDER BY concept_dimension.CONCEPT_PATH ASC&#xA;/*&#xA;context.Job = &quot;ontology&quot;;&#xA;context.SQLTable = &quot;i2b2&quot;;&#xA;context.SQLCommand = &quot;SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL &lt; 10 ORDER BY C_HLEVEL ASC&quot;;&#xA;//context.Job = &quot;ontology_dimensions&quot;;&#xA;//context.SQLTable = &quot;concept_dimension&quot;;&#xA;//context.SQLCommand = &quot;SELECT * FROM I2B2KFO179.concept_dimension FULL OUTER JOIN I2B2KFO179.modifier_dimension ON concept_dimension.CONCEPT_PATH = i2b2.C_DIMCODE &quot;;&#xA;*/&#xA;&#xA;&#xA;&#xA;boolean sqlCommandIsEmpty = StringHandling.LEN(context.SQLCommand) &lt; 1;&#xA;&#xA;if ( context.Job.isEmpty() ){&#xA;&#x9;context.Job = &quot;ontology&quot;;&#xA;&#x9;System.out.println(&quot;TOS: context.Job is empty. Set to \&quot;ontology\&quot; now.&quot;);&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL, C_NAME ASC&quot;;&#xA;} else if ( context.Job.equals(&quot;ontology&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}  else if ( context.Job.equals(&quot;ontology_dimensions&quot;) &amp;&amp; sqlCommandIsEmpty ){&#xA;&#x9;context.SQLCommand = &quot;SELECT * FROM &quot; + context.OracleSchema +&quot;.I2B2 ORDER BY C_HLEVEL ASC&quot;;&#xA;&#x9;System.out.println(&quot;context.Job is &quot;+context.Job+&quot;, but context.SQLCommand is empty. Set to \&quot;&quot;+context.SQLCommand+&quot;\&quot; now.&quot;);&#xA;}&#xA;&#xA;&#xA;&#xA;if ( context.DataFile == null || &quot;null&quot;.equals(context.DataFile) ){&#xA;&#x9;context.DataFile = &quot;&quot;;&#xA;}&#xA;&#xA;&#xA;&#xA;System.out.println(&quot;TOS: ----actual vars-----&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Schema: \&quot;&quot;+context.DB_StagingI2B2_Schema+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DB_StagingI2B2_Username: \&quot;&quot;+context.DB_StagingI2B2_Username+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Job: \&quot;&quot;+context.Job+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.Var1: \&quot;&quot;+context.Var1+&quot;\&quot;&quot;);&#xA;System.out.println(&quot; - context.DataFile: \&quot;&quot;+context.DataFile+&quot;\&quot;&quot;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="javaInitiateVars"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -986,6 +986,16 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tRunJob_5"/>
   </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1184" posY="800">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_16"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;context.StatusMessage = &quot;Target I2B2 loaded (&quot; + ((Integer)globalMap.get(&quot;tJDBCInput_3_NB_LINE&quot;)) + &quot; lines).&quot;;&#xA;&#xA;&#xA;((TOSHandler)context.TOSHandler).statusSuccess(context.StatusMessage);&#xA;System.out.println(context.StatusMessage);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="&#xA;&#xA;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_16"/>
+  </node>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tLibraryLoad_2">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
@@ -1285,6 +1295,10 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="rTargetOntology"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaFlex_7" offsetLabelX="0" offsetLabelY="0" source="tJavaFlex_7" target="tJava_16">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk8"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCRow_2" offsetLabelX="0" offsetLabelY="0" source="tJDBCRow_2" target="tFileInputDelimited_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -1596,6 +1610,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_16"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
   </subjob>

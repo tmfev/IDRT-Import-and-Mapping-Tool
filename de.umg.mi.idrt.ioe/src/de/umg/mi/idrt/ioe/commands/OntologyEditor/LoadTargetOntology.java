@@ -29,7 +29,19 @@ public class LoadTargetOntology extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
+		Target target;
 		Console.info("Command: LoadTargetOntology");
+		
+		String version = event
+				.getParameter(Resource.ID.Command.IEO.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
+		
+		if ( version != null && !version.isEmpty() ){
+			System.out.println("STRINGVERSION:" + version);
+			target = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
+		}else
+			target = OntologyEditorView.getTargetProjects().getSelectedTarget();
+		
+	
 
 		TOSConnector tos = new TOSConnector();
 		//Clears the TargetOntologyTree
@@ -44,19 +56,19 @@ public class LoadTargetOntology extends AbstractHandler {
 
 		}
 
-		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
-
-		if (targetProjects.getSelectedTarget() == null || targetProjects.getSelectedTargetProject() == null ){
-			Console.error("Can not load target ontology, because no target is selected.");
+		
+		if ( target  == null ){
+			Console.error("Can not load target ontology, because no target is selected or version found.");
 			return null;
 		}
 
-		Target target = targetProjects.getSelectedTarget();
+		Console.info("Loading target ontology for TargetID=" + target.getTargetID() + " and Version=" + target.getVersion());
+
 
 		try {
 			tos.setContextVariable("Job", "LoadTargetOntology");
 			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
-			//tos.setContextVariable("SQLTable", "I2B2");
+	
 			tos.runJob();
 		} catch (Exception e) {
 			e.printStackTrace();

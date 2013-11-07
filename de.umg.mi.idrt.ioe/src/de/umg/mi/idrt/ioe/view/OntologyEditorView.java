@@ -324,8 +324,11 @@ public class OntologyEditorView extends ViewPart {
 	public static void removeFromVersionCombo(String version) {
 		
 		if ( versionCombo != null ){
+			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + oldSelectedVersion);
 			versionCombo.remove(version);
+			versionCombo.setText(oldSelectedVersion);
 			composite_2.layout();
+			
 		} else {
 			Console.error("versionCombo is null, so don't remove an entry from it");
 		}
@@ -810,8 +813,12 @@ public class OntologyEditorView extends ViewPart {
 					tltmInsertNodes.addSelectionListener(new SelectionAdapter() {
 						public void widgetSelected(SelectionEvent e) {
 							dialog.close();
-							System.out.println("Load Version clicked");
-							//TODO
+							System.out.println("Load Version clicked (Version:"+versionCombo.getText()+")");
+
+							ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.LOADTARGETONTOLOGY);
+							command.addParameter(Resource.ID.Command.IEO.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION, versionCombo.getText());
+							Application.executeCommand(command);
+							
 						}
 					});
 					final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
@@ -822,7 +829,7 @@ public class OntologyEditorView extends ViewPart {
 							
 							dialog.close();
 							
-							System.out.println("Delete Version clicked");
+							System.out.println("Delete Version clicked for Version:" + versionCombo.getText());
 							ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.DELETETARGET);
 							command.addParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 							Application.executeCommand(command);
