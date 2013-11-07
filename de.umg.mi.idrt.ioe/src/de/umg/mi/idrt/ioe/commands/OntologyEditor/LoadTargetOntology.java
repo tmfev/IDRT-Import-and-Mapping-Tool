@@ -8,6 +8,7 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
@@ -44,7 +45,7 @@ public class LoadTargetOntology extends AbstractHandler {
 		try {
 			tos.setContextVariable("Job", "LoadTargetOntology");
 			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
-			//tos.setContextVariable("SQLTable", "I2B2");
+			
 			tos.runJob();
 		} catch (Exception e) {
 			e.printStackTrace();

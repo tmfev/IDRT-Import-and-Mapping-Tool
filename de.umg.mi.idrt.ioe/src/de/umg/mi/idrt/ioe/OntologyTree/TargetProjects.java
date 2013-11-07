@@ -31,7 +31,7 @@ public class TargetProjects {
 		
 		/*
 		if ( this.getSelectedTarget() != null )
-			System.out.println("#addTarget compare " + target.getLastModified() + " _after_ " + this.getSelectedTarget().getLastModified() );
+			System.out.println("#addTarget compaI2B2KFO179re " + target.getLastModified() + " _after_ " + this.getSelectedTarget().getLastModified() );
 		else 
 			System.out.println("#addTarget compare " + target.getLastModified() + " _after_ null" );
 		*/
@@ -78,6 +78,24 @@ public class TargetProjects {
 		for (TargetProject tmpTargetProject : list) {
 			if (tmpTargetProject.getTargetProjectID() == id)
 				return tmpTargetProject;
+		}
+		return null;
+	}
+	
+	public Target getTargetByVersion(int version) {
+		
+		for (Target tmpTarget : getSelectedTargetProject().getTargetsList()) {
+			if (tmpTarget.getVersion() == version)
+				return tmpTarget;
+		}
+		return null;
+	}
+	
+	public Target getTargetByID(int id) {
+		
+		for (Target tmpTarget : getSelectedTargetProject().getTargetsList()) {
+			if (tmpTarget.getTargetID() == id)
+				return tmpTarget;
 		}
 		return null;
 	}

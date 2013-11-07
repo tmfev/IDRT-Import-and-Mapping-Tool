@@ -70,9 +70,10 @@ Bundle-ClassPath: .,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_loadtargetprojects_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar,
- TalendJobs/,
+ TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar,
+ TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar,
  TalendJobs/TOSIDRTConnector/,
- TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar
+ TalendJobs/
 Import-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
  de.goettingen.i2b2.importtool.idrt.StatusListener,

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/dom4j-1.6.1.jar"/>

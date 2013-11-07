@@ -2,6 +2,8 @@ package de.umg.mi.idrt.ioe.view;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -174,9 +176,9 @@ public class OntologyEditorView extends ViewPart {
 		if (!contains) {
 			versionCombo.add(name);
 			versionCombo.setText(name);
-//			System.out.println("added " + name);
+			//			System.out.println("added " + name);
 		}
-		
+
 	}
 	public static void clearTargetName(){
 		lblTargetName.setText("Drop i2b2 target here!");
@@ -296,16 +298,35 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			versionCombo.removeAll();
 			versionCombo.setText("");
-				for (int i = 0; i<getTargetProjects().getSelectedTargetProject().getTargetsList().size();i++) {
-					addVersionName("" + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
-//					System.out.println(i + " " + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion() + " " +getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getTargetDBSchema());
-				}
+			ArrayList<String> list = new ArrayList<String>();
+			for (int i = 0; i<getTargetProjects().getSelectedTargetProject().getTargetsList().size();i++) {
+				//					addVersionName("" + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
+				list.add(""+getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
+				//					System.out.println(i + " " + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion() + " " +getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getTargetDBSchema());
+			}
+			Collections.sort(list);
+			for (String i : list) {
+				addVersionName(""+i);
+			}
 			composite_2.layout();
 		} else {
 			System.err.println("versionCombo null");
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
+	
+	public static void removeFromVersionCombo(String version) {
+		System.out.println("REFRESH");
+		if ( versionCombo != null ){
+			versionCombo.remove(version);
+			composite_2.layout();
+		} else {
+			Console.error("versionCombo is null, so don't remove an entry from it");
+		}
+	}
+	
+	
+	
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
 		int size = nodeLists.getNumberOfItemNodes();
 		if (text.isEmpty()) {
@@ -745,6 +766,11 @@ public class OntologyEditorView extends ViewPart {
 					oldSelectedVersion = versionCombo.getText();
 					System.err.println("NYI");
 					MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
+					
+					// if yes do:
+					
+					
+					
 				}
 			}
 		});
@@ -1063,7 +1089,7 @@ public class OntologyEditorView extends ViewPart {
 			init();
 		}
 		stagingTreeViewer.getTree().removeAll();
-		
+
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
@@ -1207,7 +1233,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		targetTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
+		//		targetTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
 
 		getOntologyTargetTree()
 		.setTreeViewer(targetTreeViewer);
@@ -1228,12 +1254,7 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent event) {
 				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer.getSelection();
 				OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
-				Iterator<OntologyTreeSubNode> it = node.getTargetNodeAttributes().getSubNodeList().iterator();
-
-				while (it.hasNext()) {
-					OntologyTreeSubNode subNode = it.next();
-					System.out.println(subNode.getParent().getName() + " " + subNode.getStagingName() + " " + subNode.getTargetSubNodeAttributes().getStartDateSource() + " " + subNode.getTargetSubNodeAttributes().getEndDateSource());
-				}
+				System.out.println(node.getTreePath());
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1365,13 +1386,13 @@ public class OntologyEditorView extends ViewPart {
 		//TODO
 		setInstance(getTargetProjects().getSelectedTargetProject().getName(),getTargetProjects().getSelectedTargetProject().getDescription());
 
-//		versionCombo.removeAll();
+		//		versionCombo.removeAll();
 		targetComposite.layout();
 		mainComposite.layout();
 		column.getColumn().setWidth(targetComposite.getBounds().width-5);
 		refreshVersionCombo();
 	}
-	
+
 	public static void setTargetNameVersion(String version) {
 		addVersionName(version);
 		versionCombo.setText(version);
@@ -1391,8 +1412,8 @@ public class OntologyEditorView extends ViewPart {
 			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		}
 
-//		addVersionName(version);
-//		versionCombo.setText(version);
+		//		addVersionName(version);
+		//		versionCombo.setText(version);
 		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
 		getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
 
@@ -1478,8 +1499,6 @@ public class OntologyEditorView extends ViewPart {
 					//do nothing
 				}
 				else {
-					if (OntologyEditorView.getTargetProjects().getSelectedTargetProject() != null)
-					OntologyEditorView.getTargetProjects().getSelectedTargetProject().clear();
 					try {
 						String schema = (String)event.data;
 						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
@@ -1551,5 +1570,11 @@ public class OntologyEditorView extends ViewPart {
 
 	@Override
 	public void setFocus() {
+	}
+	/**
+	 * 
+	 */
+	public static Composite getTargetComposite() {
+		return targetComposite;
 	}
 }
