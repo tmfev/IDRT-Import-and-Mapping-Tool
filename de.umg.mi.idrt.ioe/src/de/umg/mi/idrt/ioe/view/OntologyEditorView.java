@@ -785,7 +785,6 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent arg0) {
 				// TODO IMPLEMENT
 				if (!oldSelectedVersion.equals(versionCombo.getText())){
-					oldSelectedVersion = versionCombo.getText();
 					final Shell dialog = new Shell(Application.getDisplay(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 							| SWT.TOOL);
 					
@@ -820,9 +819,17 @@ public class OntologyEditorView extends ViewPart {
 
 					tltmCombine.addListener(SWT.Selection, new Listener() {
 						public void handleEvent(Event event) {
+							
 							dialog.close();
+							
 							System.out.println("Delete Version clicked");
-							//TODO
+							ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.DELETETARGET);
+							command.addParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
+							Application.executeCommand(command);
+							
+							
+							
+							
 						}
 					});
 
@@ -838,6 +845,8 @@ public class OntologyEditorView extends ViewPart {
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
+							System.out.println(oldSelectedVersion);
+							versionCombo.setText(oldSelectedVersion);
 							dialog.close();
 						}
 					});
