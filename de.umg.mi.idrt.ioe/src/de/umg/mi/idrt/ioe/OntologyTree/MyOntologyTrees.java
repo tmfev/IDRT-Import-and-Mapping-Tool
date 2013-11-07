@@ -531,25 +531,10 @@ public class MyOntologyTrees{
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
 					dialog.close();
-					//					ActionCommand command = new ActionCommand(
-					//							Resource.ID.Command.OTCOPY);
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-					//							"");
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
-					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
-					//					Application.executeCommand(command);
-					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
-
 					System.out.println("COPY DONE");
 
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
-//										command2.addParameter(
-//												Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-//												targetPath);
 					Application.executeCommand(command2);
 				}
 			});
@@ -564,12 +549,6 @@ public class MyOntologyTrees{
 					dialog.close();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTCOPY);
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-					//							"");
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
 					Application.executeCommand(command);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
@@ -620,25 +599,6 @@ public class MyOntologyTrees{
 	public OntologyTree getOntologyTreeSource() {
 		return this.ontologyTreeSource;
 	}
-
-	//	protected void expandTreePaths(TreePath path) {
-	//		this._ontologyTreeSource.expandPath(path);
-	//		final Object node = path.getLastPathComponent();
-	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
-	//
-	//		for (int index = 0; index < n; index++) {
-	//			final Object child = this._ontologyTreeSource.getModel().getChild(
-	//					node, index);
-	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
-	//			/*
-	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
-	//			 * item, leaf it closed and return return; }
-	//			 */
-	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
-	//				expandTreePaths(path.pathByAddingChild(child));
-	//			}
-	//		}
-	//	}
 
 	public OntologyTree getOntologyTreeTarget() {
 		return this.ontologyTargetTree;

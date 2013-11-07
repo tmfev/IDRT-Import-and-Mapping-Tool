@@ -53,19 +53,26 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -314,6 +321,19 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
+	
+	public static void removeFromVersionCombo(String version) {
+		System.out.println("REFRESH");
+		if ( versionCombo != null ){
+			versionCombo.remove(version);
+			composite_2.layout();
+		} else {
+			Console.error("versionCombo is null, so don't remove an entry from it");
+		}
+	}
+	
+	
+	
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
 		int size = nodeLists.getNumberOfItemNodes();
 		if (text.isEmpty()) {
@@ -751,8 +771,72 @@ public class OntologyEditorView extends ViewPart {
 				// TODO IMPLEMENT
 				if (!oldSelectedVersion.equals(versionCombo.getText())){
 					oldSelectedVersion = versionCombo.getText();
-					System.err.println("NYI");
-					MessageDialog.openError(mainComposite.getShell(), "NYI", "NYI!\nYou better implement that right now!");
+					final Shell dialog = new Shell(Application.getDisplay(), SWT.ON_TOP //SWT.APPLICATION_MODAL
+							| SWT.TOOL);
+					
+					dialog.setSize(250, 75);
+					Shell parentShell = PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getShell();
+							Rectangle shellBounds = parentShell.getBounds();
+							dialog.setLocation(shellBounds.x + shellBounds.width / 2,
+							shellBounds.y + shellBounds.height / 2);
+							
+					final Composite actionMenu = new Composite(dialog, SWT.NONE);
+					actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
+
+
+					/**
+					 * Menu for Combine Actions
+					 */
+					final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
+					toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
+
+					ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
+					tltmInsertNodes.setText("Load Version");
+					tltmInsertNodes.addSelectionListener(new SelectionAdapter() {
+						public void widgetSelected(SelectionEvent e) {
+							dialog.close();
+							System.out.println("Load Version clicked");
+							//TODO
+						}
+					});
+					final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
+					tltmCombine.setText("Delete Version");
+
+					tltmCombine.addListener(SWT.Selection, new Listener() {
+						public void handleEvent(Event event) {
+							dialog.close();
+							System.out.println("Delete Version clicked");
+							//TODO
+						}
+					});
+
+					ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
+					tltmCancel.setText("Cancel");
+					tltmCancel.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/terminate_co.gif"));
+					tltmCancel.addSelectionListener(new SelectionListener() {
+
+						@Override
+						public void widgetDefaultSelected(SelectionEvent e) {
+
+						}
+
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							dialog.close();
+						}
+					});
+
+					actionMenu.pack();
+					dialog.pack();
+					dialog.open();
+					
+					
+					
+					// if yes do:
+					
+					
+					
 				}
 			}
 		});
