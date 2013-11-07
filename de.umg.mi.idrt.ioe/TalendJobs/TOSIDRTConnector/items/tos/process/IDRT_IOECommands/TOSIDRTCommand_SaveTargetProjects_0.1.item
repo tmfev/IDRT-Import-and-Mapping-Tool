@@ -457,18 +457,18 @@
       <column comment="" key="true" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="TargetProjectID" expression="context.TargetProjectID" type="id_Integer"/>
         <mapperTableEntries name="TargetID" expression="context.TargetID" type="id_Integer"/>
         <mapperTableEntries name="Version" expression="context.Version" type="id_Integer"/>
-        <mapperTableEntries name="CurrentDate" expression="TalendDate.parseDate(&quot;yyyy/MM/dd/hh/mm/ss&quot;,TalendDate.getDate(&quot;CCYY/MM/DD/hh/mm/ss&quot;))&#xD;&#xA; " type="id_Date"/>
+        <mapperTableEntries name="CurrentDate" expression="TalendDate.parseDate(&quot;yyyy/MM/dd/hh/mm/ss&quot;,TalendDate.getDate(&quot;CCYY/MM/DD/HH/mm/ss&quot;))&#xD;&#xA; " type="id_Date"/>
         <mapperTableEntries name="CreatedDate" expression="(context.DateCreated == null ? TalendDate.parseDate(&quot;yyyy/MM/dd/hh/mm/ss&quot;,TalendDate.getDate(&quot;CCYY/MM/DD/hh/mm/ss&quot;)) : TalendDate.parseDate(&quot;yyyy/MM/dd/hh/mm/ss&quot;,TalendDate.getDate(&quot;CCYY/MM/DD/hh/mm/ss&quot;)))  " type="id_Date"/>
       </varTables>
       <outputTables sizeState="INTERMEDIATE" name="row5">
@@ -482,7 +482,7 @@
         <mapperTableEntries name="VERSION" expression="Var.Version " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="CREATED" expression="Var.CreatedDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LAST_MODIFIED" expression="Var.CurrentDate " type="id_Date" nullable="true"/>
-        <mapperTableEntries name="USER_ID" expression="&quot;nothing&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="USER_ID" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="TARGET_DB_SCHEMA" expression="row4.TARGET_DB_SCHEMA " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row4" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
@@ -629,8 +629,8 @@
       <column comment="" key="true" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
     </metadata>
@@ -638,8 +638,8 @@
       <column comment="" key="true" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -659,8 +659,8 @@
       <column comment="" key="true" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
     </metadata>
@@ -767,7 +767,7 @@
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="// start part of your Java code&#xA;int counter = 0;"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="if ( ( counter == 0 ) &amp;&amp; ( versionCheck.Version != null ) ) {&#xA;&#xA;&#x9;context.Version = versionCheck.Version + 1;&#xA;&#x9;context.DateCreated = TalendDate.parseDate(&quot;dd-MM-yyyy hh:mm:ss&quot;,TalendDate.getDate(&quot;dd-MM-yyyy hh:mm:ss&quot;));&#xA;&#x9;System.out.println( &quot;Saves this target project with a new version=&quot; + context.Version  + &quot;.&quot; );&#xA;&#x9;&#xA;}&#xA;counter++;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="if ( ( counter == 0 ) &amp;&amp; ( versionCheck.Version != null ) ) {&#xA;&#xA;&#x9;context.Version = versionCheck.Version + 1;&#xA;&#x9;context.DateCreated = TalendDate.parseDate(&quot;dd-MM-yyyy HH:mm:ss&quot;,TalendDate.getDate(&quot;dd-MM-yyyy HH:mm:ss&quot;));&#xA;&#x9;System.out.println( &quot;Saves this target project with a new version=&quot; + context.Version  + &quot; (Created: &quot; + context.DateCreated + &quot;).&quot; );&#xA;&#x9;&#xA;}&#xA;counter++;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_END" value="&#xA;&#xA;&#xA;"/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>

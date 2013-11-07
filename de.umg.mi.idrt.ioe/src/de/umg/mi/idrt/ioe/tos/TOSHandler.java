@@ -184,10 +184,7 @@ System.out.println(treePath);
 		targetProject.setName(name);
 		targetProject.setDescription(description);
 
-		OntologyTreeTargetRootNode targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
-
-		TargetProjects targetProjects = targetRootNode.getTargetProjects();
-		targetProjects.add(targetProject);
+		OntologyEditorView.getTargetProjects().add(targetProject);
 
 	}
 
@@ -202,13 +199,16 @@ System.out.println(treePath);
 		target.setCreated(created);
 		target.setLastModified(lastModified);
 		target.setTargetDBSchema(targetDBSchema);
+		
+		/*
 		OntologyTreeTargetRootNode targetRootNode = new OntologyTreeTargetRootNode(
 				"");
 
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
 
-		TargetProjects targetProjects = targetRootNode.getTargetProjects();
-		targetProjects.addTarget(target);
+		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+		*/
+		OntologyEditorView.getTargetProjects().addTarget(target);
 
 	}
 
