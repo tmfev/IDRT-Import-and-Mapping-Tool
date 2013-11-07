@@ -274,6 +274,8 @@ public class Resource {
 				public final static String LOADTARGETPROJECTS = "de.umg.mi.idrt.ioe.LoadTargetProjects";
 				public final static String SAVETARGETPROJECT = "de.umg.mi.idrt.ioe.SaveTargetProject";
 				public final static String SAVETARGET = "de.umg.mi.idrt.ioe.SaveTarget";
+				public final static String DELETETARGET = "de.umg.mi.idrt.ioe.DeleteTarget";
+				public final static String DELETETARGET_ATTRIBUTE_TARGETID = "de.umg.mi.idrt.ioe.DeleteTargetAttribute.TargetID";
 				public final static String INCREMENTTARGETVERSION = "de.umg.mi.idrt.ioe.IncrementTargetVersion";
 				
 							
@@ -282,6 +284,7 @@ public class Resource {
 			public class TOS {
 				
 				public final static String WRITE_TARGET_ONTOLOGY = "WriteTargetOntology";
+				public final static String DELETE_TARGET = "DeleteTarget";
 				
 				
 			}
