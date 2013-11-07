@@ -28,13 +28,13 @@ public class LoadTargetProjects extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		//String tmpDataFile = "C:/I2B2ImportProject/tmp_targettreesave.csv";
-
+		// deleting old entries
+		OntologyEditorView.getTargetProjects().clear();
+		
 		Console.info("Command: LoadTargetProjects");
 		
 		TOSConnector tos = new TOSConnector();
-		
-	
+
 
 		try {
 

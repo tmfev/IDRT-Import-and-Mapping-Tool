@@ -170,7 +170,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTarget + &quot; WHERE TARGETPROJECT_ID = &quot; + context.currentTargetProjectID + &quot; ORDER BY  LAST_MODIFIED ASC&quot; "/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTarget + &quot; WHERE TARGETPROJECT_ID = &quot; + context.currentTargetProjectID + &quot; ORDER BY  VERSION ASC&quot; "/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -203,8 +203,8 @@
       <column comment="" key="true" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy hh:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
     </metadata>
@@ -214,7 +214,7 @@
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="TOSHandler.status(&quot;Doing loop \&quot;loading target versions\&quot;...&quot;);"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="&#xA;System.out.println(&quot;  >---------------&quot;);&#xA;System.out.println(&quot;   TARGET_ID: &quot; + targetInput.TARGET_ID);&#xA;System.out.println(&quot;   TARGETPROJECT_ID: &quot; + targetInput.TARGETPROJECT_ID);&#xA;System.out.println(&quot;   VERSION: &quot; + targetInput.VERSION);&#xA;&#xA;TOSHandler.addTargetVersionToTargeProject(targetInput.TARGET_ID, targetInput.TARGETPROJECT_ID, targetInput.VERSION&#xA;, targetInput.CREATED, targetInput.LAST_MODIFIED, targetInput.TARGET_DB_SCHEMA);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="&#xA;System.out.println(&quot;  >---------------&quot;);&#xA;System.out.println(&quot;   TARGET_ID: &quot; + targetInput.TARGET_ID);&#xA;System.out.println(&quot;   TARGETPROJECT_ID: &quot; + targetInput.TARGETPROJECT_ID);&#xA;System.out.println(&quot;   VERSION: &quot; + targetInput.VERSION);&#xA;System.out.println(&quot;   LAST_MODIFIED:&quot; + targetInput.LAST_MODIFIED  );&#xA;System.out.println(&quot;   LAST_MODIFIED:&quot; + targetInput.LAST_MODIFIED  );&#xA;&#xA;TOSHandler.addTargetVersionToTargeProject(targetInput.TARGET_ID, targetInput.TARGETPROJECT_ID, targetInput.VERSION&#xA;, targetInput.CREATED, targetInput.LAST_MODIFIED, targetInput.TARGET_DB_SCHEMA);"/>
     <elementParameter field="MEMO_JAVA" name="CODE_END" value="TOSHandler.status(&quot;/END: Doing loop \&quot;loading target versions\&quot;...&quot;);&#xA;      "/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>

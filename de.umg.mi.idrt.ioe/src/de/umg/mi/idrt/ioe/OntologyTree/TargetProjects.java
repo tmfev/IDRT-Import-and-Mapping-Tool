@@ -128,5 +128,16 @@ public class TargetProjects {
 	public void setSelectedTargetProject(TargetProject selectedTargetProject) {
 		this.selectedTargetProject = selectedTargetProject;
 	}
+	
+	public void clear(){
+		setSelectedTarget(null);
+		setSelectedTargetProject(null);
+		for (TargetProject targetProject: getTargetProjectsList()) {
+				targetProject.clear();
+			}
+		getTargetProjectsList().clear();
+		
+		
+	}
 
 }

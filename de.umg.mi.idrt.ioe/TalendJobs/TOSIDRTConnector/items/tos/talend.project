@@ -691,7 +691,6 @@
     </ItemsRelations>
     <deletedFolders>process/misc/Lehre</deletedFolders>
     <deletedFolders>process/IDRT/IDRT2_IOE</deletedFolders>
-    <deletedFolders>metadata/genericSchema/IEO_Extra_Tables</deletedFolders>
     <deletedFolders>process/IDRT_IOECommands/IDRT2_IOE</deletedFolders>
     <migrationTask xmi:id="_vteq0Ah_EeK2xKsAbs-hQw" id="org.talend.repository.model.migration.UpdateExistentMigrationTasksToAdaptNewMigrationSystemMigrationTask" breaks="5.1.1" version="5.1.2" status="ok"/>
     <migrationTask xmi:id="_vteq0Qh_EeK2xKsAbs-hQw" id="org.talend.repository.localprovider.RemoveRoutineFolderTask" breaks="5.1.1" version="5.1.2" status="ok"/>

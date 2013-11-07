@@ -117,6 +117,7 @@ public class MyOntologyTrees{
 		OntologyEditorView.setSelection(targetNode);
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
 				true);
+	
 	}
 
 	public String createLongStringID(int id) {

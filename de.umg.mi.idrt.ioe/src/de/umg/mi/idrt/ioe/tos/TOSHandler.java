@@ -200,13 +200,16 @@ public class TOSHandler {
 		target.setCreated(created);
 		target.setLastModified(lastModified);
 		target.setTargetDBSchema(targetDBSchema);
+		
+		/*
 		OntologyTreeTargetRootNode targetRootNode = new OntologyTreeTargetRootNode(
 				"");
 
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
 
-		TargetProjects targetProjects = targetRootNode.getTargetProjects();
-		targetProjects.addTarget(target);
+		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+		*/
+		OntologyEditorView.getTargetProjects().addTarget(target);
 
 	}
 
