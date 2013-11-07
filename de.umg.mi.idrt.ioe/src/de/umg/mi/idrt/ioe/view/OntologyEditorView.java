@@ -832,11 +832,13 @@ public class OntologyEditorView extends ViewPart {
 
 						@Override
 						public void widgetDefaultSelected(SelectionEvent e) {
-
+							
 						}
 
 						@Override
 						public void widgetSelected(SelectionEvent e) {
+							System.out.println(oldSelectedVersion);
+							versionCombo.setText(oldSelectedVersion);
 							dialog.close();
 						}
 					});
@@ -844,7 +846,7 @@ public class OntologyEditorView extends ViewPart {
 					actionMenu.pack();
 					dialog.pack();
 					dialog.open();
-					oldSelectedVersion = versionCombo.getText();
+					
 				}
 			}
 		});
