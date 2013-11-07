@@ -19,7 +19,7 @@ import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.PathAndID;
  */
 public class OntologyTreeNodeList {
 	private long time;
-	private Map<String, OntologyTreeNode> stringPathToNode	= new HashMap<String, OntologyTreeNode>();
+	private HashMap<String, OntologyTreeNode> stringPathToNode	= new HashMap<String, OntologyTreeNode>();
 
 	public OntologyTreeNodeList(){
 
@@ -27,12 +27,12 @@ public class OntologyTreeNodeList {
 
 
 	public void add( OntologyTreeNode node ){
-		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
-			long newTime = System.currentTimeMillis();
+//		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ){
+//			long newTime = System.currentTimeMillis();
 
-//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath() + " || " );
-			time = newTime;
-		}
+//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
+//			time = newTime;
+//		}
 		this.addNodyByPath( node.getTreePath(), node );
 	}
 
@@ -61,7 +61,7 @@ public class OntologyTreeNodeList {
 //		}
 
 		if ( pathAndID.getParentPath().isEmpty() ){
-			Console.error("Could not add node \"" + node.getName() +"\", because no parent path was given.");
+System.err.println("Could not add node \"" + node.getName() +"\", because no parent path was given.");
 			return null;
 			/*
 			} else if ( pathAndID.getParentPath().equals("\\") ){
@@ -106,11 +106,9 @@ public class OntologyTreeNodeList {
 	}
 
 	public void listNodeByPath(){
-		System.out.println(" Path to Nodes:");
 		for (String path : stringPathToNode.keySet()){
 			System.out.println("  - " + path);
 		}
-
 	}
 
 	public void removeAll() {
