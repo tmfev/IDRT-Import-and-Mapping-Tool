@@ -102,47 +102,6 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar">
-         <toolbar
-               id="de.umg.mi.idrt.ioe.TargetViewToolbar"
-               label="TargetI2B2 Toolbar">
-            <command
-                  commandId="de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2"
-                  icon="icons/command_obj.gif"
-                  label="etlStagingI2B2ToTargetI2B2"
-                  style="push">
-            </command>
-            <command
-                  commandId="edu.goettingen.i2b2.importtool.OTReadTarget"
-                  icon="icons/toc_open.gif"
-                  label=" - load target"
-                  style="push">
-            </command>
-            <command
-                  commandId="de.umg.mi.idrt.ioe.SaveTarget"
-                  icon="icons/save_edit.gif"
-                  label=" - save target"
-                  style="push">
-            </command>
-            <command
-                  commandId="edu.goettingen.i2b2.importtool.OntologyEditorLoad"
-                  label="Load Ontology from 2i2b-DB ..."
-                  style="push"
-                  tooltip="Load Ontology from 2i2b-DB ...">
-            </command>
-            <command
-                  commandId="de.umg.mi.idrt.ioe.LoadTargetProjects"
-                  label="LoadTargetProjects"
-                  style="push">
-            </command>
-            <command
-                  commandId="de.umg.mi.idrt.ioe.SaveTargetProject"
-                  label="SaveTargetProject"
-                  style="push">
-            </command>
-         </toolbar>
-      </menuContribution>
-      <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
                id="file.id"
