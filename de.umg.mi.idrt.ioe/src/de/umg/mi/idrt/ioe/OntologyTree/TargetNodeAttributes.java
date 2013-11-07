@@ -17,8 +17,6 @@ public class TargetNodeAttributes {
 
 	private OntologyTreeNode parent;
 
-	boolean changed = false;
-
 	public TargetNodeAttributes(OntologyTreeNode parent) {
 		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
 		setParent(parent);
@@ -49,10 +47,6 @@ public class TargetNodeAttributes {
 			subNodeList.add(subNode);
 			this.sourcePath = stagingPath;
 		}
-	}
-
-	public String getChanged() {
-		return changed ? "0" : "1";
 	}
 
 	/**
@@ -127,9 +121,6 @@ public class TargetNodeAttributes {
 	/**
 	 * @return the changed
 	 */
-	public boolean isChanged() {
-		return changed;
-	}
 
 	/**
 	 * 
@@ -140,14 +131,6 @@ public class TargetNodeAttributes {
 
 	public boolean removeSubNode(OntologyTreeSubNode subNode) {
 		return this.subNodeList.remove(subNode);
-	}
-
-	/**
-	 * @param changed
-	 *            the changed to set
-	 */
-	public void setChanged(boolean changed) {
-		this.changed = changed;
 	}
 
 	/**

@@ -36,9 +36,11 @@ public class DeleteNodeCommand extends AbstractHandler {
 				OntologyTreeNode node = (OntologyTreeNode) mNode;
 				OntologyEditorView.setNotYetSaved(true);
 				if (!(node ==OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {
+					System.out.println("REMOVEING " + node.getTreePath());
 					node.removeFromParent();
 				}
 				else {
+					
 					node.removeFromParent();
 					node.getChildren().clear();
 					OntologyEditorView.getOntologyTargetTree()

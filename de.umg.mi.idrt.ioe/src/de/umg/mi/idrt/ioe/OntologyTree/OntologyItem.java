@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.idrtimporttool.server.Settings;
+package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.Date;
 

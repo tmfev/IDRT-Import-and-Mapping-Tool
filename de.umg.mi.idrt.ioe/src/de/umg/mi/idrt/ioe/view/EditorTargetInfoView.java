@@ -321,7 +321,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 			addValueItem(items, row++, String.valueOf(node.getName()));
 			addValueItem(items, row++,
-					String.valueOf(attributes.isChanged() == true ? "true" : false));
+					String.valueOf(attributes.getDimension()));
 			addValueItem(items, row++,
 					String.valueOf(attributes.getStartDateSource()));
 			addValueItem(items, row++,
@@ -350,7 +350,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 			addValueItem(items, row++, String.valueOf(node.getStagingName()));
 			addValueItem(items, row++,
-					String.valueOf(attributes.isChanged() == true ? "true" : false));
+					String.valueOf(attributes.getDimension()));
 			addValueItem(items, row++,
 					String.valueOf(node.getTargetSubNodeAttributes().getStartDateSource()));
 			addValueItem(items, row++,

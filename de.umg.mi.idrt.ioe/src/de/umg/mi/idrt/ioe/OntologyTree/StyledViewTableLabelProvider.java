@@ -37,7 +37,7 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 				Color color = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
 				cell.setBackground(color);	
 			}
-			if (otNode.isSearchResult()) {
+			else if (otNode.isSearchResult()) {
 				Color color = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
 				cell.setBackground(color);	
 			}

@@ -8,6 +8,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
+import de.umg.mi.idrt.ioe.OntologyTree.Dimension;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -27,7 +28,7 @@ public class AddFolderCommand extends AbstractHandler {
 		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.getTargetNodeAttributes().addStagingPath("");
-		subRootNode.getTargetNodeAttributes().setChanged(true);
+		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.setName("New Node");
 		currentNode.add(subRootNode);

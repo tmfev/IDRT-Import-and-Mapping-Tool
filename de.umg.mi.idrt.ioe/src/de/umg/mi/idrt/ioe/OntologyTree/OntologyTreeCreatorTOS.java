@@ -5,6 +5,7 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
 /**
@@ -24,7 +25,6 @@ public class OntologyTreeCreatorTOS {
 	public OntologyTreeCreatorTOS ( MyOntologyTrees myOT, String filename ){
 		_filename = filename;
 		System.out.println("OTCreatorTOS");
-		
 		
 		// loading the ieo target project into the target ontology tree
 		ActionCommand command = new ActionCommand(

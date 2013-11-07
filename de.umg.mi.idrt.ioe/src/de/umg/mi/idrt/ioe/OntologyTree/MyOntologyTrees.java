@@ -208,7 +208,7 @@ public class MyOntologyTrees{
 		targetOntologyi2b2RootNode.setType(TYPE.ONTOLOGY_TARGET);
 		targetOntologyi2b2RootNode.setNodeType(NodeType.I2B2ROOT);
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
-		targetOntologyi2b2RootNode.getTargetNodeAttributes().setChanged(false);
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setName("i2b2");
 
@@ -724,7 +724,7 @@ public class MyOntologyTrees{
 			newNode.getTargetNodeAttributes().setVisualattributes(
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
-			newNode.getTargetNodeAttributes().setChanged(true);
+			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
 		}
 		else {
 			System.out.println("sourceNode.getOntologyCellAttributes() == null");

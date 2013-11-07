@@ -10,7 +10,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
-import de.umg.mi.idrt.idrtimporttool.server.Settings.OntologyItem;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
@@ -82,8 +81,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private OntologyCellAttributes ontologyCellAttributes;
 	private TargetNodeAttributes targetNodeAttributes;
 
-	
-	
+
+
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
@@ -102,7 +101,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.setName(node.getName());
 		this.setID(node.getID());
 	}
-	
+
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
@@ -505,7 +504,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void setNodeType(NodeType nodeType) {
 		this.nodeType = nodeType;
 	}
-	
+
 	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
 			String C_NAME, String C_SYNONYM_CD, String C_VISUALATTRIBUTES,
 			int C_TOTALNUM, String C_BASECODE, Object C_METADATAXML,
@@ -584,8 +583,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 					+ "\", because he has no parents (ErrorCode: BruceWayne01).");
 
 		} else {
-
-			this.setTreePath(((OntologyTreeNode) parent).getTreePath() + "\\" + this.id);
+			System.out.println("parent treepath: " +((OntologyTreeNode) parent).getTreePath());
+			this.setTreePath(((OntologyTreeNode) parent).getTreePath() + this.id + "\\");
 			this.setTreePathLevel(((OntologyTreeNode) parent).getTreePathLevel() + 1);
 		}
 	}

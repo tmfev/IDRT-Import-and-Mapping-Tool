@@ -352,8 +352,6 @@ public class InfoView extends ViewPart {
 		addValueItem(items, row++, String.valueOf(attributes.getSourcePath()));
 		addValueItem(items, row++, String.valueOf(_node.getName()));
 		addValueItem(items, row++,
-				String.valueOf(attributes.isChanged() == true ? "true" : false));
-		addValueItem(items, row++,
 				String.valueOf(attributes.getStartDateSource()));
 		addValueItem(items, row++,
 				String.valueOf(attributes.getEndDateSource()));
