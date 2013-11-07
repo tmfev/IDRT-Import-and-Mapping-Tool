@@ -472,7 +472,6 @@ public class MyOntologyTrees{
 					IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 							.getSelection();
 					OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
-					System.out.println(node.getOntologyCellAttributes().getC_FULLNAME());
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE);
 					command.addParameter(
@@ -532,11 +531,25 @@ public class MyOntologyTrees{
 				@Override
 				public void widgetSelected(SelectionEvent arg0) {
 					dialog.close();
+					//					ActionCommand command = new ActionCommand(
+					//							Resource.ID.Command.OTCOPY);
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
+					//							"");
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
+					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
+					//					Application.executeCommand(command);
+					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
+
 					System.out.println("COPY DONE");
 
-					System.out.println(Resource.ID.Command.COMBINENODE);
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
+//										command2.addParameter(
+//												Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+//												targetPath);
 					Application.executeCommand(command2);
 				}
 			});
@@ -551,6 +564,12 @@ public class MyOntologyTrees{
 					dialog.close();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTCOPY);
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
+					//							"");
+					//					command.addParameter(
+					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
+					//							targetPath);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
 					Application.executeCommand(command);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
@@ -601,6 +620,25 @@ public class MyOntologyTrees{
 	public OntologyTree getOntologyTreeSource() {
 		return this.ontologyTreeSource;
 	}
+
+	//	protected void expandTreePaths(TreePath path) {
+	//		this._ontologyTreeSource.expandPath(path);
+	//		final Object node = path.getLastPathComponent();
+	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
+	//
+	//		for (int index = 0; index < n; index++) {
+	//			final Object child = this._ontologyTreeSource.getModel().getChild(
+	//					node, index);
+	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
+	//			/*
+	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
+	//			 * item, leaf it closed and return return; }
+	//			 */
+	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
+	//				expandTreePaths(path.pathByAddingChild(child));
+	//			}
+	//		}
+	//	}
 
 	public OntologyTree getOntologyTreeTarget() {
 		return this.ontologyTargetTree;
@@ -685,7 +723,7 @@ public class MyOntologyTrees{
 			newNode.getTargetNodeAttributes().setVisualattributes(
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
-			newNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
+			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
 		}
 		else {
 			System.out.println("sourceNode.getOntologyCellAttributes() == null");
@@ -743,12 +781,7 @@ public class MyOntologyTrees{
 	/* OT Commands */
 	public void setTargetAttributesAsSourcePath(OntologyTreeNode sourceNode,
 			OntologyTreeNode targetNode, String attribute) {
-		System.out.println("setting attribute: " + attribute);
-
 		if (sourceNode != null) {
-			System.out.println(" - do:" + sourceNode.getName() + " -> "
-					+ targetNode.getName() + "!");
-
 			setTargetAttribute(targetNode, attribute,
 					sourceNode.getOntologyCellAttributes().getC_FULLNAME());
 		}
