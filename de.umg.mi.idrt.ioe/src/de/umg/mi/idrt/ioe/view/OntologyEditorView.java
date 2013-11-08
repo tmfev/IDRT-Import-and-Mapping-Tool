@@ -162,6 +162,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Label label_1;
 	private static Text searchTextTarget;
 	private static Button searchClearButtonTarget;
+	private static Text lblStagingName;
 
 
 
@@ -334,6 +335,9 @@ public class OntologyEditorView extends ViewPart {
 		}
 	}
 	
+	public static void setStagingName(String stagingName) {
+		lblStagingName.setText(stagingName);
+	}
 	
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
 		int size = nodeLists.getNumberOfItemNodes();
@@ -354,11 +358,11 @@ public class OntologyEditorView extends ViewPart {
 
 		//TODO HERE
 
-		//		Shell shell = new Shell();
-		//		shell.setSize(844, 536);
-		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//		mainComposite = new Composite(shell, SWT.NONE);
-		//		mainComposite.setLayout(new BorderLayout(0, 0));
+//				Shell shell = new Shell();
+//				shell.setSize(844, 536);
+//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//				mainComposite = new Composite(shell, SWT.NONE);
+//				mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -655,12 +659,14 @@ public class OntologyEditorView extends ViewPart {
 		dropTarget5.addDropListener(dropListenerStaging);
 
 		composite_6 = new Composite(composite_3, SWT.NONE);
-		composite_6.setLayout(new GridLayout(1, false));
+		composite_6.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+		composite_6.setLayout(new GridLayout(2, false));
 		lblSource = new Label(composite_6, SWT.NONE);
-		lblSource.setText("Staging i2b2");
-		new Label(composite_3, SWT.NONE);
-		new Label(composite_3, SWT.NONE);
-
+		lblSource.setText("Staging i2b2:");
+		
+		lblStagingName = new Text(composite_6, SWT.NONE);
+		lblStagingName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
+		lblStagingName.setEditable(false);
 		//		btnCancel = new Button(composite_3, SWT.NONE);
 		//		btnCancel.setText("CANCEL");
 		//		btnCancel.addSelectionListener(new SelectionListener() {
@@ -678,7 +684,7 @@ public class OntologyEditorView extends ViewPart {
 		//		new Label(composite_3, SWT.NONE);
 		composite_5 = new Composite(composite_3, SWT.NONE);
 		composite_5.setLayout(new GridLayout(2, false));
-		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 3, 1));
 
 		Button btnExpandAllStaging = new Button(composite_5, SWT.FLAT);
 		btnExpandAllStaging.setSize(28, 26);
@@ -1605,10 +1611,10 @@ public class OntologyEditorView extends ViewPart {
 //						stagingServer.setSchema(schema);
 //						setStagingServer(stagingServer);
 //						setStagingSchemaName(schema);
+						
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTargetTree().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));
-
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 

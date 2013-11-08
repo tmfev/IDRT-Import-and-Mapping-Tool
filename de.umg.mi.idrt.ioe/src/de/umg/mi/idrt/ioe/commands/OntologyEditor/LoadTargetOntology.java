@@ -41,6 +41,12 @@ public class LoadTargetOntology extends AbstractHandler {
 		if ( version != null && !version.isEmpty() ){
 			System.out.println("STRINGVERSION:" + version);
 			target = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
+			if (target == null){
+				Console.error("Coudn't find the target to load.");
+				return null;
+			} else {
+				OntologyEditorView.getTargetProjects().setSelectedTarget(target);
+			}
 		}else
 			target = OntologyEditorView.getTargetProjects().getSelectedTarget();
 
@@ -83,7 +89,6 @@ public class LoadTargetOntology extends AbstractHandler {
 
 
 		}
-
 
 
 		return null;

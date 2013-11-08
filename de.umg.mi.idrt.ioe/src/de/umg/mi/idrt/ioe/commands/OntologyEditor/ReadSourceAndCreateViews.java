@@ -41,6 +41,8 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		stagingServer.setSchema(ServerView.getCurrentSchema());
 		OntologyEditorView.setStagingServer(stagingServer);
 		OntologyEditorView.setStagingSchemaName(ServerView.getCurrentSchema());
+		System.out.println("((String)(event.data)) "+ ServerView.getCurrentSchema());
+	
 		// check if the ontology table has more than 1 item
 		if (TOSConnector.checkOntology() == true) {
 			Console.info("Ontology found in the i2b2 source table.");
@@ -104,7 +106,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorTargetInfoView(editorTargetInfoView);
 
-			
+			OntologyEditorView.setStagingName(ServerView.getCurrentSchema());
 			Application.getStatusView().addMessage(
 					"The i2b2 staging project has been loaded.");
 			
