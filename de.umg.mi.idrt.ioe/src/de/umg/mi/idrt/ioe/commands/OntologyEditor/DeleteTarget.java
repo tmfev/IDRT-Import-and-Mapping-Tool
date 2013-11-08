@@ -69,7 +69,7 @@ public class DeleteTarget extends AbstractHandler {
 		
 		// deleting the target from the target projects object and the gui drop down menu
 		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
-		OntologyEditorView.removeFromVersionCombo(String.valueOf( targetOld.getVersion() ));
+		OntologyEditorView.removeVersionFromCombo(String.valueOf( targetOld.getVersion() ));
 		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetOld);
 		
 	

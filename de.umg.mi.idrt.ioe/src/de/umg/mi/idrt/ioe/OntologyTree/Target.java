@@ -126,7 +126,7 @@ public class Target {
 	 * @param targetDBSchema the targetDBSchema to set
 	 */
 	public void setTargetDBSchema(String targetDBSchema) {
-		this.targetDBSchema = targetDBSchema;
+		this.targetDBSchema = (targetDBSchema == null ? "" : targetDBSchema);
 	}
 
 	/**
