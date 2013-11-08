@@ -89,13 +89,13 @@ public class CombineNodesCommand extends AbstractHandler {
 			//			System.out.println("CHECKING " + node.getName());
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
-				System.out.println("nodeToCheck id: " + nodeToCheck.getID());
+//				System.out.println("nodeToCheck id: " + nodeToCheck.getID());
 				Pattern p = Pattern.compile(ICDREGEX);
 				Matcher m = p.matcher(nodeToCheck.getID());
 				if (m.find()) {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
-						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
+//						System.out.println(node.getID() + " IN " + nodeToCheck.getID());
 //						System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
 						perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
 //						System.out.println(perfectPath);
@@ -109,7 +109,7 @@ public class CombineNodesCommand extends AbstractHandler {
 					if (m.find()) {
 						String ops = m.group();
 						if (node.getID().contains(ops)) {
-							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
+//							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
 //							System.out.println("SourcePATH: " + nodeToCheck.getTargetNodeAttributes().getSourcePath());
 							perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
 //							System.out.println(perfectPath);
@@ -161,7 +161,7 @@ public class CombineNodesCommand extends AbstractHandler {
 				if (m.find()) {
 					String icd = m.group();
 					if (node.getID().contains(icd)) {
-						System.out.println("ICD: " + node.getID() + " IN " + nodeToCheck.getID());
+//						System.out.println("ICD: " + node.getID() + " IN " + nodeToCheck.getID());
 						node.getTargetNodeAttributes().removeAllStagingPaths();
 						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
 						found = true;
@@ -174,7 +174,7 @@ public class CombineNodesCommand extends AbstractHandler {
 					if (m.find()) {
 						String icd = m.group();
 						if (node.getID().contains(icd)) {
-							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
+//							System.out.println("OPS: " + node.getID() + " IN " + nodeToCheck.getID());
 							node.getTargetNodeAttributes().removeAllStagingPaths();
 							node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
 							found = true;
