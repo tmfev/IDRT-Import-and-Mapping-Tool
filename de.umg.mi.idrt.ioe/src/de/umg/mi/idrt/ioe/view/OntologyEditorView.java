@@ -541,7 +541,7 @@ public class OntologyEditorView extends ViewPart {
 
 					@Override
 					public void run() {
-						searchNode(getOntologyStagingTree().getNodeLists(),searchText.getText(), getOntologyStagingTree().getRootNode(),stagingTreeViewer);
+						searchNode(getOntologyStagingTree().getNodeLists(),searchText.getText(), getOntologyStagingTree().getI2B2RootNode(),stagingTreeViewer);
 						stagingTreeViewer.refresh();
 						stagingComposite.redraw();
 						sash.redraw();
@@ -580,7 +580,7 @@ public class OntologyEditorView extends ViewPart {
 				new Thread(new Runnable() {
 					@Override
 					public void run() {
-						searchNode(getOntologyTargetTree().getNodeLists(), searchTextTarget.getText(), getOntologyTargetTree().getRootNode(), targetTreeViewer);
+						searchNode(getOntologyTargetTree().getNodeLists(), searchTextTarget.getText(), getOntologyTargetTree().getI2B2RootNode(), targetTreeViewer);
 						targetTreeViewer.refresh();
 						targetComposite.redraw();
 						sash.redraw();
@@ -771,6 +771,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void focusGained(FocusEvent arg0) {
 				oldSelectedVersion = versionCombo.getText();
+				System.out.println(oldSelectedVersion);
 			}
 
 			@Override
@@ -833,10 +834,10 @@ public class OntologyEditorView extends ViewPart {
 							ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.DELETETARGET);
 							command.addParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 							Application.executeCommand(command);
+							System.out.println("setting old text: " + oldSelectedVersion);
 							
-							
-							
-							
+							versionCombo.setText(versionCombo.getItem(versionCombo.getItems().length-1));
+							versionCombo.getParent().setFocus();
 						}
 					});
 
@@ -1344,6 +1345,12 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent event) {
 				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer.getSelection();
 				OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
+				if (node == OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())
+					System.out.println("TRUE");
+				
+				for (OntologyTreeSubNode child : node.getTargetNodeAttributes().getSubNodeList()) {
+					System.out.println(child.getStagingName() + ":" + child.getStagingPath());
+				}
 				System.out.println(node.getTreePath());
 			}
 		});
@@ -1588,14 +1595,16 @@ public class OntologyEditorView extends ViewPart {
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
 					//do nothing
 				}
+				else if (((String)(event.data)).equals("stagingTreeViewer")) {
+					System.err.println("staging node dropped");
+				}
 				else {
 					try {
-						String schema = (String)event.data;
-						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
-						stagingServer.setSchema(schema);
-						setStagingServer(stagingServer);
-						setStagingSchemaName(schema);
-						//TODO
+//						String schema = (String)event.data;
+//						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
+//						stagingServer.setSchema(schema);
+//						setStagingServer(stagingServer);
+//						setStagingSchemaName(schema);
 						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 						setTargetNameVersion(getLatestVersion((String)(event.data)));
 						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTargetTree().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));

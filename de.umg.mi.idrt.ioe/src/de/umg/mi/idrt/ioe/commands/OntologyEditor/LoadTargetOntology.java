@@ -8,12 +8,15 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeContentProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 
@@ -31,32 +34,31 @@ public class LoadTargetOntology extends AbstractHandler {
 
 		Target target;
 		Console.info("Command: LoadTargetOntology");
-		
+
 		String version = event
 				.getParameter(Resource.ID.Command.IEO.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
-		
+
 		if ( version != null && !version.isEmpty() ){
 			System.out.println("STRINGVERSION:" + version);
 			target = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
 		}else
 			target = OntologyEditorView.getTargetProjects().getSelectedTarget();
-		
-	
 
 		TOSConnector tos = new TOSConnector();
 		//Clears the TargetOntologyTree
 		if (OntologyEditorView.getTargetTreeViewer()!=null) {
+			System.out.println(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getName() + " removing");
 			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().removeFromParent();
 			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren().clear();
 			OntologyEditorView.getOntologyTargetTree()
 			.getNodeLists().add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
 			for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
+				System.out.println(child.getName());
 				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
 			}
 
 		}
 
-		
 		if ( target  == null ){
 			Console.error("Can not load target ontology, because no target is selected or version found.");
 			return null;
@@ -68,8 +70,10 @@ public class LoadTargetOntology extends AbstractHandler {
 		try {
 			tos.setContextVariable("Job", "LoadTargetOntology");
 			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
-	
+
 			tos.runJob();
+			if (OntologyEditorView.getTargetTreeViewer() != null)
+				OntologyEditorView.getTargetTreeViewer().refresh();
 		} catch (Exception e) {
 			e.printStackTrace();
 			String message = "Error while using a TOS-plugin for job \"LoadTargetOntology\": "
