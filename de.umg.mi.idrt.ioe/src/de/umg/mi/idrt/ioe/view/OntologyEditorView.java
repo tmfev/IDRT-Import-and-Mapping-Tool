@@ -304,14 +304,14 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			versionCombo.removeAll();
 			versionCombo.setText("");
-			ArrayList<String> list = new ArrayList<String>();
+			ArrayList<Integer> list = new ArrayList<Integer>();
 			for (int i = 0; i<getTargetProjects().getSelectedTargetProject().getTargetsList().size();i++) {
 				//					addVersionName("" + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
-				list.add(""+getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
+				list.add(getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
 				//					System.out.println(i + " " + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion() + " " +getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getTargetDBSchema());
 			}
 			Collections.sort(list);
-			for (String i : list) {
+			for (Integer i : list) {
 				addVersionName(""+i);
 			}
 			composite_2.layout();
