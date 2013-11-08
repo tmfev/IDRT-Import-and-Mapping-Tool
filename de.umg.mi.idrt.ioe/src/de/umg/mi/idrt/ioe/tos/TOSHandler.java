@@ -165,7 +165,6 @@ public class TOSHandler {
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
 				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes);
 		if (treeLevel!=0) {
-			System.out.println("->" + treeLevel + ":" + treePath + ":" + stagingDimension);
 			OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
 		}
 	}

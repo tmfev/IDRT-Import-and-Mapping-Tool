@@ -53,15 +53,13 @@ public class LoadTargetOntology extends AbstractHandler {
 		TOSConnector tos = new TOSConnector();
 		//Clears the TargetOntologyTree
 		if (OntologyEditorView.getTargetTreeViewer()!=null) {
-			System.out.println(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getName() + " removing");
 			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().removeFromParent();
 			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren().clear();
 			OntologyEditorView.getOntologyTargetTree()
 			.getNodeLists().add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
-			for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
-				System.out.println(child.getName());
-				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
-			}
+//			for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
+//				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
+//			}
 
 		}
 
