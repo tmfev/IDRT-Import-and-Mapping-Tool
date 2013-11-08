@@ -298,6 +298,12 @@ public class OntologyEditorView extends ViewPart {
 	private static void hideNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.hideNode");
 	}
+	
+	public static void refreshTargetVersionGUI(){
+		
+		refreshVersionCombo();
+		refreshTargetName();
+	}
 
 	public static void refreshVersionCombo() {
 		System.out.println("REFRESH");
@@ -314,6 +320,11 @@ public class OntologyEditorView extends ViewPart {
 			for (Integer i : list) {
 				addVersionName(""+i);
 			}
+			
+			if (getTargetProjects().getSelectedTarget() != null){
+				versionCombo.setText(String.valueOf(getTargetProjects().getSelectedTarget().getVersion()));
+			}
+			
 			composite_2.layout();
 		} else {
 			System.err.println("versionCombo null");
@@ -322,7 +333,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 	
 	
-	public static void removeFromVersionCombo(String version) {
+	public static void removeVersionFromCombo(String version) {
 		
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + oldSelectedVersion);
@@ -1249,7 +1260,7 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.getTree().setMenu(menu);
 		stagingComposite.layout();
 		mainComposite.layout();
-		refreshVersionCombo();
+		refreshTargetVersionGUI();
 		System.out.println(System.currentTimeMillis()-time +"ms");
 	}
 
@@ -1493,7 +1504,7 @@ public class OntologyEditorView extends ViewPart {
 		targetComposite.layout();
 		mainComposite.layout();
 		column.getColumn().setWidth(targetComposite.getBounds().width-5);
-		refreshVersionCombo();
+		refreshTargetVersionGUI();
 	}
 
 	public static void setTargetNameVersion(String version) {
@@ -1522,6 +1533,23 @@ public class OntologyEditorView extends ViewPart {
 
 		composite_2.layout();
 	}
+	
+	public static void refreshTargetName() {
+		
+		if(lblTargetName == null)
+			return;
+		
+		if (getTargetProjects().getSelectedTarget() != null && !getTargetProjects().getSelectedTarget().getTargetDBSchema().isEmpty()) {
+			lblTargetName.setText(getTargetProjects().getSelectedTarget().getTargetDBSchema());
+			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		}
+		else {
+			lblTargetName.setText("Drop i2b2 target here!");
+			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		}
+		composite_2.layout();
+	}	
+	
 
 	private static void unmarkAllNodes(OntologyTreeNode node) {
 
