@@ -49,7 +49,6 @@ public class LoadTargetOntology extends AbstractHandler {
 			}
 		}else
 			target = OntologyEditorView.getTargetProjects().getSelectedTarget();
-		
 
 		TOSConnector tos = new TOSConnector();
 		//Clears the TargetOntologyTree

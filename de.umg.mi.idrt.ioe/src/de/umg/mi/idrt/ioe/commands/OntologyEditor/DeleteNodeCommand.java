@@ -33,8 +33,10 @@ public class DeleteNodeCommand extends AbstractHandler {
 			if ( mNode instanceof OntologyTreeNode) {
 				
 				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				System.out.println(node.getName());
 				OntologyEditorView.setNotYetSaved(true);
 				if (!(node ==OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {
+					System.out.println("!=");
 					node.removeFromParent();
 				}
 				else {
@@ -46,9 +48,10 @@ public class DeleteNodeCommand extends AbstractHandler {
 					//			editorTargetView.setComposite(OTTarget);
 					//TODO Ontology Editor
 					//			firstElement.removeFromParent();
-					for (OntologyTreeNode child : node.getChildren()) {
-						node.remove(child);
-					}
+//					for (OntologyTreeNode child : node.getChildren()) {
+//						System.out.println(child.getName());
+//						node.remove(child);
+//					}
 				}
 			}
 			else if (mNode instanceof OntologyTreeSubNode) {

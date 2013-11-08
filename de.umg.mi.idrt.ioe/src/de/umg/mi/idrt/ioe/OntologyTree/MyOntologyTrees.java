@@ -651,10 +651,6 @@ public class MyOntologyTrees{
 		return sourceRootNode;
 	}
 
-	public OntologyTreeNode getStudyNode() {
-		return this.ontologyTreeSource.getRootNode();
-	}
-
 	/**
 	 * @return the activeItemNode
 	 */

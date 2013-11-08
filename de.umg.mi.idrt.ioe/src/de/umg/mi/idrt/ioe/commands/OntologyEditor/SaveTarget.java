@@ -97,7 +97,7 @@ public class SaveTarget extends AbstractHandler {
                     new FileOutputStream(stringPath), "UTF-8"),
                     ';');
 			_writer.writeNext(fields);
-			writeNode((OntologyTreeNode) ((OntologyTreeNode) ontologyTreeTarget.getI2B2RootNode()));
+			writeNode(ontologyTreeTarget.getI2B2RootNode());
 			_writer.close();
 			
 			
@@ -133,7 +133,6 @@ public class SaveTarget extends AbstractHandler {
 	private void writeNode(OntologyTreeNode node) {
 
 		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
-		
 		String[] fields = new String[9];
 
 		fields[0] = targetID;
@@ -147,9 +146,9 @@ public class SaveTarget extends AbstractHandler {
 		fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
 			_writer.writeNext(fields);
 		}
-		for (int x = 0; x < node.getChildCount(); x++) {
-			writeNode((OntologyTreeNode) node.getChildAt(x));
-		}
+		
+		for (OntologyTreeNode child : node.getChildren())
+			writeNode(child);
 
 	}
 
