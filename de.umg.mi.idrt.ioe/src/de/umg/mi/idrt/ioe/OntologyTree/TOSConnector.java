@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.Path;
 import org.osgi.framework.Bundle;
 
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
@@ -124,14 +125,8 @@ public class TOSConnector {
 				e1.printStackTrace();
 			}
 
-			//			String schema = ServerView.getCurrentSchema();
-			// String schema = ServerView.getCurrentSchema();
-			// defaultProps.getProperty("schema");
-
-			//			String serverUniqueName = OntologyEditorView.getCurrentServer().;
-			// String serverUniqueName = OntologyEditorView.getCurrentServer().;
-
 			Server currentServer = OntologyEditorView.getStagingServer();
+			
 			Console.info(currentServer.getSchema());
 			//			if (serverUniqueName != null) {
 			//				currentServer = ServerList.getTargetServers().get(
@@ -171,15 +166,35 @@ public class TOSConnector {
 				//setContextVariable("OracleSid", currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_Username",
 						currentServer.getUser());
+				setContextVariable("DB_StagingI2B2_Instance",
+						currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_Password",
 						currentServer.getPassword());
 				setContextVariable("DB_StagingI2B2_Schema",
 						currentServer.getSchema());
-				
 				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				
+				//
+				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
+				System.out.println("TargetServerName" + targetServer.getName()); 
+				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
+				
+				
+				setContextVariable("DB_TargetI2B2_Username",
+						targetServer.getUser());
+				setContextVariable("DB_TargetI2B2_Password",
+						targetServer.getPassword());
+				setContextVariable("DB_TargetI2B2_Schema",
+						OntologyEditorView.getTargetSchemaName());
+				setContextVariable("DB_TargetI2B2_Instance",
+						targetServer.getSID());
+				
+				
+				setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
+				
+				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				
 				setContextVariable("TableIEOTargetOntology", "IOE_TARGET_ONTOLOGY");
 				setContextVariable("TableIEOTarget", "IOE_TARGET");
@@ -274,8 +289,52 @@ public class TOSConnector {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
+				Server currentServer = OntologyEditorView.getStagingServer();
+				
+				Console.info(currentServer.getSchema());
+				//			if (serverUniqueName != null) {
+				//				currentServer = ServerList.getTargetServers().get(
+				//						serverUniqueName);
+				//			}
 
+				Console.info("Current server: " + currentServer.toString());
+
+					Console.info("Using selected server \""
+							+ currentServer.getName() + "(\""
+							+ currentServer.getSchema() + "\")\" for db query.");
+
+					//				currentServer.setSchema(schema);
+					//				OntologyEditorView.setCurrentServer(currentServer);
+
+					Console.info("currentSchema:" + currentServer.getSchema());
+					Console.info("sid: " + currentServer.getSID());
+					System.out
+					.println("OracleUsername: " + currentServer.getUser());
+
+					//
+
+					//setContextVariable("OracleHost", currentServer.getIp());
+					//setContextVariable("OraclePort", currentServer.getPort());
+					//setContextVariable("OracleSid", currentServer.getSID());
+					setContextVariable("DB_StagingI2B2_Username",
+							currentServer.getUser());
+					setContextVariable("DB_StagingI2B2_Password",
+							currentServer.getPassword());
+					System.out.println("OntologyEditorView.getStagingSchemaName()" +OntologyEditorView.getStagingSchemaName());
+					
+					
+					setContextVariable("DB_StagingI2B2_Schema",
+							OntologyEditorView.getStagingSchemaName());
+					setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+					setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+					setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				
+				
+				
+				
+				
 				try {
 					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 					exit = tos.runJobInTOS((getARGV()));
