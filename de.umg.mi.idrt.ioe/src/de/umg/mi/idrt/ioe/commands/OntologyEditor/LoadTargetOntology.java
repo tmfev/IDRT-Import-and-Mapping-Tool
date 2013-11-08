@@ -88,6 +88,7 @@ public class LoadTargetOntology extends AbstractHandler {
 
 		}
 
+		OntologyEditorView.refreshTargetVersionGUI();
 
 
 		return null;

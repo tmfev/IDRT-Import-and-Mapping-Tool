@@ -19,22 +19,30 @@ public class DeleteTarget extends AbstractHandler {
 	int targetID;
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		String targetID = event
+		
+		Target targetOld;
+		
+		String version = event
 				.getParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID);
-		
-		Target targetOld = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( targetID ));
-		
+
+		if ( version != null && !version.isEmpty() ){
+			
+			targetOld = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
+			if (targetOld == null){
+				Console.error("Coudn't find the target for which a deletion was desired.");
+				return null;
+			} else {
+				//OntologyEditorView.getTargetProjects().setSelectedTarget(targetOld);
+			}
+		}else
+			targetOld = OntologyEditorView.getTargetProjects().getSelectedTarget();
+
 		
 		Console.info("Deleting Target Ontology with the TargetID="
 				+ targetOld.getTargetID() + " and Version=" + targetOld.getVersion()
 				+ " of the TargetProject with ID="
 				+ OntologyEditorView.getTargetProjects()
 						.getSelectedTargetProject().getTargetProjectID() + " ");
-		// ActionCommand command = new
-		// ActionCommand(Resource.ID.Command.IEO.DELETETARGET);
-		// command.addParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID,
-		// "");
-		// Application.executeCommand(command);
 		
 		// check if there are more than one version available 
 		if (OntologyEditorView.getTargetProjects().getSelectedTargetProject().getTargetsList().size() <= 1){
@@ -61,7 +69,7 @@ public class DeleteTarget extends AbstractHandler {
 		
 		// deleting the target from the target projects object and the gui drop down menu
 		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
-		OntologyEditorView.removeFromVersionCombo(String.valueOf( targetOld.getVersion() ));
+		OntologyEditorView.removeVersionFromCombo(String.valueOf( targetOld.getVersion() ));
 		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetOld);
 		
 	
