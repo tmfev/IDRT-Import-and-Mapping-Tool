@@ -268,7 +268,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static TargetProjects getTargetProjects(){
-		return ((OntologyTreeTargetRootNode)getOntologyTargetTree().getTreeRoot()).getTargetProjects();
+		return ((OntologyTreeTargetRootNode)getOntologyTargetTree().getRootNode()).getTargetProjects();
 	}
 
 	public static String getTargetSchemaName() {
@@ -970,7 +970,7 @@ public class OntologyEditorView extends ViewPart {
 
 
 				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
-				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getTreeRoot()).getName());
+				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
 				System.out.println("childCount: " + bla.getChildCount());
 				if (bla.getChildCount()>0 && isNotYetSaved()) {

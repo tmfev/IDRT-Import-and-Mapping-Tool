@@ -72,7 +72,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			// editorSourceView.setComposite();
 			OntologyEditorView.setSourceContent();
 			OntologyTreeModel newTreeModel = new OntologyTreeModel(
-					OntologyEditorView.getOntologyStagingTree().getTreeRoot());
+					OntologyEditorView.getOntologyStagingTree().getRootNode());
 
 			OntologyEditorView.getOntologyStagingTree()
 					.setModel(newTreeModel);
@@ -86,7 +86,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			}
 
 			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
-					OntologyEditorView.getOntologyTargetTree().getTreeRoot());
+					OntologyEditorView.getOntologyTargetTree().getRootNode());
 
 			OntologyEditorView.getOntologyTargetTree()
 					.setModel(newTreeModel2);

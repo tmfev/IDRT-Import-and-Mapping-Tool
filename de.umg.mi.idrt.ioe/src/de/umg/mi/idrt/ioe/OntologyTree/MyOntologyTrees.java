@@ -664,7 +664,7 @@ public class MyOntologyTrees{
 			Console.error("OTTarget is null while trying to get the tree root!");
 			return null;
 		}
-		return this.ontologyTargetTree.getTreeRoot();
+		return ontologyTargetTree.getRootNode();
 	}
 
 	/**
@@ -678,7 +678,7 @@ public class MyOntologyTrees{
 		if (this.ontologyTreeSource == null)
 			Console.error("OT is null while trying to get the tree root!");
 
-		return this.ontologyTreeSource.getTreeRoot();
+		return this.ontologyTreeSource.getRootNode();
 	}
 
 	public String getVisitFromStringPath(String stringPath) {

@@ -42,7 +42,7 @@ public class AddItemCommand extends AbstractHandler {
 		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		targetTreeViewer.refresh();
 		
-		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getTreeRoot().getNextNode();
+		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);
 		System.out.println(test.getName());
