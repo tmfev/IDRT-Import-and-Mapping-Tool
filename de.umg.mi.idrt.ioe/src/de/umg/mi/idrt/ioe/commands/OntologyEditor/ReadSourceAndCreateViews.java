@@ -9,13 +9,12 @@ import org.eclipse.ui.PlatformUI;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeCreatorTOS;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
@@ -24,7 +23,6 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class ReadSourceAndCreateViews extends AbstractHandler {
 
-	private ExecutionEvent _event;
 
 	public ReadSourceAndCreateViews() {
 		super();
@@ -53,8 +51,6 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			return null;
 		}
 
-		_event = event;
-
 		// create the source i2b2-Ontology-Editor view
 		try {
 
@@ -65,7 +61,8 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			Activator.getDefault().getResource()
 					.setEditorSourceInfoView(editorSourceInfoView);
 
-			new OntologyTreeCreatorTOS(OntologyEditorView.getMyOntologyTree(), "");
+			Application.executeCommand(new ActionCommand(
+					Resource.ID.Command.IEO.LOADEVERYTHING));
 
 			/*
 			 * creator.createMeta(); creator.createOntology();

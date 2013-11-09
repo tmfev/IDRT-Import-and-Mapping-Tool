@@ -65,9 +65,6 @@ import routines.TOSHandler2;
 //the import part of tJava_3
 //import java.util.List;
 
-//the import part of tJava_4
-//import java.util.List;
-
 //the import part of tJava_7
 //import java.util.List;
 
@@ -946,16 +943,6 @@ public class TOSIDRTConnector implements TalendJob {
 		tDie_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tJava_4_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_4", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_4_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tJDBCRow_2_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1312,17 +1299,6 @@ public class TOSIDRTConnector implements TalendJob {
 	}
 
 	public void tDie_2_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tJava_4_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -2505,7 +2481,6 @@ public class TOSIDRTConnector implements TalendJob {
 				System.out.println(" - context.DB_TargetI2B2_Schema: \""
 						+ context.DB_TargetI2B2_Schema + "\"");
 				System.out.println(" - context.Job: \"" + context.Job + "\"");
-				System.out.println(" - context.Var1: \"" + context.Var1 + "\"");
 				System.out.println(" - context.DataFile: \"" + context.DataFile
 						+ "\"");
 
@@ -2532,7 +2507,8 @@ public class TOSIDRTConnector implements TalendJob {
 				ok_Hash.put("tJava_2", true);
 				end_Hash.put("tJava_2", System.currentTimeMillis());
 
-				if (context.Job.equals("ontology")) {
+				if (context.Job.equals("ontology")
+						|| context.Job.equals("ReadStagingOntology")) {
 
 					tJDBCInput_1Process(globalMap);
 				}
@@ -2546,7 +2522,7 @@ public class TOSIDRTConnector implements TalendJob {
 				if (context.Job.equals("add_target_ontology")
 						|| context.Job.equals("WriteTargetOntology")) {
 
-					tJava_4Process(globalMap);
+					tJDBCRow_2Process(globalMap);
 				}
 
 				if (context.Job.equals("delete_target_ontology")) {
@@ -4064,89 +4040,6 @@ public class TOSIDRTConnector implements TalendJob {
 		}
 
 		globalMap.put("tDie_2_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_4Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_4_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJava_4 begin ] start
-				 */
-
-				ok_Hash.put("tJava_4", false);
-				start_Hash.put("tJava_4", System.currentTimeMillis());
-				currentComponent = "tJava_4";
-
-				int tos_count_tJava_4 = 0;
-
-				// System.out.println("Deleting old ontology ...");
-
-				/**
-				 * [tJava_4 begin ] stop
-				 */
-				/**
-				 * [tJava_4 main ] start
-				 */
-
-				currentComponent = "tJava_4";
-
-				tos_count_tJava_4++;
-
-				/**
-				 * [tJava_4 main ] stop
-				 */
-				/**
-				 * [tJava_4 end ] start
-				 */
-
-				currentComponent = "tJava_4";
-
-				ok_Hash.put("tJava_4", true);
-				end_Hash.put("tJava_4", System.currentTimeMillis());
-
-				/**
-				 * [tJava_4 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJava_4:OnSubjobOk", "", Thread
-								.currentThread().getId() + "", "", "", "", "",
-						"");
-			}
-
-			tJDBCRow_2Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJDBCRow_2Process(final java.util.Map<String, Object> globalMap)
@@ -6038,7 +5931,9 @@ public class TOSIDRTConnector implements TalendJob {
 
 				int tos_count_tJavaFlex_7 = 0;
 
-				TOSHandler.status("Starting TOS-Job \"LoadTargetOntology\".");
+				TOSHandler
+						.status("Starting TOS-Job \"LoadTargetOntology\" (TargetID="
+								+ context.TargetID + ").");
 
 				/**
 				 * [tJavaFlex_7 begin ] stop
@@ -8232,6 +8127,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 238445 characters generated by Talend Open Studio for Data Integration on the
- * 8. November 2013 13:31:22 MEZ
+ * 235940 characters generated by Talend Open Studio for Data Integration on the
+ * 9. November 2013 18:58:12 MEZ
  ************************************************************************************************/

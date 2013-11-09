@@ -270,6 +270,8 @@ public class Resource {
 
 			public class IEO {
 				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
+				public final static String LOADEVERYTHING = "de.umg.mi.idrt.ioe.LoadEverything";				
+				public final static String LOADSTAGINGONTOLOGY = "de.umg.mi.idrt.ioe.LoadStagingtOntology";				
 				public final static String LOADTARGETONTOLOGY = "de.umg.mi.idrt.ioe.LoadTargetOntology";
 				public final static String LOADTARGETONTOLOGY_ATTRIBUTE_VERSION = "de.umg.mi.idrt.ioe.LoadTargetOntologyAttribute.Version";
 				public final static String LOADTARGETPROJECTS = "de.umg.mi.idrt.ioe.LoadTargetProjects";
@@ -286,10 +288,21 @@ public class Resource {
 				
 				public final static String WRITE_TARGET_ONTOLOGY = "WriteTargetOntology";
 				public final static String DELETE_TARGET = "DeleteTarget";
+				public final static String READ_STAGING_ONTOLOGY = "ReadStagingOntology";
 				
 				
 			}
 
+		}
+		
+		public class TOS {
+			
+			public class ContextVariable {
+				public final static String JOB = "Job";
+				public final static String DATA_FILE = "DataFile";
+				public final static String TARGETID = "TargetID";
+			}
+			
 		}
 
 		public class OntologyTreeEditor {

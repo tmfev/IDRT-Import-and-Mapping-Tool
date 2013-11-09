@@ -372,44 +372,7 @@ public class TOSConnector {
 		Console.info("TOSConnector: establising a TOS connection");
 	}
 
-	public void getOntology() {
-		Console.info("TOSConnector: getOntology()");
 
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-
-				try {
-
-					setContextVariable("Job", "ontology");
-					setContextVariable("SQLTable", "I2B2");
-					/*
-					 * setContextVariable("SQLCommand",
-					 * "SELECT * FROM I2B2IDRT.I2B2 WHERE C_HLEVEL > 0 ORDER BY C_HLEVEL ASC"
-					 * );
-					 */
-
-					tos.runJobInTOS((getARGV()));
-
-				} catch (Exception e) {
-					String message = "Error while using a TOS-plugin with function getOntology(): "
-							+ e.getMessage();
-					Console.error(message);
-					Application.getStatusView().addErrorMessage(message);
-					Console.info("TOS-Error2: " + tos.getErrorCode() + " / "
-							+ " / " + tos.getException() + " / "
-							+ tos.getStatus() + " / "
-							+ tos.getExceptionStackTrace() + " / "
-							+ tos.getContext().SQLCommand);
-
-				}
-			}
-		}).run();
-
-	}
 
 	public void runJob() {
 

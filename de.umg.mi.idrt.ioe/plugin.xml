@@ -263,5 +263,15 @@
                      optional="true">
                </commandParameter>
             </command>
+       <command
+             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadStagingOntology"
+             id="de.umg.mi.idrt.ioe.LoadStagingtOntology"
+             name="LoadStagingtOntology">
+       </command>
+       <command
+             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadEverything"
+             id="de.umg.mi.idrt.ioe.LoadEverything"
+             name="LoadEverything">
+       </command>
    </extension>
 </plugin>
