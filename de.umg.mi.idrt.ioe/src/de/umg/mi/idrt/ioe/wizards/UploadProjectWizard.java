@@ -150,7 +150,7 @@ public class UploadProjectWizard extends Wizard {
 						contextMap.put("truncateProject", "false");
 					}
 					
-					Application.executeCommand(Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
+					Application.executeCommand(Resource.ID.Command.IEO.STAGINGTOTARGET);
 //					TOSConnector.setCompleteContext(contextMap);
 //					int exitCode = TOSConnector.uploadProject();
 //					System.out.println("job finshed: " + exitCode);
