@@ -39,13 +39,10 @@ public class Resource {
 	public String TEXT_FILE = "cfg/english.lf";
 	public Properties TEXT = new Properties();
 	
-	public String test = "test0";
 
-	private ActionCommand _actionCommand;
-//	private EditorSourceView _editorSourceView;
 	private EditorSourceInfoView _editorSourceInfoView;
-//	private EditorTargetView _editorTargetView;
 	private EditorTargetInfoView _editorTargetInfoView;
+
 	public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
 	public final static String COLOR_INFO_HTML = "C8C8E6";
 	public final static Color COLOR_INFO = new Color(200, 200, 230);
@@ -74,14 +71,6 @@ public class Resource {
 		this._ontologyView = ontologyView;
 	}
 
-//	public EditorSourceView getEditorSourceView() {
-//		return _editorSourceView;
-//	}
-//
-//	public void setEditorSourceView(EditorSourceView editorSourceView) {
-//		this._editorSourceView = editorSourceView;
-//	}
-
 	public EditorSourceInfoView getEditorSourceInfoView() {
 		return _editorSourceInfoView;
 	}
@@ -90,14 +79,6 @@ public class Resource {
 			EditorSourceInfoView editorSourceInfoView) {
 		this._editorSourceInfoView = editorSourceInfoView;
 	}
-
-//	public EditorTargetView getEditorTargetView() {
-//		return _editorTargetView;
-//	}
-//
-//	public void setEditorTargetView(EditorTargetView editorTargetView) {
-//		this._editorTargetView = editorTargetView;
-//	}
 
 	public EditorTargetInfoView getEditorTargetInfoView() {
 		return _editorTargetInfoView;
@@ -174,38 +155,7 @@ public class Resource {
 
 	}
 
-	public class I2B2OracleDB {
-
-		public static final String SQL_OPERATOR_LIKE = "LIKE";
-		public static final String SQL_OPERATOR_EQUAL = "=";
-
-		public static final String TABLE_I2B2 = "I2B2";
-		public static final String TABLE_CONCEPT_DIMENSION = "CONCEPT_DIMENSION";
-		public static final String TABLE_PATIENT_DIMENSION = "PATIENT_DIMENSION";
-		public static final String TABLE_OBSERVATION_FACT = "OBSERVATION_FACT";
-
-		/* i2b2 */
-		public static final String COLUMN_C_HLEVEL = "C_HLEVEL";
-		public static final String COLUMN_C_FULLNAME = "C_FULLNAME";
-		public static final String COLUMN_C_NAME = "C_NAME";
-		public static final String COLUMN_C_SYNONYM_CD = "C_SYNONYM_CD";
-		public static final String COLUMN_C_VISUALATTRIBUTES = "C_VISUALATTRIBUTES";
-		public static final String COLUMN_C_TOTALNUM = "C_TOTALNUM";
-		public static final String COLUMN_C_BASECODE = "C_BASECODE";
-		public static final String COLUMN_C_FACTTABLECOLUMN = "C_FACTTABLECOLUMN";
-		public static final String COLUMN_C_TABLENAME = "C_TABLENAME";
-		public static final String COLUMN_C_COLUMNNAME = "C_COLUMNNAME";
-		public static final String COLUMN_C_COLUMNDATATYPE = "C_COLUMNDATATYPE";
-		public static final String COLUMN_C_OPERATOR = "C_OPERATOR";
-		public static final String COLUMN_C_DIMCODE = "C_DIMCODE";
-		public static final String COLUMN_C_TOOLTIP = "C_TOOLTIP";
-		public static final String COLUMN_UPDATE_DATE = "UPDATE_DATE";
-		public static final String COLUMN_DOWNLOAD_DATE = "DOWNLOAD_DATE";
-		public static final String COLUMN_IMPORT_DATE = "IMPORT_DATE";
-		public static final String COLUMN_SOURCESYSTEM_CD = "SOURCESYSTEM_CD";
-		public static final String COLUMN_VALUETYPE_CD = "VALUETYPE_CD";
-
-	}
+	
 
 	public class TOSConnector {
 
@@ -238,24 +188,7 @@ public class Resource {
 		}
 
 		public class Command {
-			public final static String OPEN_IMPORT_WIARD = "edu.goettingen.i2b2.importtool.commands.systemimport";
-			public final static String IMPORT = "edu.goettingen.i2b2.importtool.commands.Import";
-			public final static String IMPORT_FILE = "edu.goettingen.i2b2.importtool.commands.ImportFile";
-			public final static String IMPORT_FILENAME = "edu.goettingen.i2b2.importtool.commands.Import.Filename";
-			public final static String IMPORT_VISIBILITY_METADATAVERSION = "edu.goettingen.i2b2.importtool.commands.Import.VisibilityMetaDataVersion";
-			public final static String IMPORT_VISIBILITY_STUDYEVENT = "edu.goettingen.i2b2.importtool.commands.Import.VisibilityStudyEvent";
-			public final static String IMPORT_VISIBILITY_FORM = "edu.goettingen.i2b2.importtool.commands.Import.VisibilityForm";
-			public final static String EXPORT = "edu.goettingen.i2b2.importtool.commands.Export";
-			public final static String EXPORT_ATTRIBUTE_RESTRICT_NUMBER_OF_PATIENTS = "edu.goettingen.i2b2.importtool.commands.Export.Parameter.RestrictToNumberOfPatients";
-			public final static String EXPORT_ATTRIBUTE_NUMBER_OF_PATIENTS = "edu.goettingen.i2b2.importtool.commands.Export.Parameter.NumberOfPatients";
-			public final static String EXPORT_ATTRIBUTE_SCRAMBLE = "edu.goettingen.i2b2.importtool.commands.Export.Scramble";
-			public final static String EXPORT_ATTRIBUTE_SECOND_IDENT = "edu.goettingen.i2b2.importtool.commands.Export.SecondIdent";
-			public final static String EXPORT_ATTRIBUTE_SECOND_IDENT_LAB = "edu.goettingen.i2b2.importtool.commands.Export.SecondIdent.Lab";
-			public final static String EXPORT_ATTRIBUTE_WINDOWS_FILE = "edu.goettingen.i2b2.importtool.commands.Export.WindowsFile";
-			public final static String EXPORT_ATTRIBUTE_LINUX_FILE = "edu.goettingen.i2b2.importtool.commands.Export.LinuxFile";
-			public final static String EXPORT_ATTRIBUTE_DB_NAME = "edu.goettingen.i2b2.importtool.commands.Export.DatabaseName";
-			public final static String EXPORT_ONTOLOGY = "edu.goettingen.i2b2.importtool.commands.Export.Ontology";
-
+	
 			public final static String OTCOPY = "edu.goettingen.i2b2.importtool.command.OTCopy";
 			public final static String OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTCopy.Source";
 			public final static String OTCOPY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTCopy.Target";
@@ -264,10 +197,12 @@ public class Resource {
 			public final static String OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Source";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Target";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Attribute";
+			
 			public final static String DELETENODE = "de.umg.mi.idrt.ioe.deletenode";
 			public final static String COMBINENODE = "de.umg.mi.idrt.ioe.combineNodes";
 
 			public class IEO {
+			
 				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
 				public final static String LOADEVERYTHING = "de.umg.mi.idrt.ioe.LoadEverything";				
 				public final static String LOADSTAGINGONTOLOGY = "de.umg.mi.idrt.ioe.LoadStagingtOntology";				
@@ -304,43 +239,7 @@ public class Resource {
 			
 		}
 
-		public class OntologyTreeEditor {
 
-			public class Command {
-
-				public final static String EXPORT = "edu.goettingen.i2b2.importtool.OntologyTreeEditor.command.Export";
-
-				public final static String INPUT_LOW = "low";
-				public final static String INPUT_HIGH = "high";
-				public final static String CREATE_ANSWERS_INTEGER = "edu.goettingen.i2b2.importtool.OntologyTreeEditor.command.CreateAnswersInteger";
-
-				public final static String IMPORT = "edu.goettingen.i2b2.importtool.OntologyTreeEditor.command.Import";
-
-			}
-
-		}
-
-		public class Import {
-			public final static String SECOND_IDENT_GROUP = "Second_Ident";
-			public final static String SECOND_IDENT_ID = "Second_Ident_ID";
-			public final static String SECOND_IDENT_TYPE = "Second_Ident_Type";
-			public final static String SECOND_IDENT_PATH = "Second_Ident_Path";
-
-			public class Mode {
-				public final static String ODM13 = "ODM 1.3";
-				public final static String SECUTRIAL_KFO = "Secutrial KFO";
-				public final static String TOS = "Talend Open Studio";
-			}
-
-		}
-
-		public class Export {
-			public final static String DATABASEB_STRING = "Database_String";
-			public final static String CREATE_WINDOWS_ORACLE_BATCH = "Create_Windows_Oracle_Batch";
-			public final static String CREATE_Linux_ORACLE_BATCH = "Create_Linux_Oracle_Batch";
-			public final static String SCRAMBLE_PATIENT_DATA = "Scramble_Patient_Data";
-			public final static String SECOND_IDENT_PATH = "Second_Ident_Path";
-		}
 
 		public class Variables {
 
@@ -913,37 +812,5 @@ public class Resource {
 		text = text.replaceFirst("#", value3.toString());
 		return text;
 	}
-
-	public void setActionCommand(ActionCommand actionCommand) {
-		_actionCommand = actionCommand;
-	}
-
-	public ActionCommand getActionCommand() {
-		return _actionCommand;
-	}
-
-	public ActionCommand getActionCommand(String commandID) {
-
-		if (!hasActionCommand()) {
-			Console.error("No active ActionCommand '" + commandID + "' found.");
-			return null;
-		}
-
-		if (!commandID.equals(_actionCommand.getCommandID())) {
-			Console.error("Active ActionCommand isn't '" + commandID + "' but '"
-					+ _actionCommand.getCommandID() + "'.");
-		}
-
-		return _actionCommand;
-	}
-
-	public boolean hasActionCommand() {
-		return (_actionCommand != null);
-	}
-
-	public void removeActionCommand() {
-		_actionCommand = null;
-	}
-
 
 }
