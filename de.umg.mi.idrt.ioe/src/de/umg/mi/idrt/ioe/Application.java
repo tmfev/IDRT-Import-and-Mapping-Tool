@@ -258,13 +258,9 @@ public class Application implements IApplication {
 
 	public static void executeCommand(ActionCommand command) {
 
-		Application.getResource().setActionCommand(command);
-
 		if (command.hasParameters()) {
-			System.out.println("Command hasParameters");
 			Application.executeCommand(command.getParameterizedCommand());
 		} else {
-			System.out.println("Command hasNOOOOParameters");
 			Application.executeCommand(command.getCommandID());
 		}
 	}
