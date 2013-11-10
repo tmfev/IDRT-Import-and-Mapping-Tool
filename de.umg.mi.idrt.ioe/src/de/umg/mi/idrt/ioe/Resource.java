@@ -23,7 +23,7 @@ import de.umg.mi.idrt.ioe.view.StatusView;
  *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
  *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
  * 
- *         
+ * 
  */
 
 public class Resource {
@@ -38,7 +38,6 @@ public class Resource {
 	public Display _display = null;
 	public String TEXT_FILE = "cfg/english.lf";
 	public Properties TEXT = new Properties();
-	
 
 	private EditorSourceInfoView _editorSourceInfoView;
 	private EditorTargetInfoView _editorTargetInfoView;
@@ -52,8 +51,6 @@ public class Resource {
 	public final static String COLOR_SUCCESS_HTML_LIGHT = "D3FDD2";
 	public final static String COLOR_SUCCESS_HTML = "50FC4A";
 	public final static Color COLOR_SUCCESS = new Color(80, 252, 74);
-
-
 
 	public StatusView getStatusView() {
 		return _statusView;
@@ -89,15 +86,11 @@ public class Resource {
 		this._editorTargetInfoView = editorTargetInfoView;
 	}
 
-
-
-	
 	public class Files {
-		
+
 		public static final String TEMP_FOLDER = "temp";
 		public static final String TEMP_TOS_CONNECTOR_FILE = "temp_TOS_Connector_file.csv";
-	
-		
+
 	}
 
 	public class OntologyTree {
@@ -129,7 +122,7 @@ public class Resource {
 				+ "i2b2_ra.gif";
 		public static final String SHOW_SUB_NODES = IMAGE_PATH
 				+ "showSubNodes.gif";
-		
+
 		public static final String ITEMSTATUS_ICON_UNCHECKED = IMAGE_PATH
 				+ "itemstatus-unchecked.png";
 		public static final String ITEMSTATUS_ICON_CHECKED_BY_AUTOMATION_UNSURE = IMAGE_PATH
@@ -154,8 +147,6 @@ public class Resource {
 		public static final String PATH_SEPARATOR = "\\";
 
 	}
-
-	
 
 	public class TOSConnector {
 
@@ -188,7 +179,7 @@ public class Resource {
 		}
 
 		public class Command {
-	
+
 			public final static String OTCOPY = "edu.goettingen.i2b2.importtool.command.OTCopy";
 			public final static String OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTCopy.Source";
 			public final static String OTCOPY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTCopy.Target";
@@ -197,15 +188,15 @@ public class Resource {
 			public final static String OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Source";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Target";
 			public final static String OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE = "edu.goettingen.i2b2.importtool.command.OTSetTargetAttribute.Attribute";
-			
+
 			public final static String DELETENODE = "de.umg.mi.idrt.ioe.deletenode";
 			public final static String COMBINENODE = "de.umg.mi.idrt.ioe.combineNodes";
 
 			public class IEO {
-			
-				public final static String ETLSTAGINGI2B2TOTARGETI2B2 = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
-				public final static String LOADEVERYTHING = "de.umg.mi.idrt.ioe.LoadEverything";				
-				public final static String LOADSTAGINGONTOLOGY = "de.umg.mi.idrt.ioe.LoadStagingtOntology";				
+
+				public final static String STAGINGTOTARGET = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
+				public final static String LOADEVERYTHING = "de.umg.mi.idrt.ioe.LoadEverything";
+				public final static String LOADSTAGINGONTOLOGY = "de.umg.mi.idrt.ioe.LoadStagingtOntology";
 				public final static String LOADTARGETONTOLOGY = "de.umg.mi.idrt.ioe.LoadTargetOntology";
 				public final static String LOADTARGETONTOLOGY_ATTRIBUTE_VERSION = "de.umg.mi.idrt.ioe.LoadTargetOntologyAttribute.Version";
 				public final static String LOADTARGETPROJECTS = "de.umg.mi.idrt.ioe.LoadTargetProjects";
@@ -214,52 +205,25 @@ public class Resource {
 				public final static String DELETETARGET = "de.umg.mi.idrt.ioe.DeleteTarget";
 				public final static String DELETETARGET_ATTRIBUTE_TARGETID = "de.umg.mi.idrt.ioe.DeleteTargetAttribute.TargetID";
 				public final static String INCREMENTTARGETVERSION = "de.umg.mi.idrt.ioe.IncrementTargetVersion";
-				
-							
+
 			}
-			
+
 			public class TOS {
-				
+
 				public final static String WRITE_TARGET_ONTOLOGY = "WriteTargetOntology";
 				public final static String DELETE_TARGET = "DeleteTarget";
 				public final static String READ_STAGING_ONTOLOGY = "ReadStagingOntology";
-				
-				
+
 			}
 
 		}
-		
+
 		public class TOS {
-			
+
 			public class ContextVariable {
 				public final static String JOB = "Job";
 				public final static String DATA_FILE = "DataFile";
 				public final static String TARGETID = "TargetID";
-			}
-			
-		}
-
-
-
-		public class Variables {
-
-			public class Preferences {
-
-				public final static String I2B2_DATABASE_NAME = "edu.goettingen.i2b2.importtool.keyword.I2B2.DATABASE_NAME";
-				public final static String I2B2_ONTOLOGY_HEADPATH = "edu.goettingen.i2b2.importtool.keyword.I2B2.ONTOLOGYHEADPATH";
-				public final static String LAST_IMPORTED_FILE = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE";
-				public final static String LAST_IMPORTED_FILE1 = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE1";
-				public final static String LAST_IMPORTED_FILE2 = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE2";
-				public final static String LAST_IMPORTED_FILE3 = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE3";
-				public final static String LAST_IMPORTED_FILE4 = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE4";
-				public final static String LAST_IMPORTED_FILE5 = "edu.goettingen.i2b2.importtool.keyword.LAST_IMPORTED_FILE5";
-
-				public final static String ORACLE_HOST = "edu.goettingen.i2b2.importtool.keyword.ORACLE_HOST";
-				public final static String ORACLE_PORT = "edu.goettingen.i2b2.importtool.keyword.ORACLE_PORT";
-				public final static String ORACLE_SID = "edu.goettingen.i2b2.importtool.keyword.ORACLE_SID";
-				public final static String ORACLE_USERNAME = "edu.goettingen.i2b2.importtool.keyword.ORACLE_USERNAME";
-				public final static String ORACLE_PASSWORD = "edu.goettingen.i2b2.importtool.keyword.ORACLE_PASSWORD";
-
 			}
 
 		}
@@ -385,13 +349,6 @@ public class Resource {
 		}
 	}
 
-	public class Import {
-
-		public final static String SECUTRIAL_ODM_PATIENTID_ITEMGROUP = "FG.SUBJID";
-		public final static String SECUTRIAL_ODM_PATIENTID_ITEM = "FF.SUBJID";
-		public final static String ODM_SDSVAR_PATIENTID = "SUBJID";
-
-	}
 
 	public class DataType {
 
@@ -430,96 +387,6 @@ public class Resource {
 			return path;
 		}
 
-		/**
-		 * Convert a Path to an ConceptCode and add a Concept at the end of it
-		 * 
-		 * @param path
-		 *            the Path
-		 * @param concept
-		 *            the Concept
-		 * 
-		 *            return the ConceptCode
-		 * 
-		 */
-		public static String convertPathToConceptCode(String path,
-				String concept) {
-			if (path != null)
-				return path.replace(Resource.ODM.PATH_SEPARATOR,
-						Resource.ODM.CONCEPTCODE_PATH_SEPARATOR)
-						+ (!concept.isEmpty() ? Resource.ODM.CONCEPTCODE_CODE_SEPARATOR
-								+ concept
-								: "");
-			else
-				return "";
-		}
-
-		public static String addItemToConecptCode(String oldConceptCode,
-				String newItem) {
-
-			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
-			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
-			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
-
-			return oldConceptCode.replace(
-					Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
-					Resource.ODM.CONCEPTCODE_PATH_SEPARATOR)
-					+ (!newItem.isEmpty() ? Resource.ODM.CONCEPTCODE_CODE_SEPARATOR
-							+ newItem
-							: "");
-		}
-
-		public static String replaceValueFromConecptCode(String oldConceptCode,
-				String newItem) {
-
-			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR,
-			// Resource.ODM.CONCEPTCODE_PATH_SEPARATOR) + ( !newItem.isEmpty() ?
-			// Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem : "" ));
-
-			int cutIndex = oldConceptCode
-					.lastIndexOf(Resource.ODM.CONCEPTCODE_CODE_SEPARATOR);
-
-			return oldConceptCode.substring(0, cutIndex)
-					+ Resource.ODM.CONCEPTCODE_CODE_SEPARATOR + newItem;
-		}
-
-		public static int getLevelFromLevelPathString(String levelPathString) {
-			if (!levelPathString.isEmpty())
-				return Integer.valueOf(levelPathString.split(":")[0]);
-			else
-				return 0;
-		}
-
-		public static String getPathFromLevelPathString(String levelPathString) {
-			if (!levelPathString.isEmpty()) {
-
-				String[] splitString = levelPathString.split(":");
-
-				if (splitString.length > 0)
-					return splitString[1];
-
-			}
-			return "";
-		}
-
-		public static class LevelAndPath {
-
-			int _level = 0;
-			String _path = "";
-
-			public LevelAndPath(int level, String path) {
-				_level = level;
-				_path = path;
-			}
-
-			public int getLevel() {
-				return _level;
-			}
-
-			public String getPath() {
-				return _path;
-			}
-
-		}
 
 		public static class PathAndID {
 
@@ -569,38 +436,12 @@ public class Resource {
 			return new PathAndID(parentPath, id);
 		}
 
-		public static String getParentPathFromPath(String path) {
-			if (path.length() < 0)
-				return "";
-			path = path.substring(0, path.length() - 1);
-
-			String parentPath = path.substring(0, path.lastIndexOf("\\") + 1);
-
-			return parentPath;
-		}
-
-		public static String getItemIDFromPath(String path) {
-
-			if (path.length() < 1)
-				return "";
-
-			path = path.substring(0, path.length() - 1);
-
-			if (path.lastIndexOf("\\") + 1 >= path.length())
-				return "";
-
-			String parentPath = path.substring(path.lastIndexOf("\\") + 1,
-					path.length());
-
-			return parentPath;
-		}
 
 	}
 
 	public class Global {
 
 		public String variable = "";
-
 
 		public HashMap<String, JComponent> fieldComponent = new HashMap<String, JComponent>();
 
@@ -703,9 +544,9 @@ public class Resource {
 			try {
 				this.PROPERTIES.store(new FileOutputStream(
 						Global.CONFIGURATION_FILE), null);
-				
+
 			} catch (IOException e) {
-			
+
 			}
 		}
 
