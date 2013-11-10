@@ -1,10 +1,15 @@
 package de.umg.mi.idrt.ioe;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
+
 public class Console {
 	
-	public Console(){
-		}
-
 	public static void section(String text){
 		
 		String line = "";
@@ -12,14 +17,14 @@ public class Console {
 			line += "*";
 		}
 		
-		Debug.d("");
-		Debug.d("/"+line);
-		Debug.d("* " + text + " *");
-		Debug.d(""+line+"/");
+		System.out.println("");
+		System.out.println("/"+line);
+		System.out.println("* " + text + " *");
+		System.out.println(""+line+"/");
 	}
 	
 	public static void info(String text){
-		Debug.d(". " + text);
+		System.out.println(". " + text);
 		System.out.println("* " + text);
 	}
 	
@@ -28,7 +33,7 @@ public class Console {
 	}
 	
 	public static void subinfo(String text){
-		Debug.d("* - " + text);
+		System.out.println("* - " + text);
 	}
 	
 	public static void subinfo(String text, Object object){
@@ -36,7 +41,7 @@ public class Console {
 	}
 	
 	public static void infoLine(String text){
-		Debug.d(text);
+		System.out.println(text);
 		System.out.print(text);
 	}
 	
@@ -45,7 +50,7 @@ public class Console {
 	}
 	
 	public static void error(String text){
-		Debug.e("#ERROR: " + text);
+		System.out.println("#ERROR: " + text);
 
 	}
 	
@@ -76,10 +81,10 @@ public class Console {
 		for (int x = 0; x < text.length()-1; x++){
 			border += "-";
 		}
-		Debug.d(0, " ");
-		Debug.d(0, "  /" + "-msg" + border);
-		Debug.d(0, "  | " + text + " |");
-		Debug.d(0, "  ----" + border + "/");
-		Debug.d(0, " ");
+		System.out.println(" ");
+		System.out.println("  /" + "-msg" + border);
+		System.out.println("  | " + text + " |");
+		System.out.println("  ----" + border + "/");
+		System.out.println(" ");
 	}
 }

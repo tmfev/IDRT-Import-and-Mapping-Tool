@@ -9,6 +9,14 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.commands.ICommandService;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
+
 public class ActionCommand {
 
 	private String _commandID = "";
@@ -65,26 +73,17 @@ public class ActionCommand {
 		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
 				.getWorkbench().getActiveWorkbenchWindow();
 
-		Debug.dn("activeWorkbenchWindow", activeWorkbenchWindow);
-
+		
 		if (activeWorkbenchWindow != null) {
 
 			ICommandService commandService = (ICommandService) activeWorkbenchWindow
 					.getService(ICommandService.class);
 
-			Debug.dn("commandService", commandService);
 
 			if (commandService != null) {
 
-				Debug.dn("commandService.getCommand(_commandID)",
-						commandService.getCommand(_commandID));
-				Debug.dn("_params", _params);
 
 				// commandService.
-				Debug.dn(
-						"parameterizedCommand",
-						ParameterizedCommand.generateCommand(
-								commandService.getCommand(_commandID), null));
 				ParameterizedCommand parameterizedCommand = ParameterizedCommand
 						.generateCommand(commandService.getCommand(_commandID),
 								_params);
@@ -125,7 +124,6 @@ public class ActionCommand {
 	}
 
 	public Boolean getBoolean(String key) {
-		Debug.d("getBoolean for '" + _params.get(key) + "'");
 
 		// check if parameter is really there
 		if (isNull(_params.get(key)))
@@ -133,10 +131,9 @@ public class ActionCommand {
 
 		// check if parameter is really a boolean
 		if (_params.get(key).getClass().equals(Boolean.class)) {
-			Debug.d("isBooleanClass");
 			return (Boolean) _params.get(key);
 		} else {
-			Debug.d("A boolean parameter wasn't really a boolean but a "
+			Console.error("A boolean parameter wasn't really a boolean but a "
 					+ _params.get(key).getClass().getName()
 					+ ". Trying to convert to now ...");
 
@@ -159,16 +156,12 @@ public class ActionCommand {
 			return 0;
 
 		try {
-			Debug.d("Trying getInteger for '" + key + "' ...");
 			String val = (String) _params.get(key);
 			if (val.isEmpty())
 				return 0;
-			Debug.d(" val:" + val);
 			Integer.valueOf((String) _params.get(key));
-			Debug.d(" ... YES");
 			return Integer.valueOf((String) _params.get(key));
 		} catch (NumberFormatException e) {
-			Debug.d(" ... noooooo :(");
 			Console.error("Could not convert an integer action parameter.");
 			Console.error(e);
 			e.printStackTrace();

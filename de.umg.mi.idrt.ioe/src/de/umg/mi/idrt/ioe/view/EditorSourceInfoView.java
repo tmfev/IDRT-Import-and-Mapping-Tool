@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Application;
-import de.umg.mi.idrt.ioe.Debug;
+import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
@@ -60,7 +60,7 @@ public class EditorSourceInfoView extends ViewPart {
 	
 	public TableItem addValueItem( TableItem[] items, int row, String value ){
 		if (items[row] == null){
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"+row+".");
+			Console.error("Could not add an item to a table in EditorSourceInfoView, because there was no row #"+row+".");
 			return null;
 		}
 		TableItem item = items[row];
@@ -173,7 +173,6 @@ public class EditorSourceInfoView extends ViewPart {
 	@Override
 	public void createPartControl(Composite parent) {
 
-		Debug.f("createPartControl",this);
 		_parent = parent;
 		parent.setLayout(new GridLayout(1, false));
 
@@ -244,10 +243,8 @@ public class EditorSourceInfoView extends ViewPart {
 	}
 	
 	public void executeRefresh(){
-		Debug.f("executeRefresh for text:\""+this._text+"\"",this);
 		
 		if(parentPane == null){
-			Debug.e("no pane avaible @OntologyNodeEditorView");
 			return;
 		}
 
@@ -511,17 +508,14 @@ public class EditorSourceInfoView extends ViewPart {
 	}
 	
 	public void refresh(){
-		Debug.f("refresh",this);
 		System.out.println("refreseh!");
 		Display display = Display.getCurrent();
 		
 		if(display == null) {
 		    // Bad, no display for this thread => we are not in (a) UI thread
 		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
-			Debug.e("no display");
 
 			if (PlatformUI.getWorkbench().getDisplay() != null){
-				Debug.d("display by PlatformUI");
 				System.out.println("display by PlatformUI");
 				PlatformUI.getWorkbench().getDisplay().syncExec(
 					  new Runnable() {
@@ -530,7 +524,6 @@ public class EditorSourceInfoView extends ViewPart {
 					    }
 					  });
 			} else if (Application.getDisplay() != null){
-				Debug.d("display by Acitvator");
 				System.out.println("display by Acitvator");
 				Application.getDisplay().syncExec(
 						  new Runnable() {
@@ -539,11 +532,10 @@ public class EditorSourceInfoView extends ViewPart {
 						    }
 						  });
 			} else {
-				Debug.e("no Display (final)");
-				System.out.println("no Display (final)");
+				Console.error("no Display (final)");
 			}
 		} else {
-			System.out.println("display else");
+			Console.error("display else");
 			  new Runnable() {
 				    public void run(){
 				    	System.out.println("... execute");
@@ -608,14 +600,10 @@ public class EditorSourceInfoView extends ViewPart {
 	*/
 	
 	public void setComposite(Composite pane){
-		Debug.f("setComposite",this);
-		
 		refresh();
 	}
 	
 	public void setComposite(String text){
-		Debug.f("setComposite",this);
-		
 		this._text = text;
 		refresh();
 	}

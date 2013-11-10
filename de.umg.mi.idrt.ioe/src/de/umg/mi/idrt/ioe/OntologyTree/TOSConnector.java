@@ -21,7 +21,6 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -87,7 +86,7 @@ public class TOSConnector {
 	}
 
 	public static tos.tosidrtconnector_0_4.TOSIDRTConnector getConnection() {
-		Debug.d("TOSIDRTCOnnector: gettingen Connection");
+		Console.info("TOSConnector: gettingen Connection");
 
 		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = null;
 
@@ -212,7 +211,6 @@ public class TOSConnector {
 
 		} catch (Exception e) {
 			Console.error("Error while using a TOS-plugin: " + e.getMessage());
-			Debug.e("TOS-Error: " + tos.getErrorCode());
 		}
 
 		return tos;

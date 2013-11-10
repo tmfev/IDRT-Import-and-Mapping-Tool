@@ -9,13 +9,18 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
 
-
+@SuppressWarnings("serial")
 public class OntologyTreeModel extends DefaultTreeModel {
 
-	private boolean showAncestors;
     private Vector<TreeModelListener> treeModelListeners =
         new Vector<TreeModelListener>();
     private OntologyTreeNode rootPerson;
@@ -24,7 +29,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
     
 	  public OntologyTreeModel(OntologyTreeNode ontologyTreeNode) {
 		  super(ontologyTreeNode);
-	        showAncestors = false;
 	        rootPerson = ontologyTreeNode;
 	    }
 
@@ -41,7 +45,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
 	//////////////// Fire events //////////////////////////////////////////////
 
 	    public void fireTreeNodesChanged(TreeModelEvent e) {
-        	Debug.f("fireTreeNodesChanged", this);
         	Enumeration<TreeModelListener> listeners = this.treeModelListeners.elements();
             while (listeners.hasMoreElements()) {
                 TreeModelListener listener = 
@@ -65,7 +68,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
 	    protected void fireTreeNodesInserted(Object source, Object[] path, 
 		    int[] childIndices, 
 		    Object[] children) {
-			Debug.f("fireTreeNodesInserted", this);
 			Object[] listeners = listenerList.getListenerList();
 			TreeModelEvent e = null;
 			for (int i = listeners.length-2; i>=0; i-=2) {
@@ -89,7 +91,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
 		protected void fireTreeStructureChanged(Object source, Object[] path,
 				int[] childIndices, Object[] children)
 		{
-			Debug.d(1, "fireTreeStructureChanged");
 			TreeModelEvent event = new TreeModelEvent(source, path, childIndices,
 					children);
 			TreeModelListener[] listeners = getTreeModelListeners();
@@ -161,7 +162,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
         
         
     public void nodeChanged(OntologyTreeNode node) {
-		Debug.d(1, "nodeChanged");
 		Console.info("nodeChanged");
 		OntologyTreeNode parent = (OntologyTreeNode)node.getParent();
 		int[] childIndices = new int[1];
@@ -206,7 +206,6 @@ public class OntologyTreeModel extends DefaultTreeModel {
  * to change the root of the tree.
  */
 public void showAncestor(boolean b, Object newRoot) {
-    showAncestors = b;
     OntologyTreeNode oldRoot = rootPerson;
     if (newRoot != null) {
        rootPerson = (OntologyTreeNode)newRoot;
@@ -219,7 +218,7 @@ public void showAncestor(boolean b, Object newRoot) {
 	 * identified by path to newValue.  Not used by this model.
 	 */
 	public void valueForPathChanged(TreePath path, Object newValue) {
-	    Debug.d("*** valueForPathChanged : "
+	    Console.info("*** valueForPathChanged : "
 	                       + path + " --> " + newValue);
 	}
 

@@ -19,7 +19,6 @@ import org.eclipse.ui.part.ViewPart;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.SystemMessage;
 
 public class StatusView extends ViewPart {
@@ -39,7 +38,6 @@ public class StatusView extends ViewPart {
 
 	public StatusView() {
 		super();
-		Debug.f("StatusView");
 		Activator.getDefault().getResource().setStatusView(this);
 
 	}
@@ -88,7 +86,6 @@ public class StatusView extends ViewPart {
 			public void run() {
 
 				if (_table == null) {
-					Debug.e("Table not set.", this);
 					return;
 				}
 
@@ -179,7 +176,6 @@ public class StatusView extends ViewPart {
 
 		_sc.setBackground(col);
 
-		Debug.d("* Update -> new text: " + _output.toString());
 
 		_label.redraw();
 		_pane.redraw();

@@ -6,7 +6,6 @@ import org.eclipse.core.commands.ExecutionException;
 
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
@@ -14,11 +13,18 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
+
 public class SetTargetAttribute extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Debug.f("execute", this);
 
 		String stagingNodePath = event
 				.getParameter(Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH);
@@ -37,9 +43,6 @@ public class SetTargetAttribute extends AbstractHandler {
 				+ targetNodePath);
 		System.out.println(" - OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:"
 				+ attribute);
-		Debug.d("OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH:" + stagingNodePath);
-		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH:" + targetNodePath);
-		Debug.d("OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE:" + attribute);
 
 		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 

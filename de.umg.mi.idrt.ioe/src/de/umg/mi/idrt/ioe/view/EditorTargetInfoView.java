@@ -35,7 +35,6 @@ import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
@@ -73,7 +72,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 	public static TableItem addValueItem(TableItem[] items, int row, String value) {
 		if (items[row] == null) {
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
+			Console.error("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
 					+ row + ".");
 			return null;
 		}
@@ -296,7 +295,6 @@ public class EditorTargetInfoView extends ViewPart {
 		//				+ "\"");
 
 		if (parentPane == null) {
-			Debug.e("no pane avaible @OntologyNodeEditorView");
 			return;
 		}
 
@@ -374,10 +372,8 @@ public class EditorTargetInfoView extends ViewPart {
 			// Bad, no display for this thread => we are not in (a) UI thread
 			// display.syncExec(new Runnable() {void run() { gc = new
 			// GC(display);}});
-			Debug.e("no display");
 
 			if (PlatformUI.getWorkbench().getDisplay() != null) {
-				Debug.d("display by PlatformUI");
 				PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 					public void run() {
 						executeRefresh();
@@ -385,15 +381,12 @@ public class EditorTargetInfoView extends ViewPart {
 				});
 
 			} else if (Application.getDisplay() != null) {
-				Debug.d("display by Acitvator");
 				Application.getDisplay().syncExec(new Runnable() {
 					public void run() {
 						executeRefresh();
 					}
 				});
-			} else {
-				Debug.e("no Display (final)");
-			}
+			} 
 		} else {
 			new Runnable() {
 				public void run() {
@@ -523,13 +516,11 @@ public class EditorTargetInfoView extends ViewPart {
 	}
 
 	public void setComposite(Composite pane) {
-		Debug.f("setComposite", this);
 
 		refresh();
 	}
 
 	public void setComposite(String text) {
-		Debug.f("setComposite", this);
 
 		this._text = text;
 		refresh();

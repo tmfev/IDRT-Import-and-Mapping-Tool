@@ -93,7 +93,7 @@ public class LogListener implements ILogListener {
         }
         catch (IOException ioe) 
         {
-            Debug.e("In LogListener.getStackTraceAsString() "
+            Console.error("In LogListener.getStackTraceAsString() "
             		+ "error converting exception to string. "
             		+ "Exception was " + ioe.toString());
         }

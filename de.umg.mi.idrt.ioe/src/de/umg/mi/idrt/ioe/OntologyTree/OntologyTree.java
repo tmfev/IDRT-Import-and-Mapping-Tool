@@ -5,7 +5,6 @@ import javax.swing.tree.TreeSelectionModel;
 import org.eclipse.jface.viewers.TreeViewer;
 
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -101,7 +100,7 @@ public class OntologyTree extends JTree {
 			node.setTreeAttributes();
 			return parent;
 		} else {
-			Debug.e("Couldn't add Node because there was no parent node found with the path \""
+			Console.error("Couldn't add Node because there was no parent node found with the path \""
 					+ parentPath + "\"");
 			return null;
 		}

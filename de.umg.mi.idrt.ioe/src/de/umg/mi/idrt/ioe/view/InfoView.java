@@ -29,7 +29,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
@@ -60,7 +59,7 @@ public class InfoView extends ViewPart {
 
 	public TableItem addValueItem(TableItem[] items, int row, String value) {
 		if (items[row] == null) {
-			Debug.e("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
+			Console.error("Could not add an item to a table in EditorSourceInfoView, because there was no row #"
 					+ row + ".");
 			return null;
 		}
@@ -337,7 +336,6 @@ public class InfoView extends ViewPart {
 				+ "\"");
 
 		if (parentPane == null) {
-			Debug.e("no pane avaible @OntologyNodeEditorView");
 			return;
 		}
 
@@ -363,8 +361,6 @@ public class InfoView extends ViewPart {
 	}
 
 	public void setComposite(Composite pane) {
-		Debug.f("setComposite", this);
-
 		refresh();
 	}
 

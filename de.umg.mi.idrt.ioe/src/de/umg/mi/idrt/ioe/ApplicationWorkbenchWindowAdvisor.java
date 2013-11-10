@@ -3,7 +3,6 @@ package de.umg.mi.idrt.ioe;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.ActionBarAdvisor;
@@ -22,7 +21,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 
 	public void preWindowOpen() {
-		Debug.f("preWindowOpen",this);
 
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		//configurer.setInitialSize(new Point(100, 100));
@@ -39,25 +37,9 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 	}
 	public void postWindowCreate(){
-		Debug.f("postWindowCreate",this);
 
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		configurer.getWindow().getShell().setMaximized( true );
-
-		// close views from previous session 
-		IViewReference[] views = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();//.showView("edu.goettingen.i2b2.importtool.view.OntologyView");
-		for (int x = 0; x < views.length; x++){
-			IViewReference view = views[x];
-			if (!view.getId().equals(Resource.ID.View.STATUS_VIEW) 
-					&& !view.getId().equals(Resource.ID.View.SERVER_VIEW))
-			{
-				Debug.d("closed View from previous session (ViewID:"+view.getId()+")");
-				//TODO HIDE VIEWS
-//				view.getPage().hideView(view);
-			}
-		}
-
-//		Application.getStatusView().addMessage("IDRT Import Tool started.");
 	}
 
 

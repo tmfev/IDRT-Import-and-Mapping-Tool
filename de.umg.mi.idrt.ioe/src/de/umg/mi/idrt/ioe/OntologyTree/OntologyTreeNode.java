@@ -11,9 +11,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
 import de.umg.mi.idrt.ioe.Console;
-import de.umg.mi.idrt.ioe.Debug;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+
 
 /**
  * @author Christian Bauer
@@ -356,9 +356,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void setIsVisable(boolean isVisable, boolean setChilden) {
 		setIsVisable(isVisable);
 		if (setChilden == true && this.getChildCount() > 0) {
-			Debug.d("* setVisibility ("
-					+ (isVisable == true ? "true" : "false") + ") for "
-					+ this.getChildCount() + " children");
 			for (int x = 0; x < this.getChildCount(); x++) {
 				((OntologyTreeNode) this.getChildAt(x)).setIsVisable(isVisable,
 						setChilden);

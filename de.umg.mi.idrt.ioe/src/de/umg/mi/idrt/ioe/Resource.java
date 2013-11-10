@@ -4,28 +4,27 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Properties;
 
 import javax.swing.JComponent;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.preference.IPersistentPreferenceStore;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.handlers.IHandlerService;
 
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
+
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
 
 public class Resource {
 
@@ -703,7 +702,6 @@ public class Resource {
 
 		public String variable = "";
 
-		public Debug debug = new Debug();
 
 		public HashMap<String, JComponent> fieldComponent = new HashMap<String, JComponent>();
 
@@ -777,20 +775,6 @@ public class Resource {
 
 		// the active component to talk to the user
 		public Component activeComponent = null;
-
-		// public static JMenu menuSettings = null;
-
-		private Display display;
-
-		/*
-		 * public Global(I2B2ImportTool i2b2ImportTool, JFrame jFrame){
-		 * this.I2B2ImportTool = i2b2ImportTool; this.frame = jFrame; messages =
-		 * new SystemMessages(this.I2B2ImportTool, this.frame); }
-		 * 
-		 * public Global(I2B2ImportTool i2b2ImportTool, Display display){
-		 * this.I2B2ImportTool = i2b2ImportTool; this.display = display;
-		 * //messages = new SystemMessages(this.I2B2ImportTool, this.frame); }
-		 */
 
 		public Global() {
 
@@ -941,12 +925,12 @@ public class Resource {
 	public ActionCommand getActionCommand(String commandID) {
 
 		if (!hasActionCommand()) {
-			Debug.e("No active ActionCommand '" + commandID + "' found.");
+			Console.error("No active ActionCommand '" + commandID + "' found.");
 			return null;
 		}
 
 		if (!commandID.equals(_actionCommand.getCommandID())) {
-			Debug.e("Active ActionCommand isn't '" + commandID + "' but '"
+			Console.error("Active ActionCommand isn't '" + commandID + "' but '"
 					+ _actionCommand.getCommandID() + "'.");
 		}
 

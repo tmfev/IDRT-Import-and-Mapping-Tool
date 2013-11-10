@@ -6,6 +6,14 @@ import java.awt.FlowLayout;
 
 import javax.swing.JTextPane;
 
+/**
+ * @author Christian Bauer
+ *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
+ *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
+ * 
+ *         
+ */
+
 public class SystemMessage {
 
 	String messageText = "";
@@ -123,13 +131,9 @@ public class SystemMessage {
 				+ "\">" + this.getMessageText() + "</td></tr></table>";
 		actionMessagePane.setText(message);
 
-		Debug.d("#####################");
-		Debug.d("# " + this.getMessageText());
-		Debug.d("#####################");
-
-		System.out.println("#####################");
-		System.out.println("# " + this.getMessageText());
-		System.out.println("#####################");
+		Console.info("#####################");
+		Console.info("# " + this.getMessageText());
+		Console.info("#####################");
 
 		return actionMessagePane;
 	}
@@ -141,9 +145,9 @@ public class SystemMessage {
 		return false;
 	}
 
+	
 	public JTextPane getFormattedSlim() {
-		Debug.d("#getFormattedSlim");
-
+		
 		JTextPane actionMessagePane = new JTextPane();
 		actionMessagePane.setContentType("text/html");
 
@@ -160,7 +164,7 @@ public class SystemMessage {
 
 		return actionMessagePane;
 	}
-
+	
 	private void setMessageLooks(SystemMessage.MessageType messageType) {
 		this.messageLooks = new MessageLooks(messageType);
 	}
