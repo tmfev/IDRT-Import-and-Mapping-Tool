@@ -210,6 +210,7 @@ public class TOSConnector {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin: " + e.getMessage());
 		}
 
