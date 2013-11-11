@@ -1,15 +1,8 @@
 package de.umg.mi.idrt.ioe;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Properties;
-
-import javax.swing.JComponent;
 
 import org.eclipse.swt.widgets.Display;
 
@@ -441,35 +434,11 @@ public class Resource {
 
 	public class Global {
 
-		public String variable = "";
 
-		public HashMap<String, JComponent> fieldComponent = new HashMap<String, JComponent>();
 
-		public static final boolean pluginSecondIdent = false;
-		public static final boolean pluginLabIDisLabID = false;
-		public static final boolean convertPatientIDs = false;
-		public static final boolean noI2B0Level = false;
-
-		public String PROGRAMM_TITLE = "";
-		public String FILE_EXTENSION = "csv";
-		public String SQL_STUDYID = "KFO3";
-
-		// i2b2 variables
-		public final static int maxPatientNumLength = 38;
-
-		// global variables
-		/*
-		 * public static SystemMessages messages = null; public static
-		 * JSplitPane messagePane = null; public static JPanel messagesPanel =
-		 * null; static JFrame frame = null;
-		 */
-
-		public final static String CONFIGURATION_FILE = "config.ini";
-		public Properties PROPERTIES = new Properties();
 		public String TEXT_FILE = "cfg/english.lf";
 		public Properties TEXT = new Properties();
 
-		public int counter = 0;
 
 		public final Color COLOR_SUCCESS = new Color(80, 252, 74);
 		public final static String COLOR_SUCCESS_HTML = "50FC4A";
@@ -480,104 +449,7 @@ public class Resource {
 		public final Color COLOR_INFO = new Color(200, 200, 230);
 		public final static String COLOR_INFO_HTML = "C8C8E6";
 		public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
-
-		// properties of CONFIGURATION_FILE
-
-		public String I2B2USER = "i2b2i2b2thesis";
-		public String ONTOLOGYHEADPATH = "\\i2b2";
-		public boolean DELETE_OLD_ENTRIES = true;
-		public boolean CREATE_ONE_SQL_FILE = true;
-		public String DATABASE_URL = "";
-		public String DATABASE_USERNAME = "";
-
-		// not implemented
-		// public static boolean romanTool = false;
-
-		// final variables for the look of the programm
-		public final Color MAIN_WINDOWS_BGCOLOR = Color.WHITE;
-		public final Dimension DIMENSION_PROGRAM_MAX = new Dimension(1000, 800);
-		public final Dimension DIMENSION_PROGRAM_MIN = new Dimension(1000, 800);
-		public final Dimension DIMENSION_PROGRAM_PREF = new Dimension(1000, 800);
-		public final Dimension ONTOLOGYEDITOR_DIMENSION_MAX = new Dimension(
-				1200, 800);
-		public final Dimension ONTOLOGYEDITOR_DIMENSION_MIN = new Dimension(
-				800, 400);
-		public final Dimension ONTOLOGYEDITOR_DIMENSION_PREF = new Dimension(
-				1200, 500);
-
-		public final Dimension NODEEDITOR_DIMENSION_MAX = new Dimension(1100,
-				3000);
-		public final Dimension NODEEDITOR_DIMENSION_MIN = new Dimension(800,
-				200);
-		public final Dimension NODEEDITOR_DIMENSION_PREF = new Dimension(1100,
-				200);
-		public final Color NODEEDITOR_BACKGROUND_COLOR = Color.WHITE;
-
-		// the active component to talk to the user
-		public Component activeComponent = null;
-
-		public Global() {
-
-		}
-
-		public void setDisplay(Display display) {
-			// this.display = display;
-		}
-
-		/**
-		 * Writes all changable properties to a file.
-		 * 
-		 */
-		public void writeChangableProperties() {
-
-			this.PROPERTIES.setProperty("I2B2.USER", this.I2B2USER);
-			this.PROPERTIES.setProperty("I2B2.ONTOLOGYHEADPATH",
-					this.ONTOLOGYHEADPATH);
-			this.PROPERTIES.setProperty("I2B2.DELETE_OLD_ENTRIES",
-					String.valueOf(this.DELETE_OLD_ENTRIES));
-			this.PROPERTIES.setProperty("I2B2.CREATE_ONE_SQL_FILE",
-					String.valueOf(this.CREATE_ONE_SQL_FILE));
-			this.PROPERTIES.setProperty("I2B2.DATABASE_URL",
-					String.valueOf(this.DATABASE_URL));
-			this.PROPERTIES.setProperty("I2B2.DATABASE_USERNAME",
-					String.valueOf(this.DATABASE_USERNAME));
-			try {
-				this.PROPERTIES.store(new FileOutputStream(
-						Global.CONFIGURATION_FILE), null);
-
-			} catch (IOException e) {
-
-			}
-		}
-
-		/**
-		 * Sets all the changable vars in this class.
-		 * 
-		 * @param userName
-		 * @param ontologyHeadPath
-		 * @param deleteOldEntries
-		 * @param createOneSqlFile
-		 * @param databaseURL
-		 * @param databaseUsername
-		 */
-		public void setChangeableGlobal(String userName,
-				String ontologyHeadPath, boolean deleteOldEntries,
-				boolean createOneSqlFile, String databaseURL,
-				String databaseUsername) {
-
-			this.I2B2USER = userName;
-			this.ONTOLOGYHEADPATH = ontologyHeadPath;
-			this.DELETE_OLD_ENTRIES = deleteOldEntries;
-			this.CREATE_ONE_SQL_FILE = createOneSqlFile;
-			this.DATABASE_URL = databaseURL;
-			this.DATABASE_USERNAME = databaseUsername;
-
-		}
-
-		public String getTextFromProperties(String textID) {
-			return (String) this.PROPERTIES.get(textID);
-		}
-
+		
 		public String getText(String textID) {
 			String text = (String) this.TEXT.get(textID);
 			if (text == null || text.isEmpty()) {
@@ -610,15 +482,7 @@ public class Resource {
 			return text;
 		}
 
-		public void registerField(String name, JComponent component) {
-			fieldComponent.put(name, component);
-		}
 
-		public JComponent getField(String name) {
-			JComponent component = fieldComponent.get(name);
-			fieldComponent.remove(name);
-			return component;
-		}
 
 	}
 
