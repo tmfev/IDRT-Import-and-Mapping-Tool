@@ -24,7 +24,6 @@ public class Console {
 	}
 	
 	public static void info(String text){
-		System.out.println(". " + text);
 		System.out.println("* " + text);
 	}
 	
