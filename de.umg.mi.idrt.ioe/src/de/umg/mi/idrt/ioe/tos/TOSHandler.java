@@ -17,6 +17,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
  * @author Christian Bauer
@@ -70,14 +71,16 @@ public class TOSHandler {
 	}
 
 	public static void statusSuccess(String status) {
-		Application.getStatusView().addMessage(
+		StatusView
+		.addMessage(
 				new SystemMessage(status, SystemMessage.MessageType.SUCCESS));
 
 	}
 
 	public static void statusError(String status) {
 		Console.error("TOS error:" + status);
-		Application.getStatusView().addMessage(
+		StatusView
+		.addMessage(
 				new SystemMessage(status, SystemMessage.MessageType.ERROR));
 	}
 	@Deprecated

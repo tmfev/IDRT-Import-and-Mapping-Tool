@@ -10,6 +10,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 /**
  * @author Christian Bauer
  *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
@@ -48,7 +49,7 @@ public class DeleteTarget extends AbstractHandler {
 		if (OntologyEditorView.getTargetProjects().getSelectedTargetProject().getTargetsList().size() <= 1){
 			String message = "There is only one target version existing in this target instance. Deleting not aborted.";
 			Console.error(message);
-			Application.getStatusView().addErrorMessage(message);
+			StatusView.addErrorMessage(message);
 		}
 		try {
 			TOSConnector tos = new TOSConnector();

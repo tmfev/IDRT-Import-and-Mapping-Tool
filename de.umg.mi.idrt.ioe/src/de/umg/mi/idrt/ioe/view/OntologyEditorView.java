@@ -272,7 +272,10 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static String getTargetSchemaName() {
+		if (lblTargetName!=null)
 		return lblTargetName.getText();
+		else 
+			return "";
 		//		return "";
 	}
 
@@ -631,10 +634,9 @@ public class OntologyEditorView extends ViewPart {
 					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
 					setCurrentStagingNode(node);
 					if (node != null) {
-						EditorTargetInfoView.setNode(node);
+						EditorSourceInfoView.setNode(node);
 					} else {
-						Application
-						.getStatusView()
+						StatusView
 						.addMessage(
 								new SystemMessage(
 										"Target selection changed but new selection isnt' any know kind of node..",
@@ -1076,12 +1078,10 @@ public class OntologyEditorView extends ViewPart {
 					return;
 				}
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
-				if (node != null) {
-					Activator.getDefault().getResource()
-					.getEditorSourceInfoView().setNode(node);
+				if (node != null ) {
+					EditorSourceInfoView.setNode(node);
 				} else {
-					Application
-					.getStatusView()
+					StatusView
 					.addMessage(
 							new SystemMessage(
 									"Selection changed but new selection isn't any know kind of node.",
@@ -1181,7 +1181,7 @@ public class OntologyEditorView extends ViewPart {
 		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
-		EditorTargetInfoView.setNode(node);
+//		EditorTargetInfoView.setNode(node);
 	}
 
 	/**

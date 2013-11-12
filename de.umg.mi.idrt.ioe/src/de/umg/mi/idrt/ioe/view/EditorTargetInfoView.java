@@ -108,7 +108,7 @@ public class EditorTargetInfoView extends ViewPart {
 			@Override
 			public void mouseDown(MouseEvent event) {
 				if (_node instanceof OntologyTreeNode) {
-					
+
 					final OntologyTreeNode treeNode = (OntologyTreeNode) _node;
 					Console.info("Mouse pressed in the target info view ... (mouseDown)");
 
@@ -307,29 +307,31 @@ public class EditorTargetInfoView extends ViewPart {
 
 			TargetNodeAttributes attributes = node.getTargetNodeAttributes();
 
-			TableItem[] items = _infoTable.getItems();
+			if (!_infoTable.isDisposed()) {
+				TableItem[] items = _infoTable.getItems();
 
-			int row = 0;
-			ArrayList<String> stagingPathList = new ArrayList<String>();
-			for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
-				stagingPathList.add(subNode.getStagingPath());
+				int row = 0;
+				ArrayList<String> stagingPathList = new ArrayList<String>();
+				for (OntologyTreeSubNode subNode : attributes.getSubNodeList()) {
+					stagingPathList.add(subNode.getStagingPath());
+				}
+
+				addValueItem(items, row++, stagingPathList.toString());
+
+				addValueItem(items, row++, String.valueOf(node.getName()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getDimension()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getStartDateSource()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getEndDateSource()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getVisualattribute()));
+
+				_editorComposite.layout();
+
+				_parent.layout();
 			}
-
-			addValueItem(items, row++, stagingPathList.toString());
-
-			addValueItem(items, row++, String.valueOf(node.getName()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getDimension()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getStartDateSource()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getEndDateSource()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getVisualattribute()));
-
-			_editorComposite.layout();
-
-			_parent.layout();
 		}
 		else if (_node instanceof OntologyTreeSubNode) {
 			OntologyTreeSubNode node = (OntologyTreeSubNode)_node;
@@ -340,25 +342,27 @@ public class EditorTargetInfoView extends ViewPart {
 
 			TargetNodeAttributes attributes = node.getParent().getTargetNodeAttributes();
 
-			TableItem[] items = _infoTable.getItems();
+			if (!_infoTable.isDisposed()) {
+				TableItem[] items = _infoTable.getItems();
 
-			int row = 0;
+				int row = 0;
 
-			addValueItem(items, row++, node.getStagingPath());
+				addValueItem(items, row++, node.getStagingPath());
 
-			addValueItem(items, row++, String.valueOf(node.getStagingName()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getDimension()));
-			addValueItem(items, row++,
-					String.valueOf(node.getTargetSubNodeAttributes().getStartDateSource()));
-			addValueItem(items, row++,
-					String.valueOf(node.getTargetSubNodeAttributes().getEndDateSource()));
-			addValueItem(items, row++,
-					String.valueOf(attributes.getVisualattribute()));
+				addValueItem(items, row++, String.valueOf(node.getStagingName()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getDimension()));
+				addValueItem(items, row++,
+						String.valueOf(node.getTargetSubNodeAttributes().getStartDateSource()));
+				addValueItem(items, row++,
+						String.valueOf(node.getTargetSubNodeAttributes().getEndDateSource()));
+				addValueItem(items, row++,
+						String.valueOf(attributes.getVisualattribute()));
 
-			_editorComposite.layout();
+				_editorComposite.layout();
 
-			_parent.layout();
+				_parent.layout();
+			}
 		}
 	}
 
@@ -443,7 +447,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 		// createInfoGroup();
 
-		
+
 
 
 		_editorComposite = new Composite(parent, SWT.NONE);

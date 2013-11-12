@@ -8,6 +8,7 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
  * @author Christian Bauer
@@ -46,7 +47,7 @@ public class LoadStagingOntology extends AbstractHandler {
 					String message = "Error while using a TOS-plugin while doing command \"LoadStagingOntology\" "
 							+ e.getMessage();
 					Console.error(message);
-					Application.getStatusView().addErrorMessage(message);
+					StatusView.addErrorMessage(message);
 				}
 			}
 		}).run();

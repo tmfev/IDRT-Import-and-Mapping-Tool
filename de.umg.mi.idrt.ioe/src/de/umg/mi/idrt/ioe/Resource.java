@@ -32,9 +32,6 @@ public class Resource {
 	public String TEXT_FILE = "cfg/english.lf";
 	public Properties TEXT = new Properties();
 
-	private EditorSourceInfoView _editorSourceInfoView;
-	private EditorTargetInfoView _editorTargetInfoView;
-
 	public final static String COLOR_INFO_HTML_LIGHT = "E4E4F6";
 	public final static String COLOR_INFO_HTML = "C8C8E6";
 	public final static Color COLOR_INFO = new Color(200, 200, 230);
@@ -59,24 +56,6 @@ public class Resource {
 
 	public void setOntologyView(OntologyEditorView ontologyView) {
 		this._ontologyView = ontologyView;
-	}
-
-	public EditorSourceInfoView getEditorSourceInfoView() {
-		return _editorSourceInfoView;
-	}
-
-	public void setEditorSourceInfoView(
-			EditorSourceInfoView editorSourceInfoView) {
-		this._editorSourceInfoView = editorSourceInfoView;
-	}
-
-	public EditorTargetInfoView getEditorTargetInfoView() {
-		return _editorTargetInfoView;
-	}
-
-	public void setEditorTargetInfoView(
-			EditorTargetInfoView editorTargetInfoView) {
-		this._editorTargetInfoView = editorTargetInfoView;
 	}
 
 	public class Files {

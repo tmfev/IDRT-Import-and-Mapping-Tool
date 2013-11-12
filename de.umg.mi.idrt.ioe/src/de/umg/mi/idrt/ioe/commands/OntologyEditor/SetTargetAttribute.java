@@ -11,6 +11,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
+import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -66,14 +67,7 @@ public class SetTargetAttribute extends AbstractHandler {
 			if (stagingNode != null && targetNode != null) {
 				System.out.println("sourceNode found:" + stagingNode.getName());
 				myOT.setTargetAttributesAsSourcePath(stagingNode, targetNode, attribute);
-
-
-
-				Application.getEditorTargetInfoView().setNode( targetNode );
-
-				Application.getEditorTargetInfoView().refresh();
-
-				//Application.getEditorTargetView().getTreeViewer().refresh();
+				EditorTargetInfoView.setNode( targetNode );
 
 			} else {
 				Console.error("Error while combining nodes: Staging (\""

@@ -37,28 +37,28 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
  */
 public class EditorSourceInfoView extends ViewPart {
 
-	private Resource _resource = null;
-	private String _text = ""; 
-	private Composite parentPane;
+	private static Resource _resource = null;
+	private static String _text = ""; 
+	private static Composite parentPane;
 	//private OntologyTreeItemNode _itemNode;
-	OntologyTreeNode _node = null;
-	private Composite _editorComposite;
-	private Composite _parent;
-	private Table _infoTable;
-	private TableColumn infoTableDBColumn;
-	private TableColumn infoTableValue;
+	static OntologyTreeNode _node = null;
+	private static Composite _editorComposite;
+	private static Composite _parent;
+	private static Table _infoTable;
+	private static TableColumn infoTableDBColumn;
+	private static TableColumn infoTableValue;
 	
 	public EditorSourceInfoView() {
 		
 	}
 
-	private TableItem addColumItem( String text ){
+	private static TableItem addColumItem( String text ){
 		TableItem item = new TableItem (_infoTable, SWT.NONE);
 		item.setText (new String[] { text, "" });
 		return item;
 	}
 	
-	public TableItem addValueItem( TableItem[] items, int row, String value ){
+	public static TableItem addValueItem( TableItem[] items, int row, String value ){
 		if (items[row] == null){
 			Console.error("Could not add an item to a table in EditorSourceInfoView, because there was no row #"+row+".");
 			return null;
@@ -195,7 +195,7 @@ public class EditorSourceInfoView extends ViewPart {
 	
 	
 	
-	private void createTable() {
+	private static void createTable() {
 		
 		if (_infoTable != null)
 			return;
@@ -242,7 +242,7 @@ public class EditorSourceInfoView extends ViewPart {
 
 	}
 	
-	public void executeRefresh(){
+	public static void executeRefresh(){
 		
 		if(parentPane == null){
 			return;
@@ -507,43 +507,45 @@ public class EditorSourceInfoView extends ViewPart {
 			return false;
 	}
 	
-	public void refresh(){
-		System.out.println("refreseh!");
-		Display display = Display.getCurrent();
-		
-		if(display == null) {
-		    // Bad, no display for this thread => we are not in (a) UI thread
-		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
-
-			if (PlatformUI.getWorkbench().getDisplay() != null){
-				System.out.println("display by PlatformUI");
-				PlatformUI.getWorkbench().getDisplay().syncExec(
-					  new Runnable() {
-					    public void run(){
-					    	executeRefresh();
-					    }
-					  });
-			} else if (Application.getDisplay() != null){
-				System.out.println("display by Acitvator");
-				Application.getDisplay().syncExec(
-						  new Runnable() {
-						    public void run(){
-						    	executeRefresh();
-						    }
-						  });
-			} else {
-				Console.error("no Display (final)");
-			}
-		} else {
-			Console.error("display else");
-			  new Runnable() {
-				    public void run(){
-				    	System.out.println("... execute");
-				    	executeRefresh();
-				    }
-				  };
-			executeRefresh();
-		}
+	public static void refresh(){
+		new Thread(new Runnable() {
+		    public void run(){
+		    	executeRefresh();
+		    }
+		  }).run();
+//		if(display == null) {
+//		    // Bad, no display for this thread => we are not in (a) UI thread
+//		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
+//
+//			if (PlatformUI.getWorkbench().getDisplay() != null){
+//				System.out.println("display by PlatformUI");
+//				PlatformUI.getWorkbench().getDisplay().syncExec(
+//					  new Runnable() {
+//					    public void run(){
+//					    	executeRefresh();
+//					    }
+//					  });
+//			} else if (Application.getDisplay() != null){
+//				System.out.println("display by Acitvator");
+//				Application.getDisplay().syncExec(
+//						  new Runnable() {
+//						    public void run(){
+//						    	executeRefresh();
+//						    }
+//						  });
+//			} else {
+//				Console.error("no Display (final)");
+//			}
+//		} else {
+//			Console.error("display else");
+//			  new Runnable() {
+//				    public void run(){
+//				    	System.out.println("... execute");
+//				    	executeRefresh();
+//				    }
+//				  };
+//			executeRefresh();
+//		}
 	}
 	
 	/*
@@ -613,10 +615,10 @@ public class EditorSourceInfoView extends ViewPart {
 
 	}
 	
-	public void setNode(OntologyTreeNode node){//, List<String> answersList, MyOntologyTreeItemLists itemLists){
+	public static void setNode(OntologyTreeNode node){//, List<String> answersList, MyOntologyTreeItemLists itemLists){
 		//Debug.f("setNode",this);
 		//Console.info("setting node");
-		System.out.println("setting node ("+node.getName()+")");
+//		System.out.println("setting node ("+node.getName()+")");
 		_node = node;
 		refresh();
 	}

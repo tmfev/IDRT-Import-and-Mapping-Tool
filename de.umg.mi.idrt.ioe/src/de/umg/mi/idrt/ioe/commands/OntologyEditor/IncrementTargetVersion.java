@@ -11,6 +11,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 public class IncrementTargetVersion extends AbstractHandler {
 
@@ -45,7 +46,8 @@ public class IncrementTargetVersion extends AbstractHandler {
 		ActionCommand command3  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGET);
 		Application.executeCommand(command3);
 		
-		Application.getStatusView().addMessage(
+		StatusView
+		.addMessage(
 				"A new version of this i2b2 staging project has been created.");
 		
 		OntologyEditorView.refreshTargetVersionGUI();

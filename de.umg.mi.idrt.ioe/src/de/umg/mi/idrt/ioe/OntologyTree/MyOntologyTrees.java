@@ -48,7 +48,9 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
@@ -356,7 +358,6 @@ public class MyOntologyTrees{
 			boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node "+ node.getID() +" already exists in the target ontology!\nDo you want to rename the Path?");
 			if (confirm) {
 				Display display = Application.getDisplay().getActiveShell().getDisplay();
-				Application.getOntologyView().getSite().getShell();
 
 				Point pt = display.getCursorLocation();
 
@@ -372,7 +373,7 @@ public class MyOntologyTrees{
 
 				final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
 						| SWT.TOOL);
-				dialog.setLocation(pt.x+Application.getOntologyView().getViewSite().getShell().getSize().x/2,Application.getOntologyView().getViewSite().getShell().getSize().y/2+pt.y);
+				dialog.setLocation(pt.x+Application.getShell().getSize().x/2,Application.getShell().getSize().y/2+pt.y);
 				final Composite actionMenu = new Composite(dialog, SWT.NONE);
 				actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
 
@@ -810,13 +811,12 @@ public class MyOntologyTrees{
 
 		if (node != null) {
 
-			Activator.getDefault().getResource().getEditorSourceInfoView()
-			.setNode(node);
+			EditorSourceInfoView.setNode(node);
 
 			message = "Selection in source tree changed to \'" + node.getName()
 					+ "\'.";
 
-			Application.getStatusView().addMessage(
+			StatusView.addMessage(
 					new SystemMessage(message,
 							SystemMessage.MessageType.SUCCESS));
 

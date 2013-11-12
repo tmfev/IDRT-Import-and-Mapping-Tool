@@ -467,6 +467,9 @@
 
    <plugin
          id="org.eclipse.swt.gtk.linux.x86"
+         os="linux"
+         ws="gtk"
+         arch="x86"
          download-size="0"
          install-size="0"
          version="0.0.0"

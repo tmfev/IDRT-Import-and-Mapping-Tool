@@ -177,6 +177,8 @@ public class TOSConnector {
 				
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
+				
+				if (targetServer!=null) {
 				System.out.println("TargetServerName" + targetServer.getName()); 
 				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
 				
@@ -192,7 +194,7 @@ public class TOSConnector {
 				
 				
 				setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
-				
+				}
 				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				
 				setContextVariable("TableIEOTargetOntology", "IOE_TARGET_ONTOLOGY");

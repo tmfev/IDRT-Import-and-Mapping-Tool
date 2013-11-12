@@ -14,6 +14,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 
 public class LoadTargetProjects extends AbstractHandler {
@@ -75,7 +76,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			
 			if ( newData == true ){
 				Console.info("Saving new create TargetInstance/TargetVersion.");
-				Application.getStatusView().addMessage(
+				StatusView.addMessage(
 						"While loading the i2b2 staging project a new target instance has been created.");
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT);
 				Application.executeCommand(command);
@@ -92,7 +93,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			String message = "Error while using a TOS-plugin for job \"LoadTargetProjects\": "
 					+ e.getMessage();
 			Console.error(message);
-			Application.getStatusView().addErrorMessage(message);
+			StatusView.addErrorMessage(message);
 
 
 		}

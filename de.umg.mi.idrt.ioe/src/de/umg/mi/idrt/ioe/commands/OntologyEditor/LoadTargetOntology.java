@@ -18,6 +18,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 
 public class LoadTargetOntology extends AbstractHandler {
@@ -83,7 +84,7 @@ public class LoadTargetOntology extends AbstractHandler {
 			String message = "Error while using a TOS-plugin for job \"LoadTargetOntology\": "
 					+ e.getMessage();
 			Console.error(message);
-			Application.getStatusView().addErrorMessage(message);
+			StatusView.addErrorMessage(message);
 
 
 		}

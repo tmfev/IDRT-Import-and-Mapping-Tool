@@ -22,6 +22,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -68,9 +69,7 @@ public class SaveTarget extends AbstractHandler {
 			Console.error(
 					"Coudn't save the Target-Tree, because nothing has been loaded so far.",
 					e);
-			Application
-					.getStatusView()
-					.addMessage(
+			StatusView.addMessage(
 							new SystemMessage(
 									"Coudn't save the Target-Tree, because nothing has been loaded so far. (I could also be wrong about that and just the saving failed to load the already active target ontology.)",
 									SystemMessage.MessageType.ERROR));

@@ -23,18 +23,18 @@ import de.umg.mi.idrt.ioe.SystemMessage;
 
 public class StatusView extends ViewPart {
 	Composite _parent = null;
-	boolean pressed = false;
-	private Label _label;
-	private StringBuffer _output = new StringBuffer();;
-	private ScrolledComposite _sc;
-	private Composite _pane;
-	private Table _table;
-	private TableColumn _tableColumn;
-	private Color _colorInfo;
-	private Color _colorSuccess;
-	private Color _colorError;
-	private TableColumn _tableColumn2;
-	private SystemMessage _message;
+	private static boolean  pressed = false;
+	private static Label _label;
+	private static StringBuffer _output = new StringBuffer();;
+	private static ScrolledComposite _sc;
+	private static Composite _pane;
+	private static Table _table;
+	private static TableColumn _tableColumn;
+	private static Color _colorInfo;
+	private static Color _colorSuccess;
+	private static Color _colorError;
+	private static TableColumn _tableColumn2;
+	private static SystemMessage _message;
 
 	public StatusView() {
 		super();
@@ -42,12 +42,12 @@ public class StatusView extends ViewPart {
 
 	}
 
-	public void addErrorMessage(String message) {
+	public static void addErrorMessage(String message) {
 		addMessage(new SystemMessage(message, SystemMessage.MessageType.ERROR,
 				SystemMessage.MessageLocation.MAIN));
 	}
 
-	public void addMessage(String message) {
+	public static void addMessage(String message) {
 		addMessage(new SystemMessage(message, SystemMessage.MessageType.INFO,
 				SystemMessage.MessageLocation.MAIN));
 	}
@@ -61,7 +61,7 @@ public class StatusView extends ViewPart {
 	 * Button(this, SWT.PUSH).setText("Blubber"); }
 	 */
 
-	public void addMessage(String message, SystemMessage.MessageType messageType) {
+	public static void addMessage(String message, SystemMessage.MessageType messageType) {
 		addMessage(new SystemMessage(message, messageType,
 				SystemMessage.MessageLocation.MAIN));
 	}
@@ -72,7 +72,7 @@ public class StatusView extends ViewPart {
 		addMessage(new SystemMessage(message, messageType, messageLocation));
 	}
 
-	public void addMessage(SystemMessage message) {
+	public static void addMessage(SystemMessage message) {
 
 		Console.message(message.getMessageText());
 
@@ -158,16 +158,11 @@ public class StatusView extends ViewPart {
 		refresh();
 	}
 
-	public void refresh() {
+	public static void refresh() {
 
 		_tableColumn.pack();
 		_tableColumn2.pack();
 		// _table.update();
-	}
-
-	@Override
-	public void setFocus() {
-		Application.getStatusView();
 	}
 
 	public void update() {
@@ -192,6 +187,11 @@ public class StatusView extends ViewPart {
 		_parent.layout();
 		_parent.redraw();
 
+	}
+
+	@Override
+	public void setFocus() {
+		
 	}
 
 	/*

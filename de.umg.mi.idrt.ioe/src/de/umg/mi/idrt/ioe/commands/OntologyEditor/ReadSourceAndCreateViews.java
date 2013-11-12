@@ -20,6 +20,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.StatusView;
 
 public class ReadSourceAndCreateViews extends AbstractHandler {
 
@@ -47,70 +48,55 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		} else {
 			String errorMessage = "No ontology found in the i2b2 source table. Abort loading the editor.";
 			Console.error(errorMessage);
-			Application.getStatusView().addErrorMessage(errorMessage);
+			StatusView.addErrorMessage(errorMessage);
 			return null;
 		}
 
-		// create the source i2b2-Ontology-Editor view
-		try {
+		Application.executeCommand(new ActionCommand(
+				Resource.ID.Command.IEO.LOADEVERYTHING));
 
-			// create secondary views
-			EditorSourceInfoView editorSourceInfoView = (EditorSourceInfoView) PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.showView(Resource.ID.View.EDITOR_SOURCE_INFO_VIEW);
-			Activator.getDefault().getResource()
-					.setEditorSourceInfoView(editorSourceInfoView);
+		/*
+		 * creator.createMeta(); creator.createOntology();
+		 * creator.createPatientData();
+		 */
 
-			Application.executeCommand(new ActionCommand(
-					Resource.ID.Command.IEO.LOADEVERYTHING));
+		// editorSourceView.setComposite();
+		OntologyEditorView.setSourceContent();
+		OntologyTreeModel newTreeModel = new OntologyTreeModel(
+				OntologyEditorView.getOntologyStagingTree().getRootNode());
 
-			/*
-			 * creator.createMeta(); creator.createOntology();
-			 * creator.createPatientData();
-			 */
+		OntologyEditorView.getOntologyStagingTree()
+				.setModel(newTreeModel);
+		OntologyEditorView.getOntologyStagingTree()
+				.updateUI();
 
-			// editorSourceView.setComposite();
-			OntologyEditorView.setSourceContent();
-			OntologyTreeModel newTreeModel = new OntologyTreeModel(
-					OntologyEditorView.getOntologyStagingTree().getRootNode());
+		OntologyTree ontologySourceTree = OntologyEditorView.getOntologyStagingTree();
 
-			OntologyEditorView.getOntologyStagingTree()
-					.setModel(newTreeModel);
-			OntologyEditorView.getOntologyStagingTree()
-					.updateUI();
+		if (ontologySourceTree != null) {
 
-			OntologyTree ontologySourceTree = OntologyEditorView.getOntologyStagingTree();
-
-			if (ontologySourceTree != null) {
-
-			}
-
-			OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
-					OntologyEditorView.getOntologyTargetTree().getRootNode());
-
-			OntologyEditorView.getOntologyTargetTree()
-					.setModel(newTreeModel2);
-			OntologyEditorView.getOntologyTargetTree()
-					.updateUI();
-
-			OntologyTree ontologyTargetTree = OntologyEditorView.getOntologyTargetTree();
-
-			// TODO Ontology Editor
-			OntologyEditorView.setTargetContent(ontologyTargetTree);
-			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);
-			Activator.getDefault().getResource()
-					.setEditorTargetInfoView(editorTargetInfoView);
-
-			OntologyEditorView.setStagingName(ServerView.getCurrentSchema());
-			Application.getStatusView().addMessage(
-					"The i2b2 staging project has been loaded.");
-			
-		} catch (PartInitException e) {
-			Console.error(e.toString());
-			e.printStackTrace();
 		}
+
+		OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
+				OntologyEditorView.getOntologyTargetTree().getRootNode());
+
+		OntologyEditorView.getOntologyTargetTree()
+				.setModel(newTreeModel2);
+		OntologyEditorView.getOntologyTargetTree()
+				.updateUI();
+
+		OntologyTree ontologyTargetTree = OntologyEditorView.getOntologyTargetTree();
+
+		// TODO Ontology Editor
+		OntologyEditorView.setTargetContent(ontologyTargetTree);
+//			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
+//					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+//					.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);
+//			Activator.getDefault().getResource()
+//					.setEditorTargetInfoView(editorTargetInfoView);
+
+		OntologyEditorView.setStagingName(ServerView.getCurrentSchema());
+		StatusView.addMessage(
+				"The i2b2 staging project has been loaded.");
 
 		return null;
 	}

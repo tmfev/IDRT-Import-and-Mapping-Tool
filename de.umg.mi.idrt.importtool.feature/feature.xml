@@ -401,13 +401,6 @@
          unpack="false"/>
 
    <plugin
-         id="de.umg.mi.idrt.IDRTImportTool"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.simpleconfigurator.manipulator"
          download-size="0"
          install-size="0"
@@ -820,6 +813,13 @@
          install-size="0"
          version="0.0.0"
          fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="de.umg.mi.idrt.IDRTImportTool"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
