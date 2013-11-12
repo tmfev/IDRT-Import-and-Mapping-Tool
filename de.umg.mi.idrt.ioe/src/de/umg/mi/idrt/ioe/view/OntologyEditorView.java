@@ -748,7 +748,7 @@ public class OntologyEditorView extends ViewPart {
 
 		btnNewVersion = new Button(composite_7, SWT.NONE);
 		btnNewVersion.setText("new");
-		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/plus16.png"));
+		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/add.gif"));
 		btnNewVersion.setToolTipText("New Version");
 		Button saveProject = new Button(composite_7, SWT.PUSH);
 		saveProject.setText("save");

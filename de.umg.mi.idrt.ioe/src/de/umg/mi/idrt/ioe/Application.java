@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -14,7 +16,12 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
+import au.com.bytecode.opencsv.CSVReader;
+
+import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
+import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
+import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -47,6 +54,21 @@ public class Application implements IApplication {
 
 		Activator.getDefault().createResource();
 
+		File file = new File(FileHandling.getCFGFilePath("regex.csv"));
+		
+		CSVReader reader = new CSVReader(new FileReader(file), ';');
+		
+		String[] line = reader.readNext();
+		
+		while ((line = reader.readNext()) != null) {
+			System.out.println("name: " + line[0]);
+			System.out.println("regex: " + line[1]);
+			
+			Regex regex = new Regex(line[0], line[1]);
+			CombineNodesCommand.addRegEx(regex);
+		}
+		
+		reader.close();
 		// Activator.getDefault().getResource().setDisplay(this._display);
 		// _global = new Global(_i2b2ImportTool, _display);
 

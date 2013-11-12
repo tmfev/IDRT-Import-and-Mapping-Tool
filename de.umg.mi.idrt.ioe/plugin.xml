@@ -115,6 +115,14 @@
                   style="push">
             </command>
          </menu>
+         <menu
+               label="Expert Options">
+            <command
+                  commandId="de.umg.mi.idrt.ioe.addRegex"
+                  label="Add Regular Expression"
+                  style="push">
+            </command>
+         </menu>
       </menuContribution>
    </extension>
    <extension
@@ -272,6 +280,11 @@
              defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.LoadEverything"
              id="de.umg.mi.idrt.ioe.LoadEverything"
              name="LoadEverything">
+       </command>
+       <command
+             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddRegexCommand"
+             id="de.umg.mi.idrt.ioe.addRegex"
+             name="addRegex">
        </command>
    </extension>
 </plugin>
