@@ -545,25 +545,6 @@ public class ServerView extends ViewPart {
 
 
 
-			final MenuItem importTermsMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			importTermsMenuItem.setText(Messages.ServerView_ImportAndMapST);
-			importTermsMenuItem.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					boolean result = MessageDialog.openConfirm(parent.getShell(),
-							Messages.ServerView_ImportAndMapSTConfirm,
-							Messages.ServerView_ImportAndMapSTConfirmText);
-					if(result) {
-						IDRTImport.runImportST(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
-					}
-				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-
-				}
-			});
-
 			MenuItem importCSVMenuItem = new MenuItem(importMenu, SWT.PUSH);
 			importCSVMenuItem.setText(Messages.ServerView_ImportCSV);
 			importCSVMenuItem.addSelectionListener(new SelectionListener() {
@@ -602,8 +583,20 @@ public class ServerView extends ViewPart {
 					importP21();
 				}
 			});
+			new MenuItem(importMenu, SWT.SEPARATOR);
+			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
+			importTermsMenuItem.setText(Messages.ServerView_ImportST);
+			importTermsMenuItem.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+						IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+				}
 
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
 
+				}
+			});
 			MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
 			removeLocksMenuItem.addSelectionListener(new SelectionListener() {

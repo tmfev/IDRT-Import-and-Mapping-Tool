@@ -2,6 +2,7 @@ package de.umg.mi.idrt.idrtimporttool.importidrt;
 
 import tos.csv_master_0_1.CSV_MASTER;
 import tos.dbimport_master_0_1.DBIMPORT_MASTER;
+//import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
@@ -63,6 +64,7 @@ public class IDRTImport {
 		for (String key : contextVariables.keySet()) {
 			parameters.add("--context_param");
 			parameters.add(key + "=" + contextVariables.get(key));
+			System.out.println("--context_param"+ key+ "="+contextVariables.get(key));
 		}
 		return parameters.toArray(new String[0]);
 	}
@@ -195,8 +197,8 @@ public class IDRTImport {
 			@Override
 			public void run() {
 				ServerView.btnStopSetEnabled(true);
-				IDRT_STDTERM stImport = new IDRT_STDTERM();
-				exitCode = 	stImport.runJobInTOS(getARGV());
+//				IDRT_STDTERM stImport = new IDRT_STDTERM();
+//				exitCode = 	stImport.runJobInTOS(getARGV());
 				if (exitCode==0) {
 					IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 					exitCode = transform.runJobInTOS(getARGV());
@@ -204,6 +206,92 @@ public class IDRTImport {
 					StatusListener.stopLogging();
 
 				}
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						if (exitCode == 0) {
+							StatusListener.setStatus(100f, "Import and Mapping done","");
+							StatusListener.setSubStatus(0.0f, "");
+							MessageDialog.openInformation(Display.getDefault()
+									.getActiveShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
+							StatusListener.setStatus(0.0f, "","");
+							StatusListener.setSubStatus(0.0f, "");
+						}
+						else {
+							StatusListener.setStatus(100f, "Import and Mapping failed","");
+							StatusListener.setSubStatus(0.0f, "");
+							MessageDialog.openError(Display.getDefault()
+									.getActiveShell(), "Import failed!", "Import failed!");
+							StatusListener.setStatus(0.0f, "","");
+							StatusListener.setSubStatus(0.0f, "");
+						}
+					}
+				});
+			}
+		});
+		workerThread.start();
+	}
+
+	public static void runImportST_NoMap(Server server, String project) {
+		try {
+			StatusListener.startLogging();
+			ServerView.stdImportStarted = true;
+			HashMap<String, String> contextMap = new HashMap<String, String>();
+
+			contextMap.put("DBHost", server.getIp());
+			contextMap.put("DBPassword", server.getPassword());
+			contextMap.put("DBUsername", server.getUser());
+			contextMap.put("DBInstance", server.getSID());
+			contextMap.put("DBPort", server.getPort());
+			contextMap.put("DBSchema", project);
+
+			/**
+			 * ST-Import
+			 */
+			Bundle bundle = Activator.getDefault().getBundle();
+			Path cfgPath = new Path("/cfg/");
+			URL cfgUrl = FileLocator.find(bundle, cfgPath,
+					Collections.EMPTY_MAP);
+			URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
+			File rootDir = new File(cfgFileUrl.getPath().replaceAll("\\\\", "/")
+					+ "/Standardterminologien/".replaceAll("\\\\", "/"));
+			contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/");
+			contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/");
+			contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+			contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/");
+			contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/");
+			contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/");
+			contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/");
+			contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/"); 
+			setCompleteContext(contextMap);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		StatusListener.setStatus(1f, "Importing Terminologies", "");
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				ServerView.setProgress((int) StatusListener.getPercentage());
+				ServerView.setProgressTop(StatusListener.getFile());
+				ServerView.setProgressBottom(""
+						+ StatusListener.getStatus());
+			}
+		});
+
+		workerThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				ServerView.btnStopSetEnabled(true);
+				System.out.println("yes");
+				IDRT_STDTERM std = new IDRT_STDTERM();
+//				IDRT_STDTERM std = new IDRT_STDTERM();
+				System.out.println("2");
+				exitCode = 	std.runJobInTOS(getARGV());
+				System.out.println("3");
+				StatusListener.stopLogging();
+
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
 					public void run() {
@@ -304,8 +392,8 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			exitCode = stdTerm.runJobInTOS(getARGV());
+//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -350,8 +438,8 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			exitCode = stdTerm.runJobInTOS(getARGV());
+//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -398,8 +486,8 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			exitCode = stdTerm.runJobInTOS(getARGV());
+//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -438,8 +526,8 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			exitCode = stdTerm.runJobInTOS(getARGV());
+//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -484,8 +572,8 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			exitCode = stdTerm.runJobInTOS(getARGV());
+//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
 				Bundle bundle = Activator.getDefault().getBundle();
@@ -552,12 +640,12 @@ public class IDRTImport {
 		} catch (SQLException e) {
 			error = Server.getError();
 			System.err.println(Server.getError());
-//			e.printStackTrace();
+			//			e.printStackTrace();
 			return false;
 		}
 		catch(Exception e2) {
 			error = Server.getError();
-//			e2.printStackTrace();
+			//			e2.printStackTrace();
 			System.err.println(Server.getError());
 			return false;
 		}
