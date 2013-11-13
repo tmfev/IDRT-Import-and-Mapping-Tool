@@ -29,13 +29,13 @@ public class LoadEverything extends AbstractHandler {
 		Console.info("Command: LoadTargetProjects");
 
 		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IEO.LOADTARGETPROJECTS));
+				Resource.ID.Command.IOE.LOADTARGETPROJECTS));
 
 		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IEO.LOADSTAGINGONTOLOGY));
+				Resource.ID.Command.IOE.LOADSTAGINGONTOLOGY));
 
 		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IEO.LOADTARGETONTOLOGY));
+				Resource.ID.Command.IOE.LOADTARGETONTOLOGY));
 
 		
 		return null;

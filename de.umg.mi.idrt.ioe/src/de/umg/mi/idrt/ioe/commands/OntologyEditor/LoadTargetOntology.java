@@ -37,7 +37,7 @@ public class LoadTargetOntology extends AbstractHandler {
 		Console.info("Command: LoadTargetOntology");
 
 		String version = event
-				.getParameter(Resource.ID.Command.IEO.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
+				.getParameter(Resource.ID.Command.IOE.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
 
 		if ( version != null && !version.isEmpty() ){
 			System.out.println("STRINGVERSION:" + version);

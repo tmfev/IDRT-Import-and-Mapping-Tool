@@ -164,7 +164,7 @@ public class Resource {
 			public final static String DELETENODE = "de.umg.mi.idrt.ioe.deletenode";
 			public final static String COMBINENODE = "de.umg.mi.idrt.ioe.combineNodes";
 
-			public class IEO {
+			public class IOE {
 
 				public final static String STAGINGTOTARGET = "de.umg.mi.idrt.ioe.command.etlStagingI2B2ToTargetI2B2";
 				public final static String LOADEVERYTHING = "de.umg.mi.idrt.ioe.LoadEverything";
