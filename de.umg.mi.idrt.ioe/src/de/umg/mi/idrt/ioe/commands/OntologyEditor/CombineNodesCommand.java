@@ -14,6 +14,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.misc.Regex;
@@ -26,11 +27,14 @@ public class CombineNodesCommand extends AbstractHandler {
 	private List<OntologyTreeNode> oldTreeNodeList;
 	private List<OntologyTreeNode> newTreeNodeList;
 	private String perfectPath;
+	private static String OPSREGEX = "[135689]{1}\\-[a-z0-9]{3}\\.[a-z0-9]+";
+	private static String ICDREGEX = "[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?";
+
 
 	public static void addRegEx(Regex regex) {
 		regexSet.add(regex);
 	}
-	
+
 	public static LinkedHashSet<Regex> getRegex(){
 		return regexSet;
 	}
@@ -48,7 +52,6 @@ public class CombineNodesCommand extends AbstractHandler {
 		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
 			final OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
 
-			System.out.println(targetNode.getName());
 			getOldTargetNodes(targetNode);
 			for (OntologyTreeNode node : oldTreeNodeList) {
 				System.out.println("Next OLD leaf: " + node.getName() + " parent: " + node.getParent().getName());
@@ -70,13 +73,12 @@ public class CombineNodesCommand extends AbstractHandler {
 
 
 			getnewTargetNodes(targetNode);
-
-			//		for (OntologyTreeNode node : newTreeNodeList) {
-			//			System.out.println("Next new leaf: " + node.getName());
-			//		}
-
-			generatePerfectPath(oldTreeNodeList, newTreeNodeList);
-			mergeLeafs(oldTreeNodeList, newTreeNodeList);
+			
+			//TODO GET REGEX
+			String regex = MyOntologyTrees.getCurrentRegEx();
+			System.out.println("REGEX: " + regex);
+			generatePerfectPath(oldTreeNodeList, newTreeNodeList, regex);
+			mergeLeafs(oldTreeNodeList, newTreeNodeList,regex);
 			OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
 			OntologyEditorView.getTargetTreeViewer().refresh();
 			EditorTargetInfoView.refresh();
@@ -87,24 +89,31 @@ public class CombineNodesCommand extends AbstractHandler {
 		}
 
 	}
-	private void generatePerfectPath(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
-		//TODO MAGICALLY MERGE		
+	private void generatePerfectPath(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2, String regex) {
+		//TODO MAGICALLY MERGE
+		Regex currentRegex = null;
+		for (Regex r : regexSet) {
+			if (r.getName().equals(regex)) {
+				currentRegex=r;
+				break;
+			}
+		}
+
 		for (OntologyTreeNode node : newTreeNodeList2) {
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
 
-				for (Regex regex : regexSet) {
-					Pattern p = Pattern.compile(regex.getRegex());
-					Matcher m = p.matcher(nodeToCheck.getID());
-					if (m.find()) {
-						String icd = m.group();
-						if (node.getID().contains(icd)) {
-							perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
-							found = true;
-							break;
-						}
+				Pattern p = Pattern.compile(currentRegex.getRegex());
+				Matcher m = p.matcher(nodeToCheck.getID());
+				if (m.find()) {
+					String icd = m.group();
+					if (node.getID().contains(icd)) {
+						perfectPath = nodeToCheck.getTargetNodeAttributes().getSourcePath().substring(0, nodeToCheck.getTargetNodeAttributes().getSourcePath().indexOf(nodeToCheck.getID()));
+						found = true;
+						break;
 					}
 				}
+
 				if (found)
 					break;
 			}
@@ -138,25 +147,32 @@ public class CombineNodesCommand extends AbstractHandler {
 	 * @param oldTreeNodeList2
 	 * @param newTreeNodeList2
 	 */
-	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2) {
+	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2, String regex) {
 		//TODO MAGICALLY MERGE		
+		Regex currentRegex = null;
+		for (Regex r : regexSet) {
+			if (r.getName().equals(regex)) {
+				currentRegex=r;
+				break;
+			}
+		}
 		for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
 			boolean found = false;
 			for (OntologyTreeNode node :  newTreeNodeList2 ) {
-				for (Regex currentReg : regexSet) {
-					Pattern p = Pattern.compile(currentReg.getRegex());
-					Matcher m = p.matcher(nodeToCheck.getID());
-					if (m.find()) {
-						String icd = m.group();
-						if (node.getID().contains(icd)) {
-							System.out.println(currentReg.getName() + " " + node.getID() + " IN " + nodeToCheck.getID());
-							node.getTargetNodeAttributes().removeAllStagingPaths();
-							node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
-							found = true;
-							break;
-						}
+				
+				Pattern p = Pattern.compile(currentRegex.getRegex());
+				Matcher m = p.matcher(nodeToCheck.getID());
+				if (m.find()) {
+					String icd = m.group();
+					if (node.getID().contains(icd)) {
+						System.out.println(currentRegex.getName() + " " + node.getID() + " IN " + nodeToCheck.getID());
+						node.getTargetNodeAttributes().removeAllStagingPaths();
+						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+						found = true;
+						break;
 					}
 				}
+
 				if (found)
 					break;
 				else {
@@ -179,7 +195,7 @@ public class CombineNodesCommand extends AbstractHandler {
 	 */
 	public static void removeRegex(Regex regex) {
 		regexSet.remove(regex);
-		
+
 	}
 
 	/**
@@ -187,6 +203,6 @@ public class CombineNodesCommand extends AbstractHandler {
 	 */
 	public static void clear() {
 		regexSet.clear();
-		
+
 	}
 }

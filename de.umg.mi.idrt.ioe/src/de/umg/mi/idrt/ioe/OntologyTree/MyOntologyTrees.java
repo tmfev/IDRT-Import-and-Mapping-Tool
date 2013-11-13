@@ -20,6 +20,8 @@ import javax.swing.tree.TreePath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ArmEvent;
+import org.eclipse.swt.events.ArmListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -47,7 +49,9 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
+import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
@@ -70,16 +74,19 @@ public class MyOntologyTrees{
 	private OntologyTreeNode sourceRootNode = null;
 	private OntologyTreeNode targetRootNode = null;
 
+	private static Menu regMenu;
+	private static Shell dialog;
+	private static String currentRegEx;
 	/**
 	 * The MyontolgoyTree class imports data, creates and manages a tree and
 	 * exports this tree to I2B2.
 	 */
 	public MyOntologyTrees() {
-//		super(new GridLayout(1, 0));
-		
+		//		super(new GridLayout(1, 0));
+
 		initiate();
 
-		
+
 	}
 
 	/* OT Commands */
@@ -119,7 +126,7 @@ public class MyOntologyTrees{
 		OntologyEditorView.setSelection(targetNode);
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(targetNode,
 				true);
-	
+
 	}
 
 	public String createLongStringID(int id) {
@@ -218,8 +225,8 @@ public class MyOntologyTrees{
 		rootNode.add(targetOntologyi2b2RootNode);
 
 		ontologyTargetTree.setI2B2RootNode(targetOntologyi2b2RootNode);
-		
-		
+
+
 		ontologyTargetTree.getNodeLists().addNodyByPath(
 				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
 
@@ -442,19 +449,25 @@ public class MyOntologyTrees{
 			OntologyEditorView.getTargetTreeViewer().refresh();
 		}
 		else {
-			final Shell dialog = new Shell(Application.getShell(), SWT.ON_TOP //SWT.APPLICATION_MODAL
+			dialog = new Shell(Application.getShell(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 					| SWT.TOOL);
 			dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
 					.getCursorLocation());
 
 			final Composite actionMenu = new Composite(dialog, SWT.NONE);
 			actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
-
-
 			/**
 			 * Menu for Combine Actions
 			 */
-			final Menu menu = new Menu(dialog, SWT.POP_UP);
+
+			final Menu menu = new Menu(dialog); //, SWT.POP_UP
+			final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
+			toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
+			final ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
+			final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
+			final ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
+
+
 
 			//Set StartDate
 			MenuItem startMenuItem = new MenuItem(menu, SWT.PUSH);
@@ -509,9 +522,6 @@ public class MyOntologyTrees{
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
 							node.getOntologyCellAttributes().getC_FULLNAME());
-					//					command.addParameter(
-					//							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
 							"endDateSource");
@@ -520,45 +530,21 @@ public class MyOntologyTrees{
 			});
 			new MenuItem(menu, SWT.SEPARATOR);
 
+			createRegexMenu();	
+			//			createRegexMenu();
 			//Merge Ontologies (ICD10 etc)
-			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.PUSH);
-			mergeOntMenuItem.setText("Merge with Standard Ontology");
-			mergeOntMenuItem.addSelectionListener(new SelectionListener() {
+			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.CASCADE);
+			mergeOntMenuItem.setText("Merge with Standard Terminology");
+			mergeOntMenuItem.setMenu(regMenu);
+			mergeOntMenuItem.addArmListener(new ArmListener() {
 
 				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
-				}
-
-				@Override
-				public void widgetSelected(SelectionEvent arg0) {
-					dialog.close();
-					//					ActionCommand command = new ActionCommand(
-					//							Resource.ID.Command.OTCOPY);
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-					//							"");
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
-					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
-					//					Application.executeCommand(command);
-					//					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
-
-					System.out.println("COPY DONE");
-
-					ActionCommand command2 = new ActionCommand(
-							Resource.ID.Command.COMBINENODE);
-//										command2.addParameter(
-//												Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-//												targetPath);
-					Application.executeCommand(command2);
+				public void widgetArmed(ArmEvent e) {
+					System.out.println("ARM2");
+					createRegexMenu();	
 				}
 			});
 
-			final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
-			toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
-
-			ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
 			tltmInsertNodes.setText("Insert Nodes");
 			tltmInsertNodes.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent e) {
@@ -578,7 +564,7 @@ public class MyOntologyTrees{
 					OntologyEditorView.getTargetTreeViewer().refresh();
 				}
 			});
-			final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
+
 			tltmCombine.setText("Combine Nodes");
 
 			tltmCombine.addListener(SWT.Selection, new Listener() {
@@ -590,7 +576,7 @@ public class MyOntologyTrees{
 				}
 			});
 
-			ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
+
 			tltmCancel.setText("Cancel");
 			tltmCancel.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/terminate_co.gif"));
 			tltmCancel.addSelectionListener(new SelectionListener() {
@@ -605,6 +591,7 @@ public class MyOntologyTrees{
 					dialog.close();
 				}
 			});
+
 
 			actionMenu.pack();
 			dialog.pack();
@@ -622,24 +609,52 @@ public class MyOntologyTrees{
 		return this.ontologyTreeSource;
 	}
 
-	//	protected void expandTreePaths(TreePath path) {
-	//		this._ontologyTreeSource.expandPath(path);
-	//		final Object node = path.getLastPathComponent();
-	//		final int n = this._ontologyTreeSource.getModel().getChildCount(node);
-	//
-	//		for (int index = 0; index < n; index++) {
-	//			final Object child = this._ontologyTreeSource.getModel().getChild(
-	//					node, index);
-	//			OntologyTreeNode treeNode = (OntologyTreeNode) child;
-	//			/*
-	//			 * if (treeNode.getNodeType().equals(NodeType.ITEM)) { // if its an
-	//			 * item, leaf it closed and return return; }
-	//			 */
-	//			if (this._ontologyTreeSource.getModel().getChildCount(child) > 0) {
-	//				expandTreePaths(path.pathByAddingChild(child));
-	//			}
-	//		}
-	//	}
+	public static void createRegexMenu() {
+		if (regMenu!= null)
+			regMenu.dispose();
+		regMenu = new Menu(dialog, SWT.DROP_DOWN);
+		for (MenuItem m : regMenu.getItems()) {
+			m.dispose();
+		}
+		for (Regex r : CombineNodesCommand.getRegex()) {
+			final MenuItem item = new MenuItem(regMenu, SWT.PUSH);
+			item.setText(r.getName());
+			item.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					setCurrentRegEx(item.getText());
+					dialog.close();
+					
+					ActionCommand command2 = new ActionCommand(
+							Resource.ID.Command.COMBINENODE);
+					Application.executeCommand(command2);
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+			});
+		}
+		new MenuItem(regMenu, SWT.SEPARATOR);
+		MenuItem item = new MenuItem(regMenu, SWT.PUSH);
+		item.setText("Edit Regular Expressions");
+		item.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				dialog.close();
+				ActionCommand command2 = new ActionCommand("de.umg.mi.idrt.ioe.addRegex");
+				Application.executeCommand(command2);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+	}
 
 	public OntologyTree getOntologyTreeTarget() {
 		return this.ontologyTargetTree;
@@ -826,6 +841,14 @@ public class MyOntologyTrees{
 		}
 
 		Console.info(message);
+	}
+
+	public static String getCurrentRegEx() {
+		return currentRegEx;
+	}
+
+	public static void setCurrentRegEx(String currentRegEx) {
+		MyOntologyTrees.currentRegEx = currentRegEx;
 	}
 
 }

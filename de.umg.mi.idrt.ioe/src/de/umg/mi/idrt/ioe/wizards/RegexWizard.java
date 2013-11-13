@@ -10,6 +10,7 @@ import org.eclipse.jface.wizard.Wizard;
 import au.com.bytecode.opencsv.CSVWriter;
 
 import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -47,11 +48,11 @@ public class RegexWizard extends Wizard {
 			writer.writeNext(new String[] {"Name","Regex"});
 			for (Regex r : CombineNodesCommand.getRegex()) {
 				if (!r.getName().isEmpty())
-					writer.writeNext(new String[] {r.getName(),r.getRegex()});
-				Pattern p = Pattern.compile(r.getRegex());
+					writer.writeNext(new String[] {r.getName(),r.getRegex().replaceAll("\\\\", "\\\\\\\\")});
 			}
 			writer.flush();
 			writer.close();
+//			MyOntologyTrees.createRegexMenu();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
