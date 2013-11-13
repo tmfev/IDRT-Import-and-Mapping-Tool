@@ -7,49 +7,49 @@ import org.eclipse.core.commands.ExecutionException;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
-import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
+
+/**
+ * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
+ * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 			Department of Medical Informatics Goettingen 
+ * 			www.mi.med.uni-goettingen.de
+ *         
+ *			
+ */
 
 public class IncrementTargetVersion extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
+
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
-				
+
 		// save the old target project version
-		/*
-		if ( OntologyEditorView.isNotYetSaved() ) {
-			ActionCommand command0  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT);
-			Application.executeCommand(command0);
-		}
-		*/
-		
+		// if ( OntologyEditorView.isNotYetSaved() ) {
+		// Application.executeCommand(new
+		// ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT));
+		// }
+
 		// save ontology as the old target version
-		ActionCommand command1  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGET);
-		Application.executeCommand(command1);
-				
-		Target newTarget = targetProjects.incrementVersion(targetProjects.getSelectedTarget());
-		
-		targetProjects.setSelectedTarget(newTarget);
-		
-		
+		// Application.executeCommand(new
+		// ActionCommand(Resource.ID.Command.IEO.SAVETARGET));
+
+		targetProjects.setSelectedTarget(targetProjects
+				.incrementVersion(targetProjects.getSelectedTarget()));
+
 		// save the new target project version
-		ActionCommand command2  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGETPROJECT);
-		Application.executeCommand(command2);
-			
-		
+		Application.executeCommand(new ActionCommand(
+				Resource.ID.Command.IEO.SAVETARGETPROJECT));
+
 		// save ontology as the new target version
-		ActionCommand command3  = new ActionCommand(Resource.ID.Command.IEO.SAVETARGET);
-		Application.executeCommand(command3);
-		
+		Application.executeCommand(Resource.ID.Command.IEO.SAVETARGET);
+
 		StatusView
-		.addMessage(
-				"A new version of this i2b2 staging project has been created.");
-		
+				.addMessage("A new version of this i2b2 staging project has been created.");
+
 		OntologyEditorView.refreshTargetVersionGUI();
 		return null;
 	}
