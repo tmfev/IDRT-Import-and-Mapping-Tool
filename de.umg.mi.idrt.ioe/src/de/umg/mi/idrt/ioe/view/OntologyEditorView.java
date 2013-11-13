@@ -276,6 +276,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static String getTargetSchemaName() {
+		System.out.println("GETTING TARGET SCHEMA NAME: " + lblTargetName.getText());
 		if (lblTargetName!=null)
 			return lblTargetName.getText();
 		else 
@@ -736,24 +737,14 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				// TODO IMPLEMENT
-//				if (!oldSelectedVersion.equals(versionCombo.getText())){
-				System.out.println(versionCombo.getText() + " "+ getTargetProjects().getSelectedTarget().getVersion() + "!=" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 				if (Integer.parseInt(versionCombo.getText()) != getTargetProjects().getSelectedTarget().getVersion()){
 					final Shell dialog = new Shell(Application.getDisplay(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 							| SWT.TOOL);
 
 					dialog.setSize(250, 75);
-					
-					
-					Shell parentShell = PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell();
-					Rectangle shellBounds = parentShell.getBounds();
-					System.err.println("todisplay " + composite_7.toDisplay(1, 1).toString());
-//					dialog.setLocation(composite_7.toDisplay(1, 1).x+composite_7.getSize().x/4,targetComposite.toDisplay(1, 1).y+20);
 					dialog.setLocation(versionCombo.toDisplay(1, 1).x-(2*versionCombo.getSize().x),versionCombo.toDisplay(1, 1).y+versionCombo.getSize().y);
 					final Composite actionMenu = new Composite(dialog, SWT.NONE);
 					actionMenu.setLayout(new org.eclipse.swt.layout.GridLayout(3, false));
-
 
 					/**
 					 * Menu for Combine Actions
@@ -1095,15 +1086,12 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void refreshVersionCombo() {
-		System.out.println("REFRESH");
 		if ( versionCombo != null ){
 			versionCombo.removeAll();
 			versionCombo.setText("");
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			for (int i = 0; i<getTargetProjects().getSelectedTargetProject().getTargetsList().size();i++) {
-				//					addVersionName("" + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
 				list.add(getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion());
-				//					System.out.println(i + " " + getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getVersion() + " " +getTargetProjects().getSelectedTargetProject().getTargetsList().get(i).getTargetDBSchema());
 			}
 			Collections.sort(list);
 			for (Integer i : list) {
@@ -1136,7 +1124,6 @@ public class OntologyEditorView extends ViewPart {
 		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
 
 	}
-
 
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
 		int size = nodeLists.getNumberOfItemNodes();
@@ -1187,7 +1174,6 @@ public class OntologyEditorView extends ViewPart {
 		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
-		//		EditorTargetInfoView.setNode(node);
 	}
 
 	/**
@@ -1203,8 +1189,6 @@ public class OntologyEditorView extends ViewPart {
 			init();
 		}
 		stagingTreeViewer.getTree().removeAll();
-
-		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
@@ -1284,8 +1268,8 @@ public class OntologyEditorView extends ViewPart {
 	 * @param currentStagingServer
 	 */
 	public static void setStagingServer(Server currentServer2) {
-		System.out.println("setting staging server to: " + currentServer2.toString());
-		currentStagingServer=currentServer2;
+		currentStagingServer = new Server(currentServer2);
+		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
 	}
 
 

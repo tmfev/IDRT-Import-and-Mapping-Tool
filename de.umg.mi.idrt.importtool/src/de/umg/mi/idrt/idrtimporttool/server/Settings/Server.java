@@ -78,6 +78,22 @@ public class Server implements Serializable {
 		this.setUseWinAuth(useWinAuth);
 	}
 	/**
+	 * @param currentServer2
+	 */
+	public Server(Server currentServer2) {
+		this.uniqueID = currentServer2.getUniqueID();
+		this.ip = currentServer2.getIp();
+		setPassword(currentServer2.getPassword());
+		this.port = currentServer2.getPort();
+		this.user = currentServer2.getUser();
+		this.sid =currentServer2.getSID();
+		this.schema = currentServer2.getSchema();
+		this.table = currentServer2.getTable();
+		this.databaseType = currentServer2.getDatabaseType();
+		this.setUseWinAuth(currentServer2.isUseWinAuth());
+	}
+
+	/**
 	 * @return Connection for JDBC
 	 */
 	public Connection getConnection() {
