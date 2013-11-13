@@ -276,7 +276,6 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static String getTargetSchemaName() {
-		System.out.println("GETTING TARGET SCHEMA NAME: " + lblTargetName.getText());
 		if (lblTargetName!=null)
 			return lblTargetName.getText();
 		else 
