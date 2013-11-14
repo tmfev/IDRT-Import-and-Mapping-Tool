@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="IDRT Import Tool" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.0.0.3" useFeatures="true" includeLaunchers="true">
-
+<product name="i2b2 Ontology Editor" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="0.9.3.2" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -24,7 +23,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
       <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</windows>
@@ -65,6 +63,7 @@
    <features>
       <feature id="de.umg.mi.idrt.ioe.feature"/>
       <feature id="de.umg.mi.idrt.importtool.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
    </features>
 
 

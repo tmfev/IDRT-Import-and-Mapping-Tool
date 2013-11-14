@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="de.umg.mi.idrt.importtool.feature"
-      label="Feature"
-      version="1.0.0.qualifier">
+      label="ImportTool Feature"
+      version="1.0.0.5">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
