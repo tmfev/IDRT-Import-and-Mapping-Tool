@@ -21,32 +21,60 @@ public class AddItemCommand extends AbstractHandler {
 		System.out.println("Adding Item");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
-		
-		OntologyTreeNode subRootNode = new OntologyTreeNode("New Item");
+		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
 
-		subRootNode.setID("new Item");
-		subRootNode.setTreePath("\\i2b2\\newItem\\");
-		subRootNode.setTreePathLevel(1);
+		subRootNode.setID("customItem");
+		//		subRootNode.setTreePath("\\i2b2\\customNode\\");
+		//		subRootNode.setTreeAttributes();
+		//		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-//		subRootNode.getTargetNodeAttributes().addStagingPath("");
+		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");
-		subRootNode.setName("New Item");
 		currentNode.add(subRootNode);
+		subRootNode.setTreeAttributes();
+		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {
+			System.out.println(n.getTreePathLevel() + " " + n.getTreePath());
+		}
+		int counter = 1;
+		while (OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(subRootNode.getTreePath())!=null) {
+			String oldPath = subRootNode.getID();
+			if (oldPath.contains("_"))
+				oldPath = oldPath.substring(0,oldPath.lastIndexOf("_"));
+			oldPath = oldPath+"_"+counter;
+			subRootNode.setID(oldPath);
+			subRootNode.setTreeAttributes();
+			counter++;
+		}
 
-		//MyOntologyTree myOT = OntologyEditorView.getSelf().getMyOntologyTree();
+
+		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
+		subRootNode.setTreeAttributes();
+		//			currentNode.add(subRootNode);
+		//			OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
+
+
+
+
+
+		OntologyEditorView.setCurrentTargetNode(subRootNode);
+
+
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-//		targetTreeViewer.expandToLevel(subRootNode, 10);
+		//		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
-		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
+
+
+
 		targetTreeViewer.refresh();
-		
-		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
+		//		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
+
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);
-		System.out.println(test.getName());
-		
+		//		subRootNode.setID(subRootNode.getName());
+		//		subRootNode.setTreeAttributes();
+		//		System.out.println(test.getName());		
 		return null;
 	}
 }

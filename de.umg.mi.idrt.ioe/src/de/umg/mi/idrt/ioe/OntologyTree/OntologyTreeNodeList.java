@@ -118,4 +118,11 @@ System.err.println("Could not add node \"" + node.getName() +"\", because no par
 	public void removeNode(OntologyTreeNode node){
 		stringPathToNode.remove(node.getTreePath());
 	}
+	
+	/**
+	 * @return the stringPathToNode
+	 */
+	public HashMap<String, OntologyTreeNode> getStringPathToNode() {
+		return stringPathToNode;
+	}
 }
