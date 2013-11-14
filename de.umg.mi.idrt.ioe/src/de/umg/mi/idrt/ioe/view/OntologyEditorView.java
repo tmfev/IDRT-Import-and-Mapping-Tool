@@ -53,6 +53,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -150,7 +151,7 @@ public class OntologyEditorView extends ViewPart {
 	private static Label lblInstance;
 	private static Text instanceName;
 	private static Composite composite_7;
-	private static Button btnClearTargetProject;
+	private static Button btnDeleteVersion;
 	private static Composite composite_8;
 	private static Text searchText;
 	private static Label searchImage;
@@ -314,11 +315,11 @@ public class OntologyEditorView extends ViewPart {
 
 		//TODO HERE
 
-		//				Shell shell = new Shell();
-		//				shell.setSize(844, 536);
-		//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//				mainComposite = new Composite(shell, SWT.NONE);
-		//				mainComposite.setLayout(new BorderLayout(0, 0));
+		//		Shell shell = new Shell();
+		//		shell.setSize(844, 536);
+		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//		mainComposite = new Composite(shell, SWT.NONE);
+		//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
 			Path tmpPath = new Path("/temp/output/");
@@ -622,6 +623,8 @@ public class OntologyEditorView extends ViewPart {
 		lblStagingName = new Text(composite_6, SWT.NONE);
 		lblStagingName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
 		lblStagingName.setEditable(false);
+		new Label(composite_3, SWT.NONE);
+		new Label(composite_3, SWT.NONE);
 		//		btnCancel = new Button(composite_3, SWT.NONE);
 		//		btnCancel.setText("CANCEL");
 		//		btnCancel.addSelectionListener(new SelectionListener() {
@@ -656,7 +659,7 @@ public class OntologyEditorView extends ViewPart {
 		//		composite_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 		composite_7 = new Composite(composite_2, SWT.NONE);
 		composite_7.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		composite_7.setLayout(new GridLayout(7, false));
+		composite_7.setLayout(new GridLayout(8, false));
 
 		btnEdit = new Button(composite_7, SWT.NONE);
 		btnEdit.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/format-justify-fill.png"));
@@ -691,11 +694,32 @@ public class OntologyEditorView extends ViewPart {
 		versionCombo.setLayoutData(gd_versionCombo);
 
 		btnNewVersion = new Button(composite_7, SWT.NONE);
-		btnNewVersion.setText("new");
 		btnNewVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/add.gif"));
 		btnNewVersion.setToolTipText("New Version");
+
+		btnDeleteVersion = new Button(composite_7, SWT.NONE);
+		btnDeleteVersion.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
+		btnDeleteVersion.setToolTipText("Delete Version");
+		btnDeleteVersion.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				//				clearTargetName();
+				ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
+				command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, getTargetProjects().getSelectedTarget().getVersion());
+				Application.executeCommand(command);
+
+				versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+				versionCombo.getParent().setFocus();
+				//TODO
+			}
+		});
 		Button saveProject = new Button(composite_7, SWT.PUSH);
-		saveProject.setText("save");
+		saveProject.setToolTipText("Save Version");
 		saveProject.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "icons/save_edit.gif"));
 		saveProject.addSelectionListener(new SelectionListener() {
 
@@ -771,14 +795,14 @@ public class OntologyEditorView extends ViewPart {
 						public void handleEvent(Event event) {
 
 							dialog.close();
-
-							System.out.println("Delete Version clicked for Version:" + versionCombo.getText());
+							//TODO
+							System.out.println("Delete Version clicked for Version:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 							ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
-							command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
+							command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, getTargetProjects().getPreviousSelectedVersion().getVersion());
 							Application.executeCommand(command);
 
 							versionCombo.setText(""+getTargetProjects().getSelectedTarget().getVersion());
-//							versionCombo.setText(versionCombo.getItem(versionCombo.getItems().length-1));
+							//							versionCombo.setText(versionCombo.getItem(versionCombo.getItems().length-1));
 
 							versionCombo.getParent().setFocus();
 						}
@@ -813,7 +837,7 @@ public class OntologyEditorView extends ViewPart {
 		dropTarget4.addDropListener(dropListenerTarget);
 		composite_4 = new Composite(composite_2, SWT.NONE);
 		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		composite_4.setLayout(new GridLayout(7, false));
+		composite_4.setLayout(new GridLayout(6, false));
 
 
 		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
@@ -863,25 +887,9 @@ public class OntologyEditorView extends ViewPart {
 		lblTargetName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
 		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
 		lblTargetName.setEditable(false);
-
-		btnClearTargetProject = new Button(composite_4, SWT.NONE);
-		btnClearTargetProject.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
-		btnClearTargetProject.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
-		btnClearTargetProject.setToolTipText("Remove Target Project");
-		btnClearTargetProject.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				clearTargetName();
-			}
-		});
 		btnGo = new Button(composite_4, SWT.NONE);
 		btnGo.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, true, 1, 1));
-		btnGo.setText("upload");
+		btnGo.setText("Upload");
 		btnGo.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-next.png"));
 		btnGo.addSelectionListener(new SelectionListener() {
 
@@ -1112,7 +1120,18 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 			versionCombo.remove(version);
-			versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+			boolean found = false;
+			for (String items : versionCombo.getItems()) {
+				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
+					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
+				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
+			}
 			composite_2.layout();
 
 		} else {
