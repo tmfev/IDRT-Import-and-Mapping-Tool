@@ -42,10 +42,10 @@ public class IncrementTargetVersion extends AbstractHandler {
 
 		// save the new target project version
 		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IEO.SAVETARGETPROJECT));
+				Resource.ID.Command.IOE.SAVETARGETPROJECT));
 
 		// save ontology as the new target version
-		Application.executeCommand(Resource.ID.Command.IEO.SAVETARGET);
+		Application.executeCommand(Resource.ID.Command.IOE.SAVETARGET);
 
 		StatusView
 				.addMessage("A new version of this i2b2 staging project has been created.");
