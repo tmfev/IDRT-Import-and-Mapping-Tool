@@ -3,6 +3,7 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.MessageDialog;
 
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
@@ -13,8 +14,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 public class etlStaginToTargetI2B2 extends AbstractHandler {
 
 	
-	private ExecutionEvent event;
-
 	public etlStaginToTargetI2B2(){
 		super();
 	}
@@ -23,7 +22,14 @@ public class etlStaginToTargetI2B2 extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		TOSConnector tos = new TOSConnector();
-		tos.uploadProject();
+		int exit = tos.uploadProject();
+		
+		if (exit==0) {
+			MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
+		}
+		else {
+			MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
+		}
 //		try {
 //			tos.setContextVariable("Job", Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
 //			//tos.setContextVariable("SQLTable", "I2B2");

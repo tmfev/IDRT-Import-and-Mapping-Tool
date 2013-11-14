@@ -97,6 +97,7 @@ public class SaveTargetProject extends AbstractHandler {
 			
 			
 		} catch (IOException e) {
+			e.printStackTrace();
 			Console.error(e.toString());
 		}
 
@@ -112,6 +113,7 @@ public class SaveTargetProject extends AbstractHandler {
 			tos.runJob();
 			OntologyEditorView.setNotYetSaved(false);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
 					+ e.getMessage());
 			return 1;

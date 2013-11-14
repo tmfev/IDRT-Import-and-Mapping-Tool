@@ -132,7 +132,7 @@ public class TOSConnector {
 			//						serverUniqueName);
 			//			}
 
-			Console.info("Current server: " + currentServer.toString());
+			Console.info("Current server: " + currentServer.toString() + " " + currentServer.getSchema());
 
 			if (currentServer != null) {
 				Console.info("Using selected server \""
@@ -170,7 +170,7 @@ public class TOSConnector {
 				setContextVariable("DB_StagingI2B2_Password",
 						currentServer.getPassword());
 				setContextVariable("DB_StagingI2B2_Schema",
-						currentServer.getSchema());
+						OntologyEditorView.getStagingSchemaName());
 				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
@@ -180,7 +180,7 @@ public class TOSConnector {
 				
 				if (targetServer!=null) {
 				System.out.println("TargetServerName" + targetServer.getName()); 
-				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
+//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
 				
 				
 				setContextVariable("DB_TargetI2B2_Username",

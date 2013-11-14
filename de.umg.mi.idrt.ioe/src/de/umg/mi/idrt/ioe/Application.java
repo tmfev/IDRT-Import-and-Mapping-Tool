@@ -61,9 +61,6 @@ public class Application implements IApplication {
 		String[] line = reader.readNext();
 		
 		while ((line = reader.readNext()) != null) {
-			System.out.println("name: " + line[0]);
-			System.out.println("regex: " + line[1]);
-			
 			Regex regex = new Regex(line[0], line[1]);
 			CombineNodesCommand.addRegEx(regex);
 		}

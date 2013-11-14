@@ -24,7 +24,7 @@ public class DeleteTarget extends AbstractHandler {
 		Target targetOld;
 		
 		String version = event
-				.getParameter(Resource.ID.Command.IEO.DELETETARGET_ATTRIBUTE_TARGETID);
+				.getParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID);
 
 		if ( version != null && !version.isEmpty() ){
 			

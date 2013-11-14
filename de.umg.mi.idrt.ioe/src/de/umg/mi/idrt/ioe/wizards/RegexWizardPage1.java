@@ -8,14 +8,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.jface.viewers.ViewerColumn;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
@@ -23,6 +26,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
@@ -75,36 +79,47 @@ public class RegexWizardPage1 extends WizardPage {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		Composite comp = new Composite(parent, SWT.NULL);
 
-		comp.setLayout(new FillLayout(SWT.HORIZONTAL));
+//		comp.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		buttons = new HashMap<Object, Button>();
-		viewer = new TableViewer(comp,SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.FULL_SELECTION);
+		viewer = new TableViewer(parent,SWT.MULTI | SWT.H_SCROLL
+		        | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
+		viewer.setColumnProperties(new String[] {});
 		viewer.getTable().setHeaderVisible(true);
 		viewer.getTable().setLinesVisible(true);
 		viewer.setContentProvider(new ArrayContentProvider());
-		column_2 = new TableColumn(viewer.getTable(), SWT.NONE);
-		column_2.setMoveable(true);
+		
+		GridData gridData = new GridData();
+	    gridData.verticalAlignment = GridData.CENTER;
+	    gridData.horizontalSpan = 2;
+	    gridData.grabExcessHorizontalSpace = true;
+	    gridData.grabExcessVerticalSpace = true;
+	    gridData.horizontalAlignment = GridData.CENTER;
+	    viewer.getControl().setLayoutData(gridData);
+//		column_2 = new TableColumn(viewer.getTable(), SWT.NONE);
+		
+		//		column_2.setWidth(50);
+		TableViewerColumn saveCol = new TableViewerColumn(viewer, SWT.NONE);
+		column_2 = saveCol.getColumn();
+		column_2.setResizable(true);
 		column_2.setWidth(50);
-		TableViewerColumn saveCol = new TableViewerColumn(viewer, column_2);
 		saveCol.setLabelProvider(new ColumnLabelProvider(){
 
 			@Override
 			public void update(final ViewerCell cell) {
+				
 				TableItem item = (TableItem) cell.getItem();
 				final Button button;
-				if(buttons.containsKey(cell.getElement()))
-				{
+				if (buttons.containsKey(cell.getElement())) {
 					button = buttons.get(cell.getElement());
 				}
-				else
-				{
+				else {
 					if (((Regex)cell.getElement()).getName().isEmpty()) {
-						button = new Button((Composite) cell.getViewerRow().getControl(),SWT.NONE);
-						//						button.setText("new");
+						button = new Button((Composite) cell.getViewerRow().getControl(),SWT.PUSH);
 						button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/add.gif"));
+						button.setToolTipText("Add Regular Expression");
+						
 						button.addSelectionListener(new SelectionListener() {
 
 							@Override
@@ -119,8 +134,11 @@ public class RegexWizardPage1 extends WizardPage {
 						});
 					}
 					else {
-						button = new Button((Composite) cell.getViewerRow().getControl(),SWT.NONE);
+						button = new Button((Composite) cell.getViewerRow().getControl(),SWT.PUSH);
+						button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
+						button.setToolTipText("Remove Regular Expression");
 						button.setData(((Regex)cell.getElement()));
+
 						button.addSelectionListener(new SelectionListener() {
 
 							@Override
@@ -129,15 +147,13 @@ public class RegexWizardPage1 extends WizardPage {
 								CombineNodesCommand.removeRegex(regex);
 								button.dispose();
 								setInput();
-
 							}
 
 							@Override
 							public void widgetDefaultSelected(SelectionEvent e) {
 							}
 						});
-						//					button.setText("Remove");
-						button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
+
 					}
 					buttons.put(cell.getElement(), button);
 				}
@@ -149,19 +165,19 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 
 		});
-		TableColumn column = new TableColumn(viewer.getTable(), SWT.NONE);
+		
+
+		final TextCellEditor textCellEditor = new TextCellEditor(viewer.getTable(),SWT.NONE);
+		TableViewerColumn nameCol = new TableViewerColumn(viewer, SWT.NONE);
+		TableColumn column = nameCol.getColumn();
 		column.setMoveable(true);
 		column.setText("Name");
 		column.setWidth(100);
-
-		final TextCellEditor textCellEditor = new TextCellEditor(viewer.getTable(),SWT.NONE);
-		TableViewerColumn nameCol = new TableViewerColumn(viewer, column);
 		nameCol.setLabelProvider(new ColumnLabelProvider(){
 
 			@Override
 			public String getText(Object element) {
 				Regex p = (Regex)element;
-
 				return p.getName();
 			}
 
@@ -189,13 +205,14 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 		});
 
-		column_1 = new TableColumn(viewer.getTable(), SWT.NONE);
+		
+
+
+		TableViewerColumn regexCol = new TableViewerColumn(viewer, SWT.NONE);
+		column_1 = regexCol.getColumn();
 		column_1.setMoveable(true);
 		column_1.setText("Regex");
 		column_1.setWidth(300);
-
-
-		TableViewerColumn regexCol = new TableViewerColumn(viewer, column_1);
 		regexCol.setEditingSupport(new EditingSupport(viewer) {
 
 			protected boolean canEdit(Object element) {
@@ -228,13 +245,13 @@ public class RegexWizardPage1 extends WizardPage {
 
 		});
 
-		TableColumn test = new TableColumn(viewer.getTable(), SWT.NONE);
+		
+
+		TableViewerColumn testCol = new TableViewerColumn(viewer, SWT.NONE);
+		TableColumn test = testCol.getColumn();
 		test.setMoveable(true);
 		test.setText("Test String");
 		test.setWidth(100);
-
-		TableViewerColumn testCol = new TableViewerColumn(viewer, test);
-
 		testCol.setLabelProvider(new ColumnLabelProvider(){
 
 			@Override
@@ -266,13 +283,12 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 		});
 
-		TableColumn check = new TableColumn(viewer.getTable(), SWT.NONE);
+		TableViewerColumn checkCol = new TableViewerColumn(viewer, SWT.NONE);
+		TableColumn check = checkCol.getColumn();
 		check.setMoveable(true);
 		check.setText("Check");
 		check.setWidth(100);
 		check.setAlignment(SWT.CENTER);
-
-		TableViewerColumn checkCol = new TableViewerColumn(viewer, check);
 		checkCol.setLabelProvider(new ColumnLabelProvider(){
 			@Override
 			public Image getImage(Object element) {
@@ -290,11 +306,10 @@ public class RegexWizardPage1 extends WizardPage {
 			public String getText(Object element) {
 				return "";
 			}
-
 		});
-
+//		column_2.pack();
 		setInput();
-		setControl(comp);
+		setControl(parent);
 		setPageComplete(true);
 	}
 
