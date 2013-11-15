@@ -7,18 +7,19 @@ import java.util.List;
 public class TargetProjects {
 
 	private List<TargetProject> list = new LinkedList<TargetProject>();
-	private int highestTargetID = -1;
-	private int highestTargetProject = -1;
+//	private int highestTargetID = -1;
+//	private int highestTargetProject = -1;
 	private TargetProject selectedTargetProject = null;
 	private Target selectedTarget = null;
 	private Target previousSelectedTarget;
+	
 
 
 	public TargetProjects() {
 
 	}
 
-	public void setPreviousSelectedVersion(Target lastSelectedTarget) {
+	public void setPreviousSelectedTarget(Target lastSelectedTarget) {
 		System.out.println("lastSelectedTargetVersoin: " + lastSelectedTarget.getVersion());
 		this.previousSelectedTarget = lastSelectedTarget;
 	}
@@ -60,19 +61,19 @@ public class TargetProjects {
 		this.getTargetProjectByID(targetProjectID).add(targetID, targetProjectID, version, created, lastModified, targetDBSchema);
 	}
 
-	/**
-	 * @return the highestTargetID
-	 */
-	public int getHighestTargetID() {
-		return highestTargetID;
-	}
-
-	/**
-	 * @return the highestTargetProject
-	 */
-	public int getHighestTargetProject() {
-		return highestTargetProject;
-	}
+//	/**
+//	 * @return the highestTargetID
+//	 */
+//	public int getHighestTargetID() {
+//		return highestTargetID;
+//	}
+//
+//	/**
+//	 * @return the highestTargetProject
+//	 */
+//	public int getHighestTargetProject() {
+//		return highestTargetProject;
+//	}
 
 	/**
 	 * @return the selectedTarget
@@ -121,19 +122,19 @@ public class TargetProjects {
 		return list.isEmpty();
 	}
 
-	/**
-	 * @param highestTargetID the highestTargetID to set
-	 */
-	public void setHighestTargetID(int highestTargetID) {
-		this.highestTargetID = highestTargetID;
-	}
-
-	/**
-	 * @param highestTargetProject the highestTargetProject to set
-	 */
-	public void setHighestTargetProject(int highestTargetProject) {
-		this.highestTargetProject = highestTargetProject;
-	}
+//	/**
+//	 * @param highestTargetID the highestTargetID to set
+//	 */
+//	public void setHighestTargetID(int highestTargetID) {
+//		this.highestTargetID = highestTargetID;
+//	}
+//
+//	/**
+//	 * @param highestTargetProject the highestTargetProject to set
+//	 */
+//	public void setHighestTargetProject(int highestTargetProject) {
+//		this.highestTargetProject = highestTargetProject;
+//	}
 
 	/**
 	 * @param selectedTarget
@@ -141,8 +142,8 @@ public class TargetProjects {
 	 */
 	public void setSelectedTarget(Target newSelectedTarget) {
 		if (selectedTarget!= null) {
-			setPreviousSelectedVersion(selectedTarget);
-			
+			System.out.println("Setting selected Target (V:"+newSelectedTarget.getVersion()+") with previousSelected (V:"+selectedTarget.getVersion()+")");
+			setPreviousSelectedTarget(selectedTarget);
 		}
 		this.selectedTarget = newSelectedTarget;
 	}

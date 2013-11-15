@@ -41,7 +41,7 @@ public class Console {
 	
 	public static void infoLine(String text){
 		System.out.println(text);
-		System.out.print(text);
+		//System.out.print(text);
 	}
 	
 	public static void infoNoLine(String text){

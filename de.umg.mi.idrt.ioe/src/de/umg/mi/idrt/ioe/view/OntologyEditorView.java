@@ -710,10 +710,11 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent arg0) {
 				//				clearTargetName();
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
-				command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, getTargetProjects().getSelectedTarget().getVersion());
+				command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 				Application.executeCommand(command);
 
-				versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+				//versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+				versionCombo.setText(""+getTargetProjects().getSelectedTarget().getVersion());
 				versionCombo.getParent().setFocus();
 				//TODO
 			}
@@ -796,9 +797,11 @@ public class OntologyEditorView extends ViewPart {
 
 							dialog.close();
 							//TODO
-							System.out.println("Delete Version clicked for Version:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
+							System.out.println("(Del) Version selected:" + versionCombo.getText());
+							System.out.println("(Del) Previous Selected Verions:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
+							
 							ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
-							command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, getTargetProjects().getPreviousSelectedVersion().getVersion());
+							command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 							Application.executeCommand(command);
 
 							versionCombo.setText(""+getTargetProjects().getSelectedTarget().getVersion());
@@ -1120,19 +1123,21 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 			versionCombo.remove(version);
-			boolean found = false;
-			for (String items : versionCombo.getItems()) {
-				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
-					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
-				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
-			}
-			composite_2.layout();
+			
+//			
+//			boolean found = false;
+//			for (String items : versionCombo.getItems()) {
+//				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
+//					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+//					found = true;
+//					break;
+//				}
+//			}
+//			if (!found) {
+//				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
+//				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
+//			}
+//			composite_2.layout();
 
 		} else {
 			Console.error("versionCombo is null, so don't remove an entry from it");

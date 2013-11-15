@@ -21,12 +21,12 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tos/tosidrtcommand_transformationtotarget_0_1/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tos/tosidrtconnector_0_4/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/dom4j-1.6.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/jboss-serialization.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/log4j-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/ojdbc14-9i.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/jboss-serialization.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/ojdbc14-9i.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/ojdbc14.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/ojdbc5.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>

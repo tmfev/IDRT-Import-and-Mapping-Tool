@@ -21,58 +21,73 @@ public class DeleteTarget extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		Target targetOld;
+		Target targetToDelete;
+		String message;
 		
 		String version = event
 				.getParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID);
 
 		if ( version != null && !version.isEmpty() ){
 			
-			targetOld = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
-			if (targetOld == null){
-				Console.error("Coudn't find the target for which a deletion was desired.");
-				return null;
-			} else {
-				//OntologyEditorView.getTargetProjects().setSelectedTarget(targetOld);
+			targetToDelete = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
+			if (targetToDelete == null){
+				message = "Coudn't find the target for which a deletion was desired.";
+				Console.error(message);
+				StatusView.addErrorMessage(message);
+				return 1;
 			}
-		}else
-			targetOld = OntologyEditorView.getTargetProjects().getSelectedTarget();
-
+		}else {
+			targetToDelete = OntologyEditorView.getTargetProjects().getSelectedTarget();
+		}
 		
 		Console.info("Deleting Target Ontology with the TargetID="
-				+ targetOld.getTargetID() + " and Version=" + targetOld.getVersion()
+				+ targetToDelete.getTargetID() + " and Version=" + targetToDelete.getVersion()
 				+ " of the TargetProject with ID="
 				+ OntologyEditorView.getTargetProjects()
 						.getSelectedTargetProject().getTargetProjectID() + " ");
 		
 		// check if there are more than one version available 
 		if (OntologyEditorView.getTargetProjects().getSelectedTargetProject().getTargetsList().size() <= 1){
-			String message = "There is only one target version existing in this target instance. Deleting not aborted.";
+			message = "There is only one target version existing in this target instance. Deleting not aborted.";
 			Console.error(message);
 			StatusView.addErrorMessage(message);
+			return 1;
 		}
+		
+		
 		try {
 			TOSConnector tos = new TOSConnector();
 			TOSConnector.setContextVariable("Job",
 					Resource.ID.Command.TOS.DELETE_TARGET);
-			tos.setContextVariable("TargetID", String.valueOf(targetOld.getTargetID()));
+			tos.setContextVariable("TargetID", String.valueOf(targetToDelete.getTargetID()));
 			
 			tos.runJob();
 		} catch (Exception e) {
-			Console.error("Could not delete the Target Ontology with the TargetID="
+			message = ("Could not delete the Target Ontology with the TargetID="
 					+ targetID
 					+ " of the TargetProject with ID="
 					+ OntologyEditorView.getTargetProjects()
 							.getSelectedTargetProject().getTargetProjectID()
 					+ ". " + e.getMessage());
+			Console.error(message);
+			StatusView.addErrorMessage(message);
 			return 1;
 		}
 		
 		// deleting the target from the target projects object and the gui drop down menu
 		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
-		OntologyEditorView.removeVersionFromCombo(String.valueOf( targetOld.getVersion() ));
-		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetOld);
 		
+		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetToDelete);
+		
+		// GUI stuff
+		//OntologyEditorView.removeVersionFromCombo(String.valueOf( targetToDelete.getVersion() ));
+		/*
+		if ( OntologyEditorView.getTargetProjects().getSelectedTarget() == targetToDelete  ){
+			OntologyEditorView.getTargetProjects().setSelectedTarget(OntologyEditorView.getTargetProjects().getSelectedTargetProject().getHighestTarget());
+		}
+		*/
+		
+		StatusView.addSuccsessMessage("Version " + targetToDelete.getVersion() + " was deleted.");
 	
 		return 0;
 	}
