@@ -21,7 +21,6 @@ public class Regex {
 		setName(name);
 		setRegex(regex);
 		setTest("");
-		
 	}
 	
 	/**

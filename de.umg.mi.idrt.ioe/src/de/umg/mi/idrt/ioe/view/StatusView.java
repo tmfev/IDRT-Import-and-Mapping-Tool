@@ -112,7 +112,7 @@ public class StatusView extends ViewPart {
 		});
 	}
 
-	public void addSuccsessMessage(String message) {
+	public static void addSuccsessMessage(String message) {
 		addMessage(new SystemMessage(message,
 				SystemMessage.MessageType.SUCCESS,
 				SystemMessage.MessageLocation.MAIN));

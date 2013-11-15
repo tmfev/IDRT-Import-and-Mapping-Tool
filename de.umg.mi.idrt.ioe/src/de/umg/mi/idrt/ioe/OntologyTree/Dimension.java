@@ -6,7 +6,7 @@ package de.umg.mi.idrt.ioe.OntologyTree;
  *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
  * 
  *         
-  */
+ */
 
 public enum Dimension {
 	
