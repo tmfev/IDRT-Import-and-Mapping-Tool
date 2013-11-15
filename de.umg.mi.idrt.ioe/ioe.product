@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="i2b2 Ontology Editor" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="0.9.3.2" useFeatures="true" includeLaunchers="true">
+<product name="i2b2 Ontology Editor" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="0.9.0.1" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>

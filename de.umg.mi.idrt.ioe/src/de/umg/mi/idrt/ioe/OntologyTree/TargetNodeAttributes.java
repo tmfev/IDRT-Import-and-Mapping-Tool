@@ -29,7 +29,7 @@ public class TargetNodeAttributes {
 	public void addStagingPath(String stagingPath) {
 		if (stagingPath.startsWith("\\\\"))
 			stagingPath=stagingPath.substring(1); //removes wrong "\" from beginning of path
-		if (!stagingPath.endsWith("\\"))
+		if (!stagingPath.endsWith("\\") && !stagingPath.isEmpty())
 			stagingPath=stagingPath+"\\";
 		if (!subNodeListContains(stagingPath)) {
 			OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
@@ -37,15 +37,22 @@ public class TargetNodeAttributes {
 			if (OntologyEditorView.getMyOntologyTree()!=null) {
 				OntologyTreeNode stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
 				if (stagingNode==null) {
-					stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
-				}
-				if (stagingNode != null)
-					subNode.setStagingName(stagingNode.getName());
-				else
+					//					stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
 					subNode.setStagingName("not found");
+				}
+				else if (stagingNode != null)
+					subNode.setStagingName(stagingNode.getName());
 			}
 			subNodeList.add(subNode);
 			this.sourcePath = stagingPath;
+		}
+		
+		LinkedHashSet<OntologyTreeSubNode> tmp = new LinkedHashSet<OntologyTreeSubNode>();
+		tmp.addAll(subNodeList);
+		for (OntologyTreeSubNode s : tmp) {
+			if (subNodeList.size()>1 && s.getStagingName() != null)
+				if (s.getStagingName().equals("not found"))
+					subNodeList.remove(s);
 		}
 	}
 
@@ -88,22 +95,22 @@ public class TargetNodeAttributes {
 		return startDateSource;
 	}
 
-//
-//	/**
-//	 * @return the nodeType
-//	 */
-//	public String getNodeType() {
-//		return nodeType;
-//	}
-//
-//	/**
-//	 * @param nodeType
-//	 *            the nodeType to set
-//	 */
-//	public void setNodeType(String nodeType) {
-//		this.nodeType = nodeType;
-//	}
-	
+	//
+	//	/**
+	//	 * @return the nodeType
+	//	 */
+	//	public String getNodeType() {
+	//		return nodeType;
+	//	}
+	//
+	//	/**
+	//	 * @param nodeType
+	//	 *            the nodeType to set
+	//	 */
+	//	public void setNodeType(String nodeType) {
+	//		this.nodeType = nodeType;
+	//	}
+
 	/**
 	 * @return the subNodeList
 	 */
@@ -174,7 +181,7 @@ public class TargetNodeAttributes {
 	public void setSubNodeList(LinkedHashSet<OntologyTreeSubNode> hashSet) {
 		this.subNodeList = hashSet;
 	}
-	
+
 	/**
 	 * @param visualattribute
 	 *            the visualattribute to set

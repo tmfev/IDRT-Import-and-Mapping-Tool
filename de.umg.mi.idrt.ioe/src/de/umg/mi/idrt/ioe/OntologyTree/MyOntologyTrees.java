@@ -540,7 +540,6 @@ public class MyOntologyTrees{
 
 				@Override
 				public void widgetArmed(ArmEvent e) {
-					System.out.println("ARM2");
 					createRegexMenu();	
 				}
 			});
