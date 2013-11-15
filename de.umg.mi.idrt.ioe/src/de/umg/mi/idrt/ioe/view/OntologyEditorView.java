@@ -311,7 +311,7 @@ public class OntologyEditorView extends ViewPart {
 	 * @wbp.parser.entryPoint
 	 */
 	public static void init() {
-		System.out.println("INIT!");
+		System.out.println("INIT! NEW NEW NEW");
 
 		//TODO HERE
 

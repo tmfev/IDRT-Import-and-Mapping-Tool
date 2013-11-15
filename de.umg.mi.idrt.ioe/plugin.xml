@@ -18,10 +18,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="de.umg.mi.idrt.ioe.application"
-            name="IDRT Import Tool">
+            name="i2b2 Ontology Editor">
          <property
                name="appName"
-               value="IDRT Import Tool">
+               value="i2b2 Ontology Editor">
          </property>
          <property
                name="startupForegroundColor"

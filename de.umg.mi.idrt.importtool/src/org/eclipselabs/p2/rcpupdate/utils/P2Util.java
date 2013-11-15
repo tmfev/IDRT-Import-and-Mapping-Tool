@@ -26,7 +26,7 @@ import org.osgi.framework.ServiceReference;
  */
 public class P2Util {
 	
-	 private static String UPDATE_SITE = "http://localhost/updateSite";
+	 private static String UPDATE_SITE = "http://i2b2.mi.med.uni-goettingen.de/iitupdateSite";
 
 	public static void checkForUpdates() {
 		try {

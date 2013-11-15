@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="IDRT Import Tool" id="de.umg.mi.idrt.IDRTImportTool.product" application="de.umg.mi.idrt.IDRTImportTool.application" version="1.0.0.3" useFeatures="true" includeLaunchers="true">
+<product name="IDRT Import Tool" id="de.umg.mi.idrt.IDRTImportTool.product" application="de.umg.mi.idrt.IDRTImportTool.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="images/tmf.jpg"/>
@@ -35,7 +35,6 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
       <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>

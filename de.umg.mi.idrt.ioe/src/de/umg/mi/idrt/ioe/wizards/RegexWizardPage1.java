@@ -62,7 +62,6 @@ public class RegexWizardPage1 extends WizardPage {
 
 	@Override
 	public void createControl(Composite parent) {
-
 		File file = new File(FileHandling.getCFGFilePath("regex.csv"));
 		try {
 			CombineNodesCommand.clear();
@@ -105,26 +104,19 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 		});
 		Composite composite_1 = new Composite(comp, SWT.NONE);
+		composite_1.setLayout(new FillLayout(SWT.HORIZONTAL));
 		viewer = new TableViewer(composite_1,SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
-		Table table = viewer.getTable();
-		table.setSize(574, 281);
 		viewer.setColumnProperties(new String[] {});
 		viewer.getTable().setHeaderVisible(true);
 		viewer.getTable().setLinesVisible(true);
 		viewer.setContentProvider(new ArrayContentProvider());
-		GridData gridData = new GridData();
-		gridData.verticalAlignment = GridData.CENTER;
-		gridData.horizontalSpan = 2;
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.grabExcessVerticalSpace = true;
-		gridData.horizontalAlignment = GridData.CENTER;
-		viewer.getControl().setLayoutData(gridData);
+		
+		Table table = viewer.getTable();
 		//		column_2 = new TableColumn(viewer.getTable(), SWT.NONE);
 
 		//		column_2.setWidth(50);
 		TableViewerColumn saveCol = new TableViewerColumn(viewer, SWT.NONE);
-
 
 		final TextCellEditor textCellEditor = new TextCellEditor(viewer.getTable(),SWT.NONE);
 		TableViewerColumn nameCol = new TableViewerColumn(viewer, SWT.NONE);
@@ -180,7 +172,7 @@ public class RegexWizardPage1 extends WizardPage {
 
 
 
-		TableViewerColumn testCol = new TableViewerColumn(viewer, SWT.NONE);
+		final TableViewerColumn testCol = new TableViewerColumn(viewer, SWT.NONE);
 		testCol.setEditingSupport(new EditingSupport(viewer) {
 			protected boolean canEdit(Object element) {
 				if (!((Regex)element).getName().isEmpty() && !((Regex)element).getRegex().isEmpty())
@@ -211,7 +203,7 @@ public class RegexWizardPage1 extends WizardPage {
 
 		
 		column_2 = saveCol.getColumn();
-		column_2.setResizable(true);
+		column_2.setResizable(false);
 		column_2.setWidth(50);
 		saveCol.setLabelProvider(new ColumnLabelProvider(){
 
@@ -224,11 +216,11 @@ public class RegexWizardPage1 extends WizardPage {
 					button = buttons.get(cell.getElement());
 				}
 				else {
-						button = new Button((Composite) cell.getViewerRow().getControl(),SWT.PUSH);
+						button = new Button(viewer.getTable(),SWT.PUSH);
 						button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
 						button.setToolTipText("Remove Regular Expression");
 						button.setData(((Regex)cell.getElement()));
-
+						
 						button.addSelectionListener(new SelectionListener() {
 
 							@Override
@@ -246,10 +238,11 @@ public class RegexWizardPage1 extends WizardPage {
 					buttons.put(cell.getElement(), button);
 				}
 				TableEditor editor = new TableEditor(item.getParent());
-				editor.grabHorizontal  = true;
-				editor.grabVertical = true;
+			    editor.grabHorizontal = true;
+			    editor.grabVertical = true;
 				editor.setEditor(button , item, cell.getColumnIndex());
-				editor.layout();
+//				button.pack();
+//				editor.layout();
 			}
 
 		});
@@ -302,8 +295,10 @@ public class RegexWizardPage1 extends WizardPage {
 				if (!((Regex)element).getRegex().isEmpty()) {
 					if (((Regex)element).check())
 						return ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png");
-					else
+					else if (!((Regex)element).getTest().isEmpty())
 						return ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png");
+					else
+						return null;
 				}
 				else {
 					return null;

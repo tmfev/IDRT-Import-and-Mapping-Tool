@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %Bundle-Name
+Bundle-Name: IOE Plugin
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 0.9.2.qualifier
+Bundle-Version: 0.9.3.2
 Bundle-Activator: de.umg.mi.idrt.ioe.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -96,4 +96,7 @@ Import-Package: au.com.bytecode.opencsv,
  de.umg.mi.idrt.idrtimporttool.server.commands,
  de.umg.mi.idrt.idrtimporttool.server.serverWizard,
  de.umg.mi.idrt.idrtimporttool.table,
- de.umi.mi.passwordcrypt
+ de.umi.mi.passwordcrypt,
+ org.eclipselabs.p2.rcpupdate.utils,
+ org.eclipselabs.p2.rcpupdate.utils.handler,
+ org.eclipselabs.p2.rcpupdate.utils.plugin
