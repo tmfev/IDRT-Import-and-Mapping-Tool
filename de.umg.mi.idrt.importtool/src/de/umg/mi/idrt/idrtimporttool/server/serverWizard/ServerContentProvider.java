@@ -26,10 +26,13 @@ public class ServerContentProvider implements ITreeContentProvider {
 
 		if (parentElement instanceof Server) {
 			Server server = (Server) parentElement;
-			
-			
+
+
 			HashSet<String> users = ServerList.getUsersTargetServer(server);
-			return users.toArray();
+			if (users != null)
+				return users.toArray();
+			else 
+				return null;
 		}
 		return null;
 	}

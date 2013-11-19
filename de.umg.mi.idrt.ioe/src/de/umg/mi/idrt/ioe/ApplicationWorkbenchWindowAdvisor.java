@@ -2,9 +2,6 @@ package de.umg.mi.idrt.ioe;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.ui.IWorkbenchPreferenceConstants;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
@@ -30,10 +27,11 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowPerspectiveBar(false);
 		configurer.setShowProgressIndicator(false);
 		//configurer.setShowPerspectiveBar(true);
-
-		IPreferenceStore apiStore = PlatformUI.getPreferenceStore();
-		apiStore.setValue(IWorkbenchPreferenceConstants.DOCK_PERSPECTIVE_BAR,
-				"TOP_RIGHT");
+		configurer.setTitle("I2B2 Ontology Editor V"
+				+ Activator.getDefault().getBundle().getVersion());
+//		IPreferenceStore apiStore = PlatformUI.getPreferenceStore();
+//		apiStore.setValue(IWorkbenchPreferenceConstants.DOCK_PERSPECTIVE_BAR,
+//				"TOP_RIGHT");
 
 	}
 	public void postWindowCreate(){

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/idrt_jdbc_upload_1_0.jar"/>
@@ -53,6 +52,7 @@
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/icd_2_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/ops_2_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

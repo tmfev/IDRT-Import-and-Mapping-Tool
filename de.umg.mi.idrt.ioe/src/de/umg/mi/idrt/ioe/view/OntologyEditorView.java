@@ -1,6 +1,7 @@
 package de.umg.mi.idrt.ioe.view;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -113,7 +114,6 @@ public class OntologyEditorView extends ViewPart {
 
 	private static Composite targetComposite;
 
-	private static long time;
 	private static Composite mainComposite;
 	private static SashForm sash;
 	private static OntologyTreeNode currentTargetNode;
@@ -157,6 +157,16 @@ public class OntologyEditorView extends ViewPart {
 	private static Text lblStagingName;
 
 
+	private static void createDirs(File mainPath) {
+		File misc = new File(mainPath.getAbsolutePath()+"/temp/");
+
+		if (!misc.exists()) 
+			misc.mkdir();
+
+		File miscInput = new File(mainPath.getAbsolutePath()+"/temp/output/");
+		if (!miscInput.exists()) 
+			miscInput.mkdir();
+	}
 
 	private static void addItem() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
@@ -220,17 +230,8 @@ public class OntologyEditorView extends ViewPart {
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
 	}
-	/**
-	 * @return the i2b2ImportTool
-	 */
-	/*
-	public static I2B2ImportTool getI2B2ImportTool() {
-		return i2b2ImportTool;
-	}
-	 */
 	public static TargetProject getInstance() {
 		return getTargetProjects().getSelectedTargetProject();
-		//return OntologyEditorView.getTargetProjects().getSelectedTargetProject();
 	}
 
 	public static MyOntologyTrees getMyOntologyTree(){
@@ -282,14 +283,6 @@ public class OntologyEditorView extends ViewPart {
 		return targetTreeViewer;
 	}
 
-	//	private static void markParent(OntologyTreeNode node) {
-	//		System.out.println("marking " + node.getName());
-	//		node.setSearchResult(true);
-	//		stagingTreeViewer.setExpandedState(node, true);
-	//		if (node.getParent()!=null)
-	//		markParent(node.getParent());
-	//	}
-
 	/**
 	 * @return the column
 	 */
@@ -305,7 +298,7 @@ public class OntologyEditorView extends ViewPart {
 	 * @wbp.parser.entryPoint
 	 */
 	public static void init() {
-		System.out.println("INIT! NEW NEW NEW");
+		System.out.println("INIT!");
 
 		//TODO HERE
 
@@ -315,24 +308,13 @@ public class OntologyEditorView extends ViewPart {
 		//		mainComposite = new Composite(shell, SWT.NONE);
 		//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
+
 			Bundle bundle = Activator.getDefault().getBundle();
-			Path tmpPath = new Path("/temp/output/");
-			URL tmpURL = FileLocator.find(bundle, tmpPath,
-					Collections.EMPTY_MAP);
+			URL mainURL = FileLocator.find(bundle, new Path(""), null);
+			URL mainFileUrl = FileLocator.toFileURL(mainURL);
+			File mainPath = new File(mainFileUrl.getPath());	
 
-			if (tmpURL==null) {
-				Path miscPath = new Path("/temp/"); 
-				URL miscURL = FileLocator.find(bundle, miscPath,
-						Collections.EMPTY_MAP);
-				URL miscURL2 = FileLocator.toFileURL(miscURL);
-				File file = new File(miscURL2.getPath()+"/output/");
-				file.mkdir();
-				tmpURL = FileLocator.find(bundle, tmpPath,
-						Collections.EMPTY_MAP);
-			}
-
-			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
-			File folder = new File(tmpURL2.getPath());
+			File folder = new File(mainPath.getAbsolutePath()+"/temp/output/");
 			File[] listOfFiles = folder.listFiles();
 
 			for (File listOfFile : listOfFiles) {
@@ -710,7 +692,6 @@ public class OntologyEditorView extends ViewPart {
 				//versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
 				versionCombo.setText(""+getTargetProjects().getSelectedTarget().getVersion());
 				versionCombo.getParent().setFocus();
-				//TODO
 			}
 		});
 		Button saveProject = new Button(composite_7, SWT.PUSH);
@@ -724,7 +705,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 				Application.executeCommand(Resource.ID.Command.IOE.SAVETARGET);
 			}
 		});
@@ -754,7 +734,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				// TODO IMPLEMENT
 				if (Integer.parseInt(versionCombo.getText()) != getTargetProjects().getSelectedTarget().getVersion()){
 					final Shell dialog = new Shell(Application.getDisplay(), SWT.ON_TOP //SWT.APPLICATION_MODAL
 							| SWT.TOOL);
@@ -793,7 +772,7 @@ public class OntologyEditorView extends ViewPart {
 							//TODO
 							System.out.println("(Del) Version selected:" + versionCombo.getText());
 							System.out.println("(Del) Previous Selected Verions:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
-							
+
 							ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
 							command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 							Application.executeCommand(command);
@@ -1117,21 +1096,21 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 			versionCombo.remove(version);
-			
-//			
-//			boolean found = false;
-//			for (String items : versionCombo.getItems()) {
-//				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
-//					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
-//					found = true;
-//					break;
-//				}
-//			}
-//			if (!found) {
-//				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
-//				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
-//			}
-//			composite_2.layout();
+
+			//			
+			//			boolean found = false;
+			//			for (String items : versionCombo.getItems()) {
+			//				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
+			//					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
+			//					found = true;
+			//					break;
+			//				}
+			//			}
+			//			if (!found) {
+			//				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
+			//				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
+			//			}
+			//			composite_2.layout();
 
 		} else {
 			Console.error("versionCombo is null, so don't remove an entry from it");
@@ -1510,7 +1489,6 @@ public class OntologyEditorView extends ViewPart {
 			public void menuShown(MenuEvent e) {
 			}
 		});
-		//TODO
 		setInstance(getTargetProjects().getSelectedTargetProject().getName(),getTargetProjects().getSelectedTargetProject().getDescription());
 
 		//		versionCombo.removeAll();
@@ -1555,6 +1533,16 @@ public class OntologyEditorView extends ViewPart {
 
 	@Override
 	public void createPartControl(final Composite parent) {
+
+		Bundle bundle = Activator.getDefault().getBundle();
+		URL mainURL = FileLocator.find(bundle, new Path(""), null);
+		try {
+			URL mainFileUrl = FileLocator.toFileURL(mainURL);
+			File mainPath = new File(mainFileUrl.getPath());	
+			createDirs(mainPath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		mainComposite = parent;
 		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
 		Label label = new Label(mainComposite, SWT.LEFT);
@@ -1628,20 +1616,8 @@ public class OntologyEditorView extends ViewPart {
 					System.err.println("staging node dropped");
 				}
 				else {
-					try {
-						//						String schema = (String)event.data;
-						//						Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(schema));
-						//						stagingServer.setSchema(schema);
-						//						setStagingServer(stagingServer);
-						//						setStagingSchemaName(schema);
-
-						Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
-						setTargetNameVersion(getLatestVersion((String)(event.data)));
-						// ((OntologyTreeTargetRootNode)OntologyEditorView.getI2b2ImportTool().getMyOntologyTrees().getOntologyTargetTree().getTreeRoot()).getTargetProjects().getSelectedTarget().setVersion(Integer.valueOf( (String)event.data ));
-					} catch (Exception ex) {
-						ex.printStackTrace();
-						throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
-					}
+					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
+					setTargetNameVersion(getLatestVersion((String)(event.data)));
 				}
 			}
 			@Override

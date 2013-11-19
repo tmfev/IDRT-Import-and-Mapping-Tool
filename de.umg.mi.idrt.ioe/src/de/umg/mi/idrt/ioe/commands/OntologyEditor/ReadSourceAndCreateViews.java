@@ -36,7 +36,9 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		System.out.println(ServerView.getCurrentSchema());
 		Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(ServerView.getCurrentSchema()));
-		
+		if (stagingServer == null) {
+			System.err.println("STAGING SERVER IS NULL! Schema is: " + ServerView.getCurrentSchema());
+		}
 		stagingServer.setSchema(ServerView.getCurrentSchema());
 		OntologyEditorView.setStagingServer(stagingServer);
 		OntologyEditorView.setStagingSchemaName(ServerView.getCurrentSchema());

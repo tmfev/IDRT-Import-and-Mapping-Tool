@@ -35,8 +35,6 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -149,37 +147,54 @@ public class ServerView extends ViewPart {
 
 	private static Properties defaultProps;
 	private static Text logText;
+	/**
+	 * @param mainPath
+	 */
+	private void createDirs(File mainPath) {
+		File misc = new File(mainPath.getAbsolutePath()+"/misc/");
+
+		if (!misc.exists()) 
+			misc.mkdir();
+
+		File miscInput = new File(mainPath.getAbsolutePath()+"/misc/input/");
+		if (!miscInput.exists()) 
+			miscInput.mkdir();
+
+		File miscOutput = new File(mainPath.getAbsolutePath()+"/misc/output/");
+		if (!miscOutput.exists())
+			miscOutput.mkdir();
+
+		File miscTmp = new File(mainPath.getAbsolutePath()+"/misc/tmp/");
+		if (!miscTmp.exists())
+			miscTmp.mkdir();
+
+		File log = new File(mainPath.getAbsolutePath()+"/log/");
+		if (!log.exists())
+			log.mkdir();
+
+		File logLog = new File(mainPath.getAbsolutePath()+"/log/log.log");
+		if (!logLog.exists())
+			try {
+				logLog.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
 
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
 			Bundle bundle = Activator.getDefault().getBundle();
-			try {
+			URL mainURL = FileLocator.find(bundle, new Path(""), null);
+			URL mainFileUrl = FileLocator.toFileURL(mainURL);
+			File mainPath = new File(mainFileUrl.getPath());	
 
-				Path path = new Path("/log/log.log"); 
-				URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-				if (url==null) {
-					Path miscPath = new Path("."); 
-					URL miscURL = FileLocator.find(bundle, miscPath,
-							Collections.EMPTY_MAP);
-					URL miscURL2 = FileLocator.toFileURL(miscURL);
-					File file = new File(miscURL2.getPath()+"/log/");
-					file.mkdir();
-					file = new File(miscURL2.getPath()+"/log/log.log");
-					file.createNewFile();
-					url = FileLocator.find(bundle, path,
-							Collections.EMPTY_MAP);
-				}
+			createDirs(mainPath);
 
-				URL fileUrl = FileLocator.toFileURL(url);
-				log = new File(fileUrl.getPath());	
-				logString = "";
 
-				//TODO if log.log !exists()->HANDLE IT
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			//TODO READ LOG FROM DISC
+			log = new File(mainPath.getAbsolutePath()+"/log/log.log");	
+			logString = "";
+
 			logString=readLogFromDisc(25);
 
 			parent = new Composite(parentComp, SWT.NONE);
@@ -190,31 +205,7 @@ public class ServerView extends ViewPart {
 
 			// Remove tmp files
 
-			Path tmpPath = new Path("/misc/tmp/");
-			URL tmpURL = FileLocator.find(bundle, tmpPath,
-					Collections.EMPTY_MAP);
-
-			if (tmpURL==null) {
-				Path miscPath = new Path("."); 
-				URL miscURL = FileLocator.find(bundle, miscPath,
-						Collections.EMPTY_MAP);
-				URL miscURL2 = FileLocator.toFileURL(miscURL);
-				File file = new File(miscURL2.getPath()+"/misc/");
-				System.out.println(file.getAbsolutePath());
-				boolean mkdir = file.mkdir();
-				System.out.println(mkdir);
-				miscPath = new Path("/misc/"); 
-				miscURL = FileLocator.find(bundle, miscPath,
-						Collections.EMPTY_MAP);
-				miscURL2 = FileLocator.toFileURL(miscURL);
-				file = new File(miscURL2.getPath()+"/tmp/");
-				file.mkdir();
-				tmpURL = FileLocator.find(bundle, tmpPath,
-						Collections.EMPTY_MAP);
-			}
-
-			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
-			File folder = new File(tmpURL2.getPath());
+			File folder = new File(mainPath.getAbsolutePath()+"/misc/tmp/");
 			File[] listOfFiles = folder.listFiles();
 
 			for (File listOfFile : listOfFiles) {
@@ -222,21 +213,7 @@ public class ServerView extends ViewPart {
 					listOfFile.delete();
 				}
 			}
-			Path inputPath = new Path("/misc/input/"); 
-			URL inputURL = FileLocator.find(bundle, inputPath,
-					Collections.EMPTY_MAP);
-			if (inputURL==null) {
-				Path miscPath = new Path("/misc/"); 
-				URL miscURL = FileLocator.find(bundle, miscPath,
-						Collections.EMPTY_MAP);
-				URL miscURL2 = FileLocator.toFileURL(miscURL);
-				File file = new File(miscURL2.getPath()+"/input/");
-				file.mkdir();
-				inputURL = FileLocator.find(bundle, inputPath,
-						Collections.EMPTY_MAP);
-			}
-			URL inputURL2 = FileLocator.toFileURL(inputURL);
-			File inputFolder = new File(inputURL2.getPath());
+			File inputFolder = new File(mainPath.getAbsolutePath()+"/misc/input/");
 			File[] listOfInputFiles = inputFolder.listFiles();
 
 			for (File listOfInputFile : listOfInputFiles) {
@@ -244,21 +221,7 @@ public class ServerView extends ViewPart {
 					listOfInputFile.delete();
 				}
 			}
-			Path outputPath = new Path("/misc/output/"); 
-			URL outputURL = FileLocator.find(bundle, outputPath,
-					Collections.EMPTY_MAP);
-			if (outputURL==null) {
-				Path miscPath = new Path("/misc/"); 
-				URL miscURL = FileLocator.find(bundle, miscPath,
-						Collections.EMPTY_MAP);
-				URL miscURL2 = FileLocator.toFileURL(miscURL);
-				File file = new File(miscURL2.getPath()+"/output/");
-				file.mkdir();
-				outputURL = FileLocator.find(bundle, outputPath,
-						Collections.EMPTY_MAP);
-			}
-			URL outputURL2 = FileLocator.toFileURL(outputURL);
-			File outputFolder = new File(outputURL2.getPath());
+			File outputFolder = new File(mainPath.getAbsolutePath()+"/misc/output/");
 			File[] listOfOutputFiles = outputFolder.listFiles();
 
 			for (File listOfOutputFile : listOfOutputFiles) {
@@ -266,10 +229,7 @@ public class ServerView extends ViewPart {
 					listOfOutputFile.delete();
 				}
 			}
-			Path propPath = new Path("/cfg/Default.properties"); 
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = FileLocator.toFileURL(url);
-			properties = new File(fileUrl.getPath());
+			properties = new File(mainPath.getAbsolutePath()+"/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 			boolean sysLog = ((defaultProps.getProperty("sysoLog") 
@@ -589,7 +549,7 @@ public class ServerView extends ViewPart {
 			importTermsMenuItem.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-						IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
 				}
 
 				@Override
@@ -697,37 +657,37 @@ public class ServerView extends ViewPart {
 				}
 			});
 
-//			new MenuItem(mainMenu, SWT.SEPARATOR);
-//			MenuItem ontServerMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//			ontServerMenuItem.setText("loadont(beta)");
-//			ontServerMenuItem.addSelectionListener(new SelectionListener() {
-//				@Override
-//				public void widgetDefaultSelected(SelectionEvent e) {
-//				}
-//
-//				@Override
-//				public void widgetSelected(SelectionEvent e) {
-//					Server server = ServerList.getTargetServers().get(labelNameCurrent.getText());
-////					server.getOntology(labelDBUserCurrent.getText());
-//				}
-//			});
+			//			new MenuItem(mainMenu, SWT.SEPARATOR);
+			//			MenuItem ontServerMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//			ontServerMenuItem.setText("loadont(beta)");
+			//			ontServerMenuItem.addSelectionListener(new SelectionListener() {
+			//				@Override
+			//				public void widgetDefaultSelected(SelectionEvent e) {
+			//				}
+			//
+			//				@Override
+			//				public void widgetSelected(SelectionEvent e) {
+			//					Server server = ServerList.getTargetServers().get(labelNameCurrent.getText());
+			////					server.getOntology(labelDBUserCurrent.getText());
+			//				}
+			//			});
 
 
-//			 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-//															new MenuItem(mainMenu, SWT.SEPARATOR);
-//															MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//															adminMenuItem.setText("Administration");
-//															adminMenuItem.addSelectionListener(new SelectionListener() {
-//																@Override
-//																public void widgetSelected(SelectionEvent e) {
-//																	adminTargetServer();
-//																}
-//												
-//																@Override
-//																public void widgetDefaultSelected(SelectionEvent e) {
-//												
-//																}
-//															});
+			//			 TODO REMOVE COMMENTATION FOR ADMINISTRATION
+			//															new MenuItem(mainMenu, SWT.SEPARATOR);
+			//															MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//															adminMenuItem.setText("Administration");
+			//															adminMenuItem.addSelectionListener(new SelectionListener() {
+			//																@Override
+			//																public void widgetSelected(SelectionEvent e) {
+			//																	adminTargetServer();
+			//																}
+			//												
+			//																@Override
+			//																public void widgetDefaultSelected(SelectionEvent e) {
+			//												
+			//																}
+			//															});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1159,6 +1119,7 @@ public class ServerView extends ViewPart {
 			e2.printStackTrace();
 		}
 	}
+
 
 	public static void updateStatus() {
 		Display.getDefault().syncExec(new Runnable() {
@@ -1623,7 +1584,7 @@ public class ServerView extends ViewPart {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
 		try {
-			
+
 			//TODO 
 			handlerService.executeCommand(
 					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 

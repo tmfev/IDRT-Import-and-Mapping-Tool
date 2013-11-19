@@ -484,7 +484,7 @@ public class ServerList {
 					} else {
 						users = new HashSet<String>();
 						users.add(server.getUser());
-						System.out.println(server.getUser() + " " + server.getName());
+						userServer.put(server.getUser(), server.getName());
 					}
 				}
 				else if (server.getDatabaseType().equalsIgnoreCase("mysql")) {
@@ -500,15 +500,15 @@ public class ServerList {
 				connect.close();
 				return users;
 			}else {
-					return null;
-				}
-			} catch (SQLException e) {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error", e.getMessage());
-				System.err.println(e.getMessage());
-				e.printStackTrace();
 				return null;
 			}
+		} catch (SQLException e) {
+			MessageDialog.openError(Display.getDefault()
+					.getActiveShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 
 	}
 
@@ -532,7 +532,7 @@ public class ServerList {
 		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 			while (resultSet.next()) {
 				String user = resultSet.getString("username");
-
+				System.out.println("user: " + user);
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.startsWith("I2B2")
 							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
@@ -566,6 +566,7 @@ public class ServerList {
 		}
 		//TODO HERE
 		for (String user : users) {
+			System.out.println("adding: " + user + " to " + server.getName());
 			userServer.put(user, server.getName());
 		}
 		return users;
