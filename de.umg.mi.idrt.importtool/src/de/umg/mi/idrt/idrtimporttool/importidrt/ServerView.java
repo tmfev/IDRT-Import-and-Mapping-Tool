@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
@@ -21,6 +24,7 @@ import java.util.prefs.BackingStoreException;
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.equinox.internal.p2.core.helpers.FileUtils;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -156,6 +160,10 @@ public class ServerView extends ViewPart {
 		if (!misc.exists()) 
 			misc.mkdir();
 
+		File cfg = new File(mainPath.getAbsolutePath()+"/cfg/");
+		if (!cfg.exists())
+			cfg.mkdir();
+
 		File miscInput = new File(mainPath.getAbsolutePath()+"/misc/input/");
 		if (!miscInput.exists()) 
 			miscInput.mkdir();
@@ -179,8 +187,43 @@ public class ServerView extends ViewPart {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	}
+		File server = new File(mainPath.getAbsolutePath()+"/cfg/server");
+		if (!server.exists()) {
+			File defServer = new File(mainPath.getAbsolutePath()+"/COPY_DEFAULT_CFG/server");
+			System.out.println(defServer.toPath().toString() + " " + server.toPath().toString());
+			copyFile(defServer, server);
+		}
 
+		File serverImportDB = new File(mainPath.getAbsolutePath()+"/cfg/serverImportDB");
+		if (!serverImportDB.exists()) {
+			File defserverImportDB = new File(mainPath.getAbsolutePath()+"/COPY_DEFAULT_CFG/serverImportDB");
+			copyFile(defserverImportDB, serverImportDB);
+		}
+
+		File properties = new File(mainPath.getAbsolutePath()+"/cfg/Default.properties");
+		if (!properties.exists()) {
+			File defproperties = new File(mainPath.getAbsolutePath()+"/COPY_DEFAULT_CFG/Default.properties");
+			copyFile(defproperties,properties);
+		}
+	}
+	public static void copyFile(File inputFile, File outputFile) {
+		try {
+			FileReader in = new FileReader(inputFile);
+
+			FileWriter out = new FileWriter(outputFile);
+			int c;
+
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+			in.close();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public void createPartControl(final Composite parentComp) {
 		try {
@@ -188,8 +231,9 @@ public class ServerView extends ViewPart {
 			URL mainURL = FileLocator.find(bundle, new Path(""), null);
 			URL mainFileUrl = FileLocator.toFileURL(mainURL);
 			File mainPath = new File(mainFileUrl.getPath());	
-
+			System.out.println("creating paths");
 			createDirs(mainPath);
+			System.out.println("done");
 
 
 			log = new File(mainPath.getAbsolutePath()+"/log/log.log");	

@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Properties;
 
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
@@ -135,10 +138,13 @@ public class Application implements IApplication {
 				ne.printStackTrace();
 				Console.error("NotHandledException while executing command \""
 						+ commandID + "\"");
-			} catch (Exception e) {
+			} catch (ExecutionException e) {
 				e.printStackTrace();
-				Console.error(e, true);
-			}
+			} catch (NotDefinedException e) {
+				e.printStackTrace();
+			} catch (NotEnabledException e) {
+				e.printStackTrace();
+			} 
 		}
 	}
 
@@ -151,12 +157,18 @@ public class Application implements IApplication {
 			IHandlerService handlerService = (IHandlerService) activeWorkbenchWindow
 					.getService(IHandlerService.class);
 			if (handlerService != null) {
-				try {
-					handlerService.executeCommand(parameterizedCommand, null);
-				} catch (Exception e) {
-					Console.error(e);
-					e.printStackTrace();
-				}
+					try {
+						handlerService.executeCommand(parameterizedCommand, null);
+					} catch (ExecutionException e) {
+						e.printStackTrace();
+					} catch (NotDefinedException e) {
+						e.printStackTrace();
+					} catch (NotEnabledException e) {
+						e.printStackTrace();
+					} catch (NotHandledException e) {
+						e.printStackTrace();
+					}
+				
 			}
 		}
 	}
