@@ -6,7 +6,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TargetNodeAttributes {
 
-	String sourcePath = "";
+	String stagingPath = "";
 	String name = "";
 	String nodeType = "";
 	String startDateSource = "";
@@ -27,6 +27,10 @@ public class TargetNodeAttributes {
 	 *            the sourcePath to set
 	 */
 	public void addStagingPath(String stagingPath) {
+		
+		if (stagingPath == null)
+			stagingPath = "";
+		
 		if (stagingPath.startsWith("\\\\"))
 			stagingPath=stagingPath.substring(1); //removes wrong "\" from beginning of path
 		if (!stagingPath.endsWith("\\") && !stagingPath.isEmpty())
@@ -44,7 +48,7 @@ public class TargetNodeAttributes {
 					subNode.setStagingName(stagingNode.getName());
 			}
 			subNodeList.add(subNode);
-			this.sourcePath = stagingPath;
+			this.stagingPath = stagingPath;
 		}
 		
 		LinkedHashSet<OntologyTreeSubNode> tmp = new LinkedHashSet<OntologyTreeSubNode>();
@@ -85,7 +89,7 @@ public class TargetNodeAttributes {
 	 * @return the sourcePath
 	 */
 	public String getSourcePath() {
-		return sourcePath;
+		return stagingPath;
 	}
 
 	/**
