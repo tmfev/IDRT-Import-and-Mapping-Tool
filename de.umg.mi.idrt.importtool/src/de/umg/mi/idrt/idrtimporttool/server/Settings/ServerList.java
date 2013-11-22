@@ -10,12 +10,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.sql.Array;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -219,6 +222,32 @@ public class ServerList {
 		return importDBServers;
 	}
 
+	public static ResultSet test(Server server) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+			ResultSet resultSet = null;
+			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
+					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
+					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
+				"    ? := b;  END LOOP;END;");
+			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
+		
+			
+			statement.setInt(1, 21);
+			statement.setInt(2, 21);
+			statement.registerOutParameter(1, Types.VARCHAR);
+			statement.execute(sql);
+			
+			System.out.println("RESULT: " + statement.getObject(1));
+			
+			return resultSet;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static ResultSet getPreview(String table, String schema,
 			Server server) {
 		ResultSet resultSet = null;

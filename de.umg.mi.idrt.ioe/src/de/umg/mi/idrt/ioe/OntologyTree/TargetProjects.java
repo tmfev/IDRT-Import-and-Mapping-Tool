@@ -142,7 +142,7 @@ public class TargetProjects {
 	 */
 	public void setSelectedTarget(Target newSelectedTarget) {
 		if (selectedTarget!= null) {
-			System.out.println("Setting selected Target (V:"+newSelectedTarget.getVersion()+") with previousSelected (V:"+selectedTarget.getVersion()+")");
+//			System.out.println("Setting selected Target (V:"+newSelectedTarget.getVersion()+") with previousSelected (V:"+selectedTarget.getVersion()+")");
 			setPreviousSelectedTarget(selectedTarget);
 		}
 		this.selectedTarget = newSelectedTarget;

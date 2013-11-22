@@ -76,7 +76,7 @@ public class StatusListener {
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
 						public void run() {
-							System.out.println("autolog");
+//							System.out.println("autolog");
 							if (logCounter>0)
 							Log.addLog(0, log + " - " + logCounter +" more Errors " + filename);
 							logCounter=0;

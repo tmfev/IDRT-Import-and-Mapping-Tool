@@ -1352,15 +1352,9 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer.getSelection();
-				OntologyTreeNode node = (OntologyTreeNode) selection.iterator().next();
-				if (node == OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())
-					System.out.println("TRUE");
-
-				for (OntologyTreeSubNode child : node.getTargetNodeAttributes().getSubNodeList()) {
-					System.out.println(child.getStagingName() + ":" + child.getStagingPath());
-				}
-				System.out.println(node.getTreePath());
+			
+				Server server = getStagingServer();
+				ServerList.test(server);	
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
