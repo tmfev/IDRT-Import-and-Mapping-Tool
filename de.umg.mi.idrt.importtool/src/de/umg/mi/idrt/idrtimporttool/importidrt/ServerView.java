@@ -1402,7 +1402,7 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("addServer.command not found"); 
+//			throw new RuntimeException("addServer.command not found"); 
 		}
 	}
 	/**
@@ -1417,7 +1417,7 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("editServer.command not found"); 
+//			throw new RuntimeException("editServer.command not found"); 
 		}
 	}
 	/**
@@ -1432,7 +1432,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.idrt.deleteServer", null); 
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
-			throw new RuntimeException("deleteServer.command not found"); 
+//			throw new RuntimeException("deleteServer.command not found"); 
 		}
 	}
 	/**
@@ -1447,7 +1447,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("importServer.command not found"); 
+//			throw new RuntimeException("importServer.command not found"); 
 		}
 	}
 	/**
@@ -1461,7 +1461,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.idrt.exportServer", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
 		}
 	}
 
@@ -1478,7 +1478,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
 		}
 	}
 	/**
@@ -1494,7 +1494,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
 		}
 	}
 
@@ -1511,7 +1511,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
 		}
 	}
 	/**
@@ -1527,7 +1527,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
 		}
 	}
 	/**
@@ -1542,7 +1542,7 @@ public class ServerView extends ViewPart {
 					null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
+//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
 		}
 	}
 
@@ -1559,7 +1559,7 @@ public class ServerView extends ViewPart {
 			// viewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("adminServer.command not found"); 
+//			throw new RuntimeException("adminServer.command not found"); 
 		}
 	}
 
@@ -1574,7 +1574,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.CSVImport", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("CSVImport.command not found"); 
+//			throw new RuntimeException("CSVImport.command not found"); 
 		}
 	}
 
@@ -1590,7 +1590,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("ODMImport.command not found"); 
+//			throw new RuntimeException("ODMImport.command not found"); 
 		}
 	}
 
@@ -1606,7 +1606,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("DBImport.command not found"); 
+//			throw new RuntimeException("DBImport.command not found"); 
 		}
 	}
 
@@ -1621,7 +1621,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.P21Import", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("DBImport.command not found"); 
+//			throw new RuntimeException("DBImport.command not found"); 
 		}
 	}
 	private void loadOntology() {
@@ -1634,7 +1634,7 @@ public class ServerView extends ViewPart {
 					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
+//			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
 		}
 	}
 
