@@ -4068,8 +4068,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		globalMap.put("tJDBCConnection_3_SUBPROCESS_STATE", 1);
 	}
 
-	public static class row7Struct implements
-			routines.system.IPersistableRow<row7Struct> {
+	public static class commitStruct implements
+			routines.system.IPersistableRow<commitStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -4146,7 +4146,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final row7Struct other = (row7Struct) obj;
+			final commitStruct other = (commitStruct) obj;
 
 			if (this.TARGET_ID == null) {
 				if (other.TARGET_ID != null)
@@ -4157,7 +4157,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(row7Struct other) {
+		public void copyDataTo(commitStruct other) {
 
 			other.TARGET_ID = this.TARGET_ID;
 			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
@@ -4169,7 +4169,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(row7Struct other) {
+		public void copyKeysDataTo(commitStruct other) {
 
 			other.TARGET_ID = this.TARGET_ID;
 
@@ -4344,7 +4344,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row7Struct other) {
+		public int compareTo(commitStruct other) {
 
 			int returnValue = -1;
 
@@ -4380,8 +4380,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 	}
 
-	public static class row5Struct implements
-			routines.system.IPersistableRow<row5Struct> {
+	public static class writeTargetProjectsStruct implements
+			routines.system.IPersistableRow<writeTargetProjectsStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -4434,7 +4434,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final row5Struct other = (row5Struct) obj;
+			final writeTargetProjectsStruct other = (writeTargetProjectsStruct) obj;
 
 			if (this.TARGETPROJECT_ID == null) {
 				if (other.TARGETPROJECT_ID != null)
@@ -4445,7 +4445,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(row5Struct other) {
+		public void copyDataTo(writeTargetProjectsStruct other) {
 
 			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
 			other.NAME = this.NAME;
@@ -4453,7 +4453,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(row5Struct other) {
+		public void copyKeysDataTo(writeTargetProjectsStruct other) {
 
 			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
 
@@ -4577,7 +4577,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row5Struct other) {
+		public int compareTo(writeTargetProjectsStruct other) {
 
 			int returnValue = -1;
 
@@ -4614,8 +4614,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 	}
 
-	public static class row6Struct implements
-			routines.system.IPersistableRow<row6Struct> {
+	public static class writeTargetVersionsStruct implements
+			routines.system.IPersistableRow<writeTargetVersionsStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -4692,7 +4692,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final row6Struct other = (row6Struct) obj;
+			final writeTargetVersionsStruct other = (writeTargetVersionsStruct) obj;
 
 			if (this.TARGET_ID == null) {
 				if (other.TARGET_ID != null)
@@ -4703,7 +4703,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(row6Struct other) {
+		public void copyDataTo(writeTargetVersionsStruct other) {
 
 			other.TARGET_ID = this.TARGET_ID;
 			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
@@ -4715,7 +4715,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(row6Struct other) {
+		public void copyKeysDataTo(writeTargetVersionsStruct other) {
 
 			other.TARGET_ID = this.TARGET_ID;
 
@@ -4890,7 +4890,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row6Struct other) {
+		public int compareTo(writeTargetVersionsStruct other) {
 
 			int returnValue = -1;
 
@@ -4926,8 +4926,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 	}
 
-	public static class row4Struct implements
-			routines.system.IPersistableRow<row4Struct> {
+	public static class tmpFileRowStruct implements
+			routines.system.IPersistableRow<tmpFileRowStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
 
@@ -5106,7 +5106,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row4Struct other) {
+		public int compareTo(tmpFileRowStruct other) {
 
 			int returnValue = -1;
 
@@ -5158,10 +5158,10 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				row4Struct row4 = new row4Struct();
-				row5Struct row5 = new row5Struct();
-				row6Struct row6 = new row6Struct();
-				row7Struct row7 = new row7Struct();
+				tmpFileRowStruct tmpFileRow = new tmpFileRowStruct();
+				writeTargetProjectsStruct writeTargetProjects = new writeTargetProjectsStruct();
+				writeTargetVersionsStruct writeTargetVersions = new writeTargetVersionsStruct();
+				commitStruct commit = new commitStruct();
 
 				/**
 				 * [tJDBCOutput_1 begin ] start
@@ -5338,8 +5338,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				// ###############################
 				// # Outputs initialization
-				row5Struct row5_tmp = new row5Struct();
-				row6Struct row6_tmp = new row6Struct();
+				writeTargetProjectsStruct writeTargetProjects_tmp = new writeTargetProjectsStruct();
+				writeTargetVersionsStruct writeTargetVersions_tmp = new writeTargetVersionsStruct();
 				// ###############################
 
 				/**
@@ -5541,10 +5541,10 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 							break;
 						}
 
-						row4 = null;
+						tmpFileRow = null;
 
 						boolean whetherReject_tFileInputDelimited_2 = false;
-						row4 = new row4Struct();
+						tmpFileRow = new tmpFileRowStruct();
 						try {
 
 							if (rowtFileInputDelimited_2.length == 1
@@ -5557,17 +5557,17 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 																					// is
 																					// '\n'
 
-								row4.TARGETPROJECT_ID = null;
+								tmpFileRow.TARGETPROJECT_ID = null;
 
-								row4.TARGET_ID = null;
+								tmpFileRow.TARGET_ID = null;
 
-								row4.NAME = null;
+								tmpFileRow.NAME = null;
 
-								row4.DESCRIPTION = null;
+								tmpFileRow.DESCRIPTION = null;
 
-								row4.VERSION = null;
+								tmpFileRow.VERSION = null;
 
-								row4.TARGET_DB_SCHEMA = null;
+								tmpFileRow.TARGET_DB_SCHEMA = null;
 
 							} else {
 
@@ -5581,15 +5581,15 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]
 											.length() > 0) {
 
-										row4.TARGETPROJECT_ID = ParserUtils
+										tmpFileRow.TARGETPROJECT_ID = ParserUtils
 												.parseTo_Integer(rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]);
 
 									} else {
-										row4.TARGETPROJECT_ID = null;
+										tmpFileRow.TARGETPROJECT_ID = null;
 									}
 
 								} else {
-									row4.TARGETPROJECT_ID = null;
+									tmpFileRow.TARGETPROJECT_ID = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_2 = 1;
@@ -5599,35 +5599,35 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]
 											.length() > 0) {
 
-										row4.TARGET_ID = ParserUtils
+										tmpFileRow.TARGET_ID = ParserUtils
 												.parseTo_Integer(rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]);
 
 									} else {
-										row4.TARGET_ID = null;
+										tmpFileRow.TARGET_ID = null;
 									}
 
 								} else {
-									row4.TARGET_ID = null;
+									tmpFileRow.TARGET_ID = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_2 = 2;
 
 								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
 
-									row4.NAME = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+									tmpFileRow.NAME = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
 
 								} else {
-									row4.NAME = null;
+									tmpFileRow.NAME = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_2 = 3;
 
 								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
 
-									row4.DESCRIPTION = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+									tmpFileRow.DESCRIPTION = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
 
 								} else {
-									row4.DESCRIPTION = null;
+									tmpFileRow.DESCRIPTION = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_2 = 4;
@@ -5637,25 +5637,25 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 									if (rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]
 											.length() > 0) {
 
-										row4.VERSION = ParserUtils
+										tmpFileRow.VERSION = ParserUtils
 												.parseTo_Integer(rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2]);
 
 									} else {
-										row4.VERSION = null;
+										tmpFileRow.VERSION = null;
 									}
 
 								} else {
-									row4.VERSION = null;
+									tmpFileRow.VERSION = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_2 = 5;
 
 								if (columnIndexWithD_tFileInputDelimited_2 < rowtFileInputDelimited_2.length) {
 
-									row4.TARGET_DB_SCHEMA = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
+									tmpFileRow.TARGET_DB_SCHEMA = rowtFileInputDelimited_2[columnIndexWithD_tFileInputDelimited_2];
 
 								} else {
-									row4.TARGET_DB_SCHEMA = null;
+									tmpFileRow.TARGET_DB_SCHEMA = null;
 								}
 
 							}
@@ -5664,7 +5664,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 							whetherReject_tFileInputDelimited_2 = true;
 
 							System.err.println(e.getMessage());
-							row4 = null;
+							tmpFileRow = null;
 
 						}
 
@@ -5682,8 +5682,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 						/**
 						 * [tFileInputDelimited_2 main ] stop
 						 */
-						// Start of branch "row4"
-						if (row4 != null) {
+						// Start of branch "tmpFileRow"
+						if (tmpFileRow != null) {
 
 							/**
 							 * [tMap_1 main ] start
@@ -5726,24 +5726,24 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								// ###############################
 								// # Output tables
 
-								row5 = null;
-								row6 = null;
+								writeTargetProjects = null;
+								writeTargetVersions = null;
 
-								// # Output table : 'row5'
-								row5_tmp.TARGETPROJECT_ID = Var.TargetProjectID;
-								row5_tmp.NAME = row4.NAME;
-								row5_tmp.DESCRIPTION = row4.DESCRIPTION;
-								row5 = row5_tmp;
+								// # Output table : 'writeTargetProjects'
+								writeTargetProjects_tmp.TARGETPROJECT_ID = Var.TargetProjectID;
+								writeTargetProjects_tmp.NAME = tmpFileRow.NAME;
+								writeTargetProjects_tmp.DESCRIPTION = tmpFileRow.DESCRIPTION;
+								writeTargetProjects = writeTargetProjects_tmp;
 
-								// # Output table : 'row6'
-								row6_tmp.TARGET_ID = Var.TargetID;
-								row6_tmp.TARGETPROJECT_ID = Var.TargetProjectID;
-								row6_tmp.VERSION = Var.Version;
-								row6_tmp.CREATED = Var.CreatedDate;
-								row6_tmp.LAST_MODIFIED = Var.CurrentDate;
-								row6_tmp.USER_ID = "";
-								row6_tmp.TARGET_DB_SCHEMA = row4.TARGET_DB_SCHEMA;
-								row6 = row6_tmp;
+								// # Output table : 'writeTargetVersions'
+								writeTargetVersions_tmp.TARGET_ID = Var.TargetID;
+								writeTargetVersions_tmp.TARGETPROJECT_ID = Var.TargetProjectID;
+								writeTargetVersions_tmp.VERSION = Var.Version;
+								writeTargetVersions_tmp.CREATED = Var.CreatedDate;
+								writeTargetVersions_tmp.LAST_MODIFIED = Var.CurrentDate;
+								writeTargetVersions_tmp.USER_ID = "";
+								writeTargetVersions_tmp.TARGET_DB_SCHEMA = tmpFileRow.TARGET_DB_SCHEMA;
+								writeTargetVersions = writeTargetVersions_tmp;
 								// ###############################
 
 							} // end of Var scope
@@ -5755,8 +5755,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 							/**
 							 * [tMap_1 main ] stop
 							 */
-							// Start of branch "row5"
-							if (row5 != null) {
+							// Start of branch "writeTargetProjects"
+							if (writeTargetProjects != null) {
 
 								/**
 								 * [tJDBCOutput_1 main ] start
@@ -5765,12 +5765,13 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								currentComponent = "tJDBCOutput_1";
 
 								whetherReject_tJDBCOutput_1 = false;
-								if (row5.TARGETPROJECT_ID == null) {
+								if (writeTargetProjects.TARGETPROJECT_ID == null) {
 									pstmt_tJDBCOutput_1.setNull(1,
 											java.sql.Types.INTEGER);
 								} else {
-									pstmt_tJDBCOutput_1.setInt(1,
-											row5.TARGETPROJECT_ID);
+									pstmt_tJDBCOutput_1
+											.setInt(1,
+													writeTargetProjects.TARGETPROJECT_ID);
 								}
 
 								java.sql.ResultSet rs_tJDBCOutput_1 = pstmt_tJDBCOutput_1
@@ -5781,28 +5782,31 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 											.getInt(1);
 								}
 								if (checkCount_tJDBCOutput_1 > 0) {
-									if (row5.NAME == null) {
+									if (writeTargetProjects.NAME == null) {
 										pstmtUpdate_tJDBCOutput_1.setNull(1,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtUpdate_tJDBCOutput_1.setString(1,
-												row5.NAME);
+												writeTargetProjects.NAME);
 									}
 
-									if (row5.DESCRIPTION == null) {
+									if (writeTargetProjects.DESCRIPTION == null) {
 										pstmtUpdate_tJDBCOutput_1.setNull(2,
 												java.sql.Types.VARCHAR);
 									} else {
-										pstmtUpdate_tJDBCOutput_1.setString(2,
-												row5.DESCRIPTION);
+										pstmtUpdate_tJDBCOutput_1
+												.setString(
+														2,
+														writeTargetProjects.DESCRIPTION);
 									}
 
-									if (row5.TARGETPROJECT_ID == null) {
+									if (writeTargetProjects.TARGETPROJECT_ID == null) {
 										pstmtUpdate_tJDBCOutput_1.setNull(3,
 												java.sql.Types.INTEGER);
 									} else {
-										pstmtUpdate_tJDBCOutput_1.setInt(3,
-												row5.TARGETPROJECT_ID);
+										pstmtUpdate_tJDBCOutput_1
+												.setInt(3,
+														writeTargetProjects.TARGETPROJECT_ID);
 									}
 
 									try {
@@ -5814,28 +5818,31 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 										System.err.print(e.getMessage());
 									}
 								} else {
-									if (row5.TARGETPROJECT_ID == null) {
+									if (writeTargetProjects.TARGETPROJECT_ID == null) {
 										pstmtInsert_tJDBCOutput_1.setNull(1,
 												java.sql.Types.INTEGER);
 									} else {
-										pstmtInsert_tJDBCOutput_1.setInt(1,
-												row5.TARGETPROJECT_ID);
+										pstmtInsert_tJDBCOutput_1
+												.setInt(1,
+														writeTargetProjects.TARGETPROJECT_ID);
 									}
 
-									if (row5.NAME == null) {
+									if (writeTargetProjects.NAME == null) {
 										pstmtInsert_tJDBCOutput_1.setNull(2,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtInsert_tJDBCOutput_1.setString(2,
-												row5.NAME);
+												writeTargetProjects.NAME);
 									}
 
-									if (row5.DESCRIPTION == null) {
+									if (writeTargetProjects.DESCRIPTION == null) {
 										pstmtInsert_tJDBCOutput_1.setNull(3,
 												java.sql.Types.VARCHAR);
 									} else {
-										pstmtInsert_tJDBCOutput_1.setString(3,
-												row5.DESCRIPTION);
+										pstmtInsert_tJDBCOutput_1
+												.setString(
+														3,
+														writeTargetProjects.DESCRIPTION);
 									}
 
 									try {
@@ -5855,10 +5862,10 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								 * [tJDBCOutput_1 main ] stop
 								 */
 
-							} // End of branch "row5"
+							} // End of branch "writeTargetProjects"
 
-							// Start of branch "row6"
-							if (row6 != null) {
+							// Start of branch "writeTargetVersions"
+							if (writeTargetVersions != null) {
 
 								/**
 								 * [tJDBCOutput_2 main ] start
@@ -5866,14 +5873,14 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 								currentComponent = "tJDBCOutput_2";
 
-								row7 = null;
+								commit = null;
 								whetherReject_tJDBCOutput_2 = false;
-								if (row6.TARGET_ID == null) {
+								if (writeTargetVersions.TARGET_ID == null) {
 									pstmt_tJDBCOutput_2.setNull(1,
 											java.sql.Types.INTEGER);
 								} else {
 									pstmt_tJDBCOutput_2.setInt(1,
-											row6.TARGET_ID);
+											writeTargetVersions.TARGET_ID);
 								}
 
 								java.sql.ResultSet rs_tJDBCOutput_2 = pstmt_tJDBCOutput_2
@@ -5884,67 +5891,71 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 											.getInt(1);
 								}
 								if (checkCount_tJDBCOutput_2 > 0) {
-									if (row6.TARGETPROJECT_ID == null) {
+									if (writeTargetVersions.TARGETPROJECT_ID == null) {
 										pstmtUpdate_tJDBCOutput_2.setNull(1,
 												java.sql.Types.INTEGER);
 									} else {
-										pstmtUpdate_tJDBCOutput_2.setInt(1,
-												row6.TARGETPROJECT_ID);
+										pstmtUpdate_tJDBCOutput_2
+												.setInt(1,
+														writeTargetVersions.TARGETPROJECT_ID);
 									}
 
-									if (row6.VERSION == null) {
+									if (writeTargetVersions.VERSION == null) {
 										pstmtUpdate_tJDBCOutput_2.setNull(2,
 												java.sql.Types.INTEGER);
 									} else {
 										pstmtUpdate_tJDBCOutput_2.setInt(2,
-												row6.VERSION);
+												writeTargetVersions.VERSION);
 									}
 
-									if (row6.CREATED != null) {
+									if (writeTargetVersions.CREATED != null) {
 										pstmtUpdate_tJDBCOutput_2
 												.setTimestamp(
 														3,
 														new java.sql.Timestamp(
-																row6.CREATED
+																writeTargetVersions.CREATED
 																		.getTime()));
 									} else {
 										pstmtUpdate_tJDBCOutput_2.setNull(3,
 												java.sql.Types.DATE);
 									}
 
-									if (row6.LAST_MODIFIED != null) {
-										pstmtUpdate_tJDBCOutput_2.setTimestamp(
-												4,
-												new java.sql.Timestamp(
-														row6.LAST_MODIFIED
-																.getTime()));
+									if (writeTargetVersions.LAST_MODIFIED != null) {
+										pstmtUpdate_tJDBCOutput_2
+												.setTimestamp(
+														4,
+														new java.sql.Timestamp(
+																writeTargetVersions.LAST_MODIFIED
+																		.getTime()));
 									} else {
 										pstmtUpdate_tJDBCOutput_2.setNull(4,
 												java.sql.Types.DATE);
 									}
 
-									if (row6.USER_ID == null) {
+									if (writeTargetVersions.USER_ID == null) {
 										pstmtUpdate_tJDBCOutput_2.setNull(5,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtUpdate_tJDBCOutput_2.setString(5,
-												row6.USER_ID);
+												writeTargetVersions.USER_ID);
 									}
 
-									if (row6.TARGET_DB_SCHEMA == null) {
+									if (writeTargetVersions.TARGET_DB_SCHEMA == null) {
 										pstmtUpdate_tJDBCOutput_2.setNull(6,
 												java.sql.Types.VARCHAR);
 									} else {
-										pstmtUpdate_tJDBCOutput_2.setString(6,
-												row6.TARGET_DB_SCHEMA);
+										pstmtUpdate_tJDBCOutput_2
+												.setString(
+														6,
+														writeTargetVersions.TARGET_DB_SCHEMA);
 									}
 
-									if (row6.TARGET_ID == null) {
+									if (writeTargetVersions.TARGET_ID == null) {
 										pstmtUpdate_tJDBCOutput_2.setNull(7,
 												java.sql.Types.INTEGER);
 									} else {
 										pstmtUpdate_tJDBCOutput_2.setInt(7,
-												row6.TARGET_ID);
+												writeTargetVersions.TARGET_ID);
 									}
 
 									try {
@@ -5956,67 +5967,71 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 										System.err.print(e.getMessage());
 									}
 								} else {
-									if (row6.TARGET_ID == null) {
+									if (writeTargetVersions.TARGET_ID == null) {
 										pstmtInsert_tJDBCOutput_2.setNull(1,
 												java.sql.Types.INTEGER);
 									} else {
 										pstmtInsert_tJDBCOutput_2.setInt(1,
-												row6.TARGET_ID);
+												writeTargetVersions.TARGET_ID);
 									}
 
-									if (row6.TARGETPROJECT_ID == null) {
+									if (writeTargetVersions.TARGETPROJECT_ID == null) {
 										pstmtInsert_tJDBCOutput_2.setNull(2,
 												java.sql.Types.INTEGER);
 									} else {
-										pstmtInsert_tJDBCOutput_2.setInt(2,
-												row6.TARGETPROJECT_ID);
+										pstmtInsert_tJDBCOutput_2
+												.setInt(2,
+														writeTargetVersions.TARGETPROJECT_ID);
 									}
 
-									if (row6.VERSION == null) {
+									if (writeTargetVersions.VERSION == null) {
 										pstmtInsert_tJDBCOutput_2.setNull(3,
 												java.sql.Types.INTEGER);
 									} else {
 										pstmtInsert_tJDBCOutput_2.setInt(3,
-												row6.VERSION);
+												writeTargetVersions.VERSION);
 									}
 
-									if (row6.CREATED != null) {
+									if (writeTargetVersions.CREATED != null) {
 										pstmtInsert_tJDBCOutput_2
 												.setTimestamp(
 														4,
 														new java.sql.Timestamp(
-																row6.CREATED
+																writeTargetVersions.CREATED
 																		.getTime()));
 									} else {
 										pstmtInsert_tJDBCOutput_2.setNull(4,
 												java.sql.Types.DATE);
 									}
 
-									if (row6.LAST_MODIFIED != null) {
-										pstmtInsert_tJDBCOutput_2.setTimestamp(
-												5,
-												new java.sql.Timestamp(
-														row6.LAST_MODIFIED
-																.getTime()));
+									if (writeTargetVersions.LAST_MODIFIED != null) {
+										pstmtInsert_tJDBCOutput_2
+												.setTimestamp(
+														5,
+														new java.sql.Timestamp(
+																writeTargetVersions.LAST_MODIFIED
+																		.getTime()));
 									} else {
 										pstmtInsert_tJDBCOutput_2.setNull(5,
 												java.sql.Types.DATE);
 									}
 
-									if (row6.USER_ID == null) {
+									if (writeTargetVersions.USER_ID == null) {
 										pstmtInsert_tJDBCOutput_2.setNull(6,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtInsert_tJDBCOutput_2.setString(6,
-												row6.USER_ID);
+												writeTargetVersions.USER_ID);
 									}
 
-									if (row6.TARGET_DB_SCHEMA == null) {
+									if (writeTargetVersions.TARGET_DB_SCHEMA == null) {
 										pstmtInsert_tJDBCOutput_2.setNull(7,
 												java.sql.Types.VARCHAR);
 									} else {
-										pstmtInsert_tJDBCOutput_2.setString(7,
-												row6.TARGET_DB_SCHEMA);
+										pstmtInsert_tJDBCOutput_2
+												.setString(
+														7,
+														writeTargetVersions.TARGET_DB_SCHEMA);
 									}
 
 									try {
@@ -6030,14 +6045,14 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								}
 								nb_line_tJDBCOutput_2++;
 								if (!whetherReject_tJDBCOutput_2) {
-									row7 = new row7Struct();
-									row7.TARGET_ID = row6.TARGET_ID;
-									row7.TARGETPROJECT_ID = row6.TARGETPROJECT_ID;
-									row7.VERSION = row6.VERSION;
-									row7.CREATED = row6.CREATED;
-									row7.LAST_MODIFIED = row6.LAST_MODIFIED;
-									row7.USER_ID = row6.USER_ID;
-									row7.TARGET_DB_SCHEMA = row6.TARGET_DB_SCHEMA;
+									commit = new commitStruct();
+									commit.TARGET_ID = writeTargetVersions.TARGET_ID;
+									commit.TARGETPROJECT_ID = writeTargetVersions.TARGETPROJECT_ID;
+									commit.VERSION = writeTargetVersions.VERSION;
+									commit.CREATED = writeTargetVersions.CREATED;
+									commit.LAST_MODIFIED = writeTargetVersions.LAST_MODIFIED;
+									commit.USER_ID = writeTargetVersions.USER_ID;
+									commit.TARGET_DB_SCHEMA = writeTargetVersions.TARGET_DB_SCHEMA;
 								}
 
 								tos_count_tJDBCOutput_2++;
@@ -6045,8 +6060,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								/**
 								 * [tJDBCOutput_2 main ] stop
 								 */
-								// Start of branch "row7"
-								if (row7 != null) {
+								// Start of branch "commit"
+								if (commit != null) {
 
 									/**
 									 * [tJDBCCommit_1 main ] start
@@ -6081,11 +6096,11 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 									 * [tJDBCCommit_1 main ] stop
 									 */
 
-								} // End of branch "row7"
+								} // End of branch "commit"
 
-							} // End of branch "row6"
+							} // End of branch "writeTargetVersions"
 
-						} // End of branch "row4"
+						} // End of branch "tmpFileRow"
 
 						/**
 						 * [tFileInputDelimited_2 end ] start
@@ -6901,6 +6916,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 188774 characters generated by Talend Open Studio for Data Integration on the
- * 9. November 2013 18:58:12 MEZ
+ * 190557 characters generated by Talend Open Studio for Data Integration on the
+ * 26. November 2013 13:59:27 MEZ
  ************************************************************************************************/

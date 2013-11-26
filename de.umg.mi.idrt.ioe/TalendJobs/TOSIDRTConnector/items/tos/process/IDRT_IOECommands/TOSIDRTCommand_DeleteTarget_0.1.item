@@ -247,7 +247,7 @@
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="0;0;0"/>
   </note>
   <note opaque="true" posX="64" posY="-224" sizeHeight="225" sizeWidth="1217" text="Initialization.&#xD;&#xA;&#xD;&#xA;">
-    <elementParameter field="COLOR" name="NOTE_COLOR" value="223;223;223"/>
+    <elementParameter field="COLOR" name="NOTE_COLOR" value="224;224;224"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_RIGHT" value="false"/>

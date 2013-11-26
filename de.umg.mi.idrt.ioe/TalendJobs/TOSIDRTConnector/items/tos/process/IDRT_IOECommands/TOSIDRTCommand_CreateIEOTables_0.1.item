@@ -48,7 +48,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="192"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="193"/>
     <elementParameter field="TEXT" name="SCHEMA_OPTIONS" value="none"/>
     <elementParameter field="TEXT" name="OEM_CUSTOM_ATTRIBUTE" value=""/>
     <elementParameter field="TEXT" name="HADOOP_APP_PATH" value=""/>
@@ -333,7 +333,7 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2"/>
   </connection>
-  <note opaque="true" posX="64" posY="64" sizeHeight="545" sizeWidth="1217" text="Check if IEO tables exist and if not create them&#xD;&#xA;">
+  <note opaque="true" posX="64" posY="64" sizeHeight="461" sizeWidth="1217" text="Check if IEO tables exist and if not create them&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
@@ -348,7 +348,7 @@
     <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="0;0;0"/>
   </note>
-  <note opaque="true" posX="96" posY="128" sizeHeight="449" sizeWidth="353" text="check if IEO tables already exist">
+  <note opaque="true" posX="96" posY="128" sizeHeight="308" sizeWidth="353" text="check if IEO tables already exist">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;255"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
@@ -379,7 +379,7 @@
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="237;201;122"/>
   </note>
   <note opaque="true" posX="64" posY="-192" sizeHeight="225" sizeWidth="1217" text="Initialization.&#xD;&#xA;&#xD;&#xA;">
-    <elementParameter field="COLOR" name="NOTE_COLOR" value="223;223;223"/>
+    <elementParameter field="COLOR" name="NOTE_COLOR" value="224;224;224"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_RIGHT" value="false"/>

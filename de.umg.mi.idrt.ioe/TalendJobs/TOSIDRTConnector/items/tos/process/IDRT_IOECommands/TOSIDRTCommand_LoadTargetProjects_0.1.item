@@ -110,6 +110,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Description"/>
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="dbReadTargetProjects"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -124,13 +125,14 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_1"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_START" value="TOSHandler.status(&quot;Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
-    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="System.out.println(&quot;---------------&quot;);&#xA;System.out.println(&quot;TargetProjectID: &quot; + targetProjectsInput.TargetProjectID);&#xA;System.out.println(&quot;Name: &quot; + targetProjectsInput.Name);&#xA;System.out.println(&quot;Description: &quot; + targetProjectsInput.Description);&#xA;&#xA;&#xA;context.currentTargetProjectID = targetProjectsInput.TargetProjectID;&#xA;TOSHandler.addTargetProjectToTargetProjects(targetProjectsInput.TargetProjectID, targetProjectsInput.Name, targetProjectsInput.Description);&#xA;"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_END" value="TOSHandler.status(&quot;/End: Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
+    <elementParameter field="MEMO_JAVA" name="CODE_START" value="//TOSHandler.status(&quot;Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
+    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="//System.out.println(&quot;---------------&quot;);&#xA;//System.out.println(&quot;TargetProjectID: &quot; + targetProjectsInput.TargetProjectID);&#xA;//System.out.println(&quot;Name: &quot; + targetProjectsInput.Name);&#xA;//System.out.println(&quot;Description: &quot; + targetProjectsInput.Description);&#xA;&#xA;&#xA;context.currentTargetProjectID = targetProjectsInput.TargetProjectID;&#xA;TOSHandler.addTargetProjectToTargetProjects(targetProjectsInput.TargetProjectID, targetProjectsInput.Name, targetProjectsInput.Description);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE_END" value="//TOSHandler.status(&quot;/End: Doing loop \&quot;loading target projects\&quot;...&quot;);&#xA;      "/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>
     <elementParameter field="CHECK" name="Version_V4.0" value="true"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="jFillTargetProjectObjects"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -140,17 +142,6 @@
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Description" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
-    <elementParameter field="MEMO" name="COMMENT" value=""/>
-    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tJava_2"/>
   </node>
   <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_2"/>
@@ -195,6 +186,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="TARGET_DB_SCHEMA"/>
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="dbReadTargetVersions"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -212,65 +204,20 @@
   <node componentName="tJavaFlex" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_3"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="TOSHandler.status(&quot;Doing loop \&quot;loading target versions\&quot;...&quot;);"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="&#xA;System.out.println(&quot;  >---------------&quot;);&#xA;System.out.println(&quot;   TARGET_ID: &quot; + targetInput.TARGET_ID);&#xA;System.out.println(&quot;   TARGETPROJECT_ID: &quot; + targetInput.TARGETPROJECT_ID);&#xA;System.out.println(&quot;   VERSION: &quot; + targetInput.VERSION);&#xA;System.out.println(&quot;   LAST_MODIFIED:&quot; + targetInput.LAST_MODIFIED  );&#xA;System.out.println(&quot;   LAST_MODIFIED:&quot; + targetInput.LAST_MODIFIED  );&#xA;&#xA;TOSHandler.addTargetVersionToTargeProject(targetInput.TARGET_ID, targetInput.TARGETPROJECT_ID, targetInput.VERSION&#xA;, targetInput.CREATED, targetInput.LAST_MODIFIED, targetInput.TARGET_DB_SCHEMA);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="&#xA;System.out.println(&quot;  >---------------&quot;);&#xA;System.out.println(&quot;   TARGET_ID: &quot; + targetInput.TARGET_ID);&#xA;System.out.println(&quot;   TARGETPROJECT_ID: &quot; + targetInput.TARGETPROJECT_ID);&#xA;System.out.println(&quot;   VERSION: &quot; + targetInput.VERSION);&#xA;System.out.println(&quot;   LAST_MODIFIED:&quot; + targetInput.LAST_MODIFIED  );&#xA;&#xA;TOSHandler.addTargetVersionToTargeProject(targetInput.TARGET_ID, targetInput.TARGETPROJECT_ID, targetInput.VERSION&#xA;, targetInput.CREATED, targetInput.LAST_MODIFIED, targetInput.TARGET_DB_SCHEMA);"/>
     <elementParameter field="MEMO_JAVA" name="CODE_END" value="TOSHandler.status(&quot;/END: Doing loop \&quot;loading target versions\&quot;...&quot;);&#xA;      "/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>
     <elementParameter field="CHECK" name="Version_V4.0" value="true"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="jFillTargetObjects"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" label="IOE_TARGET" name="tJavaFlex_3">
-      <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="CREATED" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="LAST_MODIFIED" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="200" name="USER_ID" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
-      <column comment="" key="false" length="200" name="TARGET_DB_SCHEMA" nullable="true" pattern="" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="896" posY="288">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS">
-      <elementValue elementRef="SCHEMA_COLUMN" value="TARGET_ID"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TARGETPROJECT_ID"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VERSION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CREATED"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="LAST_MODIFIED"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="USER_ID"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TARGET_DB_SCHEMA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
-    <elementParameter field="MEMO" name="COMMENT" value=""/>
-    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" label="IOE_TARGET" name="tLogRow_1">
       <column comment="" key="false" length="0" name="TARGET_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="TARGETPROJECT_ID" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="VERSION" nullable="true" pattern="" precision="0" type="id_Integer" usefulColumn="true"/>
@@ -311,6 +258,7 @@
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="IS_USE_AUTO_COMMIT" value="true"/>
     <elementParameter field="CHECK" name="AUTO_COMMIT" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="dbConnection"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
@@ -358,13 +306,7 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="targetProjectsInput"/>
   </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tJavaFlex_1" offsetLabelX="0" offsetLabelY="0" source="tJavaFlex_1" target="tJava_2">
-    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
-    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1"/>
-  </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tJDBCInput_2">
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tJavaFlex_1" offsetLabelX="0" offsetLabelY="0" source="tJavaFlex_1" target="tJDBCInput_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -406,40 +348,6 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="targetInput"/>
-  </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tJavaFlex_3" offsetLabelX="0" offsetLabelY="0" source="tJavaFlex_3" target="tLogRow_1">
-    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
-      <elementValue elementRef="TRACE_COLUMN" value="TARGET_ID"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="TARGETPROJECT_ID"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="VERSION"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="CREATED"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="LAST_MODIFIED"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="USER_ID"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="TARGET_DB_SCHEMA"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
-    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
-    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
-    <elementParameter field="TABLE" name="THRESHLODS"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tJDBCInput_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -486,7 +394,7 @@
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
@@ -496,7 +404,7 @@
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCConnection_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;255;255"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
