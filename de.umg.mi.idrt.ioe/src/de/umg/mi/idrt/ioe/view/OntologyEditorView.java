@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.view;
 
+import java.awt.Frame;
+import java.awt.Panel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +9,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+
+import javax.swing.JProgressBar;
+import javax.swing.JRootPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
@@ -29,6 +36,7 @@ import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -50,11 +58,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -95,6 +105,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
+import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
 
 public class OntologyEditorView extends ViewPart {
 
@@ -308,13 +320,7 @@ public class OntologyEditorView extends ViewPart {
 		//		mainComposite = new Composite(shell, SWT.NONE);
 		//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
-
-			Bundle bundle = Activator.getDefault().getBundle();
-			URL mainURL = FileLocator.find(bundle, new Path(""), null);
-			URL mainFileUrl = FileLocator.toFileURL(mainURL);
-			File mainPath = new File(mainFileUrl.getPath());	
-
-			File folder = new File(mainPath.getAbsolutePath()+"/temp/output/");
+			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
 
 			for (File listOfFile : listOfFiles) {
@@ -1185,10 +1191,8 @@ public class OntologyEditorView extends ViewPart {
 			init();
 		}
 		stagingTreeViewer.getTree().removeAll();
-
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
-
 		stagingTreeViewer.setInput(new OntologyTreeContentProvider().getStagingModel());
 		stagingTreeViewer.expandToLevel(2);
 		OntologyEditorView.getOntologyStagingTree()
@@ -1352,7 +1356,7 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-			
+
 				Server server = getStagingServer();
 				ServerList.test(server);	
 			}
@@ -1577,7 +1581,7 @@ public class OntologyEditorView extends ViewPart {
 		final Transfer[] transferTypes = new Transfer[] { TextTransfer
 				.getInstance() };
 
-		DropTarget dropTarget = new DropTarget(label, operations);
+		DropTarget dropTarget = new DropTarget(mainComposite, operations);
 		dropTarget.setTransfer(transferTypes);
 
 		dropListenerStaging = new DropTargetListener() {
@@ -1597,7 +1601,7 @@ public class OntologyEditorView extends ViewPart {
 			public void dragOver(DropTargetEvent event) {
 			}
 			@Override
-			public void drop(DropTargetEvent event) {
+			public void drop(final DropTargetEvent event) {
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
 					System.out.println("SERVER!");
@@ -1610,6 +1614,7 @@ public class OntologyEditorView extends ViewPart {
 					System.err.println("staging node dropped");
 				}
 				else {
+					getOntologyStagingTree().setI2B2RootNode(null);
 					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 					setTargetNameVersion(getLatestVersion((String)(event.data)));
 				}

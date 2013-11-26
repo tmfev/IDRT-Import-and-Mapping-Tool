@@ -4,14 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -26,13 +22,11 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.osgi.framework.Bundle;
-
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -67,11 +61,7 @@ public class WizardPage1 extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 

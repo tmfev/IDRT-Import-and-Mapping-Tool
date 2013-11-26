@@ -9,8 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URL;
-import java.sql.Array;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -19,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -27,13 +24,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.prefs.BackingStoreException;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.osgi.framework.Bundle;
-
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -230,24 +223,24 @@ public class ServerList {
 			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
 					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
 					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
-				"    ? := b;  END LOOP;END;");
+					"    ? := b;  END LOOP;END;");
 			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
-		
-			
+
+
 			statement.setInt(1, 21);
 			statement.setInt(2, 21);
 			statement.registerOutParameter(1, Types.VARCHAR);
 			statement.execute(sql);
-			
+
 			System.out.println("RESULT: " + statement.getObject(1));
-			
+
 			return resultSet;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public static ResultSet getPreview(String table, String schema,
 			Server server) {
 		ResultSet resultSet = null;
@@ -284,12 +277,8 @@ public class ServerList {
 	public static List<ServerTable> getTables(User user) {
 		try {
 			tableMap = new HashMap<String, ServerTable>();
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 
-			URL fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 			Server server = user.getServer();
@@ -507,7 +496,7 @@ public class ServerList {
 					if (server.getUser().toLowerCase().equals("system")) {
 						resultSet = statement
 								.executeQuery("select username from all_users");
-
+						System.out.println("SQL?");
 						users = getResultSet(resultSet, server);
 
 					} else {
@@ -544,12 +533,7 @@ public class ServerList {
 	private static HashSet<String> getResultSet(ResultSet resultSet,
 			Server server) throws SQLException {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-
-			URL fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 		} catch (FileNotFoundException e) {
@@ -561,7 +545,6 @@ public class ServerList {
 		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 			while (resultSet.next()) {
 				String user = resultSet.getString("username");
-				System.out.println("user: " + user);
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.startsWith("I2B2")
 							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
@@ -1022,69 +1005,29 @@ public class ServerList {
 	}
 
 	public static void loadServersfromProps() throws BackingStoreException {
-		try {
+		File serverStorage = FileHandler.getBundleFile("/cfg/server");
+		serverFile = serverStorage;
 
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			if (url != null) {
-				fileUrl = FileLocator.toFileURL(url);
-			}
-			File serverStorage = null;
-			if (fileUrl != null) {
-				serverStorage = new File(fileUrl.getPath()+"/server");
-			}
-			serverFile = serverStorage;
+		servers = deserializeServer(serverFile);
 
-			servers = deserializeServer(serverFile);
-
-			propPath = new Path("/cfg"); //$NON-NLS-1$
-			url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			fileUrl = null;
-			if (url != null) {
-				fileUrl = FileLocator.toFileURL(url);
-			}
-			serverImportDBFile = null;
-			if (fileUrl != null) {
-				serverImportDBFile = new File(fileUrl.getPath()+"/serverImportDB");
-			} 
-			serverFile = serverStorage;
-			importDBServers = deserializeServer(serverImportDBFile);
-			if (importDBServers == null) {
-				importDBServers = new HashMap<String, Server>();
-			}
-			if (servers == null) {
-				servers = new HashMap<String, Server>();
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		serverImportDBFile = FileHandler.getBundleFile("/cfg/serverImportDB");
+		serverFile = serverStorage;
+		importDBServers = deserializeServer(serverImportDBFile);
+		if (importDBServers == null) {
+			importDBServers = new HashMap<String, Server>();
+		}
+		if (servers == null) {
+			servers = new HashMap<String, Server>();
 		}
 	}
 
 	public static void removeAll() {
-		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			if (url != null) {
-				fileUrl = FileLocator.toFileURL(url);
-			}
-			File serverStorage = null;
-			if (fileUrl != null) {
-				serverStorage = new File(fileUrl.getPath()+"/server");
-			} 
-			serverFile = serverStorage;
+		File serverStorage = FileHandler.getBundleFile("/cfg/server");
+		serverFile = serverStorage;
 
-			String path = serverFile.getAbsolutePath();
-			serverFile.delete();
-			serverFile = new File(path);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		String path = serverFile.getAbsolutePath();
+		serverFile.delete();
+		serverFile = new File(path);
 	}
 
 	public static void removeServer(Server server) {

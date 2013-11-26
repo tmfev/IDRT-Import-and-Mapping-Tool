@@ -19,7 +19,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
-import org.osgi.framework.Bundle;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
@@ -30,6 +29,7 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -199,12 +199,7 @@ public class DBImportWizard extends Wizard {
 			final boolean terms = DBWizardPage3.getTerms();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPage3.getCSVPath();
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			// delete old files
 			File folder = new File(FOLDERCSV);
 			File[] files = folder.listFiles();
@@ -212,11 +207,7 @@ public class DBImportWizard extends Wizard {
 				file.delete();
 			}
 
-			Path inputPath = new Path("/misc/input/"); //$NON-NLS-1$
-			URL inputURL = FileLocator.find(bundle, inputPath,
-					Collections.EMPTY_MAP);
-			URL inputURL2 = FileLocator.toFileURL(inputURL);
-			File inputFolder = new File(inputURL2.getPath());
+			File inputFolder = FileHandler.getBundleFile("/misc/input/");
 			File[] listOfInputFiles = inputFolder.listFiles();
 
 			for (File listOfInputFile : listOfInputFiles) {
@@ -255,21 +246,13 @@ public class DBImportWizard extends Wizard {
 						currentServer.setTable(table);
 						currentServer.setSchema(currentSchema);
 
-						bundle = Activator.getDefault().getBundle();
-						Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
-						url = FileLocator.find(bundle, imgImportPath,
-								Collections.EMPTY_MAP);
-						URL fileUrl1 = null;
-						if (url != null) {
-							fileUrl1 = FileLocator.toFileURL(url);
-						}
-						File serverFile = new File(fileUrl1.getPath()+"/tables");
-						if (!serverFile.exists()) {
-							serverFile = new File(serverFile.getAbsolutePath());
-							serverFile.createNewFile();							
+						File tableFile = FileHandler.getBundleFile("/cfg/tables");
+						if (!tableFile.exists()) {
+							tableFile = new File(tableFile.getAbsolutePath());
+							tableFile.createNewFile();							
 						}
 						ObjectInputStream is = new ObjectInputStream(
-								new FileInputStream(serverFile));
+								new FileInputStream(tableFile));
 						@SuppressWarnings("unchecked")
 						HashMap<String, HashMap<String, List<List<String>>>> tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
 						.readObject();
@@ -305,20 +288,15 @@ public class DBImportWizard extends Wizard {
 				/**
 				 * ST-Import
 				 */
-				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-				File rootDir = new File(cfgFileUrl.getPath()
-						+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-				contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
-				contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
-				contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
-				contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
-				contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
-				contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
-				contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
-				contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/");
+				File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
+				contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+				contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+				contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+				contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+				contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+				contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+				contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+				contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
 			} else {
 			}
 
@@ -334,23 +312,13 @@ public class DBImportWizard extends Wizard {
 				defaultProps.store(new FileWriter(properties), "");
 			}
 
-			Path tmpPath = new Path("/misc/tmp/"); //$NON-NLS-1$
-			URL tmpURL = FileLocator.find(bundle, tmpPath,
-					Collections.EMPTY_MAP);
-			URL tmpURL2 = FileLocator.toFileURL(tmpURL);
-
-			String fileName = tmpURL2.getPath() + "exportConfig.csv";
-			createDBExportConfigCSV(exportConfigs, fileName);
-			contextMap.put("exportDBConfig", fileName);
+			File config = FileHandler.getBundleFile("/misc/tmp/exportConfig.csv");
+			createDBExportConfigCSV(exportConfigs, config.getAbsolutePath());
+			contextMap.put("exportDBConfig", config.getAbsolutePath());
 
 			contextMap.put("folderCSV", FOLDERCSV);
 
-			Path miscPath = new Path("/misc/"); //$NON-NLS-1$
-			URL miscUrl = FileLocator.find(bundle, miscPath,
-					Collections.EMPTY_MAP);
-			URL miscFileUrl = FileLocator.toFileURL(miscUrl);
-
-			File misc = new File(miscFileUrl.getPath());
+			File misc = FileHandler.getBundleFile("/misc/");
 			String miscPathReplaced = misc.getAbsolutePath().replaceAll("\\\\",
 					"/")
 					+ "/";

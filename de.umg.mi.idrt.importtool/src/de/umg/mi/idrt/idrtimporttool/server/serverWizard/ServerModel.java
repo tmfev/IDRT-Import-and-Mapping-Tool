@@ -25,6 +25,7 @@ public class ServerModel {
 
 		while (it.hasNext()) {
 			String server = it.next();
+			System.out.println("server: " + server);
 			Server currentServer = serverList.get(server);
 			categories.add(currentServer);
 		}

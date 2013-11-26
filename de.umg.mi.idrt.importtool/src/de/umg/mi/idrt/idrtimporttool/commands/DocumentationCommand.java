@@ -16,6 +16,7 @@ import org.osgi.framework.Bundle;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 public class DocumentationCommand extends AbstractHandler  {
 
@@ -26,11 +27,7 @@ public class DocumentationCommand extends AbstractHandler  {
 					"Open Documentation",
 					"Do you want to open the PDF Documentation?");
 			if(result) {
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path path = new Path("/misc/IDRT-Documentation.pdf"); 
-				URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-				URL fileUrl = FileLocator.toFileURL(url);
-				URI uri = new URI(fileUrl.getPath().substring(1));
+				URI uri = new URI(FileHandler.getBundleFile("/misc/IDRT-Documentation.pdf").getAbsolutePath().replaceAll("\\\\", "/"));
 				Desktop.getDesktop().browse(uri);
 			}
 		} catch (URISyntaxException e) {

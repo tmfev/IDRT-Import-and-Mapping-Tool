@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.ResourceManager;
-import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -62,7 +62,7 @@ public class RegexWizardPage1 extends WizardPage {
 
 	@Override
 	public void createControl(Composite parent) {
-		File file = new File(FileHandling.getCFGFilePath("regex.csv"));
+		File file = new File(FileHandler.getCFGFilePath("regex.csv"));
 		try {
 			CombineNodesCommand.clear();
 			CSVReader reader = new CSVReader(new FileReader(file), ';');
@@ -87,7 +87,6 @@ public class RegexWizardPage1 extends WizardPage {
 		composite.setLayout(new GridLayout(1, false));
 		Button button_1 = new Button(composite, SWT.NONE);
 		button_1.setBounds(0, 0, 75, 25);
-		button_1.setText("+");
 		button_1.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/add.gif"));
 		button_1.setToolTipText("Add Regular Expression");
 

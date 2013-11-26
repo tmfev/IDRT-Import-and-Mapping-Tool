@@ -4,12 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -27,11 +23,10 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.osgi.framework.Bundle;
 
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -146,13 +141,7 @@ public class CSVWizardPage2 extends WizardPage {
 	@Override
 	public void createControl(final Composite parent) {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/cfg/Default.properties"); 
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-
-			fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			final Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 

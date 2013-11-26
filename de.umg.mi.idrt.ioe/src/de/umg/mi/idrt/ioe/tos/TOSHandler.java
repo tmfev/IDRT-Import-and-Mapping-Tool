@@ -2,6 +2,9 @@ package de.umg.mi.idrt.ioe.tos;
 
 import java.util.Date;
 
+import org.eclipse.swt.widgets.Display;
+
+import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
@@ -104,51 +107,43 @@ public class TOSHandler {
 				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
 			}
 		}
-
 	}
 
-	public static void addi2b2OntologyItemToTree(int C_HLEVEL,
-			String C_FULLNAME, String C_NAME, String C_SYNONYM_CD,
-			String C_VISUALATTRIBUTES, int C_TOTALNUM, String C_BASECODE,
-			String C_METADATAXML, String C_FACTTABLECOLUMN, String C_TABLENAME,
-			String C_COLUMNNAME, String C_COLUMNDATATYPE, String C_OPERATOR,
-			String C_DIMCODE, String C_COMMENT, String C_TOOLTIP,
-			String M_APPLIED_PATH, Date UPDATE_DATE, Date DOWNLOAD_DATE,
-			Date IMPORT_DATE, String SOURCESYSTEM_CD, String VALUETYPE_CD,
-			String M_EXCLUSION_CD, String C_PATH, String C_SYMBOL) {
+	public static void addi2b2OntologyItemToTree(final int C_HLEVEL,
+			final String C_FULLNAME,final String C_NAME,final String C_SYNONYM_CD,final
+			String C_VISUALATTRIBUTES,final int C_TOTALNUM,final String C_BASECODE,final
+			String C_METADATAXML,final String C_FACTTABLECOLUMN,final String C_TABLENAME,
+			final String C_COLUMNNAME, final String C_COLUMNDATATYPE, final String C_OPERATOR,
+			final String C_DIMCODE, final String C_COMMENT, final String C_TOOLTIP,
+			final String M_APPLIED_PATH, final Date UPDATE_DATE, final Date DOWNLOAD_DATE,
+			final Date IMPORT_DATE, final String SOURCESYSTEM_CD, final String VALUETYPE_CD,
+			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL) {
 
-		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
-				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
-				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
-				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
-				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
+				OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
+						C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
+						C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
+						C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
+						VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
 
+				if (ontologyStagingTree == null)
+					ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 
-		if (ontologyStagingTree == null)
-			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
-
-		// System.out.println("C_METADATAXML: ");
-		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
-		// System.out.println(" - link2: " + C_METADATAXML != null ?
-		// String.valueOf(C_METADATAXML) : "<null>");
-
-		if (C_HLEVEL == 0) {
-			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
-		}
-		else {
-			if (item.getM_APPLIED_PATH().equals("@"))
-				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-			else {
-				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
-			}
-		}
+				if (C_HLEVEL == 0) {
+					ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+				}
+				else {
+					if (item.getM_APPLIED_PATH().equals("@"))
+						ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+					else {
+						ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+					}
+				}
 	}
 
 	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,
 			String dimensionPath, String dimensionCD, String nameChar,
 			String dimensionBlob, Date updateDate, Date downloadDate,
 			Date importDate, String sourcesysteCD, String uploadID) {
-		// implement in main program
 	}
 
 	public void addTargetOntologyItemToTree(
@@ -161,8 +156,6 @@ public class TOSHandler {
 			String enddateStagingPath,
 			String visualattributes){
 		
-//		System.out.println("ADDING ITEM TO TARGET");
-	
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
@@ -175,7 +168,6 @@ public class TOSHandler {
 	public void writeTargetOntology(int targetID, String treeNodePath,
 			int treeLevel, String sourceNodePath, int changed,
 			String startdateSourcePath, String enddateSourcePath) {
-
 	}
 
 	public static void  addTargetProjectToTargetProjects(int id,
@@ -187,7 +179,6 @@ public class TOSHandler {
 		targetProject.setDescription(description);
 
 		OntologyEditorView.getTargetProjects().add(targetProject);
-
 	}
 
 	public static void addTargetVersionToTargeProject(int targetID,

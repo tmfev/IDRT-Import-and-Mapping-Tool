@@ -14,13 +14,13 @@ import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
-import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 /**
@@ -43,7 +43,7 @@ public class SaveTarget extends AbstractHandler {
 
 		Console.info("Saving Target Ontology.");
 
-		String stringPath = FileHandling.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
+		String stringPath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 

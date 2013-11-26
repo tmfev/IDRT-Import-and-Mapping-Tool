@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,8 +13,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -51,15 +47,15 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.osgi.framework.Bundle;
 
 import swing2swt.layout.BorderLayout;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.commands.CSVImportCommand;
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
+
 import org.eclipse.wb.swt.ResourceManager;
 
 /**
@@ -189,18 +185,8 @@ public class CSVWizardPage3 extends WizardPage {
 			/*
 			 * Filling the Mapping between the config and data files 
 			 */
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path imgConfigPath = new Path("/images/itemstatus-checkmark16.png"); 
-			URL imageConfigURL = FileLocator.find(bundle, imgConfigPath,
-					Collections.EMPTY_MAP);
-			URL imageConfigURL2 = FileLocator.toFileURL(imageConfigURL);
-			File imgConfigFile = new File(imageConfigURL2.getPath());
-
-			Path imgNoConfigPath = new Path("/images/remove-grouping.png"); 
-			URL imageNoConfigURL = FileLocator.find(bundle, imgNoConfigPath,
-					Collections.EMPTY_MAP);
-			URL imageNoConfigURL2 = FileLocator.toFileURL(imageNoConfigURL);
-			File imgNoConfigFile = new File(imageNoConfigURL2.getPath());
+			File imgConfigFile = FileHandler.getBundleFile("/images/itemstatus-checkmark16.png");
+			File imgNoConfigFile = FileHandler.getBundleFile("/images/remove-grouping.png");
 			final Image imgHasConfig = new Image(parent.getDisplay(),
 					imgConfigFile.getAbsolutePath());
 			final Image imgNoConfig = new Image(parent.getDisplay(),
@@ -235,12 +221,7 @@ public class CSVWizardPage3 extends WizardPage {
 				}
 			}
 
-			Path path = new Path("/cfg/Default.properties"); 
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-
-			fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 
@@ -1061,13 +1042,7 @@ public class CSVWizardPage3 extends WizardPage {
 	public static Table fillTable(Table table, String[] nextLine) {
 		try {
 
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path schemaPath = new Path("/cfg/schema.csv"); 
-			URL schemaURL = FileLocator.find(bundle, schemaPath,
-					Collections.EMPTY_MAP);
-			URL	schemaURL2 = FileLocator.toFileURL(schemaURL);
-
-			File schemaFile = new File(schemaURL2.getPath());
+			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
 
 			char inputDelim = DEFAULTDELIM;
 			CSVReader reader = new CSVReader(

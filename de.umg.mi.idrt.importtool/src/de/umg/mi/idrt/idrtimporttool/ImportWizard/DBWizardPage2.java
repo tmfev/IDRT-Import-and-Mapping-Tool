@@ -9,18 +9,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
@@ -66,10 +62,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.osgi.framework.Bundle;
-
 import swing2swt.layout.BorderLayout;
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerTable;
@@ -77,6 +70,7 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBLabelProv
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProvider;
 import de.umg.mi.idrt.idrtimporttool.table.TableRow;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -113,22 +107,10 @@ public class DBWizardPage2 extends WizardPage {
 	private static void clearSingleTable() {
 		try {
 			tableName = serverViewer.getTree().getSelection()[0].getText();
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/tables"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			if (url != null) {
-
-				fileUrl = FileLocator.toFileURL(url);
-
-			}
-			File serverFile = null;
-			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath());
-			}
+			File tableFile = FileHandler.getBundleFile("/cfg/tables");
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
-					serverFile));
+					tableFile));
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
 					.readObject();
 			is.close();
@@ -136,7 +118,7 @@ public class DBWizardPage2 extends WizardPage {
 			tableMap.remove(tableName);
 
 			ObjectOutputStream os;
-			os = new ObjectOutputStream(new FileOutputStream(serverFile));
+			os = new ObjectOutputStream(new FileOutputStream(tableFile));
 			os.writeObject(tableMap);
 			os.flush();
 			os.close();
@@ -270,13 +252,13 @@ public class DBWizardPage2 extends WizardPage {
 		}
 		if (!pid
 				&& serverViewer.getTree().getSelection()[0].getData()
-						.getClass().equals(ServerTable.class)) {
+				.getClass().equals(ServerTable.class)) {
 			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
 					.getWorkbench().getSharedImages()
 					.getImage(ISharedImages.IMG_ETOOL_DELETE));
 		} else if (pid
 				&& serverViewer.getTree().getSelection()[0].getData()
-						.getClass().equals(ServerTable.class)) {
+				.getClass().equals(ServerTable.class)) {
 			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
 					.getWorkbench().getSharedImages()
 					.getImage(ISharedImages.IMG_OBJ_FILE));
@@ -296,12 +278,7 @@ public class DBWizardPage2 extends WizardPage {
 			checkedTables = new HashMap<Server, HashMap<String, List<String>>>();
 			tableRows = new LinkedList<TableRow>();
 			tableItems = new LinkedList<TableItem>();
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			fileUrl = FileLocator.toFileURL(url);
-			properties = new File(fileUrl.getPath());
+			properties =FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 			container = new Composite(parent, SWT.NULL);
@@ -400,8 +377,8 @@ public class DBWizardPage2 extends WizardPage {
 							});
 						} else if (column == 3) {
 							String[] optionMetas = ConfigMetaData.getMetaCombo(
-											table.getItems(),
-											item.getText(column));
+									table.getItems(),
+									item.getText(column));
 							combo = new CCombo(table, SWT.READ_ONLY);
 							for (String optionMeta : optionMetas) {
 								combo.add(optionMeta);
@@ -420,7 +397,7 @@ public class DBWizardPage2 extends WizardPage {
 									item.setText(col, combo.getText());
 									combo.dispose();
 									DBWizardPage2.this
-											.saveCurrentTableToDisc();
+									.saveCurrentTableToDisc();
 									DBWizardPage2.this.checkTable();
 
 								}
@@ -556,13 +533,13 @@ public class DBWizardPage2 extends WizardPage {
 							if (items[i].getText(0).toLowerCase()
 									.contains("patient")
 									|| items[i].getText(0).toLowerCase()
-											.contains("pid")) {
+									.contains("pid")) {
 								table.getItems()[i].setText(3, "PatientID");
 								continue;
 							} else if (items[i].getText(0).toLowerCase()
 									.contains("encounter")
 									|| items[i].getText(0).toLowerCase()
-											.contains("enc")) {
+									.contains("enc")) {
 								table.getItems()[i].setText(3, "EncounterID");
 								continue;
 							} else if (items[i].getText(0).toLowerCase()
@@ -627,15 +604,10 @@ public class DBWizardPage2 extends WizardPage {
 								"Do you really want to clear all tables?");
 
 						if (result) {
-							Bundle bundle = Activator.getDefault().getBundle();
-							Path imgImportPath = new Path("/cfg/tables"); //$NON-NLS-1$
-							URL url = FileLocator.find(bundle, imgImportPath,
-									Collections.EMPTY_MAP);
-							URL fileUrl = FileLocator.toFileURL(url);
-							File serverFile = new File(fileUrl.getPath());
+							File tableFile = FileHandler.getBundleFile("/cfg/tables");
 							tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
 							ObjectOutputStream os = new ObjectOutputStream(
-									new FileOutputStream(serverFile));
+									new FileOutputStream(tableFile));
 							// os.writeObject(itemList);
 							os.writeObject(tableMap);
 							os.flush();
@@ -656,7 +628,7 @@ public class DBWizardPage2 extends WizardPage {
 			sashForm.setWeights(new int[] { 1, 2 });
 			serverViewer = new CheckboxTreeViewer(compositeServer, SWT.CHECK);
 			serverViewer
-					.setContentProvider(new ServerSourceContentProvider());
+			.setContentProvider(new ServerSourceContentProvider());
 			serverViewer.setLabelProvider(new ServerImportDBLabelProvider());
 			serverViewer.setInput(new ServerImportDBModel());
 			serverViewer.setSorter(new ViewerSorter());
@@ -687,7 +659,7 @@ public class DBWizardPage2 extends WizardPage {
 					}
 					checkedTables.clear();
 					DBWizardPage2.this.getWizard().getContainer()
-							.updateButtons();
+					.updateButtons();
 					Object[] checkedElements = serverViewer
 							.getCheckedElements();
 					for (Object checkedElement : checkedElements) {
@@ -699,14 +671,14 @@ public class DBWizardPage2 extends WizardPage {
 								if (checkedTables.get(currentTable.getServer())
 										.get(currentTable.getDatabaseUser()) != null) {
 									checkedTables.get(currentTable.getServer())
-											.get(currentTable.getDatabaseUser())
-											.add(currentTable.getName());
+									.get(currentTable.getDatabaseUser())
+									.add(currentTable.getName());
 								} else {
 									List<String> tmpList = new LinkedList<String>();
 									tmpList.add(currentTable.getName());
 									checkedTables.get(currentTable.getServer())
-											.put(currentTable.getDatabaseUser(),
-													tmpList);
+									.put(currentTable.getDatabaseUser(),
+											tmpList);
 								}
 							} else {
 								HashMap<String, List<String>> tmpHash = new HashMap<String, List<String>>();
@@ -776,17 +748,17 @@ public class DBWizardPage2 extends WizardPage {
 												.getSourceServers()
 												.get(serverViewer.getTree()
 														.getSelection()[0]
-														.getParentItem()
-														.getParentItem()
-														.getText());
+																.getParentItem()
+																.getParentItem()
+																.getText());
 										DBWizardPage2.this
-												.loadCurrentTableFromDB();
+										.loadCurrentTableFromDB();
 									}
 									// if (btnAutoLoadNSave.getSelection()){
 									if (serverViewer.getTree().getSelection()[0]
 											.getData() instanceof ServerTable) {
 										DBWizardPage2.this
-												.loadCurrentTableFromDisc();
+										.loadCurrentTableFromDisc();
 										// }
 										// checkTable();
 									}
@@ -802,99 +774,99 @@ public class DBWizardPage2 extends WizardPage {
 					SWT.PUSH);
 			addImportDBServerMenuItem.setText("Add Server");
 			addImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							DBWizardPage2.this.addSourceDBServer();
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					DBWizardPage2.this.addSourceDBServer();
+				}
+			});
 
 			final MenuItem editImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			editImportDBServerMenuItem.setText("Edit Server");
 			editImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							DBWizardPage2.this.editSourceServer();
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					DBWizardPage2.this.editSourceServer();
+				}
+			});
 
 			final MenuItem deleteImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			deleteImportDBServerMenuItem.setText("Delete Server");
 			deleteImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							DBWizardPage2.this.deleteSourceServer();
-							if (serverViewer.getTree().getChildren() == null) {
-							}
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					DBWizardPage2.this.deleteSourceServer();
+					if (serverViewer.getTree().getChildren() == null) {
+					}
+				}
+			});
 			new MenuItem(importServerMenu, SWT.SEPARATOR);
 
 			MenuItem exportImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			exportImportDBServerMenuItem.setText("Export Server");
 			exportImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							DBWizardPage2.this.exportSourceServer();
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					DBWizardPage2.this.exportSourceServer();
+				}
+			});
 			MenuItem importImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			importImportDBServerMenuItem.setText("Import Server");
 			importImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							DBWizardPage2.this.importSourceServer();
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					DBWizardPage2.this.importSourceServer();
+				}
+			});
 			new MenuItem(importServerMenu, SWT.SEPARATOR);
 			MenuItem refreshImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			refreshImportDBServerMenuItem.setText("Refresh");
 			refreshImportDBServerMenuItem
-					.addSelectionListener(new SelectionListener() {
+			.addSelectionListener(new SelectionListener() {
 
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
-						}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							refresh();
-						}
-					});
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					refresh();
+				}
+			});
 
 			importServerMenu.addListener(SWT.Show, new Listener() {
 
@@ -1007,7 +979,7 @@ public class DBWizardPage2 extends WizardPage {
 		tableName = serverViewer.getTree().getSelection()[0].getText();
 		server = ServerList.getSourceServers().get(
 				serverViewer.getTree().getSelection()[0].getParentItem()
-						.getParentItem().getText());
+				.getParentItem().getText());
 		final ResultSet rset = ServerList.getPreview(tableName, serverViewer
 				.getTree().getSelection()[0].getParentItem().getText(), server);
 		try {
@@ -1060,17 +1032,7 @@ public class DBWizardPage2 extends WizardPage {
 	@SuppressWarnings("unchecked")
 	private void loadCurrentTableFromDisc() {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			if (url != null) {
-				fileUrl = FileLocator.toFileURL(url);
-			}
-			File serverFile = null;
-			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath()+"/tables");
-			}
+			File serverFile = FileHandler.getBundleFile("/cfg/tables");
 
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
 					serverFile));
@@ -1079,7 +1041,7 @@ public class DBWizardPage2 extends WizardPage {
 			is.close();
 
 			if (tableMap.get(server.getUniqueID()) != null) {
-			
+
 				List<List<String>> itemList = tableMap
 						.get(server.getUniqueID()).get(tableName);
 				if (itemList != null) {
@@ -1092,7 +1054,7 @@ public class DBWizardPage2 extends WizardPage {
 					}
 				}
 			}
-			
+
 		}catch (EOFException ee) {
 			System.err.println("EOF");
 		} catch (FileNotFoundException e1) {
@@ -1106,18 +1068,16 @@ public class DBWizardPage2 extends WizardPage {
 
 	/**
 	 * Saves the current table to disc.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
 	 */
 	@SuppressWarnings("unchecked")
 	private void saveCurrentTableToDisc() {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, imgImportPath,
-					Collections.EMPTY_MAP);
-			URL fileUrl = FileLocator.toFileURL(url);
-			File serverFile = new File(fileUrl.getPath()+"/tables");
+			File serverFile = FileHandler.getBundleFile("/cfg/tables");
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(serverFile));
-			
+
 			// List<List<String>> itemList = (List<List<String>>)
 			// is.readObject();
 			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
@@ -1125,7 +1085,7 @@ public class DBWizardPage2 extends WizardPage {
 			if (tableMap == null) {
 				tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
 			}
-		
+
 			TableItem[] tableItems = table.getItems();
 			List<List<String>> itemList = new LinkedList<List<String>>();
 			for (TableItem currentItem : tableItems) {
@@ -1150,17 +1110,9 @@ public class DBWizardPage2 extends WizardPage {
 			os.writeObject(tableMap);
 			os.flush();
 			os.close();
-			
+
 		} catch (EOFException eee) {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path imgImportPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, imgImportPath,
-					Collections.EMPTY_MAP);
-			URL fileUrl;
-			try {
-				fileUrl = FileLocator.toFileURL(url);
-			
-			File serverFile = new File(fileUrl.getPath()+"/tables");
+			File serverFile = FileHandler.getBundleFile("/cfg/tables");
 			tableMap = new HashMap<String, HashMap<String, List<List<String>>>>();
 			TableItem[] tableItems = table.getItems();
 			List<List<String>> itemList = new LinkedList<List<String>>();
@@ -1180,18 +1132,16 @@ public class DBWizardPage2 extends WizardPage {
 				tableMap.get(server.getUniqueID()).put(tableName, itemList);
 			}
 			ObjectOutputStream os;
-			os = new ObjectOutputStream(new FileOutputStream(serverFile));
-			os.writeObject(tableMap);
-			os.flush();
-			os.close();
+			try {
+				os = new ObjectOutputStream(new FileOutputStream(serverFile));
+				os.writeObject(tableMap);
+				os.flush();
+				os.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-		 catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -1203,17 +1153,7 @@ public class DBWizardPage2 extends WizardPage {
 		boolean tableComplete = false;
 
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-			if (url != null) {
-				fileUrl = FileLocator.toFileURL(url);
-			}
-			File serverFile = null;
-			if (fileUrl != null) {
-				serverFile = new File(fileUrl.getPath()+"/tables");
-			}
+			File serverFile = FileHandler.getBundleFile("cfg/tables");
 			if (!serverFile.exists()) {
 				serverFile = new File(serverFile.getAbsolutePath());
 				serverFile.createNewFile();				
@@ -1253,7 +1193,7 @@ public class DBWizardPage2 extends WizardPage {
 							if (tableMap.get(currentServer.getUniqueID()) != null) {
 								List<List<String>> itemList = tableMap.get(
 										currentServer.getUniqueID()).get(
-										currentTable);
+												currentTable);
 								if (itemList != null) {
 									table.getItems();
 

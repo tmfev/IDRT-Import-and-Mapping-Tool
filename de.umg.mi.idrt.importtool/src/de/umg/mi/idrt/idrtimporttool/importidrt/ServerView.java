@@ -87,6 +87,7 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProvider;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * Main view for the IDRT-Import-Tool.
@@ -274,6 +275,8 @@ public class ServerView extends ViewPart {
 				}
 			}
 			properties = new File(mainPath.getAbsolutePath()+"/cfg/Default.properties");
+			System.out.println(properties.getAbsolutePath());
+
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 			boolean sysLog = ((defaultProps.getProperty("sysoLog") 
@@ -415,30 +418,19 @@ public class ServerView extends ViewPart {
 
 							@Override
 							public void run() {
-								Bundle bundle = Activator.getDefault().getBundle();
-								Path imgLoadingPath = new Path("/images/loading.png"); 
-								URL url = FileLocator.find(bundle, imgLoadingPath,
-										Collections.EMPTY_MAP);
-								URL fileUrl;
-								try {
-									fileUrl = FileLocator.toFileURL(url);
-
-									File imgLoadingFile = new File(fileUrl.getPath());
-									Image imgLoading = new Image(parent.getDisplay(),
-											imgLoadingFile.getAbsolutePath());
-									final Shell loadingShell = new Shell(SWT.NO_TRIM ); //SWT.ON_TOP
-									loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
-									loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
-									loadingShell.setBackgroundImage(imgLoading);
-									loadingShell.open();
-									lblObservationsCurrent.setText(server
-											.getConcepts(selectedItemString));
-									lblPatientsCurrent.setText(server
-											.getPatients(selectedItemString));
-									loadingShell.close();
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
+								File imgLoadingFile = FileHandler.getBundleFile("/images/loading.png");
+								Image imgLoading = new Image(parent.getDisplay(),
+										imgLoadingFile.getAbsolutePath());
+								final Shell loadingShell = new Shell(SWT.NO_TRIM ); //SWT.ON_TOP
+								loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
+								loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
+								loadingShell.setBackgroundImage(imgLoading);
+								loadingShell.open();
+								lblObservationsCurrent.setText(server
+										.getConcepts(selectedItemString));
+								lblPatientsCurrent.setText(server
+										.getPatients(selectedItemString));
+								loadingShell.close();
 							}
 						}).run();
 
@@ -718,20 +710,20 @@ public class ServerView extends ViewPart {
 
 
 			//			 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			//															new MenuItem(mainMenu, SWT.SEPARATOR);
-			//															MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			//															adminMenuItem.setText("Administration");
-			//															adminMenuItem.addSelectionListener(new SelectionListener() {
-			//																@Override
-			//																public void widgetSelected(SelectionEvent e) {
-			//																	adminTargetServer();
-			//																}
-			//												
-			//																@Override
-			//																public void widgetDefaultSelected(SelectionEvent e) {
-			//												
-			//																}
-			//															});
+//																		new MenuItem(mainMenu, SWT.SEPARATOR);
+//																		MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+//																		adminMenuItem.setText("Administration");
+//																		adminMenuItem.addSelectionListener(new SelectionListener() {
+//																			@Override
+//																			public void widgetSelected(SelectionEvent e) {
+//																				adminTargetServer();
+//																			}
+//															
+//																			@Override
+//																			public void widgetDefaultSelected(SelectionEvent e) {
+//															
+//																			}
+//																		});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1135,12 +1127,7 @@ public class ServerView extends ViewPart {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					try {
-						Bundle bundle = Activator.getDefault().getBundle();
-						Path propPath = new Path("/cfg/Default.properties"); 
-						URL url = FileLocator.find(bundle, propPath,
-								Collections.EMPTY_MAP);
-						URL fileUrl = FileLocator.toFileURL(url);
-						File properties = new File(fileUrl.getPath());
+						File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 						defaultProps.load(new FileReader(properties));
 
 						String fileName = defaultProps.getProperty("log"); 
@@ -1362,7 +1349,6 @@ public class ServerView extends ViewPart {
 	public static void setProgress(final int percentage) {
 		progressBar.setSelection(percentage);
 	}
-
 	public static void setSubProgressTitle(final String title) {
 		subProgressLabel.setText(title);
 	}
@@ -1402,7 +1388,7 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("addServer.command not found"); 
+			//			throw new RuntimeException("addServer.command not found"); 
 		}
 	}
 	/**
@@ -1417,7 +1403,7 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("editServer.command not found"); 
+			//			throw new RuntimeException("editServer.command not found"); 
 		}
 	}
 	/**
@@ -1432,7 +1418,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.idrt.deleteServer", null); 
 			targetServerViewer.refresh();
 		} catch (Exception ex) {
-//			throw new RuntimeException("deleteServer.command not found"); 
+			//			throw new RuntimeException("deleteServer.command not found"); 
 		}
 	}
 	/**
@@ -1447,7 +1433,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("importServer.command not found"); 
+			//			throw new RuntimeException("importServer.command not found"); 
 		}
 	}
 	/**
@@ -1461,7 +1447,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.idrt.exportServer", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportServer.command not found"); 
 		}
 	}
 
@@ -1478,7 +1464,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer not found"); 
 		}
 	}
 	/**
@@ -1494,7 +1480,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.editSourceServer.command not found"); 
 		}
 	}
 
@@ -1511,7 +1497,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.deleteSourceServer.command not found"); 
 		}
 	}
 	/**
@@ -1527,7 +1513,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found"); 
 		}
 	}
 	/**
@@ -1542,7 +1528,7 @@ public class ServerView extends ViewPart {
 					null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
+			//			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.exportSourceServer.command not found"); 
 		}
 	}
 
@@ -1559,7 +1545,7 @@ public class ServerView extends ViewPart {
 			// viewer.refresh();
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("adminServer.command not found"); 
+			//			throw new RuntimeException("adminServer.command not found"); 
 		}
 	}
 
@@ -1574,7 +1560,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.CSVImport", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("CSVImport.command not found"); 
+			//			throw new RuntimeException("CSVImport.command not found"); 
 		}
 	}
 
@@ -1590,7 +1576,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("ODMImport.command not found"); 
+			//			throw new RuntimeException("ODMImport.command not found"); 
 		}
 	}
 
@@ -1606,7 +1592,7 @@ public class ServerView extends ViewPart {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("DBImport.command not found"); 
+			//			throw new RuntimeException("DBImport.command not found"); 
 		}
 	}
 
@@ -1621,7 +1607,7 @@ public class ServerView extends ViewPart {
 					"de.goettingen.i2b2.importtool.P21Import", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("DBImport.command not found"); 
+			//			throw new RuntimeException("DBImport.command not found"); 
 		}
 	}
 	private void loadOntology() {
@@ -1634,7 +1620,7 @@ public class ServerView extends ViewPart {
 					"edu.goettingen.i2b2.importtool.OntologyEditorLoad", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-//			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
+			//			throw new RuntimeException("edu.goettingen.i2b2.importtool.OntologyEditorLoad.command not found"); 
 		}
 	}
 
@@ -1650,12 +1636,7 @@ public class ServerView extends ViewPart {
 	@Override
 	public void dispose() {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path propPath = new Path("/cfg/Default.properties"); 
-			URL url = FileLocator.find(bundle, propPath, Collections.EMPTY_MAP);
-
-			URL fileUrl = FileLocator.toFileURL(url);
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 

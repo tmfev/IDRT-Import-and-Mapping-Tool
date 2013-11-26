@@ -17,6 +17,7 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
+import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -43,7 +44,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		OntologyEditorView.setStagingServer(stagingServer);
 		OntologyEditorView.setStagingSchemaName(ServerView.getCurrentSchema());
 		System.out.println("((String)(event.data)) "+ ServerView.getCurrentSchema());
-	
+
 		// check if the ontology table has more than 1 item
 		if (TOSConnector.checkOntology() == true) {
 			Console.info("Ontology found in the i2b2 source table.");
@@ -63,14 +64,22 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		 */
 
 		// editorSourceView.setComposite();
-		OntologyEditorView.setSourceContent();
+		try {
+			OntologyEditorView.setSourceContent();
+		}catch (Exception e) {
+			try {
+				throw new ProjectEmptyException();
+			} catch (ProjectEmptyException e1) {
+				e1.printStackTrace();
+			}
+		}
 		OntologyTreeModel newTreeModel = new OntologyTreeModel(
 				OntologyEditorView.getOntologyStagingTree().getRootNode());
 
 		OntologyEditorView.getOntologyStagingTree()
-				.setModel(newTreeModel);
+		.setModel(newTreeModel);
 		OntologyEditorView.getOntologyStagingTree()
-				.updateUI();
+		.updateUI();
 
 		OntologyTree ontologySourceTree = OntologyEditorView.getOntologyStagingTree();
 
@@ -82,19 +91,19 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 				OntologyEditorView.getOntologyTargetTree().getRootNode());
 
 		OntologyEditorView.getOntologyTargetTree()
-				.setModel(newTreeModel2);
+		.setModel(newTreeModel2);
 		OntologyEditorView.getOntologyTargetTree()
-				.updateUI();
+		.updateUI();
 
 		OntologyTree ontologyTargetTree = OntologyEditorView.getOntologyTargetTree();
 
 		// TODO Ontology Editor
 		OntologyEditorView.setTargetContent(ontologyTargetTree);
-//			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
-//					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-//					.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);
-//			Activator.getDefault().getResource()
-//					.setEditorTargetInfoView(editorTargetInfoView);
+		//			EditorTargetInfoView editorTargetInfoView = (EditorTargetInfoView) PlatformUI
+		//					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+		//					.showView(Resource.ID.View.EDITOR_TARGET_INFO_VIEW);
+		//			Activator.getDefault().getResource()
+		//					.setEditorTargetInfoView(editorTargetInfoView);
 
 		OntologyEditorView.setStagingName(ServerView.getCurrentSchema());
 		StatusView.addMessage(

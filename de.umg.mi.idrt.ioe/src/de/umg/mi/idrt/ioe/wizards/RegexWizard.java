@@ -9,9 +9,9 @@ import org.eclipse.jface.wizard.Wizard;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
-import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
@@ -44,7 +44,7 @@ public class RegexWizard extends Wizard {
 	public boolean performFinish() {
 
 		try {
-			CSVWriter writer = new CSVWriter(new FileWriter(new File(FileHandling.getCFGFilePath("regex.csv"))), ';');
+			CSVWriter writer = new CSVWriter(new FileWriter(new File(FileHandler.getCFGFilePath("regex.csv"))), ';');
 			writer.writeNext(new String[] {"Name","Regex"});
 			for (Regex r : CombineNodesCommand.getRegex()) {
 				if (!r.getName().isEmpty())

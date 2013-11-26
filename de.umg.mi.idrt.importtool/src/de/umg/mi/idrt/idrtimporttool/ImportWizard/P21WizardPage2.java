@@ -4,11 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -25,10 +22,9 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.osgi.framework.Bundle;
 
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -132,12 +128,7 @@ public class P21WizardPage2 extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = FileLocator.toFileURL(url);
-			
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 
@@ -228,10 +219,7 @@ public class P21WizardPage2 extends WizardPage {
 			datePatternCombo.setText(defaultProps.getProperty("datePattern")); 
 			
 			Path p21Path = new Path("/cfg/p21/"); //$NON-NLS-1$
-			URL p21url = FileLocator.find(bundle, p21Path,
-					Collections.EMPTY_MAP);
-			URL p21url2 = FileLocator.toFileURL(p21url);
-			File p21 = new File(p21url2.getPath());
+			File p21 = FileHandler.getBundleFile("/cfg/p21/");
 			File[] listOfFiles = p21.listFiles();
 			String[] p21FolderNames = new String[listOfFiles.length];
 			for (int i = 0; i < listOfFiles.length; i++) {

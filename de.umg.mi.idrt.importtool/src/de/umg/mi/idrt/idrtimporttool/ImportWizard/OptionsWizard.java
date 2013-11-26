@@ -4,20 +4,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.Bundle;
-
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -43,12 +37,7 @@ public class OptionsWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/cfg/Default.properties"); 
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = FileLocator.toFileURL(url);
-
-			File properties = new File(fileUrl.getPath());
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 

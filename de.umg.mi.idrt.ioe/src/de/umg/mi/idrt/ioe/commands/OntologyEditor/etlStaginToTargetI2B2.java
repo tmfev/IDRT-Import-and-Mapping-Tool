@@ -21,15 +21,10 @@ public class etlStaginToTargetI2B2 extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		TOSConnector tos = new TOSConnector();
-		int exit = tos.uploadProject();
+		new TOSConnector();
+		TOSConnector.uploadProject();
 		
-		if (exit==0) {
-			MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
-		}
-		else {
-			MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
-		}
+	
 //		try {
 //			tos.setContextVariable("Job", Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
 //			//tos.setContextVariable("SQLTable", "I2B2");

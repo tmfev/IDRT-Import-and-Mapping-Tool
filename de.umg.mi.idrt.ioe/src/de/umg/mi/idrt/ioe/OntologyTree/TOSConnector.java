@@ -4,23 +4,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.osgi.framework.Bundle;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -34,35 +32,36 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TOSConnector {
 
+	private static Thread workerThread;
 	public static String DEFAULT_CONTEXTNAME = "Default";
 	private static int exit;
 	private static String contextName;
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
 	public static boolean checkOntology() {
-//		setContextVariable("Job", "check_ontology_empty");
-//		setContextVariable("Var1", "1");
-//
-//		boolean hasOntology = false;
-//
-//		try {
-//
-//			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-//
-//			tos.runJobInTOS((getARGV()));
-//
-//			if (tos.getErrorCode() == 0) {
-//				hasOntology = true;
-//			}
-//
-//		} catch (Exception e) {
-//
-//			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
-//					+ e.getMessage());
-//
-//		}
+		//		setContextVariable("Job", "check_ontology_empty");
+		//		setContextVariable("Var1", "1");
+		//
+		//		boolean hasOntology = false;
+		//
+		//		try {
+		//
+		//			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+		//
+		//			tos.runJobInTOS((getARGV()));
+		//
+		//			if (tos.getErrorCode() == 0) {
+		//				hasOntology = true;
+		//			}
+		//
+		//		} catch (Exception e) {
+		//
+		//			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
+		//					+ e.getMessage());
+		//
+		//		}
 
-//		return hasOntology;
+		//		return hasOntology;
 		return true;
 
 	}
@@ -105,17 +104,11 @@ public class TOSConnector {
 			// the
 			// editors
 
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-			URL url = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
-			URL fileUrl = null;
-
 			File properties = null;
 			Properties defaultProps = null;
 
 			try {
-				fileUrl = FileLocator.toFileURL(url);
-				properties = new File(fileUrl.getPath());
+				properties = FileHandler.getBundleFile("/cfg/Default.properties");
 				defaultProps = new Properties();
 				defaultProps.load(new FileReader(properties));
 			} catch (FileNotFoundException e1) {
@@ -125,7 +118,7 @@ public class TOSConnector {
 			}
 
 			Server currentServer = OntologyEditorView.getStagingServer();
-			
+
 			Console.info(currentServer.getSchema());
 			//			if (serverUniqueName != null) {
 			//				currentServer = ServerList.getTargetServers().get(
@@ -157,7 +150,7 @@ public class TOSConnector {
 				setContextVariable("SQLTable", currentServer.getTable());
 				setContextVariable("OracleSchema", currentServer.getSchema());
 
-		
+
 				//
 
 				//setContextVariable("OracleHost", currentServer.getIp());
@@ -174,34 +167,34 @@ public class TOSConnector {
 				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				
+
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
-				
+
 				if (targetServer!=null) {
-				System.out.println("TargetServerName" + targetServer.getName()); 
-//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
-				
-				
-				setContextVariable("DB_TargetI2B2_Username",
-						targetServer.getUser());
-				setContextVariable("DB_TargetI2B2_Password",
-						targetServer.getPassword());
-				setContextVariable("DB_TargetI2B2_Schema",
-						OntologyEditorView.getTargetSchemaName());
-				setContextVariable("DB_TargetI2B2_Instance",
-						targetServer.getSID());
-				
-				
-				setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
+					System.out.println("TargetServerName" + targetServer.getName()); 
+					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
+
+
+					setContextVariable("DB_TargetI2B2_Username",
+							targetServer.getUser());
+					setContextVariable("DB_TargetI2B2_Password",
+							targetServer.getPassword());
+					setContextVariable("DB_TargetI2B2_Schema",
+							OntologyEditorView.getTargetSchemaName());
+					setContextVariable("DB_TargetI2B2_Instance",
+							targetServer.getSID());
+
+
+					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
 				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				
+
 				setContextVariable("TableIEOTargetOntology", "IOE_TARGET_ONTOLOGY");
 				setContextVariable("TableIEOTarget", "IOE_TARGET");
 				setContextVariable("TableIEOTargetProject", "IOE_TARGET_PROJECT");
 
-				
+
 				//
 
 				/*
@@ -285,15 +278,16 @@ public class TOSConnector {
 	}
 
 	public static int uploadProject() {
-		new Thread(new Runnable() {
+
+		Display display = Application.getDisplay();
+		display.asyncExec(new Runnable() {
 
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
-				
+
 				Console.info(currentServer.getSchema());
 				//			if (serverUniqueName != null) {
 				//				currentServer = ServerList.getTargetServers().get(
@@ -302,50 +296,64 @@ public class TOSConnector {
 
 				Console.info("Current server: " + currentServer.toString());
 
-					Console.info("Using selected server \""
-							+ currentServer.getName() + "(\""
-							+ currentServer.getSchema() + "\")\" for db query.");
+				Console.info("Using selected server \""
+						+ currentServer.getName() + "(\""
+						+ currentServer.getSchema() + "\")\" for db query.");
 
-					//				currentServer.setSchema(schema);
-					//				OntologyEditorView.setCurrentServer(currentServer);
+				//				currentServer.setSchema(schema);
+				//				OntologyEditorView.setCurrentServer(currentServer);
 
-					Console.info("currentSchema:" + currentServer.getSchema());
-					Console.info("sid: " + currentServer.getSID());
-					System.out
-					.println("OracleUsername: " + currentServer.getUser());
+				Console.info("currentSchema:" + currentServer.getSchema());
+				Console.info("sid: " + currentServer.getSID());
+				System.out
+				.println("OracleUsername: " + currentServer.getUser());
 
-					//
+				//
 
-					//setContextVariable("OracleHost", currentServer.getIp());
-					//setContextVariable("OraclePort", currentServer.getPort());
-					//setContextVariable("OracleSid", currentServer.getSID());
-					setContextVariable("DB_StagingI2B2_Username",
-							currentServer.getUser());
-					setContextVariable("DB_StagingI2B2_Password",
-							currentServer.getPassword());
-					System.out.println("OntologyEditorView.getStagingSchemaName()" +OntologyEditorView.getStagingSchemaName());
-					
-					
-					setContextVariable("DB_StagingI2B2_Schema",
-							OntologyEditorView.getStagingSchemaName());
-					setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-					setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-					setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				
-				
-				
-				
-				
-				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-					exit = tos.runJobInTOS((getARGV()));
-				} catch (Exception e) {
-					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-							+ e.getMessage());
+				//setContextVariable("OracleHost", currentServer.getIp());
+				//setContextVariable("OraclePort", currentServer.getPort());
+				//setContextVariable("OracleSid", currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_Username",
+						currentServer.getUser());
+				setContextVariable("DB_StagingI2B2_Password",
+						currentServer.getPassword());
+				System.out.println("OntologyEditorView.getStagingSchemaName()" +OntologyEditorView.getStagingSchemaName());
+
+
+				setContextVariable("DB_StagingI2B2_Schema",
+						OntologyEditorView.getStagingSchemaName());
+				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+
+
+				//				try {
+				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+				exit = tos.runJobInTOS((getARGV()));
+
+				if (exit==0) {
+					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
 				}
-			}
-		}).run();
+				else {
+					MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
+				}
+				//				} catch (Exception e) {
+				//					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
+				//							+ e.getMessage());
+				//				}
 
+			}
+		});
+
+		workerThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		workerThread.run();
 		return exit;
 
 	}

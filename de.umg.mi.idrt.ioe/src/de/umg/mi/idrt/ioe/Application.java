@@ -21,9 +21,9 @@ import org.eclipse.ui.handlers.IHandlerService;
 
 import au.com.bytecode.opencsv.CSVReader;
 
-import de.umg.mi.idrt.ioe.OntologyTree.FileHandling;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
+import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
@@ -57,7 +57,7 @@ public class Application implements IApplication {
 
 		Activator.getDefault().createResource();
 
-		File file = new File(FileHandling.getCFGFilePath("regex.csv"));
+		File file = new File(FileHandler.getCFGFilePath("regex.csv"));
 		
 		CSVReader reader = new CSVReader(new FileReader(file), ';');
 		

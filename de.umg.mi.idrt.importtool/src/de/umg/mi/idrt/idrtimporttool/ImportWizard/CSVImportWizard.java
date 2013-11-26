@@ -5,28 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
-import org.osgi.framework.Bundle;
-
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
-import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * Wizard for the CSV-Import.
@@ -134,23 +128,8 @@ public class CSVImportWizard extends Wizard {
 				try {
 					final long start = System.currentTimeMillis();
 
-					Bundle bundle = Activator.getDefault().getBundle();
-					Path path = new Path("/cfg/Default.properties"); //$NON-NLS-1$
-					URL url = FileLocator.find(bundle, path,
-							Collections.EMPTY_MAP);
-					URL fileUrl = null;
-
-					Path inputPath = new Path("/misc/input/"); //$NON-NLS-1$
-					URL inputURL = FileLocator.find(bundle, inputPath,
-							Collections.EMPTY_MAP);
-					URL inputURL2 = FileLocator.toFileURL(inputURL);
-					File inputFolder = new File(inputURL2.getPath());
-
-					Path outputPath = new Path("/misc/output/"); //$NON-NLS-1$
-					URL outputURL = FileLocator.find(bundle, outputPath,
-							Collections.EMPTY_MAP);
-					URL outputURL2 = FileLocator.toFileURL(outputURL);
-					File outputFolder = new File(outputURL2.getPath());
+					File inputFolder = FileHandler.getBundleFile("/misc/input/");
+					File outputFolder = FileHandler.getBundleFile("/misc/output/");
 
 					File[] listOfInputFiles = inputFolder.listFiles();
 
@@ -160,8 +139,7 @@ public class CSVImportWizard extends Wizard {
 						}
 					}
 
-					fileUrl = FileLocator.toFileURL(url);
-					File properties = new File(fileUrl.getPath());
+					File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 					defaultProps = new Properties();
 					defaultProps.load(new FileReader(properties));
 
@@ -180,11 +158,7 @@ public class CSVImportWizard extends Wizard {
 					/**
 					 * page 2
 					 */
-					Path miscPath = new Path("/misc/"); //$NON-NLS-1$
-					URL miscUrl = FileLocator.find(bundle, miscPath,
-							Collections.EMPTY_MAP);
-					URL miscFileUrl = FileLocator.toFileURL(miscUrl);
-					File misc = new File(miscFileUrl.getPath());
+					File misc = FileHandler.getBundleFile("/misc/");
 					String miscPathReplaced = misc.getAbsolutePath()
 							.replaceAll("\\\\", "/") + "/";
 
@@ -192,20 +166,15 @@ public class CSVImportWizard extends Wizard {
 						/**
 						 * ST-Import
 						 */
-						Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
-						URL cfgUrl = FileLocator.find(bundle, cfgPath,
-								Collections.EMPTY_MAP);
-						URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-						File rootDir = new File(cfgFileUrl.getPath()
-								+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-						contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
-						contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
-						contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
-						contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
-						contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
-						contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
-						contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
-						contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/");
+						File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
+						contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+						contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+						contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+						contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+						contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+						contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+						contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+						contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
 					} 
 
 					if (truncate) {

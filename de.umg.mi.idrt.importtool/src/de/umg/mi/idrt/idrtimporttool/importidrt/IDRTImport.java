@@ -10,27 +10,21 @@ import tos.odm_master_0_1.ODM_MASTER;
 import tos.server_freelocks_0_1.SERVER_FreeLocks;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.osgi.framework.Bundle;
-
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.ExportDB.ExportDB;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -146,40 +140,22 @@ public class IDRTImport {
 	 * @param project the i2b2 project within the server.
 	 */
 	public static void runImportST(Server server, String project) {
-		try {
-			StatusListener.startLogging();
-			ServerView.stdImportStarted = true;
-			HashMap<String, String> contextMap = new HashMap<String, String>();
+		StatusListener.startLogging();
+		ServerView.stdImportStarted = true;
+		HashMap<String, String> contextMap = new HashMap<String, String>();
 
-			contextMap.put("DBHost", server.getIp());
-			contextMap.put("DBPassword", server.getPassword());
-			contextMap.put("DBUsername", server.getUser());
-			contextMap.put("DBInstance", server.getSID());
-			contextMap.put("DBPort", server.getPort());
-			contextMap.put("DBSchema", project);
+		contextMap.put("DBHost", server.getIp());
+		contextMap.put("DBPassword", server.getPassword());
+		contextMap.put("DBUsername", server.getUser());
+		contextMap.put("DBInstance", server.getSID());
+		contextMap.put("DBPort", server.getPort());
+		contextMap.put("DBSchema", project);
 
-			/**
-			 * ST-Import
-			 */
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path cfgPath = new Path("/cfg/");
-			URL cfgUrl = FileLocator.find(bundle, cfgPath,
-					Collections.EMPTY_MAP);
-			URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-			File rootDir = new File(cfgFileUrl.getPath()
-					+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-			contextMap.put("icd10Dir", rootDir.getAbsolutePath()+ "/ICD-10-GM/" + "/");
-			contextMap.put("tnmDir",rootDir.getAbsolutePath() + "/TNM/" + "/");
-			contextMap.put("rootDir",rootDir.getAbsolutePath()+ "/");
-			contextMap.put("loincDir", rootDir.getAbsolutePath() + "/LOINC/" + "/");
-			contextMap.put("opsDir",rootDir.getAbsolutePath() + "/OPS/" + "/");
-			contextMap.put("p21Dir",rootDir.getAbsolutePath() + "/P21/" + "/");
-			contextMap.put("drgDir",rootDir.getAbsolutePath() + "/DRG/" + "/");
-			contextMap.put("icdoDir",rootDir.getAbsolutePath() + "/ICD-O-3/" + "/"); 
-			setCompleteContext(contextMap);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		/**
+		 * ST-Import
+		 */
+		setSTContext(contextMap);
+		setCompleteContext(contextMap);
 
 		StatusListener.setStatus(1f, "Importing Terminologies", "");
 		Display.getDefault().syncExec(new Runnable() {
@@ -197,8 +173,8 @@ public class IDRTImport {
 			@Override
 			public void run() {
 				ServerView.btnStopSetEnabled(true);
-//				IDRT_STDTERM stImport = new IDRT_STDTERM();
-//				exitCode = 	stImport.runJobInTOS(getARGV());
+				//				IDRT_STDTERM stImport = new IDRT_STDTERM();
+				//				exitCode = 	stImport.runJobInTOS(getARGV());
 				if (exitCode==0) {
 					IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 					exitCode = transform.runJobInTOS(getARGV());
@@ -232,41 +208,41 @@ public class IDRTImport {
 		workerThread.start();
 	}
 
+	/**
+	 * @param contextMap 
+	 * 
+	 */
+	private static void setSTContext(HashMap<String, String> contextMap) {
+		// TODO Auto-generated method stub
+		File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
+		contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+		contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+		contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+		contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+		contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+		contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+		contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
+
+	}
+
 	public static void runImportST_NoMap(Server server, String project) {
-		try {
-			StatusListener.startLogging();
-			ServerView.stdImportStarted = true;
-			HashMap<String, String> contextMap = new HashMap<String, String>();
+		StatusListener.startLogging();
+		ServerView.stdImportStarted = true;
+		HashMap<String, String> contextMap = new HashMap<String, String>();
 
-			contextMap.put("DBHost", server.getIp());
-			contextMap.put("DBPassword", server.getPassword());
-			contextMap.put("DBUsername", server.getUser());
-			contextMap.put("DBInstance", server.getSID());
-			contextMap.put("DBPort", server.getPort());
-			contextMap.put("DBSchema", project);
+		contextMap.put("DBHost", server.getIp());
+		contextMap.put("DBPassword", server.getPassword());
+		contextMap.put("DBUsername", server.getUser());
+		contextMap.put("DBInstance", server.getSID());
+		contextMap.put("DBPort", server.getPort());
+		contextMap.put("DBSchema", project);
 
-			/**
-			 * ST-Import
-			 */
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path cfgPath = new Path("/cfg/");
-			URL cfgUrl = FileLocator.find(bundle, cfgPath,
-					Collections.EMPTY_MAP);
-			URL cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-			File rootDir = new File(cfgFileUrl.getPath().replaceAll("\\\\", "/")
-					+ "/Standardterminologien/".replaceAll("\\\\", "/"));
-			contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/");
-			contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/");
-			contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
-			contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/");
-			contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/");
-			contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/");
-			contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/");
-			contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/"); 
-			setCompleteContext(contextMap);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		/**
+		 * ST-Import
+		 */
+		setSTContext(contextMap);
+		setCompleteContext(contextMap);
 
 		StatusListener.setStatus(1f, "Importing Terminologies", "");
 		Display.getDefault().syncExec(new Runnable() {
@@ -286,7 +262,7 @@ public class IDRTImport {
 				ServerView.btnStopSetEnabled(true);
 				System.out.println("yes");
 				IDRT_STDTERM std = new IDRT_STDTERM();
-//				IDRT_STDTERM std = new IDRT_STDTERM();
+				//				IDRT_STDTERM std = new IDRT_STDTERM();
 				System.out.println("2");
 				exitCode = 	std.runJobInTOS(getARGV());
 				System.out.println("3");
@@ -392,24 +368,13 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-//			exitCode = stdTerm.runJobInTOS(getARGV());
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path cfgPath = new Path("/cfg/");
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl;
-				try {
-					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
-					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-					setCompleteContext(contextMap);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
 				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 				exitCode = transform.runJobInTOS(getARGV());
 
@@ -438,23 +403,13 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-//			exitCode = stdTerm.runJobInTOS(getARGV());
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path cfgPath = new Path("/cfg/"); 
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl;
-				try {
-					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-					setCompleteContext(contextMap);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
 				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 				exitCode = transform.runJobInTOS(getARGV());
 			}
@@ -486,24 +441,13 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-//			exitCode = stdTerm.runJobInTOS(getARGV());
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl;
-				try {
-					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
-					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-					setCompleteContext(contextMap);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
 				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 				exitCode = transform.runJobInTOS(getARGV());
 			}
@@ -526,24 +470,13 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-//			exitCode = stdTerm.runJobInTOS(getARGV());
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl;
-				try {
-					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
-					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-					setCompleteContext(contextMap);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
 				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 				exitCode = transform.runJobInTOS(getARGV());
 			}
@@ -572,24 +505,13 @@ public class IDRTImport {
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-//			exitCode = stdTerm.runJobInTOS(getARGV());
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
 			if (exitCode == 0) {
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-				Bundle bundle = Activator.getDefault().getBundle();
-				Path cfgPath = new Path("/cfg/"); //$NON-NLS-1$
-				URL cfgUrl = FileLocator.find(bundle, cfgPath,
-						Collections.EMPTY_MAP);
-				URL cfgFileUrl;
-				try {
-					cfgFileUrl = FileLocator.toFileURL(cfgUrl);
-
-					File t_mapping = new File(cfgFileUrl.getPath()+"t_mapping.csv");
-					contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-					setCompleteContext(contextMap);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
 				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
 				exitCode = transform.runJobInTOS(getARGV());
 			}
@@ -685,23 +607,14 @@ public class IDRTImport {
 	 * Deletes all unneeded input files from previous imports.
 	 */
 	private static void clearInputFolder() {
-		try {
-			Bundle bundle = Activator.getDefault().getBundle();
-			Path inputPath = new Path("/misc/input/");
-			URL inputURL = FileLocator.find(bundle, inputPath,
-					Collections.EMPTY_MAP);
-			URL inputURL2 = FileLocator.toFileURL(inputURL);
 
-			File inputFolder = new File(inputURL2.getPath());
-			File[] listOfInputFiles = inputFolder.listFiles();
+		File inputFolder = FileHandler.getBundleFile("/misc/input/");
+		File[] listOfInputFiles = inputFolder.listFiles();
 
-			for (File listOfInputFile : listOfInputFiles) {
-				if (listOfInputFile.getName().endsWith(".csv")) {
-					listOfInputFile.delete();
-				}
+		for (File listOfInputFile : listOfInputFiles) {
+			if (listOfInputFile.getName().endsWith(".csv")) {
+				listOfInputFile.delete();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 }
