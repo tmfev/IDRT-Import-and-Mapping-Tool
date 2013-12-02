@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: IOE Plugin
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 0.9.0.5
+Bundle-Version: 0.9.0.6
 Bundle-Activator: de.umg.mi.idrt.ioe.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -81,8 +81,9 @@ Bundle-ClassPath: .,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar,
+ TalendJobs/,
  TalendJobs/TOSIDRTConnector/,
- TalendJobs/
+ TalendJobs/TOSIDRTConnector/idrtcommand_transformationtotarget_0_1.jar
 Import-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
  de.goettingen.i2b2.importtool.idrt.StatusListener,
