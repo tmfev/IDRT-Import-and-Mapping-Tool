@@ -1,34 +1,23 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import java.util.Date;
+import java.util.HashMap;
 
 public class OntologyCellAttributes {
 	
+	private HashMap<String, String> ontologyTable = new HashMap<String, String>();
+
+	public HashMap<String, String> getOntologyTable() {
+		return ontologyTable;
+	}
+
 	int C_HLEVEL;
-	String C_FULLNAME;
-	String C_NAME;
-	String C_SYNONYM_CD;
-	String C_VISUALATTRIBUTES;
 	int C_TOTALNUM;
-	String C_BASECODE;
 	Object C_METADATAXML;
-	String C_FACTTABLECOLUMN;
-	String C_TABLENAME;
-	String C_COLUMNNAME;
-	String C_COLUMNDATATYPE;
-	String C_OPERATOR;
-	String C_DIMCODE;
-	Object C_COMMENT;
-	String C_TOOLTIP;
-	String M_APPLIED_PATH;
+	String C_COMMENT;
 	Date UPDATE_DATE;
 	Date DOWNLOAD_DATE;
 	Date IMPORT_DATE;
-	String SOURCESYSTEM_CD;
-	String VALUETYPE_CD;
-	String M_EXCLUSION_CD;
-	String C_PATH;
-	String C_SYMBOL;
 	
 	public OntologyCellAttributes (){
 		
@@ -39,49 +28,53 @@ public class OntologyCellAttributes {
 	 * @return the c_BASECODE
 	 */
 	public String getC_BASECODE() {
-		return C_BASECODE;
+		return ontologyTable.get("c_basecode");
+//		return C_BASECODE;
 	}
 
 	/**
 	 * @return the c_COLUMNDATATYPE
 	 */
 	public String getC_COLUMNDATATYPE() {
-		return C_COLUMNDATATYPE;
+		return ontologyTable.get("C_COLUMNDATATYPE".toLowerCase());
 	}
 
 	/**
 	 * @return the c_COLUMNNAME
 	 */
 	public String getC_COLUMNNAME() {
-		return C_COLUMNNAME;
+//		return C_COLUMNNAME;
+		return ontologyTable.get("C_COLUMNNAME".toLowerCase());
+//		return map.set("c_columnname");
 	}
 
 	/**
 	 * @return the c_COMMENT
 	 */
 	public Object getC_COMMENT() {
-		return C_COMMENT;
+		return ontologyTable.get("C_COMMENT".toLowerCase());
+//		return C_COMMENT;
 	}
 
 	/**
 	 * @return the c_DIMCODE
 	 */
 	public String getC_DIMCODE() {
-		return C_DIMCODE;
+		return ontologyTable.get("C_DIMCODE".toLowerCase());
 	}
 
 	/**
 	 * @return the c_FACTTABLECOLUMN
 	 */
 	public String getC_FACTTABLECOLUMN() {
-		return C_FACTTABLECOLUMN;
+		return ontologyTable.get("C_FACTTABLECOLUMN".toLowerCase());
 	}
 
 	/**
 	 * @return the c_FULLNAME
 	 */
 	public String getC_FULLNAME() {
-		return C_FULLNAME;
+		return ontologyTable.get("C_FULLNAME".toLowerCase());
 	}
 
 	/**
@@ -95,56 +88,56 @@ public class OntologyCellAttributes {
 	 * @return the c_METADATAXML
 	 */
 	public Object getC_METADATAXML() {
-		return C_METADATAXML;
+		return ontologyTable.get("C_METADATAXML".toLowerCase());
 	}
 
 	/**
 	 * @return the c_NAME
 	 */
 	public String getC_NAME() {
-		return C_NAME;
+		return ontologyTable.get("C_NAME".toLowerCase());
 	}
 
 	/**
 	 * @return the c_OPERATOR
 	 */
 	public String getC_OPERATOR() {
-		return C_OPERATOR;
+		return ontologyTable.get("C_COMMENT".toLowerCase());
 	}
 
 	/**
 	 * @return the c_PATH
 	 */
 	public String getC_PATH() {
-		return C_PATH;
+		return ontologyTable.get("C_PATH".toLowerCase());
 	}
 
 	/**
 	 * @return the c_SYMBOL
 	 */
 	public String getC_SYMBOL() {
-		return C_SYMBOL;
+		return ontologyTable.get("C_SYMBOL".toLowerCase());
 	}
 
 	/**
 	 * @return the c_SYNONYM_CD
 	 */
 	public String getC_SYNONYM_CD() {
-		return C_SYNONYM_CD;
+		return ontologyTable.get("C_SYNONYM_CD".toLowerCase());
 	}
 
 	/**
 	 * @return the c_TABLENAME
 	 */
 	public String getC_TABLENAME() {
-		return C_TABLENAME;
+		return ontologyTable.get("C_TABLENAME".toLowerCase());
 	}
 
 	/**
 	 * @return the c_TOOLTIP
 	 */
 	public String getC_TOOLTIP() {
-		return C_TOOLTIP;
+		return ontologyTable.get("C_TOOLTIP".toLowerCase());
 	}
 
 	/**
@@ -158,7 +151,7 @@ public class OntologyCellAttributes {
 	 * @return the c_VISUALATTRIBUTES
 	 */
 	public String getC_VISUALATTRIBUTES() {
-		return C_VISUALATTRIBUTES;
+		return ontologyTable.get("C_VISUALATTRIBUTES".toLowerCase());
 	}
 
 	/**
@@ -179,21 +172,21 @@ public class OntologyCellAttributes {
 	 * @return the m_APPLIED_PATH
 	 */
 	public String getM_APPLIED_PATH() {
-		return M_APPLIED_PATH;
+		return ontologyTable.get("M_APPLIED_PATH".toLowerCase());
 	}
 
 	/**
 	 * @return the m_EXCLUSION_CD
 	 */
 	public String getM_EXCLUSION_CD() {
-		return M_EXCLUSION_CD;
+		return ontologyTable.get("M_EXCLUSION_CD".toLowerCase());
 	}
 
 	/**
 	 * @return the sOURCESYSTEM_CD
 	 */
 	public String getSOURCESYSTEM_CD() {
-		return SOURCESYSTEM_CD;
+		return ontologyTable.get("SOURCESYSTEM_CD".toLowerCase());
 	}
 
 	/**
@@ -207,56 +200,57 @@ public class OntologyCellAttributes {
 	 * @return the vALUETYPE_CD
 	 */
 	public String getVALUETYPE_CD() {
-		return VALUETYPE_CD;
+		return ontologyTable.get("VALUETYPE_CD".toLowerCase());
 	}
 
 	/**
 	 * @param c_BASECODE the c_BASECODE to set
 	 */
 	public void setC_BASECODE(String c_BASECODE) {
-		C_BASECODE = c_BASECODE;
+		ontologyTable.put("c_basecode", c_BASECODE);
 	}
 
 	/**
 	 * @param c_COLUMNDATATYPE the c_COLUMNDATATYPE to set
 	 */
 	public void setC_COLUMNDATATYPE(String c_COLUMNDATATYPE) {
-		C_COLUMNDATATYPE = c_COLUMNDATATYPE;
+		ontologyTable.put("c_COLUMNDATATYPE".toLowerCase(), c_COLUMNDATATYPE);
+//		C_COLUMNDATATYPE = c_COLUMNDATATYPE;
 	}
 
 	/**
 	 * @param c_COLUMNNAME the c_COLUMNNAME to set
 	 */
 	public void setC_COLUMNNAME(String c_COLUMNNAME) {
-		C_COLUMNNAME = c_COLUMNNAME;
+		ontologyTable.put("c_COLUMNNAME".toLowerCase(), c_COLUMNNAME);
 	}
 
 	/**
 	 * @param c_COMMENT the c_COMMENT to set
 	 */
 	public void setC_COMMENT(Object c_COMMENT) {
-		C_COMMENT = c_COMMENT;
+		ontologyTable.put("c_COMMENT".toLowerCase(), (String)c_COMMENT);
 	}
 
 	/**
 	 * @param c_DIMCODE the c_DIMCODE to set
 	 */
 	public void setC_DIMCODE(String c_DIMCODE) {
-		C_DIMCODE = c_DIMCODE;
+		ontologyTable.put("c_DIMCODE".toLowerCase(), c_DIMCODE);
 	}
 
 	/**
 	 * @param c_FACTTABLECOLUMN the c_FACTTABLECOLUMN to set
 	 */
 	public void setC_FACTTABLECOLUMN(String c_FACTTABLECOLUMN) {
-		C_FACTTABLECOLUMN = c_FACTTABLECOLUMN;
+		ontologyTable.put("c_FACTTABLECOLUMN".toLowerCase(), c_FACTTABLECOLUMN);
 	}
 
 	/**
 	 * @param c_FULLNAME the c_FULLNAME to set
 	 */
 	public void setC_FULLNAME(String c_FULLNAME) {
-		C_FULLNAME = c_FULLNAME;
+		ontologyTable.put("c_FULLNAME".toLowerCase(), c_FULLNAME);
 	}
 
 	/**
@@ -277,49 +271,49 @@ public class OntologyCellAttributes {
 	 * @param c_NAME the c_NAME to set
 	 */
 	public void setC_NAME(String c_NAME) {
-		C_NAME = c_NAME;
+		ontologyTable.put("c_NAME".toLowerCase(), c_NAME);
 	}
 
 	/**
 	 * @param c_OPERATOR the c_OPERATOR to set
 	 */
 	public void setC_OPERATOR(String c_OPERATOR) {
-		C_OPERATOR = c_OPERATOR;
+		ontologyTable.put("c_OPERATOR".toLowerCase(), c_OPERATOR);
 	}
 
 	/**
 	 * @param c_PATH the c_PATH to set
 	 */
 	public void setC_PATH(String c_PATH) {
-		C_PATH = c_PATH;
+		ontologyTable.put("c_PATH".toLowerCase(), c_PATH);
 	}
 
 	/**
 	 * @param c_SYMBOL the c_SYMBOL to set
 	 */
 	public void setC_SYMBOL(String c_SYMBOL) {
-		C_SYMBOL = c_SYMBOL;
+		ontologyTable.put("c_SYMBOL".toLowerCase(), c_SYMBOL);
 	}
 
 	/**
 	 * @param c_SYNONYM_CD the c_SYNONYM_CD to set
 	 */
 	public void setC_SYNONYM_CD(String c_SYNONYM_CD) {
-		C_SYNONYM_CD = c_SYNONYM_CD;
+		ontologyTable.put("c_SYNONYM_CD".toLowerCase(), c_SYNONYM_CD);
 	}
 
 	/**
 	 * @param c_TABLENAME the c_TABLENAME to set
 	 */
 	public void setC_TABLENAME(String c_TABLENAME) {
-		C_TABLENAME = c_TABLENAME;
+		ontologyTable.put("c_TABLENAME".toLowerCase(), c_TABLENAME);
 	}
 
 	/**
 	 * @param c_TOOLTIP the c_TOOLTIP to set
 	 */
 	public void setC_TOOLTIP(String c_TOOLTIP) {
-		C_TOOLTIP = c_TOOLTIP;
+		ontologyTable.put("c_TOOLTIP".toLowerCase(), c_TOOLTIP);
 	}
 
 	/**
@@ -333,7 +327,7 @@ public class OntologyCellAttributes {
 	 * @param c_VISUALATTRIBUTES the c_VISUALATTRIBUTES to set
 	 */
 	public void setC_VISUALATTRIBUTES(String c_VISUALATTRIBUTES) {
-		C_VISUALATTRIBUTES = c_VISUALATTRIBUTES;
+		ontologyTable.put("c_VISUALATTRIBUTES".toLowerCase(), c_VISUALATTRIBUTES);
 	}
 
 	/**
@@ -354,21 +348,21 @@ public class OntologyCellAttributes {
 	 * @param m_APPLIED_PATH the m_APPLIED_PATH to set
 	 */
 	public void setM_APPLIED_PATH(String m_APPLIED_PATH) {
-		M_APPLIED_PATH = m_APPLIED_PATH;
+		ontologyTable.put("m_APPLIED_PATH".toLowerCase(), m_APPLIED_PATH);
 	}
 
 	/**
 	 * @param m_EXCLUSION_CD the m_EXCLUSION_CD to set
 	 */
 	public void setM_EXCLUSION_CD(String m_EXCLUSION_CD) {
-		M_EXCLUSION_CD = m_EXCLUSION_CD;
+		ontologyTable.put("m_EXCLUSION_CD".toLowerCase(), m_EXCLUSION_CD);
 	}
 
 	/**
 	 * @param sOURCESYSTEM_CD the sOURCESYSTEM_CD to set
 	 */
 	public void setSOURCESYSTEM_CD(String sOURCESYSTEM_CD) {
-		SOURCESYSTEM_CD = sOURCESYSTEM_CD;
+		ontologyTable.put("sOURCESYSTEM_CD".toLowerCase(), sOURCESYSTEM_CD);
 	}
 
 	/**
@@ -382,7 +376,7 @@ public class OntologyCellAttributes {
 	 * @param vALUETYPE_CD the vALUETYPE_CD to set
 	 */
 	public void setVALUETYPE_CD(String vALUETYPE_CD) {
-		VALUETYPE_CD = vALUETYPE_CD;
+		ontologyTable.put("vALUETYPE_CD".toLowerCase(), vALUETYPE_CD);
 	}
 
 

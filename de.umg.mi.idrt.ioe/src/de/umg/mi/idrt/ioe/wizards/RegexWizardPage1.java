@@ -70,10 +70,11 @@ public class RegexWizardPage1 extends WizardPage {
 			String[] line = reader.readNext();
 
 			while ((line = reader.readNext()) != null) {
-				System.out.println("name: " + line[0]);
-				System.out.println("regex: " + line[1]);
-
-				Regex regex = new Regex(line[0], line[1]);
+				Regex regex;
+				if (line.length <= 2)
+					regex = new Regex(line[0], line[1], "c_basecode");
+				else
+					regex = new Regex(line[0], line[1], line[2]);	
 				CombineNodesCommand.addRegEx(regex);
 			}
 			reader.close();
@@ -94,7 +95,7 @@ public class RegexWizardPage1 extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				CombineNodesCommand.addRegEx(new Regex("new","new"));
+				CombineNodesCommand.addRegEx(new Regex("new","new","c_basecode"));
 				setInput();
 			}
 
@@ -110,7 +111,7 @@ public class RegexWizardPage1 extends WizardPage {
 		viewer.getTable().setHeaderVisible(true);
 		viewer.getTable().setLinesVisible(true);
 		viewer.setContentProvider(new ArrayContentProvider());
-		
+
 		Table table = viewer.getTable();
 		//		column_2 = new TableColumn(viewer.getTable(), SWT.NONE);
 
@@ -168,7 +169,30 @@ public class RegexWizardPage1 extends WizardPage {
 				viewer.update(element, null);
 			}
 		});
+		
+		TableViewerColumn regexTable = new TableViewerColumn(viewer, SWT.NONE);
+		regexTable.setEditingSupport(new EditingSupport(viewer) {
 
+			protected boolean canEdit(Object element) {
+				if (!((Regex)element).getName().isEmpty() && !((Regex)element).getRegex().isEmpty())
+					return true;
+				else
+					return false;
+			}
+
+			protected CellEditor getCellEditor(Object element) {
+				return textCellEditor;
+			}
+
+			protected Object getValue(Object element) {
+				return ((Regex) element).getTable();
+			}
+
+			protected void setValue(Object element, Object value) {
+				((Regex)element).setTable((String)value);
+				viewer.update(element, null);
+			}
+		});
 
 
 		final TableViewerColumn testCol = new TableViewerColumn(viewer, SWT.NONE);
@@ -200,7 +224,7 @@ public class RegexWizardPage1 extends WizardPage {
 
 		buttons = new HashMap<Object, Button>();
 
-		
+
 		column_2 = saveCol.getColumn();
 		column_2.setResizable(false);
 		column_2.setWidth(50);
@@ -215,33 +239,33 @@ public class RegexWizardPage1 extends WizardPage {
 					button = buttons.get(cell.getElement());
 				}
 				else {
-						button = new Button(viewer.getTable(),SWT.PUSH);
-						button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
-						button.setToolTipText("Remove Regular Expression");
-						button.setData(((Regex)cell.getElement()));
-						
-						button.addSelectionListener(new SelectionListener() {
+					button = new Button(viewer.getTable(),SWT.PUSH);
+					button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
+					button.setToolTipText("Remove Regular Expression");
+					button.setData(((Regex)cell.getElement()));
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								Regex regex = (Regex) button.getData();
-								CombineNodesCommand.removeRegex(regex);
-								button.dispose();
-								setInput();
-							}
+					button.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-							}
-						});
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							Regex regex = (Regex) button.getData();
+							CombineNodesCommand.removeRegex(regex);
+							button.dispose();
+							setInput();
+						}
+
+						@Override
+						public void widgetDefaultSelected(SelectionEvent e) {
+						}
+					});
 					buttons.put(cell.getElement(), button);
 				}
 				TableEditor editor = new TableEditor(item.getParent());
-			    editor.grabHorizontal = true;
-			    editor.grabVertical = true;
+				editor.grabHorizontal = true;
+				editor.grabVertical = true;
 				editor.setEditor(button , item, cell.getColumnIndex());
-//				button.pack();
-//				editor.layout();
+				//				button.pack();
+				//				editor.layout();
 			}
 
 		});
@@ -271,6 +295,22 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 
 		});
+		
+		
+
+		TableColumn regexTableCol = regexTable.getColumn();
+		regexTableCol.setMoveable(true);
+		regexTableCol.setText("DB Table");
+		regexTableCol.setWidth(100);
+		regexTable.setLabelProvider(new ColumnLabelProvider(){
+
+			@Override
+			public String getText(Object element) {
+				return ((Regex) element).getTable();
+			}
+
+		});
+		
 		TableColumn test = testCol.getColumn();
 		test.setMoveable(true);
 		test.setText("Test String");
@@ -324,7 +364,7 @@ public class RegexWizardPage1 extends WizardPage {
 			regexs.add(regex);
 		}
 
-//		regexs.add(new Regex("", ""));
+		//		regexs.add(new Regex("", ""));
 		viewer.setInput(regexs);
 		viewer.refresh();
 	}

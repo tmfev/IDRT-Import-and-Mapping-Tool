@@ -87,7 +87,9 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					else if ("R".equals(visualAttribute))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_RA));
-					
+					else
+						cell.setImage(GUITools
+								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));
 					String hidden =  visualAttributeFull.substring(1, 2);
 
 					if (hidden.toLowerCase().equals("h"))

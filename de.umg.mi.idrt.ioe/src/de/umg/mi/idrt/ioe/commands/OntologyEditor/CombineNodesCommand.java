@@ -54,7 +54,8 @@ public class CombineNodesCommand extends AbstractHandler {
 
 			getOldTargetNodes(targetNode);
 			for (OntologyTreeNode node : oldTreeNodeList) {
-//				System.out.println("Next OLD leaf: " + node.getName() + " parent: " + node.getParent().getName());
+				//				System.out.println("Next OLD leaf: " + node.getName() + " parent: " + node.getParent().getName());
+
 				node.removeFromParent();
 				targetTreeViewer.update(node, null);
 			}
@@ -73,10 +74,10 @@ public class CombineNodesCommand extends AbstractHandler {
 
 
 			getnewTargetNodes(targetNode);
-			
+
 			//TODO GET REGEX
 			String regex = MyOntologyTrees.getCurrentRegEx();
-//			System.out.println("REGEX: " + regex);
+			//			System.out.println("REGEX: " + regex);
 			generatePerfectPath(oldTreeNodeList, newTreeNodeList, regex);
 			mergeLeafs(oldTreeNodeList, newTreeNodeList,regex);
 			OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
@@ -127,7 +128,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		if (child.hasChildren()) {
 			for (OntologyTreeNode child2 : child.getChildren()) {
 				getnewTargetNodes(child2);
-				if (child2.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l")) {
+				if (!child2.isMerged() && child2.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l")) {
 					newTreeNodeList.add(child2);
 				}
 			}
@@ -138,7 +139,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		if (child.hasChildren()) {
 			for (OntologyTreeNode child2 : child.getChildren()) {
 				getOldTargetNodes(child2);
-				if (child2.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l"))
+				if (!child2.isMerged() && child2.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l"))
 					oldTreeNodeList.add(child2);
 			}
 		}
@@ -156,36 +157,41 @@ public class CombineNodesCommand extends AbstractHandler {
 				break;
 			}
 		}
-		for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
+		for (OntologyTreeNode oldNode : oldTreeNodeList2) {
 			boolean found = false;
-			for (OntologyTreeNode node :  newTreeNodeList2 ) {
-				
+			for (OntologyTreeNode newNode :  newTreeNodeList2 ) {
+
 				Pattern p = Pattern.compile(currentRegex.getRegex());
-				Matcher m = p.matcher(nodeToCheck.getID());
+				Matcher m = p.matcher(oldNode.getID());
 				if (m.find()) {
 					String icd = m.group();
-					if (node.getID().contains(icd)) {
-//						System.out.println(currentRegex.getName() + " " + node.getID() + " IN " + nodeToCheck.getID());
-						node.getTargetNodeAttributes().removeAllStagingPaths();
-						node.getTargetNodeAttributes().addStagingPath(nodeToCheck.getTargetNodeAttributes().getSourcePath());
+//					if (newNode.getOntologyCellAttributes().getC_BASECODE().contains(icd)) {
+					if (newNode.getOntologyCellAttributes().getOntologyTable().get(currentRegex.getTable()).contains(icd)) {
+						//						System.out.println(currentRegex.getName() + " " + node.getID() + " IN " + nodeToCheck.getID());
+						newNode.getTargetNodeAttributes().removeAllStagingPaths();
+						newNode.getTargetNodeAttributes().addStagingPath(oldNode.getTargetNodeAttributes().getSourcePath());
+						newNode.setMerged(true);
+						oldNode.setMerged(true);
 						found = true;
 						break;
 					}
 				}
-
+				newNode.setMerged(true);
+//				oldNode.setMerged(true);
 				if (found)
 					break;
 				else {
-					node.getTargetNodeAttributes().removeAllStagingPaths();
-					node.getTargetNodeAttributes().addStagingPath(perfectPath+node.getID()+"\\");
+					newNode.getTargetNodeAttributes().removeAllStagingPaths();
+					newNode.getTargetNodeAttributes().addStagingPath(perfectPath+newNode.getID()+"\\");
 				}
+				
 			}
 			if (!found) {
-				nodeToCheck.getTargetNodeAttributes().removeAllStagingPaths();
-				nodeToCheck.getTargetNodeAttributes().addStagingPath(perfectPath+nodeToCheck.getID()+"\\");
+				oldNode.getTargetNodeAttributes().removeAllStagingPaths();
+				oldNode.getTargetNodeAttributes().addStagingPath(perfectPath+oldNode.getID()+"\\");
 				//				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().add(nodeToCheck);
-				((OntologyTreeNode)NodeDropListener.getTargetNode()).add(nodeToCheck);
-				OntologyEditorView.getOntologyTargetTree().getNodeLists().add(nodeToCheck);
+				((OntologyTreeNode)NodeDropListener.getTargetNode()).add(oldNode);
+				OntologyEditorView.getOntologyTargetTree().getNodeLists().add(oldNode);
 			}
 		}
 	}
