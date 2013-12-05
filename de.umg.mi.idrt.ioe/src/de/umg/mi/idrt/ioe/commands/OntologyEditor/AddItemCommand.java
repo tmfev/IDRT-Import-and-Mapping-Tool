@@ -7,6 +7,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 
+import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.OntologyTree.Dimension;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
@@ -31,6 +32,7 @@ public class AddItemCommand extends AbstractHandler {
 		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");
+		subRootNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, "@");
 		currentNode.add(subRootNode);
 		subRootNode.setTreeAttributes();
 		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {

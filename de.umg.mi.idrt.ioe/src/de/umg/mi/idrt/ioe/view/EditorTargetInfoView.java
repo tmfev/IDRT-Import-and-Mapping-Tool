@@ -292,7 +292,10 @@ public class EditorTargetInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
 		addColumItem(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
 		addColumItem(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
-
+		
+		
+		addColumItem("TREE_LEVEL");
+		addColumItem("TREE_PATH");
 		// TableViewerColumn col =
 		// createTableViewerColumn(Resource.I2B2.NODE.TARGET.SOURCE_PATH,
 		// bounds[0], 0);
@@ -354,6 +357,9 @@ public class EditorTargetInfoView extends ViewPart {
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
 
+				addValueItem(items, row++,""+node.getTreePathLevel());
+				addValueItem(items, row++,node.getTreePath());
+				
 				_editorComposite.layout();
 
 				_parent.layout();
@@ -398,8 +404,8 @@ public class EditorTargetInfoView extends ViewPart {
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
 				
-				
-				
+				addValueItem(items, row++,""+node.getParent().getTreePathLevel());
+				addValueItem(items, row++,node.getParent().getTreePath());
 				
 				
 				

@@ -348,15 +348,29 @@ public class MyOntologyTrees{
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
 			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
-			node.setTreePath(target.getTreePath() + node.getID() + "\\");
-			node.setTreePathLevel(target.getTreePathLevel() + 1);
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
 		}
 		else {
+			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH,source.getOntologyCellAttributes().getM_APPLIED_PATH());
 			node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
 			node.setTreePath(target.getTreePath() + node.getID() + "\\");
 			node.setTreePathLevel(target.getTreePathLevel() + 1);
 		}
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE,source.getOntologyCellAttributes().getC_BASECODE());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML,source.getOntologyCellAttributes().getC_METADATAXML());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE,source.getOntologyCellAttributes().getC_COLUMNDATATYPE());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.OPERATOR,source.getOntologyCellAttributes().getC_OPERATOR());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COMMENT,source.getOntologyCellAttributes().getC_COMMENT());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.TOOLTIP,source.getOntologyCellAttributes().getC_TOOLTIP());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.UPDATE_DATE,source.getOntologyCellAttributes().getUPDATE_DATEAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE,source.getOntologyCellAttributes().getDOWNLOAD_DATEAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.IMPORT_DATE,source.getOntologyCellAttributes().getIMPORT_DATEAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,source.getOntologyCellAttributes().getSOURCESYSTEM_CD());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,source.getOntologyCellAttributes().getVALUETYPE_CD());
+		node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
+		node.setTreePath(target.getTreePath() + node.getID() + "\\");
+		node.setTreePathLevel(target.getTreePathLevel() + 1);
+		
 		
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 

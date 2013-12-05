@@ -44,7 +44,7 @@ public class SaveTarget extends AbstractHandler {
 		Console.info("Saving Target Ontology.");
 
 		String stringPath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
-
+System.out.println("stringPath: " + stringPath);
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){

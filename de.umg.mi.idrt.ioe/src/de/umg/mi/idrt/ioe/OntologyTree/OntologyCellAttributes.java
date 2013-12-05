@@ -51,7 +51,7 @@ public class OntologyCellAttributes {
 	/**
 	 * @return the c_COMMENT
 	 */
-	public Object getC_COMMENT() {
+	public String getC_COMMENT() {
 		return ontologyTable.get("C_COMMENT".toLowerCase());
 //		return C_COMMENT;
 	}
@@ -87,7 +87,7 @@ public class OntologyCellAttributes {
 	/**
 	 * @return the c_METADATAXML
 	 */
-	public Object getC_METADATAXML() {
+	public String getC_METADATAXML() {
 		return ontologyTable.get("C_METADATAXML".toLowerCase());
 	}
 
@@ -160,12 +160,19 @@ public class OntologyCellAttributes {
 	public Date getDOWNLOAD_DATE() {
 		return DOWNLOAD_DATE;
 	}
+	
+	public String getDOWNLOAD_DATEAsString() {
+		return DOWNLOAD_DATE!=null?DOWNLOAD_DATE.toString():"";
+	}
 
 	/**
 	 * @return the iMPORT_DATE
 	 */
 	public Date getIMPORT_DATE() {
 		return IMPORT_DATE;
+	}
+	public String getIMPORT_DATEAsString() {
+		return IMPORT_DATE!=null?IMPORT_DATE.toString():"";
 	}
 
 	/**
@@ -194,6 +201,9 @@ public class OntologyCellAttributes {
 	 */
 	public Date getUPDATE_DATE() {
 		return UPDATE_DATE;
+	}
+	public String getUPDATE_DATEAsString() {
+		return UPDATE_DATE!=null?UPDATE_DATE.toString():"";
 	}
 
 	/**
