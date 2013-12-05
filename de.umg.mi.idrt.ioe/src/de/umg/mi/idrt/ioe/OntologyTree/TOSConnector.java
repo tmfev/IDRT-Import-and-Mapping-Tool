@@ -13,6 +13,8 @@ import java.util.Properties;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
+import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
+
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -287,6 +289,40 @@ public class TOSConnector {
 				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
+				setContextVariable("DB_StagingI2B2_Username",
+						currentServer.getUser());
+				setContextVariable("DB_StagingI2B2_Instance",
+						currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_Password",
+						currentServer.getPassword());
+				setContextVariable("DB_StagingI2B2_Schema",
+						OntologyEditorView.getStagingSchemaName());
+				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+
+				//
+				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
+
+				if (targetServer!=null) {
+					System.out.println("TargetServerName" + targetServer.getName()); 
+					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
+
+
+					setContextVariable("DB_TargetI2B2_Username",
+							targetServer.getUser());
+					setContextVariable("DB_TargetI2B2_Password",
+							targetServer.getPassword());
+					setContextVariable("DB_TargetI2B2_Schema",
+							OntologyEditorView.getTargetSchemaName());
+					setContextVariable("DB_TargetI2B2_Instance",
+							targetServer.getSID());
+
+
+					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
+				}
+				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				
 
 				Console.info(currentServer.getSchema());
 				//			if (serverUniqueName != null) {
@@ -328,8 +364,10 @@ public class TOSConnector {
 
 
 				//				try {
-				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-				exit = tos.runJobInTOS((getARGV()));
+//				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+			
+				IDRTCommand_TransformationToTarget trans = new IDRTCommand_TransformationToTarget();
+				exit = trans.runJobInTOS((getARGV()));
 
 				if (exit==0) {
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");

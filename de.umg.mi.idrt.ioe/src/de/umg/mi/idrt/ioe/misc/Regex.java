@@ -13,14 +13,23 @@ public class Regex {
 	private String name;
 	private String regex;
 	private String test;
+	private String table;
 	
+	/**
+	 * @param table the table to set
+	 */
+	public void setTable(String table) {
+		this.table = table.toLowerCase();
+	}
+
 	/**
 	 * 
 	 */
-	public Regex(String name, String regex) {
+	public Regex(String name, String regex, String table) {
 		setName(name);
 		setRegex(regex);
 		setTest("");
+		setTable(table);
 	}
 	
 	/**
@@ -60,6 +69,13 @@ public class Regex {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(test);
 		return m.matches();
+	}
+
+	/**
+	 * @return
+	 */
+	public String getTable() {
+		return table.toLowerCase();
 	}
 	
 }

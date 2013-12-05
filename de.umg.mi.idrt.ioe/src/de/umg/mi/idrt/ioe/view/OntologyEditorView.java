@@ -1546,7 +1546,7 @@ public class OntologyEditorView extends ViewPart {
 		Label label = new Label(mainComposite, SWT.LEFT);
 		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
-				"images/IDRT_ME.gif"));
+				"images/IDRT.gif"));
 
 		System.out.println("################# Debug #######");
 		TargetProjects targetProjects = new TargetProjects();

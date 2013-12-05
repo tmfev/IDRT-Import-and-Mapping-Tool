@@ -48,7 +48,7 @@ public class RegexWizard extends Wizard {
 			writer.writeNext(new String[] {"Name","Regex"});
 			for (Regex r : CombineNodesCommand.getRegex()) {
 				if (!r.getName().isEmpty())
-					writer.writeNext(new String[] {r.getName(),r.getRegex().replaceAll("\\\\", "\\\\\\\\")});
+					writer.writeNext(new String[] {r.getName(),r.getRegex().replaceAll("\\\\", "\\\\\\\\"), r.getTable()});
 			}
 			writer.flush();
 			writer.close();
