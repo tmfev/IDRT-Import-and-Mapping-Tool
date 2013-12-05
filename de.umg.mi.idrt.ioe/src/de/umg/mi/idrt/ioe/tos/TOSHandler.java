@@ -2,8 +2,6 @@ package de.umg.mi.idrt.ioe.tos;
 
 import java.util.Date;
 
-import org.eclipse.swt.widgets.Display;
-
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;

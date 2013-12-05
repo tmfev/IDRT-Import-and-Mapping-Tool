@@ -600,7 +600,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM &quot; + context.DB_StagingI2B2_Schema +&quot;.I2B2 ORDER BY C_HLEVEL, C_FULLNAME ASC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM &quot; + context.DB_StagingI2B2_Schema +&quot;.I2B2 ORDER BY m_applied_path, C_HLEVEL, C_FULLNAME ASC&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -1460,7 +1460,7 @@
     <elementParameter field="CHECK" name="FONT_ITALIC" value="false"/>
     <elementParameter field="COLOR" name="NOTE_LINECOLOR" value="128;128;128"/>
   </note>
-  <note opaque="true" posX="1312" posY="-416" sizeHeight="193" sizeWidth="289" text="Commands:&#xD;&#xA;WriteTargetOntology&#xD;&#xA;">
+  <note opaque="true" posX="1344" posY="-96" sizeHeight="193" sizeWidth="289" text="Commands:&#xD;&#xA;WriteTargetOntology&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
