@@ -218,7 +218,7 @@ public class MyOntologyTrees{
 		targetOntologyi2b2RootNode.setType(TYPE.ONTOLOGY_TARGET);
 		targetOntologyi2b2RootNode.setNodeType(NodeType.I2B2ROOT);
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().addStagingPath("\\i2b2\\");
-		targetOntologyi2b2RootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setDimension("concept_dimension");
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setName("i2b2");
 
@@ -346,13 +346,20 @@ public class MyOntologyTrees{
 
 		final OntologyTreeNode node = new OntologyTreeNode(source);
 		node.getTargetNodeAttributes().setVisualattributes(source.getOntologyCellAttributes().getC_VISUALATTRIBUTES());
-		node.getTargetNodeAttributes().addStagingPath(source.getTreePath());
+		
+		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
+			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
+		}
+		else {
+			node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
+		}
+		
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
 		node.setTreePath(target.getTreePath() + node.getID() + "\\");
 		node.setTreePathLevel(target.getTreePathLevel() + 1);
 		node.getTargetNodeAttributes().setName(node.getName());
-
+		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
 		if (testNode==null) {
 			target.add(node);

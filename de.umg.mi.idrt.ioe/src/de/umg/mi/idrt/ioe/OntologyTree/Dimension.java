@@ -8,15 +8,15 @@ package de.umg.mi.idrt.ioe.OntologyTree;
  *         
  */
 
-public enum Dimension {
+public class Dimension {
 	
 	/**
 	 * the i2b2 concept_dimension
 	 */
-	CONCEPT_DIMENSION,
+	public static String CONCEPT_DIMENSION = "concept_dimension";
 	/**
 	 * the i2b2 modifier_dimension
 	 */
-	MODIFIER_DIMENSION
+	public static String MODIFIER_DIMENSION = "modifier_dimension";
 	
 }

@@ -103,7 +103,6 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProjectQuestion;
 
 	static {
-		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}
 

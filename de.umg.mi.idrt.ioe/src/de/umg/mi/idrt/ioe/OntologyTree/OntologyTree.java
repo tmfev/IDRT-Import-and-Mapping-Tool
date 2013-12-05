@@ -66,6 +66,8 @@ public class OntologyTree extends JTree {
 			System.err.println("no parent");
 			Console.error("Could not add node \"" + item.getC_NAME()
 					+ "\" to the tree, because there is no parent node for it.");
+			
+			
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);

@@ -57,22 +57,7 @@ public class Application implements IApplication {
 
 		Activator.getDefault().createResource();
 
-		File file = new File(FileHandler.getCFGFilePath("regex.csv"));
-
-		CSVReader reader = new CSVReader(new FileReader(file), ';');
-
-		String[] line = reader.readNext();
-
-		while ((line = reader.readNext()) != null) {
-			Regex regex;
-			if (line.length <= 2)
-				regex = new Regex(line[0], line[1], "c_basecode");
-			else
-				regex = new Regex(line[0], line[1], line[2]);	
-			CombineNodesCommand.addRegEx(regex);
-		}
-
-		reader.close();
+		Regex.loadRegex();
 		// Activator.getDefault().getResource().setDisplay(this._display);
 		// _global = new Global(_i2b2ImportTool, _display);
 

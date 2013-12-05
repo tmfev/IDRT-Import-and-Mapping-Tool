@@ -1,24 +1,18 @@
 package de.umg.mi.idrt.ioe.wizards;
 
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.EditingSupport;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.jface.viewers.ViewerColumn;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
@@ -26,19 +20,16 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.ResourceManager;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
-import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import au.com.bytecode.opencsv.CSVReader;
 import swing2swt.layout.BorderLayout;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -62,25 +53,14 @@ public class RegexWizardPage1 extends WizardPage {
 
 	@Override
 	public void createControl(Composite parent) {
-		File file = new File(FileHandler.getCFGFilePath("regex.csv"));
 		try {
 			CombineNodesCommand.clear();
-			CSVReader reader = new CSVReader(new FileReader(file), ';');
-
-			String[] line = reader.readNext();
-
-			while ((line = reader.readNext()) != null) {
-				Regex regex;
-				if (line.length <= 2)
-					regex = new Regex(line[0], line[1], "c_basecode");
-				else
-					regex = new Regex(line[0], line[1], line[2]);	
-				CombineNodesCommand.addRegEx(regex);
-			}
-			reader.close();
+			Regex.loadRegex();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		Composite comp = new Composite(parent, SWT.NONE);
 		comp.setLayout(new BorderLayout(0, 0));
 		Composite composite = new Composite(comp, SWT.NONE);
@@ -90,7 +70,6 @@ public class RegexWizardPage1 extends WizardPage {
 		button_1.setBounds(0, 0, 75, 25);
 		button_1.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/add.gif"));
 		button_1.setToolTipText("Add Regular Expression");
-
 		button_1.addSelectionListener(new SelectionListener() {
 
 			@Override

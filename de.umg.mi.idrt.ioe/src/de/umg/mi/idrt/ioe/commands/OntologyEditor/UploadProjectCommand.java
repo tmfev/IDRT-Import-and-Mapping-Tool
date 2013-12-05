@@ -7,12 +7,15 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
+
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
+import de.umg.mi.idrt.ioe.misc.IDRTMessageDialog;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class UploadProjectCommand extends AbstractHandler {
@@ -21,6 +24,10 @@ public class UploadProjectCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("OntologyEditorView " + OntologyEditorView.isInit());
 		System.out.println("schema: " + OntologyEditorView.getTargetSchemaName());
+	boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Warning", "This will TRUNCATE the target project!\nDo you want to" +
+				" proceed?");
+	
+	if(confirm) {
 		if (OntologyEditorView.isInit() && !OntologyEditorView.getTargetSchemaName().isEmpty() && !OntologyEditorView.getTargetSchemaName().startsWith("Drop i2b2")) {
 			String stagingServerName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
 			Server stagingServer = ServerList.getTargetServers().get(stagingServerName);
@@ -48,6 +55,7 @@ public class UploadProjectCommand extends AbstractHandler {
 			contextMap.put("folderMain",outputFolder.getAbsolutePath().replaceAll("\\\\", "/")+"/");
 			contextMap.put("folderOutput","/output");
 			System.out.println(outputFolder.getAbsolutePath().replaceAll("\\\\", "/")+"/output/");
+			
 			/**
 			 * page 1
 			 */
@@ -75,6 +83,7 @@ public class UploadProjectCommand extends AbstractHandler {
 		else {
 			MessageDialog.openError(Application.getShell(), "No Target Project", "No Target Project given!");
 		}
+	}
 		return null;
 	}
 }

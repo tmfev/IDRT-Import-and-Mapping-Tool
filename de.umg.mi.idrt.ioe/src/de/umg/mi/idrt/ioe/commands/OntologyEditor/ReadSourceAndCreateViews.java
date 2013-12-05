@@ -57,7 +57,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		Application.executeCommand(new ActionCommand(
 				Resource.ID.Command.IOE.LOADEVERYTHING));
-
+		
 		/*
 		 * creator.createMeta(); creator.createOntology();
 		 * creator.createPatientData();

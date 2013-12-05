@@ -1,7 +1,14 @@
 package de.umg.mi.idrt.ioe.misc;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import au.com.bytecode.opencsv.CSVReader;
+import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -76,6 +83,36 @@ public class Regex {
 	 */
 	public String getTable() {
 		return table.toLowerCase();
+	}
+
+	/**
+	 * 
+	 */
+	public static void loadRegex() {
+		File file = new File(FileHandler.getCFGFilePath("regex.csv"));
+
+		CSVReader reader;
+		try {
+			reader = new CSVReader(new FileReader(file), ';');
+		
+
+		String[] line = reader.readNext();
+
+		while ((line = reader.readNext()) != null) {
+			Regex regex;
+			if (line.length <= 2)
+				regex = new Regex(line[0], line[1], "c_basecode");
+			else
+				regex = new Regex(line[0], line[1], line[2]);	
+			CombineNodesCommand.addRegEx(regex);
+		}
+
+		reader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

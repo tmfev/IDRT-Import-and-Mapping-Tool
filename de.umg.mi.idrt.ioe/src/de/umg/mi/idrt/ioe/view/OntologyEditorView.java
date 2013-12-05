@@ -1,7 +1,5 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.awt.Frame;
-import java.awt.Panel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -9,11 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-
-import javax.swing.JProgressBar;
-import javax.swing.JRootPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
@@ -36,7 +29,6 @@ import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -64,7 +56,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -106,7 +97,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
-import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
 
 public class OntologyEditorView extends ViewPart {
 
@@ -313,12 +303,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-
-		//		Shell shell = new Shell();
-		//		shell.setSize(844, 536);
-		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//		mainComposite = new Composite(shell, SWT.NONE);
-		//		mainComposite.setLayout(new BorderLayout(0, 0));
+//				Shell shell = new Shell();
+//				shell.setSize(844, 536);
+//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//				mainComposite = new Composite(shell, SWT.NONE);
+//				mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();

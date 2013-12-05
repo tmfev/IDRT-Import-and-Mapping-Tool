@@ -12,7 +12,7 @@ public class TargetNodeAttributes {
 	String startDateSource = "";
 	String endDateSource = "";
 	String visualattribute = "";
-	Dimension dimension = Dimension.CONCEPT_DIMENSION;
+	String dimension = "concept_dimension";
 	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
 	private OntologyTreeNode parent;
@@ -63,7 +63,7 @@ public class TargetNodeAttributes {
 	/**
 	 * @return the dimension
 	 */
-	public Dimension getDimension() {
+	public String getDimension() {
 		return dimension;
 	}
 
@@ -147,7 +147,7 @@ public class TargetNodeAttributes {
 	/**
 	 * @param dimension the dimension to set
 	 */
-	public void setDimension(Dimension dimension) {
+	public void setDimension(String dimension) {
 		this.dimension = dimension;
 	}
 

@@ -152,12 +152,6 @@ public class TOSConnector {
 				setContextVariable("SQLTable", currentServer.getTable());
 				setContextVariable("OracleSchema", currentServer.getSchema());
 
-
-				//
-
-				//setContextVariable("OracleHost", currentServer.getIp());
-				//setContextVariable("OraclePort", currentServer.getPort());
-				//setContextVariable("OracleSid", currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_Username",
 						currentServer.getUser());
 				setContextVariable("DB_StagingI2B2_Instance",
