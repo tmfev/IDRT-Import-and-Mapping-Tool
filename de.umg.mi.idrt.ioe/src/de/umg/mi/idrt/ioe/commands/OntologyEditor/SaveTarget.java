@@ -61,7 +61,7 @@ public class SaveTarget extends AbstractHandler {
 		try {
 			OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 
-			String[] fields = new String[9];
+			String[] fields = new String[21];
 
 			fields[0] = Resource.I2B2.NODE.TARGET.TARGET_ID;
 			fields[1] = Resource.I2B2.NODE.TARGET.TREE_LEVEL;
@@ -72,7 +72,22 @@ public class SaveTarget extends AbstractHandler {
 			fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH;
 			fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH;
 			fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES;
-
+			
+			//new table columns
+			fields[9]  = Resource.I2B2.NODE.TARGET.BASECODE;
+			fields[10] = Resource.I2B2.NODE.TARGET.METADATAXML;
+			fields[11] = Resource.I2B2.NODE.TARGET.COLUMNDATATYPE;
+			fields[12] = Resource.I2B2.NODE.TARGET.OPERATOR;
+			fields[13] = Resource.I2B2.NODE.TARGET.COMMENT;
+			fields[14] = Resource.I2B2.NODE.TARGET.TOOLTIP;
+			fields[15] = Resource.I2B2.NODE.TARGET.UPDATE_DATE;
+			fields[16] = Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE;
+			fields[17] = Resource.I2B2.NODE.TARGET.IMPORT_DATE;
+			fields[18] = Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD;
+			fields[19] = Resource.I2B2.NODE.TARGET.VALUETYPE_CD;
+			fields[20] = Resource.I2B2.NODE.TARGET.M_APPLIED_PATH;
+			
+			
 			// TODO save target tmp file
 
 			_writer = new CSVWriter(new OutputStreamWriter(
@@ -124,7 +139,7 @@ public class SaveTarget extends AbstractHandler {
 	private void writeNode(OntologyTreeNode node) {
 
 		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
-			String[] fields = new String[9];
+			String[] fields = new String[21];
 
 			fields[0] = targetID;
 			fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
@@ -135,6 +150,19 @@ public class SaveTarget extends AbstractHandler {
 			fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
 			fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
 			fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
+			
+			fields[9]  = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.BASECODE);
+			fields[10] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.METADATAXML);
+			fields[11] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE);
+			fields[12] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.OPERATOR);
+			fields[13] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COMMENT);
+			fields[14] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.TOOLTIP);
+			fields[15] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE);
+			fields[16] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE);
+			fields[17] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE);
+			fields[18] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
+			fields[19] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
+			fields[20] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
 			_writer.writeNext(fields);
 		}
 

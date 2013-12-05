@@ -279,6 +279,19 @@ public class EditorTargetInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES);
+		
+		addColumItem(Resource.I2B2.NODE.TARGET.BASECODE);
+		addColumItem(Resource.I2B2.NODE.TARGET.METADATAXML);
+		addColumItem(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE);
+		addColumItem(Resource.I2B2.NODE.TARGET.OPERATOR);
+		addColumItem(Resource.I2B2.NODE.TARGET.COMMENT);
+		addColumItem(Resource.I2B2.NODE.TARGET.TOOLTIP);
+		addColumItem(Resource.I2B2.NODE.TARGET.UPDATE_DATE);
+		addColumItem(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE);
+		addColumItem(Resource.I2B2.NODE.TARGET.IMPORT_DATE);
+		addColumItem(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
+		addColumItem(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
+		addColumItem(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
 
 		// TableViewerColumn col =
 		// createTableViewerColumn(Resource.I2B2.NODE.TARGET.SOURCE_PATH,
@@ -327,6 +340,19 @@ public class EditorTargetInfoView extends ViewPart {
 						String.valueOf(attributes.getEndDateSource()));
 				addValueItem(items, row++,
 						String.valueOf(attributes.getVisualattribute()));
+				
+				addValueItem(items, row++, attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.BASECODE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.METADATAXML));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.OPERATOR));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COMMENT));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.TOOLTIP));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
 
 				_editorComposite.layout();
 
@@ -358,7 +384,25 @@ public class EditorTargetInfoView extends ViewPart {
 						String.valueOf(node.getTargetSubNodeAttributes().getEndDateSource()));
 				addValueItem(items, row++,
 						String.valueOf(attributes.getVisualattribute()));
-
+				
+				addValueItem(items, row++, attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.BASECODE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.METADATAXML));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.OPERATOR));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COMMENT));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.TOOLTIP));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
+				
+				
+				
+				
+				
+				
 				_editorComposite.layout();
 
 				_parent.layout();

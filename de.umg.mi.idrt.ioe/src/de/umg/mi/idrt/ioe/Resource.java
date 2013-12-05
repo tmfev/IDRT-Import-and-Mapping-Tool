@@ -277,6 +277,20 @@ public class Resource {
 				public final static String STARTDATE_STAGING_PATH = "STARTDATE_STAGING_PATH";
 				public final static String ENDDATE_STAGING_PATH = "ENDDATE_STAGING_PATH";
 				public final static String VISUALATTRIBUTES = "VISUALATTRIBUTES";
+				
+				// new table columns
+				public final static String BASECODE = "BASECODE";
+				public final static String METADATAXML = "METADATAXML";
+				public final static String COLUMNDATATYPE = "COLUMNDATATYPE";
+				public final static String OPERATOR = "OPERATOR";
+				public final static String COMMENT  = "COMMENT ";
+				public final static String TOOLTIP = "TOOLTIP";
+				public final static String UPDATE_DATE = "UPDATE_DATE";
+				public final static String DOWNLOAD_DATE = "DOWNLOAD_DATE";
+				public final static String IMPORT_DATE = "IMPORT_DATE";
+				public final static String SOURCESYSTEM_CD = "SOURCESYSTEM_CD";
+				public final static String VALUETYPE_CD = "VALUETYPE_CD";
+				public final static String M_APPLIED_PATH = "M_APPLIED_PATH";
 
 			}
 

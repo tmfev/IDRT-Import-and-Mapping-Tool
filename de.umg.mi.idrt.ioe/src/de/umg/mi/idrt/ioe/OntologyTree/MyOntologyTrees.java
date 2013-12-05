@@ -85,8 +85,6 @@ public class MyOntologyTrees{
 		//		super(new GridLayout(1, 0));
 
 		initiate();
-
-
 	}
 
 	/* OT Commands */
@@ -110,7 +108,7 @@ public class MyOntologyTrees{
 			while (nodeIterator.hasNext()) {
 				final OntologyTreeNode sourceNode1 = nodeIterator.next();
 				if (sourceNode1.getTreePathLevel() == minLevel){
-					deepCopy(sourceNode1, targetNode);
+					deepCopy(sourceNode1, targetNode, targetNode);
 				}
 			}
 
@@ -341,7 +339,7 @@ public class MyOntologyTrees{
 	 * ****************************************************
 	 */
 
-	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target) {
+	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, OntologyTreeNode selectedTargetNode) {
 		//TODO
 
 		final OntologyTreeNode node = new OntologyTreeNode(source);
@@ -349,15 +347,20 @@ public class MyOntologyTrees{
 		
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
+			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
+			node.setTreePath(target.getTreePath() + node.getID() + "\\");
+			node.setTreePathLevel(target.getTreePathLevel() + 1);
+			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
 		}
 		else {
 			node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
+			node.setTreePath(target.getTreePath() + node.getID() + "\\");
+			node.setTreePathLevel(target.getTreePathLevel() + 1);
 		}
 		
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
-		node.setTreePath(target.getTreePath() + node.getID() + "\\");
-		node.setTreePathLevel(target.getTreePathLevel() + 1);
+	
 		node.getTargetNodeAttributes().setName(node.getName());
 		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
@@ -365,7 +368,7 @@ public class MyOntologyTrees{
 			target.add(node);
 			this.getOntologyTreeTarget().getNodeLists().add(node);
 			for (OntologyTreeNode child : source.getChildren()) {
-				deepCopy(child, node);
+				deepCopy(child, node, target);
 			}
 		}
 		else {
@@ -419,7 +422,7 @@ public class MyOntologyTrees{
 							target.add(node);
 							getOntologyTreeTarget().getNodeLists().add(node);
 							for (OntologyTreeNode child : source.getChildren()) {
-								deepCopy(child, node);
+								deepCopy(child, node,target);
 							}
 						}
 						else {

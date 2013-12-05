@@ -1,23 +1,41 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TargetNodeAttributes {
 
-	String stagingPath = "";
-	String name = "";
-	String nodeType = "";
-	String startDateSource = "";
-	String endDateSource = "";
-	String visualattribute = "";
-	String dimension = "concept_dimension";
+	private String stagingPath = "";
+	private String name = "";
+	private String nodeType = "";
+	private String startDateSource = "";
+	private String endDateSource = "";
+	private String visualattribute = "";
+	private String dimension = "concept_dimension";
 	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
 
 	private OntologyTreeNode parent;
+	private HashMap<String, String> targetNodeMap;
+	
+	/**
+	 * @return the targetNodeMap
+	 */
+	public HashMap<String, String> getTargetNodeMap() {
+		return targetNodeMap;
+	}
+
+	/**
+	 * @param targetNodeMap the targetNodeMap to set
+	 */
+	public void setTargetNodeMap(HashMap<String, String> targetNodeMap) {
+		this.targetNodeMap = targetNodeMap;
+	}
+	
 
 	public TargetNodeAttributes(OntologyTreeNode parent) {
+		targetNodeMap = new HashMap<String, String>();
 		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
 		setParent(parent);
 	}
