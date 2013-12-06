@@ -548,7 +548,7 @@ public class OntologyEditorView extends ViewPart {
 					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
 					setCurrentStagingNode(node);
 					if (node != null) {
-						EditorSourceInfoView.setNode(node);
+						EditorStagingInfoView.setNode(node);
 					} else {
 						StatusView
 						.addMessage(
@@ -981,7 +981,7 @@ public class OntologyEditorView extends ViewPart {
 				}
 				OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
 				if (node != null ) {
-					EditorSourceInfoView.setNode(node);
+					EditorStagingInfoView.setNode(node);
 				} else {
 					StatusView
 					.addMessage(

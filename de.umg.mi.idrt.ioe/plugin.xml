@@ -64,7 +64,7 @@
       </view>
       <view
             allowMultiple="false"
-            class="de.umg.mi.idrt.ioe.view.EditorSourceInfoView"
+            class="de.umg.mi.idrt.ioe.view.EditorStagingInfoView"
             id="edu.goettingen.i2b2.importtool.view.EditorSourceInfoView"
             name="EditorSourceInfoView"
             restorable="true">

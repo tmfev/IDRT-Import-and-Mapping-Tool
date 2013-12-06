@@ -35,7 +35,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
  * 			www.mi.med.uni-goettingen.de
  *         main class managing and giving access to the source and target trees
  */
-public class EditorSourceInfoView extends ViewPart {
+public class EditorStagingInfoView extends ViewPart {
 
 	private static Resource _resource = null;
 	private static String _text = ""; 
@@ -48,7 +48,7 @@ public class EditorSourceInfoView extends ViewPart {
 	private static TableColumn infoTableDBColumn;
 	private static TableColumn infoTableValue;
 	
-	public EditorSourceInfoView() {
+	public EditorStagingInfoView() {
 		
 	}
 

@@ -52,7 +52,7 @@ import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.misc.Regex;
-import de.umg.mi.idrt.ioe.view.EditorSourceInfoView;
+import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -844,7 +844,7 @@ public class MyOntologyTrees{
 
 		if (node != null) {
 
-			EditorSourceInfoView.setNode(node);
+			EditorStagingInfoView.setNode(node);
 
 			message = "Selection in source tree changed to \'" + node.getName()
 					+ "\'.";

@@ -23,11 +23,7 @@ public class OntologyTree extends JTree {
 	private OntologyTreeNodeList nodeLists = new OntologyTreeNodeList();
 
 	OntologyTreeNode i2b2RootNode;
-	private TreeViewer treeViewer = null;
-
-	public OntologyTree() {
-
-	}
+	private TreeViewer treeViewer;
 
 	public OntologyTree(OntologyTreeModel treeModel) {
 		super();
@@ -46,7 +42,6 @@ public class OntologyTree extends JTree {
 		getSelectionModel().setSelectionMode(
 				TreeSelectionModel.SINGLE_TREE_SELECTION);
 		setEditable(false);
-
 	}
 
 	/**
@@ -68,8 +63,6 @@ public class OntologyTree extends JTree {
 			System.err.println("no parent");
 			Console.error("Could not add node \"" + item.getName()
 					+ "\" to the tree, because there is no parent node for it.");
-			
-			
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);
@@ -84,7 +77,7 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().setStartDateSourcePath(
 				item.getStartdateStagingPath());
 		node.getTargetNodeAttributes().setName(item.getName());
-		//TODO Add app_path
+		
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE, item.getBasecode());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML, item.getMetadataxml());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE, item.getColumndatatype());
@@ -97,8 +90,6 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD, item.getSourceSystemCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD, item.getValueTypeCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
-		
-		
 		
 		
 		if (nodeType != null) {
@@ -263,8 +254,7 @@ public class OntologyTree extends JTree {
 		this.treeViewer = treeViewer;
 	}
 
-	public void initilize() {
-
+	public void initialize() {
 		OntologyTreeModel OTModel = new OntologyTreeModel(this.getRootNode());
 		setModel(OTModel);
 		setEditable(true);
@@ -273,7 +263,4 @@ public class OntologyTree extends JTree {
 	public void setI2B2RootNode(OntologyTreeNode tmpi2b2RootNode) {
 		i2b2RootNode = tmpi2b2RootNode;
 	}
-
-	
-
 }
