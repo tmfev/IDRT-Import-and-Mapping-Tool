@@ -1,13 +1,5 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.tree.TreeNode;
 
 import org.eclipse.swt.SWT;
@@ -15,15 +7,12 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
-import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
@@ -38,9 +27,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 public class EditorStagingInfoView extends ViewPart {
 
 	private static Resource _resource = null;
-	private static String _text = ""; 
 	private static Composite parentPane;
-	//private OntologyTreeItemNode _itemNode;
 	static OntologyTreeNode _node = null;
 	private static Composite _editorComposite;
 	private static Composite _parent;
@@ -48,10 +35,6 @@ public class EditorStagingInfoView extends ViewPart {
 	private static TableColumn infoTableDBColumn;
 	private static TableColumn infoTableValue;
 	
-	public EditorStagingInfoView() {
-		
-	}
-
 	private static TableItem addColumItem( String text ){
 		TableItem item = new TableItem (_infoTable, SWT.NONE);
 		item.setText (new String[] { text, "" });
@@ -69,107 +52,7 @@ public class EditorStagingInfoView extends ViewPart {
 		return item;
 	}
 
-	private JButton createButton(String label, String command) {
 
-		JButton button = new JButton();
-		if (!label.isEmpty())
-			button.setText(label);
-		button.setVerticalAlignment(AbstractButton.BOTTOM);
-		button.setActionCommand(command);
-		//button.addActionListener(this.myOntologyTree);
-		// button.setLabel( label );
-
-		// button.setPreferredSize( button.getPreferredSize() );
-		// button.setMaximumSize( new Dimension(10,3) );
-		button.setVisible(true);
-
-		return button;
-	}
-	
-
-
-	private JPanel createItemPanel() {
-
-		JPanel itemPanel = new JPanel();
-		itemPanel.setBackground(Color.LIGHT_GRAY);
-		//itemPanel.setLayout(getStandardGridBagLayout());
-		itemPanel.setSize(new Dimension(1000, 500));
-		// itemPanel.setPreferredSize( new Dimension ( 900, 200 ) );
-
-		return itemPanel;
-	}
-
-	private JComboBox createJComboBox(String name, String value, int type) {
-
-		String[] pattern = null;
-		String selected = "";
-		int size = 0;
-
-		if (type == 1) // month
-			size = 12;
-		else if (type == 2) // days
-			size = 31;
-		else
-			size = 1;
-
-		if (type < 3) {
-			pattern = new String[size];
-			for (int x = 0; x < size; x++) {
-				pattern[x] = String.valueOf(x + 1);
-			}
-		} else if (type == 3) {
-			// groups
-
-			// add value to pattern
-			if (value != null) {
-				if (value != "10" && value != "50" && value != "100"
-						&& value != "1000" && value != "10" && value != "10"
-						&& value != "10") {
-					pattern = new String[] { value, "10", "50", "100", "1000" };
-				}
-
-			}
-
-			// set selected value to 10
-			if (value == null)
-				value = "10";
-		}
-
-		JComboBox jComboBox = new JComboBox(pattern);
-		jComboBox.setName(name);
-		jComboBox.setSelectedItem(value);
-		jComboBox.setPrototypeDisplayValue("XXXX");
-		jComboBox.setMaximumSize(jComboBox.getPreferredSize());
-
-		if (type == 3)
-			jComboBox.setEditable(true);
-
-		// add this object to the session array
-		//((Object) this.editorFields).put(name, jComboBox);
-
-		return jComboBox;
-	}
-	
-	private JLabel createJLabel(String text) {
-
-		return new JLabel(text);
-	}
-	
-	private JPanel createOneButtonPanel(String text, String label,
-			String actionCommand, Color bgColor) {
-
-		JPanel jPanel = new JPanel();
-		jPanel = this.createItemPanel();
-
-		JButton suggestionCreateLeafs = createButton(label, actionCommand);
-
-		jPanel.add(createJLabel(text));
-		jPanel.add(suggestionCreateLeafs);
-
-		return jPanel;
-	}
-	
-	
 	@Override
 	public void createPartControl(Composite parent) {
 
@@ -298,197 +181,6 @@ public class EditorStagingInfoView extends ViewPart {
 		
 		addValueItem(items, row++, stringPath + " (" + _node.getDepth() + ")" );
 		
-		
-		
-		
-		/*
-		TableItem item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (2, String.valueOf( attributes.getC_HLEVEL() ) );
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_FULLNAME", attributes.getC_FULLNAME()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_NAME", attributes.getC_NAME()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_SYNONYM_CD", attributes.getC_SYNONYM_CD()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_VISUALATTRIBUTES", attributes.getC_VISUALATTRIBUTES()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_TOTALNUM", String.valueOf( attributes.getC_TOTALNUM() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_BASECODE", attributes.getC_BASECODE()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_METADATAXML", String.valueOf( attributes.getC_METADATAXML() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_FACTTABLECOLUMN", attributes.getC_FACTTABLECOLUMN()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_TABLENAME", attributes.getC_TABLENAME()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_COLUMNNAME", attributes.getC_COLUMNNAME()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_COLUMNDATATYPE", attributes.getC_COLUMNDATATYPE()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_OPERATOR", attributes.getC_OPERATOR()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_DIMCODE", attributes.getC_DIMCODE()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_COMMENT", String.valueOf( attributes.getC_COMMENT() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_TOOLTIP", attributes.getC_TOOLTIP()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"M_APPLIED_PATH", attributes.getM_APPLIED_PATH()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"UPDATE_DATE", String.valueOf( attributes.getUPDATE_DATE() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"DOWNLOAD_DATE", String.valueOf( attributes.getDOWNLOAD_DATE() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"IMPORT_DATE", String.valueOf( attributes.getIMPORT_DATE() )});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"SOURCESYSTEM_CD", attributes.getSOURCESYSTEM_CD()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"VALUETYPE_CD", attributes.getVALUETYPE_CD()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"M_EXCLUSIVE_CD", attributes.getM_EXCLUSION_CD()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_PATH", attributes.getC_PATH()});
-		item = new TableItem (_infoTable, SWT.NONE);
-		item.setText (new String[] {"C_SYMBOL", attributes.getC_SYMBOL()});
-		*/
-		
-		//_infoTable.getColumn(1)
-		
-		
-		/*
-		
-		// recreate bottom-label
-		if ( _itemNode == null ){
-			
-			disposeChildren(_editorComposite);
-			
-			Group grpLabel = new Group(_editorComposite, SWT.NONE);
-			grpLabel.setText("label");
-			grpLabel.setLayout(new GridLayout(2, false));
-			
-			//_bottomLabel = new Label(grpLabel, SWT.NONE);
-			//_bottomLabel.setText("New Label");
-		}
-
-		if ( _itemNode != null ){
-			
-			path = _itemNode.getTreePath();
-			name = _itemNode.getName();
-			nodeType = _itemNode.getNodeType().toString();
-			
-			
-
-			bottomLabel = "ItemNode";
-
-			disposeChildren(_editorComposite);
-
-			_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			_editorComposite.setLayout(new FillLayout(SWT.VERTICAL));
-			
-			NodeEditorCompositeInteger bottomComposite = new NodeEditorCompositeInteger(this._editorComposite, SWT.NONE);
-			
-		} 
-		
-		if ( _node != null ) {
-			
-			//if ( _node.getNodeType().equals(NodeType.ANSWER) ){
-			//	_node = (OTNode)_node.getParent();
-			//	if ( _node.getNodeType().equals(NodeType.ANSWER) ){
-			//		_node = (OTNode)_node.getParent();
-			//		if ( _node.getNodeType().equals(NodeType.ANSWER) ){
-			//			_node = (OTNode)_node.getParent();
-			//		}
-			//	}
-			//}
-			
-			path = _node.getTreePath();
-			name = _node.getName();
-			nodeType = _node.getNodeType().toString();
-			importPath = _node.getImportPath();
-			treePath = _node.getTreePath();
-			i2b2Path = _node.getI2B2Path();
-			i2b2Level = String.valueOf(_node.getLevel());
-			if ( _node.isAdditionalData() ){
-				OTNode additionalDataParent = _node.getAdditionalDataParentNode();
-				
-				if ( _node.isAdditionDataParent() ) {
-					additionalDataParentNodePath = "*";
-				} else if ( additionalDataParent != null ){
-					additionalDataParentNodePath = additionalDataParent.getImportPath();
-				}
-			}
-			additionalDataParentNodePath = ( _node != null && _node.hastAdditionalDataParentNode() ) ? _node.getAdditionalDataParentNode().getImportPath() : "-";
-			
-			bottomLabel = "Node";
-			
-		} else {
-			path = ">";
-			name = "Name";
-			nodeType = "Type";
-			
-			bottomLabel = "nothing";
-		}
-		
-		if (_node != null){
-			i2b2Info = _node.getLevel() + "|" + _node.getI2B2Path();
-			
-			//Console.info("checkID2");
-			//_checkboxIsVisible.setSelection(_node.isVisable());
-			//_checkboxIsVisible.update();
-		}
-		
-		*/
-		
-		/*
-		_infoLabelPath.setText(path);
-		_infoLabelPath.update();
-		_infoLabelName.setText(name);
-		_infoLabelName.update();
-		//_infoLabelI2B2InfoData.setText(i2b2Info);
-		//_infoLabelI2B2InfoData.update();
-		if (nodeType != null)
-			_infoLabelNodeType.setText(nodeType + ( ( ( (nodeType.equals(NodeType.ITEM.toString() ) && _itemNode != null )  ) ?  " (" + _itemNode.getDataType() + ")" : "") ));
-		
-		_infoLabelNodeType.update();
-		_infoLabelImportPathData.setText(importPath);
-		_infoLabelImportPathData.update();
-		_infoLabelTreePathData.setText(treePath);
-		_infoLabelTreePathData.update();
-		_infoLabelI2B2PathData.setText(i2b2Path);
-		_infoLabelI2B2PathData.update();
-		_infoLabelI2B2LevelData.setText(i2b2Level);
-		_infoLabelI2B2LevelData.update();
-		_infoLabelAdditionalDataParentPathData.setText(additionalDataParentNodePath);
-		_infoLabelAdditionalDataParentPathData.update();
-		
-		_infoLabelNodeType.getParent().layout();
-		
-		// only edit if there is a active instance
-		if (!_bottomLabel.isDisposed()){
-			_bottomLabel.setText(bottomLabel);
-			_bottomLabel.update();
-			
-		}
-		
-		*/
-		
-		
-		//_editorComposite.dispose();
-		//_editorComposite = new NodeEditorCompositeInteger(this._editorComposite, SWT.NONE);
-		
-		/*
-		Label _bottomLabel2 = new Label(_editorComposite, SWT.NONE);
-		_bottomLabel2.setText("New Label2 (XX)");
-		_bottomLabel2.update();
-		*/
-		
-		//_editorComposite.update();
-		//_editorComposite.layout();
-		
-		
-		
 		_editorComposite.update();
 		_editorComposite.layout();
 		
@@ -500,113 +192,19 @@ public class EditorStagingInfoView extends ViewPart {
 		return this._resource;
 	}
 	
-	private boolean hasNode() {
-		if (_node != null)
-			return true;
-		else
-			return false;
-	}
-	
 	public static void refresh(){
 		new Thread(new Runnable() {
 		    public void run(){
 		    	executeRefresh();
 		    }
 		  }).run();
-//		if(display == null) {
-//		    // Bad, no display for this thread => we are not in (a) UI thread
-//		    //display.syncExec(new Runnable() {void run() { gc = new GC(display);}});
-//
-//			if (PlatformUI.getWorkbench().getDisplay() != null){
-//				System.out.println("display by PlatformUI");
-//				PlatformUI.getWorkbench().getDisplay().syncExec(
-//					  new Runnable() {
-//					    public void run(){
-//					    	executeRefresh();
-//					    }
-//					  });
-//			} else if (Application.getDisplay() != null){
-//				System.out.println("display by Acitvator");
-//				Application.getDisplay().syncExec(
-//						  new Runnable() {
-//						    public void run(){
-//						    	executeRefresh();
-//						    }
-//						  });
-//			} else {
-//				Console.error("no Display (final)");
-//			}
-//		} else {
-//			Console.error("display else");
-//			  new Runnable() {
-//				    public void run(){
-//				    	System.out.println("... execute");
-//				    	executeRefresh();
-//				    }
-//				  };
-//			executeRefresh();
-//		}
 	}
-	
-	/*
-	
-	private JPanel createCreateLeafsNumberPanel(OntologyTreeItemNode node) {
-
-		JPanel buttonPanel = null;
-		UserInput userInput = node.getUserInput();
-		String low = "";
-		String high = "";
-
-		if ("integer".equals(node.getDataType())) {
-			userInput = (UserInputInteger) node.getUserInput();
-			buttonPanel = createOneButtonPanel("", "erstellen (int)", "createLeafs",
-					Color.LIGHT_GRAY);
-
-			low = node.hasUserInput() ? String
-					.valueOf(((UserInputInteger) userInput).getLow()) : ((node
-					.getDataSourceLow() != null) ? node.getDataSourceLow().toString() : "");
-			high = node.hasUserInput() ? String
-					.valueOf(((UserInputInteger) userInput).getHigh()) : ((node
-					.getDataSourceHigh() != null) ? node.getDataSourceHigh().toString() : "");
-		} else if ("float".equals(node.getDataType())) {
-			userInput = (UserInputDataFloat) node.getUserInput();
-			buttonPanel = createOneButtonPanel("", "erstellen (float)", "createLeafs",
-					Color.LIGHT_GRAY);
-			low = node.hasUserInput() ? String
-					.valueOf(((UserInputDataFloat) userInput).getLow())
-					: ((node.getDataSourceLow() != null) ? node.getDataSourceLow().toString()
-							: "0");
-			high = node.hasUserInput() ? String
-					.valueOf(((UserInputDataFloat) userInput).getHigh())
-					: ((node.getDataSourceHigh() != null) ? node.getDataSourceHigh()
-							.toString() : "0");
-
-		} else {
-			userInput = node.getUserInput();
-			buttonPanel = createOneButtonPanel("", "erstellen",
-					"createLeafsInteger", Color.LIGHT_GRAY);
-		}
-
-		JPanel suggestionAddPanel = createItemPanel();
-		suggestionAddPanel.add(createJLabel("Leafs von "));
-		suggestionAddPanel.add(createJTextField("indexLow", low, 4));
-		suggestionAddPanel.add(createJLabel(" bis "));
-		suggestionAddPanel.add(createJTextField("indexHigh", high, 4));
-		suggestionAddPanel.add(createJLabel(". "));
-		createGroupingEditor(suggestionAddPanel, node);
-		suggestionAddPanel.add(buttonPanel);
-
-		return suggestionAddPanel;
-	}
-	
-	*/
 	
 	public void setComposite(Composite pane){
 		refresh();
 	}
 	
 	public void setComposite(String text){
-		this._text = text;
 		refresh();
 	}
 	
@@ -615,18 +213,14 @@ public class EditorStagingInfoView extends ViewPart {
 
 	}
 	
-	public static void setNode(OntologyTreeNode node){//, List<String> answersList, MyOntologyTreeItemLists itemLists){
-		//Debug.f("setNode",this);
-		//Console.info("setting node");
-//		System.out.println("setting node ("+node.getName()+")");
+	public static void setNode(OntologyTreeNode node){
 		_node = node;
 		refresh();
 	}
 
 
 	public void setResource(Resource resource){
-		this._resource = resource;
+		EditorStagingInfoView._resource = resource;
 	}
-	
 	
 }
