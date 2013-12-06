@@ -5,6 +5,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.eclipse.jface.viewers.TreeViewer;
 
 import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -51,6 +52,63 @@ public class OntologyTree extends JTree {
 	/**
 	 * @param item
 	 * @param ontologySource
+	 * @param nodeType
+	 */
+	public void addTargetModifierNodeByPath(OntologyItemTarget item, String ontologySource, Object nodeType) {
+		// TODO Auto-generated method stub
+		System.out.println("LOADING MODIFIER TO TARGET");
+		OntologyTreeNode node = new OntologyTreeNode(item.getName());
+		String path = item.getM_applied_path().substring(0,
+				item.getM_applied_path().length() - 1)
+				+ item.getTreePath();
+		node.setID(node.getIDFromPath(item.getTreePath()));
+		try {
+			this.getNodeLists().addOTNode(path, node).add(node);
+		} catch (Exception e) {
+			System.err.println("no parent");
+			Console.error("Could not add node \"" + item.getName()
+					+ "\" to the tree, because there is no parent node for it.");
+			
+			
+		}
+		node.setTreeAttributes();
+		node.setType(ontologySource);
+//		node.setOntologyCellAttributes(item);
+		
+		node.setTreeAttributes();
+		node.getTargetNodeAttributes().setVisualattributes(
+				item.getVisualattributes());
+		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
+		node.getTargetNodeAttributes().setEndDateSourcePath(
+				item.getEnddateStagingPath());
+		node.getTargetNodeAttributes().setStartDateSourcePath(
+				item.getStartdateStagingPath());
+		node.getTargetNodeAttributes().setName(item.getName());
+		//TODO Add app_path
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE, item.getBasecode());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML, item.getMetadataxml());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE, item.getColumndatatype());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.OPERATOR, item.getC_operator());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COMMENT, item.getC_comment());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.TOOLTIP, item.getTooltip());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.UPDATE_DATE, item.getUpdateDateAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE, item.getDownloadDateAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.IMPORT_DATE, item.getImportDateAsString());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD, item.getSourceSystemCD());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD, item.getValueTypeCD());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
+		
+		
+		
+		
+		if (nodeType != null) {
+			setI2B2RootNode(node);
+		}
+	}
+	
+	/**
+	 * @param item
+	 * @param ontologySource
 	 * @param object
 	 */
 	public void addModifierNodeByPath(OntologyItem item, String ontologySource,
@@ -75,6 +133,33 @@ public class OntologyTree extends JTree {
 		if (nodeType != null) {
 			setI2B2RootNode(node);
 		}
+	}
+	public void addNodeByPath(String i2b2Path, String name, String source,
+			OntologyItemTarget item, NodeType type) {
+
+		OntologyTreeNode node = new OntologyTreeNode(name);
+		node.setID(node.getIDFromPath(i2b2Path));
+		try {
+			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
+		} catch (Exception e) {
+			// e.printStackTrace();
+			Console.error("Could not add node \"" + name
+					+ "\" to the tree, because there is no parent node for it.");
+		}
+		node.setTreeAttributes();
+		node.setType(source);
+		node.getTargetNodeAttributes().setVisualattributes(
+				item.getVisualattributes());
+		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
+		node.getTargetNodeAttributes().setEndDateSourcePath(
+				item.getEnddateStagingPath());
+		node.getTargetNodeAttributes().setStartDateSourcePath(
+				item.getStartdateStagingPath());
+		node.getTargetNodeAttributes().setName(item.getName());
+		if (type != null) {
+			setI2B2RootNode(node);
+		}
+		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
 	}
 
 	public OntologyTreeNode addNode(OntologyTreeNode parentnode, String id,
@@ -128,43 +213,9 @@ public class OntologyTree extends JTree {
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
-		// else {
-		// if (parentNode != null) {
-		// parentNode.add(node);
-		// } else {
-		// Console.error("Could not add node \"" + name
-		// + "\" to the tree, because there is no parent node for it.");
-		// }
-		// }
 	}
 
-	public void addNodeByPath(String i2b2Path, String name, String source,
-			OntologyItemTarget item, NodeType type) {
-
-		OntologyTreeNode node = new OntologyTreeNode(name);
-		node.setID(node.getIDFromPath(i2b2Path));
-		try {
-			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
-		} catch (Exception e) {
-			// e.printStackTrace();
-			Console.error("Could not add node \"" + name
-					+ "\" to the tree, because there is no parent node for it.");
-		}
-		node.setTreeAttributes();
-		node.setType(source);
-		node.getTargetNodeAttributes().setVisualattributes(
-				item.getVisualattributes());
-		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
-		node.getTargetNodeAttributes().setEndDateSourcePath(
-				item.getEnddateStagingPath());
-		node.getTargetNodeAttributes().setStartDateSourcePath(
-				item.getStartdateStagingPath());
-		node.getTargetNodeAttributes().setName(item.getName());
-		if (type != null) {
-			setI2B2RootNode(node);
-		}
-		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
-	}
+	
 
 	public void deleteNode(OntologyTreeNode node) {
 
@@ -222,5 +273,7 @@ public class OntologyTree extends JTree {
 	public void setI2B2RootNode(OntologyTreeNode tmpi2b2RootNode) {
 		i2b2RootNode = tmpi2b2RootNode;
 	}
+
+	
 
 }

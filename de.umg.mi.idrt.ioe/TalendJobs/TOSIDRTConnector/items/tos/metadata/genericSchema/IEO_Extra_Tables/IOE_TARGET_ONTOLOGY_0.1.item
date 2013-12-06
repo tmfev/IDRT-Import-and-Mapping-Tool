@@ -12,6 +12,18 @@
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_qatPQCp6EeOfMeL2lyOGsQ" name="STARTDATE_STAGING_PATH" label="STARTDATE_STAGING_PATH" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_sHp5QCp6EeOfMeL2lyOGsQ" name="ENDDATE_STAGING_PATH" label="ENDDATE_STAGING_PATH" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_tGWWICp6EeOfMeL2lyOGsQ" name="VISUALATTRIBUTES" label="VISUALATTRIBUTES" length="3" talendType="id_String" originalLength="3"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_5h8xYF5SEeO9cMfYGBTGpw" name="BASECODE" label="BASECODE" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_6ki20F5SEeO9cMfYGBTGpw" name="METADATAXML" label="METADATAXML" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_7mQLcF5SEeO9cMfYGBTGpw" name="COLUMNDATATYPE" label="COLUMNDATATYPE" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8MP0cF5SEeO9cMfYGBTGpw" name="C_OPERATOR" label="C_OPERATOR" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8spy0F5SEeO9cMfYGBTGpw" name="C_COMMENT" label="C_COMMENT" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-Z9pMF5SEeO9cMfYGBTGpw" name="TOOLTIP" label="TOOLTIP" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-9zWEF5SEeO9cMfYGBTGpw" name="UPDATE_DATE" label="UPDATE_DATE" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__hGQYF5SEeO9cMfYGBTGpw" name="DOWNLOAD_DATE" label="DOWNLOAD_DATE" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="___IQMF5SEeO9cMfYGBTGpw" name="IMPORT_DATE" label="IMPORT_DATE" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_AcjzEF5TEeO9cMfYGBTGpw" name="SOURCESYSTEM_CD" label="SOURCESYSTEM_CD" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_A-KrUF5TEeO9cMfYGBTGpw" name="VALUETYPE_CD" label="VALUETYPE_CD" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_BeuasF5TEeO9cMfYGBTGpw" name="M_APPLIED_PATH" label="M_APPLIED_PATH" talendType="id_String"/>
     </ownedElement>
   </TalendMetadata:GenericPackage>
 </xmi:XMI>

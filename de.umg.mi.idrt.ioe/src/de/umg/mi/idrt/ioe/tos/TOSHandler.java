@@ -117,25 +117,25 @@ public class TOSHandler {
 			final Date IMPORT_DATE, final String SOURCESYSTEM_CD, final String VALUETYPE_CD,
 			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL) {
 
-				OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
-						C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
-						C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
-						C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
-						VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
+		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
+				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
+				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
+				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
+				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
 
-				if (ontologyStagingTree == null)
-					ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
+		if (ontologyStagingTree == null)
+			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 
-				if (C_HLEVEL == 0) {
-					ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
-				}
-				else {
-					if (item.getM_APPLIED_PATH().equals("@"))
-						ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-					else {
-						ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
-					}
-				}
+		if (C_HLEVEL == 0) {
+			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+		}
+		else {
+			if (item.getM_APPLIED_PATH().equals("@"))
+				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+			}
+		}
 	}
 
 	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,
@@ -152,14 +152,36 @@ public class TOSHandler {
 			String name,
 			String startdateStagingPath,
 			String enddateStagingPath,
-			String visualattributes){
-		
+			String visualattributes,
+			String basecode,
+			String metadataxml,
+			String columndatatype,
+			String c_operator,
+			String c_comment,
+			String tooltip,
+			Date updateDate, 
+			Date downloadDate,
+			Date importDate,
+			String sourceSystemCD,
+			String valueTypeCD,
+			String m_applied_path){
+		//TODO
+
+		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
-				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes);
+				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes, basecode,
+				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
+				sourceSystemCD,	valueTypeCD,m_applied_path);
 		if (treeLevel!=0) {
-			OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
+			if (item.getM_applied_path().equals("@"))
+				OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
+//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
+			}
+			
 		}
 	}
 
@@ -190,7 +212,7 @@ public class TOSHandler {
 		target.setCreated(created);
 		target.setLastModified(lastModified);
 		target.setTargetDBSchema(targetDBSchema);
-		
+
 		/*
 		OntologyTreeTargetRootNode targetRootNode = new OntologyTreeTargetRootNode(
 				"");
@@ -198,7 +220,7 @@ public class TOSHandler {
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
 
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
-		*/
+		 */
 		OntologyEditorView.getTargetProjects().addTarget(target);
 
 	}

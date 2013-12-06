@@ -22,12 +22,11 @@ import routines.TalendDataGenerator;
 import routines.Numeric;
 import routines.ExportDB;
 import routines.enc_num_routine;
-import routines.testRoutine;
 import routines.Mathematical;
 import routines.Relational;
+import routines.TOSHandler2;
 import routines.TalendDate;
 import routines.IDRTHelper;
-import routines.TOSHandler2;
 import routines.PIDGen;
 import routines.TalendString;
 import routines.StringHandling;
@@ -47,10 +46,13 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
 
+//the import part of tJava_6
+//import java.util.List;
+
 //the import part of tJava_8
 //import java.util.List;
 
-//the import part of tJava_6
+//the import part of tJava_3
 //import java.util.List;
 
 //the import part of tLibraryLoad_1
@@ -783,16 +785,6 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 		tJDBCRow_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tJava_8_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_8", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tJava_6_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -831,6 +823,44 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 		status = "failure";
 
 		tJDBCRow_4_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCRow_5_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCRow_5", System.currentTimeMillis());
+
+		tJDBCRow_5_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_8_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_8", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_3_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCRow_6_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCRow_6", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCRow_6_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tPrejob_1_error(java.lang.Exception exception,
@@ -885,17 +915,6 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 		}
 	}
 
-	public void tJava_8_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
 	public void tJava_6_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -930,6 +949,60 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 	}
 
 	public void tJDBCRow_4_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCRow_5_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "ERROR", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+		try {
+
+			errorCode = null;
+			tJava_3Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+		} catch (java.lang.Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void tJava_8_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_3_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCRow_6_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1161,13 +1234,21 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				ok_Hash.put("tJDBCRow_1", true);
 				end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
 
-				tJava_8Process(globalMap);
-
 				/**
 				 * [tJDBCRow_1 end ] stop
 				 */
 
 			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tJDBCRow_1:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tJDBCRow_5Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -1180,82 +1261,6 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 		}
 
 		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_8Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_8_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJava_8 begin ] start
-				 */
-
-				ok_Hash.put("tJava_8", false);
-				start_Hash.put("tJava_8", System.currentTimeMillis());
-				currentComponent = "tJava_8";
-
-				int tos_count_tJava_8 = 0;
-
-				System.out.println("Existed! >"
-						+ context.TableIEOTargetOntology + ">>"
-						+ context.DB_StagingI2B2_Schema);
-
-				/**
-				 * [tJava_8 begin ] stop
-				 */
-				/**
-				 * [tJava_8 main ] start
-				 */
-
-				currentComponent = "tJava_8";
-
-				tos_count_tJava_8++;
-
-				/**
-				 * [tJava_8 main ] stop
-				 */
-				/**
-				 * [tJava_8 end ] start
-				 */
-
-				currentComponent = "tJava_8";
-
-				ok_Hash.put("tJava_8", true);
-				end_Hash.put("tJava_8", System.currentTimeMillis());
-
-				/**
-				 * [tJava_8 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJava_8_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJava_6Process(final java.util.Map<String, Object> globalMap)
@@ -1675,6 +1680,375 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 		}
 
 		globalMap.put("tJDBCRow_4_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_5Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_5_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_5 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_5", false);
+				start_Hash.put("tJDBCRow_5", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_5";
+
+				int tos_count_tJDBCRow_5 = 0;
+
+				java.sql.Connection connection_tJDBCRow_5 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_1");
+				if (null == connection_tJDBCRow_5) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_5 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					connection_tJDBCRow_5 = dataSources_tJDBCRow_5.get("")
+							.getConnection();
+				}
+
+				java.sql.Statement stmt_tJDBCRow_5 = connection_tJDBCRow_5
+						.createStatement();
+				String query_tJDBCRow_5 = "";
+				boolean whetherReject_tJDBCRow_5 = false;
+
+				/**
+				 * [tJDBCRow_5 begin ] stop
+				 */
+				/**
+				 * [tJDBCRow_5 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_5";
+
+				query_tJDBCRow_5 = "select M_APPLIED_PATH from "
+						+ context.DB_StagingI2B2_Schema + "."
+						+ context.TableIEOTargetOntology;
+				whetherReject_tJDBCRow_5 = false;
+				globalMap.put("tJDBCRow_5_QUERY", query_tJDBCRow_5);
+				try {
+					stmt_tJDBCRow_5.execute(query_tJDBCRow_5);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_5 = true;
+					throw (e);
+				}
+
+				if (!whetherReject_tJDBCRow_5) {
+				}
+
+				tos_count_tJDBCRow_5++;
+
+				/**
+				 * [tJDBCRow_5 main ] stop
+				 */
+				/**
+				 * [tJDBCRow_5 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_5";
+
+				stmt_tJDBCRow_5.close();
+
+				ok_Hash.put("tJDBCRow_5", true);
+				end_Hash.put("tJDBCRow_5", System.currentTimeMillis());
+
+				tJava_8Process(globalMap);
+
+				/**
+				 * [tJDBCRow_5 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCRow_5_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_8Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_8_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_8 begin ] start
+				 */
+
+				ok_Hash.put("tJava_8", false);
+				start_Hash.put("tJava_8", System.currentTimeMillis());
+				currentComponent = "tJava_8";
+
+				int tos_count_tJava_8 = 0;
+
+				System.out.println("Existed! >"
+						+ context.TableIEOTargetOntology + ">>"
+						+ context.DB_StagingI2B2_Schema);
+
+				/**
+				 * [tJava_8 begin ] stop
+				 */
+				/**
+				 * [tJava_8 main ] start
+				 */
+
+				currentComponent = "tJava_8";
+
+				tos_count_tJava_8++;
+
+				/**
+				 * [tJava_8 main ] stop
+				 */
+				/**
+				 * [tJava_8 end ] start
+				 */
+
+				currentComponent = "tJava_8";
+
+				ok_Hash.put("tJava_8", true);
+				end_Hash.put("tJava_8", System.currentTimeMillis());
+
+				/**
+				 * [tJava_8 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_8_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_3Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_3 begin ] start
+				 */
+
+				ok_Hash.put("tJava_3", false);
+				start_Hash.put("tJava_3", System.currentTimeMillis());
+				currentComponent = "tJava_3";
+
+				int tos_count_tJava_3 = 0;
+
+				((TOSHandler) context.TOSHandler)
+						.statusSuccess("IEO tables not up to date. Creating tables ...");
+
+				/**
+				 * [tJava_3 begin ] stop
+				 */
+				/**
+				 * [tJava_3 main ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				tos_count_tJava_3++;
+
+				/**
+				 * [tJava_3 main ] stop
+				 */
+				/**
+				 * [tJava_3 end ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				ok_Hash.put("tJava_3", true);
+				end_Hash.put("tJava_3", System.currentTimeMillis());
+
+				/**
+				 * [tJava_3 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_3:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCRow_6Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_6Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_6_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_6 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_6", false);
+				start_Hash.put("tJDBCRow_6", System.currentTimeMillis());
+				currentComponent = "tJDBCRow_6";
+
+				int tos_count_tJDBCRow_6 = 0;
+
+				java.sql.Connection connection_tJDBCRow_6 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_1");
+				if (null == connection_tJDBCRow_6) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_6 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					connection_tJDBCRow_6 = dataSources_tJDBCRow_6.get("")
+							.getConnection();
+				}
+
+				java.sql.Statement stmt_tJDBCRow_6 = connection_tJDBCRow_6
+						.createStatement();
+				String query_tJDBCRow_6 = "";
+				boolean whetherReject_tJDBCRow_6 = false;
+
+				/**
+				 * [tJDBCRow_6 begin ] stop
+				 */
+				/**
+				 * [tJDBCRow_6 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_6";
+
+				query_tJDBCRow_6 = "  ALTER TABLE "
+						+ context.DB_StagingI2B2_Schema
+						+ "."
+						+ context.TableIEOTargetOntology
+						+ "  add    (      BASECODE VARCHAR2(50),  METADATAXML	CLOB,  COLUMNDATATYPE	VARCHAR2(50),  C_OPERATOR	VARCHAR2(10),  C_COMMENT 	CLOB,  TOOLTIP	VARCHAR2(900),  UPDATE_DATE	DATE,  DOWNLOAD_DATE	DATE,  IMPORT_DATE	DATE,  SOURCESYSTEM_CD	VARCHAR2(50),  VALUETYPE_CD	VARCHAR2(50),  M_APPLIED_PATH	VARCHAR2(3500 BYTE)    )  ";
+				whetherReject_tJDBCRow_6 = false;
+				globalMap.put("tJDBCRow_6_QUERY", query_tJDBCRow_6);
+				try {
+					stmt_tJDBCRow_6.execute(query_tJDBCRow_6);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_6 = true;
+					System.err.print(e.getMessage());
+				}
+
+				tos_count_tJDBCRow_6++;
+
+				/**
+				 * [tJDBCRow_6 main ] stop
+				 */
+				/**
+				 * [tJDBCRow_6 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_6";
+
+				stmt_tJDBCRow_6.close();
+
+				ok_Hash.put("tJDBCRow_6", true);
+				end_Hash.put("tJDBCRow_6", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCRow_6 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCRow_6_SUBPROCESS_STATE", 1);
 	}
 
 	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap)
@@ -2378,6 +2752,6 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 66734 characters generated by Talend Open Studio for Data Integration on the
- * 26. November 2013 13:59:28 MEZ
+ * 76477 characters generated by Talend Open Studio for Data Integration on the
+ * December 6, 2013 10:05:06 AM CET
  ************************************************************************************************/

@@ -3,10 +3,13 @@ package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Date;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+
+import routines.TalendDate;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import de.umg.mi.idrt.ioe.ActionCommand;
@@ -44,7 +47,7 @@ public class SaveTarget extends AbstractHandler {
 		Console.info("Saving Target Ontology.");
 
 		String stringPath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
-System.out.println("stringPath: " + stringPath);
+		System.out.println("stringPath: " + stringPath);
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){
@@ -72,7 +75,7 @@ System.out.println("stringPath: " + stringPath);
 			fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH;
 			fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH;
 			fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES;
-			
+
 			//new table columns
 			fields[9]  = Resource.I2B2.NODE.TARGET.BASECODE;
 			fields[10] = Resource.I2B2.NODE.TARGET.METADATAXML;
@@ -86,8 +89,8 @@ System.out.println("stringPath: " + stringPath);
 			fields[18] = Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD;
 			fields[19] = Resource.I2B2.NODE.TARGET.VALUETYPE_CD;
 			fields[20] = Resource.I2B2.NODE.TARGET.M_APPLIED_PATH;
-			
-			
+
+
 			// TODO save target tmp file
 
 			_writer = new CSVWriter(new OutputStreamWriter(
@@ -143,13 +146,34 @@ System.out.println("stringPath: " + stringPath);
 
 			fields[0] = targetID;
 			fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
-			fields[2] = subNode.getParent().getTreePath();
+
+			if (subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH).equals("@"))
+				fields[2] = subNode.getParent().getTreePath();
+			else {
+				String appliedPath = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get
+						(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
+				String treePath = subNode.getParent().getTreePath();
+				fields[2] = treePath.substring(treePath.indexOf(appliedPath)+appliedPath.length()-1);	
+			}
 			fields[3] = subNode.getStagingPath();
 			fields[4] = subNode.getParent().getTargetNodeAttributes().getDimension().toString();
 			fields[5] = subNode.getParent().getTargetNodeAttributes().getName();
 			fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
 			fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
 			fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
+
+			
+			String updateDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE);
+			if (updateDate!= null && updateDate.length()>0)
+			updateDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", updateDate));
+			
+			String downloadDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE);
+			if (downloadDate!= null && downloadDate.length()>0)
+			downloadDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", downloadDate));
+			
+			String importDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE);
+			if (importDate!= null && importDate.length()>0)
+			importDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", importDate));
 			
 			fields[9]  = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.BASECODE);
 			fields[10] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.METADATAXML);
@@ -157,9 +181,9 @@ System.out.println("stringPath: " + stringPath);
 			fields[12] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.OPERATOR);
 			fields[13] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COMMENT);
 			fields[14] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.TOOLTIP);
-			fields[15] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE);
-			fields[16] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE);
-			fields[17] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE);
+			fields[15] = updateDate;
+			fields[16] = downloadDate;
+			fields[17] = importDate;
 			fields[18] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
 			fields[19] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
 			fields[20] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);

@@ -389,7 +389,7 @@ public class TOSConnector {
 		return exit;
 
 	}
-
+	@Deprecated
 	public static int writeTargetOntology(String targetID, String tmpDataFile) {
 
 		setContextVariable("Job", "write_target_ontology");

@@ -3,6 +3,7 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 
+import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class TargetNodeAttributes {
@@ -36,6 +37,7 @@ public class TargetNodeAttributes {
 
 	public TargetNodeAttributes(OntologyTreeNode parent) {
 		targetNodeMap = new HashMap<String, String>();
+		targetNodeMap.put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, "@");
 		subNodeList = new LinkedHashSet<OntologyTreeSubNode>();
 		setParent(parent);
 	}
