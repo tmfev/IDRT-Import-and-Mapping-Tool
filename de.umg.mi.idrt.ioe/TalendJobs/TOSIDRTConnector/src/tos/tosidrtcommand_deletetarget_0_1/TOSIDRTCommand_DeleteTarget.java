@@ -323,23 +323,23 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 			}
 
-			if (TableIEOTarget != null) {
+			if (TableIOETarget != null) {
 
-				this.setProperty("TableIEOTarget", TableIEOTarget.toString());
-
-			}
-
-			if (TableIEOTargetOntology != null) {
-
-				this.setProperty("TableIEOTargetOntology",
-						TableIEOTargetOntology.toString());
+				this.setProperty("TableIOETarget", TableIOETarget.toString());
 
 			}
 
-			if (TableIEOTargetProject != null) {
+			if (TableIOETargetOntology != null) {
 
-				this.setProperty("TableIEOTargetProject",
-						TableIEOTargetProject.toString());
+				this.setProperty("TableIOETargetOntology",
+						TableIOETargetOntology.toString());
+
+			}
+
+			if (TableIOETargetProject != null) {
+
+				this.setProperty("TableIOETargetProject",
+						TableIOETargetProject.toString());
 
 			}
 
@@ -507,9 +507,9 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			return this.OracleHost;
 		}
 
-		public String OraclePassword;
+		public java.lang.String OraclePassword;
 
-		public String getOraclePassword() {
+		public java.lang.String getOraclePassword() {
 			return this.OraclePassword;
 		}
 
@@ -561,22 +561,22 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			return this.StatusMessage;
 		}
 
-		public String TableIEOTarget;
+		public String TableIOETarget;
 
-		public String getTableIEOTarget() {
-			return this.TableIEOTarget;
+		public String getTableIOETarget() {
+			return this.TableIOETarget;
 		}
 
-		public String TableIEOTargetOntology;
+		public String TableIOETargetOntology;
 
-		public String getTableIEOTargetOntology() {
-			return this.TableIEOTargetOntology;
+		public String getTableIOETargetOntology() {
+			return this.TableIOETargetOntology;
 		}
 
-		public String TableIEOTargetProject;
+		public String TableIOETargetProject;
 
-		public String getTableIEOTargetProject() {
-			return this.TableIEOTargetProject;
+		public String getTableIOETargetProject() {
+			return this.TableIOETargetProject;
 		}
 
 		public Integer TargetID;
@@ -1342,7 +1342,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				query_tJDBCRow_1 = "DELETE FROM "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetOntology
+						+ context.TableIOETargetOntology
 						+ "  WHERE target_id = '" + context.TargetID + "'";
 				whetherReject_tJDBCRow_1 = false;
 				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
@@ -1479,7 +1479,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				query_tJDBCRow_2 = "DELETE FROM "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTarget + "  WHERE target_id = '"
+						+ context.TableIOETarget + "  WHERE target_id = '"
 						+ context.TargetID + "'";
 				whetherReject_tJDBCRow_2 = false;
 				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
@@ -1703,7 +1703,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			context.Job = (String) context.getProperty("Job");
 			context.OracleDB = (String) context.getProperty("OracleDB");
 			context.OracleHost = (String) context.getProperty("OracleHost");
-			context.OraclePassword = (String) context
+			context.OraclePassword = (java.lang.String) context
 					.getProperty("OraclePassword");
 			context.OraclePort = (String) context.getProperty("OraclePort");
 			context.OracleSchema = (String) context.getProperty("OracleSchema");
@@ -1715,12 +1715,12 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			context.SQLTable2 = (String) context.getProperty("SQLTable2");
 			context.StatusMessage = (String) context
 					.getProperty("StatusMessage");
-			context.TableIEOTarget = (String) context
-					.getProperty("TableIEOTarget");
-			context.TableIEOTargetOntology = (String) context
-					.getProperty("TableIEOTargetOntology");
-			context.TableIEOTargetProject = (String) context
-					.getProperty("TableIEOTargetProject");
+			context.TableIOETarget = (String) context
+					.getProperty("TableIOETarget");
+			context.TableIOETargetOntology = (String) context
+					.getProperty("TableIOETargetOntology");
+			context.TableIOETargetProject = (String) context
+					.getProperty("TableIOETargetProject");
 			try {
 				context.TargetID = routines.system.ParserUtils
 						.parseTo_Integer(context.getProperty("TargetID"));
@@ -1831,7 +1831,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 						.get("OracleHost");
 			}
 			if (parentContextMap.containsKey("OraclePassword")) {
-				context.OraclePassword = (String) parentContextMap
+				context.OraclePassword = (java.lang.String) parentContextMap
 						.get("OraclePassword");
 			}
 			if (parentContextMap.containsKey("OraclePort")) {
@@ -1864,17 +1864,17 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 				context.StatusMessage = (String) parentContextMap
 						.get("StatusMessage");
 			}
-			if (parentContextMap.containsKey("TableIEOTarget")) {
-				context.TableIEOTarget = (String) parentContextMap
-						.get("TableIEOTarget");
+			if (parentContextMap.containsKey("TableIOETarget")) {
+				context.TableIOETarget = (String) parentContextMap
+						.get("TableIOETarget");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetOntology")) {
-				context.TableIEOTargetOntology = (String) parentContextMap
-						.get("TableIEOTargetOntology");
+			if (parentContextMap.containsKey("TableIOETargetOntology")) {
+				context.TableIOETargetOntology = (String) parentContextMap
+						.get("TableIOETargetOntology");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetProject")) {
-				context.TableIEOTargetProject = (String) parentContextMap
-						.get("TableIEOTargetProject");
+			if (parentContextMap.containsKey("TableIOETargetProject")) {
+				context.TableIOETargetProject = (String) parentContextMap
+						.get("TableIOETargetProject");
 			}
 			if (parentContextMap.containsKey("TargetID")) {
 				context.TargetID = (Integer) parentContextMap.get("TargetID");
@@ -2046,6 +2046,6 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 57128 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 13:27:47 MEZ
+ * 57168 characters generated by Talend Open Studio for Data Integration on the
+ * 9. Dezember 2013 14:12:29 MEZ
  ************************************************************************************************/

@@ -364,23 +364,23 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 
 			}
 
-			if (TableIEOTarget != null) {
+			if (TableIOETarget != null) {
 
-				this.setProperty("TableIEOTarget", TableIEOTarget.toString());
-
-			}
-
-			if (TableIEOTargetOntology != null) {
-
-				this.setProperty("TableIEOTargetOntology",
-						TableIEOTargetOntology.toString());
+				this.setProperty("TableIOETarget", TableIOETarget.toString());
 
 			}
 
-			if (TableIEOTargetProject != null) {
+			if (TableIOETargetOntology != null) {
 
-				this.setProperty("TableIEOTargetProject",
-						TableIEOTargetProject.toString());
+				this.setProperty("TableIOETargetOntology",
+						TableIOETargetOntology.toString());
+
+			}
+
+			if (TableIOETargetProject != null) {
+
+				this.setProperty("TableIOETargetProject",
+						TableIOETargetProject.toString());
 
 			}
 
@@ -566,9 +566,9 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 			return this.OracleHost;
 		}
 
-		public String OraclePassword;
+		public java.lang.String OraclePassword;
 
-		public String getOraclePassword() {
+		public java.lang.String getOraclePassword() {
 			return this.OraclePassword;
 		}
 
@@ -620,22 +620,22 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 			return this.StatusMessage;
 		}
 
-		public String TableIEOTarget;
+		public String TableIOETarget;
 
-		public String getTableIEOTarget() {
-			return this.TableIEOTarget;
+		public String getTableIOETarget() {
+			return this.TableIOETarget;
 		}
 
-		public String TableIEOTargetOntology;
+		public String TableIOETargetOntology;
 
-		public String getTableIEOTargetOntology() {
-			return this.TableIEOTargetOntology;
+		public String getTableIOETargetOntology() {
+			return this.TableIOETargetOntology;
 		}
 
-		public String TableIEOTargetProject;
+		public String TableIOETargetProject;
 
-		public String getTableIEOTargetProject() {
-			return this.TableIEOTargetProject;
+		public String getTableIOETargetProject() {
+			return this.TableIOETargetProject;
 		}
 
 		public Object TOSHandler;
@@ -1205,7 +1205,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 
 				query_tJDBCRow_1 = "select * from "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetOntology;
+						+ context.TableIOETargetOntology;
 				whetherReject_tJDBCRow_1 = false;
 				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
 				try {
@@ -1404,7 +1404,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				query_tJDBCRow_2 = "  CREATE TABLE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTargetOntology
+						+ context.TableIOETargetOntology
 						+ "    (      TARGET_ID            INTEGER,    TREE_LEVEL            INTEGER,      TREE_PATH             VARCHAR(3500),      STAGING_PATH           VARCHAR(3500),      STAGING_DIMENSION     VARCHAR(1000),      \"NAME\"  VARCHAR(1000),      STARTDATE_STAGING_PATH VARCHAR(3500),      ENDDATE_STAGING_PATH  VARCHAR(3500),      VISUALATTRIBUTES     VARCHAR(300)    )  ";
 				whetherReject_tJDBCRow_2 = false;
 				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
@@ -1520,7 +1520,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				query_tJDBCRow_3 = "  CREATE TABLE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTarget
+						+ context.TableIOETarget
 						+ "    (      TARGET_ID            INTEGER,      TARGETPROJECT_ID            INTEGER,      VERSION             INTEGER,      CREATED          DATE,      LAST_MODIFIED           DATE,      \"USER_ID\"     VARCHAR(3500),      TARGET_DB_SCHEMA  VARCHAR(3500)    )  ";
 				whetherReject_tJDBCRow_3 = false;
 				globalMap.put("tJDBCRow_3_QUERY", query_tJDBCRow_3);
@@ -1636,7 +1636,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				query_tJDBCRow_4 = "  CREATE TABLE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTargetProject
+						+ context.TableIOETargetProject
 						+ "    (       TARGETPROJECT_ID            INTEGER,      \"NAME\"             VARCHAR(3500),     DESCRIPTION             VARCHAR(3500)    )  ";
 				whetherReject_tJDBCRow_4 = false;
 				globalMap.put("tJDBCRow_4_QUERY", query_tJDBCRow_4);
@@ -1738,7 +1738,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 
 				query_tJDBCRow_5 = "select M_APPLIED_PATH from "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetOntology;
+						+ context.TableIOETargetOntology;
 				whetherReject_tJDBCRow_5 = false;
 				globalMap.put("tJDBCRow_5_QUERY", query_tJDBCRow_5);
 				try {
@@ -1820,7 +1820,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				int tos_count_tJava_8 = 0;
 
 				System.out.println("Existed! >"
-						+ context.TableIEOTargetOntology + ">>"
+						+ context.TableIOETargetOntology + ">>"
 						+ context.DB_StagingI2B2_Schema);
 
 				/**
@@ -2005,7 +2005,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				query_tJDBCRow_6 = "  ALTER TABLE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTargetOntology
+						+ context.TableIOETargetOntology
 						+ "  add    (      BASECODE VARCHAR2(50),  METADATAXML	CLOB,  COLUMNDATATYPE	VARCHAR2(50),  C_OPERATOR	VARCHAR2(10),  C_COMMENT 	CLOB,  TOOLTIP	VARCHAR2(900),  UPDATE_DATE	DATE,  DOWNLOAD_DATE	DATE,  IMPORT_DATE	DATE,  SOURCESYSTEM_CD	VARCHAR2(50),  VALUETYPE_CD	VARCHAR2(50),  M_APPLIED_PATH	VARCHAR2(3500 BYTE)    )  ";
 				whetherReject_tJDBCRow_6 = false;
 				globalMap.put("tJDBCRow_6_QUERY", query_tJDBCRow_6);
@@ -2405,7 +2405,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 			context.Job = (String) context.getProperty("Job");
 			context.OracleDB = (String) context.getProperty("OracleDB");
 			context.OracleHost = (String) context.getProperty("OracleHost");
-			context.OraclePassword = (String) context
+			context.OraclePassword = (java.lang.String) context
 					.getProperty("OraclePassword");
 			context.OraclePort = (String) context.getProperty("OraclePort");
 			context.OracleSchema = (String) context.getProperty("OracleSchema");
@@ -2417,12 +2417,12 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 			context.SQLTable2 = (String) context.getProperty("SQLTable2");
 			context.StatusMessage = (String) context
 					.getProperty("StatusMessage");
-			context.TableIEOTarget = (String) context
-					.getProperty("TableIEOTarget");
-			context.TableIEOTargetOntology = (String) context
-					.getProperty("TableIEOTargetOntology");
-			context.TableIEOTargetProject = (String) context
-					.getProperty("TableIEOTargetProject");
+			context.TableIOETarget = (String) context
+					.getProperty("TableIOETarget");
+			context.TableIOETargetOntology = (String) context
+					.getProperty("TableIOETargetOntology");
+			context.TableIOETargetProject = (String) context
+					.getProperty("TableIOETargetProject");
 			context.TOSHandler = (Object) context.getProperty("TOSHandler");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
@@ -2541,7 +2541,7 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 						.get("OracleHost");
 			}
 			if (parentContextMap.containsKey("OraclePassword")) {
-				context.OraclePassword = (String) parentContextMap
+				context.OraclePassword = (java.lang.String) parentContextMap
 						.get("OraclePassword");
 			}
 			if (parentContextMap.containsKey("OraclePort")) {
@@ -2574,17 +2574,17 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 				context.StatusMessage = (String) parentContextMap
 						.get("StatusMessage");
 			}
-			if (parentContextMap.containsKey("TableIEOTarget")) {
-				context.TableIEOTarget = (String) parentContextMap
-						.get("TableIEOTarget");
+			if (parentContextMap.containsKey("TableIOETarget")) {
+				context.TableIOETarget = (String) parentContextMap
+						.get("TableIOETarget");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetOntology")) {
-				context.TableIEOTargetOntology = (String) parentContextMap
-						.get("TableIEOTargetOntology");
+			if (parentContextMap.containsKey("TableIOETargetOntology")) {
+				context.TableIOETargetOntology = (String) parentContextMap
+						.get("TableIOETargetOntology");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetProject")) {
-				context.TableIEOTargetProject = (String) parentContextMap
-						.get("TableIEOTargetProject");
+			if (parentContextMap.containsKey("TableIOETargetProject")) {
+				context.TableIOETargetProject = (String) parentContextMap
+						.get("TableIOETargetProject");
 			}
 			if (parentContextMap.containsKey("TOSHandler")) {
 				context.TOSHandler = (Object) parentContextMap
@@ -2753,6 +2753,6 @@ public class TOSIDRTCommand_CreateIEOTables implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 76507 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 13:27:48 MEZ
+ * 76547 characters generated by Talend Open Studio for Data Integration on the
+ * 9. Dezember 2013 14:12:29 MEZ
  ************************************************************************************************/

@@ -379,23 +379,23 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 			}
 
-			if (TableIEOTarget != null) {
+			if (TableIOETarget != null) {
 
-				this.setProperty("TableIEOTarget", TableIEOTarget.toString());
-
-			}
-
-			if (TableIEOTargetOntology != null) {
-
-				this.setProperty("TableIEOTargetOntology",
-						TableIEOTargetOntology.toString());
+				this.setProperty("TableIOETarget", TableIOETarget.toString());
 
 			}
 
-			if (TableIEOTargetProject != null) {
+			if (TableIOETargetOntology != null) {
 
-				this.setProperty("TableIEOTargetProject",
-						TableIEOTargetProject.toString());
+				this.setProperty("TableIOETargetOntology",
+						TableIOETargetOntology.toString());
+
+			}
+
+			if (TableIOETargetProject != null) {
+
+				this.setProperty("TableIOETargetProject",
+						TableIOETargetProject.toString());
 
 			}
 
@@ -581,9 +581,9 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return this.OracleHost;
 		}
 
-		public String OraclePassword;
+		public java.lang.String OraclePassword;
 
-		public String getOraclePassword() {
+		public java.lang.String getOraclePassword() {
 			return this.OraclePassword;
 		}
 
@@ -635,22 +635,22 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return this.StatusMessage;
 		}
 
-		public String TableIEOTarget;
+		public String TableIOETarget;
 
-		public String getTableIEOTarget() {
-			return this.TableIEOTarget;
+		public String getTableIOETarget() {
+			return this.TableIOETarget;
 		}
 
-		public String TableIEOTargetOntology;
+		public String TableIOETargetOntology;
 
-		public String getTableIEOTargetOntology() {
-			return this.TableIEOTargetOntology;
+		public String getTableIOETargetOntology() {
+			return this.TableIOETargetOntology;
 		}
 
-		public String TableIEOTargetProject;
+		public String TableIOETargetProject;
 
-		public String getTableIEOTargetProject() {
-			return this.TableIEOTargetProject;
+		public String getTableIOETargetProject() {
+			return this.TableIOETargetProject;
 		}
 
 		public Object TOSHandler;
@@ -2075,8 +2075,8 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 											+ context.DB_StagingI2B2_Schema
 											+ "!");
 							System.out
-									.println("context.TableIEOTargetProject: "
-											+ context.TableIEOTargetProject
+									.println("context.TableIOETargetProject: "
+											+ context.TableIOETargetProject
 											+ "!");
 
 							System.out.println("DataFile: " + context.DataFile
@@ -2467,7 +2467,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				String dbquery_tJDBCInput_1 = "select  TARGETPROJECT_ID  from "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetProject
+						+ context.TableIOETargetProject
 						+ " ORDER BY TARGETPROJECT_ID DESC";
 
 				globalMap.put("tJDBCInput_1_QUERY", dbquery_tJDBCInput_1);
@@ -2872,7 +2872,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				String dbquery_tJDBCInput_3 = "select  TARGET_ID  from "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTarget + " ORDER BY TARGET_ID DESC";
+						+ context.TableIOETarget + " ORDER BY TARGET_ID DESC";
 
 				globalMap.put("tJDBCInput_3_QUERY", dbquery_tJDBCInput_3);
 
@@ -3518,7 +3518,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				String dbquery_tJDBCInput_2 = "select VERSION  from "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTarget + " WHERE TARGETPROJECT_ID="
+						+ context.TableIOETarget + " WHERE TARGETPROJECT_ID="
 						+ context.TargetProjectID + " ORDER BY VERSION DESC";
 
 				globalMap.put("tJDBCInput_2_QUERY", dbquery_tJDBCInput_2);
@@ -3841,7 +3841,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				context.Version = context.Version < 1 ? 1 : context.Version;
 
 				System.out.println("1:" + context.OracleSchema);
-				System.out.println("2:" + context.TableIEOTarget);
+				System.out.println("2:" + context.TableIOETarget);
 				System.out.println("3:" + context.TargetProjectID);
 				System.out.println("4:" + context.Version);
 
@@ -5209,18 +5209,18 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				java.sql.PreparedStatement pstmt_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement("SELECT COUNT(1) FROM "
 								+ context.DB_StagingI2B2_Schema + "."
-								+ context.TableIEOTargetProject
+								+ context.TableIOETargetProject
 								+ " WHERE TARGETPROJECT_ID = ?");
 				String insert_tJDBCOutput_1 = "INSERT INTO "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetProject
+						+ context.TableIOETargetProject
 						+ " (TARGETPROJECT_ID,NAME,DESCRIPTION) VALUES (?,?,?)";
 				java.sql.PreparedStatement pstmtInsert_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement(insert_tJDBCOutput_1);
 				String update_tJDBCOutput_1 = "UPDATE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTargetProject
+						+ context.TableIOETargetProject
 						+ " SET NAME = ?,DESCRIPTION = ? WHERE TARGETPROJECT_ID = ?";
 				java.sql.PreparedStatement pstmtUpdate_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement(update_tJDBCOutput_1);
@@ -5289,19 +5289,19 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				java.sql.PreparedStatement pstmt_tJDBCOutput_2 = connection_tJDBCOutput_2
 						.prepareStatement("SELECT COUNT(1) FROM "
 								+ context.DB_StagingI2B2_Schema + "."
-								+ context.TableIEOTarget
+								+ context.TableIOETarget
 								+ " WHERE TARGET_ID = ?");
 				String insert_tJDBCOutput_2 = "INSERT INTO "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTarget
+						+ context.TableIOETarget
 						+ " (TARGET_ID,TARGETPROJECT_ID,VERSION,CREATED,LAST_MODIFIED,USER_ID,TARGET_DB_SCHEMA) VALUES (?,?,?,?,?,?,?)";
 				java.sql.PreparedStatement pstmtInsert_tJDBCOutput_2 = connection_tJDBCOutput_2
 						.prepareStatement(insert_tJDBCOutput_2);
 				String update_tJDBCOutput_2 = "UPDATE "
 						+ context.DB_StagingI2B2_Schema
 						+ "."
-						+ context.TableIEOTarget
+						+ context.TableIOETarget
 						+ " SET TARGETPROJECT_ID = ?,VERSION = ?,CREATED = ?,LAST_MODIFIED = ?,USER_ID = ?,TARGET_DB_SCHEMA = ? WHERE TARGET_ID = ?";
 				java.sql.PreparedStatement pstmtUpdate_tJDBCOutput_2 = connection_tJDBCOutput_2
 						.prepareStatement(update_tJDBCOutput_2);
@@ -6555,7 +6555,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			context.Job = (String) context.getProperty("Job");
 			context.OracleDB = (String) context.getProperty("OracleDB");
 			context.OracleHost = (String) context.getProperty("OracleHost");
-			context.OraclePassword = (String) context
+			context.OraclePassword = (java.lang.String) context
 					.getProperty("OraclePassword");
 			context.OraclePort = (String) context.getProperty("OraclePort");
 			context.OracleSchema = (String) context.getProperty("OracleSchema");
@@ -6567,12 +6567,12 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			context.SQLTable2 = (String) context.getProperty("SQLTable2");
 			context.StatusMessage = (String) context
 					.getProperty("StatusMessage");
-			context.TableIEOTarget = (String) context
-					.getProperty("TableIEOTarget");
-			context.TableIEOTargetOntology = (String) context
-					.getProperty("TableIEOTargetOntology");
-			context.TableIEOTargetProject = (String) context
-					.getProperty("TableIEOTargetProject");
+			context.TableIOETarget = (String) context
+					.getProperty("TableIOETarget");
+			context.TableIOETargetOntology = (String) context
+					.getProperty("TableIOETargetOntology");
+			context.TableIOETargetProject = (String) context
+					.getProperty("TableIOETargetProject");
 			context.TOSHandler = (Object) context.getProperty("TOSHandler");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
@@ -6691,7 +6691,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 						.get("OracleHost");
 			}
 			if (parentContextMap.containsKey("OraclePassword")) {
-				context.OraclePassword = (String) parentContextMap
+				context.OraclePassword = (java.lang.String) parentContextMap
 						.get("OraclePassword");
 			}
 			if (parentContextMap.containsKey("OraclePort")) {
@@ -6724,17 +6724,17 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				context.StatusMessage = (String) parentContextMap
 						.get("StatusMessage");
 			}
-			if (parentContextMap.containsKey("TableIEOTarget")) {
-				context.TableIEOTarget = (String) parentContextMap
-						.get("TableIEOTarget");
+			if (parentContextMap.containsKey("TableIOETarget")) {
+				context.TableIOETarget = (String) parentContextMap
+						.get("TableIOETarget");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetOntology")) {
-				context.TableIEOTargetOntology = (String) parentContextMap
-						.get("TableIEOTargetOntology");
+			if (parentContextMap.containsKey("TableIOETargetOntology")) {
+				context.TableIOETargetOntology = (String) parentContextMap
+						.get("TableIOETargetOntology");
 			}
-			if (parentContextMap.containsKey("TableIEOTargetProject")) {
-				context.TableIEOTargetProject = (String) parentContextMap
-						.get("TableIEOTargetProject");
+			if (parentContextMap.containsKey("TableIOETargetProject")) {
+				context.TableIOETargetProject = (String) parentContextMap
+						.get("TableIOETargetProject");
 			}
 			if (parentContextMap.containsKey("TOSHandler")) {
 				context.TOSHandler = (Object) parentContextMap
@@ -6916,6 +6916,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 190557 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 13:27:47 MEZ
+ * 190597 characters generated by Talend Open Studio for Data Integration on the
+ * 9. Dezember 2013 14:12:29 MEZ
  ************************************************************************************************/
