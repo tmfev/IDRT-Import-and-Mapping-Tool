@@ -64,7 +64,12 @@ Bundle-ClassPath: .,
  TalendJobs/lib/tns.jar,
  TalendJobs/lib/trove.jar,
  TalendJobs/lib/userRoutines.jar,
- TalendJobs/lib/xdb.jar
+ TalendJobs/lib/xdb.jar,
+ TalendJobs/,
+ TalendJobs/TOSIDRTConnector/,
+ TalendJobs/TOSIDRTConnector/items/,
+ TalendJobs/TOSIDRTConnector/src/,
+ TalendJobs/TOSIDRTConnector/tos/
 Import-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
  de.goettingen.i2b2.importtool.idrt.StatusListener,
