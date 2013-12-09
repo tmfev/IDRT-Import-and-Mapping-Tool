@@ -13,7 +13,7 @@ import java.util.Properties;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
-import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
+//import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -360,8 +360,8 @@ public class TOSConnector {
 				//				try {
 //				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			
-				IDRTCommand_TransformationToTarget trans = new IDRTCommand_TransformationToTarget();
-				exit = trans.runJobInTOS((getARGV()));
+				//IDRTCommand_TransformationToTarget trans = new IDRTCommand_TransformationToTarget();
+				//exit = trans.runJobInTOS((getARGV()));
 
 				if (exit==0) {
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
