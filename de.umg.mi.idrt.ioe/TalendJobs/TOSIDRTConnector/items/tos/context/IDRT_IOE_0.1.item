@@ -1,24 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
-  <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" type="id_String" value="&quot;C:/I2B2ImportProject/GIT/de.umg.mi.idrt.ioe.git/de.umg.mi.idrt.ioe/temp/temp_TOS_Connector_file.csv&quot;"/>
-  <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;WriteTargetOntology&quot;"/>
-  <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;I2B2T&quot;"/>
-  <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;134.76.124.17&quot;"/>
-  <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_Password" value=""/>
-  <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
-  <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT&quot;"/>
-  <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;SYSTEM&quot;"/>
-  <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
-  <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
-  <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
-  <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" type="id_Object" value=""/>
-  <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" type="id_String" value="null"/>
-  <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" type="id_Boolean" value="true"/>
-  <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" type="id_String" value="null"/>
-  <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
-  <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" type="id_String" value="&quot;ioe_target&quot;"/>
-  <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" type="id_String" value="&quot;ioe_target_project&quot;"/>
-  <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" type="id_String" value="null"/>
-  <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" type="id_String" value="null"/>
-  <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" type="id_Integer" value=""/>
-</talendfile:ContextType>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType confirmationNeeded="false" name="Default">
+    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" type="id_String" value="&quot;C:/I2B2ImportProject/GIT/de.umg.mi.idrt.ioe.git/de.umg.mi.idrt.ioe/temp/temp_TOS_Connector_file.csv&quot;"/>
+    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;WriteTargetOntology&quot;"/>
+    <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;I2B2T&quot;"/>
+    <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT&quot;"/>
+    <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
+    <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" type="id_Object" value=""/>
+    <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
+    <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" type="id_String" value="&quot;ioe_target&quot;"/>
+    <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" type="id_String" value="&quot;ioe_target_project&quot;"/>
+    <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" type="id_Integer" value=""/>
+  </talendfile:ContextType>
+  <talendfile:ContextType confirmationNeeded="false" name="empty_export">
+    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" type="id_Object" value="&quot;&quot;"/>
+    <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" type="id_Integer" value="&quot;&quot;"/>
+  </talendfile:ContextType>
+</xmi:XMI>

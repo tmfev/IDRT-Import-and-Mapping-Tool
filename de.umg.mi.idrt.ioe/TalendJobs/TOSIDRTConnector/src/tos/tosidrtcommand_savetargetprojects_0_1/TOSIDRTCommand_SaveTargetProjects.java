@@ -935,16 +935,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		tJDBCInput_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tLogRow_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tLogRow_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJDBCInput_2_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tJava_2_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -3108,116 +3098,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		globalMap.put("tJDBCConnection_4_SUBPROCESS_STATE", 1);
 	}
 
-	public static class row2Struct implements
-			routines.system.IPersistableRow<row2Struct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
-
-		public Integer Version;
-
-		public Integer getVersion() {
-			return this.Version;
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects) {
-
-				try {
-
-					int length = 0;
-
-					this.Version = readInteger(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.Version, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("Version=" + String.valueOf(Version));
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row2Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
 	public static class versionCheckStruct implements
 			routines.system.IPersistableRow<versionCheckStruct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
@@ -3350,128 +3230,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				globalResumeTicket = true;
 
 				versionCheckStruct versionCheck = new versionCheckStruct();
-				row2Struct row2 = new row2Struct();
-
-				/**
-				 * [tLogRow_1 begin ] start
-				 */
-
-				ok_Hash.put("tLogRow_1", false);
-				start_Hash.put("tLogRow_1", System.currentTimeMillis());
-				currentComponent = "tLogRow_1";
-
-				int tos_count_tLogRow_1 = 0;
-
-				// /////////////////////
-
-				class Util_tLogRow_1 {
-
-					String[] des_top = { ".", ".", "-", "+" };
-
-					String[] des_head = { "|=", "=|", "-", "+" };
-
-					String[] des_bottom = { "'", "'", "-", "+" };
-
-					String name = "";
-
-					java.util.List<String[]> list = new java.util.ArrayList<String[]>();
-
-					int[] colLengths = new int[1];
-
-					public void addRow(String[] row) {
-
-						for (int i = 0; i < 1; i++) {
-							if (row[i] != null) {
-								colLengths[i] = Math.max(colLengths[i],
-										row[i].length());
-							}
-						}
-						list.add(row);
-					}
-
-					public void setTableName(String name) {
-
-						this.name = name;
-					}
-
-					public StringBuilder format() {
-
-						StringBuilder sb = new StringBuilder();
-
-						sb.append(print(des_top));
-
-						int totals = 0;
-						for (int i = 0; i < colLengths.length; i++) {
-							totals = totals + colLengths[i];
-						}
-
-						// name
-						sb.append("|");
-						int k = 0;
-						for (k = 0; k < (totals + 0 - name.length()) / 2; k++) {
-							sb.append(' ');
-						}
-						sb.append(name);
-						for (int i = 0; i < totals + 0 - name.length() - k; i++) {
-							sb.append(' ');
-						}
-						sb.append("|\n");
-
-						// head and rows
-						sb.append(print(des_head));
-						for (int i = 0; i < list.size(); i++) {
-
-							String[] row = list.get(i);
-
-							java.util.Formatter formatter = new java.util.Formatter(
-									new StringBuilder());
-
-							StringBuilder sbformat = new StringBuilder();
-							sbformat.append("|%1$-");
-							sbformat.append(colLengths[0]);
-							sbformat.append("s");
-
-							sbformat.append("|\n");
-
-							formatter.format(sbformat.toString(),
-									(Object[]) row);
-
-							sb.append(formatter.toString());
-							if (i == 0)
-								sb.append(print(des_head)); // print the head
-						}
-
-						// end
-						sb.append(print(des_bottom));
-						return sb;
-					}
-
-					private StringBuilder print(String[] fillChars) {
-						StringBuilder sb = new StringBuilder();
-						// first column
-						sb.append(fillChars[0]);
-
-						// last column
-						for (int i = 0; i < colLengths[0]
-								- fillChars[0].length() - fillChars[1].length()
-								+ 2; i++) {
-							sb.append(fillChars[2]);
-						}
-						sb.append(fillChars[1]);
-						sb.append("\n");
-						return sb;
-					}
-				}
-				Util_tLogRow_1 util_tLogRow_1 = new Util_tLogRow_1();
-				util_tLogRow_1.setTableName("tLogRow_1");
-				util_tLogRow_1.addRow(new String[] { "Version", });
-				StringBuilder strBuffer_tLogRow_1 = null;
-				int nb_line_tLogRow_1 = 0;
-				// /////////////////////
-
-				/**
-				 * [tLogRow_1 begin ] stop
-				 */
 
 				/**
 				 * [tJavaFlex_3 begin ] start
@@ -3575,8 +3333,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 					currentComponent = "tJavaFlex_3";
 
-					row2.Version = versionCheck.Version;
-
 					if ((counter == 0) && (versionCheck.Version != null)) {
 
 						context.Version = versionCheck.Version + 1;
@@ -3596,35 +3352,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 					/**
 					 * [tJavaFlex_3 main ] stop
-					 */
-
-					/**
-					 * [tLogRow_1 main ] start
-					 */
-
-					currentComponent = "tLogRow_1";
-
-					// /////////////////////
-
-					String[] row_tLogRow_1 = new String[1];
-
-					if (row2.Version != null) { //
-						row_tLogRow_1[0] = String.valueOf(row2.Version);
-
-					} //
-
-					util_tLogRow_1.addRow(row_tLogRow_1);
-					nb_line_tLogRow_1++;
-					// ////
-
-					// ////
-
-					// /////////////////////
-
-					tos_count_tLogRow_1++;
-
-					/**
-					 * [tLogRow_1 main ] stop
 					 */
 
 					/**
@@ -3657,39 +3384,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				/**
 				 * [tJavaFlex_3 end ] stop
-				 */
-
-				/**
-				 * [tLogRow_1 end ] start
-				 */
-
-				currentComponent = "tLogRow_1";
-
-				// ////
-
-				java.io.PrintStream consoleOut_tLogRow_1 = null;
-				if (globalMap.get("tLogRow_CONSOLE") != null) {
-					consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap
-							.get("tLogRow_CONSOLE");
-				} else {
-					consoleOut_tLogRow_1 = new java.io.PrintStream(
-							new java.io.BufferedOutputStream(System.out));
-					globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
-				}
-
-				consoleOut_tLogRow_1
-						.println(util_tLogRow_1.format().toString());
-				consoleOut_tLogRow_1.flush();
-				// ////
-				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
-
-				// /////////////////////
-
-				ok_Hash.put("tLogRow_1", true);
-				end_Hash.put("tLogRow_1", System.currentTimeMillis());
-
-				/**
-				 * [tLogRow_1 end ] stop
 				 */
 
 			}// end the resume
@@ -6361,7 +6055,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "Default";
+	public String contextStr = "empty_export";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -6916,6 +6610,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 190597 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 14:12:29 MEZ
+ * 181769 characters generated by Talend Open Studio for Data Integration on the
+ * 9. Dezember 2013 15:41:36 MEZ
  ************************************************************************************************/
