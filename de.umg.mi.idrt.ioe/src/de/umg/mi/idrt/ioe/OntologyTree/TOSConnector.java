@@ -358,10 +358,9 @@ public class TOSConnector {
 
 
 				//				try {
-//				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			
-				//IDRTCommand_TransformationToTarget trans = new IDRTCommand_TransformationToTarget();
-				//exit = trans.runJobInTOS((getARGV()));
+				exit = tos.runJobInTOS((getARGV()));
 
 				if (exit==0) {
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
