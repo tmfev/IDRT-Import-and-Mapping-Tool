@@ -30,12 +30,8 @@ public class IDRTMessageDialog extends MessageDialog {
 		return open(CONFIRM, parent, title, message, SWT.NONE);
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.dialogs.MessageDialog#open()
-	 */
 	@Override
 	public int open() {
-		// TODO Auto-generated method stub
 		return super.open();
 	}
 }

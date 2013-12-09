@@ -50,7 +50,6 @@ public class OntologyTree extends JTree {
 	 * @param nodeType
 	 */
 	public void addTargetModifierNodeByPath(OntologyItemTarget item, String ontologySource, Object nodeType) {
-		// TODO Auto-generated method stub
 		System.out.println("LOADING MODIFIER TO TARGET");
 		OntologyTreeNode node = new OntologyTreeNode(item.getName());
 		String path = item.getM_applied_path().substring(0,

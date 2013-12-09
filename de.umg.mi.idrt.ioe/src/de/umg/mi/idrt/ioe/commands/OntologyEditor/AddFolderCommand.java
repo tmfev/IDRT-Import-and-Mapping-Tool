@@ -41,12 +41,14 @@ public class AddFolderCommand extends AbstractHandler {
 		}
 		int counter = 1;
 		while (OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(subRootNode.getTreePath())!=null) {
+			System.out.println(subRootNode.getTreePath());
 			String oldPath = subRootNode.getID();
 			if (oldPath.contains("_"))
 				oldPath = oldPath.substring(0,oldPath.lastIndexOf("_"));
 			oldPath = oldPath+"_"+counter;
 			subRootNode.setID(oldPath);
 			subRootNode.setTreeAttributes();
+			
 			counter++;
 		}
 

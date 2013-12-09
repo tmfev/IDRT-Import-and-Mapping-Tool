@@ -310,8 +310,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	// @Override
 	public void remove(OntologyTreeNode aChild) {
-		// TODO Auto-generated method stub
-
 		// this.getParent().getChildren().remove(this);
 		super.remove(aChild);
 	}
@@ -490,7 +488,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 					+ this.getName()
 					+ "\", because he has no parents (ErrorCode: BruceWayne01).");
 
-		} else if (getTreePath() == null) {
+//		} else if (getTreePath() == null) {
+		} else {
 			this.setTreePath(((OntologyTreeNode) parent).getTreePath()
 					+ this.id + "\\");
 			this.setTreePathLevel(((OntologyTreeNode) parent)

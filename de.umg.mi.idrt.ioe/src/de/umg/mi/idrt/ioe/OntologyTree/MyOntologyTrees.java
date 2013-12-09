@@ -51,6 +51,7 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.SystemMessage;
+import de.umg.mi.idrt.ioe.misc.IDRTMessageDialog;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
@@ -77,6 +78,8 @@ public class MyOntologyTrees{
 	private static Menu regMenu;
 	private static Shell dialog;
 	private static String currentRegEx;
+
+	private int confirm;
 	/**
 	 * The MyontolgoyTree class imports data, creates and manages a tree and
 	 * exports this tree to I2B2.
@@ -92,7 +95,7 @@ public class MyOntologyTrees{
 		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 				.getSelection();
 		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-
+		confirm=-1; // cancel
 
 		if (!targetNode.isLeaf()) {
 			int minLevel = Integer.MAX_VALUE;
@@ -153,11 +156,6 @@ public class MyOntologyTrees{
 		ontologyTreeSource.setRootVisible(false);
 
 		getOntologyTreeSource().updateUI();
-
-		//		expandTreePaths(new TreePath(
-		//				((OntologyTreeNode) _ontologyTreeSource.getTreeRoot())));
-
-		// adding mouse adapter
 		MouseAdapter ma = new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.isPopupTrigger())
@@ -165,7 +163,6 @@ public class MyOntologyTrees{
 			}
 
 			public void mouseReleased(MouseEvent e) {
-				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
 				if (e.isPopupTrigger())
 					myPopupEvent(e);
 			}
@@ -223,7 +220,6 @@ public class MyOntologyTrees{
 		rootNode.add(targetOntologyi2b2RootNode);
 
 		ontologyTargetTree.setI2B2RootNode(targetOntologyi2b2RootNode);
-
 
 		ontologyTargetTree.getNodeLists().addNodyByPath(
 				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
@@ -305,7 +301,6 @@ public class MyOntologyTrees{
 			}
 
 			public void mouseReleased(MouseEvent e) {
-				// TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
 				if (e.isPopupTrigger())
 					myPopupEvent(e);
 			}
@@ -344,7 +339,7 @@ public class MyOntologyTrees{
 
 		final OntologyTreeNode node = new OntologyTreeNode(source);
 		node.getTargetNodeAttributes().setVisualattributes(source.getOntologyCellAttributes().getC_VISUALATTRIBUTES());
-		
+
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
 			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
@@ -367,9 +362,9 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,source.getOntologyCellAttributes().getVALUETYPE_CD());
 		node.setTreePath(target.getTreePath() + node.getID() + "\\");
 		node.setTreePathLevel(target.getTreePathLevel() + 1);
-		
+
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
-	
+
 		node.getTargetNodeAttributes().setName(node.getName());
 		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
@@ -381,8 +376,26 @@ public class MyOntologyTrees{
 			}
 		}
 		else {
-			boolean confirm =MessageDialog.openConfirm(Application.getShell(), "Node already exists!", "This Node "+ node.getID() +" already exists in the target ontology!\nDo you want to rename the Path?");
-			if (confirm) {
+			if (confirm<0) {
+				String folderOrItem = node.isLeaf()?"Item":"Folder";
+				IDRTMessageDialog dialog = new IDRTMessageDialog(
+						Application.getShell(),folderOrItem+" already exists!", null, 
+						"This "+ folderOrItem+" already exists in the target ontology!\nDo you want to merge, rename or cancel?", 
+						MessageDialog.QUESTION, new String[] {"Merge","Rename","Cancel"},2);
+				confirm = dialog.open();
+				
+				System.out.println(confirm);
+			}
+			if (confirm==0) {
+				if (testNode.isLeaf())
+					testNode.getTargetNodeAttributes().addStagingPath(node.getOntologyCellAttributes().getC_FULLNAME());
+				else {
+					for (OntologyTreeNode child : source.getChildren()) {
+						deepCopy(child, node, target);
+					}
+				}
+			}
+			else if (confirm == 1) {
 				Display display = Application.getDisplay().getActiveShell().getDisplay();
 
 				Point pt = display.getCursorLocation();
@@ -397,7 +410,7 @@ public class MyOntologyTrees{
 					}
 				}
 
-				final Shell dialog = new Shell(display, SWT.ON_TOP //SWT.APPLICATION_MODAL
+				final Shell dialog = new Shell(display, SWT.ON_TOP 
 						| SWT.TOOL);
 				dialog.setLocation(pt.x+Application.getShell().getSize().x/2,Application.getShell().getSize().y/2+pt.y);
 				final Composite actionMenu = new Composite(dialog, SWT.NONE);
@@ -411,10 +424,8 @@ public class MyOntologyTrees{
 				btnOK.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/itemstatus-checkmark16.png"));
 				btnOK.setToolTipText("OK");
 				btnOK.addSelectionListener(new SelectionListener() {
-
 					@Override
 					public void widgetDefaultSelected(SelectionEvent e) {
-
 					}
 
 					@Override
@@ -452,7 +463,6 @@ public class MyOntologyTrees{
 			}
 		}
 	}
-
 	public void dropCommandCopyNodes(int dropOperation) {
 		if (dropOperation == 1) {
 			ActionCommand command = new ActionCommand(
@@ -460,15 +470,12 @@ public class MyOntologyTrees{
 			command.addParameter(
 					Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
 					"");
-			//			command.addParameter(
-			//					Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-			//					targetPath);
 			Application.executeCommand(command);
 
 			OntologyEditorView.getTargetTreeViewer().refresh();
 		}
 		else {
-			dialog = new Shell(Application.getShell(), SWT.ON_TOP //SWT.APPLICATION_MODAL
+			dialog = new Shell(Application.getShell(), SWT.ON_TOP 
 					| SWT.TOOL);
 			dialog.setLocation(PlatformUI.getWorkbench().getDisplay()
 					.getCursorLocation());
@@ -479,14 +486,12 @@ public class MyOntologyTrees{
 			 * Menu for Combine Actions
 			 */
 
-			final Menu menu = new Menu(dialog); //, SWT.POP_UP
+			final Menu menu = new Menu(dialog); 
 			final ToolBar toolBar = new ToolBar(actionMenu, SWT.FLAT | SWT.RIGHT);
 			toolBar.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
 			final ToolItem tltmInsertNodes = new ToolItem(toolBar, SWT.NONE);
 			final ToolItem tltmCombine = new ToolItem(toolBar, SWT.PUSH);
 			final ToolItem tltmCancel = new ToolItem(toolBar, SWT.NONE);
-
-
 
 			//Set StartDate
 			MenuItem startMenuItem = new MenuItem(menu, SWT.PUSH);
@@ -510,9 +515,6 @@ public class MyOntologyTrees{
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTE_ATTRIBUTE_SOURCE_NODE_PATH,
 							node.getOntologyCellAttributes().getC_FULLNAME());
-					//					command.addParameter(
-					//							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
 					command.addParameter(
 							Resource.ID.Command.OTSETTARGETATTRIBUTEY_ATTRIBUTE_ATTRIBUTE,
 							"startDateSource");
@@ -569,12 +571,6 @@ public class MyOntologyTrees{
 					dialog.close();
 					ActionCommand command = new ActionCommand(
 							Resource.ID.Command.OTCOPY);
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_SOURCE_NODE_PATH,
-					//							"");
-					//					command.addParameter(
-					//							Resource.ID.Command.OTCOPY_ATTRIBUTE_TARGET_NODE_PATH,
-					//							targetPath);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(false);
 					Application.executeCommand(command);
 					OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
@@ -593,7 +589,6 @@ public class MyOntologyTrees{
 					menu.setVisible(true);
 				}
 			});
-
 
 			tltmCancel.setText("Cancel");
 			tltmCancel.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/terminate_co.gif"));
@@ -643,7 +638,7 @@ public class MyOntologyTrees{
 				public void widgetSelected(SelectionEvent e) {
 					setCurrentRegEx(item.getText());
 					dialog.close();
-					
+
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
 					Application.executeCommand(command2);

@@ -165,8 +165,6 @@ public class EditorStagingInfoView extends ViewPart {
 		addValueItem(items, row++,  attributes.getC_PATH() );
 		addValueItem(items, row++,  attributes.getC_SYMBOL() );
 		
-		
-		
 		TreeNode[] path = _node.getPath();
 		
 		String stringPath = "";
@@ -176,16 +174,13 @@ public class EditorStagingInfoView extends ViewPart {
 				System.out.println("");
 				stringPath += "\\" + path[x].toString();
 			}
-			
 		}
 		
 		addValueItem(items, row++, stringPath + " (" + _node.getDepth() + ")" );
 		
 		_editorComposite.update();
 		_editorComposite.layout();
-		
 		_parent.layout();
-		
 	}
 	
 	public Resource getResource(){
@@ -217,7 +212,6 @@ public class EditorStagingInfoView extends ViewPart {
 		_node = node;
 		refresh();
 	}
-
 
 	public void setResource(Resource resource){
 		EditorStagingInfoView._resource = resource;
