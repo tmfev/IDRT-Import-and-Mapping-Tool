@@ -186,9 +186,9 @@ public class TOSConnector {
 				}
 				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 
-				setContextVariable("TableIEOTargetOntology", "IOE_TARGET_ONTOLOGY");
-				setContextVariable("TableIEOTarget", "IOE_TARGET");
-				setContextVariable("TableIEOTargetProject", "IOE_TARGET_PROJECT");
+				setContextVariable("TableIOETargetOntology", "IOE_TARGET_ONTOLOGY");
+				setContextVariable("TableIOETarget", "IOE_TARGET");
+				setContextVariable("TableIOETargetProject", "IOE_TARGET_PROJECT");
 
 
 				//
