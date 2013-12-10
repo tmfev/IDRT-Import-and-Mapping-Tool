@@ -35,9 +35,9 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 public class TOSConnector {
 
 	private static Thread workerThread;
-	public static String DEFAULT_CONTEXTNAME = "Default";
+	public static String DEFAULT_CONTEXTNAME = "empty_export";//"Default";
 	private static int exit;
-	private static String contextName;
+	private static String contextName = DEFAULT_CONTEXTNAME;
 	private static HashMap<String, String> contextVariables = new HashMap<String, String>();
 
 	public static boolean checkOntology() {
