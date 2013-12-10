@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="TestServer">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="Var1" prompt="Var1?" promptNeeded="false" type="id_String" value="&quot;1&quot;"/>
-    <contextParameter comment="" name="Var2" prompt="Var2?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="" name="Var3" prompt="Var3?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.124.17:1521:i2b2t"/>
@@ -33,7 +30,6 @@
     <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
     <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>
@@ -43,10 +39,46 @@
     <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Integer" value=""/>
     <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Object" value=""/>
   </context>
+  <context confirmationNeeded="false" name="empty_export">
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_Host" prompt="DB_TargetI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
+    <contextParameter comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Password" value=""/>
+    <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Integer" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Object" value="&quot;&quot;"/>
+  </context>
   <context confirmationNeeded="false" name="TestServer">
-    <contextParameter comment="" name="Var1" prompt="Var1?" promptNeeded="false" type="id_String" value="&quot;1&quot;"/>
-    <contextParameter comment="" name="Var2" prompt="Var2?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="" name="Var3" prompt="Var3?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.124.17:1521:i2b2t"/>
@@ -76,7 +108,6 @@
     <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
     <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>

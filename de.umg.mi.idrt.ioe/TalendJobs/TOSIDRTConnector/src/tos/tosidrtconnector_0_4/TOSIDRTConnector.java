@@ -138,24 +138,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 		public void synchronizeContext() {
 
-			if (Var1 != null) {
-
-				this.setProperty("Var1", Var1.toString());
-
-			}
-
-			if (Var2 != null) {
-
-				this.setProperty("Var2", Var2.toString());
-
-			}
-
-			if (Var3 != null) {
-
-				this.setProperty("Var3", Var3.toString());
-
-			}
-
 			if (DB_StagingI2B2_Host != null) {
 
 				this.setProperty("DB_StagingI2B2_Host",
@@ -346,12 +328,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 			}
 
-			if (SQLCommand2 != null) {
-
-				this.setProperty("SQLCommand2", SQLCommand2.toString());
-
-			}
-
 			if (SQLTable != null) {
 
 				this.setProperty("SQLTable", SQLTable.toString());
@@ -402,24 +378,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 			}
 
-		}
-
-		public String Var1;
-
-		public String getVar1() {
-			return this.Var1;
-		}
-
-		public String Var2;
-
-		public String getVar2() {
-			return this.Var2;
-		}
-
-		public String Var3;
-
-		public String getVar3() {
-			return this.Var3;
 		}
 
 		public String DB_StagingI2B2_Host;
@@ -594,12 +552,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 		public String getSQLCommand() {
 			return this.SQLCommand;
-		}
-
-		public String SQLCommand2;
-
-		public String getSQLCommand2() {
-			return this.SQLCommand2;
 		}
 
 		public String SQLTable;
@@ -6263,7 +6215,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				paraList_tRunJob_1.add("--father_node=tRunJob_1");
 
-				paraList_tRunJob_1.add("--context=Default");
+				paraList_tRunJob_1.add("--context=empty_export");
 
 				// for feature:10589
 				paraList_tRunJob_1.add("--stat_port=" + portStats);
@@ -6300,9 +6252,6 @@ public class TOSIDRTConnector implements TalendJob {
 							+ "=" + value_tRunJob_1);
 				}
 
-				parentContextMap_tRunJob_1.put("Var1", context.Var1);
-				parentContextMap_tRunJob_1.put("Var2", context.Var2);
-				parentContextMap_tRunJob_1.put("Var3", context.Var3);
 				parentContextMap_tRunJob_1.put("DB_StagingI2B2_Host",
 						context.DB_StagingI2B2_Host);
 				parentContextMap_tRunJob_1.put("DB_StagingI2B2_Instance",
@@ -6356,8 +6305,6 @@ public class TOSIDRTConnector implements TalendJob {
 						context.OracleUsername);
 				parentContextMap_tRunJob_1
 						.put("SQLCommand", context.SQLCommand);
-				parentContextMap_tRunJob_1.put("SQLCommand2",
-						context.SQLCommand2);
 				parentContextMap_tRunJob_1.put("SQLTable", context.SQLTable);
 				parentContextMap_tRunJob_1.put("SQLTable2", context.SQLTable2);
 				parentContextMap_tRunJob_1.put("StatusMessage",
@@ -6571,7 +6518,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				paraList_tRunJob_2.add("--father_node=tRunJob_2");
 
-				paraList_tRunJob_2.add("--context=Default");
+				paraList_tRunJob_2.add("--context=empty_export");
 
 				// for feature:10589
 				paraList_tRunJob_2.add("--stat_port=" + portStats);
@@ -6608,9 +6555,6 @@ public class TOSIDRTConnector implements TalendJob {
 							+ "=" + value_tRunJob_2);
 				}
 
-				parentContextMap_tRunJob_2.put("Var1", context.Var1);
-				parentContextMap_tRunJob_2.put("Var2", context.Var2);
-				parentContextMap_tRunJob_2.put("Var3", context.Var3);
 				parentContextMap_tRunJob_2.put("DB_StagingI2B2_Host",
 						context.DB_StagingI2B2_Host);
 				parentContextMap_tRunJob_2.put("DB_StagingI2B2_Instance",
@@ -6664,8 +6608,6 @@ public class TOSIDRTConnector implements TalendJob {
 						context.OracleUsername);
 				parentContextMap_tRunJob_2
 						.put("SQLCommand", context.SQLCommand);
-				parentContextMap_tRunJob_2.put("SQLCommand2",
-						context.SQLCommand2);
 				parentContextMap_tRunJob_2.put("SQLTable", context.SQLTable);
 				parentContextMap_tRunJob_2.put("SQLTable2", context.SQLTable2);
 				parentContextMap_tRunJob_2.put("StatusMessage",
@@ -6879,7 +6821,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				paraList_tRunJob_3.add("--father_node=tRunJob_3");
 
-				paraList_tRunJob_3.add("--context=Default");
+				paraList_tRunJob_3.add("--context=empty_export");
 
 				// for feature:10589
 				paraList_tRunJob_3.add("--stat_port=" + portStats);
@@ -6916,9 +6858,6 @@ public class TOSIDRTConnector implements TalendJob {
 							+ "=" + value_tRunJob_3);
 				}
 
-				parentContextMap_tRunJob_3.put("Var1", context.Var1);
-				parentContextMap_tRunJob_3.put("Var2", context.Var2);
-				parentContextMap_tRunJob_3.put("Var3", context.Var3);
 				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Host",
 						context.DB_StagingI2B2_Host);
 				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Instance",
@@ -6972,8 +6911,6 @@ public class TOSIDRTConnector implements TalendJob {
 						context.OracleUsername);
 				parentContextMap_tRunJob_3
 						.put("SQLCommand", context.SQLCommand);
-				parentContextMap_tRunJob_3.put("SQLCommand2",
-						context.SQLCommand2);
 				parentContextMap_tRunJob_3.put("SQLTable", context.SQLTable);
 				parentContextMap_tRunJob_3.put("SQLTable2", context.SQLTable2);
 				parentContextMap_tRunJob_3.put("StatusMessage",
@@ -7187,7 +7124,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				paraList_tRunJob_5.add("--father_node=tRunJob_5");
 
-				paraList_tRunJob_5.add("--context=Default");
+				paraList_tRunJob_5.add("--context=empty_export");
 
 				// for feature:10589
 				paraList_tRunJob_5.add("--stat_port=" + portStats);
@@ -7224,9 +7161,6 @@ public class TOSIDRTConnector implements TalendJob {
 							+ "=" + value_tRunJob_5);
 				}
 
-				parentContextMap_tRunJob_5.put("Var1", context.Var1);
-				parentContextMap_tRunJob_5.put("Var2", context.Var2);
-				parentContextMap_tRunJob_5.put("Var3", context.Var3);
 				parentContextMap_tRunJob_5.put("DB_StagingI2B2_Host",
 						context.DB_StagingI2B2_Host);
 				parentContextMap_tRunJob_5.put("DB_StagingI2B2_Instance",
@@ -7280,8 +7214,6 @@ public class TOSIDRTConnector implements TalendJob {
 						context.OracleUsername);
 				parentContextMap_tRunJob_5
 						.put("SQLCommand", context.SQLCommand);
-				parentContextMap_tRunJob_5.put("SQLCommand2",
-						context.SQLCommand2);
 				parentContextMap_tRunJob_5.put("SQLTable", context.SQLTable);
 				parentContextMap_tRunJob_5.put("SQLTable2", context.SQLTable2);
 				parentContextMap_tRunJob_5.put("StatusMessage",
@@ -8070,7 +8002,7 @@ public class TOSIDRTConnector implements TalendJob {
 
 				paraList_tRunJob_4.add("--father_node=tRunJob_4");
 
-				paraList_tRunJob_4.add("--context=Default");
+				paraList_tRunJob_4.add("--context=empty_export");
 
 				// for feature:10589
 				paraList_tRunJob_4.add("--stat_port=" + portStats);
@@ -8107,9 +8039,6 @@ public class TOSIDRTConnector implements TalendJob {
 							+ "=" + value_tRunJob_4);
 				}
 
-				parentContextMap_tRunJob_4.put("Var1", context.Var1);
-				parentContextMap_tRunJob_4.put("Var2", context.Var2);
-				parentContextMap_tRunJob_4.put("Var3", context.Var3);
 				parentContextMap_tRunJob_4.put("DB_StagingI2B2_Host",
 						context.DB_StagingI2B2_Host);
 				parentContextMap_tRunJob_4.put("DB_StagingI2B2_Instance",
@@ -8163,8 +8092,6 @@ public class TOSIDRTConnector implements TalendJob {
 						context.OracleUsername);
 				parentContextMap_tRunJob_4
 						.put("SQLCommand", context.SQLCommand);
-				parentContextMap_tRunJob_4.put("SQLCommand2",
-						context.SQLCommand2);
 				parentContextMap_tRunJob_4.put("SQLTable", context.SQLTable);
 				parentContextMap_tRunJob_4.put("SQLTable2", context.SQLTable2);
 				parentContextMap_tRunJob_4.put("StatusMessage",
@@ -8342,7 +8269,7 @@ public class TOSIDRTConnector implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "Default";
+	public String contextStr = "empty_export";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -8443,9 +8370,6 @@ public class TOSIDRTConnector implements TalendJob {
 			if (!context_param.isEmpty()) {
 				context.putAll(context_param);
 			}
-			context.Var1 = (String) context.getProperty("Var1");
-			context.Var2 = (String) context.getProperty("Var2");
-			context.Var3 = (String) context.getProperty("Var3");
 			context.DB_StagingI2B2_Host = (String) context
 					.getProperty("DB_StagingI2B2_Host");
 			context.DB_StagingI2B2_Instance = (String) context
@@ -8498,7 +8422,6 @@ public class TOSIDRTConnector implements TalendJob {
 			context.OracleUsername = (String) context
 					.getProperty("OracleUsername");
 			context.SQLCommand = (String) context.getProperty("SQLCommand");
-			context.SQLCommand2 = (String) context.getProperty("SQLCommand2");
 			context.SQLTable = (String) context.getProperty("SQLTable");
 			context.SQLTable2 = (String) context.getProperty("SQLTable2");
 			context.StatusMessage = (String) context
@@ -8523,15 +8446,6 @@ public class TOSIDRTConnector implements TalendJob {
 
 		// get context value from parent directly
 		if (parentContextMap != null && !parentContextMap.isEmpty()) {
-			if (parentContextMap.containsKey("Var1")) {
-				context.Var1 = (String) parentContextMap.get("Var1");
-			}
-			if (parentContextMap.containsKey("Var2")) {
-				context.Var2 = (String) parentContextMap.get("Var2");
-			}
-			if (parentContextMap.containsKey("Var3")) {
-				context.Var3 = (String) parentContextMap.get("Var3");
-			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_Host")) {
 				context.DB_StagingI2B2_Host = (String) parentContextMap
 						.get("DB_StagingI2B2_Host");
@@ -8642,10 +8556,6 @@ public class TOSIDRTConnector implements TalendJob {
 			if (parentContextMap.containsKey("SQLCommand")) {
 				context.SQLCommand = (String) parentContextMap
 						.get("SQLCommand");
-			}
-			if (parentContextMap.containsKey("SQLCommand2")) {
-				context.SQLCommand2 = (String) parentContextMap
-						.get("SQLCommand2");
 			}
 			if (parentContextMap.containsKey("SQLTable")) {
 				context.SQLTable = (String) parentContextMap.get("SQLTable");
@@ -8838,6 +8748,6 @@ public class TOSIDRTConnector implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 256506 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 14:12:30 MEZ
+ * 253685 characters generated by Talend Open Studio for Data Integration on the
+ * 9. Dezember 2013 15:41:37 MEZ
  ************************************************************************************************/
