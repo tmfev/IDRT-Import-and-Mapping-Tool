@@ -280,7 +280,6 @@ public class TOSConnector {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
 				setContextVariable("DB_StagingI2B2_Username",
@@ -295,13 +294,10 @@ public class TOSConnector {
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 
-				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 
 				if (targetServer!=null) {
 					System.out.println("TargetServerName" + targetServer.getName()); 
-					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
-
 
 					setContextVariable("DB_TargetI2B2_Username",
 							targetServer.getUser());
@@ -312,11 +308,10 @@ public class TOSConnector {
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
 
-
 					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
 				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				
+
 
 				Console.info(currentServer.getSchema());
 				//			if (serverUniqueName != null) {
@@ -338,8 +333,6 @@ public class TOSConnector {
 				System.out
 				.println("OracleUsername: " + currentServer.getUser());
 
-				//
-
 				//setContextVariable("OracleHost", currentServer.getIp());
 				//setContextVariable("OraclePort", currentServer.getPort());
 				//setContextVariable("OracleSid", currentServer.getSID());
@@ -356,37 +349,18 @@ public class TOSConnector {
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 
-
-				//				try {
 				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
-			
-				exit = tos.runJobInTOS((getARGV()));
 
+				exit = tos.runJobInTOS((getARGV()));
 				if (exit==0) {
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
 				}
 				else {
 					MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
 				}
-				//				} catch (Exception e) {
-				//					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-				//							+ e.getMessage());
-				//				}
-
 			}
 		});
-
-		workerThread = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		workerThread.run();
 		return exit;
-
 	}
 	@Deprecated
 	public static int writeTargetOntology(String targetID, String tmpDataFile) {
@@ -404,20 +378,14 @@ public class TOSConnector {
 			return 1;
 		}
 		return 0;
-
 	}
 
 	public TOSConnector() {
-
 		Console.info("TOSConnector: establising a TOS connection");
 	}
 
-
-
 	public void runJob() {
-
 		getConnection().runJobInTOS((getARGV()));
-
 	}
 
 }

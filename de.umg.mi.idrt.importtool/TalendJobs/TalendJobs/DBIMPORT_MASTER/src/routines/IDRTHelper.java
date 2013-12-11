@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
@@ -72,13 +73,13 @@ public class IDRTHelper {
 
 	private static int objectID = -1;
 
-//	private static int discharge = -1;
-//	private static int admission = -1;
+	//	private static int discharge = -1;
+	//	private static int admission = -1;
 	private static int DeathDay = -1;
 
 	private static int headline;
 
-//	private String sourcesystemName;
+	//	private String sourcesystemName;
 	//	private static String dbName = "I2B2IDRTDEMO.IDRTHelper";
 	private HashMap<Integer, IDRTItem> IDRTItemMap;
 	/**
@@ -104,7 +105,7 @@ public class IDRTHelper {
 		IDRTItemMap = new HashMap<Integer, IDRTItem>();
 	}
 
-	
+
 	//	public IDRTHelper(String host, String port, String sid, String username, String password) {
 	//		try{
 	//			HOST = host;
@@ -196,8 +197,8 @@ public class IDRTHelper {
 			if (headerRow[1]==null)
 				headline = 1;
 			else
-			headline = Integer.parseInt(headerRow[1]);
-			
+				headline = Integer.parseInt(headerRow[1]);
+
 			CSVInput.close();
 
 			for (int k = 0; k< configRow.length; k++){
@@ -220,7 +221,7 @@ public class IDRTHelper {
 				}
 				if (configRow[k].toLowerCase().equals("sourcesystem")){
 					Sourcesystem = k-1;
-//					SourcesystemName = configRow[k];
+					//					SourcesystemName = configRow[k];
 					System.out.println("Sourcesystem@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("encounterid")){
@@ -253,11 +254,11 @@ public class IDRTHelper {
 					System.out.println("DeathDay@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("admission")){
-//					admission = k-1;
+					//					admission = k-1;
 					System.out.println("admission@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("discharge")){
-//					discharge = k-1;
+					//					discharge = k-1;
 					System.out.println("discharge@" + k);
 				}
 				if (configRow[k].toLowerCase().equals("ignore")){
@@ -308,7 +309,8 @@ public class IDRTHelper {
 
 	//NO pidgen
 	//input,output,ont,context.i2b2HeadNode,context.MDPDName,context.MDPD,context.fileName,context.quoteChar, context.datePattern
-	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, String tableName, char quoteChar, String pattern) throws SQLException {
+	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, 
+			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB) throws SQLException {
 		try {
 			//			File ont = new File("C:/Desktop/ont.csv");
 
@@ -389,7 +391,7 @@ public class IDRTHelper {
 			ontLine[ONT_IMPORTDATE] = "";
 			ontLine[ONT_DOWNLOADDATE] = "";
 			ontLine[ONT_PATHID] = "";
-			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_VISUAL] = "FA";
 			ontLine[ONT_ITEMCODE] = "";
 			ontLine[ONT_SOURCE] = "";
 			ontLine[ONT_XML] = "";
@@ -402,22 +404,33 @@ public class IDRTHelper {
 			if (objectID>=0) { 
 				System.out.println("GOING FOR MODIFIERS");
 				ontLine[ONT_HLEVEL] = "1";
-				if (objectID>=0) {
-					ontLine[ONT_NAME] = "Objects";	//TODO context variable
-					ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OID"+"\\"; //TODO context variable
-				}
-
+				ontLine[ONT_NAME] = "Objects";	//TODO context variable
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OID"+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
 				ontLine[ONT_IMPORTDATE] = "";
 				ontLine[ONT_DOWNLOADDATE] = "";
 				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_VISUAL] = "FA";
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
 				ontLine[ONT_M_APPLIEDPATH] = "@";
+				ontOutput.writeNext(ontLine);
 
+				ontLine[ONT_HLEVEL] = "1";
+				ontLine[ONT_NAME] = tableName;	
+				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //TODO context variable
+				ontLine[ONT_DATATYPE] = "";
+				ontLine[ONT_UPDATEDATE] = "";
+				ontLine[ONT_IMPORTDATE] = "";
+				ontLine[ONT_DOWNLOADDATE] = "";
+				ontLine[ONT_PATHID] = "";
+				ontLine[ONT_VISUAL] = "DA";
+				ontLine[ONT_ITEMCODE] = "";
+				ontLine[ONT_SOURCE] = "";
+				ontLine[ONT_XML] = "";
+				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
 				ontOutput.writeNext(ontLine);
 
 				ontLine[ONT_HLEVEL] = "1";
@@ -428,31 +441,29 @@ public class IDRTHelper {
 				ontLine[ONT_IMPORTDATE] = "";
 				ontLine[ONT_DOWNLOADDATE] = "";
 				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "DHE";
+				ontLine[ONT_VISUAL] = "DH";
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
 				ontLine[ONT_M_APPLIEDPATH] = "@";  //applied path
-
 				ontOutput.writeNext(ontLine);
 
 
-				ontLine[ONT_HLEVEL] = "1";
-				ontLine[ONT_NAME] = tableName;
-				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-				ontLine[ONT_DATATYPE] = "";
-				ontLine[ONT_UPDATEDATE] = "";
-				ontLine[ONT_IMPORTDATE] = "";
-				ontLine[ONT_DOWNLOADDATE] = "";
-				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "DAE";
-				ontLine[ONT_ITEMCODE] = "";
-				ontLine[ONT_SOURCE] = "";
-				ontLine[ONT_XML] = "";
-				if (objectID>=0)
-					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";  //applied path
-
-				ontOutput.writeNext(ontLine);
+				//				ontLine[ONT_HLEVEL] = "1";
+				//				ontLine[ONT_NAME] = tableName;
+				//				ontLine[ONT_PATH] = ; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+				//				ontLine[ONT_DATATYPE] = "";
+				//				ontLine[ONT_UPDATEDATE] = "";
+				//				ontLine[ONT_IMPORTDATE] = "";
+				//				ontLine[ONT_DOWNLOADDATE] = "";
+				//				ontLine[ONT_PATHID] = "";
+				//				ontLine[ONT_VISUAL] = "DA";
+				//				ontLine[ONT_ITEMCODE] = "";
+				//				ontLine[ONT_SOURCE] = "";
+				//				ontLine[ONT_XML] = "";
+				//				if (objectID>=0)
+				//					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";  //applied path
+				//				ontOutput.writeNext(ontLine);
 
 
 
@@ -479,13 +490,11 @@ public class IDRTHelper {
 						ontLine[ONT_IMPORTDATE] = "";
 						ontLine[ONT_DOWNLOADDATE] = "";
 						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-						ontLine[ONT_VISUAL] = "DAE";
+						ontLine[ONT_VISUAL] = "DA";
 						ontLine[ONT_ITEMCODE] = "";
 						ontLine[ONT_SOURCE] = "";
 						ontLine[ONT_XML] = "";
-						if (objectID>=0)
-							ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
-
+						ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\"; //"\\"+tableName+"\\"
 						ontOutput.writeNext(ontLine);
 					}
 					colCounter++;
@@ -504,7 +513,7 @@ public class IDRTHelper {
 				ontLine[ONT_IMPORTDATE] = "";
 				ontLine[ONT_DOWNLOADDATE] = "";
 				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_VISUAL] = "FA";
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
@@ -519,7 +528,7 @@ public class IDRTHelper {
 				ontLine[ONT_IMPORTDATE] = "";
 				ontLine[ONT_DOWNLOADDATE] = "";
 				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "FAE";
+				ontLine[ONT_VISUAL] = "FA";
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
@@ -549,7 +558,7 @@ public class IDRTHelper {
 						ontLine[ONT_IMPORTDATE] = "";
 						ontLine[ONT_DOWNLOADDATE] = "";
 						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-						ontLine[ONT_VISUAL] = "FAE";
+						ontLine[ONT_VISUAL] = "FA";
 						ontLine[ONT_ITEMCODE] = "";
 						ontLine[ONT_SOURCE] = "";
 						ontLine[ONT_XML] = "";
@@ -598,17 +607,18 @@ public class IDRTHelper {
 			if(allRows/100 > 0)
 				mod=allRows/100;
 			HashMap<String,HashMap<String,Integer>>patientInstanceNumMap = new HashMap<String, HashMap<String,Integer>>();
-			
+			BigDecimal instanceNum = instanceNumDB;
 			HashMap<String,Integer> instancePerObjectID = new HashMap<String, Integer>();
 			while((nextLine = CSVInput.readNext()) != null){
 				rows++;
-
+				instanceNum=instanceNum.add(new BigDecimal(1));
+				
 				if (rows%(mod)==0 || rows==allRows){
 					//					System.out.println("Row: " + rows + "/"+allRows);
 					StatusListener.setSubStatus((float)rows/allRows*100, (int)((float)rows/allRows*100)+"% " + "Row: " + rows + "/"+allRows);
 				}
 				int columnCounter = 0;
-				int instanceNum = 0;
+				
 
 				//				if(bioSic>=0) {
 				//					instanceNum++;
@@ -618,48 +628,48 @@ public class IDRTHelper {
 					if (EncounterID>=0){
 						encounterIDString = nextLine[EncounterID];
 						if (patientInstanceNumMap.get(nextLine[PID]).containsKey(encounterIDString)){
-							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
-							
+//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
+
 							patientInstanceNumMap.get(nextLine[PID]).remove(encounterIDString);
-							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
+//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
 						}
 						else {
-							patientInstanceNumMap.get(nextLine[PID]).put(nextLine[EncounterID], instanceNum);
+//							patientInstanceNumMap.get(nextLine[PID]).put(nextLine[EncounterID], instanceNum);
 						}
 					}
 					else {
 						encounterIDString = "0";
 						if (patientInstanceNumMap.get(nextLine[PID]).containsKey(encounterIDString)){
-							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
+//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
 							patientInstanceNumMap.get(nextLine[PID]).remove(encounterIDString);
-							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
+//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
 						}
 						else {
-							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString, instanceNum);
+//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString, instanceNum);
 						}
 					}
-				
+
 				}
 				else if (PID>=0 && !patientInstanceNumMap.containsKey(nextLine[PID])) {
 					if (EncounterID>=0){
 						HashMap<String,Integer> encTempMap = new HashMap<String, Integer>();
-						encTempMap.put(nextLine[EncounterID], instanceNum);
+//						encTempMap.put(nextLine[EncounterID], instanceNum);
 						patientInstanceNumMap.put(nextLine[PID], encTempMap);
 					}
 					else {
 						HashMap<String,Integer> encTempMap = new HashMap<String, Integer>();
-						encTempMap.put("0", instanceNum);
+//						encTempMap.put("0", instanceNum);
 						patientInstanceNumMap.put(nextLine[PID], encTempMap);
 					}
 				}
-				
+
 				if (objectID>=0) {
 					if (instancePerObjectID.containsKey(nextLine[objectID])){
-						instanceNum = instancePerObjectID.get(nextLine[objectID]);
+//						instanceNum = instancePerObjectID.get(nextLine[objectID]);
 						System.out.println(instanceNum + "==" + nextLine[objectID]);
 					}
 					else{
-						instancePerObjectID.put(nextLine[objectID], instanceNum);
+//						instancePerObjectID.put(nextLine[objectID], instanceNum);
 					}
 				}
 				//				else if (EncounterID<0 || PID < 0){
@@ -787,7 +797,7 @@ public class IDRTHelper {
 						}
 
 						nextOutputLine[OBS_INSTANCENUM] = ""+instanceNum;
-						
+
 						if (objectID >=0) {
 							nextOutputLine[OBS_MODIFIERTYPE] = "oid";
 							nextOutputLine[OBS_SIC] =  nextLine[objectID];
@@ -819,7 +829,9 @@ public class IDRTHelper {
 		}}
 
 	// pidgen
-	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, String tableName, char quoteChar, HashMap<String,String>pidMap, String pattern) throws SQLException {
+	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, String tableName, 
+			char quoteChar, HashMap<String,String>pidMap, String pattern,BigDecimal instanceNumDB) throws SQLException {
+		
 		try {
 
 			long start = System.currentTimeMillis();
@@ -899,7 +911,7 @@ public class IDRTHelper {
 			ontLine[ONT_IMPORTDATE] = "";
 			ontLine[ONT_DOWNLOADDATE] = "";
 			ontLine[ONT_PATHID] = "";
-			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_VISUAL] = "FA";
 			ontLine[ONT_ITEMCODE] = "";
 			ontLine[ONT_SOURCE] = "";
 			ontLine[ONT_XML] = "";
@@ -914,7 +926,7 @@ public class IDRTHelper {
 			ontLine[ONT_IMPORTDATE] = "";
 			ontLine[ONT_DOWNLOADDATE] = "";
 			ontLine[ONT_PATHID] = "";
-			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_VISUAL] = "FA";
 			ontLine[ONT_ITEMCODE] = "";
 			ontLine[ONT_SOURCE] = "";
 			ontLine[ONT_XML] = "";
@@ -930,7 +942,7 @@ public class IDRTHelper {
 			ontLine[ONT_IMPORTDATE] = "";
 			ontLine[ONT_DOWNLOADDATE] = "";
 			ontLine[ONT_PATHID] = "";
-			ontLine[ONT_VISUAL] = "FAE";
+			ontLine[ONT_VISUAL] = "FA";
 			ontLine[ONT_ITEMCODE] = "";
 			ontLine[ONT_SOURCE] = "";
 			ontLine[ONT_XML] = "";
@@ -959,7 +971,7 @@ public class IDRTHelper {
 					ontLine[ONT_IMPORTDATE] = "";
 					ontLine[ONT_DOWNLOADDATE] = "";
 					ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
-					ontLine[ONT_VISUAL] = "FAE";
+					ontLine[ONT_VISUAL] = "FA";
 					ontLine[ONT_ITEMCODE] = "";
 					ontLine[ONT_SOURCE] = "";
 					ontLine[ONT_XML] = "";

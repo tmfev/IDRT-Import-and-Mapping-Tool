@@ -145,7 +145,7 @@ public class SaveTarget extends AbstractHandler {
 			String[] fields = new String[21];
 
 			fields[0] = targetID;
-			fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
+			
 
 			if (subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH).equals("@"))
 				fields[2] = subNode.getParent().getTreePath();
@@ -155,12 +155,19 @@ public class SaveTarget extends AbstractHandler {
 				String treePath = subNode.getParent().getTreePath();
 				fields[2] = treePath.substring(treePath.indexOf(appliedPath)+appliedPath.length()-1);	
 			}
+			
+			if (subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH).equals("@"))
+				fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
+			else {
+				fields[1] = String.valueOf(fields[2].split("\\\\").length-1);
+			}
+			
 			fields[3] = subNode.getStagingPath();
 			fields[4] = subNode.getParent().getTargetNodeAttributes().getDimension().toString();
 			fields[5] = subNode.getParent().getTargetNodeAttributes().getName();
 			fields[6] = subNode.getParent().getTargetNodeAttributes().getStartDateSource();
 			fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
-			fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
+			fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattributeNotEditable();
 
 			
 			String updateDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE);

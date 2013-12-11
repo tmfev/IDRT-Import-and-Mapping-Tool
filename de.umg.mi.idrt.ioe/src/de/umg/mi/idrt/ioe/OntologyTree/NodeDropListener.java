@@ -90,19 +90,11 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - data: " + data.getClass().getSimpleName());
 		Console.info(" - data_toString: " + (String) path);
 
-		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
-				.getSelection();
 		if (data.toString().equals("stagingTreeViewer")){
 			System.out.println("data = stagingTreeViewer");
 			if (targetNode instanceof OntologyTreeNode) {
 				if (targetNode.isLeaf()) {
 					myOT.dropCommandCopyNodes(dropOperation);
-					//TODO Add as Start/End Date
-//					Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-//					while (nodeIterator.hasNext()) {
-//						OntologyTreeNode node = nodeIterator.next();
-//					((OntologyTreeNode) targetNode).getTargetNodeAttributes().addStagingPath(node.getTreePath());
-//					}
 				}
 				else {
 					myOT.dropCommandCopyNodes(dropOperation);
@@ -110,12 +102,6 @@ public class NodeDropListener extends ViewerDropAdapter {
 			}
 			else if (targetNode instanceof OntologyTreeSubNode) {
 				myOT.dropCommandCopyNodes(dropOperation);
-//				OntologyTreeSubNode subNode = (OntologyTreeSubNode)targetNode;
-//				Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
-//				while (nodeIterator.hasNext()) {
-//					OntologyTreeNode node = nodeIterator.next();
-//					subNode.getParent().getTargetNodeAttributes().addStagingPath(node.getTreePath());
-//				}
 			}
 		}
 		else if (data.toString().equals("subNode")) {

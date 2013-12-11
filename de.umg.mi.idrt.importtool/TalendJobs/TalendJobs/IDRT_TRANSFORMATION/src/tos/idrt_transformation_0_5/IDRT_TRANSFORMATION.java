@@ -93,7 +93,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: IDRT_TRANSFORMATION Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class IDRT_TRANSFORMATION implements TalendJob {
@@ -339,10 +339,6 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -1048,7 +1044,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1131,7 +1127,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1249,7 +1245,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1326,7 +1322,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1621,7 +1617,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1917,7 +1913,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1994,7 +1990,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2104,7 +2100,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2178,7 +2174,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2288,7 +2284,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2365,7 +2361,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3255,7 +3251,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3336,7 +3332,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3525,7 +3521,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3620,7 +3616,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3697,7 +3693,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3806,7 +3802,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3883,7 +3879,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3992,7 +3988,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4070,7 +4066,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4180,7 +4176,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4258,7 +4254,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4370,7 +4366,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4447,7 +4443,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4555,7 +4551,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4663,7 +4659,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4758,7 +4754,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4835,7 +4831,7 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4895,6 +4891,8 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -5144,6 +5142,6 @@ public class IDRT_TRANSFORMATION implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 144616 characters generated by Talend Open Studio for Data Integration on the
- * November 8, 2013 2:38:36 PM CET
+ * 144029 characters generated by Talend Open Studio for Data Integration on the
+ * December 11, 2013 3:42:06 PM CET
  ************************************************************************************************/

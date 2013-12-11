@@ -105,7 +105,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: CSV_MASTER Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class CSV_MASTER implements TalendJob {
@@ -785,10 +785,6 @@ public class CSV_MASTER implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -1745,8 +1741,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_1_CHILD_RETURN_CODE",
 							childJob_tRunJob_1.getErrorCode());
 				}
-				globalMap.put("tRunJob_1_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_1.getExceptionStackTrace());
+				if (childJob_tRunJob_1.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_1_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_1.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_1.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_1.getStatus())) {
@@ -1788,7 +1786,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1876,7 +1874,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1964,7 +1962,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2150,8 +2148,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_5_CHILD_RETURN_CODE",
 							childJob_tRunJob_5.getErrorCode());
 				}
-				globalMap.put("tRunJob_5_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_5.getExceptionStackTrace());
+				if (childJob_tRunJob_5.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_5_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_5.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_5.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_5.getStatus())) {
@@ -2193,7 +2193,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2270,7 +2270,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2527,7 +2527,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2615,7 +2615,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2801,8 +2801,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_3_CHILD_RETURN_CODE",
 							childJob_tRunJob_3.getErrorCode());
 				}
-				globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_3.getExceptionStackTrace());
+				if (childJob_tRunJob_3.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_3.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_3.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_3.getStatus())) {
@@ -2844,7 +2846,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3101,7 +3103,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3189,7 +3191,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3375,8 +3377,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_4_CHILD_RETURN_CODE",
 							childJob_tRunJob_4.getErrorCode());
 				}
-				globalMap.put("tRunJob_4_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_4.getExceptionStackTrace());
+				if (childJob_tRunJob_4.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_4_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_4.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_4.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_4.getStatus())) {
@@ -3418,7 +3422,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3495,7 +3499,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3569,7 +3573,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3646,7 +3650,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3724,7 +3728,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3910,8 +3914,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_6_CHILD_RETURN_CODE",
 							childJob_tRunJob_6.getErrorCode());
 				}
-				globalMap.put("tRunJob_6_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_6.getExceptionStackTrace());
+				if (childJob_tRunJob_6.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_6_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_6.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_6.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_6.getStatus())) {
@@ -3944,7 +3950,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4203,7 +4209,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4442,7 +4448,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4535,7 +4541,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4612,7 +4618,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4691,7 +4697,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4877,8 +4883,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_8_CHILD_RETURN_CODE",
 							childJob_tRunJob_8.getErrorCode());
 				}
-				globalMap.put("tRunJob_8_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_8.getExceptionStackTrace());
+				if (childJob_tRunJob_8.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_8_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_8.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_8.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_8.getStatus())) {
@@ -4911,7 +4919,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5014,7 +5022,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5212,8 +5220,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_9_CHILD_RETURN_CODE",
 							childJob_tRunJob_9.getErrorCode());
 				}
-				globalMap.put("tRunJob_9_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_9.getExceptionStackTrace());
+				if (childJob_tRunJob_9.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_9_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_9.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_9.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_9.getStatus())) {
@@ -5255,7 +5265,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5330,7 +5340,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5462,7 +5472,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5789,7 +5799,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5881,7 +5891,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6082,7 +6092,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6165,7 +6175,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6248,7 +6258,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6434,8 +6444,10 @@ public class CSV_MASTER implements TalendJob {
 					globalMap.put("tRunJob_10_CHILD_RETURN_CODE",
 							childJob_tRunJob_10.getErrorCode());
 				}
-				globalMap.put("tRunJob_10_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_10.getExceptionStackTrace());
+				if (childJob_tRunJob_10.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_10_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_10.getExceptionStackTrace());
+				}
 
 				tos_count_tRunJob_10++;
 
@@ -6473,7 +6485,7 @@ public class CSV_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6533,6 +6545,8 @@ public class CSV_MASTER implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -7006,6 +7020,6 @@ public class CSV_MASTER implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 205326 characters generated by Talend Open Studio for Data Integration on the
- * November 8, 2013 2:38:22 PM CET
+ * 205224 characters generated by Talend Open Studio for Data Integration on the
+ * December 11, 2013 3:41:43 PM CET
  ************************************************************************************************/

@@ -148,6 +148,13 @@ public class TargetNodeAttributes {
 	public String getVisualattribute() {
 		return visualattribute;
 	}
+	
+	public String getVisualattributeNotEditable() {
+		if (visualattribute.length()==3)
+		return visualattribute.substring(0, 2);
+		else
+			return visualattribute;
+	}
 
 	/**
 	 * @return the changed

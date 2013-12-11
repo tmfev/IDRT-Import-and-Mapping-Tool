@@ -85,7 +85,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: IDRT_to_DB_Schema Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class IDRT_to_DB_Schema implements TalendJob {
@@ -524,6 +524,18 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
+			if (maxInstance != null) {
+
+				this.setProperty("maxInstance", maxInstance.toString());
+
+			}
+
+			if (instanceMap != null) {
+
+				this.setProperty("instanceMap", instanceMap.toString());
+
+			}
+
 		}
 
 		public Boolean importTerms;
@@ -909,6 +921,18 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		public String getXslt_namespace() {
 			return this.xslt_namespace;
 		}
+
+		public BigDecimal maxInstance;
+
+		public BigDecimal getMaxInstance() {
+			return this.maxInstance;
+		}
+
+		public Object instanceMap;
+
+		public Object getInstanceMap() {
+			return this.instanceMap;
+		}
 	}
 
 	private ContextProperties context = new ContextProperties();
@@ -1029,10 +1053,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -23007,7 +23027,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_22"
@@ -28727,7 +28747,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_7"
@@ -28829,7 +28849,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -31829,7 +31849,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_25"
@@ -32334,7 +32354,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -33038,7 +33058,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -33503,7 +33523,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -34208,7 +34228,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -34894,7 +34914,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -34997,7 +35017,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -35865,7 +35885,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -36859,7 +36879,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -36952,7 +36972,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37055,7 +37075,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37158,7 +37178,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37261,7 +37281,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37364,7 +37384,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37466,7 +37486,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37569,7 +37589,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37672,7 +37692,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37796,7 +37816,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -38327,7 +38347,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -38654,7 +38674,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -39550,7 +39570,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -40092,7 +40112,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -40318,7 +40338,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -40393,7 +40413,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -43570,7 +43590,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 													copyOfout6_tmp.C_SYNONYM_CD = "N";
 													copyOfout6_tmp.C_VISUALATTRIBUTES = row10.visual;
 													copyOfout6_tmp.C_TOTALNUM = null;
-													copyOfout6_tmp.C_BASECODE = null;
+													copyOfout6_tmp.C_BASECODE = row10.m_applied_path
+															.equals("@") ? ""
+															: "MOD:FAKEBASE";
 													copyOfout6_tmp.C_METADATAXML = Var.var1 ? "<?xml version=\"1.0\"?><ValueMetadata><Version>3.02</Version><CreationDateTime>"
 															+ TalendDate
 																	.getDate("YYYY-MM-DD")
@@ -44524,7 +44546,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_8"
@@ -44611,7 +44633,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -46387,7 +46409,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -48240,7 +48262,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -48935,7 +48957,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -49640,7 +49662,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -50107,7 +50129,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -50167,6 +50189,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -50382,6 +50406,13 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			context.xslt = (String) context.getProperty("xslt");
 			context.xslt_namespace = (String) context
 					.getProperty("xslt_namespace");
+			try {
+				context.maxInstance = routines.system.ParserUtils
+						.parseTo_BigDecimal(context.getProperty("maxInstance"));
+			} catch (NumberFormatException e) {
+				context.maxInstance = null;
+			}
+			context.instanceMap = (Object) context.getProperty("instanceMap");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -50623,6 +50654,14 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.xslt_namespace = (String) parentContextMap
 						.get("xslt_namespace");
 			}
+			if (parentContextMap.containsKey("maxInstance")) {
+				context.maxInstance = (BigDecimal) parentContextMap
+						.get("maxInstance");
+			}
+			if (parentContextMap.containsKey("instanceMap")) {
+				context.instanceMap = (Object) parentContextMap
+						.get("instanceMap");
+			}
 		}
 
 		// Resume: init the resumeUtil
@@ -50773,6 +50812,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1381707 characters generated by Talend Open Studio for Data Integration on
- * the November 8, 2013 2:38:42 PM CET
+ * 1382097 characters generated by Talend Open Studio for Data Integration on
+ * the December 11, 2013 3:42:15 PM CET
  ************************************************************************************************/

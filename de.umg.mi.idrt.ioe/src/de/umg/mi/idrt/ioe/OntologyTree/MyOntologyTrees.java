@@ -344,10 +344,15 @@ public class MyOntologyTrees{
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
 			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
+			node.setTreePath(target.getTreePath() + node.getID() + "\\");
+			node.setTreePathLevel(node.getTreePath().split("\\\\").length-1);
+			System.out.println(node.getTreePath().split("\\\\").length +" == " +node.getTreePath() );
 		}
 		else {
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH,source.getOntologyCellAttributes().getM_APPLIED_PATH());
 			node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
+			node.setTreePath(target.getTreePath() + node.getID() + "\\");
+			node.setTreePathLevel(target.getTreePathLevel() + 1);
 		}
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE,source.getOntologyCellAttributes().getC_BASECODE());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML,source.getOntologyCellAttributes().getC_METADATAXML());
@@ -360,8 +365,7 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.IMPORT_DATE,source.getOntologyCellAttributes().getIMPORT_DATEAsString());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,source.getOntologyCellAttributes().getSOURCESYSTEM_CD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,source.getOntologyCellAttributes().getVALUETYPE_CD());
-		node.setTreePath(target.getTreePath() + node.getID() + "\\");
-		node.setTreePathLevel(target.getTreePathLevel() + 1);
+		
 
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
@@ -372,7 +376,7 @@ public class MyOntologyTrees{
 			target.add(node);
 			this.getOntologyTreeTarget().getNodeLists().add(node);
 			for (OntologyTreeNode child : source.getChildren()) {
-				deepCopy(child, node, target);
+				deepCopy(child, node, selectedTargetNode);
 			}
 		}
 		else {
@@ -749,11 +753,13 @@ public class MyOntologyTrees{
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
 			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
+			newNode.getTargetNodeAttributes().setTargetNodeMap(sourceNode.getTargetNodeAttributes().getTargetNodeMap());
+			
+			//TODO IF TARGETNODE == MODIFIER FOLDER, COPY M_APPLIEDPATH
 		}
 		else {
 			System.out.println("sourceNode.getOntologyCellAttributes() == null");
 		}
-
 
 		targetNode.add(newNode);
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode, true);

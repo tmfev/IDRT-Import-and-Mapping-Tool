@@ -102,7 +102,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: IDRT_JDBC_Upload Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class IDRT_JDBC_Upload implements TalendJob {
@@ -757,10 +757,6 @@ public class IDRT_JDBC_Upload implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -1755,7 +1751,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1844,7 +1840,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -1968,7 +1964,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2178,7 +2174,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2253,7 +2249,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2419,7 +2415,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2503,7 +2499,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3629,7 +3625,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5189,7 +5185,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5281,7 +5277,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5368,7 +5364,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5454,7 +5450,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6627,7 +6623,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -8848,7 +8844,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -8933,7 +8929,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -9786,7 +9782,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -10945,7 +10941,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -11030,7 +11026,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -11831,7 +11827,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -12915,7 +12911,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -12999,7 +12995,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -14015,7 +14011,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -15414,7 +15410,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -15498,7 +15494,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -16253,7 +16249,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -17275,7 +17271,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -17359,7 +17355,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -18116,7 +18112,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -19138,7 +19134,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -19214,7 +19210,7 @@ public class IDRT_JDBC_Upload implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -19274,6 +19270,8 @@ public class IDRT_JDBC_Upload implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -19710,6 +19708,6 @@ public class IDRT_JDBC_Upload implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 552803 characters generated by Talend Open Studio for Data Integration on the
- * November 8, 2013 2:38:43 PM CET
+ * 552174 characters generated by Talend Open Studio for Data Integration on the
+ * December 11, 2013 3:42:16 PM CET
  ************************************************************************************************/

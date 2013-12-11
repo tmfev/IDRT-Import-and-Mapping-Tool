@@ -38,29 +38,6 @@
     <elementParameter field="CHECK" name="DISABLE_INFO" value="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_10"/>
-    <elementParameter field="CHECK" name="UPDATE_COMPONENTS" value="false"/>
-    <elementParameter field="CHECK" name="STATS_DEFAULT_PROJECTSETTING" value="true"/>
-    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="false"/>
-    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="false"/>
-    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
-    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false"/>
-    <elementParameter field="CHECK" name="ON_FILES_FLAG" value="false"/>
-    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false"/>
-    <elementParameter field="TABLE" name="DRIVER_JAR"/>
-    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_USER_WARNING" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" value="false"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:PROPERTY_TYPE" value="BUILT_IN"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:REPOSITORY_PROPERTY_TYPE" value=""/>
-    <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
-    <elementParameter field="CHECK" name="IMPLICT_DEFAULT_PROJECTSETTING" value="true"/>
-    <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" value="false"/>
-    <elementParameter field="RADIO" name="FROM_DATABASE_FLAG_IMPLICIT_CONTEXT" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_OPERATIONS" value="false"/>
-    <elementParameter field="CHECK" name="DISABLE_ERROR" value="false"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:PROPERTY_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:REPOSITORY_PROPERTY_TYPE" value=""/>
     <routinesParameter id="_TUrqIEZTEeC-l5MLnCqv9A" name="DataOperation"/>
     <routinesParameter id="_TWzKAEZTEeC-l5MLnCqv9A" name="Mathematical"/>
     <routinesParameter id="_TW5QoEZTEeC-l5MLnCqv9A" name="Numeric"/>
@@ -497,7 +474,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="fromPatient.DataType.toLowerCase().equals(&quot;float&quot;)" type="id_Boolean"/>
         <mapperTableEntries name="var3" expression="fromPatient.DataType.toLowerCase().equals(&quot;date&quot;)" type="id_Boolean"/>
@@ -533,7 +510,7 @@
         <mapperTableEntries name="Import_Date" expression="fromPatient.ImportDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="fromPatient.DownloadDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="PathID" expression="fromPatient.PathID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LA&quot;:&quot;RA&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
@@ -548,7 +525,7 @@
         <mapperTableEntries name="Import_Date" expression="fromPatient.ImportDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="fromPatient.DownloadDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="PathID" expression="fromPatient.PathID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LA&quot;:&quot;RA&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;xml&quot;" type="id_String" nullable="true"/>
@@ -563,7 +540,7 @@
         <mapperTableEntries name="Import_Date" expression="fromPatient.ImportDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="fromPatient.DownloadDate" type="id_Date" nullable="true"/>
         <mapperTableEntries name="PathID" expression="fromPatient.PathID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="fromPatient.m_applied_path.equals(&quot;@&quot;)?&quot;LA&quot;:&quot;RA&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;date&quot;" type="id_String" nullable="true"/>

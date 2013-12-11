@@ -118,7 +118,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: ODM_MASTER Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class ODM_MASTER implements TalendJob {
@@ -977,10 +977,6 @@ public class ODM_MASTER implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -2048,8 +2044,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_2_CHILD_RETURN_CODE",
 							childJob_tRunJob_2.getErrorCode());
 				}
-				globalMap.put("tRunJob_2_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_2.getExceptionStackTrace());
+				if (childJob_tRunJob_2.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_2_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_2.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_2.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_2.getStatus())) {
@@ -2087,7 +2085,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2174,7 +2172,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2772,7 +2770,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -2992,8 +2990,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_3_CHILD_RETURN_CODE",
 							childJob_tRunJob_3.getErrorCode());
 				}
-				globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_3.getExceptionStackTrace());
+				if (childJob_tRunJob_3.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_3.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_3.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_3.getStatus())) {
@@ -3031,7 +3031,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3114,7 +3114,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3334,8 +3334,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_4_CHILD_RETURN_CODE",
 							childJob_tRunJob_4.getErrorCode());
 				}
-				globalMap.put("tRunJob_4_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_4.getExceptionStackTrace());
+				if (childJob_tRunJob_4.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_4_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_4.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_4.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_4.getStatus())) {
@@ -3377,7 +3379,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3454,7 +3456,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3528,7 +3530,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3606,7 +3608,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3683,7 +3685,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3776,7 +3778,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -3996,8 +3998,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_12_CHILD_RETURN_CODE",
 							childJob_tRunJob_12.getErrorCode());
 				}
-				globalMap.put("tRunJob_12_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_12.getExceptionStackTrace());
+				if (childJob_tRunJob_12.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_12_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_12.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_12.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_12.getStatus())) {
@@ -4030,7 +4034,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4120,7 +4124,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4374,7 +4378,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4458,7 +4462,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4589,8 +4593,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_5_CHILD_RETURN_CODE",
 							childJob_tRunJob_5.getErrorCode());
 				}
-				globalMap.put("tRunJob_5_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_5.getExceptionStackTrace());
+				if (childJob_tRunJob_5.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_5_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_5.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_5.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_5.getStatus())) {
@@ -4632,7 +4638,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4718,7 +4724,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -4938,8 +4944,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_1_CHILD_RETURN_CODE",
 							childJob_tRunJob_1.getErrorCode());
 				}
-				globalMap.put("tRunJob_1_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_1.getExceptionStackTrace());
+				if (childJob_tRunJob_1.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_1_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_1.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_1.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_1.getStatus())) {
@@ -4977,7 +4985,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5064,7 +5072,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5141,7 +5149,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5218,7 +5226,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5419,7 +5427,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5645,7 +5653,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5733,7 +5741,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5807,7 +5815,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -5890,7 +5898,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6110,8 +6118,10 @@ public class ODM_MASTER implements TalendJob {
 					globalMap.put("tRunJob_10_CHILD_RETURN_CODE",
 							childJob_tRunJob_10.getErrorCode());
 				}
-				globalMap.put("tRunJob_10_CHILD_EXCEPTION_STACKTRACE",
-						childJob_tRunJob_10.getExceptionStackTrace());
+				if (childJob_tRunJob_10.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_10_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_10.getExceptionStackTrace());
+				}
 
 				if (childJob_tRunJob_10.getErrorCode() != null
 						|| ("failure").equals(childJob_tRunJob_10.getStatus())) {
@@ -6144,7 +6154,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6221,7 +6231,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6324,7 +6334,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6416,7 +6426,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6540,7 +6550,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6867,7 +6877,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -6959,7 +6969,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -7042,7 +7052,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -7145,7 +7155,7 @@ public class ODM_MASTER implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -7205,6 +7215,8 @@ public class ODM_MASTER implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -7757,6 +7769,6 @@ public class ODM_MASTER implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 225477 characters generated by Talend Open Studio for Data Integration on the
- * November 8, 2013 2:38:48 PM CET
+ * 225242 characters generated by Talend Open Studio for Data Integration on the
+ * December 11, 2013 3:42:22 PM CET
  ************************************************************************************************/
