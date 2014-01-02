@@ -341,6 +341,7 @@ public class CSVWizardPage3 extends WizardPage {
 								public void widgetSelected(SelectionEvent event) {
 									item.setText(col, combo.getText());
 									combo.dispose();
+									saveTable();
 									checkTables();
 								}
 							});
@@ -1003,6 +1004,7 @@ public class CSVWizardPage3 extends WizardPage {
 						reader.close();
 						boolean fine = false;
 						for (int i = 1; i < line1.length; i++) {
+							System.out.println(line4[i]);
 							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") )
 							{
 								fine=true;

@@ -56,6 +56,8 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Combo datePatternCombo;
 	private Label labelCleanUp;
 	private static Button cleanUpBtn;
+	private Label targetFolderLabel;
+	private static Text targetFolderText;
 
 	// private static Text csvSeperatorext;
 
@@ -133,9 +135,17 @@ public class CSVWizardPage2 extends WizardPage {
 		setDescription(Messages.CSVWizardPageTwo_CSVImportSettings);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
+	 */
+	@Override
+	public boolean isPageComplete() {
+		return !getTargetFolderText().isEmpty();
+	}
+	
 	@Override
 	public boolean canFlipToNextPage() {
-		return true;
+		return !getTargetFolderText().isEmpty();
 	}
 
 	@Override
@@ -365,6 +375,35 @@ public class CSVWizardPage2 extends WizardPage {
 			quoteCharText.setEditable(true);
 
 			new Label(container, SWT.NONE);
+			
+			targetFolderLabel = new Label(container, SWT.NONE);
+			targetFolderLabel.setToolTipText("Target Folder");
+			targetFolderLabel.setText("Target Folder");
+			
+			targetFolderText = new Text(container, SWT.NONE);
+			targetFolderText.setText(defaultProps.getProperty("MDPDName"));
+			targetFolderText.setEditable(true);
+			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+			targetFolderText.addKeyListener(new KeyListener() {
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if (targetFolderText.getText().isEmpty()) {
+						setPageComplete(false);
+						setErrorMessage("Target Folder cannot be empty!");
+					}
+					else {
+						setPageComplete(true);
+						setErrorMessage(null);
+					}
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+				
+				}
+			});
+			new Label(container, SWT.NONE);
 
 			Label labelImportTerms = new Label(container, SWT.NONE);
 			labelImportTerms.setText(Messages.CSVWizardPageTwo_ImpAndMapST);
@@ -381,12 +420,27 @@ public class CSVWizardPage2 extends WizardPage {
 			checkSaveSettings.setSelection(false);
 		
 			setControl(container);
+			new Label(container, SWT.NONE);
 			setPageComplete(false);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}
+
+	/**
+	 * @return the targetFolderText
+	 */
+	public static String getTargetFolderText() {
+		return targetFolderText.getText();
+	}
+
+	/**
+	 * @param targetFolderText the targetFolderText to set
+	 */
+	public void setTargetFolderText(Text targetFolderText) {
+		this.targetFolderText = targetFolderText;
 	}
 
 	@Override

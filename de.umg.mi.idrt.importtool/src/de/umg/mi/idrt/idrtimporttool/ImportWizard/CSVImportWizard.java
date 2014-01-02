@@ -93,6 +93,8 @@ public class CSVImportWizard extends Wizard {
 		final boolean truncate = CSVWizardPage2.getTruncate();
 		final boolean cleanUp = CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
+		final String targetFolder = CSVWizardPage2.getTargetFolderText();
+	
 		final String quoteChar = CSVWizardPage2.getQuoteCharText();
 		final boolean usePIDGenerator = CSVWizardPage2.getUsePid();
 
@@ -188,7 +190,11 @@ public class CSVImportWizard extends Wizard {
 
 					contextMap.put("datePattern", pattern);
 					defaultProps.setProperty("datePattern", pattern);
-
+					
+					contextMap.put("MDPDName", targetFolder);
+					defaultProps.setProperty("MDPDName", targetFolder);
+					
+					
 					contextMap.put("quoteChar", quoteChar);
 					defaultProps.setProperty("quoteChar", quoteChar);
 					// WITH PIDGEN!
