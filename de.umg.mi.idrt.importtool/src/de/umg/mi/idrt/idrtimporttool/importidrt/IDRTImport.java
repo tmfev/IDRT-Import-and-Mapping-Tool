@@ -2,7 +2,6 @@ package de.umg.mi.idrt.idrtimporttool.importidrt;
 
 import tos.csv_master_0_1.CSV_MASTER;
 import tos.dbimport_master_0_1.DBIMPORT_MASTER;
-//import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;

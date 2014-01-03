@@ -197,6 +197,7 @@ public class DBImportWizard extends Wizard {
 
 			final boolean cleanUp = DBWizardPage3.getCleanUp();
 			final boolean terms = DBWizardPage3.getTerms();
+			final String targetFolder = DBWizardPage3.getTargetFolderText();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPage3.getCSVPath();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -307,14 +308,20 @@ public class DBImportWizard extends Wizard {
 				defaultProps.setProperty("cleanUp", "false");
 				contextMap.put("cleanUp", "false");
 			}
+			
+			contextMap.put("MDPDName", targetFolder);
+			defaultProps.setProperty("MDPDName", targetFolder);
+			
 
 			if (DBWizardPage3.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), "");
 			}
 
 			File config = FileHandler.getBundleFile("/misc/tmp/exportConfig.csv");
-			createDBExportConfigCSV(exportConfigs, config.getAbsolutePath());
-			contextMap.put("exportDBConfig", config.getAbsolutePath());
+			createDBExportConfigCSV(exportConfigs, config.getAbsolutePath().replaceAll("\\\\",
+					"/"));
+			contextMap.put("exportDBConfig", config.getAbsolutePath().replaceAll("\\\\",
+					"/"));
 
 			contextMap.put("folderCSV", FOLDERCSV);
 

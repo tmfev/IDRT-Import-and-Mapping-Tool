@@ -97,7 +97,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: ODM_Create_Ontology Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class ODM_Create_Ontology implements TalendJob {
@@ -703,10 +703,6 @@ public class ODM_Create_Ontology implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
 	}
@@ -4857,7 +4853,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_9"
@@ -4947,7 +4943,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -7445,7 +7441,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_12"
@@ -7535,7 +7531,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -10189,7 +10185,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_14"
@@ -10279,7 +10275,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -13858,7 +13854,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_29"
@@ -24017,7 +24013,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_10"
@@ -24095,7 +24091,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -24169,7 +24165,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -24763,7 +24759,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -25228,7 +25224,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -25978,7 +25974,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -26444,7 +26440,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -28600,7 +28596,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_7"
@@ -28687,7 +28683,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -29381,7 +29377,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -31244,7 +31240,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -31327,7 +31323,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -32022,7 +32018,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -32494,7 +32490,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -33195,7 +33191,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -33734,7 +33730,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -34264,7 +34260,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -35013,7 +35009,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -35116,7 +35112,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -35219,7 +35215,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -35302,7 +35298,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -36854,7 +36850,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		} finally {
 			// free memory for "tMap_39"
@@ -36941,7 +36937,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37044,7 +37040,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37147,7 +37143,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37250,7 +37246,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37354,7 +37350,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37458,7 +37454,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37562,7 +37558,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37666,7 +37662,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37769,7 +37765,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37872,7 +37868,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -37976,7 +37972,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -38080,7 +38076,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -39964,7 +39960,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -40755,7 +40751,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -41546,7 +41542,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -42337,7 +42333,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -42421,7 +42417,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -42504,7 +42500,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -42607,7 +42603,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -42667,6 +42663,8 @@ public class ODM_Create_Ontology implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -43081,6 +43079,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1179772 characters generated by Talend Open Studio for Data Integration on
- * the November 8, 2013 2:38:45 PM CET
+ * 1178765 characters generated by Talend Open Studio for Data Integration on
+ * the January 3, 2014 10:35:30 AM CET
  ************************************************************************************************/

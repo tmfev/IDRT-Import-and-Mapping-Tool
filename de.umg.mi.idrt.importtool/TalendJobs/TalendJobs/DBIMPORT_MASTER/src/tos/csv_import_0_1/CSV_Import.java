@@ -42,6 +42,12 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
 
+//the import part of tJava_2
+//import java.util.List;
+
+//the import part of tJavaRow_1
+//import java.util.List;
+
 //the import part of tLibraryLoad_3
 //import java.util.List;
 
@@ -60,7 +66,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
  * Job: CSV_Import Purpose: <br>
  * Description:  <br>
  * @author test@talend.com
- * @version 5.3.0.r101800
+ * @version 5.3.1.r104014
  * @status 
  */
 public class CSV_Import implements TalendJob {
@@ -107,6 +113,18 @@ public class CSV_Import implements TalendJob {
 
 			}
 
+			if (folderMainCSV != null) {
+
+				this.setProperty("folderMainCSV", folderMainCSV.toString());
+
+			}
+
+			if (maxInstance != null) {
+
+				this.setProperty("maxInstance", maxInstance.toString());
+
+			}
+
 			if (config != null) {
 
 				this.setProperty("config", config.toString());
@@ -143,12 +161,6 @@ public class CSV_Import implements TalendJob {
 
 			}
 
-			if (folderMainCSV != null) {
-
-				this.setProperty("folderMainCSV", folderMainCSV.toString());
-
-			}
-
 			if (folderOutput != null) {
 
 				this.setProperty("folderOutput", folderOutput.toString());
@@ -167,9 +179,59 @@ public class CSV_Import implements TalendJob {
 
 			}
 
+			if (DBHost != null) {
+
+				this.setProperty("DBHost", DBHost.toString());
+
+			}
+
+			if (DBInstance != null) {
+
+				this.setProperty("DBInstance", DBInstance.toString());
+
+			}
+
+			if (DBPassword != null) {
+
+				this.setProperty("DBPassword", DBPassword.toString());
+
+			}
+
+			if (DBPort != null) {
+
+				this.setProperty("DBPort", DBPort.toString());
+
+			}
+
+			if (DBSchema != null) {
+
+				this.setProperty("DBSchema", DBSchema.toString());
+
+			}
+
+			if (DBUsername != null) {
+
+				this.setProperty("DBUsername", DBUsername.toString());
+
+			}
+
 			if (pidgen != null) {
 
 				this.setProperty("pidgen", pidgen.toString());
+
+			}
+
+			if (DB_StagingI2B2_jdbcurl != null) {
+
+				this.setProperty("DB_StagingI2B2_jdbcurl",
+						DB_StagingI2B2_jdbcurl.toString());
+
+			}
+
+			if (DB_StagingI2B2_sqlclassname != null) {
+
+				this.setProperty("DB_StagingI2B2_sqlclassname",
+						DB_StagingI2B2_sqlclassname.toString());
 
 			}
 
@@ -204,6 +266,18 @@ public class CSV_Import implements TalendJob {
 
 		public Object getPidMap() {
 			return this.pidMap;
+		}
+
+		public String folderMainCSV;
+
+		public String getFolderMainCSV() {
+			return this.folderMainCSV;
+		}
+
+		public BigDecimal maxInstance;
+
+		public BigDecimal getMaxInstance() {
+			return this.maxInstance;
 		}
 
 		public String config;
@@ -242,12 +316,6 @@ public class CSV_Import implements TalendJob {
 			return this.folderMain;
 		}
 
-		public String folderMainCSV;
-
-		public String getFolderMainCSV() {
-			return this.folderMainCSV;
-		}
-
 		public String folderOutput;
 
 		public String getFolderOutput() {
@@ -266,10 +334,58 @@ public class CSV_Import implements TalendJob {
 			return this.quoteChar;
 		}
 
+		public String DBHost;
+
+		public String getDBHost() {
+			return this.DBHost;
+		}
+
+		public String DBInstance;
+
+		public String getDBInstance() {
+			return this.DBInstance;
+		}
+
+		public java.lang.String DBPassword;
+
+		public java.lang.String getDBPassword() {
+			return this.DBPassword;
+		}
+
+		public String DBPort;
+
+		public String getDBPort() {
+			return this.DBPort;
+		}
+
+		public String DBSchema;
+
+		public String getDBSchema() {
+			return this.DBSchema;
+		}
+
+		public String DBUsername;
+
+		public String getDBUsername() {
+			return this.DBUsername;
+		}
+
 		public Boolean pidgen;
 
 		public Boolean getPidgen() {
 			return this.pidgen;
+		}
+
+		public String DB_StagingI2B2_jdbcurl;
+
+		public String getDB_StagingI2B2_jdbcurl() {
+			return this.DB_StagingI2B2_jdbcurl;
+		}
+
+		public String DB_StagingI2B2_sqlclassname;
+
+		public String getDB_StagingI2B2_sqlclassname() {
+			return this.DB_StagingI2B2_sqlclassname;
 		}
 
 		public String i2b2HeadNode;
@@ -415,12 +531,48 @@ public class CSV_Import implements TalendJob {
 				} catch (java.lang.reflect.InvocationTargetException e) {
 					this.e.printStackTrace();
 				}
-			} else {
-
-				status = "failure";
-
 			}
 		}
+	}
+
+	public void tJava_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCConnection_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCConnection_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCInput_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJDBCInput_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJavaRow_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJavaRow_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCInput_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tLibraryLoad_3_error(java.lang.Exception exception,
@@ -451,6 +603,39 @@ public class CSV_Import implements TalendJob {
 		status = "failure";
 
 		tJava_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCConnection_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCInput_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
 	}
 
 	public void tLibraryLoad_3_onSubJobError(java.lang.Exception exception,
@@ -484,6 +669,490 @@ public class CSV_Import implements TalendJob {
 				exception.getMessage(),
 				ResumeUtil.getExceptionStackTrace(exception), "");
 
+	}
+
+	public void tJava_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_2 begin ] start
+				 */
+
+				ok_Hash.put("tJava_2", false);
+				start_Hash.put("tJava_2", System.currentTimeMillis());
+				currentComponent = "tJava_2";
+
+				int tos_count_tJava_2 = 0;
+
+				context.DB_StagingI2B2_jdbcurl = "jdbc:oracle:thin:@"
+						+ context.DBHost + ":" + context.DBPort + ":"
+						+ context.DBInstance;
+				context.DB_StagingI2B2_sqlclassname = "oracle.jdbc.driver.OracleDriver";
+
+				// jdbc:oracle:thin:@134.76.113.224:1521:i2b2t
+
+				/**
+				 * [tJava_2 begin ] stop
+				 */
+				/**
+				 * [tJava_2 main ] start
+				 */
+
+				currentComponent = "tJava_2";
+
+				tos_count_tJava_2++;
+
+				/**
+				 * [tJava_2 main ] stop
+				 */
+				/**
+				 * [tJava_2 end ] start
+				 */
+
+				currentComponent = "tJava_2";
+
+				ok_Hash.put("tJava_2", true);
+				end_Hash.put("tJava_2", System.currentTimeMillis());
+
+				/**
+				 * [tJava_2 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_2:OnSubjobOk1", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCConnection_1Process(globalMap);
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_2:OnSubjobOk2", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tLibraryLoad_3Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_2_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCConnection_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCConnection_1 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCConnection_1", false);
+				start_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
+				currentComponent = "tJDBCConnection_1";
+
+				int tos_count_tJDBCConnection_1 = 0;
+
+				String url_tJDBCConnection_1 = context.DB_StagingI2B2_jdbcurl;
+
+				String userName_tJDBCConnection_1 = context.DBUsername;
+				String password_tJDBCConnection_1 = context.DBPassword;
+
+				java.sql.Connection conn_tJDBCConnection_1 = null;
+
+				if ((null == globalMap.get(KEY_DB_DATASOURCES))
+						|| "".equals("")) {
+
+					java.lang.Class
+							.forName(context.DB_StagingI2B2_sqlclassname);
+
+					conn_tJDBCConnection_1 = java.sql.DriverManager
+							.getConnection(url_tJDBCConnection_1,
+									userName_tJDBCConnection_1,
+									password_tJDBCConnection_1);
+					globalMap.put("conn_tJDBCConnection_1",
+							conn_tJDBCConnection_1);
+				}
+				if (null != conn_tJDBCConnection_1) {
+
+				}
+
+				globalMap.put("conn_tJDBCConnection_1", conn_tJDBCConnection_1);
+				globalMap.put("url_tJDBCConnection_1", url_tJDBCConnection_1);
+				// globalMap.put("user_tJDBCConnection_1",
+				// userName_tJDBCConnection_1);
+				// globalMap.put("pass_tJDBCConnection_1",
+				// password_tJDBCConnection_1);
+
+				/**
+				 * [tJDBCConnection_1 begin ] stop
+				 */
+				/**
+				 * [tJDBCConnection_1 main ] start
+				 */
+
+				currentComponent = "tJDBCConnection_1";
+
+				tos_count_tJDBCConnection_1++;
+
+				/**
+				 * [tJDBCConnection_1 main ] stop
+				 */
+				/**
+				 * [tJDBCConnection_1 end ] start
+				 */
+
+				currentComponent = "tJDBCConnection_1";
+
+				ok_Hash.put("tJDBCConnection_1", true);
+				end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCConnection_1 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJDBCConnection_1:OnSubjobOk",
+						"", Thread.currentThread().getId() + "", "", "", "",
+						"", "");
+			}
+
+			tJDBCInput_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 1);
+	}
+
+	public static class row1Struct implements
+			routines.system.IPersistableRow<row1Struct> {
+		final static byte[] commonByteArrayLock_TOS_CSV_Import = new byte[0];
+		static byte[] commonByteArray_TOS_CSV_Import = new byte[0];
+
+		public BigDecimal instance_num;
+
+		public BigDecimal getInstance_num() {
+			return this.instance_num;
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_CSV_Import) {
+
+				try {
+
+					int length = 0;
+
+					this.instance_num = (BigDecimal) dis.readObject();
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				} catch (ClassNotFoundException eCNFE) {
+					throw new RuntimeException(eCNFE);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// BigDecimal
+
+				dos.writeObject(this.instance_num);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("instance_num=" + String.valueOf(instance_num));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row1Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tJDBCInput_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCInput_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				row1Struct row1 = new row1Struct();
+
+				/**
+				 * [tJavaRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tJavaRow_1", false);
+				start_Hash.put("tJavaRow_1", System.currentTimeMillis());
+				currentComponent = "tJavaRow_1";
+
+				int tos_count_tJavaRow_1 = 0;
+
+				int nb_line_tJavaRow_1 = 0;
+
+				/**
+				 * [tJavaRow_1 begin ] stop
+				 */
+
+				/**
+				 * [tJDBCInput_1 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCInput_1", false);
+				start_Hash.put("tJDBCInput_1", System.currentTimeMillis());
+				currentComponent = "tJDBCInput_1";
+
+				int tos_count_tJDBCInput_1 = 0;
+
+				int nb_line_tJDBCInput_1 = 0;
+				java.sql.Connection conn_tJDBCInput_1 = null;
+				conn_tJDBCInput_1 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_1");
+				if (null == conn_tJDBCInput_1) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCInput_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					conn_tJDBCInput_1 = dataSources_tJDBCInput_1.get("")
+							.getConnection();
+					// globalMap.put("conn_tJDBCConnection_1",
+					// conn_tJDBCInput_1);
+				}
+
+				java.sql.Statement stmt_tJDBCInput_1 = conn_tJDBCInput_1
+						.createStatement();
+
+				String dbquery_tJDBCInput_1 = "select max(instance_num) from "
+						+ context.DBSchema + ".observation_fact";
+
+				globalMap.put("tJDBCInput_1_QUERY", dbquery_tJDBCInput_1);
+
+				java.sql.ResultSet rs_tJDBCInput_1 = stmt_tJDBCInput_1
+						.executeQuery(dbquery_tJDBCInput_1);
+				java.sql.ResultSetMetaData rsmd_tJDBCInput_1 = rs_tJDBCInput_1
+						.getMetaData();
+				int colQtyInRs_tJDBCInput_1 = rsmd_tJDBCInput_1
+						.getColumnCount();
+
+				String tmpContent_tJDBCInput_1 = null;
+				int column_index_tJDBCInput_1 = 1;
+				while (rs_tJDBCInput_1.next()) {
+					nb_line_tJDBCInput_1++;
+
+					column_index_tJDBCInput_1 = 1;
+
+					if (colQtyInRs_tJDBCInput_1 < column_index_tJDBCInput_1) {
+						row1.instance_num = null;
+					} else {
+
+						if (rs_tJDBCInput_1
+								.getObject(column_index_tJDBCInput_1) != null) {
+							row1.instance_num = rs_tJDBCInput_1
+									.getBigDecimal(column_index_tJDBCInput_1);
+						} else {
+							row1.instance_num = null;
+						}
+
+						if (rs_tJDBCInput_1.wasNull()) {
+							row1.instance_num = null;
+						}
+					}
+
+					/**
+					 * [tJDBCInput_1 begin ] stop
+					 */
+					/**
+					 * [tJDBCInput_1 main ] start
+					 */
+
+					currentComponent = "tJDBCInput_1";
+
+					tos_count_tJDBCInput_1++;
+
+					/**
+					 * [tJDBCInput_1 main ] stop
+					 */
+
+					/**
+					 * [tJavaRow_1 main ] start
+					 */
+
+					currentComponent = "tJavaRow_1";
+
+					if (row1.instance_num != null)
+						context.maxInstance = row1.instance_num;
+					else
+						context.maxInstance = new BigDecimal(0);
+					System.out.println("maxInstance: " + row1.instance_num);
+					nb_line_tJavaRow_1++;
+
+					tos_count_tJavaRow_1++;
+
+					/**
+					 * [tJavaRow_1 main ] stop
+					 */
+
+					/**
+					 * [tJDBCInput_1 end ] start
+					 */
+
+					currentComponent = "tJDBCInput_1";
+
+				}
+				rs_tJDBCInput_1.close();
+				stmt_tJDBCInput_1.close();
+
+				globalMap.put("tJDBCInput_1_NB_LINE", nb_line_tJDBCInput_1);
+
+				ok_Hash.put("tJDBCInput_1", true);
+				end_Hash.put("tJDBCInput_1", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCInput_1 end ] stop
+				 */
+
+				/**
+				 * [tJavaRow_1 end ] start
+				 */
+
+				currentComponent = "tJavaRow_1";
+
+				globalMap.put("tJavaRow_1_NB_LINE", nb_line_tJavaRow_1);
+
+				ok_Hash.put("tJavaRow_1", true);
+				end_Hash.put("tJavaRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tJavaRow_1 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCInput_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tLibraryLoad_3Process(
@@ -562,7 +1231,7 @@ public class CSV_Import implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -645,7 +1314,7 @@ public class CSV_Import implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -695,7 +1364,7 @@ public class CSV_Import implements TalendJob {
 					idrtHelper.rotateData(input, output, ont,
 							context.i2b2HeadNode, context.MDPDName,
 							context.MDPD, context.fileName, context.quoteChar,
-							context.datePattern);
+							context.datePattern, context.maxInstance);
 				} else {
 					File input = new File(context.currentFile);
 					File output = new File(context.folderMain
@@ -710,7 +1379,7 @@ public class CSV_Import implements TalendJob {
 							context.i2b2HeadNode, context.MDPDName,
 							context.MDPD, context.fileName, context.quoteChar,
 							(HashMap<String, String>) context.pidMap,
-							context.datePattern);
+							context.datePattern, context.maxInstance);
 				}
 
 				/**
@@ -748,7 +1417,7 @@ public class CSV_Import implements TalendJob {
 
 		} catch (java.lang.Error error) {
 
-			throw new java.lang.Error(error);
+			throw error;
 
 		}
 
@@ -808,6 +1477,8 @@ public class CSV_Import implements TalendJob {
 	}
 
 	public int runJobInTOS(String[] args) {
+		// reset status
+		status = "";
 
 		String lastStr = "";
 		for (String arg : args) {
@@ -867,24 +1538,41 @@ public class CSV_Import implements TalendJob {
 				context.putAll(context_param);
 			}
 			context.pidMap = (Object) context.getProperty("pidMap");
+			context.folderMainCSV = (String) context
+					.getProperty("folderMainCSV");
+			try {
+				context.maxInstance = routines.system.ParserUtils
+						.parseTo_BigDecimal(context.getProperty("maxInstance"));
+			} catch (NumberFormatException e) {
+				context.maxInstance = null;
+			}
 			context.config = (String) context.getProperty("config");
 			context.currentFile = (String) context.getProperty("currentFile");
 			context.datePattern = (String) context.getProperty("datePattern");
 			context.fileName = (String) context.getProperty("fileName");
 			context.folderCSV = (String) context.getProperty("folderCSV");
 			context.folderMain = (String) context.getProperty("folderMain");
-			context.folderMainCSV = (String) context
-					.getProperty("folderMainCSV");
 			context.folderOutput = (String) context.getProperty("folderOutput");
 			context.output = (String) context.getProperty("output");
 			context.quoteChar = new java.text.StringCharacterIterator(
 					context.getProperty("quoteChar")).first();
+			context.DBHost = (String) context.getProperty("DBHost");
+			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBPassword = (java.lang.String) context
+					.getProperty("DBPassword");
+			context.DBPort = (String) context.getProperty("DBPort");
+			context.DBSchema = (String) context.getProperty("DBSchema");
+			context.DBUsername = (String) context.getProperty("DBUsername");
 			try {
 				context.pidgen = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("pidgen"));
 			} catch (NumberFormatException e) {
 				context.pidgen = null;
 			}
+			context.DB_StagingI2B2_jdbcurl = (String) context
+					.getProperty("DB_StagingI2B2_jdbcurl");
+			context.DB_StagingI2B2_sqlclassname = (String) context
+					.getProperty("DB_StagingI2B2_sqlclassname");
 			context.i2b2HeadNode = (String) context.getProperty("i2b2HeadNode");
 			context.i2b2HeadNodeName = (String) context
 					.getProperty("i2b2HeadNodeName");
@@ -899,6 +1587,14 @@ public class CSV_Import implements TalendJob {
 		if (parentContextMap != null && !parentContextMap.isEmpty()) {
 			if (parentContextMap.containsKey("pidMap")) {
 				context.pidMap = (Object) parentContextMap.get("pidMap");
+			}
+			if (parentContextMap.containsKey("folderMainCSV")) {
+				context.folderMainCSV = (String) parentContextMap
+						.get("folderMainCSV");
+			}
+			if (parentContextMap.containsKey("maxInstance")) {
+				context.maxInstance = (BigDecimal) parentContextMap
+						.get("maxInstance");
 			}
 			if (parentContextMap.containsKey("config")) {
 				context.config = (String) parentContextMap.get("config");
@@ -921,10 +1617,6 @@ public class CSV_Import implements TalendJob {
 				context.folderMain = (String) parentContextMap
 						.get("folderMain");
 			}
-			if (parentContextMap.containsKey("folderMainCSV")) {
-				context.folderMainCSV = (String) parentContextMap
-						.get("folderMainCSV");
-			}
 			if (parentContextMap.containsKey("folderOutput")) {
 				context.folderOutput = (String) parentContextMap
 						.get("folderOutput");
@@ -936,8 +1628,37 @@ public class CSV_Import implements TalendJob {
 				context.quoteChar = (Character) parentContextMap
 						.get("quoteChar");
 			}
+			if (parentContextMap.containsKey("DBHost")) {
+				context.DBHost = (String) parentContextMap.get("DBHost");
+			}
+			if (parentContextMap.containsKey("DBInstance")) {
+				context.DBInstance = (String) parentContextMap
+						.get("DBInstance");
+			}
+			if (parentContextMap.containsKey("DBPassword")) {
+				context.DBPassword = (java.lang.String) parentContextMap
+						.get("DBPassword");
+			}
+			if (parentContextMap.containsKey("DBPort")) {
+				context.DBPort = (String) parentContextMap.get("DBPort");
+			}
+			if (parentContextMap.containsKey("DBSchema")) {
+				context.DBSchema = (String) parentContextMap.get("DBSchema");
+			}
+			if (parentContextMap.containsKey("DBUsername")) {
+				context.DBUsername = (String) parentContextMap
+						.get("DBUsername");
+			}
 			if (parentContextMap.containsKey("pidgen")) {
 				context.pidgen = (Boolean) parentContextMap.get("pidgen");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_jdbcurl")) {
+				context.DB_StagingI2B2_jdbcurl = (String) parentContextMap
+						.get("DB_StagingI2B2_jdbcurl");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
+				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
+						.get("DB_StagingI2B2_sqlclassname");
 			}
 			if (parentContextMap.containsKey("i2b2HeadNode")) {
 				context.i2b2HeadNode = (String) parentContextMap
@@ -983,14 +1704,14 @@ public class CSV_Import implements TalendJob {
 
 		try {
 			errorCode = null;
-			tLibraryLoad_3Process(globalMap);
+			tJava_2Process(globalMap);
 			if (!"failure".equals(status)) {
 				status = "end";
 			}
-		} catch (TalendException e_tLibraryLoad_3) {
+		} catch (TalendException e_tJava_2) {
 
-			e_tLibraryLoad_3.printStackTrace();
-			globalMap.put("tLibraryLoad_3_SUBPROCESS_STATE", -1);
+			e_tJava_2.printStackTrace();
+			globalMap.put("tJava_2_SUBPROCESS_STATE", -1);
 
 		}
 
@@ -1102,6 +1823,6 @@ public class CSV_Import implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 31658 characters generated by Talend Open Studio for Data Integration on the
- * November 8, 2013 2:38:19 PM CET
+ * 50577 characters generated by Talend Open Studio for Data Integration on the
+ * January 3, 2014 10:34:49 AM CET
  ************************************************************************************************/

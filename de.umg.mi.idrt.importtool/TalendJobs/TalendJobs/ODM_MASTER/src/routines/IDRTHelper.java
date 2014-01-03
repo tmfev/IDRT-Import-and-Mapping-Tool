@@ -194,8 +194,8 @@ public class IDRTHelper {
 			String []configRow = CSVInput.readNext();
 			CSVInput.readNext(); //pidrow
 			String []headerRow = CSVInput.readNext();
-			if (headerRow[1]==null)
-				headline = 1;
+			if (headerRow==null)
+				headline = 0;
 			else
 				headline = Integer.parseInt(headerRow[1]);
 

@@ -14,6 +14,7 @@
 	<classpathentry kind="lib" path="lib/swt.jar"/>
 	<classpathentry kind="lib" path="lib/tosidrtconnector_0_4.jar"/>
 	<classpathentry kind="lib" path="lib/transformation_to_target_0_1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_import_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_master_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_patient_data_0_1.jar"/>
@@ -52,7 +53,6 @@
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/icd_2_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/ops_2_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

@@ -1153,7 +1153,8 @@ public class DBWizardPage2 extends WizardPage {
 		boolean tableComplete = false;
 
 		try {
-			File serverFile = FileHandler.getBundleFile("cfg/tables");
+			File serverFile = FileHandler.getBundleFile("/cfg/tables");
+			System.out.println(serverFile.getAbsolutePath());
 			if (!serverFile.exists()) {
 				serverFile = new File(serverFile.getAbsolutePath());
 				serverFile.createNewFile();				
