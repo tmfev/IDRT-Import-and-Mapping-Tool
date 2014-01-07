@@ -240,7 +240,6 @@ public class MyOntologyTrees{
 
 				JTree.DropLocation dropLocation = (JTree.DropLocation) support
 						.getDropLocation();
-
 				return dropLocation.getPath() != null;
 			}
 
@@ -552,7 +551,7 @@ public class MyOntologyTrees{
 			new MenuItem(menu, SWT.SEPARATOR);
 
 			createRegexMenu();	
-			//			createRegexMenu();
+
 			//Merge Ontologies (ICD10 etc)
 			MenuItem mergeOntMenuItem = new MenuItem(menu, SWT.CASCADE);
 			mergeOntMenuItem.setText("Merge with Standard Terminology");
@@ -701,12 +700,9 @@ public class MyOntologyTrees{
 	 * 
 	 * @return this tree root
 	 */
-
 	public OntologyTreeNode getTreeRoot() {
-
 		if (this.ontologyTreeSource == null)
 			Console.error("OT is null while trying to get the tree root!");
-
 		return this.ontologyTreeSource.getRootNode();
 	}
 
@@ -715,7 +711,6 @@ public class MyOntologyTrees{
 		if (split[2] != null) {
 			return split[2].toString();
 		}
-
 		return "";
 	}
 

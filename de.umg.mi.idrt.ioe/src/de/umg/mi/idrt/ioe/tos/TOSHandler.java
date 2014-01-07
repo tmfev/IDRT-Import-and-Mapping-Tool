@@ -167,7 +167,7 @@ public class TOSHandler {
 			String m_applied_path){
 		//TODO
 
-		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
+//		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 

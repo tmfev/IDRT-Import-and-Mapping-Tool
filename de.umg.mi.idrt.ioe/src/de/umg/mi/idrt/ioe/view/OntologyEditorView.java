@@ -49,6 +49,7 @@ import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -65,6 +66,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.wb.swt.ResourceManager;
@@ -197,7 +199,6 @@ public class OntologyEditorView extends ViewPart {
 		composite_2.layout();
 	}
 	private static void collapseAllLeafs(boolean state) {
-
 		for (Object child : (targetTreeViewer.getExpandedElements())) {
 			for (OntologyTreeNode node2 : ((OntologyTreeNode)child).getChildren())
 				if (((OntologyTreeNode)node2).isLeaf())
@@ -303,11 +304,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-//				Shell shell = new Shell();
-//				shell.setSize(844, 536);
-//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//				mainComposite = new Composite(shell, SWT.NONE);
-//				mainComposite.setLayout(new BorderLayout(0, 0));
+//		Shell shell = new Shell();
+//		shell.setSize(844, 536);
+//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//		mainComposite = new Composite(shell, SWT.NONE);
+//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -1201,20 +1202,10 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 
-				new Thread(new Runnable() {
-
-					@Override
-					public void run() {
-						OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
-						stagingComposite.setRedraw(false);
-
-						expandStagingChildren(node, true);
-						stagingComposite.setRedraw(true);
-					}
-				}).run();
 				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 				stagingComposite.setRedraw(false);
-				expandStagingChildren(node, true);
+				stagingTreeViewer.expandToLevel(node, TreeViewer.ALL_LEVELS);
+//				expandStagingChildren(node, true);
 				stagingComposite.setRedraw(true);
 			}
 		});
@@ -1231,7 +1222,8 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent event) {
 				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 				stagingComposite.setRedraw(false);
-				expandStagingChildren(node, false);
+				stagingTreeViewer.collapseToLevel(node, TreeViewer.ALL_LEVELS);
+//				expandStagingChildren(node, false);
 				stagingComposite.setRedraw(true);
 			}
 		});
@@ -1242,8 +1234,6 @@ public class OntologyEditorView extends ViewPart {
 		refreshTargetVersionGUI();
 		System.out.println(System.currentTimeMillis()-time +"ms");
 	}
-
-
 
 	public static void setStagingName(String stagingName) {
 		lblStagingName.setText(stagingName);
@@ -1306,7 +1296,6 @@ public class OntologyEditorView extends ViewPart {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 
-						//				System.out.println("T "+node.getName());
 						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
 							if (subNode.getStagingParentNode()!=null) {
 								highlightedStagingNodes.add(subNode.getStagingParentNode());
@@ -1326,8 +1315,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		//		targetTreeViewer.expandToLevel(Resource.Options.EDITOR_SOURCE_TREE_OPENING_LEVEL);
-
 		getOntologyTargetTree()
 		.setTreeViewer(targetTreeViewer);
 
@@ -1339,7 +1326,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				//				targetTreeViewer.getSelection()
 
 			}
 
@@ -1394,10 +1380,10 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 
-
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
-				expandTargetChildren(node, true);
+//				expandTargetChildren(node, true);
+				targetTreeViewer.expandToLevel(node, TreeViewer.ALL_LEVELS);
 				targetComposite.setRedraw(true);
 			}
 		});
@@ -1414,7 +1400,8 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent event) {
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
-				expandTargetChildren(node, false);
+//				expandTargetChildren(node, false);
+				targetTreeViewer.collapseToLevel(node, TreeViewer.ALL_LEVELS);
 				targetComposite.setRedraw(true);
 			}
 		});

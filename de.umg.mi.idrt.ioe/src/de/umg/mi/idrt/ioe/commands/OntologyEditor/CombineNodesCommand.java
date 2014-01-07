@@ -9,8 +9,10 @@ import java.util.regex.Pattern;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TreeViewer;
 
+import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
@@ -30,7 +32,6 @@ public class CombineNodesCommand extends AbstractHandler {
 	private static String OPSREGEX = "[135689]{1}\\-[a-z0-9]{3}\\.[a-z0-9]+";
 	private static String ICDREGEX = "[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?";
 
-
 	public static void addRegEx(Regex regex) {
 		regexSet.add(regex);
 	}
@@ -38,7 +39,6 @@ public class CombineNodesCommand extends AbstractHandler {
 	public static LinkedHashSet<Regex> getRegex(){
 		return regexSet;
 	}
-
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -72,17 +72,16 @@ public class CombineNodesCommand extends AbstractHandler {
 
 			Application.executeCommand(command);
 
-
 			getnewTargetNodes(targetNode);
 
 			//TODO GET REGEX
 			String regex = MyOntologyTrees.getCurrentRegEx();
-			//			System.out.println("REGEX: " + regex);
 			generatePerfectPath(oldTreeNodeList, newTreeNodeList, regex);
 			mergeLeafs(oldTreeNodeList, newTreeNodeList,regex);
 			OntologyEditorView.getTargetTreeViewer().getTree().setRedraw(true);
 			OntologyEditorView.getTargetTreeViewer().refresh();
 			EditorTargetInfoView.refresh();
+			StatusListener.setSubStatus(0, "");
 			return null;
 		}
 		else {
@@ -103,7 +102,6 @@ public class CombineNodesCommand extends AbstractHandler {
 		for (OntologyTreeNode node : newTreeNodeList2) {
 			boolean found = false;
 			for (OntologyTreeNode nodeToCheck : oldTreeNodeList2) {
-
 				Pattern p = Pattern.compile(currentRegex.getRegex());
 				Matcher m = p.matcher(nodeToCheck.getID());
 				if (m.find()) {
@@ -114,7 +112,6 @@ public class CombineNodesCommand extends AbstractHandler {
 						break;
 					}
 				}
-
 				if (found)
 					break;
 			}
@@ -150,6 +147,9 @@ public class CombineNodesCommand extends AbstractHandler {
 	 */
 	private void mergeLeafs(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2, String regex) {
 		//TODO MAGICALLY MERGE		
+		OntologyTreeNode unmatchedFolder = null;
+		int numberOfNotFoundItems = 0;
+
 		Regex currentRegex = null;
 		for (Regex r : regexSet) {
 			if (r.getName().equals(regex)) {
@@ -157,43 +157,71 @@ public class CombineNodesCommand extends AbstractHandler {
 				break;
 			}
 		}
-		for (OntologyTreeNode oldNode : oldTreeNodeList2) {
-			boolean found = false;
-			for (OntologyTreeNode newNode :  newTreeNodeList2 ) {
 
-				Pattern p = Pattern.compile(currentRegex.getRegex());
+		System.out.println("OLD LIST: " + oldTreeNodeList2.size());
+		System.out.println("NEW LIST: " + newTreeNodeList2.size());
+		int counter = 0;
+		int mod = 1;
+		int allRows = oldTreeNodeList2.size();
+		if(allRows/100 > 0)
+			mod=allRows/100;
+
+		Pattern p = Pattern.compile(currentRegex.getRegex());
+		for (OntologyTreeNode oldNode : oldTreeNodeList2) {
+			counter++;
+			if (counter%(mod)==0 || counter==allRows){
+				StatusListener.setSubStatus((float)counter/allRows*100, (int)((float)counter/allRows*100)+"% " + "Merging: " + counter + "/"+allRows);
+			}
+			boolean found = false;
+			for (OntologyTreeNode newNode :  newTreeNodeList2) {
 				Matcher m = p.matcher(oldNode.getID());
 				if (m.find()) {
 					String icd = m.group();
-//					if (newNode.getOntologyCellAttributes().getC_BASECODE().contains(icd)) {
+					//					if (newNode.getOntologyCellAttributes().getC_BASECODE().contains(icd)) {
 					if (newNode.getOntologyCellAttributes().getOntologyTable().get(currentRegex.getTable()).contains(icd)) {
-						//						System.out.println(currentRegex.getName() + " " + node.getID() + " IN " + nodeToCheck.getID());
-						newNode.getTargetNodeAttributes().removeAllStagingPaths();
+						//						System.out.println(currentRegex.getName() + " " + oldNode.getID() + " IN " + newNode.getID());
+						//						newNode.getTargetNodeAttributes().removeAllStagingPaths();
 						newNode.getTargetNodeAttributes().addStagingPath(oldNode.getTargetNodeAttributes().getSourcePath());
 						newNode.setMerged(true);
 						oldNode.setMerged(true);
+						//						newTreeNodeList2.remove(newNode);
+						//						System.out.println("removed " + newNode.getID());
 						found = true;
 						break;
 					}
 				}
 				newNode.setMerged(true);
-//				oldNode.setMerged(true);
-				if (found)
+				//				oldNode.setMerged(true);
+				if (found) {
 					break;
+				}
 				else {
-					newNode.getTargetNodeAttributes().removeAllStagingPaths();
+					//					newNode.getTargetNodeAttributes().removeAllStagingPaths();
 					newNode.getTargetNodeAttributes().addStagingPath(perfectPath+newNode.getID()+"\\");
 				}
-				
 			}
 			if (!found) {
-				oldNode.getTargetNodeAttributes().removeAllStagingPaths();
+				numberOfNotFoundItems++;
+				if (numberOfNotFoundItems==1) {
+					unmatchedFolder = new OntologyTreeNode("Unmerged");
+					unmatchedFolder.setID("Unmerged");
+					((OntologyTreeNode)NodeDropListener.getTargetNode()).add(unmatchedFolder);
+					unmatchedFolder.getOntologyCellAttributes().setC_VISUALATTRIBUTES("FA");
+					unmatchedFolder.getTargetNodeAttributes().setVisualattributes("FA");
+					unmatchedFolder.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
+					unmatchedFolder.setTreeAttributes();
+					unmatchedFolder.setNodeType(null);
+				}
 				oldNode.getTargetNodeAttributes().addStagingPath(perfectPath+oldNode.getID()+"\\");
-				//				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().add(nodeToCheck);
-				((OntologyTreeNode)NodeDropListener.getTargetNode()).add(oldNode);
+				unmatchedFolder.add(oldNode);
 				OntologyEditorView.getOntologyTargetTree().getNodeLists().add(oldNode);
 			}
 		}
+
+		if (numberOfNotFoundItems>0) {
+			MessageDialog.openConfirm(Application.getShell(), "Merging finished!", "Merging finished. " + numberOfNotFoundItems + " items not merged!\nSee \"Unmerged\" Folder!");
+		}
+		System.out.println("not found: " + numberOfNotFoundItems);
 	}
 
 	/**

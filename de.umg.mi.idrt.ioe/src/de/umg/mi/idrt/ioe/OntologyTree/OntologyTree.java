@@ -208,15 +208,10 @@ public class OntologyTree extends JTree {
 	
 
 	public void deleteNode(OntologyTreeNode node) {
-
 		for (int x = 0; x < node.getChildCount(); x++) {
-
 			deleteNode((OntologyTreeNode) node.getChildAt(x));
-
 		}
-
 		this.getNodeLists().removeNode(node);
-
 	}
 
 	public void deleteNode(String i2b2Path) {

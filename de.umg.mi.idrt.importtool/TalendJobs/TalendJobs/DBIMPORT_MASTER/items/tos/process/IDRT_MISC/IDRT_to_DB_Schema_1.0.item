@@ -456,7 +456,7 @@
       <column comment="" key="false" name="itemGroupRepeatKey" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="toCD" expressionFilter="patientData.m_applied_path.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="CONCEPT_PATH" expression="patientData.Path" type="id_String"/>
@@ -480,7 +480,7 @@
         <mapperTableEntries name="SOURCESYSTEM_CD" expression="patientData.source  " type="id_String" nullable="true"/>
         <mapperTableEntries name="UPLOAD_ID" expression=" " type="id_String" nullable="true"/>
       </outputTables>
-      <outputTables sizeState="INTERMEDIATE" name="out2" minimized="true" activateExpressionFilter="true" activateCondensedTool="true">
+      <outputTables sizeState="INTERMEDIATE" name="out2" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="itemID" expression="patientData.itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" expression="patientData.Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" expression="patientData.VisitID" type="id_String" nullable="true"/>
@@ -494,8 +494,8 @@
         <mapperTableEntries name="Download_Date" expression="patientData.Download_Date" type="id_Date" nullable="true"/>
         <mapperTableEntries name="StudyEventRepeatKey" expression="patientData.StudyEventRepeatKey" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemGroupRepeatKey" expression="patientData.itemGroupRepeatKey" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="startDate" expression="(patientData.Value.length()>9&amp;&amp;patientData.DataType.toLowerCase().contains(&quot;date&quot;) &amp;&amp;!patientData.DataType.equalsIgnoreCase(&quot;durationDatetime&quot;))?TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,patientData.Value)  :patientData.startDate       " type="id_Date" nullable="true"/>
-        <mapperTableEntries name="endDate" expression="patientData.endDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="startDate" expression="(patientData.Value.length()>9&amp;&amp;patientData.DataType.toLowerCase().contains(&quot;date&quot;) &amp;&amp;!patientData.DataType.equalsIgnoreCase(&quot;durationDatetime&quot;))?TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,patientData.Value)  :patientData.startDate        " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="endDate" expression="(patientData.Value.length()>9&amp;&amp;patientData.DataType.toLowerCase().contains(&quot;date&quot;) &amp;&amp;!patientData.DataType.equalsIgnoreCase(&quot;durationDatetime&quot;))?TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,patientData.Value)  :patientData.endDate   " type="id_Date" nullable="true"/>
         <mapperTableEntries name="source" expression="patientData.source" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONCEPT_CD" expression="patientData.CONCEPT_CD " type="id_String" nullable="true"/>
         <mapperTableEntries name="m_applied_path" expression="patientData.m_applied_path " type="id_String" nullable="true"/>
@@ -1551,7 +1551,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var2" expression="row5.DataType.toLowerCase().equals(&quot;float&quot;)||row5.DataType.toLowerCase().equals(&quot;integer&quot;)   " type="id_Boolean"/>
       </varTables>
@@ -1569,7 +1569,7 @@
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" expression="" type="id_String" nullable="true"/>
-        <mapperTableEntries name="END_DATE" expression="row5.endDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="END_DATE" expression="row5.endDate!=null?row5.endDate:row5.startDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LOCATION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="OBSERVATION_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONFIDENCE_NUM" type="id_String" nullable="true"/>
@@ -1593,7 +1593,7 @@
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="END_DATE" expression="row5.endDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="END_DATE" expression="row5.endDate!=null?row5.endDate:row5.startDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LOCATION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="OBSERVATION_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONFIDENCE_NUM" type="id_String" nullable="true"/>
@@ -1615,12 +1615,12 @@
         <mapperTableEntries name="TVAL_CHAR" expression="row5.sic " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="null" type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
+        <mapperTableEntries name="QUANTITY_NUM" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="END_DATE" expression="row5.endDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LOCATION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="OBSERVATION_BLOB" type="id_String" nullable="true"/>
-        <mapperTableEntries name="CONFIDENCE_NUM" type="id_String" nullable="true"/>
+        <mapperTableEntries name="CONFIDENCE_NUM" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="row5.Update_Date" type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="row5.Download_Date" type="id_Date" nullable="true"/>
         <mapperTableEntries name="IMPORT_DATE" expression="row5.Import_Date" type="id_Date" nullable="true"/>
@@ -4270,7 +4270,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var2" expression="row66.DataType.toLowerCase().equals(&quot;float&quot;)||row66.DataType.toLowerCase().equals(&quot;integer&quot;)  " type="id_Boolean"/>
         <mapperTableEntries name="var1" expression="row66.StudyEventRepeatKey != null " type="id_Boolean"/>
@@ -4289,7 +4289,7 @@
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" expression="" type="id_String" nullable="true"/>
-        <mapperTableEntries name="END_DATE" expression="row66.endDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="END_DATE" expression="row66.endDate!=null?row66.endDate:row66.startDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LOCATION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="OBSERVATION_BLOB" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONFIDENCE_NUM" type="id_String" nullable="true"/>
@@ -4313,7 +4313,7 @@
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="END_DATE" expression="row66.endDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="END_DATE" expression="row66.endDate!=null?row66.endDate:row66.startDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="LOCATION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="OBSERVATION_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="CONFIDENCE_NUM" type="id_String" nullable="true"/>
@@ -5845,7 +5845,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="row10.xml.equals(&quot;xml&quot;) " type="id_Boolean"/>
       </varTables>

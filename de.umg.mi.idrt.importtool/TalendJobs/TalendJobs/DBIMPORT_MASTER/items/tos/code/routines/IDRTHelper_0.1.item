@@ -478,7 +478,7 @@ public class IDRTHelper {
 							colCounter!= Sourcesystem && colCounter != DownloadDate && 
 							colCounter != ImportDate && colCounter != UpdateDate && 
 							colCounter != EncounterID && colCounter != DeathDay && 
-							colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate
+							colCounter != BirthDay //&& colCounter != StartDate && colCounter != EndDate
 					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
@@ -546,7 +546,7 @@ public class IDRTHelper {
 							colCounter!= Sourcesystem && colCounter != DownloadDate && 
 							colCounter != ImportDate && colCounter != UpdateDate && 
 							colCounter != EncounterID && colCounter != DeathDay && 
-							colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate
+							colCounter != BirthDay //&& colCounter != StartDate && colCounter != EndDate
 					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
@@ -704,7 +704,7 @@ public class IDRTHelper {
 							columnCounter!= Sourcesystem && columnCounter != DownloadDate && 
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
-							columnCounter != BirthDay && columnCounter != StartDate && columnCounter != EndDate 
+							columnCounter != BirthDay //&& columnCounter != StartDate && columnCounter != EndDate 
 					){ //&& columnCounter != bioSic && columnCounter != imageSic && columnCounter != otherSic
 
 
@@ -960,7 +960,8 @@ public class IDRTHelper {
 						colCounter!= Sourcesystem && colCounter != DownloadDate && 
 						colCounter != ImportDate && colCounter != UpdateDate && 
 						colCounter != EncounterID && colCounter != DeathDay && 
-						colCounter != BirthDay && colCounter != StartDate && colCounter != EndDate ){
+						colCounter != BirthDay //&& colCounter != StartDate && colCounter != EndDate
+						){
 
 					String string = columnNames.get(i);	
 					ontLine[ONT_HLEVEL] = "3";
@@ -1066,7 +1067,8 @@ public class IDRTHelper {
 							columnCounter!= Sourcesystem && columnCounter != DownloadDate && 
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
-							columnCounter != BirthDay && columnCounter != StartDate && columnCounter != EndDate){
+							columnCounter != BirthDay //&& columnCounter != StartDate && columnCounter != EndDate
+							){
 						String [] nextOutputLine = new String[OBS_LENGTH];
 
 						//						if (PID>=0){
