@@ -44,19 +44,13 @@ public class TOSHandler {
 		// try to get the current ot from the view
 		if (OntologyEditorView.getMyOntologyTree() == null) {
 			nullError = true;
-			System.out
-			.println("OntologyEditorView.getMyOntologyTree() == null");
 		} else if (OntologyEditorView.getOntologyStagingTree()
 				== null) {
 			nullError = true;
-			System.out
-			.println("OntologyEditorView.getOntologyStagingTree() == null");
 		}
 
 		if (nullError == true) {
 			Console.error("Could not find a working OntologyTree to add data.");
-			System.out
-			.println("Could not find a working OntologyTree to add data.");
 			return;
 		}
 
@@ -125,7 +119,6 @@ public class TOSHandler {
 
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
-
 		if (C_HLEVEL == 0) {
 			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
 		}

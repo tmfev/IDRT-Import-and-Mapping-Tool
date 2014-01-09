@@ -28,6 +28,10 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class OntologyTreeNode extends DefaultMutableTreeNode {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -874444767245977081L;
 	private boolean searchResult = false;
 	private boolean highlighted = false;
 	private boolean merged = false;
@@ -92,13 +96,18 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private OntologyCellAttributes ontologyCellAttributes;
 	private TargetNodeAttributes targetNodeAttributes;
 
+//	private static int counter=0;
+	
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
 	 */
-	public OntologyTreeNode() {
-		setName("No_Name");
-	}
+//	public OntologyTreeNode() {
+//		setName("No_Name");
+//		counter++;
+//		if(counter%500==0||counter<500)
+//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
+//	}
 
 	/**
 	 * Copy Constructor
@@ -110,6 +119,9 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.ontologyCellAttributes = node.getOntologyCellAttributes();
 		this.setName(node.getName());
 		this.setID(node.getID());
+//		counter++;
+//		if(counter%500==0||counter<500)
+//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
 
 	/**
@@ -123,8 +135,25 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 		this.ontologyCellAttributes = new OntologyCellAttributes();
 		this.setName(name);
+//		counter++;
+//		if(counter%500==0||counter<500)
+//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+	
+//		counter--;
+//		if(counter%500==0)
+//			System.err.println("FINALIZE: " + counter + " "+ this.getName() );
+//		System.err.println("FINALIZE OT: " + this.getName());
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+	
 	/**
 	 * 155: * Adds a new child node to this node and sets this node as the
 	 * parent of 156: * the child node. The child node must not be an ancestor
@@ -167,6 +196,10 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	public List<OntologyTreeNode> getChildren() {
 		return this.children;
+	}
+	
+	public void destr() {
+		children = null;
 	}
 
 	public Object[] getChildrenArray() {
@@ -311,7 +344,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	// @Override
 	public void remove(OntologyTreeNode aChild) {
 		// this.getParent().getChildren().remove(this);
-		super.remove(aChild);
+		getChildren().remove(aChild);
+//		super.remove(aChild);
 	}
 
 	/*
@@ -321,18 +355,21 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	@Override
 	public void removeAllChildren() {
-
 		for (OntologyTreeNode node : getChildren()) {
 			MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
+			myOT.getOntologyTreeSource().getNodeLists().removeNode(node);
+			System.out.println("removing: " + node.getName());
 			node.removeAllChildren();
-			node.getChildren().clear();
+			node.destr();
 		}
+		this.getChildren().clear();
 	}
 
 	@Override
 	public void removeFromParent() {
 		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
+		myOT.getOntologyTreeSource().getNodeLists().removeNode(this);
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
 		if (this != OntologyEditorView.getOntologyTargetTree()

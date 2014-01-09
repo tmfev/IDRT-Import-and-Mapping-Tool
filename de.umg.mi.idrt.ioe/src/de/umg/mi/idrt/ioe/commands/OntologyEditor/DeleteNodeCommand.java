@@ -11,7 +11,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
@@ -38,11 +37,12 @@ public class DeleteNodeCommand extends AbstractHandler {
 					node.removeFromParent();
 				}
 				else {
-					
+					//TODO ???
 					node.removeFromParent();
 					node.getChildren().clear();
-					OntologyEditorView.getOntologyTargetTree()
-					.getNodeLists().add(node);
+					node=null;
+//					OntologyEditorView.getOntologyTargetTree()
+//					.getNodeLists().add(node);
 					//			editorTargetView.setComposite(OTTarget);
 					//TODO Ontology Editor
 					//			firstElement.removeFromParent();

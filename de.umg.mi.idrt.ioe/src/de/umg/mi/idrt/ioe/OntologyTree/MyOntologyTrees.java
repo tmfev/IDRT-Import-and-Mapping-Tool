@@ -86,8 +86,18 @@ public class MyOntologyTrees{
 	 */
 	public MyOntologyTrees() {
 		//		super(new GridLayout(1, 0));
-
+//System.out.println("****** NEW MyOntologyTrees() *********");
 		initiate();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+	System.err.println("******** FINALIZE MYOT ************");
+		// TODO Auto-generated method stub
+		super.finalize();
 	}
 
 	/* OT Commands */
@@ -117,7 +127,6 @@ public class MyOntologyTrees{
 
 		}
 		else {
-			//TODO
 			while (nodeIterator.hasNext()) {
 				final OntologyTreeNode sourceNode1 = nodeIterator.next();
 				targetNode.getTargetNodeAttributes().addStagingPath(sourceNode1.getOntologyCellAttributes().getC_FULLNAME());
@@ -225,8 +234,8 @@ public class MyOntologyTrees{
 				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
 
 		// set some options
-		OntologyTreeModel OTModel = new OntologyTreeModel(
-				this.getTargetTreeRoot());
+DefaultTreeModel OTModel = new DefaultTreeModel(
+				this.getTargetTreeRoot(),true);
 		getOntologyTreeTarget().setModel(OTModel);
 		getOntologyTreeTarget().setEditable(true);
 
@@ -341,7 +350,7 @@ public class MyOntologyTrees{
 
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
-			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
+//			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
 		}
 		else {
@@ -383,7 +392,7 @@ public class MyOntologyTrees{
 						MessageDialog.QUESTION, new String[] {"Merge","Rename","Cancel"},2);
 				confirm = dialog.open();
 				
-				System.out.println(confirm);
+//				System.out.println(confirm);
 			}
 			if (confirm==0) {
 				if (testNode.isLeaf())
@@ -745,9 +754,9 @@ public class MyOntologyTrees{
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
 			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
 		}
-		else {
-			System.out.println("sourceNode.getOntologyCellAttributes() == null");
-		}
+//		else {
+//			System.out.println("sourceNode.getOntologyCellAttributes() == null");
+//		}
 
 
 		targetNode.add(newNode);

@@ -315,7 +315,7 @@ public class OntologyEditorView extends ViewPart {
 
 			for (File listOfFile : listOfFiles) {
 				if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
-					System.out.println(listOfFile.getName() + " deleted");
+//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -408,7 +408,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.DEL) {
-					System.out.println("DELETE");
+//					System.out.println("DELETE");
 					deleteNode();
 				}
 			}
@@ -874,10 +874,10 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent e) {
 
 
-				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
-				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
+//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
+//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
-				System.out.println("childCount: " + bla.getChildCount());
+//				System.out.println("childCount: " + bla.getChildCount());
 				if (bla.getChildCount()>0 && isNotYetSaved()) {
 					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
 							"do you want to save it first?");
@@ -1152,6 +1152,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setMyOntologyTree (MyOntologyTrees myOT){
+//		System.out.println("********* SETTING OT **********");
 		myOntologyTree = myOT;
 	}
 
@@ -1248,7 +1249,7 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void setStagingServer(Server currentServer2) {
 		currentStagingServer = new Server(currentServer2);
-		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
+//		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
 	}
 
 
@@ -1321,7 +1322,8 @@ public class OntologyEditorView extends ViewPart {
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
 		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
-		mntmgetChildren.setText("getChildren");
+		//TODO
+		mntmgetChildren.setText("TEST");
 		mntmgetChildren.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -1331,9 +1333,26 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-
-				Server server = getStagingServer();
-				ServerList.test(server);	
+//				System.out.println("**** STAGING: ****");
+				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
+					System.out.println(child.getName());
+					for (OntologyTreeNode cchild : child.getChildren()) {
+						System.out.println("\t"+cchild.getName());
+					}
+				}
+//				System.out.println("*****************");
+//				System.out.println("**** TARGET: ****");
+				for (OntologyTreeNode child : getOntologyTargetTree().getRootNode().getChildren()) {
+					System.out.println(child.getName());
+					for (OntologyTreeNode cchild : child.getChildren()) {
+						System.out.println("\t"+cchild.getName());
+					}
+				}
+//				System.out.println("*****************");
+//				System.out.println("TARGET: " +getOntologyTargetTree().getNodeLists().getNumberOfItemNodes());
+//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
+				
+				System.gc();
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1492,7 +1511,7 @@ public class OntologyEditorView extends ViewPart {
 
 		//		addVersionName(version);
 		//		versionCombo.setText(version);
-		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
+//		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
 		getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
 
 		composite_2.layout();
@@ -1524,7 +1543,7 @@ public class OntologyEditorView extends ViewPart {
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
 				"images/IDRT.gif"));
 
-		System.out.println("################# Debug #######");
+//		System.out.println("################# Debug #######");
 		TargetProjects targetProjects = new TargetProjects();
 
 		TargetProject targetProject1 = new TargetProject();
@@ -1540,14 +1559,13 @@ public class OntologyEditorView extends ViewPart {
 		targetProjects.add(targetProject1);
 		targetProjects.add(targetProject2);
 
-		System.out.println("TargetProjects:");
-		List<TargetProject> list = targetProjects.getTargetProjectsList();
-		for ( TargetProject tmpTargetProject : list ){
-			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
-		}
-		System.out.println("---");
-		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
-
+//		System.out.println("TargetProjects:");
+//		List<TargetProject> list = targetProjects.getTargetProjectsList();
+//		for ( TargetProject tmpTargetProject : list ){
+//			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
+//		}
+//		System.out.println("---");
+//		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
 
 
 
@@ -1580,7 +1598,7 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(final DropTargetEvent event) {
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
-					System.out.println("SERVER!");
+//					System.out.println("SERVER!");
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
@@ -1590,7 +1608,7 @@ public class OntologyEditorView extends ViewPart {
 					System.err.println("staging node dropped");
 				}
 				else {
-					getOntologyStagingTree().setI2B2RootNode(null);
+//					getOntologyStagingTree().setI2B2RootNode(null);
 					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 					setTargetNameVersion(getLatestVersion((String)(event.data)));
 				}
@@ -1621,7 +1639,7 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(DropTargetEvent event) {
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
-					System.out.println("SERVER!");
+//					System.out.println("SERVER!");
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {

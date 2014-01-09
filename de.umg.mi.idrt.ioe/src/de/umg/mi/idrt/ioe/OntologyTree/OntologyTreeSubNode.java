@@ -19,7 +19,6 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 	private TargetSubNodeAttributes targetSubNodeAttributes;
 
 	public OntologyTreeSubNode(OntologyTreeNode parent) {
-		
 		if (parent != null) {
 			if (parent.getTargetNodeAttributes().getSourcePath() != null)
 				this.setStagingPath(parent.getTargetNodeAttributes().getSourcePath());
@@ -33,7 +32,18 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 			System.err.println("Parent null");
 		}
 	}
+	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+
+//		System.err.println("SN FINALIZE: " + this.getStagingName());
+		super.finalize();
+	}
+	
 	/**
 	 * @return the parent
 	 */

@@ -1,6 +1,7 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
 import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
 import org.eclipse.jface.viewers.TreeViewer;
 
@@ -19,29 +20,32 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 @SuppressWarnings("serial")
 public class OntologyTree extends JTree {
 
-	private OntologyTreeNode treeRoot = new OntologyTreeNode();
-	private OntologyTreeNodeList nodeLists = new OntologyTreeNodeList();
+	private OntologyTreeNode treeRoot;
+	private OntologyTreeNodeList nodeLists;
 
-	OntologyTreeNode i2b2RootNode;
+	private OntologyTreeNode i2b2RootNode;
 	private TreeViewer treeViewer;
-
-	public OntologyTree(OntologyTreeModel treeModel) {
-		super();
-		this.setModel(treeModel);
-		this.treeRoot = (OntologyTreeNode) treeModel.getRoot();
-	}
 
 	public OntologyTree(OntologyTreeNode treeRoot) {
 		super();
-
+//System.out.println("------ NEW OntologyTree(*) ---------");
 		this.treeRoot = treeRoot;
-
+		nodeLists = new OntologyTreeNodeList();
 		treeRoot.setTreePath("\\");
 		treeRoot.setTreePathLevel(-1);
 
 		getSelectionModel().setSelectionMode(
 				TreeSelectionModel.SINGLE_TREE_SELECTION);
 		setEditable(false);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		System.err.println("------ FINALIZE OntologyTree() ---------");
+		super.finalize();
 	}
 
 	/**
@@ -50,7 +54,6 @@ public class OntologyTree extends JTree {
 	 * @param nodeType
 	 */
 	public void addTargetModifierNodeByPath(OntologyItemTarget item, String ontologySource, Object nodeType) {
-		System.out.println("LOADING MODIFIER TO TARGET");
 		OntologyTreeNode node = new OntologyTreeNode(item.getName());
 		String path = item.getM_applied_path().substring(0,
 				item.getM_applied_path().length() - 1)
@@ -154,7 +157,6 @@ public class OntologyTree extends JTree {
 
 	public OntologyTreeNode addNode(OntologyTreeNode parentnode, String id,
 			String name, String path, int level) {
-		System.out.print("Adding node:" + name);
 		OntologyTreeNode node = new OntologyTreeNode(name);
 		node.setID(id);
 
@@ -249,7 +251,7 @@ public class OntologyTree extends JTree {
 	}
 
 	public void initialize() {
-		OntologyTreeModel OTModel = new OntologyTreeModel(this.getRootNode());
+		DefaultTreeModel OTModel = new DefaultTreeModel(this.getRootNode(),true);
 		setModel(OTModel);
 		setEditable(true);
 	}
