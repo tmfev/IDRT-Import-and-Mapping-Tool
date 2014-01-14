@@ -53,7 +53,7 @@ public class Application implements IApplication {
 	public Object start(IApplicationContext context) throws Exception {
 		this._display = PlatformUI.createDisplay();
 
-		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
+//		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
 
 		Activator.getDefault().createResource();
 

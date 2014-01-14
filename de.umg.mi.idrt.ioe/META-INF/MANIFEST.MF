@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: IOE Plugin
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 0.9.0.6
+Bundle-Version: 0.9.0.7
 Bundle-Activator: de.umg.mi.idrt.ioe.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.databinding,
  com.ibm.icu
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/cdatetime-0.14.0.jar,
  lib/commons-lang-2.5.jar,

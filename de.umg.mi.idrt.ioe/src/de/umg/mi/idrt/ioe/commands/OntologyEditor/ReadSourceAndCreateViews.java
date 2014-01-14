@@ -1,5 +1,7 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
+import javax.swing.tree.DefaultTreeModel;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -14,8 +16,9 @@ import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
 import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
@@ -35,7 +38,11 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		Console.info("Loading the i2b2-Ontology-Editor.");
 
-		System.out.println(ServerView.getCurrentSchema());
+		if (OntologyEditorView.getMyOntologyTree()!=null)
+		OntologyEditorView.getOntologyStagingTree().getNodeLists().removeAll();
+		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
+		
+//		System.out.println(ServerView.getCurrentSchema());
 		Server stagingServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(ServerView.getCurrentSchema()));
 		if (stagingServer == null) {
 			System.err.println("STAGING SERVER IS NULL! Schema is: " + ServerView.getCurrentSchema());
@@ -43,7 +50,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		stagingServer.setSchema(ServerView.getCurrentSchema());
 		OntologyEditorView.setStagingServer(stagingServer);
 		OntologyEditorView.setStagingSchemaName(ServerView.getCurrentSchema());
-		System.out.println("((String)(event.data)) "+ ServerView.getCurrentSchema());
+//		System.out.println("((String)(event.data)) "+ ServerView.getCurrentSchema());
 
 		// check if the ontology table has more than 1 item
 		if (TOSConnector.checkOntology() == true) {
@@ -54,7 +61,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 			StatusView.addErrorMessage(errorMessage);
 			return null;
 		}
-
+	
 		Application.executeCommand(new ActionCommand(
 				Resource.ID.Command.IOE.LOADEVERYTHING));
 		
@@ -65,6 +72,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		// editorSourceView.setComposite();
 		try {
+			
 			OntologyEditorView.setSourceContent();
 		}catch (Exception e) {
 			try {
@@ -73,11 +81,13 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 				e1.printStackTrace();
 			}
 		}
-		OntologyTreeModel newTreeModel = new OntologyTreeModel(
-				OntologyEditorView.getOntologyStagingTree().getRootNode());
+		DefaultTreeModel model = new DefaultTreeModel(
+				OntologyEditorView.getOntologyStagingTree().getRootNode(), true);
+//		OntologyTreeModel newTreeModel = new OntologyTreeModel(
+//				OntologyEditorView.getOntologyStagingTree().getRootNode());
 
 		OntologyEditorView.getOntologyStagingTree()
-		.setModel(newTreeModel);
+		.setModel(model);
 		OntologyEditorView.getOntologyStagingTree()
 		.updateUI();
 
@@ -87,11 +97,10 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 
 		}
 
-		OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
-				OntologyEditorView.getOntologyTargetTree().getRootNode());
+		DefaultTreeModel model2 = new DefaultTreeModel(OntologyEditorView.getOntologyTargetTree().getRootNode(), true);
 
 		OntologyEditorView.getOntologyTargetTree()
-		.setModel(newTreeModel2);
+		.setModel(model2);
 		OntologyEditorView.getOntologyTargetTree()
 		.updateUI();
 

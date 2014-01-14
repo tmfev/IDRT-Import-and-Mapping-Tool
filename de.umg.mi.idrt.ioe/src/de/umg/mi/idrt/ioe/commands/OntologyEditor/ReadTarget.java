@@ -1,6 +1,8 @@
 package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 
+import javax.swing.tree.DefaultTreeModel;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -10,7 +12,6 @@ import org.eclipse.ui.PlatformUI;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeModel;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
@@ -124,8 +125,8 @@ public class ReadTarget extends AbstractHandler {
 //
 //			editorTargetView.setI2B2ImportTool(i2b2ImportTool);
 
-		OntologyTreeModel newTreeModel2 = new OntologyTreeModel(
-				OntologyEditorView.getOntologyTargetTree().getRootNode());
+		DefaultTreeModel newTreeModel2 = new DefaultTreeModel(
+				OntologyEditorView.getOntologyTargetTree().getRootNode(),true);
 
 		OntologyEditorView.getOntologyTargetTree()
 		.setModel(newTreeModel2);
