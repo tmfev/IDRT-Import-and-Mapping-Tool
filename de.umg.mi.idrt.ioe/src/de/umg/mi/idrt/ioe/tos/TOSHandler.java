@@ -18,6 +18,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.ProgressView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
@@ -33,6 +34,7 @@ public class TOSHandler {
 
 	static OntologyTree ontologyStagingTree = null;
 
+	private static int counter=0;
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
 	public static final String TableIEOTarget = "ioe_target";
 	public static final String TableIEOTargetProject = "ioe_target_project";
@@ -78,28 +80,6 @@ public class TOSHandler {
 		.addMessage(
 				new SystemMessage(status, SystemMessage.MessageType.ERROR));
 	}
-	@Deprecated
-	public static void addi2b2OntologyItemToTree(OntologyItem item) {
-		if (ontologyStagingTree == null)
-			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
-
-		// System.out.println("C_METADATAXML: ");
-		// System.out.println(" - link1: " + String.valueOf(C_METADATAXML));
-		// System.out.println(" - link2: " + C_METADATAXML != null ?
-		// String.valueOf(C_METADATAXML) : "<null>");
-
-		if (item.getC_HLEVEL() == 0) {
-			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
-		}
-		else {
-			if (item.getM_APPLIED_PATH().equals("@"))
-				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-			else {
-				//TODO IMPLEMENT MODIFIER
-				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
-			}
-		}
-	}
 
 	public static void addi2b2OntologyItemToTree(final int C_HLEVEL,
 			final String C_FULLNAME,final String C_NAME,final String C_SYNONYM_CD,final
@@ -111,6 +91,9 @@ public class TOSHandler {
 			final Date IMPORT_DATE, final String SOURCESYSTEM_CD, final String VALUETYPE_CD,
 			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL) {
 
+		setCounter(getCounter() + 1);
+		if (getCounter()%1000==0)
+			ProgressView.setProgress(0, "Importing...", getCounter()+"/??? items");
 		OntologyItem item = new OntologyItem(C_HLEVEL, C_FULLNAME, C_NAME, C_SYNONYM_CD, 
 				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
 				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
@@ -126,6 +109,7 @@ public class TOSHandler {
 			if (item.getM_APPLIED_PATH().equals("@"))
 				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
 			else {
+//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
 				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
 			}
 		}
@@ -160,7 +144,7 @@ public class TOSHandler {
 			String m_applied_path){
 		//TODO
 
-//		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
+		//		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
@@ -168,13 +152,13 @@ public class TOSHandler {
 				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
 				sourceSystemCD,	valueTypeCD,m_applied_path);
 		if (treeLevel!=0) {
-			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path()))
-				OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
-//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-			else {
-				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
-			}
-			
+//			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path()))
+//				OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
+			//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+//			else {
+//				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
+//			}
+
 		}
 	}
 
@@ -226,6 +210,14 @@ public class TOSHandler {
 		targetProjects.getSelectedTarget().setVersion(version);
 		targetProjects.getSelectedTargetProject().setTargetProjectID(targetProjectID);
 
+	}
+
+	public static int getCounter() {
+		return counter;
+	}
+
+	public static void setCounter(int counter) {
+		TOSHandler.counter = counter;
 	}
 
 }

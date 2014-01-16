@@ -52,9 +52,11 @@ import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.misc.IDRTMessageDialog;
+import de.umg.mi.idrt.ioe.misc.Progress;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.ProgressView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
@@ -78,24 +80,26 @@ public class MyOntologyTrees{
 	private static Menu regMenu;
 	private static Shell dialog;
 	private static String currentRegEx;
-
+	private float percent;
+	private int counter;
 	private int confirm;
+	private int progress;
 	/**
 	 * The MyontolgoyTree class imports data, creates and manages a tree and
 	 * exports this tree to I2B2.
 	 */
 	public MyOntologyTrees() {
 		//		super(new GridLayout(1, 0));
-//System.out.println("****** NEW MyOntologyTrees() *********");
+		//System.out.println("****** NEW MyOntologyTrees() *********");
 		initiate();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override
 	protected void finalize() throws Throwable {
-	System.err.println("******** FINALIZE MYOT ************");
+		System.err.println("******** FINALIZE MYOT ************");
 		// TODO Auto-generated method stub
 		super.finalize();
 	}
@@ -118,10 +122,20 @@ public class MyOntologyTrees{
 			}
 			nodeIterator = selection.iterator();
 
+			//TODO Start Progress
+			//			ProgressView.addProgress();
 			while (nodeIterator.hasNext()) {
 				final OntologyTreeNode sourceNode1 = nodeIterator.next();
 				if (sourceNode1.getTreePathLevel() == minLevel){
+
+					progress = 0;
+					counter = sourceNode1.getAllChildrenCount();
+					percent = (float)counter/100;
+					System.out.println("COPY SIZE: " + counter + " " + percent);
+
+					ProgressView.setProgress(0, "Copying...", "");
 					deepCopy(sourceNode1, targetNode, targetNode);
+					ProgressView.setProgress(100, "Copying... (done)","");
 				}
 			}
 
@@ -165,35 +179,35 @@ public class MyOntologyTrees{
 		ontologyTreeSource.setRootVisible(false);
 
 		getOntologyTreeSource().updateUI();
-		MouseAdapter ma = new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			private void myPopupEvent(MouseEvent e) {
-				int x = e.getX();
-				int y = e.getY();
-				OntologyTree OT = (OntologyTree) e.getSource();
-				TreePath path = OT.getPathForLocation(x, y);
-				if (path == null)
-					return;
-
-				OT.setSelectionPath(path);
-
-			}
-		};
-
-		// set custom listener
-		if (this.ontologyTreeSource != null) {
-			// this.OT.addTreeSelectionListener(this);
-			this.ontologyTreeSource.addMouseListener(ma);
-		}
+//		MouseAdapter ma = new MouseAdapter() {
+//			public void mousePressed(MouseEvent e) {
+//				if (e.isPopupTrigger())
+//					myPopupEvent(e);
+//			}
+//
+//			public void mouseReleased(MouseEvent e) {
+//				if (e.isPopupTrigger())
+//					myPopupEvent(e);
+//			}
+//
+//			private void myPopupEvent(MouseEvent e) {
+//				int x = e.getX();
+//				int y = e.getY();
+//				OntologyTree OT = (OntologyTree) e.getSource();
+//				TreePath path = OT.getPathForLocation(x, y);
+//				if (path == null)
+//					return;
+//
+//				OT.setSelectionPath(path);
+//
+//			}
+//		};
+//
+//		// set custom listener
+//		if (this.ontologyTreeSource != null) {
+//			// this.OT.addTreeSelectionListener(this);
+//			this.ontologyTreeSource.addMouseListener(ma);
+//		}
 
 
 	}
@@ -234,104 +248,104 @@ public class MyOntologyTrees{
 				targetOntologyi2b2RootNode.getTreePath(), targetOntologyi2b2RootNode);
 
 		// set some options
-DefaultTreeModel OTModel = new DefaultTreeModel(
+		DefaultTreeModel OTModel = new DefaultTreeModel(
 				this.getTargetTreeRoot(),true);
 		getOntologyTreeTarget().setModel(OTModel);
 		getOntologyTreeTarget().setEditable(true);
 
-		getOntologyTreeTarget().setTransferHandler(new TransferHandler() {
-
-			public boolean canImport(TransferHandler.TransferSupport support) {
-				if (!support.isDataFlavorSupported(DataFlavor.stringFlavor)
-						|| !support.isDrop()) {
-					return false;
-				}
-
-				JTree.DropLocation dropLocation = (JTree.DropLocation) support
-						.getDropLocation();
-				return dropLocation.getPath() != null;
-			}
-
-			public boolean importData(TransferHandler.TransferSupport support) {
-				Console.info("... importing data via the TransferHandler. Crazy.");
-				Console.error("This is just plain wrong.");
-				Console.subinfo("Subinfo");
-				if (!canImport(support)) {
-					return false;
-				}
-
-				JTree.DropLocation dropLocation = (JTree.DropLocation) support
-						.getDropLocation();
-
-				TreePath path = dropLocation.getPath();
-
-				Transferable transferable = support.getTransferable();
-
-				String transferData;
-				try {
-					transferData = (String) transferable
-							.getTransferData(DataFlavor.stringFlavor);
-				} catch (IOException e) {
-					return false;
-				} catch (UnsupportedFlavorException e) {
-					return false;
-				}
-
-				int childIndex = dropLocation.getChildIndex();
-				if (childIndex == -1) {
-					childIndex = getOntologyTreeTarget().getModel()
-							.getChildCount(path.getLastPathComponent());
-				}
-
-				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(
-						transferData);
-				DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) path
-						.getLastPathComponent();
-				((DefaultTreeModel) getOntologyTreeTarget().getModel())
-				.insertNodeInto(newNode, parentNode, childIndex);
-
-				TreePath newPath = path.pathByAddingChild(newNode);
-				getOntologyTreeTarget().makeVisible(newPath);
-				getOntologyTreeTarget().scrollRectToVisible(
-						getOntologyTreeTarget().getPathBounds(newPath));
-
-				return true;
-			}
-		});
+		//		getOntologyTreeTarget().setTransferHandler(new TransferHandler() {
+		//
+		//			public boolean canImport(TransferHandler.TransferSupport support) {
+		//				if (!support.isDataFlavorSupported(DataFlavor.stringFlavor)
+		//						|| !support.isDrop()) {
+		//					return false;
+		//				}
+		//
+		//				JTree.DropLocation dropLocation = (JTree.DropLocation) support
+		//						.getDropLocation();
+		//				return dropLocation.getPath() != null;
+		//			}
+		//
+		//			public boolean importData(TransferHandler.TransferSupport support) {
+		//				Console.info("... importing data via the TransferHandler. Crazy.");
+		//				Console.error("This is just plain wrong.");
+		//				Console.subinfo("Subinfo");
+		//				if (!canImport(support)) {
+		//					return false;
+		//				}
+		//
+		//				JTree.DropLocation dropLocation = (JTree.DropLocation) support
+		//						.getDropLocation();
+		//
+		//				TreePath path = dropLocation.getPath();
+		//
+		//				Transferable transferable = support.getTransferable();
+		//
+		//				String transferData;
+		//				try {
+		//					transferData = (String) transferable
+		//							.getTransferData(DataFlavor.stringFlavor);
+		//				} catch (IOException e) {
+		//					return false;
+		//				} catch (UnsupportedFlavorException e) {
+		//					return false;
+		//				}
+		//
+		//				int childIndex = dropLocation.getChildIndex();
+		//				if (childIndex == -1) {
+		//					childIndex = getOntologyTreeTarget().getModel()
+		//							.getChildCount(path.getLastPathComponent());
+		//				}
+		//
+		//				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(
+		//						transferData);
+		//				DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) path
+		//						.getLastPathComponent();
+		//				((DefaultTreeModel) getOntologyTreeTarget().getModel())
+		//				.insertNodeInto(newNode, parentNode, childIndex);
+		//
+		//				TreePath newPath = path.pathByAddingChild(newNode);
+		//				getOntologyTreeTarget().makeVisible(newPath);
+		//				getOntologyTreeTarget().scrollRectToVisible(
+		//						getOntologyTreeTarget().getPathBounds(newPath));
+		//
+		//				return true;
+		//			}
+		//		});
 
 		this.setTargetRootNode(getOntologyTreeTarget().getRootNode());
 
 		// adding mouse adapter
-		MouseAdapter ma = new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger())
-					myPopupEvent(e);
-			}
-
-			private void myPopupEvent(MouseEvent e) {
-				int x = e.getX();
-				int y = e.getY();
-				OntologyTree OTTarget = (OntologyTree) e.getSource();
-				TreePath path = OTTarget.getPathForLocation(x, y);
-				if (path == null)
-					return;
-
-				OTTarget.setSelectionPath(path);
-
-			}
-		};
+		//		MouseAdapter ma = new MouseAdapter() {
+		//			public void mousePressed(MouseEvent e) {
+		//				if (e.isPopupTrigger())
+		//					myPopupEvent(e);
+		//			}
+		//
+		//			public void mouseReleased(MouseEvent e) {
+		//				if (e.isPopupTrigger())
+		//					myPopupEvent(e);
+		//			}
+		//
+		//			private void myPopupEvent(MouseEvent e) {
+		//				int x = e.getX();
+		//				int y = e.getY();
+		//				OntologyTree OTTarget = (OntologyTree) e.getSource();
+		//				TreePath path = OTTarget.getPathForLocation(x, y);
+		//				if (path == null)
+		//					return;
+		//
+		//				OTTarget.setSelectionPath(path);
+		//
+		//			}
+		//		};
 
 		// set custom renderer and listener
-		if (this.ontologyTargetTree != null) {
-
-			// this.OTTarget.addTreeSelectionListener(this);
-			this.ontologyTargetTree.addMouseListener(ma);
-		}
+		//		if (this.ontologyTargetTree != null) {
+		//
+		//			// this.OTTarget.addTreeSelectionListener(this);
+		//			this.ontologyTargetTree.addMouseListener(ma);
+		//		}
 
 	}
 
@@ -339,18 +353,25 @@ DefaultTreeModel OTModel = new DefaultTreeModel(
 	 * 
 	 * Node operations
 	 * 
-	 * ****************************************************
+	 * *
+	 * @param pro ***************************************************
 	 */
 
-	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, OntologyTreeNode selectedTargetNode) {
+	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, final OntologyTreeNode selectedTargetNode) {
 		//TODO
+		progress++;
+		if ((int) (progress/percent)>ProgressView.getValue()+10) {
+//			System.out.println(progress + " " + percent + " " + counter + " " + progress/percent);
+			ProgressView.setProgress((int) (progress/percent),"Copying... ("+ProgressView.getValue()+"%)",source.getName());
+		}
 
+		//		ProgressView.set
 		final OntologyTreeNode node = new OntologyTreeNode(source);
 		node.getTargetNodeAttributes().setVisualattributes(source.getOntologyCellAttributes().getC_VISUALATTRIBUTES());
-
+		node.setModifier(source.isModifier());
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
-//			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
+			//			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
 		}
 		else {
@@ -380,7 +401,7 @@ DefaultTreeModel OTModel = new DefaultTreeModel(
 			target.add(node);
 			this.getOntologyTreeTarget().getNodeLists().add(node);
 			for (OntologyTreeNode child : source.getChildren()) {
-				deepCopy(child, node, target);
+				deepCopy(child, node, selectedTargetNode);
 			}
 		}
 		else {
@@ -391,15 +412,15 @@ DefaultTreeModel OTModel = new DefaultTreeModel(
 						"This "+ folderOrItem+" already exists in the target ontology!\nDo you want to merge, rename or cancel?", 
 						MessageDialog.QUESTION, new String[] {"Merge","Rename","Cancel"},2);
 				confirm = dialog.open();
-				
-//				System.out.println(confirm);
+
+				//				System.out.println(confirm);
 			}
 			if (confirm==0) {
 				if (testNode.isLeaf())
 					testNode.getTargetNodeAttributes().addStagingPath(node.getOntologyCellAttributes().getC_FULLNAME());
 				else {
 					for (OntologyTreeNode child : source.getChildren()) {
-						deepCopy(child, node, target);
+						deepCopy(child, node, selectedTargetNode);
 					}
 				}
 			}
@@ -450,7 +471,7 @@ DefaultTreeModel OTModel = new DefaultTreeModel(
 							target.add(node);
 							getOntologyTreeTarget().getNodeLists().add(node);
 							for (OntologyTreeNode child : source.getChildren()) {
-								deepCopy(child, node,target);
+								deepCopy(child, node,selectedTargetNode);
 							}
 						}
 						else {
@@ -754,9 +775,9 @@ DefaultTreeModel OTModel = new DefaultTreeModel(
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
 			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
 		}
-//		else {
-//			System.out.println("sourceNode.getOntologyCellAttributes() == null");
-//		}
+		//		else {
+		//			System.out.println("sourceNode.getOntologyCellAttributes() == null");
+		//		}
 
 
 		targetNode.add(newNode);

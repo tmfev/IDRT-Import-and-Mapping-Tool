@@ -55,6 +55,7 @@ public class OntologyTree extends JTree {
 	 */
 	public void addTargetModifierNodeByPath(OntologyItemTarget item, String ontologySource, Object nodeType) {
 		OntologyTreeNode node = new OntologyTreeNode(item.getName());
+//		node.setModifier(true);
 		String path = item.getM_applied_path().substring(0,
 				item.getM_applied_path().length() - 1)
 				+ item.getTreePath();
@@ -70,16 +71,19 @@ public class OntologyTree extends JTree {
 		node.setType(ontologySource);
 //		node.setOntologyCellAttributes(item);
 		
-		node.setTreeAttributes();
 		node.getTargetNodeAttributes().setVisualattributes(
 				item.getVisualattributes());
-		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
+		
+		System.out.println(item.getM_applied_path() + " " +item.getStagingDimension());
+		
+		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath()); //item.getStagingPath()
 		node.getTargetNodeAttributes().setEndDateSourcePath(
 				item.getEnddateStagingPath());
 		node.getTargetNodeAttributes().setStartDateSourcePath(
 				item.getStartdateStagingPath());
 		node.getTargetNodeAttributes().setName(item.getName());
 		
+		node.getTargetNodeAttributes().setDimension(item.getStagingDimension());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE, item.getBasecode());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML, item.getMetadataxml());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE, item.getColumndatatype());
@@ -92,6 +96,7 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD, item.getSourceSystemCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD, item.getValueTypeCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION, item.getStagingDimension());
 		
 		
 		if (nodeType != null) {
@@ -99,6 +104,71 @@ public class OntologyTree extends JTree {
 		}
 	}
 	
+	
+//	public void addNodeByPath(String i2b2Path, String name, String source,
+//			OntologyItemTarget item, NodeType type) {
+//
+//		OntologyTreeNode node = new OntologyTreeNode(name);
+//		node.setID(node.getIDFromPath(i2b2Path));
+//		
+//		if (!item.getM_applied_path().equals("@"))
+//			node.setModifier(true);
+//		else
+//			node.setModifier(false);
+//		
+//		try {
+//			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
+//		} catch (Exception e) {
+//			// e.printStackTrace();
+//			Console.error("Could not add node \"" + name
+//					+ "\" to the tree, because there is no parent node for it.");
+//		}
+//		node.setTreeAttributes();
+//		node.setType(source);
+//		node.getTargetNodeAttributes().setVisualattributes(
+//				item.getVisualattributes());
+//		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
+//		node.getTargetNodeAttributes().setEndDateSourcePath(
+//				item.getEnddateStagingPath());
+//		node.getTargetNodeAttributes().setStartDateSourcePath(
+//				item.getStartdateStagingPath());
+//		node.getTargetNodeAttributes().setName(item.getName());
+//		if (type != null) {
+//			setI2B2RootNode(node);
+//		}
+//		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
+//	}
+
+//	private OntologyTreeNode addNode(OntologyTreeNode parentnode, String id,
+//			String name, String path, int level) {
+//		OntologyTreeNode node = new OntologyTreeNode(name);
+//		node.setID(id);
+//
+//		node.setTreePath(path);
+//		node.setTreePathLevel(level);
+//
+//		parentnode.add(node);
+//		this.getNodeLists().add(id, parentnode.getTreePath(), node);
+//		return node;
+//	}
+
+//	@Deprecated
+//	private OntologyTreeNode addNodeByPath(String parentPath, String itemID,
+//			String name) {
+//
+//		OntologyTreeNode node = new OntologyTreeNode(name);
+//		this.getNodeLists().add(itemID, parentPath, node);
+//		OntologyTreeNode parent = getNodeLists().getNodeByPath(parentPath);
+//		if (parent != null) {
+//			parent.add(node);
+//			node.setTreeAttributes();
+//			return parent;
+//		} else {
+//			Console.error("Couldn't add Node because there was no parent node found with the path \""
+//					+ parentPath + "\"");
+//			return null;
+//		}
+//	}
 	/**
 	 * @param item
 	 * @param ontologySource
@@ -113,98 +183,52 @@ public class OntologyTree extends JTree {
 		node.setID(node.getIDFromPath(item.getC_FULLNAME()));
 		try {
 			this.getNodeLists().addOTNode(path, node).add(node);
+//			this.getNodeLists().addOTNode(item.getC_FULLNAME(), node).add(node);
 		} catch (Exception e) {
 			System.err.println("no parent");
 			Console.error("Could not add node \"" + item.getC_NAME()
 					+ "\" to the tree, because there is no parent node for it.");
-			
-			
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);
+		
 		node.setOntologyCellAttributes(item);
+		node.setModifier(true);
 		if (nodeType != null) {
 			setI2B2RootNode(node);
 		}
 	}
-	public void addNodeByPath(String i2b2Path, String name, String source,
-			OntologyItemTarget item, NodeType type) {
-
-		OntologyTreeNode node = new OntologyTreeNode(name);
-		node.setID(node.getIDFromPath(i2b2Path));
-		try {
-			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
-		} catch (Exception e) {
-			// e.printStackTrace();
-			Console.error("Could not add node \"" + name
-					+ "\" to the tree, because there is no parent node for it.");
-		}
-		node.setTreeAttributes();
-		node.setType(source);
-		node.getTargetNodeAttributes().setVisualattributes(
-				item.getVisualattributes());
-		node.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
-		node.getTargetNodeAttributes().setEndDateSourcePath(
-				item.getEnddateStagingPath());
-		node.getTargetNodeAttributes().setStartDateSourcePath(
-				item.getStartdateStagingPath());
-		node.getTargetNodeAttributes().setName(item.getName());
-		if (type != null) {
-			setI2B2RootNode(node);
-		}
-		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
-	}
-
-	public OntologyTreeNode addNode(OntologyTreeNode parentnode, String id,
-			String name, String path, int level) {
-		OntologyTreeNode node = new OntologyTreeNode(name);
-		node.setID(id);
-
-		node.setTreePath(path);
-		node.setTreePathLevel(level);
-
-		parentnode.add(node);
-		this.getNodeLists().add(id, parentnode.getTreePath(), node);
-		return node;
-	}
-
-	public OntologyTreeNode addNodeByPath(String parentPath, String itemID,
-			String name) {
-
-		OntologyTreeNode node = new OntologyTreeNode(name);
-		this.getNodeLists().add(itemID, parentPath, node);
-		OntologyTreeNode parent = getNodeLists().getNodeByPath(parentPath);
-		if (parent != null) {
-			parent.add(node);
-			node.setTreeAttributes();
-			return parent;
-		} else {
-			Console.error("Couldn't add Node because there was no parent node found with the path \""
-					+ parentPath + "\"");
-			return null;
-		}
-	}
-
+	
 	public void addNodeByPath(String i2b2Path, String name, String source,
 			OntologyItem item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
 		node.setID(node.getIDFromPath(i2b2Path));
+		if (item != null)
+			node.setOntologyCellAttributes(item);
+		
+		
+		if (item.getC_TABLENAME().equalsIgnoreCase("modifier_dimension")) {
+			node.setModifier(true);
+		}
+		else {
+			node.setModifier(false);
+		}
 		try {
 			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 		} catch (Exception e) {
-			// e.printStackTrace();
+			 e.printStackTrace();
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}
 		node.setTreeAttributes();
 		node.setType(source);
-		if (item != null)
-			node.setOntologyCellAttributes(item);
+		
 		
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
+		
 	}
 
 	

@@ -19,9 +19,11 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.misc.Progress;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.ProgressView;
 
 public class CombineNodesCommand extends AbstractHandler {
 
@@ -31,6 +33,7 @@ public class CombineNodesCommand extends AbstractHandler {
 	private String perfectPath;
 	private static String OPSREGEX = "[135689]{1}\\-[a-z0-9]{3}\\.[a-z0-9]+";
 	private static String ICDREGEX = "[A-TV-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?";
+	private static Progress pro;
 
 	public static void addRegEx(Regex regex) {
 		regexSet.add(regex);
@@ -74,7 +77,9 @@ public class CombineNodesCommand extends AbstractHandler {
 
 			getnewTargetNodes(targetNode);
 
-			//TODO GET REGEX
+			//TODO start progress bar
+			ProgressView.setProgress(0, "Merging...", "");
+			
 			String regex = MyOntologyTrees.getCurrentRegEx();
 			generatePerfectPath(oldTreeNodeList, newTreeNodeList, regex);
 			mergeLeafs(oldTreeNodeList, newTreeNodeList,regex);
@@ -82,6 +87,7 @@ public class CombineNodesCommand extends AbstractHandler {
 			OntologyEditorView.getTargetTreeViewer().refresh();
 			EditorTargetInfoView.refresh();
 			StatusListener.setSubStatus(0, "");
+			//			ProgressView.clearProgress();
 			return null;
 		}
 		else {
@@ -171,6 +177,10 @@ public class CombineNodesCommand extends AbstractHandler {
 			counter++;
 			if (counter%(mod)==0 || counter==allRows){
 				StatusListener.setSubStatus((float)counter/allRows*100, (int)((float)counter/allRows*100)+"% " + "Merging: " + counter + "/"+allRows);
+				ProgressView.setProgress(counter/allRows*100, "Merging...", counter + "/"+allRows);
+
+
+				ProgressView.updateProgressBar();
 			}
 			boolean found = false;
 			for (OntologyTreeNode newNode :  newTreeNodeList2) {
@@ -219,7 +229,12 @@ public class CombineNodesCommand extends AbstractHandler {
 		}
 
 		if (numberOfNotFoundItems>0) {
+			ProgressView.setProgress(100,"Merging... (Finished)", numberOfNotFoundItems + " items not merged!");
 			MessageDialog.openConfirm(Application.getShell(), "Merging finished!", "Merging finished. " + numberOfNotFoundItems + " items not merged!\nSee \"Unmerged\" Folder!");
+
+		}
+		else {
+			ProgressView.setProgress(100,"Merging... (Finished)","OK");
 		}
 		System.out.println("not found: " + numberOfNotFoundItems);
 	}

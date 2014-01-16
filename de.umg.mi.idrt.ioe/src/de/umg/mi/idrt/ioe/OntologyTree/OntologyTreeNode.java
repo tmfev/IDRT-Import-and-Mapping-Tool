@@ -35,7 +35,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private boolean searchResult = false;
 	private boolean highlighted = false;
 	private boolean merged = false;
-	
+	private boolean isModifier = false;
+	private static int counter = 0;
 	/**
 	 * @return the merged
 	 */
@@ -96,18 +97,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private OntologyCellAttributes ontologyCellAttributes;
 	private TargetNodeAttributes targetNodeAttributes;
 
-//	private static int counter=0;
-	
+	//	private static int counter=0;
+
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
 	 */
-//	public OntologyTreeNode() {
-//		setName("No_Name");
-//		counter++;
-//		if(counter%500==0||counter<500)
-//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
-//	}
 
 	/**
 	 * Copy Constructor
@@ -120,8 +115,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.setName(node.getName());
 		this.setID(node.getID());
 //		counter++;
-//		if(counter%500==0||counter<500)
-//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
+//		if(counter%2000==0||counter<500)
+//			System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
 
 	/**
@@ -136,8 +131,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		this.ontologyCellAttributes = new OntologyCellAttributes();
 		this.setName(name);
 //		counter++;
-//		if(counter%500==0||counter<500)
-//		System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
+//		if(counter%2000==0||counter<500)
+//			System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
 
 	/* (non-Javadoc)
@@ -145,15 +140,15 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	@Override
 	protected void finalize() throws Throwable {
-	
+
 //		counter--;
-//		if(counter%500==0)
-//			System.err.println("FINALIZE: " + counter + " "+ this.getName() );
-//		System.err.println("FINALIZE OT: " + this.getName());
+		//		if(counter%500==0)
+//		System.err.println("FINALIZE OT: " + counter + " "+ this.getName() );
+		//		System.err.println("FINALIZE OT: " + this.getName());
 		// TODO Auto-generated method stub
 		super.finalize();
 	}
-	
+
 	/**
 	 * 155: * Adds a new child node to this node and sets this node as the
 	 * parent of 156: * the child node. The child node must not be an ancestor
@@ -182,6 +177,14 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return this.children.listIterator();
 	}
 
+	public int getAllChildrenCount() {
+		int sum = this.getChildren().size();
+		for (OntologyTreeNode child : getChildren()) {
+			sum+=child.getAllChildrenCount();
+		}
+		return sum;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -196,41 +199,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	public List<OntologyTreeNode> getChildren() {
 		return this.children;
-	}
-	
-	public void destr() {
-		children = null;
-	}
-
-	public Object[] getChildrenArray() {
-
-		List<OntologyTreeNode> children = new ArrayList<OntologyTreeNode>();
-
-		// System.out.println("getChildrenArray for \"" +
-		// this.getOntologyCellAttributes().getC_FULLNAME() + "\" ChildCount \""
-		// + getChildCount() + "\"");
-
-		if (this.getChildCount() > 0) {
-
-			for (int x = 0; x < this.getChildCount(); x++) {
-				// System.out.println(" ... while " + i++);
-				OntologyTreeNode tmpChild = (OntologyTreeNode) this
-						.getChildAt(x);
-				children.add(tmpChild);
-				tmpChild.getChildrenArray();
-			}
-
-			return children.toArray();
-		} else
-			return null;
-
-	}
-
-	public Iterator<OntologyTreeNode> getChildrenIterator() {
-		if (this.children != null) {
-			return (Iterator<OntologyTreeNode>) this.children.iterator();
-		}
-		return null;
 	}
 
 	/**
@@ -341,11 +309,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return this.isVisible;
 	}
 
-	// @Override
+//	@Override
 	public void remove(OntologyTreeNode aChild) {
 		// this.getParent().getChildren().remove(this);
 		getChildren().remove(aChild);
-//		super.remove(aChild);
+		
+				super.remove(aChild);
 	}
 
 	/*
@@ -355,23 +324,34 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	@Override
 	public void removeAllChildren() {
+//		System.out.println("REMOVEALL\tCHILDREN "+this.getName());
 		for (OntologyTreeNode node : getChildren()) {
 			MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
 			myOT.getOntologyTreeSource().getNodeLists().removeNode(node);
-			System.out.println("removing: " + node.getName());
+//						System.out.println("removing: " + node.getName());
+//			node.ontologyCellAttributes=null;
+//			if (node.targetNodeAttributes!=null)
+//			node.targetNodeAttributes.setSubNodeList(null);
+//			node.targetNodeAttributes=null;
 			node.removeAllChildren();
-			node.destr();
+			node=null;
+			
 		}
-		this.getChildren().clear();
+		this.children=new ArrayList<OntologyTreeNode>();
+		super.removeAllChildren();
 	}
 
 	@Override
 	public void removeFromParent() {
+//		System.out.println("REMOVEFROM\tPARENT "+this.getName());
 		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 		myOT.getOntologyTreeSource().getNodeLists().removeNode(this);
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
+//		this.ontologyCellAttributes=null;
+//		this.targetNodeAttributes.setSubNodeList(null);
+//		this.targetNodeAttributes=null;
 		if (this != OntologyEditorView.getOntologyTargetTree()
 				.getI2B2RootNode())
 			this.getParent().getChildren().remove(this);
@@ -495,7 +475,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		ontologyCellAttributes.setC_BASECODE(item.getC_BASECODE());
 		ontologyCellAttributes.setC_METADATAXML(item.getC_METADATAXML());
 		ontologyCellAttributes
-				.setC_FACTTABLECOLUMN(item.getC_FACTTABLECOLUMN());
+		.setC_FACTTABLECOLUMN(item.getC_FACTTABLECOLUMN());
 		ontologyCellAttributes.setC_TABLENAME(item.getC_TABLENAME());
 		ontologyCellAttributes.setC_COLUMNNAME(item.getC_COLUMNNAME());
 		ontologyCellAttributes.setC_COLUMNDATATYPE(item.getC_COLUMNDATATYPE());
@@ -525,7 +505,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 					+ this.getName()
 					+ "\", because he has no parents (ErrorCode: BruceWayne01).");
 
-//		} else if (getTreePath() == null) {
+			//		} else if (getTreePath() == null) {
 		} else {
 			this.setTreePath(((OntologyTreeNode) parent).getTreePath()
 					+ this.id + "\\");
@@ -593,6 +573,15 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 */
 	public String toString() {
 		return this.name + " " + this.treePath;
+	}
+
+	public boolean isModifier() {
+		return isModifier;
+	}
+
+	public void setModifier(boolean isModifier) {
+		//		System.out.println("setting " + isModifier + " for " + getName());
+		this.isModifier = isModifier;
 	}
 
 }

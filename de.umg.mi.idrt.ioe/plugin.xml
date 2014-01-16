@@ -56,7 +56,8 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            allowMultiple="false"
+            allowMultiple="true"
+            category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.StatusView"
             id="edu.goettingen.i2b2.importtool.view.StatusView"
             name="StatusView"
@@ -64,6 +65,7 @@
       </view>
       <view
             allowMultiple="false"
+            category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorStagingInfoView"
             id="edu.goettingen.i2b2.importtool.view.EditorSourceInfoView"
             name="EditorSourceInfoView"
@@ -71,15 +73,24 @@
       </view>
       <view
             allowMultiple="false"
+            category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorTargetInfoView"
             id="edu.goettingen.i2b2.importtool.view.EditorTargetInfoView"
             name="EditorTargetInfoView"
             restorable="true">
       </view>
       <view
+            category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.OntologyEditorView"
             id="de.umg.mi.idrt.ioe.OntologyEditor"
             name="Ontology Editor"
+            restorable="true">
+      </view>
+      <view
+            category="de.umg.mi.idrt.importtool.IDRT"
+            class="de.umg.mi.idrt.ioe.view.ProgressView"
+            id="de.umg.mi.idrt.ioe.ProgressView"
+            name="Progress"
             restorable="true">
       </view>
    </extension>

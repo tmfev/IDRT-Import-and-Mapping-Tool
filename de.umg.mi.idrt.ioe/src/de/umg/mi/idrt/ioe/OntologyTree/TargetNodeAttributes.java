@@ -47,7 +47,7 @@ public class TargetNodeAttributes {
 	 *            the sourcePath to set
 	 */
 	public void addStagingPath(String stagingPath) {
-		
+		System.out.println(stagingPath);
 		if (stagingPath == null)
 			stagingPath = "";
 		
@@ -61,8 +61,10 @@ public class TargetNodeAttributes {
 			if (OntologyEditorView.getMyOntologyTree()!=null) {
 				OntologyTreeNode stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
 				if (stagingNode==null) {
+					System.out.println("NULL");
 					//					stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeTarget().getNodeLists().getNodeByPath(stagingPath);
 					subNode.setStagingName("not found");
+					System.out.println(subNode.getTargetSubNodeAttributes().getParent().getStagingName());
 				}
 				else if (stagingNode != null)
 					subNode.setStagingName(stagingNode.getName());
@@ -71,13 +73,13 @@ public class TargetNodeAttributes {
 			this.stagingPath = stagingPath;
 		}
 		
-		LinkedHashSet<OntologyTreeSubNode> tmp = new LinkedHashSet<OntologyTreeSubNode>();
-		tmp.addAll(subNodeList);
-		for (OntologyTreeSubNode s : tmp) {
-			if (subNodeList.size()>1 && s.getStagingName() != null)
-				if (s.getStagingName().equals("not found"))
-					subNodeList.remove(s);
-		}
+//		LinkedHashSet<OntologyTreeSubNode> tmp = new LinkedHashSet<OntologyTreeSubNode>();
+//		tmp.addAll(subNodeList);
+//		for (OntologyTreeSubNode s : tmp) {
+//			if (subNodeList.size()>1 && s.getStagingName() != null)
+//				if (s.getStagingName().equals("not found"))
+//					subNodeList.remove(s);
+//		}
 	}
 
 	/**

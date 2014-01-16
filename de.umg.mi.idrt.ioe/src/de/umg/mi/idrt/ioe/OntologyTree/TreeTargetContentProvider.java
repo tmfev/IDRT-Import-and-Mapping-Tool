@@ -23,7 +23,7 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 		if (element instanceof OntologyTreeNode) {
 			// System.out.println("TREENODE");
 			OntologyTreeNode node = (OntologyTreeNode) element;
-			if (node.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l")) {
+			if (node.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("l")||node.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("r")) {
 				return node.getTargetNodeAttributes().getSubNodeList().toArray();
 			} else
 				return ((OntologyTreeNode) element).getChildren().toArray();
@@ -56,10 +56,13 @@ public class TreeTargetContentProvider implements ITreeContentProvider {
 			return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// unused
-		System.out.println("changed");
+		// TODO Auto-generated method stub
+		
 	}
 
 }
