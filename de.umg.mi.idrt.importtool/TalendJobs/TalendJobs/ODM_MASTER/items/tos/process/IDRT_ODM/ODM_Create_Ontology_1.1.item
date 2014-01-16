@@ -14,7 +14,7 @@
     <contextParameter comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Ontology&quot;"/>
     <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
-    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny[not(@IsNull)]&quot;"/>
+    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
     <contextParameter comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
@@ -2413,7 +2413,7 @@
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="asd">
         <mapperTableEntries name="StudyID" expression="row16.StudyID" type="id_String" nullable="true"/>
@@ -4313,7 +4313,7 @@
         <mapperTableEntries name="CodeListItem" expression="codeList.CodeListItem" type="id_String" nullable="true"/>
         <mapperTableEntries name="TranslatedText" expression="codeList.TranslatedText" type="id_String" nullable="true"/>
         <mapperTableEntries name="ItemGroupOID" expression="outasd.ItemGroupOID" type="id_String" nullable="true"/>
-        <mapperTableEntries name="Datatype" expression="codeList.Datatype " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datatype" expression="&quot;String&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="codeList" matchingMode="ALL_ROWS" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="OID" type="id_String" nullable="true"/>
@@ -4322,7 +4322,7 @@
         <mapperTableEntries name="TranslatedText" type="id_String" nullable="true"/>
         <mapperTableEntries name="Datatype" type="id_String" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="outasd" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="outasd" activateCondensedTool="true" matchingMode="ALL_MATCHES" lookupMode="LOAD_ONCE" innerJoin="true">
         <mapperTableEntries name="ItemGroupOID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Name" type="id_String" nullable="true"/>
         <mapperTableEntries name="TransText" type="id_String" nullable="true"/>

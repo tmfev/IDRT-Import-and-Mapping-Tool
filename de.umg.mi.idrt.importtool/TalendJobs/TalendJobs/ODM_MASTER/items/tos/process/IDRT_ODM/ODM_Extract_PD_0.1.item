@@ -29,7 +29,7 @@
     <contextParameter comment="" name="importCodelist" prompt="importCodelist?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
-    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny[not(@IsNull)]&quot;"/>
+    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
     <contextParameter comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
@@ -82,7 +82,7 @@
     <contextParameter comment="" name="importCodelist" prompt="importCodelist?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
-    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny[not(@IsNull)]&quot;"/>
+    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
     <contextParameter comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
     <contextParameter comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
@@ -1218,6 +1218,64 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_6"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="DUMMY" value="true"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
+    <elementParameter field="TABLE" name="LENGTHS">
+      <elementValue elementRef="SCHEMA_COLUMN" value="itemID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Value"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="itemGroupOID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FormID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SubjectKey"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VisitID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="StudyEventRepeatKey"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ItemGroupRepeatKey"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="MetaDataVersionOID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TransactionType"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IsNull"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" label="metadata" name="tLogRow_6">
+      <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="itemGroupOID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="FormID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="SubjectKey" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="StudyEventRepeatKey" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ItemGroupRepeatKey" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="MetaDataVersionOID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="TransactionType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="IsNull" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="-224" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_1"/>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
@@ -1266,44 +1324,44 @@
     <nodeData xsi:type="MapperData">
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var">
-        <mapperTableEntries name="var1" expression="row1.itemID.equals(context.subjid)" type="id_Boolean"/>
-        <mapperTableEntries name="var2" expression="row1.TransactionType.equals(&quot;Insert&quot;)||row1.TransactionType.isEmpty() " type="id_Boolean"/>
-        <mapperTableEntries name="var3" expression="row1.TransactionType.equals(&quot;Update&quot;) " type="id_Boolean"/>
-        <mapperTableEntries name="var4" expression="row1.itemID.equals(context.encounterItem)" type="id_Boolean"/>
+        <mapperTableEntries name="var1" expression="row27.itemID.equals(context.subjid)" type="id_Boolean"/>
+        <mapperTableEntries name="var2" expression="row27.TransactionType.equals(&quot;Insert&quot;)||row27.TransactionType.isEmpty() " type="id_Boolean"/>
+        <mapperTableEntries name="var3" expression="row27.TransactionType.equals(&quot;Update&quot;) " type="id_Boolean"/>
+        <mapperTableEntries name="var4" expression="row27.itemID.equals(context.encounterItem)" type="id_Boolean"/>
       </varTables>
-      <outputTables sizeState="INTERMEDIATE" name="toTemp" expressionFilter="Var.var1" activateExpressionFilter="true">
-        <mapperTableEntries name="PID" expression="row1.Value" type="id_String" nullable="true"/>
-        <mapperTableEntries name="SubjectKey" expression="row1.SubjectKey " type="id_String" nullable="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="toTemp" expressionFilter="Var.var1" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="PID" expression="row27.Value" type="id_String" nullable="true"/>
+        <mapperTableEntries name="SubjectKey" expression="row27.SubjectKey " type="id_String" nullable="true"/>
       </outputTables>
-      <outputTables sizeState="INTERMEDIATE" name="fromPatient" expressionFilter="(context.includePids || !Var.var1) &amp;&amp; Var.var2" activateExpressionFilter="true">
-        <mapperTableEntries name="itemID" expression="row1.itemID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Value" expression="StringHandling.EREPLACE(row1.Value,&quot;\n&quot;,&quot; &quot;)       " type="id_String" nullable="true"/>
-        <mapperTableEntries name="itemGroupOID" expression="row1.itemGroupOID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="VisitID" expression="row1.VisitID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="FormID" expression="row1.FormID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="SubjectKey" expression="row1.SubjectKey " type="id_String" nullable="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="fromPatient" expressionFilter="(context.includePids || !Var.var1) &amp;&amp; Var.var2" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="itemID" expression="row27.itemID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Value" expression="StringHandling.EREPLACE(row27.Value,&quot;\n&quot;,&quot; &quot;)       " type="id_String" nullable="true"/>
+        <mapperTableEntries name="itemGroupOID" expression="row27.itemGroupOID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="VisitID" expression="row27.VisitID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FormID" expression="row27.FormID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="SubjectKey" expression="row27.SubjectKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="" type="id_String" nullable="true"/>
-        <mapperTableEntries name="StudyEventRepeatKey" expression="row1.StudyEventRepeatKey " type="id_String" nullable="true"/>
-        <mapperTableEntries name="ItemGroupRepeatKey" expression="row1.ItemGroupRepeatKey " type="id_String" nullable="true"/>
-        <mapperTableEntries name="MetaDataVersionOID" expression="row1.MetaDataVersionOID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="StudyEventRepeatKey" expression="row27.StudyEventRepeatKey " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ItemGroupRepeatKey" expression="row27.ItemGroupRepeatKey " type="id_String" nullable="true"/>
+        <mapperTableEntries name="MetaDataVersionOID" expression="row27.MetaDataVersionOID " type="id_String" nullable="true"/>
       </outputTables>
-      <outputTables sizeState="INTERMEDIATE" name="out8" expressionFilter="Var.var3" activateExpressionFilter="true">
-        <mapperTableEntries name="itemID" expression="row1.itemID  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Value" expression="StringHandling.EREPLACE(row1.Value,&quot;\n&quot;,&quot; &quot;) " type="id_String" nullable="true"/>
-        <mapperTableEntries name="VisitID" expression="row1.VisitID  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="FormID" expression="row1.FormID  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="SubjectKey" expression="row1.SubjectKey  " type="id_String" nullable="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out8" expressionFilter="Var.var3" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="itemID" expression="row27.itemID  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Value" expression="StringHandling.EREPLACE(row27.Value,&quot;\n&quot;,&quot; &quot;) " type="id_String" nullable="true"/>
+        <mapperTableEntries name="VisitID" expression="row27.VisitID  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FormID" expression="row27.FormID  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="SubjectKey" expression="row27.SubjectKey  " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="" type="id_String" nullable="true"/>
-        <mapperTableEntries name="StudyEventRepeatKey" expression="row1.StudyEventRepeatKey  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="ItemGroupRepeatKey" expression="row1.ItemGroupRepeatKey  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="MetaDataVersionOID" expression="row1.MetaDataVersionOID  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="StudyEventRepeatKey" expression="row27.StudyEventRepeatKey  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ItemGroupRepeatKey" expression="row27.ItemGroupRepeatKey  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="MetaDataVersionOID" expression="row27.MetaDataVersionOID  " type="id_String" nullable="true"/>
       </outputTables>
-      <outputTables sizeState="INTERMEDIATE" name="toEncNum" expressionFilter="Var.var4" activateExpressionFilter="true">
-        <mapperTableEntries name="PatientID" expression="row1.SubjectKey " type="id_String" nullable="true"/>
-        <mapperTableEntries name="EncounterNum" expression="row1.Value " type="id_String" nullable="true"/>
-        <mapperTableEntries name="VisitID" expression="row1.VisitID " type="id_String" nullable="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="toEncNum" expressionFilter="Var.var4" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="PatientID" expression="row27.SubjectKey " type="id_String" nullable="true"/>
+        <mapperTableEntries name="EncounterNum" expression="row27.Value " type="id_String" nullable="true"/>
+        <mapperTableEntries name="VisitID" expression="row27.VisitID " type="id_String" nullable="true"/>
       </outputTables>
-      <inputTables sizeState="INTERMEDIATE" name="row1" expressionFilter="!row1.IsNull.equals(&quot;Yes&quot;)" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="row27" expressionFilter="!row27.IsNull.equals(&quot;Yes&quot;)" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemGroupOID" type="id_String" nullable="true"/>
@@ -1390,7 +1448,7 @@
         <mapperTableEntries name="SubjectKey" expression="fromPatient.SubjectKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="Path" expression="fromOnt.Path " type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="fromOnt.PathID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="DataType" expression="fromCode.Datatype!=null?fromCode.Datatype:fromOnt.DataType " type="id_String" nullable="true"/>
+        <mapperTableEntries name="DataType" expression="fromCode.Datatype!=null?fromCode.Datatype:fromOnt.DataType  " type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="fromOnt.Update_Date " type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="fromOnt.Import_Date " type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="fromOnt.Download_Date " type="id_String" nullable="true"/>
@@ -1424,7 +1482,7 @@
         <mapperTableEntries name="itemCode" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" type="id_String" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="fromCode" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="fromCode" activateCondensedTool="true" matchingMode="ALL_MATCHES" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="OID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Name" type="id_String" nullable="true"/>
         <mapperTableEntries name="CodeListItem" type="id_String" nullable="true"/>
@@ -1781,7 +1839,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;float&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;integer&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;date&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;}&#xA;else{&#xA;//if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;else{&#xA;hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;//}&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xD;&#xA;output_row.name = input_row.name;&#xA;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;float&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;integer&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;else if (input_row.DataType.toLowerCase().contains(&quot;date&quot;))&#xA;&#x9;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;}&#xA;else{&#xA;//if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;}&#xA;else{&#xA;hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;}&#xA;//}&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xD;&#xA;output_row.name = input_row.name;&#xA;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1908,7 +1966,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-448" posY="448">
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-480" posY="416">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_2"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="DUMMY" value="true"/>
@@ -2073,7 +2131,7 @@
         <mapperTableEntries name="itemCode" type="id_String" nullable="true"/>
         <mapperTableEntries name="name" type="id_String" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="row7" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE" innerJoin="true">
+      <inputTables sizeState="INTERMEDIATE" name="row7" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="OID" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="Name" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="CodeListItem" expression="row25.Value " type="id_String" nullable="true" operator="="/>
@@ -2417,7 +2475,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="864">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_9"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -2467,7 +2525,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="1024">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="928">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_15"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -2517,7 +2575,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="64" posY="1056">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-320" posY="960">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_6"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.itemID = input_row.itemID;&#xD;&#xA;output_row.Value = input_row.Value;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xD;&#xA;output_row.Path = input_row.Path;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xD;&#xA;output_row.DataType = input_row.DataType;&#xD;&#xA;output_row.Update_Date = input_row.Update_Date;&#xD;&#xA;output_row.Import_Date = input_row.Import_Date;&#xD;&#xA;output_row.Download_Date = input_row.Download_Date;&#xD;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xD;&#xA;output_row.itemGroupRepeatKey = input_row.itemGroupRepeatKey;&#xD;&#xA;output_row.itemCode = input_row.itemCode;&#xA;if (input_row.startDate.toLowerCase().contains(&quot;t&quot;)){&#xA;output_row.startDate = input_row.startDate.substring(0,input_row.startDate.toLowerCase().indexOf(&quot;t&quot;));&#xD;&#xA;}&#xA;else &#xA;output_row.startDate = input_row.startDate;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -2543,7 +2601,7 @@
       <column comment="" key="false" name="startDate" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="1184">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-256" posY="1056">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_1"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -2595,7 +2653,7 @@
       <column comment="" key="false" name="startDate" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="928">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -2827,7 +2885,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out11" expressionFilter="row21.Path != null &amp;&amp;  row22.CodeListItem != null" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="HLEVEL" expression="8" type="id_Integer" nullable="true"/>
@@ -3755,7 +3813,6 @@
   </node>
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-576" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
-    <elementParameter field="CHECK" name="START" value="true"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="context.ItemData"/>
@@ -4315,13 +4372,16 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate2"/>
   </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tFileInputXML_2" offsetLabelX="0" offsetLabelY="0" source="tFileInputXML_2" target="tMap_1">
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tFileInputXML_2" offsetLabelX="0" offsetLabelY="0" source="tFileInputXML_2" target="tLogRow_6">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
       <elementValue elementRef="TRACE_COLUMN" value="itemID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="Value"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="itemGroupOID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="FormID"/>
@@ -4345,16 +4405,7 @@
       <elementValue elementRef="TRACE_COLUMN" value="TransactionType"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="Value2"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="IsNull"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="itemGroupOID"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="StudyEventOID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -4366,6 +4417,52 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1"/>
+  </connection>
+  <connection connectorName="FLOW" label="row27" lineStyle="0" metaname="tLogRow_6" offsetLabelX="0" offsetLabelY="0" source="tLogRow_6" target="tMap_1">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="itemID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Value"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="itemGroupOID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FormID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SubjectKey"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="VisitID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="StudyEventRepeatKey"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ItemGroupRepeatKey"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MetaDataVersionOID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TransactionType"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IsNull"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row27"/>
   </connection>
   <connection connectorName="FLOW" label="toTemp" lineStyle="0" metaname="toTemp" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_1" target="tUniqRow_1">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>

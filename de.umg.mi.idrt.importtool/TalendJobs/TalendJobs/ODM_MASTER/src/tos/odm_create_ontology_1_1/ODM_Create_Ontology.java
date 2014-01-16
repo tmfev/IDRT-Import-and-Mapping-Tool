@@ -36595,175 +36595,188 @@ public class ODM_Create_Ontology implements TalendJob {
 
 									tHash_Lookup_outasd.lookup(outasdHashKey);
 
+									if (!tHash_Lookup_outasd.hasNext()) { // G_TM_M_090
+
+										rejectedInnerJoin_tMap_39 = true;
+
+										forceLoopoutasd = true;
+
+									} // G_TM_M_090
+
 								} // G_TM_M_020
 
-								if (tHash_Lookup_outasd != null
-										&& tHash_Lookup_outasd
-												.getCount(outasdHashKey) > 1) { // G
-																				// 071
-
-									// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'outasd' and it contains more one result from keys :  outasd.codeList = '"
-									// + outasdHashKey.codeList + "'");
-								} // G 071
+								else { // G 20 - G 21
+									forceLoopoutasd = true;
+								} // G 21
 
 								outasdStruct outasd = null;
 
-								outasdStruct fromLookup_outasd = null;
-								outasd = outasdDefault;
+								while ((tHash_Lookup_outasd != null && tHash_Lookup_outasd
+										.hasNext()) || forceLoopoutasd) { // G_TM_M_043
 
-								if (tHash_Lookup_outasd != null
-										&& tHash_Lookup_outasd.hasNext()) { // G
-																			// 099
+									// CALL close loop of lookup 'outasd'
 
-									fromLookup_outasd = tHash_Lookup_outasd
-											.next();
+									outasdStruct fromLookup_outasd = null;
+									outasd = outasdDefault;
 
-								} // G 099
+									if (!forceLoopoutasd) { // G 46
 
-								if (fromLookup_outasd != null) {
-									outasd = fromLookup_outasd;
-								}
+										fromLookup_outasd = tHash_Lookup_outasd
+												.next();
 
-								// ###############################
-								{ // start of Var scope
+										if (fromLookup_outasd != null) {
+											outasd = fromLookup_outasd;
+										}
+
+									} // G 46
+
+									forceLoopoutasd = false;
 
 									// ###############################
-									// # Vars tables
+									{ // start of Var scope
 
-									Var__tMap_39__Struct Var = Var__tMap_39;// ###############################
-									// ###############################
-									// # Output tables
-
-									out1 = null;
-
-									// # Output table : 'out1'
-									// # Filter conditions
-									if (
-
-									outasd.ItemGroupOID != null
-
-									) {
-										out1_tmp.OID = codeList.OID;
-										out1_tmp.Name = codeList.Name;
-										out1_tmp.CodeListItem = codeList.CodeListItem;
-										out1_tmp.TranslatedText = codeList.TranslatedText;
-										out1_tmp.ItemGroupOID = outasd.ItemGroupOID;
-										out1_tmp.Datatype = codeList.Datatype;
-										out1 = out1_tmp;
-									} // closing filter/reject
 										// ###############################
+										// # Vars tables
 
-								} // end of Var scope
+										Var__tMap_39__Struct Var = Var__tMap_39;// ###############################
+										// ###############################
+										// # Output tables
 
-								rejectedInnerJoin_tMap_39 = false;
+										out1 = null;
 
-								tos_count_tMap_39++;
+										if (!rejectedInnerJoin_tMap_39) {
 
-								/**
-								 * [tMap_39 main ] stop
-								 */
-								// Start of branch "out1"
-								if (out1 != null) {
+											// # Output table : 'out1'
+											// # Filter conditions
+											if (
 
-									/**
-									 * [tFileOutputDelimited_34 main ] start
-									 */
+											outasd.ItemGroupOID != null
 
-									currentComponent = "tFileOutputDelimited_34";
+											) {
+												out1_tmp.OID = codeList.OID;
+												out1_tmp.Name = codeList.Name;
+												out1_tmp.CodeListItem = codeList.CodeListItem;
+												out1_tmp.TranslatedText = codeList.TranslatedText;
+												out1_tmp.ItemGroupOID = outasd.ItemGroupOID;
+												out1_tmp.Datatype = "String";
+												out1 = out1_tmp;
+											} // closing filter/reject
+										} // closing inner join bracket (2)
+											// ###############################
 
-									StringBuilder sb_tFileOutputDelimited_34 = new StringBuilder();
+									} // end of Var scope
 
-									if (out1.OID != null) {
+									rejectedInnerJoin_tMap_39 = false;
 
-										sb_tFileOutputDelimited_34.append(
-
-										out1.OID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_tFileOutputDelimited_34);
-
-									if (out1.Name != null) {
-
-										sb_tFileOutputDelimited_34.append(
-
-										out1.Name
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_tFileOutputDelimited_34);
-
-									if (out1.CodeListItem != null) {
-
-										sb_tFileOutputDelimited_34.append(
-
-										out1.CodeListItem
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_tFileOutputDelimited_34);
-
-									if (out1.TranslatedText != null) {
-
-										sb_tFileOutputDelimited_34.append(
-
-										out1.TranslatedText
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_tFileOutputDelimited_34);
-
-									if (out1.ItemGroupOID != null) {
-
-										sb_tFileOutputDelimited_34.append(
-
-										out1.ItemGroupOID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_tFileOutputDelimited_34);
-
-									if (out1.Datatype != null) {
-
-										sb_tFileOutputDelimited_34.append(
-
-										out1.Datatype
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_34
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_34);
-
-									nb_line_tFileOutputDelimited_34++;
-
-									outtFileOutputDelimited_34
-											.write(sb_tFileOutputDelimited_34
-													.toString());
-
-									tos_count_tFileOutputDelimited_34++;
+									tos_count_tMap_39++;
 
 									/**
-									 * [tFileOutputDelimited_34 main ] stop
+									 * [tMap_39 main ] stop
 									 */
+									// Start of branch "out1"
+									if (out1 != null) {
 
-								} // End of branch "out1"
+										/**
+										 * [tFileOutputDelimited_34 main ] start
+										 */
+
+										currentComponent = "tFileOutputDelimited_34";
+
+										StringBuilder sb_tFileOutputDelimited_34 = new StringBuilder();
+
+										if (out1.OID != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.OID
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_tFileOutputDelimited_34);
+
+										if (out1.Name != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.Name
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_tFileOutputDelimited_34);
+
+										if (out1.CodeListItem != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.CodeListItem
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_tFileOutputDelimited_34);
+
+										if (out1.TranslatedText != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.TranslatedText
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_tFileOutputDelimited_34);
+
+										if (out1.ItemGroupOID != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.ItemGroupOID
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_tFileOutputDelimited_34);
+
+										if (out1.Datatype != null) {
+
+											sb_tFileOutputDelimited_34.append(
+
+											out1.Datatype
+
+											);
+
+										}
+
+										sb_tFileOutputDelimited_34
+												.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_34);
+
+										nb_line_tFileOutputDelimited_34++;
+
+										outtFileOutputDelimited_34
+												.write(sb_tFileOutputDelimited_34
+														.toString());
+
+										tos_count_tFileOutputDelimited_34++;
+
+										/**
+										 * [tFileOutputDelimited_34 main ] stop
+										 */
+
+									} // End of branch "out1"
+
+								} // close loop of lookup 'outasd' // G_TM_M_043
 
 							} // End of branch "codeList"
 
@@ -39044,7 +39057,7 @@ public class ODM_Create_Ontology implements TalendJob {
 					// linked node: tMap_39 - inputs:(codeList,outasd)
 					// outputs:(out1)
 
-					org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_outasd = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+					org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_outasd = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
 
 					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<outasdStruct> tHash_Lookup_outasd = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
 							.<outasdStruct> getLookup(matchingModeEnum_outasd);
@@ -43079,6 +43092,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1178765 characters generated by Talend Open Studio for Data Integration on
- * the January 13, 2014 5:03:12 PM CET
+ * 1179208 characters generated by Talend Open Studio for Data Integration on
+ * the January 16, 2014 3:47:12 PM CET
  ************************************************************************************************/

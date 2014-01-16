@@ -112,6 +112,7 @@
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.QT_PDO_QUERY_MASTER&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.QT_XML_RESULT&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.ENCOUNTER_MAPPING&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.VISIT_DIMENSION&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;update &quot;+ context.DBSchema+ &quot;.qt_query_result_instance set delete_flag='Y'&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;update &quot;+ context.DBSchema+ &quot;.qt_query_instance set delete_flag='Y'&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;update &quot;+ context.DBSchema+ &quot;.qt_query_master set delete_flag='Y'&quot;"/>
