@@ -20,7 +20,7 @@
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
-    <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="false"/>
+    <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="32"/>
     <elementParameter field="TEXT" name="SCHEMA_OPTIONS" value="none"/>
@@ -98,7 +98,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="704" posY="160">
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.I2B2&quot;"/>
@@ -123,7 +123,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tOracleRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="864" posY="160">
+  <node componentName="tOracleRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleRow_1"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>

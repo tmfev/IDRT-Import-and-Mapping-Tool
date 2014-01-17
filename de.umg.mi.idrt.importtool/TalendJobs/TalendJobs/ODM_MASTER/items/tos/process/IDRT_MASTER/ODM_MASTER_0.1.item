@@ -181,7 +181,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="416"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="320"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="352"/>
     <elementParameter field="TEXT" name="SCHEMA_OPTIONS" value="none"/>
     <elementParameter field="TEXT" name="OEM_CUSTOM_ATTRIBUTE" value=""/>
     <elementParameter field="TEXT" name="HADOOP_APP_PATH" value=""/>

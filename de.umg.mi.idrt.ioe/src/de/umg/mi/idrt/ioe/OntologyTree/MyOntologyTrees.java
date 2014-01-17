@@ -131,7 +131,7 @@ public class MyOntologyTrees{
 					progress = 0;
 					counter = sourceNode1.getAllChildrenCount();
 					percent = (float)counter/100;
-					System.out.println("COPY SIZE: " + counter + " " + percent);
+//					System.out.println("COPY SIZE: " + counter + " " + percent);
 
 					ProgressView.setProgress(0, "Copying...", "");
 					deepCopy(sourceNode1, targetNode, targetNode);

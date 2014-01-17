@@ -277,7 +277,6 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tOracleCommit_2"/>
   </node>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_1"/>
@@ -1066,7 +1065,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_10"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="672">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-192" posY="672">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_11"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Upload complete!&quot;);&#xA;StatusListener.setSubStatus(100.0f,(int)(float)(100.0f)+&quot;%&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -3856,13 +3855,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk18"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="8" source="tOracleCommit_2" target="tJava_11">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk17"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="9" source="tOracleCommit_2" target="tJava_15">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="8" source="tOracleCommit_2" target="tJava_15">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk21"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="9" source="tOracleCommit_2" target="tJava_11">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk17"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tFileInputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_1" target="tJavaFlex_5">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
@@ -4889,13 +4888,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11"/>
   </connection>
-  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tJava_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError7"/>
-  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tOracleCommit_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12"/>
+  </connection>
+  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError7"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>

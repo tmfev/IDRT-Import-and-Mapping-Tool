@@ -1,4 +1,5 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
+import java.awt.Container;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -32,15 +33,61 @@ public class OntologyTreeNodeList {
 	}
 
 	public void addNodyByPath( String stringPath, OntologyTreeNode node ){
-//		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ) {
-//			long newTime = System.currentTimeMillis();
-//
-//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
-//			time = newTime;
-//		}
+		//		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ) {
+		//			long newTime = System.currentTimeMillis();
+		//
+		//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
+		//			time = newTime;
+		//		}
 		this.stringPathToNode.put( stringPath, node );
 	}
+	/**
+	 * @param item
+	 * @param node
+	 * @return
+	 */
+	public OntologyTreeNode addOTNode(OntologyItem item, OntologyTreeNode node) {
 
+		String i2b2Path;
+		System.out.println(item.getC_HLEVEL());
+//		if (item.getC_HLEVEL()==1)
+//			i2b2Path=item.getM_APPLIED_PATH()+item.getC_FULLNAME().substring(1);
+//		else
+			i2b2Path=item.getC_FULLNAME();
+		OntologyTreeNode parentNode = null;
+		PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
+		String parentPath;
+		if (item.getC_HLEVEL()==1)
+			parentPath = item.getM_APPLIED_PATH();
+		else
+			parentPath = pathAndID.getParentPath();
+		System.out.println("MODIFIER: " + i2b2Path + " --> " + parentPath);
+
+		if ( parentPath.isEmpty() ){
+			System.err.println("Could not add node \"" + node.getName() +"\", because no parent path was given.");
+			return null;
+		} else {
+			parentNode = this.getNodeByPath( parentPath );
+			if (parentNode == null){
+				String path = parentPath.substring(0, parentPath.length()-1);
+				node.setID(path.substring(path.lastIndexOf("\\")+1,path.length()));
+				path = path.substring(0,path.lastIndexOf("\\"))+"\\";
+				parentNode =  this.getNodeByPath(path);
+				if (parentNode == null) {
+					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + parentPath +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
+					return null;
+				}
+			}
+		}
+
+		this.addNodyByPath( i2b2Path, node );
+
+		node.setTreePath( i2b2Path );
+		if ( parentNode != null )
+			node.setTreePathLevel( parentNode.getTreePathLevel() + 1 );
+
+		return parentNode;
+	}
 	public OntologyTreeNode addOTNode( String i2b2Path, OntologyTreeNode node ){
 		OntologyTreeNode parentNode = null;
 		PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
@@ -86,7 +133,7 @@ public class OntologyTreeNodeList {
 
 	public void listNodeByPath(){
 		for (String path : stringPathToNode.keySet()){
-			System.out.println("  - " + path);
+			//			System.out.println("  - " + path);
 		}
 	}
 
@@ -105,4 +152,6 @@ public class OntologyTreeNodeList {
 	public HashMap<String, OntologyTreeNode> getStringPathToNode() {
 		return stringPathToNode;
 	}
+
+
 }

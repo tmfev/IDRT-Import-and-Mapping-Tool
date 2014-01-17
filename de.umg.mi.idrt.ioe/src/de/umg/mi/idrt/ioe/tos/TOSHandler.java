@@ -152,12 +152,12 @@ public class TOSHandler {
 				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
 				sourceSystemCD,	valueTypeCD,m_applied_path);
 		if (treeLevel!=0) {
-//			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path()))
-//				OntologyEditorView.getOntologyTargetTree().addNodeByPath(treePath, name,Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);	
-			//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-//			else {
-//				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
-//			}
+			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path()))
+				OntologyEditorView.getOntologyTargetTree().addNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
+//							ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+			else {
+				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
+			}
 
 		}
 	}
