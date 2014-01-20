@@ -7,6 +7,8 @@ import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.TextTransfer;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
  *         Department of Medical Informatics Goettingen
@@ -43,7 +45,7 @@ public class ServerDragSourceListener implements DragSourceListener {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			MessageDialog.openError(viewer.getControl().getShell(), "Failure",
+			MessageDialog.openError(Application.getShell(), "Failure",
 					"You cannot drop this target here.");
 		}
 

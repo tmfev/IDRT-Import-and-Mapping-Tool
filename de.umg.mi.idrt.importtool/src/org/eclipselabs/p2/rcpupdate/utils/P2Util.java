@@ -20,6 +20,8 @@ import org.eclipselabs.p2.rcpupdate.utils.plugin.Activator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+
 /**
  * @see http://wiki.eclipse.org/Equinox/p2/Adding_Self-Update_to_an_RCP_Application
  * @see http://bugs.eclipse.org/281226
@@ -89,8 +91,7 @@ public class P2Util {
 		if (status.getSeverity() != IStatus.ERROR) {
 			boolean result = MessageDialog
 					.openConfirm(
-							Display.getDefault()
-							.getActiveShell(),
+							Application.getShell(),
 							"Update available!",
 							"Do you want to update the Software?");
 			if (result) {

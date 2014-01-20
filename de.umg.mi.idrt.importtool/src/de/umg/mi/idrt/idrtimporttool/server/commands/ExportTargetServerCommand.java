@@ -16,6 +16,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -55,12 +56,10 @@ public class ExportTargetServerCommand extends AbstractHandler {
 
 				// File file = new File(fileName);
 				// serverPrefs.exportNode(new FileOutputStream(file));
-				MessageDialog.openInformation(Display.getDefault()
-						.getActiveShell(), "Success", serverName
+				MessageDialog.openInformation(Application.getShell(), "Success", serverName
 						+ " exported to " + fileName);
 			} else {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error", "Export failed!");
+				MessageDialog.openError(Application.getShell(), "Error", "Export failed!");
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

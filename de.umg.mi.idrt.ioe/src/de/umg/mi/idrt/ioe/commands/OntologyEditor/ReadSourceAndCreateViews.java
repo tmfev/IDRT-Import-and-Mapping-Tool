@@ -68,6 +68,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		try {
 			OntologyEditorView.setSourceContent();
 		}catch (Exception e) {
+			e.printStackTrace();
 			try {
 				throw new ProjectEmptyException();
 			} catch (ProjectEmptyException e1) {
@@ -77,16 +78,8 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		DefaultTreeModel model = new DefaultTreeModel(
 				OntologyEditorView.getOntologyStagingTree().getRootNode(), true);
 
-		OntologyEditorView.getOntologyStagingTree()
-		.setModel(model);
-		OntologyEditorView.getOntologyStagingTree()
-		.updateUI();
-
-		OntologyTree ontologySourceTree = OntologyEditorView.getOntologyStagingTree();
-
-		if (ontologySourceTree != null) {
-
-		}
+		OntologyEditorView.getOntologyStagingTree().setModel(model);
+		OntologyEditorView.getOntologyStagingTree().updateUI();
 
 		DefaultTreeModel model2 = new DefaultTreeModel(OntologyEditorView.getOntologyTargetTree().getRootNode(), true);
 

@@ -4,6 +4,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -57,8 +58,7 @@ public class EditServerWizard extends Wizard {
 				} else {
 					boolean result = MessageDialog
 							.openConfirm(
-									Display.getDefault()
-									.getActiveShell(),
+									Application.getShell(),
 									"Server not Responding!",
 									"The Server cannot be reached. There might be an error in the settings.\nSave anyway?");
 					if (result) {
@@ -75,8 +75,7 @@ public class EditServerWizard extends Wizard {
 				} else {
 					boolean result = MessageDialog
 							.openConfirm(
-									Display.getDefault()
-									.getActiveShell(),
+									Application.getShell(),
 									"Server not Responding!",
 									"The Server cannot be reached. There might be an error in the settings.\nSave anyway?");
 					if (result) {
@@ -98,8 +97,7 @@ public class EditServerWizard extends Wizard {
 				} else {
 					boolean result = MessageDialog
 							.openConfirm(
-									Display.getDefault()
-									.getActiveShell(),
+									Application.getShell(),
 									"Server not Responding!",
 									"The Server cannot be reached. There might be an error in the settings.\nSave anyway?");
 					if (result) {
@@ -130,8 +128,7 @@ public class EditServerWizard extends Wizard {
 			}
 			return true;
 		} else {
-			MessageDialog.openInformation(Display.getDefault()
-					.getActiveShell(), "Server already exists.",
+			MessageDialog.openInformation(Application.getShell(), "Server already exists.",
 					"The Server already exists. Please choose another Name.");
 			return false;
 		}

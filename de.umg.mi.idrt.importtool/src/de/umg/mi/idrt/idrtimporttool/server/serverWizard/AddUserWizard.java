@@ -9,6 +9,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -68,8 +69,7 @@ public class AddUserWizard extends Wizard {
 					e1.printStackTrace();
 				}
 			} else if (AddUserPageOne.getSendEmail() && newEmail.isEmpty()) {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error", "Missing EMail!");
+				MessageDialog.openError(Application.getShell(), "Error", "Missing EMail!");
 				return false;
 			}
 		}

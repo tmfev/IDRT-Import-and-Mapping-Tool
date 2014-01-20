@@ -25,6 +25,7 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.ExportDB.ExportConfig;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Activator;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -78,7 +79,7 @@ public class DBImportWizard extends Wizard {
 				public void run() {
 					Log.addLog(1, "DB Import Failed!");
 					MessageDialog
-					.openError(Display.getDefault().getActiveShell(),
+					.openError(Application.getShell(),
 							"Import Failed!",
 							"Import failed. (User aborted!)\nYou might want to redo your last action!");
 				}
@@ -100,8 +101,7 @@ public class DBImportWizard extends Wizard {
 				@Override
 				public void run() {
 					Log.addLog(1, "DB Import Failed: " + error);
-					MessageDialog.openError(Display.getDefault()
-							.getActiveShell(), "Import Failed!",
+					MessageDialog.openError(Application.getShell(), "Import Failed!",
 							"Import failed. Please see the log.");
 				}
 			});
@@ -363,8 +363,7 @@ public class DBImportWizard extends Wizard {
 								long time = end - start;
 								Log.addLog(0, "Duration: " + (time / 1000)
 										+ " s");
-								MessageDialog.openInformation(Display
-										.getDefault().getActiveShell(),
+								MessageDialog.openInformation(Application.getShell(),
 										"Import Finished", "Import finished.");
 							}
 						});

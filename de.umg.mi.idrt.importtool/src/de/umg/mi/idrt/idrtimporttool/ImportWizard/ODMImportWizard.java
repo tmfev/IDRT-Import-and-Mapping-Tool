@@ -13,6 +13,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
@@ -46,7 +47,7 @@ public class ODMImportWizard extends Wizard {
 					Log.addLog(1, Messages.ODMImportWizard_ODMImportFailed); 
 					MessageDialog
 							.openError(
-									Display.getDefault().getActiveShell(),
+									Application.getShell(),
 									Messages.ODMImportWizard_ODMImportFailed, 
 									Messages.ODMImportWizard_ODMImportFailed
 											+ ". (User aborted!)\nYou might want to redo your last action!"); 
@@ -69,8 +70,7 @@ public class ODMImportWizard extends Wizard {
 				public void run() {
 //					closeBar(error, fileName, 1);
 					Log.addLog(1, "ODM Import Failed: " + error); 
-					MessageDialog.openError(Display.getDefault()
-							.getActiveShell(),
+					MessageDialog.openError(Application.getShell(),
 							Messages.ODMImportWizard_ODMImportFailed, 
 							Messages.ODMImportWizard_ImpFailedSeeLog);
 				}
@@ -224,8 +224,7 @@ public class ODMImportWizard extends Wizard {
 										+ (time / 1000) + " s"); 
 								MessageDialog
 										.openInformation(
-												Display.getDefault()
-														.getActiveShell(),
+												Application.getShell(),
 												Messages.ODMImportWizard_ODMImpFinished,
 												Messages.ODMImportWizard_ODMImpFinished);  
 							}

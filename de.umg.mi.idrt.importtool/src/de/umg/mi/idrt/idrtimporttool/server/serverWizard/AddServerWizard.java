@@ -4,6 +4,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -43,8 +44,7 @@ public class AddServerWizard extends Wizard {
 		} else {
 			boolean result = MessageDialog
 					.openConfirm(
-							Display.getDefault()
-							.getActiveShell(),
+							Application.getShell(),
 							"Server not Responding!",
 							"The Server cannot be reached. There might be an error in the settings.\nSave anyway?");
 			if (result) {

@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
 import swing2swt.layout.BorderLayout;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.SWTResourceManager;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -787,7 +788,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 					@Override
 					public void widgetSelected(SelectionEvent e) {
 						if (projectTab_projectID_answer.getText().isEmpty()) {
-							MessageDialog.openError(shell, "Error",
+							MessageDialog.openError(Application.getShell(), "Error",
 									"No Server Selected");
 						} else {
 							Server server = ServerList.getTargetServers().get(
@@ -811,7 +812,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 					public void widgetSelected(SelectionEvent e) {
 						if (projectTab_projectID_answer.getText().isEmpty()
 								|| userTab_userName_answer.getText().isEmpty()) {
-							MessageDialog.openError(shell, "Error",
+							MessageDialog.openError(Application.getShell(), "Error",
 									"No Server/User Selected");
 						} else {
 							Server server = ServerList.getTargetServers().get(
@@ -1013,7 +1014,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 
 	private static void deleteUser(String username, Shell shell) {
 
-		boolean confirm = MessageDialog.openConfirm(shell, "Confirm Deletion",
+		boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Confirm Deletion",
 				"Do you really want to delete the user " + username + "?");
 
 		if (confirm) {

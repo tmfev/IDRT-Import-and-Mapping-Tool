@@ -63,6 +63,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 import swing2swt.layout.BorderLayout;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerTable;
@@ -519,7 +520,7 @@ public class DBWizardPage2 extends WizardPage {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 
-					boolean cont = MessageDialog.openConfirm(parent.getShell(),
+					boolean cont = MessageDialog.openConfirm(Application.getShell(),
 							"Guess Schema?",
 							"This will overwrite your current Config!\nContinue?");
 
@@ -575,7 +576,7 @@ public class DBWizardPage2 extends WizardPage {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 
-					boolean cont = MessageDialog.openConfirm(parent.getShell(),
+					boolean cont = MessageDialog.openConfirm(Application.getShell(),
 							"Clear Table?",
 							"This will clear the current Table!\nContinue?");
 
@@ -600,7 +601,7 @@ public class DBWizardPage2 extends WizardPage {
 				public void widgetSelected(SelectionEvent e) {
 					try {
 						boolean result = MessageDialog.openConfirm(
-								parent.getShell(), "Clear All Tables?",
+								Application.getShell(), "Clear All Tables?",
 								"Do you really want to clear all tables?");
 
 						if (result) {

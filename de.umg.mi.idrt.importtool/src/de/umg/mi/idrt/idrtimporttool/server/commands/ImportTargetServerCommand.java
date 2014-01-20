@@ -13,6 +13,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -44,21 +45,19 @@ public class ImportTargetServerCommand extends AbstractHandler {
 			Server newServer = ServerList
 					.deserializeImportServer(importServerFile);
 			if (newServer == null) {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error", "Import failed!");
+				MessageDialog.openError(Application.getShell(), "Error", "Import failed!");
 			}
 			if (serverList.containsKey(newServer.getUniqueID())
 					|| ServerList.getSourceServers().containsKey(
 							newServer.getUniqueID())) {
-				MessageDialog.openError(Display.getDefault()
-						.getActiveShell(), "Error",
+				MessageDialog.openError(Application.getShell(), "Error",
 						"Server already exists!");
 				System.err.println("ERROR, Server already exists!");
 			} else {
 				ServerList.addServer(newServer);
 			}
 		} else {
-			// MessageDialog.openError(shell, "Error", "Import failed!");
+			// MessageDialog.openError(Application.getShell(), "Error", "Import failed!");
 		}
 		try {
 			ServerList.loadServersfromProps();

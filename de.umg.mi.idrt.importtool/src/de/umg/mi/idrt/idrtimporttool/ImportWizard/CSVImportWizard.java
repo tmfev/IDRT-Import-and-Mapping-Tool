@@ -18,6 +18,7 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
@@ -334,8 +335,7 @@ public class CSVImportWizard extends Wizard {
 									Log.addLog(0, "CSV Import Finished!");
 									Log.addLog(0, "Duration: " + (time / 1000)
 											+ " s");
-									MessageDialog.openInformation(Display
-											.getDefault().getActiveShell(),
+									MessageDialog.openInformation(Application.getShell(),
 											"Import Finished",
 											"Import finished.");
 								}
@@ -414,8 +414,7 @@ public class CSVImportWizard extends Wizard {
 													if (StatusListener.getImportErrorCounter()>0) {
 														MessageDialog
 														.openInformation(
-																Display.getDefault()
-																.getActiveShell(),
+																Application.getShell(),
 																"Import Finished",
 																"Import finished.\n"+StatusListener.getImportErrorCounter() 
 																+ " Errors occured!");
@@ -424,8 +423,7 @@ public class CSVImportWizard extends Wizard {
 													else {
 														MessageDialog
 														.openInformation(
-																Display.getDefault()
-																.getActiveShell(),
+																Application.getShell(),
 																"Import Finished",
 																"Import finished.");
 													}
@@ -499,7 +497,7 @@ public class CSVImportWizard extends Wizard {
 					//					closeBar("CSV Import Failed!", 1);
 					Log.addLog(1, "CSV Import Failed!");
 					MessageDialog
-					.openError(Display.getDefault().getActiveShell(),
+					.openError(Application.getShell(),
 							"Import Failed!",
 							"Import failed. (User aborted!)\nYou might want to redo your last action!");
 				}
@@ -523,8 +521,7 @@ public class CSVImportWizard extends Wizard {
 				public void run() {
 					//					closeBar(error, fileName, 1);
 					Log.addLog(1, "CSV Import Failed: " + error);
-					MessageDialog.openError(Display.getDefault()
-							.getActiveShell(), "Import Failed!",
+					MessageDialog.openError(Application.getShell(), "Import Failed!",
 							"Import failed. Please see the log.");
 				}
 			});

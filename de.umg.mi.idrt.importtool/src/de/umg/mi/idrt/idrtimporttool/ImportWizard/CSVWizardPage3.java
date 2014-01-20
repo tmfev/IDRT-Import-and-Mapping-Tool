@@ -53,6 +53,7 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.commands.CSVImportCommand;
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
@@ -399,7 +400,7 @@ public class CSVWizardPage3 extends WizardPage {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 
-					boolean cont = MessageDialog.openConfirm(parent.getShell(),
+					boolean cont = MessageDialog.openConfirm(Application.getShell(),
 							"Overwrite all Configs?",
 							"Do you really want to overwirte all Configs?");
 					if (cont) {
@@ -764,7 +765,7 @@ public class CSVWizardPage3 extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					boolean cont = MessageDialog.openConfirm(parent.getShell(),
+					boolean cont = MessageDialog.openConfirm(Application.getShell(),
 							Messages.CSVWizardPageThree_ClearTableConfirm,
 							Messages.CSVWizardPageThree_ClearTableConfirmText);
 					if (cont) {
@@ -787,7 +788,7 @@ public class CSVWizardPage3 extends WizardPage {
 					boolean cont = allConfigs;
 
 					if (!cont) {
-						cont = MessageDialog.openConfirm(parent.getShell(),
+						cont = MessageDialog.openConfirm(Application.getShell(),
 								Messages.CSVWizardPageThree_GuessSchemaConfirm,
 								Messages.CSVWizardPageThree_GuessSchemaConfirmText);
 					}

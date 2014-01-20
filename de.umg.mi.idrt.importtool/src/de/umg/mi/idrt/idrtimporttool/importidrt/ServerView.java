@@ -520,7 +520,7 @@ public class ServerView extends ViewPart {
 			truncateMenuItem.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					boolean result = MessageDialog.openConfirm(parent.getShell(),
+					boolean result = MessageDialog.openConfirm(Application.getShell(),
 							Messages.ServerView_TruncateProjectQuestion,
 							Messages.ServerView_TruncateProjectConfirmText);
 					if(result) {
@@ -594,7 +594,7 @@ public class ServerView extends ViewPart {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					boolean result = MessageDialog.openConfirm(parent.getShell(),
+					boolean result = MessageDialog.openConfirm(Application.getShell(),
 							"Remove Locks?",
 							"Do you really want to remove ALL locks from the database?\nSYSDBA REQUIRED!");
 					if(result) {

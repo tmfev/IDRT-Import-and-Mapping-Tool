@@ -96,12 +96,10 @@ public class IDRTImport {
 						if (exitCode == 0) {
 
 							StatusListener.setStatus(100f, "Locks removed.","");
-							MessageDialog.openInformation(Display.getDefault()
-									.getActiveShell(),"Locks removed!", "Locks removed!");
+							MessageDialog.openInformation(Application.getShell(),"Locks removed!", "Locks removed!");
 						}
 						else {
-							MessageDialog.openError(Display.getDefault()
-									.getActiveShell(), "Removing Locks failed!", "Removing Locks failed!\nAre you sys admin?");
+							MessageDialog.openError(Application.getShell(), "Removing Locks failed!", "Removing Locks failed!\nAre you sys admin?");
 						}
 					}
 				});
@@ -125,7 +123,7 @@ public class IDRTImport {
 					StatusListener.setStatus(0, "", "");
 					StatusListener.setSubStatus(0, "");
 					MessageDialog
-					.openError(Display.getDefault().getActiveShell(),
+					.openError(Application.getShell(),
 							"Import Standardterminologies Failed!",
 							"Import Standardterminologies failed. (User aborted!)\nYou might want to redo your last action!");
 				}
@@ -187,16 +185,14 @@ public class IDRTImport {
 						if (exitCode == 0) {
 							StatusListener.setStatus(100f, "Import and Mapping done","");
 							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openInformation(Display.getDefault()
-									.getActiveShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
+							MessageDialog.openInformation(Application.getShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
 							StatusListener.setStatus(0.0f, "","");
 							StatusListener.setSubStatus(0.0f, "");
 						}
 						else {
 							StatusListener.setStatus(100f, "Import and Mapping failed","");
 							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openError(Display.getDefault()
-									.getActiveShell(), "Import failed!", "Import failed!");
+							MessageDialog.openError(Application.getShell(), "Import failed!", "Import failed!");
 							StatusListener.setStatus(0.0f, "","");
 							StatusListener.setSubStatus(0.0f, "");
 						}
@@ -273,16 +269,14 @@ public class IDRTImport {
 						if (exitCode == 0) {
 							StatusListener.setStatus(100f, "Import and Mapping done","");
 							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openInformation(Display.getDefault()
-									.getActiveShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
+							MessageDialog.openInformation(Application.getShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
 							StatusListener.setStatus(0.0f, "","");
 							StatusListener.setSubStatus(0.0f, "");
 						}
 						else {
 							StatusListener.setStatus(100f, "Import and Mapping failed","");
 							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openError(Display.getDefault()
-									.getActiveShell(), "Import failed!", "Import failed!");
+							MessageDialog.openError(Application.getShell(), "Import failed!", "Import failed!");
 							StatusListener.setStatus(0.0f, "","");
 							StatusListener.setSubStatus(0.0f, "");
 						}
@@ -338,12 +332,10 @@ public class IDRTImport {
 						ServerView.setProgressBottom(""
 								+ StatusListener.getStatus());
 						if (exitCode == 0) {
-							MessageDialog.openInformation(Display.getDefault()
-									.getActiveShell(),"Truncate Complete!", "Truncate Complete!");
+							MessageDialog.openInformation(Application.getShell(),"Truncate Complete!", "Truncate Complete!");
 						}
 						else {
-							MessageDialog.openError(Display.getDefault()
-									.getActiveShell(), "Truncate failed!", "Truncate failed!");
+							MessageDialog.openError(Application.getShell(), "Truncate failed!", "Truncate failed!");
 						}
 					}
 				});

@@ -20372,6 +20372,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 										row20HashKey.ENCOUNTER_NUM = row61.ENCOUNTER_NUM;
 
+										row20HashKey.PATIENT_IDE = row61.PATIENT_IDE;
+
 										row20HashKey.hashCodeDirty = true;
 
 										tHash_Lookup_row20.lookup(row20HashKey);
@@ -20390,7 +20392,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 																					// 071
 
 										// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row20' and it contains more one result from keys :  row20.ENCOUNTER_NUM = '"
-										// + row20HashKey.ENCOUNTER_NUM + "'");
+										// + row20HashKey.ENCOUNTER_NUM +
+										// "', row20.PATIENT_IDE = '" +
+										// row20HashKey.PATIENT_IDE + "'");
 									} // G 071
 
 									row20Struct row20 = null;
@@ -20424,18 +20428,13 @@ public class IDRT_to_DB_Schema implements TalendJob {
 										row6 = null;
 										iut1 = null;
 
-										boolean rejected_tMap_20 = true;
 										if (!rejectedInnerJoin_tMap_20) {
 										} // closing inner join bracket (1)
-										else {
-											rejected_tMap_20 = false;
-										} // closing else inner join bracket (1)
 											// ###### START REJECTS #####
 
 										// # Output reject table : 'row6'
 										// # Filter conditions
-										if (rejected_tMap_20
-												|| rejectedInnerJoin_tMap_20) {
+										if (rejectedInnerJoin_tMap_20) {
 											row6_tmp.ENCOUNTER_IDE = row61.ENCOUNTER_IDE;
 											row6_tmp.ENCOUNTER_IDE_SOURCE = row61.ENCOUNTER_IDE_SOURCE;
 											row6_tmp.ENCOUNTER_NUM = row61.ENCOUNTER_NUM;
@@ -20453,8 +20452,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 										// # Output reject table : 'iut1'
 										// # Filter conditions
-										if (rejected_tMap_20
-												|| rejectedInnerJoin_tMap_20) {
+										if (rejectedInnerJoin_tMap_20) {
 											iut1_tmp.ENCOUNTER_NUM = row61.ENCOUNTER_NUM;
 											iut1_tmp.PATIENT_IDE = row61.PATIENT_IDE;
 											iut1_tmp.ACTIVE_STATUS_CD = null;
@@ -35297,6 +35295,11 @@ public class IDRT_to_DB_Schema implements TalendJob {
 						+ ((this.ENCOUNTER_NUM == null) ? 0
 								: this.ENCOUNTER_NUM.hashCode());
 
+				result = prime
+						* result
+						+ ((this.PATIENT_IDE == null) ? 0 : this.PATIENT_IDE
+								.hashCode());
+
 				this.hashCode = result;
 				this.hashCodeDirty = false;
 			}
@@ -35319,6 +35322,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			} else if (!this.ENCOUNTER_NUM.equals(other.ENCOUNTER_NUM))
 				return false;
 
+			if (this.PATIENT_IDE == null) {
+				if (other.PATIENT_IDE != null)
+					return false;
+			} else if (!this.PATIENT_IDE.equals(other.PATIENT_IDE))
+				return false;
+
 			return true;
 		}
 
@@ -35333,6 +35342,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		public void copyKeysDataTo(row20Struct other) {
 
 			other.ENCOUNTER_NUM = this.ENCOUNTER_NUM;
+			other.PATIENT_IDE = this.PATIENT_IDE;
 
 		}
 
@@ -35362,6 +35372,39 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			}
 		}
 
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_IDRT_to_DB_Schema.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_IDRT_to_DB_Schema.length == 0) {
+						commonByteArray_TOS_IDRT_to_DB_Schema = new byte[1024];
+					} else {
+						commonByteArray_TOS_IDRT_to_DB_Schema = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_IDRT_to_DB_Schema, 0, length);
+				strReturn = new String(commonByteArray_TOS_IDRT_to_DB_Schema,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
 		public void readKeysData(ObjectInputStream dis) {
 
 			synchronized (commonByteArrayLock_TOS_IDRT_to_DB_Schema) {
@@ -35371,6 +35414,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					int length = 0;
 
 					this.ENCOUNTER_NUM = (BigDecimal) dis.readObject();
+
+					this.PATIENT_IDE = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -35391,6 +35436,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				dos.writeObject(this.ENCOUNTER_NUM);
 
+				// String
+
+				writeString(this.PATIENT_IDE, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -35407,8 +35456,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				this.ENCOUNTER_IDE = readString(dis, ois);
 
-				this.PATIENT_IDE = readString(dis, ois);
-
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 
@@ -35423,8 +35470,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			try {
 
 				writeString(this.ENCOUNTER_IDE, dos, oos);
-
-				writeString(this.PATIENT_IDE, dos, oos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -35454,6 +35499,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			returnValue = checkNullsAndCompare(this.ENCOUNTER_NUM,
 					other.ENCOUNTER_NUM);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			returnValue = checkNullsAndCompare(this.PATIENT_IDE,
+					other.PATIENT_IDE);
 			if (returnValue != 0) {
 				return returnValue;
 			}
@@ -53713,6 +53764,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1464457 characters generated by Talend Open Studio for Data Integration on
- * the January 17, 2014 1:19:55 PM CET
+ * 1465998 characters generated by Talend Open Studio for Data Integration on
+ * the January 20, 2014 11:24:06 AM CET
  ************************************************************************************************/

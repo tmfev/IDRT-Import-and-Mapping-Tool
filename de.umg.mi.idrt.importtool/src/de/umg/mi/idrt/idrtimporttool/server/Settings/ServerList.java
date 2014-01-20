@@ -26,6 +26,8 @@ import java.util.prefs.BackingStoreException;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
+
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
@@ -468,8 +470,7 @@ public class ServerList {
 			connect.close();
 			return userList;
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			e.printStackTrace();
 		}
 		return null;
@@ -521,8 +522,7 @@ public class ServerList {
 				return null;
 			}
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;
@@ -857,8 +857,7 @@ public class ServerList {
 			return users;
 
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;
@@ -893,15 +892,13 @@ public class ServerList {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			LinkedList<String> users = new LinkedList<String>();
 			return users;
@@ -944,8 +941,7 @@ public class ServerList {
 			connect.close();
 			return i2b2User;
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;
@@ -980,14 +976,12 @@ public class ServerList {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;
 		} catch (Exception e) {
-			MessageDialog.openError(Display.getDefault()
-					.getActiveShell(), "Error", e.getMessage());
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			e.printStackTrace();
 			HashSet<String> users = new HashSet<String>();
 			return users;

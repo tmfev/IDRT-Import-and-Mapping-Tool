@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
-  <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\DIVI-Auszug.cfg.csv&quot;"/>
-  <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\DIVI-Auszug.csv&quot;"/>
+  <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.cfg.csv&quot;"/>
+  <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.csv&quot;"/>
   <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
   <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop/CSV/&quot;"/>
   <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>

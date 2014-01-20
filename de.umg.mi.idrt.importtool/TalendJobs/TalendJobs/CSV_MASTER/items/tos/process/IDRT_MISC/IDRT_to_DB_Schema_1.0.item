@@ -207,7 +207,7 @@
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="736"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="740"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="704"/>
     <elementParameter field="TEXT" name="SCHEMA_OPTIONS" value="none"/>
     <elementParameter field="TEXT" name="OEM_CUSTOM_ATTRIBUTE" value=""/>
@@ -1004,7 +1004,7 @@
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out7">
         <mapperTableEntries name="SubjectKey" expression="subjKey_GT_0.SubjectKey " type="id_String" nullable="true"/>
@@ -1799,7 +1799,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="row61">
         <mapperTableEntries name="ENCOUNTER_IDE" expression="row2.StudyEventRepeatKey.length()>0?&quot;&quot;+row2.StudyEventRepeatKey:&quot;&quot;+row2.SubjectKey.hashCode()                 " type="id_String"/>
@@ -1886,9 +1886,9 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
-      <outputTables sizeState="INTERMEDIATE" name="row6" activateCondensedTool="true" reject="true" rejectInnerJoin="true">
+      <outputTables sizeState="INTERMEDIATE" name="row6" activateCondensedTool="true" rejectInnerJoin="true">
         <mapperTableEntries name="ENCOUNTER_IDE" expression="row61.ENCOUNTER_IDE" type="id_String"/>
         <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" expression="row61.ENCOUNTER_IDE_SOURCE" type="id_String"/>
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row61.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -1902,7 +1902,7 @@
         <mapperTableEntries name="SOURCESYSTEM_CD" expression="row61.SOURCESYSTEM_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPLOAD_ID" expression="row61.UPLOAD_ID " type="id_String" nullable="true"/>
       </outputTables>
-      <outputTables sizeState="INTERMEDIATE" name="iut1" activateCondensedTool="true" reject="true" rejectInnerJoin="true">
+      <outputTables sizeState="INTERMEDIATE" name="iut1" activateCondensedTool="true" rejectInnerJoin="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row61.ENCOUNTER_NUM " type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_IDE" expression="row61.PATIENT_IDE " type="id_String" nullable="true"/>
         <mapperTableEntries name="ACTIVE_STATUS_CD" expression="" type="id_String" nullable="true"/>
@@ -1938,7 +1938,7 @@
       <inputTables sizeState="INTERMEDIATE" name="row20" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE" innerJoin="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row61.ENCOUNTER_NUM " type="id_BigDecimal" operator="="/>
         <mapperTableEntries name="ENCOUNTER_IDE" type="id_String"/>
-        <mapperTableEntries name="PATIENT_IDE" expression="" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PATIENT_IDE" expression="row61.PATIENT_IDE " type="id_String" nullable="true" operator="="/>
       </inputTables>
     </nodeData>
   </node>
@@ -2081,7 +2081,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="864">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="896">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -3051,7 +3051,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="asd">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="iut1.ENCOUNTER_NUM" type="id_BigDecimal"/>

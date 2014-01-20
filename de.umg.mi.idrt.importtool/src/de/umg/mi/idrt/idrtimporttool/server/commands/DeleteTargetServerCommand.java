@@ -8,6 +8,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -25,15 +26,13 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 
 		boolean result;
 		if (viewer.getTree().getSelectionCount() > 1) {
-			result = MessageDialog.openConfirm(Display.getDefault()
-					.getActiveShell(),
+			result = MessageDialog.openConfirm(Application.getShell(),
 					"Delete Multiple Servers?",
 					"Do you really want to delete the selected servers?");
 		} else {
 			String currentServerName = viewer.getTree().getSelection()[0]
 					.getText();
-			result = MessageDialog.openConfirm(Display.getDefault()
-					.getActiveShell(), "Delete "
+			result = MessageDialog.openConfirm(Application.getShell(), "Delete "
 					+ currentServerName + "?",
 					"Do you really want to delete the server "
 							+ currentServerName + "?");

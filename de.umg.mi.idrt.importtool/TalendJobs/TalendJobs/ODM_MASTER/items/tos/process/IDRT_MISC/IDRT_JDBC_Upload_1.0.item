@@ -277,6 +277,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tOracleCommit_2"/>
   </node>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_1"/>
@@ -616,7 +617,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1184" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tOracleOutput_1_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_2_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_3_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_4_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_5_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_8_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_9_QUERY&quot;)));"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tOracleOutput_1_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_2_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_3_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_4_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_5_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_8_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_9_QUERY&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tOracleOutput_10_QUERY&quot;)));"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="log: error"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -3525,7 +3526,7 @@
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="int counter = 0;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="counter++;"/>
-    <elementParameter field="MEMO_JAVA" name="CODE_END" value="System.out.println(counter + &quot; rows...&quot;);&#xA;StatusListener.addLog(&quot;Modifier Dimension: &quot; +counter,context.currentFile); "/>
+    <elementParameter field="MEMO_JAVA" name="CODE_END" value="System.out.println(counter + &quot; rows...&quot;);&#xA;StatusListener.addLog(&quot;Visit Dimension: &quot; +counter,context.currentFile); "/>
     <elementParameter field="CHECK" name="Version_V2_0" value="false"/>
     <elementParameter field="CHECK" name="Version_V3_2" value="false"/>
     <elementParameter field="CHECK" name="Version_V4.0" value="true"/>
@@ -4888,13 +4889,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tOracleCommit_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12"/>
-  </connection>
   <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tJava_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError7"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tOracleCommit_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>

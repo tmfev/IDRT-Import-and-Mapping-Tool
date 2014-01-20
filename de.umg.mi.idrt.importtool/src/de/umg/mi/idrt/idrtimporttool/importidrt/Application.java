@@ -16,7 +16,6 @@ public class Application implements IApplication {
 	
 		return PlatformUI.getWorkbench().getDisplay().getActiveShell();
 	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
