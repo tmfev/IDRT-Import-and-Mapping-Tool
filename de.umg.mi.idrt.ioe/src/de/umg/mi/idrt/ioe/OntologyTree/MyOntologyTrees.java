@@ -774,6 +774,7 @@ public class MyOntologyTrees{
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
 			newNode.getTargetNodeAttributes().setDimension(sourceNode.getTargetNodeAttributes().getDimension());
+			newNode.getTargetNodeAttributes().setTargetNodeMap(sourceNode.getTargetNodeAttributes().getTargetNodeMap());
 		}
 		//		else {
 		//			System.out.println("sourceNode.getOntologyCellAttributes() == null");

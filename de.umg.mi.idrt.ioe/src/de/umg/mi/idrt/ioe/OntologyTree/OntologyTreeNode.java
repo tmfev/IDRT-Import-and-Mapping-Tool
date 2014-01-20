@@ -293,7 +293,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	@Override
 	public boolean isLeaf() {
 		return this.getTargetNodeAttributes().getVisualattribute()
-				.toLowerCase().startsWith("l");
+				.toLowerCase().startsWith("l")||this.getTargetNodeAttributes().getVisualattribute()
+				.toLowerCase().startsWith("r");
 	}
 
 	public boolean isSearchResult() {
