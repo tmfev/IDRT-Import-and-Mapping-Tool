@@ -10,7 +10,21 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = "de.umg.mi.idrt.idrtimporttool.messages.messages"; //$NON-NLS-1$
-
+	public static String AddServerPageOne_0;
+	public static String AddServerPageOne_1;
+	public static String AddServerPageOne_DBPassword;
+	public static String AddServerPageOne_DBSID;
+	public static String AddServerPageOne_DBType;
+	public static String AddServerPageOne_DBUsername;
+	public static String AddServerPageOne_EditYourServer;
+	public static String AddServerPageOne_Failure;
+	public static String AddServerPageOne_Hostname;
+	public static String AddServerPageOne_IDEmpty;
+	public static String AddServerPageOne_ServerExists;
+	public static String AddServerPageOne_ServerSetup;
+	public static String AddServerPageOne_Success;
+	public static String AddServerPageOne_TestDB;
+	public static String AddServerPageOne_UniqueID;
 	public static String ServerView_ImportST;
 	public static String ServerView_ImportDatasourceServer;
 	public static String ServerView_ExportDatasourceServer;
@@ -50,6 +64,20 @@ public class Messages extends NLS {
 	public static String CSVWizardPageTwo_TruncateProject;
 	public static String CSVWizardPageTwo_TruncateProjectToolTip;
 	public static String CSVWizardPageTwo_UsePidGen;
+	public static String EditServerPageOne_DBHostname;
+	public static String EditServerPageOne_DBPassword;
+	public static String EditServerPageOne_DBPort;
+	public static String EditServerPageOne_DBSID;
+	public static String EditServerPageOne_DBType;
+	public static String EditServerPageOne_DBUser;
+	public static String EditServerPageOne_EditServer;
+	public static String EditServerPageOne_Failure;
+	public static String EditServerPageOne_ServerSetup;
+	public static String EditServerPageOne_Success;
+	public static String EditServerPageOne_TestDB;
+	public static String EditServerPageOne_TestDBConnActive;
+	public static String EditServerPageOne_UniqueID;
+	public static String EditServerPageOne_UseWinAuth;
 	public static String ODMImportWizard_Duration;
 	public static String ODMImportWizard_ImpFailedSeeLog;
 	public static String ODMImportWizard_ODMImpFinished;

@@ -352,7 +352,7 @@ public class ServerView extends ViewPart {
 			sourceServerViewer.setInput(new ServerImportDBModel());
 			sourceServerViewer.setAutoExpandLevel(1);
 			sourceServerViewer.setSorter(new ViewerSorter());
-
+			sourceServerViewer.getTree().setData("org.eclipse.swtbot.widget.key","sourceServerTree");
 			/**
 			 * Menu for the source servers
 			 */
@@ -366,6 +366,8 @@ public class ServerView extends ViewPart {
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
+			targetServerViewer.getTree().setData("org.eclipse.swtbot.widget.key","targetServerTree");
+			
 			Tree targetServerTree = targetServerViewer.getTree();
 			targetServerTree.setLayoutData(BorderLayout.CENTER);
 			targetServerViewer.setContentProvider(new ServerContentProvider());

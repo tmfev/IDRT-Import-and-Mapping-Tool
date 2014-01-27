@@ -445,7 +445,7 @@ public class IDRTHelper {
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
-				ontLine[ONT_M_APPLIEDPATH] = "@";  //applied path
+				ontLine[ONT_M_APPLIEDPATH] = "\\i2b2\\";  //applied path
 				ontOutput.writeNext(ontLine);
 
 

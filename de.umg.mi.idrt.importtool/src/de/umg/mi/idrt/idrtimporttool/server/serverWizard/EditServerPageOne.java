@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 
 /**
@@ -82,10 +83,10 @@ public class EditServerPageOne extends WizardPage {
 	private Label DBTypeLabel;
 
 	public EditServerPageOne(Server server) {
-		super("Server Setup");
+		super(Messages.EditServerPageOne_ServerSetup);
 		this.server = server;
-		setTitle("Server Setup");
-		setDescription("Edit your server");
+		setTitle(Messages.EditServerPageOne_ServerSetup);
+		setDescription(Messages.EditServerPageOne_EditServer);
 	}
 
 	// /**
@@ -102,7 +103,7 @@ public class EditServerPageOne extends WizardPage {
 		container1.setLayout(layout);
 
 		Label uniqueID = new Label(container1, SWT.FILL | SWT.CENTER);
-		uniqueID.setText("Unique Identifier");
+		uniqueID.setText(Messages.EditServerPageOne_UniqueID);
 
 		uniqueIDText = new Text(container1, SWT.FILL);
 		uniqueIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
@@ -125,7 +126,7 @@ public class EditServerPageOne extends WizardPage {
 		});
 
 		Label ip = new Label(container1, SWT.FILL | SWT.CENTER);
-		ip.setText("IP");
+		ip.setText(Messages.EditServerPageOne_DBHostname);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		ipText = new Text(container1, SWT.FILL);
 		ipText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
@@ -145,7 +146,7 @@ public class EditServerPageOne extends WizardPage {
 		});
 
 		Label Port = new Label(container1, SWT.FILL | SWT.CENTER);
-		Port.setText("Port");
+		Port.setText(Messages.EditServerPageOne_DBPort);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		PortText = new Text(container1, SWT.FILL);
 		PortText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1,
@@ -165,7 +166,7 @@ public class EditServerPageOne extends WizardPage {
 			}
 		});
 		DBUser = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBUser.setText("DB Username");
+		DBUser.setText(Messages.EditServerPageOne_DBUser);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBUserText = new Text(container1, SWT.FILL);
 		DBUserText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
@@ -186,7 +187,7 @@ public class EditServerPageOne extends WizardPage {
 		});
 
 		DBUserPassword = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBUserPassword.setText("DB Password");
+		DBUserPassword.setText(Messages.EditServerPageOne_DBPassword);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBUserPasswordText = new Text(container1, SWT.FILL);
 
@@ -209,7 +210,7 @@ public class EditServerPageOne extends WizardPage {
 		});
 
 		Label DBSID = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBSID.setText("DB SID");
+		DBSID.setText(Messages.EditServerPageOne_DBSID);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBSIDText = new Text(container1, SWT.FILL);
 		DBSIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
@@ -230,7 +231,7 @@ public class EditServerPageOne extends WizardPage {
 		});
 
 		DBTypeLabel = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
-		DBTypeLabel.setText("DB Type");
+		DBTypeLabel.setText(Messages.EditServerPageOne_DBType);
 
 		DBTypeCombo = new Combo(container1, SWT.READ_ONLY);
 		DBIntegratedSecurity = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
@@ -240,7 +241,7 @@ public class EditServerPageOne extends WizardPage {
 		for (int i = 0; i < DBTypeCombo.getItems().length; i++) {
 			if (DBTypeCombo.getItem(i).equalsIgnoreCase(server.getDatabaseType())) {
 				DBTypeCombo.select(i);
-				if (server.getDatabaseType().equalsIgnoreCase("mssql")) {
+				if (server.getDatabaseType().equalsIgnoreCase("mssql")) { //$NON-NLS-1$
 					DBIntegratedSecurity.setEnabled(true);
 					DBMSSQLUseWinAuth.setEnabled(true);
 					if(server.isUseWinAuth()) {
@@ -264,7 +265,7 @@ public class EditServerPageOne extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) {
+				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) { //$NON-NLS-1$
 					DBIntegratedSecurity.setEnabled(true);
 					DBMSSQLUseWinAuth.setEnabled(true);
 					DBUserPassword.setEnabled(!DBMSSQLUseWinAuth.getSelection());
@@ -289,7 +290,7 @@ public class EditServerPageOne extends WizardPage {
 			}
 		});
 
-		DBIntegratedSecurity.setText("Use Windows Authentication?");
+		DBIntegratedSecurity.setText(Messages.EditServerPageOne_UseWinAuth);
 		//		DBIntegratedSecurity.setEnabled(false);
 		setControl(container1);
 
@@ -328,9 +329,9 @@ public class EditServerPageOne extends WizardPage {
 		// });
 
 		Button buttonTestDB = new Button(container1, SWT.PUSH);
-		buttonTestDB.setText("Test DB connectivity");
+		buttonTestDB.setText(Messages.EditServerPageOne_TestDB);
 		DBTest = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBTest.setText("?");
+		DBTest.setText("?"); //$NON-NLS-1$
 		// Button ButtonTestDB = new Button("Test DB connectivity");
 		buttonTestDB.addSelectionListener(new SelectionListener() {
 
@@ -340,7 +341,7 @@ public class EditServerPageOne extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				DBTest.setText("Testing DB Connection...");
+				DBTest.setText(Messages.EditServerPageOne_TestDBConnActive);
 				Color color_black = container1.getDisplay().getSystemColor(
 						SWT.COLOR_BLACK);
 				DBTest.setForeground(color_black);
@@ -350,14 +351,14 @@ public class EditServerPageOne extends WizardPage {
 				if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 						DBUserText.getText(), DBUserPasswordText.getText(),
 						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection())) {
-					DBTest.setText("Success");
+					DBTest.setText(Messages.EditServerPageOne_Success);
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_GREEN);
 					DBTest.setForeground(color_red);
 					DBTest.pack();
 				} else {
 					// RGB value = Color.red;
-					DBTest.setText("Failure");
+					DBTest.setText(Messages.EditServerPageOne_Failure);
 					// org.eclipse.swt.graphics.Color red = new CSWT.COLOR_RED;
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_RED);

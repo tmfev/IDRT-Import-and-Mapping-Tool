@@ -1056,7 +1056,7 @@
       <outputTables sizeState="INTERMEDIATE" name="asdd">
         <mapperTableEntries name="HLEVEL" expression="2" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="row14.sic " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="&quot;\\i2b2\\OBJECTID\\&quot;+row14.sic " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="&quot;\\i2b2\\OBJECTID\\&quot;+row14.sic +&quot;\\&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="&quot;String&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="row14.UpdateDate " type="id_Date" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="row14.ImportDate " type="id_Date" nullable="true"/>
@@ -1066,7 +1066,7 @@
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="row14.m_applied_path " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;\\i2b2\\&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row14" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="PatientID" type="id_String" nullable="true"/>

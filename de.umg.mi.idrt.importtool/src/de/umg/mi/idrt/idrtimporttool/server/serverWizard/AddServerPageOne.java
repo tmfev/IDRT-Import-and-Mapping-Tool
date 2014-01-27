@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 
@@ -97,9 +98,9 @@ public class AddServerPageOne extends WizardPage {
 	}
 
 	public AddServerPageOne() {
-		super("Server Setup");
-		setTitle("Server Setup");
-		setDescription("Edit your server");
+		super(Messages.AddServerPageOne_ServerSetup);
+		setTitle(Messages.AddServerPageOne_1);
+		setDescription(Messages.AddServerPageOne_EditYourServer);
 	}
 
 	@Override
@@ -109,7 +110,7 @@ public class AddServerPageOne extends WizardPage {
 		container1.setLayout(layout);
 
 		Label uniqueID = new Label(container1, SWT.FILL | SWT.CENTER);
-		uniqueID.setText("Unique Identifier");
+		uniqueID.setText(Messages.AddServerPageOne_UniqueID);
 
 		uniqueIDText = new Text(container1, SWT.FILL);
 		tip = new ToolTip(uniqueIDText.getShell(), SWT.BALLOON);
@@ -135,9 +136,9 @@ public class AddServerPageOne extends WizardPage {
 					if (ServerList.getTargetServers().containsKey(
 							uniqueIDText.getText())) {
 						uniqueIDText
-						.setToolTipText("Unique Server ID already exists!");
+						.setToolTipText(Messages.AddServerPageOne_ServerExists);
 
-						tip.setMessage("Unique Server ID already exists!");
+						tip.setMessage(Messages.AddServerPageOne_ServerExists);
 						Point loc = uniqueIDText.toDisplay(uniqueIDText
 								.getLocation());
 						// tip.setLocation(loc.x + uniqueIDText.getSize().x -
@@ -146,8 +147,8 @@ public class AddServerPageOne extends WizardPage {
 						tip.setVisible(true);
 						uniqueIDText.redraw();
 					} else if (uniqueIDText.getText().isEmpty()) {
-						uniqueIDText.setToolTipText("Unique Server ID empty!");
-						tip.setMessage("Unique Server ID empty!");
+						uniqueIDText.setToolTipText(Messages.AddServerPageOne_IDEmpty);
+						tip.setMessage(Messages.AddServerPageOne_IDEmpty);
 						Point loc = uniqueIDText.toDisplay(uniqueIDText
 								.getLocation());
 						// tip.setLocation(loc.x + uniqueIDText.getSize().x -
@@ -169,16 +170,16 @@ public class AddServerPageOne extends WizardPage {
 			public void focusGained(FocusEvent e) {
 				if (ServerList.getTargetServers().containsKey(uniqueIDText.getText())) {
 					uniqueIDText
-					.setToolTipText("Unique Server ID already exists!");
-					tip.setMessage("Unique Server ID already exists!");
+					.setToolTipText(Messages.AddServerPageOne_ServerExists);
+					tip.setMessage(Messages.AddServerPageOne_ServerExists);
 					Point loc = uniqueIDText.toDisplay(uniqueIDText
 							.getLocation());
 					tip.setLocation(loc);
 					tip.setVisible(true);
 					uniqueIDText.redraw();
 				} else if (uniqueIDText.getText().isEmpty()) {
-					uniqueIDText.setToolTipText("Unique Server ID empty!");
-					tip.setMessage("Unique Server ID empty!");
+					uniqueIDText.setToolTipText(Messages.AddServerPageOne_IDEmpty);
+					tip.setMessage(Messages.AddServerPageOne_IDEmpty);
 					Point loc = uniqueIDText.toDisplay(uniqueIDText
 							.getLocation());
 					tip.setLocation(loc);
@@ -194,11 +195,11 @@ public class AddServerPageOne extends WizardPage {
 		});
 
 		Label ip = new Label(container1, SWT.FILL | SWT.CENTER);
-		ip.setText("IP");
+		ip.setText(Messages.AddServerPageOne_Hostname);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		ipText = new Text(container1, SWT.FILL);
 		ipText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		ipText.setText("");
+		ipText.setText(""); //$NON-NLS-1$
 		// ipText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
 		// }
@@ -210,12 +211,12 @@ public class AddServerPageOne extends WizardPage {
 		// });
 
 		Label Port = new Label(container1, SWT.FILL | SWT.CENTER);
-		Port.setText("Port");
+		Port.setText(Messages.AddServerPageOne_0);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		PortText = new Text(container1, SWT.FILL);
 		PortText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1,
 				1));
-		PortText.setText("");
+		PortText.setText(""); //$NON-NLS-1$
 		// PortText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
 		// }
@@ -226,12 +227,12 @@ public class AddServerPageOne extends WizardPage {
 		// }
 		// });
 		DBUser = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBUser.setText("DB Username");
+		DBUser.setText(Messages.AddServerPageOne_DBUsername);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBUserText = new Text(container1, SWT.FILL);
 		DBUserText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
 				1, 1));
-		DBUserText.setText("");
+		DBUserText.setText(""); //$NON-NLS-1$
 		// DBUserText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
 		// }
@@ -243,13 +244,13 @@ public class AddServerPageOne extends WizardPage {
 		// });
 
 		DBUserPassword = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBUserPassword.setText("DB Password");
+		DBUserPassword.setText(Messages.AddServerPageOne_DBPassword);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBUserPasswordText = new Text(container1, SWT.FILL);
 
 		DBUserPasswordText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				false, 1, 1));
-		DBUserPasswordText.setText("");
+		DBUserPasswordText.setText(""); //$NON-NLS-1$
 		DBUserPasswordText.setEchoChar('*');
 		// DBUserPasswordText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
@@ -262,15 +263,15 @@ public class AddServerPageOne extends WizardPage {
 		// });
 
 		Label DBSID = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBSID.setText("DB SID");
+		DBSID.setText(Messages.AddServerPageOne_DBSID);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		DBSIDText = new Text(container1, SWT.FILL);
 		DBSIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
 				1, 1));
-		DBSIDText.setText("");
+		DBSIDText.setText(""); //$NON-NLS-1$
 
 		DBTypeLabel = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
-		DBTypeLabel.setText("DB Type");
+		DBTypeLabel.setText(Messages.AddServerPageOne_DBType);
 
 		DBTypeCombo = new Combo(container1, SWT.READ_ONLY);
 		DBTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -279,7 +280,7 @@ public class AddServerPageOne extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) {
+				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) { //$NON-NLS-1$
 					DBIntegratedSecurity.setEnabled(true);
 					DBMSSQLUseWinAuth.setEnabled(true);
 					DBUserPassword.setEnabled(!DBMSSQLUseWinAuth.getSelection());
@@ -304,7 +305,7 @@ public class AddServerPageOne extends WizardPage {
 			}
 		});
 		DBIntegratedSecurity = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
-		DBIntegratedSecurity.setText("Use Windows Authentication?");
+		DBIntegratedSecurity.setText("Use Windows Authentication?"); //$NON-NLS-1$
 		DBIntegratedSecurity.setEnabled(false);
 		setControl(container1);
 
@@ -326,7 +327,7 @@ public class AddServerPageOne extends WizardPage {
 		});
 
 		Button buttonTestDB = new Button(container1, SWT.PUSH);
-		buttonTestDB.setText("Test DB connectivity");
+		buttonTestDB.setText(Messages.AddServerPageOne_TestDB);
 
 		// Button ButtonTestDB = new Button("Test DB connectivity");
 		buttonTestDB.addSelectionListener(new SelectionListener() {
@@ -338,7 +339,7 @@ public class AddServerPageOne extends WizardPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
-				DBTest.setText("Testing DB Connection...");
+				DBTest.setText("Testing DB Connection..."); //$NON-NLS-1$
 				Color color_black = container1.getDisplay().getSystemColor(
 						SWT.COLOR_BLACK);
 				DBTest.setForeground(color_black);
@@ -350,13 +351,13 @@ public class AddServerPageOne extends WizardPage {
 						DBUserText.getText(), DBUserPasswordText.getText(),
 						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection())) {
 
-					DBTest.setText("Success");
+					DBTest.setText(Messages.AddServerPageOne_Success);
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_GREEN);
 					DBTest.setForeground(color_red);
 					DBTest.pack();
 				} else {
-					DBTest.setText("Failure");
+					DBTest.setText(Messages.AddServerPageOne_Failure);
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_RED);
 					DBTest.setForeground(color_red);
@@ -366,7 +367,7 @@ public class AddServerPageOne extends WizardPage {
 			}
 		});
 		DBTest = new Label(container1, SWT.FILL | SWT.CENTER);
-		DBTest.setText("?");
+		DBTest.setText("?"); //$NON-NLS-1$
 		setPageComplete(false);
 	}
 
