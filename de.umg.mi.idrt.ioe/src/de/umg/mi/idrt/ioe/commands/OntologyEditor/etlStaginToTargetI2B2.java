@@ -24,24 +24,6 @@ public class etlStaginToTargetI2B2 extends AbstractHandler {
 		new TOSConnector();
 		TOSConnector.uploadProject();
 		
-	
-//		try {
-//			tos.setContextVariable("Job", Resource.ID.Command.IEO.ETLSTAGINGI2B2TOTARGETI2B2);
-//			//tos.setContextVariable("SQLTable", "I2B2");
-//	
-//			tos.runJob();
-//
-//		} catch (Exception e) {
-//			String message = "Error while using a TOS-plugin with function getOntology(): "
-//					+ e.getMessage();
-//			Console.error(message);
-//			Application.getStatusView().addErrorMessage(message);
-//			Console.info("TOS-Error2: ");
-//
-//		}
-		
-		
-		
 		return null;
 	}
 }

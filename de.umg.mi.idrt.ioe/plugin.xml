@@ -59,6 +59,7 @@
             allowMultiple="true"
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.StatusView"
+            icon="images/simpletype_obj.gif"
             id="edu.goettingen.i2b2.importtool.view.StatusView"
             name="StatusView"
             restorable="true">
@@ -67,21 +68,24 @@
             allowMultiple="false"
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorStagingInfoView"
-            id="edu.goettingen.i2b2.importtool.view.EditorSourceInfoView"
-            name="EditorSourceInfoView"
+            icon="images/go-next.png"
+            id="edu.goettingen.i2b2.importtool.view.EditorStagingInfoView"
+            name="Staging Info View"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorTargetInfoView"
+            icon="images/go-next-unchecked.png"
             id="edu.goettingen.i2b2.importtool.view.EditorTargetInfoView"
-            name="EditorTargetInfoView"
+            name="Target Info View"
             restorable="true">
       </view>
       <view
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.OntologyEditorView"
+            icon="images/format-justify-fill.png"
             id="de.umg.mi.idrt.ioe.OntologyEditor"
             name="Ontology Editor"
             restorable="true">
@@ -89,6 +93,7 @@
       <view
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.ProgressView"
+            icon="images/progress_none.gif"
             id="de.umg.mi.idrt.ioe.ProgressView"
             name="Progress"
             restorable="true">
@@ -231,6 +236,11 @@
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddItemCommand"
             id="de.umg.mi.idrt.ioe.addItem"
             name="addItem">
+      </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.AddModifierCommand"
+            id="de.umg.mi.idrt.ioe.addModifierNode"
+            name="addModifierNode">
       </command>
       <command
             defaultHandler="de.umg.mi.idrt.ioe.commands.OntologyEditor.RenameNodeCommand"

@@ -122,9 +122,6 @@ public class RegexWizardPage1 extends WizardPage {
 			}
 		});
 
-
-
-
 		TableViewerColumn regexCol = new TableViewerColumn(viewer, SWT.NONE);
 		regexCol.setEditingSupport(new EditingSupport(viewer) {
 
@@ -172,7 +169,6 @@ public class RegexWizardPage1 extends WizardPage {
 				viewer.update(element, null);
 			}
 		});
-
 
 		final TableViewerColumn testCol = new TableViewerColumn(viewer, SWT.NONE);
 		testCol.setEditingSupport(new EditingSupport(viewer) {

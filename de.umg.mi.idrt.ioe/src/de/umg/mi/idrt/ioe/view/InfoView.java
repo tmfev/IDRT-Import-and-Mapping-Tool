@@ -276,7 +276,7 @@ public class InfoView extends ViewPart {
 		// infoTableValue.
 
 		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_PATH);
-		addColumItem(Resource.I2B2.NODE.TARGET.NAME);
+		addColumItem(Resource.I2B2.NODE.TARGET.C_NAME);
 		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION);
 		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH);
 		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH);

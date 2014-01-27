@@ -71,18 +71,18 @@ public class SaveTarget extends AbstractHandler {
 			fields[2] = Resource.I2B2.NODE.TARGET.TREE_PATH;
 			fields[3] = Resource.I2B2.NODE.TARGET.STAGING_PATH;
 			fields[4] = Resource.I2B2.NODE.TARGET.STAGING_DIMENSION;
-			fields[5] = Resource.I2B2.NODE.TARGET.NAME;
+			fields[5] = Resource.I2B2.NODE.TARGET.C_NAME;
 			fields[6] = Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH;
 			fields[7] = Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH;
 			fields[8] = Resource.I2B2.NODE.TARGET.VISUALATTRIBUTES;
 
 			//new table columns
-			fields[9]  = Resource.I2B2.NODE.TARGET.BASECODE;
-			fields[10] = Resource.I2B2.NODE.TARGET.METADATAXML;
-			fields[11] = Resource.I2B2.NODE.TARGET.COLUMNDATATYPE;
-			fields[12] = Resource.I2B2.NODE.TARGET.OPERATOR;
-			fields[13] = Resource.I2B2.NODE.TARGET.COMMENT;
-			fields[14] = Resource.I2B2.NODE.TARGET.TOOLTIP;
+			fields[9]  = Resource.I2B2.NODE.TARGET.C_BASECODE;
+			fields[10] = Resource.I2B2.NODE.TARGET.C_METADATAXML;
+			fields[11] = Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE;
+			fields[12] = Resource.I2B2.NODE.TARGET.C_OPERATOR;
+			fields[13] = Resource.I2B2.NODE.TARGET.C_COMMENT;
+			fields[14] = Resource.I2B2.NODE.TARGET.C_TOOLTIP;
 			fields[15] = Resource.I2B2.NODE.TARGET.UPDATE_DATE;
 			fields[16] = Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE;
 			fields[17] = Resource.I2B2.NODE.TARGET.IMPORT_DATE;
@@ -175,12 +175,12 @@ public class SaveTarget extends AbstractHandler {
 			if (importDate!= null && importDate.length()>0)
 			importDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", importDate));
 			
-			fields[9]  = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.BASECODE);
-			fields[10] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.METADATAXML);
-			fields[11] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE);
-			fields[12] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.OPERATOR);
-			fields[13] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.COMMENT);
-			fields[14] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.TOOLTIP);
+			fields[9]  = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_BASECODE);
+			fields[10] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML);
+			fields[11] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE);
+			fields[12] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR);
+			fields[13] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COMMENT);
+			fields[14] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP);
 			fields[15] = updateDate;
 			fields[16] = downloadDate;
 			fields[17] = importDate;

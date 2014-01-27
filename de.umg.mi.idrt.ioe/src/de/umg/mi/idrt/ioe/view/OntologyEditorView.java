@@ -6,8 +6,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
-
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -51,7 +49,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -80,6 +77,7 @@ import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
+import de.umg.mi.idrt.ioe.GUITools;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.SystemMessage;
 import de.umg.mi.idrt.ioe.OntologyTree.FocusCellOwnerDrawHighlighterForMultiselection;
@@ -178,6 +176,10 @@ public class OntologyEditorView extends ViewPart {
 	private static void addNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
 	}
+	private static void addModifier() {
+		Application.executeCommand("de.umg.mi.idrt.ioe.addModifierNode");
+	}
+	
 	public static void addVersionName(String name) {
 		boolean contains = false;
 		for (String item : versionCombo.getItems())
@@ -208,20 +210,20 @@ public class OntologyEditorView extends ViewPart {
 	private static void deleteNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
 	}
-	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
-
-		for (OntologyTreeNode child : node.getChildren())
-			expandStagingChildren(child,state);
-		stagingTreeViewer.setExpandedState(node, state);
-	}
-
-	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
-
-		for (OntologyTreeNode child : node.getChildren())
-			expandTargetChildren(child,state);
-		targetTreeViewer.setExpandedState(node, state);
-
-	}
+	//	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
+	//
+	//		for (OntologyTreeNode child : node.getChildren())
+	//			expandStagingChildren(child,state);
+	//		stagingTreeViewer.setExpandedState(node, state);
+	//	}
+	//
+	//	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
+	//
+	//		for (OntologyTreeNode child : node.getChildren())
+	//			expandTargetChildren(child,state);
+	//		targetTreeViewer.setExpandedState(node, state);
+	//
+	//	}
 
 	/**
 	 * @return the currentStagingNode
@@ -246,7 +248,10 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static OntologyTree getOntologyTargetTree(){
-		return myOntologyTree.getOntologyTreeTarget();
+		if (myOntologyTree != null)
+			return myOntologyTree.getOntologyTreeTarget();
+		else 
+			return null;
 	}
 
 	public static String getStagingSchemaName() {
@@ -304,18 +309,18 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-//		Shell shell = new Shell();
-//		shell.setSize(844, 536);
-//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//		mainComposite = new Composite(shell, SWT.NONE);
-//		mainComposite.setLayout(new BorderLayout(0, 0));
+		//		Shell shell = new Shell();
+		//		shell.setSize(844, 536);
+		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//		mainComposite = new Composite(shell, SWT.NONE);
+		//		mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
 
 			for (File listOfFile : listOfFiles) {
 				if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
-//					System.out.println(listOfFile.getName() + " deleted");
+					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -395,6 +400,8 @@ public class OntologyEditorView extends ViewPart {
 				EditorTargetInfoView.refresh();
 			}
 		});
+
+
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
 
@@ -408,7 +415,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.DEL) {
-//					System.out.println("DELETE");
+					//					System.out.println("DELETE");
 					deleteNode();
 				}
 			}
@@ -455,7 +462,7 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer = new TreeViewer(stagingComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-
+		
 		composite_8 = new Composite(stagingComposite, SWT.NONE);
 		composite_8.setLayoutData(BorderLayout.NORTH);
 		composite_8.setLayout(new GridLayout(3, false));
@@ -701,7 +708,9 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				ProgressView.setProgress(0, "Saving...", "");
 				Application.executeCommand(Resource.ID.Command.IOE.SAVETARGET);
+				ProgressView.setProgress(100, "Saving...(done)", "");
 			}
 		});
 		btnNewVersion.addSelectionListener(new SelectionListener() {
@@ -873,11 +882,11 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
-
-//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
-//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
+				ProgressView.setProgress(0, "Uploading...", "");
+				//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
+				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
-//				System.out.println("childCount: " + bla.getChildCount());
+				//				System.out.println("childCount: " + bla.getChildCount());
 				if (bla.getChildCount()>0 && isNotYetSaved()) {
 					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
 							"do you want to save it first?");
@@ -888,6 +897,7 @@ public class OntologyEditorView extends ViewPart {
 					}
 				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
+				ProgressView.setProgress(100, "Uploading...(done)", "");
 			}
 		});
 
@@ -1152,7 +1162,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setMyOntologyTree (MyOntologyTrees myOT){
-//		System.out.println("********* SETTING OT **********");
+		//		System.out.println("********* SETTING OT **********");
 		myOntologyTree = myOT;
 	}
 
@@ -1176,7 +1186,7 @@ public class OntologyEditorView extends ViewPart {
 		OntologyEditorView.showSubNodes = showSubNodes;
 	}
 
-	public static void setSourceContent() {
+	public static void setStagingContent() {
 		long time =System.currentTimeMillis();
 		if (!init) {
 			init();
@@ -1188,7 +1198,9 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.expandToLevel(2);
 		OntologyEditorView.getOntologyStagingTree()
 		.setTreeViewer(stagingTreeViewer);
-
+		Tree stagingTree = stagingTreeViewer.getTree();
+		//JUnit
+		stagingTree.setData("org.eclipse.swtbot.widget.key", "stagingTree");
 		Menu menu = new Menu(stagingTreeViewer.getTree());
 
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
@@ -1206,7 +1218,7 @@ public class OntologyEditorView extends ViewPart {
 				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 				stagingComposite.setRedraw(false);
 				stagingTreeViewer.expandToLevel(node, TreeViewer.ALL_LEVELS);
-//				expandStagingChildren(node, true);
+				//				expandStagingChildren(node, true);
 				stagingComposite.setRedraw(true);
 			}
 		});
@@ -1224,7 +1236,7 @@ public class OntologyEditorView extends ViewPart {
 				OntologyTreeNode node = OntologyEditorView.getCurrentStagingNode();
 				stagingComposite.setRedraw(false);
 				stagingTreeViewer.collapseToLevel(node, TreeViewer.ALL_LEVELS);
-//				expandStagingChildren(node, false);
+				//				expandStagingChildren(node, false);
 				stagingComposite.setRedraw(true);
 			}
 		});
@@ -1249,19 +1261,95 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void setStagingServer(Server currentServer2) {
 		currentStagingServer = new Server(currentServer2);
-//		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
+		//		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
 	}
 
 
 
 	public static void setTargetContent(OntologyTree oTTarget) {
 		targetTreeViewer.getTree().removeAll();
-
+		final int IMAGE_MARGIN = 20;
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OntologyTreeContentProvider().getTargetModel());
+		targetTreeViewer.getTree().setData("org.eclipse.swtbot.widget.key", "targetTree");
+		final Tree tree = targetTreeViewer.getTree();
+		tree.addListener(SWT.MeasureItem, new Listener() {
+			public void handleEvent(Event event) {
+				TreeItem item = (TreeItem)event.item;
+				if (item.getData() instanceof OntologyTreeNode) {
+					OntologyTreeNode node = (OntologyTreeNode) item.getData();
+					Image trailingImage;
+					boolean start = node.getTargetNodeAttributes().getStartDateSource()!= null && !node.getTargetNodeAttributes().getStartDateSource().isEmpty();
+					boolean end = node.getTargetNodeAttributes().getEndDateSource()!= null && !node.getTargetNodeAttributes().getEndDateSource().isEmpty();
+					boolean startEnd = node.getTargetNodeAttributes().getEndDateSource()!= null && 
+							!node.getTargetNodeAttributes().getEndDateSource().isEmpty() && 
+							node.getTargetNodeAttributes().getStartDateSource()!= null && 
+							!node.getTargetNodeAttributes().getStartDateSource().isEmpty();
+					
+//					boolean name = !node.getTargetNodeAttributes().getName().isEmpty(); 
+					
+					if (start && !end) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_START_DATE);
+						if (trailingImage != null) {
+							event.width += trailingImage.getBounds().width + IMAGE_MARGIN;
+						}
+					}
+					else if (end && !start) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_START_DATE);
+						if (trailingImage != null) {
+							event.width += trailingImage.getBounds().width + IMAGE_MARGIN;
+						}
+					}
+					else if (startEnd) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_START_END_DATE);
+						if (trailingImage != null) {
+							event.width += trailingImage.getBounds().width + IMAGE_MARGIN;
+						}
+					}
+				}
+			}
+		});
+		tree.addListener(SWT.PaintItem, new Listener() {
+			public void handleEvent(Event event) {
+				TreeItem item = (TreeItem)event.item;
+				if (item.getData() instanceof OntologyTreeNode) {
+					OntologyTreeNode node = (OntologyTreeNode) item.getData();
+					Image trailingImage = null;
+					boolean start = node.getTargetNodeAttributes().getStartDateSource()!= null && !node.getTargetNodeAttributes().getStartDateSource().isEmpty();
+					boolean end = node.getTargetNodeAttributes().getEndDateSource()!= null && !node.getTargetNodeAttributes().getEndDateSource().isEmpty();
+					boolean startEnd = node.getTargetNodeAttributes().getEndDateSource()!= null && 
+							!node.getTargetNodeAttributes().getEndDateSource().isEmpty() && 
+							node.getTargetNodeAttributes().getStartDateSource()!= null && 
+							!node.getTargetNodeAttributes().getStartDateSource().isEmpty();
+					
+					if (start && !end) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_START_DATE);
+					}
+					else if (end && !start) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_END_DATE);
+					}
+					else if (startEnd) {
+						trailingImage = GUITools
+								.getImage(Resource.OntologyTree.HAS_START_END_DATE);
+					}
+					if (trailingImage != null) {
+						int x = event.x + event.width + IMAGE_MARGIN;
+						int itemHeight = tree.getItemHeight();
+						int imageHeight = trailingImage.getBounds().height;
+						int y = event.y + (itemHeight - imageHeight) / 2;
+						event.gc.drawImage(trailingImage, x, y);
+					}
+				}
+			}
+		});
 		targetTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
 
 			@Override
@@ -1333,26 +1421,26 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-//				System.out.println("**** STAGING: ****");
-				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
-					System.out.println(child.getName());
-					for (OntologyTreeNode cchild : child.getChildren()) {
-						System.out.println("\t"+cchild.getName());
-					}
-				}
-//				System.out.println("*****************");
-//				System.out.println("**** TARGET: ****");
-				for (OntologyTreeNode child : getOntologyTargetTree().getRootNode().getChildren()) {
-					System.out.println(child.getName());
-					for (OntologyTreeNode cchild : child.getChildren()) {
-						System.out.println("\t"+cchild.getName());
-					}
-				}
-//				System.out.println("*****************");
-//				System.out.println("TARGET: " +getOntologyTargetTree().getNodeLists().getNumberOfItemNodes());
-//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
-				
-				System.gc();
+				//				System.out.println("**** STAGING: ****");
+//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
+//					System.out.println(child.getName());
+//					for (OntologyTreeNode cchild : child.getChildren()) {
+//						System.out.println("\t"+cchild.getName());
+//					}
+//				}
+				//				System.out.println("*****************");
+				//				System.out.println("**** TARGET: ****");
+//				for (OntologyTreeNode child : getOntologyTargetTree().getRootNode().getChildren()) {
+//					System.out.println(child.getName());
+//					for (OntologyTreeNode cchild : child.getChildren()) {
+//						System.out.println("\t"+cchild.getName());
+//					}
+//				}
+				//				System.out.println("*****************");
+				//				System.out.println("TARGET: " +getOntologyTargetTree().getNodeLists().getNumberOfItemNodes());
+				//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
+
+//				System.gc();
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1385,7 +1473,23 @@ public class OntologyEditorView extends ViewPart {
 				addItem();
 			}
 		});
-
+		//TODO MODIFIER
+//		new MenuItem(menu, SWT.SEPARATOR);
+//
+//		MenuItem mntmAddModifier = new MenuItem(menu, SWT.PUSH);
+//		mntmAddModifier.setText("Add Modifier");
+//		mntmAddModifier.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
+//			}
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent event) {
+//				addModifier();
+//			}
+//		});
 		new MenuItem(menu, SWT.SEPARATOR);
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
 		mntmExpandChildren.setText("Expand All Children");
@@ -1401,7 +1505,7 @@ public class OntologyEditorView extends ViewPart {
 
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
-//				expandTargetChildren(node, true);
+				//				expandTargetChildren(node, true);
 				targetTreeViewer.expandToLevel(node, TreeViewer.ALL_LEVELS);
 				targetComposite.setRedraw(true);
 			}
@@ -1419,7 +1523,7 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent event) {
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
-//				expandTargetChildren(node, false);
+				//				expandTargetChildren(node, false);
 				targetTreeViewer.collapseToLevel(node, TreeViewer.ALL_LEVELS);
 				targetComposite.setRedraw(true);
 			}
@@ -1511,7 +1615,7 @@ public class OntologyEditorView extends ViewPart {
 
 		//		addVersionName(version);
 		//		versionCombo.setText(version);
-//		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
+		//		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
 		getTargetProjects().getSelectedTarget().setTargetDBSchema(name);
 
 		composite_2.layout();
@@ -1543,7 +1647,7 @@ public class OntologyEditorView extends ViewPart {
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
 				"images/IDRT.gif"));
 
-//		System.out.println("################# Debug #######");
+		//		System.out.println("################# Debug #######");
 		TargetProjects targetProjects = new TargetProjects();
 
 		TargetProject targetProject1 = new TargetProject();
@@ -1559,13 +1663,13 @@ public class OntologyEditorView extends ViewPart {
 		targetProjects.add(targetProject1);
 		targetProjects.add(targetProject2);
 
-//		System.out.println("TargetProjects:");
-//		List<TargetProject> list = targetProjects.getTargetProjectsList();
-//		for ( TargetProject tmpTargetProject : list ){
-//			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
-//		}
-//		System.out.println("---");
-//		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
+		//		System.out.println("TargetProjects:");
+		//		List<TargetProject> list = targetProjects.getTargetProjectsList();
+		//		for ( TargetProject tmpTargetProject : list ){
+		//			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
+		//		}
+		//		System.out.println("---");
+		//		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
 
 
 
@@ -1598,7 +1702,7 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(final DropTargetEvent event) {
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
-//					System.out.println("SERVER!");
+					//					System.out.println("SERVER!");
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
@@ -1608,7 +1712,17 @@ public class OntologyEditorView extends ViewPart {
 					System.err.println("staging node dropped");
 				}
 				else {
-//					getOntologyStagingTree().setI2B2RootNode(null);
+					if (OntologyEditorView.getOntologyTargetTree()!=null) {
+						OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
+						if (bla.getChildCount()>0 && isNotYetSaved()) {
+							boolean confirm = MessageDialog.openQuestion(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
+									"do you want to save it first?");
+							if (confirm)
+							{
+								Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
+							}
+						}
+					}
 					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 					setTargetNameVersion(getLatestVersion((String)(event.data)));
 				}
@@ -1639,7 +1753,6 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(DropTargetEvent event) {
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
-//					System.out.println("SERVER!");
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
@@ -1656,10 +1769,8 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	private String getLatestVersion(String string) {
-
 		if (  getTargetProjects().getSelectedTarget() != null ){ 
 			return String.valueOf( getTargetProjects().getSelectedTarget().getVersion() ) ;
-
 		} else {
 			return "0";
 		}

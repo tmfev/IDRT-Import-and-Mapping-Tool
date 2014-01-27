@@ -378,12 +378,12 @@ public class MyOntologyTrees{
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH,source.getOntologyCellAttributes().getM_APPLIED_PATH());
 			node.getTargetNodeAttributes().addStagingPath(source.getTreePath());	
 		}
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE,source.getOntologyCellAttributes().getC_BASECODE());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML,source.getOntologyCellAttributes().getC_METADATAXML());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE,source.getOntologyCellAttributes().getC_COLUMNDATATYPE());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.OPERATOR,source.getOntologyCellAttributes().getC_OPERATOR());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COMMENT,source.getOntologyCellAttributes().getC_COMMENT());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.TOOLTIP,source.getOntologyCellAttributes().getC_TOOLTIP());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_BASECODE,source.getOntologyCellAttributes().getC_BASECODE());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_METADATAXML,source.getOntologyCellAttributes().getC_METADATAXML());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE,source.getOntologyCellAttributes().getC_COLUMNDATATYPE());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_OPERATOR,source.getOntologyCellAttributes().getC_OPERATOR());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_COMMENT,source.getOntologyCellAttributes().getC_COMMENT());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,source.getOntologyCellAttributes().getC_TOOLTIP());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.UPDATE_DATE,source.getOntologyCellAttributes().getUPDATE_DATEAsString());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE,source.getOntologyCellAttributes().getDOWNLOAD_DATEAsString());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.IMPORT_DATE,source.getOntologyCellAttributes().getIMPORT_DATEAsString());

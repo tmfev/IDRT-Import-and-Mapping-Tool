@@ -66,7 +66,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 				Resource.ID.Command.IOE.LOADEVERYTHING));
 
 		try {
-			OntologyEditorView.setSourceContent();
+			OntologyEditorView.setStagingContent();
 		}catch (Exception e) {
 			e.printStackTrace();
 			try {

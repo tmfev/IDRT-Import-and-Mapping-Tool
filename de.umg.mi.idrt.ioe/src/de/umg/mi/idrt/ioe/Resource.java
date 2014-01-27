@@ -67,6 +67,12 @@ public class Resource {
 
 	public class OntologyTree {
 
+		public static final String HAS_START_DATE = IMAGE_PATH
+				+ "hasStartDate16.gif";
+		public static final String HAS_END_DATE = IMAGE_PATH
+				+ "hasEndDate16.gif";
+		public static final String HAS_START_END_DATE = IMAGE_PATH
+				+ "hasSEDate16.gif";
 		public static final String ICON_ITEM = IMAGE_PATH + "i2b2_itemEdit.gif";
 		public static final String ICON_ANSWER = IMAGE_PATH + "answer.gif";
 		public static final String ICON_ANSWERGROUP = IMAGE_PATH
@@ -273,24 +279,38 @@ public class Resource {
 				public final static String TREE_PATH = "TREE_PATH";
 				public final static String STAGING_PATH = "STAGING_PATH";
 				public final static String STAGING_DIMENSION = "STAGING_DIMENSION";
-				public final static String NAME = "NAME";
+//				public final static String NAME = "NAME";
 				public final static String STARTDATE_STAGING_PATH = "STARTDATE_STAGING_PATH";
 				public final static String ENDDATE_STAGING_PATH = "ENDDATE_STAGING_PATH";
 				public final static String VISUALATTRIBUTES = "VISUALATTRIBUTES";
 				
 				// new table columns
-				public final static String BASECODE = "BASECODE";
-				public final static String METADATAXML = "METADATAXML";
-				public final static String COLUMNDATATYPE = "COLUMNDATATYPE";
-				public final static String OPERATOR = "C_OPERATOR";
-				public final static String COMMENT  = "C_COMMENT ";
-				public final static String TOOLTIP = "TOOLTIP";
-				public final static String UPDATE_DATE = "UPDATE_DATE";
-				public final static String DOWNLOAD_DATE = "DOWNLOAD_DATE";
-				public final static String IMPORT_DATE = "IMPORT_DATE";
-				public final static String SOURCESYSTEM_CD = "SOURCESYSTEM_CD";
-				public final static String VALUETYPE_CD = "VALUETYPE_CD";
-				public final static String M_APPLIED_PATH = "M_APPLIED_PATH";
+				
+				public final static String	C_HLEVEL = "C_HLEVEL";
+				public final static String 	C_FULLNAME = "C_FULLNAME";
+				public final static String	C_NAME = "C_NAME";
+				public final static String	C_SYNONYM_CD = "C_SYNONYM_CD";
+				public final static String	C_VISUALATTRIBUTES = "C_VISUALATTRIBUTES";
+				public final static String	C_TOTALNUM = "C_TOTALNUM";
+				public final static String	C_BASECODE = "C_BASECODE";
+				public final static String	C_METADATAXML = "C_METADATAXML";
+				public final static String	C_FACTTABLECOLUMN = "C_FACTTABLECOLUMN";
+				public final static String	C_TABLENAME = "C_TABLENAME";
+				public final static String	C_COLUMNNAME = "C_COLUMNNAME";
+				public final static String	C_COLUMNDATATYPE = "C_COLUMNDATATYPE";
+				public final static String	C_OPERATOR = "C_OPERATOR";
+				public final static String	C_DIMCODE = "C_DIMCODE";
+				public final static String	C_COMMENT = "C_COMMENT";
+				public final static String	C_TOOLTIP = "C_TOOLTIP";
+				public final static String	M_APPLIED_PATH = "M_APPLIED_PATH";
+				public final static String	UPDATE_DATE = "UPDATE_DATE";
+				public final static String	DOWNLOAD_DATE = "DOWNLOAD_DATE";
+				public final static String	IMPORT_DATE = "IMPORT_DATE";
+				public final static String	SOURCESYSTEM_CD = "SOURCESYSTEM_CD";
+				public final static String	VALUETYPE_CD = "VALUETYPE_CD";
+				public final static String	M_EXCLUSION_CD = "M_EXCLUSION_CD";
+				public final static String	C_PATH = "C_PATH";
+				public final static String	C_SYMBOL = "C_SYMBOL";
 
 			}
 
@@ -316,7 +336,7 @@ public class Resource {
 	public class GUI {
 
 		public final String[] editorTargetInfoViewRows = { "*id", "*treePath",
-				"*treePathLevel", Resource.I2B2.NODE.TARGET.NAME };
+				"*treePathLevel", Resource.I2B2.NODE.TARGET.C_NAME };
 
 		public class EditorInfoViewTable {
 

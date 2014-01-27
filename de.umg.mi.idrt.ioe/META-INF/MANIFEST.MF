@@ -1,25 +1,24 @@
-Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: IOE Plugin
-Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 0.9.0.7
 Bundle-Activator: de.umg.mi.idrt.ioe.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.core.resources;bundle-version="3.6.0",
- org.eclipse.ui.intro,
- org.eclipse.equinox.p2.operations;bundle-version="2.0.0",
- org.eclipse.equinox.p2.core;bundle-version="2.0.0",
- org.eclipse.equinox.p2.ui;bundle-version="2.0.0",
- org.eclipse.equinox.p2.metadata;bundle-version="2.0.0",
- org.eclipse.core.databinding,
- org.eclipse.core.databinding.beans,
- org.eclipse.core.databinding.observable,
- org.eclipse.core.databinding.property,
- org.eclipse.jface.databinding,
- com.ibm.icu
-Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Name: IOE Plugin
+Import-Package: au.com.bytecode.opencsv,
+ au.com.bytecode.opencsv.bean,
+ de.goettingen.i2b2.importtool.idrt.StatusListener,
+ de.umg.mi.idrt.idrtimporttool.ExportDB,
+ de.umg.mi.idrt.idrtimporttool.ImportWizard,
+ de.umg.mi.idrt.idrtimporttool.Log,
+ de.umg.mi.idrt.idrtimporttool.commands,
+ de.umg.mi.idrt.idrtimporttool.importidrt,
+ de.umg.mi.idrt.idrtimporttool.messages,
+ de.umg.mi.idrt.idrtimporttool.server.Settings,
+ de.umg.mi.idrt.idrtimporttool.server.commands,
+ de.umg.mi.idrt.idrtimporttool.server.serverWizard,
+ de.umg.mi.idrt.idrtimporttool.table,
+ de.umi.mi.passwordcrypt,
+ org.eclipselabs.p2.rcpupdate.utils,
+ org.eclipselabs.p2.rcpupdate.utils.handler,
+ org.eclipselabs.p2.rcpupdate.utils.plugin
 Bundle-ClassPath: .,
  lib/cdatetime-0.14.0.jar,
  lib/commons-lang-2.5.jar,
@@ -71,20 +70,30 @@ Bundle-ClassPath: .,
  TalendJobs/TOSIDRTConnector/items/,
  TalendJobs/TOSIDRTConnector/src/,
  TalendJobs/TOSIDRTConnector/tos/
-Import-Package: au.com.bytecode.opencsv,
- au.com.bytecode.opencsv.bean,
- de.goettingen.i2b2.importtool.idrt.StatusListener,
- de.umg.mi.idrt.idrtimporttool.ExportDB,
- de.umg.mi.idrt.idrtimporttool.ImportWizard,
- de.umg.mi.idrt.idrtimporttool.Log,
- de.umg.mi.idrt.idrtimporttool.commands,
- de.umg.mi.idrt.idrtimporttool.importidrt,
- de.umg.mi.idrt.idrtimporttool.messages,
- de.umg.mi.idrt.idrtimporttool.server.Settings,
- de.umg.mi.idrt.idrtimporttool.server.commands,
- de.umg.mi.idrt.idrtimporttool.server.serverWizard,
- de.umg.mi.idrt.idrtimporttool.table,
- de.umi.mi.passwordcrypt,
- org.eclipselabs.p2.rcpupdate.utils,
- org.eclipselabs.p2.rcpupdate.utils.handler,
- org.eclipselabs.p2.rcpupdate.utils.plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.intro,
+ org.eclipse.equinox.p2.operations,
+ org.eclipse.equinox.p2.core,
+ org.eclipse.equinox.p2.ui,
+ org.eclipse.equinox.p2.metadata,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.core.databinding.property,
+ org.eclipse.jface.databinding,
+ com.ibm.icu,
+ org.junit,
+ com.windowtester.runtime,
+ com.windowtester.swt.runtime,
+ com.windowtester.swing.runtime,
+ com.instantiations.eclipse.debug,
+ org.eclipse.jface,
+ com.instantiations.common.core,
+ com.instantiations.eclipse.util,
+ org.eclipse.swt
+Bundle-ActivationPolicy: lazy
+Manifest-Version: 1.0
+Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
+Bundle-Version: 0.9.0.7

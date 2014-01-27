@@ -13,6 +13,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 
+import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
@@ -38,6 +39,7 @@ public class EditorStagingInfoView extends ViewPart {
 	private static TableItem addColumItem( String text ){
 		TableItem item = new TableItem (_infoTable, SWT.NONE);
 		item.setText (new String[] { text, "" });
+		item.setForeground(Application.getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
 		return item;
 	}
 	
@@ -48,7 +50,7 @@ public class EditorStagingInfoView extends ViewPart {
 		}
 		TableItem item = items[row];
 		item.setText (1, value != null && !value.equals("null") ? value : "" );
-
+		
 		return item;
 	}
 
@@ -60,9 +62,6 @@ public class EditorStagingInfoView extends ViewPart {
 		parent.setLayout(new GridLayout(1, false));
 
 		//createInfoGroup();
-
-		Label lblNodeInfosDeluxe = new Label(parent, SWT.NONE);
-		lblNodeInfosDeluxe.setText("node infos deluxe");
 
 		_editorComposite = new Composite(parent, SWT.NONE);
 		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -90,11 +89,11 @@ public class EditorStagingInfoView extends ViewPart {
 
 		infoTableDBColumn = new TableColumn(_infoTable, SWT.NONE);
 		infoTableDBColumn.setWidth(170);
-		infoTableDBColumn.setText("column");
+		infoTableDBColumn.setText("Attribute");
 
 		infoTableValue = new TableColumn(_infoTable, SWT.NONE);
 		infoTableValue.setWidth(550);
-		infoTableValue.setText("value");
+		infoTableValue.setText("Value");
 
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_HLEVEL);
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_FULLNAME);
@@ -121,7 +120,6 @@ public class EditorStagingInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.M_EXCLUSION_CD);
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_PATH);
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_SYMBOL);
-		addColumItem("DebugTreeInfo");
 
 	}
 	

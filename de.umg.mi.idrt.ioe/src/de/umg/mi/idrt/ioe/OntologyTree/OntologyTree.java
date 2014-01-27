@@ -7,6 +7,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.Resource.I2B2;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
@@ -84,12 +85,13 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().setName(item.getName());
 		
 		node.getTargetNodeAttributes().setDimension(item.getStagingDimension());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.BASECODE, item.getBasecode());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.METADATAXML, item.getMetadataxml());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COLUMNDATATYPE, item.getColumndatatype());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.OPERATOR, item.getC_operator());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.COMMENT, item.getC_comment());
-		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.TOOLTIP, item.getTooltip());
+		
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_BASECODE, item.getBasecode());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_METADATAXML, item.getMetadataxml());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE, item.getColumndatatype());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_OPERATOR, item.getC_operator());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_COMMENT, item.getC_comment());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP, item.getTooltip());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.UPDATE_DATE, item.getUpdateDateAsString());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE, item.getDownloadDateAsString());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.IMPORT_DATE, item.getImportDateAsString());
@@ -230,7 +232,7 @@ public class OntologyTree extends JTree {
 			setI2B2RootNode(node);
 		}
 	}
-	public void addNodeByPath(String i2b2Path, String name, String source,
+	public void addTargetNodeByPath(String i2b2Path, String name, String source,
 			OntologyItemTarget item, NodeType type) {
 
 		OntologyTreeNode node = new OntologyTreeNode(name);
@@ -252,6 +254,18 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().setStartDateSourcePath(
 				item.getStartdateStagingPath());
 		node.getTargetNodeAttributes().setName(item.getName());
+		
+//		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.TREE_LEVEL, ""+item.getTreeLevel());
+//		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.TREE_PATH, ""+item.getTreePath());
+		
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_BASECODE, ""+item.getBasecode());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_METADATAXML, ""+item.getMetadataxml());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_COLUMNDATATYPE, ""+item.getColumndatatype());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_OPERATOR, ""+item.getC_operator());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_COMMENT, ""+item.getC_comment());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_TOOLTIP, ""+item.getTooltip());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.SOURCESYSTEM_CD, ""+item.getSourceSystemCD());
+		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.VALUETYPE_CD, ""+item.getValueTypeCD());
 		if (type != null) {
 			setI2B2RootNode(node);
 		}
