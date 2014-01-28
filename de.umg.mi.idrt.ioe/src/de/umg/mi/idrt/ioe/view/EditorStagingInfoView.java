@@ -27,7 +27,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
  */
 public class EditorStagingInfoView extends ViewPart {
 
-	private static Resource _resource = null;
+//	private static Resource _resource = null;
 	private static Composite parentPane;
 	static OntologyTreeNode _node = null;
 	private static Composite _editorComposite;
@@ -163,27 +163,27 @@ public class EditorStagingInfoView extends ViewPart {
 		addValueItem(items, row++,  attributes.getC_PATH() );
 		addValueItem(items, row++,  attributes.getC_SYMBOL() );
 		
-		TreeNode[] path = _node.getPath();
+//		TreeNode[] path = _node.getPath();
 		
-		String stringPath = "";
-		if (path != null && path.length < 1 ){
-			
-			for ( int x = 0; x < path.length; x ++ ) {
-				System.out.println("");
-				stringPath += "\\" + path[x].toString();
-			}
-		}
+//		String stringPath = "";
+//		if (path != null && path.length < 1 ){
+//			
+//			for ( int x = 0; x < path.length; x ++ ) {
+//				System.out.println("");
+//				stringPath += "\\" + path[x].toString();
+//			}
+//		}
 		
-		addValueItem(items, row++, stringPath + " (" + _node.getDepth() + ")" );
+//		addValueItem(items, row++, stringPath + " (" + _node.getDepth() + ")" );
 		
 		_editorComposite.update();
 		_editorComposite.layout();
 		_parent.layout();
 	}
 	
-	public Resource getResource(){
-		return this._resource;
-	}
+//	public Resource getResource(){
+//		return this._resource;
+//	}
 	
 	public static void refresh(){
 		new Thread(new Runnable() {
@@ -211,8 +211,8 @@ public class EditorStagingInfoView extends ViewPart {
 		refresh();
 	}
 
-	public void setResource(Resource resource){
-		EditorStagingInfoView._resource = resource;
-	}
-	
+//	public void setResource(Resource resource){
+//		EditorStagingInfoView._resource = resource;
+//	}
+//	
 }

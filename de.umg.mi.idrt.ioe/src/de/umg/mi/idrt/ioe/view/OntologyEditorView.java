@@ -358,7 +358,7 @@ public class OntologyEditorView extends ViewPart {
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		targetTreeViewer.setSorter(new ViewerSorter());
 
-		final Listener labelListener = new Listener () {
+		final Listener targetTreeLabelListener = new Listener () {
 			public void handleEvent (Event event) {
 				Label label = (Label)event.widget;
 				Shell shell = label.getShell ();
@@ -380,7 +380,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 
-		Listener treeListener = new Listener () {
+		Listener targetTreeListener = new Listener () {
 			Shell tip = null;
 			Label label = null;
 			public void handleEvent (Event event) {
@@ -399,20 +399,21 @@ public class OntologyEditorView extends ViewPart {
 					TreeItem item = targetTreeViewer.getTree().getItem(coords);
 					MutableTreeNode nodse = null;
 					String tooltip ="";
-					if (item.getData() instanceof OntologyTreeNode) {
-						nodse = (OntologyTreeNode) item.getData();
-						if (((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
-								get(Resource.I2B2.NODE.TARGET.C_TOOLTIP) != null)
-							tooltip=((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
-							get(Resource.I2B2.NODE.TARGET.C_TOOLTIP);
-					}
-					else if (item.getData() instanceof OntologyTreeSubNode) {
-						nodse = (OntologyTreeSubNode) item.getData();
-						if (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP)!=null) {
-							tooltip = (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
+					if (item != null) {
+						if (item.getData() instanceof OntologyTreeNode) {
+							nodse = (OntologyTreeNode) item.getData();
+							if (((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
+									get(Resource.I2B2.NODE.TARGET.C_TOOLTIP) != null)
+								tooltip=((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
+								get(Resource.I2B2.NODE.TARGET.C_TOOLTIP);
+						}
+						else if (item.getData() instanceof OntologyTreeSubNode) {
+							nodse = (OntologyTreeSubNode) item.getData();
+							if (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP)!=null) {
+								tooltip = (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
+							}
 						}
 					}
-
 					if (item != null && !tooltip.isEmpty()) {
 						int columns = targetTreeViewer.getTree().getColumnCount();
 
@@ -430,8 +431,8 @@ public class OntologyEditorView extends ViewPart {
 								label.setBackground (targetTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
 								label.setData ("_TABLEITEM", item);
 								label.setText(tooltip);
-								label.addListener (SWT.MouseExit, labelListener);
-								label.addListener (SWT.MouseDown, labelListener);
+								label.addListener (SWT.MouseExit, targetTreeLabelListener);
+								label.addListener (SWT.MouseDown, targetTreeLabelListener);
 								Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
 								Rectangle rect = item.getBounds (i);
 								Point pt = targetTreeViewer.getTree().toDisplay (rect.x, rect.y);
@@ -445,11 +446,10 @@ public class OntologyEditorView extends ViewPart {
 				}
 			}
 		};
-		targetTreeViewer.getTree().addListener (SWT.Dispose, treeListener);
-		targetTreeViewer.getTree().addListener (SWT.KeyDown, treeListener);
-		targetTreeViewer.getTree().addListener (SWT.MouseMove, treeListener);
-		targetTreeViewer.getTree().addListener (SWT.MouseHover, treeListener);
-
+		targetTreeViewer.getTree().addListener (SWT.Dispose, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.KeyDown, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.MouseMove, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.MouseHover, targetTreeListener);
 
 		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighterForMultiselection(targetTreeViewer));
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
@@ -561,6 +561,93 @@ public class OntologyEditorView extends ViewPart {
 
 		stagingTreeViewer = new TreeViewer(stagingComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
+
+		final Listener stagingTreeLabelListener = new Listener () {
+			public void handleEvent (Event event) {
+				Label label = (Label)event.widget;
+				Shell shell = label.getShell ();
+				switch (event.type) {
+				case SWT.MouseDown:
+					Event e = new Event ();
+					e.item = (TreeItem) label.getData ("_TABLEITEM");
+					// Assuming table is single select, set the selection as if
+					// the mouse down event went through to the table
+					stagingTreeViewer.getTree().setSelection (new TreeItem [] {(TreeItem) e.item});
+					stagingTreeViewer.getTree().notifyListeners (SWT.Selection, e);
+					shell.dispose ();
+					stagingTreeViewer.getTree().setFocus();
+					break;
+				case SWT.MouseExit:
+					shell.dispose ();
+					break;
+				}
+			}
+		};
+
+		Listener stagingTreeListener = new Listener () {
+			Shell tip = null;
+			Label label = null;
+			public void handleEvent (Event event) {
+				switch (event.type) {
+				case SWT.Dispose:
+				case SWT.KeyDown:
+				case SWT.MouseMove: {
+					if (tip == null) break;
+					tip.dispose ();
+					tip = null;
+					label = null;
+					break;
+				}
+				case SWT.MouseHover: {
+					Point coords = new Point(event.x, event.y);
+					TreeItem item = stagingTreeViewer.getTree().getItem(coords);
+					MutableTreeNode nodse = null;
+					String tooltip ="";
+					if (item!=null) {
+						if (item.getData() instanceof OntologyTreeNode) {
+							nodse = (OntologyTreeNode) item.getData();
+							if (((OntologyTreeNode) nodse).getOntologyCellAttributes().getC_TOOLTIP() != null)
+								tooltip=((OntologyTreeNode) nodse).getOntologyCellAttributes().getC_TOOLTIP();
+						}
+
+						if (!tooltip.isEmpty()) {
+							int columns = stagingTreeViewer.getTree().getColumnCount();
+
+							for (int i = 0; i < columns || i == 0; i++) {
+								if (item.getBounds(i).contains(coords)) {
+									if (tip != null  && !tip.isDisposed ())
+										tip.dispose ();
+									tip = new Shell (stagingTreeViewer.getTree().getShell(), SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
+									tip.setBackground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
+									FillLayout layout = new FillLayout ();
+									layout.marginWidth = 2;
+									tip.setLayout (layout);
+									label = new Label (tip, SWT.NONE);
+									label.setForeground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_FOREGROUND));
+									label.setBackground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
+									label.setData ("_TABLEITEM", item);
+									label.setText(tooltip);
+									label.addListener (SWT.MouseExit, stagingTreeLabelListener);
+									label.addListener (SWT.MouseDown, stagingTreeLabelListener);
+									Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
+									Rectangle rect = item.getBounds (i);
+									Point pt = stagingTreeViewer.getTree().toDisplay (rect.x, rect.y);
+									tip.setBounds (pt.x, pt.y, size.x, size.y);
+									tip.setVisible (true);
+									break;
+								}
+							}
+						}
+					}
+				}
+				}
+			}
+		};
+
+		stagingTreeViewer.getTree().addListener (SWT.Dispose, stagingTreeListener);
+		stagingTreeViewer.getTree().addListener (SWT.KeyDown, stagingTreeListener);
+		stagingTreeViewer.getTree().addListener (SWT.MouseMove, stagingTreeListener);
+		stagingTreeViewer.getTree().addListener (SWT.MouseHover, stagingTreeListener);
 
 		composite_8 = new Composite(stagingComposite, SWT.NONE);
 		composite_8.setLayoutData(BorderLayout.NORTH);
