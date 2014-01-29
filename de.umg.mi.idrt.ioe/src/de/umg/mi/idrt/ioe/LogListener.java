@@ -14,6 +14,8 @@ import java.util.Date;
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 
+import de.umg.mi.idrt.ioe.misc.FileHandler;
+
 
 public class LogListener implements ILogListener {
 
@@ -38,8 +40,7 @@ public class LogListener implements ILogListener {
 			}
 		}
         
-        
-        logFile = new File( LOG_DIRECTORY + "/" + ERROR_LOG_FILE + "." + FILENAME_EXTENSION );
+        logFile = FileHandler.getBundleFile("/"+LOG_DIRECTORY + "/" + ERROR_LOG_FILE + "." + FILENAME_EXTENSION);
         System.out.println(logFile.getAbsolutePath());
         try {
         	logFile.createNewFile();
