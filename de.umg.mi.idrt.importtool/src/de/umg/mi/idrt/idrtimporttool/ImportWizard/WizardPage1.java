@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
@@ -33,6 +34,7 @@ import de.umg.mi.idrt.importtool.misc.FileHandler;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
+@Deprecated
 public class WizardPage1 extends WizardPage {
 
 	private static Text ipText;
@@ -53,9 +55,11 @@ public class WizardPage1 extends WizardPage {
 	private static Label DBUser;
 
 	public WizardPage1() {
+		
 		super("Target Database Setup");
 		setTitle("Target Database Setup");
 		setDescription("Please enter your target database connection data");
+		System.err.println("WIZARDPAGE1 LOADED!");
 	}
 
 	@Override
@@ -65,7 +69,7 @@ public class WizardPage1 extends WizardPage {
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 
-			String serverUniqueName = ServerView.getSelectedServer();
+			String serverUniqueName = ServerView.getSelectedServer().getUniqueID();
 			container = new Composite(parent, SWT.NULL);
 			GridLayout layout = new GridLayout(2, true);
 			container.setLayout(layout);
@@ -124,7 +128,7 @@ public class WizardPage1 extends WizardPage {
 			});
 
 			Label ip = new Label(container, SWT.FILL | SWT.CENTER);
-			ip.setText("IP");
+			ip.setText(Messages.AddServerPageOne_Hostname);
 			ipText = new Text(container, SWT.FILL);
 			ipText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
 					1, 1));
@@ -335,9 +339,10 @@ public class WizardPage1 extends WizardPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					//TODO SERVER PASSWORD
 					if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 							DBUserText.getText(), DBUserPasswordText.getText(),
-							DBSIDText.getText(),DBTypeCombo.getText(), DBMSSQLUseWinAuth.getSelection())) {
+							DBSIDText.getText(),DBTypeCombo.getText(), DBMSSQLUseWinAuth.getSelection(),false)) {
 
 						DBTest.setText("success");
 						Color color_red = container.getDisplay()

@@ -51,7 +51,7 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 		Server newServer = new Server("copy of " + draggedServer.getUniqueID(),
 				draggedServer.getIp(), draggedServer.getPort(),
 				draggedServer.getUser(), draggedServer.getPassword(),
-				draggedServer.getSID(),draggedServer.getDatabaseType(),draggedServer.isUseWinAuth());
+				draggedServer.getSID(),draggedServer.getDatabaseType(),draggedServer.isUseWinAuth(),draggedServer.isSavePassword());
 
 		ServerList.addSourceServer(newServer);
 		TreeViewer viewer = ServerView.getSourceServerViewer();

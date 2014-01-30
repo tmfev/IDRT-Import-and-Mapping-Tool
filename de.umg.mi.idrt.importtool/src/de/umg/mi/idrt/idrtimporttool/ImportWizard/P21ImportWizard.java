@@ -16,6 +16,7 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
@@ -28,7 +29,7 @@ public class P21ImportWizard extends Wizard {
 	private Properties defaultProps;
 	private static Thread b;
 	private HashMap<String, String> contextMap;
-	protected WizardPage1 one;
+//	protected WizardPage1 one;
 	protected P21WizardPage2 two;
 	public boolean done = false;
 	public static boolean started = false;
@@ -120,9 +121,9 @@ public class P21ImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPage1();
+//		one = new WizardPage1();
 		two = new P21WizardPage2();
-		addPage(one);
+//		addPage(one);
 		addPage(two);
 	}
 
@@ -153,12 +154,28 @@ public class P21ImportWizard extends Wizard {
 			/**
 			 * page 1
 			 */
-			contextMap.put("DBHost", WizardPage1.getIpText());
-			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
-			contextMap.put("DBUsername", WizardPage1.getDBUserText());
-			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
-			contextMap.put("DBPort", WizardPage1.getPortText());
-			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
+			
+			Server selectedServer = ServerView.getSelectedServer();
+			final String ipText = selectedServer.getIp();
+			final String passwordText = selectedServer.getPassword();
+			final String dbUserText = selectedServer.getUser();
+			final String dbSID = selectedServer.getSID();
+			final String dbPort = selectedServer.getPort();
+			final String dbSchema = selectedServer.getSchema();
+			
+			contextMap.put("DBHost", ipText);
+			contextMap.put("DBPassword", passwordText);
+			contextMap.put("DBUsername", dbUserText);
+			contextMap.put("DBInstance", dbSID);
+			contextMap.put("DBPort", dbPort);
+			contextMap.put("DBSchema", dbSchema);
+			
+//			contextMap.put("DBHost", WizardPage1.getIpText());
+//			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
+//			contextMap.put("DBUsername", WizardPage1.getDBUserText());
+//			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
+//			contextMap.put("DBPort", WizardPage1.getPortText());
+//			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
 
 			/**
 			 * page 2

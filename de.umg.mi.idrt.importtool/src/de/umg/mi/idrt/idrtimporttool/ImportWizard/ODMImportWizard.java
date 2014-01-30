@@ -17,6 +17,8 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
@@ -32,7 +34,7 @@ public class ODMImportWizard extends Wizard {
 
 	private HashMap<String, String> contextMap;
 
-	protected WizardPage1 one;
+//	protected WizardPage1 one;
 	protected ODMWizardPage2 two;
 
 	public boolean done = false;
@@ -104,9 +106,9 @@ public class ODMImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPage1();
+//		one = new WizardPage1();
 		two = new ODMWizardPage2();
-		addPage(one);
+//		addPage(one);
 		addPage(two);
 	}
 
@@ -123,15 +125,35 @@ public class ODMImportWizard extends Wizard {
 
 			/*
 			 * page 1
+			 * 
+			 * 
+			 * 
 			 */
-			contextMap.put("DBHost", WizardPage1.getIpText()); 
-			defaultProps.setProperty("DBHost", WizardPage1.getIpText()); 
-
-			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText()); 
-			contextMap.put("DBUsername", WizardPage1.getDBUserText()); 
-			contextMap.put("DBInstance", WizardPage1.getDBSIDText()); 
-			contextMap.put("DBPort", WizardPage1.getPortText()); 
-			contextMap.put("DBSchema", WizardPage1.getDBSchemaText()); 
+			
+			Server selectedServer = ServerView.getSelectedServer();
+			final String ipText = selectedServer.getIp();
+			final String passwordText = selectedServer.getPassword();
+			final String dbUserText = selectedServer.getUser();
+			final String dbSID = selectedServer.getSID();
+			final String dbPort = selectedServer.getPort();
+			final String dbSchema = selectedServer.getSchema();
+			
+			contextMap.put("DBHost", ipText);
+			contextMap.put("DBPassword", passwordText);
+			contextMap.put("DBUsername", dbUserText);
+			contextMap.put("DBInstance", dbSID);
+			contextMap.put("DBPort", dbPort);
+			contextMap.put("DBSchema", dbSchema);
+			
+			
+//			contextMap.put("DBHost", WizardPage1.getIpText()); 
+//			defaultProps.setProperty("DBHost", WizardPage1.getIpText()); 
+//
+//			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText()); 
+//			contextMap.put("DBUsername", WizardPage1.getDBUserText()); 
+//			contextMap.put("DBInstance", WizardPage1.getDBSIDText()); 
+//			contextMap.put("DBPort", WizardPage1.getPortText()); 
+//			contextMap.put("DBSchema", WizardPage1.getDBSchemaText()); 
 
 			/*
 			 * page 2

@@ -43,10 +43,12 @@ public class AddServerPageOne extends WizardPage {
 	private static Label DBUser;
 	private static Label DBTest;
 	private static Composite container1;
-	private Label DBTypeLabel;
+	private static Label DBTypeLabel;
 	private static Combo DBTypeCombo;
 	private static Label DBIntegratedSecurity;
 	private static Button DBMSSQLUseWinAuth;
+	private Label lblSavePassword;
+	private static Button chkSavePassword;
 
 	/**
 	 * @return the dBSchemaText
@@ -252,6 +254,14 @@ public class AddServerPageOne extends WizardPage {
 				false, 1, 1));
 		DBUserPasswordText.setText(""); //$NON-NLS-1$
 		DBUserPasswordText.setEchoChar('*');
+		
+		lblSavePassword = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
+		lblSavePassword.setText("Save Password?");
+		
+		chkSavePassword = new Button(container1, SWT.CHECK);
+//		Label savePassword = new Label(container1, SWT.FILL | SWT.CENTER);
+//		savePassword.setText(Messages.AddServerPageOne_SavePassword);
+//		new Label(container1, SWT.NONE);
 		// DBUserPasswordText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
 		// }
@@ -349,7 +359,7 @@ public class AddServerPageOne extends WizardPage {
 
 				if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 						DBUserText.getText(), DBUserPasswordText.getText(),
-						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection())) {
+						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection(),chkSavePassword.getSelection())) {
 
 					DBTest.setText(Messages.AddServerPageOne_Success);
 					Color color_red = container1.getDisplay().getSystemColor(
@@ -380,6 +390,13 @@ public class AddServerPageOne extends WizardPage {
 
 	public static boolean getCheckUseWinAuth() {
 		return DBMSSQLUseWinAuth.getSelection();
+	}
+
+	/**
+	 * @return
+	 */
+	public static boolean getCheckStorePassword() {
+		return chkSavePassword.getSelection();
 	}
 
 }

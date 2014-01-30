@@ -20,6 +20,7 @@ public class Messages extends NLS {
 	public static String AddServerPageOne_Failure;
 	public static String AddServerPageOne_Hostname;
 	public static String AddServerPageOne_IDEmpty;
+	public static String AddServerPageOne_SavePassword;
 	public static String AddServerPageOne_ServerExists;
 	public static String AddServerPageOne_ServerSetup;
 	public static String AddServerPageOne_Success;
@@ -129,6 +130,8 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProject;
 	public static String ServerView_TruncateProjectConfirmText;
 	public static String ServerView_TruncateProjectQuestion;
+	public static String AddServerPageOne_lblSavePassword_text;
+	public static String AddServerPageOne_btnCheckButton_text;
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

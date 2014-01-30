@@ -39,7 +39,8 @@ public class EditServerPageOne extends WizardPage {
 	private static Button DBMSSQLUseWinAuth;
 	private static Label DBUserPassword;
 	private static Label DBUser;
-
+	private static Label lblSavePassword;
+	private static Button chkSavePassword;
 	/**
 	 * @return the dBSIDText
 	 */
@@ -209,6 +210,11 @@ public class EditServerPageOne extends WizardPage {
 			}
 		});
 
+		lblSavePassword = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
+		lblSavePassword.setText("Save Password?");
+		
+		chkSavePassword = new Button(container1, SWT.CHECK);
+		
 		Label DBSID = new Label(container1, SWT.FILL | SWT.CENTER);
 		DBSID.setText(Messages.EditServerPageOne_DBSID);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -311,23 +317,6 @@ public class EditServerPageOne extends WizardPage {
 			}
 		});
 
-		// Label DBSchema = new Label(container1, SWT.FILL|SWT.CENTER);
-		// DBSchema.setText("DB Schema");
-		// // ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
-		// DBSchemaText = new Text(container1, SWT.FILL);
-		// DBSchemaText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-		// false, 1, 1));
-		// DBSchemaText.setText("TODO SCHEMA");
-		// DBSchemaText.addKeyListener(new KeyListener() {
-		// public void keyPressed(KeyEvent e) {
-		// }
-		// public void keyReleased(KeyEvent e) {
-		// if (!DBSchemaText.getText().isEmpty()) {
-		// setPageComplete(true);
-		// }
-		// }
-		// });
-
 		Button buttonTestDB = new Button(container1, SWT.PUSH);
 		buttonTestDB.setText(Messages.EditServerPageOne_TestDB);
 		DBTest = new Label(container1, SWT.FILL | SWT.CENTER);
@@ -350,7 +339,7 @@ public class EditServerPageOne extends WizardPage {
 				DBTest.update();
 				if (IDRTImport.testDB(ipText.getText(), PortText.getText(),
 						DBUserText.getText(), DBUserPasswordText.getText(),
-						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection())) {
+						DBSIDText.getText(),DBTypeCombo.getText(),DBMSSQLUseWinAuth.getSelection(),chkSavePassword.getSelection())) {
 					DBTest.setText(Messages.EditServerPageOne_Success);
 					Color color_red = container1.getDisplay().getSystemColor(
 							SWT.COLOR_GREEN);
@@ -382,9 +371,7 @@ public class EditServerPageOne extends WizardPage {
 	public static boolean getCheckUseWinAuth() {
 		return DBMSSQLUseWinAuth.getSelection();
 	}
-	// private static void setText(String text){
-	// DBTest.setText(text);
-	// DBTest.redraw();
-	// DBTest.update();
-	// }
-}
+	public static boolean getCheckStorePassword() {
+		return chkSavePassword.getSelection();
+	}
+	}

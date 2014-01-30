@@ -45,7 +45,7 @@ public class EditServerWizard extends Wizard {
 				EditServerPageOne.getIpText(), EditServerPageOne.getPortText(),
 				EditServerPageOne.getDBUserText(),
 				EditServerPageOne.getDBUserPasswordText(),
-				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth());
+				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth(),false);
 
 		if (!ServerList.getSourceServers().containsKey(
 				editedServer.getUniqueID())

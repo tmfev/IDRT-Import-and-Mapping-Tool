@@ -1223,7 +1223,7 @@ public class ServerView extends ViewPart {
 		return parent;
 	}
 
-	public static String getSelectedServer() {
+	public static Server getSelectedServer() {
 		TreeViewer viewer = null;
 		viewer = ServerView.getTargetServersViewer();
 		if (viewer != null) {
@@ -1231,7 +1231,7 @@ public class ServerView extends ViewPart {
 				if (viewer.getTree().getSelection()[0].getParentItem() != null) {
 					String serverUniqueName = viewer.getTree().getSelection()[0]
 							.getParentItem().getText();
-					return serverUniqueName;
+					return ServerList.getTargetServers().get(serverUniqueName);
 				}
 			}
 		}

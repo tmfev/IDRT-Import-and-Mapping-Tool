@@ -575,9 +575,9 @@ public class IDRTImport {
 	 * @return Success=true Error=Failure
 	 */
 	public static boolean testDB(String ip, String port, String username,
-			String password, String sid, String databaseType, boolean useWinAuth) {
+			String password, String sid, String databaseType, boolean useWinAuth, boolean savePassword) {
 		try {
-			Server server = new Server("test", ip, port, username, password, sid, databaseType,useWinAuth);
+			Server server = new Server("test", ip, port, username, password, sid, databaseType,useWinAuth,savePassword);
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 			connect.close();

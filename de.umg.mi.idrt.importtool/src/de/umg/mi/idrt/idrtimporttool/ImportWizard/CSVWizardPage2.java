@@ -134,6 +134,8 @@ public class CSVWizardPage2 extends WizardPage {
 		setTitle(Messages.CSVWizardPageTwo_CSVImportSettings);
 		setDescription(Messages.CSVWizardPageTwo_CSVImportSettings);
 	}
+	
+	
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
@@ -146,6 +148,12 @@ public class CSVWizardPage2 extends WizardPage {
 	@Override
 	public boolean canFlipToNextPage() {
 		return !getTargetFolderText().isEmpty();
+	}
+
+	@Override
+	public IWizardPage getNextPage() {
+		CSVImportWizard.setThree(new CSVWizardPage3());
+		return CSVImportWizard.three;
 	}
 
 	@Override
@@ -175,44 +183,6 @@ public class CSVWizardPage2 extends WizardPage {
 			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp"))); 
 			new Label(container, SWT.NONE);
-
-			// Label mainFolder = new Label(container, SWT.FILL|SWT.CENTER);
-			// mainFolder.setText("CSV Main Folder");
-			// mainFolder.setToolTipText("Der Hauptordner mit der ganzen Struktur!");
-
-			// mainPath = defaultProps.getProperty("folderMainCSV");
-			// final DirectoryDialog dlgMain = new
-			// DirectoryDialog(parent.getShell());
-			// dlgMain.setText("CSV Main Folder");
-			// dlgMain.setFilterPath(defaultProps.getProperty("folderMain"));
-
-			// folderMainText = new Text(container, SWT.FILL);
-			// folderMainText.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
-			// true, false, 1, 1));
-			// folderMainText.setText(mainPath);
-			// folderMainText.setEditable(false);
-			// folderMainText.addKeyListener(new KeyListener() {
-			// public void keyPressed(KeyEvent e) {
-			// }
-			// public void keyReleased(KeyEvent e) {
-			// if (!folderMainText.getText().isEmpty()) {
-			// setPageComplete(true);
-			// }
-			// }
-			// });
-
-			// Button MainButton = new Button(container, SWT.PUSH);
-			// MainButton.setText("...");
-			// MainButton.addSelectionListener(new SelectionListener() {
-			//
-			// public void widgetSelected(SelectionEvent e) {
-			// mainPath = dlgMain.open().replaceAll("\\\\", "/");
-			// mainPath += "/";
-			// folderMainText.setText(mainPath);
-			// }
-			// public void widgetDefaultSelected(SelectionEvent e) {
-			// }
-			// });
 
 			Label folder = new Label(container, SWT.FILL | SWT.CENTER);
 			folder.setText(Messages.CSVWizardPageTwo_CSVFolder);
@@ -434,19 +404,6 @@ public class CSVWizardPage2 extends WizardPage {
 	 */
 	public static String getTargetFolderText() {
 		return targetFolderText.getText();
-	}
-
-	/**
-	 * @param targetFolderText the targetFolderText to set
-	 */
-	public void setTargetFolderText(Text targetFolderText) {
-		this.targetFolderText = targetFolderText;
-	}
-
-	@Override
-	public IWizardPage getNextPage() {
-		CSVImportWizard.setThree(new CSVWizardPage3());
-		return CSVImportWizard.three;
 	}
 
 }

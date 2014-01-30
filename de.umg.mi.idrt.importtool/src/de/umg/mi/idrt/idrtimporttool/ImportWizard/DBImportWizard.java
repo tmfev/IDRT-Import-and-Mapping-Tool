@@ -42,7 +42,7 @@ public class DBImportWizard extends Wizard {
 	private Properties defaultProps;
 	private static Thread b;
 	private HashMap<String, String> contextMap;
-	protected WizardPage1 one;
+//	protected WizardPage1 one;
 
 	public static DBWizardPage2 two;
 	public static DBWizardPage3 three;
@@ -130,10 +130,12 @@ public class DBImportWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		one = new WizardPage1();
+//		one = new WizardPage1();
 		two = new DBWizardPage2();
-		addPage(one);
+		three = new DBWizardPage3();
+//		addPage(one);
 		addPage(two);
+		addPage(three);
 	}
 
 	@Override
@@ -272,12 +274,28 @@ public class DBImportWizard extends Wizard {
 				}
 			}
 			contextMap = new HashMap<String, String>();
-			contextMap.put("DBHost", WizardPage1.getIpText());
-			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
-			contextMap.put("DBUsername", WizardPage1.getDBUserText());
-			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
-			contextMap.put("DBPort", WizardPage1.getPortText());
-			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
+			
+			Server selectedServer = ServerView.getSelectedServer();
+			final String ipText = selectedServer.getIp();
+			final String passwordText = selectedServer.getPassword();
+			final String dbUserText = selectedServer.getUser();
+			final String dbSID = selectedServer.getSID();
+			final String dbPort = selectedServer.getPort();
+			final String dbSchema = selectedServer.getSchema();
+			
+			contextMap.put("DBHost", ipText);
+			contextMap.put("DBPassword", passwordText);
+			contextMap.put("DBUsername", dbUserText);
+			contextMap.put("DBInstance", dbSID);
+			contextMap.put("DBPort", dbPort);
+			contextMap.put("DBSchema", dbSchema);
+			
+//			contextMap.put("DBHost", WizardPage1.getIpText());
+//			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
+//			contextMap.put("DBUsername", WizardPage1.getDBUserText());
+//			contextMap.put("DBInstance", WizardPage1.getDBSIDText());
+//			contextMap.put("DBPort", WizardPage1.getPortText());
+//			contextMap.put("DBSchema", WizardPage1.getDBSchemaText());
 
 
 			/**

@@ -6,9 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-
 import de.umi.mi.passwordcrypt.PasswordCrypt;
 
 /**
@@ -37,10 +34,13 @@ public class Server implements Serializable {
 	private String concepts;
 	private String projectName;
 	private String databaseType;
+	
+	private boolean savePassword;
+	
 	private boolean useWinAuth;
 
 	public Server(String uniqueID, String ip, String port, String user,
-			String passWord, String sid, String databaseType, boolean useWinAuth) {
+			String passWord, String sid, String databaseType, boolean useWinAuth, boolean savePassword) {
 		this.uniqueID = uniqueID;
 		this.ip = ip;
 		setPassword(passWord);
@@ -49,6 +49,7 @@ public class Server implements Serializable {
 		this.sid = sid;
 		this.databaseType = databaseType;
 		this.setUseWinAuth(useWinAuth);
+		this.setSavePassword(savePassword);
 	}
 
 	public Server(String uniqueID, String ip, String port, String user,
@@ -388,5 +389,13 @@ public class Server implements Serializable {
 
 	public void setUseWinAuth(boolean useWinAuth) {
 		this.useWinAuth = useWinAuth;
+	}
+
+	public boolean isSavePassword() {
+		return savePassword;
+	}
+
+	public void setSavePassword(boolean savePassword) {
+		this.savePassword = savePassword;
 	}
 }

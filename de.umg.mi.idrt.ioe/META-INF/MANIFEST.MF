@@ -85,8 +85,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.databinding,
  com.ibm.icu,
  org.eclipse.jface,
- com.instantiations.common.core,
- com.instantiations.eclipse.util,
  org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Manifest-Version: 1.0

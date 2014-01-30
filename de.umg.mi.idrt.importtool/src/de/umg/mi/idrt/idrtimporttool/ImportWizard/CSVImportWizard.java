@@ -13,6 +13,8 @@ import java.util.Properties;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -21,6 +23,7 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
@@ -43,7 +46,7 @@ public class CSVImportWizard extends Wizard {
 	private static Thread b;
 	private static Thread importThread;
 	private HashMap<String, String> contextMap;
-	protected WizardPage1 one;
+//	protected WizardPage1 one;
 	protected CSVWizardPage2 two;
 	public static CSVWizardPage3 three;
 	public static boolean started = false;
@@ -51,15 +54,24 @@ public class CSVImportWizard extends Wizard {
 	public CSVImportWizard() {
 		super();
 		setNeedsProgressMonitor(false);
-
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.wizard.Wizard#getPageCount()
+	 */
+	@Override
+	public int getPageCount() {
+		// TODO Auto-generated method stub
+		return 2;
+	}
 	@Override
 	public void addPages() {
-		one = new WizardPage1();
+//		one = new WizardPage1();
+		three = new CSVWizardPage3();
 		two = new CSVWizardPage2();
-		addPage(one);
+//		addPage(one);
 		addPage(two);
+		addPage(three);
 	}
 
 	//
@@ -85,12 +97,21 @@ public class CSVImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
-		final String ipText = WizardPage1.getIpText();
-		final String passwordText = WizardPage1.getDBUserPasswordText();
-		final String dbUserText = WizardPage1.getDBUserText();
-		final String dbSID = WizardPage1.getDBSIDText();
-		final String dbPort = WizardPage1.getPortText();
-		final String dbSchema = WizardPage1.getDBSchemaText();
+		Server selectedServer = ServerView.getSelectedServer();
+		final String ipText = selectedServer.getIp();
+		final String passwordText = selectedServer.getPassword();
+		final String dbUserText = selectedServer.getUser();
+		final String dbSID = selectedServer.getSID();
+		final String dbPort = selectedServer.getPort();
+		final String dbSchema = selectedServer.getSchema();
+		
+		
+//		final String ipText = WizardPage1.getIpText();
+//		final String passwordText = WizardPage1.getDBUserPasswordText();
+//		final String dbUserText = WizardPage1.getDBUserText();
+//		final String dbSID = WizardPage1.getDBSIDText();
+//		final String dbPort = WizardPage1.getPortText();
+//		final String dbSchema = WizardPage1.getDBSchemaText();
 		final boolean truncate = CSVWizardPage2.getTruncate();
 		final boolean cleanUp = CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
