@@ -56,8 +56,6 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Combo datePatternCombo;
 	private Label labelCleanUp;
 	private static Button cleanUpBtn;
-	private Label targetFolderLabel;
-	private static Text targetFolderText;
 
 	// private static Text csvSeperatorext;
 
@@ -140,14 +138,14 @@ public class CSVWizardPage2 extends WizardPage {
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
 	 */
-	@Override
-	public boolean isPageComplete() {
-		return !getTargetFolderText().isEmpty();
-	}
-	
+//	@Override
+//	public boolean isPageComplete() {
+//		return !getTargetFolderText().isEmpty();
+//	}
+//	
 	@Override
 	public boolean canFlipToNextPage() {
-		return !getTargetFolderText().isEmpty();
+		return true;
 	}
 
 	@Override
@@ -346,35 +344,6 @@ public class CSVWizardPage2 extends WizardPage {
 
 			new Label(container, SWT.NONE);
 			
-			targetFolderLabel = new Label(container, SWT.NONE);
-			targetFolderLabel.setToolTipText("Target Folder");
-			targetFolderLabel.setText("Target Folder");
-			
-			targetFolderText = new Text(container, SWT.NONE);
-			targetFolderText.setText(defaultProps.getProperty("MDPDName"));
-			targetFolderText.setEditable(true);
-			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			targetFolderText.addKeyListener(new KeyListener() {
-				
-				@Override
-				public void keyReleased(KeyEvent e) {
-					if (targetFolderText.getText().isEmpty()) {
-						setPageComplete(false);
-						setErrorMessage("Target Folder cannot be empty!");
-					}
-					else {
-						setPageComplete(true);
-						setErrorMessage(null);
-					}
-				}
-				
-				@Override
-				public void keyPressed(KeyEvent e) {
-				
-				}
-			});
-			new Label(container, SWT.NONE);
-
 			Label labelImportTerms = new Label(container, SWT.NONE);
 			labelImportTerms.setText(Messages.CSVWizardPageTwo_ImpAndMapST);
 			labelImportTerms
@@ -398,12 +367,4 @@ public class CSVWizardPage2 extends WizardPage {
 			e1.printStackTrace();
 		}
 	}
-
-	/**
-	 * @return the targetFolderText
-	 */
-	public static String getTargetFolderText() {
-		return targetFolderText.getText();
-	}
-
 }

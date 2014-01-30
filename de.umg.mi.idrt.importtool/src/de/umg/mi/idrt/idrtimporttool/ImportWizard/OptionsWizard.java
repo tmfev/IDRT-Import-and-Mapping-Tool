@@ -54,6 +54,8 @@ public class OptionsWizard extends Wizard {
 					OptionsWizardPage1.getGuessRowtext());
 			defaultProps.setProperty("hideTemp",
 					OptionsWizardPage1.getHideTempTablesButton());
+			defaultProps.setProperty("MDPDName",
+					OptionsWizardPage1.getTargetFolderText());
 			defaultProps.store(new FileWriter(properties), "");
 			boolean restart = false;
 			if (OptionsWizardPage1.getChanged()) {

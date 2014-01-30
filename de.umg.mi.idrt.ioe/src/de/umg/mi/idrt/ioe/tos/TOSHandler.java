@@ -142,9 +142,7 @@ public class TOSHandler {
 			String sourceSystemCD,
 			String valueTypeCD,
 			String m_applied_path){
-		//TODO
-System.out.println("META: " + metadataxml);
-		//		System.out.println("NEW FUNCTION APPLED PATH: " + m_applied_path);
+		//TODO FIX META ALWAYS NULL
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 

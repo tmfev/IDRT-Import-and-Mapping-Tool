@@ -169,7 +169,8 @@ public class P21ImportWizard extends Wizard {
 			contextMap.put("DBInstance", dbSID);
 			contextMap.put("DBPort", dbPort);
 			contextMap.put("DBSchema", dbSchema);
-			
+			contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
+
 //			contextMap.put("DBHost", WizardPage1.getIpText());
 //			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
 //			contextMap.put("DBUsername", WizardPage1.getDBUserText());

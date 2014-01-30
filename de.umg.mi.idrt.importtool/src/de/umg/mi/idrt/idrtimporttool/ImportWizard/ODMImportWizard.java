@@ -144,17 +144,7 @@ public class ODMImportWizard extends Wizard {
 			contextMap.put("DBInstance", dbSID);
 			contextMap.put("DBPort", dbPort);
 			contextMap.put("DBSchema", dbSchema);
-			
-			
-//			contextMap.put("DBHost", WizardPage1.getIpText()); 
-//			defaultProps.setProperty("DBHost", WizardPage1.getIpText()); 
-//
-//			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText()); 
-//			contextMap.put("DBUsername", WizardPage1.getDBUserText()); 
-//			contextMap.put("DBInstance", WizardPage1.getDBSIDText()); 
-//			contextMap.put("DBPort", WizardPage1.getPortText()); 
-//			contextMap.put("DBSchema", WizardPage1.getDBSchemaText()); 
-
+			contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 			/*
 			 * page 2
 			 */
@@ -206,6 +196,9 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("includePids", "false");  
 				defaultProps.setProperty("includePids", "false");  
 			}
+			
+			
+
 
 			if (ODMWizardPage2.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), ""); 

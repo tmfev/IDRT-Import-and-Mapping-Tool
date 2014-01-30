@@ -199,7 +199,6 @@ public class DBImportWizard extends Wizard {
 
 			final boolean cleanUp = DBWizardPage3.getCleanUp();
 			final boolean terms = DBWizardPage3.getTerms();
-			final String targetFolder = DBWizardPage3.getTargetFolderText();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPage3.getCSVPath();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -289,7 +288,7 @@ public class DBImportWizard extends Wizard {
 			contextMap.put("DBInstance", dbSID);
 			contextMap.put("DBPort", dbPort);
 			contextMap.put("DBSchema", dbSchema);
-			
+			contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 //			contextMap.put("DBHost", WizardPage1.getIpText());
 //			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
 //			contextMap.put("DBUsername", WizardPage1.getDBUserText());
@@ -327,10 +326,6 @@ public class DBImportWizard extends Wizard {
 				contextMap.put("cleanUp", "false");
 			}
 			
-			contextMap.put("MDPDName", targetFolder);
-			defaultProps.setProperty("MDPDName", targetFolder);
-			
-
 			if (DBWizardPage3.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), "");
 			}

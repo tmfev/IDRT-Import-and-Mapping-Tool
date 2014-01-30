@@ -48,12 +48,7 @@ public class OntologyTreeNodeList {
 	 */
 	public OntologyTreeNode addOTNode(OntologyItem item, OntologyTreeNode node) {
 
-		String i2b2Path;
-		System.out.println(item.getC_HLEVEL());
-//		if (item.getC_HLEVEL()==1)
-//			i2b2Path=item.getM_APPLIED_PATH()+item.getC_FULLNAME().substring(1);
-//		else
-			i2b2Path=item.getC_FULLNAME();
+		String i2b2Path=item.getC_FULLNAME();
 		OntologyTreeNode parentNode = null;
 		PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path );
 		String parentPath;
@@ -61,7 +56,6 @@ public class OntologyTreeNodeList {
 			parentPath = item.getM_APPLIED_PATH();
 		else
 			parentPath = pathAndID.getParentPath();
-		System.out.println("MODIFIER: " + i2b2Path + " --> " + parentPath);
 
 		if ( parentPath.isEmpty() ){
 			System.err.println("Could not add node \"" + node.getName() +"\", because no parent path was given.");

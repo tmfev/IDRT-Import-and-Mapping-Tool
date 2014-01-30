@@ -8,6 +8,8 @@ import java.util.Properties;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -39,6 +41,15 @@ public class OptionsWizardPage1 extends WizardPage {
 	private static boolean changed = false;
 	private Text sysoLogLocationPath;
 	private static Text guessRowtext;
+	private static Text targetFolderText;
+	/**
+	 * @return the targetFolderText
+	 */
+	public static String getTargetFolderText() {
+		return targetFolderText.getText();
+	}
+
+	private static String targetFolder;
 
 	public static boolean getChanged() {
 		return changed;
@@ -87,9 +98,44 @@ public class OptionsWizardPage1 extends WizardPage {
 
 			pidURL = defaultProps.getProperty("PIDURL");
 			exportLogPath = defaultProps.getProperty("log");
+			targetFolder = defaultProps.getProperty("MDPDName");
 			Composite composite = new Composite(parent, SWT.NONE);
 			setControl(composite);
 			composite.setLayout(new GridLayout(3, false));
+			
+			Label lblTargetFolder = new Label(composite, SWT.NONE);
+			lblTargetFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
+					false, 1, 1));
+			lblTargetFolder.setText("Target Folder:");
+			
+			targetFolderText = new Text(composite, SWT.BORDER);
+			targetFolderText.setText(targetFolder);
+			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+			targetFolderText.addKeyListener(new KeyListener() {
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if (targetFolderText.getText().isEmpty()) {
+						setPageComplete(false);
+						setErrorMessage("Target Folder cannot be empty!");
+					}
+					else {
+						setPageComplete(true);
+						setErrorMessage(null);
+					}
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+				
+				}
+			});
+			new Label(composite, SWT.NONE);
+			
+			Label label_6 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
+			label_6.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
+					false, 2, 1));
+			new Label(composite, SWT.NONE);
 
 			Label lblPidgenUrl = new Label(composite, SWT.NONE);
 			lblPidgenUrl.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,

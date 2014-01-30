@@ -35,22 +35,6 @@ import de.umg.mi.idrt.importtool.misc.FileHandler;
  */
 public class DBWizardPage3 extends WizardPage {
 
-	
-	private static Text targetFolderText; 
-	/**
-	 * @return the targetFolderText
-	 */
-	public static String getTargetFolderText() {
-		return targetFolderText.getText();
-	}
-
-	/**
-	 * @param targetFolderText the targetFolderText to set
-	 */
-	public static void setTargetFolderText(Text targetFolderText) {
-		DBWizardPage3.targetFolderText = targetFolderText;
-	}
-
 	private Composite container;
 	private static Text folderMainText;
 	private static String path = "";
@@ -141,35 +125,6 @@ public class DBWizardPage3 extends WizardPage {
 			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp")));
 
-			new Label(composite, SWT.NONE);
-			
-			Label targetFolderLabel = new Label(composite, SWT.NONE);
-			targetFolderLabel.setToolTipText("Target Folder");
-			targetFolderLabel.setText("Target Folder");
-			
-			targetFolderText = new Text(composite, SWT.NONE);
-			targetFolderText.setText(defaultProps.getProperty("MDPDName"));
-			targetFolderText.setEditable(true);
-			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			targetFolderText.addKeyListener(new KeyListener() {
-				
-				@Override
-				public void keyReleased(KeyEvent e) {
-					if (targetFolderText.getText().isEmpty()) {
-						setPageComplete(false);
-						setErrorMessage("Target Folder cannot be empty!");
-					}
-					else {
-						setPageComplete(true);
-						setErrorMessage(null);
-					}
-				}
-				
-				@Override
-				public void keyPressed(KeyEvent e) {
-				
-				}
-			});
 			new Label(composite, SWT.NONE);
 			
 			Label labelImportTerms = new Label(composite, SWT.NONE);

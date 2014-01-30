@@ -89,20 +89,6 @@ public class P21WizardPage2 extends WizardPage {
 	private static Text folderMainText;
 	private static Combo datePatternCombo;
 	private Label lblDatePattern;
-	/**
-	 * @return the csvSeperatorext
-	 */
-	// public static char getCsvSeperator() {
-	// char separator=';';
-	// if ("\\t".equals(csvSeperatorext.getText())) {
-	// separator = '\t';
-	// } else {
-	// separator = csvSeperatorext.getText().charAt(0);
-	// }
-	//
-	// return separator;
-	// }
-
 	private static String P21path = "";
 
 	private static String mainPath = "";
