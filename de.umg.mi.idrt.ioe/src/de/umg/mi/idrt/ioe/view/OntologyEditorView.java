@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.ioe.view;
 
+import java.awt.MouseInfo;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +53,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -434,9 +434,7 @@ public class OntologyEditorView extends ViewPart {
 								label.addListener (SWT.MouseExit, targetTreeLabelListener);
 								label.addListener (SWT.MouseDown, targetTreeLabelListener);
 								Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
-								Rectangle rect = item.getBounds (i);
-								Point pt = targetTreeViewer.getTree().toDisplay (rect.x, rect.y);
-								tip.setBounds (pt.x, pt.y, size.x, size.y);
+								tip.setBounds (MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y-size.y, size.x, size.y);
 								tip.setVisible (true);
 								break;
 							}
@@ -630,9 +628,7 @@ public class OntologyEditorView extends ViewPart {
 									label.addListener (SWT.MouseExit, stagingTreeLabelListener);
 									label.addListener (SWT.MouseDown, stagingTreeLabelListener);
 									Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
-									Rectangle rect = item.getBounds (i);
-									Point pt = stagingTreeViewer.getTree().toDisplay (rect.x, rect.y);
-									tip.setBounds (pt.x, pt.y, size.x, size.y);
+									tip.setBounds (MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y-size.y, size.x, size.y);
 									tip.setVisible (true);
 									break;
 								}
@@ -1566,7 +1562,7 @@ public class OntologyEditorView extends ViewPart {
 				}
 
 				Point p = new Point(arg0.x,arg0.y);
-				TreeItem a = targetTreeViewer.getTree().getItem(p);
+				final TreeItem a = targetTreeViewer.getTree().getItem(p);
 				if (a!=null) {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
