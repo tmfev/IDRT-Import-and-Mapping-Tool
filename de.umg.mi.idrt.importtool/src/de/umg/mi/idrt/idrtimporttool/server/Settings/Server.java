@@ -6,6 +6,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.eclipse.swt.widgets.Shell;
+
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+import de.umg.mi.idrt.idrtimporttool.server.serverWizard.PasswordDialog;
+import de.umg.mi.idrt.importtool.views.ServerView;
 import de.umi.mi.passwordcrypt.PasswordCrypt;
 
 /**
@@ -22,6 +28,17 @@ public class Server implements Serializable {
 	private static String error;
 	private static String[] comboItems = {"Oracle","MSSQL","MySQL"};
 	private static final long serialVersionUID = 1L;
+
+	public static String[] getComboItems() {
+		return comboItems;
+	}
+	public static String getError() {
+		return error;
+	}
+	public static void setError(String error) {
+		Server.error = error;
+	}
+	private transient String notStoredPassword;
 	private String uniqueID;
 	private String ip;
 	private String port;
@@ -31,39 +48,111 @@ public class Server implements Serializable {
 	private String schema;
 	private String table;
 	private String patients;
+
 	private String concepts;
+
 	private String projectName;
+
 	private String databaseType;
-	
+
 	private boolean savePassword;
-	
+
 	private boolean useWinAuth;
+	/**
+	 * @param currentServer2
+	 */
+	public Server(Server currentServer2) {
+		this.uniqueID = currentServer2.getUniqueID();
+		this.ip = currentServer2.getIp();
+		this.port = currentServer2.getPort();
+		this.user = currentServer2.getUser();
+		this.sid =currentServer2.getSID();
+		this.schema = currentServer2.getSchema();
+		this.table = currentServer2.getTable();
+		this.databaseType = currentServer2.getDatabaseType();
+		this.setUseWinAuth(currentServer2.isUseWinAuth());
+		this.setSavePassword(currentServer2.isSavePassword());
+		if (savePassword)
+			setPassword(currentServer2.getPassword());
+		else {
+			setPassword("");
+			setNotStoredPassword(currentServer2.getNotStoredPassword());
+		}
+	}
 
 	public Server(String uniqueID, String ip, String port, String user,
 			String passWord, String sid, String databaseType, boolean useWinAuth, boolean savePassword) {
 		this.uniqueID = uniqueID;
 		this.ip = ip;
-		setPassword(passWord);
+
 		this.port = port;
 		this.user = user;
 		this.sid = sid;
 		this.databaseType = databaseType;
 		this.setUseWinAuth(useWinAuth);
 		this.setSavePassword(savePassword);
+		if (savePassword)
+			setPassword(passWord);
+		else {
+			setPassword("");
+			setNotStoredPassword(passWord);
+		}
 	}
 
-	public Server(String uniqueID, String ip, String port, String user,
-			String passWord, String sid, String databaseType,boolean useWinAuth, String schema) {
-		this.uniqueID = uniqueID;
-		this.ip = ip;
-		setPassword(passWord);
-		this.port = port;
-		this.user = user;
-		this.sid = sid;
-		this.schema = schema;
-		this.databaseType=databaseType;
-		this.setUseWinAuth(useWinAuth);
-	}
+
+	//	private Server(String uniqueID, String ip, String port, String user,
+	//			String passWord, String sid, String databaseType,boolean useWinAuth, String schema) {
+	//		this.uniqueID = uniqueID;
+	//		this.ip = ip;
+	//		setPassword(passWord);
+	//		this.port = port;
+	//		this.user = user;
+	//		this.sid = sid;
+	//		this.schema = schema;
+	//		this.databaseType=databaseType;
+	//		this.setUseWinAuth(useWinAuth);
+	//	}
+
+	//	public void getOntology(String user) {
+	//		//TODO
+	//		try {
+	//			System.out.println("user: " + user);
+	//			ontology = new LinkedHashSet<OntologyItem>();
+	//			DriverManager.setLoginTimeout(2);
+	//			Connection connect = getConnection();
+	//			Statement statement = connect.createStatement();
+	//			ResultSet resultSet = statement
+	//					.executeQuery("select * from " + user
+	//							+ ".i2b2 order by c_hlevel, c_fullname asc");
+	//			
+	//			long time = System.currentTimeMillis();
+	//			while (resultSet.next()) {
+	//				OntologyItem item = new OntologyItem(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+	//						resultSet.getString(4),resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7),
+	//						resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11),
+	//						resultSet.getString(12),resultSet.getString(13),resultSet.getString(14),resultSet.getString(15),
+	//						resultSet.getString(16),resultSet.getString(17),resultSet.getDate(18),resultSet.getDate(19),
+	//						resultSet.getDate(20),resultSet.getString(21),resultSet.getString(22),resultSet.getString(23),
+	//						resultSet.getString(24),resultSet.getString(25));
+	//				ontology.add(item);
+	//				if (ontology.size()%1000==0) {
+	//					System.out.println(System.currentTimeMillis()-time+ "ms "+ontology.size() + " items in array");
+	//					time = System.currentTimeMillis();
+	//				}
+	//			}			
+	//			connect.close();
+	//		} catch (SQLException e) {
+	//			e.printStackTrace();
+	//			System.err.println("Not a valid i2b2 project: No Concepts found!");
+	//		}
+	//	}
+
+	/**
+	 * @return the ontology
+	 */
+	//	public static LinkedHashSet<OntologyItem> getOntology() {
+	//		return ontology;
+	//	}
 
 	public Server(String uniqueID, String ip, String port, String user,
 			String passWord, String sid,String databaseType, String schema, boolean useWinAuth, String table) {
@@ -78,22 +167,39 @@ public class Server implements Serializable {
 		this.databaseType = databaseType;
 		this.setUseWinAuth(useWinAuth);
 	}
-	/**
-	 * @param currentServer2
-	 */
-	public Server(Server currentServer2) {
-		this.uniqueID = currentServer2.getUniqueID();
-		this.ip = currentServer2.getIp();
-		setPassword(currentServer2.getPassword());
-		this.port = currentServer2.getPort();
-		this.user = currentServer2.getUser();
-		this.sid =currentServer2.getSID();
-		this.schema = currentServer2.getSchema();
-		this.table = currentServer2.getTable();
-		this.databaseType = currentServer2.getDatabaseType();
-		this.setUseWinAuth(currentServer2.isUseWinAuth());
+
+	public boolean checkDatabaseType() {
+
+		if (this.databaseType.equals("oracle")) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
+	public String getConcepts(String user) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			Connection connect = getConnection();
+			Statement statement = connect.createStatement();
+			if (!user.toLowerCase().startsWith("i2b2")) {
+				user = "i2b2" + user;
+			}
+			ResultSet resultSet = statement
+					.executeQuery("select count(*) as concepts from " + user
+							+ ".observation_fact");
+			while (resultSet.next()) {
+				concepts = resultSet.getString("concepts");
+			}
+			connect.close();
+		} catch (SQLException e) {
+			System.err.println("Not a valid i2b2 project: No Concepts found!");
+			concepts = "";
+			return concepts;
+		}
+		return concepts;
+	}
 	/**
 	 * @return Connection for JDBC
 	 */
@@ -153,76 +259,16 @@ public class Server implements Serializable {
 		return null;
 	}
 
-	public String getConcepts(String user) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			Connection connect = getConnection();
-			Statement statement = connect.createStatement();
-			if (!user.toLowerCase().startsWith("i2b2")) {
-				user = "i2b2" + user;
-			}
-			ResultSet resultSet = statement
-					.executeQuery("select count(*) as concepts from " + user
-							+ ".observation_fact");
-			while (resultSet.next()) {
-				concepts = resultSet.getString("concepts");
-			}
-			connect.close();
-		} catch (SQLException e) {
-			System.err.println("Not a valid i2b2 project: No Concepts found!");
-			concepts = "";
-			return concepts;
-		}
-		return concepts;
+	public String getDatabaseType() {
+		return databaseType;
 	}
-	
-//	public void getOntology(String user) {
-//		//TODO
-//		try {
-//			System.out.println("user: " + user);
-//			ontology = new LinkedHashSet<OntologyItem>();
-//			DriverManager.setLoginTimeout(2);
-//			Connection connect = getConnection();
-//			Statement statement = connect.createStatement();
-//			ResultSet resultSet = statement
-//					.executeQuery("select * from " + user
-//							+ ".i2b2 order by c_hlevel, c_fullname asc");
-//			
-//			long time = System.currentTimeMillis();
-//			while (resultSet.next()) {
-//				OntologyItem item = new OntologyItem(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
-//						resultSet.getString(4),resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7),
-//						resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11),
-//						resultSet.getString(12),resultSet.getString(13),resultSet.getString(14),resultSet.getString(15),
-//						resultSet.getString(16),resultSet.getString(17),resultSet.getDate(18),resultSet.getDate(19),
-//						resultSet.getDate(20),resultSet.getString(21),resultSet.getString(22),resultSet.getString(23),
-//						resultSet.getString(24),resultSet.getString(25));
-//				ontology.add(item);
-//				if (ontology.size()%1000==0) {
-//					System.out.println(System.currentTimeMillis()-time+ "ms "+ontology.size() + " items in array");
-//					time = System.currentTimeMillis();
-//				}
-//			}			
-//			connect.close();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			System.err.println("Not a valid i2b2 project: No Concepts found!");
-//		}
-//	}
-
-	/**
-	 * @return the ontology
-	 */
-//	public static LinkedHashSet<OntologyItem> getOntology() {
-//		return ontology;
-//	}
 
 	/**
 	 * @param ontology the ontology to set
 	 */
-//	public static void setOntology(LinkedHashSet<OntologyItem> ontology) {
-//		Server.ontology = ontology;
-//	}
+	//	public static void setOntology(LinkedHashSet<OntologyItem> ontology) {
+	//		Server.ontology = ontology;
+	//	}
 
 	public String getIp() {
 		return ip;
@@ -233,31 +279,19 @@ public class Server implements Serializable {
 	}
 
 	public String getPassword() {
-		return PasswordCrypt.decrypt(password);
-	}
-	public void setPassword(String password) {
-		this.password = PasswordCrypt.encrypt(password);
-	}
-
-	public String getProjectName(String project) {
-		try {
-			Connection connect = getConnection();
-			DriverManager.setLoginTimeout(2);
-			Statement statement = connect.createStatement();
-			ResultSet resultSet = statement
-					.executeQuery("select project_name from i2b2pm.pm_project_data where project_id='"
-							+ project + "'");
-			while (resultSet.next()) {
-				projectName = resultSet.getString("project_name");
-			}
-			connect.close();
-			return projectName;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.err.println("Not a valid i2b2 project: No Patients found!");
-			projectName = "";
-			return projectName;
+		if (this.isSavePassword())
+			return PasswordCrypt.decrypt(password);
+		else if (getNotStoredPassword()==null) {
+			PasswordDialog dialog = new PasswordDialog(Application.getShell());
+			dialog.open();
+			setNotStoredPassword(dialog.getPassword());
 		}
+
+		if  (getNotStoredPassword()==null) {
+			ServerView.refresh();
+			throw new RuntimeException("PASSWORD NULL");
+		}
+		return this.getNotStoredPassword();
 	}
 
 	public String getPatients(String user) {
@@ -289,6 +323,27 @@ public class Server implements Serializable {
 		return port;
 	}
 
+	public String getProjectName(String project) {
+		try {
+			Connection connect = getConnection();
+			DriverManager.setLoginTimeout(2);
+			Statement statement = connect.createStatement();
+			ResultSet resultSet = statement
+					.executeQuery("select project_name from i2b2pm.pm_project_data where project_id='"
+							+ project + "'");
+			while (resultSet.next()) {
+				projectName = resultSet.getString("project_name");
+			}
+			connect.close();
+			return projectName;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("Not a valid i2b2 project: No Patients found!");
+			projectName = "";
+			return projectName;
+		}
+	}
+
 	public String getSchema() {
 		return schema;
 	}
@@ -309,12 +364,28 @@ public class Server implements Serializable {
 		return user;
 	}
 
+	public boolean isSavePassword() {
+		return savePassword;
+	}
+
+	public boolean isUseWinAuth() {
+		return useWinAuth;
+	}
+
 	public void setConcecpts(String concecpts) {
 		concepts = concecpts;
 	}
 
+	public void setDatabaseType(String databaseType) {
+		this.databaseType = databaseType;
+	}
+
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	public void setPassword(String password) {
+		this.password = PasswordCrypt.encrypt(password);
 	}
 
 	public void setPatients(String patients) {
@@ -323,6 +394,10 @@ public class Server implements Serializable {
 
 	public void setPort(String port) {
 		this.port = port;
+	}
+
+	public void setSavePassword(boolean savePassword) {
+		this.savePassword = savePassword;
 	}
 
 	public void setSchema(String schema) {
@@ -345,57 +420,18 @@ public class Server implements Serializable {
 		this.user = user;
 	}
 
-	public String getDatabaseType() {
-		return databaseType;
-	}
-
-	public void setDatabaseType(String databaseType) {
-		this.databaseType = databaseType;
-	}
-
-	public boolean checkDatabaseType() {
-
-		if (this.databaseType.equals("oracle")) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	public void setUseWinAuth(boolean useWinAuth) {
+		this.useWinAuth = useWinAuth;
 	}
 
 	@Override
 	public String toString() {
 		return uniqueID + " " + ip;
 	}
-
-	/**
-	 * @return
-	 */
-	public static String[] getComboItems() {
-		return comboItems;
+	public String getNotStoredPassword() {
+		return notStoredPassword;
 	}
-
-	public static String getError() {
-		return error;
-	}
-
-	public static void setError(String error) {
-		Server.error = error;
-	}
-
-	public boolean isUseWinAuth() {
-		return useWinAuth;
-	}
-
-	public void setUseWinAuth(boolean useWinAuth) {
-		this.useWinAuth = useWinAuth;
-	}
-
-	public boolean isSavePassword() {
-		return savePassword;
-	}
-
-	public void setSavePassword(boolean savePassword) {
-		this.savePassword = savePassword;
+	public void setNotStoredPassword(String notStoredPassword) {
+		this.notStoredPassword = notStoredPassword;
 	}
 }

@@ -23,11 +23,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

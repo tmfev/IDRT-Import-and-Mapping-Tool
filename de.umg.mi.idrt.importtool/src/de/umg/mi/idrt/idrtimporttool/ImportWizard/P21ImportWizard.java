@@ -15,9 +15,9 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

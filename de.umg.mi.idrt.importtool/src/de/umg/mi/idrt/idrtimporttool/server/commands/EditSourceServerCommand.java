@@ -8,10 +8,10 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.TreeItem;
 
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPage2;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditServerWizard;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

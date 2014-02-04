@@ -194,7 +194,12 @@ public class EditServerPageOne extends WizardPage {
 
 		DBUserPasswordText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				false, 1, 1));
-		DBUserPasswordText.setText(server.getPassword());
+		String password;
+		if (server.getPassword()==null)
+			password="";
+		else
+			password = server.getPassword();
+		DBUserPasswordText.setText(password);
 		DBUserPasswordText.setEchoChar('*');
 		DBUserPasswordText.addKeyListener(new KeyListener() {
 
@@ -212,9 +217,10 @@ public class EditServerPageOne extends WizardPage {
 
 		lblSavePassword = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		lblSavePassword.setText("Save Password?");
-		
+
 		chkSavePassword = new Button(container1, SWT.CHECK);
-		
+		chkSavePassword.setSelection(server.isSavePassword());
+		//TODO
 		Label DBSID = new Label(container1, SWT.FILL | SWT.CENTER);
 		DBSID.setText(Messages.EditServerPageOne_DBSID);
 		// ipText = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -301,7 +307,7 @@ public class EditServerPageOne extends WizardPage {
 		setControl(container1);
 
 
-//		DBMSSQLUseWinAuth.setEnabled(false);
+		//		DBMSSQLUseWinAuth.setEnabled(false);
 		DBMSSQLUseWinAuth.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -374,4 +380,4 @@ public class EditServerPageOne extends WizardPage {
 	public static boolean getCheckStorePassword() {
 		return chkSavePassword.getSelection();
 	}
-	}
+}

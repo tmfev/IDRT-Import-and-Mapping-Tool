@@ -2,11 +2,16 @@ package de.umg.mi.idrt.idrtimporttool.server.serverWizard;
 
 import java.util.HashSet;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Shell;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -27,12 +32,24 @@ public class ServerContentProvider implements ITreeContentProvider {
 		if (parentElement instanceof Server) {
 			Server server = (Server) parentElement;
 
-
-			HashSet<String> users = ServerList.getUsersTargetServer(server);
-			if (users != null)
-				return users.toArray();
-			else 
-				return null;
+//			if (!server.isSavePassword() && server.getNotStoredPassword() == null) {
+//				PasswordDialog dialog = new PasswordDialog(new Shell());
+//			    dialog.open();
+//				server.setNotStoredPassword(dialog.getPassword());
+//			}
+				HashSet<String> users = ServerList.getUsersTargetServer(server);
+				if (users != null)
+					return users.toArray();
+				else {
+					ServerView.refresh();
+					return null;
+					
+				}
+//			}
+//			else {
+//				MessageDialog.openError(Application.getShell(), "NYI", "NYI");
+//				server.setPassword("wc24gqd");
+//			}
 		}
 		return null;
 	}

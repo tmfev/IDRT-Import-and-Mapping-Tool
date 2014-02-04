@@ -51,7 +51,7 @@
       <view
             allowMultiple="false"
             category="de.umg.mi.idrt.importtool.IDRT"
-            class="de.umg.mi.idrt.idrtimporttool.importidrt.ServerView"
+            class="de.umg.mi.idrt.importtool.views.ServerView"
             icon="images/addServer.png"
             id="de.umg.mi.idrt.importtool.ServerView"
             name="IDRT Import Tool">

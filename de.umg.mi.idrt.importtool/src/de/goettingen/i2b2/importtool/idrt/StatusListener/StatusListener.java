@@ -12,7 +12,7 @@ import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.ODMImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.P21ImportWizard;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

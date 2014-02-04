@@ -32,20 +32,18 @@ public class EditServerWizard extends Wizard {
 	@Override
 	public void addPages() {
 		one = new EditServerPageOne(server);
-		// two = new CSVWizardPageTwo();
 		addPage(one);
-		// addPage(two);
 	}
 
 	@Override
 	public boolean performFinish() {
 
-
 		Server editedServer = new Server(EditServerPageOne.getUniqueIDText(),
 				EditServerPageOne.getIpText(), EditServerPageOne.getPortText(),
 				EditServerPageOne.getDBUserText(),
 				EditServerPageOne.getDBUserPasswordText(),
-				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth(),false);
+				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth(),
+				EditServerPageOne.getCheckStorePassword());
 
 		if (!ServerList.getSourceServers().containsKey(
 				editedServer.getUniqueID())

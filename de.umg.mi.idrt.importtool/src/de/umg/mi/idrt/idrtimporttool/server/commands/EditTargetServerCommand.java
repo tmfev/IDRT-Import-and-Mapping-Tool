@@ -7,10 +7,10 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.TreeItem;
 
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditServerWizard;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -34,6 +34,7 @@ public class EditTargetServerCommand extends AbstractHandler {
 				WizardDialog wizardDialog = new WizardDialog(viewer
 						.getControl().getShell(), new EditServerWizard(
 						currentServer, true));
+				
 				wizardDialog.open();
 			} else {
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();

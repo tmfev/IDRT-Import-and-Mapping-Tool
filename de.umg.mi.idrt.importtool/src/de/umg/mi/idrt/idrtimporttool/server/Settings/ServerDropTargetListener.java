@@ -8,7 +8,7 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
+import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
