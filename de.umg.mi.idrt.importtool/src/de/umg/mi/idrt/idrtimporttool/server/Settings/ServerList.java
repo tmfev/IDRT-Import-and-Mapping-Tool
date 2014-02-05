@@ -52,6 +52,26 @@ public class ServerList {
 		"DATA_OBFSC", "DATA_LDS", "DATA_DEID", "DATA_AGG" };
 
 
+	public static void addServer(Server server) {
+		try {
+			if (!importDBServers.containsKey(server.getUniqueID())) {
+				servers.put(server.getUniqueID(), server);
+				ObjectOutputStream os = new ObjectOutputStream(
+						new FileOutputStream(serverFile));
+				os.writeObject(servers);
+				os.flush();
+				os.close();
+			} else {
+				System.err.println("server vorhanden");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	public static void addSourceServer(Server loadServer) {
 		if (!servers.containsKey(loadServer.getUniqueID())) {
 			importDBServers.put(loadServer.getUniqueID(), loadServer);
@@ -72,24 +92,63 @@ public class ServerList {
 		}
 	}
 
-	public static void addServer(Server server) {
+	public static void addUser(Server server, String username,
+			String newFullname, String newPassword, String newEmail, Date date) {
 		try {
-			if (!importDBServers.containsKey(server.getUniqueID())) {
-				servers.put(server.getUniqueID(), server);
-				ObjectOutputStream os = new ObjectOutputStream(
-						new FileOutputStream(serverFile));
-				os.writeObject(servers);
-				os.flush();
-				os.close();
-			} else {
-				System.err.println("server vorhanden");
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+			connect.setAutoCommit(true);
+			statement = connect.createStatement();
+			// Result set get the result of the SQL query
+			String sql = "insert into i2b2pm.pm_user_data (user_id, full_name, password, email, change_date, entry_date, changeby_char, status_cd) values ('"
+					+ username
+					+ "', '"
+					+ newFullname
+					+ "','"
+					+ newPassword
+					+ "', '"
+					+ newEmail
+					+ "', TO_DATE('"
+					+ date
+					+ "','yyyy-mm-dd'), TO_DATE('"
+					+ date
+					+ "','yyyy-mm-dd'), 'IDRT', 'A')";
+			resultSet = statement.executeQuery(sql);
+			connect.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 
+	public static void assignUserToProject(String username, String project,
+			Server server) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			java.util.Date today = new java.util.Date();
+			java.sql.Date date = new java.sql.Date(today.getTime());
+			connect.setAutoCommit(true);
+			for (String role : USERROLES) {
+				String sql = "insert into i2b2pm.pm_project_user_roles (project_id, user_id, user_role_cd, change_date, entry_date, changeby_char, status_cd) "
+						+ "values ('"
+						+ project
+						+ "','"
+						+ username
+						+ "','"
+						+ role
+						+ "', TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
+				resultSet = statement.executeQuery(sql);
+			}
+			connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static Server deserializeImportServer(File importServerFile) {
@@ -136,34 +195,273 @@ public class ServerList {
 		return null;
 	}
 
-	public static HashMap<String, Server> getSourceServers() {
-		return importDBServers;
-	}
+	public static void editUser(Server server, String newUsername,
+			String oldUsername, String newFullname, String newEmail, Date date) {
 
-	public static ResultSet test(Server server) {
 		try {
+
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
-			ResultSet resultSet = null;
-			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
-					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
-					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
-					"    ? := b;  END LOOP;END;");
-			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
+			connect.setAutoCommit(true);
+			statement = connect.createStatement();
+			// Result set get the result of the SQL query
+			statement.executeQuery("update i2b2pm.pm_user_data set user_id='"
+					+ newUsername + "', full_name='" + newFullname
+					+ "',email='" + newEmail + "',change_date=TO_DATE('" + date
+					+ "','yyyy-mm-dd') where user_id='" + oldUsername + "'");
 
-
-			statement.setInt(1, 21);
-			statement.setInt(2, 21);
-			statement.registerOutParameter(1, Types.VARCHAR);
-			statement.execute(sql);
-
-			System.out.println("RESULT: " + statement.getObject(1));
-
-			return resultSet;
+			if (!newUsername.equals(oldUsername)) {
+				statement
+				.executeQuery("update i2b2pm.pm_user_session set user_id='"
+						+ newUsername
+						+ "' where user_id='"
+						+ oldUsername + "'");
+				statement
+				.executeQuery("update i2b2pm.pm_project_user_roles set user_id='"
+						+ newUsername
+						+ "' where user_id='"
+						+ oldUsername + "'");
+			}
+			connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void editUserPW(Server server, String oldUsername,
+			String newPassword) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+			connect.setAutoCommit(true);
+			statement = connect.createStatement();
+			statement.executeQuery("update i2b2pm.pm_user_data set password='"
+					+ newPassword + "' where user_id='" + oldUsername + "'");
+			connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static boolean getAdmin(Server server, String username,
+			String project) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			connect.setAutoCommit(true);
+			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
+					+ username
+					+ "' and project_id='"
+					+ project
+					+ "' and user_role_cd='ADMIN'";
+			resultSet = statement.executeQuery(sql);
+			String admin = "";
+			while (resultSet.next()) {
+				admin = resultSet.getString("user_role_cd");
+			}
+			connect.close();
+			if (admin.toLowerCase().equals("admin")) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static LinkedList<String> getAllUsersFromServer(Server server) {
+		try {
+
+			if (server.getUser().toLowerCase().equals("system")
+					|| server.getUser().toLowerCase().equals("sys")) {
+				DriverManager.setLoginTimeout(2);
+				connect = server.getConnection();
+				statement = connect.createStatement();
+				// Result set get the result of the SQL query
+				LinkedList<String> users = new LinkedList<String>();
+				resultSet = statement
+						.executeQuery("select distinct user_id from i2b2pm.pm_user_data order by user_id asc");
+
+				while (resultSet.next()) {
+					String user = resultSet.getString("user_id");
+					if (!user.contains("SERVICE_ACCOUNT")) {
+						users.add(user);
+					}
+				}
+				connect.close();
+				return users;
+			} else {
+				throw new Exception(
+						"Not enough Database priviliges, try system or sys!");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			LinkedList<String> users = new LinkedList<String>();
+			return users;
+		}
 		return null;
+	}
+
+	public static LinkedList<String> getAssignedUsersFromProject(Server server,
+			String project) {
+		try {
+			LinkedList<String> users = new LinkedList<String>();
+			if (!project.isEmpty()) {
+
+				DriverManager.setLoginTimeout(2);
+				connect = server.getConnection();
+
+				statement = connect.createStatement();
+				// Result set get the result of the SQL query
+
+				resultSet = statement
+						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where project_id='"
+								+ project + "' order by user_id asc");
+
+				while (resultSet.next()) {
+					String user = resultSet.getString("user_id");
+					if (!user.contains("SERVICE_ACCOUNT")) {
+						users.add(user);
+					}
+				}
+				connect.close();
+			}
+			return users;
+
+		} catch (SQLException e) {
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static HashSet<String> getI2B2Projects(Server server) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			// Result set get the result of the SQL query
+			HashSet<String> users = new HashSet<String>();
+			if (server.getUser().toLowerCase().equals("system")
+					|| server.getUser().toLowerCase().equals("sys")) {
+				resultSet = statement
+						.executeQuery("select project_id from i2b2pm.pm_project_data");
+
+				while (resultSet.next()) {
+					users.add(resultSet.getString("project_id"));
+				}
+			} else {
+				users = new HashSet<String>();
+				throw new Exception(
+						"Not enough Database priviliges, try system or sys!");
+
+				// users.add(server.getUser());
+			}
+			connect.close();
+			return users;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		} catch (Exception e) {
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			e.printStackTrace();
+			HashSet<String> users = new HashSet<String>();
+			return users;
+		}
+		return null;
+	}
+
+	public static I2B2User getI2B2UserData(String user, String project,
+			Server server) {
+
+		try {
+			I2B2User i2b2User = new I2B2User(user);
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			// Result set get the result of the SQL query
+			resultSet = statement
+					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id='"
+							+ user
+							+ "' order by entry_date desc) where rownum <=1");
+			i2b2User.setLastLogin(null);
+			while (resultSet.next()) {
+				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
+			}
+			i2b2User.setLastQuery(null);
+			resultSet = statement
+					.executeQuery("select *from i2b2pm.pm_user_data where user_id='"
+							+ user + "'");
+			i2b2User.setFullname("");
+			i2b2User.setEmail("");
+			i2b2User.setStatus("");
+
+			while (resultSet.next()) {
+				i2b2User.setFullname(resultSet.getString("full_name"));
+				i2b2User.setEmail(resultSet.getString("email"));
+				i2b2User.setStatus(resultSet.getString("status_cd"));
+			}
+
+			connect.close();
+			return i2b2User;
+		} catch (SQLException e) {
+			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static boolean getManager(Server server, String username,
+			String project) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			connect.setAutoCommit(true);
+			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
+					+ username
+					+ "' and project_id='"
+					+ project
+					+ "' and user_role_cd='MANAGER'";
+			resultSet = statement.executeQuery(sql);
+			String admin = "";
+			while (resultSet.next()) {
+				admin = resultSet.getString("user_role_cd");
+			}
+			connect.close();
+			if (admin.toLowerCase().equals("manager")) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static ResultSet getPreview(String table, String schema,
@@ -191,6 +489,17 @@ public class ServerList {
 			e.printStackTrace();
 		}
 		return resultSet;
+	}
+
+	public static HashMap<String, Server> getSourceServers() {
+		return importDBServers;
+	}
+
+	/**
+	 * @return the tableMap
+	 */
+	public static HashMap<String, ServerTable> getTableMap() {
+		return tableMap;
 	}
 
 	/**
@@ -328,10 +637,16 @@ public class ServerList {
 	}
 
 	/**
-	 * @return the tableMap
+	 * Returns all Servers stored
+	 * 
+	 * @return
 	 */
-	public static HashMap<String, ServerTable> getTableMap() {
-		return tableMap;
+	public static HashMap<String, Server> getTargetServers() {
+		return servers;
+	}
+
+	public static HashMap<String,String> getUserServer(){
+		return userServer;
 	}
 
 	/**
@@ -453,465 +768,6 @@ public class ServerList {
 
 	}
 
-	private static HashSet<String> getResultSet(ResultSet resultSet,
-			Server server) throws SQLException {
-		try {
-			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
-			defaultProps = new Properties();
-			defaultProps.load(new FileReader(properties));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		HashSet<String> users = new HashSet<String>();
-		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
-			while (resultSet.next()) {
-				String user = resultSet.getString("username");
-				if (defaultProps.getProperty("filter").equals("true")) {
-					if (user.startsWith("I2B2")
-							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
-						users.add(user);
-					}
-				} else {
-					users.add(user);
-				}
-			}
-		}
-		else if (server.getDatabaseType().equalsIgnoreCase("mysql")){
-			while (resultSet.next()) {
-				String user = resultSet.getString("Database");
-
-				users.add(user);
-			}
-		}
-		else {
-			while (resultSet.next()) {
-				String user = resultSet.getString("username");
-
-				if (defaultProps.getProperty("filter").equals("true")) {
-					if (user.startsWith("I2B2")
-							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
-						users.add(user);
-					}
-				} else {
-					users.add(user);
-				}
-			}	
-		}
-		//TODO HERE
-		for (String user : users) {
-//			System.out.println("adding: " + user + " to " + server.getName());
-			userServer.put(user, server.getName());
-		}
-		return users;
-	}
-
-	/**
-	 * Returns all Servers stored
-	 * 
-	 * @return
-	 */
-	public static HashMap<String, Server> getTargetServers() {
-		return servers;
-	}
-
-	public static HashMap<String,String> getUserServer(){
-		return userServer;
-	}
-
-	public static boolean getManager(Server server, String username,
-			String project) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			connect.setAutoCommit(true);
-			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
-					+ username
-					+ "' and project_id='"
-					+ project
-					+ "' and user_role_cd='MANAGER'";
-			resultSet = statement.executeQuery(sql);
-			String admin = "";
-			while (resultSet.next()) {
-				admin = resultSet.getString("user_role_cd");
-			}
-			connect.close();
-			if (admin.toLowerCase().equals("manager")) {
-				return true;
-			} else {
-				return false;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	public static boolean getAdmin(Server server, String username,
-			String project) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			connect.setAutoCommit(true);
-			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
-					+ username
-					+ "' and project_id='"
-					+ project
-					+ "' and user_role_cd='ADMIN'";
-			resultSet = statement.executeQuery(sql);
-			String admin = "";
-			while (resultSet.next()) {
-				admin = resultSet.getString("user_role_cd");
-			}
-			connect.close();
-			if (admin.toLowerCase().equals("admin")) {
-				return true;
-			} else {
-				return false;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	public static void setManager(String username, String project,
-			Server server, boolean setManager) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			connect.setAutoCommit(true);
-			java.util.Date today = new java.util.Date();
-			java.sql.Date date = new java.sql.Date(today.getTime());
-			String sql;
-			if (setManager) {
-				sql = "insert into i2b2pm.pm_project_user_roles (project_id,user_id,user_role_cd,change_date,entry_date,changeby_char,status_cd) values ('"
-						+ project
-						+ "','"
-						+ username
-						+ "','MANAGER', TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
-			} else {
-				sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
-						+ username
-						+ "' and project_id='"
-						+ project
-						+ "' and user_role_cd='MANAGER'";
-			}
-			resultSet = statement.executeQuery(sql);
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void setAdmin(String username, String project, Server server,
-			boolean setAdmin) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			connect.setAutoCommit(true);
-			java.util.Date today = new java.util.Date();
-			java.sql.Date date = new java.sql.Date(today.getTime());
-			String sql;
-			if (setAdmin) {
-				sql = "insert into i2b2pm.pm_project_user_roles (project_id,user_id,user_role_cd,change_date,entry_date,changeby_char,status_cd) values ('"
-						+ project
-						+ "','"
-						+ username
-						+ "','ADMIN', TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
-			} else {
-				sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
-						+ username
-						+ "' and project_id='"
-						+ project
-						+ "' and user_role_cd='ADMIN'";
-			}
-			resultSet = statement.executeQuery(sql);
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void unAssignUserFromProject(String username, String project,
-			Server server) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			connect.setAutoCommit(true);
-			String sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
-					+ username + "' and project_id='" + project + "'";
-			resultSet = statement.executeQuery(sql);
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void assignUserToProject(String username, String project,
-			Server server) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			java.util.Date today = new java.util.Date();
-			java.sql.Date date = new java.sql.Date(today.getTime());
-			connect.setAutoCommit(true);
-			for (String role : USERROLES) {
-				String sql = "insert into i2b2pm.pm_project_user_roles (project_id, user_id, user_role_cd, change_date, entry_date, changeby_char, status_cd) "
-						+ "values ('"
-						+ project
-						+ "','"
-						+ username
-						+ "','"
-						+ role
-						+ "', TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), TO_DATE('"
-						+ date
-						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
-				resultSet = statement.executeQuery(sql);
-			}
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void addUser(Server server, String username,
-			String newFullname, String newPassword, String newEmail, Date date) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-			connect.setAutoCommit(true);
-			statement = connect.createStatement();
-			// Result set get the result of the SQL query
-			String sql = "insert into i2b2pm.pm_user_data (user_id, full_name, password, email, change_date, entry_date, changeby_char, status_cd) values ('"
-					+ username
-					+ "', '"
-					+ newFullname
-					+ "','"
-					+ newPassword
-					+ "', '"
-					+ newEmail
-					+ "', TO_DATE('"
-					+ date
-					+ "','yyyy-mm-dd'), TO_DATE('"
-					+ date
-					+ "','yyyy-mm-dd'), 'IDRT', 'A')";
-			resultSet = statement.executeQuery(sql);
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void removeUser(Server server, String username) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			// Result set get the result of the SQL query
-
-			resultSet = statement
-					.executeQuery("delete from i2b2pm.pm_user_data where user_id='"
-							+ username + "'");
-			resultSet = statement
-					.executeQuery("delete from i2b2pm.pm_user_session where user_id='"
-							+ username + "'");
-			resultSet = statement
-					.executeQuery("delete from i2b2pm.pm_project_user_roles where user_id='"
-							+ username + "'");
-
-			connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public static LinkedList<String> getAssignedUsersFromProject(Server server,
-			String project) {
-		try {
-			LinkedList<String> users = new LinkedList<String>();
-			if (!project.isEmpty()) {
-
-				DriverManager.setLoginTimeout(2);
-				connect = server.getConnection();
-
-				statement = connect.createStatement();
-				// Result set get the result of the SQL query
-
-				resultSet = statement
-						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where project_id='"
-								+ project + "' order by user_id asc");
-
-				while (resultSet.next()) {
-					String user = resultSet.getString("user_id");
-					if (!user.contains("SERVICE_ACCOUNT")) {
-						users.add(user);
-					}
-				}
-				connect.close();
-			}
-			return users;
-
-		} catch (SQLException e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static LinkedList<String> getAllUsersFromServer(Server server) {
-		try {
-
-			if (server.getUser().toLowerCase().equals("system")
-					|| server.getUser().toLowerCase().equals("sys")) {
-				DriverManager.setLoginTimeout(2);
-				connect = server.getConnection();
-				statement = connect.createStatement();
-				// Result set get the result of the SQL query
-				LinkedList<String> users = new LinkedList<String>();
-				resultSet = statement
-						.executeQuery("select distinct user_id from i2b2pm.pm_user_data order by user_id asc");
-
-				while (resultSet.next()) {
-					String user = resultSet.getString("user_id");
-					if (!user.contains("SERVICE_ACCOUNT")) {
-						users.add(user);
-					}
-				}
-				connect.close();
-				return users;
-			} else {
-				throw new Exception(
-						"Not enough Database priviliges, try system or sys!");
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		} catch (Exception e) {
-			e.printStackTrace();
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			LinkedList<String> users = new LinkedList<String>();
-			return users;
-		}
-		return null;
-	}
-
-	public static I2B2User getI2B2UserData(String user, String project,
-			Server server) {
-
-		try {
-			I2B2User i2b2User = new I2B2User(user);
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			// Result set get the result of the SQL query
-			resultSet = statement
-					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id='"
-							+ user
-							+ "' order by entry_date desc) where rownum <=1");
-			i2b2User.setLastLogin(null);
-			while (resultSet.next()) {
-				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
-			}
-			i2b2User.setLastQuery(null);
-			resultSet = statement
-					.executeQuery("select *from i2b2pm.pm_user_data where user_id='"
-							+ user + "'");
-			i2b2User.setFullname("");
-			i2b2User.setEmail("");
-			i2b2User.setStatus("");
-
-			while (resultSet.next()) {
-				i2b2User.setFullname(resultSet.getString("full_name"));
-				i2b2User.setEmail(resultSet.getString("email"));
-				i2b2User.setStatus(resultSet.getString("status_cd"));
-			}
-
-			connect.close();
-			return i2b2User;
-		} catch (SQLException e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static HashSet<String> getI2B2Projects(Server server) {
-		try {
-			DriverManager.setLoginTimeout(2);
-			connect = server.getConnection();
-
-			statement = connect.createStatement();
-			// Result set get the result of the SQL query
-			HashSet<String> users = new HashSet<String>();
-			if (server.getUser().toLowerCase().equals("system")
-					|| server.getUser().toLowerCase().equals("sys")) {
-				resultSet = statement
-						.executeQuery("select project_id from i2b2pm.pm_project_data");
-
-				while (resultSet.next()) {
-					users.add(resultSet.getString("project_id"));
-				}
-			} else {
-				users = new HashSet<String>();
-				throw new Exception(
-						"Not enough Database priviliges, try system or sys!");
-
-				// users.add(server.getUser());
-			}
-			connect.close();
-			return users;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		} catch (Exception e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
-			e.printStackTrace();
-			HashSet<String> users = new HashSet<String>();
-			return users;
-		}
-		return null;
-	}
-
 	public static boolean isServer(String uniqueID) {
 		if ((servers.get(uniqueID) != null)
 				|| (importDBServers.get(uniqueID) != null)) {
@@ -1008,52 +864,209 @@ public class ServerList {
 		}
 	}
 
-	public static void editUser(Server server, String newUsername,
-			String oldUsername, String newFullname, String newEmail, Date date) {
-
+	public static void removeUser(Server server, String username) {
 		try {
-
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
-			connect.setAutoCommit(true);
+
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
-			statement.executeQuery("update i2b2pm.pm_user_data set user_id='"
-					+ newUsername + "', full_name='" + newFullname
-					+ "',email='" + newEmail + "',change_date=TO_DATE('" + date
-					+ "','yyyy-mm-dd') where user_id='" + oldUsername + "'");
 
-			if (!newUsername.equals(oldUsername)) {
-				statement
-				.executeQuery("update i2b2pm.pm_user_session set user_id='"
-						+ newUsername
-						+ "' where user_id='"
-						+ oldUsername + "'");
-				statement
-				.executeQuery("update i2b2pm.pm_project_user_roles set user_id='"
-						+ newUsername
-						+ "' where user_id='"
-						+ oldUsername + "'");
+			resultSet = statement
+					.executeQuery("delete from i2b2pm.pm_user_data where user_id='"
+							+ username + "'");
+			resultSet = statement
+					.executeQuery("delete from i2b2pm.pm_user_session where user_id='"
+							+ username + "'");
+			resultSet = statement
+					.executeQuery("delete from i2b2pm.pm_project_user_roles where user_id='"
+							+ username + "'");
+
+			connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void serializeServers() {
+		try {
+			ObjectOutputStream os = new ObjectOutputStream(
+					new FileOutputStream(serverFile));
+
+			os.writeObject(servers);
+			os.flush();
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void setAdmin(String username, String project, Server server,
+			boolean setAdmin) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			connect.setAutoCommit(true);
+			java.util.Date today = new java.util.Date();
+			java.sql.Date date = new java.sql.Date(today.getTime());
+			String sql;
+			if (setAdmin) {
+				sql = "insert into i2b2pm.pm_project_user_roles (project_id,user_id,user_role_cd,change_date,entry_date,changeby_char,status_cd) values ('"
+						+ project
+						+ "','"
+						+ username
+						+ "','ADMIN', TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
+			} else {
+				sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
+						+ username
+						+ "' and project_id='"
+						+ project
+						+ "' and user_role_cd='ADMIN'";
 			}
+			resultSet = statement.executeQuery(sql);
 			connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void editUserPW(Server server, String oldUsername,
-			String newPassword) {
+	public static void setManager(String username, String project,
+			Server server, boolean setManager) {
 		try {
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
-			connect.setAutoCommit(true);
+
 			statement = connect.createStatement();
-			statement.executeQuery("update i2b2pm.pm_user_data set password='"
-					+ newPassword + "' where user_id='" + oldUsername + "'");
+			connect.setAutoCommit(true);
+			java.util.Date today = new java.util.Date();
+			java.sql.Date date = new java.sql.Date(today.getTime());
+			String sql;
+			if (setManager) {
+				sql = "insert into i2b2pm.pm_project_user_roles (project_id,user_id,user_role_cd,change_date,entry_date,changeby_char,status_cd) values ('"
+						+ project
+						+ "','"
+						+ username
+						+ "','MANAGER', TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), TO_DATE('"
+						+ date
+						+ "','yyyy-mm-dd'), 'IDRT', 'A')";
+			} else {
+				sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
+						+ username
+						+ "' and project_id='"
+						+ project
+						+ "' and user_role_cd='MANAGER'";
+			}
+			resultSet = statement.executeQuery(sql);
 			connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	
+//	private static ResultSet test(Server server) {
+//		try {
+//			DriverManager.setLoginTimeout(2);
+//			connect = server.getConnection();
+//			ResultSet resultSet = null;
+//			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
+//					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
+//					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
+//					"    ? := b;  END LOOP;END;");
+//			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
+//
+//
+//			statement.setInt(1, 21);
+//			statement.setInt(2, 21);
+//			statement.registerOutParameter(1, Types.VARCHAR);
+//			statement.execute(sql);
+//
+//			System.out.println("RESULT: " + statement.getObject(1));
+//
+//			return resultSet;
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+
+	public static void unAssignUserFromProject(String username, String project,
+			Server server) {
+		try {
+			DriverManager.setLoginTimeout(2);
+			connect = server.getConnection();
+
+			statement = connect.createStatement();
+			connect.setAutoCommit(true);
+			String sql = "delete from i2b2pm.pm_project_user_roles where user_id='"
+					+ username + "' and project_id='" + project + "'";
+			resultSet = statement.executeQuery(sql);
+			connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static HashSet<String> getResultSet(ResultSet resultSet,
+			Server server) throws SQLException {
+		try {
+			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
+			defaultProps = new Properties();
+			defaultProps.load(new FileReader(properties));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		HashSet<String> users = new HashSet<String>();
+		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+			while (resultSet.next()) {
+				String user = resultSet.getString("username");
+				if (defaultProps.getProperty("filter").equals("true")) {
+					if (user.startsWith("I2B2")
+							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
+						users.add(user);
+					}
+				} else {
+					users.add(user);
+				}
+			}
+		}
+		else if (server.getDatabaseType().equalsIgnoreCase("mysql")){
+			while (resultSet.next()) {
+				String user = resultSet.getString("Database");
+
+				users.add(user);
+			}
+		}
+		else {
+			while (resultSet.next()) {
+				String user = resultSet.getString("username");
+
+				if (defaultProps.getProperty("filter").equals("true")) {
+					if (user.startsWith("I2B2")
+							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
+						users.add(user);
+					}
+				} else {
+					users.add(user);
+				}
+			}	
+		}
+		for (String user : users) {
+			//			System.out.println("adding: " + user + " to " + server.getName());
+			userServer.put(user, server.getName());
+		}
+		return users;
 	}
 
 }

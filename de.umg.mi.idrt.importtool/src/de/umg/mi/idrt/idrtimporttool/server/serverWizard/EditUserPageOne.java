@@ -30,15 +30,53 @@ public class EditUserPageOne extends WizardPage {
 	private static Text username_answer;
 	private static Composite container1;
 	private static String oldUserName;
+	/**
+	 * @return the portText
+	 */
+	public static String getEmail() {
+		return email_answer.getText();
+	}
+	/**
+	 * @return the ipText
+	 */
+	public static String getFullname() {
+		return fullname_answer.getText();
+	}
+	public static String getGeneratedPassword(int i) {
+		String alphabet = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghjkimnopqrstuvwxyz";
+		return (SimplePassGen.generate(alphabet, i));
+	}
+	public static String getNewUserID() {
+		return username_answer.getText();
+	}
+	public static boolean getSendEmail() {
+		return checkEMailButton.getSelection();
+	}
+	public static String getUsername() {
+		return oldUserName;
+	}
+	/**
+	 * @return the dBUserPasswordText
+	 */
+	public static String getUserPasswordText() {
+		return userPassword_answer.getText();
+	}
 	private Label lblLength;
 	private Button btnGeneratePassword;
 	private Label label;
+
 	private Composite composite;
+
 	private I2B2User user;
+
 	private Label lblRetypePassword;
+
 	private Text retypePassword_answer;
+
 	private Label lblSendEmail;
+
 	private static Button checkEMailButton;
+
 	private Text passwordLength;
 
 	public EditUserPageOne(Server servers, I2B2User user) {
@@ -46,35 +84,6 @@ public class EditUserPageOne extends WizardPage {
 		setUser(user);
 		setTitle("Edit User");
 		setDescription("Edit User");
-	}
-
-	/**
-	 * @return the dBUserPasswordText
-	 */
-	public static String getUserPasswordText() {
-		return userPassword_answer.getText();
-	}
-
-	/**
-	 * @return the ipText
-	 */
-	public static String getFullname() {
-		return fullname_answer.getText();
-	}
-
-	/**
-	 * @return the portText
-	 */
-	public static String getEmail() {
-		return email_answer.getText();
-	}
-
-	public static String getUsername() {
-		return oldUserName;
-	}
-
-	public static String getNewUserID() {
-		return username_answer.getText();
 	}
 
 	@Override
@@ -262,14 +271,5 @@ public class EditUserPageOne extends WizardPage {
 
 	public void setUser(I2B2User user) {
 		this.user = user;
-	}
-
-	public static boolean getSendEmail() {
-		return checkEMailButton.getSelection();
-	}
-
-	public static String getGeneratedPassword(int i) {
-		String alphabet = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghjkimnopqrstuvwxyz";
-		return (SimplePassGen.generate(alphabet, i));
 	}
 }

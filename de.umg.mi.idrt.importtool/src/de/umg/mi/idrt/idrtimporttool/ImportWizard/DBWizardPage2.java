@@ -89,6 +89,13 @@ public class DBWizardPage2 extends WizardPage {
 	private static Server server;
 	private static Menu importServerMenu;
 	private static String tableName;
+	/**
+	 * 
+	 * @return all checked tables
+	 */
+	public static HashMap<Server, HashMap<String, List<String>>> getCheckedTables() {
+		return checkedTables;
+	}
 	private Composite container;
 	private SashForm sashForm;
 	private Composite compositeServer;
@@ -102,41 +109,8 @@ public class DBWizardPage2 extends WizardPage {
 	private Composite composite;
 	private static Control old;
 	private static TableItem item;
+
 	private static CCombo combo;
-
-	@SuppressWarnings("unchecked")
-	private static void clearSingleTable() {
-		try {
-			tableName = serverViewer.getTree().getSelection()[0].getText();
-			File tableFile = FileHandler.getBundleFile("/cfg/tables");
-
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
-					tableFile));
-			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
-					.readObject();
-			is.close();
-
-			tableMap.remove(tableName);
-
-			ObjectOutputStream os;
-			os = new ObjectOutputStream(new FileOutputStream(tableFile));
-			os.writeObject(tableMap);
-			os.flush();
-			os.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * 
-	 * @return all checked tables
-	 */
-	public static HashMap<Server, HashMap<String, List<String>>> getCheckedTables() {
-		return checkedTables;
-	}
 
 	public static TreeViewer getImportDBViewer() {
 		return serverViewer;
@@ -162,6 +136,14 @@ public class DBWizardPage2 extends WizardPage {
 	 */
 	public static List<TableRow> getTableRows() {
 		return tableRows;
+	}
+
+	/**
+	 * commands for target server
+	 */
+	public static void refresh() {
+		serverViewer.setContentProvider(new ServerSourceContentProvider());
+		serverViewer.refresh();
 	}
 
 	// private String[] getMetaComboPIDGen(String[] optionsMeta, TableItem[]
@@ -219,12 +201,30 @@ public class DBWizardPage2 extends WizardPage {
 	// return metaString;
 	// }
 
-	/**
-	 * commands for target server
-	 */
-	public static void refresh() {
-		serverViewer.setContentProvider(new ServerSourceContentProvider());
-		serverViewer.refresh();
+	@SuppressWarnings("unchecked")
+	private static void clearSingleTable() {
+		try {
+			tableName = serverViewer.getTree().getSelection()[0].getText();
+			File tableFile = FileHandler.getBundleFile("/cfg/tables");
+
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(
+					tableFile));
+			tableMap = (HashMap<String, HashMap<String, List<List<String>>>>) is
+					.readObject();
+			is.close();
+
+			tableMap.remove(tableName);
+
+			ObjectOutputStream os;
+			os = new ObjectOutputStream(new FileOutputStream(tableFile));
+			os.writeObject(tableMap);
+			os.flush();
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public DBWizardPage2() {
@@ -236,40 +236,6 @@ public class DBWizardPage2 extends WizardPage {
 	@Override
 	public boolean canFlipToNextPage() {
 		return tablesComplete() && !checkedTables.isEmpty();
-	}
-
-	/**
-	 * Checks the active, shown table, if patientID is assigned.
-	 */
-	private void checkTable() {
-		boolean pid = false;
-		getWizard().getContainer().updateButtons();
-		TableItem[] items = table.getItems();
-		for (TableItem item2 : items) {
-			if (item2.getText(3).toLowerCase().equals("patientid")) {
-				pid = true;
-				break;
-			}
-		}
-		if (!pid
-				&& serverViewer.getTree().getSelection()[0].getData()
-				.getClass().equals(ServerTable.class)) {
-			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
-					.getWorkbench().getSharedImages()
-					.getImage(ISharedImages.IMG_ETOOL_DELETE));
-		} else if (pid
-				&& serverViewer.getTree().getSelection()[0].getData()
-				.getClass().equals(ServerTable.class)) {
-			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
-					.getWorkbench().getSharedImages()
-					.getImage(ISharedImages.IMG_OBJ_FILE));
-		}
-
-	}
-
-	private void clearMetaDataFromTable() {
-		clearSingleTable();
-		loadCurrentTableFromDB();
 	}
 
 	@Override
@@ -892,6 +858,13 @@ public class DBWizardPage2 extends WizardPage {
 		}
 	}
 
+	@Override
+	public IWizardPage getNextPage() {
+		saveCurrentTableToDisc();
+		DBImportWizard.setThree(new DBWizardPage3());
+		return DBImportWizard.three;
+	}
+
 	private void addSourceDBServer() {
 		IHandlerService handlerService = (IHandlerService) PlatformUI
 				.getWorkbench().getService(IHandlerService.class);
@@ -904,6 +877,40 @@ public class DBWizardPage2 extends WizardPage {
 			ex.printStackTrace();
 			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.addSourceServer.command not found");
 		}
+	}
+
+	/**
+	 * Checks the active, shown table, if patientID is assigned.
+	 */
+	private void checkTable() {
+		boolean pid = false;
+		getWizard().getContainer().updateButtons();
+		TableItem[] items = table.getItems();
+		for (TableItem item2 : items) {
+			if (item2.getText(3).toLowerCase().equals("patientid")) {
+				pid = true;
+				break;
+			}
+		}
+		if (!pid
+				&& serverViewer.getTree().getSelection()[0].getData()
+				.getClass().equals(ServerTable.class)) {
+			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
+					.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_ETOOL_DELETE));
+		} else if (pid
+				&& serverViewer.getTree().getSelection()[0].getData()
+				.getClass().equals(ServerTable.class)) {
+			serverViewer.getTree().getSelection()[0].setImage(PlatformUI
+					.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_FILE));
+		}
+
+	}
+
+	private void clearMetaDataFromTable() {
+		clearSingleTable();
+		loadCurrentTableFromDB();
 	}
 
 	/**
@@ -962,13 +969,6 @@ public class DBWizardPage2 extends WizardPage {
 			ex.printStackTrace();
 			throw new RuntimeException("de.goettingen.i2b2.importtool.idrt.importSourceServer.command not found");
 		}
-	}
-
-	@Override
-	public IWizardPage getNextPage() {
-		saveCurrentTableToDisc();
-		DBImportWizard.setThree(new DBWizardPage3());
-		return DBImportWizard.three;
 	}
 
 	private void layoutSourceServerContextMenu() {

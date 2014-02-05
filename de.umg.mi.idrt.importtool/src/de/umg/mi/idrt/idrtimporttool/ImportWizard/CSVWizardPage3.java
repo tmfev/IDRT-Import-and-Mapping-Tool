@@ -67,11 +67,258 @@ import org.eclipse.wb.swt.ResourceManager;
 public class CSVWizardPage3 extends WizardPage {
 
 
+	public static Table fillTable(Table table, String[] nextLine) {
+		try {
+
+			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
+
+			char inputDelim = DEFAULTDELIM;
+			CSVReader reader = new CSVReader(
+					new FileReader(schemaFile),
+					inputDelim);
+			String[] testLine = reader.readNext();
+			reader.close();
+
+			HashMap<Integer,String> patientIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> objectIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> encounterIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> downloadDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> importDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> startDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> updateDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> endDateMap = new HashMap<Integer, String>();
+
+
+			if (testLine != null) {
+
+				if (testLine.length == 1) {
+					System.err
+					.println("Wrong delimiter?"); 
+					if (inputDelim == DEFAULTDELIM) {
+						inputDelim = '\t';
+						System.err
+						.println("Delimiter set to: \\t"); 
+					} else {
+						inputDelim = DEFAULTDELIM;
+						System.err
+						.println("Delimiter set to: " 
+								+ DEFAULTDELIM);
+					}
+				}
+
+				reader = new CSVReader(new FileReader(
+						schemaFile), inputDelim, QUOTECHAR);
+
+				String [] schemaContent = reader.readNext();
+
+
+
+				int counter = 0;
+				while ((schemaContent = reader.readNext()) != null) {
+					if (schemaContent[0] != null && schemaContent[0].length()>0)
+						patientIDMap.put(counter, schemaContent[0]);
+					if (schemaContent[1] != null && schemaContent[1].length()>0)
+						objectIDMap.put(counter, schemaContent[1]);
+					if (schemaContent[2] != null && schemaContent[2].length()>0)
+						encounterIDMap.put(counter, schemaContent[2]);
+					if (schemaContent[3] != null && schemaContent[3].length()>0)
+						downloadDateMap.put(counter, schemaContent[3]);
+					if (schemaContent[4] != null && schemaContent[4].length()>0)
+						importDateMap.put(counter, schemaContent[4]);
+					if (schemaContent[5] != null && schemaContent[5].length()>0)
+						startDateMap.put(counter, schemaContent[5]);
+					if (schemaContent[6] != null && schemaContent[6].length()>0)
+						updateDateMap.put(counter, schemaContent[6]);
+					if (schemaContent[7] != null && schemaContent[7].length()>0)
+						endDateMap.put(counter, schemaContent[7]);
+					counter++;
+				}
+				//				System.out.println(objectIDMap);
+				//				System.out.println(encounterIDMap);
+				//				System.out.println(downloadDateMap);
+				//				System.out.println(importDateMap);
+				//				System.out.println(startDateMap);
+				//				System.out.println(updateDateMap);
+			}
+			int pidLocation = -1;
+			int pidWeight = 99999;
+			int objLocation = -1;
+			int objWeight = 99999;
+			int encLocation = -1;
+			int encWeight = 99999;
+			int dwnLocation = -1;
+			int dwnWeight = 99999;
+			int impLocation = -1;
+			int impWeight = 99999;
+			int srtLocation = -1;
+			int strWeight = 99999;
+			int updLocation = -1;
+			int updWeight = 99999;
+			int endLocation = -1;
+			int endWeight = 99999;
+			for (int i = 0; i < nextLine.length; i++) {
+
+
+				int pidmapSize = patientIDMap.size()-1;
+				int objmapSize = objectIDMap.size()-1;
+				int encmapSize = encounterIDMap.size()-1;
+				int dwnmapSize = downloadDateMap.size()-1;
+				int impmapSize = importDateMap.size()-1;
+				int srtmapSize = startDateMap.size()-1;
+				int updmapSize = updateDateMap.size()-1;
+				int endmapSize = endDateMap.size()-1;
+
+				for (int i2 = pidmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
+						if (pidLocation>=0) {
+							if (i2 < pidWeight) {
+								table.getItems()[pidLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+								pidWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							pidLocation = i;
+							pidWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = objmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
+						if (objLocation>=0) {
+							if (i2 < objWeight) {
+								table.getItems()[objLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+								objWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							objLocation = i;
+							objWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = encmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
+						if (encLocation>=0) {
+							if (i2 < encWeight) {
+								table.getItems()[encLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+								encWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							encLocation = i;
+							encWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = dwnmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
+						if (dwnLocation>=0) {
+							if (i2 < dwnWeight) {
+								table.getItems()[dwnLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+								dwnWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							dwnLocation = i;
+							dwnWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = impmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
+						if (impLocation>=0) {
+							if (i2 < impWeight) {
+								table.getItems()[impLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+								impWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							impLocation = i;
+							impWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = srtmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
+						if (srtLocation>=0) {
+							if (i2 < strWeight) {
+								table.getItems()[srtLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+								strWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							srtLocation = i;
+							strWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = updmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
+						if (updLocation>=0) {
+							if (i2 < updWeight) {
+								table.getItems()[updLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+								updWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							updLocation = i;
+							updWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = endmapSize; i2 >=0; i2--) {
+					if (nextLine[i].toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
+						if (endLocation>=0) {
+							if (i2 < endWeight) {
+								table.getItems()[endLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+								endWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							endLocation = i;
+							endWeight = i2;
+						}
+					}
+				}
+
+			}
+
+			return table;
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	private Composite container;
 	private static String csvFolder;
+
 	//	private static String mainPath = "";
 	private static Vector<String> list;
-
 	/**
 	 * Table for the configuration of each column of the import-data.
 	 */
@@ -82,21 +329,22 @@ public class CSVWizardPage3 extends WizardPage {
 	private TableColumn tblclmnName;
 	private TableColumn tblclmnPIDGen;
 	private Composite compositeTables;
+
 	private boolean allConfigs;
 
 	private static String oldHeadlineNumber;
 
 	private static List<String> configList;
-
 	/**
 	 * Default Properties for the TOS Jobs
 	 */
 	private static Properties defaultProps;
 	private static char DEFAULTDELIM = ';';
+
 	private static char QUOTECHAR='\"';
 
-	private Composite buttonComposite;
 
+	private Composite buttonComposite;
 
 	/**
 	 * Last active Table
@@ -108,11 +356,11 @@ public class CSVWizardPage3 extends WizardPage {
 	 */
 	private static TableViewer serverListViewer;
 
+
 	/**
 	 * Mapping between Config Files and corresponding import file.
 	 */
 	private static HashMap<String, String> fileConfigMap;
-
 
 	/**
 	 * @return List of all .cfg.csv Files
@@ -121,10 +369,10 @@ public class CSVWizardPage3 extends WizardPage {
 		return configList;
 	}
 
+
 	public static char getDEFAULTDELIM() {
 		return DEFAULTDELIM;
 	}
-
 
 	/**
 	 * @return The HashMap with the mapping of the config files and data files.
@@ -140,12 +388,11 @@ public class CSVWizardPage3 extends WizardPage {
 		return serverListViewer;
 	}
 
+
 	/**
 	 * Button for "guess schema"
 	 */
 	private Button btnGuessSchema;
-
-
 	/**
 	 * Button for "clear Table"
 	 */
@@ -153,8 +400,74 @@ public class CSVWizardPage3 extends WizardPage {
 	private Button button;
 	private Label startLineLabel;
 	private static Text headLineText;
-	private Button refreshBtn;
 
+	/**
+	 * Saves the Table to disc.
+	 */
+	public static void saveTable() {
+		if ((fileConfigMap.get(lastTable) != null) && !table.isDisposed()) {
+
+			File tmpTableFile = new File(csvFolder
+					+ fileConfigMap.get(lastTable));
+			try {
+				CSVWriter rotatedOutput = new CSVWriter(new FileWriter(
+						tmpTableFile), DEFAULTDELIM);
+				TableItem[] tableItems = table.getItems();
+				String[] nextLine = new String[tableItems.length + 1];
+
+				nextLine[0] = "Spaltenname (Pflicht)"; 
+				if (tableItems != null) {
+					nextLine[0] = "Spaltenname (Pflicht)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(0);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Datentyp (Pflicht)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(2);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Name (kann leer sein)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(1);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "Metainformationen"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(3);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					nextLine[0] = "PID-Generator"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(4);
+					}
+					rotatedOutput.writeNext(nextLine);
+					nextLine[0] = "Headline"; 
+					nextLine[1] = headLineText.getText();
+					rotatedOutput.writeNext(nextLine);
+				}
+				rotatedOutput.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+	}
+
+	private static int getHeadLine() {
+		try {
+			return Integer.parseInt(headLineText.getText());
+		}catch (Exception e) {
+			System.err.println("Error @ Config:Headline");
+			return 0;
+		}
+	}
+
+	private Button refreshBtn;
+	
 	private HashSet<String> incompleteConfigs;
 
 	/**
@@ -167,15 +480,88 @@ public class CSVWizardPage3 extends WizardPage {
 		setDescription(Messages.CSVWizardPageThree_CSVImportSettings); 
 	}
 
-	private static int getHeadLine() {
+	public boolean checkTables() {
+		boolean filesOK = true;
+		//		boolean anythingwrong = false;
 		try {
-			return Integer.parseInt(headLineText.getText());
+
+			for(TableItem item : serverListViewer
+					.getTable().getItems()) {
+				String table = item.getText();
+				if (fileConfigMap.get(table) != null) {
+					File configFile = new File(csvFolder
+							+ fileConfigMap
+							.get(table));
+					char inputDelim = DEFAULTDELIM;
+					CSVReader reader = new CSVReader(
+							new FileReader(configFile),
+							inputDelim);
+					String[] testLine = reader.readNext();
+					reader.close();
+					if (testLine != null) {
+
+						if (testLine.length == 1) {
+							System.err
+							.println("Wrong delimiter?"); 
+							System.err.println(inputDelim + "==" + DEFAULTDELIM);
+							if (inputDelim == DEFAULTDELIM) {
+								inputDelim = '\t';
+								System.err
+								.println("Delimiter set to: \\t"); 
+							} else {
+								inputDelim = DEFAULTDELIM;
+								System.err
+								.println("DefDelimiter set to: " 
+										+ DEFAULTDELIM);
+							}
+						}
+						//										DEFAULTDELIM = inputDelim;
+
+						reader = new CSVReader(new FileReader(
+								configFile), inputDelim, QUOTECHAR);
+						String[] line1 = reader.readNext();
+						reader.readNext();
+						reader.readNext();
+						String[] line4 = reader.readNext();
+						reader.close();
+						boolean fine = false;
+						for (int i = 1; i < line1.length; i++) {
+							System.out.println(line4[i]);
+							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") )
+							{
+								fine=true;
+								break;
+							}
+						}
+						if (fine) {
+							incompleteConfigs.remove(table);
+						}
+						else {
+							filesOK=false;
+							setPageComplete(false);
+							setErrorMessage("No PatientID or EncounterID found in " + table + "!");
+							incompleteConfigs.add(table);
+						}
+					}
+				}
+				else {
+					incompleteConfigs.add(table);
+					setErrorMessage("No PatientID or EncounterID found in " + table + "!");
+					setPageComplete(false);
+				}
+				if (filesOK) {
+					setPageComplete(true);
+					setErrorMessage(null);
+				}
+			}
+			serverListViewer.refresh(true);
+			return filesOK;
 		}catch (Exception e) {
-			System.err.println("Error @ Config:Headline");
-			return 0;
+			e.printStackTrace();
+			serverListViewer.refresh(true);
+			return filesOK;
 		}
 	}
-	
 	@Override
 	public void createControl(final Composite parent) {
 		try {
@@ -398,6 +784,10 @@ public class CSVWizardPage3 extends WizardPage {
 			button.addSelectionListener(new SelectionListener() {
 
 				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+
+				@Override
 				public void widgetSelected(SelectionEvent e) {
 
 					boolean cont = MessageDialog.openConfirm(Application.getShell(),
@@ -415,10 +805,6 @@ public class CSVWizardPage3 extends WizardPage {
 							allConfigs = false;
 						}
 					}
-				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 			});
 			new Label(compositeList, SWT.NONE);
@@ -958,337 +1344,14 @@ public class CSVWizardPage3 extends WizardPage {
 			e1.printStackTrace();
 		}
 	}
-
-	public boolean checkTables() {
-		boolean filesOK = true;
-		//		boolean anythingwrong = false;
-		try {
-
-			for(TableItem item : serverListViewer
-					.getTable().getItems()) {
-				String table = item.getText();
-				if (fileConfigMap.get(table) != null) {
-					File configFile = new File(csvFolder
-							+ fileConfigMap
-							.get(table));
-					char inputDelim = DEFAULTDELIM;
-					CSVReader reader = new CSVReader(
-							new FileReader(configFile),
-							inputDelim);
-					String[] testLine = reader.readNext();
-					reader.close();
-					if (testLine != null) {
-
-						if (testLine.length == 1) {
-							System.err
-							.println("Wrong delimiter?"); 
-							System.err.println(inputDelim + "==" + DEFAULTDELIM);
-							if (inputDelim == DEFAULTDELIM) {
-								inputDelim = '\t';
-								System.err
-								.println("Delimiter set to: \\t"); 
-							} else {
-								inputDelim = DEFAULTDELIM;
-								System.err
-								.println("DefDelimiter set to: " 
-										+ DEFAULTDELIM);
-							}
-						}
-						//										DEFAULTDELIM = inputDelim;
-
-						reader = new CSVReader(new FileReader(
-								configFile), inputDelim, QUOTECHAR);
-						String[] line1 = reader.readNext();
-						reader.readNext();
-						reader.readNext();
-						String[] line4 = reader.readNext();
-						reader.close();
-						boolean fine = false;
-						for (int i = 1; i < line1.length; i++) {
-							System.out.println(line4[i]);
-							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") )
-							{
-								fine=true;
-								break;
-							}
-						}
-						if (fine) {
-							incompleteConfigs.remove(table);
-						}
-						else {
-							filesOK=false;
-							setPageComplete(false);
-							setErrorMessage("No PatientID or EncounterID found in " + table + "!");
-							incompleteConfigs.add(table);
-						}
-					}
-				}
-				else {
-					incompleteConfigs.add(table);
-					setErrorMessage("No PatientID or EncounterID found in " + table + "!");
-					setPageComplete(false);
-				}
-				if (filesOK) {
-					setPageComplete(true);
-					setErrorMessage(null);
-				}
-			}
-			serverListViewer.refresh(true);
-			return filesOK;
-		}catch (Exception e) {
-			e.printStackTrace();
-			serverListViewer.refresh(true);
-			return filesOK;
+	@Override
+	public IWizardPage getPreviousPage() {
+		if (lastTable != null) {
+			saveTable();
 		}
+		return super.getPreviousPage();
 	}
 
-	public static Table fillTable(Table table, String[] nextLine) {
-		try {
-
-			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
-
-			char inputDelim = DEFAULTDELIM;
-			CSVReader reader = new CSVReader(
-					new FileReader(schemaFile),
-					inputDelim);
-			String[] testLine = reader.readNext();
-			reader.close();
-
-			HashMap<Integer,String> patientIDMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> objectIDMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> encounterIDMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> downloadDateMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> importDateMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> startDateMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> updateDateMap = new HashMap<Integer, String>();
-			HashMap<Integer,String> endDateMap = new HashMap<Integer, String>();
-
-
-			if (testLine != null) {
-
-				if (testLine.length == 1) {
-					System.err
-					.println("Wrong delimiter?"); 
-					if (inputDelim == DEFAULTDELIM) {
-						inputDelim = '\t';
-						System.err
-						.println("Delimiter set to: \\t"); 
-					} else {
-						inputDelim = DEFAULTDELIM;
-						System.err
-						.println("Delimiter set to: " 
-								+ DEFAULTDELIM);
-					}
-				}
-
-				reader = new CSVReader(new FileReader(
-						schemaFile), inputDelim, QUOTECHAR);
-
-				String [] schemaContent = reader.readNext();
-
-
-
-				int counter = 0;
-				while ((schemaContent = reader.readNext()) != null) {
-					if (schemaContent[0] != null && schemaContent[0].length()>0)
-						patientIDMap.put(counter, schemaContent[0]);
-					if (schemaContent[1] != null && schemaContent[1].length()>0)
-						objectIDMap.put(counter, schemaContent[1]);
-					if (schemaContent[2] != null && schemaContent[2].length()>0)
-						encounterIDMap.put(counter, schemaContent[2]);
-					if (schemaContent[3] != null && schemaContent[3].length()>0)
-						downloadDateMap.put(counter, schemaContent[3]);
-					if (schemaContent[4] != null && schemaContent[4].length()>0)
-						importDateMap.put(counter, schemaContent[4]);
-					if (schemaContent[5] != null && schemaContent[5].length()>0)
-						startDateMap.put(counter, schemaContent[5]);
-					if (schemaContent[6] != null && schemaContent[6].length()>0)
-						updateDateMap.put(counter, schemaContent[6]);
-					if (schemaContent[7] != null && schemaContent[7].length()>0)
-						endDateMap.put(counter, schemaContent[7]);
-					counter++;
-				}
-				//				System.out.println(objectIDMap);
-				//				System.out.println(encounterIDMap);
-				//				System.out.println(downloadDateMap);
-				//				System.out.println(importDateMap);
-				//				System.out.println(startDateMap);
-				//				System.out.println(updateDateMap);
-			}
-			int pidLocation = -1;
-			int pidWeight = 99999;
-			int objLocation = -1;
-			int objWeight = 99999;
-			int encLocation = -1;
-			int encWeight = 99999;
-			int dwnLocation = -1;
-			int dwnWeight = 99999;
-			int impLocation = -1;
-			int impWeight = 99999;
-			int srtLocation = -1;
-			int strWeight = 99999;
-			int updLocation = -1;
-			int updWeight = 99999;
-			int endLocation = -1;
-			int endWeight = 99999;
-			for (int i = 0; i < nextLine.length; i++) {
-
-
-				int pidmapSize = patientIDMap.size()-1;
-				int objmapSize = objectIDMap.size()-1;
-				int encmapSize = encounterIDMap.size()-1;
-				int dwnmapSize = downloadDateMap.size()-1;
-				int impmapSize = importDateMap.size()-1;
-				int srtmapSize = startDateMap.size()-1;
-				int updmapSize = updateDateMap.size()-1;
-				int endmapSize = endDateMap.size()-1;
-
-				for (int i2 = pidmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
-						if (pidLocation>=0) {
-							if (i2 < pidWeight) {
-								table.getItems()[pidLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
-								pidWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
-							pidLocation = i;
-							pidWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = objmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
-						if (objLocation>=0) {
-							if (i2 < objWeight) {
-								table.getItems()[objLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
-								objWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
-							objLocation = i;
-							objWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = encmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
-						if (encLocation>=0) {
-							if (i2 < encWeight) {
-								table.getItems()[encLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
-								encWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
-							encLocation = i;
-							encWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = dwnmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
-						if (dwnLocation>=0) {
-							if (i2 < dwnWeight) {
-								table.getItems()[dwnLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
-								dwnWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
-							dwnLocation = i;
-							dwnWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = impmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
-						if (impLocation>=0) {
-							if (i2 < impWeight) {
-								table.getItems()[impLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
-								impWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
-							impLocation = i;
-							impWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = srtmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
-						if (srtLocation>=0) {
-							if (i2 < strWeight) {
-								table.getItems()[srtLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
-								strWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
-							srtLocation = i;
-							strWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = updmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
-						if (updLocation>=0) {
-							if (i2 < updWeight) {
-								table.getItems()[updLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
-								updWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
-							updLocation = i;
-							updWeight = i2;
-						}
-					}
-				}
-
-				for (int i2 = endmapSize; i2 >=0; i2--) {
-					if (nextLine[i].toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
-						if (endLocation>=0) {
-							if (i2 < endWeight) {
-								table.getItems()[endLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
-								endWeight = i2;
-							}
-						}
-						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
-							endLocation = i;
-							endWeight = i2;
-						}
-					}
-				}
-
-			}
-
-			return table;
-		} catch (IOException e) {
-
-			e.printStackTrace();
-			return null;
-		}
-
-	}
 	/**
 	 * Clear all metadata from the current table.
 	 */
@@ -1356,6 +1419,7 @@ public class CSVWizardPage3 extends WizardPage {
 		}
 
 	}
+
 	/**
 	 * Clears the current table.
 	 */
@@ -1403,69 +1467,5 @@ public class CSVWizardPage3 extends WizardPage {
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
-	}
-
-	/**
-	 * Saves the Table to disc.
-	 */
-	public static void saveTable() {
-		if ((fileConfigMap.get(lastTable) != null) && !table.isDisposed()) {
-
-			File tmpTableFile = new File(csvFolder
-					+ fileConfigMap.get(lastTable));
-			try {
-				CSVWriter rotatedOutput = new CSVWriter(new FileWriter(
-						tmpTableFile), DEFAULTDELIM);
-				TableItem[] tableItems = table.getItems();
-				String[] nextLine = new String[tableItems.length + 1];
-
-				nextLine[0] = "Spaltenname (Pflicht)"; 
-				if (tableItems != null) {
-					nextLine[0] = "Spaltenname (Pflicht)"; 
-					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(0);
-					}
-					rotatedOutput.writeNext(nextLine);
-
-					nextLine[0] = "Datentyp (Pflicht)"; 
-					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(2);
-					}
-					rotatedOutput.writeNext(nextLine);
-
-					nextLine[0] = "Name (kann leer sein)"; 
-					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(1);
-					}
-					rotatedOutput.writeNext(nextLine);
-
-					nextLine[0] = "Metainformationen"; 
-					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(3);
-					}
-					rotatedOutput.writeNext(nextLine);
-
-					nextLine[0] = "PID-Generator"; 
-					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(4);
-					}
-					rotatedOutput.writeNext(nextLine);
-					nextLine[0] = "Headline"; 
-					nextLine[1] = headLineText.getText();
-					rotatedOutput.writeNext(nextLine);
-				}
-				rotatedOutput.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} 
-	}
-
-	@Override
-	public IWizardPage getPreviousPage() {
-		if (lastTable != null) {
-			saveTable();
-		}
-		return super.getPreviousPage();
 	}
 }

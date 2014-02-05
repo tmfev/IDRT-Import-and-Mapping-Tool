@@ -42,28 +42,112 @@ public class CSVImportWizard extends Wizard {
 
 	private static int exitCode;
 
+	/**
+	 * Updates the status of the progress bar.
+	 */
+	public static void updateStatus() {
+		if (started) {
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					ServerView.setProgress((int) StatusListener.getPercentage());
+					ServerView.setProgressTop(StatusListener.getFile());
+					ServerView.setProgressBottom(""
+							+ StatusListener.getStatus());
+				}
+			});
+		}
+	}
 	private Properties defaultProps;
 	private static Thread b;
 	private static Thread importThread;
+/**
+	 * Copies a file.
+	 * @param inputFile Input file.
+	 * @param outputFile Output file.
+	 */
+	public static void copyFile(File inputFile, File outputFile) {
+		try {
+			FileReader in = new FileReader(inputFile);
+			FileWriter out = new FileWriter(outputFile);
+			int c;
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+			in.close();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * Brutally kills the the import thread.
+	 */
+	@SuppressWarnings("deprecation")
+	public static void killThread() {
+		if (started) {
+			importThread.stop();
+			b.stop();
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					//					closeBar("CSV Import Failed!", 1);
+					Log.addLog(1, "CSV Import Failed!");
+					MessageDialog
+					.openError(Application.getShell(),
+							"Import Failed!",
+							"Import failed. (User aborted!)\nYou might want to redo your last action!");
+				}
+			});
+		}
+		StatusListener.notifyListener();
+		started = false;
+	}
+	@SuppressWarnings("deprecation")
+	public static void killThreadRemote(final String error,
+			final String fileName) {
+
+		if (started) {
+			importThread.stop();
+			// b.stop();
+
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					//					closeBar(error, fileName, 1);
+					Log.addLog(1, "CSV Import Failed: " + error);
+					MessageDialog.openError(Application.getShell(), "Import Failed!",
+							"Import failed. Please see the log.");
+				}
+			});
+		}
+		started = false;
+		StatusListener.notifyListener();
+	}
+
 	private HashMap<String, String> contextMap;
-//	protected WizardPage1 one;
+	
+	//	protected WizardPage1 one;
 	protected CSVWizardPage2 two;
 	public static CSVWizardPage3 three;
+
 	public static boolean started = false;
+
+	public static void setThree(CSVWizardPage3 three) {
+		CSVImportWizard.three = three;
+	}
+
 
 	public CSVImportWizard() {
 		super();
 		setNeedsProgressMonitor(false);
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#getPageCount()
-	 */
-	@Override
-	public int getPageCount() {
-		// TODO Auto-generated method stub
-		return 2;
-	}
+
 	@Override
 	public void addPages() {
 //		one = new WizardPage1();
@@ -74,17 +158,37 @@ public class CSVImportWizard extends Wizard {
 		addPage(three);
 	}
 
+	//	private static void closeBar(String msg, int status) {
+	//		closeBar(msg, "", status);
+	//	}
+
+	//	private static void closeBar(String msg, final String fileName, int status) {
+	//		ServerView.closeBar(msg, fileName, status);
+	//	}
+
 	//
 	@Override
 	public boolean canFinish() {
 		return (three != null && three.isPageComplete());
 	}
 
+//	public static CSVWizardPageThree getThree() {
+//		return three;
+//	}
+
 	@Override
 	public void dispose() {
 		super.dispose();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.wizard.Wizard#getPageCount()
+	 */
+	@Override
+	public int getPageCount() {
+		// TODO Auto-generated method stub
+		return 2;
+	}
 
 	@Override
 	public boolean performCancel() {
@@ -464,109 +568,5 @@ public class CSVImportWizard extends Wizard {
 		});
 		importThread.start();
 		return true;
-	}
-
-	//	private static void closeBar(String msg, int status) {
-	//		closeBar(msg, "", status);
-	//	}
-
-	//	private static void closeBar(String msg, final String fileName, int status) {
-	//		ServerView.closeBar(msg, fileName, status);
-	//	}
-
-	/**
-	 * Copies a file.
-	 * @param inputFile Input file.
-	 * @param outputFile Output file.
-	 */
-	public static void copyFile(File inputFile, File outputFile) {
-		try {
-			FileReader in = new FileReader(inputFile);
-			FileWriter out = new FileWriter(outputFile);
-			int c;
-			while ((c = in.read()) != -1) {
-				out.write(c);
-			}
-			in.close();
-			out.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-//	public static CSVWizardPageThree getThree() {
-//		return three;
-//	}
-
-	/**
-	 * Brutally kills the the import thread.
-	 */
-	@SuppressWarnings("deprecation")
-	public static void killThread() {
-		if (started) {
-			importThread.stop();
-			b.stop();
-			Display.getDefault().syncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					//					closeBar("CSV Import Failed!", 1);
-					Log.addLog(1, "CSV Import Failed!");
-					MessageDialog
-					.openError(Application.getShell(),
-							"Import Failed!",
-							"Import failed. (User aborted!)\nYou might want to redo your last action!");
-				}
-			});
-		}
-		StatusListener.notifyListener();
-		started = false;
-	}
-
-	@SuppressWarnings("deprecation")
-	public static void killThreadRemote(final String error,
-			final String fileName) {
-
-		if (started) {
-			importThread.stop();
-			// b.stop();
-
-			Display.getDefault().syncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					//					closeBar(error, fileName, 1);
-					Log.addLog(1, "CSV Import Failed: " + error);
-					MessageDialog.openError(Application.getShell(), "Import Failed!",
-							"Import failed. Please see the log.");
-				}
-			});
-		}
-		started = false;
-		StatusListener.notifyListener();
-	}
-
-	public static void setThree(CSVWizardPage3 three) {
-		CSVImportWizard.three = three;
-	}
-
-	/**
-	 * Updates the status of the progress bar.
-	 */
-	public static void updateStatus() {
-		if (started) {
-			Display.getDefault().syncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					ServerView.setProgress((int) StatusListener.getPercentage());
-					ServerView.setProgressTop(StatusListener.getFile());
-					ServerView.setProgressBottom(""
-							+ StatusListener.getStatus());
-				}
-			});
-		}
 	}
 }

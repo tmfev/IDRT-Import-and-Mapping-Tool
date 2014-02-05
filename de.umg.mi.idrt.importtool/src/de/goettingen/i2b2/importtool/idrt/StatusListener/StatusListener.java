@@ -34,20 +34,6 @@ public class StatusListener {
 	public static String filename;
 	public static ScheduledExecutorService executor;
 
-	/**
-	 * @return the subPerc
-	 */
-	public static float getSubPerc() {
-		return subPerc;
-	}
-
-	/**
-	 * @param subPerc the subPerc to set
-	 */
-	public static void setSubPerc(float subPerc) {
-		StatusListener.subPerc = subPerc;
-	}
-
 	public static void addError(final String logg, final String fileName) {
 		final File file = new File(fileName);
 		filename = file.getName();
@@ -67,33 +53,14 @@ public class StatusListener {
 
 			}});
 	}
-	
-	public static void startLogging() {
-		System.out.println("START LOGGING");
-		Runnable helloRunnable = new Runnable() {
-			public void run() {
-				try {
-					Display.getDefault().syncExec(new Runnable() {
-						@Override
-						public void run() {
-//							System.out.println("autolog");
-							if (logCounter>0)
-							Log.addLog(0, log + " - " + logCounter +" more Errors " + filename);
-							logCounter=0;
-						}});
-					
-				}catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		executor = Executors.newScheduledThreadPool(1);
-		executor.scheduleAtFixedRate(helloRunnable, 3, 3, TimeUnit.SECONDS);
-	}
 
-	public static void stopLogging() {
-		System.out.println("STOP LOGGING");
-		executor.shutdown();
+	public static void clearStatus() {
+		perc = 0;
+		subPerc = 0;
+		subStatus = "";
+		status = "";
+		file = "";
+		ServerView.updateStatus();
 	}
 
 	public static void error(final String msg, final String error,
@@ -107,7 +74,7 @@ public class StatusListener {
 			}
 		});
 	}
-
+	
 	public static void errorInfo(final String msg, final String error,
 			final String fileName) {
 		final File file = new File(fileName);
@@ -125,6 +92,10 @@ public class StatusListener {
 		return file;
 	}
 
+	public static int getImportErrorCounter() {
+		return importErrorCounter;
+	}
+
 	public static boolean getInterrupt() {
 		return interrupted;
 	}
@@ -135,6 +106,20 @@ public class StatusListener {
 
 	public static String getStatus() {
 		return status;
+	}
+
+	/**
+	 * @return the subPerc
+	 */
+	public static float getSubPerc() {
+		return subPerc;
+	}
+
+	/**
+	 * @return the subStatus
+	 */
+	public static String getSubStatus() {
+		return subStatus;
 	}
 
 	public static void interrupt() {
@@ -158,11 +143,8 @@ public class StatusListener {
 		interrupted = false;
 	}
 
-	/**
-	 * @return the subStatus
-	 */
-	public static String getSubStatus() {
-		return subStatus;
+	public static void setImportErrorCounter(int importErrorCounter) {
+		StatusListener.importErrorCounter = importErrorCounter;
 	}
 
 	public static void setStatus(float percentage, String currentFile) {
@@ -201,12 +183,6 @@ public class StatusListener {
 		});
 	}
 	
-	public static void setSubStatus(float percentage, final String statusMsg) {
-		subPerc = percentage;
-		subStatus = statusMsg;
-		ServerView.updateStatus();
-	}
-
 	public static void setStatusPID(float percentage, String msg,
 			String currentFile) {
 		File fileName = new File(currentFile);
@@ -216,20 +192,44 @@ public class StatusListener {
 		ServerView.updateStatus();
 	}
 
-	public static int getImportErrorCounter() {
-		return importErrorCounter;
+	/**
+	 * @param subPerc the subPerc to set
+	 */
+	public static void setSubPerc(float subPerc) {
+		StatusListener.subPerc = subPerc;
 	}
 
-	public static void setImportErrorCounter(int importErrorCounter) {
-		StatusListener.importErrorCounter = importErrorCounter;
-	}
-
-	public static void clearStatus() {
-		perc = 0;
-		subPerc = 0;
-		subStatus = "";
-		status = "";
-		file = "";
+	public static void setSubStatus(float percentage, final String statusMsg) {
+		subPerc = percentage;
+		subStatus = statusMsg;
 		ServerView.updateStatus();
+	}
+
+	public static void startLogging() {
+		System.out.println("START LOGGING");
+		Runnable helloRunnable = new Runnable() {
+			public void run() {
+				try {
+					Display.getDefault().syncExec(new Runnable() {
+						@Override
+						public void run() {
+//							System.out.println("autolog");
+							if (logCounter>0)
+							Log.addLog(0, log + " - " + logCounter +" more Errors " + filename);
+							logCounter=0;
+						}});
+					
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		executor = Executors.newScheduledThreadPool(1);
+		executor.scheduleAtFixedRate(helloRunnable, 3, 3, TimeUnit.SECONDS);
+	}
+
+	public static void stopLogging() {
+		System.out.println("STOP LOGGING");
+		executor.shutdown();
 	}
 }

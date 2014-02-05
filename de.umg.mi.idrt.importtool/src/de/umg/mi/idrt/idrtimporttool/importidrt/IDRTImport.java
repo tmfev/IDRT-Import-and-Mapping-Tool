@@ -66,51 +66,6 @@ public class IDRTImport {
 	public static int getStatus() {
 		return status;
 	}
-	/**
-	 * @param server
-	 * @param text
-	 */
-	public static void runRemoveLocks(Server server, String project) {
-		StatusListener.startLogging();
-		HashMap<String, String> contextMap = new HashMap<String, String>();
-		contextMap.put("DBHost", server.getIp());
-		contextMap.put("DBPassword", server.getPassword());
-		contextMap.put("DBUsername", server.getUser());
-		contextMap.put("DBInstance", server.getSID());
-		contextMap.put("DBPort", server.getPort());
-		contextMap.put("DBSchema", project);
-		setCompleteContext(contextMap);
-
-
-		Thread workerThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
-				ServerView.btnStopSetEnabled(true);
-				exitCode = 	freeLocks.runJobInTOS(getARGV());
-				ServerView.btnStopSetEnabled(false);
-
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						StatusListener.stopLogging();
-						if (exitCode == 0) {
-
-							StatusListener.setStatus(100f, "Locks removed.","");
-							MessageDialog.openInformation(Application.getShell(),"Locks removed!", "Locks removed!");
-						}
-						else {
-							MessageDialog.openError(Application.getShell(), "Removing Locks failed!", "Removing Locks failed!\nAre you sys admin?");
-						}
-					}
-				});
-
-			}
-		});
-		workerThread.start();
-
-	}
-
 	@SuppressWarnings("deprecation")
 	public static void killThread() {
 
@@ -132,6 +87,110 @@ public class IDRTImport {
 		}
 		ServerView.stdImportStarted = false;
 	}
+
+	/**
+	 * TOS-Job which imports several CSV-Files in a Folder.
+	 * <p><strong>Note:</strong> CSV-File delimiter: tabulator, semicolon</p>
+	 * @param importTerms Import the standard terminologies?
+	 * @return Exitcode from TOS (0=success)
+	 * 
+	 */
+	public static int runCSVImport(boolean importTerms) {
+		StatusListener.startLogging();
+		ServerView.btnStopSetEnabled(true);
+		CSV_MASTER CSVImport = new CSV_MASTER();
+		exitCode = CSVImport.runJobInTOS(getARGV());
+		clearInputFolder();
+		if (exitCode == 0 && importTerms) {
+			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
+			if (exitCode == 0) {
+				HashMap<String, String> contextMap = new HashMap<String, String>();
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
+				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
+				exitCode = transform.runJobInTOS(getARGV());
+
+			}
+			StatusListener.clearStatus();
+			ServerView.btnStopSetEnabled(false);
+			StatusListener.stopLogging();
+			return exitCode;
+		} else {
+			ServerView.btnStopSetEnabled(false);
+			StatusListener.stopLogging();
+			return exitCode;
+		}
+	}
+	/**
+	 * TOS-Job which imports data from another sql database.
+	 * @param importTerms Import the standard terminologies?
+	 * @return Exitcode from TOS (0=success)
+	 */
+	public static int runDBImport(boolean importTerms) {
+		StatusListener.startLogging();
+		ServerView.btnStopSetEnabled(true);
+		DBIMPORT_MASTER db = new DBIMPORT_MASTER();
+		exitCode = db.runJobInTOS(getARGV());
+		clearInputFolder();
+		if (exitCode == 0 && importTerms) {
+			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
+			if (exitCode == 0) {
+				HashMap<String, String> contextMap = new HashMap<String, String>();
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
+				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
+				exitCode = transform.runJobInTOS(getARGV());
+			}
+			ServerView.btnStopSetEnabled(false);
+			StatusListener.stopLogging();
+			return exitCode;
+		} else {
+			ServerView.btnStopSetEnabled(false);
+			StatusListener.stopLogging();
+			return exitCode;
+		}
+	}
+
+	/**
+	 * 
+	 * @deprecated
+	 * @return Exitcode from TOS (0=success)
+	 */
+	@Deprecated
+	public static int runDBImport(Server server, File output,
+			boolean importTerms) {
+		setContextVariable("currentFile", output.getAbsolutePath());
+		setContextVariable("fileName", server.getTable());
+		ExportDB.exportDB(server, output);
+		CSV_MASTER CSVImport = new CSV_MASTER();
+		exitCode = CSVImport.runJobInTOS(getARGV());
+		clearContextVariable();
+		output.delete();
+		clearInputFolder();
+		if (exitCode == 0 && importTerms) {
+			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
+			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+			//			exitCode = stdTerm.runJobInTOS(getARGV());
+			if (exitCode == 0) {
+				HashMap<String, String> contextMap = new HashMap<String, String>();
+				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+				setCompleteContext(contextMap);
+				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
+				exitCode = transform.runJobInTOS(getARGV());
+			}
+			return exitCode;
+		} else {
+			return exitCode;
+		}
+	}
+
 	/**
 	 * Imports the standard terminologies.
 	 * @param server the target server.
@@ -204,24 +263,6 @@ public class IDRTImport {
 		workerThread.start();
 	}
 
-	/**
-	 * @param contextMap 
-	 * 
-	 */
-	private static void setSTContext(HashMap<String, String> contextMap) {
-		// TODO Auto-generated method stub
-		File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
-		contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
-		contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
-		contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
-		contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
-		contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
-		contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
-		contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
-		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
-
-	}
-
 	public static void runImportST_NoMap(Server server, String project) {
 		StatusListener.startLogging();
 		ServerView.stdImportStarted = true;
@@ -286,167 +327,6 @@ public class IDRTImport {
 			}
 		});
 		workerThread.start();
-	}
-
-	/**
-	 * TOS-Job which truncates the selected project.
-	 * 
-	 * @param server The target server.
-	 * @param project The i2b2 project within the server.
-	 */
-	public static void runTruncateProject(final Server server, final String project) {
-		Thread workerThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				ServerView.btnStopSetEnabled(true);
-				IDRT_Truncate_Tables truncJob = new IDRT_Truncate_Tables();
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-
-				contextMap.put("DBHost", server.getIp());
-				contextMap.put("DBPassword", server.getPassword());
-				contextMap.put("DBUsername", server.getUser());
-				contextMap.put("DBInstance", server.getSID());
-				contextMap.put("DBPort", server.getPort());
-				contextMap.put("DBSchema", project);
-
-				setCompleteContext(contextMap);
-				StatusListener.setStatus(0f, "Truncating Project", "");
-				Display.getDefault().syncExec(new Runnable() {
-
-					@Override
-					public void run() {
-						ServerView.setProgress((int) StatusListener.getPercentage());
-						ServerView.setProgressTop(StatusListener.getFile());
-						ServerView.setProgressBottom(""
-								+ StatusListener.getStatus());
-					}
-				});
-				exitCode = truncJob.runJobInTOS(getARGV());
-				StatusListener.setStatus(100f, "Truncating Project done", "");
-				Display.getDefault().syncExec(new Runnable() {
-
-					@Override
-					public void run() {
-						ServerView.btnStopSetEnabled(false);
-						ServerView.setProgress((int) StatusListener.getPercentage());
-						ServerView.setProgressTop(StatusListener.getFile());
-						ServerView.setProgressBottom(""
-								+ StatusListener.getStatus());
-						if (exitCode == 0) {
-							MessageDialog.openInformation(Application.getShell(),"Truncate Complete!", "Truncate Complete!");
-						}
-						else {
-							MessageDialog.openError(Application.getShell(), "Truncate failed!", "Truncate failed!");
-						}
-					}
-				});
-			}
-		});
-		workerThread.start();
-	}
-
-	/**
-	 * TOS-Job which imports several CSV-Files in a Folder.
-	 * <p><strong>Note:</strong> CSV-File delimiter: tabulator, semicolon</p>
-	 * @param importTerms Import the standard terminologies?
-	 * @return Exitcode from TOS (0=success)
-	 * 
-	 */
-	public static int runCSVImport(boolean importTerms) {
-		StatusListener.startLogging();
-		ServerView.btnStopSetEnabled(true);
-		CSV_MASTER CSVImport = new CSV_MASTER();
-		exitCode = CSVImport.runJobInTOS(getARGV());
-		clearInputFolder();
-		if (exitCode == 0 && importTerms) {
-			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			//			exitCode = stdTerm.runJobInTOS(getARGV());
-			if (exitCode == 0) {
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-				setCompleteContext(contextMap);
-				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
-				exitCode = transform.runJobInTOS(getARGV());
-
-			}
-			StatusListener.clearStatus();
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		} else {
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		}
-	}
-
-	/**
-	 * TOS-Job which imports data from another sql database.
-	 * @param importTerms Import the standard terminologies?
-	 * @return Exitcode from TOS (0=success)
-	 */
-	public static int runDBImport(boolean importTerms) {
-		StatusListener.startLogging();
-		ServerView.btnStopSetEnabled(true);
-		DBIMPORT_MASTER db = new DBIMPORT_MASTER();
-		exitCode = db.runJobInTOS(getARGV());
-		clearInputFolder();
-		if (exitCode == 0 && importTerms) {
-			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			//			exitCode = stdTerm.runJobInTOS(getARGV());
-			if (exitCode == 0) {
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-				setCompleteContext(contextMap);
-				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
-				exitCode = transform.runJobInTOS(getARGV());
-			}
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		} else {
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		}
-	}
-
-	/**
-	 * 
-	 * @deprecated
-	 * @return Exitcode from TOS (0=success)
-	 */
-	@Deprecated
-	public static int runDBImport(Server server, File output,
-			boolean importTerms) {
-		setContextVariable("currentFile", output.getAbsolutePath());
-		setContextVariable("fileName", server.getTable());
-		ExportDB.exportDB(server, output);
-		CSV_MASTER CSVImport = new CSV_MASTER();
-		exitCode = CSVImport.runJobInTOS(getARGV());
-		clearContextVariable();
-		output.delete();
-		clearInputFolder();
-		if (exitCode == 0 && importTerms) {
-			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			//			exitCode = stdTerm.runJobInTOS(getARGV());
-			if (exitCode == 0) {
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-				setCompleteContext(contextMap);
-				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
-				exitCode = transform.runJobInTOS(getARGV());
-			}
-			return exitCode;
-		} else {
-			return exitCode;
-		}
 	}
 
 	/**
@@ -515,6 +395,108 @@ public class IDRTImport {
 			StatusListener.stopLogging();
 			return exitCode;
 		}
+	}
+
+	/**
+	 * @param server
+	 * @param text
+	 */
+	public static void runRemoveLocks(Server server, String project) {
+		StatusListener.startLogging();
+		HashMap<String, String> contextMap = new HashMap<String, String>();
+		contextMap.put("DBHost", server.getIp());
+		contextMap.put("DBPassword", server.getPassword());
+		contextMap.put("DBUsername", server.getUser());
+		contextMap.put("DBInstance", server.getSID());
+		contextMap.put("DBPort", server.getPort());
+		contextMap.put("DBSchema", project);
+		setCompleteContext(contextMap);
+
+
+		Thread workerThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
+				ServerView.btnStopSetEnabled(true);
+				exitCode = 	freeLocks.runJobInTOS(getARGV());
+				ServerView.btnStopSetEnabled(false);
+
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						StatusListener.stopLogging();
+						if (exitCode == 0) {
+
+							StatusListener.setStatus(100f, "Locks removed.","");
+							MessageDialog.openInformation(Application.getShell(),"Locks removed!", "Locks removed!");
+						}
+						else {
+							MessageDialog.openError(Application.getShell(), "Removing Locks failed!", "Removing Locks failed!\nAre you sys admin?");
+						}
+					}
+				});
+
+			}
+		});
+		workerThread.start();
+
+	}
+
+	/**
+	 * TOS-Job which truncates the selected project.
+	 * 
+	 * @param server The target server.
+	 * @param project The i2b2 project within the server.
+	 */
+	public static void runTruncateProject(final Server server, final String project) {
+		Thread workerThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				ServerView.btnStopSetEnabled(true);
+				IDRT_Truncate_Tables truncJob = new IDRT_Truncate_Tables();
+				HashMap<String, String> contextMap = new HashMap<String, String>();
+
+				contextMap.put("DBHost", server.getIp());
+				contextMap.put("DBPassword", server.getPassword());
+				contextMap.put("DBUsername", server.getUser());
+				contextMap.put("DBInstance", server.getSID());
+				contextMap.put("DBPort", server.getPort());
+				contextMap.put("DBSchema", project);
+
+				setCompleteContext(contextMap);
+				StatusListener.setStatus(0f, "Truncating Project", "");
+				Display.getDefault().syncExec(new Runnable() {
+
+					@Override
+					public void run() {
+						ServerView.setProgress((int) StatusListener.getPercentage());
+						ServerView.setProgressTop(StatusListener.getFile());
+						ServerView.setProgressBottom(""
+								+ StatusListener.getStatus());
+					}
+				});
+				exitCode = truncJob.runJobInTOS(getARGV());
+				StatusListener.setStatus(100f, "Truncating Project done", "");
+				Display.getDefault().syncExec(new Runnable() {
+
+					@Override
+					public void run() {
+						ServerView.btnStopSetEnabled(false);
+						ServerView.setProgress((int) StatusListener.getPercentage());
+						ServerView.setProgressTop(StatusListener.getFile());
+						ServerView.setProgressBottom(""
+								+ StatusListener.getStatus());
+						if (exitCode == 0) {
+							MessageDialog.openInformation(Application.getShell(),"Truncate Complete!", "Truncate Complete!");
+						}
+						else {
+							MessageDialog.openError(Application.getShell(), "Truncate failed!", "Truncate failed!");
+						}
+					}
+				});
+			}
+		});
+		workerThread.start();
 	}
 
 	/**
@@ -608,5 +590,23 @@ public class IDRTImport {
 				listOfInputFile.delete();
 			}
 		}
+	}
+
+	/**
+	 * @param contextMap 
+	 * 
+	 */
+	private static void setSTContext(HashMap<String, String> contextMap) {
+		// TODO Auto-generated method stub
+		File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
+		contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+		contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+		contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+		contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+		contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+		contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+		contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
+
 	}
 }

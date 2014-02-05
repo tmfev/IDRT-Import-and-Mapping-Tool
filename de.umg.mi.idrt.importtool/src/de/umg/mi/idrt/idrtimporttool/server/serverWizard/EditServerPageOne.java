@@ -41,11 +41,26 @@ public class EditServerPageOne extends WizardPage {
 	private static Label DBUser;
 	private static Label lblSavePassword;
 	private static Button chkSavePassword;
+	public static boolean getCheckStorePassword() {
+		return chkSavePassword.getSelection();
+	}
+
+	public static boolean getCheckUseWinAuth() {
+		return DBMSSQLUseWinAuth.getSelection();
+	}
+
 	/**
 	 * @return the dBSIDText
 	 */
 	public static String getDBSIDText() {
 		return DBSIDText.getText();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getDBType() {
+		return DBTypeCombo.getText();
 	}
 
 	/**
@@ -68,7 +83,6 @@ public class EditServerPageOne extends WizardPage {
 	public static String getIpText() {
 		return ipText.getText();
 	}
-
 	/**
 	 * @return the portText
 	 */
@@ -80,16 +94,6 @@ public class EditServerPageOne extends WizardPage {
 		return uniqueIDText.getText();
 	}
 
-	private Server server;
-	private Label DBTypeLabel;
-
-	public EditServerPageOne(Server server) {
-		super(Messages.EditServerPageOne_ServerSetup);
-		this.server = server;
-		setTitle(Messages.EditServerPageOne_ServerSetup);
-		setDescription(Messages.EditServerPageOne_EditServer);
-	}
-
 	// /**
 	// * @return the dBSchemaText
 	// */
@@ -97,6 +101,15 @@ public class EditServerPageOne extends WizardPage {
 	// return DBSchemaText.getText();
 	// }
 
+	private Server server;
+
+	private Label DBTypeLabel;
+	public EditServerPageOne(Server server) {
+		super(Messages.EditServerPageOne_ServerSetup);
+		this.server = server;
+		setTitle(Messages.EditServerPageOne_ServerSetup);
+		setDescription(Messages.EditServerPageOne_EditServer);
+	}
 	@Override
 	public void createControl(Composite parent) {
 		container1 = new Composite(parent, SWT.NULL);
@@ -276,6 +289,10 @@ public class EditServerPageOne extends WizardPage {
 		DBTypeCombo.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) { //$NON-NLS-1$
 					DBIntegratedSecurity.setEnabled(true);
@@ -296,10 +313,6 @@ public class EditServerPageOne extends WizardPage {
 
 				}
 			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
 		});
 
 		DBIntegratedSecurity.setText(Messages.EditServerPageOne_UseWinAuth);
@@ -311,15 +324,15 @@ public class EditServerPageOne extends WizardPage {
 		DBMSSQLUseWinAuth.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				DBUserPassword.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUserPasswordText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUser.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUserText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 
@@ -366,18 +379,5 @@ public class EditServerPageOne extends WizardPage {
 
 		setControl(container1);
 		setPageComplete(true);
-	}
-
-	/**
-	 * @return
-	 */
-	public static String getDBType() {
-		return DBTypeCombo.getText();
-	}
-	public static boolean getCheckUseWinAuth() {
-		return DBMSSQLUseWinAuth.getSelection();
-	}
-	public static boolean getCheckStorePassword() {
-		return chkSavePassword.getSelection();
 	}
 }

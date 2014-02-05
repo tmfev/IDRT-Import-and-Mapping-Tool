@@ -13,24 +13,6 @@ public class SimplePassGen {
 	private static Random random = new Random();
 
 	/**
-	 * Generates a string with the given length, that contains at least one
-	 * random digit (if length > 0), at least one random special character (if
-	 * length > 1), and possibly (but not necessarily) random characters from
-	 * the given alphabet.
-	 * 
-	 * @param alphabet
-	 *            The alphabet to choose characters from
-	 * @param length
-	 *            The length of the string to generate
-	 * @return The generated String
-	 */
-	public static String generate(String alphabet, int length) {
-		String digits = "0123456789";
-		// String special = "!\"#$%&'()*+,-./:;<=>?@";
-		return generate(length, digits, alphabet);
-	}
-
-	/**
 	 * Creates a String of the given length, containing random characters from
 	 * the given alphabets, but at least one character from each alphabet. If
 	 * there are more than 'length' alphabets, one random character is chosen
@@ -70,6 +52,24 @@ public class SimplePassGen {
 		}
 		result.append(selectRandom(all, length - result.length()));
 		return shuffle(result).toString();
+	}
+
+	/**
+	 * Generates a string with the given length, that contains at least one
+	 * random digit (if length > 0), at least one random special character (if
+	 * length > 1), and possibly (but not necessarily) random characters from
+	 * the given alphabet.
+	 * 
+	 * @param alphabet
+	 *            The alphabet to choose characters from
+	 * @param length
+	 *            The length of the string to generate
+	 * @return The generated String
+	 */
+	public static String generate(String alphabet, int length) {
+		String digits = "0123456789";
+		// String special = "!\"#$%&'()*+,-./:;<=>?@";
+		return generate(length, digits, alphabet);
 	}
 
 	/**

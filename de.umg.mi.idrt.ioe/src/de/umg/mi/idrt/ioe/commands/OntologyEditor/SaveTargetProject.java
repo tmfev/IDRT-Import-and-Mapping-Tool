@@ -9,11 +9,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import au.com.bytecode.opencsv.CSVWriter;
-import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
@@ -39,9 +36,6 @@ public class SaveTargetProject extends AbstractHandler {
 		Console.info("Saving TargetProject ...");
 		
 		String tempFilePath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
-
-		// init
-		OntologyTree ontologyTreeTarget = null;
 
 		try {
 			// TODO save target tmp file
@@ -106,7 +100,7 @@ public class SaveTargetProject extends AbstractHandler {
 		TOSConnector.setContextVariable("Job", "SaveTargetProjects");
 		//tos.setContextVariable("Var1", "1"); // target project id
 		//tos.setContextVariable("Var2", "1"); // target id
-		tos.setContextVariable("DataFile", tempFilePath);
+		TOSConnector.setContextVariable("DataFile", tempFilePath);
 
 		try {
 

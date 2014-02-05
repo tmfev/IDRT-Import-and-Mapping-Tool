@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.eclipse.swt.widgets.Shell;
-
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.PasswordDialog;
 import de.umg.mi.idrt.importtool.views.ServerView;
@@ -278,17 +276,29 @@ public class Server implements Serializable {
 		return uniqueID;
 	}
 
+	public String getNotStoredPassword() {
+		return notStoredPassword;
+	}
+
 	public String getPassword() {
+		ServerList.serializeServers();
 		if (this.isSavePassword())
 			return PasswordCrypt.decrypt(password);
-		else if (getNotStoredPassword()==null) {
+		else if (getNotStoredPassword()==null || getNotStoredPassword().isEmpty()) {
 			PasswordDialog dialog = new PasswordDialog(Application.getShell());
 			dialog.open();
-			setNotStoredPassword(dialog.getPassword());
+			if (dialog.getSavePassword()) {
+				setSavePassword(true);
+				setPassword(dialog.getPassword());
+				return dialog.getPassword();
+			}
+			else {
+				setSavePassword(false);
+				setNotStoredPassword(dialog.getPassword());
+			}
 		}
-
+		
 		if  (getNotStoredPassword()==null) {
-			ServerView.refresh();
 			throw new RuntimeException("PASSWORD NULL");
 		}
 		return this.getNotStoredPassword();
@@ -384,6 +394,10 @@ public class Server implements Serializable {
 		this.ip = ip;
 	}
 
+	public void setNotStoredPassword(String notStoredPassword) {
+		this.notStoredPassword = notStoredPassword;
+	}
+
 	public void setPassword(String password) {
 		this.password = PasswordCrypt.encrypt(password);
 	}
@@ -419,19 +433,11 @@ public class Server implements Serializable {
 	public void setUser(String user) {
 		this.user = user;
 	}
-
 	public void setUseWinAuth(boolean useWinAuth) {
 		this.useWinAuth = useWinAuth;
 	}
-
 	@Override
 	public String toString() {
 		return uniqueID + " " + ip;
-	}
-	public String getNotStoredPassword() {
-		return notStoredPassword;
-	}
-	public void setNotStoredPassword(String notStoredPassword) {
-		this.notStoredPassword = notStoredPassword;
 	}
 }

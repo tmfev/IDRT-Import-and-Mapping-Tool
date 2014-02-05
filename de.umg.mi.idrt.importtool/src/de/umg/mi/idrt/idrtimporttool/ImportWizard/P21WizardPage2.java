@@ -105,6 +105,13 @@ public class P21WizardPage2 extends WizardPage {
 
 	// private static Text csvSeperatorext;
 
+	/**
+	 * @return
+	 */
+	public static String getPattern() {
+		return datePatternCombo.getText();
+	}
+
 	public P21WizardPage2() {
 		super("P21 Import Settings");
 		setTitle("P21 Import Settings");
@@ -257,12 +264,5 @@ public class P21WizardPage2 extends WizardPage {
 	@Override
 	public boolean isPageComplete() {
 		return getP21Selected();
-	}
-
-	/**
-	 * @return
-	 */
-	public static String getPattern() {
-		return datePatternCombo.getText();
 	}
 }

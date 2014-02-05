@@ -710,7 +710,7 @@ public static String getCsvPathSpecific() {
 								File imgLoadingFile = FileHandler.getBundleFile("/images/loading.png");
 								Image imgLoading = new Image(parent.getDisplay(),
 										imgLoadingFile.getAbsolutePath());
-								final Shell loadingShell = new Shell(SWT.NO_TRIM ); //SWT.ON_TOP
+								final Shell loadingShell = new Shell(SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);//(SWT.NO_TRIM ); //SWT.ON_TOP
 								loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
 								loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
 								loadingShell.setBackgroundImage(imgLoading);

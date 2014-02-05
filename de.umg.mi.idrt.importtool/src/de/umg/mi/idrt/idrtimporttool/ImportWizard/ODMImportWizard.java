@@ -32,13 +32,6 @@ public class ODMImportWizard extends Wizard {
 	public static boolean started = false;
 	private static Thread b;
 
-	private HashMap<String, String> contextMap;
-
-//	protected WizardPage1 one;
-	protected ODMWizardPage2 two;
-
-	public boolean done = false;
-	
 	@SuppressWarnings("deprecation")
 	public static void killThread() {
 		if (started) {
@@ -60,7 +53,7 @@ public class ODMImportWizard extends Wizard {
 		started = false;
 	}
 
-	@SuppressWarnings("deprecation")
+@SuppressWarnings("deprecation")
 	public static void killThreadRemote(final String error,
 			final String fileName) {
 		if (started) {
@@ -96,6 +89,13 @@ public class ODMImportWizard extends Wizard {
 			});
 		}
 	}
+	
+	private HashMap<String, String> contextMap;
+
+	//	protected WizardPage1 one;
+	protected ODMWizardPage2 two;
+
+	public boolean done = false;
 
 	
 

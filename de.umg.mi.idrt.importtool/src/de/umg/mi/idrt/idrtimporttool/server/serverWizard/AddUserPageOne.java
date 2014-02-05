@@ -28,22 +28,37 @@ public class AddUserPageOne extends WizardPage {
 	private static Text userPassword_answer;
 	private static Text username_answer;
 	private static Composite container1;
+	/**
+	 * @return the portText
+	 */
+	public static String getEmail() {
+		return email_answer.getText();
+	}
+	public static String getGeneratedPassword(int i) {
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		return (SimplePassGen.generate(alphabet, i));
+	}
+	// private static void setText(String text){
+	// DBTest.setText(text);
+	// DBTest.redraw();
+	// DBTest.update();
+	// }
 	private Label lblRetypePassword;
 	private Text retypePassword_answer;
 	private Label lblSendEmail;
 	private static Button checkEMailButton;
-	private Button btnGeneratePassword;
-	private Label label;
-	private Composite composite;
-	private Label lblLength;
-	private Text passwordLength;
-	private Label label_1;
-
-	public AddUserPageOne(Server server) {
-		super("Add I2B2 User");
-		setTitle("Add I2B2 User");
+	/**
+	 * @return the ipText
+	 */
+	public static String getFullname() {
+		return fullname_answer.getText();
 	}
-
+	public static boolean getSendEmail() {
+		return checkEMailButton.getSelection();
+	}
+	public static String getUsername() {
+		return username_answer.getText();
+	}
 	/**
 	 * @return the dBUserPasswordText
 	 */
@@ -51,22 +66,21 @@ public class AddUserPageOne extends WizardPage {
 		return userPassword_answer.getText();
 	}
 
-	/**
-	 * @return the ipText
-	 */
-	public static String getFullname() {
-		return fullname_answer.getText();
-	}
+	private Button btnGeneratePassword;
 
-	/**
-	 * @return the portText
-	 */
-	public static String getEmail() {
-		return email_answer.getText();
-	}
+	private Label label;
 
-	public static String getUsername() {
-		return username_answer.getText();
+	private Composite composite;
+
+	private Label lblLength;
+
+	private Text passwordLength;
+
+	private Label label_1;
+
+	public AddUserPageOne(Server server) {
+		super("Add I2B2 User");
+		setTitle("Add I2B2 User");
 	}
 
 	@Override
@@ -273,18 +287,4 @@ public class AddUserPageOne extends WizardPage {
 		setPageComplete(false);
 		setErrorMessage("Missing Username");
 	}
-
-	public static boolean getSendEmail() {
-		return checkEMailButton.getSelection();
-	}
-
-	public static String getGeneratedPassword(int i) {
-		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-		return (SimplePassGen.generate(alphabet, i));
-	}
-	// private static void setText(String text){
-	// DBTest.setText(text);
-	// DBTest.redraw();
-	// DBTest.update();
-	// }
 }

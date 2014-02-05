@@ -39,15 +39,16 @@ public class OptionsWizardPage1 extends WizardPage {
 	private static Button hideTempTablesButton;
 	private static Properties defaultProps;
 	private static boolean changed = false;
+	public static String getSysoLogPath() {
+		return sysoLogPath;
+	}
+	public static String getTxtPIDURL() {
+		return txtPIDURL.getText();
+	}
 	private Text sysoLogLocationPath;
 	private static Text guessRowtext;
+
 	private static Text targetFolderText;
-	/**
-	 * @return the targetFolderText
-	 */
-	public static String getTargetFolderText() {
-		return targetFolderText.getText();
-	}
 
 	private static String targetFolder;
 
@@ -71,16 +72,15 @@ public class OptionsWizardPage1 extends WizardPage {
 		return String.valueOf(checkSysoLog.getSelection());
 	}
 
-	public static String getSysoLogPath() {
-		return sysoLogPath;
+	/**
+	 * @return the targetFolderText
+	 */
+	public static String getTargetFolderText() {
+		return targetFolderText.getText();
 	}
 
 	public static String getTxtLog() {
 		return txtLlogPath.getText();
-	}
-
-	public static String getTxtPIDURL() {
-		return txtPIDURL.getText();
 	}
 
 	public OptionsWizardPage1() {
@@ -114,6 +114,11 @@ public class OptionsWizardPage1 extends WizardPage {
 			targetFolderText.addKeyListener(new KeyListener() {
 				
 				@Override
+				public void keyPressed(KeyEvent e) {
+				
+				}
+				
+				@Override
 				public void keyReleased(KeyEvent e) {
 					if (targetFolderText.getText().isEmpty()) {
 						setPageComplete(false);
@@ -123,11 +128,6 @@ public class OptionsWizardPage1 extends WizardPage {
 						setPageComplete(true);
 						setErrorMessage(null);
 					}
-				}
-				
-				@Override
-				public void keyPressed(KeyEvent e) {
-				
 				}
 			});
 			new Label(composite, SWT.NONE);

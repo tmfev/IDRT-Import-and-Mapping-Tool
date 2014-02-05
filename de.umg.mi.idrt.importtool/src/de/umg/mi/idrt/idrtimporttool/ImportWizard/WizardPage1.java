@@ -47,12 +47,77 @@ public class WizardPage1 extends WizardPage {
 	private static Combo comboDB;
 	private static Combo comboUser;
 	private static String schema;
+	/**
+	 * @return the dBSchemaText
+	 */
+	public static String getDBSchemaText() {
+		return comboUser.getText();
+	}
+	/**
+	 * @return the dBUserPasswordText
+	 */
+	public static String getDBUserPasswordText() {
+		return DBUserPasswordText.getText();
+	}
+	/**
+	 * @return the ipText
+	 */
+	public static String getIpText() {
+		return ipText.getText();
+	}
+	public static void setSelectedServer(Server server) {
+
+		ipText.setText(server.getIp());
+		PortText.setText(server.getPort());
+		DBUserText.setText(server.getUser());
+		DBUserPasswordText.setText(server.getPassword());
+		DBSIDText.setText(server.getSID());
+	}
 	private Label DBTypeLabel;
 	private static Combo DBTypeCombo;
+
 	private static Label DBIntegratedSecurity;
+
 	private static Button DBMSSQLUseWinAuth;
+
 	private static Label DBUserPassword;
+
 	private static Label DBUser;
+
+	/**
+	 * @return the container1
+	 */
+	public static Composite getContainer1() {
+		return container;
+	}
+
+	/**
+	 * @return the comboDB
+	 */
+	public static String getCurrentServerString() {
+		return comboDB.getItem(comboDB.getSelectionIndex());
+	}
+
+	/**
+	 * @return the dBSIDText
+	 */
+	public static String getDBSIDText() {
+		return DBSIDText.getText();
+	}
+
+	/**
+	 * @return the dBUserText
+	 */
+	public static String getDBUserText() {
+		return DBUserText.getText();
+	}
+
+	/**
+	 * @return the portText
+	 */
+	public static String getPortText() {
+		return PortText.getText();
+	}
 
 	public WizardPage1() {
 		
@@ -275,6 +340,10 @@ public class WizardPage1 extends WizardPage {
 			DBTypeCombo.addSelectionListener(new SelectionListener() {
 
 				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+
+				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) {
 						DBIntegratedSecurity.setEnabled(true);
@@ -294,10 +363,6 @@ public class WizardPage1 extends WizardPage {
 						DBMSSQLUseWinAuth.setSelection(false);
 
 					}
-				}
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 			});
 
@@ -373,71 +438,6 @@ public class WizardPage1 extends WizardPage {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-	}
-
-	/**
-	 * @return the container1
-	 */
-	public static Composite getContainer1() {
-		return container;
-	}
-
-	/**
-	 * @return the comboDB
-	 */
-	public static String getCurrentServerString() {
-		return comboDB.getItem(comboDB.getSelectionIndex());
-	}
-
-	/**
-	 * @return the dBSchemaText
-	 */
-	public static String getDBSchemaText() {
-		return comboUser.getText();
-	}
-
-	/**
-	 * @return the dBSIDText
-	 */
-	public static String getDBSIDText() {
-		return DBSIDText.getText();
-	}
-
-	/**
-	 * @return the dBUserPasswordText
-	 */
-	public static String getDBUserPasswordText() {
-		return DBUserPasswordText.getText();
-	}
-
-	/**
-	 * @return the dBUserText
-	 */
-	public static String getDBUserText() {
-		return DBUserText.getText();
-	}
-
-	/**
-	 * @return the ipText
-	 */
-	public static String getIpText() {
-		return ipText.getText();
-	}
-
-	/**
-	 * @return the portText
-	 */
-	public static String getPortText() {
-		return PortText.getText();
-	}
-
-	public static void setSelectedServer(Server server) {
-
-		ipText.setText(server.getIp());
-		PortText.setText(server.getPort());
-		DBUserText.setText(server.getUser());
-		DBUserPasswordText.setText(server.getPassword());
-		DBSIDText.setText(server.getSID());
 	}
 
 }

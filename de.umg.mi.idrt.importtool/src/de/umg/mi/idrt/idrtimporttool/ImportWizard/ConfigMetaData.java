@@ -18,70 +18,6 @@ public class ConfigMetaData {
 	public static String[] optionsData = { "String", "Date", "Float", "Integer" };
 	
 	/**
-	 * 
-	 * @param items TableItems
-	 * @param currentOption The current selected option.
-	 * @return The current Combo for the PIDGen metadata column.
-	 */
-	public static String[] getMetaComboPIDGen(
-			TableItem[] items, String currentOption) {
-		boolean firstName = false;
-		boolean name = false;
-		boolean reportDate = false;
-		boolean birthday = false;
-		boolean sex = false;
-		
-		for (TableItem item : items) {
-			if (item.getText(4).equalsIgnoreCase("FirstName")) { //$NON-NLS-1$
-				firstName = true;
-			}
-			if (item.getText(4).equalsIgnoreCase("LastName")) { //$NON-NLS-1$
-				name = true;
-			}
-			if (item.getText(4).equalsIgnoreCase("Reporting Date")) { //$NON-NLS-1$
-				reportDate = true;
-			}
-			if (item.getText(4).equalsIgnoreCase("Birthday")) { //$NON-NLS-1$
-				birthday = true;
-			}
-			if (item.getText(4).equalsIgnoreCase("Sex")) { //$NON-NLS-1$
-				sex = true;
-			}
-		}
-		List<String> metaOptionList = new LinkedList<String>();
-
-		if (currentOption.isEmpty()) {
-			metaOptionList.add(""); //$NON-NLS-1$
-		} else {
-			metaOptionList.add(""); //$NON-NLS-1$
-			metaOptionList.add(currentOption);
-		}
-
-		if (!firstName) {
-			metaOptionList.add("FirstName"); //$NON-NLS-1$
-		}
-		if (!name) {
-			metaOptionList.add("LastName"); //$NON-NLS-1$
-		}
-		if (!reportDate) {
-			metaOptionList.add("Reporting Date"); //$NON-NLS-1$
-		}
-		if (!birthday) {
-			metaOptionList.add("Birthday"); //$NON-NLS-1$
-		}
-		if (!sex) {
-			metaOptionList.add("Sex"); //$NON-NLS-1$
-		}
-	
-		String[] metaString = new String[metaOptionList.size()];
-		for (int i = 0; i < metaOptionList.size(); i++) {
-			metaString[i] = metaOptionList.get(i);
-		}
-
-		return metaString;
-	}
-	
-	/**
 	 * Fills the Combo of the table
 	 * 
 	 * @param optionsMeta Old options.
@@ -165,6 +101,70 @@ public class ConfigMetaData {
 		
 		metaOptionList.add("ignore");
 		
+		String[] metaString = new String[metaOptionList.size()];
+		for (int i = 0; i < metaOptionList.size(); i++) {
+			metaString[i] = metaOptionList.get(i);
+		}
+
+		return metaString;
+	}
+	
+	/**
+	 * 
+	 * @param items TableItems
+	 * @param currentOption The current selected option.
+	 * @return The current Combo for the PIDGen metadata column.
+	 */
+	public static String[] getMetaComboPIDGen(
+			TableItem[] items, String currentOption) {
+		boolean firstName = false;
+		boolean name = false;
+		boolean reportDate = false;
+		boolean birthday = false;
+		boolean sex = false;
+		
+		for (TableItem item : items) {
+			if (item.getText(4).equalsIgnoreCase("FirstName")) { //$NON-NLS-1$
+				firstName = true;
+			}
+			if (item.getText(4).equalsIgnoreCase("LastName")) { //$NON-NLS-1$
+				name = true;
+			}
+			if (item.getText(4).equalsIgnoreCase("Reporting Date")) { //$NON-NLS-1$
+				reportDate = true;
+			}
+			if (item.getText(4).equalsIgnoreCase("Birthday")) { //$NON-NLS-1$
+				birthday = true;
+			}
+			if (item.getText(4).equalsIgnoreCase("Sex")) { //$NON-NLS-1$
+				sex = true;
+			}
+		}
+		List<String> metaOptionList = new LinkedList<String>();
+
+		if (currentOption.isEmpty()) {
+			metaOptionList.add(""); //$NON-NLS-1$
+		} else {
+			metaOptionList.add(""); //$NON-NLS-1$
+			metaOptionList.add(currentOption);
+		}
+
+		if (!firstName) {
+			metaOptionList.add("FirstName"); //$NON-NLS-1$
+		}
+		if (!name) {
+			metaOptionList.add("LastName"); //$NON-NLS-1$
+		}
+		if (!reportDate) {
+			metaOptionList.add("Reporting Date"); //$NON-NLS-1$
+		}
+		if (!birthday) {
+			metaOptionList.add("Birthday"); //$NON-NLS-1$
+		}
+		if (!sex) {
+			metaOptionList.add("Sex"); //$NON-NLS-1$
+		}
+	
 		String[] metaString = new String[metaOptionList.size()];
 		for (int i = 0; i < metaOptionList.size(); i++) {
 			metaString[i] = metaOptionList.get(i);

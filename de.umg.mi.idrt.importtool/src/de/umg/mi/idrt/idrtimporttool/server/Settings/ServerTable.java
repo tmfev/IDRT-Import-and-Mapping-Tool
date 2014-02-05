@@ -19,28 +19,28 @@ public class ServerTable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getName() {
-		return table;
+	public String getDatabaseSchema() {
+		return databaseSchema;
 	}
 
 	public String getDatabaseUser() {
 		return databaseUser;
 	}
 
+	public String getName() {
+		return table;
+	}
+
 	public Server getServer() {
 		return server;
+	}
+
+	public void setDatabaseSchema(String databaseSchema) {
+		this.databaseSchema = databaseSchema;
 	}
 
 	@Override
 	public String toString() {
 		return table;
-	}
-
-	public String getDatabaseSchema() {
-		return databaseSchema;
-	}
-
-	public void setDatabaseSchema(String databaseSchema) {
-		this.databaseSchema = databaseSchema;
 	}
 }

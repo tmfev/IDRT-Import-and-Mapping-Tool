@@ -41,28 +41,40 @@ public class DBImportWizard extends Wizard {
 	
 	private Properties defaultProps;
 	private static Thread b;
-	private HashMap<String, String> contextMap;
-//	protected WizardPage1 one;
-
-	public static DBWizardPage2 two;
-	public static DBWizardPage3 three;
-	public boolean done = false;
-	public static boolean started = false;
-
-	private static String FOLDERCSV;
-
-	public static void setThree(DBWizardPage3 three) {
-		DBImportWizard.three = three;
-	}
-
-	public DBImportWizard() {
-		super();
-		setNeedsProgressMonitor(false);
-	}
 	public static DBWizardPage3 getThree() {
 		return three;
 	}
 
+	@SuppressWarnings("deprecation")
+	public static void killThreadRemote(final String error,
+			final String fileName) {
+
+		if (started) {
+			b.stop();
+
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					Log.addLog(1, "DB Import Failed: " + error);
+					MessageDialog.openError(Application.getShell(), "Import Failed!",
+							"Import failed. Please see the log.");
+				}
+			});
+		}
+		StatusListener.notifyListener();
+		started = false;
+	}
+	private HashMap<String, String> contextMap;
+//	protected WizardPage1 one;
+	public static DBWizardPage2 two;
+	public static DBWizardPage3 three;
+
+	public boolean done = false;
+
+	public static boolean started = false;
+
+	private static String FOLDERCSV;
 	/**
 	 * Kills the active Import.
 	 */
@@ -89,25 +101,8 @@ public class DBImportWizard extends Wizard {
 		StatusListener.notifyListener();
 	}
 
-	@SuppressWarnings("deprecation")
-	public static void killThreadRemote(final String error,
-			final String fileName) {
-
-		if (started) {
-			b.stop();
-
-			Display.getDefault().syncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					Log.addLog(1, "DB Import Failed: " + error);
-					MessageDialog.openError(Application.getShell(), "Import Failed!",
-							"Import failed. Please see the log.");
-				}
-			});
-		}
-		StatusListener.notifyListener();
-		started = false;
+	public static void setThree(DBWizardPage3 three) {
+		DBImportWizard.three = three;
 	}
 
 	/**
@@ -128,6 +123,11 @@ public class DBImportWizard extends Wizard {
 		}
 	}
 
+	public DBImportWizard() {
+		super();
+		setNeedsProgressMonitor(false);
+	}
+
 	@Override
 	public void addPages() {
 //		one = new WizardPage1();
@@ -141,51 +141,6 @@ public class DBImportWizard extends Wizard {
 	@Override
 	public boolean canFinish() {
 		return (three != null);
-	}
-
-	private void createDBExportConfigCSV(List<ExportConfig> exportConfigs,
-			String fileName) {
-		try {
-			File file = new File(fileName);
-			CSVWriter writer = new CSVWriter(new FileWriter(file), ';');
-			String[] nextLine = new String[10];
-
-			// Header
-			int k = 0;
-			nextLine[k++] = "Server Name";
-			nextLine[k++] = "Server IP";
-			nextLine[k++] = "Server Port";
-			nextLine[k++] = "Server SID";
-			nextLine[k++] = "Server Username";
-			nextLine[k++] = "Server Password";
-			nextLine[k++] = "Server Schema";
-			nextLine[k++] = "Server Table";
-			nextLine[k++] = "Server DatabaseType";
-			nextLine[k++] = "mssqlSchema";
-			writer.writeNext(nextLine);
-			for (int i = 0; i < exportConfigs.size(); i++) {
-				k = 0;
-				nextLine[k++] = exportConfigs.get(i).getServer().getName();
-				nextLine[k++] = exportConfigs.get(i).getServer().getIp();
-				nextLine[k++] = exportConfigs.get(i).getServer().getPort();
-				nextLine[k++] = exportConfigs.get(i).getServer().getSID();
-				nextLine[k++] = exportConfigs.get(i).getServer().getUser();
-				nextLine[k++] = exportConfigs.get(i).getServer().getPassword();
-				nextLine[k++] = exportConfigs.get(i).getSchema();
-				nextLine[k++] = exportConfigs.get(i).getTable();
-				nextLine[k++] = exportConfigs.get(i).getServer().getDatabaseType();
-				if(exportConfigs.get(i).getServer().getDatabaseType().equalsIgnoreCase("mssql"))
-					nextLine[k++] = ServerList.getTableMap().get(exportConfigs.get(i).getTable()).getDatabaseSchema();
-				else
-					nextLine[k++]="";
-				writer.writeNext(nextLine);
-			}
-			writer.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	@Override
@@ -392,6 +347,51 @@ public class DBImportWizard extends Wizard {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	private void createDBExportConfigCSV(List<ExportConfig> exportConfigs,
+			String fileName) {
+		try {
+			File file = new File(fileName);
+			CSVWriter writer = new CSVWriter(new FileWriter(file), ';');
+			String[] nextLine = new String[10];
+
+			// Header
+			int k = 0;
+			nextLine[k++] = "Server Name";
+			nextLine[k++] = "Server IP";
+			nextLine[k++] = "Server Port";
+			nextLine[k++] = "Server SID";
+			nextLine[k++] = "Server Username";
+			nextLine[k++] = "Server Password";
+			nextLine[k++] = "Server Schema";
+			nextLine[k++] = "Server Table";
+			nextLine[k++] = "Server DatabaseType";
+			nextLine[k++] = "mssqlSchema";
+			writer.writeNext(nextLine);
+			for (int i = 0; i < exportConfigs.size(); i++) {
+				k = 0;
+				nextLine[k++] = exportConfigs.get(i).getServer().getName();
+				nextLine[k++] = exportConfigs.get(i).getServer().getIp();
+				nextLine[k++] = exportConfigs.get(i).getServer().getPort();
+				nextLine[k++] = exportConfigs.get(i).getServer().getSID();
+				nextLine[k++] = exportConfigs.get(i).getServer().getUser();
+				nextLine[k++] = exportConfigs.get(i).getServer().getPassword();
+				nextLine[k++] = exportConfigs.get(i).getSchema();
+				nextLine[k++] = exportConfigs.get(i).getTable();
+				nextLine[k++] = exportConfigs.get(i).getServer().getDatabaseType();
+				if(exportConfigs.get(i).getServer().getDatabaseType().equalsIgnoreCase("mssql"))
+					nextLine[k++] = ServerList.getTableMap().get(exportConfigs.get(i).getTable()).getDatabaseSchema();
+				else
+					nextLine[k++]="";
+				writer.writeNext(nextLine);
+			}
+			writer.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

@@ -125,6 +125,7 @@ public class OntologyEditorView extends ViewPart {
 	private static SashForm sash;
 	private static OntologyTreeNode currentTargetNode;
 	private static HashSet<OntologyTreeNode> highlightedStagingNodes;
+	private static HashSet<OntologyTreeNode> highlightedTargetNodes;
 	private static String sourceSchema;
 	private static Server currentStagingServer;
 	private static Label lblSource;
@@ -143,7 +144,8 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_5;
 	private static SashForm composite_1;
 	private static Composite composite_6;
-	private static TreeViewerColumn column;
+	private static TreeViewerColumn targetColumn;
+	private static TreeViewerColumn stagingColumn;
 	private static Button btnShowSubNodes;
 	private static Combo versionCombo;
 	private static Button btnEdit;
@@ -300,7 +302,7 @@ public class OntologyEditorView extends ViewPart {
 	 * @return the column
 	 */
 	public static TreeViewerColumn getTargetTreeViewerColumn() {
-		return column;
+		return targetColumn;
 	}
 
 	private static void hideNode() {
@@ -466,18 +468,18 @@ public class OntologyEditorView extends ViewPart {
 
 		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree(),SWT.NONE);
 		targetComposite.layout();
-		column = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
+		targetColumn = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		column.getColumn().setMoveable(false);
+		targetColumn.getColumn().setMoveable(false);
 		//		column.getColumn().setText("");
-		column.setLabelProvider(new ColumnLabelProvider() {
+		targetColumn.setLabelProvider(new ColumnLabelProvider() {
 
 			public String getText(Object element) {
 				return element.toString();
 			}
 
 		});
-		column.setEditingSupport(new EditingSupport(targetTreeViewer) {
+		targetColumn.setEditingSupport(new EditingSupport(targetTreeViewer) {
 			protected boolean canEdit(Object element) {
 				return true;
 			}
@@ -644,6 +646,19 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.getTree().addListener (SWT.KeyDown, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.MouseMove, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.MouseHover, stagingTreeListener);
+
+
+		 stagingColumn = new TreeViewerColumn(stagingTreeViewer, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION);
+		stagingColumn.getColumn().setMoveable(false);
+		//		column.getColumn().setText("");
+		stagingColumn.setLabelProvider(new ColumnLabelProvider() {
+
+			public String getText(Object element) {
+				return element.toString();
+			}
+
+		});
 
 		composite_8 = new Composite(stagingComposite, SWT.NONE);
 		composite_8.setLayoutData(BorderLayout.NORTH);
@@ -956,7 +971,6 @@ public class OntologyEditorView extends ViewPart {
 						public void handleEvent(Event event) {
 
 							dialog.close();
-							//TODO
 							System.out.println("(Del) Version selected:" + versionCombo.getText());
 							System.out.println("(Del) Previous Selected Verions:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 
@@ -1186,14 +1200,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 		init = true;
-		initDataBindings();
-	}
-
-
-	protected static DataBindingContext initDataBindings() {
-		DataBindingContext bindingContext = new DataBindingContext();
-		//
-		return bindingContext;
 	}
 
 	/**
@@ -1324,7 +1330,7 @@ public class OntologyEditorView extends ViewPart {
 	 * @param column the column to set
 	 */
 	public static void setColumn(TreeViewerColumn column) {
-		OntologyEditorView.column = column;
+		OntologyEditorView.targetColumn = column;
 	}
 	/**
 	 * @param currentStagingNode the currentStagingNode to set
@@ -1378,11 +1384,8 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		stagingTreeViewer.setInput(new OntologyTreeContentProvider().getStagingModel());
 		stagingTreeViewer.expandToLevel(2);
-		OntologyEditorView.getOntologyStagingTree()
-		.setTreeViewer(stagingTreeViewer);
-		Tree stagingTree = stagingTreeViewer.getTree();
-		//JUnit
-		stagingTree.setData("org.eclipse.swtbot.widget.key", "stagingTree");
+		OntologyEditorView.getOntologyStagingTree().setTreeViewer(stagingTreeViewer);
+
 		Menu menu = new Menu(stagingTreeViewer.getTree());
 
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
@@ -1423,9 +1426,63 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
+		stagingTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
+
+			@Override
+			public void mouseEnter(MouseEvent arg0) {
+				for (OntologyTreeNode node : highlightedTargetNodes) {
+					node.setHighlighted(false);
+					highlightedTargetNodes.remove(node);
+				}
+
+			}
+
+			@Override
+			public void mouseExit(MouseEvent arg0) {
+				for (OntologyTreeNode node : highlightedTargetNodes) {
+					node.setHighlighted(false);
+				}
+				highlightedTargetNodes.clear();
+				targetTreeViewer.refresh();
+			}
+
+			@Override
+			public void mouseHover(MouseEvent arg0) {
+				long time = System.currentTimeMillis();
+				if (highlightedTargetNodes!=null) {
+					for (OntologyTreeNode node : highlightedTargetNodes) {
+						node.setHighlighted(false);
+					}
+					highlightedTargetNodes.clear();
+				}
+
+				Point p = new Point(arg0.x,arg0.y);
+				final TreeItem a = stagingTreeViewer.getTree().getItem(p);
+				if (a!=null) {
+					if (a.getData() instanceof OntologyTreeNode) {
+						OntologyTreeNode node = (OntologyTreeNode) a.getData();
+						String fullname = node.getOntologyCellAttributes().getC_FULLNAME();
+						for (OntologyTreeNode target : myOntologyTree.getOntologyTreeTarget().getNodeLists().getStringPathToNode().values()) {
+//							System.out.println(System.currentTimeMillis()-time + "ms == " + System.currentTimeMillis() +"-" + time);
+							if (System.currentTimeMillis()-time>1500) {
+//								System.out.println("BREAKING");
+								break;
+							}
+							
+							if (fullname.equals(target.getTargetNodeAttributes().getSourcePath()))
+								target.setHighlighted(true);
+							highlightedTargetNodes.add(target);
+						}
+					}
+				}
+				targetTreeViewer.refresh();
+//				System.out.println(System.currentTimeMillis()-time + "ms");
+			}
+		});
 		stagingTreeViewer.getTree().setMenu(menu);
 		stagingComposite.layout();
 		mainComposite.layout();
+		stagingColumn.getColumn().setWidth(stagingComposite.getBounds().width);
 		refreshTargetVersionGUI();
 		System.out.println(System.currentTimeMillis()-time +"ms");
 	}
@@ -1442,6 +1499,7 @@ public class OntologyEditorView extends ViewPart {
 	 * @param currentStagingServer
 	 */
 	public static void setStagingServer(Server currentServer2) {
+
 		currentStagingServer = new Server(currentServer2);
 		//		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
 	}
@@ -1773,7 +1831,7 @@ public class OntologyEditorView extends ViewPart {
 		//		versionCombo.removeAll();
 		targetComposite.layout();
 		mainComposite.layout();
-		column.getColumn().setWidth(targetComposite.getBounds().width-5);
+		targetColumn.getColumn().setWidth(targetComposite.getBounds().width);
 		refreshTargetVersionGUI();
 	}
 
@@ -1824,6 +1882,7 @@ public class OntologyEditorView extends ViewPart {
 		}
 		mainComposite = parent;
 		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
+		highlightedTargetNodes = new HashSet<OntologyTreeNode>();
 		Label label = new Label(mainComposite, SWT.LEFT);
 		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",

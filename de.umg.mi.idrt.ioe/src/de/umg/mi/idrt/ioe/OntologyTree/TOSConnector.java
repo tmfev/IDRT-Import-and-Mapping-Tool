@@ -15,9 +15,9 @@ import org.eclipse.swt.widgets.Display;
 
 //import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
-import de.umg.mi.idrt.idrtimporttool.importidrt.ServerView;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.importtool.views.ServerView;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
@@ -117,7 +117,7 @@ public class TOSConnector {
 				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
 				System.out
-				.println("OracleUsername: " + currentServer.getUser());
+				.println("OracleUsername2: " + currentServer.getUser());
 
 				setContextVariable("OracleHost", currentServer.getIp());
 				setContextVariable("OraclePort", currentServer.getPort());
@@ -313,7 +313,7 @@ public class TOSConnector {
 				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
 				System.out
-				.println("OracleUsername: " + currentServer.getUser());
+				.println("OracleUsername1: " + currentServer.getUser());
 
 				//
 

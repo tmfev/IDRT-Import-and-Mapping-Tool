@@ -35,19 +35,22 @@ import de.umg.mi.idrt.importtool.views.ServerView;
  */
 public class CSVWizardPage2 extends WizardPage {
 
+	public static String getExternalIDFilePath() {
+		return idText.getText();
+	}
 	private Composite container;
 	private static Text folderCSVText;
-	private static Text folderMainText;
+	private static Text folderMainText; 
 	private static String idPath = ""; 
 	private static String CSVpath = ""; 
-	private static String mainPath = ""; 
+	private static String mainPath = "";
 	private static Button checkSaveSettings;
 	private static Button checkTruncate;
 	private static Button checkTerms;
 	private static Button btnUsepid;
 	private static Button idButton;
-	private static Label lblIdfile;
 
+	private static Label lblIdfile;
 	private static Text quoteCharText;
 	private static Text idText;
 	private static Button btnRADIOIdfile;
@@ -55,9 +58,10 @@ public class CSVWizardPage2 extends WizardPage {
 	private Label lblDatePattern;
 	private static Combo datePatternCombo;
 	private Label labelCleanUp;
-	private static Button cleanUpBtn;
 
 	// private static Text csvSeperatorext;
+
+	private static Button cleanUpBtn;
 
 	public static boolean getBtnRADIOCsvfile() {
 		return btnRADIOCsvfile.getSelection();
@@ -83,10 +87,6 @@ public class CSVWizardPage2 extends WizardPage {
 	 */
 	public static String getFolderMainText() {
 		return folderMainText.getText();
-	}
-
-	public static String getExternalIDFilePath() {
-		return idText.getText();
 	}
 
 	public static String getMainPath() {
@@ -146,12 +146,6 @@ public class CSVWizardPage2 extends WizardPage {
 	@Override
 	public boolean canFlipToNextPage() {
 		return true;
-	}
-
-	@Override
-	public IWizardPage getNextPage() {
-		CSVImportWizard.setThree(new CSVWizardPage3());
-		return CSVImportWizard.three;
 	}
 
 	@Override
@@ -366,5 +360,11 @@ public class CSVWizardPage2 extends WizardPage {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}
+
+	@Override
+	public IWizardPage getNextPage() {
+		CSVImportWizard.setThree(new CSVWizardPage3());
+		return CSVImportWizard.three;
 	}
 }

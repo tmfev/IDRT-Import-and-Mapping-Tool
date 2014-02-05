@@ -16,16 +16,35 @@ import java.util.HashSet;
  */
 public class I2B2User {
 
+	public static String getHashedPassword(String pass) {
+		try {
+			MessageDigest md5 = MessageDigest.getInstance("MD5");
+			md5.update(pass.getBytes());
+			return toHex(md5.digest());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public static String toHex(byte[] digest) {
+		StringBuffer buf = new StringBuffer();
+		for (byte element : digest) {
+			buf.append(Integer.toHexString(element & 0x00FF));
+		}
+		return buf.toString();
+	}
 	private String userName;
 	private String email;
 	private String lastLogin;
 	private int loginCount;
 	private String lastQuery;
+
 	private int queryCount;
 	private boolean admin;
-
 	private HashMap<String, HashSet<String>> userRoles;
+
 	private String fullname;
+
 	private String status;
 
 	public I2B2User(String userName) {
@@ -42,41 +61,8 @@ public class I2B2User {
 		userRoles = new HashMap<String, HashSet<String>>();
 	}
 
-	// public HashMap<String, HashSet<String>> getUserRoles() {
-	// return userRoles;
-	// }
-	//
-	// public void addUserRoleForProject(String project, String role) {
-	// if (this.userRoles.containsKey(project))
-	// this.userRoles.get(project).add(role);
-	// else {
-	// HashSet<String> tmpSet = new HashSet<String>();
-	// tmpSet.add(role);
-	// this.userRoles.put(project, tmpSet);
-	// }
-	// }
-	//
-	// public void removeUserRoleFromProject(String project, String role){
-	//
-	// }
-	@Override
-	public String toString() {
-		return (userName + " " + lastLogin + " " + lastQuery);
-	}
-
-	/**
-	 * @return the userName
-	 */
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	 * @param userName
-	 *            the userName to set
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public boolean getAdmin() {
+		return admin;
 	}
 
 	/**
@@ -94,11 +80,72 @@ public class I2B2User {
 	// this.roles = roles;
 	// }
 
+	public String getEmail() {
+		return email;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
 	/**
 	 * @return the lastLogin
 	 */
 	public String getLastLogin() {
 		return lastLogin;
+	}
+
+	/**
+	 * @return the lastQuery
+	 */
+	public String getLastQuery() {
+		return lastQuery;
+	}
+
+	/**
+	 * @return the loginCount
+	 */
+	public int getLoginCount() {
+		return loginCount;
+	}
+
+	public int getQueryCount() {
+		return queryCount;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	public HashSet<String> getUserRoles(String project) {
+		return userRoles.get(project);
+	}
+
+	public void setAdmin(boolean setAdmin) {
+		admin = setAdmin;
+	}
+
+	public void setEmail(String email) {
+		if (email == null) {
+			this.email = "";
+		} else {
+			this.email = email;
+		}
+	}
+
+	public void setFullname(String fullname) {
+		if (fullname == null) {
+			this.fullname = "";
+		} else {
+			this.fullname = fullname;
+		}
 	}
 
 	/**
@@ -122,36 +169,6 @@ public class I2B2User {
 	}
 
 	/**
-	 * @return the loginCount
-	 */
-	public int getLoginCount() {
-		return loginCount;
-	}
-
-	/**
-	 * @param loginCount
-	 *            the loginCount to set
-	 */
-	public void setLoginCount(int loginCount) {
-		this.loginCount = loginCount;
-	}
-
-	/**
-	 * @return the lastQuery
-	 */
-	public String getLastQuery() {
-		return lastQuery;
-	}
-
-	public int getQueryCount() {
-		return queryCount;
-	}
-
-	public void setQueryCount(int queryCount) {
-		this.queryCount = queryCount;
-	}
-
-	/**
 	 * @param lastQuery
 	 *            the lastQuery to set
 	 */
@@ -171,32 +188,16 @@ public class I2B2User {
 		}
 	}
 
-	public String getFullname() {
-		return fullname;
+	/**
+	 * @param loginCount
+	 *            the loginCount to set
+	 */
+	public void setLoginCount(int loginCount) {
+		this.loginCount = loginCount;
 	}
 
-	public void setFullname(String fullname) {
-		if (fullname == null) {
-			this.fullname = "";
-		} else {
-			this.fullname = fullname;
-		}
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		if (email == null) {
-			this.email = "";
-		} else {
-			this.email = email;
-		}
-	}
-
-	public String getStatus() {
-		return status;
+	public void setQueryCount(int queryCount) {
+		this.queryCount = queryCount;
 	}
 
 	public void setStatus(String status) {
@@ -207,27 +208,12 @@ public class I2B2User {
 		}
 	}
 
-	public static String getHashedPassword(String pass) {
-		try {
-			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			md5.update(pass.getBytes());
-			return toHex(md5.digest());
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public static String toHex(byte[] digest) {
-		StringBuffer buf = new StringBuffer();
-		for (byte element : digest) {
-			buf.append(Integer.toHexString(element & 0x00FF));
-		}
-		return buf.toString();
-	}
-
-	public HashSet<String> getUserRoles(String project) {
-		return userRoles.get(project);
+	/**
+	 * @param userName
+	 *            the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setUserRole(String project, String role) {
@@ -238,12 +224,26 @@ public class I2B2User {
 		userRoles.get(project).add(role);
 	}
 
-	public void setAdmin(boolean setAdmin) {
-		admin = setAdmin;
-	}
-
-	public boolean getAdmin() {
-		return admin;
+	// public HashMap<String, HashSet<String>> getUserRoles() {
+	// return userRoles;
+	// }
+	//
+	// public void addUserRoleForProject(String project, String role) {
+	// if (this.userRoles.containsKey(project))
+	// this.userRoles.get(project).add(role);
+	// else {
+	// HashSet<String> tmpSet = new HashSet<String>();
+	// tmpSet.add(role);
+	// this.userRoles.put(project, tmpSet);
+	// }
+	// }
+	//
+	// public void removeUserRoleFromProject(String project, String role){
+	//
+	// }
+	@Override
+	public String toString() {
+		return (userName + " " + lastLogin + " " + lastQuery);
 	}
 
 }

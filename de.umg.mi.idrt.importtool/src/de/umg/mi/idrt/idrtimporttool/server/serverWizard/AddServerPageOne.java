@@ -47,8 +47,19 @@ public class AddServerPageOne extends WizardPage {
 	private static Combo DBTypeCombo;
 	private static Label DBIntegratedSecurity;
 	private static Button DBMSSQLUseWinAuth;
+	public static boolean getCheckUseWinAuth() {
+		return DBMSSQLUseWinAuth.getSelection();
+	}
 	private Label lblSavePassword;
+
 	private static Button chkSavePassword;
+
+	/**
+	 * @return
+	 */
+	public static boolean getCheckStorePassword() {
+		return chkSavePassword.getSelection();
+	}
 
 	/**
 	 * @return the dBSchemaText
@@ -62,6 +73,13 @@ public class AddServerPageOne extends WizardPage {
 	 */
 	public static String getDBSIDText() {
 		return DBSIDText.getText();
+	}
+
+	/**
+	 * @return the dBTypeCombo
+	 */
+	public static String getDBType() {
+		return DBTypeCombo.getText();
 	}
 
 	/**
@@ -289,6 +307,10 @@ public class AddServerPageOne extends WizardPage {
 		DBTypeCombo.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if(DBTypeCombo.getItem(DBTypeCombo.getSelectionIndex()).equalsIgnoreCase("mssql")) { //$NON-NLS-1$
 					DBIntegratedSecurity.setEnabled(true);
@@ -309,10 +331,6 @@ public class AddServerPageOne extends WizardPage {
 					
 				}
 			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
 		});
 		DBIntegratedSecurity = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		DBIntegratedSecurity.setText("Use Windows Authentication?"); //$NON-NLS-1$
@@ -324,15 +342,15 @@ public class AddServerPageOne extends WizardPage {
 		DBMSSQLUseWinAuth.addSelectionListener(new SelectionListener() {
 
 			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				DBUserPassword.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUserPasswordText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUser.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 				DBUserText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 
@@ -379,24 +397,6 @@ public class AddServerPageOne extends WizardPage {
 		DBTest = new Label(container1, SWT.FILL | SWT.CENTER);
 		DBTest.setText("?"); //$NON-NLS-1$
 		setPageComplete(false);
-	}
-
-	/**
-	 * @return the dBTypeCombo
-	 */
-	public static String getDBType() {
-		return DBTypeCombo.getText();
-	}
-
-	public static boolean getCheckUseWinAuth() {
-		return DBMSSQLUseWinAuth.getSelection();
-	}
-
-	/**
-	 * @return
-	 */
-	public static boolean getCheckStorePassword() {
-		return chkSavePassword.getSelection();
 	}
 
 }

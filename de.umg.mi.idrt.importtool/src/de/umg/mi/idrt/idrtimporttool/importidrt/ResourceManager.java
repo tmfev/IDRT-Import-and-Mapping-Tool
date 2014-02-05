@@ -43,6 +43,12 @@ import org.osgi.framework.Bundle;
  * @author Dan Rubel
  */
 public class ResourceManager extends SWTResourceManager {
+	/**
+	 * Provider for plugin resources, used by WindowBuilder at design time.
+	 */
+	public interface PluginResourceProvider {
+		URL getEntry(String symbolicName, String path);
+	}
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// Image
@@ -50,55 +56,23 @@ public class ResourceManager extends SWTResourceManager {
 	////////////////////////////////////////////////////////////////////////////
 	private static Map<ImageDescriptor, Image> m_descriptorImageMap = new HashMap<ImageDescriptor, Image>();
 	/**
-	 * Returns an {@link ImageDescriptor} stored in the file at the specified path relative to the specified
-	 * class.
-	 * 
-	 * @param clazz
-	 *            the {@link Class} relative to which to find the image descriptor.
-	 * @param path
-	 *            the path to the image file.
-	 * @return the {@link ImageDescriptor} stored in the file at the specified path.
-	 */
-	public static ImageDescriptor getImageDescriptor(Class<?> clazz, String path) {
-		return ImageDescriptor.createFromFile(clazz, path);
-	}
-	/**
-	 * Returns an {@link ImageDescriptor} stored in the file at the specified path.
-	 * 
-	 * @param path
-	 *            the path to the image file.
-	 * @return the {@link ImageDescriptor} stored in the file at the specified path.
-	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
-		try {
-			return ImageDescriptor.createFromURL(new File(path).toURI().toURL());
-		} catch (MalformedURLException e) {
-			return null;
-		}
-	}
-	/**
-	 * Returns an {@link Image} based on the specified {@link ImageDescriptor}.
-	 * 
-	 * @param descriptor
-	 *            the {@link ImageDescriptor} for the {@link Image}.
-	 * @return the {@link Image} based on the specified {@link ImageDescriptor}.
-	 */
-	public static Image getImage(ImageDescriptor descriptor) {
-		if (descriptor == null) {
-			return null;
-		}
-		Image image = m_descriptorImageMap.get(descriptor);
-		if (image == null) {
-			image = descriptor.createImage();
-			m_descriptorImageMap.put(descriptor, image);
-		}
-		return image;
-	}
-	/**
 	 * Maps images to decorated images.
 	 */
 	@SuppressWarnings("unchecked")
 	private static Map<Image, Map<Image, Image>>[] m_decoratedImageMap = new Map[LAST_CORNER_KEY];
+	////////////////////////////////////////////////////////////////////////////
+	//
+	// Plugin images support
+	//
+	////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Maps URL to images.
+	 */
+	private static Map<String, Image> m_URLImageMap = new HashMap<String, Image>();
+	/**
+	 * Instance of {@link PluginResourceProvider}, used by WindowBuilder at design time.
+	 */
+	private static PluginResourceProvider m_designTimePluginResourceProvider = null;
 	/**
 	 * Returns an {@link Image} composed of a base image decorated by another image.
 	 * 
@@ -167,6 +141,20 @@ public class ResourceManager extends SWTResourceManager {
 		}
 		return result;
 	}
+	////////////////////////////////////////////////////////////////////////////
+	//
+	// General
+	//
+	////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Dispose of cached objects and their underlying OS resources. This should only be called when the cached
+	 * objects are no longer needed (e.g. on application shutdown).
+	 */
+	public static void dispose() {
+		disposeColors();
+		disposeFonts();
+		disposeImages();
+	}
 	/**
 	 * Dispose all of the cached images.
 	 */
@@ -200,25 +188,51 @@ public class ResourceManager extends SWTResourceManager {
 			m_URLImageMap.clear();
 		}
 	}
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// Plugin images support
-	//
-	////////////////////////////////////////////////////////////////////////////
 	/**
-	 * Maps URL to images.
+	 * Returns an {@link Image} based on the specified {@link ImageDescriptor}.
+	 * 
+	 * @param descriptor
+	 *            the {@link ImageDescriptor} for the {@link Image}.
+	 * @return the {@link Image} based on the specified {@link ImageDescriptor}.
 	 */
-	private static Map<String, Image> m_URLImageMap = new HashMap<String, Image>();
-	/**
-	 * Provider for plugin resources, used by WindowBuilder at design time.
-	 */
-	public interface PluginResourceProvider {
-		URL getEntry(String symbolicName, String path);
+	public static Image getImage(ImageDescriptor descriptor) {
+		if (descriptor == null) {
+			return null;
+		}
+		Image image = m_descriptorImageMap.get(descriptor);
+		if (image == null) {
+			image = descriptor.createImage();
+			m_descriptorImageMap.put(descriptor, image);
+		}
+		return image;
 	}
 	/**
-	 * Instance of {@link PluginResourceProvider}, used by WindowBuilder at design time.
+	 * Returns an {@link ImageDescriptor} stored in the file at the specified path relative to the specified
+	 * class.
+	 * 
+	 * @param clazz
+	 *            the {@link Class} relative to which to find the image descriptor.
+	 * @param path
+	 *            the path to the image file.
+	 * @return the {@link ImageDescriptor} stored in the file at the specified path.
 	 */
-	private static PluginResourceProvider m_designTimePluginResourceProvider = null;
+	public static ImageDescriptor getImageDescriptor(Class<?> clazz, String path) {
+		return ImageDescriptor.createFromFile(clazz, path);
+	}
+	/**
+	 * Returns an {@link ImageDescriptor} stored in the file at the specified path.
+	 * 
+	 * @param path
+	 *            the path to the image file.
+	 * @return the {@link ImageDescriptor} stored in the file at the specified path.
+	 */
+	public static ImageDescriptor getImageDescriptor(String path) {
+		try {
+			return ImageDescriptor.createFromURL(new File(path).toURI().toURL());
+		} catch (MalformedURLException e) {
+			return null;
+		}
+	}
 	/**
 	 * Returns an {@link Image} based on a plugin and file path.
 	 * 
@@ -256,32 +270,6 @@ public class ResourceManager extends SWTResourceManager {
 			URL url = getPluginImageURL(symbolicName, path);
 			if (url != null) {
 				return getPluginImageFromUrl(url);
-			}
-		} catch (Throwable e) {
-			// Ignore any exceptions
-		}
-		return null;
-	}
-	/**
-	 * Returns an {@link Image} based on given {@link URL}.
-	 */
-	private static Image getPluginImageFromUrl(URL url) {
-		try {
-			try {
-				String key = url.toExternalForm();
-				Image image = m_URLImageMap.get(key);
-				if (image == null) {
-					InputStream stream = url.openStream();
-					try {
-						image = getImage(stream);
-						m_URLImageMap.put(key, image);
-					} finally {
-						stream.close();
-					}
-				}
-				return image;
-			} catch (Throwable e) {
-				// Ignore any exceptions
 			}
 		} catch (Throwable e) {
 			// Ignore any exceptions
@@ -334,21 +322,29 @@ public class ResourceManager extends SWTResourceManager {
 		return null;
 	}
 	/**
-	 * Returns an {@link URL} based on a {@link Bundle} and resource entry path.
+	 * Returns an {@link Image} based on given {@link URL}.
 	 */
-	private static URL getPluginImageURL(String symbolicName, String path) {
-		// try runtime plugins
-		{
-			Bundle bundle = Platform.getBundle(symbolicName);
-			if (bundle != null) {
-				return bundle.getEntry(path);
+	private static Image getPluginImageFromUrl(URL url) {
+		try {
+			try {
+				String key = url.toExternalForm();
+				Image image = m_URLImageMap.get(key);
+				if (image == null) {
+					InputStream stream = url.openStream();
+					try {
+						image = getImage(stream);
+						m_URLImageMap.put(key, image);
+					} finally {
+						stream.close();
+					}
+				}
+				return image;
+			} catch (Throwable e) {
+				// Ignore any exceptions
 			}
+		} catch (Throwable e) {
+			// Ignore any exceptions
 		}
-		// try design time provider
-		if (m_designTimePluginResourceProvider != null) {
-			return m_designTimePluginResourceProvider.getEntry(symbolicName, path);
-		}
-		// no such resource
 		return null;
 	}
 	/**
@@ -398,18 +394,22 @@ public class ResourceManager extends SWTResourceManager {
 		}
 		return null;
 	}
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// General
-	//
-	////////////////////////////////////////////////////////////////////////////
 	/**
-	 * Dispose of cached objects and their underlying OS resources. This should only be called when the cached
-	 * objects are no longer needed (e.g. on application shutdown).
+	 * Returns an {@link URL} based on a {@link Bundle} and resource entry path.
 	 */
-	public static void dispose() {
-		disposeColors();
-		disposeFonts();
-		disposeImages();
+	private static URL getPluginImageURL(String symbolicName, String path) {
+		// try runtime plugins
+		{
+			Bundle bundle = Platform.getBundle(symbolicName);
+			if (bundle != null) {
+				return bundle.getEntry(path);
+			}
+		}
+		// try design time provider
+		if (m_designTimePluginResourceProvider != null) {
+			return m_designTimePluginResourceProvider.getEntry(symbolicName, path);
+		}
+		// no such resource
+		return null;
 	}
 }

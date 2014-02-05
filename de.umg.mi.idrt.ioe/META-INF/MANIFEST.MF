@@ -7,6 +7,7 @@ Import-Package: au.com.bytecode.opencsv,
  de.umg.mi.idrt.idrtimporttool.importidrt,
  de.umg.mi.idrt.idrtimporttool.messages,
  de.umg.mi.idrt.idrtimporttool.server.Settings,
+ de.umg.mi.idrt.importtool.views,
  org.eclipselabs.p2.rcpupdate.utils
 Bundle-ClassPath: .,
  lib/cdatetime-0.14.0.jar,
