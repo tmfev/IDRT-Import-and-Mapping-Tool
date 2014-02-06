@@ -59,6 +59,8 @@ public class TargetNodeAttributes {
 			OntologyTreeSubNode subNode = new OntologyTreeSubNode(getParent());
 			subNode.setStagingPath(stagingPath);
 			if (OntologyEditorView.getMyOntologyTree()!=null) {
+//				System.out.println(OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode());
+//				System.out.println("GETTING NODE FOR: " + stagingPath);
 				OntologyTreeNode stagingNode = OntologyEditorView.getMyOntologyTree().getOntologyTreeSource().getNodeLists().getNodeByPath(stagingPath);
 				if (stagingNode==null) {
 //					System.out.println("NULL");

@@ -33,7 +33,7 @@ public class DeleteNodeCommand extends AbstractHandler {
 				
 				OntologyTreeNode node = (OntologyTreeNode) mNode;
 				OntologyEditorView.setNotYetSaved(true);
-				if (!(node ==OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {
+				if (!(node == OntologyEditorView.getOntologyTargetTree().getI2B2RootNode())) {
 					node.removeFromParent();
 				}
 				else {

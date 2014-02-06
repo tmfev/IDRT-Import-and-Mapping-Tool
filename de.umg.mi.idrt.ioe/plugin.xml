@@ -98,6 +98,12 @@
             name="Progress"
             restorable="true">
       </view>
+      <view
+            class="de.umg.mi.idrt.ioe.view.HelpView"
+            id="de.umg.mi.idrt.ioe.help"
+            name="Help"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">

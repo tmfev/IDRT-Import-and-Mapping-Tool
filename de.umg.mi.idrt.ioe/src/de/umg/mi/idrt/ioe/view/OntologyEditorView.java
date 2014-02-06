@@ -648,7 +648,7 @@ public class OntologyEditorView extends ViewPart {
 		stagingTreeViewer.getTree().addListener (SWT.MouseHover, stagingTreeListener);
 
 
-		 stagingColumn = new TreeViewerColumn(stagingTreeViewer, SWT.MULTI | SWT.H_SCROLL
+		stagingColumn = new TreeViewerColumn(stagingTreeViewer, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		stagingColumn.getColumn().setMoveable(false);
 		//		column.getColumn().setText("");
@@ -1202,34 +1202,25 @@ public class OntologyEditorView extends ViewPart {
 		init = true;
 	}
 
-	/**
-	 * @return the init
-	 */
 	public static boolean isInit() {
 		return init;
 	}
 
-	/**
-	 * @return the notYetSaved
-	 */
 	public static boolean isNotYetSaved() {
 		return notYetSaved;
 	}
-	/**
-	 * @return the showSubNodes
-	 */
+
 	public static boolean isShowSubNodes() {
 		return showSubNodes;
 	}
+	
 	private static void markNodes(OntologyTreeNode node, String text, TreeViewer viewer) {
 
 		for (OntologyTreeNode child : node.getChildren()) {
 			markNodes(child, text,viewer);
 		}
 		if (node.getName().toLowerCase().contains(text.toLowerCase())) {
-			//			markParent(node);
 			node.setSearchResult(true);
-			//			stagingTreeViewer.
 			while (node.getParent()!=null) {
 				node = node.getParent();
 				viewer.setExpandedState(node, true);
@@ -1237,12 +1228,10 @@ public class OntologyEditorView extends ViewPart {
 		}
 		else {
 			node.setSearchResult(false);
-			//			stagingTreeViewer.setExpandedState(node, false);
 		}
 	}
 
 	public static void refreshTargetName() {
-
 		if(lblTargetName != null) {
 			if (getTargetProjects().getSelectedTarget() != null && !getTargetProjects().getSelectedTarget().getTargetDBSchema().isEmpty()) {
 				lblTargetName.setText(getTargetProjects().getSelectedTarget().getTargetDBSchema());
@@ -1257,7 +1246,6 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void refreshTargetVersionGUI(){
-
 		refreshVersionCombo();
 		refreshTargetName();
 	}
@@ -1290,21 +1278,6 @@ public class OntologyEditorView extends ViewPart {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetProjects().getPreviousSelectedVersion().getVersion());
 			versionCombo.remove(version);
-
-			//			
-			//			boolean found = false;
-			//			for (String items : versionCombo.getItems()) {
-			//				if (items.equals(""+getTargetProjects().getPreviousSelectedVersion().getVersion())) {
-			//					versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
-			//					found = true;
-			//					break;
-			//				}
-			//			}
-			//			if (!found) {
-			//				versionCombo.setText(""+versionCombo.getItem(versionCombo.getItemCount()-1));
-			//				System.out.println(versionCombo.getItem(versionCombo.getItemCount()-1));
-			//			}
-			//			composite_2.layout();
 
 		} else {
 			Console.error("versionCombo is null, so don't remove an entry from it");
@@ -1463,12 +1436,10 @@ public class OntologyEditorView extends ViewPart {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 						String fullname = node.getOntologyCellAttributes().getC_FULLNAME();
 						for (OntologyTreeNode target : myOntologyTree.getOntologyTreeTarget().getNodeLists().getStringPathToNode().values()) {
-//							System.out.println(System.currentTimeMillis()-time + "ms == " + System.currentTimeMillis() +"-" + time);
-							if (System.currentTimeMillis()-time>1500) {
-//								System.out.println("BREAKING");
+							if (System.currentTimeMillis()-time>500) {
+								//Timeout, if it takes to long.
 								break;
 							}
-							
 							if (fullname.equals(target.getTargetNodeAttributes().getSourcePath()))
 								target.setHighlighted(true);
 							highlightedTargetNodes.add(target);
@@ -1476,7 +1447,6 @@ public class OntologyEditorView extends ViewPart {
 					}
 				}
 				targetTreeViewer.refresh();
-//				System.out.println(System.currentTimeMillis()-time + "ms");
 			}
 		});
 		stagingTreeViewer.getTree().setMenu(menu);
@@ -1661,6 +1631,9 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
+				
+				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
+				
 				//				System.out.println("**** STAGING: ****");
 				//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
 				//					System.out.println(child.getName());

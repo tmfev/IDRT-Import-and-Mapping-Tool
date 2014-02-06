@@ -36,21 +36,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	private boolean highlighted = false;
 	private boolean merged = false;
 	private boolean isModifier = false;
-	private static int counter = 0;
-	/**
-	 * @return the merged
-	 */
-	public boolean isMerged() {
-		return merged;
-	}
-
-	/**
-	 * @param merged the merged to set
-	 */
-	public void setMerged(boolean merged) {
-		this.merged = merged;
-	}
-
 	/**
 	 * a list of this nodes children for the use in a swt tree viewer
 	 */
@@ -95,14 +80,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	 * specific attributes for different kind of nodes
 	 */
 	private OntologyCellAttributes ontologyCellAttributes;
+
 	private TargetNodeAttributes targetNodeAttributes;
-
-	//	private static int counter=0;
-
-	/**
-	 * Creates a generic ontology tree node.
-	 * 
-	 */
 
 	/**
 	 * Copy Constructor
@@ -118,7 +97,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 //		if(counter%2000==0||counter<500)
 //			System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
-
 	/**
 	 * Creates a generic ontology tree node.
 	 * 
@@ -135,19 +113,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 //			System.out.println("Creating OTNODE: "+ counter+ " " + this.getName()+ " " );
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#finalize()
-	 */
-	@Override
-	protected void finalize() throws Throwable {
+	//	private static int counter=0;
 
-//		counter--;
-		//		if(counter%500==0)
-//		System.err.println("FINALIZE OT: " + counter + " "+ this.getName() );
-		//		System.err.println("FINALIZE OT: " + this.getName());
-		// TODO Auto-generated method stub
-		super.finalize();
-	}
+	/**
+	 * Creates a generic ontology tree node.
+	 * 
+	 */
 
 	/**
 	 * 155: * Adds a new child node to this node and sets this node as the
@@ -170,19 +141,19 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 
 	}
 
-	/* ******************************
-	 * /* functions for the swt tree /* *****************************
-	 */
-	public ListIterator<OntologyTreeNode> getChild() {
-		return this.children.listIterator();
-	}
-
 	public int getAllChildrenCount() {
 		int sum = this.getChildren().size();
 		for (OntologyTreeNode child : getChildren()) {
 			sum+=child.getAllChildrenCount();
 		}
 		return sum;
+	}
+
+	/* ******************************
+	 * /* functions for the swt tree /* *****************************
+	 */
+	public ListIterator<OntologyTreeNode> getChild() {
+		return this.children.listIterator();
 	}
 
 	/*
@@ -297,6 +268,17 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 				.toLowerCase().startsWith("r");
 	}
 
+	/**
+	 * @return the merged
+	 */
+	public boolean isMerged() {
+		return merged;
+	}
+
+	public boolean isModifier() {
+		return isModifier;
+	}
+
 	public boolean isSearchResult() {
 		return searchResult;
 	}
@@ -310,7 +292,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return this.isVisible;
 	}
 
-//	@Override
+	//	@Override
 	public void remove(OntologyTreeNode aChild) {
 		// this.getParent().getChildren().remove(this);
 		getChildren().remove(aChild);
@@ -318,7 +300,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 				super.remove(aChild);
 	}
 
-	/*
+/*
 	 * (non-Javadoc)
 	 * 
 	 * @see javax.swing.tree.DefaultMutableTreeNode#removeAllChildren()
@@ -329,7 +311,25 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		for (OntologyTreeNode node : getChildren()) {
 			MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
 			myOT.getOntologyTreeTarget().getNodeLists().removeNode(node);
-			myOT.getOntologyTreeSource().getNodeLists().removeNode(node);
+//			myOT.getOntologyTreeSource().getNodeLists().removeNode(node);
+//						System.out.println("removing: " + node.getName());
+//			node.ontologyCellAttributes=null;
+//			if (node.targetNodeAttributes!=null)
+//			node.targetNodeAttributes.setSubNodeList(null);
+//			node.targetNodeAttributes=null;
+			node.removeAllChildren();
+			node=null;
+			
+		}
+		this.children=new ArrayList<OntologyTreeNode>();
+		super.removeAllChildren();
+	}
+	
+	public void removeAllChildren(OntologyTreeNodeList nodeList) {
+//		System.out.println("REMOVEALL\tCHILDREN "+this.getName());
+		for (OntologyTreeNode node : getChildren()) {
+			nodeList.removeNode(node);
+//			myOT.getOntologyTreeSource().getNodeLists().removeNode(node);
 //						System.out.println("removing: " + node.getName());
 //			node.ontologyCellAttributes=null;
 //			if (node.targetNodeAttributes!=null)
@@ -347,7 +347,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	public void removeFromParent() {
 //		System.out.println("REMOVEFROM\tPARENT "+this.getName());
 		MyOntologyTrees myOT = OntologyEditorView.getMyOntologyTree();
-		myOT.getOntologyTreeSource().getNodeLists().removeNode(this);
+//		myOT.getOntologyTreeSource().getNodeLists().removeNode(this);
 		myOT.getOntologyTreeTarget().getNodeLists().removeNode(this);
 		this.removeAllChildren();
 //		this.ontologyCellAttributes=null;
@@ -406,6 +406,18 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		}
 	}
 
+	/**
+	 * @param merged the merged to set
+	 */
+	public void setMerged(boolean merged) {
+		this.merged = merged;
+	}
+
+
+	public void setModifier(boolean isModifier) {
+		//		System.out.println("setting " + isModifier + " for " + getName());
+		this.isModifier = isModifier;
+	}
 
 	/**
 	 * Sets the name attribute for this node.
@@ -525,16 +537,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	}
 
 	/**
-	 * Sets the level attribute for this node.
-	 * 
-	 * @param treePathLevel
-	 *            the level of this node in a tree
-	 */
-	public void setTreePathLevel(int treePathLevel) {
-		this.treePathLevel = treePathLevel;
-	}
-
-	/**
 	 * Sets the visual attribute (key to connect items and user data) for I2B2.
 	 * 
 	 * @param visualattribute
@@ -543,6 +545,16 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 	// public void setVisualattribute(String visualattribute) {
 	// this.visualattribute = visualattribute;
 	// }
+
+	/**
+	 * Sets the level attribute for this node.
+	 * 
+	 * @param treePathLevel
+	 *            the level of this node in a tree
+	 */
+	public void setTreePathLevel(int treePathLevel) {
+		this.treePathLevel = treePathLevel;
+	}
 
 	/**
 	 * Sets the level attribute for this node by converting a string to int
@@ -576,13 +588,18 @@ public class OntologyTreeNode extends DefaultMutableTreeNode {
 		return this.name + " " + this.treePath;
 	}
 
-	public boolean isModifier() {
-		return isModifier;
-	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
 
-	public void setModifier(boolean isModifier) {
-		//		System.out.println("setting " + isModifier + " for " + getName());
-		this.isModifier = isModifier;
+//		counter--;
+		//		if(counter%500==0)
+//		System.err.println("FINALIZE OT: " + counter + " "+ this.getName() );
+		//		System.err.println("FINALIZE OT: " + this.getName());
+		// TODO Auto-generated method stub
+		super.finalize();
 	}
 
 }

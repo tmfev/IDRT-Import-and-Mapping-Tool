@@ -1,6 +1,7 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
-import java.awt.Container;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import de.umg.mi.idrt.ioe.Console;
@@ -15,10 +16,15 @@ import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.PathAndID;
  */
 public class OntologyTreeNodeList {
 	private HashMap<String, OntologyTreeNode> stringPathToNode;
-	private long time = 0;
 	public OntologyTreeNodeList(){
 		stringPathToNode = new HashMap<String, OntologyTreeNode>();
 	}
+//	
+//	public Collection<OntologyTreeNode> getStringPathToNode(){
+//		
+//		return stringPathToNode.values();
+//		
+//	}
 
 	public void add( OntologyTreeNode node ){
 
@@ -123,12 +129,6 @@ public class OntologyTreeNodeList {
 
 	public Iterator<Entry<String, OntologyTreeNode>> getPathToNodeIterator () {
 		return this.stringPathToNode.entrySet().iterator();
-	}
-
-	public void listNodeByPath(){
-		for (String path : stringPathToNode.keySet()){
-			//			System.out.println("  - " + path);
-		}
 	}
 
 	public void removeAll() {

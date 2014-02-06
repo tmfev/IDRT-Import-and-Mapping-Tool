@@ -301,7 +301,7 @@ public class OntologyTree extends JTree {
 	public OntologyTreeNodeList getNodeLists() {
 		return this.nodeLists;
 	}
-
+	
 	public OntologyTreeNode getRootNode() {
 
 		return treeRoot;

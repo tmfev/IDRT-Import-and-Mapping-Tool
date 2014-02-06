@@ -36,7 +36,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		if (OntologyEditorView.getMyOntologyTree()!=null) {
 			//		OntologyEditorView.getOntologyStagingTree().getNodeLists().removeAll();
 			if (OntologyEditorView.getOntologyStagingTree().getI2B2RootNode()!=null)
-				OntologyEditorView.getOntologyStagingTree().getI2B2RootNode().removeAllChildren();
+				OntologyEditorView.getOntologyStagingTree().getI2B2RootNode().removeAllChildren(OntologyEditorView.getOntologyStagingTree().getNodeLists());
 		}
 
 		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
