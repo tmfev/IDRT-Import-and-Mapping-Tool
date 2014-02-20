@@ -1,7 +1,5 @@
 package de.umg.mi.idrt.ioe;
 
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
@@ -10,7 +8,7 @@ import org.eclipselabs.p2.rcpupdate.utils.P2Util;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
-	private static final String PERSPECTIVE_ID = "de.umg.mi.idrt.ioe.perspective"; //$NON-NLS-1$
+	private static final String PERSPECTIVE_ID = "de.umg.mi.idrt.ioe.PerspectiveExpert";
 
 	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
 			IWorkbenchWindowConfigurer configurer) {

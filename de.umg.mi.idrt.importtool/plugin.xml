@@ -35,14 +35,6 @@
       </product>
    </extension>
    <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            name="Perspective"
-            class="de.umg.mi.idrt.idrtimporttool.importidrt.Perspective"
-            id="ImportIDRT.perspective">
-      </perspective>
-   </extension>
-   <extension
          point="org.eclipse.ui.views">
       <category
             id="de.umg.mi.idrt.importtool.IDRT"
@@ -56,22 +48,6 @@
             id="de.umg.mi.idrt.importtool.ServerView"
             name="IDRT Import Tool">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="*">
-         <view
-               closeable="true"
-               id="de.umg.mi.idrt.importtool.ServerView"
-               minimized="false"
-               moveable="true"
-               relationship="stack"
-               relative="org.eclipse.ui.editorss"
-               standalone="true"
-               visible="true">
-         </view>
-      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -108,6 +84,12 @@
                label="Views">
             <command
                   commandId="org.eclipse.ui.views.showView"
+                  style="pulldown">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.perspectives.showPerspective"
+                  id="OpenPersp.id"
+                  label="Open Perspective"
                   style="pulldown">
             </command>
          </menu>

@@ -48,9 +48,14 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="de.umg.mi.idrt.ioe.Perspective"
-            id="de.umg.mi.idrt.ioe.perspective"
-            name="perspective">
+            class="de.umg.mi.idrt.ioe.PerspectiveSimple"
+            id="de.umg.mi.idrt.ioe.PerspectiveSimple"
+            name="PerspectiveSimple">
+      </perspective>
+      <perspective
+            class="de.umg.mi.idrt.ioe.PerspectiveExpert"
+            id="de.umg.mi.idrt.ioe.PerspectiveExpert"
+            name="PerspectiveExpert">
       </perspective>
    </extension>
    <extension
@@ -104,22 +109,6 @@
             name="Help"
             restorable="true">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="*">
-         <view
-               closeable="true"
-               id="de.umg.mi.idrt.ioe.OntologyEditor"
-               minimized="false"
-               moveable="true"
-               relationship="stack"
-               relative="org.eclipse.ui.editorss"
-               standalone="true"
-               visible="true">
-         </view>
-      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
