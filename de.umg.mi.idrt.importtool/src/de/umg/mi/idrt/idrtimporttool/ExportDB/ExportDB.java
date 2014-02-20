@@ -19,6 +19,8 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
  */
 public class ExportDB {
 
+	
+	
 	private static Connection connect = null;
 	private static Statement statement = null;
 	private static ResultSet resultSet = null;
