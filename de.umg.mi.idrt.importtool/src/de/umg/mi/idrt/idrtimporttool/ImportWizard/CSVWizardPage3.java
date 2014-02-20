@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -467,7 +469,7 @@ public class CSVWizardPage3 extends WizardPage {
 	}
 
 	private Button refreshBtn;
-	
+
 	private HashSet<String> incompleteConfigs;
 
 	/**
@@ -579,35 +581,37 @@ public class CSVWizardPage3 extends WizardPage {
 			final Image imgNoConfig = new Image(parent.getDisplay(),
 					imgNoConfigFile.getAbsolutePath());
 			csvFolder = CSVWizardPage2.getFolderCSVText();
-
 			File folder = new File(csvFolder);
-			File[] listOfFiles = folder.listFiles();
-			configList = new LinkedList<String>();
-			list = new Vector<String>();
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].getName().endsWith(".cfg.csv")) { 
-					configList.add(listOfFiles[i].getName());
-				}
-				if (!listOfFiles[i].getName().endsWith(".cfg.csv") 
-						&& listOfFiles[i].isFile()) {
-					list.add(listOfFiles[i].getName());
-				}
-			}
+			if (folder!=null) {
+				File[] listOfFiles = folder.listFiles();
+				configList = new LinkedList<String>();
+				list = new Vector<String>();
+				if (listOfFiles!=null) {
+					for (int i = 0; i < listOfFiles.length; i++) {
+						if (listOfFiles[i].getName().endsWith(".cfg.csv")) { 
+							configList.add(listOfFiles[i].getName());
+						}
+						if (!listOfFiles[i].getName().endsWith(".cfg.csv") 
+								&& listOfFiles[i].isFile()) {
+							list.add(listOfFiles[i].getName());
+						}
+					}
 
-			for (int i = 0; i < list.size(); i++) {
-				String tmpElement = list.get(i);
-				if (tmpElement.contains(".")) { 
-					String filename = tmpElement.substring(0,
-							tmpElement.lastIndexOf(".")); 
-					String extension = tmpElement.substring(tmpElement
-							.lastIndexOf(".")); 
-					if (configList.contains(filename + ".cfg" + extension)) { 
-						fileConfigMap.put(list.get(i), filename + ".cfg" 
-								+ extension);
+					for (int i = 0; i < list.size(); i++) {
+						String tmpElement = list.get(i);
+						if (tmpElement.contains(".")) { 
+							String filename = tmpElement.substring(0,
+									tmpElement.lastIndexOf(".")); 
+							String extension = tmpElement.substring(tmpElement
+									.lastIndexOf(".")); 
+							if (configList.contains(filename + ".cfg" + extension)) { 
+								fileConfigMap.put(list.get(i), filename + ".cfg" 
+										+ extension);
+							}
+						}
 					}
 				}
 			}
-
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -895,7 +899,7 @@ public class CSVWizardPage3 extends WizardPage {
 										&& (fileConfigMap.get(lastTable) != null)) {
 									saveTable();
 								}
-								
+
 								if (lastTable == null) {
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
@@ -933,7 +937,6 @@ public class CSVWizardPage3 extends WizardPage {
 											}
 										}
 										//										DEFAULTDELIM = inputDelim;
-
 										reader = new CSVReader(new FileReader(
 												configFile), inputDelim, QUOTECHAR);
 										String[] line1 = reader.readNext();

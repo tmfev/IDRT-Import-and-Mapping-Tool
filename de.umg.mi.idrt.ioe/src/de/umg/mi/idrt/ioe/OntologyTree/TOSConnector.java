@@ -3,6 +3,7 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,6 +89,10 @@ public class TOSConnector {
 
 			try {
 				properties = FileHandler.getBundleFile("/cfg/Default.properties");
+				if (!properties.exists()) {
+					File defproperties = FileHandler.getBundleFile("/COPY_DEFAULT_CFG/Default.properties");
+					copyFile(defproperties,properties);
+				}
 				defaultProps = new Properties();
 				defaultProps.load(new FileReader(properties));
 			} catch (FileNotFoundException e1) {
@@ -185,7 +190,24 @@ public class TOSConnector {
 		return tos;
 
 	}
+	public static void copyFile(File inputFile, File outputFile) {
+		try {
+			FileReader in = new FileReader(inputFile);
 
+			FileWriter out = new FileWriter(outputFile);
+			int c;
+
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+			in.close();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public static int loadSourceToTarget(String targetID,
 			final String tmpDataFile) {
 

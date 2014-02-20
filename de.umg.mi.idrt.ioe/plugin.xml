@@ -74,7 +74,7 @@
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorStagingInfoView"
             icon="images/go-next.png"
-            id="edu.goettingen.i2b2.importtool.view.EditorStagingInfoView"
+            id="de.umg.mi.idrt.ioe.EditorStagingInfoView"
             name="Staging Info View"
             restorable="true">
       </view>
@@ -83,7 +83,7 @@
             category="de.umg.mi.idrt.importtool.IDRT"
             class="de.umg.mi.idrt.ioe.view.EditorTargetInfoView"
             icon="images/go-next-unchecked.png"
-            id="edu.goettingen.i2b2.importtool.view.EditorTargetInfoView"
+            id="de.umg.mi.idrt.ioe.EditorTargetInfoView"
             name="Target Info View"
             restorable="true">
       </view>

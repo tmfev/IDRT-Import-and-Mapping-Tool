@@ -149,10 +149,6 @@ public class Resource {
 			public final static String ONTOLOGY_ANSWERSPREVIEW_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyAnswersPreviewView";
 			public final static String ONTOLOGY_ANSWERSTEMPLATES_VIEW = "edu.goettingen.i2b2.importtool.view.OntologyAnswersTemplatesView";
 
-			public final static String EDITOR_SOURCE_VIEW = "edu.goettingen.i2b2.importtool.view.EditorSourceView";
-			public final static String EDITOR_SOURCE_INFO_VIEW = "edu.goettingen.i2b2.importtool.view.EditorSourceInfoView";
-			public final static String EDITOR_TARGET_VIEW = "edu.goettingen.i2b2.importtool.view.EditorTargetView";
-			public final static String EDITOR_TARGET_INFO_VIEW = "edu.goettingen.i2b2.importtool.view.EditorTargetInfoView";
 
 		}
 
