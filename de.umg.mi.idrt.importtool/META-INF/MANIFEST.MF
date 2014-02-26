@@ -13,20 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.equinox.p2.ui;bundle-version="2.0.0",
  org.eclipse.equinox.p2.metadata;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
- lib/idrt_jdbc_upload_1_0.jar,
- lib/idrt_truncate_tables_0_1.jar,
- lib/mysql-connector-java-5.1.24-bin.jar,
- lib/org.eclipse.swt.gtk.linux.x86_3.7.2.v3740f.jar,
- lib/org.eclipse.wb.swt.jar,
- lib/passwordCrypt.jar,
- lib/sqljdbc.jar,
- lib/sqljdbc4.jar,
- lib/swing2swt.jar,
- lib/swt.jar,
- lib/tosidrtconnector_0_4.jar,
- lib/transformation_to_target_0_1.jar,
  TalendJobs/,
  TalendJobs/TalendJobs/,
  TalendJobs/TalendJobs/CSV_MASTER/,
@@ -118,7 +106,15 @@ Bundle-ClassPath: .,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/fab_2_0_1.jar,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/icd_2_0_1.jar,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/ops_2_0_1.jar,
- TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar
+ TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar,
+ lib/swt.jar,
+ lib/mysql-connector-java-5.1.24-bin.jar,
+ lib/org.eclipse.swt.gtk.linux.x86_3.7.2.v3740f.jar,
+ lib/org.eclipse.wb.swt.jar,
+ lib/passwordCrypt.jar,
+ lib/sqljdbc.jar,
+ lib/sqljdbc4.jar,
+ lib/swing2swt.jar
 Bundle-Vendor: TMF - IDRT
 Export-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,

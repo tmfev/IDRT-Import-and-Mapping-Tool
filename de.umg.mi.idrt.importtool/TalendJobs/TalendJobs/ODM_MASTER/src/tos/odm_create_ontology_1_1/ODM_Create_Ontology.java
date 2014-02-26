@@ -23,6 +23,7 @@ import routines.Relational;
 import routines.TalendDate;
 import routines.TalendDataGenerator;
 import routines.Numeric;
+import routines.Visit;
 import routines.TalendString;
 import routines.StringHandling;
 import routines.system.*;
@@ -40,6 +41,9 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
+
+//the import part of tJava_6
+//import java.util.List;
 
 //the import part of tJavaRow_4
 //import java.util.List;
@@ -69,9 +73,6 @@ import java.util.Comparator;
 //import java.util.List;
 
 //the import part of tJava_10
-//import java.util.List;
-
-//the import part of tJava_6
 //import java.util.List;
 
 //the import part of tJava_5
@@ -707,6 +708,66 @@ public class ODM_Create_Ontology implements TalendJob {
 		}
 	}
 
+	public void tFileInputXML_8_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputXML_8", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_7_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tMap_7", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tUniqRow_5_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tUniqRow_5", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tLogRow_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tLogRow_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileOutputDelimited_12_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileOutputDelimited_12", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_6_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_6", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_6_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputXML_3_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -721,6 +782,16 @@ public class ODM_Create_Ontology implements TalendJob {
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 		end_Hash.put("tJavaRow_4", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputXML_3_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tLogRow_4_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tLogRow_4", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1025,100 +1096,6 @@ public class ODM_Create_Ontology implements TalendJob {
 		status = "failure";
 
 		tJava_10_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tFileInputDelimited_8_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_8", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_8_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileInputDelimited_11_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_11", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_11_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileInputDelimited_10_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_10", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileInputDelimited_12_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_12", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_12_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileInputXML_8_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputXML_8", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tMap_7_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tMap_7", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tUniqRow_5_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tUniqRow_5", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tFileOutputDelimited_12_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileOutputDelimited_12", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputXML_8_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJava_6_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_6", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_6_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tFileInputDelimited_7_error(java.lang.Exception exception,
@@ -1711,21 +1688,10 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_row15_error(java.lang.Exception exception,
+	public void tFileInputDelimited_11_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_row15", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_8_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tAdvancedHash_row22_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tAdvancedHash_row22", System.currentTimeMillis());
+		end_Hash.put("tFileInputDelimited_11", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1733,10 +1699,54 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_Temp3Visit_error(java.lang.Exception exception,
+	public void tLogRow_3_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_Temp3Visit", System.currentTimeMillis());
+		end_Hash.put("tLogRow_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileInputDelimited_8_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_8", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_8_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tLogRow_7_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tLogRow_7", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_8_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileInputDelimited_12_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_12", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_12_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileInputDelimited_10_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tFileInputDelimited_10", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1744,15 +1754,14 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_FormNames_error(java.lang.Exception exception,
+	public void tMap_33_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_FormNames", System.currentTimeMillis());
+		end_Hash.put("tMap_33", System.currentTimeMillis());
 
 		status = "failure";
 
-		tFileInputDelimited_12_onSubJobError(exception, errorComponent,
-				globalMap);
+		tMap_33_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tAdvancedHash_fromTemp1_error(java.lang.Exception exception,
@@ -1802,10 +1811,10 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap);
 	}
 
-	public void tAdvancedHash_row14_error(java.lang.Exception exception,
+	public void tAdvancedHash_fromCodeList_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tAdvancedHash_row14", System.currentTimeMillis());
+		end_Hash.put("tAdvancedHash_fromCodeList", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1843,6 +1852,72 @@ public class ODM_Create_Ontology implements TalendJob {
 		status = "failure";
 
 		tFileInputXML_14_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tAdvancedHash_row15_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_row15", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tAdvancedHash_row24_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_row24", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_8_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tAdvancedHash_FormNames_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_FormNames", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_12_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tAdvancedHash_Temp3Visit_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tAdvancedHash_Temp3Visit", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_10_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tFileInputXML_8_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_6_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
 	}
 
 	public void tFileInputXML_3_onSubJobError(java.lang.Exception exception,
@@ -1945,76 +2020,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	}
 
 	public void tJava_10_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputDelimited_8_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputDelimited_11_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputDelimited_10_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputDelimited_12_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputXML_8_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tJava_6_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -2395,6 +2400,2702 @@ public class ODM_Create_Ontology implements TalendJob {
 				exception.getMessage(),
 				ResumeUtil.getExceptionStackTrace(exception), "");
 
+	}
+
+	public void tFileInputDelimited_11_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_8_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_12_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tFileInputDelimited_10_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tMap_33_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public static class row22Struct implements
+			routines.system.IPersistableRow<row22Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+					this.HLEVEL = readInteger(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row22Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row11Struct implements
+			routines.system.IPersistableRow<row11Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+					this.HLEVEL = readInteger(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row11Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class out7Struct implements
+			routines.system.IPersistableRow<out7Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+					this.HLEVEL = readInteger(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(out7Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class fromMetaIDStruct implements
+			routines.system.IPersistableRow<fromMetaIDStruct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String OID;
+
+		public String getOID() {
+			return this.OID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String StudyOID;
+
+		public String getStudyOID() {
+			return this.StudyOID;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.OID = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.StudyOID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.OID, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.StudyOID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("OID=" + OID);
+			sb.append(",Name=" + Name);
+			sb.append(",StudyOID=" + StudyOID);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(fromMetaIDStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class after_tFileInputXML_8Struct implements
+			routines.system.IPersistableRow<after_tFileInputXML_8Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String OID;
+
+		public String getOID() {
+			return this.OID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String StudyOID;
+
+		public String getStudyOID() {
+			return this.StudyOID;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.OID = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.StudyOID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.OID, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.StudyOID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("OID=" + OID);
+			sb.append(",Name=" + Name);
+			sb.append(",StudyOID=" + StudyOID);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(after_tFileInputXML_8Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputXML_8Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputXML_8_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				tFileInputDelimited_7Process(globalMap);
+
+				fromMetaIDStruct fromMetaID = new fromMetaIDStruct();
+				out7Struct out7 = new out7Struct();
+				row11Struct row11 = new row11Struct();
+				row11Struct row22 = row11;
+
+				/**
+				 * [tFileOutputDelimited_12 begin ] start
+				 */
+
+				ok_Hash.put("tFileOutputDelimited_12", false);
+				start_Hash.put("tFileOutputDelimited_12",
+						System.currentTimeMillis());
+				currentComponent = "tFileOutputDelimited_12";
+
+				int tos_count_tFileOutputDelimited_12 = 0;
+
+				String fileName_tFileOutputDelimited_12 = "";
+				fileName_tFileOutputDelimited_12 = (new java.io.File(
+						((String) globalMap
+								.get("tCreateTemporaryFile_4_FILEPATH"))))
+						.getAbsolutePath().replace("\\", "/");
+				String fullName_tFileOutputDelimited_12 = null;
+				String extension_tFileOutputDelimited_12 = null;
+				String directory_tFileOutputDelimited_12 = null;
+				if ((fileName_tFileOutputDelimited_12.indexOf("/") != -1)) {
+					if (fileName_tFileOutputDelimited_12.lastIndexOf(".") < fileName_tFileOutputDelimited_12
+							.lastIndexOf("/")) {
+						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12;
+						extension_tFileOutputDelimited_12 = "";
+					} else {
+						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
+								.substring(0, fileName_tFileOutputDelimited_12
+										.lastIndexOf("."));
+						extension_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
+								.substring(fileName_tFileOutputDelimited_12
+										.lastIndexOf("."));
+					}
+					directory_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
+							.substring(0, fileName_tFileOutputDelimited_12
+									.lastIndexOf("/"));
+				} else {
+					if (fileName_tFileOutputDelimited_12.lastIndexOf(".") != -1) {
+						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
+								.substring(0, fileName_tFileOutputDelimited_12
+										.lastIndexOf("."));
+						extension_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
+								.substring(fileName_tFileOutputDelimited_12
+										.lastIndexOf("."));
+					} else {
+						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12;
+						extension_tFileOutputDelimited_12 = "";
+					}
+					directory_tFileOutputDelimited_12 = "";
+				}
+				boolean isFileGenerated_tFileOutputDelimited_12 = true;
+				java.io.File filetFileOutputDelimited_12 = new java.io.File(
+						fileName_tFileOutputDelimited_12);
+				globalMap.put("tFileOutputDelimited_12_FILE_NAME",
+						fileName_tFileOutputDelimited_12);
+
+				int nb_line_tFileOutputDelimited_12 = 0;
+				int splitEvery_tFileOutputDelimited_12 = 1000;
+				int splitedFileNo_tFileOutputDelimited_12 = 0;
+				int currentRow_tFileOutputDelimited_12 = 0;
+
+				final String OUT_DELIM_tFileOutputDelimited_12 = /**
+				 * Start field
+				 * tFileOutputDelimited_12:FIELDSEPARATOR
+				 */
+				"\t"/** End field tFileOutputDelimited_12:FIELDSEPARATOR */
+				;
+
+				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_12 = /**
+				 * Start
+				 * field tFileOutputDelimited_12:ROWSEPARATOR
+				 */
+				"\n"/** End field tFileOutputDelimited_12:ROWSEPARATOR */
+				;
+
+				// create directory only if not exists
+				if (directory_tFileOutputDelimited_12 != null
+						&& directory_tFileOutputDelimited_12.trim().length() != 0) {
+					java.io.File dir_tFileOutputDelimited_12 = new java.io.File(
+							directory_tFileOutputDelimited_12);
+					if (!dir_tFileOutputDelimited_12.exists()) {
+						dir_tFileOutputDelimited_12.mkdirs();
+					}
+				}
+
+				// routines.system.Row
+				java.io.Writer outtFileOutputDelimited_12 = null;
+				try {
+					outtFileOutputDelimited_12 = new java.io.BufferedWriter(
+							new java.io.OutputStreamWriter(
+									new java.io.FileOutputStream(
+											fileName_tFileOutputDelimited_12,
+											false), "ISO-8859-15"));
+
+					/**
+					 * [tFileOutputDelimited_12 begin ] stop
+					 */
+
+					/**
+					 * [tLogRow_2 begin ] start
+					 */
+
+					ok_Hash.put("tLogRow_2", false);
+					start_Hash.put("tLogRow_2", System.currentTimeMillis());
+					currentComponent = "tLogRow_2";
+
+					int tos_count_tLogRow_2 = 0;
+
+					/**
+					 * [tLogRow_2 begin ] stop
+					 */
+
+					/**
+					 * [tUniqRow_5 begin ] start
+					 */
+
+					ok_Hash.put("tUniqRow_5", false);
+					start_Hash.put("tUniqRow_5", System.currentTimeMillis());
+					currentComponent = "tUniqRow_5";
+
+					int tos_count_tUniqRow_5 = 0;
+
+					class KeyStruct_tUniqRow_5 {
+
+						private static final int DEFAULT_HASHCODE = 1;
+						private static final int PRIME = 31;
+						private int hashCode = DEFAULT_HASHCODE;
+						public boolean hashCodeDirty = true;
+
+						String StudyID;
+						String MetaID;
+
+						@Override
+						public int hashCode() {
+							if (this.hashCodeDirty) {
+								final int prime = PRIME;
+								int result = DEFAULT_HASHCODE;
+
+								result = prime
+										* result
+										+ ((this.StudyID == null) ? 0
+												: this.StudyID.hashCode());
+
+								result = prime
+										* result
+										+ ((this.MetaID == null) ? 0
+												: this.MetaID.hashCode());
+
+								this.hashCode = result;
+								this.hashCodeDirty = false;
+							}
+							return this.hashCode;
+						}
+
+						@Override
+						public boolean equals(Object obj) {
+							if (this == obj)
+								return true;
+							if (obj == null)
+								return false;
+							if (getClass() != obj.getClass())
+								return false;
+							final KeyStruct_tUniqRow_5 other = (KeyStruct_tUniqRow_5) obj;
+
+							if (this.StudyID == null) {
+								if (other.StudyID != null)
+									return false;
+							} else if (!this.StudyID.equals(other.StudyID))
+								return false;
+
+							if (this.MetaID == null) {
+								if (other.MetaID != null)
+									return false;
+							} else if (!this.MetaID.equals(other.MetaID))
+								return false;
+
+							return true;
+						}
+
+					}
+
+					int nb_uniques_tUniqRow_5 = 0;
+					int nb_duplicates_tUniqRow_5 = 0;
+					KeyStruct_tUniqRow_5 finder_tUniqRow_5 = new KeyStruct_tUniqRow_5();
+					java.util.Set<KeyStruct_tUniqRow_5> keystUniqRow_5 = new java.util.HashSet<KeyStruct_tUniqRow_5>();
+
+					/**
+					 * [tUniqRow_5 begin ] stop
+					 */
+
+					/**
+					 * [tMap_7 begin ] start
+					 */
+
+					ok_Hash.put("tMap_7", false);
+					start_Hash.put("tMap_7", System.currentTimeMillis());
+					currentComponent = "tMap_7";
+
+					int tos_count_tMap_7 = 0;
+
+					// ###############################
+					// # Lookup's keys initialization
+
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct> tHash_Lookup_fromTemp1 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct>) globalMap
+							.get("tHash_Lookup_fromTemp1"));
+
+					fromTemp1Struct fromTemp1HashKey = new fromTemp1Struct();
+					fromTemp1Struct fromTemp1Default = new fromTemp1Struct();
+					// ###############################
+
+					// ###############################
+					// # Vars initialization
+					class Var__tMap_7__Struct {
+					}
+					Var__tMap_7__Struct Var__tMap_7 = new Var__tMap_7__Struct();
+					// ###############################
+
+					// ###############################
+					// # Outputs initialization
+					out7Struct out7_tmp = new out7Struct();
+					// ###############################
+
+					/**
+					 * [tMap_7 begin ] stop
+					 */
+
+					/**
+					 * [tFileInputXML_8 begin ] start
+					 */
+
+					ok_Hash.put("tFileInputXML_8", false);
+					start_Hash.put("tFileInputXML_8",
+							System.currentTimeMillis());
+					currentComponent = "tFileInputXML_8";
+
+					int tos_count_tFileInputXML_8 = 0;
+
+					int nb_line_tFileInputXML_8 = 0;
+
+					class IgnoreDTDEntityResolver_tFileInputXML_8 implements
+							org.xml.sax.EntityResolver {
+
+						public org.xml.sax.InputSource resolveEntity(
+								String publicId, String systemId)
+								throws org.xml.sax.SAXException,
+								java.io.IOException {
+							return new org.xml.sax.InputSource(
+									new java.io.ByteArrayInputStream(
+											"<?xml version='1.0' encoding='UTF-8'?>"
+													.getBytes()));
+						}
+
+					}
+					String os_tFileInputXML_8 = System.getProperty("os.name")
+							.toLowerCase();
+					boolean isWindows_tFileInputXML_8 = false;
+					if (os_tFileInputXML_8.indexOf("windows") > -1
+							|| os_tFileInputXML_8.indexOf("nt") > -1) {
+						isWindows_tFileInputXML_8 = true;
+					}
+					class NameSpaceTool_tFileInputXML_8 {
+
+						public java.util.HashMap<String, String> xmlNameSpaceMap = new java.util.HashMap<String, String>();
+
+						private java.util.List<String> defualtNSPath = new java.util.ArrayList<String>();
+
+						public void countNSMap(org.dom4j.Element el) {
+							for (org.dom4j.Namespace ns : (java.util.List<org.dom4j.Namespace>) el
+									.declaredNamespaces()) {
+								if (ns.getPrefix().trim().length() == 0) {
+									xmlNameSpaceMap.put(
+											"pre" + defualtNSPath.size(),
+											ns.getURI());
+									String path = "";
+									org.dom4j.Element elTmp = el;
+									while (elTmp != null) {
+										if (elTmp.getNamespacePrefix() != null
+												&& elTmp.getNamespacePrefix()
+														.length() > 0) {
+											path = "/"
+													+ elTmp.getNamespacePrefix()
+													+ ":" + elTmp.getName()
+													+ path;
+										} else {
+											path = "/" + elTmp.getName() + path;
+										}
+										elTmp = elTmp.getParent();
+									}
+									defualtNSPath.add(path);
+								} else {
+									xmlNameSpaceMap.put(ns.getPrefix(),
+											ns.getURI());
+								}
+
+							}
+							for (org.dom4j.Element e : (java.util.List<org.dom4j.Element>) el
+									.elements()) {
+								countNSMap(e);
+							}
+						}
+
+						public String addDefaultNSPrefix(String path,
+								String loopPath) {
+							if (defualtNSPath.size() > 0) {
+								String fullPath = loopPath;
+								if (!path.equals(fullPath)) {
+									for (String tmp : path.split("/")) {
+										if (("..").equals(tmp)) {
+											fullPath = fullPath.substring(0,
+													fullPath.lastIndexOf("/"));
+										} else {
+											fullPath += "/" + tmp;
+										}
+									}
+								}
+								int size = fullPath.split("/").length - 1;
+								if (size < 0) {
+									return fullPath;
+								}
+								int[] indexs = new int[size];
+								java.util.Arrays.fill(indexs, -1);
+								int length = 0;
+								for (int i = 0; i < defualtNSPath.size(); i++) {
+									if (defualtNSPath.get(i).length() > length
+											&& fullPath
+													.startsWith(defualtNSPath
+															.get(i))) {
+										java.util.Arrays
+												.fill(indexs,
+														defualtNSPath.get(i)
+																.split("/").length - 2,
+														indexs.length, i);
+										length = defualtNSPath.get(i).length();
+									}
+								}
+
+								StringBuilder newPath = new StringBuilder();
+								String[] pathStrs = path.split("/");
+								for (int i = 0; i < pathStrs.length; i++) {
+									String tmp = pathStrs[i];
+									if (newPath.length() > 0) {
+										newPath.append("/");
+									}
+									if (tmp.length() > 0
+											&& tmp.indexOf(":") == -1
+											&& tmp.indexOf(".") == -1 /*
+																	 * &&
+																	 * tmp.indexOf
+																	 * ("@") ==
+																	 * -1
+																	 */) {
+										int index = indexs[i + indexs.length
+												- pathStrs.length];
+										if (index >= 0) {
+											// ==== add by wliu to support both
+											// filter and functions==
+											if (tmp.indexOf("[") > 0
+													&& tmp.indexOf("]") > tmp
+															.indexOf("[")) {// include
+																			// filter
+												String tmpStr = replaceElementWithNS(
+														tmp, "pre" + index
+																+ ":");
+												newPath.append(tmpStr);
+											} else {
+												if (tmp.indexOf("@") != -1
+														|| tmp.indexOf("(") < tmp
+																.indexOf(")")) { // include
+																					// attribute
+													newPath.append(tmp);
+												} else {
+													// ==add end=======
+													newPath.append("pre")
+															.append(index)
+															.append(":")
+															.append(tmp);
+												}
+											}
+										} else {
+											newPath.append(tmp);
+										}
+									} else {
+										newPath.append(tmp);
+									}
+								}
+								return newPath.toString();
+							}
+							return path;
+						}
+
+						private String matches = "@*\\b[a-z|A-Z|_]+[[-]*\\w]*\\b[^'|^\\(]";
+						private java.util.regex.Pattern pattern = java.util.regex.Pattern
+								.compile(matches);
+
+						private String replaceElementWithNS(String global,
+								String pre) {
+
+							java.util.regex.Matcher match = pattern
+									.matcher(global);
+							StringBuffer sb = new StringBuffer();
+							match.reset();
+							while (match.find()) {
+								String group = match.group();
+								String tmp = "";
+								if (group.toLowerCase().matches(
+										"\\b(div|mod|and|or)\\b.*")
+										|| group.matches("@.*")) {
+									tmp = group;
+								} else {
+									tmp = tmp + pre + group;
+								}
+								match.appendReplacement(sb, tmp);
+							}
+							match.appendTail(sb);
+
+							return sb.toString();
+						}
+
+					}
+
+					class XML_API_tFileInputXML_8 {
+						public boolean isDefNull(org.dom4j.Node node)
+								throws javax.xml.transform.TransformerException {
+							if (node != null
+									&& node instanceof org.dom4j.Element) {
+								org.dom4j.Attribute attri = ((org.dom4j.Element) node)
+										.attribute("nil");
+								if (attri != null
+										&& ("true").equals(attri.getText())) {
+									return true;
+								}
+							}
+							return false;
+						}
+
+						public boolean isMissing(org.dom4j.Node node)
+								throws javax.xml.transform.TransformerException {
+							return node == null ? true : false;
+						}
+
+						public boolean isEmpty(org.dom4j.Node node)
+								throws javax.xml.transform.TransformerException {
+							if (node != null) {
+								return node.getText().length() == 0;
+							}
+							return false;
+						}
+					}
+
+					org.dom4j.io.SAXReader reader_tFileInputXML_8 = new org.dom4j.io.SAXReader();
+					reader_tFileInputXML_8
+							.setEntityResolver(new IgnoreDTDEntityResolver_tFileInputXML_8());
+					Object filename_tFileInputXML_8 = null;
+					try {
+						filename_tFileInputXML_8 = context.currentFile;
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+					if (filename_tFileInputXML_8 != null
+							&& filename_tFileInputXML_8 instanceof String
+							&& filename_tFileInputXML_8.toString().startsWith(
+									"//")) {
+						if (!isWindows_tFileInputXML_8) {
+							filename_tFileInputXML_8 = filename_tFileInputXML_8
+									.toString().replaceFirst("//", "/");
+						}
+					}
+
+					boolean isValidFile_tFileInputXML_8 = true;
+					org.dom4j.Document doc_tFileInputXML_8 = null;
+					java.io.Closeable toClose_tFileInputXML_8 = null;
+					try {
+						if (filename_tFileInputXML_8 instanceof java.io.InputStream) {
+							java.io.InputStream inputStream_tFileInputXML_8 = (java.io.InputStream) filename_tFileInputXML_8;
+							toClose_tFileInputXML_8 = inputStream_tFileInputXML_8;
+							doc_tFileInputXML_8 = reader_tFileInputXML_8
+									.read(inputStream_tFileInputXML_8);
+						} else {
+							java.io.Reader unicodeReader_tFileInputXML_8 = new UnicodeReader(
+									new java.io.FileInputStream(String
+											.valueOf(filename_tFileInputXML_8)),
+									context.encoding);
+							toClose_tFileInputXML_8 = unicodeReader_tFileInputXML_8;
+							org.xml.sax.InputSource in_tFileInputXML_8 = new org.xml.sax.InputSource(
+									unicodeReader_tFileInputXML_8);
+							doc_tFileInputXML_8 = reader_tFileInputXML_8
+									.read(in_tFileInputXML_8);
+						}
+					} catch (java.lang.Exception e) {
+						System.err.println(e.getMessage());
+						isValidFile_tFileInputXML_8 = false;
+					} finally {
+						if (toClose_tFileInputXML_8 != null) {
+							toClose_tFileInputXML_8.close();
+						}
+					}
+					if (isValidFile_tFileInputXML_8) {
+						NameSpaceTool_tFileInputXML_8 nsTool_tFileInputXML_8 = new NameSpaceTool_tFileInputXML_8();
+						nsTool_tFileInputXML_8.countNSMap(doc_tFileInputXML_8
+								.getRootElement());
+						java.util.HashMap<String, String> xmlNameSpaceMap_tFileInputXML_8 = nsTool_tFileInputXML_8.xmlNameSpaceMap;
+
+						org.dom4j.XPath x_tFileInputXML_8 = doc_tFileInputXML_8
+								.createXPath(nsTool_tFileInputXML_8
+										.addDefaultNSPrefix(
+												"/ODM/Study/MetaDataVersion",
+												"/ODM/Study/MetaDataVersion"));
+						x_tFileInputXML_8
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
+
+						java.util.List<org.dom4j.tree.AbstractNode> nodeList_tFileInputXML_8 = (java.util.List<org.dom4j.tree.AbstractNode>) x_tFileInputXML_8
+								.selectNodes(doc_tFileInputXML_8);
+						XML_API_tFileInputXML_8 xml_api_tFileInputXML_8 = new XML_API_tFileInputXML_8();
+						String str_tFileInputXML_8 = "";
+						org.dom4j.Node node_tFileInputXML_8 = null;
+
+						// init all mapping xpaths
+						org.dom4j.XPath xTmp0_tFileInputXML_8 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_8
+										.addDefaultNSPrefix("@OID",
+												"/ODM/Study/MetaDataVersion"));
+						xTmp0_tFileInputXML_8
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
+						org.dom4j.XPath xTmp1_tFileInputXML_8 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_8
+										.addDefaultNSPrefix("@Name",
+												"/ODM/Study/MetaDataVersion"));
+						xTmp1_tFileInputXML_8
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
+						org.dom4j.XPath xTmp2_tFileInputXML_8 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_8
+										.addDefaultNSPrefix("../@OID",
+												"/ODM/Study/MetaDataVersion"));
+						xTmp2_tFileInputXML_8
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
+
+						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_8 : nodeList_tFileInputXML_8) {
+							nb_line_tFileInputXML_8++;
+							fromMetaID = null;
+							boolean whetherReject_tFileInputXML_8 = false;
+							fromMetaID = new fromMetaIDStruct();
+							try {
+								Object obj0_tFileInputXML_8 = xTmp0_tFileInputXML_8
+										.evaluate(temp_tFileInputXML_8);
+								if (obj0_tFileInputXML_8 == null) {
+									node_tFileInputXML_8 = null;
+									str_tFileInputXML_8 = "";
+
+								} else if (obj0_tFileInputXML_8 instanceof org.dom4j.Node) {
+									node_tFileInputXML_8 = (org.dom4j.Node) obj0_tFileInputXML_8;
+									str_tFileInputXML_8 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_8,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj0_tFileInputXML_8 instanceof String
+										|| obj0_tFileInputXML_8 instanceof Number) {
+									node_tFileInputXML_8 = temp_tFileInputXML_8;
+									str_tFileInputXML_8 = String
+											.valueOf(obj0_tFileInputXML_8);
+								} else if (obj0_tFileInputXML_8 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj0_tFileInputXML_8;
+									node_tFileInputXML_8 = nodes_tFileInputXML_8
+											.size() > 0 ? nodes_tFileInputXML_8
+											.get(0) : null;
+									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_8,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_8
+										.isDefNull(node_tFileInputXML_8)) {
+									fromMetaID.OID = null;
+								} else if (xml_api_tFileInputXML_8
+										.isEmpty(node_tFileInputXML_8)) {
+									fromMetaID.OID = "";
+								} else if (xml_api_tFileInputXML_8
+										.isMissing(node_tFileInputXML_8)) {
+									fromMetaID.OID = null;
+								} else {
+									fromMetaID.OID = str_tFileInputXML_8;
+								}
+								Object obj1_tFileInputXML_8 = xTmp1_tFileInputXML_8
+										.evaluate(temp_tFileInputXML_8);
+								if (obj1_tFileInputXML_8 == null) {
+									node_tFileInputXML_8 = null;
+									str_tFileInputXML_8 = "";
+
+								} else if (obj1_tFileInputXML_8 instanceof org.dom4j.Node) {
+									node_tFileInputXML_8 = (org.dom4j.Node) obj1_tFileInputXML_8;
+									str_tFileInputXML_8 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_8,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj1_tFileInputXML_8 instanceof String
+										|| obj1_tFileInputXML_8 instanceof Number) {
+									node_tFileInputXML_8 = temp_tFileInputXML_8;
+									str_tFileInputXML_8 = String
+											.valueOf(obj1_tFileInputXML_8);
+								} else if (obj1_tFileInputXML_8 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj1_tFileInputXML_8;
+									node_tFileInputXML_8 = nodes_tFileInputXML_8
+											.size() > 0 ? nodes_tFileInputXML_8
+											.get(0) : null;
+									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_8,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_8
+										.isDefNull(node_tFileInputXML_8)) {
+									fromMetaID.Name = null;
+								} else if (xml_api_tFileInputXML_8
+										.isEmpty(node_tFileInputXML_8)) {
+									fromMetaID.Name = "";
+								} else if (xml_api_tFileInputXML_8
+										.isMissing(node_tFileInputXML_8)) {
+									fromMetaID.Name = null;
+								} else {
+									fromMetaID.Name = str_tFileInputXML_8;
+								}
+								Object obj2_tFileInputXML_8 = xTmp2_tFileInputXML_8
+										.evaluate(temp_tFileInputXML_8);
+								if (obj2_tFileInputXML_8 == null) {
+									node_tFileInputXML_8 = null;
+									str_tFileInputXML_8 = "";
+
+								} else if (obj2_tFileInputXML_8 instanceof org.dom4j.Node) {
+									node_tFileInputXML_8 = (org.dom4j.Node) obj2_tFileInputXML_8;
+									str_tFileInputXML_8 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_8,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj2_tFileInputXML_8 instanceof String
+										|| obj2_tFileInputXML_8 instanceof Number) {
+									node_tFileInputXML_8 = temp_tFileInputXML_8;
+									str_tFileInputXML_8 = String
+											.valueOf(obj2_tFileInputXML_8);
+								} else if (obj2_tFileInputXML_8 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj2_tFileInputXML_8;
+									node_tFileInputXML_8 = nodes_tFileInputXML_8
+											.size() > 0 ? nodes_tFileInputXML_8
+											.get(0) : null;
+									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_8,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_8
+										.isDefNull(node_tFileInputXML_8)) {
+									fromMetaID.StudyOID = null;
+								} else if (xml_api_tFileInputXML_8
+										.isEmpty(node_tFileInputXML_8)) {
+									fromMetaID.StudyOID = "";
+								} else if (xml_api_tFileInputXML_8
+										.isMissing(node_tFileInputXML_8)) {
+									fromMetaID.StudyOID = null;
+								} else {
+									fromMetaID.StudyOID = str_tFileInputXML_8;
+								}
+
+							} catch (java.lang.Exception e) {
+								whetherReject_tFileInputXML_8 = true;
+								System.err.println(e.getMessage());
+								fromMetaID = null;
+							}
+
+							/**
+							 * [tFileInputXML_8 begin ] stop
+							 */
+							/**
+							 * [tFileInputXML_8 main ] start
+							 */
+
+							currentComponent = "tFileInputXML_8";
+
+							tos_count_tFileInputXML_8++;
+
+							/**
+							 * [tFileInputXML_8 main ] stop
+							 */
+							// Start of branch "fromMetaID"
+							if (fromMetaID != null) {
+
+								/**
+								 * [tMap_7 main ] start
+								 */
+
+								currentComponent = "tMap_7";
+
+								boolean hasCasePrimitiveKeyWithNull_tMap_7 = false;
+
+								// ###############################
+								// # Input tables (lookups)
+								boolean rejectedInnerJoin_tMap_7 = false;
+								boolean mainRowRejected_tMap_7 = false;
+
+								// /////////////////////////////////////////////
+								// Starting Lookup Table "fromTemp1"
+								// /////////////////////////////////////////////
+
+								boolean forceLoopfromTemp1 = false;
+
+								fromTemp1Struct fromTemp1ObjectFromLookup = null;
+
+								if (!rejectedInnerJoin_tMap_7) { // G_TM_M_020
+
+									hasCasePrimitiveKeyWithNull_tMap_7 = false;
+
+									fromTemp1HashKey.StudyID = fromMetaID.StudyOID;
+
+									fromTemp1HashKey.hashCodeDirty = true;
+
+									tHash_Lookup_fromTemp1
+											.lookup(fromTemp1HashKey);
+
+									if (!tHash_Lookup_fromTemp1.hasNext()) { // G_TM_M_090
+
+										forceLoopfromTemp1 = true;
+
+									} // G_TM_M_090
+
+								} // G_TM_M_020
+
+								else { // G 20 - G 21
+									forceLoopfromTemp1 = true;
+								} // G 21
+
+								fromTemp1Struct fromTemp1 = null;
+
+								while ((tHash_Lookup_fromTemp1 != null && tHash_Lookup_fromTemp1
+										.hasNext()) || forceLoopfromTemp1) { // G_TM_M_043
+
+									// CALL close loop of lookup 'fromTemp1'
+
+									fromTemp1Struct fromLookup_fromTemp1 = null;
+									fromTemp1 = fromTemp1Default;
+
+									if (!forceLoopfromTemp1) { // G 46
+
+										fromLookup_fromTemp1 = tHash_Lookup_fromTemp1
+												.next();
+
+										if (fromLookup_fromTemp1 != null) {
+											fromTemp1 = fromLookup_fromTemp1;
+										}
+
+									} // G 46
+
+									forceLoopfromTemp1 = false;
+
+									// ###############################
+									{ // start of Var scope
+
+										// ###############################
+										// # Vars tables
+
+										Var__tMap_7__Struct Var = Var__tMap_7;// ###############################
+										// ###############################
+										// # Output tables
+
+										out7 = null;
+
+										// # Output table : 'out7'
+										out7_tmp.StudyID = fromTemp1.StudyID;
+										out7_tmp.MetaID = fromMetaID.OID;
+										out7_tmp.VisitID = null;
+										out7_tmp.FormID = null;
+										out7_tmp.QuestionID = null;
+										out7_tmp.ItemID = null;
+										out7_tmp.ParentItem = null;
+										out7_tmp.Name = fromMetaID.Name;
+										out7_tmp.VisitNo = null;
+										out7_tmp.Sequence = null;
+										out7_tmp.hidden = null;
+										out7_tmp.FormFamily = null;
+										out7_tmp.AdditionalData = null;
+										out7_tmp.item_Datatype = null;
+										out7_tmp.HLEVEL = 3;
+										out7 = out7_tmp;
+										// ###############################
+
+									} // end of Var scope
+
+									rejectedInnerJoin_tMap_7 = false;
+
+									tos_count_tMap_7++;
+
+									/**
+									 * [tMap_7 main ] stop
+									 */
+									// Start of branch "out7"
+									if (out7 != null) {
+
+										/**
+										 * [tUniqRow_5 main ] start
+										 */
+
+										currentComponent = "tUniqRow_5";
+
+										row11 = null;
+										if (out7.StudyID == null) {
+											finder_tUniqRow_5.StudyID = null;
+										} else {
+											finder_tUniqRow_5.StudyID = out7.StudyID
+													.toLowerCase();
+										}
+										if (out7.MetaID == null) {
+											finder_tUniqRow_5.MetaID = null;
+										} else {
+											finder_tUniqRow_5.MetaID = out7.MetaID
+													.toLowerCase();
+										}
+										finder_tUniqRow_5.hashCodeDirty = true;
+										if (!keystUniqRow_5
+												.contains(finder_tUniqRow_5)) {
+											KeyStruct_tUniqRow_5 new_tUniqRow_5 = new KeyStruct_tUniqRow_5();
+
+											if (out7.StudyID == null) {
+												new_tUniqRow_5.StudyID = null;
+											} else {
+												new_tUniqRow_5.StudyID = out7.StudyID
+														.toLowerCase();
+											}
+											if (out7.MetaID == null) {
+												new_tUniqRow_5.MetaID = null;
+											} else {
+												new_tUniqRow_5.MetaID = out7.MetaID
+														.toLowerCase();
+											}
+
+											keystUniqRow_5.add(new_tUniqRow_5);
+											if (row11 == null) {
+												row11 = new row11Struct();
+											}
+											row11.StudyID = out7.StudyID;
+											row11.MetaID = out7.MetaID;
+											row11.VisitID = out7.VisitID;
+											row11.FormID = out7.FormID;
+											row11.QuestionID = out7.QuestionID;
+											row11.ItemID = out7.ItemID;
+											row11.ParentItem = out7.ParentItem;
+											row11.Name = out7.Name;
+											row11.VisitNo = out7.VisitNo;
+											row11.Sequence = out7.Sequence;
+											row11.hidden = out7.hidden;
+											row11.FormFamily = out7.FormFamily;
+											row11.AdditionalData = out7.AdditionalData;
+											row11.item_Datatype = out7.item_Datatype;
+											row11.HLEVEL = out7.HLEVEL;
+											nb_uniques_tUniqRow_5++;
+										} else {
+											nb_duplicates_tUniqRow_5++;
+										}
+
+										tos_count_tUniqRow_5++;
+
+										/**
+										 * [tUniqRow_5 main ] stop
+										 */
+										// Start of branch "row11"
+										if (row11 != null) {
+
+											/**
+											 * [tLogRow_2 main ] start
+											 */
+
+											currentComponent = "tLogRow_2";
+
+											row22 = row11;
+
+											tos_count_tLogRow_2++;
+
+											/**
+											 * [tLogRow_2 main ] stop
+											 */
+
+											/**
+											 * [tFileOutputDelimited_12 main ]
+											 * start
+											 */
+
+											currentComponent = "tFileOutputDelimited_12";
+
+											StringBuilder sb_tFileOutputDelimited_12 = new StringBuilder();
+
+											if (row22.StudyID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.StudyID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.MetaID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.MetaID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.VisitID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.VisitID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.FormID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.FormID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.QuestionID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.QuestionID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.ItemID != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.ItemID
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.ParentItem != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.ParentItem
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.Name != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.Name
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.VisitNo != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.VisitNo
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.Sequence != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.Sequence
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.hidden != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.hidden
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.FormFamily != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.FormFamily
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.AdditionalData != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.AdditionalData
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.item_Datatype != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.item_Datatype
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_tFileOutputDelimited_12);
+
+											if (row22.HLEVEL != null) {
+
+												sb_tFileOutputDelimited_12
+														.append(
+
+														row22.HLEVEL
+
+														);
+
+											}
+
+											sb_tFileOutputDelimited_12
+													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_12);
+
+											nb_line_tFileOutputDelimited_12++;
+
+											outtFileOutputDelimited_12
+													.write(sb_tFileOutputDelimited_12
+															.toString());
+
+											tos_count_tFileOutputDelimited_12++;
+
+											/**
+											 * [tFileOutputDelimited_12 main ]
+											 * stop
+											 */
+
+										} // End of branch "row11"
+
+									} // End of branch "out7"
+
+								} // close loop of lookup 'fromTemp1' //
+									// G_TM_M_043
+
+							} // End of branch "fromMetaID"
+
+							/**
+							 * [tFileInputXML_8 end ] start
+							 */
+
+							currentComponent = "tFileInputXML_8";
+
+						}
+					}
+					globalMap.put("tFileInputXML_8_NB_LINE",
+							nb_line_tFileInputXML_8);
+
+					ok_Hash.put("tFileInputXML_8", true);
+					end_Hash.put("tFileInputXML_8", System.currentTimeMillis());
+
+					/**
+					 * [tFileInputXML_8 end ] stop
+					 */
+
+					/**
+					 * [tMap_7 end ] start
+					 */
+
+					currentComponent = "tMap_7";
+
+					// ###############################
+					// # Lookup hashes releasing
+					if (tHash_Lookup_fromTemp1 != null) {
+						tHash_Lookup_fromTemp1.endGet();
+					}
+					globalMap.remove("tHash_Lookup_fromTemp1");
+
+					// ###############################
+
+					ok_Hash.put("tMap_7", true);
+					end_Hash.put("tMap_7", System.currentTimeMillis());
+
+					/**
+					 * [tMap_7 end ] stop
+					 */
+
+					/**
+					 * [tUniqRow_5 end ] start
+					 */
+
+					currentComponent = "tUniqRow_5";
+
+					globalMap.put("tUniqRow_5_NB_UNIQUES",
+							nb_uniques_tUniqRow_5);
+					globalMap.put("tUniqRow_5_NB_DUPLICATES",
+							nb_duplicates_tUniqRow_5);
+
+					ok_Hash.put("tUniqRow_5", true);
+					end_Hash.put("tUniqRow_5", System.currentTimeMillis());
+
+					/**
+					 * [tUniqRow_5 end ] stop
+					 */
+
+					/**
+					 * [tLogRow_2 end ] start
+					 */
+
+					currentComponent = "tLogRow_2";
+
+					ok_Hash.put("tLogRow_2", true);
+					end_Hash.put("tLogRow_2", System.currentTimeMillis());
+
+					/**
+					 * [tLogRow_2 end ] stop
+					 */
+
+					/**
+					 * [tFileOutputDelimited_12 end ] start
+					 */
+
+					currentComponent = "tFileOutputDelimited_12";
+
+				} finally {
+					if (outtFileOutputDelimited_12 != null) {
+						outtFileOutputDelimited_12.flush();
+						outtFileOutputDelimited_12.close();
+					}
+					globalMap.put("tFileOutputDelimited_12_NB_LINE",
+							nb_line_tFileOutputDelimited_12);
+					globalMap.put("tFileOutputDelimited_12_FILE_NAME",
+							fileName_tFileOutputDelimited_12);
+				} // finally
+
+				ok_Hash.put("tFileOutputDelimited_12", true);
+				end_Hash.put("tFileOutputDelimited_12",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileOutputDelimited_12 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tFileInputXML_8:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tJava_6Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		} finally {
+			// free memory for "tMap_7"
+			globalMap.remove("tHash_Lookup_fromTemp1");
+
+		}
+
+		globalMap.put("tFileInputXML_8_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_6Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_6_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_6 begin ] start
+				 */
+
+				ok_Hash.put("tJava_6", false);
+				start_Hash.put("tJava_6", System.currentTimeMillis());
+				currentComponent = "tJava_6";
+
+				int tos_count_tJava_6 = 0;
+
+				StatusListener.setSubStatus(55.0f, (int) (55.0f) + "%");
+
+				/**
+				 * [tJava_6 begin ] stop
+				 */
+				/**
+				 * [tJava_6 main ] start
+				 */
+
+				currentComponent = "tJava_6";
+
+				tos_count_tJava_6++;
+
+				/**
+				 * [tJava_6 main ] stop
+				 */
+				/**
+				 * [tJava_6 end ] start
+				 */
+
+				currentComponent = "tJava_6";
+
+				ok_Hash.put("tJava_6", true);
+				end_Hash.put("tJava_6", System.currentTimeMillis());
+
+				/**
+				 * [tJava_6 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_6:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tFileInputXML_3Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_6_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row10Struct implements
@@ -3050,7 +5751,263 @@ public class ODM_Create_Ontology implements TalendJob {
 	}
 
 	public static class row21Struct implements
-			routines.system.IPersistableRow<row21Struct> {
+			routines.system.IPersistableComparableLookupRow<row21Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String OID;
+
+		public String getOID() {
+			return this.OID;
+		}
+
+		public String order;
+
+		public String getOrder() {
+			return this.order;
+		}
+
+		public String MOID;
+
+		public String getMOID() {
+			return this.MOID;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result
+						+ ((this.OID == null) ? 0 : this.OID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row21Struct other = (row21Struct) obj;
+
+			if (this.OID == null) {
+				if (other.OID != null)
+					return false;
+			} else if (!this.OID.equals(other.OID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row21Struct other) {
+
+			other.OID = this.OID;
+			other.order = this.order;
+			other.MOID = this.MOID;
+
+		}
+
+		public void copyKeysDataTo(row21Struct other) {
+
+			other.OID = this.OID;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.OID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.OID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.order = readString(dis, ois);
+
+				this.MOID = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.order, dos, oos);
+
+				writeString(this.MOID, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("OID=" + OID);
+			sb.append(",order=" + order);
+			sb.append(",MOID=" + MOID);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row21Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.OID, other.OID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class fVisitXMLStruct implements
+			routines.system.IPersistableRow<fVisitXMLStruct> {
 		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
 
@@ -3064,6 +6021,12 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		public String getOrder() {
 			return this.order;
+		}
+
+		public String MOID;
+
+		public String getMOID() {
+			return this.MOID;
 		}
 
 		private String readString(ObjectInputStream dis) throws IOException {
@@ -3112,6 +6075,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.MOID = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -3132,6 +6097,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.MOID, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -3145,6 +6114,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append("[");
 			sb.append("OID=" + OID);
 			sb.append(",order=" + order);
+			sb.append(",MOID=" + MOID);
 			sb.append("]");
 
 			return sb.toString();
@@ -3153,7 +6123,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row21Struct other) {
+		public int compareTo(fVisitXMLStruct other) {
 
 			int returnValue = -1;
 
@@ -3201,6 +6171,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.order;
 		}
 
+		public String MOID;
+
+		public String getMOID() {
+			return this.MOID;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -3247,6 +6223,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.MOID = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -3267,6 +6245,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.MOID, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -3280,6 +6262,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append("[");
 			sb.append("OID=" + OID);
 			sb.append(",order=" + order);
+			sb.append(",MOID=" + MOID);
 			sb.append("]");
 
 			return sb.toString();
@@ -3336,6 +6319,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.order;
 		}
 
+		public String MOID;
+
+		public String getMOID() {
+			return this.MOID;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -3382,6 +6371,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.MOID = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -3402,6 +6393,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.MOID, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -3415,6 +6410,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append("[");
 			sb.append("OID=" + OID);
 			sb.append(",order=" + order);
+			sb.append(",MOID=" + MOID);
 			sb.append("]");
 
 			return sb.toString();
@@ -3475,11 +6471,12 @@ public class ODM_Create_Ontology implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				tFileInputDelimited_8Process(globalMap);
 				tFileInputDelimited_11Process(globalMap);
+				tFileInputDelimited_8Process(globalMap);
 
 				row3Struct row3 = new row3Struct();
-				row21Struct row21 = new row21Struct();
+				fVisitXMLStruct fVisitXML = new fVisitXMLStruct();
+				fVisitXMLStruct row21 = fVisitXML;
 				out8Struct out8 = new out8Struct();
 				row10Struct row10 = new row10Struct();
 
@@ -3765,16 +6762,14 @@ public class ODM_Create_Ontology implements TalendJob {
 					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row15Struct> tHash_Lookup_row15 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row15Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row15Struct>) globalMap
 							.get("tHash_Lookup_row15"));
 
-					tHash_Lookup_row15.initGet();
-
 					row15Struct row15HashKey = new row15Struct();
 					row15Struct row15Default = new row15Struct();
 
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct> tHash_Lookup_row22 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct>) globalMap
-							.get("tHash_Lookup_row22"));
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row24Struct> tHash_Lookup_row24 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row24Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row24Struct>) globalMap
+							.get("tHash_Lookup_row24"));
 
-					row22Struct row22HashKey = new row22Struct();
-					row22Struct row22Default = new row22Struct();
+					row24Struct row24HashKey = new row24Struct();
+					row24Struct row24Default = new row24Struct();
 					// ###############################
 
 					// ###############################
@@ -3791,6 +6786,20 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					/**
 					 * [tMap_9 begin ] stop
+					 */
+
+					/**
+					 * [tLogRow_4 begin ] start
+					 */
+
+					ok_Hash.put("tLogRow_4", false);
+					start_Hash.put("tLogRow_4", System.currentTimeMillis());
+					currentComponent = "tLogRow_4";
+
+					int tos_count_tLogRow_4 = 0;
+
+					/**
+					 * [tLogRow_4 begin ] stop
 					 */
 
 					/**
@@ -4114,6 +7123,12 @@ public class ODM_Create_Ontology implements TalendJob {
 												"/ODM/Study/MetaDataVersion/Protocol/StudyEventRef"));
 						xTmp1_tFileInputXML_3
 								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_3);
+						org.dom4j.XPath xTmp2_tFileInputXML_3 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_3
+										.addDefaultNSPrefix("../../@OID",
+												"/ODM/Study/MetaDataVersion/Protocol/StudyEventRef"));
+						xTmp2_tFileInputXML_3
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_3);
 
 						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_3 : nodeList_tFileInputXML_3) {
 							nb_line_tFileInputXML_3++;
@@ -4205,6 +7220,48 @@ public class ODM_Create_Ontology implements TalendJob {
 								} else {
 									row3.order = str_tFileInputXML_3;
 								}
+								Object obj2_tFileInputXML_3 = xTmp2_tFileInputXML_3
+										.evaluate(temp_tFileInputXML_3);
+								if (obj2_tFileInputXML_3 == null) {
+									node_tFileInputXML_3 = null;
+									str_tFileInputXML_3 = "";
+
+								} else if (obj2_tFileInputXML_3 instanceof org.dom4j.Node) {
+									node_tFileInputXML_3 = (org.dom4j.Node) obj2_tFileInputXML_3;
+									str_tFileInputXML_3 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_3,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj2_tFileInputXML_3 instanceof String
+										|| obj2_tFileInputXML_3 instanceof Number) {
+									node_tFileInputXML_3 = temp_tFileInputXML_3;
+									str_tFileInputXML_3 = String
+											.valueOf(obj2_tFileInputXML_3);
+								} else if (obj2_tFileInputXML_3 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_3 = (java.util.List<org.dom4j.Node>) obj2_tFileInputXML_3;
+									node_tFileInputXML_3 = nodes_tFileInputXML_3
+											.size() > 0 ? nodes_tFileInputXML_3
+											.get(0) : null;
+									str_tFileInputXML_3 = node_tFileInputXML_3 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_3,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_3
+										.isDefNull(node_tFileInputXML_3)) {
+									row3.MOID = null;
+								} else if (xml_api_tFileInputXML_3
+										.isEmpty(node_tFileInputXML_3)) {
+									row3.MOID = "";
+								} else if (xml_api_tFileInputXML_3
+										.isMissing(node_tFileInputXML_3)) {
+									row3.MOID = null;
+								} else {
+									row3.MOID = str_tFileInputXML_3;
+								}
 
 							} catch (java.lang.Exception e) {
 								whetherReject_tFileInputXML_3 = true;
@@ -4242,7 +7299,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								// Code generated according to input schema and
 								// output schema
-								row21.OID = row3.OID;
+								fVisitXML.OID = row3.OID;
 								if (row3.order == null) {
 									row3.order = "";
 								} else {
@@ -4250,7 +7307,8 @@ public class ODM_Create_Ontology implements TalendJob {
 										row3.order = "0" + row3.order;
 									}
 								}
-								row21.order = row3.order;
+								fVisitXML.order = row3.order;
+								fVisitXML.MOID = row3.MOID;
 
 								nb_line_tJavaRow_4++;
 
@@ -4258,6 +7316,20 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								/**
 								 * [tJavaRow_4 main ] stop
+								 */
+
+								/**
+								 * [tLogRow_4 main ] start
+								 */
+
+								currentComponent = "tLogRow_4";
+
+								row21 = fVisitXML;
+
+								tos_count_tLogRow_4++;
+
+								/**
+								 * [tLogRow_4 main ] stop
 								 */
 
 								/**
@@ -4283,89 +7355,95 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								if (!rejectedInnerJoin_tMap_9) { // G_TM_M_020
 
+									hasCasePrimitiveKeyWithNull_tMap_9 = false;
+
+									row15HashKey.VisitOID = row21.OID;
+
+									row15HashKey.hashCodeDirty = true;
+
 									tHash_Lookup_row15.lookup(row15HashKey);
 
-									if (!tHash_Lookup_row15.hasNext()) { // G_TM_M_090
+								} // G_TM_M_020
 
-										forceLooprow15 = true;
+								if (tHash_Lookup_row15 != null
+										&& tHash_Lookup_row15
+												.getCount(row15HashKey) > 1) { // G
+																				// 071
+
+									// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row15' and it contains more one result from keys :  row15.VisitOID = '"
+									// + row15HashKey.VisitOID + "'");
+								} // G 071
+
+								row15Struct row15 = null;
+
+								row15Struct fromLookup_row15 = null;
+								row15 = row15Default;
+
+								if (tHash_Lookup_row15 != null
+										&& tHash_Lookup_row15.hasNext()) { // G
+																			// 099
+
+									fromLookup_row15 = tHash_Lookup_row15
+											.next();
+
+								} // G 099
+
+								if (fromLookup_row15 != null) {
+									row15 = fromLookup_row15;
+								}
+
+								// /////////////////////////////////////////////
+								// Starting Lookup Table "row24"
+								// /////////////////////////////////////////////
+
+								boolean forceLooprow24 = false;
+
+								row24Struct row24ObjectFromLookup = null;
+
+								if (!rejectedInnerJoin_tMap_9) { // G_TM_M_020
+
+									hasCasePrimitiveKeyWithNull_tMap_9 = false;
+
+									row24HashKey.MetaID = row21.MOID;
+
+									row24HashKey.hashCodeDirty = true;
+
+									tHash_Lookup_row24.lookup(row24HashKey);
+
+									if (!tHash_Lookup_row24.hasNext()) { // G_TM_M_090
+
+										forceLooprow24 = true;
 
 									} // G_TM_M_090
 
 								} // G_TM_M_020
 
 								else { // G 20 - G 21
-									forceLooprow15 = true;
+									forceLooprow24 = true;
 								} // G 21
 
-								row15Struct row15 = null;
+								row24Struct row24 = null;
 
-								while ((tHash_Lookup_row15 != null && tHash_Lookup_row15
-										.hasNext()) || forceLooprow15) { // G_TM_M_043
+								while ((tHash_Lookup_row24 != null && tHash_Lookup_row24
+										.hasNext()) || forceLooprow24) { // G_TM_M_043
 
-									// CALL close loop of lookup 'row15'
+									// CALL close loop of lookup 'row24'
 
-									row15Struct fromLookup_row15 = null;
-									row15 = row15Default;
+									row24Struct fromLookup_row24 = null;
+									row24 = row24Default;
 
-									if (!forceLooprow15) { // G 46
+									if (!forceLooprow24) { // G 46
 
-										fromLookup_row15 = tHash_Lookup_row15
+										fromLookup_row24 = tHash_Lookup_row24
 												.next();
 
-										if (fromLookup_row15 != null) {
-											row15 = fromLookup_row15;
+										if (fromLookup_row24 != null) {
+											row24 = fromLookup_row24;
 										}
 
 									} // G 46
 
-									forceLooprow15 = false;
-
-									// /////////////////////////////////////////////
-									// Starting Lookup Table "row22"
-									// /////////////////////////////////////////////
-
-									boolean forceLooprow22 = false;
-
-									row22Struct row22ObjectFromLookup = null;
-
-									if (!rejectedInnerJoin_tMap_9) { // G_TM_M_020
-
-										hasCasePrimitiveKeyWithNull_tMap_9 = false;
-
-										row22HashKey.VisitOID = row21.OID;
-
-										row22HashKey.hashCodeDirty = true;
-
-										tHash_Lookup_row22.lookup(row22HashKey);
-
-									} // G_TM_M_020
-
-									if (tHash_Lookup_row22 != null
-											&& tHash_Lookup_row22
-													.getCount(row22HashKey) > 1) { // G
-																					// 071
-
-										// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row22' and it contains more one result from keys :  row22.VisitOID = '"
-										// + row22HashKey.VisitOID + "'");
-									} // G 071
-
-									row22Struct row22 = null;
-
-									row22Struct fromLookup_row22 = null;
-									row22 = row22Default;
-
-									if (tHash_Lookup_row22 != null
-											&& tHash_Lookup_row22.hasNext()) { // G
-																				// 099
-
-										fromLookup_row22 = tHash_Lookup_row22
-												.next();
-
-									} // G 099
-
-									if (fromLookup_row22 != null) {
-										row22 = fromLookup_row22;
-									}
+									forceLooprow24 = false;
 
 									// ###############################
 									{ // start of Var scope
@@ -4380,21 +7458,21 @@ public class ODM_Create_Ontology implements TalendJob {
 										out8 = null;
 
 										// # Output table : 'out8'
-										out8_tmp.StudyID = row15.StudyID;
-										out8_tmp.MetaID = row15.MetaID;
+										out8_tmp.StudyID = row24.StudyID;
+										out8_tmp.MetaID = row24.MetaID;
 										out8_tmp.VisitID = row21.OID;
-										out8_tmp.FormID = null;
-										out8_tmp.QuestionID = null;
-										out8_tmp.ItemID = null;
-										out8_tmp.ParentItem = null;
+										out8_tmp.FormID = row24.FormID;
+										out8_tmp.QuestionID = row24.QuestionID;
+										out8_tmp.ItemID = row24.ItemID;
+										out8_tmp.ParentItem = row24.ParentItem;
 										out8_tmp.Name = row21.order + " "
-												+ row22.Name;
-										out8_tmp.VisitNo = null;
-										out8_tmp.Sequence = null;
-										out8_tmp.hidden = null;
-										out8_tmp.FormFamily = null;
-										out8_tmp.AdditionalData = null;
-										out8_tmp.item_Datatype = row15.item_Datatype;
+												+ row15.Name;
+										out8_tmp.VisitNo = row24.VisitNo;
+										out8_tmp.Sequence = row24.Sequence;
+										out8_tmp.hidden = row24.hidden;
+										out8_tmp.FormFamily = row24.FormFamily;
+										out8_tmp.AdditionalData = row24.AdditionalData;
+										out8_tmp.item_Datatype = row24.item_Datatype;
 										out8_tmp.HLEVEL = 4;
 										out8 = out8_tmp;
 										// ###############################
@@ -4728,7 +7806,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 									} // End of branch "out8"
 
-								} // close loop of lookup 'row15' // G_TM_M_043
+								} // close loop of lookup 'row24' // G_TM_M_043
 
 							} // End of branch "row3"
 
@@ -4766,6 +7844,19 @@ public class ODM_Create_Ontology implements TalendJob {
 					 */
 
 					/**
+					 * [tLogRow_4 end ] start
+					 */
+
+					currentComponent = "tLogRow_4";
+
+					ok_Hash.put("tLogRow_4", true);
+					end_Hash.put("tLogRow_4", System.currentTimeMillis());
+
+					/**
+					 * [tLogRow_4 end ] stop
+					 */
+
+					/**
 					 * [tMap_9 end ] start
 					 */
 
@@ -4778,10 +7869,10 @@ public class ODM_Create_Ontology implements TalendJob {
 					}
 					globalMap.remove("tHash_Lookup_row15");
 
-					if (tHash_Lookup_row22 != null) {
-						tHash_Lookup_row22.endGet();
+					if (tHash_Lookup_row24 != null) {
+						tHash_Lookup_row24.endGet();
 					}
-					globalMap.remove("tHash_Lookup_row22");
+					globalMap.remove("tHash_Lookup_row24");
 
 					// ###############################
 
@@ -4860,7 +7951,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			globalMap.remove("tHash_Lookup_row15");
 
 			// free memory for "tMap_9"
-			globalMap.remove("tHash_Lookup_row22");
+			globalMap.remove("tHash_Lookup_row24");
 
 		}
 
@@ -5603,9 +8694,15 @@ public class ODM_Create_Ontology implements TalendJob {
 	}
 
 	public static class row17Struct implements
-			routines.system.IPersistableRow<row17Struct> {
+			routines.system.IPersistableComparableLookupRow<row17Struct> {
 		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
 
 		public String FormOID;
 
@@ -5623,6 +8720,55 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		public String getOrder() {
 			return this.order;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime
+						* result
+						+ ((this.FormOID == null) ? 0 : this.FormOID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row17Struct other = (row17Struct) obj;
+
+			if (this.FormOID == null) {
+				if (other.FormOID != null)
+					return false;
+			} else if (!this.FormOID.equals(other.FormOID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row17Struct other) {
+
+			other.FormOID = this.FormOID;
+			other.VisitOID = this.VisitOID;
+			other.order = this.order;
+
+		}
+
+		public void copyKeysDataTo(row17Struct other) {
+
+			other.FormOID = this.FormOID;
+
 		}
 
 		private String readString(ObjectInputStream dis) throws IOException {
@@ -5659,7 +8805,33 @@ public class ODM_Create_Ontology implements TalendJob {
 			}
 		}
 
-		public void readData(ObjectInputStream dis) {
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
 
 			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
 
@@ -5668,10 +8840,6 @@ public class ODM_Create_Ontology implements TalendJob {
 					int length = 0;
 
 					this.FormOID = readString(dis);
-
-					this.VisitOID = readString(dis);
-
-					this.order = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -5682,20 +8850,47 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		}
 
-		public void writeData(ObjectOutputStream dos) {
+		public void writeKeysData(ObjectOutputStream dos) {
 			try {
 
 				// String
 
 				writeString(this.FormOID, dos);
 
-				// String
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 
-				writeString(this.VisitOID, dos);
+		}
 
-				// String
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
 
-				writeString(this.order, dos);
+				int length = 0;
+
+				this.VisitOID = readString(dis, ois);
+
+				this.order = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.VisitOID, dos, oos);
+
+				writeString(this.order, dos, oos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -5722,6 +8917,11 @@ public class ODM_Create_Ontology implements TalendJob {
 		public int compareTo(row17Struct other) {
 
 			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.FormOID, other.FormOID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
 
 			return returnValue;
 		}
@@ -6067,8 +9267,8 @@ public class ODM_Create_Ontology implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				tFileInputDelimited_10Process(globalMap);
 				tFileInputDelimited_12Process(globalMap);
+				tFileInputDelimited_10Process(globalMap);
 
 				FormsStruct Forms = new FormsStruct();
 				row17Struct row17 = new row17Struct();
@@ -6287,17 +9487,17 @@ public class ODM_Create_Ontology implements TalendJob {
 					// ###############################
 					// # Lookup's keys initialization
 
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct> tHash_Lookup_Temp3Visit = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct>) globalMap
-							.get("tHash_Lookup_Temp3Visit"));
-
-					Temp3VisitStruct Temp3VisitHashKey = new Temp3VisitStruct();
-					Temp3VisitStruct Temp3VisitDefault = new Temp3VisitStruct();
-
 					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<FormNamesStruct> tHash_Lookup_FormNames = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<FormNamesStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<FormNamesStruct>) globalMap
 							.get("tHash_Lookup_FormNames"));
 
 					FormNamesStruct FormNamesHashKey = new FormNamesStruct();
 					FormNamesStruct FormNamesDefault = new FormNamesStruct();
+
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct> tHash_Lookup_Temp3Visit = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct>) globalMap
+							.get("tHash_Lookup_Temp3Visit"));
+
+					Temp3VisitStruct Temp3VisitHashKey = new Temp3VisitStruct();
+					Temp3VisitStruct Temp3VisitDefault = new Temp3VisitStruct();
 					// ###############################
 
 					// ###############################
@@ -6841,6 +10041,54 @@ public class ODM_Create_Ontology implements TalendJob {
 								boolean mainRowRejected_tMap_12 = false;
 
 								// /////////////////////////////////////////////
+								// Starting Lookup Table "FormNames"
+								// /////////////////////////////////////////////
+
+								boolean forceLoopFormNames = false;
+
+								FormNamesStruct FormNamesObjectFromLookup = null;
+
+								if (!rejectedInnerJoin_tMap_12) { // G_TM_M_020
+
+									hasCasePrimitiveKeyWithNull_tMap_12 = false;
+
+									FormNamesHashKey.FormOID = row17.FormOID;
+
+									FormNamesHashKey.hashCodeDirty = true;
+
+									tHash_Lookup_FormNames
+											.lookup(FormNamesHashKey);
+
+								} // G_TM_M_020
+
+								if (tHash_Lookup_FormNames != null
+										&& tHash_Lookup_FormNames
+												.getCount(FormNamesHashKey) > 1) { // G
+																					// 071
+
+									// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'FormNames' and it contains more one result from keys :  FormNames.FormOID = '"
+									// + FormNamesHashKey.FormOID + "'");
+								} // G 071
+
+								FormNamesStruct FormNames = null;
+
+								FormNamesStruct fromLookup_FormNames = null;
+								FormNames = FormNamesDefault;
+
+								if (tHash_Lookup_FormNames != null
+										&& tHash_Lookup_FormNames.hasNext()) { // G
+																				// 099
+
+									fromLookup_FormNames = tHash_Lookup_FormNames
+											.next();
+
+								} // G 099
+
+								if (fromLookup_FormNames != null) {
+									FormNames = fromLookup_FormNames;
+								}
+
+								// /////////////////////////////////////////////
 								// Starting Lookup Table "Temp3Visit"
 								// /////////////////////////////////////////////
 
@@ -6893,54 +10141,6 @@ public class ODM_Create_Ontology implements TalendJob {
 									} // G 46
 
 									forceLoopTemp3Visit = false;
-
-									// /////////////////////////////////////////////
-									// Starting Lookup Table "FormNames"
-									// /////////////////////////////////////////////
-
-									boolean forceLoopFormNames = false;
-
-									FormNamesStruct FormNamesObjectFromLookup = null;
-
-									if (!rejectedInnerJoin_tMap_12) { // G_TM_M_020
-
-										hasCasePrimitiveKeyWithNull_tMap_12 = false;
-
-										FormNamesHashKey.FormOID = row17.FormOID;
-
-										FormNamesHashKey.hashCodeDirty = true;
-
-										tHash_Lookup_FormNames
-												.lookup(FormNamesHashKey);
-
-									} // G_TM_M_020
-
-									if (tHash_Lookup_FormNames != null
-											&& tHash_Lookup_FormNames
-													.getCount(FormNamesHashKey) > 1) { // G
-																						// 071
-
-										// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'FormNames' and it contains more one result from keys :  FormNames.FormOID = '"
-										// + FormNamesHashKey.FormOID + "'");
-									} // G 071
-
-									FormNamesStruct FormNames = null;
-
-									FormNamesStruct fromLookup_FormNames = null;
-									FormNames = FormNamesDefault;
-
-									if (tHash_Lookup_FormNames != null
-											&& tHash_Lookup_FormNames.hasNext()) { // G
-																					// 099
-
-										fromLookup_FormNames = tHash_Lookup_FormNames
-												.next();
-
-									} // G 099
-
-									if (fromLookup_FormNames != null) {
-										FormNames = fromLookup_FormNames;
-									}
 
 									// ###############################
 									{ // start of Var scope
@@ -7361,15 +10561,15 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					// ###############################
 					// # Lookup hashes releasing
-					if (tHash_Lookup_Temp3Visit != null) {
-						tHash_Lookup_Temp3Visit.endGet();
-					}
-					globalMap.remove("tHash_Lookup_Temp3Visit");
-
 					if (tHash_Lookup_FormNames != null) {
 						tHash_Lookup_FormNames.endGet();
 					}
 					globalMap.remove("tHash_Lookup_FormNames");
+
+					if (tHash_Lookup_Temp3Visit != null) {
+						tHash_Lookup_Temp3Visit.endGet();
+					}
+					globalMap.remove("tHash_Lookup_Temp3Visit");
 
 					// ###############################
 
@@ -7445,10 +10645,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} finally {
 			// free memory for "tMap_12"
-			globalMap.remove("tHash_Lookup_Temp3Visit");
+			globalMap.remove("tHash_Lookup_FormNames");
 
 			// free memory for "tMap_12"
-			globalMap.remove("tHash_Lookup_FormNames");
+			globalMap.remove("tHash_Lookup_Temp3Visit");
 
 		}
 
@@ -12364,11 +15564,11 @@ public class ODM_Create_Ontology implements TalendJob {
 					// ###############################
 					// # Lookup's keys initialization
 
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct> tHash_Lookup_row14 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct>) globalMap
-							.get("tHash_Lookup_row14"));
+					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromCodeListStruct> tHash_Lookup_fromCodeList = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromCodeListStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromCodeListStruct>) globalMap
+							.get("tHash_Lookup_fromCodeList"));
 
-					row14Struct row14HashKey = new row14Struct();
-					row14Struct row14Default = new row14Struct();
+					fromCodeListStruct fromCodeListHashKey = new fromCodeListStruct();
+					fromCodeListStruct fromCodeListDefault = new fromCodeListStruct();
 					// ###############################
 
 					// ###############################
@@ -13237,53 +16437,55 @@ public class ODM_Create_Ontology implements TalendJob {
 											boolean mainRowRejected_tMap_29 = false;
 
 											// /////////////////////////////////////////////
-											// Starting Lookup Table "row14"
+											// Starting Lookup Table
+											// "fromCodeList"
 											// /////////////////////////////////////////////
 
-											boolean forceLooprow14 = false;
+											boolean forceLoopfromCodeList = false;
 
-											row14Struct row14ObjectFromLookup = null;
+											fromCodeListStruct fromCodeListObjectFromLookup = null;
 
 											if (!rejectedInnerJoin_tMap_29) { // G_TM_M_020
 
 												hasCasePrimitiveKeyWithNull_tMap_29 = false;
 
-												row14HashKey.ItemGroupOID = row16.ItemID;
+												fromCodeListHashKey.ItemGroupOID = row16.ItemID;
 
-												row14HashKey.hashCodeDirty = true;
+												fromCodeListHashKey.hashCodeDirty = true;
 
-												tHash_Lookup_row14
-														.lookup(row14HashKey);
+												tHash_Lookup_fromCodeList
+														.lookup(fromCodeListHashKey);
 
 											} // G_TM_M_020
 
-											if (tHash_Lookup_row14 != null
-													&& tHash_Lookup_row14
-															.getCount(row14HashKey) > 1) { // G
-																							// 071
+											if (tHash_Lookup_fromCodeList != null
+													&& tHash_Lookup_fromCodeList
+															.getCount(fromCodeListHashKey) > 1) { // G
+																									// 071
 
-												// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row14' and it contains more one result from keys :  row14.ItemGroupOID = '"
-												// + row14HashKey.ItemGroupOID +
-												// "'");
+												// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'fromCodeList' and it contains more one result from keys :  fromCodeList.ItemGroupOID = '"
+												// +
+												// fromCodeListHashKey.ItemGroupOID
+												// + "'");
 											} // G 071
 
-											row14Struct row14 = null;
+											fromCodeListStruct fromCodeList = null;
 
-											row14Struct fromLookup_row14 = null;
-											row14 = row14Default;
+											fromCodeListStruct fromLookup_fromCodeList = null;
+											fromCodeList = fromCodeListDefault;
 
-											if (tHash_Lookup_row14 != null
-													&& tHash_Lookup_row14
+											if (tHash_Lookup_fromCodeList != null
+													&& tHash_Lookup_fromCodeList
 															.hasNext()) { // G
 																			// 099
 
-												fromLookup_row14 = tHash_Lookup_row14
+												fromLookup_fromCodeList = tHash_Lookup_fromCodeList
 														.next();
 
 											} // G 099
 
-											if (fromLookup_row14 != null) {
-												row14 = fromLookup_row14;
+											if (fromLookup_fromCodeList != null) {
+												fromCodeList = fromLookup_fromCodeList;
 											}
 
 											// ###############################
@@ -13313,7 +16515,7 @@ public class ODM_Create_Ontology implements TalendJob {
 												asd_tmp.VisitNo = row16.VisitNo;
 												asd_tmp.Sequence = row16.Sequence;
 												asd_tmp.hidden = row16.hidden;
-												asd_tmp.FormFamily = row14.OID;
+												asd_tmp.FormFamily = fromCodeList.OID;
 												asd_tmp.AdditionalData = row16.AdditionalData;
 												asd_tmp.item_Datatype = row16.item_Datatype;
 												asd_tmp.HLEVEL = row16.HLEVEL;
@@ -13779,10 +16981,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					// ###############################
 					// # Lookup hashes releasing
-					if (tHash_Lookup_row14 != null) {
-						tHash_Lookup_row14.endGet();
+					if (tHash_Lookup_fromCodeList != null) {
+						tHash_Lookup_fromCodeList.endGet();
 					}
-					globalMap.remove("tHash_Lookup_row14");
+					globalMap.remove("tHash_Lookup_fromCodeList");
 
 					// ###############################
 
@@ -13858,7 +17060,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		} finally {
 			// free memory for "tMap_29"
-			globalMap.remove("tHash_Lookup_row14");
+			globalMap.remove("tHash_Lookup_fromCodeList");
 
 			// free memory for "tMap_15"
 			globalMap.remove("tHash_Lookup_fromTemp5ItemGroup");
@@ -18852,25 +22054,119 @@ public class ODM_Create_Ontology implements TalendJob {
 				globalMap.put("tFileOutputDelimited_26_FILE_NAME",
 						fileName_tFileOutputDelimited_26);
 
+				String[] headColutFileOutputDelimited_26 = new String[13];
+				class CSVBasicSet_tFileOutputDelimited_26 {
+					private char field_Delim;
+					private char row_Delim;
+					private char escape;
+					private char textEnclosure;
+					private boolean useCRLFRecordDelimiter;
+
+					public boolean isUseCRLFRecordDelimiter() {
+						return useCRLFRecordDelimiter;
+					}
+
+					public void setFieldSeparator(String fieldSep)
+							throws IllegalArgumentException {
+						char field_Delim_tFileOutputDelimited_26[] = null;
+
+						// support passing value (property: Field Separator) by
+						// 'context.fs' or 'globalMap.get("fs")'.
+						if (fieldSep.length() > 0) {
+							field_Delim_tFileOutputDelimited_26 = fieldSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Field Separator must be assigned a char.");
+						}
+						this.field_Delim = field_Delim_tFileOutputDelimited_26[0];
+					}
+
+					public char getFieldDelim() {
+						if (this.field_Delim == 0) {
+							setFieldSeparator("\t");
+						}
+						return this.field_Delim;
+					}
+
+					public void setRowSeparator(String rowSep) {
+						if ("\r\n".equals(rowSep)) {
+							useCRLFRecordDelimiter = true;
+							return;
+						}
+						char row_DelimtFileOutputDelimited_26[] = null;
+
+						// support passing value (property: Row Separator) by
+						// 'context.rs' or 'globalMap.get("rs")'.
+						if (rowSep.length() > 0) {
+							row_DelimtFileOutputDelimited_26 = rowSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Row Separator must be assigned a char.");
+						}
+						this.row_Delim = row_DelimtFileOutputDelimited_26[0];
+					}
+
+					public char getRowDelim() {
+						if (this.row_Delim == 0) {
+							setRowSeparator("\n");
+						}
+						return this.row_Delim;
+					}
+
+					public void setEscapeAndTextEnclosure(String strEscape,
+							String strTextEnclosure)
+							throws IllegalArgumentException {
+						if (strEscape.length() <= 0) {
+							throw new IllegalArgumentException(
+									"Escape Char must be assigned a char.");
+						}
+
+						if ("".equals(strTextEnclosure))
+							strTextEnclosure = "\0";
+						char textEnclosure_tFileOutputDelimited_26[] = null;
+
+						if (strTextEnclosure.length() > 0) {
+							textEnclosure_tFileOutputDelimited_26 = strTextEnclosure
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Text Enclosure must be assigned a char.");
+						}
+
+						this.textEnclosure = textEnclosure_tFileOutputDelimited_26[0];
+
+						if (("\\").equals(strEscape)) {
+							this.escape = '\\';
+						} else if (strEscape.equals(strTextEnclosure)) {
+							this.escape = this.textEnclosure;
+						} else {
+							// the default escape mode is double escape
+							this.escape = this.textEnclosure;
+						}
+
+					}
+
+					public char getEscapeChar() {
+						return (char) this.escape;
+					}
+
+					public char getTextEnclosure() {
+						return this.textEnclosure;
+					}
+				}
+
 				int nb_line_tFileOutputDelimited_26 = 0;
 				int splitEvery_tFileOutputDelimited_26 = 1000;
 				int splitedFileNo_tFileOutputDelimited_26 = 0;
 				int currentRow_tFileOutputDelimited_26 = 0;
 
-				final String OUT_DELIM_tFileOutputDelimited_26 = /**
-				 * Start field
-				 * tFileOutputDelimited_26:FIELDSEPARATOR
-				 */
-				"\t"/** End field tFileOutputDelimited_26:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_26 = /**
-				 * Start
-				 * field tFileOutputDelimited_26:ROWSEPARATOR
-				 */
-				"\n"/** End field tFileOutputDelimited_26:ROWSEPARATOR */
-				;
-
+				CSVBasicSet_tFileOutputDelimited_26 csvSettings_tFileOutputDelimited_26 = new CSVBasicSet_tFileOutputDelimited_26();
+				csvSettings_tFileOutputDelimited_26.setFieldSeparator("\t");
+				csvSettings_tFileOutputDelimited_26.setRowSeparator("\n");
+				csvSettings_tFileOutputDelimited_26.setEscapeAndTextEnclosure(
+						"\"", "\"");
 				// create directory only if not exists
 				if (directory_tFileOutputDelimited_26 != null
 						&& directory_tFileOutputDelimited_26.trim().length() != 0) {
@@ -18880,84 +22176,71 @@ public class ODM_Create_Ontology implements TalendJob {
 						dir_tFileOutputDelimited_26.mkdirs();
 					}
 				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_26 = null;
+				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_26 = null;
 				try {
-					outtFileOutputDelimited_26 = new java.io.BufferedWriter(
-							new java.io.OutputStreamWriter(
-									new java.io.FileOutputStream(
-											fileName_tFileOutputDelimited_26,
-											false), "ISO-8859-15"));
+					CsvWritertFileOutputDelimited_26 = new com.talend.csv.CSVWriter(
+							new java.io.BufferedWriter(
+									new java.io.OutputStreamWriter(
+											new java.io.FileOutputStream(
+													fileName_tFileOutputDelimited_26,
+													false), "ISO-8859-15")));
+					CsvWritertFileOutputDelimited_26
+							.setSeparator(csvSettings_tFileOutputDelimited_26
+									.getFieldDelim());
+
+					if (!csvSettings_tFileOutputDelimited_26
+							.isUseCRLFRecordDelimiter()
+							&& csvSettings_tFileOutputDelimited_26
+									.getRowDelim() != '\r'
+							&& csvSettings_tFileOutputDelimited_26
+									.getRowDelim() != '\n') {
+						CsvWritertFileOutputDelimited_26.setLineEnd(""
+								+ csvSettings_tFileOutputDelimited_26
+										.getRowDelim());
+					}
 
 					if (filetFileOutputDelimited_26.length() == 0) {
 
-						outtFileOutputDelimited_26.write("HLEVEL");
+						headColutFileOutputDelimited_26[0] = "HLEVEL";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[1] = "Name";
 
-						outtFileOutputDelimited_26.write("Name");
+						headColutFileOutputDelimited_26[2] = "Path";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[3] = "DataType";
 
-						outtFileOutputDelimited_26.write("Path");
+						headColutFileOutputDelimited_26[4] = "Update_Date";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[5] = "Import_Date";
 
-						outtFileOutputDelimited_26.write("DataType");
+						headColutFileOutputDelimited_26[6] = "Download_Date";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[7] = "PathID";
 
-						outtFileOutputDelimited_26.write("Update_Date");
+						headColutFileOutputDelimited_26[8] = "visual";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[9] = "itemCode";
 
-						outtFileOutputDelimited_26.write("Import_Date");
+						headColutFileOutputDelimited_26[10] = "source";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						headColutFileOutputDelimited_26[11] = "xml";
 
-						outtFileOutputDelimited_26.write("Download_Date");
+						headColutFileOutputDelimited_26[12] = "m_applied_path";
 
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
+						CsvWritertFileOutputDelimited_26
+								.writeNext(headColutFileOutputDelimited_26);
+						CsvWritertFileOutputDelimited_26.flush();
 
-						outtFileOutputDelimited_26.write("PathID");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
-
-						outtFileOutputDelimited_26.write("visual");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
-
-						outtFileOutputDelimited_26.write("itemCode");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
-
-						outtFileOutputDelimited_26.write("source");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
-
-						outtFileOutputDelimited_26.write("xml");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_tFileOutputDelimited_26);
-
-						outtFileOutputDelimited_26.write("m_applied_path");
-
-						outtFileOutputDelimited_26
-								.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
-						outtFileOutputDelimited_26.flush();
 					}
+
+					CsvWritertFileOutputDelimited_26
+							.setEscapeChar(csvSettings_tFileOutputDelimited_26
+									.getEscapeChar());
+					CsvWritertFileOutputDelimited_26
+							.setQuoteChar(csvSettings_tFileOutputDelimited_26
+									.getTextEnclosure());
+					CsvWritertFileOutputDelimited_26
+							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 					/**
 					 * [tFileOutputDelimited_26 begin ] stop
@@ -19282,186 +22565,56 @@ public class ODM_Create_Ontology implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_26";
 
-									StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+									String[] rowtFileOutputDelimited_26 = new String[13];
 
-									if (out6.HLEVEL != null) {
+									rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+											: String.valueOf(out6.HLEVEL);
 
-										sb_tFileOutputDelimited_26.append(
+									rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+											: out6.Name;
 
-										out6.HLEVEL
+									rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+											: out6.Path;
 
-										);
+									rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+											: out6.DataType;
 
-									}
+									rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Update_Date,
+													"yyyy-MM-dd");
 
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Import_Date,
+													"yyyy-MM-dd");
 
-									if (out6.Name != null) {
+									rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Download_Date,
+													"yyyy-MM-dd");
 
-										sb_tFileOutputDelimited_26.append(
+									rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+											: out6.PathID;
 
-										out6.Name
+									rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+											: out6.visual;
 
-										);
+									rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+											: out6.itemCode;
 
-									}
+									rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+											: out6.source;
 
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+											: out6.xml;
 
-									if (out6.Path != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.DataType != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Update_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Update_Date, "yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Import_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Import_Date, "yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Download_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Download_Date,
-												"yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.PathID != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.visual != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.itemCode != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.itemCode
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.source != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.xml != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+											: out6.m_applied_path;
 
 									nb_line_tFileOutputDelimited_26++;
-
-									outtFileOutputDelimited_26
-											.write(sb_tFileOutputDelimited_26
-													.toString());
+									CsvWritertFileOutputDelimited_26
+											.writeNext(rowtFileOutputDelimited_26);
 
 									tos_count_tFileOutputDelimited_26++;
 
@@ -19775,186 +22928,56 @@ public class ODM_Create_Ontology implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_26";
 
-									StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+									String[] rowtFileOutputDelimited_26 = new String[13];
 
-									if (out6.HLEVEL != null) {
+									rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+											: String.valueOf(out6.HLEVEL);
 
-										sb_tFileOutputDelimited_26.append(
+									rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+											: out6.Name;
 
-										out6.HLEVEL
+									rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+											: out6.Path;
 
-										);
+									rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+											: out6.DataType;
 
-									}
+									rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Update_Date,
+													"yyyy-MM-dd");
 
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Import_Date,
+													"yyyy-MM-dd");
 
-									if (out6.Name != null) {
+									rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+											: FormatterUtils.format_Date(
+													out6.Download_Date,
+													"yyyy-MM-dd");
 
-										sb_tFileOutputDelimited_26.append(
+									rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+											: out6.PathID;
 
-										out6.Name
+									rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+											: out6.visual;
 
-										);
+									rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+											: out6.itemCode;
 
-									}
+									rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+											: out6.source;
 
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+											: out6.xml;
 
-									if (out6.Path != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.DataType != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Update_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Update_Date, "yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Import_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Import_Date, "yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.Download_Date != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										FormatterUtils.format_Date(
-												out6.Download_Date,
-												"yyyy-MM-dd")
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.PathID != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.visual != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.itemCode != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.itemCode
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.source != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.xml != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_tFileOutputDelimited_26);
-
-									if (out6.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_26.append(
-
-										out6.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_26
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+									rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+											: out6.m_applied_path;
 
 									nb_line_tFileOutputDelimited_26++;
-
-									outtFileOutputDelimited_26
-											.write(sb_tFileOutputDelimited_26
-													.toString());
+									CsvWritertFileOutputDelimited_26
+											.writeNext(rowtFileOutputDelimited_26);
 
 									tos_count_tFileOutputDelimited_26++;
 
@@ -20391,204 +23414,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -21041,204 +23919,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -21693,204 +24426,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -22346,204 +24934,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -23001,204 +25444,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -23664,204 +25962,59 @@ public class ODM_Create_Ontology implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_26";
 
-											StringBuilder sb_tFileOutputDelimited_26 = new StringBuilder();
+											String[] rowtFileOutputDelimited_26 = new String[13];
 
-											if (out6.HLEVEL != null) {
+											rowtFileOutputDelimited_26[0] = out6.HLEVEL == null ? ""
+													: String.valueOf(out6.HLEVEL);
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[1] = out6.Name == null ? ""
+													: out6.Name;
 
-														out6.HLEVEL
+											rowtFileOutputDelimited_26[2] = out6.Path == null ? ""
+													: out6.Path;
 
-														);
+											rowtFileOutputDelimited_26[3] = out6.DataType == null ? ""
+													: out6.DataType;
 
-											}
+											rowtFileOutputDelimited_26[4] = out6.Update_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Update_Date,
+																	"yyyy-MM-dd");
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[5] = out6.Import_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Import_Date,
+																	"yyyy-MM-dd");
 
-											if (out6.Name != null) {
+											rowtFileOutputDelimited_26[6] = out6.Download_Date == null ? ""
+													: FormatterUtils
+															.format_Date(
+																	out6.Download_Date,
+																	"yyyy-MM-dd");
 
-												sb_tFileOutputDelimited_26
-														.append(
+											rowtFileOutputDelimited_26[7] = out6.PathID == null ? ""
+													: out6.PathID;
 
-														out6.Name
+											rowtFileOutputDelimited_26[8] = out6.visual == null ? ""
+													: out6.visual;
 
-														);
+											rowtFileOutputDelimited_26[9] = out6.itemCode == null ? ""
+													: out6.itemCode;
 
-											}
+											rowtFileOutputDelimited_26[10] = out6.source == null ? ""
+													: out6.source;
 
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[11] = out6.xml == null ? ""
+													: out6.xml;
 
-											if (out6.Path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.Path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.DataType != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.DataType
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Update_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Update_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Import_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Import_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.Download_Date != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														FormatterUtils
-																.format_Date(
-																		out6.Download_Date,
-																		"yyyy-MM-dd")
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.PathID != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.PathID
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.visual != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.visual
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.itemCode != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.itemCode
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.source != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.source
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.xml != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.xml
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_tFileOutputDelimited_26);
-
-											if (out6.m_applied_path != null) {
-
-												sb_tFileOutputDelimited_26
-														.append(
-
-														out6.m_applied_path
-
-														);
-
-											}
-
-											sb_tFileOutputDelimited_26
-													.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_26);
+											rowtFileOutputDelimited_26[12] = out6.m_applied_path == null ? ""
+													: out6.m_applied_path;
 
 											nb_line_tFileOutputDelimited_26++;
-
-											outtFileOutputDelimited_26
-													.write(sb_tFileOutputDelimited_26
-															.toString());
+											CsvWritertFileOutputDelimited_26
+													.writeNext(rowtFileOutputDelimited_26);
 
 											tos_count_tFileOutputDelimited_26++;
 
@@ -23968,14 +26121,12 @@ public class ODM_Create_Ontology implements TalendJob {
 					currentComponent = "tFileOutputDelimited_26";
 
 				} finally {
-					if (outtFileOutputDelimited_26 != null) {
-						outtFileOutputDelimited_26.flush();
-						outtFileOutputDelimited_26.close();
+
+					if (CsvWritertFileOutputDelimited_26 != null) {
+						CsvWritertFileOutputDelimited_26.close();
 					}
 					globalMap.put("tFileOutputDelimited_26_NB_LINE",
 							nb_line_tFileOutputDelimited_26);
-					globalMap.put("tFileOutputDelimited_26_FILE_NAME",
-							fileName_tFileOutputDelimited_26);
 				} // finally
 
 				ok_Hash.put("tFileOutputDelimited_26", true);
@@ -24170,4524 +26321,6 @@ public class ODM_Create_Ontology implements TalendJob {
 		}
 
 		globalMap.put("tJava_10_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row15Struct implements
-			routines.system.IPersistableRow<row15Struct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-
-		public String StudyID;
-
-		public String getStudyID() {
-			return this.StudyID;
-		}
-
-		public String MetaID;
-
-		public String getMetaID() {
-			return this.MetaID;
-		}
-
-		public String VisitID;
-
-		public String getVisitID() {
-			return this.VisitID;
-		}
-
-		public String FormID;
-
-		public String getFormID() {
-			return this.FormID;
-		}
-
-		public String QuestionID;
-
-		public String getQuestionID() {
-			return this.QuestionID;
-		}
-
-		public String ItemID;
-
-		public String getItemID() {
-			return this.ItemID;
-		}
-
-		public String ParentItem;
-
-		public String getParentItem() {
-			return this.ParentItem;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String VisitNo;
-
-		public String getVisitNo() {
-			return this.VisitNo;
-		}
-
-		public String Sequence;
-
-		public String getSequence() {
-			return this.Sequence;
-		}
-
-		public String hidden;
-
-		public String getHidden() {
-			return this.hidden;
-		}
-
-		public String FormFamily;
-
-		public String getFormFamily() {
-			return this.FormFamily;
-		}
-
-		public String AdditionalData;
-
-		public String getAdditionalData() {
-			return this.AdditionalData;
-		}
-
-		public String item_Datatype;
-
-		public String getItem_Datatype() {
-			return this.item_Datatype;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.StudyID = readString(dis);
-
-					this.MetaID = readString(dis);
-
-					this.VisitID = readString(dis);
-
-					this.FormID = readString(dis);
-
-					this.QuestionID = readString(dis);
-
-					this.ItemID = readString(dis);
-
-					this.ParentItem = readString(dis);
-
-					this.Name = readString(dis);
-
-					this.VisitNo = readString(dis);
-
-					this.Sequence = readString(dis);
-
-					this.hidden = readString(dis);
-
-					this.FormFamily = readString(dis);
-
-					this.AdditionalData = readString(dis);
-
-					this.item_Datatype = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.StudyID, dos);
-
-				// String
-
-				writeString(this.MetaID, dos);
-
-				// String
-
-				writeString(this.VisitID, dos);
-
-				// String
-
-				writeString(this.FormID, dos);
-
-				// String
-
-				writeString(this.QuestionID, dos);
-
-				// String
-
-				writeString(this.ItemID, dos);
-
-				// String
-
-				writeString(this.ParentItem, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.VisitNo, dos);
-
-				// String
-
-				writeString(this.Sequence, dos);
-
-				// String
-
-				writeString(this.hidden, dos);
-
-				// String
-
-				writeString(this.FormFamily, dos);
-
-				// String
-
-				writeString(this.AdditionalData, dos);
-
-				// String
-
-				writeString(this.item_Datatype, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("StudyID=" + StudyID);
-			sb.append(",MetaID=" + MetaID);
-			sb.append(",VisitID=" + VisitID);
-			sb.append(",FormID=" + FormID);
-			sb.append(",QuestionID=" + QuestionID);
-			sb.append(",ItemID=" + ItemID);
-			sb.append(",ParentItem=" + ParentItem);
-			sb.append(",Name=" + Name);
-			sb.append(",VisitNo=" + VisitNo);
-			sb.append(",Sequence=" + Sequence);
-			sb.append(",hidden=" + hidden);
-			sb.append(",FormFamily=" + FormFamily);
-			sb.append(",AdditionalData=" + AdditionalData);
-			sb.append(",item_Datatype=" + item_Datatype);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row15Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_8Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_8_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				row15Struct row15 = new row15Struct();
-
-				/**
-				 * [tAdvancedHash_row15 begin ] start
-				 */
-
-				ok_Hash.put("tAdvancedHash_row15", false);
-				start_Hash.put("tAdvancedHash_row15",
-						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_row15";
-
-				int tos_count_tAdvancedHash_row15 = 0;
-
-				// connection name:row15
-				// source node:tFileInputDelimited_8 -
-				// inputs:(after_tFileInputXML_3) outputs:(row15,row15) | target
-				// node:tAdvancedHash_row15 - inputs:(row15) outputs:()
-				// linked node: tMap_9 - inputs:(row21,row15,row22)
-				// outputs:(out8)
-
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row15 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_ROWS;
-
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row15Struct> tHash_Lookup_row15 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<row15Struct> getLookup(matchingModeEnum_row15);
-
-				globalMap.put("tHash_Lookup_row15", tHash_Lookup_row15);
-
-				/**
-				 * [tAdvancedHash_row15 begin ] stop
-				 */
-
-				/**
-				 * [tFileInputDelimited_8 begin ] start
-				 */
-
-				ok_Hash.put("tFileInputDelimited_8", false);
-				start_Hash.put("tFileInputDelimited_8",
-						System.currentTimeMillis());
-				currentComponent = "tFileInputDelimited_8";
-
-				int tos_count_tFileInputDelimited_8 = 0;
-
-				int nb_line_tFileInputDelimited_8 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_8 = null;
-				try {
-
-					Object filename_tFileInputDelimited_8 = ((String) globalMap
-							.get("tCreateTemporaryFile_4_FILEPATH"));
-					if (filename_tFileInputDelimited_8 instanceof java.io.InputStream) {
-
-						int footer_value_tFileInputDelimited_8 = 0, random_value_tFileInputDelimited_8 = -1;
-						if (footer_value_tFileInputDelimited_8 > 0
-								|| random_value_tFileInputDelimited_8 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
-						}
-
-					}
-					try {
-						fid_tFileInputDelimited_8 = new org.talend.fileprocess.FileInputDelimited(
-								((String) globalMap
-										.get("tCreateTemporaryFile_4_FILEPATH")),
-								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
-								false);
-					} catch (java.lang.Exception e) {
-
-						System.err.println(e.getMessage());
-
-					}
-
-					while (fid_tFileInputDelimited_8 != null
-							&& fid_tFileInputDelimited_8.nextRecord()) {
-
-						row15 = null;
-
-						row15 = null;
-
-						boolean whetherReject_tFileInputDelimited_8 = false;
-						row15 = new row15Struct();
-						try {
-
-							int columnIndexWithD_tFileInputDelimited_8 = 0;
-
-							columnIndexWithD_tFileInputDelimited_8 = 0;
-
-							row15.StudyID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 1;
-
-							row15.MetaID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 2;
-
-							row15.VisitID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 3;
-
-							row15.FormID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 4;
-
-							row15.QuestionID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 5;
-
-							row15.ItemID = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 6;
-
-							row15.ParentItem = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 7;
-
-							row15.Name = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 8;
-
-							row15.VisitNo = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 9;
-
-							row15.Sequence = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 10;
-
-							row15.hidden = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 11;
-
-							row15.FormFamily = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 12;
-
-							row15.AdditionalData = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-							columnIndexWithD_tFileInputDelimited_8 = 13;
-
-							row15.item_Datatype = fid_tFileInputDelimited_8
-									.get(columnIndexWithD_tFileInputDelimited_8);
-
-						} catch (java.lang.Exception e) {
-							whetherReject_tFileInputDelimited_8 = true;
-
-							System.err.println(e.getMessage());
-							row15 = null;
-
-						}
-
-						/**
-						 * [tFileInputDelimited_8 begin ] stop
-						 */
-						/**
-						 * [tFileInputDelimited_8 main ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_8";
-
-						tos_count_tFileInputDelimited_8++;
-
-						/**
-						 * [tFileInputDelimited_8 main ] stop
-						 */
-						// Start of branch "row15"
-						if (row15 != null) {
-
-							/**
-							 * [tAdvancedHash_row15 main ] start
-							 */
-
-							currentComponent = "tAdvancedHash_row15";
-
-							row15Struct row15_HashRow = new row15Struct();
-
-							row15_HashRow.StudyID = row15.StudyID;
-
-							row15_HashRow.MetaID = row15.MetaID;
-
-							row15_HashRow.VisitID = row15.VisitID;
-
-							row15_HashRow.FormID = row15.FormID;
-
-							row15_HashRow.QuestionID = row15.QuestionID;
-
-							row15_HashRow.ItemID = row15.ItemID;
-
-							row15_HashRow.ParentItem = row15.ParentItem;
-
-							row15_HashRow.Name = row15.Name;
-
-							row15_HashRow.VisitNo = row15.VisitNo;
-
-							row15_HashRow.Sequence = row15.Sequence;
-
-							row15_HashRow.hidden = row15.hidden;
-
-							row15_HashRow.FormFamily = row15.FormFamily;
-
-							row15_HashRow.AdditionalData = row15.AdditionalData;
-
-							row15_HashRow.item_Datatype = row15.item_Datatype;
-
-							tHash_Lookup_row15.put(row15_HashRow);
-
-							tos_count_tAdvancedHash_row15++;
-
-							/**
-							 * [tAdvancedHash_row15 main ] stop
-							 */
-
-						} // End of branch "row15"
-
-						/**
-						 * [tFileInputDelimited_8 end ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_8";
-
-					}
-				} finally {
-					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_4_FILEPATH"))) instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_8 != null) {
-							fid_tFileInputDelimited_8.close();
-						}
-					}
-					if (fid_tFileInputDelimited_8 != null) {
-						globalMap.put("tFileInputDelimited_8_NB_LINE",
-								fid_tFileInputDelimited_8.getRowNumber());
-					}
-				}
-
-				ok_Hash.put("tFileInputDelimited_8", true);
-				end_Hash.put("tFileInputDelimited_8",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileInputDelimited_8 end ] stop
-				 */
-
-				/**
-				 * [tAdvancedHash_row15 end ] start
-				 */
-
-				currentComponent = "tAdvancedHash_row15";
-
-				tHash_Lookup_row15.endPut();
-
-				ok_Hash.put("tAdvancedHash_row15", true);
-				end_Hash.put("tAdvancedHash_row15", System.currentTimeMillis());
-
-				/**
-				 * [tAdvancedHash_row15 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tFileInputDelimited_8_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row22Struct implements
-			routines.system.IPersistableComparableLookupRow<row22Struct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-		protected static final int DEFAULT_HASHCODE = 1;
-		protected static final int PRIME = 31;
-		protected int hashCode = DEFAULT_HASHCODE;
-		public boolean hashCodeDirty = true;
-
-		public String loopKey;
-
-		public String VisitOID;
-
-		public String getVisitOID() {
-			return this.VisitOID;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		@Override
-		public int hashCode() {
-			if (this.hashCodeDirty) {
-				final int prime = PRIME;
-				int result = DEFAULT_HASHCODE;
-
-				result = prime
-						* result
-						+ ((this.VisitOID == null) ? 0 : this.VisitOID
-								.hashCode());
-
-				this.hashCode = result;
-				this.hashCodeDirty = false;
-			}
-			return this.hashCode;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final row22Struct other = (row22Struct) obj;
-
-			if (this.VisitOID == null) {
-				if (other.VisitOID != null)
-					return false;
-			} else if (!this.VisitOID.equals(other.VisitOID))
-				return false;
-
-			return true;
-		}
-
-		public void copyDataTo(row22Struct other) {
-
-			other.VisitOID = this.VisitOID;
-			other.Name = this.Name;
-
-		}
-
-		public void copyKeysDataTo(row22Struct other) {
-
-			other.VisitOID = this.VisitOID;
-
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private String readString(DataInputStream dis, ObjectInputStream ois)
-				throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				byte[] byteArray = new byte[length];
-				dis.read(byteArray);
-				strReturn = new String(byteArray, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, DataOutputStream dos,
-				ObjectOutputStream oos) throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readKeysData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.VisitOID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeKeysData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.VisitOID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		/**
-		 * Fill Values data by reading ObjectInputStream.
-		 */
-		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
-			try {
-
-				int length = 0;
-
-				this.Name = readString(dis, ois);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-
-			}
-
-		}
-
-		/**
-		 * Return a byte array which represents Values data.
-		 */
-		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
-			try {
-
-				writeString(this.Name, dos, oos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("VisitOID=" + VisitOID);
-			sb.append(",Name=" + Name);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row22Struct other) {
-
-			int returnValue = -1;
-
-			returnValue = checkNullsAndCompare(this.VisitOID, other.VisitOID);
-			if (returnValue != 0) {
-				return returnValue;
-			}
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_11Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				row22Struct row22 = new row22Struct();
-
-				/**
-				 * [tAdvancedHash_row22 begin ] start
-				 */
-
-				ok_Hash.put("tAdvancedHash_row22", false);
-				start_Hash.put("tAdvancedHash_row22",
-						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_row22";
-
-				int tos_count_tAdvancedHash_row22 = 0;
-
-				// connection name:row22
-				// source node:tFileInputDelimited_11 -
-				// inputs:(after_tFileInputXML_3) outputs:(row22,row22) | target
-				// node:tAdvancedHash_row22 - inputs:(row22) outputs:()
-				// linked node: tMap_9 - inputs:(row21,row15,row22)
-				// outputs:(out8)
-
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row22 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
-
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row22Struct> tHash_Lookup_row22 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<row22Struct> getLookup(matchingModeEnum_row22);
-
-				globalMap.put("tHash_Lookup_row22", tHash_Lookup_row22);
-
-				/**
-				 * [tAdvancedHash_row22 begin ] stop
-				 */
-
-				/**
-				 * [tFileInputDelimited_11 begin ] start
-				 */
-
-				ok_Hash.put("tFileInputDelimited_11", false);
-				start_Hash.put("tFileInputDelimited_11",
-						System.currentTimeMillis());
-				currentComponent = "tFileInputDelimited_11";
-
-				int tos_count_tFileInputDelimited_11 = 0;
-
-				int nb_line_tFileInputDelimited_11 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11 = null;
-				try {
-
-					Object filename_tFileInputDelimited_11 = ((String) globalMap
-							.get("tCreateTemporaryFile_8_FILEPATH"));
-					if (filename_tFileInputDelimited_11 instanceof java.io.InputStream) {
-
-						int footer_value_tFileInputDelimited_11 = 0, random_value_tFileInputDelimited_11 = -1;
-						if (footer_value_tFileInputDelimited_11 > 0
-								|| random_value_tFileInputDelimited_11 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
-						}
-
-					}
-					try {
-						fid_tFileInputDelimited_11 = new org.talend.fileprocess.FileInputDelimited(
-								((String) globalMap
-										.get("tCreateTemporaryFile_8_FILEPATH")),
-								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
-								false);
-					} catch (java.lang.Exception e) {
-
-						System.err.println(e.getMessage());
-
-					}
-
-					while (fid_tFileInputDelimited_11 != null
-							&& fid_tFileInputDelimited_11.nextRecord()) {
-
-						row22 = null;
-
-						row22 = null;
-
-						boolean whetherReject_tFileInputDelimited_11 = false;
-						row22 = new row22Struct();
-						try {
-
-							int columnIndexWithD_tFileInputDelimited_11 = 0;
-
-							columnIndexWithD_tFileInputDelimited_11 = 0;
-
-							row22.VisitOID = fid_tFileInputDelimited_11
-									.get(columnIndexWithD_tFileInputDelimited_11);
-
-							columnIndexWithD_tFileInputDelimited_11 = 1;
-
-							row22.Name = fid_tFileInputDelimited_11
-									.get(columnIndexWithD_tFileInputDelimited_11);
-
-						} catch (java.lang.Exception e) {
-							whetherReject_tFileInputDelimited_11 = true;
-
-							System.err.println(e.getMessage());
-							row22 = null;
-
-						}
-
-						/**
-						 * [tFileInputDelimited_11 begin ] stop
-						 */
-						/**
-						 * [tFileInputDelimited_11 main ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_11";
-
-						tos_count_tFileInputDelimited_11++;
-
-						/**
-						 * [tFileInputDelimited_11 main ] stop
-						 */
-						// Start of branch "row22"
-						if (row22 != null) {
-
-							/**
-							 * [tAdvancedHash_row22 main ] start
-							 */
-
-							currentComponent = "tAdvancedHash_row22";
-
-							row22Struct row22_HashRow = new row22Struct();
-
-							row22_HashRow.VisitOID = row22.VisitOID;
-
-							row22_HashRow.Name = row22.Name;
-
-							tHash_Lookup_row22.put(row22_HashRow);
-
-							tos_count_tAdvancedHash_row22++;
-
-							/**
-							 * [tAdvancedHash_row22 main ] stop
-							 */
-
-						} // End of branch "row22"
-
-						/**
-						 * [tFileInputDelimited_11 end ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_11";
-
-					}
-				} finally {
-					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_8_FILEPATH"))) instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_11 != null) {
-							fid_tFileInputDelimited_11.close();
-						}
-					}
-					if (fid_tFileInputDelimited_11 != null) {
-						globalMap.put("tFileInputDelimited_11_NB_LINE",
-								fid_tFileInputDelimited_11.getRowNumber());
-					}
-				}
-
-				ok_Hash.put("tFileInputDelimited_11", true);
-				end_Hash.put("tFileInputDelimited_11",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileInputDelimited_11 end ] stop
-				 */
-
-				/**
-				 * [tAdvancedHash_row22 end ] start
-				 */
-
-				currentComponent = "tAdvancedHash_row22";
-
-				tHash_Lookup_row22.endPut();
-
-				ok_Hash.put("tAdvancedHash_row22", true);
-				end_Hash.put("tAdvancedHash_row22", System.currentTimeMillis());
-
-				/**
-				 * [tAdvancedHash_row22 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 1);
-	}
-
-	public static class Temp3VisitStruct implements
-			routines.system.IPersistableComparableLookupRow<Temp3VisitStruct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-		protected static final int DEFAULT_HASHCODE = 1;
-		protected static final int PRIME = 31;
-		protected int hashCode = DEFAULT_HASHCODE;
-		public boolean hashCodeDirty = true;
-
-		public String loopKey;
-
-		public String StudyID;
-
-		public String getStudyID() {
-			return this.StudyID;
-		}
-
-		public String MetaID;
-
-		public String getMetaID() {
-			return this.MetaID;
-		}
-
-		public String VisitID;
-
-		public String getVisitID() {
-			return this.VisitID;
-		}
-
-		public String FormID;
-
-		public String getFormID() {
-			return this.FormID;
-		}
-
-		public String QuestionID;
-
-		public String getQuestionID() {
-			return this.QuestionID;
-		}
-
-		public String ItemID;
-
-		public String getItemID() {
-			return this.ItemID;
-		}
-
-		public String ParentItem;
-
-		public String getParentItem() {
-			return this.ParentItem;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String VisitNo;
-
-		public String getVisitNo() {
-			return this.VisitNo;
-		}
-
-		public String Sequence;
-
-		public String getSequence() {
-			return this.Sequence;
-		}
-
-		public String hidden;
-
-		public String getHidden() {
-			return this.hidden;
-		}
-
-		public String FormFamily;
-
-		public String getFormFamily() {
-			return this.FormFamily;
-		}
-
-		public String AdditionalData;
-
-		public String getAdditionalData() {
-			return this.AdditionalData;
-		}
-
-		public String item_Datatype;
-
-		public String getItem_Datatype() {
-			return this.item_Datatype;
-		}
-
-		public Integer HLEVEL;
-
-		public Integer getHLEVEL() {
-			return this.HLEVEL;
-		}
-
-		@Override
-		public int hashCode() {
-			if (this.hashCodeDirty) {
-				final int prime = PRIME;
-				int result = DEFAULT_HASHCODE;
-
-				result = prime
-						* result
-						+ ((this.VisitID == null) ? 0 : this.VisitID.hashCode());
-
-				this.hashCode = result;
-				this.hashCodeDirty = false;
-			}
-			return this.hashCode;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final Temp3VisitStruct other = (Temp3VisitStruct) obj;
-
-			if (this.VisitID == null) {
-				if (other.VisitID != null)
-					return false;
-			} else if (!this.VisitID.equals(other.VisitID))
-				return false;
-
-			return true;
-		}
-
-		public void copyDataTo(Temp3VisitStruct other) {
-
-			other.StudyID = this.StudyID;
-			other.MetaID = this.MetaID;
-			other.VisitID = this.VisitID;
-			other.FormID = this.FormID;
-			other.QuestionID = this.QuestionID;
-			other.ItemID = this.ItemID;
-			other.ParentItem = this.ParentItem;
-			other.Name = this.Name;
-			other.VisitNo = this.VisitNo;
-			other.Sequence = this.Sequence;
-			other.hidden = this.hidden;
-			other.FormFamily = this.FormFamily;
-			other.AdditionalData = this.AdditionalData;
-			other.item_Datatype = this.item_Datatype;
-			other.HLEVEL = this.HLEVEL;
-
-		}
-
-		public void copyKeysDataTo(Temp3VisitStruct other) {
-
-			other.VisitID = this.VisitID;
-
-		}
-
-		private String readString(DataInputStream dis, ObjectInputStream ois)
-				throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				byte[] byteArray = new byte[length];
-				dis.read(byteArray);
-				strReturn = new String(byteArray, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, DataOutputStream dos,
-				ObjectOutputStream oos) throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private Integer readInteger(DataInputStream dis, ObjectInputStream ois)
-				throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, DataOutputStream dos,
-				ObjectOutputStream oos) throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		public void readKeysData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.VisitID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeKeysData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.VisitID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		/**
-		 * Fill Values data by reading ObjectInputStream.
-		 */
-		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
-			try {
-
-				int length = 0;
-
-				this.StudyID = readString(dis, ois);
-
-				this.MetaID = readString(dis, ois);
-
-				this.FormID = readString(dis, ois);
-
-				this.QuestionID = readString(dis, ois);
-
-				this.ItemID = readString(dis, ois);
-
-				this.ParentItem = readString(dis, ois);
-
-				this.Name = readString(dis, ois);
-
-				this.VisitNo = readString(dis, ois);
-
-				this.Sequence = readString(dis, ois);
-
-				this.hidden = readString(dis, ois);
-
-				this.FormFamily = readString(dis, ois);
-
-				this.AdditionalData = readString(dis, ois);
-
-				this.item_Datatype = readString(dis, ois);
-
-				this.HLEVEL = readInteger(dis, ois);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-
-			}
-
-		}
-
-		/**
-		 * Return a byte array which represents Values data.
-		 */
-		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
-			try {
-
-				writeString(this.StudyID, dos, oos);
-
-				writeString(this.MetaID, dos, oos);
-
-				writeString(this.FormID, dos, oos);
-
-				writeString(this.QuestionID, dos, oos);
-
-				writeString(this.ItemID, dos, oos);
-
-				writeString(this.ParentItem, dos, oos);
-
-				writeString(this.Name, dos, oos);
-
-				writeString(this.VisitNo, dos, oos);
-
-				writeString(this.Sequence, dos, oos);
-
-				writeString(this.hidden, dos, oos);
-
-				writeString(this.FormFamily, dos, oos);
-
-				writeString(this.AdditionalData, dos, oos);
-
-				writeString(this.item_Datatype, dos, oos);
-
-				writeInteger(this.HLEVEL, dos, oos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("StudyID=" + StudyID);
-			sb.append(",MetaID=" + MetaID);
-			sb.append(",VisitID=" + VisitID);
-			sb.append(",FormID=" + FormID);
-			sb.append(",QuestionID=" + QuestionID);
-			sb.append(",ItemID=" + ItemID);
-			sb.append(",ParentItem=" + ParentItem);
-			sb.append(",Name=" + Name);
-			sb.append(",VisitNo=" + VisitNo);
-			sb.append(",Sequence=" + Sequence);
-			sb.append(",hidden=" + hidden);
-			sb.append(",FormFamily=" + FormFamily);
-			sb.append(",AdditionalData=" + AdditionalData);
-			sb.append(",item_Datatype=" + item_Datatype);
-			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(Temp3VisitStruct other) {
-
-			int returnValue = -1;
-
-			returnValue = checkNullsAndCompare(this.VisitID, other.VisitID);
-			if (returnValue != 0) {
-				return returnValue;
-			}
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_10Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				Temp3VisitStruct Temp3Visit = new Temp3VisitStruct();
-
-				/**
-				 * [tAdvancedHash_Temp3Visit begin ] start
-				 */
-
-				ok_Hash.put("tAdvancedHash_Temp3Visit", false);
-				start_Hash.put("tAdvancedHash_Temp3Visit",
-						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_Temp3Visit";
-
-				int tos_count_tAdvancedHash_Temp3Visit = 0;
-
-				// connection name:Temp3Visit
-				// source node:tFileInputDelimited_10 -
-				// inputs:(after_tFileInputXML_2)
-				// outputs:(Temp3Visit,Temp3Visit) | target
-				// node:tAdvancedHash_Temp3Visit - inputs:(Temp3Visit)
-				// outputs:()
-				// linked node: tMap_12 - inputs:(row17,Temp3Visit,FormNames)
-				// outputs:(out9)
-
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_Temp3Visit = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
-
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct> tHash_Lookup_Temp3Visit = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<Temp3VisitStruct> getLookup(matchingModeEnum_Temp3Visit);
-
-				globalMap.put("tHash_Lookup_Temp3Visit",
-						tHash_Lookup_Temp3Visit);
-
-				/**
-				 * [tAdvancedHash_Temp3Visit begin ] stop
-				 */
-
-				/**
-				 * [tFileInputDelimited_10 begin ] start
-				 */
-
-				ok_Hash.put("tFileInputDelimited_10", false);
-				start_Hash.put("tFileInputDelimited_10",
-						System.currentTimeMillis());
-				currentComponent = "tFileInputDelimited_10";
-
-				int tos_count_tFileInputDelimited_10 = 0;
-
-				int nb_line_tFileInputDelimited_10 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_10 = null;
-				try {
-
-					Object filename_tFileInputDelimited_10 = ((String) globalMap
-							.get("tCreateTemporaryFile_16_FILEPATH"));
-					if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
-
-						int footer_value_tFileInputDelimited_10 = 0, random_value_tFileInputDelimited_10 = -1;
-						if (footer_value_tFileInputDelimited_10 > 0
-								|| random_value_tFileInputDelimited_10 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
-						}
-
-					}
-					try {
-						fid_tFileInputDelimited_10 = new org.talend.fileprocess.FileInputDelimited(
-								((String) globalMap
-										.get("tCreateTemporaryFile_16_FILEPATH")),
-								"ISO-8859-15", "\t", "\n", true, 1, 0, -1, -1,
-								false);
-					} catch (java.lang.Exception e) {
-
-						System.err.println(e.getMessage());
-
-					}
-
-					while (fid_tFileInputDelimited_10 != null
-							&& fid_tFileInputDelimited_10.nextRecord()) {
-
-						Temp3Visit = null;
-
-						Temp3Visit = null;
-
-						boolean whetherReject_tFileInputDelimited_10 = false;
-						Temp3Visit = new Temp3VisitStruct();
-						try {
-
-							int columnIndexWithD_tFileInputDelimited_10 = 0;
-
-							String temp = "";
-
-							columnIndexWithD_tFileInputDelimited_10 = 0;
-
-							Temp3Visit.StudyID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 1;
-
-							Temp3Visit.MetaID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 2;
-
-							Temp3Visit.VisitID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 3;
-
-							Temp3Visit.FormID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 4;
-
-							Temp3Visit.QuestionID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 5;
-
-							Temp3Visit.ItemID = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 6;
-
-							Temp3Visit.ParentItem = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 7;
-
-							Temp3Visit.Name = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 8;
-
-							Temp3Visit.VisitNo = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 9;
-
-							Temp3Visit.Sequence = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 10;
-
-							Temp3Visit.hidden = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 11;
-
-							Temp3Visit.FormFamily = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 12;
-
-							Temp3Visit.AdditionalData = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 13;
-
-							Temp3Visit.item_Datatype = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 14;
-
-							temp = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
-							if (temp.length() > 0) {
-
-								Temp3Visit.HLEVEL = ParserUtils
-										.parseTo_Integer(temp);
-
-							} else {
-
-								Temp3Visit.HLEVEL = null;
-
-							}
-
-						} catch (java.lang.Exception e) {
-							whetherReject_tFileInputDelimited_10 = true;
-
-							System.err.println(e.getMessage());
-							Temp3Visit = null;
-
-						}
-
-						/**
-						 * [tFileInputDelimited_10 begin ] stop
-						 */
-						/**
-						 * [tFileInputDelimited_10 main ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_10";
-
-						tos_count_tFileInputDelimited_10++;
-
-						/**
-						 * [tFileInputDelimited_10 main ] stop
-						 */
-						// Start of branch "Temp3Visit"
-						if (Temp3Visit != null) {
-
-							/**
-							 * [tAdvancedHash_Temp3Visit main ] start
-							 */
-
-							currentComponent = "tAdvancedHash_Temp3Visit";
-
-							Temp3VisitStruct Temp3Visit_HashRow = new Temp3VisitStruct();
-
-							Temp3Visit_HashRow.StudyID = Temp3Visit.StudyID;
-
-							Temp3Visit_HashRow.MetaID = Temp3Visit.MetaID;
-
-							Temp3Visit_HashRow.VisitID = Temp3Visit.VisitID;
-
-							Temp3Visit_HashRow.FormID = Temp3Visit.FormID;
-
-							Temp3Visit_HashRow.QuestionID = Temp3Visit.QuestionID;
-
-							Temp3Visit_HashRow.ItemID = Temp3Visit.ItemID;
-
-							Temp3Visit_HashRow.ParentItem = Temp3Visit.ParentItem;
-
-							Temp3Visit_HashRow.Name = Temp3Visit.Name;
-
-							Temp3Visit_HashRow.VisitNo = Temp3Visit.VisitNo;
-
-							Temp3Visit_HashRow.Sequence = Temp3Visit.Sequence;
-
-							Temp3Visit_HashRow.hidden = Temp3Visit.hidden;
-
-							Temp3Visit_HashRow.FormFamily = Temp3Visit.FormFamily;
-
-							Temp3Visit_HashRow.AdditionalData = Temp3Visit.AdditionalData;
-
-							Temp3Visit_HashRow.item_Datatype = Temp3Visit.item_Datatype;
-
-							Temp3Visit_HashRow.HLEVEL = Temp3Visit.HLEVEL;
-
-							tHash_Lookup_Temp3Visit.put(Temp3Visit_HashRow);
-
-							tos_count_tAdvancedHash_Temp3Visit++;
-
-							/**
-							 * [tAdvancedHash_Temp3Visit main ] stop
-							 */
-
-						} // End of branch "Temp3Visit"
-
-						/**
-						 * [tFileInputDelimited_10 end ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_10";
-
-					}
-				} finally {
-					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_16_FILEPATH"))) instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_10 != null) {
-							fid_tFileInputDelimited_10.close();
-						}
-					}
-					if (fid_tFileInputDelimited_10 != null) {
-						globalMap.put("tFileInputDelimited_10_NB_LINE",
-								fid_tFileInputDelimited_10.getRowNumber());
-					}
-				}
-
-				ok_Hash.put("tFileInputDelimited_10", true);
-				end_Hash.put("tFileInputDelimited_10",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileInputDelimited_10 end ] stop
-				 */
-
-				/**
-				 * [tAdvancedHash_Temp3Visit end ] start
-				 */
-
-				currentComponent = "tAdvancedHash_Temp3Visit";
-
-				tHash_Lookup_Temp3Visit.endPut();
-
-				ok_Hash.put("tAdvancedHash_Temp3Visit", true);
-				end_Hash.put("tAdvancedHash_Temp3Visit",
-						System.currentTimeMillis());
-
-				/**
-				 * [tAdvancedHash_Temp3Visit end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 1);
-	}
-
-	public static class FormNamesStruct implements
-			routines.system.IPersistableComparableLookupRow<FormNamesStruct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-		protected static final int DEFAULT_HASHCODE = 1;
-		protected static final int PRIME = 31;
-		protected int hashCode = DEFAULT_HASHCODE;
-		public boolean hashCodeDirty = true;
-
-		public String loopKey;
-
-		public String FormOID;
-
-		public String getFormOID() {
-			return this.FormOID;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		@Override
-		public int hashCode() {
-			if (this.hashCodeDirty) {
-				final int prime = PRIME;
-				int result = DEFAULT_HASHCODE;
-
-				result = prime
-						* result
-						+ ((this.FormOID == null) ? 0 : this.FormOID.hashCode());
-
-				this.hashCode = result;
-				this.hashCodeDirty = false;
-			}
-			return this.hashCode;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final FormNamesStruct other = (FormNamesStruct) obj;
-
-			if (this.FormOID == null) {
-				if (other.FormOID != null)
-					return false;
-			} else if (!this.FormOID.equals(other.FormOID))
-				return false;
-
-			return true;
-		}
-
-		public void copyDataTo(FormNamesStruct other) {
-
-			other.FormOID = this.FormOID;
-			other.Name = this.Name;
-
-		}
-
-		public void copyKeysDataTo(FormNamesStruct other) {
-
-			other.FormOID = this.FormOID;
-
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private String readString(DataInputStream dis, ObjectInputStream ois)
-				throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				byte[] byteArray = new byte[length];
-				dis.read(byteArray);
-				strReturn = new String(byteArray, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, DataOutputStream dos,
-				ObjectOutputStream oos) throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readKeysData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.FormOID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeKeysData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.FormOID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		/**
-		 * Fill Values data by reading ObjectInputStream.
-		 */
-		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
-			try {
-
-				int length = 0;
-
-				this.Name = readString(dis, ois);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-
-			}
-
-		}
-
-		/**
-		 * Return a byte array which represents Values data.
-		 */
-		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
-			try {
-
-				writeString(this.Name, dos, oos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("FormOID=" + FormOID);
-			sb.append(",Name=" + Name);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(FormNamesStruct other) {
-
-			int returnValue = -1;
-
-			returnValue = checkNullsAndCompare(this.FormOID, other.FormOID);
-			if (returnValue != 0) {
-				return returnValue;
-			}
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_12Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				FormNamesStruct FormNames = new FormNamesStruct();
-
-				/**
-				 * [tAdvancedHash_FormNames begin ] start
-				 */
-
-				ok_Hash.put("tAdvancedHash_FormNames", false);
-				start_Hash.put("tAdvancedHash_FormNames",
-						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_FormNames";
-
-				int tos_count_tAdvancedHash_FormNames = 0;
-
-				// connection name:FormNames
-				// source node:tFileInputDelimited_12 -
-				// inputs:(after_tFileInputXML_2) outputs:(FormNames,FormNames)
-				// | target node:tAdvancedHash_FormNames - inputs:(FormNames)
-				// outputs:()
-				// linked node: tMap_12 - inputs:(row17,Temp3Visit,FormNames)
-				// outputs:(out9)
-
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_FormNames = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
-
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<FormNamesStruct> tHash_Lookup_FormNames = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<FormNamesStruct> getLookup(matchingModeEnum_FormNames);
-
-				globalMap.put("tHash_Lookup_FormNames", tHash_Lookup_FormNames);
-
-				/**
-				 * [tAdvancedHash_FormNames begin ] stop
-				 */
-
-				/**
-				 * [tFileInputDelimited_12 begin ] start
-				 */
-
-				ok_Hash.put("tFileInputDelimited_12", false);
-				start_Hash.put("tFileInputDelimited_12",
-						System.currentTimeMillis());
-				currentComponent = "tFileInputDelimited_12";
-
-				int tos_count_tFileInputDelimited_12 = 0;
-
-				int nb_line_tFileInputDelimited_12 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_12 = null;
-				try {
-
-					Object filename_tFileInputDelimited_12 = ((String) globalMap
-							.get("tCreateTemporaryFile_9_FILEPATH"));
-					if (filename_tFileInputDelimited_12 instanceof java.io.InputStream) {
-
-						int footer_value_tFileInputDelimited_12 = 0, random_value_tFileInputDelimited_12 = -1;
-						if (footer_value_tFileInputDelimited_12 > 0
-								|| random_value_tFileInputDelimited_12 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
-						}
-
-					}
-					try {
-						fid_tFileInputDelimited_12 = new org.talend.fileprocess.FileInputDelimited(
-								((String) globalMap
-										.get("tCreateTemporaryFile_9_FILEPATH")),
-								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
-								false);
-					} catch (java.lang.Exception e) {
-
-						System.err.println(e.getMessage());
-
-					}
-
-					while (fid_tFileInputDelimited_12 != null
-							&& fid_tFileInputDelimited_12.nextRecord()) {
-
-						FormNames = null;
-
-						FormNames = null;
-
-						boolean whetherReject_tFileInputDelimited_12 = false;
-						FormNames = new FormNamesStruct();
-						try {
-
-							int columnIndexWithD_tFileInputDelimited_12 = 0;
-
-							columnIndexWithD_tFileInputDelimited_12 = 0;
-
-							FormNames.FormOID = fid_tFileInputDelimited_12
-									.get(columnIndexWithD_tFileInputDelimited_12);
-
-							columnIndexWithD_tFileInputDelimited_12 = 1;
-
-							FormNames.Name = fid_tFileInputDelimited_12
-									.get(columnIndexWithD_tFileInputDelimited_12);
-
-						} catch (java.lang.Exception e) {
-							whetherReject_tFileInputDelimited_12 = true;
-
-							System.err.println(e.getMessage());
-							FormNames = null;
-
-						}
-
-						/**
-						 * [tFileInputDelimited_12 begin ] stop
-						 */
-						/**
-						 * [tFileInputDelimited_12 main ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_12";
-
-						tos_count_tFileInputDelimited_12++;
-
-						/**
-						 * [tFileInputDelimited_12 main ] stop
-						 */
-						// Start of branch "FormNames"
-						if (FormNames != null) {
-
-							/**
-							 * [tAdvancedHash_FormNames main ] start
-							 */
-
-							currentComponent = "tAdvancedHash_FormNames";
-
-							FormNamesStruct FormNames_HashRow = new FormNamesStruct();
-
-							FormNames_HashRow.FormOID = FormNames.FormOID;
-
-							FormNames_HashRow.Name = FormNames.Name;
-
-							tHash_Lookup_FormNames.put(FormNames_HashRow);
-
-							tos_count_tAdvancedHash_FormNames++;
-
-							/**
-							 * [tAdvancedHash_FormNames main ] stop
-							 */
-
-						} // End of branch "FormNames"
-
-						/**
-						 * [tFileInputDelimited_12 end ] start
-						 */
-
-						currentComponent = "tFileInputDelimited_12";
-
-					}
-				} finally {
-					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_9_FILEPATH"))) instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_12 != null) {
-							fid_tFileInputDelimited_12.close();
-						}
-					}
-					if (fid_tFileInputDelimited_12 != null) {
-						globalMap.put("tFileInputDelimited_12_NB_LINE",
-								fid_tFileInputDelimited_12.getRowNumber());
-					}
-				}
-
-				ok_Hash.put("tFileInputDelimited_12", true);
-				end_Hash.put("tFileInputDelimited_12",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileInputDelimited_12 end ] stop
-				 */
-
-				/**
-				 * [tAdvancedHash_FormNames end ] start
-				 */
-
-				currentComponent = "tAdvancedHash_FormNames";
-
-				tHash_Lookup_FormNames.endPut();
-
-				ok_Hash.put("tAdvancedHash_FormNames", true);
-				end_Hash.put("tAdvancedHash_FormNames",
-						System.currentTimeMillis());
-
-				/**
-				 * [tAdvancedHash_FormNames end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row11Struct implements
-			routines.system.IPersistableRow<row11Struct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-
-		public String StudyID;
-
-		public String getStudyID() {
-			return this.StudyID;
-		}
-
-		public String MetaID;
-
-		public String getMetaID() {
-			return this.MetaID;
-		}
-
-		public String VisitID;
-
-		public String getVisitID() {
-			return this.VisitID;
-		}
-
-		public String FormID;
-
-		public String getFormID() {
-			return this.FormID;
-		}
-
-		public String QuestionID;
-
-		public String getQuestionID() {
-			return this.QuestionID;
-		}
-
-		public String ItemID;
-
-		public String getItemID() {
-			return this.ItemID;
-		}
-
-		public String ParentItem;
-
-		public String getParentItem() {
-			return this.ParentItem;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String VisitNo;
-
-		public String getVisitNo() {
-			return this.VisitNo;
-		}
-
-		public String Sequence;
-
-		public String getSequence() {
-			return this.Sequence;
-		}
-
-		public String hidden;
-
-		public String getHidden() {
-			return this.hidden;
-		}
-
-		public String FormFamily;
-
-		public String getFormFamily() {
-			return this.FormFamily;
-		}
-
-		public String AdditionalData;
-
-		public String getAdditionalData() {
-			return this.AdditionalData;
-		}
-
-		public String item_Datatype;
-
-		public String getItem_Datatype() {
-			return this.item_Datatype;
-		}
-
-		public Integer HLEVEL;
-
-		public Integer getHLEVEL() {
-			return this.HLEVEL;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.StudyID = readString(dis);
-
-					this.MetaID = readString(dis);
-
-					this.VisitID = readString(dis);
-
-					this.FormID = readString(dis);
-
-					this.QuestionID = readString(dis);
-
-					this.ItemID = readString(dis);
-
-					this.ParentItem = readString(dis);
-
-					this.Name = readString(dis);
-
-					this.VisitNo = readString(dis);
-
-					this.Sequence = readString(dis);
-
-					this.hidden = readString(dis);
-
-					this.FormFamily = readString(dis);
-
-					this.AdditionalData = readString(dis);
-
-					this.item_Datatype = readString(dis);
-
-					this.HLEVEL = readInteger(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.StudyID, dos);
-
-				// String
-
-				writeString(this.MetaID, dos);
-
-				// String
-
-				writeString(this.VisitID, dos);
-
-				// String
-
-				writeString(this.FormID, dos);
-
-				// String
-
-				writeString(this.QuestionID, dos);
-
-				// String
-
-				writeString(this.ItemID, dos);
-
-				// String
-
-				writeString(this.ParentItem, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.VisitNo, dos);
-
-				// String
-
-				writeString(this.Sequence, dos);
-
-				// String
-
-				writeString(this.hidden, dos);
-
-				// String
-
-				writeString(this.FormFamily, dos);
-
-				// String
-
-				writeString(this.AdditionalData, dos);
-
-				// String
-
-				writeString(this.item_Datatype, dos);
-
-				// Integer
-
-				writeInteger(this.HLEVEL, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("StudyID=" + StudyID);
-			sb.append(",MetaID=" + MetaID);
-			sb.append(",VisitID=" + VisitID);
-			sb.append(",FormID=" + FormID);
-			sb.append(",QuestionID=" + QuestionID);
-			sb.append(",ItemID=" + ItemID);
-			sb.append(",ParentItem=" + ParentItem);
-			sb.append(",Name=" + Name);
-			sb.append(",VisitNo=" + VisitNo);
-			sb.append(",Sequence=" + Sequence);
-			sb.append(",hidden=" + hidden);
-			sb.append(",FormFamily=" + FormFamily);
-			sb.append(",AdditionalData=" + AdditionalData);
-			sb.append(",item_Datatype=" + item_Datatype);
-			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row11Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class out7Struct implements
-			routines.system.IPersistableRow<out7Struct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-
-		public String StudyID;
-
-		public String getStudyID() {
-			return this.StudyID;
-		}
-
-		public String MetaID;
-
-		public String getMetaID() {
-			return this.MetaID;
-		}
-
-		public String VisitID;
-
-		public String getVisitID() {
-			return this.VisitID;
-		}
-
-		public String FormID;
-
-		public String getFormID() {
-			return this.FormID;
-		}
-
-		public String QuestionID;
-
-		public String getQuestionID() {
-			return this.QuestionID;
-		}
-
-		public String ItemID;
-
-		public String getItemID() {
-			return this.ItemID;
-		}
-
-		public String ParentItem;
-
-		public String getParentItem() {
-			return this.ParentItem;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String VisitNo;
-
-		public String getVisitNo() {
-			return this.VisitNo;
-		}
-
-		public String Sequence;
-
-		public String getSequence() {
-			return this.Sequence;
-		}
-
-		public String hidden;
-
-		public String getHidden() {
-			return this.hidden;
-		}
-
-		public String FormFamily;
-
-		public String getFormFamily() {
-			return this.FormFamily;
-		}
-
-		public String AdditionalData;
-
-		public String getAdditionalData() {
-			return this.AdditionalData;
-		}
-
-		public String item_Datatype;
-
-		public String getItem_Datatype() {
-			return this.item_Datatype;
-		}
-
-		public Integer HLEVEL;
-
-		public Integer getHLEVEL() {
-			return this.HLEVEL;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.StudyID = readString(dis);
-
-					this.MetaID = readString(dis);
-
-					this.VisitID = readString(dis);
-
-					this.FormID = readString(dis);
-
-					this.QuestionID = readString(dis);
-
-					this.ItemID = readString(dis);
-
-					this.ParentItem = readString(dis);
-
-					this.Name = readString(dis);
-
-					this.VisitNo = readString(dis);
-
-					this.Sequence = readString(dis);
-
-					this.hidden = readString(dis);
-
-					this.FormFamily = readString(dis);
-
-					this.AdditionalData = readString(dis);
-
-					this.item_Datatype = readString(dis);
-
-					this.HLEVEL = readInteger(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.StudyID, dos);
-
-				// String
-
-				writeString(this.MetaID, dos);
-
-				// String
-
-				writeString(this.VisitID, dos);
-
-				// String
-
-				writeString(this.FormID, dos);
-
-				// String
-
-				writeString(this.QuestionID, dos);
-
-				// String
-
-				writeString(this.ItemID, dos);
-
-				// String
-
-				writeString(this.ParentItem, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.VisitNo, dos);
-
-				// String
-
-				writeString(this.Sequence, dos);
-
-				// String
-
-				writeString(this.hidden, dos);
-
-				// String
-
-				writeString(this.FormFamily, dos);
-
-				// String
-
-				writeString(this.AdditionalData, dos);
-
-				// String
-
-				writeString(this.item_Datatype, dos);
-
-				// Integer
-
-				writeInteger(this.HLEVEL, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("StudyID=" + StudyID);
-			sb.append(",MetaID=" + MetaID);
-			sb.append(",VisitID=" + VisitID);
-			sb.append(",FormID=" + FormID);
-			sb.append(",QuestionID=" + QuestionID);
-			sb.append(",ItemID=" + ItemID);
-			sb.append(",ParentItem=" + ParentItem);
-			sb.append(",Name=" + Name);
-			sb.append(",VisitNo=" + VisitNo);
-			sb.append(",Sequence=" + Sequence);
-			sb.append(",hidden=" + hidden);
-			sb.append(",FormFamily=" + FormFamily);
-			sb.append(",AdditionalData=" + AdditionalData);
-			sb.append(",item_Datatype=" + item_Datatype);
-			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(out7Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class fromMetaIDStruct implements
-			routines.system.IPersistableRow<fromMetaIDStruct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-
-		public String OID;
-
-		public String getOID() {
-			return this.OID;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String StudyOID;
-
-		public String getStudyOID() {
-			return this.StudyOID;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.OID = readString(dis);
-
-					this.Name = readString(dis);
-
-					this.StudyOID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.OID, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.StudyOID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("OID=" + OID);
-			sb.append(",Name=" + Name);
-			sb.append(",StudyOID=" + StudyOID);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(fromMetaIDStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class after_tFileInputXML_8Struct implements
-			routines.system.IPersistableRow<after_tFileInputXML_8Struct> {
-		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
-		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
-
-		public String OID;
-
-		public String getOID() {
-			return this.OID;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String StudyOID;
-
-		public String getStudyOID() {
-			return this.StudyOID;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
-					} else {
-						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
-						length);
-				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
-
-				try {
-
-					int length = 0;
-
-					this.OID = readString(dis);
-
-					this.Name = readString(dis);
-
-					this.StudyOID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.OID, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.StudyOID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("OID=" + OID);
-			sb.append(",Name=" + Name);
-			sb.append(",StudyOID=" + StudyOID);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(after_tFileInputXML_8Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputXML_8Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputXML_8_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				tFileInputDelimited_7Process(globalMap);
-
-				fromMetaIDStruct fromMetaID = new fromMetaIDStruct();
-				out7Struct out7 = new out7Struct();
-				row11Struct row11 = new row11Struct();
-
-				/**
-				 * [tFileOutputDelimited_12 begin ] start
-				 */
-
-				ok_Hash.put("tFileOutputDelimited_12", false);
-				start_Hash.put("tFileOutputDelimited_12",
-						System.currentTimeMillis());
-				currentComponent = "tFileOutputDelimited_12";
-
-				int tos_count_tFileOutputDelimited_12 = 0;
-
-				String fileName_tFileOutputDelimited_12 = "";
-				fileName_tFileOutputDelimited_12 = (new java.io.File(
-						((String) globalMap
-								.get("tCreateTemporaryFile_4_FILEPATH"))))
-						.getAbsolutePath().replace("\\", "/");
-				String fullName_tFileOutputDelimited_12 = null;
-				String extension_tFileOutputDelimited_12 = null;
-				String directory_tFileOutputDelimited_12 = null;
-				if ((fileName_tFileOutputDelimited_12.indexOf("/") != -1)) {
-					if (fileName_tFileOutputDelimited_12.lastIndexOf(".") < fileName_tFileOutputDelimited_12
-							.lastIndexOf("/")) {
-						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12;
-						extension_tFileOutputDelimited_12 = "";
-					} else {
-						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
-								.substring(0, fileName_tFileOutputDelimited_12
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
-								.substring(fileName_tFileOutputDelimited_12
-										.lastIndexOf("."));
-					}
-					directory_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
-							.substring(0, fileName_tFileOutputDelimited_12
-									.lastIndexOf("/"));
-				} else {
-					if (fileName_tFileOutputDelimited_12.lastIndexOf(".") != -1) {
-						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
-								.substring(0, fileName_tFileOutputDelimited_12
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12
-								.substring(fileName_tFileOutputDelimited_12
-										.lastIndexOf("."));
-					} else {
-						fullName_tFileOutputDelimited_12 = fileName_tFileOutputDelimited_12;
-						extension_tFileOutputDelimited_12 = "";
-					}
-					directory_tFileOutputDelimited_12 = "";
-				}
-				boolean isFileGenerated_tFileOutputDelimited_12 = true;
-				java.io.File filetFileOutputDelimited_12 = new java.io.File(
-						fileName_tFileOutputDelimited_12);
-				globalMap.put("tFileOutputDelimited_12_FILE_NAME",
-						fileName_tFileOutputDelimited_12);
-
-				int nb_line_tFileOutputDelimited_12 = 0;
-				int splitEvery_tFileOutputDelimited_12 = 1000;
-				int splitedFileNo_tFileOutputDelimited_12 = 0;
-				int currentRow_tFileOutputDelimited_12 = 0;
-
-				final String OUT_DELIM_tFileOutputDelimited_12 = /**
-				 * Start field
-				 * tFileOutputDelimited_12:FIELDSEPARATOR
-				 */
-				"\t"/** End field tFileOutputDelimited_12:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_12 = /**
-				 * Start
-				 * field tFileOutputDelimited_12:ROWSEPARATOR
-				 */
-				"\n"/** End field tFileOutputDelimited_12:ROWSEPARATOR */
-				;
-
-				// create directory only if not exists
-				if (directory_tFileOutputDelimited_12 != null
-						&& directory_tFileOutputDelimited_12.trim().length() != 0) {
-					java.io.File dir_tFileOutputDelimited_12 = new java.io.File(
-							directory_tFileOutputDelimited_12);
-					if (!dir_tFileOutputDelimited_12.exists()) {
-						dir_tFileOutputDelimited_12.mkdirs();
-					}
-				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_12 = null;
-				try {
-					outtFileOutputDelimited_12 = new java.io.BufferedWriter(
-							new java.io.OutputStreamWriter(
-									new java.io.FileOutputStream(
-											fileName_tFileOutputDelimited_12,
-											false), "ISO-8859-15"));
-
-					/**
-					 * [tFileOutputDelimited_12 begin ] stop
-					 */
-
-					/**
-					 * [tUniqRow_5 begin ] start
-					 */
-
-					ok_Hash.put("tUniqRow_5", false);
-					start_Hash.put("tUniqRow_5", System.currentTimeMillis());
-					currentComponent = "tUniqRow_5";
-
-					int tos_count_tUniqRow_5 = 0;
-
-					class KeyStruct_tUniqRow_5 {
-
-						private static final int DEFAULT_HASHCODE = 1;
-						private static final int PRIME = 31;
-						private int hashCode = DEFAULT_HASHCODE;
-						public boolean hashCodeDirty = true;
-
-						String StudyID;
-						String MetaID;
-
-						@Override
-						public int hashCode() {
-							if (this.hashCodeDirty) {
-								final int prime = PRIME;
-								int result = DEFAULT_HASHCODE;
-
-								result = prime
-										* result
-										+ ((this.StudyID == null) ? 0
-												: this.StudyID.hashCode());
-
-								result = prime
-										* result
-										+ ((this.MetaID == null) ? 0
-												: this.MetaID.hashCode());
-
-								this.hashCode = result;
-								this.hashCodeDirty = false;
-							}
-							return this.hashCode;
-						}
-
-						@Override
-						public boolean equals(Object obj) {
-							if (this == obj)
-								return true;
-							if (obj == null)
-								return false;
-							if (getClass() != obj.getClass())
-								return false;
-							final KeyStruct_tUniqRow_5 other = (KeyStruct_tUniqRow_5) obj;
-
-							if (this.StudyID == null) {
-								if (other.StudyID != null)
-									return false;
-							} else if (!this.StudyID.equals(other.StudyID))
-								return false;
-
-							if (this.MetaID == null) {
-								if (other.MetaID != null)
-									return false;
-							} else if (!this.MetaID.equals(other.MetaID))
-								return false;
-
-							return true;
-						}
-
-					}
-
-					int nb_uniques_tUniqRow_5 = 0;
-					int nb_duplicates_tUniqRow_5 = 0;
-					KeyStruct_tUniqRow_5 finder_tUniqRow_5 = new KeyStruct_tUniqRow_5();
-					java.util.Set<KeyStruct_tUniqRow_5> keystUniqRow_5 = new java.util.HashSet<KeyStruct_tUniqRow_5>();
-
-					/**
-					 * [tUniqRow_5 begin ] stop
-					 */
-
-					/**
-					 * [tMap_7 begin ] start
-					 */
-
-					ok_Hash.put("tMap_7", false);
-					start_Hash.put("tMap_7", System.currentTimeMillis());
-					currentComponent = "tMap_7";
-
-					int tos_count_tMap_7 = 0;
-
-					// ###############################
-					// # Lookup's keys initialization
-
-					org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct> tHash_Lookup_fromTemp1 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct>) globalMap
-							.get("tHash_Lookup_fromTemp1"));
-
-					fromTemp1Struct fromTemp1HashKey = new fromTemp1Struct();
-					fromTemp1Struct fromTemp1Default = new fromTemp1Struct();
-					// ###############################
-
-					// ###############################
-					// # Vars initialization
-					class Var__tMap_7__Struct {
-					}
-					Var__tMap_7__Struct Var__tMap_7 = new Var__tMap_7__Struct();
-					// ###############################
-
-					// ###############################
-					// # Outputs initialization
-					out7Struct out7_tmp = new out7Struct();
-					// ###############################
-
-					/**
-					 * [tMap_7 begin ] stop
-					 */
-
-					/**
-					 * [tFileInputXML_8 begin ] start
-					 */
-
-					ok_Hash.put("tFileInputXML_8", false);
-					start_Hash.put("tFileInputXML_8",
-							System.currentTimeMillis());
-					currentComponent = "tFileInputXML_8";
-
-					int tos_count_tFileInputXML_8 = 0;
-
-					int nb_line_tFileInputXML_8 = 0;
-
-					class IgnoreDTDEntityResolver_tFileInputXML_8 implements
-							org.xml.sax.EntityResolver {
-
-						public org.xml.sax.InputSource resolveEntity(
-								String publicId, String systemId)
-								throws org.xml.sax.SAXException,
-								java.io.IOException {
-							return new org.xml.sax.InputSource(
-									new java.io.ByteArrayInputStream(
-											"<?xml version='1.0' encoding='UTF-8'?>"
-													.getBytes()));
-						}
-
-					}
-					String os_tFileInputXML_8 = System.getProperty("os.name")
-							.toLowerCase();
-					boolean isWindows_tFileInputXML_8 = false;
-					if (os_tFileInputXML_8.indexOf("windows") > -1
-							|| os_tFileInputXML_8.indexOf("nt") > -1) {
-						isWindows_tFileInputXML_8 = true;
-					}
-					class NameSpaceTool_tFileInputXML_8 {
-
-						public java.util.HashMap<String, String> xmlNameSpaceMap = new java.util.HashMap<String, String>();
-
-						private java.util.List<String> defualtNSPath = new java.util.ArrayList<String>();
-
-						public void countNSMap(org.dom4j.Element el) {
-							for (org.dom4j.Namespace ns : (java.util.List<org.dom4j.Namespace>) el
-									.declaredNamespaces()) {
-								if (ns.getPrefix().trim().length() == 0) {
-									xmlNameSpaceMap.put(
-											"pre" + defualtNSPath.size(),
-											ns.getURI());
-									String path = "";
-									org.dom4j.Element elTmp = el;
-									while (elTmp != null) {
-										if (elTmp.getNamespacePrefix() != null
-												&& elTmp.getNamespacePrefix()
-														.length() > 0) {
-											path = "/"
-													+ elTmp.getNamespacePrefix()
-													+ ":" + elTmp.getName()
-													+ path;
-										} else {
-											path = "/" + elTmp.getName() + path;
-										}
-										elTmp = elTmp.getParent();
-									}
-									defualtNSPath.add(path);
-								} else {
-									xmlNameSpaceMap.put(ns.getPrefix(),
-											ns.getURI());
-								}
-
-							}
-							for (org.dom4j.Element e : (java.util.List<org.dom4j.Element>) el
-									.elements()) {
-								countNSMap(e);
-							}
-						}
-
-						public String addDefaultNSPrefix(String path,
-								String loopPath) {
-							if (defualtNSPath.size() > 0) {
-								String fullPath = loopPath;
-								if (!path.equals(fullPath)) {
-									for (String tmp : path.split("/")) {
-										if (("..").equals(tmp)) {
-											fullPath = fullPath.substring(0,
-													fullPath.lastIndexOf("/"));
-										} else {
-											fullPath += "/" + tmp;
-										}
-									}
-								}
-								int size = fullPath.split("/").length - 1;
-								if (size < 0) {
-									return fullPath;
-								}
-								int[] indexs = new int[size];
-								java.util.Arrays.fill(indexs, -1);
-								int length = 0;
-								for (int i = 0; i < defualtNSPath.size(); i++) {
-									if (defualtNSPath.get(i).length() > length
-											&& fullPath
-													.startsWith(defualtNSPath
-															.get(i))) {
-										java.util.Arrays
-												.fill(indexs,
-														defualtNSPath.get(i)
-																.split("/").length - 2,
-														indexs.length, i);
-										length = defualtNSPath.get(i).length();
-									}
-								}
-
-								StringBuilder newPath = new StringBuilder();
-								String[] pathStrs = path.split("/");
-								for (int i = 0; i < pathStrs.length; i++) {
-									String tmp = pathStrs[i];
-									if (newPath.length() > 0) {
-										newPath.append("/");
-									}
-									if (tmp.length() > 0
-											&& tmp.indexOf(":") == -1
-											&& tmp.indexOf(".") == -1 /*
-																	 * &&
-																	 * tmp.indexOf
-																	 * ("@") ==
-																	 * -1
-																	 */) {
-										int index = indexs[i + indexs.length
-												- pathStrs.length];
-										if (index >= 0) {
-											// ==== add by wliu to support both
-											// filter and functions==
-											if (tmp.indexOf("[") > 0
-													&& tmp.indexOf("]") > tmp
-															.indexOf("[")) {// include
-																			// filter
-												String tmpStr = replaceElementWithNS(
-														tmp, "pre" + index
-																+ ":");
-												newPath.append(tmpStr);
-											} else {
-												if (tmp.indexOf("@") != -1
-														|| tmp.indexOf("(") < tmp
-																.indexOf(")")) { // include
-																					// attribute
-													newPath.append(tmp);
-												} else {
-													// ==add end=======
-													newPath.append("pre")
-															.append(index)
-															.append(":")
-															.append(tmp);
-												}
-											}
-										} else {
-											newPath.append(tmp);
-										}
-									} else {
-										newPath.append(tmp);
-									}
-								}
-								return newPath.toString();
-							}
-							return path;
-						}
-
-						private String matches = "@*\\b[a-z|A-Z|_]+[[-]*\\w]*\\b[^'|^\\(]";
-						private java.util.regex.Pattern pattern = java.util.regex.Pattern
-								.compile(matches);
-
-						private String replaceElementWithNS(String global,
-								String pre) {
-
-							java.util.regex.Matcher match = pattern
-									.matcher(global);
-							StringBuffer sb = new StringBuffer();
-							match.reset();
-							while (match.find()) {
-								String group = match.group();
-								String tmp = "";
-								if (group.toLowerCase().matches(
-										"\\b(div|mod|and|or)\\b.*")
-										|| group.matches("@.*")) {
-									tmp = group;
-								} else {
-									tmp = tmp + pre + group;
-								}
-								match.appendReplacement(sb, tmp);
-							}
-							match.appendTail(sb);
-
-							return sb.toString();
-						}
-
-					}
-
-					class XML_API_tFileInputXML_8 {
-						public boolean isDefNull(org.dom4j.Node node)
-								throws javax.xml.transform.TransformerException {
-							if (node != null
-									&& node instanceof org.dom4j.Element) {
-								org.dom4j.Attribute attri = ((org.dom4j.Element) node)
-										.attribute("nil");
-								if (attri != null
-										&& ("true").equals(attri.getText())) {
-									return true;
-								}
-							}
-							return false;
-						}
-
-						public boolean isMissing(org.dom4j.Node node)
-								throws javax.xml.transform.TransformerException {
-							return node == null ? true : false;
-						}
-
-						public boolean isEmpty(org.dom4j.Node node)
-								throws javax.xml.transform.TransformerException {
-							if (node != null) {
-								return node.getText().length() == 0;
-							}
-							return false;
-						}
-					}
-
-					org.dom4j.io.SAXReader reader_tFileInputXML_8 = new org.dom4j.io.SAXReader();
-					reader_tFileInputXML_8
-							.setEntityResolver(new IgnoreDTDEntityResolver_tFileInputXML_8());
-					Object filename_tFileInputXML_8 = null;
-					try {
-						filename_tFileInputXML_8 = context.currentFile;
-					} catch (java.lang.Exception e) {
-
-						System.err.println(e.getMessage());
-
-					}
-					if (filename_tFileInputXML_8 != null
-							&& filename_tFileInputXML_8 instanceof String
-							&& filename_tFileInputXML_8.toString().startsWith(
-									"//")) {
-						if (!isWindows_tFileInputXML_8) {
-							filename_tFileInputXML_8 = filename_tFileInputXML_8
-									.toString().replaceFirst("//", "/");
-						}
-					}
-
-					boolean isValidFile_tFileInputXML_8 = true;
-					org.dom4j.Document doc_tFileInputXML_8 = null;
-					java.io.Closeable toClose_tFileInputXML_8 = null;
-					try {
-						if (filename_tFileInputXML_8 instanceof java.io.InputStream) {
-							java.io.InputStream inputStream_tFileInputXML_8 = (java.io.InputStream) filename_tFileInputXML_8;
-							toClose_tFileInputXML_8 = inputStream_tFileInputXML_8;
-							doc_tFileInputXML_8 = reader_tFileInputXML_8
-									.read(inputStream_tFileInputXML_8);
-						} else {
-							java.io.Reader unicodeReader_tFileInputXML_8 = new UnicodeReader(
-									new java.io.FileInputStream(String
-											.valueOf(filename_tFileInputXML_8)),
-									context.encoding);
-							toClose_tFileInputXML_8 = unicodeReader_tFileInputXML_8;
-							org.xml.sax.InputSource in_tFileInputXML_8 = new org.xml.sax.InputSource(
-									unicodeReader_tFileInputXML_8);
-							doc_tFileInputXML_8 = reader_tFileInputXML_8
-									.read(in_tFileInputXML_8);
-						}
-					} catch (java.lang.Exception e) {
-						System.err.println(e.getMessage());
-						isValidFile_tFileInputXML_8 = false;
-					} finally {
-						if (toClose_tFileInputXML_8 != null) {
-							toClose_tFileInputXML_8.close();
-						}
-					}
-					if (isValidFile_tFileInputXML_8) {
-						NameSpaceTool_tFileInputXML_8 nsTool_tFileInputXML_8 = new NameSpaceTool_tFileInputXML_8();
-						nsTool_tFileInputXML_8.countNSMap(doc_tFileInputXML_8
-								.getRootElement());
-						java.util.HashMap<String, String> xmlNameSpaceMap_tFileInputXML_8 = nsTool_tFileInputXML_8.xmlNameSpaceMap;
-
-						org.dom4j.XPath x_tFileInputXML_8 = doc_tFileInputXML_8
-								.createXPath(nsTool_tFileInputXML_8
-										.addDefaultNSPrefix(
-												"/ODM/Study/MetaDataVersion",
-												"/ODM/Study/MetaDataVersion"));
-						x_tFileInputXML_8
-								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
-
-						java.util.List<org.dom4j.tree.AbstractNode> nodeList_tFileInputXML_8 = (java.util.List<org.dom4j.tree.AbstractNode>) x_tFileInputXML_8
-								.selectNodes(doc_tFileInputXML_8);
-						XML_API_tFileInputXML_8 xml_api_tFileInputXML_8 = new XML_API_tFileInputXML_8();
-						String str_tFileInputXML_8 = "";
-						org.dom4j.Node node_tFileInputXML_8 = null;
-
-						// init all mapping xpaths
-						org.dom4j.XPath xTmp0_tFileInputXML_8 = org.dom4j.DocumentHelper
-								.createXPath(nsTool_tFileInputXML_8
-										.addDefaultNSPrefix("@OID",
-												"/ODM/Study/MetaDataVersion"));
-						xTmp0_tFileInputXML_8
-								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
-						org.dom4j.XPath xTmp1_tFileInputXML_8 = org.dom4j.DocumentHelper
-								.createXPath(nsTool_tFileInputXML_8
-										.addDefaultNSPrefix("@Name",
-												"/ODM/Study/MetaDataVersion"));
-						xTmp1_tFileInputXML_8
-								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
-						org.dom4j.XPath xTmp2_tFileInputXML_8 = org.dom4j.DocumentHelper
-								.createXPath(nsTool_tFileInputXML_8
-										.addDefaultNSPrefix("../@OID",
-												"/ODM/Study/MetaDataVersion"));
-						xTmp2_tFileInputXML_8
-								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_8);
-
-						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_8 : nodeList_tFileInputXML_8) {
-							nb_line_tFileInputXML_8++;
-							fromMetaID = null;
-							boolean whetherReject_tFileInputXML_8 = false;
-							fromMetaID = new fromMetaIDStruct();
-							try {
-								Object obj0_tFileInputXML_8 = xTmp0_tFileInputXML_8
-										.evaluate(temp_tFileInputXML_8);
-								if (obj0_tFileInputXML_8 == null) {
-									node_tFileInputXML_8 = null;
-									str_tFileInputXML_8 = "";
-
-								} else if (obj0_tFileInputXML_8 instanceof org.dom4j.Node) {
-									node_tFileInputXML_8 = (org.dom4j.Node) obj0_tFileInputXML_8;
-									str_tFileInputXML_8 = org.jaxen.function.StringFunction
-											.evaluate(
-													node_tFileInputXML_8,
-													org.jaxen.dom4j.DocumentNavigator
-															.getInstance());
-								} else if (obj0_tFileInputXML_8 instanceof String
-										|| obj0_tFileInputXML_8 instanceof Number) {
-									node_tFileInputXML_8 = temp_tFileInputXML_8;
-									str_tFileInputXML_8 = String
-											.valueOf(obj0_tFileInputXML_8);
-								} else if (obj0_tFileInputXML_8 instanceof java.util.List) {
-									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj0_tFileInputXML_8;
-									node_tFileInputXML_8 = nodes_tFileInputXML_8
-											.size() > 0 ? nodes_tFileInputXML_8
-											.get(0) : null;
-									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
-											: org.jaxen.function.StringFunction
-													.evaluate(
-															node_tFileInputXML_8,
-															org.jaxen.dom4j.DocumentNavigator
-																	.getInstance());
-								}
-								if (xml_api_tFileInputXML_8
-										.isDefNull(node_tFileInputXML_8)) {
-									fromMetaID.OID = null;
-								} else if (xml_api_tFileInputXML_8
-										.isEmpty(node_tFileInputXML_8)) {
-									fromMetaID.OID = "";
-								} else if (xml_api_tFileInputXML_8
-										.isMissing(node_tFileInputXML_8)) {
-									fromMetaID.OID = null;
-								} else {
-									fromMetaID.OID = str_tFileInputXML_8;
-								}
-								Object obj1_tFileInputXML_8 = xTmp1_tFileInputXML_8
-										.evaluate(temp_tFileInputXML_8);
-								if (obj1_tFileInputXML_8 == null) {
-									node_tFileInputXML_8 = null;
-									str_tFileInputXML_8 = "";
-
-								} else if (obj1_tFileInputXML_8 instanceof org.dom4j.Node) {
-									node_tFileInputXML_8 = (org.dom4j.Node) obj1_tFileInputXML_8;
-									str_tFileInputXML_8 = org.jaxen.function.StringFunction
-											.evaluate(
-													node_tFileInputXML_8,
-													org.jaxen.dom4j.DocumentNavigator
-															.getInstance());
-								} else if (obj1_tFileInputXML_8 instanceof String
-										|| obj1_tFileInputXML_8 instanceof Number) {
-									node_tFileInputXML_8 = temp_tFileInputXML_8;
-									str_tFileInputXML_8 = String
-											.valueOf(obj1_tFileInputXML_8);
-								} else if (obj1_tFileInputXML_8 instanceof java.util.List) {
-									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj1_tFileInputXML_8;
-									node_tFileInputXML_8 = nodes_tFileInputXML_8
-											.size() > 0 ? nodes_tFileInputXML_8
-											.get(0) : null;
-									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
-											: org.jaxen.function.StringFunction
-													.evaluate(
-															node_tFileInputXML_8,
-															org.jaxen.dom4j.DocumentNavigator
-																	.getInstance());
-								}
-								if (xml_api_tFileInputXML_8
-										.isDefNull(node_tFileInputXML_8)) {
-									fromMetaID.Name = null;
-								} else if (xml_api_tFileInputXML_8
-										.isEmpty(node_tFileInputXML_8)) {
-									fromMetaID.Name = "";
-								} else if (xml_api_tFileInputXML_8
-										.isMissing(node_tFileInputXML_8)) {
-									fromMetaID.Name = null;
-								} else {
-									fromMetaID.Name = str_tFileInputXML_8;
-								}
-								Object obj2_tFileInputXML_8 = xTmp2_tFileInputXML_8
-										.evaluate(temp_tFileInputXML_8);
-								if (obj2_tFileInputXML_8 == null) {
-									node_tFileInputXML_8 = null;
-									str_tFileInputXML_8 = "";
-
-								} else if (obj2_tFileInputXML_8 instanceof org.dom4j.Node) {
-									node_tFileInputXML_8 = (org.dom4j.Node) obj2_tFileInputXML_8;
-									str_tFileInputXML_8 = org.jaxen.function.StringFunction
-											.evaluate(
-													node_tFileInputXML_8,
-													org.jaxen.dom4j.DocumentNavigator
-															.getInstance());
-								} else if (obj2_tFileInputXML_8 instanceof String
-										|| obj2_tFileInputXML_8 instanceof Number) {
-									node_tFileInputXML_8 = temp_tFileInputXML_8;
-									str_tFileInputXML_8 = String
-											.valueOf(obj2_tFileInputXML_8);
-								} else if (obj2_tFileInputXML_8 instanceof java.util.List) {
-									java.util.List<org.dom4j.Node> nodes_tFileInputXML_8 = (java.util.List<org.dom4j.Node>) obj2_tFileInputXML_8;
-									node_tFileInputXML_8 = nodes_tFileInputXML_8
-											.size() > 0 ? nodes_tFileInputXML_8
-											.get(0) : null;
-									str_tFileInputXML_8 = node_tFileInputXML_8 == null ? ""
-											: org.jaxen.function.StringFunction
-													.evaluate(
-															node_tFileInputXML_8,
-															org.jaxen.dom4j.DocumentNavigator
-																	.getInstance());
-								}
-								if (xml_api_tFileInputXML_8
-										.isDefNull(node_tFileInputXML_8)) {
-									fromMetaID.StudyOID = null;
-								} else if (xml_api_tFileInputXML_8
-										.isEmpty(node_tFileInputXML_8)) {
-									fromMetaID.StudyOID = "";
-								} else if (xml_api_tFileInputXML_8
-										.isMissing(node_tFileInputXML_8)) {
-									fromMetaID.StudyOID = null;
-								} else {
-									fromMetaID.StudyOID = str_tFileInputXML_8;
-								}
-
-							} catch (java.lang.Exception e) {
-								whetherReject_tFileInputXML_8 = true;
-								System.err.println(e.getMessage());
-								fromMetaID = null;
-							}
-
-							/**
-							 * [tFileInputXML_8 begin ] stop
-							 */
-							/**
-							 * [tFileInputXML_8 main ] start
-							 */
-
-							currentComponent = "tFileInputXML_8";
-
-							tos_count_tFileInputXML_8++;
-
-							/**
-							 * [tFileInputXML_8 main ] stop
-							 */
-							// Start of branch "fromMetaID"
-							if (fromMetaID != null) {
-
-								/**
-								 * [tMap_7 main ] start
-								 */
-
-								currentComponent = "tMap_7";
-
-								boolean hasCasePrimitiveKeyWithNull_tMap_7 = false;
-
-								// ###############################
-								// # Input tables (lookups)
-								boolean rejectedInnerJoin_tMap_7 = false;
-								boolean mainRowRejected_tMap_7 = false;
-
-								// /////////////////////////////////////////////
-								// Starting Lookup Table "fromTemp1"
-								// /////////////////////////////////////////////
-
-								boolean forceLoopfromTemp1 = false;
-
-								fromTemp1Struct fromTemp1ObjectFromLookup = null;
-
-								if (!rejectedInnerJoin_tMap_7) { // G_TM_M_020
-
-									hasCasePrimitiveKeyWithNull_tMap_7 = false;
-
-									fromTemp1HashKey.StudyID = fromMetaID.StudyOID;
-
-									fromTemp1HashKey.hashCodeDirty = true;
-
-									tHash_Lookup_fromTemp1
-											.lookup(fromTemp1HashKey);
-
-								} // G_TM_M_020
-
-								if (tHash_Lookup_fromTemp1 != null
-										&& tHash_Lookup_fromTemp1
-												.getCount(fromTemp1HashKey) > 1) { // G
-																					// 071
-
-									// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'fromTemp1' and it contains more one result from keys :  fromTemp1.StudyID = '"
-									// + fromTemp1HashKey.StudyID + "'");
-								} // G 071
-
-								fromTemp1Struct fromTemp1 = null;
-
-								fromTemp1Struct fromLookup_fromTemp1 = null;
-								fromTemp1 = fromTemp1Default;
-
-								if (tHash_Lookup_fromTemp1 != null
-										&& tHash_Lookup_fromTemp1.hasNext()) { // G
-																				// 099
-
-									fromLookup_fromTemp1 = tHash_Lookup_fromTemp1
-											.next();
-
-								} // G 099
-
-								if (fromLookup_fromTemp1 != null) {
-									fromTemp1 = fromLookup_fromTemp1;
-								}
-
-								// ###############################
-								{ // start of Var scope
-
-									// ###############################
-									// # Vars tables
-
-									Var__tMap_7__Struct Var = Var__tMap_7;// ###############################
-									// ###############################
-									// # Output tables
-
-									out7 = null;
-
-									// # Output table : 'out7'
-									out7_tmp.StudyID = fromTemp1.StudyID;
-									out7_tmp.MetaID = fromMetaID.OID;
-									out7_tmp.VisitID = null;
-									out7_tmp.FormID = null;
-									out7_tmp.QuestionID = null;
-									out7_tmp.ItemID = null;
-									out7_tmp.ParentItem = null;
-									out7_tmp.Name = fromMetaID.Name;
-									out7_tmp.VisitNo = null;
-									out7_tmp.Sequence = null;
-									out7_tmp.hidden = null;
-									out7_tmp.FormFamily = null;
-									out7_tmp.AdditionalData = null;
-									out7_tmp.item_Datatype = null;
-									out7_tmp.HLEVEL = 3;
-									out7 = out7_tmp;
-									// ###############################
-
-								} // end of Var scope
-
-								rejectedInnerJoin_tMap_7 = false;
-
-								tos_count_tMap_7++;
-
-								/**
-								 * [tMap_7 main ] stop
-								 */
-								// Start of branch "out7"
-								if (out7 != null) {
-
-									/**
-									 * [tUniqRow_5 main ] start
-									 */
-
-									currentComponent = "tUniqRow_5";
-
-									row11 = null;
-									if (out7.StudyID == null) {
-										finder_tUniqRow_5.StudyID = null;
-									} else {
-										finder_tUniqRow_5.StudyID = out7.StudyID
-												.toLowerCase();
-									}
-									if (out7.MetaID == null) {
-										finder_tUniqRow_5.MetaID = null;
-									} else {
-										finder_tUniqRow_5.MetaID = out7.MetaID
-												.toLowerCase();
-									}
-									finder_tUniqRow_5.hashCodeDirty = true;
-									if (!keystUniqRow_5
-											.contains(finder_tUniqRow_5)) {
-										KeyStruct_tUniqRow_5 new_tUniqRow_5 = new KeyStruct_tUniqRow_5();
-
-										if (out7.StudyID == null) {
-											new_tUniqRow_5.StudyID = null;
-										} else {
-											new_tUniqRow_5.StudyID = out7.StudyID
-													.toLowerCase();
-										}
-										if (out7.MetaID == null) {
-											new_tUniqRow_5.MetaID = null;
-										} else {
-											new_tUniqRow_5.MetaID = out7.MetaID
-													.toLowerCase();
-										}
-
-										keystUniqRow_5.add(new_tUniqRow_5);
-										if (row11 == null) {
-											row11 = new row11Struct();
-										}
-										row11.StudyID = out7.StudyID;
-										row11.MetaID = out7.MetaID;
-										row11.VisitID = out7.VisitID;
-										row11.FormID = out7.FormID;
-										row11.QuestionID = out7.QuestionID;
-										row11.ItemID = out7.ItemID;
-										row11.ParentItem = out7.ParentItem;
-										row11.Name = out7.Name;
-										row11.VisitNo = out7.VisitNo;
-										row11.Sequence = out7.Sequence;
-										row11.hidden = out7.hidden;
-										row11.FormFamily = out7.FormFamily;
-										row11.AdditionalData = out7.AdditionalData;
-										row11.item_Datatype = out7.item_Datatype;
-										row11.HLEVEL = out7.HLEVEL;
-										nb_uniques_tUniqRow_5++;
-									} else {
-										nb_duplicates_tUniqRow_5++;
-									}
-
-									tos_count_tUniqRow_5++;
-
-									/**
-									 * [tUniqRow_5 main ] stop
-									 */
-									// Start of branch "row11"
-									if (row11 != null) {
-
-										/**
-										 * [tFileOutputDelimited_12 main ] start
-										 */
-
-										currentComponent = "tFileOutputDelimited_12";
-
-										StringBuilder sb_tFileOutputDelimited_12 = new StringBuilder();
-
-										if (row11.StudyID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.StudyID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.MetaID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.MetaID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.VisitID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.VisitID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.FormID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.FormID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.QuestionID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.QuestionID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.ItemID != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.ItemID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.ParentItem != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.ParentItem
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.Name != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.Name
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.VisitNo != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.VisitNo
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.Sequence != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.Sequence
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.hidden != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.hidden
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.FormFamily != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.FormFamily
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.AdditionalData != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.AdditionalData
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.item_Datatype != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.item_Datatype
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_tFileOutputDelimited_12);
-
-										if (row11.HLEVEL != null) {
-
-											sb_tFileOutputDelimited_12.append(
-
-											row11.HLEVEL
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_12
-												.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_12);
-
-										nb_line_tFileOutputDelimited_12++;
-
-										outtFileOutputDelimited_12
-												.write(sb_tFileOutputDelimited_12
-														.toString());
-
-										tos_count_tFileOutputDelimited_12++;
-
-										/**
-										 * [tFileOutputDelimited_12 main ] stop
-										 */
-
-									} // End of branch "row11"
-
-								} // End of branch "out7"
-
-							} // End of branch "fromMetaID"
-
-							/**
-							 * [tFileInputXML_8 end ] start
-							 */
-
-							currentComponent = "tFileInputXML_8";
-
-						}
-					}
-					globalMap.put("tFileInputXML_8_NB_LINE",
-							nb_line_tFileInputXML_8);
-
-					ok_Hash.put("tFileInputXML_8", true);
-					end_Hash.put("tFileInputXML_8", System.currentTimeMillis());
-
-					/**
-					 * [tFileInputXML_8 end ] stop
-					 */
-
-					/**
-					 * [tMap_7 end ] start
-					 */
-
-					currentComponent = "tMap_7";
-
-					// ###############################
-					// # Lookup hashes releasing
-					if (tHash_Lookup_fromTemp1 != null) {
-						tHash_Lookup_fromTemp1.endGet();
-					}
-					globalMap.remove("tHash_Lookup_fromTemp1");
-
-					// ###############################
-
-					ok_Hash.put("tMap_7", true);
-					end_Hash.put("tMap_7", System.currentTimeMillis());
-
-					/**
-					 * [tMap_7 end ] stop
-					 */
-
-					/**
-					 * [tUniqRow_5 end ] start
-					 */
-
-					currentComponent = "tUniqRow_5";
-
-					globalMap.put("tUniqRow_5_NB_UNIQUES",
-							nb_uniques_tUniqRow_5);
-					globalMap.put("tUniqRow_5_NB_DUPLICATES",
-							nb_duplicates_tUniqRow_5);
-
-					ok_Hash.put("tUniqRow_5", true);
-					end_Hash.put("tUniqRow_5", System.currentTimeMillis());
-
-					/**
-					 * [tUniqRow_5 end ] stop
-					 */
-
-					/**
-					 * [tFileOutputDelimited_12 end ] start
-					 */
-
-					currentComponent = "tFileOutputDelimited_12";
-
-				} finally {
-					if (outtFileOutputDelimited_12 != null) {
-						outtFileOutputDelimited_12.flush();
-						outtFileOutputDelimited_12.close();
-					}
-					globalMap.put("tFileOutputDelimited_12_NB_LINE",
-							nb_line_tFileOutputDelimited_12);
-					globalMap.put("tFileOutputDelimited_12_FILE_NAME",
-							fileName_tFileOutputDelimited_12);
-				} // finally
-
-				ok_Hash.put("tFileOutputDelimited_12", true);
-				end_Hash.put("tFileOutputDelimited_12",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileOutputDelimited_12 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tFileInputXML_8:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tJava_6Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		} finally {
-			// free memory for "tMap_7"
-			globalMap.remove("tHash_Lookup_fromTemp1");
-
-		}
-
-		globalMap.put("tFileInputXML_8_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_6Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_6_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJava_6 begin ] start
-				 */
-
-				ok_Hash.put("tJava_6", false);
-				start_Hash.put("tJava_6", System.currentTimeMillis());
-				currentComponent = "tJava_6";
-
-				int tos_count_tJava_6 = 0;
-
-				StatusListener.setSubStatus(55.0f, (int) (55.0f) + "%");
-
-				/**
-				 * [tJava_6 begin ] stop
-				 */
-				/**
-				 * [tJava_6 main ] start
-				 */
-
-				currentComponent = "tJava_6";
-
-				tos_count_tJava_6++;
-
-				/**
-				 * [tJava_6 main ] stop
-				 */
-				/**
-				 * [tJava_6 end ] start
-				 */
-
-				currentComponent = "tJava_6";
-
-				ok_Hash.put("tJava_6", true);
-				end_Hash.put("tJava_6", System.currentTimeMillis());
-
-				/**
-				 * [tJava_6 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJava_6:OnSubjobOk", "", Thread
-								.currentThread().getId() + "", "", "", "", "",
-						"");
-			}
-
-			tFileInputXML_3Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJava_6_SUBPROCESS_STATE", 1);
 	}
 
 	public static class fromTemp1Struct implements
@@ -29121,7 +26754,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				// linked node: tMap_7 - inputs:(fromMetaID,fromTemp1)
 				// outputs:(out7)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_fromTemp1 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_fromTemp1 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
 
 				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromTemp1Struct> tHash_Lookup_fromTemp1 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
 						.<fromTemp1Struct> getLookup(matchingModeEnum_fromTemp1);
@@ -33198,8 +30831,8 @@ public class ODM_Create_Ontology implements TalendJob {
 		globalMap.put("tFileInputDelimited_15_SUBPROCESS_STATE", 1);
 	}
 
-	public static class row14Struct implements
-			routines.system.IPersistableComparableLookupRow<row14Struct> {
+	public static class fromCodeListStruct implements
+			routines.system.IPersistableComparableLookupRow<fromCodeListStruct> {
 		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
 		protected static final int DEFAULT_HASHCODE = 1;
@@ -33270,7 +30903,7 @@ public class ODM_Create_Ontology implements TalendJob {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			final row14Struct other = (row14Struct) obj;
+			final fromCodeListStruct other = (fromCodeListStruct) obj;
 
 			if (this.ItemGroupOID == null) {
 				if (other.ItemGroupOID != null)
@@ -33281,7 +30914,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			return true;
 		}
 
-		public void copyDataTo(row14Struct other) {
+		public void copyDataTo(fromCodeListStruct other) {
 
 			other.OID = this.OID;
 			other.Name = this.Name;
@@ -33292,7 +30925,7 @@ public class ODM_Create_Ontology implements TalendJob {
 
 		}
 
-		public void copyKeysDataTo(row14Struct other) {
+		public void copyKeysDataTo(fromCodeListStruct other) {
 
 			other.ItemGroupOID = this.ItemGroupOID;
 
@@ -33456,7 +31089,7 @@ public class ODM_Create_Ontology implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row14Struct other) {
+		public int compareTo(fromCodeListStruct other) {
 
 			int returnValue = -1;
 
@@ -33514,34 +31147,38 @@ public class ODM_Create_Ontology implements TalendJob {
 																					// resume
 				globalResumeTicket = true;
 
-				row14Struct row14 = new row14Struct();
+				fromCodeListStruct fromCodeList = new fromCodeListStruct();
 
 				/**
-				 * [tAdvancedHash_row14 begin ] start
+				 * [tAdvancedHash_fromCodeList begin ] start
 				 */
 
-				ok_Hash.put("tAdvancedHash_row14", false);
-				start_Hash.put("tAdvancedHash_row14",
+				ok_Hash.put("tAdvancedHash_fromCodeList", false);
+				start_Hash.put("tAdvancedHash_fromCodeList",
 						System.currentTimeMillis());
-				currentComponent = "tAdvancedHash_row14";
+				currentComponent = "tAdvancedHash_fromCodeList";
 
-				int tos_count_tAdvancedHash_row14 = 0;
+				int tos_count_tAdvancedHash_fromCodeList = 0;
 
-				// connection name:row14
+				// connection name:fromCodeList
 				// source node:tFileInputDelimited_23 -
-				// inputs:(after_tFileInputXML_16) outputs:(row14,row14) |
-				// target node:tAdvancedHash_row14 - inputs:(row14) outputs:()
-				// linked node: tMap_29 - inputs:(row16,row14) outputs:(asd)
+				// inputs:(after_tFileInputXML_16)
+				// outputs:(fromCodeList,fromCodeList) | target
+				// node:tAdvancedHash_fromCodeList - inputs:(fromCodeList)
+				// outputs:()
+				// linked node: tMap_29 - inputs:(row16,fromCodeList)
+				// outputs:(asd)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row14 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_fromCodeList = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
 
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row14Struct> tHash_Lookup_row14 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<row14Struct> getLookup(matchingModeEnum_row14);
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromCodeListStruct> tHash_Lookup_fromCodeList = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<fromCodeListStruct> getLookup(matchingModeEnum_fromCodeList);
 
-				globalMap.put("tHash_Lookup_row14", tHash_Lookup_row14);
+				globalMap.put("tHash_Lookup_fromCodeList",
+						tHash_Lookup_fromCodeList);
 
 				/**
-				 * [tAdvancedHash_row14 begin ] stop
+				 * [tAdvancedHash_fromCodeList begin ] stop
 				 */
 
 				/**
@@ -33585,51 +31222,51 @@ public class ODM_Create_Ontology implements TalendJob {
 					while (fid_tFileInputDelimited_23 != null
 							&& fid_tFileInputDelimited_23.nextRecord()) {
 
-						row14 = null;
+						fromCodeList = null;
 
-						row14 = null;
+						fromCodeList = null;
 
 						boolean whetherReject_tFileInputDelimited_23 = false;
-						row14 = new row14Struct();
+						fromCodeList = new fromCodeListStruct();
 						try {
 
 							int columnIndexWithD_tFileInputDelimited_23 = 0;
 
 							columnIndexWithD_tFileInputDelimited_23 = 0;
 
-							row14.OID = fid_tFileInputDelimited_23
+							fromCodeList.OID = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 							columnIndexWithD_tFileInputDelimited_23 = 1;
 
-							row14.Name = fid_tFileInputDelimited_23
+							fromCodeList.Name = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 							columnIndexWithD_tFileInputDelimited_23 = 2;
 
-							row14.CodeListItem = fid_tFileInputDelimited_23
+							fromCodeList.CodeListItem = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 							columnIndexWithD_tFileInputDelimited_23 = 3;
 
-							row14.TranslatedText = fid_tFileInputDelimited_23
+							fromCodeList.TranslatedText = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 							columnIndexWithD_tFileInputDelimited_23 = 4;
 
-							row14.ItemGroupOID = fid_tFileInputDelimited_23
+							fromCodeList.ItemGroupOID = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 							columnIndexWithD_tFileInputDelimited_23 = 5;
 
-							row14.Datatype = fid_tFileInputDelimited_23
+							fromCodeList.Datatype = fid_tFileInputDelimited_23
 									.get(columnIndexWithD_tFileInputDelimited_23);
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_23 = true;
 
 							System.err.println(e.getMessage());
-							row14 = null;
+							fromCodeList = null;
 
 						}
 
@@ -33647,38 +31284,38 @@ public class ODM_Create_Ontology implements TalendJob {
 						/**
 						 * [tFileInputDelimited_23 main ] stop
 						 */
-						// Start of branch "row14"
-						if (row14 != null) {
+						// Start of branch "fromCodeList"
+						if (fromCodeList != null) {
 
 							/**
-							 * [tAdvancedHash_row14 main ] start
+							 * [tAdvancedHash_fromCodeList main ] start
 							 */
 
-							currentComponent = "tAdvancedHash_row14";
+							currentComponent = "tAdvancedHash_fromCodeList";
 
-							row14Struct row14_HashRow = new row14Struct();
+							fromCodeListStruct fromCodeList_HashRow = new fromCodeListStruct();
 
-							row14_HashRow.OID = row14.OID;
+							fromCodeList_HashRow.OID = fromCodeList.OID;
 
-							row14_HashRow.Name = row14.Name;
+							fromCodeList_HashRow.Name = fromCodeList.Name;
 
-							row14_HashRow.CodeListItem = row14.CodeListItem;
+							fromCodeList_HashRow.CodeListItem = fromCodeList.CodeListItem;
 
-							row14_HashRow.TranslatedText = row14.TranslatedText;
+							fromCodeList_HashRow.TranslatedText = fromCodeList.TranslatedText;
 
-							row14_HashRow.ItemGroupOID = row14.ItemGroupOID;
+							fromCodeList_HashRow.ItemGroupOID = fromCodeList.ItemGroupOID;
 
-							row14_HashRow.Datatype = row14.Datatype;
+							fromCodeList_HashRow.Datatype = fromCodeList.Datatype;
 
-							tHash_Lookup_row14.put(row14_HashRow);
+							tHash_Lookup_fromCodeList.put(fromCodeList_HashRow);
 
-							tos_count_tAdvancedHash_row14++;
+							tos_count_tAdvancedHash_fromCodeList++;
 
 							/**
-							 * [tAdvancedHash_row14 main ] stop
+							 * [tAdvancedHash_fromCodeList main ] stop
 							 */
 
-						} // End of branch "row14"
+						} // End of branch "fromCodeList"
 
 						/**
 						 * [tFileInputDelimited_23 end ] start
@@ -33708,18 +31345,19 @@ public class ODM_Create_Ontology implements TalendJob {
 				 */
 
 				/**
-				 * [tAdvancedHash_row14 end ] start
+				 * [tAdvancedHash_fromCodeList end ] start
 				 */
 
-				currentComponent = "tAdvancedHash_row14";
+				currentComponent = "tAdvancedHash_fromCodeList";
 
-				tHash_Lookup_row14.endPut();
+				tHash_Lookup_fromCodeList.endPut();
 
-				ok_Hash.put("tAdvancedHash_row14", true);
-				end_Hash.put("tAdvancedHash_row14", System.currentTimeMillis());
+				ok_Hash.put("tAdvancedHash_fromCodeList", true);
+				end_Hash.put("tAdvancedHash_fromCodeList",
+						System.currentTimeMillis());
 
 				/**
-				 * [tAdvancedHash_row14 end ] stop
+				 * [tAdvancedHash_fromCodeList end ] stop
 				 */
 
 			}// end the resume
@@ -42623,6 +40261,2997 @@ public class ODM_Create_Ontology implements TalendJob {
 		globalMap.put("tCreateTemporaryFile_16_SUBPROCESS_STATE", 1);
 	}
 
+	public static class row15Struct implements
+			routines.system.IPersistableComparableLookupRow<row15Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String VisitOID;
+
+		public String getVisitOID() {
+			return this.VisitOID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime
+						* result
+						+ ((this.VisitOID == null) ? 0 : this.VisitOID
+								.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row15Struct other = (row15Struct) obj;
+
+			if (this.VisitOID == null) {
+				if (other.VisitOID != null)
+					return false;
+			} else if (!this.VisitOID.equals(other.VisitOID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row15Struct other) {
+
+			other.VisitOID = this.VisitOID;
+			other.Name = this.Name;
+
+		}
+
+		public void copyKeysDataTo(row15Struct other) {
+
+			other.VisitOID = this.VisitOID;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.VisitOID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.VisitOID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.Name = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.Name, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("VisitOID=" + VisitOID);
+			sb.append(",Name=" + Name);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row15Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.VisitOID, other.VisitOID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class fVisitNamesStruct implements
+			routines.system.IPersistableRow<fVisitNamesStruct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String VisitOID;
+
+		public String getVisitOID() {
+			return this.VisitOID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.VisitOID = readString(dis);
+
+					this.Name = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.VisitOID, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("VisitOID=" + VisitOID);
+			sb.append(",Name=" + Name);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(fVisitNamesStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_11Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				fVisitNamesStruct fVisitNames = new fVisitNamesStruct();
+				fVisitNamesStruct row15 = fVisitNames;
+
+				/**
+				 * [tAdvancedHash_row15 begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_row15", false);
+				start_Hash.put("tAdvancedHash_row15",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_row15";
+
+				int tos_count_tAdvancedHash_row15 = 0;
+
+				// connection name:row15
+				// source node:tLogRow_3 - inputs:(fVisitNames)
+				// outputs:(row15,row15) | target node:tAdvancedHash_row15 -
+				// inputs:(row15) outputs:()
+				// linked node: tMap_9 - inputs:(row21,row15,row24)
+				// outputs:(out8)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row15 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row15Struct> tHash_Lookup_row15 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<row15Struct> getLookup(matchingModeEnum_row15);
+
+				globalMap.put("tHash_Lookup_row15", tHash_Lookup_row15);
+
+				/**
+				 * [tAdvancedHash_row15 begin ] stop
+				 */
+
+				/**
+				 * [tLogRow_3 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_3", false);
+				start_Hash.put("tLogRow_3", System.currentTimeMillis());
+				currentComponent = "tLogRow_3";
+
+				int tos_count_tLogRow_3 = 0;
+
+				/**
+				 * [tLogRow_3 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_11 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_11", false);
+				start_Hash.put("tFileInputDelimited_11",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_11";
+
+				int tos_count_tFileInputDelimited_11 = 0;
+
+				int nb_line_tFileInputDelimited_11 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11 = null;
+				try {
+
+					Object filename_tFileInputDelimited_11 = ((String) globalMap
+							.get("tCreateTemporaryFile_8_FILEPATH"));
+					if (filename_tFileInputDelimited_11 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_11 = 0, random_value_tFileInputDelimited_11 = -1;
+						if (footer_value_tFileInputDelimited_11 > 0
+								|| random_value_tFileInputDelimited_11 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_11 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_8_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
+								false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_11 != null
+							&& fid_tFileInputDelimited_11.nextRecord()) {
+
+						fVisitNames = null;
+
+						boolean whetherReject_tFileInputDelimited_11 = false;
+						fVisitNames = new fVisitNamesStruct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_11 = 0;
+
+							columnIndexWithD_tFileInputDelimited_11 = 0;
+
+							fVisitNames.VisitOID = fid_tFileInputDelimited_11
+									.get(columnIndexWithD_tFileInputDelimited_11);
+
+							columnIndexWithD_tFileInputDelimited_11 = 1;
+
+							fVisitNames.Name = fid_tFileInputDelimited_11
+									.get(columnIndexWithD_tFileInputDelimited_11);
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_11 = true;
+
+							System.err.println(e.getMessage());
+							fVisitNames = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_11 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_11 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_11";
+
+						tos_count_tFileInputDelimited_11++;
+
+						/**
+						 * [tFileInputDelimited_11 main ] stop
+						 */
+						// Start of branch "fVisitNames"
+						if (fVisitNames != null) {
+
+							/**
+							 * [tLogRow_3 main ] start
+							 */
+
+							currentComponent = "tLogRow_3";
+
+							row15 = fVisitNames;
+
+							tos_count_tLogRow_3++;
+
+							/**
+							 * [tLogRow_3 main ] stop
+							 */
+
+							/**
+							 * [tAdvancedHash_row15 main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row15";
+
+							row15Struct row15_HashRow = new row15Struct();
+
+							row15_HashRow.VisitOID = row15.VisitOID;
+
+							row15_HashRow.Name = row15.Name;
+
+							tHash_Lookup_row15.put(row15_HashRow);
+
+							tos_count_tAdvancedHash_row15++;
+
+							/**
+							 * [tAdvancedHash_row15 main ] stop
+							 */
+
+						} // End of branch "fVisitNames"
+
+						/**
+						 * [tFileInputDelimited_11 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_11";
+
+					}
+				} finally {
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_8_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_11 != null) {
+							fid_tFileInputDelimited_11.close();
+						}
+					}
+					if (fid_tFileInputDelimited_11 != null) {
+						globalMap.put("tFileInputDelimited_11_NB_LINE",
+								fid_tFileInputDelimited_11.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_11", true);
+				end_Hash.put("tFileInputDelimited_11",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_11 end ] stop
+				 */
+
+				/**
+				 * [tLogRow_3 end ] start
+				 */
+
+				currentComponent = "tLogRow_3";
+
+				ok_Hash.put("tLogRow_3", true);
+				end_Hash.put("tLogRow_3", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_3 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row15 end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row15";
+
+				tHash_Lookup_row15.endPut();
+
+				ok_Hash.put("tAdvancedHash_row15", true);
+				end_Hash.put("tAdvancedHash_row15", System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_row15 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 1);
+	}
+
+	public static class row24Struct implements
+			routines.system.IPersistableComparableLookupRow<row24Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result
+						+ ((this.MetaID == null) ? 0 : this.MetaID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row24Struct other = (row24Struct) obj;
+
+			if (this.MetaID == null) {
+				if (other.MetaID != null)
+					return false;
+			} else if (!this.MetaID.equals(other.MetaID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row24Struct other) {
+
+			other.StudyID = this.StudyID;
+			other.MetaID = this.MetaID;
+			other.VisitID = this.VisitID;
+			other.FormID = this.FormID;
+			other.QuestionID = this.QuestionID;
+			other.ItemID = this.ItemID;
+			other.ParentItem = this.ParentItem;
+			other.Name = this.Name;
+			other.VisitNo = this.VisitNo;
+			other.Sequence = this.Sequence;
+			other.hidden = this.hidden;
+			other.FormFamily = this.FormFamily;
+			other.AdditionalData = this.AdditionalData;
+			other.item_Datatype = this.item_Datatype;
+
+		}
+
+		public void copyKeysDataTo(row24Struct other) {
+
+			other.MetaID = this.MetaID;
+
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.MetaID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.StudyID = readString(dis, ois);
+
+				this.VisitID = readString(dis, ois);
+
+				this.FormID = readString(dis, ois);
+
+				this.QuestionID = readString(dis, ois);
+
+				this.ItemID = readString(dis, ois);
+
+				this.ParentItem = readString(dis, ois);
+
+				this.Name = readString(dis, ois);
+
+				this.VisitNo = readString(dis, ois);
+
+				this.Sequence = readString(dis, ois);
+
+				this.hidden = readString(dis, ois);
+
+				this.FormFamily = readString(dis, ois);
+
+				this.AdditionalData = readString(dis, ois);
+
+				this.item_Datatype = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.StudyID, dos, oos);
+
+				writeString(this.VisitID, dos, oos);
+
+				writeString(this.FormID, dos, oos);
+
+				writeString(this.QuestionID, dos, oos);
+
+				writeString(this.ItemID, dos, oos);
+
+				writeString(this.ParentItem, dos, oos);
+
+				writeString(this.Name, dos, oos);
+
+				writeString(this.VisitNo, dos, oos);
+
+				writeString(this.Sequence, dos, oos);
+
+				writeString(this.hidden, dos, oos);
+
+				writeString(this.FormFamily, dos, oos);
+
+				writeString(this.AdditionalData, dos, oos);
+
+				writeString(this.item_Datatype, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row24Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.MetaID, other.MetaID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class fTemp2Struct implements
+			routines.system.IPersistableRow<fTemp2Struct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.StudyID = readString(dis);
+
+					this.MetaID = readString(dis);
+
+					this.VisitID = readString(dis);
+
+					this.FormID = readString(dis);
+
+					this.QuestionID = readString(dis);
+
+					this.ItemID = readString(dis);
+
+					this.ParentItem = readString(dis);
+
+					this.Name = readString(dis);
+
+					this.VisitNo = readString(dis);
+
+					this.Sequence = readString(dis);
+
+					this.hidden = readString(dis);
+
+					this.FormFamily = readString(dis);
+
+					this.AdditionalData = readString(dis);
+
+					this.item_Datatype = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.StudyID, dos);
+
+				// String
+
+				writeString(this.MetaID, dos);
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+				// String
+
+				writeString(this.FormID, dos);
+
+				// String
+
+				writeString(this.QuestionID, dos);
+
+				// String
+
+				writeString(this.ItemID, dos);
+
+				// String
+
+				writeString(this.ParentItem, dos);
+
+				// String
+
+				writeString(this.Name, dos);
+
+				// String
+
+				writeString(this.VisitNo, dos);
+
+				// String
+
+				writeString(this.Sequence, dos);
+
+				// String
+
+				writeString(this.hidden, dos);
+
+				// String
+
+				writeString(this.FormFamily, dos);
+
+				// String
+
+				writeString(this.AdditionalData, dos);
+
+				// String
+
+				writeString(this.item_Datatype, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(fTemp2Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_8Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_8_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				fTemp2Struct fTemp2 = new fTemp2Struct();
+				fTemp2Struct row24 = fTemp2;
+
+				/**
+				 * [tAdvancedHash_row24 begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_row24", false);
+				start_Hash.put("tAdvancedHash_row24",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_row24";
+
+				int tos_count_tAdvancedHash_row24 = 0;
+
+				// connection name:row24
+				// source node:tLogRow_7 - inputs:(fTemp2) outputs:(row24,row24)
+				// | target node:tAdvancedHash_row24 - inputs:(row24) outputs:()
+				// linked node: tMap_9 - inputs:(row21,row15,row24)
+				// outputs:(out8)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row24 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row24Struct> tHash_Lookup_row24 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<row24Struct> getLookup(matchingModeEnum_row24);
+
+				globalMap.put("tHash_Lookup_row24", tHash_Lookup_row24);
+
+				/**
+				 * [tAdvancedHash_row24 begin ] stop
+				 */
+
+				/**
+				 * [tLogRow_7 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_7", false);
+				start_Hash.put("tLogRow_7", System.currentTimeMillis());
+				currentComponent = "tLogRow_7";
+
+				int tos_count_tLogRow_7 = 0;
+
+				/**
+				 * [tLogRow_7 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_8 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_8", false);
+				start_Hash.put("tFileInputDelimited_8",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_8";
+
+				int tos_count_tFileInputDelimited_8 = 0;
+
+				int nb_line_tFileInputDelimited_8 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_8 = null;
+				try {
+
+					Object filename_tFileInputDelimited_8 = ((String) globalMap
+							.get("tCreateTemporaryFile_4_FILEPATH"));
+					if (filename_tFileInputDelimited_8 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_8 = 0, random_value_tFileInputDelimited_8 = -1;
+						if (footer_value_tFileInputDelimited_8 > 0
+								|| random_value_tFileInputDelimited_8 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_8 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_4_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
+								false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_8 != null
+							&& fid_tFileInputDelimited_8.nextRecord()) {
+
+						fTemp2 = null;
+
+						boolean whetherReject_tFileInputDelimited_8 = false;
+						fTemp2 = new fTemp2Struct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_8 = 0;
+
+							columnIndexWithD_tFileInputDelimited_8 = 0;
+
+							fTemp2.StudyID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 1;
+
+							fTemp2.MetaID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 2;
+
+							fTemp2.VisitID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 3;
+
+							fTemp2.FormID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 4;
+
+							fTemp2.QuestionID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 5;
+
+							fTemp2.ItemID = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 6;
+
+							fTemp2.ParentItem = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 7;
+
+							fTemp2.Name = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 8;
+
+							fTemp2.VisitNo = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 9;
+
+							fTemp2.Sequence = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 10;
+
+							fTemp2.hidden = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 11;
+
+							fTemp2.FormFamily = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 12;
+
+							fTemp2.AdditionalData = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+							columnIndexWithD_tFileInputDelimited_8 = 13;
+
+							fTemp2.item_Datatype = fid_tFileInputDelimited_8
+									.get(columnIndexWithD_tFileInputDelimited_8);
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_8 = true;
+
+							System.err.println(e.getMessage());
+							fTemp2 = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_8 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_8 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_8";
+
+						tos_count_tFileInputDelimited_8++;
+
+						/**
+						 * [tFileInputDelimited_8 main ] stop
+						 */
+						// Start of branch "fTemp2"
+						if (fTemp2 != null) {
+
+							/**
+							 * [tLogRow_7 main ] start
+							 */
+
+							currentComponent = "tLogRow_7";
+
+							row24 = fTemp2;
+
+							tos_count_tLogRow_7++;
+
+							/**
+							 * [tLogRow_7 main ] stop
+							 */
+
+							/**
+							 * [tAdvancedHash_row24 main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row24";
+
+							row24Struct row24_HashRow = new row24Struct();
+
+							row24_HashRow.StudyID = row24.StudyID;
+
+							row24_HashRow.MetaID = row24.MetaID;
+
+							row24_HashRow.VisitID = row24.VisitID;
+
+							row24_HashRow.FormID = row24.FormID;
+
+							row24_HashRow.QuestionID = row24.QuestionID;
+
+							row24_HashRow.ItemID = row24.ItemID;
+
+							row24_HashRow.ParentItem = row24.ParentItem;
+
+							row24_HashRow.Name = row24.Name;
+
+							row24_HashRow.VisitNo = row24.VisitNo;
+
+							row24_HashRow.Sequence = row24.Sequence;
+
+							row24_HashRow.hidden = row24.hidden;
+
+							row24_HashRow.FormFamily = row24.FormFamily;
+
+							row24_HashRow.AdditionalData = row24.AdditionalData;
+
+							row24_HashRow.item_Datatype = row24.item_Datatype;
+
+							tHash_Lookup_row24.put(row24_HashRow);
+
+							tos_count_tAdvancedHash_row24++;
+
+							/**
+							 * [tAdvancedHash_row24 main ] stop
+							 */
+
+						} // End of branch "fTemp2"
+
+						/**
+						 * [tFileInputDelimited_8 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_8";
+
+					}
+				} finally {
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_4_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_8 != null) {
+							fid_tFileInputDelimited_8.close();
+						}
+					}
+					if (fid_tFileInputDelimited_8 != null) {
+						globalMap.put("tFileInputDelimited_8_NB_LINE",
+								fid_tFileInputDelimited_8.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_8", true);
+				end_Hash.put("tFileInputDelimited_8",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_8 end ] stop
+				 */
+
+				/**
+				 * [tLogRow_7 end ] start
+				 */
+
+				currentComponent = "tLogRow_7";
+
+				ok_Hash.put("tLogRow_7", true);
+				end_Hash.put("tLogRow_7", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_7 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row24 end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row24";
+
+				tHash_Lookup_row24.endPut();
+
+				ok_Hash.put("tAdvancedHash_row24", true);
+				end_Hash.put("tAdvancedHash_row24", System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_row24 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tFileInputDelimited_8_SUBPROCESS_STATE", 1);
+	}
+
+	public static class FormNamesStruct implements
+			routines.system.IPersistableComparableLookupRow<FormNamesStruct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String FormOID;
+
+		public String getFormOID() {
+			return this.FormOID;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime
+						* result
+						+ ((this.FormOID == null) ? 0 : this.FormOID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final FormNamesStruct other = (FormNamesStruct) obj;
+
+			if (this.FormOID == null) {
+				if (other.FormOID != null)
+					return false;
+			} else if (!this.FormOID.equals(other.FormOID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(FormNamesStruct other) {
+
+			other.FormOID = this.FormOID;
+			other.Name = this.Name;
+
+		}
+
+		public void copyKeysDataTo(FormNamesStruct other) {
+
+			other.FormOID = this.FormOID;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.FormOID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.FormOID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.Name = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.Name, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("FormOID=" + FormOID);
+			sb.append(",Name=" + Name);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(FormNamesStruct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.FormOID, other.FormOID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_12Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				FormNamesStruct FormNames = new FormNamesStruct();
+
+				/**
+				 * [tAdvancedHash_FormNames begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_FormNames", false);
+				start_Hash.put("tAdvancedHash_FormNames",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_FormNames";
+
+				int tos_count_tAdvancedHash_FormNames = 0;
+
+				// connection name:FormNames
+				// source node:tFileInputDelimited_12 -
+				// inputs:(after_tFileInputXML_2) outputs:(FormNames,FormNames)
+				// | target node:tAdvancedHash_FormNames - inputs:(FormNames)
+				// outputs:()
+				// linked node: tMap_12 - inputs:(row17,FormNames,Temp3Visit)
+				// outputs:(out9)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_FormNames = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<FormNamesStruct> tHash_Lookup_FormNames = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<FormNamesStruct> getLookup(matchingModeEnum_FormNames);
+
+				globalMap.put("tHash_Lookup_FormNames", tHash_Lookup_FormNames);
+
+				/**
+				 * [tAdvancedHash_FormNames begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_12 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_12", false);
+				start_Hash.put("tFileInputDelimited_12",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_12";
+
+				int tos_count_tFileInputDelimited_12 = 0;
+
+				int nb_line_tFileInputDelimited_12 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_12 = null;
+				try {
+
+					Object filename_tFileInputDelimited_12 = ((String) globalMap
+							.get("tCreateTemporaryFile_9_FILEPATH"));
+					if (filename_tFileInputDelimited_12 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_12 = 0, random_value_tFileInputDelimited_12 = -1;
+						if (footer_value_tFileInputDelimited_12 > 0
+								|| random_value_tFileInputDelimited_12 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_12 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_9_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
+								false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_12 != null
+							&& fid_tFileInputDelimited_12.nextRecord()) {
+
+						FormNames = null;
+
+						FormNames = null;
+
+						boolean whetherReject_tFileInputDelimited_12 = false;
+						FormNames = new FormNamesStruct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_12 = 0;
+
+							columnIndexWithD_tFileInputDelimited_12 = 0;
+
+							FormNames.FormOID = fid_tFileInputDelimited_12
+									.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 1;
+
+							FormNames.Name = fid_tFileInputDelimited_12
+									.get(columnIndexWithD_tFileInputDelimited_12);
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_12 = true;
+
+							System.err.println(e.getMessage());
+							FormNames = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_12 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_12 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+						tos_count_tFileInputDelimited_12++;
+
+						/**
+						 * [tFileInputDelimited_12 main ] stop
+						 */
+						// Start of branch "FormNames"
+						if (FormNames != null) {
+
+							/**
+							 * [tAdvancedHash_FormNames main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_FormNames";
+
+							FormNamesStruct FormNames_HashRow = new FormNamesStruct();
+
+							FormNames_HashRow.FormOID = FormNames.FormOID;
+
+							FormNames_HashRow.Name = FormNames.Name;
+
+							tHash_Lookup_FormNames.put(FormNames_HashRow);
+
+							tos_count_tAdvancedHash_FormNames++;
+
+							/**
+							 * [tAdvancedHash_FormNames main ] stop
+							 */
+
+						} // End of branch "FormNames"
+
+						/**
+						 * [tFileInputDelimited_12 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+					}
+				} finally {
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_9_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_12 != null) {
+							fid_tFileInputDelimited_12.close();
+						}
+					}
+					if (fid_tFileInputDelimited_12 != null) {
+						globalMap.put("tFileInputDelimited_12_NB_LINE",
+								fid_tFileInputDelimited_12.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_12", true);
+				end_Hash.put("tFileInputDelimited_12",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_12 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_FormNames end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_FormNames";
+
+				tHash_Lookup_FormNames.endPut();
+
+				ok_Hash.put("tAdvancedHash_FormNames", true);
+				end_Hash.put("tAdvancedHash_FormNames",
+						System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_FormNames end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 1);
+	}
+
+	public static class Temp3VisitStruct implements
+			routines.system.IPersistableComparableLookupRow<Temp3VisitStruct> {
+		final static byte[] commonByteArrayLock_TOS_ODM_Create_Ontology = new byte[0];
+		static byte[] commonByteArray_TOS_ODM_Create_Ontology = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String StudyID;
+
+		public String getStudyID() {
+			return this.StudyID;
+		}
+
+		public String MetaID;
+
+		public String getMetaID() {
+			return this.MetaID;
+		}
+
+		public String VisitID;
+
+		public String getVisitID() {
+			return this.VisitID;
+		}
+
+		public String FormID;
+
+		public String getFormID() {
+			return this.FormID;
+		}
+
+		public String QuestionID;
+
+		public String getQuestionID() {
+			return this.QuestionID;
+		}
+
+		public String ItemID;
+
+		public String getItemID() {
+			return this.ItemID;
+		}
+
+		public String ParentItem;
+
+		public String getParentItem() {
+			return this.ParentItem;
+		}
+
+		public String Name;
+
+		public String getName() {
+			return this.Name;
+		}
+
+		public String VisitNo;
+
+		public String getVisitNo() {
+			return this.VisitNo;
+		}
+
+		public String Sequence;
+
+		public String getSequence() {
+			return this.Sequence;
+		}
+
+		public String hidden;
+
+		public String getHidden() {
+			return this.hidden;
+		}
+
+		public String FormFamily;
+
+		public String getFormFamily() {
+			return this.FormFamily;
+		}
+
+		public String AdditionalData;
+
+		public String getAdditionalData() {
+			return this.AdditionalData;
+		}
+
+		public String item_Datatype;
+
+		public String getItem_Datatype() {
+			return this.item_Datatype;
+		}
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime
+						* result
+						+ ((this.VisitID == null) ? 0 : this.VisitID.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Temp3VisitStruct other = (Temp3VisitStruct) obj;
+
+			if (this.VisitID == null) {
+				if (other.VisitID != null)
+					return false;
+			} else if (!this.VisitID.equals(other.VisitID))
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(Temp3VisitStruct other) {
+
+			other.StudyID = this.StudyID;
+			other.MetaID = this.MetaID;
+			other.VisitID = this.VisitID;
+			other.FormID = this.FormID;
+			other.QuestionID = this.QuestionID;
+			other.ItemID = this.ItemID;
+			other.ParentItem = this.ParentItem;
+			other.Name = this.Name;
+			other.VisitNo = this.VisitNo;
+			other.Sequence = this.Sequence;
+			other.hidden = this.hidden;
+			other.FormFamily = this.FormFamily;
+			other.AdditionalData = this.AdditionalData;
+			other.item_Datatype = this.item_Datatype;
+			other.HLEVEL = this.HLEVEL;
+
+		}
+
+		public void copyKeysDataTo(Temp3VisitStruct other) {
+
+			other.VisitID = this.VisitID;
+
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_ODM_Create_Ontology.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_ODM_Create_Ontology.length == 0) {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[1024];
+					} else {
+						commonByteArray_TOS_ODM_Create_Ontology = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_ODM_Create_Ontology, 0,
+						length);
+				strReturn = new String(commonByteArray_TOS_ODM_Create_Ontology,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(DataInputStream dis, ObjectInputStream ois)
+				throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, DataOutputStream dos,
+				ObjectOutputStream oos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_ODM_Create_Ontology) {
+
+				try {
+
+					int length = 0;
+
+					this.VisitID = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.VisitID, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.StudyID = readString(dis, ois);
+
+				this.MetaID = readString(dis, ois);
+
+				this.FormID = readString(dis, ois);
+
+				this.QuestionID = readString(dis, ois);
+
+				this.ItemID = readString(dis, ois);
+
+				this.ParentItem = readString(dis, ois);
+
+				this.Name = readString(dis, ois);
+
+				this.VisitNo = readString(dis, ois);
+
+				this.Sequence = readString(dis, ois);
+
+				this.hidden = readString(dis, ois);
+
+				this.FormFamily = readString(dis, ois);
+
+				this.AdditionalData = readString(dis, ois);
+
+				this.item_Datatype = readString(dis, ois);
+
+				this.HLEVEL = readInteger(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.StudyID, dos, oos);
+
+				writeString(this.MetaID, dos, oos);
+
+				writeString(this.FormID, dos, oos);
+
+				writeString(this.QuestionID, dos, oos);
+
+				writeString(this.ItemID, dos, oos);
+
+				writeString(this.ParentItem, dos, oos);
+
+				writeString(this.Name, dos, oos);
+
+				writeString(this.VisitNo, dos, oos);
+
+				writeString(this.Sequence, dos, oos);
+
+				writeString(this.hidden, dos, oos);
+
+				writeString(this.FormFamily, dos, oos);
+
+				writeString(this.AdditionalData, dos, oos);
+
+				writeString(this.item_Datatype, dos, oos);
+
+				writeInteger(this.HLEVEL, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("StudyID=" + StudyID);
+			sb.append(",MetaID=" + MetaID);
+			sb.append(",VisitID=" + VisitID);
+			sb.append(",FormID=" + FormID);
+			sb.append(",QuestionID=" + QuestionID);
+			sb.append(",ItemID=" + ItemID);
+			sb.append(",ParentItem=" + ParentItem);
+			sb.append(",Name=" + Name);
+			sb.append(",VisitNo=" + VisitNo);
+			sb.append(",Sequence=" + Sequence);
+			sb.append(",hidden=" + hidden);
+			sb.append(",FormFamily=" + FormFamily);
+			sb.append(",AdditionalData=" + AdditionalData);
+			sb.append(",item_Datatype=" + item_Datatype);
+			sb.append(",HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(Temp3VisitStruct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.VisitID, other.VisitID);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_10Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				Temp3VisitStruct Temp3Visit = new Temp3VisitStruct();
+
+				/**
+				 * [tAdvancedHash_Temp3Visit begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_Temp3Visit", false);
+				start_Hash.put("tAdvancedHash_Temp3Visit",
+						System.currentTimeMillis());
+				currentComponent = "tAdvancedHash_Temp3Visit";
+
+				int tos_count_tAdvancedHash_Temp3Visit = 0;
+
+				// connection name:Temp3Visit
+				// source node:tFileInputDelimited_10 -
+				// inputs:(after_tFileInputXML_2)
+				// outputs:(Temp3Visit,Temp3Visit) | target
+				// node:tAdvancedHash_Temp3Visit - inputs:(Temp3Visit)
+				// outputs:()
+				// linked node: tMap_12 - inputs:(row17,FormNames,Temp3Visit)
+				// outputs:(out9)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_Temp3Visit = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<Temp3VisitStruct> tHash_Lookup_Temp3Visit = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<Temp3VisitStruct> getLookup(matchingModeEnum_Temp3Visit);
+
+				globalMap.put("tHash_Lookup_Temp3Visit",
+						tHash_Lookup_Temp3Visit);
+
+				/**
+				 * [tAdvancedHash_Temp3Visit begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_10 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_10", false);
+				start_Hash.put("tFileInputDelimited_10",
+						System.currentTimeMillis());
+				currentComponent = "tFileInputDelimited_10";
+
+				int tos_count_tFileInputDelimited_10 = 0;
+
+				int nb_line_tFileInputDelimited_10 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_10 = null;
+				try {
+
+					Object filename_tFileInputDelimited_10 = ((String) globalMap
+							.get("tCreateTemporaryFile_16_FILEPATH"));
+					if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_10 = 0, random_value_tFileInputDelimited_10 = -1;
+						if (footer_value_tFileInputDelimited_10 > 0
+								|| random_value_tFileInputDelimited_10 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_10 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_16_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 1, 0, -1, -1,
+								false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_10 != null
+							&& fid_tFileInputDelimited_10.nextRecord()) {
+
+						Temp3Visit = null;
+
+						Temp3Visit = null;
+
+						boolean whetherReject_tFileInputDelimited_10 = false;
+						Temp3Visit = new Temp3VisitStruct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_10 = 0;
+
+							String temp = "";
+
+							columnIndexWithD_tFileInputDelimited_10 = 0;
+
+							Temp3Visit.StudyID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 1;
+
+							Temp3Visit.MetaID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 2;
+
+							Temp3Visit.VisitID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 3;
+
+							Temp3Visit.FormID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 4;
+
+							Temp3Visit.QuestionID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 5;
+
+							Temp3Visit.ItemID = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 6;
+
+							Temp3Visit.ParentItem = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 7;
+
+							Temp3Visit.Name = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 8;
+
+							Temp3Visit.VisitNo = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 9;
+
+							Temp3Visit.Sequence = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 10;
+
+							Temp3Visit.hidden = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 11;
+
+							Temp3Visit.FormFamily = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 12;
+
+							Temp3Visit.AdditionalData = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 13;
+
+							Temp3Visit.item_Datatype = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+
+							columnIndexWithD_tFileInputDelimited_10 = 14;
+
+							temp = fid_tFileInputDelimited_10
+									.get(columnIndexWithD_tFileInputDelimited_10);
+							if (temp.length() > 0) {
+
+								Temp3Visit.HLEVEL = ParserUtils
+										.parseTo_Integer(temp);
+
+							} else {
+
+								Temp3Visit.HLEVEL = null;
+
+							}
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_10 = true;
+
+							System.err.println(e.getMessage());
+							Temp3Visit = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_10 begin ] stop
+						 */
+						/**
+						 * [tFileInputDelimited_10 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_10";
+
+						tos_count_tFileInputDelimited_10++;
+
+						/**
+						 * [tFileInputDelimited_10 main ] stop
+						 */
+						// Start of branch "Temp3Visit"
+						if (Temp3Visit != null) {
+
+							/**
+							 * [tAdvancedHash_Temp3Visit main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_Temp3Visit";
+
+							Temp3VisitStruct Temp3Visit_HashRow = new Temp3VisitStruct();
+
+							Temp3Visit_HashRow.StudyID = Temp3Visit.StudyID;
+
+							Temp3Visit_HashRow.MetaID = Temp3Visit.MetaID;
+
+							Temp3Visit_HashRow.VisitID = Temp3Visit.VisitID;
+
+							Temp3Visit_HashRow.FormID = Temp3Visit.FormID;
+
+							Temp3Visit_HashRow.QuestionID = Temp3Visit.QuestionID;
+
+							Temp3Visit_HashRow.ItemID = Temp3Visit.ItemID;
+
+							Temp3Visit_HashRow.ParentItem = Temp3Visit.ParentItem;
+
+							Temp3Visit_HashRow.Name = Temp3Visit.Name;
+
+							Temp3Visit_HashRow.VisitNo = Temp3Visit.VisitNo;
+
+							Temp3Visit_HashRow.Sequence = Temp3Visit.Sequence;
+
+							Temp3Visit_HashRow.hidden = Temp3Visit.hidden;
+
+							Temp3Visit_HashRow.FormFamily = Temp3Visit.FormFamily;
+
+							Temp3Visit_HashRow.AdditionalData = Temp3Visit.AdditionalData;
+
+							Temp3Visit_HashRow.item_Datatype = Temp3Visit.item_Datatype;
+
+							Temp3Visit_HashRow.HLEVEL = Temp3Visit.HLEVEL;
+
+							tHash_Lookup_Temp3Visit.put(Temp3Visit_HashRow);
+
+							tos_count_tAdvancedHash_Temp3Visit++;
+
+							/**
+							 * [tAdvancedHash_Temp3Visit main ] stop
+							 */
+
+						} // End of branch "Temp3Visit"
+
+						/**
+						 * [tFileInputDelimited_10 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_10";
+
+					}
+				} finally {
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_16_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_10 != null) {
+							fid_tFileInputDelimited_10.close();
+						}
+					}
+					if (fid_tFileInputDelimited_10 != null) {
+						globalMap.put("tFileInputDelimited_10_NB_LINE",
+								fid_tFileInputDelimited_10.getRowNumber());
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_10", true);
+				end_Hash.put("tFileInputDelimited_10",
+						System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_10 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_Temp3Visit end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_Temp3Visit";
+
+				tHash_Lookup_Temp3Visit.endPut();
+
+				ok_Hash.put("tAdvancedHash_Temp3Visit", true);
+				end_Hash.put("tAdvancedHash_Temp3Visit",
+						System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_Temp3Visit end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 1);
+	}
+
+	public void tMap_33Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tMap_33_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tMap_33 begin ] start
+				 */
+
+				ok_Hash.put("tMap_33", false);
+				start_Hash.put("tMap_33", System.currentTimeMillis());
+				currentComponent = "tMap_33";
+
+				int tos_count_tMap_33 = 0;
+
+				// ###############################
+				// # Lookup's keys initialization
+				// ###############################
+
+				// ###############################
+				// # Vars initialization
+				class Var__tMap_33__Struct {
+				}
+				Var__tMap_33__Struct Var__tMap_33 = new Var__tMap_33__Struct();
+				// ###############################
+
+				// ###############################
+				// # Outputs initialization
+				// ###############################
+
+				/**
+				 * [tMap_33 begin ] stop
+				 */
+				/**
+				 * [tMap_33 main ] start
+				 */
+
+				currentComponent = "tMap_33";
+
+				boolean hasCasePrimitiveKeyWithNull_tMap_33 = false;
+
+				// ###############################
+				// # Input tables (lookups)
+				boolean rejectedInnerJoin_tMap_33 = false;
+				boolean mainRowRejected_tMap_33 = false;
+
+				// ###############################
+				{ // start of Var scope
+
+					// ###############################
+					// # Vars tables
+
+					Var__tMap_33__Struct Var = Var__tMap_33;// ###############################
+					// ###############################
+					// # Output tables
+
+					// ###############################
+
+				} // end of Var scope
+
+				rejectedInnerJoin_tMap_33 = false;
+
+				tos_count_tMap_33++;
+
+				/**
+				 * [tMap_33 main ] stop
+				 */
+				/**
+				 * [tMap_33 end ] start
+				 */
+
+				currentComponent = "tMap_33";
+
+				// ###############################
+				// # Lookup hashes releasing
+				// ###############################
+
+				ok_Hash.put("tMap_33", true);
+				end_Hash.put("tMap_33", System.currentTimeMillis());
+
+				/**
+				 * [tMap_33 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tMap_33_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -43092,6 +43721,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1179208 characters generated by Talend Open Studio for Data Integration on
- * the January 21, 2014 3:26:31 PM CET
+ * 1200304 characters generated by Talend Open Studio for Data Integration on
+ * the February 26, 2014 12:09:08 PM CET
  ************************************************************************************************/

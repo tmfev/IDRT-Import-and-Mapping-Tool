@@ -435,7 +435,7 @@ public class IDRTHelper {
 
 				ontLine[ONT_HLEVEL] = "1";
 				ontLine[ONT_NAME] = "OBJECTID";
-				ontLine[ONT_PATH] = "\\i2b2\\"+"OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+				ontLine[ONT_PATH] = "\\OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
 				ontLine[ONT_IMPORTDATE] = "";

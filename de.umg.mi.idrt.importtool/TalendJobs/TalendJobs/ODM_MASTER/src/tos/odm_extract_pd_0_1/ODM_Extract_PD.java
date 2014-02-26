@@ -63,6 +63,9 @@ import java.util.Comparator;
 //the import part of tJava_1
 //import java.util.List;
 
+//the import part of tJavaRow_9
+//import java.util.List;
+
 //the import part of tJavaRow_2
 //import java.util.List;
 
@@ -1136,10 +1139,10 @@ public class ODM_Extract_PD implements TalendJob {
 		tForeach_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tLogRow_6_error(java.lang.Exception exception,
+	public void tJavaRow_9_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tLogRow_6", System.currentTimeMillis());
+		end_Hash.put("tJavaRow_9", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -8658,7 +8661,7 @@ public class ODM_Extract_PD implements TalendJob {
 				tFileInputDelimited_7Process(globalMap);
 
 				row1Struct row1 = new row1Struct();
-				row1Struct row27 = row1;
+				row27Struct row27 = new row27Struct();
 				toTempStruct toTemp = new toTempStruct();
 				row2Struct row2 = new row2Struct();
 				fromPatientStruct fromPatient = new fromPatientStruct();
@@ -8826,25 +8829,119 @@ public class ODM_Extract_PD implements TalendJob {
 						isFileGenerated_tFileOutputDelimited_2 = false;
 					}
 
+					String[] headColutFileOutputDelimited_2 = new String[2];
+					class CSVBasicSet_tFileOutputDelimited_2 {
+						private char field_Delim;
+						private char row_Delim;
+						private char escape;
+						private char textEnclosure;
+						private boolean useCRLFRecordDelimiter;
+
+						public boolean isUseCRLFRecordDelimiter() {
+							return useCRLFRecordDelimiter;
+						}
+
+						public void setFieldSeparator(String fieldSep)
+								throws IllegalArgumentException {
+							char field_Delim_tFileOutputDelimited_2[] = null;
+
+							// support passing value (property: Field Separator)
+							// by 'context.fs' or 'globalMap.get("fs")'.
+							if (fieldSep.length() > 0) {
+								field_Delim_tFileOutputDelimited_2 = fieldSep
+										.toCharArray();
+							} else {
+								throw new IllegalArgumentException(
+										"Field Separator must be assigned a char.");
+							}
+							this.field_Delim = field_Delim_tFileOutputDelimited_2[0];
+						}
+
+						public char getFieldDelim() {
+							if (this.field_Delim == 0) {
+								setFieldSeparator("\t");
+							}
+							return this.field_Delim;
+						}
+
+						public void setRowSeparator(String rowSep) {
+							if ("\r\n".equals(rowSep)) {
+								useCRLFRecordDelimiter = true;
+								return;
+							}
+							char row_DelimtFileOutputDelimited_2[] = null;
+
+							// support passing value (property: Row Separator)
+							// by 'context.rs' or 'globalMap.get("rs")'.
+							if (rowSep.length() > 0) {
+								row_DelimtFileOutputDelimited_2 = rowSep
+										.toCharArray();
+							} else {
+								throw new IllegalArgumentException(
+										"Row Separator must be assigned a char.");
+							}
+							this.row_Delim = row_DelimtFileOutputDelimited_2[0];
+						}
+
+						public char getRowDelim() {
+							if (this.row_Delim == 0) {
+								setRowSeparator("\n");
+							}
+							return this.row_Delim;
+						}
+
+						public void setEscapeAndTextEnclosure(String strEscape,
+								String strTextEnclosure)
+								throws IllegalArgumentException {
+							if (strEscape.length() <= 0) {
+								throw new IllegalArgumentException(
+										"Escape Char must be assigned a char.");
+							}
+
+							if ("".equals(strTextEnclosure))
+								strTextEnclosure = "\0";
+							char textEnclosure_tFileOutputDelimited_2[] = null;
+
+							if (strTextEnclosure.length() > 0) {
+								textEnclosure_tFileOutputDelimited_2 = strTextEnclosure
+										.toCharArray();
+							} else {
+								throw new IllegalArgumentException(
+										"Text Enclosure must be assigned a char.");
+							}
+
+							this.textEnclosure = textEnclosure_tFileOutputDelimited_2[0];
+
+							if (("\\").equals(strEscape)) {
+								this.escape = '\\';
+							} else if (strEscape.equals(strTextEnclosure)) {
+								this.escape = this.textEnclosure;
+							} else {
+								// the default escape mode is double escape
+								this.escape = this.textEnclosure;
+							}
+
+						}
+
+						public char getEscapeChar() {
+							return (char) this.escape;
+						}
+
+						public char getTextEnclosure() {
+							return this.textEnclosure;
+						}
+					}
+
 					int nb_line_tFileOutputDelimited_2 = 0;
 					int splitEvery_tFileOutputDelimited_2 = 1000;
 					int splitedFileNo_tFileOutputDelimited_2 = 0;
 					int currentRow_tFileOutputDelimited_2 = 0;
 
-					final String OUT_DELIM_tFileOutputDelimited_2 = /**
-					 * Start
-					 * field tFileOutputDelimited_2:FIELDSEPARATOR
-					 */
-					"\t"/** End field tFileOutputDelimited_2:FIELDSEPARATOR */
-					;
-
-					final String OUT_DELIM_ROWSEP_tFileOutputDelimited_2 = /**
-					 * 
-					 * Start field tFileOutputDelimited_2:ROWSEPARATOR
-					 */
-					"\n"/** End field tFileOutputDelimited_2:ROWSEPARATOR */
-					;
-
+					CSVBasicSet_tFileOutputDelimited_2 csvSettings_tFileOutputDelimited_2 = new CSVBasicSet_tFileOutputDelimited_2();
+					csvSettings_tFileOutputDelimited_2.setFieldSeparator("\t");
+					csvSettings_tFileOutputDelimited_2.setRowSeparator("\n");
+					csvSettings_tFileOutputDelimited_2
+							.setEscapeAndTextEnclosure("\"", "\"");
 					// create directory only if not exists
 					if (directory_tFileOutputDelimited_2 != null
 							&& directory_tFileOutputDelimited_2.trim().length() != 0) {
@@ -8854,29 +8951,37 @@ public class ODM_Extract_PD implements TalendJob {
 							dir_tFileOutputDelimited_2.mkdirs();
 						}
 					}
-
-					// routines.system.Row
-					java.io.Writer outtFileOutputDelimited_2 = null;
+					com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_2 = null;
 					try {
-						outtFileOutputDelimited_2 = new java.io.BufferedWriter(
-								new java.io.OutputStreamWriter(
-										new java.io.FileOutputStream(
-												fileName_tFileOutputDelimited_2,
-												true), "ISO-8859-15"));
+						CsvWritertFileOutputDelimited_2 = new com.talend.csv.CSVWriter(
+								new java.io.BufferedWriter(
+										new java.io.OutputStreamWriter(
+												new java.io.FileOutputStream(
+														fileName_tFileOutputDelimited_2,
+														true), "ISO-8859-15")));
+						CsvWritertFileOutputDelimited_2
+								.setSeparator(csvSettings_tFileOutputDelimited_2
+										.getFieldDelim());
 
-						if (filetFileOutputDelimited_2.length() == 0) {
-
-							outtFileOutputDelimited_2.write("PID");
-
-							outtFileOutputDelimited_2
-									.write(OUT_DELIM_tFileOutputDelimited_2);
-
-							outtFileOutputDelimited_2.write("SubjectKey");
-
-							outtFileOutputDelimited_2
-									.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
-							outtFileOutputDelimited_2.flush();
+						if (!csvSettings_tFileOutputDelimited_2
+								.isUseCRLFRecordDelimiter()
+								&& csvSettings_tFileOutputDelimited_2
+										.getRowDelim() != '\r'
+								&& csvSettings_tFileOutputDelimited_2
+										.getRowDelim() != '\n') {
+							CsvWritertFileOutputDelimited_2.setLineEnd(""
+									+ csvSettings_tFileOutputDelimited_2
+											.getRowDelim());
 						}
+
+						CsvWritertFileOutputDelimited_2
+								.setEscapeChar(csvSettings_tFileOutputDelimited_2
+										.getEscapeChar());
+						CsvWritertFileOutputDelimited_2
+								.setQuoteChar(csvSettings_tFileOutputDelimited_2
+										.getTextEnclosure());
+						CsvWritertFileOutputDelimited_2
+								.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 						/**
 						 * [tFileOutputDelimited_2 begin ] stop
@@ -9014,25 +9119,123 @@ public class ODM_Extract_PD implements TalendJob {
 							isFileGenerated_tFileOutputDelimited_1 = false;
 						}
 
+						String[] headColutFileOutputDelimited_1 = new String[15];
+						class CSVBasicSet_tFileOutputDelimited_1 {
+							private char field_Delim;
+							private char row_Delim;
+							private char escape;
+							private char textEnclosure;
+							private boolean useCRLFRecordDelimiter;
+
+							public boolean isUseCRLFRecordDelimiter() {
+								return useCRLFRecordDelimiter;
+							}
+
+							public void setFieldSeparator(String fieldSep)
+									throws IllegalArgumentException {
+								char field_Delim_tFileOutputDelimited_1[] = null;
+
+								// support passing value (property: Field
+								// Separator) by 'context.fs' or
+								// 'globalMap.get("fs")'.
+								if (fieldSep.length() > 0) {
+									field_Delim_tFileOutputDelimited_1 = fieldSep
+											.toCharArray();
+								} else {
+									throw new IllegalArgumentException(
+											"Field Separator must be assigned a char.");
+								}
+								this.field_Delim = field_Delim_tFileOutputDelimited_1[0];
+							}
+
+							public char getFieldDelim() {
+								if (this.field_Delim == 0) {
+									setFieldSeparator("\t");
+								}
+								return this.field_Delim;
+							}
+
+							public void setRowSeparator(String rowSep) {
+								if ("\r\n".equals(rowSep)) {
+									useCRLFRecordDelimiter = true;
+									return;
+								}
+								char row_DelimtFileOutputDelimited_1[] = null;
+
+								// support passing value (property: Row
+								// Separator) by 'context.rs' or
+								// 'globalMap.get("rs")'.
+								if (rowSep.length() > 0) {
+									row_DelimtFileOutputDelimited_1 = rowSep
+											.toCharArray();
+								} else {
+									throw new IllegalArgumentException(
+											"Row Separator must be assigned a char.");
+								}
+								this.row_Delim = row_DelimtFileOutputDelimited_1[0];
+							}
+
+							public char getRowDelim() {
+								if (this.row_Delim == 0) {
+									setRowSeparator("\n");
+								}
+								return this.row_Delim;
+							}
+
+							public void setEscapeAndTextEnclosure(
+									String strEscape, String strTextEnclosure)
+									throws IllegalArgumentException {
+								if (strEscape.length() <= 0) {
+									throw new IllegalArgumentException(
+											"Escape Char must be assigned a char.");
+								}
+
+								if ("".equals(strTextEnclosure))
+									strTextEnclosure = "\0";
+								char textEnclosure_tFileOutputDelimited_1[] = null;
+
+								if (strTextEnclosure.length() > 0) {
+									textEnclosure_tFileOutputDelimited_1 = strTextEnclosure
+											.toCharArray();
+								} else {
+									throw new IllegalArgumentException(
+											"Text Enclosure must be assigned a char.");
+								}
+
+								this.textEnclosure = textEnclosure_tFileOutputDelimited_1[0];
+
+								if (("\\").equals(strEscape)) {
+									this.escape = '\\';
+								} else if (strEscape.equals(strTextEnclosure)) {
+									this.escape = this.textEnclosure;
+								} else {
+									// the default escape mode is double escape
+									this.escape = this.textEnclosure;
+								}
+
+							}
+
+							public char getEscapeChar() {
+								return (char) this.escape;
+							}
+
+							public char getTextEnclosure() {
+								return this.textEnclosure;
+							}
+						}
+
 						int nb_line_tFileOutputDelimited_1 = 0;
 						int splitEvery_tFileOutputDelimited_1 = 1000;
 						int splitedFileNo_tFileOutputDelimited_1 = 0;
 						int currentRow_tFileOutputDelimited_1 = 0;
 
-						final String OUT_DELIM_tFileOutputDelimited_1 = /**
-						 * Start
-						 * field tFileOutputDelimited_1:FIELDSEPARATOR
-						 */
-						"\t"/** End field tFileOutputDelimited_1:FIELDSEPARATOR */
-						;
-
-						final String OUT_DELIM_ROWSEP_tFileOutputDelimited_1 = /**
-						 * 
-						 * Start field tFileOutputDelimited_1:ROWSEPARATOR
-						 */
-						"\n"/** End field tFileOutputDelimited_1:ROWSEPARATOR */
-						;
-
+						CSVBasicSet_tFileOutputDelimited_1 csvSettings_tFileOutputDelimited_1 = new CSVBasicSet_tFileOutputDelimited_1();
+						csvSettings_tFileOutputDelimited_1
+								.setFieldSeparator("\t");
+						csvSettings_tFileOutputDelimited_1
+								.setRowSeparator("\n");
+						csvSettings_tFileOutputDelimited_1
+								.setEscapeAndTextEnclosure("\"", "\"");
 						// create directory only if not exists
 						if (directory_tFileOutputDelimited_1 != null
 								&& directory_tFileOutputDelimited_1.trim()
@@ -9043,97 +9246,76 @@ public class ODM_Extract_PD implements TalendJob {
 								dir_tFileOutputDelimited_1.mkdirs();
 							}
 						}
-
-						// routines.system.Row
-						java.io.Writer outtFileOutputDelimited_1 = null;
+						com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_1 = null;
 						try {
-							outtFileOutputDelimited_1 = new java.io.BufferedWriter(
-									new java.io.OutputStreamWriter(
-											new java.io.FileOutputStream(
-													fileName_tFileOutputDelimited_1,
-													true), "ISO-8859-15"));
+							CsvWritertFileOutputDelimited_1 = new com.talend.csv.CSVWriter(
+									new java.io.BufferedWriter(
+											new java.io.OutputStreamWriter(
+													new java.io.FileOutputStream(
+															fileName_tFileOutputDelimited_1,
+															true),
+													"ISO-8859-15")));
+							CsvWritertFileOutputDelimited_1
+									.setSeparator(csvSettings_tFileOutputDelimited_1
+											.getFieldDelim());
+
+							if (!csvSettings_tFileOutputDelimited_1
+									.isUseCRLFRecordDelimiter()
+									&& csvSettings_tFileOutputDelimited_1
+											.getRowDelim() != '\r'
+									&& csvSettings_tFileOutputDelimited_1
+											.getRowDelim() != '\n') {
+								CsvWritertFileOutputDelimited_1.setLineEnd(""
+										+ csvSettings_tFileOutputDelimited_1
+												.getRowDelim());
+							}
 
 							if (filetFileOutputDelimited_1.length() == 0) {
 
-								outtFileOutputDelimited_1.write("itemID");
+								headColutFileOutputDelimited_1[0] = "itemID";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[1] = "Value";
 
-								outtFileOutputDelimited_1.write("Value");
+								headColutFileOutputDelimited_1[2] = "VisitID";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[3] = "FormID";
 
-								outtFileOutputDelimited_1.write("VisitID");
+								headColutFileOutputDelimited_1[4] = "SubjectKey";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[5] = "Path";
 
-								outtFileOutputDelimited_1.write("FormID");
+								headColutFileOutputDelimited_1[6] = "PathID";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[7] = "DataType";
 
-								outtFileOutputDelimited_1.write("SubjectKey");
+								headColutFileOutputDelimited_1[8] = "Update_Date";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[9] = "Import_Date";
 
-								outtFileOutputDelimited_1.write("Path");
+								headColutFileOutputDelimited_1[10] = "Download_Date";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[11] = "StudyEventRepeatKey";
 
-								outtFileOutputDelimited_1.write("PathID");
+								headColutFileOutputDelimited_1[12] = "itemGroupRepeatKey";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								headColutFileOutputDelimited_1[13] = "itemCode";
 
-								outtFileOutputDelimited_1.write("DataType");
+								headColutFileOutputDelimited_1[14] = "startDate";
 
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
+								CsvWritertFileOutputDelimited_1
+										.writeNext(headColutFileOutputDelimited_1);
+								CsvWritertFileOutputDelimited_1.flush();
 
-								outtFileOutputDelimited_1.write("Update_Date");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1.write("Import_Date");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1
-										.write("Download_Date");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1
-										.write("StudyEventRepeatKey");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1
-										.write("itemGroupRepeatKey");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1.write("itemCode");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_tFileOutputDelimited_1);
-
-								outtFileOutputDelimited_1.write("startDate");
-
-								outtFileOutputDelimited_1
-										.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
-								outtFileOutputDelimited_1.flush();
 							}
+
+							CsvWritertFileOutputDelimited_1
+									.setEscapeChar(csvSettings_tFileOutputDelimited_1
+											.getEscapeChar());
+							CsvWritertFileOutputDelimited_1
+									.setQuoteChar(csvSettings_tFileOutputDelimited_1
+											.getTextEnclosure());
+							CsvWritertFileOutputDelimited_1
+									.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 							/**
 							 * [tFileOutputDelimited_1 begin ] stop
@@ -9219,28 +9401,126 @@ public class ODM_Extract_PD implements TalendJob {
 								isFileGenerated_tFileOutputDelimited_5 = false;
 							}
 
+							String[] headColutFileOutputDelimited_5 = new String[13];
+							class CSVBasicSet_tFileOutputDelimited_5 {
+								private char field_Delim;
+								private char row_Delim;
+								private char escape;
+								private char textEnclosure;
+								private boolean useCRLFRecordDelimiter;
+
+								public boolean isUseCRLFRecordDelimiter() {
+									return useCRLFRecordDelimiter;
+								}
+
+								public void setFieldSeparator(String fieldSep)
+										throws IllegalArgumentException {
+									char field_Delim_tFileOutputDelimited_5[] = null;
+
+									// support passing value (property: Field
+									// Separator) by 'context.fs' or
+									// 'globalMap.get("fs")'.
+									if (fieldSep.length() > 0) {
+										field_Delim_tFileOutputDelimited_5 = fieldSep
+												.toCharArray();
+									} else {
+										throw new IllegalArgumentException(
+												"Field Separator must be assigned a char.");
+									}
+									this.field_Delim = field_Delim_tFileOutputDelimited_5[0];
+								}
+
+								public char getFieldDelim() {
+									if (this.field_Delim == 0) {
+										setFieldSeparator("\t");
+									}
+									return this.field_Delim;
+								}
+
+								public void setRowSeparator(String rowSep) {
+									if ("\r\n".equals(rowSep)) {
+										useCRLFRecordDelimiter = true;
+										return;
+									}
+									char row_DelimtFileOutputDelimited_5[] = null;
+
+									// support passing value (property: Row
+									// Separator) by 'context.rs' or
+									// 'globalMap.get("rs")'.
+									if (rowSep.length() > 0) {
+										row_DelimtFileOutputDelimited_5 = rowSep
+												.toCharArray();
+									} else {
+										throw new IllegalArgumentException(
+												"Row Separator must be assigned a char.");
+									}
+									this.row_Delim = row_DelimtFileOutputDelimited_5[0];
+								}
+
+								public char getRowDelim() {
+									if (this.row_Delim == 0) {
+										setRowSeparator("\n");
+									}
+									return this.row_Delim;
+								}
+
+								public void setEscapeAndTextEnclosure(
+										String strEscape,
+										String strTextEnclosure)
+										throws IllegalArgumentException {
+									if (strEscape.length() <= 0) {
+										throw new IllegalArgumentException(
+												"Escape Char must be assigned a char.");
+									}
+
+									if ("".equals(strTextEnclosure))
+										strTextEnclosure = "\0";
+									char textEnclosure_tFileOutputDelimited_5[] = null;
+
+									if (strTextEnclosure.length() > 0) {
+										textEnclosure_tFileOutputDelimited_5 = strTextEnclosure
+												.toCharArray();
+									} else {
+										throw new IllegalArgumentException(
+												"Text Enclosure must be assigned a char.");
+									}
+
+									this.textEnclosure = textEnclosure_tFileOutputDelimited_5[0];
+
+									if (("\\").equals(strEscape)) {
+										this.escape = '\\';
+									} else if (strEscape
+											.equals(strTextEnclosure)) {
+										this.escape = this.textEnclosure;
+									} else {
+										// the default escape mode is double
+										// escape
+										this.escape = this.textEnclosure;
+									}
+
+								}
+
+								public char getEscapeChar() {
+									return (char) this.escape;
+								}
+
+								public char getTextEnclosure() {
+									return this.textEnclosure;
+								}
+							}
+
 							int nb_line_tFileOutputDelimited_5 = 0;
 							int splitEvery_tFileOutputDelimited_5 = 1000;
 							int splitedFileNo_tFileOutputDelimited_5 = 0;
 							int currentRow_tFileOutputDelimited_5 = 0;
 
-							final String OUT_DELIM_tFileOutputDelimited_5 = /**
-							 * 
-							 * Start field tFileOutputDelimited_5:FIELDSEPARATOR
-							 */
-							"\t"/**
-							 * End field
-							 * tFileOutputDelimited_5:FIELDSEPARATOR
-							 */
-							;
-
-							final String OUT_DELIM_ROWSEP_tFileOutputDelimited_5 = /**
-							 * 
-							 * Start field tFileOutputDelimited_5:ROWSEPARATOR
-							 */
-							"\n"/** End field tFileOutputDelimited_5:ROWSEPARATOR */
-							;
-
+							CSVBasicSet_tFileOutputDelimited_5 csvSettings_tFileOutputDelimited_5 = new CSVBasicSet_tFileOutputDelimited_5();
+							csvSettings_tFileOutputDelimited_5
+									.setFieldSeparator("\t");
+							csvSettings_tFileOutputDelimited_5
+									.setRowSeparator("\n");
+							csvSettings_tFileOutputDelimited_5
+									.setEscapeAndTextEnclosure("\"", "\"");
 							// create directory only if not exists
 							if (directory_tFileOutputDelimited_5 != null
 									&& directory_tFileOutputDelimited_5.trim()
@@ -9251,15 +9531,39 @@ public class ODM_Extract_PD implements TalendJob {
 									dir_tFileOutputDelimited_5.mkdirs();
 								}
 							}
-
-							// routines.system.Row
-							java.io.Writer outtFileOutputDelimited_5 = null;
+							com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_5 = null;
 							try {
-								outtFileOutputDelimited_5 = new java.io.BufferedWriter(
-										new java.io.OutputStreamWriter(
-												new java.io.FileOutputStream(
-														fileName_tFileOutputDelimited_5,
-														true), "ISO-8859-15"));
+								CsvWritertFileOutputDelimited_5 = new com.talend.csv.CSVWriter(
+										new java.io.BufferedWriter(
+												new java.io.OutputStreamWriter(
+														new java.io.FileOutputStream(
+																fileName_tFileOutputDelimited_5,
+																true),
+														"ISO-8859-15")));
+								CsvWritertFileOutputDelimited_5
+										.setSeparator(csvSettings_tFileOutputDelimited_5
+												.getFieldDelim());
+
+								if (!csvSettings_tFileOutputDelimited_5
+										.isUseCRLFRecordDelimiter()
+										&& csvSettings_tFileOutputDelimited_5
+												.getRowDelim() != '\r'
+										&& csvSettings_tFileOutputDelimited_5
+												.getRowDelim() != '\n') {
+									CsvWritertFileOutputDelimited_5
+											.setLineEnd(""
+													+ csvSettings_tFileOutputDelimited_5
+															.getRowDelim());
+								}
+
+								CsvWritertFileOutputDelimited_5
+										.setEscapeChar(csvSettings_tFileOutputDelimited_5
+												.getEscapeChar());
+								CsvWritertFileOutputDelimited_5
+										.setQuoteChar(csvSettings_tFileOutputDelimited_5
+												.getTextEnclosure());
+								CsvWritertFileOutputDelimited_5
+										.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 								/**
 								 * [tFileOutputDelimited_5 begin ] stop
@@ -9332,33 +9636,127 @@ public class ODM_Extract_PD implements TalendJob {
 									isFileGenerated_tFileOutputDelimited_9 = false;
 								}
 
+								String[] headColutFileOutputDelimited_9 = new String[13];
+								class CSVBasicSet_tFileOutputDelimited_9 {
+									private char field_Delim;
+									private char row_Delim;
+									private char escape;
+									private char textEnclosure;
+									private boolean useCRLFRecordDelimiter;
+
+									public boolean isUseCRLFRecordDelimiter() {
+										return useCRLFRecordDelimiter;
+									}
+
+									public void setFieldSeparator(
+											String fieldSep)
+											throws IllegalArgumentException {
+										char field_Delim_tFileOutputDelimited_9[] = null;
+
+										// support passing value (property:
+										// Field Separator) by 'context.fs' or
+										// 'globalMap.get("fs")'.
+										if (fieldSep.length() > 0) {
+											field_Delim_tFileOutputDelimited_9 = fieldSep
+													.toCharArray();
+										} else {
+											throw new IllegalArgumentException(
+													"Field Separator must be assigned a char.");
+										}
+										this.field_Delim = field_Delim_tFileOutputDelimited_9[0];
+									}
+
+									public char getFieldDelim() {
+										if (this.field_Delim == 0) {
+											setFieldSeparator("\t");
+										}
+										return this.field_Delim;
+									}
+
+									public void setRowSeparator(String rowSep) {
+										if ("\r\n".equals(rowSep)) {
+											useCRLFRecordDelimiter = true;
+											return;
+										}
+										char row_DelimtFileOutputDelimited_9[] = null;
+
+										// support passing value (property: Row
+										// Separator) by 'context.rs' or
+										// 'globalMap.get("rs")'.
+										if (rowSep.length() > 0) {
+											row_DelimtFileOutputDelimited_9 = rowSep
+													.toCharArray();
+										} else {
+											throw new IllegalArgumentException(
+													"Row Separator must be assigned a char.");
+										}
+										this.row_Delim = row_DelimtFileOutputDelimited_9[0];
+									}
+
+									public char getRowDelim() {
+										if (this.row_Delim == 0) {
+											setRowSeparator("\n");
+										}
+										return this.row_Delim;
+									}
+
+									public void setEscapeAndTextEnclosure(
+											String strEscape,
+											String strTextEnclosure)
+											throws IllegalArgumentException {
+										if (strEscape.length() <= 0) {
+											throw new IllegalArgumentException(
+													"Escape Char must be assigned a char.");
+										}
+
+										if ("".equals(strTextEnclosure))
+											strTextEnclosure = "\0";
+										char textEnclosure_tFileOutputDelimited_9[] = null;
+
+										if (strTextEnclosure.length() > 0) {
+											textEnclosure_tFileOutputDelimited_9 = strTextEnclosure
+													.toCharArray();
+										} else {
+											throw new IllegalArgumentException(
+													"Text Enclosure must be assigned a char.");
+										}
+
+										this.textEnclosure = textEnclosure_tFileOutputDelimited_9[0];
+
+										if (("\\").equals(strEscape)) {
+											this.escape = '\\';
+										} else if (strEscape
+												.equals(strTextEnclosure)) {
+											this.escape = this.textEnclosure;
+										} else {
+											// the default escape mode is double
+											// escape
+											this.escape = this.textEnclosure;
+										}
+
+									}
+
+									public char getEscapeChar() {
+										return (char) this.escape;
+									}
+
+									public char getTextEnclosure() {
+										return this.textEnclosure;
+									}
+								}
+
 								int nb_line_tFileOutputDelimited_9 = 0;
 								int splitEvery_tFileOutputDelimited_9 = 1000;
 								int splitedFileNo_tFileOutputDelimited_9 = 0;
 								int currentRow_tFileOutputDelimited_9 = 0;
 
-								final String OUT_DELIM_tFileOutputDelimited_9 = /**
-								 * 
-								 * Start field
-								 * tFileOutputDelimited_9:FIELDSEPARATOR
-								 */
-								"\t"/**
-								 * End field
-								 * tFileOutputDelimited_9:FIELDSEPARATOR
-								 */
-								;
-
-								final String OUT_DELIM_ROWSEP_tFileOutputDelimited_9 = /**
-								 * 
-								 * Start field
-								 * tFileOutputDelimited_9:ROWSEPARATOR
-								 */
-								"\n"/**
-								 * End field
-								 * tFileOutputDelimited_9:ROWSEPARATOR
-								 */
-								;
-
+								CSVBasicSet_tFileOutputDelimited_9 csvSettings_tFileOutputDelimited_9 = new CSVBasicSet_tFileOutputDelimited_9();
+								csvSettings_tFileOutputDelimited_9
+										.setFieldSeparator("\t");
+								csvSettings_tFileOutputDelimited_9
+										.setRowSeparator("\n");
+								csvSettings_tFileOutputDelimited_9
+										.setEscapeAndTextEnclosure("\"", "\"");
 								// create directory only if not exists
 								if (directory_tFileOutputDelimited_9 != null
 										&& directory_tFileOutputDelimited_9
@@ -9369,16 +9767,39 @@ public class ODM_Extract_PD implements TalendJob {
 										dir_tFileOutputDelimited_9.mkdirs();
 									}
 								}
-
-								// routines.system.Row
-								java.io.Writer outtFileOutputDelimited_9 = null;
+								com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_9 = null;
 								try {
-									outtFileOutputDelimited_9 = new java.io.BufferedWriter(
-											new java.io.OutputStreamWriter(
-													new java.io.FileOutputStream(
-															fileName_tFileOutputDelimited_9,
-															true),
-													"ISO-8859-15"));
+									CsvWritertFileOutputDelimited_9 = new com.talend.csv.CSVWriter(
+											new java.io.BufferedWriter(
+													new java.io.OutputStreamWriter(
+															new java.io.FileOutputStream(
+																	fileName_tFileOutputDelimited_9,
+																	true),
+															"ISO-8859-15")));
+									CsvWritertFileOutputDelimited_9
+											.setSeparator(csvSettings_tFileOutputDelimited_9
+													.getFieldDelim());
+
+									if (!csvSettings_tFileOutputDelimited_9
+											.isUseCRLFRecordDelimiter()
+											&& csvSettings_tFileOutputDelimited_9
+													.getRowDelim() != '\r'
+											&& csvSettings_tFileOutputDelimited_9
+													.getRowDelim() != '\n') {
+										CsvWritertFileOutputDelimited_9
+												.setLineEnd(""
+														+ csvSettings_tFileOutputDelimited_9
+																.getRowDelim());
+									}
+
+									CsvWritertFileOutputDelimited_9
+											.setEscapeChar(csvSettings_tFileOutputDelimited_9
+													.getEscapeChar());
+									CsvWritertFileOutputDelimited_9
+											.setQuoteChar(csvSettings_tFileOutputDelimited_9
+													.getTextEnclosure());
+									CsvWritertFileOutputDelimited_9
+											.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 									/**
 									 * [tFileOutputDelimited_9 begin ] stop
@@ -9454,33 +9875,129 @@ public class ODM_Extract_PD implements TalendJob {
 										isFileGenerated_tFileOutputDelimited_15 = false;
 									}
 
+									String[] headColutFileOutputDelimited_15 = new String[13];
+									class CSVBasicSet_tFileOutputDelimited_15 {
+										private char field_Delim;
+										private char row_Delim;
+										private char escape;
+										private char textEnclosure;
+										private boolean useCRLFRecordDelimiter;
+
+										public boolean isUseCRLFRecordDelimiter() {
+											return useCRLFRecordDelimiter;
+										}
+
+										public void setFieldSeparator(
+												String fieldSep)
+												throws IllegalArgumentException {
+											char field_Delim_tFileOutputDelimited_15[] = null;
+
+											// support passing value (property:
+											// Field Separator) by 'context.fs'
+											// or 'globalMap.get("fs")'.
+											if (fieldSep.length() > 0) {
+												field_Delim_tFileOutputDelimited_15 = fieldSep
+														.toCharArray();
+											} else {
+												throw new IllegalArgumentException(
+														"Field Separator must be assigned a char.");
+											}
+											this.field_Delim = field_Delim_tFileOutputDelimited_15[0];
+										}
+
+										public char getFieldDelim() {
+											if (this.field_Delim == 0) {
+												setFieldSeparator("\t");
+											}
+											return this.field_Delim;
+										}
+
+										public void setRowSeparator(
+												String rowSep) {
+											if ("\r\n".equals(rowSep)) {
+												useCRLFRecordDelimiter = true;
+												return;
+											}
+											char row_DelimtFileOutputDelimited_15[] = null;
+
+											// support passing value (property:
+											// Row Separator) by 'context.rs' or
+											// 'globalMap.get("rs")'.
+											if (rowSep.length() > 0) {
+												row_DelimtFileOutputDelimited_15 = rowSep
+														.toCharArray();
+											} else {
+												throw new IllegalArgumentException(
+														"Row Separator must be assigned a char.");
+											}
+											this.row_Delim = row_DelimtFileOutputDelimited_15[0];
+										}
+
+										public char getRowDelim() {
+											if (this.row_Delim == 0) {
+												setRowSeparator("\n");
+											}
+											return this.row_Delim;
+										}
+
+										public void setEscapeAndTextEnclosure(
+												String strEscape,
+												String strTextEnclosure)
+												throws IllegalArgumentException {
+											if (strEscape.length() <= 0) {
+												throw new IllegalArgumentException(
+														"Escape Char must be assigned a char.");
+											}
+
+											if ("".equals(strTextEnclosure))
+												strTextEnclosure = "\0";
+											char textEnclosure_tFileOutputDelimited_15[] = null;
+
+											if (strTextEnclosure.length() > 0) {
+												textEnclosure_tFileOutputDelimited_15 = strTextEnclosure
+														.toCharArray();
+											} else {
+												throw new IllegalArgumentException(
+														"Text Enclosure must be assigned a char.");
+											}
+
+											this.textEnclosure = textEnclosure_tFileOutputDelimited_15[0];
+
+											if (("\\").equals(strEscape)) {
+												this.escape = '\\';
+											} else if (strEscape
+													.equals(strTextEnclosure)) {
+												this.escape = this.textEnclosure;
+											} else {
+												// the default escape mode is
+												// double escape
+												this.escape = this.textEnclosure;
+											}
+
+										}
+
+										public char getEscapeChar() {
+											return (char) this.escape;
+										}
+
+										public char getTextEnclosure() {
+											return this.textEnclosure;
+										}
+									}
+
 									int nb_line_tFileOutputDelimited_15 = 0;
 									int splitEvery_tFileOutputDelimited_15 = 1000;
 									int splitedFileNo_tFileOutputDelimited_15 = 0;
 									int currentRow_tFileOutputDelimited_15 = 0;
 
-									final String OUT_DELIM_tFileOutputDelimited_15 = /**
-									 * 
-									 * Start field
-									 * tFileOutputDelimited_15:FIELDSEPARATOR
-									 */
-									"\t"/**
-									 * End field
-									 * tFileOutputDelimited_15:FIELDSEPARATOR
-									 */
-									;
-
-									final String OUT_DELIM_ROWSEP_tFileOutputDelimited_15 = /**
-									 * 
-									 * Start field
-									 * tFileOutputDelimited_15:ROWSEPARATOR
-									 */
-									"\n"/**
-									 * End field
-									 * tFileOutputDelimited_15:ROWSEPARATOR
-									 */
-									;
-
+									CSVBasicSet_tFileOutputDelimited_15 csvSettings_tFileOutputDelimited_15 = new CSVBasicSet_tFileOutputDelimited_15();
+									csvSettings_tFileOutputDelimited_15
+											.setFieldSeparator("\t");
+									csvSettings_tFileOutputDelimited_15
+											.setRowSeparator("\n");
+									csvSettings_tFileOutputDelimited_15
+											.setEscapeAndTextEnclosure("\"",
+													"\"");
 									// create directory only if not exists
 									if (directory_tFileOutputDelimited_15 != null
 											&& directory_tFileOutputDelimited_15
@@ -9493,16 +10010,39 @@ public class ODM_Extract_PD implements TalendJob {
 													.mkdirs();
 										}
 									}
-
-									// routines.system.Row
-									java.io.Writer outtFileOutputDelimited_15 = null;
+									com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_15 = null;
 									try {
-										outtFileOutputDelimited_15 = new java.io.BufferedWriter(
-												new java.io.OutputStreamWriter(
-														new java.io.FileOutputStream(
-																fileName_tFileOutputDelimited_15,
-																true),
-														"ISO-8859-15"));
+										CsvWritertFileOutputDelimited_15 = new com.talend.csv.CSVWriter(
+												new java.io.BufferedWriter(
+														new java.io.OutputStreamWriter(
+																new java.io.FileOutputStream(
+																		fileName_tFileOutputDelimited_15,
+																		true),
+																"ISO-8859-15")));
+										CsvWritertFileOutputDelimited_15
+												.setSeparator(csvSettings_tFileOutputDelimited_15
+														.getFieldDelim());
+
+										if (!csvSettings_tFileOutputDelimited_15
+												.isUseCRLFRecordDelimiter()
+												&& csvSettings_tFileOutputDelimited_15
+														.getRowDelim() != '\r'
+												&& csvSettings_tFileOutputDelimited_15
+														.getRowDelim() != '\n') {
+											CsvWritertFileOutputDelimited_15
+													.setLineEnd(""
+															+ csvSettings_tFileOutputDelimited_15
+																	.getRowDelim());
+										}
+
+										CsvWritertFileOutputDelimited_15
+												.setEscapeChar(csvSettings_tFileOutputDelimited_15
+														.getEscapeChar());
+										CsvWritertFileOutputDelimited_15
+												.setQuoteChar(csvSettings_tFileOutputDelimited_15
+														.getTextEnclosure());
+										CsvWritertFileOutputDelimited_15
+												.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 										/**
 										 * [tFileOutputDelimited_15 begin ] stop
@@ -9616,33 +10156,131 @@ public class ODM_Extract_PD implements TalendJob {
 											isFileGenerated_tFileOutputDelimited_8 = false;
 										}
 
+										String[] headColutFileOutputDelimited_8 = new String[14];
+										class CSVBasicSet_tFileOutputDelimited_8 {
+											private char field_Delim;
+											private char row_Delim;
+											private char escape;
+											private char textEnclosure;
+											private boolean useCRLFRecordDelimiter;
+
+											public boolean isUseCRLFRecordDelimiter() {
+												return useCRLFRecordDelimiter;
+											}
+
+											public void setFieldSeparator(
+													String fieldSep)
+													throws IllegalArgumentException {
+												char field_Delim_tFileOutputDelimited_8[] = null;
+
+												// support passing value
+												// (property: Field Separator)
+												// by 'context.fs' or
+												// 'globalMap.get("fs")'.
+												if (fieldSep.length() > 0) {
+													field_Delim_tFileOutputDelimited_8 = fieldSep
+															.toCharArray();
+												} else {
+													throw new IllegalArgumentException(
+															"Field Separator must be assigned a char.");
+												}
+												this.field_Delim = field_Delim_tFileOutputDelimited_8[0];
+											}
+
+											public char getFieldDelim() {
+												if (this.field_Delim == 0) {
+													setFieldSeparator("\t");
+												}
+												return this.field_Delim;
+											}
+
+											public void setRowSeparator(
+													String rowSep) {
+												if ("\r\n".equals(rowSep)) {
+													useCRLFRecordDelimiter = true;
+													return;
+												}
+												char row_DelimtFileOutputDelimited_8[] = null;
+
+												// support passing value
+												// (property: Row Separator) by
+												// 'context.rs' or
+												// 'globalMap.get("rs")'.
+												if (rowSep.length() > 0) {
+													row_DelimtFileOutputDelimited_8 = rowSep
+															.toCharArray();
+												} else {
+													throw new IllegalArgumentException(
+															"Row Separator must be assigned a char.");
+												}
+												this.row_Delim = row_DelimtFileOutputDelimited_8[0];
+											}
+
+											public char getRowDelim() {
+												if (this.row_Delim == 0) {
+													setRowSeparator("\n");
+												}
+												return this.row_Delim;
+											}
+
+											public void setEscapeAndTextEnclosure(
+													String strEscape,
+													String strTextEnclosure)
+													throws IllegalArgumentException {
+												if (strEscape.length() <= 0) {
+													throw new IllegalArgumentException(
+															"Escape Char must be assigned a char.");
+												}
+
+												if ("".equals(strTextEnclosure))
+													strTextEnclosure = "\0";
+												char textEnclosure_tFileOutputDelimited_8[] = null;
+
+												if (strTextEnclosure.length() > 0) {
+													textEnclosure_tFileOutputDelimited_8 = strTextEnclosure
+															.toCharArray();
+												} else {
+													throw new IllegalArgumentException(
+															"Text Enclosure must be assigned a char.");
+												}
+
+												this.textEnclosure = textEnclosure_tFileOutputDelimited_8[0];
+
+												if (("\\").equals(strEscape)) {
+													this.escape = '\\';
+												} else if (strEscape
+														.equals(strTextEnclosure)) {
+													this.escape = this.textEnclosure;
+												} else {
+													// the default escape mode
+													// is double escape
+													this.escape = this.textEnclosure;
+												}
+
+											}
+
+											public char getEscapeChar() {
+												return (char) this.escape;
+											}
+
+											public char getTextEnclosure() {
+												return this.textEnclosure;
+											}
+										}
+
 										int nb_line_tFileOutputDelimited_8 = 0;
 										int splitEvery_tFileOutputDelimited_8 = 1000;
 										int splitedFileNo_tFileOutputDelimited_8 = 0;
 										int currentRow_tFileOutputDelimited_8 = 0;
 
-										final String OUT_DELIM_tFileOutputDelimited_8 = /**
-										 * 
-										 * Start field tFileOutputDelimited_8:
-										 * FIELDSEPARATOR
-										 */
-										"\t"/**
-										 * End field tFileOutputDelimited_8:
-										 * FIELDSEPARATOR
-										 */
-										;
-
-										final String OUT_DELIM_ROWSEP_tFileOutputDelimited_8 = /**
-										 * 
-										 * Start field
-										 * tFileOutputDelimited_8:ROWSEPARATOR
-										 */
-										"\n"/**
-										 * End field
-										 * tFileOutputDelimited_8:ROWSEPARATOR
-										 */
-										;
-
+										CSVBasicSet_tFileOutputDelimited_8 csvSettings_tFileOutputDelimited_8 = new CSVBasicSet_tFileOutputDelimited_8();
+										csvSettings_tFileOutputDelimited_8
+												.setFieldSeparator("\t");
+										csvSettings_tFileOutputDelimited_8
+												.setRowSeparator("\n");
+										csvSettings_tFileOutputDelimited_8
+												.setEscapeAndTextEnclosure(
+														"\"", "\"");
 										// create directory only if not exists
 										if (directory_tFileOutputDelimited_8 != null
 												&& directory_tFileOutputDelimited_8
@@ -9655,106 +10293,77 @@ public class ODM_Extract_PD implements TalendJob {
 														.mkdirs();
 											}
 										}
-
-										// routines.system.Row
-										java.io.Writer outtFileOutputDelimited_8 = null;
+										com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_8 = null;
 										try {
-											outtFileOutputDelimited_8 = new java.io.BufferedWriter(
-													new java.io.OutputStreamWriter(
-															new java.io.FileOutputStream(
-																	fileName_tFileOutputDelimited_8,
-																	true),
-															"ISO-8859-15"));
+											CsvWritertFileOutputDelimited_8 = new com.talend.csv.CSVWriter(
+													new java.io.BufferedWriter(
+															new java.io.OutputStreamWriter(
+																	new java.io.FileOutputStream(
+																			fileName_tFileOutputDelimited_8,
+																			true),
+																	"ISO-8859-15")));
+											CsvWritertFileOutputDelimited_8
+													.setSeparator(csvSettings_tFileOutputDelimited_8
+															.getFieldDelim());
+
+											if (!csvSettings_tFileOutputDelimited_8
+													.isUseCRLFRecordDelimiter()
+													&& csvSettings_tFileOutputDelimited_8
+															.getRowDelim() != '\r'
+													&& csvSettings_tFileOutputDelimited_8
+															.getRowDelim() != '\n') {
+												CsvWritertFileOutputDelimited_8
+														.setLineEnd(""
+																+ csvSettings_tFileOutputDelimited_8
+																		.getRowDelim());
+											}
 
 											if (filetFileOutputDelimited_8
 													.length() == 0) {
 
-												outtFileOutputDelimited_8
-														.write("itemID");
+												headColutFileOutputDelimited_8[0] = "itemID";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[1] = "Value";
 
-												outtFileOutputDelimited_8
-														.write("Value");
+												headColutFileOutputDelimited_8[2] = "VisitID";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[3] = "FormID";
 
-												outtFileOutputDelimited_8
-														.write("VisitID");
+												headColutFileOutputDelimited_8[4] = "SubjectKey";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[5] = "Path";
 
-												outtFileOutputDelimited_8
-														.write("FormID");
+												headColutFileOutputDelimited_8[6] = "PathID";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[7] = "DataType";
 
-												outtFileOutputDelimited_8
-														.write("SubjectKey");
+												headColutFileOutputDelimited_8[8] = "Update_Date";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[9] = "Import_Date";
 
-												outtFileOutputDelimited_8
-														.write("Path");
+												headColutFileOutputDelimited_8[10] = "Download_Date";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[11] = "StudyEventRepeatKey";
 
-												outtFileOutputDelimited_8
-														.write("PathID");
+												headColutFileOutputDelimited_8[12] = "itemGroupRepeatKey";
 
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
+												headColutFileOutputDelimited_8[13] = "itemCode";
 
-												outtFileOutputDelimited_8
-														.write("DataType");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("Update_Date");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("Import_Date");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("Download_Date");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("StudyEventRepeatKey");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("itemGroupRepeatKey");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_tFileOutputDelimited_8);
-
-												outtFileOutputDelimited_8
-														.write("itemCode");
-
-												outtFileOutputDelimited_8
-														.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_8);
-												outtFileOutputDelimited_8
+												CsvWritertFileOutputDelimited_8
+														.writeNext(headColutFileOutputDelimited_8);
+												CsvWritertFileOutputDelimited_8
 														.flush();
+
 											}
+
+											CsvWritertFileOutputDelimited_8
+													.setEscapeChar(csvSettings_tFileOutputDelimited_8
+															.getEscapeChar());
+											CsvWritertFileOutputDelimited_8
+													.setQuoteChar(csvSettings_tFileOutputDelimited_8
+															.getTextEnclosure());
+											CsvWritertFileOutputDelimited_8
+													.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 											/**
 											 * [tFileOutputDelimited_8 begin ]
@@ -9835,37 +10444,134 @@ public class ODM_Extract_PD implements TalendJob {
 												isFileGenerated_tFileOutputDelimited_10 = false;
 											}
 
+											String[] headColutFileOutputDelimited_10 = new String[13];
+											class CSVBasicSet_tFileOutputDelimited_10 {
+												private char field_Delim;
+												private char row_Delim;
+												private char escape;
+												private char textEnclosure;
+												private boolean useCRLFRecordDelimiter;
+
+												public boolean isUseCRLFRecordDelimiter() {
+													return useCRLFRecordDelimiter;
+												}
+
+												public void setFieldSeparator(
+														String fieldSep)
+														throws IllegalArgumentException {
+													char field_Delim_tFileOutputDelimited_10[] = null;
+
+													// support passing value
+													// (property: Field
+													// Separator) by
+													// 'context.fs' or
+													// 'globalMap.get("fs")'.
+													if (fieldSep.length() > 0) {
+														field_Delim_tFileOutputDelimited_10 = fieldSep
+																.toCharArray();
+													} else {
+														throw new IllegalArgumentException(
+																"Field Separator must be assigned a char.");
+													}
+													this.field_Delim = field_Delim_tFileOutputDelimited_10[0];
+												}
+
+												public char getFieldDelim() {
+													if (this.field_Delim == 0) {
+														setFieldSeparator("\t");
+													}
+													return this.field_Delim;
+												}
+
+												public void setRowSeparator(
+														String rowSep) {
+													if ("\r\n".equals(rowSep)) {
+														useCRLFRecordDelimiter = true;
+														return;
+													}
+													char row_DelimtFileOutputDelimited_10[] = null;
+
+													// support passing value
+													// (property: Row Separator)
+													// by 'context.rs' or
+													// 'globalMap.get("rs")'.
+													if (rowSep.length() > 0) {
+														row_DelimtFileOutputDelimited_10 = rowSep
+																.toCharArray();
+													} else {
+														throw new IllegalArgumentException(
+																"Row Separator must be assigned a char.");
+													}
+													this.row_Delim = row_DelimtFileOutputDelimited_10[0];
+												}
+
+												public char getRowDelim() {
+													if (this.row_Delim == 0) {
+														setRowSeparator("\n");
+													}
+													return this.row_Delim;
+												}
+
+												public void setEscapeAndTextEnclosure(
+														String strEscape,
+														String strTextEnclosure)
+														throws IllegalArgumentException {
+													if (strEscape.length() <= 0) {
+														throw new IllegalArgumentException(
+																"Escape Char must be assigned a char.");
+													}
+
+													if ("".equals(strTextEnclosure))
+														strTextEnclosure = "\0";
+													char textEnclosure_tFileOutputDelimited_10[] = null;
+
+													if (strTextEnclosure
+															.length() > 0) {
+														textEnclosure_tFileOutputDelimited_10 = strTextEnclosure
+																.toCharArray();
+													} else {
+														throw new IllegalArgumentException(
+																"Text Enclosure must be assigned a char.");
+													}
+
+													this.textEnclosure = textEnclosure_tFileOutputDelimited_10[0];
+
+													if (("\\")
+															.equals(strEscape)) {
+														this.escape = '\\';
+													} else if (strEscape
+															.equals(strTextEnclosure)) {
+														this.escape = this.textEnclosure;
+													} else {
+														// the default escape
+														// mode is double escape
+														this.escape = this.textEnclosure;
+													}
+
+												}
+
+												public char getEscapeChar() {
+													return (char) this.escape;
+												}
+
+												public char getTextEnclosure() {
+													return this.textEnclosure;
+												}
+											}
+
 											int nb_line_tFileOutputDelimited_10 = 0;
 											int splitEvery_tFileOutputDelimited_10 = 1000;
 											int splitedFileNo_tFileOutputDelimited_10 = 0;
 											int currentRow_tFileOutputDelimited_10 = 0;
 
-											final String OUT_DELIM_tFileOutputDelimited_10 = /**
-											 * 
-											 * Start field
-											 * tFileOutputDelimited_10
-											 * :FIELDSEPARATOR
-											 */
-											"\t"/**
-											 * End field
-											 * tFileOutputDelimited_10
-											 * :FIELDSEPARATOR
-											 */
-											;
-
-											final String OUT_DELIM_ROWSEP_tFileOutputDelimited_10 = /**
-											 * 
-											 * Start field
-											 * tFileOutputDelimited_10
-											 * :ROWSEPARATOR
-											 */
-											"\n"/**
-											 * End field
-											 * tFileOutputDelimited_10
-											 * :ROWSEPARATOR
-											 */
-											;
-
+											CSVBasicSet_tFileOutputDelimited_10 csvSettings_tFileOutputDelimited_10 = new CSVBasicSet_tFileOutputDelimited_10();
+											csvSettings_tFileOutputDelimited_10
+													.setFieldSeparator("\t");
+											csvSettings_tFileOutputDelimited_10
+													.setRowSeparator("\n");
+											csvSettings_tFileOutputDelimited_10
+													.setEscapeAndTextEnclosure(
+															"\"", "\"");
 											// create directory only if not
 											// exists
 											if (directory_tFileOutputDelimited_10 != null
@@ -9879,16 +10585,39 @@ public class ODM_Extract_PD implements TalendJob {
 															.mkdirs();
 												}
 											}
-
-											// routines.system.Row
-											java.io.Writer outtFileOutputDelimited_10 = null;
+											com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_10 = null;
 											try {
-												outtFileOutputDelimited_10 = new java.io.BufferedWriter(
-														new java.io.OutputStreamWriter(
-																new java.io.FileOutputStream(
-																		fileName_tFileOutputDelimited_10,
-																		true),
-																"ISO-8859-15"));
+												CsvWritertFileOutputDelimited_10 = new com.talend.csv.CSVWriter(
+														new java.io.BufferedWriter(
+																new java.io.OutputStreamWriter(
+																		new java.io.FileOutputStream(
+																				fileName_tFileOutputDelimited_10,
+																				true),
+																		"ISO-8859-15")));
+												CsvWritertFileOutputDelimited_10
+														.setSeparator(csvSettings_tFileOutputDelimited_10
+																.getFieldDelim());
+
+												if (!csvSettings_tFileOutputDelimited_10
+														.isUseCRLFRecordDelimiter()
+														&& csvSettings_tFileOutputDelimited_10
+																.getRowDelim() != '\r'
+														&& csvSettings_tFileOutputDelimited_10
+																.getRowDelim() != '\n') {
+													CsvWritertFileOutputDelimited_10
+															.setLineEnd(""
+																	+ csvSettings_tFileOutputDelimited_10
+																			.getRowDelim());
+												}
+
+												CsvWritertFileOutputDelimited_10
+														.setEscapeChar(csvSettings_tFileOutputDelimited_10
+																.getEscapeChar());
+												CsvWritertFileOutputDelimited_10
+														.setQuoteChar(csvSettings_tFileOutputDelimited_10
+																.getTextEnclosure());
+												CsvWritertFileOutputDelimited_10
+														.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 												/**
 												 * [tFileOutputDelimited_10
@@ -10135,37 +10864,137 @@ public class ODM_Extract_PD implements TalendJob {
 													isFileGenerated_tFileOutputDelimited_12 = false;
 												}
 
+												String[] headColutFileOutputDelimited_12 = new String[3];
+												class CSVBasicSet_tFileOutputDelimited_12 {
+													private char field_Delim;
+													private char row_Delim;
+													private char escape;
+													private char textEnclosure;
+													private boolean useCRLFRecordDelimiter;
+
+													public boolean isUseCRLFRecordDelimiter() {
+														return useCRLFRecordDelimiter;
+													}
+
+													public void setFieldSeparator(
+															String fieldSep)
+															throws IllegalArgumentException {
+														char field_Delim_tFileOutputDelimited_12[] = null;
+
+														// support passing value
+														// (property: Field
+														// Separator) by
+														// 'context.fs' or
+														// 'globalMap.get("fs")'.
+														if (fieldSep.length() > 0) {
+															field_Delim_tFileOutputDelimited_12 = fieldSep
+																	.toCharArray();
+														} else {
+															throw new IllegalArgumentException(
+																	"Field Separator must be assigned a char.");
+														}
+														this.field_Delim = field_Delim_tFileOutputDelimited_12[0];
+													}
+
+													public char getFieldDelim() {
+														if (this.field_Delim == 0) {
+															setFieldSeparator("\t");
+														}
+														return this.field_Delim;
+													}
+
+													public void setRowSeparator(
+															String rowSep) {
+														if ("\r\n"
+																.equals(rowSep)) {
+															useCRLFRecordDelimiter = true;
+															return;
+														}
+														char row_DelimtFileOutputDelimited_12[] = null;
+
+														// support passing value
+														// (property: Row
+														// Separator) by
+														// 'context.rs' or
+														// 'globalMap.get("rs")'.
+														if (rowSep.length() > 0) {
+															row_DelimtFileOutputDelimited_12 = rowSep
+																	.toCharArray();
+														} else {
+															throw new IllegalArgumentException(
+																	"Row Separator must be assigned a char.");
+														}
+														this.row_Delim = row_DelimtFileOutputDelimited_12[0];
+													}
+
+													public char getRowDelim() {
+														if (this.row_Delim == 0) {
+															setRowSeparator("\n");
+														}
+														return this.row_Delim;
+													}
+
+													public void setEscapeAndTextEnclosure(
+															String strEscape,
+															String strTextEnclosure)
+															throws IllegalArgumentException {
+														if (strEscape.length() <= 0) {
+															throw new IllegalArgumentException(
+																	"Escape Char must be assigned a char.");
+														}
+
+														if ("".equals(strTextEnclosure))
+															strTextEnclosure = "\0";
+														char textEnclosure_tFileOutputDelimited_12[] = null;
+
+														if (strTextEnclosure
+																.length() > 0) {
+															textEnclosure_tFileOutputDelimited_12 = strTextEnclosure
+																	.toCharArray();
+														} else {
+															throw new IllegalArgumentException(
+																	"Text Enclosure must be assigned a char.");
+														}
+
+														this.textEnclosure = textEnclosure_tFileOutputDelimited_12[0];
+
+														if (("\\")
+																.equals(strEscape)) {
+															this.escape = '\\';
+														} else if (strEscape
+																.equals(strTextEnclosure)) {
+															this.escape = this.textEnclosure;
+														} else {
+															// the default
+															// escape mode is
+															// double escape
+															this.escape = this.textEnclosure;
+														}
+
+													}
+
+													public char getEscapeChar() {
+														return (char) this.escape;
+													}
+
+													public char getTextEnclosure() {
+														return this.textEnclosure;
+													}
+												}
+
 												int nb_line_tFileOutputDelimited_12 = 0;
 												int splitEvery_tFileOutputDelimited_12 = 1000;
 												int splitedFileNo_tFileOutputDelimited_12 = 0;
 												int currentRow_tFileOutputDelimited_12 = 0;
 
-												final String OUT_DELIM_tFileOutputDelimited_12 = /**
-												 * 
-												 * Start field
-												 * tFileOutputDelimited_12
-												 * :FIELDSEPARATOR
-												 */
-												"\t"/**
-												 * End field
-												 * tFileOutputDelimited_12
-												 * :FIELDSEPARATOR
-												 */
-												;
-
-												final String OUT_DELIM_ROWSEP_tFileOutputDelimited_12 = /**
-												 * 
-												 * Start field
-												 * tFileOutputDelimited_12
-												 * :ROWSEPARATOR
-												 */
-												"\n"/**
-												 * End field
-												 * tFileOutputDelimited_12
-												 * :ROWSEPARATOR
-												 */
-												;
-
+												CSVBasicSet_tFileOutputDelimited_12 csvSettings_tFileOutputDelimited_12 = new CSVBasicSet_tFileOutputDelimited_12();
+												csvSettings_tFileOutputDelimited_12
+														.setFieldSeparator("\t");
+												csvSettings_tFileOutputDelimited_12
+														.setRowSeparator("\n");
+												csvSettings_tFileOutputDelimited_12
+														.setEscapeAndTextEnclosure(
+																"\"", "\"");
 												// create directory only if not
 												// exists
 												if (directory_tFileOutputDelimited_12 != null
@@ -10180,40 +11009,39 @@ public class ODM_Extract_PD implements TalendJob {
 																.mkdirs();
 													}
 												}
-
-												// routines.system.Row
-												java.io.Writer outtFileOutputDelimited_12 = null;
+												com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_12 = null;
 												try {
-													outtFileOutputDelimited_12 = new java.io.BufferedWriter(
-															new java.io.OutputStreamWriter(
-																	new java.io.FileOutputStream(
-																			fileName_tFileOutputDelimited_12,
-																			true),
-																	"ISO-8859-15"));
+													CsvWritertFileOutputDelimited_12 = new com.talend.csv.CSVWriter(
+															new java.io.BufferedWriter(
+																	new java.io.OutputStreamWriter(
+																			new java.io.FileOutputStream(
+																					fileName_tFileOutputDelimited_12,
+																					true),
+																			"ISO-8859-15")));
+													CsvWritertFileOutputDelimited_12
+															.setSeparator(csvSettings_tFileOutputDelimited_12
+																	.getFieldDelim());
 
-													if (filetFileOutputDelimited_12
-															.length() == 0) {
-
-														outtFileOutputDelimited_12
-																.write("PatientID");
-
-														outtFileOutputDelimited_12
-																.write(OUT_DELIM_tFileOutputDelimited_12);
-
-														outtFileOutputDelimited_12
-																.write("EncounterNum");
-
-														outtFileOutputDelimited_12
-																.write(OUT_DELIM_tFileOutputDelimited_12);
-
-														outtFileOutputDelimited_12
-																.write("VisitID");
-
-														outtFileOutputDelimited_12
-																.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_12);
-														outtFileOutputDelimited_12
-																.flush();
+													if (!csvSettings_tFileOutputDelimited_12
+															.isUseCRLFRecordDelimiter()
+															&& csvSettings_tFileOutputDelimited_12
+																	.getRowDelim() != '\r'
+															&& csvSettings_tFileOutputDelimited_12
+																	.getRowDelim() != '\n') {
+														CsvWritertFileOutputDelimited_12
+																.setLineEnd(""
+																		+ csvSettings_tFileOutputDelimited_12
+																				.getRowDelim());
 													}
+
+													CsvWritertFileOutputDelimited_12
+															.setEscapeChar(csvSettings_tFileOutputDelimited_12
+																	.getEscapeChar());
+													CsvWritertFileOutputDelimited_12
+															.setQuoteChar(csvSettings_tFileOutputDelimited_12
+																	.getTextEnclosure());
+													CsvWritertFileOutputDelimited_12
+															.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 													/**
 													 * [tFileOutputDelimited_12
@@ -10333,20 +11161,22 @@ public class ODM_Extract_PD implements TalendJob {
 													 */
 
 													/**
-													 * [tLogRow_6 begin ] start
+													 * [tJavaRow_9 begin ] start
 													 */
 
-													ok_Hash.put("tLogRow_6",
+													ok_Hash.put("tJavaRow_9",
 															false);
 													start_Hash
-															.put("tLogRow_6",
+															.put("tJavaRow_9",
 																	System.currentTimeMillis());
-													currentComponent = "tLogRow_6";
+													currentComponent = "tJavaRow_9";
 
-													int tos_count_tLogRow_6 = 0;
+													int tos_count_tJavaRow_9 = 0;
+
+													int nb_line_tJavaRow_9 = 0;
 
 													/**
-													 * [tLogRow_6 begin ] stop
+													 * [tJavaRow_9 begin ] stop
 													 */
 
 													/**
@@ -10704,19 +11534,42 @@ public class ODM_Extract_PD implements TalendJob {
 														if (row1 != null) {
 
 															/**
-															 * [tLogRow_6 main ]
-															 * start
+															 * [tJavaRow_9 main
+															 * ] start
 															 */
 
-															currentComponent = "tLogRow_6";
+															currentComponent = "tJavaRow_9";
 
-															row27 = row1;
+															// Code generated
+															// according to
+															// input schema and
+															// output schema
+															row27.itemID = row1.itemID;
+															row27.Value = row1.Value
+																	.replaceAll(
+																			"\\\\",
+																			"/");
+															if (row1.Value
+																	.contains("quot"))
+																System.out
+																		.println(row1.Value);
+															row27.itemGroupOID = row1.itemGroupOID;
+															row27.FormID = row1.FormID;
+															row27.SubjectKey = row1.SubjectKey;
+															row27.VisitID = row1.VisitID;
+															row27.StudyEventRepeatKey = row1.StudyEventRepeatKey;
+															row27.ItemGroupRepeatKey = row1.ItemGroupRepeatKey;
+															row27.MetaDataVersionOID = row1.MetaDataVersionOID;
+															row27.TransactionType = row1.TransactionType;
+															row27.IsNull = row1.IsNull;
 
-															tos_count_tLogRow_6++;
+															nb_line_tJavaRow_9++;
+
+															tos_count_tJavaRow_9++;
 
 															/**
-															 * [tLogRow_6 main ]
-															 * stop
+															 * [tJavaRow_9 main
+															 * ] stop
 															 */
 
 															/**
@@ -10918,41 +11771,17 @@ public class ODM_Extract_PD implements TalendJob {
 
 																		currentComponent = "tFileOutputDelimited_2";
 
-																		StringBuilder sb_tFileOutputDelimited_2 = new StringBuilder();
+																		String[] rowtFileOutputDelimited_2 = new String[2];
 
-																		if (row2.PID != null) {
+																		rowtFileOutputDelimited_2[0] = row2.PID == null ? ""
+																				: row2.PID;
 
-																			sb_tFileOutputDelimited_2
-																					.append(
-
-																					row2.PID
-
-																					);
-
-																		}
-
-																		sb_tFileOutputDelimited_2
-																				.append(OUT_DELIM_tFileOutputDelimited_2);
-
-																		if (row2.SubjectKey != null) {
-
-																			sb_tFileOutputDelimited_2
-																					.append(
-
-																					row2.SubjectKey
-
-																					);
-
-																		}
-
-																		sb_tFileOutputDelimited_2
-																				.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_2);
+																		rowtFileOutputDelimited_2[1] = row2.SubjectKey == null ? ""
+																				: row2.SubjectKey;
 
 																		nb_line_tFileOutputDelimited_2++;
-
-																		outtFileOutputDelimited_2
-																				.write(sb_tFileOutputDelimited_2
-																						.toString());
+																		CsvWritertFileOutputDelimited_2
+																				.writeNext(rowtFileOutputDelimited_2);
 
 																		tos_count_tFileOutputDelimited_2++;
 
@@ -11786,223 +12615,56 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_1";
 
-																						StringBuilder sb_tFileOutputDelimited_1 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_1 = new String[15];
 
-																						if (row24.itemID != null) {
+																						rowtFileOutputDelimited_1[0] = row24.itemID == null ? ""
+																								: row24.itemID;
 
-																							sb_tFileOutputDelimited_1
-																									.append(
+																						rowtFileOutputDelimited_1[1] = row24.Value == null ? ""
+																								: row24.Value;
 
-																									row24.itemID
+																						rowtFileOutputDelimited_1[2] = row24.VisitID == null ? ""
+																								: row24.VisitID;
 
-																									);
+																						rowtFileOutputDelimited_1[3] = row24.FormID == null ? ""
+																								: row24.FormID;
 
-																						}
+																						rowtFileOutputDelimited_1[4] = row24.SubjectKey == null ? ""
+																								: row24.SubjectKey;
 
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
+																						rowtFileOutputDelimited_1[5] = row24.Path == null ? ""
+																								: row24.Path;
 
-																						if (row24.Value != null) {
+																						rowtFileOutputDelimited_1[6] = row24.PathID == null ? ""
+																								: row24.PathID;
 
-																							sb_tFileOutputDelimited_1
-																									.append(
+																						rowtFileOutputDelimited_1[7] = row24.DataType == null ? ""
+																								: row24.DataType;
 
-																									row24.Value
+																						rowtFileOutputDelimited_1[8] = row24.Update_Date == null ? ""
+																								: row24.Update_Date;
 
-																									);
+																						rowtFileOutputDelimited_1[9] = row24.Import_Date == null ? ""
+																								: row24.Import_Date;
 
-																						}
+																						rowtFileOutputDelimited_1[10] = row24.Download_Date == null ? ""
+																								: row24.Download_Date;
 
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
+																						rowtFileOutputDelimited_1[11] = row24.StudyEventRepeatKey == null ? ""
+																								: row24.StudyEventRepeatKey;
 
-																						if (row24.VisitID != null) {
+																						rowtFileOutputDelimited_1[12] = row24.itemGroupRepeatKey == null ? ""
+																								: row24.itemGroupRepeatKey;
 
-																							sb_tFileOutputDelimited_1
-																									.append(
+																						rowtFileOutputDelimited_1[13] = row24.itemCode == null ? ""
+																								: row24.itemCode;
 
-																									row24.VisitID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.FormID != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.FormID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.SubjectKey != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.SubjectKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.Path != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.PathID != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.DataType != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.StudyEventRepeatKey != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.StudyEventRepeatKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.itemGroupRepeatKey != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.itemGroupRepeatKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.itemCode != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.itemCode
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_tFileOutputDelimited_1);
-
-																						if (row24.startDate != null) {
-
-																							sb_tFileOutputDelimited_1
-																									.append(
-
-																									row24.startDate
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_1
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
+																						rowtFileOutputDelimited_1[14] = row24.startDate == null ? ""
+																								: row24.startDate;
 
 																						nb_line_tFileOutputDelimited_1++;
-
-																						outtFileOutputDelimited_1
-																								.write(sb_tFileOutputDelimited_1
-																										.toString());
+																						CsvWritertFileOutputDelimited_1
+																								.writeNext(rowtFileOutputDelimited_1);
 
 																						tos_count_tFileOutputDelimited_1++;
 
@@ -12035,195 +12697,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_5";
 
-																						StringBuilder sb_tFileOutputDelimited_5 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_5 = new String[13];
 
-																						if (to_ont_xml.HLEVEL != null) {
+																						rowtFileOutputDelimited_5[0] = to_ont_xml.HLEVEL == null ? ""
+																								: String.valueOf(to_ont_xml.HLEVEL);
 
-																							sb_tFileOutputDelimited_5
-																									.append(
+																						rowtFileOutputDelimited_5[1] = to_ont_xml.Name == null ? ""
+																								: to_ont_xml.Name;
 
-																									to_ont_xml.HLEVEL
+																						rowtFileOutputDelimited_5[2] = to_ont_xml.Path == null ? ""
+																								: to_ont_xml.Path;
 
-																									);
+																						rowtFileOutputDelimited_5[3] = to_ont_xml.DataType == null ? ""
+																								: to_ont_xml.DataType;
 
-																						}
+																						rowtFileOutputDelimited_5[4] = to_ont_xml.Update_Date == null ? ""
+																								: to_ont_xml.Update_Date;
 
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
+																						rowtFileOutputDelimited_5[5] = to_ont_xml.Import_Date == null ? ""
+																								: to_ont_xml.Import_Date;
 
-																						if (to_ont_xml.Name != null) {
+																						rowtFileOutputDelimited_5[6] = to_ont_xml.Download_Date == null ? ""
+																								: to_ont_xml.Download_Date;
 
-																							sb_tFileOutputDelimited_5
-																									.append(
+																						rowtFileOutputDelimited_5[7] = to_ont_xml.PathID == null ? ""
+																								: to_ont_xml.PathID;
 
-																									to_ont_xml.Name
+																						rowtFileOutputDelimited_5[8] = to_ont_xml.visual == null ? ""
+																								: to_ont_xml.visual;
 
-																									);
+																						rowtFileOutputDelimited_5[9] = to_ont_xml.codeList == null ? ""
+																								: to_ont_xml.codeList;
 
-																						}
+																						rowtFileOutputDelimited_5[10] = to_ont_xml.source == null ? ""
+																								: to_ont_xml.source;
 
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
+																						rowtFileOutputDelimited_5[11] = to_ont_xml.xml == null ? ""
+																								: to_ont_xml.xml;
 
-																						if (to_ont_xml.Path != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.DataType != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.PathID != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.visual != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.visual
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.codeList != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.codeList
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.source != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.source
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.xml != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.xml
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_tFileOutputDelimited_5);
-
-																						if (to_ont_xml.m_applied_path != null) {
-
-																							sb_tFileOutputDelimited_5
-																									.append(
-
-																									to_ont_xml.m_applied_path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_5
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_5);
+																						rowtFileOutputDelimited_5[12] = to_ont_xml.m_applied_path == null ? ""
+																								: to_ont_xml.m_applied_path;
 
 																						nb_line_tFileOutputDelimited_5++;
-
-																						outtFileOutputDelimited_5
-																								.write(sb_tFileOutputDelimited_5
-																										.toString());
+																						CsvWritertFileOutputDelimited_5
+																								.writeNext(rowtFileOutputDelimited_5);
 
 																						tos_count_tFileOutputDelimited_5++;
 
@@ -12256,195 +12773,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_9";
 
-																						StringBuilder sb_tFileOutputDelimited_9 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_9 = new String[13];
 
-																						if (to_ont.HLEVEL != null) {
+																						rowtFileOutputDelimited_9[0] = to_ont.HLEVEL == null ? ""
+																								: String.valueOf(to_ont.HLEVEL);
 
-																							sb_tFileOutputDelimited_9
-																									.append(
+																						rowtFileOutputDelimited_9[1] = to_ont.Name == null ? ""
+																								: to_ont.Name;
 
-																									to_ont.HLEVEL
+																						rowtFileOutputDelimited_9[2] = to_ont.Path == null ? ""
+																								: to_ont.Path;
 
-																									);
+																						rowtFileOutputDelimited_9[3] = to_ont.DataType == null ? ""
+																								: to_ont.DataType;
 
-																						}
+																						rowtFileOutputDelimited_9[4] = to_ont.Update_Date == null ? ""
+																								: to_ont.Update_Date;
 
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
+																						rowtFileOutputDelimited_9[5] = to_ont.Import_Date == null ? ""
+																								: to_ont.Import_Date;
 
-																						if (to_ont.Name != null) {
+																						rowtFileOutputDelimited_9[6] = to_ont.Download_Date == null ? ""
+																								: to_ont.Download_Date;
 
-																							sb_tFileOutputDelimited_9
-																									.append(
+																						rowtFileOutputDelimited_9[7] = to_ont.PathID == null ? ""
+																								: to_ont.PathID;
 
-																									to_ont.Name
+																						rowtFileOutputDelimited_9[8] = to_ont.visual == null ? ""
+																								: to_ont.visual;
 
-																									);
+																						rowtFileOutputDelimited_9[9] = to_ont.codeList == null ? ""
+																								: to_ont.codeList;
 
-																						}
+																						rowtFileOutputDelimited_9[10] = to_ont.source == null ? ""
+																								: to_ont.source;
 
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
+																						rowtFileOutputDelimited_9[11] = to_ont.xml == null ? ""
+																								: to_ont.xml;
 
-																						if (to_ont.Path != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.DataType != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.PathID != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.visual != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.visual
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.codeList != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.codeList
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.source != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.source
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.xml != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.xml
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_tFileOutputDelimited_9);
-
-																						if (to_ont.m_applied_path != null) {
-
-																							sb_tFileOutputDelimited_9
-																									.append(
-
-																									to_ont.m_applied_path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_9
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_9);
+																						rowtFileOutputDelimited_9[12] = to_ont.m_applied_path == null ? ""
+																								: to_ont.m_applied_path;
 
 																						nb_line_tFileOutputDelimited_9++;
-
-																						outtFileOutputDelimited_9
-																								.write(sb_tFileOutputDelimited_9
-																										.toString());
+																						CsvWritertFileOutputDelimited_9
+																								.writeNext(rowtFileOutputDelimited_9);
 
 																						tos_count_tFileOutputDelimited_9++;
 
@@ -12477,195 +12849,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_15";
 
-																						StringBuilder sb_tFileOutputDelimited_15 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_15 = new String[13];
 
-																						if (out7.HLEVEL != null) {
+																						rowtFileOutputDelimited_15[0] = out7.HLEVEL == null ? ""
+																								: String.valueOf(out7.HLEVEL);
 
-																							sb_tFileOutputDelimited_15
-																									.append(
+																						rowtFileOutputDelimited_15[1] = out7.Name == null ? ""
+																								: out7.Name;
 
-																									out7.HLEVEL
+																						rowtFileOutputDelimited_15[2] = out7.Path == null ? ""
+																								: out7.Path;
 
-																									);
+																						rowtFileOutputDelimited_15[3] = out7.DataType == null ? ""
+																								: out7.DataType;
 
-																						}
+																						rowtFileOutputDelimited_15[4] = out7.Update_Date == null ? ""
+																								: out7.Update_Date;
 
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
+																						rowtFileOutputDelimited_15[5] = out7.Import_Date == null ? ""
+																								: out7.Import_Date;
 
-																						if (out7.Name != null) {
+																						rowtFileOutputDelimited_15[6] = out7.Download_Date == null ? ""
+																								: out7.Download_Date;
 
-																							sb_tFileOutputDelimited_15
-																									.append(
+																						rowtFileOutputDelimited_15[7] = out7.PathID == null ? ""
+																								: out7.PathID;
 
-																									out7.Name
+																						rowtFileOutputDelimited_15[8] = out7.visual == null ? ""
+																								: out7.visual;
 
-																									);
+																						rowtFileOutputDelimited_15[9] = out7.codeList == null ? ""
+																								: out7.codeList;
 
-																						}
+																						rowtFileOutputDelimited_15[10] = out7.source == null ? ""
+																								: out7.source;
 
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
+																						rowtFileOutputDelimited_15[11] = out7.xml == null ? ""
+																								: out7.xml;
 
-																						if (out7.Path != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.DataType != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.PathID != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.visual != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.visual
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.codeList != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.codeList
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.source != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.source
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.xml != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.xml
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_tFileOutputDelimited_15);
-
-																						if (out7.m_applied_path != null) {
-
-																							sb_tFileOutputDelimited_15
-																									.append(
-
-																									out7.m_applied_path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_15
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_15);
+																						rowtFileOutputDelimited_15[12] = out7.m_applied_path == null ? ""
+																								: out7.m_applied_path;
 
 																						nb_line_tFileOutputDelimited_15++;
-
-																						outtFileOutputDelimited_15
-																								.write(sb_tFileOutputDelimited_15
-																										.toString());
+																						CsvWritertFileOutputDelimited_15
+																								.writeNext(rowtFileOutputDelimited_15);
 
 																						tos_count_tFileOutputDelimited_15++;
 
@@ -12892,209 +13119,53 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_8";
 
-																						StringBuilder sb_tFileOutputDelimited_8 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_8 = new String[14];
 
-																						if (out5.itemID != null) {
+																						rowtFileOutputDelimited_8[0] = out5.itemID == null ? ""
+																								: out5.itemID;
 
-																							sb_tFileOutputDelimited_8
-																									.append(
+																						rowtFileOutputDelimited_8[1] = out5.Value == null ? ""
+																								: out5.Value;
 
-																									out5.itemID
+																						rowtFileOutputDelimited_8[2] = out5.VisitID == null ? ""
+																								: out5.VisitID;
 
-																									);
+																						rowtFileOutputDelimited_8[3] = out5.FormID == null ? ""
+																								: out5.FormID;
 
-																						}
+																						rowtFileOutputDelimited_8[4] = out5.SubjectKey == null ? ""
+																								: out5.SubjectKey;
 
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
+																						rowtFileOutputDelimited_8[5] = out5.Path == null ? ""
+																								: out5.Path;
 
-																						if (out5.Value != null) {
+																						rowtFileOutputDelimited_8[6] = out5.PathID == null ? ""
+																								: out5.PathID;
 
-																							sb_tFileOutputDelimited_8
-																									.append(
+																						rowtFileOutputDelimited_8[7] = out5.DataType == null ? ""
+																								: out5.DataType;
 
-																									out5.Value
+																						rowtFileOutputDelimited_8[8] = out5.Update_Date == null ? ""
+																								: out5.Update_Date;
 
-																									);
+																						rowtFileOutputDelimited_8[9] = out5.Import_Date == null ? ""
+																								: out5.Import_Date;
 
-																						}
+																						rowtFileOutputDelimited_8[10] = out5.Download_Date == null ? ""
+																								: out5.Download_Date;
 
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
+																						rowtFileOutputDelimited_8[11] = out5.StudyEventRepeatKey == null ? ""
+																								: out5.StudyEventRepeatKey;
 
-																						if (out5.VisitID != null) {
+																						rowtFileOutputDelimited_8[12] = out5.itemGroupRepeatKey == null ? ""
+																								: out5.itemGroupRepeatKey;
 
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.VisitID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.FormID != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.FormID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.SubjectKey != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.SubjectKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.Path != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.PathID != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.DataType != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.StudyEventRepeatKey != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.StudyEventRepeatKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.itemGroupRepeatKey != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.itemGroupRepeatKey
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_tFileOutputDelimited_8);
-
-																						if (out5.itemCode != null) {
-
-																							sb_tFileOutputDelimited_8
-																									.append(
-
-																									out5.itemCode
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_8
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_8);
+																						rowtFileOutputDelimited_8[13] = out5.itemCode == null ? ""
+																								: out5.itemCode;
 
 																						nb_line_tFileOutputDelimited_8++;
-
-																						outtFileOutputDelimited_8
-																								.write(sb_tFileOutputDelimited_8
-																										.toString());
+																						CsvWritertFileOutputDelimited_8
+																								.writeNext(rowtFileOutputDelimited_8);
 
 																						tos_count_tFileOutputDelimited_8++;
 
@@ -13127,195 +13198,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 																						currentComponent = "tFileOutputDelimited_10";
 
-																						StringBuilder sb_tFileOutputDelimited_10 = new StringBuilder();
+																						String[] rowtFileOutputDelimited_10 = new String[13];
 
-																						if (out6.HLEVEL != null) {
+																						rowtFileOutputDelimited_10[0] = out6.HLEVEL == null ? ""
+																								: String.valueOf(out6.HLEVEL);
 
-																							sb_tFileOutputDelimited_10
-																									.append(
+																						rowtFileOutputDelimited_10[1] = out6.Name == null ? ""
+																								: out6.Name;
 
-																									out6.HLEVEL
+																						rowtFileOutputDelimited_10[2] = out6.Path == null ? ""
+																								: out6.Path;
 
-																									);
+																						rowtFileOutputDelimited_10[3] = out6.DataType == null ? ""
+																								: out6.DataType;
 
-																						}
+																						rowtFileOutputDelimited_10[4] = out6.Update_Date == null ? ""
+																								: out6.Update_Date;
 
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
+																						rowtFileOutputDelimited_10[5] = out6.Import_Date == null ? ""
+																								: out6.Import_Date;
 
-																						if (out6.Name != null) {
+																						rowtFileOutputDelimited_10[6] = out6.Download_Date == null ? ""
+																								: out6.Download_Date;
 
-																							sb_tFileOutputDelimited_10
-																									.append(
+																						rowtFileOutputDelimited_10[7] = out6.PathID == null ? ""
+																								: out6.PathID;
 
-																									out6.Name
+																						rowtFileOutputDelimited_10[8] = out6.visual == null ? ""
+																								: out6.visual;
 
-																									);
+																						rowtFileOutputDelimited_10[9] = out6.codeList == null ? ""
+																								: out6.codeList;
 
-																						}
+																						rowtFileOutputDelimited_10[10] = out6.source == null ? ""
+																								: out6.source;
 
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
+																						rowtFileOutputDelimited_10[11] = out6.xml == null ? ""
+																								: out6.xml;
 
-																						if (out6.Path != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.Path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.DataType != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.DataType
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.Update_Date != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.Update_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.Import_Date != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.Import_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.Download_Date != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.Download_Date
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.PathID != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.PathID
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.visual != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.visual
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.codeList != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.codeList
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.source != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.source
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.xml != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.xml
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_tFileOutputDelimited_10);
-
-																						if (out6.m_applied_path != null) {
-
-																							sb_tFileOutputDelimited_10
-																									.append(
-
-																									out6.m_applied_path
-
-																									);
-
-																						}
-
-																						sb_tFileOutputDelimited_10
-																								.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_10);
+																						rowtFileOutputDelimited_10[12] = out6.m_applied_path == null ? ""
+																								: out6.m_applied_path;
 
 																						nb_line_tFileOutputDelimited_10++;
-
-																						outtFileOutputDelimited_10
-																								.write(sb_tFileOutputDelimited_10
-																										.toString());
+																						CsvWritertFileOutputDelimited_10
+																								.writeNext(rowtFileOutputDelimited_10);
 
 																						tos_count_tFileOutputDelimited_10++;
 
@@ -13431,55 +13357,20 @@ public class ODM_Extract_PD implements TalendJob {
 
 																		currentComponent = "tFileOutputDelimited_12";
 
-																		StringBuilder sb_tFileOutputDelimited_12 = new StringBuilder();
+																		String[] rowtFileOutputDelimited_12 = new String[3];
 
-																		if (row3.PatientID != null) {
+																		rowtFileOutputDelimited_12[0] = row3.PatientID == null ? ""
+																				: row3.PatientID;
 
-																			sb_tFileOutputDelimited_12
-																					.append(
+																		rowtFileOutputDelimited_12[1] = row3.EncounterNum == null ? ""
+																				: row3.EncounterNum;
 
-																					row3.PatientID
-
-																					);
-
-																		}
-
-																		sb_tFileOutputDelimited_12
-																				.append(OUT_DELIM_tFileOutputDelimited_12);
-
-																		if (row3.EncounterNum != null) {
-
-																			sb_tFileOutputDelimited_12
-																					.append(
-
-																					row3.EncounterNum
-
-																					);
-
-																		}
-
-																		sb_tFileOutputDelimited_12
-																				.append(OUT_DELIM_tFileOutputDelimited_12);
-
-																		if (row3.VisitID != null) {
-
-																			sb_tFileOutputDelimited_12
-																					.append(
-
-																					row3.VisitID
-
-																					);
-
-																		}
-
-																		sb_tFileOutputDelimited_12
-																				.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_12);
+																		rowtFileOutputDelimited_12[2] = row3.VisitID == null ? ""
+																				: row3.VisitID;
 
 																		nb_line_tFileOutputDelimited_12++;
-
-																		outtFileOutputDelimited_12
-																				.write(sb_tFileOutputDelimited_12
-																						.toString());
+																		CsvWritertFileOutputDelimited_12
+																				.writeNext(rowtFileOutputDelimited_12);
 
 																		tos_count_tFileOutputDelimited_12++;
 
@@ -13544,19 +13435,23 @@ public class ODM_Extract_PD implements TalendJob {
 													 */
 
 													/**
-													 * [tLogRow_6 end ] start
+													 * [tJavaRow_9 end ] start
 													 */
 
-													currentComponent = "tLogRow_6";
+													currentComponent = "tJavaRow_9";
 
-													ok_Hash.put("tLogRow_6",
+													globalMap
+															.put("tJavaRow_9_NB_LINE",
+																	nb_line_tJavaRow_9);
+
+													ok_Hash.put("tJavaRow_9",
 															true);
 													end_Hash.put(
-															"tLogRow_6",
+															"tJavaRow_9",
 															System.currentTimeMillis());
 
 													/**
-													 * [tLogRow_6 end ] stop
+													 * [tJavaRow_9 end ] stop
 													 */
 
 													/**
@@ -13609,18 +13504,14 @@ public class ODM_Extract_PD implements TalendJob {
 													currentComponent = "tFileOutputDelimited_12";
 
 												} finally {
-													if (outtFileOutputDelimited_12 != null) {
-														outtFileOutputDelimited_12
-																.flush();
-														outtFileOutputDelimited_12
+
+													if (CsvWritertFileOutputDelimited_12 != null) {
+														CsvWritertFileOutputDelimited_12
 																.close();
 													}
 													globalMap
 															.put("tFileOutputDelimited_12_NB_LINE",
 																	nb_line_tFileOutputDelimited_12);
-													globalMap
-															.put("tFileOutputDelimited_12_FILE_NAME",
-																	fileName_tFileOutputDelimited_12);
 												} // finally
 
 												ok_Hash.put(
@@ -13746,18 +13637,14 @@ public class ODM_Extract_PD implements TalendJob {
 												currentComponent = "tFileOutputDelimited_10";
 
 											} finally {
-												if (outtFileOutputDelimited_10 != null) {
-													outtFileOutputDelimited_10
-															.flush();
-													outtFileOutputDelimited_10
+
+												if (CsvWritertFileOutputDelimited_10 != null) {
+													CsvWritertFileOutputDelimited_10
 															.close();
 												}
 												globalMap
 														.put("tFileOutputDelimited_10_NB_LINE",
 																nb_line_tFileOutputDelimited_10);
-												globalMap
-														.put("tFileOutputDelimited_10_FILE_NAME",
-																fileName_tFileOutputDelimited_10);
 											} // finally
 
 											ok_Hash.put(
@@ -13780,18 +13667,14 @@ public class ODM_Extract_PD implements TalendJob {
 											currentComponent = "tFileOutputDelimited_8";
 
 										} finally {
-											if (outtFileOutputDelimited_8 != null) {
-												outtFileOutputDelimited_8
-														.flush();
-												outtFileOutputDelimited_8
+
+											if (CsvWritertFileOutputDelimited_8 != null) {
+												CsvWritertFileOutputDelimited_8
 														.close();
 											}
 											globalMap
 													.put("tFileOutputDelimited_8_NB_LINE",
 															nb_line_tFileOutputDelimited_8);
-											globalMap
-													.put("tFileOutputDelimited_8_FILE_NAME",
-															fileName_tFileOutputDelimited_8);
 										} // finally
 
 										ok_Hash.put("tFileOutputDelimited_8",
@@ -13828,16 +13711,14 @@ public class ODM_Extract_PD implements TalendJob {
 										currentComponent = "tFileOutputDelimited_15";
 
 									} finally {
-										if (outtFileOutputDelimited_15 != null) {
-											outtFileOutputDelimited_15.flush();
-											outtFileOutputDelimited_15.close();
+
+										if (CsvWritertFileOutputDelimited_15 != null) {
+											CsvWritertFileOutputDelimited_15
+													.close();
 										}
 										globalMap
 												.put("tFileOutputDelimited_15_NB_LINE",
 														nb_line_tFileOutputDelimited_15);
-										globalMap
-												.put("tFileOutputDelimited_15_FILE_NAME",
-														fileName_tFileOutputDelimited_15);
 									} // finally
 
 									ok_Hash.put("tFileOutputDelimited_15", true);
@@ -13855,16 +13736,13 @@ public class ODM_Extract_PD implements TalendJob {
 									currentComponent = "tFileOutputDelimited_9";
 
 								} finally {
-									if (outtFileOutputDelimited_9 != null) {
-										outtFileOutputDelimited_9.flush();
-										outtFileOutputDelimited_9.close();
+
+									if (CsvWritertFileOutputDelimited_9 != null) {
+										CsvWritertFileOutputDelimited_9.close();
 									}
 									globalMap.put(
 											"tFileOutputDelimited_9_NB_LINE",
 											nb_line_tFileOutputDelimited_9);
-									globalMap.put(
-											"tFileOutputDelimited_9_FILE_NAME",
-											fileName_tFileOutputDelimited_9);
 								} // finally
 
 								ok_Hash.put("tFileOutputDelimited_9", true);
@@ -13882,15 +13760,12 @@ public class ODM_Extract_PD implements TalendJob {
 								currentComponent = "tFileOutputDelimited_5";
 
 							} finally {
-								if (outtFileOutputDelimited_5 != null) {
-									outtFileOutputDelimited_5.flush();
-									outtFileOutputDelimited_5.close();
+
+								if (CsvWritertFileOutputDelimited_5 != null) {
+									CsvWritertFileOutputDelimited_5.close();
 								}
 								globalMap.put("tFileOutputDelimited_5_NB_LINE",
 										nb_line_tFileOutputDelimited_5);
-								globalMap.put(
-										"tFileOutputDelimited_5_FILE_NAME",
-										fileName_tFileOutputDelimited_5);
 							} // finally
 
 							ok_Hash.put("tFileOutputDelimited_5", true);
@@ -13925,14 +13800,12 @@ public class ODM_Extract_PD implements TalendJob {
 							currentComponent = "tFileOutputDelimited_1";
 
 						} finally {
-							if (outtFileOutputDelimited_1 != null) {
-								outtFileOutputDelimited_1.flush();
-								outtFileOutputDelimited_1.close();
+
+							if (CsvWritertFileOutputDelimited_1 != null) {
+								CsvWritertFileOutputDelimited_1.close();
 							}
 							globalMap.put("tFileOutputDelimited_1_NB_LINE",
 									nb_line_tFileOutputDelimited_1);
-							globalMap.put("tFileOutputDelimited_1_FILE_NAME",
-									fileName_tFileOutputDelimited_1);
 						} // finally
 
 						ok_Hash.put("tFileOutputDelimited_1", true);
@@ -13968,14 +13841,12 @@ public class ODM_Extract_PD implements TalendJob {
 						currentComponent = "tFileOutputDelimited_2";
 
 					} finally {
-						if (outtFileOutputDelimited_2 != null) {
-							outtFileOutputDelimited_2.flush();
-							outtFileOutputDelimited_2.close();
+
+						if (CsvWritertFileOutputDelimited_2 != null) {
+							CsvWritertFileOutputDelimited_2.close();
 						}
 						globalMap.put("tFileOutputDelimited_2_NB_LINE",
 								nb_line_tFileOutputDelimited_2);
-						globalMap.put("tFileOutputDelimited_2_FILE_NAME",
-								fileName_tFileOutputDelimited_2);
 					} // finally
 
 					ok_Hash.put("tFileOutputDelimited_2", true);
@@ -15161,25 +15032,119 @@ public class ODM_Extract_PD implements TalendJob {
 					isFileGenerated_tFileOutputDelimited_14 = false;
 				}
 
+				String[] headColutFileOutputDelimited_14 = new String[13];
+				class CSVBasicSet_tFileOutputDelimited_14 {
+					private char field_Delim;
+					private char row_Delim;
+					private char escape;
+					private char textEnclosure;
+					private boolean useCRLFRecordDelimiter;
+
+					public boolean isUseCRLFRecordDelimiter() {
+						return useCRLFRecordDelimiter;
+					}
+
+					public void setFieldSeparator(String fieldSep)
+							throws IllegalArgumentException {
+						char field_Delim_tFileOutputDelimited_14[] = null;
+
+						// support passing value (property: Field Separator) by
+						// 'context.fs' or 'globalMap.get("fs")'.
+						if (fieldSep.length() > 0) {
+							field_Delim_tFileOutputDelimited_14 = fieldSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Field Separator must be assigned a char.");
+						}
+						this.field_Delim = field_Delim_tFileOutputDelimited_14[0];
+					}
+
+					public char getFieldDelim() {
+						if (this.field_Delim == 0) {
+							setFieldSeparator("\t");
+						}
+						return this.field_Delim;
+					}
+
+					public void setRowSeparator(String rowSep) {
+						if ("\r\n".equals(rowSep)) {
+							useCRLFRecordDelimiter = true;
+							return;
+						}
+						char row_DelimtFileOutputDelimited_14[] = null;
+
+						// support passing value (property: Row Separator) by
+						// 'context.rs' or 'globalMap.get("rs")'.
+						if (rowSep.length() > 0) {
+							row_DelimtFileOutputDelimited_14 = rowSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Row Separator must be assigned a char.");
+						}
+						this.row_Delim = row_DelimtFileOutputDelimited_14[0];
+					}
+
+					public char getRowDelim() {
+						if (this.row_Delim == 0) {
+							setRowSeparator("\n");
+						}
+						return this.row_Delim;
+					}
+
+					public void setEscapeAndTextEnclosure(String strEscape,
+							String strTextEnclosure)
+							throws IllegalArgumentException {
+						if (strEscape.length() <= 0) {
+							throw new IllegalArgumentException(
+									"Escape Char must be assigned a char.");
+						}
+
+						if ("".equals(strTextEnclosure))
+							strTextEnclosure = "\0";
+						char textEnclosure_tFileOutputDelimited_14[] = null;
+
+						if (strTextEnclosure.length() > 0) {
+							textEnclosure_tFileOutputDelimited_14 = strTextEnclosure
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Text Enclosure must be assigned a char.");
+						}
+
+						this.textEnclosure = textEnclosure_tFileOutputDelimited_14[0];
+
+						if (("\\").equals(strEscape)) {
+							this.escape = '\\';
+						} else if (strEscape.equals(strTextEnclosure)) {
+							this.escape = this.textEnclosure;
+						} else {
+							// the default escape mode is double escape
+							this.escape = this.textEnclosure;
+						}
+
+					}
+
+					public char getEscapeChar() {
+						return (char) this.escape;
+					}
+
+					public char getTextEnclosure() {
+						return this.textEnclosure;
+					}
+				}
+
 				int nb_line_tFileOutputDelimited_14 = 0;
 				int splitEvery_tFileOutputDelimited_14 = 1000;
 				int splitedFileNo_tFileOutputDelimited_14 = 0;
 				int currentRow_tFileOutputDelimited_14 = 0;
 
-				final String OUT_DELIM_tFileOutputDelimited_14 = /**
-				 * Start field
-				 * tFileOutputDelimited_14:FIELDSEPARATOR
-				 */
-				"\t"/** End field tFileOutputDelimited_14:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_14 = /**
-				 * Start
-				 * field tFileOutputDelimited_14:ROWSEPARATOR
-				 */
-				"\n"/** End field tFileOutputDelimited_14:ROWSEPARATOR */
-				;
-
+				CSVBasicSet_tFileOutputDelimited_14 csvSettings_tFileOutputDelimited_14 = new CSVBasicSet_tFileOutputDelimited_14();
+				csvSettings_tFileOutputDelimited_14.setFieldSeparator("\t");
+				csvSettings_tFileOutputDelimited_14.setRowSeparator("\n");
+				csvSettings_tFileOutputDelimited_14.setEscapeAndTextEnclosure(
+						"\"", "\"");
 				// create directory only if not exists
 				if (directory_tFileOutputDelimited_14 != null
 						&& directory_tFileOutputDelimited_14.trim().length() != 0) {
@@ -15189,15 +15154,37 @@ public class ODM_Extract_PD implements TalendJob {
 						dir_tFileOutputDelimited_14.mkdirs();
 					}
 				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_14 = null;
+				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_14 = null;
 				try {
-					outtFileOutputDelimited_14 = new java.io.BufferedWriter(
-							new java.io.OutputStreamWriter(
-									new java.io.FileOutputStream(
-											fileName_tFileOutputDelimited_14,
-											true), "ISO-8859-15"));
+					CsvWritertFileOutputDelimited_14 = new com.talend.csv.CSVWriter(
+							new java.io.BufferedWriter(
+									new java.io.OutputStreamWriter(
+											new java.io.FileOutputStream(
+													fileName_tFileOutputDelimited_14,
+													true), "ISO-8859-15")));
+					CsvWritertFileOutputDelimited_14
+							.setSeparator(csvSettings_tFileOutputDelimited_14
+									.getFieldDelim());
+
+					if (!csvSettings_tFileOutputDelimited_14
+							.isUseCRLFRecordDelimiter()
+							&& csvSettings_tFileOutputDelimited_14
+									.getRowDelim() != '\r'
+							&& csvSettings_tFileOutputDelimited_14
+									.getRowDelim() != '\n') {
+						CsvWritertFileOutputDelimited_14.setLineEnd(""
+								+ csvSettings_tFileOutputDelimited_14
+										.getRowDelim());
+					}
+
+					CsvWritertFileOutputDelimited_14
+							.setEscapeChar(csvSettings_tFileOutputDelimited_14
+									.getEscapeChar());
+					CsvWritertFileOutputDelimited_14
+							.setQuoteChar(csvSettings_tFileOutputDelimited_14
+									.getTextEnclosure());
+					CsvWritertFileOutputDelimited_14
+							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 					/**
 					 * [tFileOutputDelimited_14 begin ] stop
@@ -15761,182 +15748,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 										currentComponent = "tFileOutputDelimited_14";
 
-										StringBuilder sb_tFileOutputDelimited_14 = new StringBuilder();
+										String[] rowtFileOutputDelimited_14 = new String[13];
 
-										if (out11.HLEVEL != null) {
+										rowtFileOutputDelimited_14[0] = out11.HLEVEL == null ? ""
+												: String.valueOf(out11.HLEVEL);
 
-											sb_tFileOutputDelimited_14.append(
+										rowtFileOutputDelimited_14[1] = out11.Name == null ? ""
+												: out11.Name;
 
-											out11.HLEVEL
+										rowtFileOutputDelimited_14[2] = out11.Path == null ? ""
+												: out11.Path;
 
-											);
+										rowtFileOutputDelimited_14[3] = out11.DataType == null ? ""
+												: out11.DataType;
 
-										}
+										rowtFileOutputDelimited_14[4] = out11.Update_Date == null ? ""
+												: out11.Update_Date;
 
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
+										rowtFileOutputDelimited_14[5] = out11.Import_Date == null ? ""
+												: out11.Import_Date;
 
-										if (out11.Name != null) {
+										rowtFileOutputDelimited_14[6] = out11.Download_Date == null ? ""
+												: out11.Download_Date;
 
-											sb_tFileOutputDelimited_14.append(
+										rowtFileOutputDelimited_14[7] = out11.PathID == null ? ""
+												: out11.PathID;
 
-											out11.Name
+										rowtFileOutputDelimited_14[8] = out11.visual == null ? ""
+												: out11.visual;
 
-											);
+										rowtFileOutputDelimited_14[9] = out11.codeList == null ? ""
+												: out11.codeList;
 
-										}
+										rowtFileOutputDelimited_14[10] = out11.source == null ? ""
+												: out11.source;
 
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
+										rowtFileOutputDelimited_14[11] = out11.xml == null ? ""
+												: out11.xml;
 
-										if (out11.Path != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.Path
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.DataType != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.DataType
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.Update_Date != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.Update_Date
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.Import_Date != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.Import_Date
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.Download_Date != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.Download_Date
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.PathID != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.PathID
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.visual != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.visual
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.codeList != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.codeList
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.source != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.source
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.xml != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.xml
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_tFileOutputDelimited_14);
-
-										if (out11.m_applied_path != null) {
-
-											sb_tFileOutputDelimited_14.append(
-
-											out11.m_applied_path
-
-											);
-
-										}
-
-										sb_tFileOutputDelimited_14
-												.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_14);
+										rowtFileOutputDelimited_14[12] = out11.m_applied_path == null ? ""
+												: out11.m_applied_path;
 
 										nb_line_tFileOutputDelimited_14++;
-
-										outtFileOutputDelimited_14
-												.write(sb_tFileOutputDelimited_14
-														.toString());
+										CsvWritertFileOutputDelimited_14
+												.writeNext(rowtFileOutputDelimited_14);
 
 										tos_count_tFileOutputDelimited_14++;
 
@@ -16008,14 +15863,12 @@ public class ODM_Extract_PD implements TalendJob {
 					currentComponent = "tFileOutputDelimited_14";
 
 				} finally {
-					if (outtFileOutputDelimited_14 != null) {
-						outtFileOutputDelimited_14.flush();
-						outtFileOutputDelimited_14.close();
+
+					if (CsvWritertFileOutputDelimited_14 != null) {
+						CsvWritertFileOutputDelimited_14.close();
 					}
 					globalMap.put("tFileOutputDelimited_14_NB_LINE",
 							nb_line_tFileOutputDelimited_14);
-					globalMap.put("tFileOutputDelimited_14_FILE_NAME",
-							fileName_tFileOutputDelimited_14);
 				} // finally
 
 				ok_Hash.put("tFileOutputDelimited_14", true);
@@ -18229,25 +18082,119 @@ public class ODM_Extract_PD implements TalendJob {
 					isFileGenerated_tFileOutputDelimited_7 = false;
 				}
 
+				String[] headColutFileOutputDelimited_7 = new String[13];
+				class CSVBasicSet_tFileOutputDelimited_7 {
+					private char field_Delim;
+					private char row_Delim;
+					private char escape;
+					private char textEnclosure;
+					private boolean useCRLFRecordDelimiter;
+
+					public boolean isUseCRLFRecordDelimiter() {
+						return useCRLFRecordDelimiter;
+					}
+
+					public void setFieldSeparator(String fieldSep)
+							throws IllegalArgumentException {
+						char field_Delim_tFileOutputDelimited_7[] = null;
+
+						// support passing value (property: Field Separator) by
+						// 'context.fs' or 'globalMap.get("fs")'.
+						if (fieldSep.length() > 0) {
+							field_Delim_tFileOutputDelimited_7 = fieldSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Field Separator must be assigned a char.");
+						}
+						this.field_Delim = field_Delim_tFileOutputDelimited_7[0];
+					}
+
+					public char getFieldDelim() {
+						if (this.field_Delim == 0) {
+							setFieldSeparator("\t");
+						}
+						return this.field_Delim;
+					}
+
+					public void setRowSeparator(String rowSep) {
+						if ("\r\n".equals(rowSep)) {
+							useCRLFRecordDelimiter = true;
+							return;
+						}
+						char row_DelimtFileOutputDelimited_7[] = null;
+
+						// support passing value (property: Row Separator) by
+						// 'context.rs' or 'globalMap.get("rs")'.
+						if (rowSep.length() > 0) {
+							row_DelimtFileOutputDelimited_7 = rowSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Row Separator must be assigned a char.");
+						}
+						this.row_Delim = row_DelimtFileOutputDelimited_7[0];
+					}
+
+					public char getRowDelim() {
+						if (this.row_Delim == 0) {
+							setRowSeparator("\n");
+						}
+						return this.row_Delim;
+					}
+
+					public void setEscapeAndTextEnclosure(String strEscape,
+							String strTextEnclosure)
+							throws IllegalArgumentException {
+						if (strEscape.length() <= 0) {
+							throw new IllegalArgumentException(
+									"Escape Char must be assigned a char.");
+						}
+
+						if ("".equals(strTextEnclosure))
+							strTextEnclosure = "\0";
+						char textEnclosure_tFileOutputDelimited_7[] = null;
+
+						if (strTextEnclosure.length() > 0) {
+							textEnclosure_tFileOutputDelimited_7 = strTextEnclosure
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Text Enclosure must be assigned a char.");
+						}
+
+						this.textEnclosure = textEnclosure_tFileOutputDelimited_7[0];
+
+						if (("\\").equals(strEscape)) {
+							this.escape = '\\';
+						} else if (strEscape.equals(strTextEnclosure)) {
+							this.escape = this.textEnclosure;
+						} else {
+							// the default escape mode is double escape
+							this.escape = this.textEnclosure;
+						}
+
+					}
+
+					public char getEscapeChar() {
+						return (char) this.escape;
+					}
+
+					public char getTextEnclosure() {
+						return this.textEnclosure;
+					}
+				}
+
 				int nb_line_tFileOutputDelimited_7 = 0;
 				int splitEvery_tFileOutputDelimited_7 = 1000;
 				int splitedFileNo_tFileOutputDelimited_7 = 0;
 				int currentRow_tFileOutputDelimited_7 = 0;
 
-				final String OUT_DELIM_tFileOutputDelimited_7 = /**
-				 * Start field
-				 * tFileOutputDelimited_7:FIELDSEPARATOR
-				 */
-				"\t"/** End field tFileOutputDelimited_7:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_7 = /**
-				 * Start
-				 * field tFileOutputDelimited_7:ROWSEPARATOR
-				 */
-				"\n"/** End field tFileOutputDelimited_7:ROWSEPARATOR */
-				;
-
+				CSVBasicSet_tFileOutputDelimited_7 csvSettings_tFileOutputDelimited_7 = new CSVBasicSet_tFileOutputDelimited_7();
+				csvSettings_tFileOutputDelimited_7.setFieldSeparator("\t");
+				csvSettings_tFileOutputDelimited_7.setRowSeparator("\n");
+				csvSettings_tFileOutputDelimited_7.setEscapeAndTextEnclosure(
+						"\"", "\"");
 				// create directory only if not exists
 				if (directory_tFileOutputDelimited_7 != null
 						&& directory_tFileOutputDelimited_7.trim().length() != 0) {
@@ -18257,15 +18204,35 @@ public class ODM_Extract_PD implements TalendJob {
 						dir_tFileOutputDelimited_7.mkdirs();
 					}
 				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_7 = null;
+				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_7 = null;
 				try {
-					outtFileOutputDelimited_7 = new java.io.BufferedWriter(
-							new java.io.OutputStreamWriter(
-									new java.io.FileOutputStream(
-											fileName_tFileOutputDelimited_7,
-											true), "ISO-8859-15"));
+					CsvWritertFileOutputDelimited_7 = new com.talend.csv.CSVWriter(
+							new java.io.BufferedWriter(
+									new java.io.OutputStreamWriter(
+											new java.io.FileOutputStream(
+													fileName_tFileOutputDelimited_7,
+													true), "ISO-8859-15")));
+					CsvWritertFileOutputDelimited_7
+							.setSeparator(csvSettings_tFileOutputDelimited_7
+									.getFieldDelim());
+
+					if (!csvSettings_tFileOutputDelimited_7
+							.isUseCRLFRecordDelimiter()
+							&& csvSettings_tFileOutputDelimited_7.getRowDelim() != '\r'
+							&& csvSettings_tFileOutputDelimited_7.getRowDelim() != '\n') {
+						CsvWritertFileOutputDelimited_7.setLineEnd(""
+								+ csvSettings_tFileOutputDelimited_7
+										.getRowDelim());
+					}
+
+					CsvWritertFileOutputDelimited_7
+							.setEscapeChar(csvSettings_tFileOutputDelimited_7
+									.getEscapeChar());
+					CsvWritertFileOutputDelimited_7
+							.setQuoteChar(csvSettings_tFileOutputDelimited_7
+									.getTextEnclosure());
+					CsvWritertFileOutputDelimited_7
+							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 					/**
 					 * [tFileOutputDelimited_7 begin ] stop
@@ -18866,182 +18833,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_7";
 
-									StringBuilder sb_tFileOutputDelimited_7 = new StringBuilder();
+									String[] rowtFileOutputDelimited_7 = new String[13];
 
-									if (row12.HLEVEL != null) {
+									rowtFileOutputDelimited_7[0] = row12.HLEVEL == null ? ""
+											: String.valueOf(row12.HLEVEL);
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[1] = row12.Name == null ? ""
+											: row12.Name;
 
-										row12.HLEVEL
+									rowtFileOutputDelimited_7[2] = row12.Path == null ? ""
+											: row12.Path;
 
-										);
+									rowtFileOutputDelimited_7[3] = row12.DataType == null ? ""
+											: row12.DataType;
 
-									}
+									rowtFileOutputDelimited_7[4] = row12.Update_Date == null ? ""
+											: row12.Update_Date;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[5] = row12.Import_Date == null ? ""
+											: row12.Import_Date;
 
-									if (row12.Name != null) {
+									rowtFileOutputDelimited_7[6] = row12.Download_Date == null ? ""
+											: row12.Download_Date;
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[7] = row12.PathID == null ? ""
+											: row12.PathID;
 
-										row12.Name
+									rowtFileOutputDelimited_7[8] = row12.visual == null ? ""
+											: row12.visual;
 
-										);
+									rowtFileOutputDelimited_7[9] = row12.codeList == null ? ""
+											: row12.codeList;
 
-									}
+									rowtFileOutputDelimited_7[10] = row12.source == null ? ""
+											: row12.source;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[11] = row12.xml == null ? ""
+											: row12.xml;
 
-									if (row12.Path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.DataType != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Update_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Update_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Import_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Import_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Download_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Download_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.PathID != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.visual != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.codeList != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.codeList
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.source != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.xml != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[12] = row12.m_applied_path == null ? ""
+											: row12.m_applied_path;
 
 									nb_line_tFileOutputDelimited_7++;
-
-									outtFileOutputDelimited_7
-											.write(sb_tFileOutputDelimited_7
-													.toString());
+									CsvWritertFileOutputDelimited_7
+											.writeNext(rowtFileOutputDelimited_7);
 
 									tos_count_tFileOutputDelimited_7++;
 
@@ -19595,182 +19430,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_7";
 
-									StringBuilder sb_tFileOutputDelimited_7 = new StringBuilder();
+									String[] rowtFileOutputDelimited_7 = new String[13];
 
-									if (row12.HLEVEL != null) {
+									rowtFileOutputDelimited_7[0] = row12.HLEVEL == null ? ""
+											: String.valueOf(row12.HLEVEL);
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[1] = row12.Name == null ? ""
+											: row12.Name;
 
-										row12.HLEVEL
+									rowtFileOutputDelimited_7[2] = row12.Path == null ? ""
+											: row12.Path;
 
-										);
+									rowtFileOutputDelimited_7[3] = row12.DataType == null ? ""
+											: row12.DataType;
 
-									}
+									rowtFileOutputDelimited_7[4] = row12.Update_Date == null ? ""
+											: row12.Update_Date;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[5] = row12.Import_Date == null ? ""
+											: row12.Import_Date;
 
-									if (row12.Name != null) {
+									rowtFileOutputDelimited_7[6] = row12.Download_Date == null ? ""
+											: row12.Download_Date;
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[7] = row12.PathID == null ? ""
+											: row12.PathID;
 
-										row12.Name
+									rowtFileOutputDelimited_7[8] = row12.visual == null ? ""
+											: row12.visual;
 
-										);
+									rowtFileOutputDelimited_7[9] = row12.codeList == null ? ""
+											: row12.codeList;
 
-									}
+									rowtFileOutputDelimited_7[10] = row12.source == null ? ""
+											: row12.source;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[11] = row12.xml == null ? ""
+											: row12.xml;
 
-									if (row12.Path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.DataType != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Update_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Update_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Import_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Import_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Download_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Download_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.PathID != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.visual != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.codeList != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.codeList
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.source != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.xml != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[12] = row12.m_applied_path == null ? ""
+											: row12.m_applied_path;
 
 									nb_line_tFileOutputDelimited_7++;
-
-									outtFileOutputDelimited_7
-											.write(sb_tFileOutputDelimited_7
-													.toString());
+									CsvWritertFileOutputDelimited_7
+											.writeNext(rowtFileOutputDelimited_7);
 
 									tos_count_tFileOutputDelimited_7++;
 
@@ -20324,182 +20027,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_7";
 
-									StringBuilder sb_tFileOutputDelimited_7 = new StringBuilder();
+									String[] rowtFileOutputDelimited_7 = new String[13];
 
-									if (row12.HLEVEL != null) {
+									rowtFileOutputDelimited_7[0] = row12.HLEVEL == null ? ""
+											: String.valueOf(row12.HLEVEL);
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[1] = row12.Name == null ? ""
+											: row12.Name;
 
-										row12.HLEVEL
+									rowtFileOutputDelimited_7[2] = row12.Path == null ? ""
+											: row12.Path;
 
-										);
+									rowtFileOutputDelimited_7[3] = row12.DataType == null ? ""
+											: row12.DataType;
 
-									}
+									rowtFileOutputDelimited_7[4] = row12.Update_Date == null ? ""
+											: row12.Update_Date;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[5] = row12.Import_Date == null ? ""
+											: row12.Import_Date;
 
-									if (row12.Name != null) {
+									rowtFileOutputDelimited_7[6] = row12.Download_Date == null ? ""
+											: row12.Download_Date;
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[7] = row12.PathID == null ? ""
+											: row12.PathID;
 
-										row12.Name
+									rowtFileOutputDelimited_7[8] = row12.visual == null ? ""
+											: row12.visual;
 
-										);
+									rowtFileOutputDelimited_7[9] = row12.codeList == null ? ""
+											: row12.codeList;
 
-									}
+									rowtFileOutputDelimited_7[10] = row12.source == null ? ""
+											: row12.source;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[11] = row12.xml == null ? ""
+											: row12.xml;
 
-									if (row12.Path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.DataType != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Update_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Update_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Import_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Import_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Download_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Download_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.PathID != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.visual != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.codeList != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.codeList
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.source != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.xml != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[12] = row12.m_applied_path == null ? ""
+											: row12.m_applied_path;
 
 									nb_line_tFileOutputDelimited_7++;
-
-									outtFileOutputDelimited_7
-											.write(sb_tFileOutputDelimited_7
-													.toString());
+									CsvWritertFileOutputDelimited_7
+											.writeNext(rowtFileOutputDelimited_7);
 
 									tos_count_tFileOutputDelimited_7++;
 
@@ -21053,182 +20624,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_7";
 
-									StringBuilder sb_tFileOutputDelimited_7 = new StringBuilder();
+									String[] rowtFileOutputDelimited_7 = new String[13];
 
-									if (row12.HLEVEL != null) {
+									rowtFileOutputDelimited_7[0] = row12.HLEVEL == null ? ""
+											: String.valueOf(row12.HLEVEL);
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[1] = row12.Name == null ? ""
+											: row12.Name;
 
-										row12.HLEVEL
+									rowtFileOutputDelimited_7[2] = row12.Path == null ? ""
+											: row12.Path;
 
-										);
+									rowtFileOutputDelimited_7[3] = row12.DataType == null ? ""
+											: row12.DataType;
 
-									}
+									rowtFileOutputDelimited_7[4] = row12.Update_Date == null ? ""
+											: row12.Update_Date;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[5] = row12.Import_Date == null ? ""
+											: row12.Import_Date;
 
-									if (row12.Name != null) {
+									rowtFileOutputDelimited_7[6] = row12.Download_Date == null ? ""
+											: row12.Download_Date;
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[7] = row12.PathID == null ? ""
+											: row12.PathID;
 
-										row12.Name
+									rowtFileOutputDelimited_7[8] = row12.visual == null ? ""
+											: row12.visual;
 
-										);
+									rowtFileOutputDelimited_7[9] = row12.codeList == null ? ""
+											: row12.codeList;
 
-									}
+									rowtFileOutputDelimited_7[10] = row12.source == null ? ""
+											: row12.source;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[11] = row12.xml == null ? ""
+											: row12.xml;
 
-									if (row12.Path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.DataType != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Update_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Update_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Import_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Import_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Download_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Download_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.PathID != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.visual != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.codeList != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.codeList
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.source != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.xml != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[12] = row12.m_applied_path == null ? ""
+											: row12.m_applied_path;
 
 									nb_line_tFileOutputDelimited_7++;
-
-									outtFileOutputDelimited_7
-											.write(sb_tFileOutputDelimited_7
-													.toString());
+									CsvWritertFileOutputDelimited_7
+											.writeNext(rowtFileOutputDelimited_7);
 
 									tos_count_tFileOutputDelimited_7++;
 
@@ -21782,182 +21221,50 @@ public class ODM_Extract_PD implements TalendJob {
 
 									currentComponent = "tFileOutputDelimited_7";
 
-									StringBuilder sb_tFileOutputDelimited_7 = new StringBuilder();
+									String[] rowtFileOutputDelimited_7 = new String[13];
 
-									if (row12.HLEVEL != null) {
+									rowtFileOutputDelimited_7[0] = row12.HLEVEL == null ? ""
+											: String.valueOf(row12.HLEVEL);
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[1] = row12.Name == null ? ""
+											: row12.Name;
 
-										row12.HLEVEL
+									rowtFileOutputDelimited_7[2] = row12.Path == null ? ""
+											: row12.Path;
 
-										);
+									rowtFileOutputDelimited_7[3] = row12.DataType == null ? ""
+											: row12.DataType;
 
-									}
+									rowtFileOutputDelimited_7[4] = row12.Update_Date == null ? ""
+											: row12.Update_Date;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[5] = row12.Import_Date == null ? ""
+											: row12.Import_Date;
 
-									if (row12.Name != null) {
+									rowtFileOutputDelimited_7[6] = row12.Download_Date == null ? ""
+											: row12.Download_Date;
 
-										sb_tFileOutputDelimited_7.append(
+									rowtFileOutputDelimited_7[7] = row12.PathID == null ? ""
+											: row12.PathID;
 
-										row12.Name
+									rowtFileOutputDelimited_7[8] = row12.visual == null ? ""
+											: row12.visual;
 
-										);
+									rowtFileOutputDelimited_7[9] = row12.codeList == null ? ""
+											: row12.codeList;
 
-									}
+									rowtFileOutputDelimited_7[10] = row12.source == null ? ""
+											: row12.source;
 
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[11] = row12.xml == null ? ""
+											: row12.xml;
 
-									if (row12.Path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.DataType != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.DataType
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Update_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Update_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Import_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Import_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.Download_Date != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.Download_Date
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.PathID != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.PathID
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.visual != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.visual
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.codeList != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.codeList
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.source != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.source
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.xml != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.xml
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_tFileOutputDelimited_7);
-
-									if (row12.m_applied_path != null) {
-
-										sb_tFileOutputDelimited_7.append(
-
-										row12.m_applied_path
-
-										);
-
-									}
-
-									sb_tFileOutputDelimited_7
-											.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_7);
+									rowtFileOutputDelimited_7[12] = row12.m_applied_path == null ? ""
+											: row12.m_applied_path;
 
 									nb_line_tFileOutputDelimited_7++;
-
-									outtFileOutputDelimited_7
-											.write(sb_tFileOutputDelimited_7
-													.toString());
+									CsvWritertFileOutputDelimited_7
+											.writeNext(rowtFileOutputDelimited_7);
 
 									tos_count_tFileOutputDelimited_7++;
 
@@ -22037,14 +21344,12 @@ public class ODM_Extract_PD implements TalendJob {
 					currentComponent = "tFileOutputDelimited_7";
 
 				} finally {
-					if (outtFileOutputDelimited_7 != null) {
-						outtFileOutputDelimited_7.flush();
-						outtFileOutputDelimited_7.close();
+
+					if (CsvWritertFileOutputDelimited_7 != null) {
+						CsvWritertFileOutputDelimited_7.close();
 					}
 					globalMap.put("tFileOutputDelimited_7_NB_LINE",
 							nb_line_tFileOutputDelimited_7);
-					globalMap.put("tFileOutputDelimited_7_FILE_NAME",
-							fileName_tFileOutputDelimited_7);
 				} // finally
 
 				ok_Hash.put("tFileOutputDelimited_7", true);
@@ -24626,25 +23931,119 @@ public class ODM_Extract_PD implements TalendJob {
 				globalMap.put("tFileOutputDelimited_3_FILE_NAME",
 						fileName_tFileOutputDelimited_3);
 
+				String[] headColutFileOutputDelimited_3 = new String[19];
+				class CSVBasicSet_tFileOutputDelimited_3 {
+					private char field_Delim;
+					private char row_Delim;
+					private char escape;
+					private char textEnclosure;
+					private boolean useCRLFRecordDelimiter;
+
+					public boolean isUseCRLFRecordDelimiter() {
+						return useCRLFRecordDelimiter;
+					}
+
+					public void setFieldSeparator(String fieldSep)
+							throws IllegalArgumentException {
+						char field_Delim_tFileOutputDelimited_3[] = null;
+
+						// support passing value (property: Field Separator) by
+						// 'context.fs' or 'globalMap.get("fs")'.
+						if (fieldSep.length() > 0) {
+							field_Delim_tFileOutputDelimited_3 = fieldSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Field Separator must be assigned a char.");
+						}
+						this.field_Delim = field_Delim_tFileOutputDelimited_3[0];
+					}
+
+					public char getFieldDelim() {
+						if (this.field_Delim == 0) {
+							setFieldSeparator("\t");
+						}
+						return this.field_Delim;
+					}
+
+					public void setRowSeparator(String rowSep) {
+						if ("\r\n".equals(rowSep)) {
+							useCRLFRecordDelimiter = true;
+							return;
+						}
+						char row_DelimtFileOutputDelimited_3[] = null;
+
+						// support passing value (property: Row Separator) by
+						// 'context.rs' or 'globalMap.get("rs")'.
+						if (rowSep.length() > 0) {
+							row_DelimtFileOutputDelimited_3 = rowSep
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Row Separator must be assigned a char.");
+						}
+						this.row_Delim = row_DelimtFileOutputDelimited_3[0];
+					}
+
+					public char getRowDelim() {
+						if (this.row_Delim == 0) {
+							setRowSeparator("\n");
+						}
+						return this.row_Delim;
+					}
+
+					public void setEscapeAndTextEnclosure(String strEscape,
+							String strTextEnclosure)
+							throws IllegalArgumentException {
+						if (strEscape.length() <= 0) {
+							throw new IllegalArgumentException(
+									"Escape Char must be assigned a char.");
+						}
+
+						if ("".equals(strTextEnclosure))
+							strTextEnclosure = "\0";
+						char textEnclosure_tFileOutputDelimited_3[] = null;
+
+						if (strTextEnclosure.length() > 0) {
+							textEnclosure_tFileOutputDelimited_3 = strTextEnclosure
+									.toCharArray();
+						} else {
+							throw new IllegalArgumentException(
+									"Text Enclosure must be assigned a char.");
+						}
+
+						this.textEnclosure = textEnclosure_tFileOutputDelimited_3[0];
+
+						if (("\\").equals(strEscape)) {
+							this.escape = '\\';
+						} else if (strEscape.equals(strTextEnclosure)) {
+							this.escape = this.textEnclosure;
+						} else {
+							// the default escape mode is double escape
+							this.escape = this.textEnclosure;
+						}
+
+					}
+
+					public char getEscapeChar() {
+						return (char) this.escape;
+					}
+
+					public char getTextEnclosure() {
+						return this.textEnclosure;
+					}
+				}
+
 				int nb_line_tFileOutputDelimited_3 = 0;
 				int splitEvery_tFileOutputDelimited_3 = 1000;
 				int splitedFileNo_tFileOutputDelimited_3 = 0;
 				int currentRow_tFileOutputDelimited_3 = 0;
 
-				final String OUT_DELIM_tFileOutputDelimited_3 = /**
-				 * Start field
-				 * tFileOutputDelimited_3:FIELDSEPARATOR
-				 */
-				"\t"/** End field tFileOutputDelimited_3:FIELDSEPARATOR */
-				;
-
-				final String OUT_DELIM_ROWSEP_tFileOutputDelimited_3 = /**
-				 * Start
-				 * field tFileOutputDelimited_3:ROWSEPARATOR
-				 */
-				"\n"/** End field tFileOutputDelimited_3:ROWSEPARATOR */
-				;
-
+				CSVBasicSet_tFileOutputDelimited_3 csvSettings_tFileOutputDelimited_3 = new CSVBasicSet_tFileOutputDelimited_3();
+				csvSettings_tFileOutputDelimited_3.setFieldSeparator("\t");
+				csvSettings_tFileOutputDelimited_3.setRowSeparator("\n");
+				csvSettings_tFileOutputDelimited_3.setEscapeAndTextEnclosure(
+						"\"", "\"");
 				// create directory only if not exists
 				if (directory_tFileOutputDelimited_3 != null
 						&& directory_tFileOutputDelimited_3.trim().length() != 0) {
@@ -24654,114 +24053,81 @@ public class ODM_Extract_PD implements TalendJob {
 						dir_tFileOutputDelimited_3.mkdirs();
 					}
 				}
-
-				// routines.system.Row
-				java.io.Writer outtFileOutputDelimited_3 = null;
+				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_3 = null;
 				try {
-					outtFileOutputDelimited_3 = new java.io.BufferedWriter(
-							new java.io.OutputStreamWriter(
-									new java.io.FileOutputStream(
-											fileName_tFileOutputDelimited_3,
-											false), "ISO-8859-15"));
+					CsvWritertFileOutputDelimited_3 = new com.talend.csv.CSVWriter(
+							new java.io.BufferedWriter(
+									new java.io.OutputStreamWriter(
+											new java.io.FileOutputStream(
+													fileName_tFileOutputDelimited_3,
+													false), "ISO-8859-15")));
+					CsvWritertFileOutputDelimited_3
+							.setSeparator(csvSettings_tFileOutputDelimited_3
+									.getFieldDelim());
+
+					if (!csvSettings_tFileOutputDelimited_3
+							.isUseCRLFRecordDelimiter()
+							&& csvSettings_tFileOutputDelimited_3.getRowDelim() != '\r'
+							&& csvSettings_tFileOutputDelimited_3.getRowDelim() != '\n') {
+						CsvWritertFileOutputDelimited_3.setLineEnd(""
+								+ csvSettings_tFileOutputDelimited_3
+										.getRowDelim());
+					}
 
 					if (filetFileOutputDelimited_3.length() == 0) {
 
-						outtFileOutputDelimited_3.write("itemID");
+						headColutFileOutputDelimited_3[0] = "itemID";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[1] = "Value";
 
-						outtFileOutputDelimited_3.write("Value");
+						headColutFileOutputDelimited_3[2] = "VisitID";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[3] = "FormID";
 
-						outtFileOutputDelimited_3.write("VisitID");
+						headColutFileOutputDelimited_3[4] = "SubjectKey";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[5] = "Path";
 
-						outtFileOutputDelimited_3.write("FormID");
+						headColutFileOutputDelimited_3[6] = "PathID";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[7] = "DataType";
 
-						outtFileOutputDelimited_3.write("SubjectKey");
+						headColutFileOutputDelimited_3[8] = "Update_Date";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[9] = "Import_Date";
 
-						outtFileOutputDelimited_3.write("Path");
+						headColutFileOutputDelimited_3[10] = "Download_Date";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[11] = "StudyEventRepeatKey";
 
-						outtFileOutputDelimited_3.write("PathID");
+						headColutFileOutputDelimited_3[12] = "itemGroupRepeatKey";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[13] = "startDate";
 
-						outtFileOutputDelimited_3.write("DataType");
+						headColutFileOutputDelimited_3[14] = "endDate";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[15] = "source";
 
-						outtFileOutputDelimited_3.write("Update_Date");
+						headColutFileOutputDelimited_3[16] = "modifierType";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						headColutFileOutputDelimited_3[17] = "sic";
 
-						outtFileOutputDelimited_3.write("Import_Date");
+						headColutFileOutputDelimited_3[18] = "m_applied_path";
 
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
+						CsvWritertFileOutputDelimited_3
+								.writeNext(headColutFileOutputDelimited_3);
+						CsvWritertFileOutputDelimited_3.flush();
 
-						outtFileOutputDelimited_3.write("Download_Date");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("StudyEventRepeatKey");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("itemGroupRepeatKey");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("startDate");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("endDate");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("source");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("modifierType");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("sic");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_tFileOutputDelimited_3);
-
-						outtFileOutputDelimited_3.write("m_applied_path");
-
-						outtFileOutputDelimited_3
-								.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
-						outtFileOutputDelimited_3.flush();
 					}
+
+					CsvWritertFileOutputDelimited_3
+							.setEscapeChar(csvSettings_tFileOutputDelimited_3
+									.getEscapeChar());
+					CsvWritertFileOutputDelimited_3
+							.setQuoteChar(csvSettings_tFileOutputDelimited_3
+									.getTextEnclosure());
+					CsvWritertFileOutputDelimited_3
+							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
 
 					/**
 					 * [tFileOutputDelimited_3 begin ] stop
@@ -24962,10 +24328,8 @@ public class ODM_Extract_PD implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_2[0]);
 
-							csvReadertFileInputDelimited_2.setQuoteChar('\"');
+							csvReadertFileInputDelimited_2.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_2
 									.setEscapeChar(csvReadertFileInputDelimited_2
 											.getQuoteChar());
@@ -25030,10 +24394,8 @@ public class ODM_Extract_PD implements TalendJob {
 													+ rowSeparator_tFileInputDelimited_2[0]);
 
 								csvReadertFileInputDelimited_2
-										.setQuoteChar('\"');
+										.setQuoteChar('"');
 
-								// ?????doesn't work for other escapeChar
-								// the default escape mode is double escape
 								csvReadertFileInputDelimited_2
 										.setEscapeChar(csvReadertFileInputDelimited_2
 												.getQuoteChar());
@@ -25735,279 +25097,68 @@ public class ODM_Extract_PD implements TalendJob {
 
 												currentComponent = "tFileOutputDelimited_3";
 
-												StringBuilder sb_tFileOutputDelimited_3 = new StringBuilder();
+												String[] rowtFileOutputDelimited_3 = new String[19];
 
-												if (row4.itemID != null) {
+												rowtFileOutputDelimited_3[0] = row4.itemID == null ? ""
+														: row4.itemID;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[1] = row4.Value == null ? ""
+														: row4.Value;
 
-															row4.itemID
+												rowtFileOutputDelimited_3[2] = row4.VisitID == null ? ""
+														: row4.VisitID;
 
-															);
+												rowtFileOutputDelimited_3[3] = row4.FormID == null ? ""
+														: row4.FormID;
 
-												}
+												rowtFileOutputDelimited_3[4] = row4.SubjectKey == null ? ""
+														: row4.SubjectKey;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[5] = row4.Path == null ? ""
+														: row4.Path;
 
-												if (row4.Value != null) {
+												rowtFileOutputDelimited_3[6] = row4.PathID == null ? ""
+														: row4.PathID;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[7] = row4.DataType == null ? ""
+														: row4.DataType;
 
-															row4.Value
+												rowtFileOutputDelimited_3[8] = row4.Update_Date == null ? ""
+														: row4.Update_Date;
 
-															);
+												rowtFileOutputDelimited_3[9] = row4.Import_Date == null ? ""
+														: row4.Import_Date;
 
-												}
+												rowtFileOutputDelimited_3[10] = row4.Download_Date == null ? ""
+														: row4.Download_Date;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[11] = row4.StudyEventRepeatKey == null ? ""
+														: row4.StudyEventRepeatKey;
 
-												if (row4.VisitID != null) {
+												rowtFileOutputDelimited_3[12] = row4.itemGroupRepeatKey == null ? ""
+														: row4.itemGroupRepeatKey;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[13] = row4.startDate == null ? ""
+														: row4.startDate;
 
-															row4.VisitID
+												rowtFileOutputDelimited_3[14] = row4.endDate == null ? ""
+														: row4.endDate;
 
-															);
+												rowtFileOutputDelimited_3[15] = row4.source == null ? ""
+														: row4.source;
 
-												}
+												rowtFileOutputDelimited_3[16] = row4.modifierType == null ? ""
+														: row4.modifierType;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[17] = row4.sic == null ? ""
+														: row4.sic;
 
-												if (row4.FormID != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.FormID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.SubjectKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.SubjectKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Path != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Path
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.PathID != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.PathID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.DataType != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.DataType
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Update_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Update_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Import_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Import_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Download_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Download_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.StudyEventRepeatKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.StudyEventRepeatKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.itemGroupRepeatKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.itemGroupRepeatKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.startDate != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.startDate
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.endDate != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.endDate
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.source != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.source
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.modifierType != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.modifierType
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.sic != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.sic
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.m_applied_path != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.m_applied_path
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[18] = row4.m_applied_path == null ? ""
+														: row4.m_applied_path;
 
 												nb_line_tFileOutputDelimited_3++;
-
-												outtFileOutputDelimited_3
-														.write(sb_tFileOutputDelimited_3
-																.toString());
+												CsvWritertFileOutputDelimited_3
+														.writeNext(rowtFileOutputDelimited_3);
 
 												tos_count_tFileOutputDelimited_3++;
 
@@ -26144,10 +25295,8 @@ public class ODM_Extract_PD implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_8[0]);
 
-							csvReadertFileInputDelimited_8.setQuoteChar('\"');
+							csvReadertFileInputDelimited_8.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_8
 									.setEscapeChar(csvReadertFileInputDelimited_8
 											.getQuoteChar());
@@ -26212,10 +25361,8 @@ public class ODM_Extract_PD implements TalendJob {
 													+ rowSeparator_tFileInputDelimited_8[0]);
 
 								csvReadertFileInputDelimited_8
-										.setQuoteChar('\"');
+										.setQuoteChar('"');
 
-								// ?????doesn't work for other escapeChar
-								// the default escape mode is double escape
 								csvReadertFileInputDelimited_8
 										.setEscapeChar(csvReadertFileInputDelimited_8
 												.getQuoteChar());
@@ -26917,279 +26064,68 @@ public class ODM_Extract_PD implements TalendJob {
 
 												currentComponent = "tFileOutputDelimited_3";
 
-												StringBuilder sb_tFileOutputDelimited_3 = new StringBuilder();
+												String[] rowtFileOutputDelimited_3 = new String[19];
 
-												if (row4.itemID != null) {
+												rowtFileOutputDelimited_3[0] = row4.itemID == null ? ""
+														: row4.itemID;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[1] = row4.Value == null ? ""
+														: row4.Value;
 
-															row4.itemID
+												rowtFileOutputDelimited_3[2] = row4.VisitID == null ? ""
+														: row4.VisitID;
 
-															);
+												rowtFileOutputDelimited_3[3] = row4.FormID == null ? ""
+														: row4.FormID;
 
-												}
+												rowtFileOutputDelimited_3[4] = row4.SubjectKey == null ? ""
+														: row4.SubjectKey;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[5] = row4.Path == null ? ""
+														: row4.Path;
 
-												if (row4.Value != null) {
+												rowtFileOutputDelimited_3[6] = row4.PathID == null ? ""
+														: row4.PathID;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[7] = row4.DataType == null ? ""
+														: row4.DataType;
 
-															row4.Value
+												rowtFileOutputDelimited_3[8] = row4.Update_Date == null ? ""
+														: row4.Update_Date;
 
-															);
+												rowtFileOutputDelimited_3[9] = row4.Import_Date == null ? ""
+														: row4.Import_Date;
 
-												}
+												rowtFileOutputDelimited_3[10] = row4.Download_Date == null ? ""
+														: row4.Download_Date;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[11] = row4.StudyEventRepeatKey == null ? ""
+														: row4.StudyEventRepeatKey;
 
-												if (row4.VisitID != null) {
+												rowtFileOutputDelimited_3[12] = row4.itemGroupRepeatKey == null ? ""
+														: row4.itemGroupRepeatKey;
 
-													sb_tFileOutputDelimited_3
-															.append(
+												rowtFileOutputDelimited_3[13] = row4.startDate == null ? ""
+														: row4.startDate;
 
-															row4.VisitID
+												rowtFileOutputDelimited_3[14] = row4.endDate == null ? ""
+														: row4.endDate;
 
-															);
+												rowtFileOutputDelimited_3[15] = row4.source == null ? ""
+														: row4.source;
 
-												}
+												rowtFileOutputDelimited_3[16] = row4.modifierType == null ? ""
+														: row4.modifierType;
 
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[17] = row4.sic == null ? ""
+														: row4.sic;
 
-												if (row4.FormID != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.FormID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.SubjectKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.SubjectKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Path != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Path
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.PathID != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.PathID
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.DataType != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.DataType
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Update_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Update_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Import_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Import_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.Download_Date != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.Download_Date
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.StudyEventRepeatKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.StudyEventRepeatKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.itemGroupRepeatKey != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.itemGroupRepeatKey
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.startDate != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.startDate
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.endDate != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.endDate
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.source != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.source
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.modifierType != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.modifierType
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.sic != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.sic
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_tFileOutputDelimited_3);
-
-												if (row4.m_applied_path != null) {
-
-													sb_tFileOutputDelimited_3
-															.append(
-
-															row4.m_applied_path
-
-															);
-
-												}
-
-												sb_tFileOutputDelimited_3
-														.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
+												rowtFileOutputDelimited_3[18] = row4.m_applied_path == null ? ""
+														: row4.m_applied_path;
 
 												nb_line_tFileOutputDelimited_3++;
-
-												outtFileOutputDelimited_3
-														.write(sb_tFileOutputDelimited_3
-																.toString());
+												CsvWritertFileOutputDelimited_3
+														.writeNext(rowtFileOutputDelimited_3);
 
 												tos_count_tFileOutputDelimited_3++;
 
@@ -27319,14 +26255,12 @@ public class ODM_Extract_PD implements TalendJob {
 					currentComponent = "tFileOutputDelimited_3";
 
 				} finally {
-					if (outtFileOutputDelimited_3 != null) {
-						outtFileOutputDelimited_3.flush();
-						outtFileOutputDelimited_3.close();
+
+					if (CsvWritertFileOutputDelimited_3 != null) {
+						CsvWritertFileOutputDelimited_3.close();
 					}
 					globalMap.put("tFileOutputDelimited_3_NB_LINE",
 							nb_line_tFileOutputDelimited_3);
-					globalMap.put("tFileOutputDelimited_3_FILE_NAME",
-							fileName_tFileOutputDelimited_3);
 				} // finally
 
 				ok_Hash.put("tFileOutputDelimited_3", true);
@@ -27979,199 +26913,35 @@ public class ODM_Extract_PD implements TalendJob {
 				int tos_count_tFileInputDelimited_3 = 0;
 
 				int nb_line_tFileInputDelimited_3 = 0;
-				int footer_tFileInputDelimited_3 = 0;
-				int totalLinetFileInputDelimited_3 = 0;
-				int limittFileInputDelimited_3 = -1;
-				int lastLinetFileInputDelimited_3 = -1;
-
-				char fieldSeparator_tFileInputDelimited_3[] = null;
-
-				// support passing value (property: Field Separator) by
-				// 'context.fs' or 'globalMap.get("fs")'.
-				if (((String) "\t").length() > 0) {
-					fieldSeparator_tFileInputDelimited_3 = ((String) "\t")
-							.toCharArray();
-				} else {
-					throw new IllegalArgumentException(
-							"Field Separator must be assigned a char.");
-				}
-
-				char rowSeparator_tFileInputDelimited_3[] = null;
-
-				// support passing value (property: Row Separator) by
-				// 'context.rs' or 'globalMap.get("rs")'.
-				if (((String) "\n").length() > 0) {
-					rowSeparator_tFileInputDelimited_3 = ((String) "\n")
-							.toCharArray();
-				} else {
-					throw new IllegalArgumentException(
-							"Row Separator must be assigned a char.");
-				}
-
-				Object filename_tFileInputDelimited_3 = /**
-				 * Start field
-				 * tFileInputDelimited_3:FILENAME
-				 */
-				((String) globalMap.get("tCreateTemporaryFile_2_FILEPATH"))/**
-				 * End
-				 * field tFileInputDelimited_3:FILENAME
-				 */
-				;
-				com.talend.csv.CSVReader csvReadertFileInputDelimited_3 = null;
-
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_3 = null;
 				try {
 
-					String[] rowtFileInputDelimited_3 = null;
-					int currentLinetFileInputDelimited_3 = 0;
-					int outputLinetFileInputDelimited_3 = 0;
-					try {// TD110 begin
-						if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
+					Object filename_tFileInputDelimited_3 = ((String) globalMap
+							.get("tCreateTemporaryFile_2_FILEPATH"));
+					if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
 
-							int footer_value_tFileInputDelimited_3 = 0;
-							if (footer_value_tFileInputDelimited_3 > 0) {
-								throw new java.lang.Exception(
-										"When the input source is a stream,footer shouldn't be bigger than 0.");
-							}
-
-							csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
-									(java.io.InputStream) filename_tFileInputDelimited_3,
-									fieldSeparator_tFileInputDelimited_3[0],
-									"ISO-8859-15");
-						} else {
-							csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
-									new java.io.BufferedReader(
-											new java.io.InputStreamReader(
-													new java.io.FileInputStream(
-															String.valueOf(filename_tFileInputDelimited_3)),
-													"ISO-8859-15")),
-									fieldSeparator_tFileInputDelimited_3[0]);
+						int footer_value_tFileInputDelimited_3 = 0, random_value_tFileInputDelimited_3 = -1;
+						if (footer_value_tFileInputDelimited_3 > 0
+								|| random_value_tFileInputDelimited_3 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
 						}
 
-						csvReadertFileInputDelimited_3.setTrimWhitespace(false);
-						if ((rowSeparator_tFileInputDelimited_3[0] != '\n')
-								&& (rowSeparator_tFileInputDelimited_3[0] != '\r'))
-							csvReadertFileInputDelimited_3.setLineEnd(""
-									+ rowSeparator_tFileInputDelimited_3[0]);
-
-						csvReadertFileInputDelimited_3.setQuoteChar('\"');
-
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
-						csvReadertFileInputDelimited_3
-								.setEscapeChar(csvReadertFileInputDelimited_3
-										.getQuoteChar());
-
-						if (footer_tFileInputDelimited_3 > 0) {
-							for (totalLinetFileInputDelimited_3 = 0; totalLinetFileInputDelimited_3 < 1; totalLinetFileInputDelimited_3++) {
-								csvReadertFileInputDelimited_3.readNext();
-							}
-							csvReadertFileInputDelimited_3
-									.setSkipEmptyRecords(true);
-							while (csvReadertFileInputDelimited_3.readNext()) {
-
-								rowtFileInputDelimited_3 = csvReadertFileInputDelimited_3
-										.getValues();
-								if (!(rowtFileInputDelimited_3.length == 1 && ("\015")
-										.equals(rowtFileInputDelimited_3[0]))) {// empty
-																				// line
-																				// when
-																				// row
-																				// separator
-																				// is
-																				// '\n'
-
-									totalLinetFileInputDelimited_3++;
-
-								}
-
-							}
-							int lastLineTemptFileInputDelimited_3 = totalLinetFileInputDelimited_3
-									- footer_tFileInputDelimited_3 < 0 ? 0
-									: totalLinetFileInputDelimited_3
-											- footer_tFileInputDelimited_3;
-							if (lastLinetFileInputDelimited_3 > 0) {
-								lastLinetFileInputDelimited_3 = lastLinetFileInputDelimited_3 < lastLineTemptFileInputDelimited_3 ? lastLinetFileInputDelimited_3
-										: lastLineTemptFileInputDelimited_3;
-							} else {
-								lastLinetFileInputDelimited_3 = lastLineTemptFileInputDelimited_3;
-							}
-
-							csvReadertFileInputDelimited_3.close();
-							if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
-								csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
-										(java.io.InputStream) filename_tFileInputDelimited_3,
-										fieldSeparator_tFileInputDelimited_3[0],
-										"ISO-8859-15");
-							} else {
-								csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
-										new java.io.BufferedReader(
-												new java.io.InputStreamReader(
-														new java.io.FileInputStream(
-																String.valueOf(filename_tFileInputDelimited_3)),
-														"ISO-8859-15")),
-										fieldSeparator_tFileInputDelimited_3[0]);
-							}
-							csvReadertFileInputDelimited_3
-									.setTrimWhitespace(false);
-							if ((rowSeparator_tFileInputDelimited_3[0] != '\n')
-									&& (rowSeparator_tFileInputDelimited_3[0] != '\r'))
-								csvReadertFileInputDelimited_3
-										.setLineEnd(""
-												+ rowSeparator_tFileInputDelimited_3[0]);
-
-							csvReadertFileInputDelimited_3.setQuoteChar('\"');
-
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
-							csvReadertFileInputDelimited_3
-									.setEscapeChar(csvReadertFileInputDelimited_3
-											.getQuoteChar());
-
-						}
-
-						if (limittFileInputDelimited_3 != 0) {
-							for (currentLinetFileInputDelimited_3 = 0; currentLinetFileInputDelimited_3 < 1; currentLinetFileInputDelimited_3++) {
-								csvReadertFileInputDelimited_3.readNext();
-							}
-						}
-						csvReadertFileInputDelimited_3
-								.setSkipEmptyRecords(true);
-
+					}
+					try {
+						fid_tFileInputDelimited_3 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_2_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
+								false);
 					} catch (java.lang.Exception e) {
 
 						System.err.println(e.getMessage());
 
-					}// TD110 end
+					}
 
-					while (limittFileInputDelimited_3 != 0
-							&& csvReadertFileInputDelimited_3 != null
-							&& csvReadertFileInputDelimited_3.readNext()) {
-
-						rowtFileInputDelimited_3 = csvReadertFileInputDelimited_3
-								.getValues();
-
-						if (rowtFileInputDelimited_3.length == 1
-								&& ("\015").equals(rowtFileInputDelimited_3[0])) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
-							continue;
-						}
-
-						currentLinetFileInputDelimited_3++;
-
-						if (lastLinetFileInputDelimited_3 > -1
-								&& currentLinetFileInputDelimited_3 > lastLinetFileInputDelimited_3) {
-							break;
-						}
-						outputLinetFileInputDelimited_3++;
-						if (limittFileInputDelimited_3 > 0
-								&& outputLinetFileInputDelimited_3 > limittFileInputDelimited_3) {
-							break;
-						}
+					while (fid_tFileInputDelimited_3 != null
+							&& fid_tFileInputDelimited_3.nextRecord()) {
 
 						row8 = null;
 
@@ -28181,46 +26951,17 @@ public class ODM_Extract_PD implements TalendJob {
 						row8 = new row8Struct();
 						try {
 
-							if (rowtFileInputDelimited_3.length == 1
-									&& ("\015")
-											.equals(rowtFileInputDelimited_3[0])) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
+							int columnIndexWithD_tFileInputDelimited_3 = 0;
 
-								row8.Value = null;
+							columnIndexWithD_tFileInputDelimited_3 = 0;
 
-								row8.SubjectKey = null;
+							row8.Value = fid_tFileInputDelimited_3
+									.get(columnIndexWithD_tFileInputDelimited_3);
 
-							} else {
+							columnIndexWithD_tFileInputDelimited_3 = 1;
 
-								int columnIndexWithD_tFileInputDelimited_3 = 0; // Column
-																				// Index
-
-								columnIndexWithD_tFileInputDelimited_3 = 0;
-
-								if (columnIndexWithD_tFileInputDelimited_3 < rowtFileInputDelimited_3.length) {
-
-									row8.Value = rowtFileInputDelimited_3[columnIndexWithD_tFileInputDelimited_3];
-
-								} else {
-									row8.Value = null;
-								}
-
-								columnIndexWithD_tFileInputDelimited_3 = 1;
-
-								if (columnIndexWithD_tFileInputDelimited_3 < rowtFileInputDelimited_3.length) {
-
-									row8.SubjectKey = rowtFileInputDelimited_3[columnIndexWithD_tFileInputDelimited_3];
-
-								} else {
-									row8.SubjectKey = null;
-								}
-
-							}
+							row8.SubjectKey = fid_tFileInputDelimited_3
+									.get(columnIndexWithD_tFileInputDelimited_3);
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_3 = true;
@@ -28275,18 +27016,17 @@ public class ODM_Extract_PD implements TalendJob {
 
 						currentComponent = "tFileInputDelimited_3";
 
-						nb_line_tFileInputDelimited_3++;
 					}
-
 				} finally {
-					if (!(filename_tFileInputDelimited_3 instanceof java.io.InputStream)) {
-						if (csvReadertFileInputDelimited_3 != null) {
-							csvReadertFileInputDelimited_3.close();
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_2_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_3 != null) {
+							fid_tFileInputDelimited_3.close();
 						}
 					}
-					if (csvReadertFileInputDelimited_3 != null) {
+					if (fid_tFileInputDelimited_3 != null) {
 						globalMap.put("tFileInputDelimited_3_NB_LINE",
-								nb_line_tFileInputDelimited_3);
+								fid_tFileInputDelimited_3.getRowNumber());
 					}
 				}
 
@@ -28649,201 +27389,35 @@ public class ODM_Extract_PD implements TalendJob {
 				int tos_count_tFileInputDelimited_15 = 0;
 
 				int nb_line_tFileInputDelimited_15 = 0;
-				int footer_tFileInputDelimited_15 = 0;
-				int totalLinetFileInputDelimited_15 = 0;
-				int limittFileInputDelimited_15 = -1;
-				int lastLinetFileInputDelimited_15 = -1;
-
-				char fieldSeparator_tFileInputDelimited_15[] = null;
-
-				// support passing value (property: Field Separator) by
-				// 'context.fs' or 'globalMap.get("fs")'.
-				if (((String) "\t").length() > 0) {
-					fieldSeparator_tFileInputDelimited_15 = ((String) "\t")
-							.toCharArray();
-				} else {
-					throw new IllegalArgumentException(
-							"Field Separator must be assigned a char.");
-				}
-
-				char rowSeparator_tFileInputDelimited_15[] = null;
-
-				// support passing value (property: Row Separator) by
-				// 'context.rs' or 'globalMap.get("rs")'.
-				if (((String) "\n").length() > 0) {
-					rowSeparator_tFileInputDelimited_15 = ((String) "\n")
-							.toCharArray();
-				} else {
-					throw new IllegalArgumentException(
-							"Row Separator must be assigned a char.");
-				}
-
-				Object filename_tFileInputDelimited_15 = /**
-				 * Start field
-				 * tFileInputDelimited_15:FILENAME
-				 */
-				((String) globalMap.get("tCreateTemporaryFile_14_FILEPATH"))/**
-				 * 
-				 * End field tFileInputDelimited_15:FILENAME
-				 */
-				;
-				com.talend.csv.CSVReader csvReadertFileInputDelimited_15 = null;
-
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_15 = null;
 				try {
 
-					String[] rowtFileInputDelimited_15 = null;
-					int currentLinetFileInputDelimited_15 = 0;
-					int outputLinetFileInputDelimited_15 = 0;
-					try {// TD110 begin
-						if (filename_tFileInputDelimited_15 instanceof java.io.InputStream) {
+					Object filename_tFileInputDelimited_15 = ((String) globalMap
+							.get("tCreateTemporaryFile_14_FILEPATH"));
+					if (filename_tFileInputDelimited_15 instanceof java.io.InputStream) {
 
-							int footer_value_tFileInputDelimited_15 = 0;
-							if (footer_value_tFileInputDelimited_15 > 0) {
-								throw new java.lang.Exception(
-										"When the input source is a stream,footer shouldn't be bigger than 0.");
-							}
-
-							csvReadertFileInputDelimited_15 = new com.talend.csv.CSVReader(
-									(java.io.InputStream) filename_tFileInputDelimited_15,
-									fieldSeparator_tFileInputDelimited_15[0],
-									"ISO-8859-15");
-						} else {
-							csvReadertFileInputDelimited_15 = new com.talend.csv.CSVReader(
-									new java.io.BufferedReader(
-											new java.io.InputStreamReader(
-													new java.io.FileInputStream(
-															String.valueOf(filename_tFileInputDelimited_15)),
-													"ISO-8859-15")),
-									fieldSeparator_tFileInputDelimited_15[0]);
+						int footer_value_tFileInputDelimited_15 = 0, random_value_tFileInputDelimited_15 = -1;
+						if (footer_value_tFileInputDelimited_15 > 0
+								|| random_value_tFileInputDelimited_15 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
 						}
 
-						csvReadertFileInputDelimited_15
-								.setTrimWhitespace(false);
-						if ((rowSeparator_tFileInputDelimited_15[0] != '\n')
-								&& (rowSeparator_tFileInputDelimited_15[0] != '\r'))
-							csvReadertFileInputDelimited_15.setLineEnd(""
-									+ rowSeparator_tFileInputDelimited_15[0]);
-
-						csvReadertFileInputDelimited_15.setQuoteChar('\"');
-
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
-						csvReadertFileInputDelimited_15
-								.setEscapeChar(csvReadertFileInputDelimited_15
-										.getQuoteChar());
-
-						if (footer_tFileInputDelimited_15 > 0) {
-							for (totalLinetFileInputDelimited_15 = 0; totalLinetFileInputDelimited_15 < 1; totalLinetFileInputDelimited_15++) {
-								csvReadertFileInputDelimited_15.readNext();
-							}
-							csvReadertFileInputDelimited_15
-									.setSkipEmptyRecords(true);
-							while (csvReadertFileInputDelimited_15.readNext()) {
-
-								rowtFileInputDelimited_15 = csvReadertFileInputDelimited_15
-										.getValues();
-								if (!(rowtFileInputDelimited_15.length == 1 && ("\015")
-										.equals(rowtFileInputDelimited_15[0]))) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
-
-									totalLinetFileInputDelimited_15++;
-
-								}
-
-							}
-							int lastLineTemptFileInputDelimited_15 = totalLinetFileInputDelimited_15
-									- footer_tFileInputDelimited_15 < 0 ? 0
-									: totalLinetFileInputDelimited_15
-											- footer_tFileInputDelimited_15;
-							if (lastLinetFileInputDelimited_15 > 0) {
-								lastLinetFileInputDelimited_15 = lastLinetFileInputDelimited_15 < lastLineTemptFileInputDelimited_15 ? lastLinetFileInputDelimited_15
-										: lastLineTemptFileInputDelimited_15;
-							} else {
-								lastLinetFileInputDelimited_15 = lastLineTemptFileInputDelimited_15;
-							}
-
-							csvReadertFileInputDelimited_15.close();
-							if (filename_tFileInputDelimited_15 instanceof java.io.InputStream) {
-								csvReadertFileInputDelimited_15 = new com.talend.csv.CSVReader(
-										(java.io.InputStream) filename_tFileInputDelimited_15,
-										fieldSeparator_tFileInputDelimited_15[0],
-										"ISO-8859-15");
-							} else {
-								csvReadertFileInputDelimited_15 = new com.talend.csv.CSVReader(
-										new java.io.BufferedReader(
-												new java.io.InputStreamReader(
-														new java.io.FileInputStream(
-																String.valueOf(filename_tFileInputDelimited_15)),
-														"ISO-8859-15")),
-										fieldSeparator_tFileInputDelimited_15[0]);
-							}
-							csvReadertFileInputDelimited_15
-									.setTrimWhitespace(false);
-							if ((rowSeparator_tFileInputDelimited_15[0] != '\n')
-									&& (rowSeparator_tFileInputDelimited_15[0] != '\r'))
-								csvReadertFileInputDelimited_15
-										.setLineEnd(""
-												+ rowSeparator_tFileInputDelimited_15[0]);
-
-							csvReadertFileInputDelimited_15.setQuoteChar('\"');
-
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
-							csvReadertFileInputDelimited_15
-									.setEscapeChar(csvReadertFileInputDelimited_15
-											.getQuoteChar());
-
-						}
-
-						if (limittFileInputDelimited_15 != 0) {
-							for (currentLinetFileInputDelimited_15 = 0; currentLinetFileInputDelimited_15 < 1; currentLinetFileInputDelimited_15++) {
-								csvReadertFileInputDelimited_15.readNext();
-							}
-						}
-						csvReadertFileInputDelimited_15
-								.setSkipEmptyRecords(true);
-
+					}
+					try {
+						fid_tFileInputDelimited_15 = new org.talend.fileprocess.FileInputDelimited(
+								((String) globalMap
+										.get("tCreateTemporaryFile_14_FILEPATH")),
+								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
+								false);
 					} catch (java.lang.Exception e) {
 
 						System.err.println(e.getMessage());
 
-					}// TD110 end
+					}
 
-					while (limittFileInputDelimited_15 != 0
-							&& csvReadertFileInputDelimited_15 != null
-							&& csvReadertFileInputDelimited_15.readNext()) {
-
-						rowtFileInputDelimited_15 = csvReadertFileInputDelimited_15
-								.getValues();
-
-						if (rowtFileInputDelimited_15.length == 1
-								&& ("\015")
-										.equals(rowtFileInputDelimited_15[0])) {// empty
-																				// line
-																				// when
-																				// row
-																				// separator
-																				// is
-																				// '\n'
-							continue;
-						}
-
-						currentLinetFileInputDelimited_15++;
-
-						if (lastLinetFileInputDelimited_15 > -1
-								&& currentLinetFileInputDelimited_15 > lastLinetFileInputDelimited_15) {
-							break;
-						}
-						outputLinetFileInputDelimited_15++;
-						if (limittFileInputDelimited_15 > 0
-								&& outputLinetFileInputDelimited_15 > limittFileInputDelimited_15) {
-							break;
-						}
+					while (fid_tFileInputDelimited_15 != null
+							&& fid_tFileInputDelimited_15.nextRecord()) {
 
 						row20 = null;
 
@@ -28853,58 +27427,22 @@ public class ODM_Extract_PD implements TalendJob {
 						row20 = new row20Struct();
 						try {
 
-							if (rowtFileInputDelimited_15.length == 1
-									&& ("\015")
-											.equals(rowtFileInputDelimited_15[0])) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
+							int columnIndexWithD_tFileInputDelimited_15 = 0;
 
-								row20.PatientID = null;
+							columnIndexWithD_tFileInputDelimited_15 = 0;
 
-								row20.EncounterNum = null;
+							row20.PatientID = fid_tFileInputDelimited_15
+									.get(columnIndexWithD_tFileInputDelimited_15);
 
-								row20.VisitID = null;
+							columnIndexWithD_tFileInputDelimited_15 = 1;
 
-							} else {
+							row20.EncounterNum = fid_tFileInputDelimited_15
+									.get(columnIndexWithD_tFileInputDelimited_15);
 
-								int columnIndexWithD_tFileInputDelimited_15 = 0; // Column
-																					// Index
+							columnIndexWithD_tFileInputDelimited_15 = 2;
 
-								columnIndexWithD_tFileInputDelimited_15 = 0;
-
-								if (columnIndexWithD_tFileInputDelimited_15 < rowtFileInputDelimited_15.length) {
-
-									row20.PatientID = rowtFileInputDelimited_15[columnIndexWithD_tFileInputDelimited_15];
-
-								} else {
-									row20.PatientID = null;
-								}
-
-								columnIndexWithD_tFileInputDelimited_15 = 1;
-
-								if (columnIndexWithD_tFileInputDelimited_15 < rowtFileInputDelimited_15.length) {
-
-									row20.EncounterNum = rowtFileInputDelimited_15[columnIndexWithD_tFileInputDelimited_15];
-
-								} else {
-									row20.EncounterNum = null;
-								}
-
-								columnIndexWithD_tFileInputDelimited_15 = 2;
-
-								if (columnIndexWithD_tFileInputDelimited_15 < rowtFileInputDelimited_15.length) {
-
-									row20.VisitID = rowtFileInputDelimited_15[columnIndexWithD_tFileInputDelimited_15];
-
-								} else {
-									row20.VisitID = null;
-								}
-
-							}
+							row20.VisitID = fid_tFileInputDelimited_15
+									.get(columnIndexWithD_tFileInputDelimited_15);
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_15 = true;
@@ -28961,18 +27499,17 @@ public class ODM_Extract_PD implements TalendJob {
 
 						currentComponent = "tFileInputDelimited_15";
 
-						nb_line_tFileInputDelimited_15++;
 					}
-
 				} finally {
-					if (!(filename_tFileInputDelimited_15 instanceof java.io.InputStream)) {
-						if (csvReadertFileInputDelimited_15 != null) {
-							csvReadertFileInputDelimited_15.close();
+					if (!((Object) (((String) globalMap
+							.get("tCreateTemporaryFile_14_FILEPATH"))) instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_15 != null) {
+							fid_tFileInputDelimited_15.close();
 						}
 					}
-					if (csvReadertFileInputDelimited_15 != null) {
+					if (fid_tFileInputDelimited_15 != null) {
 						globalMap.put("tFileInputDelimited_15_NB_LINE",
-								nb_line_tFileInputDelimited_15);
+								fid_tFileInputDelimited_15.getRowNumber());
 					}
 				}
 
@@ -34586,6 +33123,6 @@ public class ODM_Extract_PD implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 911230 characters generated by Talend Open Studio for Data Integration on the
- * January 21, 2014 3:26:26 PM CET
+ * 896091 characters generated by Talend Open Studio for Data Integration on the
+ * February 26, 2014 12:09:05 PM CET
  ************************************************************************************************/

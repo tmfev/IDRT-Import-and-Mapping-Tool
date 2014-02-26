@@ -6,8 +6,6 @@ import java.util.Properties;
 
 import org.eclipse.swt.widgets.Display;
 
-import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
