@@ -107,7 +107,7 @@
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;IDRT.xslt&quot;"/>
   </context>
   <parameters>
-    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
+    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx2048M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="608"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="416"/>
@@ -158,7 +158,7 @@
   </node>
   <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="0" posY="-224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_2"/>
-    <elementParameter field="CHECK" name="REMOVE" value="true"/>
+    <elementParameter field="CHECK" name="REMOVE" value="false"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="context.folderMain+context.folderTmp"/>
     <elementParameter field="LABEL" name="INFO_RANGE" value="the temporary file name should include template &quot;XXXX&quot;."/>
@@ -610,7 +610,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="512">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value.replace(';','.').replace('\t','.');&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;if (input_row.Update_Date.contains(&quot;T&quot;))&#xA;output_row.Update_Date = input_row.Update_Date.substring(0,input_row.Update_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;if (input_row.Import_Date.contains(&quot;T&quot;))&#xA;output_row.Import_Date = input_row.Import_Date.substring(0,input_row.Import_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;if (input_row.Download_Date.contains(&quot;T&quot;))&#xA;output_row.Download_Date = input_row.Download_Date.substring(0,input_row.Download_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;output_row.startDate = input_row.startDate;&#xA;output_row.endDate = input_row.endDate;&#xA;&#xA;if (((HashMap&lt;String, BigDecimal>) context.instanceMap).get(input_row.SubjectKey) != null){&#xA;output_row.itemGroupRepeatKey = &quot;&quot;+((HashMap&lt;String, BigDecimal>) context.instanceMap).get(input_row.SubjectKey);&#xA;//System.out.println(&quot;IF REPEATKEY: &quot; + output_row.itemGroupRepeatKey + &quot; FOR PID: &quot; + input_row.SubjectKey);&#xA;}&#xA;else{&#xA;context.maxInstance = context.maxInstance.add(new BigDecimal(1));&#xA;output_row.itemGroupRepeatKey = &quot;&quot;+context.maxInstance;&#xA;((HashMap&lt;String, BigDecimal>) context.instanceMap).put(input_row.SubjectKey,context.maxInstance);&#xA;//System.out.println(&quot;ELSE REPEATKEY: &quot; + output_row.itemGroupRepeatKey + &quot; FOR PID: &quot; + input_row.SubjectKey);&#xA;}&#xA;&#xA;output_row.source = input_row.source;&#xD;&#xA;output_row.modifierType = &quot;&quot;;&#xD;&#xA;output_row.sic = &quot;&quot;;&#xD;&#xA;output_row.m_applied_path = &quot;@&quot;;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value.replace(';','.').replace('\t','.');&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;if (input_row.Update_Date.contains(&quot;T&quot;))&#xA;output_row.Update_Date = input_row.Update_Date.substring(0,input_row.Update_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;if (input_row.Import_Date.contains(&quot;T&quot;))&#xA;output_row.Import_Date = input_row.Import_Date.substring(0,input_row.Import_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;if (input_row.Download_Date.contains(&quot;T&quot;))&#xA;output_row.Download_Date = input_row.Download_Date.substring(0,input_row.Download_Date.lastIndexOf(&quot;T&quot;));&#xA;else&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;output_row.startDate = input_row.startDate;&#xA;output_row.endDate = input_row.endDate;&#xA;&#xA;if (((HashMap&lt;String, BigDecimal>) context.instanceMap).get(input_row.SubjectKey) != null){&#xA;output_row.itemGroupRepeatKey = &quot;&quot;+((HashMap&lt;String, BigDecimal>) context.instanceMap).get(input_row.SubjectKey);&#xA;//System.out.println(&quot;IF REPEATKEY: &quot; + output_row.itemGroupRepeatKey + &quot; FOR PID: &quot; + input_row.SubjectKey);&#xA;}&#xA;else{&#xA;context.maxInstance = context.maxInstance.add(new BigDecimal(1));&#xA;output_row.itemGroupRepeatKey = &quot;&quot;+context.maxInstance;&#xA;((HashMap&lt;String, BigDecimal>) context.instanceMap).put(input_row.SubjectKey,context.maxInstance);&#xA;//System.out.println(&quot;ELSE REPEATKEY: &quot; + output_row.itemGroupRepeatKey + &quot; FOR PID: &quot; + input_row.SubjectKey);&#xA;}&#xA;&#xA;output_row.source = input_row.source;&#xD;&#xA;&#xD;&#xA;output_row.sic = &quot;&quot;;&#xD;&#xA;output_row.m_applied_path = &quot;@&quot;;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -633,7 +633,6 @@
       <column comment="" key="false" name="startDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="endDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="modifierType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -689,7 +688,6 @@
       <column comment="" key="false" name="startDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="endDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="modifierType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -703,9 +701,9 @@
     <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
     <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
     <elementParameter field="TEXT" name="HEADER" value="0"/>
     <elementParameter field="TEXT" name="FOOTER" value="0"/>
     <elementParameter field="TEXT" name="LIMIT" value=""/>
@@ -1220,7 +1218,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_9"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.itemID = input_row.itemID;&#xD;&#xA;output_row.Value = input_row.Value.replaceAll(&quot;\\\\&quot;,&quot;/&quot;);&#xA;if (input_row.Value.contains(&quot;quot&quot;))&#xA;System.out.println(input_row.Value);&#xD;&#xA;output_row.itemGroupOID = input_row.itemGroupOID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xD;&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xD;&#xA;output_row.MetaDataVersionOID = input_row.MetaDataVersionOID;&#xD;&#xA;output_row.TransactionType = input_row.TransactionType;&#xD;&#xA;output_row.IsNull = input_row.IsNull;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.itemID = input_row.itemID;&#xD;&#xA;output_row.Value = input_row.Value.replaceAll(&quot;\\\\&quot;,&quot;/&quot;);&#xA;output_row.itemGroupOID = input_row.itemGroupOID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xD;&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xD;&#xA;output_row.MetaDataVersionOID = input_row.MetaDataVersionOID;&#xD;&#xA;output_row.TransactionType = input_row.TransactionType;&#xD;&#xA;output_row.IsNull = input_row.IsNull;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1633,7 +1631,7 @@
     <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
     <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
     <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
     <elementParameter field="CHECK" name="CREATE" value="true"/>
     <elementParameter field="CHECK" name="SPLIT" value="false"/>
     <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
@@ -2373,7 +2371,7 @@
         <mapperTableEntries name="StudyEventRepeatKey" expression="outt123.StudyEventRepeatKey" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemGroupRepeatKey" expression="outt123.itemGroupRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="outt123.itemCode " type="id_String" nullable="true"/>
-        <mapperTableEntries name="startDate" expression="(Var.var3 &amp;&amp; outt123.Value.length() > 9)? outt123.Value :&quot;&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="startDate" expression="(Var.var3 &amp;&amp; outt123.Value.length() >= 4)? outt123.Value :&quot;&quot;  " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="to_ont_xml" expressionFilter="Var.var1 || Var.var2" activateExpressionFilter="true">
         <mapperTableEntries name="HLEVEL" expression="8" type="id_Integer" nullable="true"/>

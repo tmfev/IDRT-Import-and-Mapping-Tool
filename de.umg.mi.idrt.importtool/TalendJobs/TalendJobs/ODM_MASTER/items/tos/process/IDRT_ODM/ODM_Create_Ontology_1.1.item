@@ -39,7 +39,7 @@
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;IDRT.xslt&quot;"/>
   </context>
   <parameters>
-    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
+    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx2048M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="1376"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="352"/>

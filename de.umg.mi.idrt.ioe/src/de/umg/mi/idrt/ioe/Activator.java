@@ -1,7 +1,5 @@
 package de.umg.mi.idrt.ioe;
 
-import org.eclipse.core.runtime.ILogListener;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -12,14 +10,14 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "edu.goettingen.i2b2.importtool"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "de.umg.mi.idrt.ioe"; //$NON-NLS-1$
     
 	// The shared instance
 	private static Activator plugin;
 
 	private Resource _resource;
 	
-	private ILogListener listener;	
+//	private ILogListener listener;	
 	
 	/**
 	 * The constructor
@@ -39,8 +37,8 @@ public class Activator extends AbstractUIPlugin {
 
 		// adding local log file listener
 		
-		listener = new LogListener();
-		Platform.addLogListener(listener);
+//		listener = new LogListener();
+//		Platform.addLogListener(listener);
 	}
 
 	/*
@@ -50,8 +48,8 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		
 		// removing local log file listener
-		Platform.removeLogListener(listener);
-	    listener = null;
+//		Platform.removeLogListener(listener);
+//	    listener = null;
 		
 		plugin = null;
 		super.stop(context);

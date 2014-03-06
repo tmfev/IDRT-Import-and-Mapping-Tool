@@ -38,7 +38,7 @@ public class StatusView extends ViewPart {
 
 	public StatusView() {
 		super();
-		Activator.getDefault().getResource().setStatusView(this);
+//		Activator.getDefault().getResource().setStatusView(this);
 
 	}
 

@@ -1,37 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/IDRT_STDTERM/idrt_stdterm_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/IDRT_TRANSFORMATION/idrt_transformation_0_5.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/idrt_delete_patients_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/idrt_to_db_schema_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_create_ontology_1_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_extract_pd_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_extract_pd_with_xslt_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_master_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/drg_1_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/fab_1_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/icd_1_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/ops_1_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/p21_erweiterung_2010_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/fab_2_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/icd_2_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/ops_2_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/csv_import_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/csv_master_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/csv_patient_data_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/dbimport_master_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/idrt_delete_patients_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/idrt_to_db_schema_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/pidgenerator_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/server_freelocks_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_import_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_master_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_patient_data_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_to_db_schema_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/pidgenerator_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/server_freelocks_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/commons-collections-3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/jakarta-oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/jaxen-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/jboss-serialization.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc14.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc5.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc6.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/OpenCSV.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/saxon9.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/StatusListener29.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/systemRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend_file_enhanced_20070724.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend-oracle-timestamptz.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talendcsv.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/TalendSAX.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/thashfile.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/tns.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/trove.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/userRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
-	<classpathentry kind="lib" path="lib/swt.jar"/>
+	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_create_ontology_1_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_extract_pd_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_extract_pd_with_xslt_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/odm_master_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/drg_1_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/fab_1_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/icd_1_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/ops_1_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2010/p21_erweiterung_2010_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/fab_2_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/icd_2_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/ops_2_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_import_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_master_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/csv_patient_data_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_jdbc_upload_1_0.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_to_db_schema_1_0.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_truncate_tables_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/pidgenerator_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/server_freelocks_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/DBIMPORT_MASTER/dbimport_master_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/IDRT_STDTERM/idrt_stdterm_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TalendJobs/IDRT_TRANSFORMATION/idrt_transformation_0_5.jar"/>
+	<classpathentry kind="lib" path="lib/swt64.jar"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

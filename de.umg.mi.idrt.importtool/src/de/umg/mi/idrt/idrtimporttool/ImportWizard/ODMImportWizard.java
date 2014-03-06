@@ -138,6 +138,7 @@ public class ODMImportWizard extends Wizard {
 			final String dbPort = selectedServer.getPort();
 			final String dbSchema = selectedServer.getSchema();
 			
+			System.out.println("DBSCHEMA: " + dbSchema);
 			contextMap.put("DBHost", ipText);
 			contextMap.put("DBPassword", passwordText);
 			contextMap.put("DBUsername", dbUserText);

@@ -1,49 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
-
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
       <application
-            icon="images/answergroup.gif">
+            icon="images/i2b2_16.png">
          <run
                class="de.umg.mi.idrt.ioe.Application">
          </run>
       </application>
-   </extension>
-   <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="de.umg.mi.idrt.ioe.application"
-            name="i2b2 Ontology Editor">
-         <property
-               name="appName"
-               value="i2b2 Ontology Editor">
-         </property>
-         <property
-               name="startupForegroundColor"
-               value="000000">
-         </property>
-         <property
-               name="startupMessageRect"
-               value="7,252,445,20">
-         </property>
-         <property
-               name="startupProgressRect"
-               value="5,275,445,15">
-         </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
-         <property
-               name="windowImages"
-               value="images/answergroup.gif">
-         </property>
-      </product>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
@@ -57,6 +23,18 @@
             id="de.umg.mi.idrt.ioe.PerspectiveExpert"
             name="PerspectiveExpert">
       </perspective>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="de.umg.mi.idrt.ioe.application"
+            name="de.umg.mi.idrt.ioe.product">
+         <property
+               name="appName"
+               value="de.umg.mi.idrt.ioe.product">
+         </property>
+      </product>
    </extension>
    <extension
          point="org.eclipse.ui.views">

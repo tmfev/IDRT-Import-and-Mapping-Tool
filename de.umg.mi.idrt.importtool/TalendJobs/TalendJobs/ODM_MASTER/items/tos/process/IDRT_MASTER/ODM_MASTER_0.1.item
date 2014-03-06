@@ -178,7 +178,7 @@
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
   </context>
   <parameters>
-    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms512M -Xmx1500M"/>
+    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms512M -Xmx2048M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="416"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="320"/>

@@ -11549,10 +11549,6 @@ public class ODM_Extract_PD implements TalendJob {
 																	.replaceAll(
 																			"\\\\",
 																			"/");
-															if (row1.Value
-																	.contains("quot"))
-																System.out
-																		.println(row1.Value);
 															row27.itemGroupOID = row1.itemGroupOID;
 															row27.FormID = row1.FormID;
 															row27.SubjectKey = row1.SubjectKey;
@@ -12420,7 +12416,7 @@ public class ODM_Extract_PD implements TalendJob {
 																						out3_tmp.itemGroupRepeatKey = outt123.itemGroupRepeatKey;
 																						out3_tmp.itemCode = outt123.itemCode;
 																						out3_tmp.startDate = (Var.var3 && outt123.Value
-																								.length() > 9) ? outt123.Value
+																								.length() >= 4) ? outt123.Value
 																								: "";
 																						out3 = out3_tmp;
 
@@ -21647,12 +21643,6 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.source;
 		}
 
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
 		public String sic;
 
 		public String getSic() {
@@ -21738,8 +21728,6 @@ public class ODM_Extract_PD implements TalendJob {
 
 					this.source = readString(dis);
 
-					this.modifierType = readString(dis);
-
 					this.sic = readString(dis);
 
 					this.m_applied_path = readString(dis);
@@ -21822,10 +21810,6 @@ public class ODM_Extract_PD implements TalendJob {
 
 				// String
 
-				writeString(this.modifierType, dos);
-
-				// String
-
 				writeString(this.sic, dos);
 
 				// String
@@ -21859,7 +21843,6 @@ public class ODM_Extract_PD implements TalendJob {
 			sb.append(",startDate=" + startDate);
 			sb.append(",endDate=" + endDate);
 			sb.append(",source=" + source);
-			sb.append(",modifierType=" + modifierType);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
 			sb.append("]");
@@ -23931,7 +23914,7 @@ public class ODM_Extract_PD implements TalendJob {
 				globalMap.put("tFileOutputDelimited_3_FILE_NAME",
 						fileName_tFileOutputDelimited_3);
 
-				String[] headColutFileOutputDelimited_3 = new String[19];
+				String[] headColutFileOutputDelimited_3 = new String[18];
 				class CSVBasicSet_tFileOutputDelimited_3 {
 					private char field_Delim;
 					private char row_Delim;
@@ -24108,11 +24091,9 @@ public class ODM_Extract_PD implements TalendJob {
 
 						headColutFileOutputDelimited_3[15] = "source";
 
-						headColutFileOutputDelimited_3[16] = "modifierType";
+						headColutFileOutputDelimited_3[16] = "sic";
 
-						headColutFileOutputDelimited_3[17] = "sic";
-
-						headColutFileOutputDelimited_3[18] = "m_applied_path";
+						headColutFileOutputDelimited_3[17] = "m_applied_path";
 
 						CsvWritertFileOutputDelimited_3
 								.writeNext(headColutFileOutputDelimited_3);
@@ -25078,7 +25059,7 @@ public class ODM_Extract_PD implements TalendJob {
 												}
 
 												row4.source = outt1.source;
-												row4.modifierType = "";
+
 												row4.sic = "";
 												row4.m_applied_path = "@";
 
@@ -25097,7 +25078,7 @@ public class ODM_Extract_PD implements TalendJob {
 
 												currentComponent = "tFileOutputDelimited_3";
 
-												String[] rowtFileOutputDelimited_3 = new String[19];
+												String[] rowtFileOutputDelimited_3 = new String[18];
 
 												rowtFileOutputDelimited_3[0] = row4.itemID == null ? ""
 														: row4.itemID;
@@ -25147,13 +25128,10 @@ public class ODM_Extract_PD implements TalendJob {
 												rowtFileOutputDelimited_3[15] = row4.source == null ? ""
 														: row4.source;
 
-												rowtFileOutputDelimited_3[16] = row4.modifierType == null ? ""
-														: row4.modifierType;
-
-												rowtFileOutputDelimited_3[17] = row4.sic == null ? ""
+												rowtFileOutputDelimited_3[16] = row4.sic == null ? ""
 														: row4.sic;
 
-												rowtFileOutputDelimited_3[18] = row4.m_applied_path == null ? ""
+												rowtFileOutputDelimited_3[17] = row4.m_applied_path == null ? ""
 														: row4.m_applied_path;
 
 												nb_line_tFileOutputDelimited_3++;
@@ -26045,7 +26023,7 @@ public class ODM_Extract_PD implements TalendJob {
 												}
 
 												row4.source = outt1.source;
-												row4.modifierType = "";
+
 												row4.sic = "";
 												row4.m_applied_path = "@";
 
@@ -26064,7 +26042,7 @@ public class ODM_Extract_PD implements TalendJob {
 
 												currentComponent = "tFileOutputDelimited_3";
 
-												String[] rowtFileOutputDelimited_3 = new String[19];
+												String[] rowtFileOutputDelimited_3 = new String[18];
 
 												rowtFileOutputDelimited_3[0] = row4.itemID == null ? ""
 														: row4.itemID;
@@ -26114,13 +26092,10 @@ public class ODM_Extract_PD implements TalendJob {
 												rowtFileOutputDelimited_3[15] = row4.source == null ? ""
 														: row4.source;
 
-												rowtFileOutputDelimited_3[16] = row4.modifierType == null ? ""
-														: row4.modifierType;
-
-												rowtFileOutputDelimited_3[17] = row4.sic == null ? ""
+												rowtFileOutputDelimited_3[16] = row4.sic == null ? ""
 														: row4.sic;
 
-												rowtFileOutputDelimited_3[18] = row4.m_applied_path == null ? ""
+												rowtFileOutputDelimited_3[17] = row4.m_applied_path == null ? ""
 														: row4.m_applied_path;
 
 												nb_line_tFileOutputDelimited_3++;
@@ -26338,7 +26313,6 @@ public class ODM_Extract_PD implements TalendJob {
 						dir_tCreateTemporaryFile_2, name_tCreateTemporaryFile_2
 								+ "." + suffix_tCreateTemporaryFile_2);
 				if (file_tCreateTemporaryFile_2.createNewFile()) {
-					file_tCreateTemporaryFile_2.deleteOnExit();
 				}
 				globalMap.put("tCreateTemporaryFile_2_FILEPATH",
 						file_tCreateTemporaryFile_2.getCanonicalPath());
@@ -26913,35 +26887,195 @@ public class ODM_Extract_PD implements TalendJob {
 				int tos_count_tFileInputDelimited_3 = 0;
 
 				int nb_line_tFileInputDelimited_3 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_3 = null;
+				int footer_tFileInputDelimited_3 = 0;
+				int totalLinetFileInputDelimited_3 = 0;
+				int limittFileInputDelimited_3 = -1;
+				int lastLinetFileInputDelimited_3 = -1;
+
+				char fieldSeparator_tFileInputDelimited_3[] = null;
+
+				// support passing value (property: Field Separator) by
+				// 'context.fs' or 'globalMap.get("fs")'.
+				if (((String) "\t").length() > 0) {
+					fieldSeparator_tFileInputDelimited_3 = ((String) "\t")
+							.toCharArray();
+				} else {
+					throw new IllegalArgumentException(
+							"Field Separator must be assigned a char.");
+				}
+
+				char rowSeparator_tFileInputDelimited_3[] = null;
+
+				// support passing value (property: Row Separator) by
+				// 'context.rs' or 'globalMap.get("rs")'.
+				if (((String) "\n").length() > 0) {
+					rowSeparator_tFileInputDelimited_3 = ((String) "\n")
+							.toCharArray();
+				} else {
+					throw new IllegalArgumentException(
+							"Row Separator must be assigned a char.");
+				}
+
+				Object filename_tFileInputDelimited_3 = /**
+				 * Start field
+				 * tFileInputDelimited_3:FILENAME
+				 */
+				((String) globalMap.get("tCreateTemporaryFile_2_FILEPATH"))/**
+				 * End
+				 * field tFileInputDelimited_3:FILENAME
+				 */
+				;
+				com.talend.csv.CSVReader csvReadertFileInputDelimited_3 = null;
+
 				try {
 
-					Object filename_tFileInputDelimited_3 = ((String) globalMap
-							.get("tCreateTemporaryFile_2_FILEPATH"));
-					if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
+					String[] rowtFileInputDelimited_3 = null;
+					int currentLinetFileInputDelimited_3 = 0;
+					int outputLinetFileInputDelimited_3 = 0;
+					try {// TD110 begin
+						if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
 
-						int footer_value_tFileInputDelimited_3 = 0, random_value_tFileInputDelimited_3 = -1;
-						if (footer_value_tFileInputDelimited_3 > 0
-								|| random_value_tFileInputDelimited_3 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+							int footer_value_tFileInputDelimited_3 = 0;
+							if (footer_value_tFileInputDelimited_3 > 0) {
+								throw new java.lang.Exception(
+										"When the input source is a stream,footer shouldn't be bigger than 0.");
+							}
+
+							csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
+									(java.io.InputStream) filename_tFileInputDelimited_3,
+									fieldSeparator_tFileInputDelimited_3[0],
+									"ISO-8859-15");
+						} else {
+							csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
+									new java.io.BufferedReader(
+											new java.io.InputStreamReader(
+													new java.io.FileInputStream(
+															String.valueOf(filename_tFileInputDelimited_3)),
+													"ISO-8859-15")),
+									fieldSeparator_tFileInputDelimited_3[0]);
 						}
 
-					}
-					try {
-						fid_tFileInputDelimited_3 = new org.talend.fileprocess.FileInputDelimited(
-								((String) globalMap
-										.get("tCreateTemporaryFile_2_FILEPATH")),
-								"ISO-8859-15", "\t", "\n", true, 0, 0, -1, -1,
-								false);
+						csvReadertFileInputDelimited_3.setTrimWhitespace(false);
+						if ((rowSeparator_tFileInputDelimited_3[0] != '\n')
+								&& (rowSeparator_tFileInputDelimited_3[0] != '\r'))
+							csvReadertFileInputDelimited_3.setLineEnd(""
+									+ rowSeparator_tFileInputDelimited_3[0]);
+
+						csvReadertFileInputDelimited_3.setQuoteChar('"');
+
+						csvReadertFileInputDelimited_3
+								.setEscapeChar(csvReadertFileInputDelimited_3
+										.getQuoteChar());
+
+						if (footer_tFileInputDelimited_3 > 0) {
+							for (totalLinetFileInputDelimited_3 = 0; totalLinetFileInputDelimited_3 < 0; totalLinetFileInputDelimited_3++) {
+								csvReadertFileInputDelimited_3.readNext();
+							}
+							csvReadertFileInputDelimited_3
+									.setSkipEmptyRecords(true);
+							while (csvReadertFileInputDelimited_3.readNext()) {
+
+								rowtFileInputDelimited_3 = csvReadertFileInputDelimited_3
+										.getValues();
+								if (!(rowtFileInputDelimited_3.length == 1 && ("\015")
+										.equals(rowtFileInputDelimited_3[0]))) {// empty
+																				// line
+																				// when
+																				// row
+																				// separator
+																				// is
+																				// '\n'
+
+									totalLinetFileInputDelimited_3++;
+
+								}
+
+							}
+							int lastLineTemptFileInputDelimited_3 = totalLinetFileInputDelimited_3
+									- footer_tFileInputDelimited_3 < 0 ? 0
+									: totalLinetFileInputDelimited_3
+											- footer_tFileInputDelimited_3;
+							if (lastLinetFileInputDelimited_3 > 0) {
+								lastLinetFileInputDelimited_3 = lastLinetFileInputDelimited_3 < lastLineTemptFileInputDelimited_3 ? lastLinetFileInputDelimited_3
+										: lastLineTemptFileInputDelimited_3;
+							} else {
+								lastLinetFileInputDelimited_3 = lastLineTemptFileInputDelimited_3;
+							}
+
+							csvReadertFileInputDelimited_3.close();
+							if (filename_tFileInputDelimited_3 instanceof java.io.InputStream) {
+								csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
+										(java.io.InputStream) filename_tFileInputDelimited_3,
+										fieldSeparator_tFileInputDelimited_3[0],
+										"ISO-8859-15");
+							} else {
+								csvReadertFileInputDelimited_3 = new com.talend.csv.CSVReader(
+										new java.io.BufferedReader(
+												new java.io.InputStreamReader(
+														new java.io.FileInputStream(
+																String.valueOf(filename_tFileInputDelimited_3)),
+														"ISO-8859-15")),
+										fieldSeparator_tFileInputDelimited_3[0]);
+							}
+							csvReadertFileInputDelimited_3
+									.setTrimWhitespace(false);
+							if ((rowSeparator_tFileInputDelimited_3[0] != '\n')
+									&& (rowSeparator_tFileInputDelimited_3[0] != '\r'))
+								csvReadertFileInputDelimited_3
+										.setLineEnd(""
+												+ rowSeparator_tFileInputDelimited_3[0]);
+
+							csvReadertFileInputDelimited_3.setQuoteChar('"');
+
+							csvReadertFileInputDelimited_3
+									.setEscapeChar(csvReadertFileInputDelimited_3
+											.getQuoteChar());
+
+						}
+
+						if (limittFileInputDelimited_3 != 0) {
+							for (currentLinetFileInputDelimited_3 = 0; currentLinetFileInputDelimited_3 < 0; currentLinetFileInputDelimited_3++) {
+								csvReadertFileInputDelimited_3.readNext();
+							}
+						}
+						csvReadertFileInputDelimited_3
+								.setSkipEmptyRecords(true);
+
 					} catch (java.lang.Exception e) {
 
 						System.err.println(e.getMessage());
 
-					}
+					}// TD110 end
 
-					while (fid_tFileInputDelimited_3 != null
-							&& fid_tFileInputDelimited_3.nextRecord()) {
+					while (limittFileInputDelimited_3 != 0
+							&& csvReadertFileInputDelimited_3 != null
+							&& csvReadertFileInputDelimited_3.readNext()) {
+
+						rowtFileInputDelimited_3 = csvReadertFileInputDelimited_3
+								.getValues();
+
+						if (rowtFileInputDelimited_3.length == 1
+								&& ("\015").equals(rowtFileInputDelimited_3[0])) {// empty
+																					// line
+																					// when
+																					// row
+																					// separator
+																					// is
+																					// '\n'
+							continue;
+						}
+
+						currentLinetFileInputDelimited_3++;
+
+						if (lastLinetFileInputDelimited_3 > -1
+								&& currentLinetFileInputDelimited_3 > lastLinetFileInputDelimited_3) {
+							break;
+						}
+						outputLinetFileInputDelimited_3++;
+						if (limittFileInputDelimited_3 > 0
+								&& outputLinetFileInputDelimited_3 > limittFileInputDelimited_3) {
+							break;
+						}
 
 						row8 = null;
 
@@ -26951,17 +27085,46 @@ public class ODM_Extract_PD implements TalendJob {
 						row8 = new row8Struct();
 						try {
 
-							int columnIndexWithD_tFileInputDelimited_3 = 0;
+							if (rowtFileInputDelimited_3.length == 1
+									&& ("\015")
+											.equals(rowtFileInputDelimited_3[0])) {// empty
+																					// line
+																					// when
+																					// row
+																					// separator
+																					// is
+																					// '\n'
 
-							columnIndexWithD_tFileInputDelimited_3 = 0;
+								row8.Value = null;
 
-							row8.Value = fid_tFileInputDelimited_3
-									.get(columnIndexWithD_tFileInputDelimited_3);
+								row8.SubjectKey = null;
 
-							columnIndexWithD_tFileInputDelimited_3 = 1;
+							} else {
 
-							row8.SubjectKey = fid_tFileInputDelimited_3
-									.get(columnIndexWithD_tFileInputDelimited_3);
+								int columnIndexWithD_tFileInputDelimited_3 = 0; // Column
+																				// Index
+
+								columnIndexWithD_tFileInputDelimited_3 = 0;
+
+								if (columnIndexWithD_tFileInputDelimited_3 < rowtFileInputDelimited_3.length) {
+
+									row8.Value = rowtFileInputDelimited_3[columnIndexWithD_tFileInputDelimited_3];
+
+								} else {
+									row8.Value = null;
+								}
+
+								columnIndexWithD_tFileInputDelimited_3 = 1;
+
+								if (columnIndexWithD_tFileInputDelimited_3 < rowtFileInputDelimited_3.length) {
+
+									row8.SubjectKey = rowtFileInputDelimited_3[columnIndexWithD_tFileInputDelimited_3];
+
+								} else {
+									row8.SubjectKey = null;
+								}
+
+							}
 
 						} catch (java.lang.Exception e) {
 							whetherReject_tFileInputDelimited_3 = true;
@@ -27016,17 +27179,18 @@ public class ODM_Extract_PD implements TalendJob {
 
 						currentComponent = "tFileInputDelimited_3";
 
+						nb_line_tFileInputDelimited_3++;
 					}
+
 				} finally {
-					if (!((Object) (((String) globalMap
-							.get("tCreateTemporaryFile_2_FILEPATH"))) instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_3 != null) {
-							fid_tFileInputDelimited_3.close();
+					if (!(filename_tFileInputDelimited_3 instanceof java.io.InputStream)) {
+						if (csvReadertFileInputDelimited_3 != null) {
+							csvReadertFileInputDelimited_3.close();
 						}
 					}
-					if (fid_tFileInputDelimited_3 != null) {
+					if (csvReadertFileInputDelimited_3 != null) {
 						globalMap.put("tFileInputDelimited_3_NB_LINE",
-								fid_tFileInputDelimited_3.getRowNumber());
+								nb_line_tFileInputDelimited_3);
 					}
 				}
 
@@ -33123,6 +33287,6 @@ public class ODM_Extract_PD implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 896091 characters generated by Talend Open Studio for Data Integration on the
- * February 26, 2014 12:09:05 PM CET
+ * 901400 characters generated by Talend Open Studio for Data Integration on the
+ * March 5, 2014 1:17:12 PM CET
  ************************************************************************************************/

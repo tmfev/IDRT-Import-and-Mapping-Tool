@@ -160,6 +160,7 @@ public class Server implements Serializable {
 		this.port = port;
 		this.user = user;
 		this.sid = sid;
+		System.out.println("NEW SERVER: " + schema);
 		this.schema = schema;
 		this.table = table;
 		this.databaseType = databaseType;
@@ -355,7 +356,7 @@ public class Server implements Serializable {
 	}
 
 	public String getSchema() {
-		return schema;
+		return ServerView.getCurrentSchema();
 	}
 
 	public String getSID() {

@@ -1,0 +1,3 @@
+%~d0
+ cd %~dp0
+ java -Xms512M -Xmx1524M -cp ../lib/advancedPersistentLookupLib-1.0.jar;../lib/commons-collections-3.2.jar;../lib/dom4j-1.6.1.jar;../lib/jboss-serialization.jar;../lib/log4j-1.2.15.jar;../lib/StatusListener29.jar;../lib/talendcsv.jar;../lib/talend_file_enhanced_20070724.jar;../lib/trove.jar;../lib/systemRoutines.jar;../lib/userRoutines.jar;.;p21_erweiterung_2010_0_1.jar;icd_1_0_1.jar;drg_1_0_1.jar;fab_1_0_1.jar;ops_1_0_1.jar; tos.p21_erweiterung_2010_0_1.P21_ERWEITERUNG_2010 --context=Default %* 

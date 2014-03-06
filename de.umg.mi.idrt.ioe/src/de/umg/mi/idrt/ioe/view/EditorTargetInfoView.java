@@ -241,6 +241,7 @@ public class EditorTargetInfoView extends ViewPart {
 						else if (column.equalsIgnoreCase("c_metadataxml")) {//(row == 7) { //METADATAXML
 							final Text text = new Text(infoTable, SWT.NONE);
 							text.setForeground(item.getForeground());
+							if (treeNode.getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML)!=null)
 							if (!treeNode.getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML).equals("null"))
 								text.setText(treeNode.getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML));
 							else
@@ -439,7 +440,7 @@ C_SYMBOL
 		addColumItem(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE,true,row++);
 		addColumItem(Resource.I2B2.NODE.TARGET.C_OPERATOR,true,row++);
 		addColumItem(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,true,row++);
-		addColumItem("TREE_LEVEL",true,row++);
+		addColumItem("TREE_PATHLEVEL",true,row++);
 		addColumItem("TREE_PATH",true,row++);
 	}
 

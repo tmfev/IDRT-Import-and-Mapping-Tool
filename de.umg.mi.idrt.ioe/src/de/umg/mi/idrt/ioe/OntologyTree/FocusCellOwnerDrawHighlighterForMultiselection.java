@@ -69,13 +69,13 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
     	Device dev = new Device() {
 			
 			@Override
-			public void internal_dispose_GC(int hDC, GCData data) {
+			public void internal_dispose_GC(long hDC, GCData data) {
 				// TODO Auto-generated method stub
 				
 			}
 			
 			@Override
-			public int internal_new_GC(GCData data) {
+			public long internal_new_GC(GCData data) {
 				// TODO Auto-generated method stub
 				return 0;
 			}

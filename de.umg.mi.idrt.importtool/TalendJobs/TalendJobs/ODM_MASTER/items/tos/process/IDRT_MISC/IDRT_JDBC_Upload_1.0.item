@@ -127,7 +127,7 @@
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
   </context>
   <parameters>
-    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
+    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx4096M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="320"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0"/>
@@ -3827,13 +3827,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError2"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="-14" offsetLabelY="-33" outputId="1" source="tOracleCommit_2" target="tJava_5">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tOracleCommit_2" target="tJava_10">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tOracleCommit_2" target="tJava_10">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="-14" offsetLabelY="-33" outputId="2" source="tOracleCommit_2" target="tJava_5">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleCommit_2" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tOracleCommit_2" target="tJava_12">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>

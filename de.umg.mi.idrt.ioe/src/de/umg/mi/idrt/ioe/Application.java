@@ -1,10 +1,5 @@
 package de.umg.mi.idrt.ioe;
 
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Properties;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
@@ -19,16 +14,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import au.com.bytecode.opencsv.CSVReader;
-
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
-import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
-import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
-import de.umg.mi.idrt.ioe.view.EditorStagingInfoView;
-import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.view.StatusView;
 
 /**
  * This class controls all aspects of the application's execution
@@ -38,11 +24,6 @@ import de.umg.mi.idrt.ioe.view.StatusView;
  */
 public class Application implements IApplication {
 
-	protected Properties properties = new Properties();
-
-	HashMap<String, javax.swing.JComponent> exportDialogComponents = new HashMap<String, javax.swing.JComponent>();
-
-	private Display _display;
 
 	/*
 	 * (non-Javadoc)
@@ -51,7 +32,7 @@ public class Application implements IApplication {
 	 * IApplicationContext)
 	 */
 	public Object start(IApplicationContext context) throws Exception {
-		this._display = PlatformUI.createDisplay();
+		Display display = PlatformUI.createDisplay();
 
 //		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
 
@@ -62,7 +43,7 @@ public class Application implements IApplication {
 		// _global = new Global(_i2b2ImportTool, _display);
 
 		try {
-			int returnCode = PlatformUI.createAndRunWorkbench(_display,
+			int returnCode = PlatformUI.createAndRunWorkbench(display,
 					new ApplicationWorkbenchAdvisor());
 
 			if (returnCode == PlatformUI.RETURN_RESTART)
@@ -71,7 +52,7 @@ public class Application implements IApplication {
 				return IApplication.EXIT_OK;
 
 		} finally {
-			_display.dispose();
+			display.dispose();
 		}
 	}
 

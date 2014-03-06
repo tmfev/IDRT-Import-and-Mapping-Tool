@@ -67,9 +67,6 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 //the import part of tJavaRow_7
 //import java.util.List;
 
-//the import part of tJavaRow_9
-//import java.util.List;
-
 //the import part of tJava_1
 //import java.util.List;
 
@@ -626,50 +623,6 @@ public class CSV_Patient_Data implements TalendJob {
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 		end_Hash.put("tFileOutputDelimited_6", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tUniqRow_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tUniqRow_2", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tMap_3_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tMap_3", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tJavaRow_9_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJavaRow_9", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileOutputDelimited_7_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileOutputDelimited_7", System.currentTimeMillis());
 
 		status = "failure";
 
@@ -1599,10 +1552,8 @@ public class CSV_Patient_Data implements TalendJob {
 							csvReadertFileInputDelimited_5.setLineEnd(""
 									+ rowSeparator_tFileInputDelimited_5[0]);
 
-						csvReadertFileInputDelimited_5.setQuoteChar('\"');
+						csvReadertFileInputDelimited_5.setQuoteChar('"');
 
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
 						csvReadertFileInputDelimited_5
 								.setEscapeChar(csvReadertFileInputDelimited_5
 										.getQuoteChar());
@@ -1665,10 +1616,8 @@ public class CSV_Patient_Data implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_5[0]);
 
-							csvReadertFileInputDelimited_5.setQuoteChar('\"');
+							csvReadertFileInputDelimited_5.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_5
 									.setEscapeChar(csvReadertFileInputDelimited_5
 											.getQuoteChar());
@@ -2676,1028 +2625,6 @@ public class CSV_Patient_Data implements TalendJob {
 		}
 
 		globalMap.put("tJava_2_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row13Struct implements
-			routines.system.IPersistableRow<row13Struct> {
-		final static byte[] commonByteArrayLock_TOS_CSV_Patient_Data = new byte[0];
-		static byte[] commonByteArray_TOS_CSV_Patient_Data = new byte[0];
-
-		public Integer HLEVEL;
-
-		public Integer getHLEVEL() {
-			return this.HLEVEL;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String Path;
-
-		public String getPath() {
-			return this.Path;
-		}
-
-		public String DataType;
-
-		public String getDataType() {
-			return this.DataType;
-		}
-
-		public java.util.Date Update_Date;
-
-		public java.util.Date getUpdate_Date() {
-			return this.Update_Date;
-		}
-
-		public java.util.Date Import_Date;
-
-		public java.util.Date getImport_Date() {
-			return this.Import_Date;
-		}
-
-		public java.util.Date Download_Date;
-
-		public java.util.Date getDownload_Date() {
-			return this.Download_Date;
-		}
-
-		public String PathID;
-
-		public String getPathID() {
-			return this.PathID;
-		}
-
-		public String visual;
-
-		public String getVisual() {
-			return this.visual;
-		}
-
-		public String codeList;
-
-		public String getCodeList() {
-			return this.codeList;
-		}
-
-		public String source;
-
-		public String getSource() {
-			return this.source;
-		}
-
-		public String xml;
-
-		public String getXml() {
-			return this.xml;
-		}
-
-		public String m_applied_path;
-
-		public String getM_applied_path() {
-			return this.m_applied_path;
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_CSV_Patient_Data.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_CSV_Patient_Data.length == 0) {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[1024];
-					} else {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_CSV_Patient_Data, 0, length);
-				strReturn = new String(commonByteArray_TOS_CSV_Patient_Data, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_CSV_Patient_Data) {
-
-				try {
-
-					int length = 0;
-
-					this.HLEVEL = readInteger(dis);
-
-					this.Name = readString(dis);
-
-					this.Path = readString(dis);
-
-					this.DataType = readString(dis);
-
-					this.Update_Date = readDate(dis);
-
-					this.Import_Date = readDate(dis);
-
-					this.Download_Date = readDate(dis);
-
-					this.PathID = readString(dis);
-
-					this.visual = readString(dis);
-
-					this.codeList = readString(dis);
-
-					this.source = readString(dis);
-
-					this.xml = readString(dis);
-
-					this.m_applied_path = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.HLEVEL, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.Path, dos);
-
-				// String
-
-				writeString(this.DataType, dos);
-
-				// java.util.Date
-
-				writeDate(this.Update_Date, dos);
-
-				// java.util.Date
-
-				writeDate(this.Import_Date, dos);
-
-				// java.util.Date
-
-				writeDate(this.Download_Date, dos);
-
-				// String
-
-				writeString(this.PathID, dos);
-
-				// String
-
-				writeString(this.visual, dos);
-
-				// String
-
-				writeString(this.codeList, dos);
-
-				// String
-
-				writeString(this.source, dos);
-
-				// String
-
-				writeString(this.xml, dos);
-
-				// String
-
-				writeString(this.m_applied_path, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
-			sb.append(",Name=" + Name);
-			sb.append(",Path=" + Path);
-			sb.append(",DataType=" + DataType);
-			sb.append(",Update_Date=" + String.valueOf(Update_Date));
-			sb.append(",Import_Date=" + String.valueOf(Import_Date));
-			sb.append(",Download_Date=" + String.valueOf(Download_Date));
-			sb.append(",PathID=" + PathID);
-			sb.append(",visual=" + visual);
-			sb.append(",codeList=" + codeList);
-			sb.append(",source=" + source);
-			sb.append(",xml=" + xml);
-			sb.append(",m_applied_path=" + m_applied_path);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row13Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class asddStruct implements
-			routines.system.IPersistableRow<asddStruct> {
-		final static byte[] commonByteArrayLock_TOS_CSV_Patient_Data = new byte[0];
-		static byte[] commonByteArray_TOS_CSV_Patient_Data = new byte[0];
-
-		public Integer HLEVEL;
-
-		public Integer getHLEVEL() {
-			return this.HLEVEL;
-		}
-
-		public String Name;
-
-		public String getName() {
-			return this.Name;
-		}
-
-		public String Path;
-
-		public String getPath() {
-			return this.Path;
-		}
-
-		public String DataType;
-
-		public String getDataType() {
-			return this.DataType;
-		}
-
-		public java.util.Date Update_Date;
-
-		public java.util.Date getUpdate_Date() {
-			return this.Update_Date;
-		}
-
-		public java.util.Date Import_Date;
-
-		public java.util.Date getImport_Date() {
-			return this.Import_Date;
-		}
-
-		public java.util.Date Download_Date;
-
-		public java.util.Date getDownload_Date() {
-			return this.Download_Date;
-		}
-
-		public String PathID;
-
-		public String getPathID() {
-			return this.PathID;
-		}
-
-		public String visual;
-
-		public String getVisual() {
-			return this.visual;
-		}
-
-		public String codeList;
-
-		public String getCodeList() {
-			return this.codeList;
-		}
-
-		public String source;
-
-		public String getSource() {
-			return this.source;
-		}
-
-		public String xml;
-
-		public String getXml() {
-			return this.xml;
-		}
-
-		public String m_applied_path;
-
-		public String getM_applied_path() {
-			return this.m_applied_path;
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_CSV_Patient_Data.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_CSV_Patient_Data.length == 0) {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[1024];
-					} else {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_CSV_Patient_Data, 0, length);
-				strReturn = new String(commonByteArray_TOS_CSV_Patient_Data, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_CSV_Patient_Data) {
-
-				try {
-
-					int length = 0;
-
-					this.HLEVEL = readInteger(dis);
-
-					this.Name = readString(dis);
-
-					this.Path = readString(dis);
-
-					this.DataType = readString(dis);
-
-					this.Update_Date = readDate(dis);
-
-					this.Import_Date = readDate(dis);
-
-					this.Download_Date = readDate(dis);
-
-					this.PathID = readString(dis);
-
-					this.visual = readString(dis);
-
-					this.codeList = readString(dis);
-
-					this.source = readString(dis);
-
-					this.xml = readString(dis);
-
-					this.m_applied_path = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.HLEVEL, dos);
-
-				// String
-
-				writeString(this.Name, dos);
-
-				// String
-
-				writeString(this.Path, dos);
-
-				// String
-
-				writeString(this.DataType, dos);
-
-				// java.util.Date
-
-				writeDate(this.Update_Date, dos);
-
-				// java.util.Date
-
-				writeDate(this.Import_Date, dos);
-
-				// java.util.Date
-
-				writeDate(this.Download_Date, dos);
-
-				// String
-
-				writeString(this.PathID, dos);
-
-				// String
-
-				writeString(this.visual, dos);
-
-				// String
-
-				writeString(this.codeList, dos);
-
-				// String
-
-				writeString(this.source, dos);
-
-				// String
-
-				writeString(this.xml, dos);
-
-				// String
-
-				writeString(this.m_applied_path, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
-			sb.append(",Name=" + Name);
-			sb.append(",Path=" + Path);
-			sb.append(",DataType=" + DataType);
-			sb.append(",Update_Date=" + String.valueOf(Update_Date));
-			sb.append(",Import_Date=" + String.valueOf(Import_Date));
-			sb.append(",Download_Date=" + String.valueOf(Download_Date));
-			sb.append(",PathID=" + PathID);
-			sb.append(",visual=" + visual);
-			sb.append(",codeList=" + codeList);
-			sb.append(",source=" + source);
-			sb.append(",xml=" + xml);
-			sb.append(",m_applied_path=" + m_applied_path);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(asddStruct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class row14Struct implements
-			routines.system.IPersistableRow<row14Struct> {
-		final static byte[] commonByteArrayLock_TOS_CSV_Patient_Data = new byte[0];
-		static byte[] commonByteArray_TOS_CSV_Patient_Data = new byte[0];
-
-		public String PatientID;
-
-		public String getPatientID() {
-			return this.PatientID;
-		}
-
-		public String EncounterID;
-
-		public String getEncounterID() {
-			return this.EncounterID;
-		}
-
-		public java.util.Date ImportDate;
-
-		public java.util.Date getImportDate() {
-			return this.ImportDate;
-		}
-
-		public java.util.Date UpdateDate;
-
-		public java.util.Date getUpdateDate() {
-			return this.UpdateDate;
-		}
-
-		public java.util.Date DownloadDate;
-
-		public java.util.Date getDownloadDate() {
-			return this.DownloadDate;
-		}
-
-		public String Item;
-
-		public String getItem() {
-			return this.Item;
-		}
-
-		public String Value;
-
-		public String getValue() {
-			return this.Value;
-		}
-
-		public String NiceName;
-
-		public String getNiceName() {
-			return this.NiceName;
-		}
-
-		public String DataType;
-
-		public String getDataType() {
-			return this.DataType;
-		}
-
-		public String uniqueID;
-
-		public String getUniqueID() {
-			return this.uniqueID;
-		}
-
-		public String Path;
-
-		public String getPath() {
-			return this.Path;
-		}
-
-		public String PathID;
-
-		public String getPathID() {
-			return this.PathID;
-		}
-
-		public java.util.Date StartDate;
-
-		public java.util.Date getStartDate() {
-			return this.StartDate;
-		}
-
-		public java.util.Date EndDate;
-
-		public java.util.Date getEndDate() {
-			return this.EndDate;
-		}
-
-		public String SourceSystem;
-
-		public String getSourceSystem() {
-			return this.SourceSystem;
-		}
-
-		public String instanceNum;
-
-		public String getInstanceNum() {
-			return this.instanceNum;
-		}
-
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
-		public String sic;
-
-		public String getSic() {
-			return this.sic;
-		}
-
-		public String m_applied_path;
-
-		public String getM_applied_path() {
-			return this.m_applied_path;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_CSV_Patient_Data.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_CSV_Patient_Data.length == 0) {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[1024];
-					} else {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_CSV_Patient_Data, 0, length);
-				strReturn = new String(commonByteArray_TOS_CSV_Patient_Data, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_CSV_Patient_Data) {
-
-				try {
-
-					int length = 0;
-
-					this.PatientID = readString(dis);
-
-					this.EncounterID = readString(dis);
-
-					this.ImportDate = readDate(dis);
-
-					this.UpdateDate = readDate(dis);
-
-					this.DownloadDate = readDate(dis);
-
-					this.Item = readString(dis);
-
-					this.Value = readString(dis);
-
-					this.NiceName = readString(dis);
-
-					this.DataType = readString(dis);
-
-					this.uniqueID = readString(dis);
-
-					this.Path = readString(dis);
-
-					this.PathID = readString(dis);
-
-					this.StartDate = readDate(dis);
-
-					this.EndDate = readDate(dis);
-
-					this.SourceSystem = readString(dis);
-
-					this.instanceNum = readString(dis);
-
-					this.modifierType = readString(dis);
-
-					this.sic = readString(dis);
-
-					this.m_applied_path = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.PatientID, dos);
-
-				// String
-
-				writeString(this.EncounterID, dos);
-
-				// java.util.Date
-
-				writeDate(this.ImportDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.UpdateDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.DownloadDate, dos);
-
-				// String
-
-				writeString(this.Item, dos);
-
-				// String
-
-				writeString(this.Value, dos);
-
-				// String
-
-				writeString(this.NiceName, dos);
-
-				// String
-
-				writeString(this.DataType, dos);
-
-				// String
-
-				writeString(this.uniqueID, dos);
-
-				// String
-
-				writeString(this.Path, dos);
-
-				// String
-
-				writeString(this.PathID, dos);
-
-				// java.util.Date
-
-				writeDate(this.StartDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.EndDate, dos);
-
-				// String
-
-				writeString(this.SourceSystem, dos);
-
-				// String
-
-				writeString(this.instanceNum, dos);
-
-				// String
-
-				writeString(this.modifierType, dos);
-
-				// String
-
-				writeString(this.sic, dos);
-
-				// String
-
-				writeString(this.m_applied_path, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("PatientID=" + PatientID);
-			sb.append(",EncounterID=" + EncounterID);
-			sb.append(",ImportDate=" + String.valueOf(ImportDate));
-			sb.append(",UpdateDate=" + String.valueOf(UpdateDate));
-			sb.append(",DownloadDate=" + String.valueOf(DownloadDate));
-			sb.append(",Item=" + Item);
-			sb.append(",Value=" + Value);
-			sb.append(",NiceName=" + NiceName);
-			sb.append(",DataType=" + DataType);
-			sb.append(",uniqueID=" + uniqueID);
-			sb.append(",Path=" + Path);
-			sb.append(",PathID=" + PathID);
-			sb.append(",StartDate=" + String.valueOf(StartDate));
-			sb.append(",EndDate=" + String.valueOf(EndDate));
-			sb.append(",SourceSystem=" + SourceSystem);
-			sb.append(",instanceNum=" + instanceNum);
-			sb.append(",modifierType=" + modifierType);
-			sb.append(",sic=" + sic);
-			sb.append(",m_applied_path=" + m_applied_path);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row14Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
 	}
 
 	public static class row8Struct implements
@@ -4767,12 +3694,6 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.source;
 		}
 
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
 		public String sic;
 
 		public String getSic() {
@@ -4881,8 +3802,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.source = readString(dis);
 
-					this.modifierType = readString(dis);
-
 					this.sic = readString(dis);
 
 					this.m_applied_path = readString(dis);
@@ -4965,10 +3884,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 				// String
 
-				writeString(this.modifierType, dos);
-
-				// String
-
 				writeString(this.sic, dos);
 
 				// String
@@ -5002,7 +3917,6 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(",startDate=" + String.valueOf(startDate));
 			sb.append(",endDate=" + String.valueOf(endDate));
 			sb.append(",source=" + source);
-			sb.append(",modifierType=" + modifierType);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
 			sb.append("]");
@@ -6010,384 +4924,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 	}
 
-	public static class out1Struct implements
-			routines.system.IPersistableRow<out1Struct> {
-		final static byte[] commonByteArrayLock_TOS_CSV_Patient_Data = new byte[0];
-		static byte[] commonByteArray_TOS_CSV_Patient_Data = new byte[0];
-
-		public String PatientID;
-
-		public String getPatientID() {
-			return this.PatientID;
-		}
-
-		public String EncounterID;
-
-		public String getEncounterID() {
-			return this.EncounterID;
-		}
-
-		public java.util.Date ImportDate;
-
-		public java.util.Date getImportDate() {
-			return this.ImportDate;
-		}
-
-		public java.util.Date UpdateDate;
-
-		public java.util.Date getUpdateDate() {
-			return this.UpdateDate;
-		}
-
-		public java.util.Date DownloadDate;
-
-		public java.util.Date getDownloadDate() {
-			return this.DownloadDate;
-		}
-
-		public String Item;
-
-		public String getItem() {
-			return this.Item;
-		}
-
-		public String Value;
-
-		public String getValue() {
-			return this.Value;
-		}
-
-		public String NiceName;
-
-		public String getNiceName() {
-			return this.NiceName;
-		}
-
-		public String DataType;
-
-		public String getDataType() {
-			return this.DataType;
-		}
-
-		public String uniqueID;
-
-		public String getUniqueID() {
-			return this.uniqueID;
-		}
-
-		public String Path;
-
-		public String getPath() {
-			return this.Path;
-		}
-
-		public String PathID;
-
-		public String getPathID() {
-			return this.PathID;
-		}
-
-		public java.util.Date StartDate;
-
-		public java.util.Date getStartDate() {
-			return this.StartDate;
-		}
-
-		public java.util.Date EndDate;
-
-		public java.util.Date getEndDate() {
-			return this.EndDate;
-		}
-
-		public String SourceSystem;
-
-		public String getSourceSystem() {
-			return this.SourceSystem;
-		}
-
-		public String instanceNum;
-
-		public String getInstanceNum() {
-			return this.instanceNum;
-		}
-
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
-		public String sic;
-
-		public String getSic() {
-			return this.sic;
-		}
-
-		public String m_applied_path;
-
-		public String getM_applied_path() {
-			return this.m_applied_path;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_CSV_Patient_Data.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_CSV_Patient_Data.length == 0) {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[1024];
-					} else {
-						commonByteArray_TOS_CSV_Patient_Data = new byte[2 * length];
-					}
-				}
-				dis.readFully(commonByteArray_TOS_CSV_Patient_Data, 0, length);
-				strReturn = new String(commonByteArray_TOS_CSV_Patient_Data, 0,
-						length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_CSV_Patient_Data) {
-
-				try {
-
-					int length = 0;
-
-					this.PatientID = readString(dis);
-
-					this.EncounterID = readString(dis);
-
-					this.ImportDate = readDate(dis);
-
-					this.UpdateDate = readDate(dis);
-
-					this.DownloadDate = readDate(dis);
-
-					this.Item = readString(dis);
-
-					this.Value = readString(dis);
-
-					this.NiceName = readString(dis);
-
-					this.DataType = readString(dis);
-
-					this.uniqueID = readString(dis);
-
-					this.Path = readString(dis);
-
-					this.PathID = readString(dis);
-
-					this.StartDate = readDate(dis);
-
-					this.EndDate = readDate(dis);
-
-					this.SourceSystem = readString(dis);
-
-					this.instanceNum = readString(dis);
-
-					this.modifierType = readString(dis);
-
-					this.sic = readString(dis);
-
-					this.m_applied_path = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// String
-
-				writeString(this.PatientID, dos);
-
-				// String
-
-				writeString(this.EncounterID, dos);
-
-				// java.util.Date
-
-				writeDate(this.ImportDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.UpdateDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.DownloadDate, dos);
-
-				// String
-
-				writeString(this.Item, dos);
-
-				// String
-
-				writeString(this.Value, dos);
-
-				// String
-
-				writeString(this.NiceName, dos);
-
-				// String
-
-				writeString(this.DataType, dos);
-
-				// String
-
-				writeString(this.uniqueID, dos);
-
-				// String
-
-				writeString(this.Path, dos);
-
-				// String
-
-				writeString(this.PathID, dos);
-
-				// java.util.Date
-
-				writeDate(this.StartDate, dos);
-
-				// java.util.Date
-
-				writeDate(this.EndDate, dos);
-
-				// String
-
-				writeString(this.SourceSystem, dos);
-
-				// String
-
-				writeString(this.instanceNum, dos);
-
-				// String
-
-				writeString(this.modifierType, dos);
-
-				// String
-
-				writeString(this.sic, dos);
-
-				// String
-
-				writeString(this.m_applied_path, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("PatientID=" + PatientID);
-			sb.append(",EncounterID=" + EncounterID);
-			sb.append(",ImportDate=" + String.valueOf(ImportDate));
-			sb.append(",UpdateDate=" + String.valueOf(UpdateDate));
-			sb.append(",DownloadDate=" + String.valueOf(DownloadDate));
-			sb.append(",Item=" + Item);
-			sb.append(",Value=" + Value);
-			sb.append(",NiceName=" + NiceName);
-			sb.append(",DataType=" + DataType);
-			sb.append(",uniqueID=" + uniqueID);
-			sb.append(",Path=" + Path);
-			sb.append(",PathID=" + PathID);
-			sb.append(",StartDate=" + String.valueOf(StartDate));
-			sb.append(",EndDate=" + String.valueOf(EndDate));
-			sb.append(",SourceSystem=" + SourceSystem);
-			sb.append(",instanceNum=" + instanceNum);
-			sb.append(",modifierType=" + modifierType);
-			sb.append(",sic=" + sic);
-			sb.append(",m_applied_path=" + m_applied_path);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(out1Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
 	public static class fromPatientStruct implements
 			routines.system.IPersistableRow<fromPatientStruct> {
 		final static byte[] commonByteArrayLock_TOS_CSV_Patient_Data = new byte[0];
@@ -6489,12 +5025,6 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.instanceNum;
 		}
 
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
 		public String sic;
 
 		public String getSic() {
@@ -6603,8 +5133,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.instanceNum = readString(dis);
 
-					this.modifierType = readString(dis);
-
 					this.sic = readString(dis);
 
 					this.m_applied_path = readString(dis);
@@ -6687,10 +5215,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 				// String
 
-				writeString(this.modifierType, dos);
-
-				// String
-
 				writeString(this.sic, dos);
 
 				// String
@@ -6724,7 +5248,6 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(",EndDate=" + String.valueOf(EndDate));
 			sb.append(",SourceSystem=" + SourceSystem);
 			sb.append(",instanceNum=" + instanceNum);
-			sb.append(",modifierType=" + modifierType);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
 			sb.append("]");
@@ -6867,12 +5390,6 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.instanceNum;
 		}
 
-		public String modifierType;
-
-		public String getModifierType() {
-			return this.modifierType;
-		}
-
 		public String sic;
 
 		public String getSic() {
@@ -6981,8 +5498,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.instanceNum = readString(dis);
 
-					this.modifierType = readString(dis);
-
 					this.sic = readString(dis);
 
 					this.m_applied_path = readString(dis);
@@ -7065,10 +5580,6 @@ public class CSV_Patient_Data implements TalendJob {
 
 				// String
 
-				writeString(this.modifierType, dos);
-
-				// String
-
 				writeString(this.sic, dos);
 
 				// String
@@ -7102,7 +5613,6 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(",EndDate=" + String.valueOf(EndDate));
 			sb.append(",SourceSystem=" + SourceSystem);
 			sb.append(",instanceNum=" + instanceNum);
-			sb.append(",modifierType=" + modifierType);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
 			sb.append("]");
@@ -7907,10 +6417,6 @@ public class CSV_Patient_Data implements TalendJob {
 				row4Struct row4 = new row4Struct();
 				to_ont_dateStruct to_ont_date = new to_ont_dateStruct();
 				row8Struct row8 = new row8Struct();
-				out1Struct out1 = new out1Struct();
-				row14Struct row14 = new row14Struct();
-				asddStruct asdd = new asddStruct();
-				row13Struct row13 = new row13Struct();
 
 				/**
 				 * [tFileOutputDelimited_1 begin ] start
@@ -7969,7 +6475,7 @@ public class CSV_Patient_Data implements TalendJob {
 					isFileGenerated_tFileOutputDelimited_1 = false;
 				}
 
-				String[] headColutFileOutputDelimited_1 = new String[19];
+				String[] headColutFileOutputDelimited_1 = new String[18];
 				class CSVBasicSet_tFileOutputDelimited_1 {
 					private char field_Delim;
 					private char row_Delim;
@@ -8146,11 +6652,9 @@ public class CSV_Patient_Data implements TalendJob {
 
 						headColutFileOutputDelimited_1[15] = "source";
 
-						headColutFileOutputDelimited_1[16] = "modifierType";
+						headColutFileOutputDelimited_1[16] = "sic";
 
-						headColutFileOutputDelimited_1[17] = "sic";
-
-						headColutFileOutputDelimited_1[18] = "m_applied_path";
+						headColutFileOutputDelimited_1[17] = "m_applied_path";
 
 						CsvWritertFileOutputDelimited_1
 								.writeNext(headColutFileOutputDelimited_1);
@@ -8899,534 +7403,234 @@ public class CSV_Patient_Data implements TalendJob {
 								 */
 
 								/**
-								 * [tFileOutputDelimited_7 begin ] start
+								 * [tMap_2 begin ] start
 								 */
 
-								ok_Hash.put("tFileOutputDelimited_7", false);
-								start_Hash.put("tFileOutputDelimited_7",
+								ok_Hash.put("tMap_2", false);
+								start_Hash.put("tMap_2",
 										System.currentTimeMillis());
-								currentComponent = "tFileOutputDelimited_7";
+								currentComponent = "tMap_2";
 
-								int tos_count_tFileOutputDelimited_7 = 0;
+								int tos_count_tMap_2 = 0;
 
-								String fileName_tFileOutputDelimited_7 = "";
-								fileName_tFileOutputDelimited_7 = (new java.io.File(
-										((String) globalMap
-												.get("tCreateTemporaryFile_5_FILEPATH"))))
-										.getAbsolutePath().replace("\\", "/");
-								String fullName_tFileOutputDelimited_7 = null;
-								String extension_tFileOutputDelimited_7 = null;
-								String directory_tFileOutputDelimited_7 = null;
-								if ((fileName_tFileOutputDelimited_7
-										.indexOf("/") != -1)) {
-									if (fileName_tFileOutputDelimited_7
-											.lastIndexOf(".") < fileName_tFileOutputDelimited_7
-											.lastIndexOf("/")) {
-										fullName_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7;
-										extension_tFileOutputDelimited_7 = "";
-									} else {
-										fullName_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7
-												.substring(
-														0,
-														fileName_tFileOutputDelimited_7
-																.lastIndexOf("."));
-										extension_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7
-												.substring(fileName_tFileOutputDelimited_7
-														.lastIndexOf("."));
-									}
-									directory_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7
-											.substring(0,
-													fileName_tFileOutputDelimited_7
-															.lastIndexOf("/"));
+								// ###############################
+								// # Lookup's keys initialization
+								// ###############################
+
+								// ###############################
+								// # Vars initialization
+								class Var__tMap_2__Struct {
+									boolean var1;
+									boolean var3;
+									boolean var2;
+								}
+								Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
+								// ###############################
+
+								// ###############################
+								// # Outputs initialization
+								toDataStruct toData_tmp = new toDataStruct();
+								to_ontStruct to_ont_tmp = new to_ontStruct();
+								to_ont_xmlStruct to_ont_xml_tmp = new to_ont_xmlStruct();
+								to_ont_dateStruct to_ont_date_tmp = new to_ont_dateStruct();
+								// ###############################
+
+								/**
+								 * [tMap_2 begin ] stop
+								 */
+
+								/**
+								 * [tJavaRow_1 begin ] start
+								 */
+
+								ok_Hash.put("tJavaRow_1", false);
+								start_Hash.put("tJavaRow_1",
+										System.currentTimeMillis());
+								currentComponent = "tJavaRow_1";
+
+								int tos_count_tJavaRow_1 = 0;
+
+								int nb_line_tJavaRow_1 = 0;
+
+								/**
+								 * [tJavaRow_1 begin ] stop
+								 */
+
+								/**
+								 * [tMap_4 begin ] start
+								 */
+
+								ok_Hash.put("tMap_4", false);
+								start_Hash.put("tMap_4",
+										System.currentTimeMillis());
+								currentComponent = "tMap_4";
+
+								int tos_count_tMap_4 = 0;
+
+								// ###############################
+								// # Lookup's keys initialization
+
+								org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct> tHash_Lookup_fromOnt = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct>) globalMap
+										.get("tHash_Lookup_fromOnt"));
+
+								fromOntStruct fromOntHashKey = new fromOntStruct();
+								fromOntStruct fromOntDefault = new fromOntStruct();
+								// ###############################
+
+								// ###############################
+								// # Vars initialization
+								class Var__tMap_4__Struct {
+								}
+								Var__tMap_4__Struct Var__tMap_4 = new Var__tMap_4__Struct();
+								// ###############################
+
+								// ###############################
+								// # Outputs initialization
+								asdStruct asd_tmp = new asdStruct();
+								// ###############################
+
+								/**
+								 * [tMap_4 begin ] stop
+								 */
+
+								/**
+								 * [tFileInputDelimited_1 begin ] start
+								 */
+
+								ok_Hash.put("tFileInputDelimited_1", false);
+								start_Hash.put("tFileInputDelimited_1",
+										System.currentTimeMillis());
+								currentComponent = "tFileInputDelimited_1";
+
+								int tos_count_tFileInputDelimited_1 = 0;
+
+								int nb_line_tFileInputDelimited_1 = 0;
+								int footer_tFileInputDelimited_1 = 0;
+								int totalLinetFileInputDelimited_1 = 0;
+								int limittFileInputDelimited_1 = -1;
+								int lastLinetFileInputDelimited_1 = -1;
+
+								char fieldSeparator_tFileInputDelimited_1[] = null;
+
+								// support passing value (property: Field
+								// Separator) by 'context.fs' or
+								// 'globalMap.get("fs")'.
+								if (((String) "\t").length() > 0) {
+									fieldSeparator_tFileInputDelimited_1 = ((String) "\t")
+											.toCharArray();
 								} else {
-									if (fileName_tFileOutputDelimited_7
-											.lastIndexOf(".") != -1) {
-										fullName_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7
-												.substring(
-														0,
-														fileName_tFileOutputDelimited_7
-																.lastIndexOf("."));
-										extension_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7
-												.substring(fileName_tFileOutputDelimited_7
-														.lastIndexOf("."));
-									} else {
-										fullName_tFileOutputDelimited_7 = fileName_tFileOutputDelimited_7;
-										extension_tFileOutputDelimited_7 = "";
-									}
-									directory_tFileOutputDelimited_7 = "";
-								}
-								boolean isFileGenerated_tFileOutputDelimited_7 = true;
-								java.io.File filetFileOutputDelimited_7 = new java.io.File(
-										fileName_tFileOutputDelimited_7);
-								globalMap.put(
-										"tFileOutputDelimited_7_FILE_NAME",
-										fileName_tFileOutputDelimited_7);
-								if (filetFileOutputDelimited_7.exists()) {
-									isFileGenerated_tFileOutputDelimited_7 = false;
+									throw new IllegalArgumentException(
+											"Field Separator must be assigned a char.");
 								}
 
-								String[] headColutFileOutputDelimited_7 = new String[13];
-								class CSVBasicSet_tFileOutputDelimited_7 {
-									private char field_Delim;
-									private char row_Delim;
-									private char escape;
-									private char textEnclosure;
-									private boolean useCRLFRecordDelimiter;
+								char rowSeparator_tFileInputDelimited_1[] = null;
 
-									public boolean isUseCRLFRecordDelimiter() {
-										return useCRLFRecordDelimiter;
-									}
-
-									public void setFieldSeparator(
-											String fieldSep)
-											throws IllegalArgumentException {
-										char field_Delim_tFileOutputDelimited_7[] = null;
-
-										// support passing value (property:
-										// Field Separator) by 'context.fs' or
-										// 'globalMap.get("fs")'.
-										if (fieldSep.length() > 0) {
-											field_Delim_tFileOutputDelimited_7 = fieldSep
-													.toCharArray();
-										} else {
-											throw new IllegalArgumentException(
-													"Field Separator must be assigned a char.");
-										}
-										this.field_Delim = field_Delim_tFileOutputDelimited_7[0];
-									}
-
-									public char getFieldDelim() {
-										if (this.field_Delim == 0) {
-											setFieldSeparator("\t");
-										}
-										return this.field_Delim;
-									}
-
-									public void setRowSeparator(String rowSep) {
-										if ("\r\n".equals(rowSep)) {
-											useCRLFRecordDelimiter = true;
-											return;
-										}
-										char row_DelimtFileOutputDelimited_7[] = null;
-
-										// support passing value (property: Row
-										// Separator) by 'context.rs' or
-										// 'globalMap.get("rs")'.
-										if (rowSep.length() > 0) {
-											row_DelimtFileOutputDelimited_7 = rowSep
-													.toCharArray();
-										} else {
-											throw new IllegalArgumentException(
-													"Row Separator must be assigned a char.");
-										}
-										this.row_Delim = row_DelimtFileOutputDelimited_7[0];
-									}
-
-									public char getRowDelim() {
-										if (this.row_Delim == 0) {
-											setRowSeparator("\n");
-										}
-										return this.row_Delim;
-									}
-
-									public void setEscapeAndTextEnclosure(
-											String strEscape,
-											String strTextEnclosure)
-											throws IllegalArgumentException {
-										if (strEscape.length() <= 0) {
-											throw new IllegalArgumentException(
-													"Escape Char must be assigned a char.");
-										}
-
-										if ("".equals(strTextEnclosure))
-											strTextEnclosure = "\0";
-										char textEnclosure_tFileOutputDelimited_7[] = null;
-
-										if (strTextEnclosure.length() > 0) {
-											textEnclosure_tFileOutputDelimited_7 = strTextEnclosure
-													.toCharArray();
-										} else {
-											throw new IllegalArgumentException(
-													"Text Enclosure must be assigned a char.");
-										}
-
-										this.textEnclosure = textEnclosure_tFileOutputDelimited_7[0];
-
-										if (("\\").equals(strEscape)) {
-											this.escape = '\\';
-										} else if (strEscape
-												.equals(strTextEnclosure)) {
-											this.escape = this.textEnclosure;
-										} else {
-											// the default escape mode is double
-											// escape
-											this.escape = this.textEnclosure;
-										}
-
-									}
-
-									public char getEscapeChar() {
-										return (char) this.escape;
-									}
-
-									public char getTextEnclosure() {
-										return this.textEnclosure;
-									}
+								// support passing value (property: Row
+								// Separator) by 'context.rs' or
+								// 'globalMap.get("rs")'.
+								if (((String) "\n").length() > 0) {
+									rowSeparator_tFileInputDelimited_1 = ((String) "\n")
+											.toCharArray();
+								} else {
+									throw new IllegalArgumentException(
+											"Row Separator must be assigned a char.");
 								}
 
-								int nb_line_tFileOutputDelimited_7 = 0;
-								int splitEvery_tFileOutputDelimited_7 = 1000;
-								int splitedFileNo_tFileOutputDelimited_7 = 0;
-								int currentRow_tFileOutputDelimited_7 = 0;
+								Object filename_tFileInputDelimited_1 = /**
+								 * Start
+								 * field tFileInputDelimited_1:FILENAME
+								 */
+								context.folderMain + context.folderOutput
+										+ context.output/**
+								 * End field
+								 * tFileInputDelimited_1:FILENAME
+								 */
+								;
+								com.talend.csv.CSVReader csvReadertFileInputDelimited_1 = null;
 
-								CSVBasicSet_tFileOutputDelimited_7 csvSettings_tFileOutputDelimited_7 = new CSVBasicSet_tFileOutputDelimited_7();
-								csvSettings_tFileOutputDelimited_7
-										.setFieldSeparator("\t");
-								csvSettings_tFileOutputDelimited_7
-										.setRowSeparator("\n");
-								csvSettings_tFileOutputDelimited_7
-										.setEscapeAndTextEnclosure("\"", "\"");
-								// create directory only if not exists
-								if (directory_tFileOutputDelimited_7 != null
-										&& directory_tFileOutputDelimited_7
-												.trim().length() != 0) {
-									java.io.File dir_tFileOutputDelimited_7 = new java.io.File(
-											directory_tFileOutputDelimited_7);
-									if (!dir_tFileOutputDelimited_7.exists()) {
-										dir_tFileOutputDelimited_7.mkdirs();
-									}
-								}
-								com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_7 = null;
 								try {
-									CsvWritertFileOutputDelimited_7 = new com.talend.csv.CSVWriter(
-											new java.io.BufferedWriter(
-													new java.io.OutputStreamWriter(
-															new java.io.FileOutputStream(
-																	fileName_tFileOutputDelimited_7,
-																	true),
-															"ISO-8859-15")));
-									CsvWritertFileOutputDelimited_7
-											.setSeparator(csvSettings_tFileOutputDelimited_7
-													.getFieldDelim());
 
-									if (!csvSettings_tFileOutputDelimited_7
-											.isUseCRLFRecordDelimiter()
-											&& csvSettings_tFileOutputDelimited_7
-													.getRowDelim() != '\r'
-											&& csvSettings_tFileOutputDelimited_7
-													.getRowDelim() != '\n') {
-										CsvWritertFileOutputDelimited_7
-												.setLineEnd(""
-														+ csvSettings_tFileOutputDelimited_7
-																.getRowDelim());
-									}
+									String[] rowtFileInputDelimited_1 = null;
+									int currentLinetFileInputDelimited_1 = 0;
+									int outputLinetFileInputDelimited_1 = 0;
+									try {// TD110 begin
+										if (filename_tFileInputDelimited_1 instanceof java.io.InputStream) {
 
-									CsvWritertFileOutputDelimited_7
-											.setEscapeChar(csvSettings_tFileOutputDelimited_7
-													.getEscapeChar());
-									CsvWritertFileOutputDelimited_7
-											.setQuoteChar(csvSettings_tFileOutputDelimited_7
-													.getTextEnclosure());
-									CsvWritertFileOutputDelimited_7
-											.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
-
-									/**
-									 * [tFileOutputDelimited_7 begin ] stop
-									 */
-
-									/**
-									 * [tJavaRow_9 begin ] start
-									 */
-
-									ok_Hash.put("tJavaRow_9", false);
-									start_Hash.put("tJavaRow_9",
-											System.currentTimeMillis());
-									currentComponent = "tJavaRow_9";
-
-									int tos_count_tJavaRow_9 = 0;
-
-									int nb_line_tJavaRow_9 = 0;
-
-									/**
-									 * [tJavaRow_9 begin ] stop
-									 */
-
-									/**
-									 * [tMap_3 begin ] start
-									 */
-
-									ok_Hash.put("tMap_3", false);
-									start_Hash.put("tMap_3",
-											System.currentTimeMillis());
-									currentComponent = "tMap_3";
-
-									int tos_count_tMap_3 = 0;
-
-									// ###############################
-									// # Lookup's keys initialization
-									// ###############################
-
-									// ###############################
-									// # Vars initialization
-									class Var__tMap_3__Struct {
-									}
-									Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
-									// ###############################
-
-									// ###############################
-									// # Outputs initialization
-									asddStruct asdd_tmp = new asddStruct();
-									// ###############################
-
-									/**
-									 * [tMap_3 begin ] stop
-									 */
-
-									/**
-									 * [tUniqRow_2 begin ] start
-									 */
-
-									ok_Hash.put("tUniqRow_2", false);
-									start_Hash.put("tUniqRow_2",
-											System.currentTimeMillis());
-									currentComponent = "tUniqRow_2";
-
-									int tos_count_tUniqRow_2 = 0;
-
-									class KeyStruct_tUniqRow_2 {
-
-										private static final int DEFAULT_HASHCODE = 1;
-										private static final int PRIME = 31;
-										private int hashCode = DEFAULT_HASHCODE;
-										public boolean hashCodeDirty = true;
-
-										String PatientID;
-										String sic;
-
-										@Override
-										public int hashCode() {
-											if (this.hashCodeDirty) {
-												final int prime = PRIME;
-												int result = DEFAULT_HASHCODE;
-
-												result = prime
-														* result
-														+ ((this.PatientID == null) ? 0
-																: this.PatientID
-																		.hashCode());
-
-												result = prime
-														* result
-														+ ((this.sic == null) ? 0
-																: this.sic
-																		.hashCode());
-
-												this.hashCode = result;
-												this.hashCodeDirty = false;
+											int footer_value_tFileInputDelimited_1 = 0;
+											if (footer_value_tFileInputDelimited_1 > 0) {
+												throw new java.lang.Exception(
+														"When the input source is a stream,footer shouldn't be bigger than 0.");
 											}
-											return this.hashCode;
+
+											csvReadertFileInputDelimited_1 = new com.talend.csv.CSVReader(
+													(java.io.InputStream) filename_tFileInputDelimited_1,
+													fieldSeparator_tFileInputDelimited_1[0],
+													"ISO-8859-15");
+										} else {
+											csvReadertFileInputDelimited_1 = new com.talend.csv.CSVReader(
+													new java.io.BufferedReader(
+															new java.io.InputStreamReader(
+																	new java.io.FileInputStream(
+																			String.valueOf(filename_tFileInputDelimited_1)),
+																	"ISO-8859-15")),
+													fieldSeparator_tFileInputDelimited_1[0]);
 										}
 
-										@Override
-										public boolean equals(Object obj) {
-											if (this == obj)
-												return true;
-											if (obj == null)
-												return false;
-											if (getClass() != obj.getClass())
-												return false;
-											final KeyStruct_tUniqRow_2 other = (KeyStruct_tUniqRow_2) obj;
+										csvReadertFileInputDelimited_1
+												.setTrimWhitespace(false);
+										if ((rowSeparator_tFileInputDelimited_1[0] != '\n')
+												&& (rowSeparator_tFileInputDelimited_1[0] != '\r'))
+											csvReadertFileInputDelimited_1
+													.setLineEnd(""
+															+ rowSeparator_tFileInputDelimited_1[0]);
 
-											if (this.PatientID == null) {
-												if (other.PatientID != null)
-													return false;
-											} else if (!this.PatientID
-													.equals(other.PatientID))
-												return false;
+										csvReadertFileInputDelimited_1
+												.setQuoteChar('"');
 
-											if (this.sic == null) {
-												if (other.sic != null)
-													return false;
-											} else if (!this.sic
-													.equals(other.sic))
-												return false;
+										csvReadertFileInputDelimited_1
+												.setEscapeChar(csvReadertFileInputDelimited_1
+														.getQuoteChar());
 
-											return true;
-										}
+										if (footer_tFileInputDelimited_1 > 0) {
+											for (totalLinetFileInputDelimited_1 = 0; totalLinetFileInputDelimited_1 < 1; totalLinetFileInputDelimited_1++) {
+												csvReadertFileInputDelimited_1
+														.readNext();
+											}
+											csvReadertFileInputDelimited_1
+													.setSkipEmptyRecords(true);
+											while (csvReadertFileInputDelimited_1
+													.readNext()) {
 
-									}
+												rowtFileInputDelimited_1 = csvReadertFileInputDelimited_1
+														.getValues();
+												if (!(rowtFileInputDelimited_1.length == 1 && ("\015")
+														.equals(rowtFileInputDelimited_1[0]))) {// empty
+																								// line
+																								// when
+																								// row
+																								// separator
+																								// is
+																								// '\n'
 
-									int nb_uniques_tUniqRow_2 = 0;
-									int nb_duplicates_tUniqRow_2 = 0;
-									KeyStruct_tUniqRow_2 finder_tUniqRow_2 = new KeyStruct_tUniqRow_2();
-									java.util.Set<KeyStruct_tUniqRow_2> keystUniqRow_2 = new java.util.HashSet<KeyStruct_tUniqRow_2>();
+													totalLinetFileInputDelimited_1++;
 
-									/**
-									 * [tUniqRow_2 begin ] stop
-									 */
-
-									/**
-									 * [tMap_2 begin ] start
-									 */
-
-									ok_Hash.put("tMap_2", false);
-									start_Hash.put("tMap_2",
-											System.currentTimeMillis());
-									currentComponent = "tMap_2";
-
-									int tos_count_tMap_2 = 0;
-
-									// ###############################
-									// # Lookup's keys initialization
-									// ###############################
-
-									// ###############################
-									// # Vars initialization
-									class Var__tMap_2__Struct {
-										boolean var1;
-										boolean var3;
-										boolean var2;
-									}
-									Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
-									// ###############################
-
-									// ###############################
-									// # Outputs initialization
-									toDataStruct toData_tmp = new toDataStruct();
-									to_ontStruct to_ont_tmp = new to_ontStruct();
-									to_ont_xmlStruct to_ont_xml_tmp = new to_ont_xmlStruct();
-									to_ont_dateStruct to_ont_date_tmp = new to_ont_dateStruct();
-									out1Struct out1_tmp = new out1Struct();
-									// ###############################
-
-									/**
-									 * [tMap_2 begin ] stop
-									 */
-
-									/**
-									 * [tJavaRow_1 begin ] start
-									 */
-
-									ok_Hash.put("tJavaRow_1", false);
-									start_Hash.put("tJavaRow_1",
-											System.currentTimeMillis());
-									currentComponent = "tJavaRow_1";
-
-									int tos_count_tJavaRow_1 = 0;
-
-									int nb_line_tJavaRow_1 = 0;
-
-									/**
-									 * [tJavaRow_1 begin ] stop
-									 */
-
-									/**
-									 * [tMap_4 begin ] start
-									 */
-
-									ok_Hash.put("tMap_4", false);
-									start_Hash.put("tMap_4",
-											System.currentTimeMillis());
-									currentComponent = "tMap_4";
-
-									int tos_count_tMap_4 = 0;
-
-									// ###############################
-									// # Lookup's keys initialization
-
-									org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct> tHash_Lookup_fromOnt = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<fromOntStruct>) globalMap
-											.get("tHash_Lookup_fromOnt"));
-
-									fromOntStruct fromOntHashKey = new fromOntStruct();
-									fromOntStruct fromOntDefault = new fromOntStruct();
-									// ###############################
-
-									// ###############################
-									// # Vars initialization
-									class Var__tMap_4__Struct {
-									}
-									Var__tMap_4__Struct Var__tMap_4 = new Var__tMap_4__Struct();
-									// ###############################
-
-									// ###############################
-									// # Outputs initialization
-									asdStruct asd_tmp = new asdStruct();
-									// ###############################
-
-									/**
-									 * [tMap_4 begin ] stop
-									 */
-
-									/**
-									 * [tFileInputDelimited_1 begin ] start
-									 */
-
-									ok_Hash.put("tFileInputDelimited_1", false);
-									start_Hash.put("tFileInputDelimited_1",
-											System.currentTimeMillis());
-									currentComponent = "tFileInputDelimited_1";
-
-									int tos_count_tFileInputDelimited_1 = 0;
-
-									int nb_line_tFileInputDelimited_1 = 0;
-									int footer_tFileInputDelimited_1 = 0;
-									int totalLinetFileInputDelimited_1 = 0;
-									int limittFileInputDelimited_1 = -1;
-									int lastLinetFileInputDelimited_1 = -1;
-
-									char fieldSeparator_tFileInputDelimited_1[] = null;
-
-									// support passing value (property: Field
-									// Separator) by 'context.fs' or
-									// 'globalMap.get("fs")'.
-									if (((String) "\t").length() > 0) {
-										fieldSeparator_tFileInputDelimited_1 = ((String) "\t")
-												.toCharArray();
-									} else {
-										throw new IllegalArgumentException(
-												"Field Separator must be assigned a char.");
-									}
-
-									char rowSeparator_tFileInputDelimited_1[] = null;
-
-									// support passing value (property: Row
-									// Separator) by 'context.rs' or
-									// 'globalMap.get("rs")'.
-									if (((String) "\n").length() > 0) {
-										rowSeparator_tFileInputDelimited_1 = ((String) "\n")
-												.toCharArray();
-									} else {
-										throw new IllegalArgumentException(
-												"Row Separator must be assigned a char.");
-									}
-
-									Object filename_tFileInputDelimited_1 = /**
-									 * 
-									 * Start field
-									 * tFileInputDelimited_1:FILENAME
-									 */
-									context.folderMain + context.folderOutput
-											+ context.output/**
-									 * End field
-									 * tFileInputDelimited_1:FILENAME
-									 */
-									;
-									com.talend.csv.CSVReader csvReadertFileInputDelimited_1 = null;
-
-									try {
-
-										String[] rowtFileInputDelimited_1 = null;
-										int currentLinetFileInputDelimited_1 = 0;
-										int outputLinetFileInputDelimited_1 = 0;
-										try {// TD110 begin
-											if (filename_tFileInputDelimited_1 instanceof java.io.InputStream) {
-
-												int footer_value_tFileInputDelimited_1 = 0;
-												if (footer_value_tFileInputDelimited_1 > 0) {
-													throw new java.lang.Exception(
-															"When the input source is a stream,footer shouldn't be bigger than 0.");
 												}
 
+											}
+											int lastLineTemptFileInputDelimited_1 = totalLinetFileInputDelimited_1
+													- footer_tFileInputDelimited_1 < 0 ? 0
+													: totalLinetFileInputDelimited_1
+															- footer_tFileInputDelimited_1;
+											if (lastLinetFileInputDelimited_1 > 0) {
+												lastLinetFileInputDelimited_1 = lastLinetFileInputDelimited_1 < lastLineTemptFileInputDelimited_1 ? lastLinetFileInputDelimited_1
+														: lastLineTemptFileInputDelimited_1;
+											} else {
+												lastLinetFileInputDelimited_1 = lastLineTemptFileInputDelimited_1;
+											}
+
+											csvReadertFileInputDelimited_1
+													.close();
+											if (filename_tFileInputDelimited_1 instanceof java.io.InputStream) {
 												csvReadertFileInputDelimited_1 = new com.talend.csv.CSVReader(
 														(java.io.InputStream) filename_tFileInputDelimited_1,
 														fieldSeparator_tFileInputDelimited_1[0],
@@ -9440,7 +7644,6 @@ public class CSV_Patient_Data implements TalendJob {
 																		"ISO-8859-15")),
 														fieldSeparator_tFileInputDelimited_1[0]);
 											}
-
 											csvReadertFileInputDelimited_1
 													.setTrimWhitespace(false);
 											if ((rowSeparator_tFileInputDelimited_1[0] != '\n')
@@ -9450,112 +7653,66 @@ public class CSV_Patient_Data implements TalendJob {
 																+ rowSeparator_tFileInputDelimited_1[0]);
 
 											csvReadertFileInputDelimited_1
-													.setQuoteChar('\"');
+													.setQuoteChar('"');
 
-											// ?????doesn't work for other
-											// escapeChar
-											// the default escape mode is double
-											// escape
 											csvReadertFileInputDelimited_1
 													.setEscapeChar(csvReadertFileInputDelimited_1
 															.getQuoteChar());
 
-											if (footer_tFileInputDelimited_1 > 0) {
-												for (totalLinetFileInputDelimited_1 = 0; totalLinetFileInputDelimited_1 < 1; totalLinetFileInputDelimited_1++) {
-													csvReadertFileInputDelimited_1
-															.readNext();
-												}
+										}
+
+										if (limittFileInputDelimited_1 != 0) {
+											for (currentLinetFileInputDelimited_1 = 0; currentLinetFileInputDelimited_1 < 1; currentLinetFileInputDelimited_1++) {
 												csvReadertFileInputDelimited_1
-														.setSkipEmptyRecords(true);
-												while (csvReadertFileInputDelimited_1
-														.readNext()) {
-
-													rowtFileInputDelimited_1 = csvReadertFileInputDelimited_1
-															.getValues();
-													if (!(rowtFileInputDelimited_1.length == 1 && ("\015")
-															.equals(rowtFileInputDelimited_1[0]))) {// empty
-																									// line
-																									// when
-																									// row
-																									// separator
-																									// is
-																									// '\n'
-
-														totalLinetFileInputDelimited_1++;
-
-													}
-
-												}
-												int lastLineTemptFileInputDelimited_1 = totalLinetFileInputDelimited_1
-														- footer_tFileInputDelimited_1 < 0 ? 0
-														: totalLinetFileInputDelimited_1
-																- footer_tFileInputDelimited_1;
-												if (lastLinetFileInputDelimited_1 > 0) {
-													lastLinetFileInputDelimited_1 = lastLinetFileInputDelimited_1 < lastLineTemptFileInputDelimited_1 ? lastLinetFileInputDelimited_1
-															: lastLineTemptFileInputDelimited_1;
-												} else {
-													lastLinetFileInputDelimited_1 = lastLineTemptFileInputDelimited_1;
-												}
-
-												csvReadertFileInputDelimited_1
-														.close();
-												if (filename_tFileInputDelimited_1 instanceof java.io.InputStream) {
-													csvReadertFileInputDelimited_1 = new com.talend.csv.CSVReader(
-															(java.io.InputStream) filename_tFileInputDelimited_1,
-															fieldSeparator_tFileInputDelimited_1[0],
-															"ISO-8859-15");
-												} else {
-													csvReadertFileInputDelimited_1 = new com.talend.csv.CSVReader(
-															new java.io.BufferedReader(
-																	new java.io.InputStreamReader(
-																			new java.io.FileInputStream(
-																					String.valueOf(filename_tFileInputDelimited_1)),
-																			"ISO-8859-15")),
-															fieldSeparator_tFileInputDelimited_1[0]);
-												}
-												csvReadertFileInputDelimited_1
-														.setTrimWhitespace(false);
-												if ((rowSeparator_tFileInputDelimited_1[0] != '\n')
-														&& (rowSeparator_tFileInputDelimited_1[0] != '\r'))
-													csvReadertFileInputDelimited_1
-															.setLineEnd(""
-																	+ rowSeparator_tFileInputDelimited_1[0]);
-
-												csvReadertFileInputDelimited_1
-														.setQuoteChar('\"');
-
-												// ?????doesn't work for other
-												// escapeChar
-												// the default escape mode is
-												// double escape
-												csvReadertFileInputDelimited_1
-														.setEscapeChar(csvReadertFileInputDelimited_1
-																.getQuoteChar());
-
+														.readNext();
 											}
+										}
+										csvReadertFileInputDelimited_1
+												.setSkipEmptyRecords(true);
 
-											if (limittFileInputDelimited_1 != 0) {
-												for (currentLinetFileInputDelimited_1 = 0; currentLinetFileInputDelimited_1 < 1; currentLinetFileInputDelimited_1++) {
-													csvReadertFileInputDelimited_1
-															.readNext();
-												}
-											}
-											csvReadertFileInputDelimited_1
-													.setSkipEmptyRecords(true);
+									} catch (java.lang.Exception e) {
 
-										} catch (java.lang.Exception e) {
+										throw e;
 
-											throw e;
+									}// TD110 end
 
-										}// TD110 end
+									while (limittFileInputDelimited_1 != 0
+											&& csvReadertFileInputDelimited_1 != null
+											&& csvReadertFileInputDelimited_1
+													.readNext()) {
 
-										while (limittFileInputDelimited_1 != 0
-												&& csvReadertFileInputDelimited_1 != null
-												&& csvReadertFileInputDelimited_1
-														.readNext()) {
+										rowtFileInputDelimited_1 = csvReadertFileInputDelimited_1
+												.getValues();
 
-											rowtFileInputDelimited_1 = csvReadertFileInputDelimited_1
-													.getValues();
+										if (rowtFileInputDelimited_1.length == 1
+												&& ("\015")
+														.equals(rowtFileInputDelimited_1[0])) {// empty
+																								// line
+																								// when
+																								// row
+																								// separator
+																								// is
+																								// '\n'
+											continue;
+										}
+
+										currentLinetFileInputDelimited_1++;
+
+										if (lastLinetFileInputDelimited_1 > -1
+												&& currentLinetFileInputDelimited_1 > lastLinetFileInputDelimited_1) {
+											break;
+										}
+										outputLinetFileInputDelimited_1++;
+										if (limittFileInputDelimited_1 > 0
+												&& outputLinetFileInputDelimited_1 > limittFileInputDelimited_1) {
+											break;
+										}
+
+										fromOutput = null;
+
+										boolean whetherReject_tFileInputDelimited_1 = false;
+										fromOutput = new fromOutputStruct();
+										try {
 
 											if (rowtFileInputDelimited_1.length == 1
 													&& ("\015")
@@ -9566,402 +7723,525 @@ public class CSV_Patient_Data implements TalendJob {
 																									// separator
 																									// is
 																									// '\n'
-												continue;
-											}
 
-											currentLinetFileInputDelimited_1++;
+												fromOutput.PatientID = null;
 
-											if (lastLinetFileInputDelimited_1 > -1
-													&& currentLinetFileInputDelimited_1 > lastLinetFileInputDelimited_1) {
-												break;
-											}
-											outputLinetFileInputDelimited_1++;
-											if (limittFileInputDelimited_1 > 0
-													&& outputLinetFileInputDelimited_1 > limittFileInputDelimited_1) {
-												break;
-											}
+												fromOutput.EncounterID = null;
 
-											fromOutput = null;
+												fromOutput.ImportDate = null;
 
-											boolean whetherReject_tFileInputDelimited_1 = false;
-											fromOutput = new fromOutputStruct();
-											try {
+												fromOutput.UpdateDate = null;
 
-												if (rowtFileInputDelimited_1.length == 1
-														&& ("\015")
-																.equals(rowtFileInputDelimited_1[0])) {// empty
-																										// line
-																										// when
-																										// row
-																										// separator
-																										// is
-																										// '\n'
+												fromOutput.DownloadDate = null;
 
-													fromOutput.PatientID = null;
+												fromOutput.Item = null;
 
-													fromOutput.EncounterID = null;
+												fromOutput.Value = null;
 
-													fromOutput.ImportDate = null;
+												fromOutput.NiceName = null;
 
-													fromOutput.UpdateDate = null;
+												fromOutput.DataType = null;
 
-													fromOutput.DownloadDate = null;
+												fromOutput.uniqueID = null;
 
-													fromOutput.Item = null;
+												fromOutput.BirthDay = null;
 
-													fromOutput.Value = null;
+												fromOutput.DeathDay = null;
 
-													fromOutput.NiceName = null;
+												fromOutput.StartDate = null;
 
-													fromOutput.DataType = null;
+												fromOutput.EndDate = null;
 
-													fromOutput.uniqueID = null;
+												fromOutput.SourceSystem = null;
 
-													fromOutput.BirthDay = null;
+												fromOutput.instanceNum = null;
 
-													fromOutput.DeathDay = null;
+												fromOutput.modifierType = null;
 
-													fromOutput.StartDate = null;
+												fromOutput.sic = null;
 
-													fromOutput.EndDate = null;
+											} else {
 
-													fromOutput.SourceSystem = null;
+												int columnIndexWithD_tFileInputDelimited_1 = 0; // Column
+																								// Index
 
-													fromOutput.instanceNum = null;
+												columnIndexWithD_tFileInputDelimited_1 = 0;
 
-													fromOutput.modifierType = null;
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													fromOutput.sic = null;
+													fromOutput.PatientID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 												} else {
+													fromOutput.PatientID = null;
+												}
 
-													int columnIndexWithD_tFileInputDelimited_1 = 0; // Column
-																									// Index
+												columnIndexWithD_tFileInputDelimited_1 = 1;
 
-													columnIndexWithD_tFileInputDelimited_1 = 0;
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+													fromOutput.EncounterID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-														fromOutput.PatientID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												} else {
+													fromOutput.EncounterID = null;
+												}
 
-													} else {
-														fromOutput.PatientID = null;
-													}
+												columnIndexWithD_tFileInputDelimited_1 = 2;
 
-													columnIndexWithD_tFileInputDelimited_1 = 1;
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+													if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+															.length() > 0) {
 
-														fromOutput.EncounterID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
-
-													} else {
-														fromOutput.EncounterID = null;
-													}
-
-													columnIndexWithD_tFileInputDelimited_1 = 2;
-
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
-
-														if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
-																.length() > 0) {
-
-															fromOutput.ImportDate = ParserUtils
-																	.parseTo_Date(
-																			rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
-																			"dd.MM.yyyy");
-
-														} else {
-															fromOutput.ImportDate = null;
-														}
+														fromOutput.ImportDate = ParserUtils
+																.parseTo_Date(
+																		rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
+																		"dd.MM.yyyy");
 
 													} else {
 														fromOutput.ImportDate = null;
 													}
 
-													columnIndexWithD_tFileInputDelimited_1 = 3;
+												} else {
+													fromOutput.ImportDate = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 3;
 
-														if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
-																.length() > 0) {
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-															fromOutput.UpdateDate = ParserUtils
-																	.parseTo_Date(
-																			rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
-																			"dd.MM.yyyy");
+													if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+															.length() > 0) {
 
-														} else {
-															fromOutput.UpdateDate = null;
-														}
+														fromOutput.UpdateDate = ParserUtils
+																.parseTo_Date(
+																		rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
+																		"dd.MM.yyyy");
 
 													} else {
 														fromOutput.UpdateDate = null;
 													}
 
-													columnIndexWithD_tFileInputDelimited_1 = 4;
+												} else {
+													fromOutput.UpdateDate = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 4;
 
-														if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
-																.length() > 0) {
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-															fromOutput.DownloadDate = ParserUtils
-																	.parseTo_Date(
-																			rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
-																			"dd.MM.yyyy");
+													if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+															.length() > 0) {
 
-														} else {
-															fromOutput.DownloadDate = null;
-														}
+														fromOutput.DownloadDate = ParserUtils
+																.parseTo_Date(
+																		rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
+																		"dd.MM.yyyy");
 
 													} else {
 														fromOutput.DownloadDate = null;
 													}
 
-													columnIndexWithD_tFileInputDelimited_1 = 5;
+												} else {
+													fromOutput.DownloadDate = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 5;
 
-														fromOutput.Item = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.Item = null;
-													}
+													fromOutput.Item = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 6;
+												} else {
+													fromOutput.Item = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 6;
 
-														fromOutput.Value = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.Value = null;
-													}
+													fromOutput.Value = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 7;
+												} else {
+													fromOutput.Value = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 7;
 
-														fromOutput.NiceName = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.NiceName = null;
-													}
+													fromOutput.NiceName = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 8;
+												} else {
+													fromOutput.NiceName = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 8;
 
-														fromOutput.DataType = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.DataType = null;
-													}
+													fromOutput.DataType = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 9;
+												} else {
+													fromOutput.DataType = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 9;
 
-														fromOutput.uniqueID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.uniqueID = null;
-													}
+													fromOutput.uniqueID = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 10;
+												} else {
+													fromOutput.uniqueID = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 10;
 
-														fromOutput.BirthDay = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.BirthDay = null;
-													}
+													fromOutput.BirthDay = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 11;
+												} else {
+													fromOutput.BirthDay = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 11;
 
-														fromOutput.DeathDay = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-													} else {
-														fromOutput.DeathDay = null;
-													}
+													fromOutput.DeathDay = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
-													columnIndexWithD_tFileInputDelimited_1 = 12;
+												} else {
+													fromOutput.DeathDay = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 12;
 
-														if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
-																.length() > 0) {
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-															fromOutput.StartDate = ParserUtils
-																	.parseTo_Date(
-																			rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
-																			"dd.MM.yyyy");
+													if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+															.length() > 0) {
 
-														} else {
-															fromOutput.StartDate = null;
-														}
+														fromOutput.StartDate = ParserUtils
+																.parseTo_Date(
+																		rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
+																		"dd.MM.yyyy");
 
 													} else {
 														fromOutput.StartDate = null;
 													}
 
-													columnIndexWithD_tFileInputDelimited_1 = 13;
+												} else {
+													fromOutput.StartDate = null;
+												}
 
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+												columnIndexWithD_tFileInputDelimited_1 = 13;
 
-														if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
-																.length() > 0) {
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-															fromOutput.EndDate = ParserUtils
-																	.parseTo_Date(
-																			rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
-																			"dd.MM.yyyy");
+													if (rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1]
+															.length() > 0) {
 
-														} else {
-															fromOutput.EndDate = null;
-														}
+														fromOutput.EndDate = ParserUtils
+																.parseTo_Date(
+																		rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1],
+																		"dd.MM.yyyy");
 
 													} else {
 														fromOutput.EndDate = null;
 													}
 
-													columnIndexWithD_tFileInputDelimited_1 = 14;
-
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
-
-														fromOutput.SourceSystem = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
-
-													} else {
-														fromOutput.SourceSystem = null;
-													}
-
-													columnIndexWithD_tFileInputDelimited_1 = 15;
-
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
-
-														fromOutput.instanceNum = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
-
-													} else {
-														fromOutput.instanceNum = null;
-													}
-
-													columnIndexWithD_tFileInputDelimited_1 = 16;
-
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
-
-														fromOutput.modifierType = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
-
-													} else {
-														fromOutput.modifierType = null;
-													}
-
-													columnIndexWithD_tFileInputDelimited_1 = 17;
-
-													if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
-
-														fromOutput.sic = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
-
-													} else {
-														fromOutput.sic = null;
-													}
-
+												} else {
+													fromOutput.EndDate = null;
 												}
 
-											} catch (java.lang.Exception e) {
-												whetherReject_tFileInputDelimited_1 = true;
+												columnIndexWithD_tFileInputDelimited_1 = 14;
 
-												throw (e);
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+
+													fromOutput.SourceSystem = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+
+												} else {
+													fromOutput.SourceSystem = null;
+												}
+
+												columnIndexWithD_tFileInputDelimited_1 = 15;
+
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+
+													fromOutput.instanceNum = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+
+												} else {
+													fromOutput.instanceNum = null;
+												}
+
+												columnIndexWithD_tFileInputDelimited_1 = 16;
+
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+
+													fromOutput.modifierType = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+
+												} else {
+													fromOutput.modifierType = null;
+												}
+
+												columnIndexWithD_tFileInputDelimited_1 = 17;
+
+												if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
+
+													fromOutput.sic = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+
+												} else {
+													fromOutput.sic = null;
+												}
 
 											}
 
+										} catch (java.lang.Exception e) {
+											whetherReject_tFileInputDelimited_1 = true;
+
+											throw (e);
+
+										}
+
+										/**
+										 * [tFileInputDelimited_1 begin ] stop
+										 */
+										/**
+										 * [tFileInputDelimited_1 main ] start
+										 */
+
+										currentComponent = "tFileInputDelimited_1";
+
+										tos_count_tFileInputDelimited_1++;
+
+										/**
+										 * [tFileInputDelimited_1 main ] stop
+										 */
+										// Start of branch "fromOutput"
+										if (fromOutput != null) {
+
 											/**
-											 * [tFileInputDelimited_1 begin ]
-											 * stop
-											 */
-											/**
-											 * [tFileInputDelimited_1 main ]
-											 * start
+											 * [tMap_4 main ] start
 											 */
 
-											currentComponent = "tFileInputDelimited_1";
+											currentComponent = "tMap_4";
 
-											tos_count_tFileInputDelimited_1++;
+											boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+
+											// ###############################
+											// # Input tables (lookups)
+											boolean rejectedInnerJoin_tMap_4 = false;
+											boolean mainRowRejected_tMap_4 = false;
+
+											// /////////////////////////////////////////////
+											// Starting Lookup Table "fromOnt"
+											// /////////////////////////////////////////////
+
+											boolean forceLoopfromOnt = false;
+
+											fromOntStruct fromOntObjectFromLookup = null;
+
+											if (!rejectedInnerJoin_tMap_4) { // G_TM_M_020
+
+												hasCasePrimitiveKeyWithNull_tMap_4 = false;
+
+												fromOntHashKey.PathID = fromOutput.uniqueID
+														+ "|" + fromOutput.Item;
+
+												fromOntHashKey.hashCodeDirty = true;
+
+												tHash_Lookup_fromOnt
+														.lookup(fromOntHashKey);
+
+											} // G_TM_M_020
+
+											if (tHash_Lookup_fromOnt != null
+													&& tHash_Lookup_fromOnt
+															.getCount(fromOntHashKey) > 1) { // G
+																								// 071
+
+												// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'fromOnt' and it contains more one result from keys :  fromOnt.PathID = '"
+												// + fromOntHashKey.PathID +
+												// "'");
+											} // G 071
+
+											fromOntStruct fromOnt = null;
+
+											fromOntStruct fromLookup_fromOnt = null;
+											fromOnt = fromOntDefault;
+
+											if (tHash_Lookup_fromOnt != null
+													&& tHash_Lookup_fromOnt
+															.hasNext()) { // G
+																			// 099
+
+												fromLookup_fromOnt = tHash_Lookup_fromOnt
+														.next();
+
+											} // G 099
+
+											if (fromLookup_fromOnt != null) {
+												fromOnt = fromLookup_fromOnt;
+											}
+
+											// ###############################
+											{ // start of Var scope
+
+												// ###############################
+												// # Vars tables
+
+												Var__tMap_4__Struct Var = Var__tMap_4;// ###############################
+												// ###############################
+												// # Output tables
+
+												asd = null;
+
+												// # Output table : 'asd'
+												asd_tmp.PatientID = fromOutput.PatientID;
+												asd_tmp.EncounterID = fromOutput.EncounterID;
+												asd_tmp.ImportDate = fromOutput.ImportDate;
+												asd_tmp.UpdateDate = fromOutput.UpdateDate;
+												asd_tmp.DownloadDate = fromOutput.DownloadDate;
+												asd_tmp.Item = fromOutput.Item;
+												asd_tmp.Value = fromOutput.Value;
+												asd_tmp.NiceName = fromOutput.NiceName;
+												asd_tmp.DataType = fromOutput.DataType;
+												asd_tmp.uniqueID = fromOutput.uniqueID;
+												asd_tmp.Path = fromOnt.Path;
+												asd_tmp.PathID = fromOnt.PathID;
+												asd_tmp.StartDate = fromOutput.StartDate;
+												asd_tmp.EndDate = fromOutput.EndDate;
+												asd_tmp.SourceSystem = fromOutput.SourceSystem;
+												asd_tmp.instanceNum = fromOutput.instanceNum;
+												asd_tmp.sic = fromOutput.sic;
+												asd_tmp.m_applied_path = fromOnt.m_applied_path;
+												asd = asd_tmp;
+												// ###############################
+
+											} // end of Var scope
+
+											rejectedInnerJoin_tMap_4 = false;
+
+											tos_count_tMap_4++;
 
 											/**
-											 * [tFileInputDelimited_1 main ]
-											 * stop
+											 * [tMap_4 main ] stop
 											 */
-											// Start of branch "fromOutput"
-											if (fromOutput != null) {
+											// Start of branch "asd"
+											if (asd != null) {
 
 												/**
-												 * [tMap_4 main ] start
+												 * [tJavaRow_1 main ] start
 												 */
 
-												currentComponent = "tMap_4";
+												currentComponent = "tJavaRow_1";
 
-												boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+												// Code generated according to
+												// input schema and output
+												// schema
+												context.csvOutputCurrent++;
+												if (context.csvOutputCurrent
+														% context.csvOutputMod == 0) {
+													StatusListener
+															.setSubStatus(
+																	(float) context.csvOutputCurrent
+																			/ context.csvOutputRows
+																			* 100,
+																	(int) ((float) context.csvOutputCurrent
+																			/ context.csvOutputRows * 100)
+																			+ "% - Observations");
+												}
+
+												fromPatient.PatientID = asd.PatientID;
+												fromPatient.EncounterID = asd.EncounterID;
+												fromPatient.ImportDate = asd.ImportDate;
+												fromPatient.UpdateDate = asd.UpdateDate;
+												fromPatient.DownloadDate = asd.DownloadDate;
+												fromPatient.Item = asd.Item;
+												fromPatient.Value = asd.Value;
+												fromPatient.NiceName = asd.NiceName;
+												fromPatient.SourceSystem = asd.SourceSystem;
+												fromPatient.uniqueID = asd.uniqueID;
+
+												fromPatient.PathID = asd.PathID;
+
+												if (asd.DataType == null) {
+													asd.DataType = "string";
+												}
+
+												// if (asd.itemCode == null){
+												if (asd.DataType.toLowerCase()
+														.trim()
+														.equals("string")) {
+													String hash = asd.Path
+															+ asd.Value;
+													fromPatient.Path = asd.Path
+															+ hash.hashCode()
+															+ "\\";
+													if (asd.Value.length() < 20) {
+														fromPatient.Path = asd.Path
+																+ asd.Value
+																+ "\\";
+													}
+
+												} else if (asd.DataType
+														.toLowerCase().trim()
+														.equals("float"))
+													fromPatient.Path = asd.Path
+															+ "xml\\";
+												else if (asd.DataType
+														.toLowerCase().trim()
+														.equals("integer"))
+													fromPatient.Path = asd.Path
+															+ "xml\\";
+												else if (asd.DataType
+														.toLowerCase().trim()
+														.equals("date")
+														|| asd.DataType
+																.toLowerCase()
+																.trim()
+																.equals("partialDate"))
+													fromPatient.Path = asd.Path
+															+ "date\\";
+												else {
+													String hash = asd.Path
+															+ asd.Value;
+													// fromPatient.Path =
+													// asd.Path+hash.hashCode()
+													// +"\\";
+													fromPatient.Path = asd.Path
+															+ asd.Value + "\\";
+												}
+
+												fromPatient.DataType = asd.DataType;
+												fromPatient.StartDate = asd.StartDate;
+												fromPatient.EndDate = asd.EndDate;
+												fromPatient.instanceNum = asd.instanceNum;
+
+												fromPatient.sic = asd.sic;
+												fromPatient.m_applied_path = asd.m_applied_path;
+
+												nb_line_tJavaRow_1++;
+
+												tos_count_tJavaRow_1++;
+
+												/**
+												 * [tJavaRow_1 main ] stop
+												 */
+
+												/**
+												 * [tMap_2 main ] start
+												 */
+
+												currentComponent = "tMap_2";
+
+												boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
 
 												// ###############################
 												// # Input tables (lookups)
-												boolean rejectedInnerJoin_tMap_4 = false;
-												boolean mainRowRejected_tMap_4 = false;
-
-												// /////////////////////////////////////////////
-												// Starting Lookup Table
-												// "fromOnt"
-												// /////////////////////////////////////////////
-
-												boolean forceLoopfromOnt = false;
-
-												fromOntStruct fromOntObjectFromLookup = null;
-
-												if (!rejectedInnerJoin_tMap_4) { // G_TM_M_020
-
-													hasCasePrimitiveKeyWithNull_tMap_4 = false;
-
-													fromOntHashKey.PathID = fromOutput.uniqueID
-															+ "|"
-															+ fromOutput.Item;
-
-													fromOntHashKey.hashCodeDirty = true;
-
-													tHash_Lookup_fromOnt
-															.lookup(fromOntHashKey);
-
-												} // G_TM_M_020
-
-												if (tHash_Lookup_fromOnt != null
-														&& tHash_Lookup_fromOnt
-																.getCount(fromOntHashKey) > 1) { // G
-																									// 071
-
-													// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'fromOnt' and it contains more one result from keys :  fromOnt.PathID = '"
-													// + fromOntHashKey.PathID +
-													// "'");
-												} // G 071
-
-												fromOntStruct fromOnt = null;
-
-												fromOntStruct fromLookup_fromOnt = null;
-												fromOnt = fromOntDefault;
-
-												if (tHash_Lookup_fromOnt != null
-														&& tHash_Lookup_fromOnt
-																.hasNext()) { // G
-																				// 099
-
-													fromLookup_fromOnt = tHash_Lookup_fromOnt
-															.next();
-
-												} // G 099
-
-												if (fromLookup_fromOnt != null) {
-													fromOnt = fromLookup_fromOnt;
-												}
+												boolean rejectedInnerJoin_tMap_2 = false;
+												boolean mainRowRejected_tMap_2 = false;
 
 												// ###############################
 												{ // start of Var scope
@@ -9969,1239 +8249,672 @@ public class CSV_Patient_Data implements TalendJob {
 													// ###############################
 													// # Vars tables
 
-													Var__tMap_4__Struct Var = Var__tMap_4;// ###############################
+													Var__tMap_2__Struct Var = Var__tMap_2;
+													Var.var1 = fromPatient.DataType
+															.toLowerCase()
+															.equals("float");
+													Var.var3 = fromPatient.DataType
+															.toLowerCase()
+															.equals("date");
+													Var.var2 = fromPatient.DataType
+															.toLowerCase()
+															.equals("integer");// ###############################
 													// ###############################
 													// # Output tables
 
-													asd = null;
+													toData = null;
+													to_ont = null;
+													to_ont_xml = null;
+													to_ont_date = null;
 
-													// # Output table : 'asd'
-													asd_tmp.PatientID = fromOutput.PatientID;
-													asd_tmp.EncounterID = fromOutput.EncounterID;
-													asd_tmp.ImportDate = fromOutput.ImportDate;
-													asd_tmp.UpdateDate = fromOutput.UpdateDate;
-													asd_tmp.DownloadDate = fromOutput.DownloadDate;
-													asd_tmp.Item = fromOutput.Item;
-													asd_tmp.Value = fromOutput.Value;
-													asd_tmp.NiceName = fromOutput.NiceName;
-													asd_tmp.DataType = fromOutput.DataType;
-													asd_tmp.uniqueID = fromOutput.uniqueID;
-													asd_tmp.Path = fromOnt.Path;
-													asd_tmp.PathID = fromOnt.PathID;
-													asd_tmp.StartDate = fromOutput.StartDate;
-													asd_tmp.EndDate = fromOutput.EndDate;
-													asd_tmp.SourceSystem = fromOutput.SourceSystem;
-													asd_tmp.instanceNum = fromOutput.instanceNum;
-													asd_tmp.modifierType = fromOutput.modifierType;
-													asd_tmp.sic = fromOutput.sic;
-													asd_tmp.m_applied_path = fromOnt.m_applied_path;
-													asd = asd_tmp;
-													// ###############################
+													// # Output table : 'toData'
+													toData_tmp.itemID = fromPatient.Item;
+													toData_tmp.Value = fromPatient.Value
+															.replace(";", ",");
+													toData_tmp.VisitID = "";
+													toData_tmp.FormID = "";
+													toData_tmp.SubjectKey = ""
+															+ fromPatient.PatientID;
+													toData_tmp.Path = fromPatient.Path;
+													toData_tmp.PathID = fromPatient.PathID;
+													toData_tmp.DataType = fromPatient.DataType;
+													toData_tmp.Update_Date = fromPatient.UpdateDate;
+													toData_tmp.Import_Date = fromPatient.ImportDate;
+													toData_tmp.Download_Date = fromPatient.DownloadDate;
+													toData_tmp.StudyEventRepeatKey = fromPatient.EncounterID;
+													toData_tmp.itemGroupRepeatKey = fromPatient.instanceNum;
+													toData_tmp.startDate = fromPatient.StartDate;
+													toData_tmp.endDate = fromPatient.EndDate;
+													toData_tmp.source = fromPatient.SourceSystem;
+													toData_tmp.sic = fromPatient.sic;
+													toData_tmp.m_applied_path = fromPatient.m_applied_path;
+													toData = toData_tmp;
+
+													// # Output table : 'to_ont'
+													// # Filter conditions
+													if (
+
+													!(Var.var2 || Var.var1 || Var.var3)
+
+													) {
+														to_ont_tmp.HLEVEL = fromPatient.m_applied_path
+																.equals("@") ? 4
+																: 3;
+														to_ont_tmp.Name = fromPatient.Value
+																.replace(";",
+																		",");
+														to_ont_tmp.Path = fromPatient.Path;
+														to_ont_tmp.DataType = fromPatient.DataType;
+														to_ont_tmp.Update_Date = fromPatient.UpdateDate;
+														to_ont_tmp.Import_Date = fromPatient.ImportDate;
+														to_ont_tmp.Download_Date = fromPatient.DownloadDate;
+														to_ont_tmp.PathID = fromPatient.PathID;
+														to_ont_tmp.visual = fromPatient.m_applied_path
+																.equals("@") ? "LA"
+																: "RA";
+														to_ont_tmp.codeList = "";
+														to_ont_tmp.source = "";
+														to_ont_tmp.xml = "";
+														to_ont_tmp.m_applied_path = fromPatient.m_applied_path;
+														to_ont = to_ont_tmp;
+													} // closing filter/reject
+
+													// # Output table :
+													// 'to_ont_xml'
+													// # Filter conditions
+													if (
+
+													(Var.var1 || Var.var2)
+
+													) {
+														to_ont_xml_tmp.HLEVEL = fromPatient.m_applied_path
+																.equals("@") ? 4
+																: 3;
+														to_ont_xml_tmp.Name = fromPatient.Item
+																+ " (Numerical Query)";
+														to_ont_xml_tmp.Path = fromPatient.Path;
+														to_ont_xml_tmp.DataType = fromPatient.DataType;
+														to_ont_xml_tmp.Update_Date = fromPatient.UpdateDate;
+														to_ont_xml_tmp.Import_Date = fromPatient.ImportDate;
+														to_ont_xml_tmp.Download_Date = fromPatient.DownloadDate;
+														to_ont_xml_tmp.PathID = fromPatient.PathID;
+														to_ont_xml_tmp.visual = fromPatient.m_applied_path
+																.equals("@") ? "LA"
+																: "RA";
+														to_ont_xml_tmp.codeList = "";
+														to_ont_xml_tmp.source = "";
+														to_ont_xml_tmp.xml = "xml";
+														to_ont_xml_tmp.m_applied_path = fromPatient.m_applied_path;
+														to_ont_xml = to_ont_xml_tmp;
+													} // closing filter/reject
+
+													// # Output table :
+													// 'to_ont_date'
+													// # Filter conditions
+													if (
+
+													Var.var3
+
+													) {
+														to_ont_date_tmp.HLEVEL = fromPatient.m_applied_path
+																.equals("@") ? 4
+																: 3;
+														to_ont_date_tmp.Name = fromPatient.Item
+																+ " (Date)";
+														to_ont_date_tmp.Path = fromPatient.Path;
+														to_ont_date_tmp.DataType = fromPatient.DataType;
+														to_ont_date_tmp.Update_Date = fromPatient.UpdateDate;
+														to_ont_date_tmp.Import_Date = fromPatient.ImportDate;
+														to_ont_date_tmp.Download_Date = fromPatient.DownloadDate;
+														to_ont_date_tmp.PathID = fromPatient.PathID;
+														to_ont_date_tmp.visual = fromPatient.m_applied_path
+																.equals("@") ? "LA"
+																: "RA";
+														to_ont_date_tmp.codeList = "";
+														to_ont_date_tmp.source = "";
+														to_ont_date_tmp.xml = "date";
+														to_ont_date_tmp.m_applied_path = fromPatient.m_applied_path;
+														to_ont_date = to_ont_date_tmp;
+													} // closing filter/reject
+														// ###############################
 
 												} // end of Var scope
 
-												rejectedInnerJoin_tMap_4 = false;
+												rejectedInnerJoin_tMap_2 = false;
 
-												tos_count_tMap_4++;
+												tos_count_tMap_2++;
 
 												/**
-												 * [tMap_4 main ] stop
+												 * [tMap_2 main ] stop
 												 */
-												// Start of branch "asd"
-												if (asd != null) {
+												// Start of branch "toData"
+												if (toData != null) {
 
 													/**
-													 * [tJavaRow_1 main ] start
+													 * [tFileOutputDelimited_1
+													 * main ] start
 													 */
 
-													currentComponent = "tJavaRow_1";
+													currentComponent = "tFileOutputDelimited_1";
+
+													String[] rowtFileOutputDelimited_1 = new String[18];
+
+													rowtFileOutputDelimited_1[0] = toData.itemID == null ? ""
+															: toData.itemID;
+
+													rowtFileOutputDelimited_1[1] = toData.Value == null ? ""
+															: toData.Value;
+
+													rowtFileOutputDelimited_1[2] = toData.VisitID == null ? ""
+															: toData.VisitID;
+
+													rowtFileOutputDelimited_1[3] = toData.FormID == null ? ""
+															: toData.FormID;
+
+													rowtFileOutputDelimited_1[4] = toData.SubjectKey == null ? ""
+															: toData.SubjectKey;
+
+													rowtFileOutputDelimited_1[5] = toData.Path == null ? ""
+															: toData.Path;
+
+													rowtFileOutputDelimited_1[6] = toData.PathID == null ? ""
+															: toData.PathID;
+
+													rowtFileOutputDelimited_1[7] = toData.DataType == null ? ""
+															: toData.DataType;
+
+													rowtFileOutputDelimited_1[8] = toData.Update_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			toData.Update_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_1[9] = toData.Import_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			toData.Import_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_1[10] = toData.Download_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			toData.Download_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_1[11] = toData.StudyEventRepeatKey == null ? ""
+															: toData.StudyEventRepeatKey;
+
+													rowtFileOutputDelimited_1[12] = toData.itemGroupRepeatKey == null ? ""
+															: toData.itemGroupRepeatKey;
+
+													rowtFileOutputDelimited_1[13] = toData.startDate == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			toData.startDate,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_1[14] = toData.endDate == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			toData.endDate,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_1[15] = toData.source == null ? ""
+															: toData.source;
+
+													rowtFileOutputDelimited_1[16] = toData.sic == null ? ""
+															: toData.sic;
+
+													rowtFileOutputDelimited_1[17] = toData.m_applied_path == null ? ""
+															: toData.m_applied_path;
+
+													nb_line_tFileOutputDelimited_1++;
+													CsvWritertFileOutputDelimited_1
+															.writeNext(rowtFileOutputDelimited_1);
+
+													if (nb_line_tFileOutputDelimited_1 % 50000 == 0) {
+
+														CsvWritertFileOutputDelimited_1
+																.flush();
+
+													}
+
+													tos_count_tFileOutputDelimited_1++;
+
+													/**
+													 * [tFileOutputDelimited_1
+													 * main ] stop
+													 */
+
+												} // End of branch "toData"
+
+												// Start of branch "to_ont"
+												if (to_ont != null) {
+
+													/**
+													 * [tJavaRow_4 main ] start
+													 */
+
+													currentComponent = "tJavaRow_4";
 
 													// Code generated according
 													// to input schema and
 													// output schema
-													context.csvOutputCurrent++;
-													if (context.csvOutputCurrent
-															% context.csvOutputMod == 0) {
-														StatusListener
-																.setSubStatus(
-																		(float) context.csvOutputCurrent
-																				/ context.csvOutputRows
-																				* 100,
-																		(int) ((float) context.csvOutputCurrent
-																				/ context.csvOutputRows * 100)
-																				+ "% - Observations");
-													}
+													context.ontOutputRows++;
+													row5.HLEVEL = to_ont.HLEVEL;
+													row5.Name = to_ont.Name;
+													row5.Path = to_ont.Path;
+													row5.DataType = to_ont.DataType;
+													row5.Update_Date = to_ont.Update_Date;
+													row5.Import_Date = to_ont.Import_Date;
+													row5.Download_Date = to_ont.Download_Date;
+													row5.PathID = to_ont.PathID;
+													row5.visual = to_ont.visual;
+													row5.codeList = to_ont.codeList;
+													row5.source = to_ont.source;
+													row5.xml = to_ont.xml;
+													row5.m_applied_path = to_ont.m_applied_path;
 
-													fromPatient.PatientID = asd.PatientID;
-													fromPatient.EncounterID = asd.EncounterID;
-													fromPatient.ImportDate = asd.ImportDate;
-													fromPatient.UpdateDate = asd.UpdateDate;
-													fromPatient.DownloadDate = asd.DownloadDate;
-													fromPatient.Item = asd.Item;
-													fromPatient.Value = asd.Value;
-													fromPatient.NiceName = asd.NiceName;
-													fromPatient.SourceSystem = asd.SourceSystem;
-													fromPatient.uniqueID = asd.uniqueID;
+													nb_line_tJavaRow_4++;
 
-													fromPatient.PathID = asd.PathID;
-
-													if (asd.DataType == null) {
-														asd.DataType = "string";
-													}
-
-													// if (asd.itemCode ==
-													// null){
-													if (asd.DataType
-															.toLowerCase()
-															.trim()
-															.equals("string")) {
-														String hash = asd.Path
-																+ asd.Value;
-														fromPatient.Path = asd.Path
-																+ hash.hashCode()
-																+ "\\";
-														if (asd.Value.length() < 20) {
-															fromPatient.Path = asd.Path
-																	+ asd.Value
-																	+ "\\";
-														}
-
-													} else if (asd.DataType
-															.toLowerCase()
-															.trim()
-															.equals("float"))
-														fromPatient.Path = asd.Path
-																+ "xml\\";
-													else if (asd.DataType
-															.toLowerCase()
-															.trim()
-															.equals("integer"))
-														fromPatient.Path = asd.Path
-																+ "xml\\";
-													else if (asd.DataType
-															.toLowerCase()
-															.trim()
-															.equals("date")
-															|| asd.DataType
-																	.toLowerCase()
-																	.trim()
-																	.equals("partialDate"))
-														fromPatient.Path = asd.Path
-																+ "date\\";
-													else {
-														String hash = asd.Path
-																+ asd.Value;
-														// fromPatient.Path =
-														// asd.Path+hash.hashCode()
-														// +"\\";
-														fromPatient.Path = asd.Path
-																+ asd.Value
-																+ "\\";
-													}
-
-													fromPatient.DataType = asd.DataType;
-													fromPatient.StartDate = asd.StartDate;
-													fromPatient.EndDate = asd.EndDate;
-													fromPatient.instanceNum = asd.instanceNum;
-
-													fromPatient.sic = asd.sic;
-													fromPatient.m_applied_path = asd.m_applied_path;
-
-													nb_line_tJavaRow_1++;
-
-													tos_count_tJavaRow_1++;
+													tos_count_tJavaRow_4++;
 
 													/**
-													 * [tJavaRow_1 main ] stop
+													 * [tJavaRow_4 main ] stop
 													 */
 
 													/**
-													 * [tMap_2 main ] start
+													 * [tFileOutputDelimited_3
+													 * main ] start
 													 */
 
-													currentComponent = "tMap_2";
-
-													boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
-
-													// ###############################
-													// # Input tables (lookups)
-													boolean rejectedInnerJoin_tMap_2 = false;
-													boolean mainRowRejected_tMap_2 = false;
-
-													// ###############################
-													{ // start of Var scope
-
-														// ###############################
-														// # Vars tables
-
-														Var__tMap_2__Struct Var = Var__tMap_2;
-														Var.var1 = fromPatient.DataType
-																.toLowerCase()
-																.equals("float");
-														Var.var3 = fromPatient.DataType
-																.toLowerCase()
-																.equals("date");
-														Var.var2 = fromPatient.DataType
-																.toLowerCase()
-																.equals("integer");// ###############################
-														// ###############################
-														// # Output tables
-
-														toData = null;
-														to_ont = null;
-														to_ont_xml = null;
-														to_ont_date = null;
-														out1 = null;
-
-														// # Output table :
-														// 'toData'
-														toData_tmp.itemID = fromPatient.Item;
-														toData_tmp.Value = fromPatient.Value
-																.replace(";",
-																		",");
-														toData_tmp.VisitID = "";
-														toData_tmp.FormID = "";
-														toData_tmp.SubjectKey = ""
-																+ fromPatient.PatientID;
-														toData_tmp.Path = fromPatient.Path;
-														toData_tmp.PathID = fromPatient.PathID;
-														toData_tmp.DataType = fromPatient.DataType;
-														toData_tmp.Update_Date = fromPatient.UpdateDate;
-														toData_tmp.Import_Date = fromPatient.ImportDate;
-														toData_tmp.Download_Date = fromPatient.DownloadDate;
-														toData_tmp.StudyEventRepeatKey = fromPatient.EncounterID;
-														toData_tmp.itemGroupRepeatKey = fromPatient.instanceNum;
-														toData_tmp.startDate = fromPatient.StartDate;
-														toData_tmp.endDate = fromPatient.EndDate;
-														toData_tmp.source = fromPatient.SourceSystem;
-														toData_tmp.modifierType = fromPatient.modifierType;
-														toData_tmp.sic = fromPatient.sic;
-														toData_tmp.m_applied_path = fromPatient.m_applied_path;
-														toData = toData_tmp;
-
-														// # Output table :
-														// 'to_ont'
-														// # Filter conditions
-														if (
-
-														!(Var.var2 || Var.var1 || Var.var3)
-
-														) {
-															to_ont_tmp.HLEVEL = fromPatient.m_applied_path
-																	.equals("@") ? 4
-																	: 3;
-															to_ont_tmp.Name = fromPatient.Value
-																	.replace(
-																			";",
-																			",");
-															to_ont_tmp.Path = fromPatient.Path;
-															to_ont_tmp.DataType = fromPatient.DataType;
-															to_ont_tmp.Update_Date = fromPatient.UpdateDate;
-															to_ont_tmp.Import_Date = fromPatient.ImportDate;
-															to_ont_tmp.Download_Date = fromPatient.DownloadDate;
-															to_ont_tmp.PathID = fromPatient.PathID;
-															to_ont_tmp.visual = fromPatient.m_applied_path
-																	.equals("@") ? "LA"
-																	: "RA";
-															to_ont_tmp.codeList = "";
-															to_ont_tmp.source = "";
-															to_ont_tmp.xml = "";
-															to_ont_tmp.m_applied_path = fromPatient.m_applied_path;
-															to_ont = to_ont_tmp;
-														} // closing
-															// filter/reject
-
-														// # Output table :
-														// 'to_ont_xml'
-														// # Filter conditions
-														if (
-
-														(Var.var1 || Var.var2)
-
-														) {
-															to_ont_xml_tmp.HLEVEL = fromPatient.m_applied_path
-																	.equals("@") ? 4
-																	: 3;
-															to_ont_xml_tmp.Name = fromPatient.Item
-																	+ " (Numerical Query)";
-															to_ont_xml_tmp.Path = fromPatient.Path;
-															to_ont_xml_tmp.DataType = fromPatient.DataType;
-															to_ont_xml_tmp.Update_Date = fromPatient.UpdateDate;
-															to_ont_xml_tmp.Import_Date = fromPatient.ImportDate;
-															to_ont_xml_tmp.Download_Date = fromPatient.DownloadDate;
-															to_ont_xml_tmp.PathID = fromPatient.PathID;
-															to_ont_xml_tmp.visual = fromPatient.m_applied_path
-																	.equals("@") ? "LA"
-																	: "RA";
-															to_ont_xml_tmp.codeList = "";
-															to_ont_xml_tmp.source = "";
-															to_ont_xml_tmp.xml = "xml";
-															to_ont_xml_tmp.m_applied_path = fromPatient.m_applied_path;
-															to_ont_xml = to_ont_xml_tmp;
-														} // closing
-															// filter/reject
-
-														// # Output table :
-														// 'to_ont_date'
-														// # Filter conditions
-														if (
-
-														Var.var3
-
-														) {
-															to_ont_date_tmp.HLEVEL = fromPatient.m_applied_path
-																	.equals("@") ? 4
-																	: 3;
-															to_ont_date_tmp.Name = fromPatient.Item
-																	+ " (Date)";
-															to_ont_date_tmp.Path = fromPatient.Path;
-															to_ont_date_tmp.DataType = fromPatient.DataType;
-															to_ont_date_tmp.Update_Date = fromPatient.UpdateDate;
-															to_ont_date_tmp.Import_Date = fromPatient.ImportDate;
-															to_ont_date_tmp.Download_Date = fromPatient.DownloadDate;
-															to_ont_date_tmp.PathID = fromPatient.PathID;
-															to_ont_date_tmp.visual = fromPatient.m_applied_path
-																	.equals("@") ? "LA"
-																	: "RA";
-															to_ont_date_tmp.codeList = "";
-															to_ont_date_tmp.source = "";
-															to_ont_date_tmp.xml = "date";
-															to_ont_date_tmp.m_applied_path = fromPatient.m_applied_path;
-															to_ont_date = to_ont_date_tmp;
-														} // closing
-															// filter/reject
-
-														// # Output table :
-														// 'out1'
-														out1_tmp.PatientID = fromPatient.PatientID;
-														out1_tmp.EncounterID = fromPatient.EncounterID;
-														out1_tmp.ImportDate = fromPatient.ImportDate;
-														out1_tmp.UpdateDate = fromPatient.UpdateDate;
-														out1_tmp.DownloadDate = fromPatient.DownloadDate;
-														out1_tmp.Item = fromPatient.Item;
-														out1_tmp.Value = fromPatient.Value;
-														out1_tmp.NiceName = fromPatient.NiceName;
-														out1_tmp.DataType = fromPatient.DataType;
-														out1_tmp.uniqueID = fromPatient.uniqueID;
-														out1_tmp.Path = fromPatient.Path;
-														out1_tmp.PathID = fromPatient.PathID;
-														out1_tmp.StartDate = fromPatient.StartDate;
-														out1_tmp.EndDate = fromPatient.EndDate;
-														out1_tmp.SourceSystem = fromPatient.SourceSystem;
-														out1_tmp.instanceNum = fromPatient.instanceNum;
-														out1_tmp.modifierType = fromPatient.modifierType;
-														out1_tmp.sic = fromPatient.sic;
-														out1_tmp.m_applied_path = fromPatient.m_applied_path;
-														out1 = out1_tmp;
-														// ###############################
-
-													} // end of Var scope
-
-													rejectedInnerJoin_tMap_2 = false;
-
-													tos_count_tMap_2++;
-
-													/**
-													 * [tMap_2 main ] stop
-													 */
-													// Start of branch "toData"
-													if (toData != null) {
-
-														/**
-														 * [
-														 * tFileOutputDelimited_1
-														 * main ] start
-														 */
-
-														currentComponent = "tFileOutputDelimited_1";
-
-														String[] rowtFileOutputDelimited_1 = new String[19];
-
-														rowtFileOutputDelimited_1[0] = toData.itemID == null ? ""
-																: toData.itemID;
-
-														rowtFileOutputDelimited_1[1] = toData.Value == null ? ""
-																: toData.Value;
-
-														rowtFileOutputDelimited_1[2] = toData.VisitID == null ? ""
-																: toData.VisitID;
-
-														rowtFileOutputDelimited_1[3] = toData.FormID == null ? ""
-																: toData.FormID;
-
-														rowtFileOutputDelimited_1[4] = toData.SubjectKey == null ? ""
-																: toData.SubjectKey;
-
-														rowtFileOutputDelimited_1[5] = toData.Path == null ? ""
-																: toData.Path;
-
-														rowtFileOutputDelimited_1[6] = toData.PathID == null ? ""
-																: toData.PathID;
-
-														rowtFileOutputDelimited_1[7] = toData.DataType == null ? ""
-																: toData.DataType;
-
-														rowtFileOutputDelimited_1[8] = toData.Update_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				toData.Update_Date,
-																				"yyyy-MM-dd");
-
-														rowtFileOutputDelimited_1[9] = toData.Import_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				toData.Import_Date,
-																				"yyyy-MM-dd");
-
-														rowtFileOutputDelimited_1[10] = toData.Download_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				toData.Download_Date,
-																				"yyyy-MM-dd");
-
-														rowtFileOutputDelimited_1[11] = toData.StudyEventRepeatKey == null ? ""
-																: toData.StudyEventRepeatKey;
-
-														rowtFileOutputDelimited_1[12] = toData.itemGroupRepeatKey == null ? ""
-																: toData.itemGroupRepeatKey;
-
-														rowtFileOutputDelimited_1[13] = toData.startDate == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				toData.startDate,
-																				"yyyy-MM-dd");
-
-														rowtFileOutputDelimited_1[14] = toData.endDate == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				toData.endDate,
-																				"yyyy-MM-dd");
-
-														rowtFileOutputDelimited_1[15] = toData.source == null ? ""
-																: toData.source;
-
-														rowtFileOutputDelimited_1[16] = toData.modifierType == null ? ""
-																: toData.modifierType;
-
-														rowtFileOutputDelimited_1[17] = toData.sic == null ? ""
-																: toData.sic;
-
-														rowtFileOutputDelimited_1[18] = toData.m_applied_path == null ? ""
-																: toData.m_applied_path;
-
-														nb_line_tFileOutputDelimited_1++;
-														CsvWritertFileOutputDelimited_1
-																.writeNext(rowtFileOutputDelimited_1);
-
-														if (nb_line_tFileOutputDelimited_1 % 50000 == 0) {
-
-															CsvWritertFileOutputDelimited_1
-																	.flush();
-
-														}
-
-														tos_count_tFileOutputDelimited_1++;
-
-														/**
-														 * [
-														 * tFileOutputDelimited_1
-														 * main ] stop
-														 */
-
-													} // End of branch "toData"
-
-													// Start of branch "to_ont"
-													if (to_ont != null) {
-
-														/**
-														 * [tJavaRow_4 main ]
-														 * start
-														 */
-
-														currentComponent = "tJavaRow_4";
-
-														// Code generated
-														// according to input
-														// schema and output
-														// schema
-														context.ontOutputRows++;
-														row5.HLEVEL = to_ont.HLEVEL;
-														row5.Name = to_ont.Name;
-														row5.Path = to_ont.Path;
-														row5.DataType = to_ont.DataType;
-														row5.Update_Date = to_ont.Update_Date;
-														row5.Import_Date = to_ont.Import_Date;
-														row5.Download_Date = to_ont.Download_Date;
-														row5.PathID = to_ont.PathID;
-														row5.visual = to_ont.visual;
-														row5.codeList = to_ont.codeList;
-														row5.source = to_ont.source;
-														row5.xml = to_ont.xml;
-														row5.m_applied_path = to_ont.m_applied_path;
-
-														nb_line_tJavaRow_4++;
-
-														tos_count_tJavaRow_4++;
-
-														/**
-														 * [tJavaRow_4 main ]
-														 * stop
-														 */
-
-														/**
-														 * [
-														 * tFileOutputDelimited_3
-														 * main ] start
-														 */
-
-														currentComponent = "tFileOutputDelimited_3";
-
-														String[] rowtFileOutputDelimited_3 = new String[13];
-
-														rowtFileOutputDelimited_3[0] = row5.HLEVEL == null ? ""
-																: String.valueOf(row5.HLEVEL);
-
-														rowtFileOutputDelimited_3[1] = row5.Name == null ? ""
-																: row5.Name;
-
-														rowtFileOutputDelimited_3[2] = row5.Path == null ? ""
-																: row5.Path;
-
-														rowtFileOutputDelimited_3[3] = row5.DataType == null ? ""
-																: row5.DataType;
-
-														rowtFileOutputDelimited_3[4] = row5.Update_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row5.Update_Date,
-																				"dd-MM-yyyy");
-
-														rowtFileOutputDelimited_3[5] = row5.Import_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row5.Import_Date,
-																				"dd-MM-yyyy");
-
-														rowtFileOutputDelimited_3[6] = row5.Download_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row5.Download_Date,
-																				"dd-MM-yyyy");
-
-														rowtFileOutputDelimited_3[7] = row5.PathID == null ? ""
-																: row5.PathID;
-
-														rowtFileOutputDelimited_3[8] = row5.visual == null ? ""
-																: row5.visual;
-
-														rowtFileOutputDelimited_3[9] = row5.codeList == null ? ""
-																: row5.codeList;
-
-														rowtFileOutputDelimited_3[10] = row5.source == null ? ""
-																: row5.source;
-
-														rowtFileOutputDelimited_3[11] = row5.xml == null ? ""
-																: row5.xml;
-
-														rowtFileOutputDelimited_3[12] = row5.m_applied_path == null ? ""
-																: row5.m_applied_path;
-
-														nb_line_tFileOutputDelimited_3++;
+													currentComponent = "tFileOutputDelimited_3";
+
+													String[] rowtFileOutputDelimited_3 = new String[13];
+
+													rowtFileOutputDelimited_3[0] = row5.HLEVEL == null ? ""
+															: String.valueOf(row5.HLEVEL);
+
+													rowtFileOutputDelimited_3[1] = row5.Name == null ? ""
+															: row5.Name;
+
+													rowtFileOutputDelimited_3[2] = row5.Path == null ? ""
+															: row5.Path;
+
+													rowtFileOutputDelimited_3[3] = row5.DataType == null ? ""
+															: row5.DataType;
+
+													rowtFileOutputDelimited_3[4] = row5.Update_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row5.Update_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_3[5] = row5.Import_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row5.Import_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_3[6] = row5.Download_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row5.Download_Date,
+																			"dd-MM-yyyy");
+
+													rowtFileOutputDelimited_3[7] = row5.PathID == null ? ""
+															: row5.PathID;
+
+													rowtFileOutputDelimited_3[8] = row5.visual == null ? ""
+															: row5.visual;
+
+													rowtFileOutputDelimited_3[9] = row5.codeList == null ? ""
+															: row5.codeList;
+
+													rowtFileOutputDelimited_3[10] = row5.source == null ? ""
+															: row5.source;
+
+													rowtFileOutputDelimited_3[11] = row5.xml == null ? ""
+															: row5.xml;
+
+													rowtFileOutputDelimited_3[12] = row5.m_applied_path == null ? ""
+															: row5.m_applied_path;
+
+													nb_line_tFileOutputDelimited_3++;
+													CsvWritertFileOutputDelimited_3
+															.writeNext(rowtFileOutputDelimited_3);
+
+													if (nb_line_tFileOutputDelimited_3 % 50000 == 0) {
+
 														CsvWritertFileOutputDelimited_3
-																.writeNext(rowtFileOutputDelimited_3);
+																.flush();
 
-														if (nb_line_tFileOutputDelimited_3 % 50000 == 0) {
+													}
 
-															CsvWritertFileOutputDelimited_3
-																	.flush();
+													tos_count_tFileOutputDelimited_3++;
 
-														}
+													/**
+													 * [tFileOutputDelimited_3
+													 * main ] stop
+													 */
 
-														tos_count_tFileOutputDelimited_3++;
+												} // End of branch "to_ont"
 
-														/**
-														 * [
-														 * tFileOutputDelimited_3
-														 * main ] stop
-														 */
+												// Start of branch "to_ont_xml"
+												if (to_ont_xml != null) {
 
-													} // End of branch "to_ont"
+													/**
+													 * [tJavaRow_3 main ] start
+													 */
 
-													// Start of branch
-													// "to_ont_xml"
-													if (to_ont_xml != null) {
+													currentComponent = "tJavaRow_3";
 
-														/**
-														 * [tJavaRow_3 main ]
-														 * start
-														 */
+													// Code generated according
+													// to input schema and
+													// output schema
+													context.ontOutputRows++;
+													row4.HLEVEL = to_ont_xml.HLEVEL;
+													row4.Name = to_ont_xml.Name;
+													row4.Path = to_ont_xml.Path;
+													row4.DataType = to_ont_xml.DataType;
+													row4.Update_Date = to_ont_xml.Update_Date;
+													row4.Import_Date = to_ont_xml.Import_Date;
+													row4.Download_Date = to_ont_xml.Download_Date;
+													row4.PathID = to_ont_xml.PathID;
+													row4.visual = to_ont_xml.visual;
+													row4.codeList = to_ont_xml.codeList;
+													row4.source = to_ont_xml.source;
+													row4.xml = to_ont_xml.xml;
+													row4.m_applied_path = to_ont_xml.m_applied_path;
 
-														currentComponent = "tJavaRow_3";
+													nb_line_tJavaRow_3++;
 
-														// Code generated
-														// according to input
-														// schema and output
-														// schema
-														context.ontOutputRows++;
-														row4.HLEVEL = to_ont_xml.HLEVEL;
-														row4.Name = to_ont_xml.Name;
-														row4.Path = to_ont_xml.Path;
-														row4.DataType = to_ont_xml.DataType;
-														row4.Update_Date = to_ont_xml.Update_Date;
-														row4.Import_Date = to_ont_xml.Import_Date;
-														row4.Download_Date = to_ont_xml.Download_Date;
-														row4.PathID = to_ont_xml.PathID;
-														row4.visual = to_ont_xml.visual;
-														row4.codeList = to_ont_xml.codeList;
-														row4.source = to_ont_xml.source;
-														row4.xml = to_ont_xml.xml;
-														row4.m_applied_path = to_ont_xml.m_applied_path;
+													tos_count_tJavaRow_3++;
 
-														nb_line_tJavaRow_3++;
+													/**
+													 * [tJavaRow_3 main ] stop
+													 */
 
-														tos_count_tJavaRow_3++;
+													/**
+													 * [tFileOutputDelimited_2
+													 * main ] start
+													 */
 
-														/**
-														 * [tJavaRow_3 main ]
-														 * stop
-														 */
+													currentComponent = "tFileOutputDelimited_2";
 
-														/**
-														 * [
-														 * tFileOutputDelimited_2
-														 * main ] start
-														 */
+													String[] rowtFileOutputDelimited_2 = new String[13];
 
-														currentComponent = "tFileOutputDelimited_2";
+													rowtFileOutputDelimited_2[0] = row4.HLEVEL == null ? ""
+															: String.valueOf(row4.HLEVEL);
 
-														String[] rowtFileOutputDelimited_2 = new String[13];
+													rowtFileOutputDelimited_2[1] = row4.Name == null ? ""
+															: row4.Name;
 
-														rowtFileOutputDelimited_2[0] = row4.HLEVEL == null ? ""
-																: String.valueOf(row4.HLEVEL);
+													rowtFileOutputDelimited_2[2] = row4.Path == null ? ""
+															: row4.Path;
 
-														rowtFileOutputDelimited_2[1] = row4.Name == null ? ""
-																: row4.Name;
+													rowtFileOutputDelimited_2[3] = row4.DataType == null ? ""
+															: row4.DataType;
 
-														rowtFileOutputDelimited_2[2] = row4.Path == null ? ""
-																: row4.Path;
+													rowtFileOutputDelimited_2[4] = row4.Update_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row4.Update_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_2[3] = row4.DataType == null ? ""
-																: row4.DataType;
+													rowtFileOutputDelimited_2[5] = row4.Import_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row4.Import_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_2[4] = row4.Update_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row4.Update_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_2[6] = row4.Download_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row4.Download_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_2[5] = row4.Import_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row4.Import_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_2[7] = row4.PathID == null ? ""
+															: row4.PathID;
 
-														rowtFileOutputDelimited_2[6] = row4.Download_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row4.Download_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_2[8] = row4.visual == null ? ""
+															: row4.visual;
 
-														rowtFileOutputDelimited_2[7] = row4.PathID == null ? ""
-																: row4.PathID;
+													rowtFileOutputDelimited_2[9] = row4.codeList == null ? ""
+															: row4.codeList;
 
-														rowtFileOutputDelimited_2[8] = row4.visual == null ? ""
-																: row4.visual;
+													rowtFileOutputDelimited_2[10] = row4.source == null ? ""
+															: row4.source;
 
-														rowtFileOutputDelimited_2[9] = row4.codeList == null ? ""
-																: row4.codeList;
+													rowtFileOutputDelimited_2[11] = row4.xml == null ? ""
+															: row4.xml;
 
-														rowtFileOutputDelimited_2[10] = row4.source == null ? ""
-																: row4.source;
+													rowtFileOutputDelimited_2[12] = row4.m_applied_path == null ? ""
+															: row4.m_applied_path;
 
-														rowtFileOutputDelimited_2[11] = row4.xml == null ? ""
-																: row4.xml;
+													nb_line_tFileOutputDelimited_2++;
+													CsvWritertFileOutputDelimited_2
+															.writeNext(rowtFileOutputDelimited_2);
 
-														rowtFileOutputDelimited_2[12] = row4.m_applied_path == null ? ""
-																: row4.m_applied_path;
+													if (nb_line_tFileOutputDelimited_2 % 50000 == 0) {
 
-														nb_line_tFileOutputDelimited_2++;
 														CsvWritertFileOutputDelimited_2
-																.writeNext(rowtFileOutputDelimited_2);
+																.flush();
 
-														if (nb_line_tFileOutputDelimited_2 % 50000 == 0) {
+													}
 
-															CsvWritertFileOutputDelimited_2
-																	.flush();
+													tos_count_tFileOutputDelimited_2++;
 
-														}
+													/**
+													 * [tFileOutputDelimited_2
+													 * main ] stop
+													 */
 
-														tos_count_tFileOutputDelimited_2++;
+												} // End of branch "to_ont_xml"
 
-														/**
-														 * [
-														 * tFileOutputDelimited_2
-														 * main ] stop
-														 */
+												// Start of branch "to_ont_date"
+												if (to_ont_date != null) {
 
-													} // End of branch
-														// "to_ont_xml"
+													/**
+													 * [tJavaRow_7 main ] start
+													 */
 
-													// Start of branch
-													// "to_ont_date"
-													if (to_ont_date != null) {
+													currentComponent = "tJavaRow_7";
 
-														/**
-														 * [tJavaRow_7 main ]
-														 * start
-														 */
+													// Code generated according
+													// to input schema and
+													// output schema
+													context.ontOutputRows++;
+													row8.HLEVEL = to_ont_date.HLEVEL;
+													row8.Name = to_ont_date.Name;
+													row8.Path = to_ont_date.Path;
+													row8.DataType = to_ont_date.DataType;
+													row8.Update_Date = to_ont_date.Update_Date;
+													row8.Import_Date = to_ont_date.Import_Date;
+													row8.Download_Date = to_ont_date.Download_Date;
+													row8.PathID = to_ont_date.PathID;
+													row8.visual = to_ont_date.visual;
+													row8.codeList = to_ont_date.codeList;
+													row8.source = to_ont_date.source;
+													row8.xml = to_ont_date.xml;
+													row8.m_applied_path = to_ont_date.m_applied_path;
 
-														currentComponent = "tJavaRow_7";
+													nb_line_tJavaRow_7++;
 
-														// Code generated
-														// according to input
-														// schema and output
-														// schema
-														context.ontOutputRows++;
-														row8.HLEVEL = to_ont_date.HLEVEL;
-														row8.Name = to_ont_date.Name;
-														row8.Path = to_ont_date.Path;
-														row8.DataType = to_ont_date.DataType;
-														row8.Update_Date = to_ont_date.Update_Date;
-														row8.Import_Date = to_ont_date.Import_Date;
-														row8.Download_Date = to_ont_date.Download_Date;
-														row8.PathID = to_ont_date.PathID;
-														row8.visual = to_ont_date.visual;
-														row8.codeList = to_ont_date.codeList;
-														row8.source = to_ont_date.source;
-														row8.xml = to_ont_date.xml;
-														row8.m_applied_path = to_ont_date.m_applied_path;
+													tos_count_tJavaRow_7++;
 
-														nb_line_tJavaRow_7++;
+													/**
+													 * [tJavaRow_7 main ] stop
+													 */
 
-														tos_count_tJavaRow_7++;
+													/**
+													 * [tFileOutputDelimited_6
+													 * main ] start
+													 */
 
-														/**
-														 * [tJavaRow_7 main ]
-														 * stop
-														 */
+													currentComponent = "tFileOutputDelimited_6";
 
-														/**
-														 * [
-														 * tFileOutputDelimited_6
-														 * main ] start
-														 */
+													String[] rowtFileOutputDelimited_6 = new String[13];
 
-														currentComponent = "tFileOutputDelimited_6";
+													rowtFileOutputDelimited_6[0] = row8.HLEVEL == null ? ""
+															: String.valueOf(row8.HLEVEL);
 
-														String[] rowtFileOutputDelimited_6 = new String[13];
+													rowtFileOutputDelimited_6[1] = row8.Name == null ? ""
+															: row8.Name;
 
-														rowtFileOutputDelimited_6[0] = row8.HLEVEL == null ? ""
-																: String.valueOf(row8.HLEVEL);
+													rowtFileOutputDelimited_6[2] = row8.Path == null ? ""
+															: row8.Path;
 
-														rowtFileOutputDelimited_6[1] = row8.Name == null ? ""
-																: row8.Name;
+													rowtFileOutputDelimited_6[3] = row8.DataType == null ? ""
+															: row8.DataType;
 
-														rowtFileOutputDelimited_6[2] = row8.Path == null ? ""
-																: row8.Path;
+													rowtFileOutputDelimited_6[4] = row8.Update_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row8.Update_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_6[3] = row8.DataType == null ? ""
-																: row8.DataType;
+													rowtFileOutputDelimited_6[5] = row8.Import_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row8.Import_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_6[4] = row8.Update_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row8.Update_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_6[6] = row8.Download_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row8.Download_Date,
+																			"dd-MM-yyyy");
 
-														rowtFileOutputDelimited_6[5] = row8.Import_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row8.Import_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_6[7] = row8.PathID == null ? ""
+															: row8.PathID;
 
-														rowtFileOutputDelimited_6[6] = row8.Download_Date == null ? ""
-																: FormatterUtils
-																		.format_Date(
-																				row8.Download_Date,
-																				"dd-MM-yyyy");
+													rowtFileOutputDelimited_6[8] = row8.visual == null ? ""
+															: row8.visual;
 
-														rowtFileOutputDelimited_6[7] = row8.PathID == null ? ""
-																: row8.PathID;
+													rowtFileOutputDelimited_6[9] = row8.codeList == null ? ""
+															: row8.codeList;
 
-														rowtFileOutputDelimited_6[8] = row8.visual == null ? ""
-																: row8.visual;
+													rowtFileOutputDelimited_6[10] = row8.source == null ? ""
+															: row8.source;
 
-														rowtFileOutputDelimited_6[9] = row8.codeList == null ? ""
-																: row8.codeList;
+													rowtFileOutputDelimited_6[11] = row8.xml == null ? ""
+															: row8.xml;
 
-														rowtFileOutputDelimited_6[10] = row8.source == null ? ""
-																: row8.source;
+													rowtFileOutputDelimited_6[12] = row8.m_applied_path == null ? ""
+															: row8.m_applied_path;
 
-														rowtFileOutputDelimited_6[11] = row8.xml == null ? ""
-																: row8.xml;
+													nb_line_tFileOutputDelimited_6++;
+													CsvWritertFileOutputDelimited_6
+															.writeNext(rowtFileOutputDelimited_6);
 
-														rowtFileOutputDelimited_6[12] = row8.m_applied_path == null ? ""
-																: row8.m_applied_path;
+													if (nb_line_tFileOutputDelimited_6 % 50000 == 0) {
 
-														nb_line_tFileOutputDelimited_6++;
 														CsvWritertFileOutputDelimited_6
-																.writeNext(rowtFileOutputDelimited_6);
+																.flush();
 
-														if (nb_line_tFileOutputDelimited_6 % 50000 == 0) {
+													}
 
-															CsvWritertFileOutputDelimited_6
-																	.flush();
+													tos_count_tFileOutputDelimited_6++;
 
-														}
+													/**
+													 * [tFileOutputDelimited_6
+													 * main ] stop
+													 */
 
-														tos_count_tFileOutputDelimited_6++;
+												} // End of branch "to_ont_date"
 
-														/**
-														 * [
-														 * tFileOutputDelimited_6
-														 * main ] stop
-														 */
+											} // End of branch "asd"
 
-													} // End of branch
-														// "to_ont_date"
+										} // End of branch "fromOutput"
 
-													// Start of branch "out1"
-													if (out1 != null) {
+										/**
+										 * [tFileInputDelimited_1 end ] start
+										 */
 
-														/**
-														 * [tUniqRow_2 main ]
-														 * start
-														 */
+										currentComponent = "tFileInputDelimited_1";
 
-														currentComponent = "tUniqRow_2";
-
-														row14 = null;
-														if (out1.PatientID == null) {
-															finder_tUniqRow_2.PatientID = null;
-														} else {
-															finder_tUniqRow_2.PatientID = out1.PatientID
-																	.toLowerCase();
-														}
-														if (out1.sic == null) {
-															finder_tUniqRow_2.sic = null;
-														} else {
-															finder_tUniqRow_2.sic = out1.sic
-																	.toLowerCase();
-														}
-														finder_tUniqRow_2.hashCodeDirty = true;
-														if (!keystUniqRow_2
-																.contains(finder_tUniqRow_2)) {
-															KeyStruct_tUniqRow_2 new_tUniqRow_2 = new KeyStruct_tUniqRow_2();
-
-															if (out1.PatientID == null) {
-																new_tUniqRow_2.PatientID = null;
-															} else {
-																new_tUniqRow_2.PatientID = out1.PatientID
-																		.toLowerCase();
-															}
-															if (out1.sic == null) {
-																new_tUniqRow_2.sic = null;
-															} else {
-																new_tUniqRow_2.sic = out1.sic
-																		.toLowerCase();
-															}
-
-															keystUniqRow_2
-																	.add(new_tUniqRow_2);
-															if (row14 == null) {
-																row14 = new row14Struct();
-															}
-															row14.PatientID = out1.PatientID;
-															row14.EncounterID = out1.EncounterID;
-															row14.ImportDate = out1.ImportDate;
-															row14.UpdateDate = out1.UpdateDate;
-															row14.DownloadDate = out1.DownloadDate;
-															row14.Item = out1.Item;
-															row14.Value = out1.Value;
-															row14.NiceName = out1.NiceName;
-															row14.DataType = out1.DataType;
-															row14.uniqueID = out1.uniqueID;
-															row14.Path = out1.Path;
-															row14.PathID = out1.PathID;
-															row14.StartDate = out1.StartDate;
-															row14.EndDate = out1.EndDate;
-															row14.SourceSystem = out1.SourceSystem;
-															row14.instanceNum = out1.instanceNum;
-															row14.modifierType = out1.modifierType;
-															row14.sic = out1.sic;
-															row14.m_applied_path = out1.m_applied_path;
-															nb_uniques_tUniqRow_2++;
-														} else {
-															nb_duplicates_tUniqRow_2++;
-														}
-
-														tos_count_tUniqRow_2++;
-
-														/**
-														 * [tUniqRow_2 main ]
-														 * stop
-														 */
-														// Start of branch
-														// "row14"
-														if (row14 != null) {
-
-															/**
-															 * [tMap_3 main ]
-															 * start
-															 */
-
-															currentComponent = "tMap_3";
-
-															boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
-
-															// ###############################
-															// # Input tables
-															// (lookups)
-															boolean rejectedInnerJoin_tMap_3 = false;
-															boolean mainRowRejected_tMap_3 = false;
-
-															// ###############################
-															{ // start of Var
-																// scope
-
-																// ###############################
-																// # Vars tables
-
-																Var__tMap_3__Struct Var = Var__tMap_3;// ###############################
-																// ###############################
-																// # Output
-																// tables
-
-																asdd = null;
-
-																// # Output
-																// table :
-																// 'asdd'
-																asdd_tmp.HLEVEL = 2;
-																asdd_tmp.Name = row14.sic;
-																asdd_tmp.Path = "\\OBJECTID\\"
-																		+ row14.sic
-																		+ "\\";
-																asdd_tmp.DataType = "String";
-																asdd_tmp.Update_Date = row14.UpdateDate;
-																asdd_tmp.Import_Date = row14.ImportDate;
-																asdd_tmp.Download_Date = row14.DownloadDate;
-																asdd_tmp.PathID = "";
-																asdd_tmp.visual = "RH";
-																asdd_tmp.codeList = "";
-																asdd_tmp.source = "";
-																asdd_tmp.xml = "";
-																asdd_tmp.m_applied_path = "\\i2b2\\";
-																asdd = asdd_tmp;
-																// ###############################
-
-															} // end of Var
-																// scope
-
-															rejectedInnerJoin_tMap_3 = false;
-
-															tos_count_tMap_3++;
-
-															/**
-															 * [tMap_3 main ]
-															 * stop
-															 */
-															// Start of branch
-															// "asdd"
-															if (asdd != null) {
-
-																/**
-																 * [tJavaRow_9
-																 * main ] start
-																 */
-
-																currentComponent = "tJavaRow_9";
-
-																// Code
-																// generated
-																// according to
-																// input schema
-																// and output
-																// schema
-																context.ontOutputRows++;
-																row13.HLEVEL = asdd.HLEVEL;
-																row13.Name = asdd.Name;
-																row13.Path = asdd.Path;
-																row13.DataType = asdd.DataType;
-																row13.Update_Date = asdd.Update_Date;
-																row13.Import_Date = asdd.Import_Date;
-																row13.Download_Date = asdd.Download_Date;
-																row13.PathID = asdd.PathID;
-																row13.visual = asdd.visual;
-																row13.codeList = asdd.codeList;
-																row13.source = asdd.source;
-																row13.xml = asdd.xml;
-																row13.m_applied_path = asdd.m_applied_path;
-
-																nb_line_tJavaRow_9++;
-
-																tos_count_tJavaRow_9++;
-
-																/**
-																 * [tJavaRow_9
-																 * main ] stop
-																 */
-
-																/**
-																 * [
-																 * tFileOutputDelimited_7
-																 * main ] start
-																 */
-
-																currentComponent = "tFileOutputDelimited_7";
-
-																String[] rowtFileOutputDelimited_7 = new String[13];
-
-																rowtFileOutputDelimited_7[0] = row13.HLEVEL == null ? ""
-																		: String.valueOf(row13.HLEVEL);
-
-																rowtFileOutputDelimited_7[1] = row13.Name == null ? ""
-																		: row13.Name;
-
-																rowtFileOutputDelimited_7[2] = row13.Path == null ? ""
-																		: row13.Path;
-
-																rowtFileOutputDelimited_7[3] = row13.DataType == null ? ""
-																		: row13.DataType;
-
-																rowtFileOutputDelimited_7[4] = row13.Update_Date == null ? ""
-																		: FormatterUtils
-																				.format_Date(
-																						row13.Update_Date,
-																						"dd-MM-yyyy");
-
-																rowtFileOutputDelimited_7[5] = row13.Import_Date == null ? ""
-																		: FormatterUtils
-																				.format_Date(
-																						row13.Import_Date,
-																						"dd-MM-yyyy");
-
-																rowtFileOutputDelimited_7[6] = row13.Download_Date == null ? ""
-																		: FormatterUtils
-																				.format_Date(
-																						row13.Download_Date,
-																						"dd-MM-yyyy");
-
-																rowtFileOutputDelimited_7[7] = row13.PathID == null ? ""
-																		: row13.PathID;
-
-																rowtFileOutputDelimited_7[8] = row13.visual == null ? ""
-																		: row13.visual;
-
-																rowtFileOutputDelimited_7[9] = row13.codeList == null ? ""
-																		: row13.codeList;
-
-																rowtFileOutputDelimited_7[10] = row13.source == null ? ""
-																		: row13.source;
-
-																rowtFileOutputDelimited_7[11] = row13.xml == null ? ""
-																		: row13.xml;
-
-																rowtFileOutputDelimited_7[12] = row13.m_applied_path == null ? ""
-																		: row13.m_applied_path;
-
-																nb_line_tFileOutputDelimited_7++;
-																CsvWritertFileOutputDelimited_7
-																		.writeNext(rowtFileOutputDelimited_7);
-
-																if (nb_line_tFileOutputDelimited_7 % 50000 == 0) {
-
-																	CsvWritertFileOutputDelimited_7
-																			.flush();
-
-																}
-
-																tos_count_tFileOutputDelimited_7++;
-
-																/**
-																 * [
-																 * tFileOutputDelimited_7
-																 * main ] stop
-																 */
-
-															} // End of branch
-																// "asdd"
-
-														} // End of branch
-															// "row14"
-
-													} // End of branch "out1"
-
-												} // End of branch "asd"
-
-											} // End of branch "fromOutput"
-
-											/**
-											 * [tFileInputDelimited_1 end ]
-											 * start
-											 */
-
-											currentComponent = "tFileInputDelimited_1";
-
-											nb_line_tFileInputDelimited_1++;
-										}
-
-									} finally {
-										if (!(filename_tFileInputDelimited_1 instanceof java.io.InputStream)) {
-											if (csvReadertFileInputDelimited_1 != null) {
-												csvReadertFileInputDelimited_1
-														.close();
-											}
-										}
-										if (csvReadertFileInputDelimited_1 != null) {
-											globalMap
-													.put("tFileInputDelimited_1_NB_LINE",
-															nb_line_tFileInputDelimited_1);
-										}
+										nb_line_tFileInputDelimited_1++;
 									}
-
-									ok_Hash.put("tFileInputDelimited_1", true);
-									end_Hash.put("tFileInputDelimited_1",
-											System.currentTimeMillis());
-
-									/**
-									 * [tFileInputDelimited_1 end ] stop
-									 */
-
-									/**
-									 * [tMap_4 end ] start
-									 */
-
-									currentComponent = "tMap_4";
-
-									// ###############################
-									// # Lookup hashes releasing
-									if (tHash_Lookup_fromOnt != null) {
-										tHash_Lookup_fromOnt.endGet();
-									}
-									globalMap.remove("tHash_Lookup_fromOnt");
-
-									// ###############################
-
-									ok_Hash.put("tMap_4", true);
-									end_Hash.put("tMap_4",
-											System.currentTimeMillis());
-
-									/**
-									 * [tMap_4 end ] stop
-									 */
-
-									/**
-									 * [tJavaRow_1 end ] start
-									 */
-
-									currentComponent = "tJavaRow_1";
-
-									globalMap.put("tJavaRow_1_NB_LINE",
-											nb_line_tJavaRow_1);
-
-									ok_Hash.put("tJavaRow_1", true);
-									end_Hash.put("tJavaRow_1",
-											System.currentTimeMillis());
-
-									/**
-									 * [tJavaRow_1 end ] stop
-									 */
-
-									/**
-									 * [tMap_2 end ] start
-									 */
-
-									currentComponent = "tMap_2";
-
-									// ###############################
-									// # Lookup hashes releasing
-									// ###############################
-
-									ok_Hash.put("tMap_2", true);
-									end_Hash.put("tMap_2",
-											System.currentTimeMillis());
-
-									/**
-									 * [tMap_2 end ] stop
-									 */
-
-									/**
-									 * [tUniqRow_2 end ] start
-									 */
-
-									currentComponent = "tUniqRow_2";
-
-									globalMap.put("tUniqRow_2_NB_UNIQUES",
-											nb_uniques_tUniqRow_2);
-									globalMap.put("tUniqRow_2_NB_DUPLICATES",
-											nb_duplicates_tUniqRow_2);
-
-									ok_Hash.put("tUniqRow_2", true);
-									end_Hash.put("tUniqRow_2",
-											System.currentTimeMillis());
-
-									/**
-									 * [tUniqRow_2 end ] stop
-									 */
-
-									/**
-									 * [tMap_3 end ] start
-									 */
-
-									currentComponent = "tMap_3";
-
-									// ###############################
-									// # Lookup hashes releasing
-									// ###############################
-
-									ok_Hash.put("tMap_3", true);
-									end_Hash.put("tMap_3",
-											System.currentTimeMillis());
-
-									/**
-									 * [tMap_3 end ] stop
-									 */
-
-									/**
-									 * [tJavaRow_9 end ] start
-									 */
-
-									currentComponent = "tJavaRow_9";
-
-									globalMap.put("tJavaRow_9_NB_LINE",
-											nb_line_tJavaRow_9);
-
-									ok_Hash.put("tJavaRow_9", true);
-									end_Hash.put("tJavaRow_9",
-											System.currentTimeMillis());
-
-									/**
-									 * [tJavaRow_9 end ] stop
-									 */
-
-									/**
-									 * [tFileOutputDelimited_7 end ] start
-									 */
-
-									currentComponent = "tFileOutputDelimited_7";
 
 								} finally {
-
-									if (CsvWritertFileOutputDelimited_7 != null) {
-										CsvWritertFileOutputDelimited_7.close();
+									if (!(filename_tFileInputDelimited_1 instanceof java.io.InputStream)) {
+										if (csvReadertFileInputDelimited_1 != null) {
+											csvReadertFileInputDelimited_1
+													.close();
+										}
 									}
-									globalMap.put(
-											"tFileOutputDelimited_7_NB_LINE",
-											nb_line_tFileOutputDelimited_7);
-								} // finally
+									if (csvReadertFileInputDelimited_1 != null) {
+										globalMap
+												.put("tFileInputDelimited_1_NB_LINE",
+														nb_line_tFileInputDelimited_1);
+									}
+								}
 
-								ok_Hash.put("tFileOutputDelimited_7", true);
-								end_Hash.put("tFileOutputDelimited_7",
+								ok_Hash.put("tFileInputDelimited_1", true);
+								end_Hash.put("tFileInputDelimited_1",
 										System.currentTimeMillis());
 
 								/**
-								 * [tFileOutputDelimited_7 end ] stop
+								 * [tFileInputDelimited_1 end ] stop
+								 */
+
+								/**
+								 * [tMap_4 end ] start
+								 */
+
+								currentComponent = "tMap_4";
+
+								// ###############################
+								// # Lookup hashes releasing
+								if (tHash_Lookup_fromOnt != null) {
+									tHash_Lookup_fromOnt.endGet();
+								}
+								globalMap.remove("tHash_Lookup_fromOnt");
+
+								// ###############################
+
+								ok_Hash.put("tMap_4", true);
+								end_Hash.put("tMap_4",
+										System.currentTimeMillis());
+
+								/**
+								 * [tMap_4 end ] stop
+								 */
+
+								/**
+								 * [tJavaRow_1 end ] start
+								 */
+
+								currentComponent = "tJavaRow_1";
+
+								globalMap.put("tJavaRow_1_NB_LINE",
+										nb_line_tJavaRow_1);
+
+								ok_Hash.put("tJavaRow_1", true);
+								end_Hash.put("tJavaRow_1",
+										System.currentTimeMillis());
+
+								/**
+								 * [tJavaRow_1 end ] stop
+								 */
+
+								/**
+								 * [tMap_2 end ] start
+								 */
+
+								currentComponent = "tMap_2";
+
+								// ###############################
+								// # Lookup hashes releasing
+								// ###############################
+
+								ok_Hash.put("tMap_2", true);
+								end_Hash.put("tMap_2",
+										System.currentTimeMillis());
+
+								/**
+								 * [tMap_2 end ] stop
 								 */
 
 								/**
@@ -13659,10 +11372,8 @@ public class CSV_Patient_Data implements TalendJob {
 							csvReadertFileInputDelimited_3.setLineEnd(""
 									+ rowSeparator_tFileInputDelimited_3[0]);
 
-						csvReadertFileInputDelimited_3.setQuoteChar('\"');
+						csvReadertFileInputDelimited_3.setQuoteChar('"');
 
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
 						csvReadertFileInputDelimited_3
 								.setEscapeChar(csvReadertFileInputDelimited_3
 										.getQuoteChar());
@@ -13725,10 +11436,8 @@ public class CSV_Patient_Data implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_3[0]);
 
-							csvReadertFileInputDelimited_3.setQuoteChar('\"');
+							csvReadertFileInputDelimited_3.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_3
 									.setEscapeChar(csvReadertFileInputDelimited_3
 											.getQuoteChar());
@@ -14286,10 +11995,8 @@ public class CSV_Patient_Data implements TalendJob {
 							csvReadertFileInputDelimited_4.setLineEnd(""
 									+ rowSeparator_tFileInputDelimited_4[0]);
 
-						csvReadertFileInputDelimited_4.setQuoteChar('\"');
+						csvReadertFileInputDelimited_4.setQuoteChar('"');
 
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
 						csvReadertFileInputDelimited_4
 								.setEscapeChar(csvReadertFileInputDelimited_4
 										.getQuoteChar());
@@ -14352,10 +12059,8 @@ public class CSV_Patient_Data implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_4[0]);
 
-							csvReadertFileInputDelimited_4.setQuoteChar('\"');
+							csvReadertFileInputDelimited_4.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_4
 									.setEscapeChar(csvReadertFileInputDelimited_4
 											.getQuoteChar());
@@ -14913,10 +12618,8 @@ public class CSV_Patient_Data implements TalendJob {
 							csvReadertFileInputDelimited_7.setLineEnd(""
 									+ rowSeparator_tFileInputDelimited_7[0]);
 
-						csvReadertFileInputDelimited_7.setQuoteChar('\"');
+						csvReadertFileInputDelimited_7.setQuoteChar('"');
 
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
 						csvReadertFileInputDelimited_7
 								.setEscapeChar(csvReadertFileInputDelimited_7
 										.getQuoteChar());
@@ -14979,10 +12682,8 @@ public class CSV_Patient_Data implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_7[0]);
 
-							csvReadertFileInputDelimited_7.setQuoteChar('\"');
+							csvReadertFileInputDelimited_7.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_7
 									.setEscapeChar(csvReadertFileInputDelimited_7
 											.getQuoteChar());
@@ -16718,10 +14419,8 @@ public class CSV_Patient_Data implements TalendJob {
 							csvReadertFileInputDelimited_2.setLineEnd(""
 									+ rowSeparator_tFileInputDelimited_2[0]);
 
-						csvReadertFileInputDelimited_2.setQuoteChar('\"');
+						csvReadertFileInputDelimited_2.setQuoteChar('"');
 
-						// ?????doesn't work for other escapeChar
-						// the default escape mode is double escape
 						csvReadertFileInputDelimited_2
 								.setEscapeChar(csvReadertFileInputDelimited_2
 										.getQuoteChar());
@@ -16784,10 +14483,8 @@ public class CSV_Patient_Data implements TalendJob {
 										.setLineEnd(""
 												+ rowSeparator_tFileInputDelimited_2[0]);
 
-							csvReadertFileInputDelimited_2.setQuoteChar('\"');
+							csvReadertFileInputDelimited_2.setQuoteChar('"');
 
-							// ?????doesn't work for other escapeChar
-							// the default escape mode is double escape
 							csvReadertFileInputDelimited_2
 									.setEscapeChar(csvReadertFileInputDelimited_2
 											.getQuoteChar());
@@ -17539,6 +15236,6 @@ public class CSV_Patient_Data implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 469874 characters generated by Talend Open Studio for Data Integration on the
- * February 26, 2014 12:08:35 PM CET
+ * 413054 characters generated by Talend Open Studio for Data Integration on the
+ * March 5, 2014 1:16:43 PM CET
  ************************************************************************************************/

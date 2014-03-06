@@ -26,12 +26,12 @@ public class ServerLabelProvider extends LabelProvider {
 		Device device = new Device() {
 
 			@Override
-			public void internal_dispose_GC(int hDC, GCData data) {
+			public void internal_dispose_GC(long hDC, GCData data) {
 
 			}
 
 			@Override
-			public int internal_new_GC(GCData data) {
+			public long internal_new_GC(GCData data) {
 				return 0;
 			}
 		};

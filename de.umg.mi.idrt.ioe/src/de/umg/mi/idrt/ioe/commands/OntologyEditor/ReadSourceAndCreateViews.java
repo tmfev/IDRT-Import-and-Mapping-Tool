@@ -61,7 +61,7 @@ public class ReadSourceAndCreateViews extends AbstractHandler {
 		}
 		//		ProgressView.setProgress(true, "Loading...", "");
 		ProgressView.setProgress(0, "Loading...", "");
-		TOSHandler.setCounter(0);
+//		TOSHandler.setCounter(0);
 		Application.executeCommand(new ActionCommand(
 				Resource.ID.Command.IOE.LOADEVERYTHING));
 

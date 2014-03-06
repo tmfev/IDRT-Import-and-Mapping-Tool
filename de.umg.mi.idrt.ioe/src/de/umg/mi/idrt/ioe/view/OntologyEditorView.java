@@ -7,10 +7,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.swing.tree.MutableTreeNode;
 
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -164,6 +164,8 @@ public class OntologyEditorView extends ViewPart {
 	private static Text searchTextTarget;
 	private static Button searchClearButtonTarget;
 	private static Text lblStagingName;
+	private static Composite composite_12;
+	private static Composite composite_11;
 
 
 	private static void createDirs(File mainPath) {
@@ -356,9 +358,6 @@ public class OntologyEditorView extends ViewPart {
 
 		targetComposite = new Composite(sash, SWT.NONE);
 		targetComposite.setLayout(new BorderLayout(0, 0));
-		targetTreeViewer = new TreeViewer(targetComposite, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		targetTreeViewer.setSorter(new ViewerSorter());
 
 		final Listener targetTreeLabelListener = new Listener () {
 			public void handleEvent (Event event) {
@@ -446,106 +445,20 @@ public class OntologyEditorView extends ViewPart {
 				}
 			}
 		};
-		targetTreeViewer.getTree().addListener (SWT.Dispose, targetTreeListener);
-		targetTreeViewer.getTree().addListener (SWT.KeyDown, targetTreeListener);
-		targetTreeViewer.getTree().addListener (SWT.MouseMove, targetTreeListener);
-		targetTreeViewer.getTree().addListener (SWT.MouseHover, targetTreeListener);
-
-		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighterForMultiselection(targetTreeViewer));
-		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
-			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
-				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
-						//						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
-						|| (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
-						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC
-						|| (event.keyCode == SWT.F2);
-			}
-		};
-
-		TreeViewerEditor.create(targetTreeViewer, focusCellManager, actSupport, ColumnViewerEditor.TABBING_HORIZONTAL
-				| ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
-				| ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
-
-		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree(),SWT.NONE);
 		targetComposite.layout();
-		targetColumn = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		targetColumn.getColumn().setMoveable(false);
+		//		targetColumn.getColumn().setMoveable(false);
 		//		column.getColumn().setText("");
-		targetColumn.setLabelProvider(new ColumnLabelProvider() {
-
-			public String getText(Object element) {
-				return element.toString();
-			}
-
-		});
-		targetColumn.setEditingSupport(new EditingSupport(targetTreeViewer) {
-			protected boolean canEdit(Object element) {
-				return true;
-			}
-
-			protected CellEditor getCellEditor(Object element) {
-				return textCellEditor;
-			}
-
-			protected Object getValue(Object element) {
-				return ((OntologyTreeNode) element).getName();
-			}
-
-			protected void setValue(Object element, Object value) {
-				((OntologyTreeNode) element).getTargetNodeAttributes().setName((String)value);
-				((OntologyTreeNode) element).setName((String)value);
-				targetTreeViewer.update(element, null);
-				EditorTargetInfoView.refresh();
-			}
-		});
+		//		targetColumn.setLabelProvider(new ColumnLabelProvider() {
+		//
+		//			public String getText(Object element) {
+		//				return element.toString();
+		//			}
+		//
+		//		});
 
 
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
-
-		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
-				targetTreeViewer));
-		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
-
-		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
-		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.keyCode == SWT.DEL) {
-					//					System.out.println("DELETE");
-					deleteNode();
-				}
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-		});
-
-		targetTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-
-				if (e.item == null || e.item.getData() == null) {
-					System.out.println("WidgetSelected but no known node found!");
-					return;
-				}
-				if (e.item.getData() instanceof OntologyTreeNode) {
-					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
-					setCurrentTargetNode(node);
-					if (node != null) {
-						EditorTargetInfoView.setNode(node);
-					}
-				}
-				else if (e.item.getData() instanceof OntologyTreeSubNode) {
-					OntologyTreeSubNode subNode = (OntologyTreeSubNode) e.item.getData();
-					setCurrentTargetNode(subNode.getParent());
-					EditorTargetInfoView.setNode(subNode);
-				}
-
-			}
-		});
 		IDoubleClickListener doubleClickListener = new IDoubleClickListener() {
 			@Override
 			public void doubleClick(DoubleClickEvent event) {
@@ -556,8 +469,6 @@ public class OntologyEditorView extends ViewPart {
 						!viewer.getExpandedState(selectedNode));
 			}
 		};
-
-		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 
 		stagingTreeViewer = new TreeViewer(stagingComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
@@ -728,6 +639,127 @@ public class OntologyEditorView extends ViewPart {
 		searchClearButtonTarget = new Button(composite_9, SWT.NONE);
 		searchClearButtonTarget.setToolTipText("Clear Search");
 		searchClearButtonTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
+
+		composite_12 = new Composite(targetComposite, SWT.NONE);
+		composite_12.setLayoutData(BorderLayout.CENTER);
+		composite_12.setLayout(new BorderLayout(0, 0));
+
+		Composite composite_10 = new Composite(composite_12, SWT.NONE);
+		composite_10.setLayoutData(BorderLayout.EAST);
+		composite_10.setLayout(new GridLayout(1, false));
+
+		Button btnMoveNodeUp = new Button(composite_10, SWT.NONE);
+		btnMoveNodeUp.setLayoutData(new GridData(SWT.LEFT, SWT.BOTTOM, false, true, 1, 1));
+		btnMoveNodeUp.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-up.png"));
+		btnMoveNodeUp.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				moveNodeUp();
+			}
+		});
+		Button btnMoveNodeDown = new Button(composite_10, SWT.NONE);
+		btnMoveNodeDown.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, true, 1, 1));
+		btnMoveNodeDown.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/go-down.png"));
+		btnMoveNodeDown.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				moveNodeDown();
+			}
+		});
+		composite_11 = new Composite(composite_12, SWT.NONE);
+		composite_11.setLayoutData(BorderLayout.CENTER);
+		composite_11.setLayout(new FillLayout(SWT.HORIZONTAL));
+		targetTreeViewer = new TreeViewer(composite_11, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION);
+		targetTreeViewer.setSorter(new ViewerSorter());
+		targetTreeViewer.getTree().addListener (SWT.Dispose, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.KeyDown, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.MouseMove, targetTreeListener);
+		targetTreeViewer.getTree().addListener (SWT.MouseHover, targetTreeListener);
+
+		TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(targetTreeViewer,new FocusCellOwnerDrawHighlighterForMultiselection(targetTreeViewer));
+		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
+			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
+				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
+						//						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
+						|| (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
+						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC
+						|| (event.keyCode == SWT.F2);
+			}
+		};
+
+		TreeViewerEditor.create(targetTreeViewer, focusCellManager, actSupport, ColumnViewerEditor.TABBING_HORIZONTAL
+				| ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
+				| ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+
+		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree(),SWT.NONE);
+		targetColumn = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL | SWT.FULL_SELECTION);
+		targetColumn.setEditingSupport(new EditingSupport(targetTreeViewer) {
+			protected boolean canEdit(Object element) {
+				return true;
+			}
+
+			protected CellEditor getCellEditor(Object element) {
+				return textCellEditor;
+			}
+
+			protected Object getValue(Object element) {
+				return ((OntologyTreeNode) element).getName();
+			}
+			//TODO
+			protected void setValue(Object element, Object value) {
+				((OntologyTreeNode) element).getTargetNodeAttributes().setName((String)value);
+				((OntologyTreeNode) element).setName((String)value);
+				targetTreeViewer.update(element, null);
+				EditorTargetInfoView.refresh();
+			}
+		});
+
+		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
+				targetTreeViewer));
+		NodeDropListener nodeDropListener = new NodeDropListener(targetTreeViewer);
+
+		targetTreeViewer.addDropSupport(operations, transferTypes, nodeDropListener);
+		targetTreeViewer.getTree().addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.keyCode == SWT.DEL) {
+					deleteNode();
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+		});
+
+		targetTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+
+				if (e.item == null || e.item.getData() == null) {
+					System.out.println("WidgetSelected but no known node found!");
+					return;
+				}
+				if (e.item.getData() instanceof OntologyTreeNode) {
+					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
+					setCurrentTargetNode(node);
+					if (node != null) {
+						EditorTargetInfoView.setNode(node);
+					}
+				}
+				else if (e.item.getData() instanceof OntologyTreeSubNode) {
+					OntologyTreeSubNode subNode = (OntologyTreeSubNode) e.item.getData();
+					setCurrentTargetNode(subNode.getParent());
+					EditorTargetInfoView.setNode(subNode);
+				}
+
+			}
+		});
+
+
+		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 		searchClearButtonTarget.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -1213,7 +1245,7 @@ public class OntologyEditorView extends ViewPart {
 	public static boolean isShowSubNodes() {
 		return showSubNodes;
 	}
-	
+
 	private static void markNodes(OntologyTreeNode node, String text, TreeViewer viewer) {
 
 		for (OntologyTreeNode child : node.getChildren()) {
@@ -1619,8 +1651,28 @@ public class OntologyEditorView extends ViewPart {
 
 		Menu menu = new Menu(targetTreeViewer.getTree());
 
-		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+		MenuItem mntmSortChildren = new MenuItem(menu, SWT.PUSH);
 		//TODO
+		mntmSortChildren.setText("Sort Children");
+		mntmSortChildren.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
+				sortNode(node);
+
+			}
+		});
+
+		//TODO
+		new MenuItem(menu, SWT.SEPARATOR);
+
+		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
 		mntmgetChildren.setText("TEST");
 		mntmgetChildren.addSelectionListener(new SelectionListener() {
 
@@ -1631,9 +1683,9 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				
+
 				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
-				
+
 				//				System.out.println("**** STAGING: ****");
 				//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
 				//					System.out.println(child.getName());
@@ -1657,6 +1709,9 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
+
+
+
 		MenuItem mntmAddNode = new MenuItem(menu, SWT.PUSH);
 		mntmAddNode.setText("Add Folder");
 		mntmAddNode.addSelectionListener(new SelectionListener() {
@@ -1686,7 +1741,6 @@ public class OntologyEditorView extends ViewPart {
 				addItem();
 			}
 		});
-		//TODO MODIFIER
 		//		new MenuItem(menu, SWT.SEPARATOR);
 		//
 		//		MenuItem mntmAddModifier = new MenuItem(menu, SWT.PUSH);
@@ -1861,7 +1915,6 @@ public class OntologyEditorView extends ViewPart {
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
 				"images/IDRT.gif"));
 
-		//		System.out.println("################# Debug #######");
 		TargetProjects targetProjects = new TargetProjects();
 
 		TargetProject targetProject1 = new TargetProject();
@@ -1991,5 +2044,166 @@ public class OntologyEditorView extends ViewPart {
 	}
 	@Override
 	public void setFocus() {
+	}
+	private static void moveNodeDown(){
+		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
+		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
+				.getSelection();
+
+		List<MutableTreeNode> nodeList = selection.toList();
+
+		for (int i = nodeList.size()-1;i>=0;i--){
+			MutableTreeNode mNode = nodeList.get(i);
+			if ( mNode instanceof OntologyTreeNode) {
+				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				OntologyTreeNode parent = node.getParent();
+
+				int max = parent.getChildren().size();
+				int leading = 2;
+				int zeros = max/10;
+				while(zeros>1){
+					zeros=zeros/10;
+					leading++;
+				}
+				boolean isSorted = false;
+				if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
+					boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
+					if (cont){
+						sortNode(parent);
+						isSorted=true;
+					}
+				}
+				else 
+					isSorted=true;
+
+				if (isSorted){
+					//find next item
+					String nodeNumber = node.getName().substring(0,leading);
+					int nextNumber = Integer.parseInt(nodeNumber)+1;
+					if (nextNumber<=parent.getChildren().size()){
+						for (OntologyTreeNode neighbors : parent.getChildren()){
+							String name = neighbors.getName();
+
+							if (name.startsWith(String.format("%0"+leading+"d", nextNumber))){
+								//got previous item
+								String newName;
+								newName = name.substring(leading, name.length()).trim();
+								newName=""+String.format("%0"+leading+"d", nextNumber-1)+" " +newName;
+								neighbors.setName(newName);
+								neighbors.getTargetNodeAttributes().setName(newName);
+								newName = node.getName().substring(leading, node.getName().length()).trim();
+								newName=""+String.format("%0"+leading+"d", nextNumber)+" " +newName;
+								node.setName(newName);
+								node.getTargetNodeAttributes().setName(newName);
+								break;
+							}
+						}
+						targetTreeViewer.refresh();
+					}
+					else 
+						break;
+
+				}
+			}
+		}
+	}
+
+	private static void moveNodeUp(){
+		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
+		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
+				.getSelection();
+
+		List<MutableTreeNode> nodeList = selection.toList();
+		for (int i = 0; i<nodeList.size();i++){
+			MutableTreeNode mNode = nodeList.get(i);
+			if ( mNode instanceof OntologyTreeNode) {
+				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				OntologyTreeNode parent = node.getParent();
+
+				int max = parent.getChildren().size();
+				int leading = 2;
+				int zeros = max/10;
+				while(zeros>1){
+					zeros=zeros/10;
+					leading++;
+				}
+				boolean isSorted = false;
+				if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
+					boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
+					if (cont){
+						sortNode(parent);
+						isSorted=true;
+					}
+				}
+				else 
+					isSorted=true;
+
+				if (isSorted){
+					//find next item
+					String nodeNumber = node.getName().substring(0,leading);
+					int prevNumber = Integer.parseInt(nodeNumber)-1;
+					if (prevNumber>0){
+						for (OntologyTreeNode neighbors : parent.getChildren()){
+							String name = neighbors.getName();
+
+							if (name.startsWith(String.format("%0"+leading+"d", prevNumber))){
+								//got previous item
+								String newName;
+								newName = name.substring(leading, name.length()).trim();
+								newName=""+String.format("%0"+leading+"d", prevNumber+1)+" " +newName;
+								neighbors.setName(newName);
+								neighbors.getTargetNodeAttributes().setName(newName);
+								newName = node.getName().substring(leading, node.getName().length()).trim();
+								newName=""+String.format("%0"+leading+"d", prevNumber)+" " +newName;
+								node.setName(newName);
+								node.getTargetNodeAttributes().setName(newName);
+								break;
+							}
+						}
+						targetTreeViewer.refresh();
+					}
+					else 
+						break;
+
+				}
+			}
+
+		}
+	}
+	private static void sortNode(OntologyTreeNode node){
+		int counter = 1;
+		int max = node.getChildren().size();
+		int leading = 2;
+		int zeros = max/10;
+		while(zeros>1){
+			zeros=zeros/10;
+			leading++;
+		}
+		Collections.sort(node.getChildren());
+		Collections.reverse(node.getChildren());
+		for (OntologyTreeNode child:node.getChildren()){
+			String name = child.getName();
+			String sortNumber;
+			if (name.length()>leading){
+				sortNumber = name.substring(0, leading);
+			}
+			else 
+				sortNumber = name;
+			
+			String newName;
+			if (sortNumber.matches("[0-9]{"+leading+"}")){
+				newName = name.substring(leading, name.length()).trim();
+				newName=""+String.format("%0"+leading+"d", counter)+" " +newName;
+			}
+			else {
+				newName = name.trim();
+				newName=""+String.format("%0"+leading+"d", counter)+" " +newName;
+			}
+			child.setName(newName);
+			child.getTargetNodeAttributes().setName(newName);
+			counter++;
+
+		}
+		targetTreeViewer.refresh();
 	}
 }

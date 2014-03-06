@@ -105,7 +105,8 @@ public class MyOntologyTrees{
 	}
 
 	/* OT Commands */
-	public void copySourceNodeToTarget(final OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
+	public void copySourceNodeToTarget(OntologyTreeNode sourceNode , final OntologyTreeNode targetNode) {
+		sourceNode = OntologyEditorView.getCurrentStagingNode();
 		IStructuredSelection selection = (IStructuredSelection) OntologyEditorView.getStagingTreeViewer()
 				.getSelection();
 		Iterator<OntologyTreeNode> nodeIterator = selection.iterator();
@@ -126,15 +127,16 @@ public class MyOntologyTrees{
 			//			ProgressView.addProgress();
 			while (nodeIterator.hasNext()) {
 				final OntologyTreeNode sourceNode1 = nodeIterator.next();
+
 				if (sourceNode1.getTreePathLevel() == minLevel){
 
 					progress = 0;
 					counter = sourceNode1.getAllChildrenCount();
 					percent = (float)counter/100;
-//					System.out.println("COPY SIZE: " + counter + " " + percent);
+					//					System.out.println("COPY SIZE: " + counter + " " + percent);
 
 					ProgressView.setProgress(0, "Copying...", "");
-					deepCopy(sourceNode1, targetNode, targetNode);
+					deepCopy(sourceNode1, targetNode, targetNode,sourceNode);
 					ProgressView.setProgress(100, "Copying... (done)","");
 				}
 			}
@@ -179,35 +181,35 @@ public class MyOntologyTrees{
 		ontologyTreeSource.setRootVisible(false);
 
 		getOntologyTreeSource().updateUI();
-//		MouseAdapter ma = new MouseAdapter() {
-//			public void mousePressed(MouseEvent e) {
-//				if (e.isPopupTrigger())
-//					myPopupEvent(e);
-//			}
-//
-//			public void mouseReleased(MouseEvent e) {
-//				if (e.isPopupTrigger())
-//					myPopupEvent(e);
-//			}
-//
-//			private void myPopupEvent(MouseEvent e) {
-//				int x = e.getX();
-//				int y = e.getY();
-//				OntologyTree OT = (OntologyTree) e.getSource();
-//				TreePath path = OT.getPathForLocation(x, y);
-//				if (path == null)
-//					return;
-//
-//				OT.setSelectionPath(path);
-//
-//			}
-//		};
-//
-//		// set custom listener
-//		if (this.ontologyTreeSource != null) {
-//			// this.OT.addTreeSelectionListener(this);
-//			this.ontologyTreeSource.addMouseListener(ma);
-//		}
+		//		MouseAdapter ma = new MouseAdapter() {
+		//			public void mousePressed(MouseEvent e) {
+		//				if (e.isPopupTrigger())
+		//					myPopupEvent(e);
+		//			}
+		//
+		//			public void mouseReleased(MouseEvent e) {
+		//				if (e.isPopupTrigger())
+		//					myPopupEvent(e);
+		//			}
+		//
+		//			private void myPopupEvent(MouseEvent e) {
+		//				int x = e.getX();
+		//				int y = e.getY();
+		//				OntologyTree OT = (OntologyTree) e.getSource();
+		//				TreePath path = OT.getPathForLocation(x, y);
+		//				if (path == null)
+		//					return;
+		//
+		//				OT.setSelectionPath(path);
+		//
+		//			}
+		//		};
+		//
+		//		// set custom listener
+		//		if (this.ontologyTreeSource != null) {
+		//			// this.OT.addTreeSelectionListener(this);
+		//			this.ontologyTreeSource.addMouseListener(ma);
+		//		}
 
 
 	}
@@ -357,11 +359,11 @@ public class MyOntologyTrees{
 	 * @param pro ***************************************************
 	 */
 
-	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, final OntologyTreeNode selectedTargetNode) {
+	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, final OntologyTreeNode selectedTargetNode, final OntologyTreeNode selectedSourceNode) {
 		//TODO
 		progress++;
 		if ((int) (progress/percent)>ProgressView.getValue()+10) {
-//			System.out.println(progress + " " + percent + " " + counter + " " + progress/percent);
+			//			System.out.println(progress + " " + percent + " " + counter + " " + progress/percent);
 			ProgressView.setProgress((int) (progress/percent),"Copying... ("+ProgressView.getValue()+"%)",source.getName());
 		}
 
@@ -372,7 +374,12 @@ public class MyOntologyTrees{
 		if (source.getOntologyCellAttributes().getC_FACTTABLECOLUMN().toLowerCase().equals("modifier_cd")) {
 			node.getTargetNodeAttributes().addStagingPath(source.getOntologyCellAttributes().getC_FULLNAME());
 			//			System.out.println(selectedTargetNode.getTreePath() + " " + selectedTargetNode.getID());
-			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
+			if (!selectedSourceNode.isModifier()){
+				node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (source.getOntologyCellAttributes().getM_APPLIED_PATH()));
+			}
+			else {
+				node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, (selectedTargetNode.getTreePath()));
+			}
 		}
 		else {
 			node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH,source.getOntologyCellAttributes().getM_APPLIED_PATH());
@@ -390,7 +397,18 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,source.getOntologyCellAttributes().getSOURCESYSTEM_CD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,source.getOntologyCellAttributes().getVALUETYPE_CD());
 		node.setTreePath(target.getTreePath() + node.getID() + "\\");
-		node.setTreePathLevel(target.getTreePathLevel() + 1);
+
+
+		if (!target.isModifier() && node.isModifier()){
+			node.setTreePathLevel(1);
+		}
+		else {
+			node.setTreePathLevel(target.getTreePathLevel() + 1);
+		}
+		System.out.println((target.isModifier() + " " +  node.isModifier() + " NODE=" + node.getName() + ":" 
+				+node.getTreePathLevel() + "--> TARGET=" + target.getName() + ":" + target.getTreePathLevel() + "=="+target.getOntologyCellAttributes().getC_HLEVEL()));
+
+
 
 		node.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
 
@@ -399,9 +417,10 @@ public class MyOntologyTrees{
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
 		if (testNode==null) {
 			target.add(node);
+			System.out.println("ADDED NODE: " + node.getName() + " " + node.getTreePathLevel() + " TO " + target.getName() + " " + target.getTreePathLevel());
 			this.getOntologyTreeTarget().getNodeLists().add(node);
 			for (OntologyTreeNode child : source.getChildren()) {
-				deepCopy(child, node, selectedTargetNode);
+				deepCopy(child, node, selectedTargetNode,selectedSourceNode);
 			}
 		}
 		else {
@@ -420,7 +439,7 @@ public class MyOntologyTrees{
 					testNode.getTargetNodeAttributes().addStagingPath(node.getOntologyCellAttributes().getC_FULLNAME());
 				else {
 					for (OntologyTreeNode child : source.getChildren()) {
-						deepCopy(child, node, selectedTargetNode);
+						deepCopy(child, node, selectedTargetNode,selectedSourceNode);
 					}
 				}
 			}
@@ -471,7 +490,7 @@ public class MyOntologyTrees{
 							target.add(node);
 							getOntologyTreeTarget().getNodeLists().add(node);
 							for (OntologyTreeNode child : source.getChildren()) {
-								deepCopy(child, node,selectedTargetNode);
+								deepCopy(child, node,selectedTargetNode,selectedSourceNode);
 							}
 						}
 						else {
@@ -780,7 +799,9 @@ public class MyOntologyTrees{
 		//			System.out.println("sourceNode.getOntologyCellAttributes() == null");
 		//		}
 
-
+		newNode.setTreePath(targetNode.getTreePath() + sourceNode.getID() + "\\");
+		newNode.setTreePathLevel(targetNode.getTreePathLevel() + 1);
+		
 		targetNode.add(newNode);
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode, true);
 		OntologyEditorView.getTargetTreeViewer().refresh();

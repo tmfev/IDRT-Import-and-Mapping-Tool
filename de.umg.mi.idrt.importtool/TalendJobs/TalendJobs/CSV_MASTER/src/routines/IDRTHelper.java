@@ -433,20 +433,20 @@ public class IDRTHelper {
 				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
 				ontOutput.writeNext(ontLine);
 
-				ontLine[ONT_HLEVEL] = "1";
-				ontLine[ONT_NAME] = "OBJECTID";
-				ontLine[ONT_PATH] = "\\OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-				ontLine[ONT_DATATYPE] = "";
-				ontLine[ONT_UPDATEDATE] = "";
-				ontLine[ONT_IMPORTDATE] = "";
-				ontLine[ONT_DOWNLOADDATE] = "";
-				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "DH";
-				ontLine[ONT_ITEMCODE] = "";
-				ontLine[ONT_SOURCE] = "";
-				ontLine[ONT_XML] = "";
-				ontLine[ONT_M_APPLIEDPATH] = "\\i2b2\\";  //applied path
-				ontOutput.writeNext(ontLine);
+//				ontLine[ONT_HLEVEL] = "1";
+//				ontLine[ONT_NAME] = "OBJECTID";
+//				ontLine[ONT_PATH] = "\\OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
+//				ontLine[ONT_DATATYPE] = "";
+//				ontLine[ONT_UPDATEDATE] = "";
+//				ontLine[ONT_IMPORTDATE] = "";
+//				ontLine[ONT_DOWNLOADDATE] = "";
+//				ontLine[ONT_PATHID] = "";
+//				ontLine[ONT_VISUAL] = "DH";
+//				ontLine[ONT_ITEMCODE] = "";
+//				ontLine[ONT_SOURCE] = "";
+//				ontLine[ONT_XML] = "";
+//				ontLine[ONT_M_APPLIEDPATH] = "\\i2b2\\";  //applied path
+//				ontOutput.writeNext(ontLine);
 
 
 				//				ontLine[ONT_HLEVEL] = "1";

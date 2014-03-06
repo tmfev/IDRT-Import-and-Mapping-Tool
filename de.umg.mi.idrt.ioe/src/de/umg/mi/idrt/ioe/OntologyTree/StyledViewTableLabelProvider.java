@@ -1,15 +1,9 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
-import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.umg.mi.idrt.ioe.GUITools;
