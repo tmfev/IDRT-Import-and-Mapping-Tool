@@ -10,7 +10,7 @@
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.124.17:1521:i2b2t"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="8Hm+c/CLC8Q="/>
-    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.124.17:1521:i2b2t"/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
@@ -22,71 +22,27 @@
     <contextParameter comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT2&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
-    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;C:/I2B2ImportProject/GIT/de.umg.mi.idrt.ioe.git/de.umg.mi.idrt.ioe/temp/temp_TOS_Connector_file.csv&quot;"/>
+    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>
     <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>
     <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>
-    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;WriteTargetOntology&quot;"/>
+    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;I2B2T&quot;"/>
     <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Password" value=""/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;wc24gqd&quot;"/>
     <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;1521&quot;"/>
     <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
+    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;oe_target_ontology&quot;"/>
     <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="null"/>
-    <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target&quot;"/>
-    <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
-    <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_project&quot;"/>
+    <contextParameter comment="" name="TableIEOTarget" prompt="TableIEOTarget?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target&quot;"/>
+    <contextParameter comment="" name="TableIEOTargetOntology" prompt="TableIEOTargetOntology?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
+    <contextParameter comment="" name="TableIEOTargetProject" prompt="TableIEOTargetProject?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;ioe_target_project&quot;"/>
     <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Object" value=""/>
-  </context>
-  <context confirmationNeeded="false" name="empty_export">
-    <contextParameter comment="" name="currentTargetProjectID" prompt="currentTargetProjectID?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="TargetProjectID" prompt="TargetProjectID?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="" name="DateCreated" prompt="DateCreated?" promptNeeded="false" type="id_Date" value=""/>
-    <contextParameter comment="" name="Version" prompt="Version?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
-    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Host" prompt="DB_TargetI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
-    <contextParameter comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Password" value=""/>
-    <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Object" value="&quot;&quot;"/>
-    <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_Boolean" value="true"/>
-    <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="TableIOETargetOntology" prompt="TableIOETargetOntology?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="TableIOETarget" prompt="TableIOETarget?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="TableIOETargetProject" prompt="TableIOETargetProject?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" repositoryContextId="_rKyS8AlUEeK4TLaYlOdWYA" type="id_String" value="&quot;&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
@@ -104,13 +60,14 @@
     <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
     <elementParameter field="FILE" name="IMPLICIT_TCONTEXTLOAD_FILE" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:REPOSITORY_PROPERTY_TYPE" value=""/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION_IMPLICIT_CONTEXT" value=""/>
     <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value=""/>
     <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value=""/>
     <elementParameter field="CHECK" name="DISABLE_WARNINGS" value="false"/>
     <elementParameter field="CHECK" name="DISABLE_INFO" value="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ojdbc14-10g.jar"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_10"/>
     <routinesParameter id="_xOUygAh_EeK2xKsAbs-hQw" name="DataOperation"/>
     <routinesParameter id="_xOi08Ah_EeK2xKsAbs-hQw" name="Mathematical"/>
     <routinesParameter id="_xOntcAh_EeK2xKsAbs-hQw" name="Numeric"/>
@@ -258,7 +215,7 @@
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.TargetProjectID = input_row.TARGETPROJECT_ID != null ? input_row.TARGETPROJECT_ID : -1;&#xA;context.TargetID = input_row.TARGET_ID != null ? input_row.TARGET_ID : -1;&#xA;context.Version = input_row.VERSION != null ? input_row.VERSION : -1;&#xA;&#xA;System.out.println(&quot;TOSIDRTCommand_SaveTargetProjects&quot;);&#xA;System.out.println(&quot;TARGETPROJECT_ID: &quot; + context.TargetProjectID + &quot;!&quot;);&#xA;System.out.println(&quot;TARGET_ID: &quot; + context.TargetID+ &quot;!&quot;);&#xA;System.out.println(&quot;VERSION: &quot; + context.Version+ &quot;!&quot;);&#xA;&#xA;System.out.println(&quot;context.DB_StagingI2B2_Schema: &quot; + context.DB_StagingI2B2_Schema + &quot;!&quot;);&#xA;System.out.println(&quot;context.TableIOETargetProject: &quot; + context.TableIOETargetProject + &quot;!&quot;);&#xA;&#xA;System.out.println(&quot;DataFile: &quot; + context.DataFile + &quot;!&quot;);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.TargetProjectID = input_row.TARGETPROJECT_ID != null ? input_row.TARGETPROJECT_ID : -1;&#xA;context.TargetID = input_row.TARGET_ID != null ? input_row.TARGET_ID : -1;&#xA;context.Version = input_row.VERSION != null ? input_row.VERSION : -1;&#xA;&#xA;System.out.println(&quot;TOSIDRTCommand_SaveTargetProjects&quot;);&#xA;System.out.println(&quot;TARGETPROJECT_ID: &quot; + context.TargetProjectID + &quot;!&quot;);&#xA;System.out.println(&quot;TARGET_ID: &quot; + context.TargetID+ &quot;!&quot;);&#xA;System.out.println(&quot;VERSION: &quot; + context.Version+ &quot;!&quot;);&#xA;&#xA;System.out.println(&quot;context.DB_StagingI2B2_Schema: &quot; + context.DB_StagingI2B2_Schema + &quot;!&quot;);&#xA;System.out.println(&quot;context.TableIEOTargetProject: &quot; + context.TableIEOTargetProject + &quot;!&quot;);&#xA;&#xA;System.out.println(&quot;DataFile: &quot; + context.DataFile + &quot;!&quot;);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="initiatingVars"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -284,12 +241,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIOETargetProject "/>
+    <elementParameter field="DBTABLE" name="TABLE" value="context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetProject "/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select  TARGETPROJECT_ID  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIOETargetProject + &quot; ORDER BY TARGETPROJECT_ID DESC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select  TARGETPROJECT_ID  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTargetProject + &quot; ORDER BY TARGETPROJECT_ID DESC&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -365,7 +322,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select  TARGET_ID  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIOETarget + &quot; ORDER BY TARGET_ID DESC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select  TARGET_ID  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTarget + &quot; ORDER BY TARGET_ID DESC&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -554,7 +511,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="context.DB_StagingI2B2_Schema +&quot;.&quot; +  context.TableIOETargetProject"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.DB_StagingI2B2_Schema +&quot;.&quot; +  context.TableIEOTargetProject"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
@@ -616,7 +573,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="context.DB_StagingI2B2_Schema +&quot;.&quot; +  context.TableIOETarget"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.DB_StagingI2B2_Schema +&quot;.&quot; +  context.TableIEOTarget"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
@@ -741,7 +698,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="512">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;if ( context.TargetProjectID &lt; 0 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target project as the first entry of this i2b2 project with TargetProjectID=0.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;if ( context.TargetID &lt; 0 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target as the first entry of this target project with TargetID=0.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;if ( context.Version &lt; 1 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target as the first entry of this target project with Version=1.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;&#xA;context.TargetProjectID = context.TargetProjectID &lt; 0 ? 0 : context.TargetProjectID;&#xA;context.TargetID = context.TargetID &lt; 0 ? 0 : context.TargetID;&#xA;context.Version = context.Version &lt; 1 ? 1 : context.Version;&#xA;&#xA;&#xA;System.out.println(&quot;1:&quot; + context.OracleSchema );&#xA;System.out.println(&quot;2:&quot; + context.TableIOETarget );&#xA;System.out.println(&quot;3:&quot; + context.TargetProjectID );&#xA;System.out.println(&quot;4:&quot; + context.Version);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;if ( context.TargetProjectID &lt; 0 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target project as the first entry of this i2b2 project with TargetProjectID=0.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;if ( context.TargetID &lt; 0 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target as the first entry of this target project with TargetID=0.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;if ( context.Version &lt; 1 ){&#xA;&#x9;&#xA;&#x9;System.out.println( &quot;Saves this target as the first entry of this target project with Version=1.&quot; );&#xA;&#x9;&#x9;&#xA;}&#xA;&#xA;&#xA;context.TargetProjectID = context.TargetProjectID &lt; 0 ? 0 : context.TargetProjectID;&#xA;context.TargetID = context.TargetID &lt; 0 ? 0 : context.TargetID;&#xA;context.Version = context.Version &lt; 1 ? 1 : context.Version;&#xA;&#xA;&#xA;System.out.println(&quot;1:&quot; + context.OracleSchema );&#xA;System.out.println(&quot;2:&quot; + context.TableIEOTarget );&#xA;System.out.println(&quot;3:&quot; + context.TargetProjectID );&#xA;System.out.println(&quot;4:&quot; + context.Version);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="checkVersion"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -790,7 +747,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select VERSION  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIOETarget + &quot; WHERE TARGETPROJECT_ID=&quot; + context.TargetProjectID + &quot; ORDER BY VERSION DESC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select VERSION  from &quot; + context.DB_StagingI2B2_Schema + &quot;.&quot; + context.TableIEOTarget + &quot; WHERE TARGETPROJECT_ID=&quot; + context.TargetProjectID + &quot; ORDER BY VERSION DESC&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -815,6 +772,7 @@
   <node componentName="tJavaFlex" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="992" posY="512">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_3"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
     <elementParameter field="MEMO_JAVA" name="CODE_START" value="// start part of your Java code&#xA;int counter = 0;"/>
     <elementParameter field="MEMO_JAVA" name="CODE_MAIN" value="if ( ( counter == 0 ) &amp;&amp; ( versionCheck.Version != null ) ) {&#xA;&#xA;&#x9;context.Version = versionCheck.Version + 1;&#xA;&#x9;context.DateCreated = TalendDate.parseDate(&quot;dd-MM-yyyy HH:mm:ss&quot;,TalendDate.getDate(&quot;dd-MM-yyyy HH:mm:ss&quot;));&#xA;&#x9;System.out.println( &quot;Saves this target project with a new version=&quot; + context.Version  + &quot; (Created: &quot; + context.DateCreated + &quot;).&quot; );&#xA;&#x9;&#xA;}&#xA;counter++;"/>
@@ -829,6 +787,33 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJavaFlex_3">
+      <column comment="" key="false" name="Version" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1152" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
+    <elementParameter field="TABLE" name="LENGTHS">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Version"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tLogRow_1">
       <column comment="" key="false" name="Version" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
@@ -1128,6 +1113,22 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="versionCheck"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tJavaFlex_3" offsetLabelX="0" offsetLabelY="0" source="tJavaFlex_3" target="tLogRow_1">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="Version"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPostjob_1" offsetLabelX="0" offsetLabelY="0" source="tPostjob_1" target="tJDBCConnection_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>

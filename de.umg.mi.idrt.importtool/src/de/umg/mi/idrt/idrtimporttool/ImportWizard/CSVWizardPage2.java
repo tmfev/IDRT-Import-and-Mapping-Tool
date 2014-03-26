@@ -62,6 +62,8 @@ public class CSVWizardPage2 extends WizardPage {
 	// private static Text csvSeperatorext;
 
 	private static Button cleanUpBtn;
+	private Label label;
+	private static Button checkTruncateQueries;
 
 	public static boolean getBtnRADIOCsvfile() {
 		return btnRADIOCsvfile.getSelection();
@@ -119,6 +121,10 @@ public class CSVWizardPage2 extends WizardPage {
 	public static boolean getTruncate() {
 		return checkTruncate.getSelection();
 	}
+	
+	public static boolean getTruncateQueries() {
+		return checkTruncateQueries.getSelection();
+	}
 
 	/**
 	 * use pidgenerator?
@@ -166,6 +172,14 @@ public class CSVWizardPage2 extends WizardPage {
 			checkTruncate = new Button(container, SWT.CHECK);
 			checkTruncate.setSelection(false);
 
+			new Label(container, SWT.NONE);
+			
+			label = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			label.setToolTipText("Truncates the Project!");
+			label.setText("Truncate Previous Queries?");
+			
+			checkTruncateQueries = new Button(container, SWT.CHECK);
+			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
 
 			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);

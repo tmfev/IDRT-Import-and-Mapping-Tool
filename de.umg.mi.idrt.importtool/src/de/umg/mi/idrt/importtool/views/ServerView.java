@@ -188,6 +188,8 @@ public class ServerView extends ViewPart {
 		for (String s : ServerList.getSourceServers().keySet()) {
 			Server current = ServerList.getSourceServers().get(s);
 			if (current.getDatabaseType().equalsIgnoreCase("oracle")) {
+				
+				System.out.println(current.getUniqueID());
 				final MenuItem item = new MenuItem(mdrMenu, SWT.PUSH);
 				item.setText(current.getUniqueID());
 				item.addSelectionListener(new SelectionListener() {
@@ -204,6 +206,7 @@ public class ServerView extends ViewPart {
 				});
 			}
 		}
+		importMDRMenuItem.setMenu(mdrMenu);
 	}
 public static String getCsvPathSpecific() {
 		return csvPathSpecific;
@@ -374,6 +377,9 @@ public static String getCsvPathSpecific() {
 	}
 
 	public static void setSubProgressTitle(final String title) {
+		if (title==null)
+			subProgressLabel.setText("");
+		else
 		subProgressLabel.setText(title);
 	}
 	public static void updateStatus() {
@@ -887,15 +893,12 @@ public static String getCsvPathSpecific() {
 				
 				@Override
 				public void widgetArmed(ArmEvent e) {
+					System.out.println("ARMED");
+					createMDRMenu();
 				}
 			});
 			//TODO CREATE MENU AND SET IT
-			Menu asd = new Menu(importMDRMenuItem);
-
-			new MenuItem(asd, SWT.PUSH).setText("MDR1");
-			new MenuItem(asd, SWT.PUSH).setText("MDR2");
-			new MenuItem(asd, SWT.PUSH).setText("MDR3");
-			importMDRMenuItem.setMenu(asd);
+			
 
 			MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
@@ -997,7 +1000,7 @@ public static String getCsvPathSpecific() {
 				}
 			});
 
-			//			 TODO REMOVE COMMENTATION FOR ADMINISTRATION
+//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
 //						new MenuItem(mainMenu, SWT.SEPARATOR);
 //						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 //						adminMenuItem.setText("Administration");

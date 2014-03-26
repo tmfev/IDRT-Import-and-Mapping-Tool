@@ -97,9 +97,9 @@ public class IDRT_Truncate_Tables implements TalendJob {
 
 		public void synchronizeContext() {
 
-			if (DBInstance != null) {
+			if (project != null) {
 
-				this.setProperty("DBInstance", DBInstance.toString());
+				this.setProperty("project", project.toString());
 
 			}
 
@@ -109,21 +109,21 @@ public class IDRT_Truncate_Tables implements TalendJob {
 
 			}
 
-			if (DBPort != null) {
+			if (DBInstance != null) {
 
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (project != null) {
-
-				this.setProperty("project", project.toString());
+				this.setProperty("DBInstance", DBInstance.toString());
 
 			}
 
 			if (DBPassword != null) {
 
 				this.setProperty("DBPassword", DBPassword.toString());
+
+			}
+
+			if (DBPort != null) {
+
+				this.setProperty("DBPort", DBPort.toString());
 
 			}
 
@@ -139,24 +139,12 @@ public class IDRT_Truncate_Tables implements TalendJob {
 
 			}
 
-		}
+			if (truncateQueries != null) {
 
-		public String DBInstance;
+				this.setProperty("truncateQueries", truncateQueries.toString());
 
-		public String getDBInstance() {
-			return this.DBInstance;
-		}
+			}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
 		}
 
 		public String project;
@@ -165,10 +153,28 @@ public class IDRT_Truncate_Tables implements TalendJob {
 			return this.project;
 		}
 
+		public String DBHost;
+
+		public String getDBHost() {
+			return this.DBHost;
+		}
+
+		public String DBInstance;
+
+		public String getDBInstance() {
+			return this.DBInstance;
+		}
+
 		public java.lang.String DBPassword;
 
 		public java.lang.String getDBPassword() {
 			return this.DBPassword;
+		}
+
+		public String DBPort;
+
+		public String getDBPort() {
+			return this.DBPort;
 		}
 
 		public String DBSchema;
@@ -181,6 +187,12 @@ public class IDRT_Truncate_Tables implements TalendJob {
 
 		public String getDBUsername() {
 			return this.DBUsername;
+		}
+
+		public Boolean truncateQueries;
+
+		public Boolean getTruncateQueries() {
+			return this.truncateQueries;
 		}
 	}
 
@@ -376,6 +388,26 @@ public class IDRT_Truncate_Tables implements TalendJob {
 		tJava_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tForeach_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tForeach_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tForeach_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tOracleRow_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tOracleRow_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tForeach_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tLibraryLoad_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -422,6 +454,17 @@ public class IDRT_Truncate_Tables implements TalendJob {
 	}
 
 	public void tJava_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tForeach_2_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -695,6 +738,11 @@ public class IDRT_Truncate_Tables implements TalendJob {
 				ok_Hash.put("tOracleConnection_1", true);
 				end_Hash.put("tOracleConnection_1", System.currentTimeMillis());
 
+				if (context.truncateQueries) {
+
+					tForeach_2Process(globalMap);
+				}
+
 				/**
 				 * [tOracleConnection_1 end ] stop
 				 */
@@ -770,21 +818,9 @@ public class IDRT_Truncate_Tables implements TalendJob {
 						"TRUNCATE TABLE " + context.DBSchema
 								+ ".MASTER_QUERY_GLOBAL_TEMP",
 						"TRUNCATE TABLE " + context.DBSchema
-								+ ".QT_PATIENT_SET_COLLECTION",
-						"TRUNCATE TABLE " + context.DBSchema
-								+ ".QT_PDO_QUERY_MASTER",
-						"TRUNCATE TABLE " + context.DBSchema + ".QT_XML_RESULT",
-						"TRUNCATE TABLE " + context.DBSchema
 								+ ".ENCOUNTER_MAPPING",
 						"TRUNCATE TABLE " + context.DBSchema
-								+ ".VISIT_DIMENSION",
-						"update "
-								+ context.DBSchema
-								+ ".qt_query_result_instance set delete_flag='Y'",
-						"update " + context.DBSchema
-								+ ".qt_query_instance set delete_flag='Y'",
-						"update " + context.DBSchema
-								+ ".qt_query_master set delete_flag='Y'", };
+								+ ".VISIT_DIMENSION", };
 
 				for (Object tmp_tForeach_1 : values_tForeach_1) {
 					globalMap.put("tForeach_1_CURRENT_VALUE", tmp_tForeach_1);
@@ -983,6 +1019,169 @@ public class IDRT_Truncate_Tables implements TalendJob {
 		globalMap.put("tJava_2_SUBPROCESS_STATE", 1);
 	}
 
+	public void tForeach_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tForeach_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tForeach_2 begin ] start
+				 */
+
+				int NB_ITERATE_tOracleRow_2 = 0; // for statistics
+
+				ok_Hash.put("tForeach_2", false);
+				start_Hash.put("tForeach_2", System.currentTimeMillis());
+				currentComponent = "tForeach_2";
+
+				int tos_count_tForeach_2 = 0;
+
+				Object[] values_tForeach_2 = new Object[] {
+						"TRUNCATE TABLE " + context.DBSchema
+								+ ".QT_PATIENT_SET_COLLECTION",
+						"TRUNCATE TABLE " + context.DBSchema
+								+ ".QT_PDO_QUERY_MASTER",
+						"TRUNCATE TABLE " + context.DBSchema + ".QT_XML_RESULT",
+						"update "
+								+ context.DBSchema
+								+ ".qt_query_result_instance set delete_flag='Y'",
+						"update " + context.DBSchema
+								+ ".qt_query_instance set delete_flag='Y'",
+						"update " + context.DBSchema
+								+ ".qt_query_master set delete_flag='Y'", };
+
+				for (Object tmp_tForeach_2 : values_tForeach_2) {
+					globalMap.put("tForeach_2_CURRENT_VALUE", tmp_tForeach_2);
+
+					/**
+					 * [tForeach_2 begin ] stop
+					 */
+					/**
+					 * [tForeach_2 main ] start
+					 */
+
+					currentComponent = "tForeach_2";
+
+					tos_count_tForeach_2++;
+
+					/**
+					 * [tForeach_2 main ] stop
+					 */
+					NB_ITERATE_tOracleRow_2++;
+					iterateLoop++;
+
+					/**
+					 * [tOracleRow_2 begin ] start
+					 */
+
+					ok_Hash.put("tOracleRow_2", false);
+					start_Hash.put("tOracleRow_2", System.currentTimeMillis());
+					currentComponent = "tOracleRow_2";
+
+					int tos_count_tOracleRow_2 = 0;
+
+					java.sql.Connection conn_tOracleRow_2 = null;
+					conn_tOracleRow_2 = (java.sql.Connection) globalMap
+							.get("conn_tOracleConnection_1");
+					if (null == conn_tOracleRow_2) {
+						java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleRow_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+								.get(KEY_DB_DATASOURCES);
+						conn_tOracleRow_2 = dataSources_tOracleRow_2.get("")
+								.getConnection();
+					}
+
+					java.sql.Statement stmt_tOracleRow_2 = conn_tOracleRow_2
+							.createStatement();
+					String query_tOracleRow_2 = "";
+					boolean whetherReject_tOracleRow_2 = false;
+
+					/**
+					 * [tOracleRow_2 begin ] stop
+					 */
+					/**
+					 * [tOracleRow_2 main ] start
+					 */
+
+					currentComponent = "tOracleRow_2";
+
+					query_tOracleRow_2 = ((String) globalMap
+							.get("tForeach_2_CURRENT_VALUE"));
+					whetherReject_tOracleRow_2 = false;
+
+					globalMap.put("tOracleRow_2_QUERY", query_tOracleRow_2);
+					try {
+						stmt_tOracleRow_2.execute(query_tOracleRow_2);
+
+					} catch (java.lang.Exception e) {
+						whetherReject_tOracleRow_2 = true;
+						throw (e);
+					}
+
+					tos_count_tOracleRow_2++;
+
+					/**
+					 * [tOracleRow_2 main ] stop
+					 */
+					/**
+					 * [tOracleRow_2 end ] start
+					 */
+
+					currentComponent = "tOracleRow_2";
+
+					stmt_tOracleRow_2.close();
+
+					ok_Hash.put("tOracleRow_2", true);
+					end_Hash.put("tOracleRow_2", System.currentTimeMillis());
+
+					/**
+					 * [tOracleRow_2 end ] stop
+					 */
+
+					/**
+					 * [tForeach_2 end ] start
+					 */
+
+					currentComponent = "tForeach_2";
+
+				}
+
+				ok_Hash.put("tForeach_2", true);
+				end_Hash.put("tForeach_2", System.currentTimeMillis());
+
+				/**
+				 * [tForeach_2 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tForeach_2_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -1096,14 +1295,20 @@ public class IDRT_Truncate_Tables implements TalendJob {
 			if (!context_param.isEmpty()) {
 				context.putAll(context_param);
 			}
-			context.DBInstance = (String) context.getProperty("DBInstance");
-			context.DBHost = (String) context.getProperty("DBHost");
-			context.DBPort = (String) context.getProperty("DBPort");
 			context.project = (String) context.getProperty("project");
+			context.DBHost = (String) context.getProperty("DBHost");
+			context.DBInstance = (String) context.getProperty("DBInstance");
 			context.DBPassword = (java.lang.String) context
 					.getProperty("DBPassword");
+			context.DBPort = (String) context.getProperty("DBPort");
 			context.DBSchema = (String) context.getProperty("DBSchema");
 			context.DBUsername = (String) context.getProperty("DBUsername");
+			try {
+				context.truncateQueries = routines.system.ParserUtils
+						.parseTo_Boolean(context.getProperty("truncateQueries"));
+			} catch (NumberFormatException e) {
+				context.truncateQueries = null;
+			}
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -1111,22 +1316,22 @@ public class IDRT_Truncate_Tables implements TalendJob {
 
 		// get context value from parent directly
 		if (parentContextMap != null && !parentContextMap.isEmpty()) {
-			if (parentContextMap.containsKey("DBInstance")) {
-				context.DBInstance = (String) parentContextMap
-						.get("DBInstance");
+			if (parentContextMap.containsKey("project")) {
+				context.project = (String) parentContextMap.get("project");
 			}
 			if (parentContextMap.containsKey("DBHost")) {
 				context.DBHost = (String) parentContextMap.get("DBHost");
 			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("project")) {
-				context.project = (String) parentContextMap.get("project");
+			if (parentContextMap.containsKey("DBInstance")) {
+				context.DBInstance = (String) parentContextMap
+						.get("DBInstance");
 			}
 			if (parentContextMap.containsKey("DBPassword")) {
 				context.DBPassword = (java.lang.String) parentContextMap
 						.get("DBPassword");
+			}
+			if (parentContextMap.containsKey("DBPort")) {
+				context.DBPort = (String) parentContextMap.get("DBPort");
 			}
 			if (parentContextMap.containsKey("DBSchema")) {
 				context.DBSchema = (String) parentContextMap.get("DBSchema");
@@ -1134,6 +1339,10 @@ public class IDRT_Truncate_Tables implements TalendJob {
 			if (parentContextMap.containsKey("DBUsername")) {
 				context.DBUsername = (String) parentContextMap
 						.get("DBUsername");
+			}
+			if (parentContextMap.containsKey("truncateQueries")) {
+				context.truncateQueries = (Boolean) parentContextMap
+						.get("truncateQueries");
 			}
 		}
 
@@ -1285,6 +1494,6 @@ public class IDRT_Truncate_Tables implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 36339 characters generated by Talend Open Studio for Data Integration on the
- * March 5, 2014 1:17:15 PM CET
+ * 41561 characters generated by Talend Open Studio for Data Integration on the
+ * March 20, 2014 12:27:10 PM CET
  ************************************************************************************************/

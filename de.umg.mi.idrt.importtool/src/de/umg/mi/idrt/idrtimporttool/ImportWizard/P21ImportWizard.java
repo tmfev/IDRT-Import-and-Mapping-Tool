@@ -11,6 +11,7 @@ import java.util.Properties;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
+
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
@@ -138,6 +139,7 @@ public class P21ImportWizard extends Wizard {
 			final boolean cleanUp = P21WizardPage2.getCleanUp();
 			final boolean terms = P21WizardPage2.getTerms();
 			final String pattern = P21WizardPage2.getPattern(); 
+			final boolean truncateQueries = P21WizardPage2.getTruncateQueries();
 			File inputFolder = FileHandler.getBundleFile("/misc/input/");
 			File[] listOfInputFiles = inputFolder.listFiles();
 
@@ -229,6 +231,12 @@ public class P21ImportWizard extends Wizard {
 				contextMap.put("truncateProject", "true");
 			} else {
 				contextMap.put("truncateProject", "false");
+			}
+			if (truncateQueries){
+				contextMap.put("truncateQueries", "true");
+			}
+			else {
+				contextMap.put("truncateQueries", "false");
 			}
 
 			contextMap.put("folderMain", miscPathReplaced);

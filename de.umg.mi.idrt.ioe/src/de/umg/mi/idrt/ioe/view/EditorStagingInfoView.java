@@ -129,7 +129,7 @@ public class EditorStagingInfoView extends ViewPart {
 			return;
 		}
 
-		createTable();
+//		createTable();
 		
 		OntologyCellAttributes attributes = _node.getOntologyCellAttributes();
 		

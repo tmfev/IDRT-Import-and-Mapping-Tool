@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value="C:/Desktop/IDRT/ODM1-3-0_KFO6_20120313-151937.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="startDate" prompt="startDate?" promptNeeded="false" type="id_Long" value=""/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
@@ -876,6 +876,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -896,6 +897,7 @@
         <mapperTableEntries name="AdditionalData" expression="temp4Forms.AdditionalData " type="id_String" nullable="true"/>
         <mapperTableEntries name="item_Datatype" expression="temp4Forms.item_Datatype " type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" expression="6" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="ItemGroupNames.Repeating " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row13" expressionFilter="!row13.hidden.equals(&quot;true&quot;)" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ItemGroupOID" type="id_String" nullable="true"/>
@@ -922,6 +924,7 @@
       <inputTables sizeState="INTERMEDIATE" name="ItemGroupNames" expressionFilter="!row13.hidden.equals(&quot;true&quot;)" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ItemGroupOID" expression="row13.ItemGroupOID" type="id_String" nullable="true" operator="="/>
         <mapperTableEntries name="Name" expression="" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Repeating" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
   </node>
@@ -1057,6 +1060,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Name"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Repeating"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
     <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
@@ -1073,10 +1078,12 @@
     <metadata connector="FLOW" name="tFileInputDelimited_14">
       <column comment="" key="false" length="7" name="ItemGroupOID" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Repeating" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" length="7" name="ItemGroupOID" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Repeating" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -1131,6 +1138,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="480">
@@ -1181,6 +1189,9 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="ONLY_ONCE_EACH_DUPLICATED_KEY" value="false"/>
     <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
@@ -1206,6 +1217,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="UNIQUE" name="UNIQUE">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1223,6 +1235,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="DUPLICATE" name="DUPLICATE">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1240,6 +1253,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="352">
@@ -1342,11 +1356,12 @@
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="order" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
-      <outputTables sizeState="INTERMEDIATE" name="out11" activateCondensedTool="true">
+      <outputTables sizeState="INTERMEDIATE" name="out11" expressionFilter="!fromTemp5ItemGroup.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="StudyID" expression="fromTemp5ItemGroup.StudyID " type="id_String" nullable="true"/>
         <mapperTableEntries name="MetaID" expression="fromTemp5ItemGroup.MetaID " type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" expression="fromTemp5ItemGroup.VisitID " type="id_String" nullable="true"/>
@@ -1363,6 +1378,26 @@
         <mapperTableEntries name="item_Datatype" expression="fromItemNames.dataType " type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" expression="7" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="order" expression="fromItem.order!=null?fromItem.order:&quot;&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
+      </outputTables>
+      <outputTables sizeState="INTERMEDIATE" name="out4" activateCondensedTool="true" reject="true" isJoinTableOf="out11">
+        <mapperTableEntries name="StudyID" expression="fromTemp5ItemGroup.StudyID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="MetaID" expression="fromTemp5ItemGroup.MetaID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="VisitID" expression="fromTemp5ItemGroup.VisitID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FormID" expression="fromTemp5ItemGroup.FormID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="QuestionID" expression="fromTemp5ItemGroup.QuestionID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ItemID" expression="fromItem.ItemOID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ParentItem" expression="fromTemp5ItemGroup.ParentItem " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name" expression="fromItemNames.TransText!=null?fromItemNames.TransText :fromItemNames.Name    " type="id_String" nullable="true"/>
+        <mapperTableEntries name="VisitNo" expression="fromTemp5ItemGroup.VisitNo " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Sequence" expression="fromTemp5ItemGroup.Sequence " type="id_String" nullable="true"/>
+        <mapperTableEntries name="hidden" expression="fromTemp5ItemGroup.hidden " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FormFamily" expression="fromTemp5ItemGroup.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="AdditionalData" expression="fromTemp5ItemGroup.AdditionalData " type="id_String" nullable="true"/>
+        <mapperTableEntries name="item_Datatype" expression="fromItemNames.dataType " type="id_String" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="7" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="order" expression="fromItem.order!=null?fromItem.order:&quot;&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;yes&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="fromItem" expressionFilter="!fromItem.hidden.equals(&quot;true&quot;)" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ItemOID" type="id_String" nullable="true"/>
@@ -1385,6 +1420,8 @@
         <mapperTableEntries name="FormFamily" type="id_String" nullable="true"/>
         <mapperTableEntries name="AdditionalData" type="id_String" nullable="true"/>
         <mapperTableEntries name="item_Datatype" type="id_String" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="fromItemNames" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ItemGroupOID" expression="fromItem.ItemOID " type="id_String" nullable="true" operator="="/>
@@ -1449,6 +1486,10 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="item_Datatype"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
     <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
@@ -1477,6 +1518,8 @@
       <column comment="" key="false" name="FormFamily" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1493,6 +1536,8 @@
       <column comment="" key="false" name="FormFamily" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -1514,7 +1559,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1216" posY="448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_10"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="output_row.StudyID = input_row.StudyID;&#xD;&#xA;output_row.MetaID = input_row.MetaID;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.QuestionID = input_row.QuestionID;&#xD;&#xA;output_row.ItemID = input_row.ItemID;&#xD;&#xA;output_row.ParentItem = input_row.ParentItem;&#xD;&#xA;output_row.Name = input_row.Name;&#xD;&#xA;output_row.VisitNo = input_row.VisitNo;&#xD;&#xA;output_row.Sequence = input_row.Sequence;&#xD;&#xA;output_row.hidden = input_row.hidden;&#xD;&#xA;output_row.FormFamily = input_row.FormFamily;&#xD;&#xA;output_row.AdditionalData = input_row.AdditionalData;&#xD;&#xA;output_row.item_Datatype = input_row.item_Datatype;&#xD;&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xD;&#xA;output_row.order = input_row.order;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.StudyID = input_row.StudyID;&#xD;&#xA;output_row.MetaID = input_row.MetaID;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.QuestionID = input_row.QuestionID;&#xD;&#xA;output_row.ItemID = input_row.ItemID;&#xD;&#xA;output_row.ParentItem = input_row.ParentItem;&#xD;&#xA;output_row.Name = input_row.Name;&#xD;&#xA;output_row.VisitNo = input_row.VisitNo;&#xD;&#xA;output_row.Sequence = input_row.Sequence;&#xD;&#xA;output_row.hidden = input_row.hidden;&#xD;&#xA;output_row.FormFamily = input_row.FormFamily;&#xD;&#xA;output_row.AdditionalData = input_row.AdditionalData;&#xD;&#xA;output_row.item_Datatype = input_row.item_Datatype;&#xD;&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xD;&#xA;output_row.order = input_row.order;&#xD;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1537,6 +1582,7 @@
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="order" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="-4" offsetLabelY="0" posX="1184" posY="576">
@@ -1568,6 +1614,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -1588,6 +1635,7 @@
         <mapperTableEntries name="AdditionalData" expression="row16.AdditionalData" type="id_String" nullable="true"/>
         <mapperTableEntries name="item_Datatype" expression="row16.item_Datatype " type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" expression="row16.HLEVEL" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="row16.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row16" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -1606,6 +1654,7 @@
         <mapperTableEntries name="item_Datatype" type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="order" type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="fromCodeList" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="OID" expression="" type="id_String" nullable="true"/>
@@ -1665,6 +1714,9 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="ONLY_ONCE_EACH_DUPLICATED_KEY" value="false"/>
     <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
@@ -1690,6 +1742,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="UNIQUE" name="UNIQUE">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1707,6 +1760,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="DUPLICATE" name="DUPLICATE">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1724,6 +1778,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="896" posY="672">
@@ -1776,6 +1831,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1344" posY="576">
@@ -1790,7 +1846,7 @@
     <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
     <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
     <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="HEADER" value="0"/>
+    <elementParameter field="TEXT" name="HEADER" value="1"/>
     <elementParameter field="TEXT" name="FOOTER" value="0"/>
     <elementParameter field="TEXT" name="LIMIT" value=""/>
     <elementParameter field="CHECK" name="REMOVE_EMPTY_ROW" value="true"/>
@@ -1954,6 +2010,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -1968,6 +2025,7 @@
         <mapperTableEntries name="Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row32" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="newColumn" type="id_String" nullable="true"/>
@@ -1990,6 +2048,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-608" posY="800">
@@ -2121,6 +2180,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -2135,6 +2195,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row30.StudyID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row30.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row30" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2284,6 +2345,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -2298,6 +2360,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row33.MetaID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row33.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row33" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2447,6 +2510,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -2461,6 +2525,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row34.VisitID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row34.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row34" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2610,6 +2675,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -2624,6 +2690,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row35.FormID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row35.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row35" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2700,6 +2767,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
     <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
@@ -2729,6 +2798,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -2746,6 +2816,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -2773,11 +2844,12 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
-      <outputTables sizeState="INTERMEDIATE" name="copyOfcopyOfcopyOfout6_0_1">
+      <outputTables sizeState="INTERMEDIATE" name="copyOfcopyOfcopyOfout6_0_1" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="HLEVEL" expression="row36.HLEVEL " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="row36.Name " type="id_String" nullable="true"/>
         <mapperTableEntries name="Path" expression="&quot;\\&quot;+context.i2b2HeadNode+&quot;\\&quot;+context.MDPD +&quot;\\&quot;+row36.StudyID + &quot;\\&quot; +  row36.MetaID + &quot;\\&quot; +  row36.VisitID + &quot;\\&quot; +  row36.FormID+ &quot;\\&quot; +  row36.QuestionID " type="id_String" nullable="true"/>
@@ -2787,6 +2859,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row36.FormID  + &quot;|&quot; + row36.QuestionID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row36.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row36" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2804,6 +2877,7 @@
         <mapperTableEntries name="AdditionalData" type="id_String" nullable="true"/>
         <mapperTableEntries name="item_Datatype" type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
   </node>
@@ -2863,6 +2937,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
     <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
@@ -2892,6 +2968,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" name="StudyID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -2909,6 +2986,7 @@
       <column comment="" key="false" name="AdditionalData" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="item_Datatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -2936,11 +3014,12 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
-      <outputTables sizeState="INTERMEDIATE" name="copyOfcopyOfcopyOfout6_0_2">
+      <outputTables sizeState="INTERMEDIATE" name="copyOfcopyOfcopyOfout6_0_2" activateExpressionFilter="true">
         <mapperTableEntries name="HLEVEL" expression="row38.HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="row38.Name " type="id_String" nullable="true"/>
         <mapperTableEntries name="Path" expression="&quot;\\&quot;+context.i2b2HeadNode+&quot;\\&quot;+context.MDPD +&quot;\\&quot;+row38.StudyID + &quot;\\&quot; +  row38.MetaID + &quot;\\&quot; +  row38.VisitID + &quot;\\&quot; +  row38.FormID + &quot;\\&quot; +  row38.QuestionID + &quot;\\&quot; +  row38.ItemID  " type="id_String" nullable="true"/>
@@ -2950,6 +3029,7 @@
         <mapperTableEntries name="Download_Date" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row38.MetaID+ &quot;|&quot;+ row38.VisitID  + &quot;|&quot; + row38.FormID   + &quot;|&quot; +row38.QuestionID +&quot;|&quot; +row38.ItemID " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row38.FormFamily " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="row38.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row38" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="StudyID" type="id_String" nullable="true"/>
@@ -2967,6 +3047,7 @@
         <mapperTableEntries name="AdditionalData" type="id_String" nullable="true"/>
         <mapperTableEntries name="item_Datatype" type="id_String" nullable="true"/>
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
   </node>
@@ -3016,7 +3097,7 @@
         <mapperTableEntries name="itemCode" expression="row31.itemCode " type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="(row5.source != null)? row5.source+ &quot; &quot; +row5.SourceSystemVersion :&quot;&quot;   " type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="row31.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row31" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
@@ -3028,6 +3109,7 @@
         <mapperTableEntries name="Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="row5" matchingMode="ALL_ROWS" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="Download_Date" type="id_Date" nullable="true"/>
@@ -3035,56 +3117,6 @@
         <mapperTableEntries name="SourceSystemVersion" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
-  </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="1216">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_26"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
-    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
-    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream"/>
-    <elementParameter field="FILE" name="FILENAME" value="context.folderMain+context.folderOutput+&quot;ont.csv&quot;"/>
-    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
-    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
-    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
-    <elementParameter field="CHECK" name="APPEND" value="false"/>
-    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
-    <elementParameter field="CHECK" name="COMPRESS" value="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CREATE" value="true"/>
-    <elementParameter field="CHECK" name="SPLIT" value="false"/>
-    <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
-    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
-    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1"/>
-    <elementParameter field="CHECK" name="ROW_MODE" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90"/>
-    <elementParameter field="TEXT" name="LABEL" value="ont.csv"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
-    <elementParameter field="MEMO" name="COMMENT" value=""/>
-    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tFileOutputDelimited_26">
-      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="xml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
   </node>
   <node componentName="tFileInputXML" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-128" posY="958">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputXML_17"/>
@@ -3178,6 +3210,7 @@
       <column comment="" key="false" name="Download_Date" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -3192,11 +3225,159 @@
         <mapperTableEntries name="Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="&quot;@&quot;" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row6" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="newColumn" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
+  </node>
+  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="1216">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUniqRow_9"/>
+    <elementParameter field="TABLE" name="UNIQUE_KEY">
+      <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Name"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Path"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DataType"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Update_Date"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Import_Date"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Download_Date"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PathID"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="visual"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="itemCode"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="source"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="xml"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="ONLY_ONCE_EACH_DUPLICATED_KEY" value="false"/>
+    <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
+    <elementParameter field="OPENED_LIST" name="BUFFER_SIZE" value="M"/>
+    <elementParameter field="DIRECTORY" name="TEMP_DIRECTORY" value=""/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tUniqRow_9">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="xml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="UNIQUE" name="UNIQUE">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="xml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="DUPLICATE" name="DUPLICATE">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="xml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="192" posY="1216">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_26"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.folderMain+context.folderOutput+&quot;ont.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="false"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="ont.csv"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_26">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="source" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="xml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
   </node>
   <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-128" posY="-192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_3"/>
@@ -3326,7 +3507,7 @@
   </node>
   <node componentName="tCreateTemporaryFile" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tCreateTemporaryFile_12"/>
-    <elementParameter field="CHECK" name="REMOVE" value="true"/>
+    <elementParameter field="CHECK" name="REMOVE" value="false"/>
     <elementParameter field="CHECK" name="USE_DEFAULT_DIR" value="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="context.folderMain+context.folderTmp"/>
     <elementParameter field="LABEL" name="INFO_RANGE" value="the temporary file name should include template &quot;XXXX&quot;."/>
@@ -3499,7 +3680,7 @@
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
     <elementParameter field="CHECK" name="APPEND" value="false"/>
-    <elementParameter field="CHECK" name="INCLUDEHEADER" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
     <elementParameter field="CHECK" name="COMPRESS" value="false"/>
     <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
     <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
@@ -3886,6 +4067,9 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Name"/>
       <elementValue elementRef="QUERY" value="&quot;@Name&quot;"/>
       <elementValue elementRef="NODECHECK" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Repeating"/>
+      <elementValue elementRef="QUERY" value="&quot;@Repeating&quot;"/>
+      <elementValue elementRef="NODECHECK" value="false"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LIMIT" value=""/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
@@ -3911,10 +4095,12 @@
     <metadata connector="FLOW" label="metadata" name="tFileInputXML_13">
       <column comment="" key="false" length="7" name="ItemGroupOID" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Repeating" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="metadata" name="REJECT">
       <column comment="" key="false" length="7" name="ItemGroupOID" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Repeating" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -3956,12 +4142,13 @@
     <metadata connector="FLOW" label="metadata" name="tFileOutputDelimited_20">
       <column comment="" key="false" length="7" name="ItemGroupOID" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="Repeating" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-480" posY="0">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
     <elementParameter field="CHECK" name="START" value="true"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Creating Ontology for: &quot; + context.currentFile);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Creating Ontology for: &quot; + context.currentFile);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -3969,7 +4156,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-1024" posY="608">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-1024" posY="736">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;DONE: Creating Ontology!&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -5934,6 +6121,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -6006,6 +6196,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="Name"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Repeating"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -6168,6 +6361,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="order"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -6221,6 +6417,12 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="item_Datatype"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -6303,6 +6505,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -7111,6 +7316,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -7149,6 +7357,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="itemCode"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -7209,6 +7420,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -7259,7 +7473,7 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="copyOfcopyOfcopyOfout6_0_2"/>
   </connection>
-  <connection connectorName="FLOW" label="out6" lineStyle="0" metaname="out6" offsetLabelX="0" offsetLabelY="0" source="tMap_10" target="tFileOutputDelimited_26">
+  <connection connectorName="FLOW" label="out6" lineStyle="0" metaname="out6" offsetLabelX="0" offsetLabelY="0" source="tMap_10" target="tUniqRow_9">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
       <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
@@ -7388,6 +7602,58 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="copyOfcopyOfout6"/>
+  </connection>
+  <connection connectorName="UNIQUE" label="row14" lineStyle="0" metaname="tUniqRow_9" offsetLabelX="0" offsetLabelY="0" source="tUniqRow_9" target="tFileOutputDelimited_26">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Name"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="DataType"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Update_Date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Import_Date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Download_Date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PathID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="visual"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="itemCode"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="source"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="xml"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row14"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tCreateTemporaryFile_3" offsetLabelX="0" offsetLabelY="0" source="tCreateTemporaryFile_3" target="tCreateTemporaryFile_4">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -7660,6 +7926,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="dataType"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Repeating"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>

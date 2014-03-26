@@ -41,6 +41,7 @@ public class DBWizardPage3 extends WizardPage {
 	private static String mainPath = "";
 	private static Button checkContext;
 	private static Button checkTruncate;
+	private static Button checkTruncateQueries;
 	private static Button checkTerms;
 	private static String CSVPath;
 	private static Text quoteCharText;
@@ -51,6 +52,7 @@ public class DBWizardPage3 extends WizardPage {
 	private List list;
 	private Label cleanUpLabel;
 	private static Button cleanUpBtn;
+	private Label label;
 
 	public static boolean getCleanUp() {
 		return cleanUpBtn.getSelection();
@@ -88,6 +90,10 @@ public class DBWizardPage3 extends WizardPage {
 		return checkTruncate.getSelection();
 	}
 
+	public static boolean getTruncateQueries() {
+		return checkTruncateQueries.getSelection();
+	}
+
 	public DBWizardPage3() {
 		super("DB Import Settings");
 		setTitle("DB Import Settings");
@@ -116,6 +122,13 @@ public class DBWizardPage3 extends WizardPage {
 
 			checkTruncate = new Button(composite, SWT.CHECK);
 			checkTruncate.setSelection(false);
+			new Label(composite, SWT.NONE);
+			
+			label = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
+			label.setToolTipText("Truncates the previous queries!");
+			label.setText("Truncate Previous Queries?");
+			checkTruncateQueries = new Button(composite, SWT.CHECK);
+			checkTruncateQueries.setSelection(false);
 			new Label(composite, SWT.NONE);
 
 			cleanUpLabel = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);

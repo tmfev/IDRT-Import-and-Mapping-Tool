@@ -188,6 +188,19 @@ public class CSV_MASTER implements TalendJob {
 
 			}
 
+			if (patientDataFolder != null) {
+
+				this.setProperty("patientDataFolder",
+						patientDataFolder.toString());
+
+			}
+
+			if (uploadFolder != null) {
+
+				this.setProperty("uploadFolder", uploadFolder.toString());
+
+			}
+
 			if (config != null) {
 
 				this.setProperty("config", config.toString());
@@ -254,15 +267,45 @@ public class CSV_MASTER implements TalendJob {
 
 			}
 
-			if (DBInstance != null) {
+			if (DBHost != null) {
 
-				this.setProperty("DBInstance", DBInstance.toString());
+				this.setProperty("DBHost", DBHost.toString());
 
 			}
 
 			if (dbImport != null) {
 
 				this.setProperty("dbImport", dbImport.toString());
+
+			}
+
+			if (DBInstance != null) {
+
+				this.setProperty("DBInstance", DBInstance.toString());
+
+			}
+
+			if (DBPassword != null) {
+
+				this.setProperty("DBPassword", DBPassword.toString());
+
+			}
+
+			if (DBPort != null) {
+
+				this.setProperty("DBPort", DBPort.toString());
+
+			}
+
+			if (DBSchema != null) {
+
+				this.setProperty("DBSchema", DBSchema.toString());
+
+			}
+
+			if (DBUsername != null) {
+
+				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -278,22 +321,9 @@ public class CSV_MASTER implements TalendJob {
 
 			}
 
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
 			if (idFile != null) {
 
 				this.setProperty("idFile", idFile.toString());
-
-			}
-
-			if (patientDataFolder != null) {
-
-				this.setProperty("patientDataFolder",
-						patientDataFolder.toString());
 
 			}
 
@@ -309,39 +339,15 @@ public class CSV_MASTER implements TalendJob {
 
 			}
 
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
 			if (truncateProject != null) {
 
 				this.setProperty("truncateProject", truncateProject.toString());
 
 			}
 
-			if (uploadFolder != null) {
+			if (truncateQueries != null) {
 
-				this.setProperty("uploadFolder", uploadFolder.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
+				this.setProperty("truncateQueries", truncateQueries.toString());
 
 			}
 
@@ -450,6 +456,18 @@ public class CSV_MASTER implements TalendJob {
 			return this.folderMainCSV;
 		}
 
+		public String patientDataFolder;
+
+		public String getPatientDataFolder() {
+			return this.patientDataFolder;
+		}
+
+		public String uploadFolder;
+
+		public String getUploadFolder() {
+			return this.uploadFolder;
+		}
+
 		public String config;
 
 		public String getConfig() {
@@ -516,16 +534,46 @@ public class CSV_MASTER implements TalendJob {
 			return this.coding;
 		}
 
-		public String DBInstance;
+		public String DBHost;
 
-		public String getDBInstance() {
-			return this.DBInstance;
+		public String getDBHost() {
+			return this.DBHost;
 		}
 
 		public Boolean dbImport;
 
 		public Boolean getDbImport() {
 			return this.dbImport;
+		}
+
+		public String DBInstance;
+
+		public String getDBInstance() {
+			return this.DBInstance;
+		}
+
+		public java.lang.String DBPassword;
+
+		public java.lang.String getDBPassword() {
+			return this.DBPassword;
+		}
+
+		public String DBPort;
+
+		public String getDBPort() {
+			return this.DBPort;
+		}
+
+		public String DBSchema;
+
+		public String getDBSchema() {
+			return this.DBSchema;
+		}
+
+		public String DBUsername;
+
+		public String getDBUsername() {
+			return this.DBUsername;
 		}
 
 		public java.lang.String FTPPassword;
@@ -540,22 +588,10 @@ public class CSV_MASTER implements TalendJob {
 			return this.FTPUser;
 		}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
 		public String idFile;
 
 		public String getIdFile() {
 			return this.idFile;
-		}
-
-		public String patientDataFolder;
-
-		public String getPatientDataFolder() {
-			return this.patientDataFolder;
 		}
 
 		public Boolean pidgen;
@@ -570,40 +606,16 @@ public class CSV_MASTER implements TalendJob {
 			return this.PIDURL;
 		}
 
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
-		}
-
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
 		public Boolean truncateProject;
 
 		public Boolean getTruncateProject() {
 			return this.truncateProject;
 		}
 
-		public String uploadFolder;
+		public Boolean truncateQueries;
 
-		public String getUploadFolder() {
-			return this.uploadFolder;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
+		public Boolean getTruncateQueries() {
+			return this.truncateQueries;
 		}
 
 		public String folderTmp;
@@ -1625,6 +1637,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_1.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_1.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_1.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_1.put("config", context.config);
 				parentContextMap_tRunJob_1.put("currentFile",
 						context.currentFile);
@@ -1640,28 +1656,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_1.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_1.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_1.put("coding", context.coding);
+				parentContextMap_tRunJob_1.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_1.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_1
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_1.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_1
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_1.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_1.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_1
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_1.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_1.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_1.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_1.put("idFile", context.idFile);
-				parentContextMap_tRunJob_1.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_1.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_1.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_1.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_1
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_1.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_1.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_1.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_1
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_1.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_1.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_1.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -2032,6 +2046,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_5.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_5.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_5.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_5.put("config", context.config);
 				parentContextMap_tRunJob_5.put("currentFile",
 						context.currentFile);
@@ -2047,28 +2065,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_5.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_5.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_5.put("coding", context.coding);
+				parentContextMap_tRunJob_5.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_5.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_5
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_5.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_5
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_5.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_5.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_5
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_5.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_5.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_5.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_5.put("idFile", context.idFile);
-				parentContextMap_tRunJob_5.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_5.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_5.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_5.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_5
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_5.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_5.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_5.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_5
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_5.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_5.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_5.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -2428,6 +2444,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_3.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_3.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_3.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_3.put("config", context.config);
 				parentContextMap_tRunJob_3.put("currentFile",
 						context.currentFile);
@@ -2443,28 +2463,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_3.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_3.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_3.put("coding", context.coding);
+				parentContextMap_tRunJob_3.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_3.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_3
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_3.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_3
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_3.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_3.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_3
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_3.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_3.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_3.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_3.put("idFile", context.idFile);
-				parentContextMap_tRunJob_3.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_3.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_3.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_3.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_3
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_3.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_3.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_3.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_3
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_3.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_3.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_3.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -3004,6 +3022,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_4.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_4.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_4.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_4.put("config", context.config);
 				parentContextMap_tRunJob_4.put("currentFile",
 						context.currentFile);
@@ -3019,28 +3041,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_4.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_4.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_4.put("coding", context.coding);
+				parentContextMap_tRunJob_4.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_4.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_4
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_4.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_4
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_4.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_4.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_4
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_4.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_4.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_4.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_4.put("idFile", context.idFile);
-				parentContextMap_tRunJob_4.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_4.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_4.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_4.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_4
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_4.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_4.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_4.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_4
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_4.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_4.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_4.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -3541,6 +3561,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_6.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_6.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_6.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_6.put("config", context.config);
 				parentContextMap_tRunJob_6.put("currentFile",
 						context.currentFile);
@@ -3556,28 +3580,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_6.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_6.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_6.put("coding", context.coding);
+				parentContextMap_tRunJob_6.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_6.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_6
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_6.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_6
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_6.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_6.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_6
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_6.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_6.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_6.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_6.put("idFile", context.idFile);
-				parentContextMap_tRunJob_6.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_6.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_6.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_6.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_6
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_6.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_6.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_6.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_6
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_6.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_6.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_6.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -4510,6 +4532,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_8.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_8.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_8.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_8.put("config", context.config);
 				parentContextMap_tRunJob_8.put("currentFile",
 						context.currentFile);
@@ -4525,28 +4551,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_8.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_8.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_8.put("coding", context.coding);
+				parentContextMap_tRunJob_8.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_8.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_8
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_8.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_8
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_8.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_8.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_8
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_8.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_8.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_8.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_8.put("idFile", context.idFile);
-				parentContextMap_tRunJob_8.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_8.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_8.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_8.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_8
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_8.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_8.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_8.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_8
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_8.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_8.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_8.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -4835,6 +4859,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_9.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_9.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_9.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_9.put("config", context.config);
 				parentContextMap_tRunJob_9.put("currentFile",
 						context.currentFile);
@@ -4850,28 +4878,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_9.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_9.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_9.put("coding", context.coding);
+				parentContextMap_tRunJob_9.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_9.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_9
 						.put("DBInstance", context.DBInstance);
-				parentContextMap_tRunJob_9.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_9
+						.put("DBPassword", context.DBPassword);
+				parentContextMap_tRunJob_9.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_9.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_9
+						.put("DBUsername", context.DBUsername);
 				parentContextMap_tRunJob_9.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_9.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_9.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_9.put("idFile", context.idFile);
-				parentContextMap_tRunJob_9.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_9.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_9.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_9.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_9
-						.put("DBPassword", context.DBPassword);
-				parentContextMap_tRunJob_9.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_9.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_9.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_9
-						.put("DBUsername", context.DBUsername);
+				parentContextMap_tRunJob_9.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_9.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_9.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -6071,6 +6097,10 @@ public class CSV_MASTER implements TalendJob {
 						context.importTerms);
 				parentContextMap_tRunJob_10.put("folderMainCSV",
 						context.folderMainCSV);
+				parentContextMap_tRunJob_10.put("patientDataFolder",
+						context.patientDataFolder);
+				parentContextMap_tRunJob_10.put("uploadFolder",
+						context.uploadFolder);
 				parentContextMap_tRunJob_10.put("config", context.config);
 				parentContextMap_tRunJob_10.put("currentFile",
 						context.currentFile);
@@ -6086,28 +6116,26 @@ public class CSV_MASTER implements TalendJob {
 				parentContextMap_tRunJob_10.put("quoteChar", context.quoteChar);
 				parentContextMap_tRunJob_10.put("cleanUp", context.cleanUp);
 				parentContextMap_tRunJob_10.put("coding", context.coding);
+				parentContextMap_tRunJob_10.put("DBHost", context.DBHost);
+				parentContextMap_tRunJob_10.put("dbImport", context.dbImport);
 				parentContextMap_tRunJob_10.put("DBInstance",
 						context.DBInstance);
-				parentContextMap_tRunJob_10.put("dbImport", context.dbImport);
+				parentContextMap_tRunJob_10.put("DBPassword",
+						context.DBPassword);
+				parentContextMap_tRunJob_10.put("DBPort", context.DBPort);
+				parentContextMap_tRunJob_10.put("DBSchema", context.DBSchema);
+				parentContextMap_tRunJob_10.put("DBUsername",
+						context.DBUsername);
 				parentContextMap_tRunJob_10.put("FTPPassword",
 						context.FTPPassword);
 				parentContextMap_tRunJob_10.put("FTPUser", context.FTPUser);
-				parentContextMap_tRunJob_10.put("DBHost", context.DBHost);
 				parentContextMap_tRunJob_10.put("idFile", context.idFile);
-				parentContextMap_tRunJob_10.put("patientDataFolder",
-						context.patientDataFolder);
 				parentContextMap_tRunJob_10.put("pidgen", context.pidgen);
 				parentContextMap_tRunJob_10.put("PIDURL", context.PIDURL);
-				parentContextMap_tRunJob_10.put("DBPort", context.DBPort);
-				parentContextMap_tRunJob_10.put("DBPassword",
-						context.DBPassword);
-				parentContextMap_tRunJob_10.put("DBSchema", context.DBSchema);
 				parentContextMap_tRunJob_10.put("truncateProject",
 						context.truncateProject);
-				parentContextMap_tRunJob_10.put("uploadFolder",
-						context.uploadFolder);
-				parentContextMap_tRunJob_10.put("DBUsername",
-						context.DBUsername);
+				parentContextMap_tRunJob_10.put("truncateQueries",
+						context.truncateQueries);
 				parentContextMap_tRunJob_10.put("folderTmp", context.folderTmp);
 				parentContextMap_tRunJob_10.put("i2b2HeadNode",
 						context.i2b2HeadNode);
@@ -6341,6 +6369,9 @@ public class CSV_MASTER implements TalendJob {
 			}
 			context.folderMainCSV = (String) context
 					.getProperty("folderMainCSV");
+			context.patientDataFolder = (String) context
+					.getProperty("patientDataFolder");
+			context.uploadFolder = (String) context.getProperty("uploadFolder");
 			context.config = (String) context.getProperty("config");
 			context.currentFile = (String) context.getProperty("currentFile");
 			context.datePattern = (String) context.getProperty("datePattern");
@@ -6358,20 +6389,23 @@ public class CSV_MASTER implements TalendJob {
 				context.cleanUp = null;
 			}
 			context.coding = (String) context.getProperty("coding");
-			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBHost = (String) context.getProperty("DBHost");
 			try {
 				context.dbImport = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("dbImport"));
 			} catch (NumberFormatException e) {
 				context.dbImport = null;
 			}
+			context.DBInstance = (String) context.getProperty("DBInstance");
+			context.DBPassword = (java.lang.String) context
+					.getProperty("DBPassword");
+			context.DBPort = (String) context.getProperty("DBPort");
+			context.DBSchema = (String) context.getProperty("DBSchema");
+			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.FTPPassword = (java.lang.String) context
 					.getProperty("FTPPassword");
 			context.FTPUser = (String) context.getProperty("FTPUser");
-			context.DBHost = (String) context.getProperty("DBHost");
 			context.idFile = (String) context.getProperty("idFile");
-			context.patientDataFolder = (String) context
-					.getProperty("patientDataFolder");
 			try {
 				context.pidgen = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("pidgen"));
@@ -6379,18 +6413,18 @@ public class CSV_MASTER implements TalendJob {
 				context.pidgen = null;
 			}
 			context.PIDURL = (String) context.getProperty("PIDURL");
-			context.DBPort = (String) context.getProperty("DBPort");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBSchema = (String) context.getProperty("DBSchema");
 			try {
 				context.truncateProject = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("truncateProject"));
 			} catch (NumberFormatException e) {
 				context.truncateProject = null;
 			}
-			context.uploadFolder = (String) context.getProperty("uploadFolder");
-			context.DBUsername = (String) context.getProperty("DBUsername");
+			try {
+				context.truncateQueries = routines.system.ParserUtils
+						.parseTo_Boolean(context.getProperty("truncateQueries"));
+			} catch (NumberFormatException e) {
+				context.truncateQueries = null;
+			}
 			context.folderTmp = (String) context.getProperty("folderTmp");
 			context.i2b2HeadNode = (String) context.getProperty("i2b2HeadNode");
 			context.i2b2HeadNodeName = (String) context
@@ -6459,6 +6493,14 @@ public class CSV_MASTER implements TalendJob {
 				context.folderMainCSV = (String) parentContextMap
 						.get("folderMainCSV");
 			}
+			if (parentContextMap.containsKey("patientDataFolder")) {
+				context.patientDataFolder = (String) parentContextMap
+						.get("patientDataFolder");
+			}
+			if (parentContextMap.containsKey("uploadFolder")) {
+				context.uploadFolder = (String) parentContextMap
+						.get("uploadFolder");
+			}
 			if (parentContextMap.containsKey("config")) {
 				context.config = (String) parentContextMap.get("config");
 			}
@@ -6497,12 +6539,29 @@ public class CSV_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("coding")) {
 				context.coding = (String) parentContextMap.get("coding");
 			}
+			if (parentContextMap.containsKey("DBHost")) {
+				context.DBHost = (String) parentContextMap.get("DBHost");
+			}
+			if (parentContextMap.containsKey("dbImport")) {
+				context.dbImport = (Boolean) parentContextMap.get("dbImport");
+			}
 			if (parentContextMap.containsKey("DBInstance")) {
 				context.DBInstance = (String) parentContextMap
 						.get("DBInstance");
 			}
-			if (parentContextMap.containsKey("dbImport")) {
-				context.dbImport = (Boolean) parentContextMap.get("dbImport");
+			if (parentContextMap.containsKey("DBPassword")) {
+				context.DBPassword = (java.lang.String) parentContextMap
+						.get("DBPassword");
+			}
+			if (parentContextMap.containsKey("DBPort")) {
+				context.DBPort = (String) parentContextMap.get("DBPort");
+			}
+			if (parentContextMap.containsKey("DBSchema")) {
+				context.DBSchema = (String) parentContextMap.get("DBSchema");
+			}
+			if (parentContextMap.containsKey("DBUsername")) {
+				context.DBUsername = (String) parentContextMap
+						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("FTPPassword")) {
 				context.FTPPassword = (java.lang.String) parentContextMap
@@ -6511,15 +6570,8 @@ public class CSV_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("FTPUser")) {
 				context.FTPUser = (String) parentContextMap.get("FTPUser");
 			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
 			if (parentContextMap.containsKey("idFile")) {
 				context.idFile = (String) parentContextMap.get("idFile");
-			}
-			if (parentContextMap.containsKey("patientDataFolder")) {
-				context.patientDataFolder = (String) parentContextMap
-						.get("patientDataFolder");
 			}
 			if (parentContextMap.containsKey("pidgen")) {
 				context.pidgen = (Boolean) parentContextMap.get("pidgen");
@@ -6527,27 +6579,13 @@ public class CSV_MASTER implements TalendJob {
 			if (parentContextMap.containsKey("PIDURL")) {
 				context.PIDURL = (String) parentContextMap.get("PIDURL");
 			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
 			if (parentContextMap.containsKey("truncateProject")) {
 				context.truncateProject = (Boolean) parentContextMap
 						.get("truncateProject");
 			}
-			if (parentContextMap.containsKey("uploadFolder")) {
-				context.uploadFolder = (String) parentContextMap
-						.get("uploadFolder");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
+			if (parentContextMap.containsKey("truncateQueries")) {
+				context.truncateQueries = (Boolean) parentContextMap
+						.get("truncateQueries");
 			}
 			if (parentContextMap.containsKey("folderTmp")) {
 				context.folderTmp = (String) parentContextMap.get("folderTmp");
@@ -6732,6 +6770,6 @@ public class CSV_MASTER implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 197127 characters generated by Talend Open Studio for Data Integration on the
- * March 5, 2014 1:16:47 PM CET
+ * 198462 characters generated by Talend Open Studio for Data Integration on the
+ * March 20, 2014 12:25:13 PM CET
  ************************************************************************************************/

@@ -78,6 +78,9 @@ public class P21WizardPage2 extends WizardPage {
 		return checkTerms.getSelection();
 	}
 
+	public static boolean getTruncateQueries() {
+		return checkTruncateQueries.getSelection();
+	}
 	public static boolean getTruncate() {
 		return checkTruncate.getSelection();
 	}
@@ -85,7 +88,7 @@ public class P21WizardPage2 extends WizardPage {
 	private Composite container;
 
 	private static Text folderP21Text;
-
+	private static Button checkTruncateQueries;
 	private static Text folderMainText;
 	private static Combo datePatternCombo;
 	private Label lblDatePattern;
@@ -102,6 +105,8 @@ public class P21WizardPage2 extends WizardPage {
 	private Label cleanUpLabel;
 
 	private static Button cleanUpBtn;
+	private Label label;
+	private Button button_1;
 
 	// private static Text csvSeperatorext;
 
@@ -136,6 +141,14 @@ public class P21WizardPage2 extends WizardPage {
 			checkTruncate = new Button(container, SWT.CHECK);
 			checkTruncate.setSelection(false);
 
+			new Label(container, SWT.NONE);
+			
+			label = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			label.setToolTipText("L\u00F6scht den Inhalt des Projektes!");
+			label.setText("Truncate Previous Queries?");
+			
+			checkTruncateQueries = new Button(container, SWT.CHECK);
+			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
 
 			cleanUpLabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);

@@ -142,12 +142,11 @@ public class EditorTargetInfoView extends ViewPart {
 		if (infoTable != null)
 			infoTable.dispose();
 
-		infoTable = new Table(_parent, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.VIRTUAL | SWT.MULTI);
+		infoTable = new Table(_parent, SWT.BORDER | SWT.MULTI);
 		infoTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		infoTable.setHeaderVisible(true);
 		infoTable.setLinesVisible(true);
-		infoTable.setTopIndex(4);
+//		infoTable.setTopIndex(4);
 
 
 		final TableEditor editor = new TableEditor(infoTable);
@@ -389,35 +388,6 @@ public class EditorTargetInfoView extends ViewPart {
 		
 		
 		// infoTableValue.
-
-
-		/**
-C_HLEVEL
-C_FULLNAME
-C_NAME
-C_SYNONYM_CD
-C_VISUALATTRIBUTES
-C_TOTALNUM
-C_BASECODE
-C_METADATAXML
-C_FACTTABLECOLUMN
-C_TABLENAME
-C_COLUMNNAME
-C_COLUMNDATATYPE
-C_OPERATOR
-C_DIMCODE
-C_COMMENT
-C_TOOLTIP
-M_APPLIED_PATH
-UPDATE_DATE
-DOWNLOAD_DATE
-IMPORT_DATE
-SOURCESYSTEM_CD
-VALUETYPE_CD
-M_EXCLUSION_CD
-C_PATH
-C_SYMBOL
-		 */
 		int row = 0;
 		
 		boolean grayed = node instanceof OntologyTreeNode;
@@ -486,8 +456,8 @@ C_SYMBOL
 				addValueItem(items, row++,""+treeNode.getTreePathLevel());
 				addValueItem(items, row++,treeNode.getTreePath());
 
+				_editorComposite.update();
 				_editorComposite.layout();
-
 				_parent.layout();
 			}
 		}
@@ -532,9 +502,8 @@ C_SYMBOL
 				addValueItem(items, row++,treeNode.getParent().getTreePath());
 
 
-
+				_editorComposite.update();
 				_editorComposite.layout();
-
 				_parent.layout();
 			}
 		}

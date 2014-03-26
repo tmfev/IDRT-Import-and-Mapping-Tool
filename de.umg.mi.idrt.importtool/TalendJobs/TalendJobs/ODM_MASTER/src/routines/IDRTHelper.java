@@ -59,7 +59,10 @@ public class IDRTHelper {
 	private static int OBS_INSTANCENUM = 15;
 	private static int OBS_MODIFIERTYPE = 16;
 	private static int OBS_SIC = 17;
-	private static int OBS_LENGTH = 18;
+	private static int OBS_M_APPLIED_PATH = 18;
+	private static int OBS_MOD_PATH = 19;
+	private static int OBS_MOD_ITEM = 20;
+	private static int OBS_LENGTH = 21;
 
 	private static int PID = -1;
 	private static int UpdateDate = -1;
@@ -312,12 +315,6 @@ public class IDRTHelper {
 	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, 
 			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB) throws SQLException {
 		try {
-			//			File ont = new File("C:/Desktop/ont.csv");
-
-			//			String tableName = "DATATABLE";
-			//			String pdName="Patientendaten";
-			//			String pd = "PD";
-
 			long start = System.currentTimeMillis();
 			char inputDelim = '\t';
 			char outputDelim = '\t';
@@ -433,47 +430,9 @@ public class IDRTHelper {
 				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
 				ontOutput.writeNext(ontLine);
 
-//				ontLine[ONT_HLEVEL] = "1";
-//				ontLine[ONT_NAME] = "OBJECTID";
-//				ontLine[ONT_PATH] = "\\OBJECTID"+"\\"; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-//				ontLine[ONT_DATATYPE] = "";
-//				ontLine[ONT_UPDATEDATE] = "";
-//				ontLine[ONT_IMPORTDATE] = "";
-//				ontLine[ONT_DOWNLOADDATE] = "";
-//				ontLine[ONT_PATHID] = "";
-//				ontLine[ONT_VISUAL] = "DH";
-//				ontLine[ONT_ITEMCODE] = "";
-//				ontLine[ONT_SOURCE] = "";
-//				ontLine[ONT_XML] = "";
-//				ontLine[ONT_M_APPLIEDPATH] = "\\i2b2\\";  //applied path
-//				ontOutput.writeNext(ontLine);
-
-
-				//				ontLine[ONT_HLEVEL] = "1";
-				//				ontLine[ONT_NAME] = tableName;
-				//				ontLine[ONT_PATH] = ; //"\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
-				//				ontLine[ONT_DATATYPE] = "";
-				//				ontLine[ONT_UPDATEDATE] = "";
-				//				ontLine[ONT_IMPORTDATE] = "";
-				//				ontLine[ONT_DOWNLOADDATE] = "";
-				//				ontLine[ONT_PATHID] = "";
-				//				ontLine[ONT_VISUAL] = "DA";
-				//				ontLine[ONT_ITEMCODE] = "";
-				//				ontLine[ONT_SOURCE] = "";
-				//				ontLine[ONT_XML] = "";
-				//				if (objectID>=0)
-				//					ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";  //applied path
-				//				ontOutput.writeNext(ontLine);
-
-
-
 				int columnNum = columnNames.size();
 				int colCounter = 0;
-				//				System.out.println(columnNumber);
-				//				while(coulumnNameIterator.hasNext()){
 				for (int i= 0; i<columnNum;i++){
-					//					currentColumn = coulumnNameIterator.next();
-
 					if ( !ignoreList.contains(colCounter) && colCounter!=PID && 
 							colCounter!= Sourcesystem && colCounter != DownloadDate && 
 							colCounter != ImportDate && colCounter != UpdateDate && 
@@ -600,6 +559,9 @@ public class IDRTHelper {
 			header[OBS_INSTANCENUM] = "instanceNum";
 			header[OBS_MODIFIERTYPE] = "modifierType";
 			header[OBS_SIC] = "sic";
+//			header[OBS_M_APPLIED_PATH] = "m_applied_path";
+//			header[OBS_MOD_PATH] = "mod_path";
+//			header[OBS_MOD_ITEM] = "mod_item";
 			rotatedOutput.writeNext(header);
 			String [] nextOutputLine = new String[OBS_LENGTH];
 			int rows = 1;
@@ -612,13 +574,13 @@ public class IDRTHelper {
 			while((nextLine = CSVInput.readNext()) != null){
 				rows++;
 				instanceNum=instanceNum.add(new BigDecimal(1));
-				
+
 				if (rows%(mod)==0 || rows==allRows){
 					//					System.out.println("Row: " + rows + "/"+allRows);
 					StatusListener.setSubStatus((float)rows/allRows*100, (int)((float)rows/allRows*100)+"% " + "Row: " + rows + "/"+allRows);
 				}
 				int columnCounter = 0;
-				
+
 
 				//				if(bioSic>=0) {
 				//					instanceNum++;
@@ -628,24 +590,24 @@ public class IDRTHelper {
 					if (EncounterID>=0){
 						encounterIDString = nextLine[EncounterID];
 						if (patientInstanceNumMap.get(nextLine[PID]).containsKey(encounterIDString)){
-//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
+							//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
 
 							patientInstanceNumMap.get(nextLine[PID]).remove(encounterIDString);
-//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
+							//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
 						}
 						else {
-//							patientInstanceNumMap.get(nextLine[PID]).put(nextLine[EncounterID], instanceNum);
+							//							patientInstanceNumMap.get(nextLine[PID]).put(nextLine[EncounterID], instanceNum);
 						}
 					}
 					else {
 						encounterIDString = "0";
 						if (patientInstanceNumMap.get(nextLine[PID]).containsKey(encounterIDString)){
-//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
+							//							instanceNum = patientInstanceNumMap.get(nextLine[PID]).get(encounterIDString)+1;
 							patientInstanceNumMap.get(nextLine[PID]).remove(encounterIDString);
-//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
+							//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString,instanceNum);
 						}
 						else {
-//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString, instanceNum);
+							//							patientInstanceNumMap.get(nextLine[PID]).put(encounterIDString, instanceNum);
 						}
 					}
 
@@ -653,23 +615,23 @@ public class IDRTHelper {
 				else if (PID>=0 && !patientInstanceNumMap.containsKey(nextLine[PID])) {
 					if (EncounterID>=0){
 						HashMap<String,Integer> encTempMap = new HashMap<String, Integer>();
-//						encTempMap.put(nextLine[EncounterID], instanceNum);
+						//						encTempMap.put(nextLine[EncounterID], instanceNum);
 						patientInstanceNumMap.put(nextLine[PID], encTempMap);
 					}
 					else {
 						HashMap<String,Integer> encTempMap = new HashMap<String, Integer>();
-//						encTempMap.put("0", instanceNum);
+						//						encTempMap.put("0", instanceNum);
 						patientInstanceNumMap.put(nextLine[PID], encTempMap);
 					}
 				}
 
 				if (objectID>=0) {
 					if (instancePerObjectID.containsKey(nextLine[objectID])){
-//						instanceNum = instancePerObjectID.get(nextLine[objectID]);
+						//						instanceNum = instancePerObjectID.get(nextLine[objectID]);
 						System.out.println(instanceNum + "==" + nextLine[objectID]);
 					}
 					else{
-//						instancePerObjectID.put(nextLine[objectID], instanceNum);
+						//						instancePerObjectID.put(nextLine[objectID], instanceNum);
 					}
 				}
 				//				else if (EncounterID<0 || PID < 0){
@@ -802,6 +764,11 @@ public class IDRTHelper {
 							nextOutputLine[OBS_MODIFIERTYPE] = "oid";
 							nextOutputLine[OBS_SIC] =  nextLine[objectID];
 						}
+						
+						
+//						nextOutputLine[OBS_M_APPLIED_PATH] = "m_applied_path";
+//						nextOutputLine[OBS_MOD_PATH] = "mod_path";
+//						nextOutputLine[OBS_MOD_ITEM] = currentColumn;
 
 						rotatedOutput.writeNext(nextOutputLine);
 						rotatedOutput.flush();
@@ -831,7 +798,7 @@ public class IDRTHelper {
 	// pidgen
 	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, String tableName, 
 			char quoteChar, HashMap<String,String>pidMap, String pattern,BigDecimal instanceNumDB) throws SQLException {
-		
+
 		try {
 
 			long start = System.currentTimeMillis();
@@ -961,7 +928,7 @@ public class IDRTHelper {
 						colCounter != ImportDate && colCounter != UpdateDate && 
 						colCounter != EncounterID && colCounter != DeathDay && 
 						colCounter != BirthDay //&& colCounter != StartDate && colCounter != EndDate
-						){
+				){
 
 					String string = columnNames.get(i);	
 					ontLine[ONT_HLEVEL] = "3";
@@ -1068,7 +1035,7 @@ public class IDRTHelper {
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
 							columnCounter != BirthDay //&& columnCounter != StartDate && columnCounter != EndDate
-							){
+					){
 						String [] nextOutputLine = new String[OBS_LENGTH];
 
 						//						if (PID>=0){

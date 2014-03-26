@@ -420,7 +420,6 @@ public class Resource {
 			}
 
 			path = path.substring(0, path.length() - 1);
-
 			int separator = path.lastIndexOf("\\") + 1;
 
 			if (separator >= path.length()) {

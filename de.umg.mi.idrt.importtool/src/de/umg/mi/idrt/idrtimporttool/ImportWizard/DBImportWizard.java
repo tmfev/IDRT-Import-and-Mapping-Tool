@@ -154,6 +154,7 @@ public class DBImportWizard extends Wizard {
 
 			final boolean cleanUp = DBWizardPage3.getCleanUp();
 			final boolean terms = DBWizardPage3.getTerms();
+			final boolean truncateQueries = DBWizardPage3.getTruncateQueries();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPage3.getCSVPath();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -303,6 +304,13 @@ public class DBImportWizard extends Wizard {
 			} else {
 				contextMap.put("truncateProject", "false");
 			}
+			if (truncateQueries){
+				contextMap.put("truncateQueries", "true");
+			}
+			else {
+				contextMap.put("truncateQueries", "false");
+			}
+
 			contextMap.put("datePattern", "yyyy-MM-dd");
 			contextMap.put("pidgen", "false");
 

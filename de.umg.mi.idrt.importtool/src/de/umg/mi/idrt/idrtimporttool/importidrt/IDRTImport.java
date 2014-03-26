@@ -462,7 +462,7 @@ public class IDRTImport {
 				contextMap.put("DBInstance", server.getSID());
 				contextMap.put("DBPort", server.getPort());
 				contextMap.put("DBSchema", project);
-
+				contextMap.put("truncateQueries", "true");
 				setCompleteContext(contextMap);
 				StatusListener.setStatus(0f, "Truncating Project", "");
 				Display.getDefault().syncExec(new Runnable() {

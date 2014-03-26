@@ -17,6 +17,7 @@
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="true" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.113.224&quot;"/>
@@ -35,5 +36,6 @@
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="true" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
   </talendfile:ContextType>
 </xmi:XMI>

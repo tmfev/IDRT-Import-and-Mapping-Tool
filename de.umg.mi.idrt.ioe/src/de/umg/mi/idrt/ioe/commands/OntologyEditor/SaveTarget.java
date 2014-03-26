@@ -34,7 +34,7 @@ import de.umg.mi.idrt.ioe.view.StatusView;
  */
 public class SaveTarget extends AbstractHandler {
 
-	CSVWriter _writer = null;
+	CSVWriter writer = null;
 	String targetID = "0";
 
 
@@ -93,12 +93,12 @@ public class SaveTarget extends AbstractHandler {
 
 			// TODO save target tmp file
 
-			_writer = new CSVWriter(new OutputStreamWriter(
+			writer = new CSVWriter(new OutputStreamWriter(
 					new FileOutputStream(stringPath), "UTF-8"),
 					';');
-			_writer.writeNext(fields);
+			writer.writeNext(fields);
 			writeNode(ontologyTreeTarget.getI2B2RootNode());
-			_writer.close();
+			writer.close();
 
 
 		} catch (IOException e) {
@@ -145,14 +145,21 @@ public class SaveTarget extends AbstractHandler {
 			String[] fields = new String[21];
 
 			fields[0] = targetID;
-			fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
+			if (!node.isModifier()){
+				fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());
+			}
+			else {
+				fields[1] = String.valueOf(subNode.getParent().getTreePathLevel());	
+			}
 
 			if (subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH).equals("@"))
 				fields[2] = subNode.getParent().getTreePath();
 			else {
 				String appliedPath = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get
 						(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
+//				System.out.println("APPLIEDPATH:_ "+appliedPath);
 				String treePath = subNode.getParent().getTreePath();
+//				System.out.println("TREEPATH:"  + treePath);
 				fields[2] = treePath.substring(treePath.indexOf(appliedPath)+appliedPath.length()-1);	
 			}
 			fields[3] = subNode.getStagingPath();
@@ -162,19 +169,19 @@ public class SaveTarget extends AbstractHandler {
 			fields[7] = subNode.getParent().getTargetNodeAttributes().getEndDateSource();
 			fields[8] = subNode.getParent().getTargetNodeAttributes().getVisualattribute();
 
-			
+
 			String updateDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE);
 			if (updateDate!= null && updateDate.length()>0)
-			updateDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", updateDate));
-			
+				updateDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", updateDate));
+
 			String downloadDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE);
 			if (downloadDate!= null && downloadDate.length()>0)
-			downloadDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", downloadDate));
-			
+				downloadDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", downloadDate));
+
 			String importDate = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE);
 			if (importDate!= null && importDate.length()>0)
-			importDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", importDate));
-			
+				importDate = TalendDate.formatDate("dd-MM-yyyy", TalendDate.parseDate("yyyy-MM-dd hh:mm:ss", importDate));
+
 			fields[9]  = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_BASECODE);
 			fields[10] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML);
 			fields[11] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE);
@@ -187,12 +194,10 @@ public class SaveTarget extends AbstractHandler {
 			fields[18] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
 			fields[19] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
 			fields[20] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
-			_writer.writeNext(fields);
+			writer.writeNext(fields);
 		}
 
 		for (OntologyTreeNode child : node.getChildren())
 			writeNode(child);
-
 	}
-
 }

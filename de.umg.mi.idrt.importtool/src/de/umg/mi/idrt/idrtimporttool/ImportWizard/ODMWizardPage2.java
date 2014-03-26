@@ -38,9 +38,15 @@ public class ODMWizardPage2 extends WizardPage {
 	private static Button checkIncludePids;
 	private static Button checkContext;
 	private static Button checkTruncate;
+	private static Button checkTruncateQueries;
 	private static Button checkTerms;
 	private static Button checkCleanUp;
 	private static Button checkCompleteCodelists;
+	private Label label;
+
+	public static boolean getTruncateQueries() {
+		return checkTruncateQueries.getSelection();
+	}
 
 	public static boolean getCleanUp() {
 		return checkCleanUp.getSelection();
@@ -119,6 +125,14 @@ public class ODMWizardPage2 extends WizardPage {
 			checkTruncate = new Button(container, SWT.CHECK);
 			checkTruncate.setSelection(false);
 
+			new Label(container, SWT.NONE);
+			
+			label = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			label.setToolTipText("Truncates the Project!");
+			label.setText("Truncate Previous Queries?");
+			
+			checkTruncateQueries = new Button(container, SWT.CHECK);
+			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
 
 			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);

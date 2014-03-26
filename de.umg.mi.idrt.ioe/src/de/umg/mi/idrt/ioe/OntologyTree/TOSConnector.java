@@ -134,6 +134,12 @@ public class TOSConnector {
 				setContextVariable("SQLTable", currentServer.getTable());
 				setContextVariable("OracleSchema", currentServer.getSchema());
 
+				setContextVariable("DB_StagingI2B2_Host",
+						currentServer.getIp());
+				setContextVariable("DB_StagingI2B2_Port",
+						currentServer.getPort());
+				setContextVariable("DB_StagingI2B2_Instance",
+						currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_Username",
 						currentServer.getUser());
 				setContextVariable("DB_StagingI2B2_Instance",
@@ -153,7 +159,10 @@ public class TOSConnector {
 					System.out.println("TargetServerName" + targetServer.getName()); 
 					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
 
-
+					setContextVariable("DB_TargetI2B2_Host",
+							targetServer.getIp());
+					setContextVariable("DB_TargetI2B2_Port",
+							targetServer.getPort());
 					setContextVariable("DB_TargetI2B2_Username",
 							targetServer.getUser());
 					setContextVariable("DB_TargetI2B2_Password",
@@ -282,6 +291,14 @@ public class TOSConnector {
 				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
+				
+				setContextVariable("DB_StagingI2B2_Host",
+						currentServer.getIp());
+				setContextVariable("DB_StagingI2B2_Port",
+						currentServer.getPort());
+				setContextVariable("DB_StagingI2B2_Instance",
+						currentServer.getSID());
+				
 				setContextVariable("DB_StagingI2B2_Username",
 						currentServer.getUser());
 				setContextVariable("DB_StagingI2B2_Instance",
@@ -301,7 +318,12 @@ public class TOSConnector {
 					System.out.println("TargetServerName" + targetServer.getName()); 
 					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
 
-
+					setContextVariable("DB_TargetI2B2_Host",
+							targetServer.getIp());
+					setContextVariable("DB_TargetI2B2_Port",
+							targetServer.getPort());
+					setContextVariable("DB_TargetI2B2_Instance",
+							targetServer.getSID());
 					setContextVariable("DB_TargetI2B2_Username",
 							targetServer.getUser());
 					setContextVariable("DB_TargetI2B2_Password",

@@ -16,6 +16,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
@@ -217,6 +218,7 @@ public class CSVImportWizard extends Wizard {
 //		final String dbPort = WizardPage1.getPortText();
 //		final String dbSchema = WizardPage1.getDBSchemaText();
 		final boolean truncate = CSVWizardPage2.getTruncate();
+		final boolean truncateQueries = CSVWizardPage2.getTruncateQueries();
 		final boolean cleanUp = CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
 	
@@ -499,6 +501,13 @@ public class CSVImportWizard extends Wizard {
 						} else {
 							contextMap.put("truncateProject", "false");
 						}
+						
+						if (truncateQueries){
+							contextMap.put("truncateQueries", "true");
+						}
+						else {
+							contextMap.put("truncateQueries", "false");
+						}
 
 						b = new Thread(new Runnable() {
 
@@ -532,7 +541,6 @@ public class CSVImportWizard extends Wizard {
 													Log.addLog(0, "Duration: "
 															+ (time / 1000)
 															+ " s");
-
 													if (StatusListener.getImportErrorCounter()>0) {
 														MessageDialog
 														.openInformation(

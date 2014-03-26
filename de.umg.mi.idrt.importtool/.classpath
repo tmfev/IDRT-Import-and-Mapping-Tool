@@ -50,7 +50,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/OpenCSV.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/saxon9.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/StatusListener29.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/systemRoutines.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend_file_enhanced_20070724.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend-oracle-timestamptz.jar"/>

@@ -117,6 +117,7 @@ public class ODMImportWizard extends Wizard {
 		try {
 			final boolean cleanUp = ODMWizardPage2.getCleanUp();
 			final boolean terms = ODMWizardPage2.getTerms();
+			final boolean truncateQueries = ODMWizardPage2.getTruncateQueries();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -197,9 +198,6 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("includePids", "false");  
 				defaultProps.setProperty("includePids", "false");  
 			}
-			
-			
-
 
 			if (ODMWizardPage2.getSaveContext()) {
 				defaultProps.store(new FileWriter(properties), ""); 
@@ -209,6 +207,12 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("truncateProject", "true");  
 			} else {
 				contextMap.put("truncateProject", "false");  
+			}
+			if (truncateQueries){
+				contextMap.put("truncateQueries", "true");
+			}
+			else {
+				contextMap.put("truncateQueries", "false");
 			}
 
 			done = false;

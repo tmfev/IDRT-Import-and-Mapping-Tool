@@ -276,12 +276,22 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	}
 
 	public boolean isModifier() {
-		isModifier = this.getTargetNodeAttributes().getVisualattribute()
-				.toLowerCase().startsWith("r") || this.getTargetNodeAttributes().getVisualattribute()
-				.toLowerCase().startsWith("d") || 
-				(this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d"):false 
-				|| (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r"):false;
+		
+		isModifier = this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("r") 
+				|| this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("d");
+				//|| 	(this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d"):false 
+				//|| (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r"):false;
+		boolean isModifier2 = false;
+		if (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null){
+		isModifier2 = this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d")
+							|| this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r");
+		}
+		
+		
+		
+		isModifier = isModifier||isModifier2;
 		return isModifier;
+				
 	}
 
 	public boolean isSearchResult() {
@@ -494,7 +504,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	}
 
 	public void setTreeAttributes() {
-System.out.println("SETTREEATTR");
 		if (this.parent == null) {
 			Console.error("Could not set tree attributes for node \""
 					+ this.getName()
@@ -537,7 +546,7 @@ System.out.println("SETTREEATTR");
 	 *            the level of this node in a tree
 	 */
 	public void setTreePathLevel(int treePathLevel) {
-		System.out.println("SETTING TREEPATHLEVEL: " + treePathLevel + " FOR " + this.getName());
+//		System.out.println("SETTING TREEPATHLEVEL: " + treePathLevel + " FOR " + this.getName());
 		this.treePathLevel = treePathLevel;
 	}
 

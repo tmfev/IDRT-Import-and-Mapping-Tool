@@ -22,12 +22,11 @@ import routines.TalendDataGenerator;
 import routines.Numeric;
 import routines.ExportDB;
 import routines.enc_num_routine;
-import routines.testRoutine;
 import routines.Mathematical;
 import routines.Relational;
+import routines.TOSHandler2;
 import routines.TalendDate;
 import routines.IDRTHelper;
-import routines.TOSHandler2;
 import routines.PIDGen;
 import routines.TalendString;
 import routines.StringHandling;
@@ -323,23 +322,23 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 			}
 
-			if (TableIOETarget != null) {
+			if (TableIEOTarget != null) {
 
-				this.setProperty("TableIOETarget", TableIOETarget.toString());
-
-			}
-
-			if (TableIOETargetOntology != null) {
-
-				this.setProperty("TableIOETargetOntology",
-						TableIOETargetOntology.toString());
+				this.setProperty("TableIEOTarget", TableIEOTarget.toString());
 
 			}
 
-			if (TableIOETargetProject != null) {
+			if (TableIEOTargetOntology != null) {
 
-				this.setProperty("TableIOETargetProject",
-						TableIOETargetProject.toString());
+				this.setProperty("TableIEOTargetOntology",
+						TableIEOTargetOntology.toString());
+
+			}
+
+			if (TableIEOTargetProject != null) {
+
+				this.setProperty("TableIEOTargetProject",
+						TableIEOTargetProject.toString());
 
 			}
 
@@ -507,9 +506,9 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			return this.OracleHost;
 		}
 
-		public java.lang.String OraclePassword;
+		public String OraclePassword;
 
-		public java.lang.String getOraclePassword() {
+		public String getOraclePassword() {
 			return this.OraclePassword;
 		}
 
@@ -561,22 +560,22 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			return this.StatusMessage;
 		}
 
-		public String TableIOETarget;
+		public String TableIEOTarget;
 
-		public String getTableIOETarget() {
-			return this.TableIOETarget;
+		public String getTableIEOTarget() {
+			return this.TableIEOTarget;
 		}
 
-		public String TableIOETargetOntology;
+		public String TableIEOTargetOntology;
 
-		public String getTableIOETargetOntology() {
-			return this.TableIOETargetOntology;
+		public String getTableIEOTargetOntology() {
+			return this.TableIEOTargetOntology;
 		}
 
-		public String TableIOETargetProject;
+		public String TableIEOTargetProject;
 
-		public String getTableIOETargetProject() {
-			return this.TableIOETargetProject;
+		public String getTableIEOTargetProject() {
+			return this.TableIEOTargetProject;
 		}
 
 		public Integer TargetID;
@@ -1342,7 +1341,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				query_tJDBCRow_1 = "DELETE FROM "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIOETargetOntology
+						+ context.TableIEOTargetOntology
 						+ "  WHERE target_id = '" + context.TargetID + "'";
 				whetherReject_tJDBCRow_1 = false;
 				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
@@ -1479,7 +1478,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				query_tJDBCRow_2 = "DELETE FROM "
 						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIOETarget + "  WHERE target_id = '"
+						+ context.TableIEOTarget + "  WHERE target_id = '"
 						+ context.TargetID + "'";
 				whetherReject_tJDBCRow_2 = false;
 				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
@@ -1550,7 +1549,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "empty_export";
+	public String contextStr = "Default";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -1703,7 +1702,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			context.Job = (String) context.getProperty("Job");
 			context.OracleDB = (String) context.getProperty("OracleDB");
 			context.OracleHost = (String) context.getProperty("OracleHost");
-			context.OraclePassword = (java.lang.String) context
+			context.OraclePassword = (String) context
 					.getProperty("OraclePassword");
 			context.OraclePort = (String) context.getProperty("OraclePort");
 			context.OracleSchema = (String) context.getProperty("OracleSchema");
@@ -1715,12 +1714,12 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			context.SQLTable2 = (String) context.getProperty("SQLTable2");
 			context.StatusMessage = (String) context
 					.getProperty("StatusMessage");
-			context.TableIOETarget = (String) context
-					.getProperty("TableIOETarget");
-			context.TableIOETargetOntology = (String) context
-					.getProperty("TableIOETargetOntology");
-			context.TableIOETargetProject = (String) context
-					.getProperty("TableIOETargetProject");
+			context.TableIEOTarget = (String) context
+					.getProperty("TableIEOTarget");
+			context.TableIEOTargetOntology = (String) context
+					.getProperty("TableIEOTargetOntology");
+			context.TableIEOTargetProject = (String) context
+					.getProperty("TableIEOTargetProject");
 			try {
 				context.TargetID = routines.system.ParserUtils
 						.parseTo_Integer(context.getProperty("TargetID"));
@@ -1831,7 +1830,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 						.get("OracleHost");
 			}
 			if (parentContextMap.containsKey("OraclePassword")) {
-				context.OraclePassword = (java.lang.String) parentContextMap
+				context.OraclePassword = (String) parentContextMap
 						.get("OraclePassword");
 			}
 			if (parentContextMap.containsKey("OraclePort")) {
@@ -1864,17 +1863,17 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 				context.StatusMessage = (String) parentContextMap
 						.get("StatusMessage");
 			}
-			if (parentContextMap.containsKey("TableIOETarget")) {
-				context.TableIOETarget = (String) parentContextMap
-						.get("TableIOETarget");
+			if (parentContextMap.containsKey("TableIEOTarget")) {
+				context.TableIEOTarget = (String) parentContextMap
+						.get("TableIEOTarget");
 			}
-			if (parentContextMap.containsKey("TableIOETargetOntology")) {
-				context.TableIOETargetOntology = (String) parentContextMap
-						.get("TableIOETargetOntology");
+			if (parentContextMap.containsKey("TableIEOTargetOntology")) {
+				context.TableIEOTargetOntology = (String) parentContextMap
+						.get("TableIEOTargetOntology");
 			}
-			if (parentContextMap.containsKey("TableIOETargetProject")) {
-				context.TableIOETargetProject = (String) parentContextMap
-						.get("TableIOETargetProject");
+			if (parentContextMap.containsKey("TableIEOTargetProject")) {
+				context.TableIEOTargetProject = (String) parentContextMap
+						.get("TableIEOTargetProject");
 			}
 			if (parentContextMap.containsKey("TargetID")) {
 				context.TargetID = (Integer) parentContextMap.get("TargetID");
@@ -2046,6 +2045,6 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 57173 characters generated by Talend Open Studio for Data Integration on the
- * 9. Dezember 2013 15:41:36 MEZ
+ * 57098 characters generated by Talend Open Studio for Data Integration on the
+ * March 26, 2014 2:36:36 PM CET
  ************************************************************************************************/

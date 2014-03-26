@@ -1516,6 +1516,9 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OntologyTreeContentProvider().getTargetModel());
+//		if (targetTreeViewer.getTree().getItems().length>=2)
+		targetTreeViewer.expandToLevel(3);
+		
 		targetTreeViewer.getTree().setData("org.eclipse.swtbot.widget.key", "targetTree");
 		final Tree tree = targetTreeViewer.getTree();
 		tree.addListener(SWT.MeasureItem, new Listener() {
@@ -1609,6 +1612,7 @@ public class OntologyEditorView extends ViewPart {
 					node.setHighlighted(false);
 				}
 				highlightedStagingNodes.clear();
+				if (stagingTreeViewer.getTree().getItemCount()>0)
 				stagingTreeViewer.refresh();
 			}
 

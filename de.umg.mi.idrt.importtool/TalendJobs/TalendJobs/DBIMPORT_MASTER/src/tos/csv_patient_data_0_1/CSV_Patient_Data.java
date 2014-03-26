@@ -3664,10 +3664,16 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.Download_Date;
 		}
 
-		public String StudyEventRepeatKey;
+		public Integer StudyEventRepeatKey;
 
-		public String getStudyEventRepeatKey() {
+		public Integer getStudyEventRepeatKey() {
 			return this.StudyEventRepeatKey;
+		}
+
+		public Integer FormRepeatKey;
+
+		public Integer getFormRepeatKey() {
+			return this.FormRepeatKey;
 		}
 
 		public String itemGroupRepeatKey;
@@ -3704,6 +3710,18 @@ public class CSV_Patient_Data implements TalendJob {
 
 		public String getM_applied_path() {
 			return this.m_applied_path;
+		}
+
+		public String mod_path;
+
+		public String getMod_path() {
+			return this.mod_path;
+		}
+
+		public String mod_item;
+
+		public String getMod_item() {
+			return this.mod_item;
 		}
 
 		private String readString(ObjectInputStream dis) throws IOException {
@@ -3762,6 +3780,28 @@ public class CSV_Patient_Data implements TalendJob {
 			}
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		public void readData(ObjectInputStream dis) {
 
 			synchronized (commonByteArrayLock_TOS_CSV_Patient_Data) {
@@ -3792,7 +3832,9 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.Download_Date = readDate(dis);
 
-					this.StudyEventRepeatKey = readString(dis);
+					this.StudyEventRepeatKey = readInteger(dis);
+
+					this.FormRepeatKey = readInteger(dis);
 
 					this.itemGroupRepeatKey = readString(dis);
 
@@ -3805,6 +3847,10 @@ public class CSV_Patient_Data implements TalendJob {
 					this.sic = readString(dis);
 
 					this.m_applied_path = readString(dis);
+
+					this.mod_path = readString(dis);
+
+					this.mod_item = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -3862,9 +3908,13 @@ public class CSV_Patient_Data implements TalendJob {
 
 				writeDate(this.Download_Date, dos);
 
-				// String
+				// Integer
 
-				writeString(this.StudyEventRepeatKey, dos);
+				writeInteger(this.StudyEventRepeatKey, dos);
+
+				// Integer
+
+				writeInteger(this.FormRepeatKey, dos);
 
 				// String
 
@@ -3890,6 +3940,14 @@ public class CSV_Patient_Data implements TalendJob {
 
 				writeString(this.m_applied_path, dos);
 
+				// String
+
+				writeString(this.mod_path, dos);
+
+				// String
+
+				writeString(this.mod_item, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -3912,13 +3970,17 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(",Update_Date=" + String.valueOf(Update_Date));
 			sb.append(",Import_Date=" + String.valueOf(Import_Date));
 			sb.append(",Download_Date=" + String.valueOf(Download_Date));
-			sb.append(",StudyEventRepeatKey=" + StudyEventRepeatKey);
+			sb.append(",StudyEventRepeatKey="
+					+ String.valueOf(StudyEventRepeatKey));
+			sb.append(",FormRepeatKey=" + String.valueOf(FormRepeatKey));
 			sb.append(",itemGroupRepeatKey=" + itemGroupRepeatKey);
 			sb.append(",startDate=" + String.valueOf(startDate));
 			sb.append(",endDate=" + String.valueOf(endDate));
 			sb.append(",source=" + source);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
+			sb.append(",mod_path=" + mod_path);
+			sb.append(",mod_item=" + mod_item);
 			sb.append("]");
 
 			return sb.toString();
@@ -4935,9 +4997,9 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.PatientID;
 		}
 
-		public String EncounterID;
+		public Integer EncounterID;
 
-		public String getEncounterID() {
+		public Integer getEncounterID() {
 			return this.EncounterID;
 		}
 
@@ -5037,6 +5099,18 @@ public class CSV_Patient_Data implements TalendJob {
 			return this.m_applied_path;
 		}
 
+		public String mod_path;
+
+		public String getMod_path() {
+			return this.mod_path;
+		}
+
+		public String mod_item;
+
+		public String getMod_item() {
+			return this.mod_item;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -5067,6 +5141,28 @@ public class CSV_Patient_Data implements TalendJob {
 				byte[] byteArray = str.getBytes(utf8Charset);
 				dos.writeInt(byteArray.length);
 				dos.write(byteArray);
+			}
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
 			}
 		}
 
@@ -5103,7 +5199,7 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.PatientID = readString(dis);
 
-					this.EncounterID = readString(dis);
+					this.EncounterID = readInteger(dis);
 
 					this.ImportDate = readDate(dis);
 
@@ -5137,6 +5233,10 @@ public class CSV_Patient_Data implements TalendJob {
 
 					this.m_applied_path = readString(dis);
 
+					this.mod_path = readString(dis);
+
+					this.mod_item = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -5153,9 +5253,9 @@ public class CSV_Patient_Data implements TalendJob {
 
 				writeString(this.PatientID, dos);
 
-				// String
+				// Integer
 
-				writeString(this.EncounterID, dos);
+				writeInteger(this.EncounterID, dos);
 
 				// java.util.Date
 
@@ -5221,6 +5321,14 @@ public class CSV_Patient_Data implements TalendJob {
 
 				writeString(this.m_applied_path, dos);
 
+				// String
+
+				writeString(this.mod_path, dos);
+
+				// String
+
+				writeString(this.mod_item, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -5233,7 +5341,7 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("PatientID=" + PatientID);
-			sb.append(",EncounterID=" + EncounterID);
+			sb.append(",EncounterID=" + String.valueOf(EncounterID));
 			sb.append(",ImportDate=" + String.valueOf(ImportDate));
 			sb.append(",UpdateDate=" + String.valueOf(UpdateDate));
 			sb.append(",DownloadDate=" + String.valueOf(DownloadDate));
@@ -5250,6 +5358,8 @@ public class CSV_Patient_Data implements TalendJob {
 			sb.append(",instanceNum=" + instanceNum);
 			sb.append(",sic=" + sic);
 			sb.append(",m_applied_path=" + m_applied_path);
+			sb.append(",mod_path=" + mod_path);
+			sb.append(",mod_item=" + mod_item);
 			sb.append("]");
 
 			return sb.toString();
@@ -6475,7 +6585,7 @@ public class CSV_Patient_Data implements TalendJob {
 					isFileGenerated_tFileOutputDelimited_1 = false;
 				}
 
-				String[] headColutFileOutputDelimited_1 = new String[18];
+				String[] headColutFileOutputDelimited_1 = new String[21];
 				class CSVBasicSet_tFileOutputDelimited_1 {
 					private char field_Delim;
 					private char row_Delim;
@@ -6644,17 +6754,23 @@ public class CSV_Patient_Data implements TalendJob {
 
 						headColutFileOutputDelimited_1[11] = "StudyEventRepeatKey";
 
-						headColutFileOutputDelimited_1[12] = "itemGroupRepeatKey";
+						headColutFileOutputDelimited_1[12] = "FormRepeatKey";
 
-						headColutFileOutputDelimited_1[13] = "startDate";
+						headColutFileOutputDelimited_1[13] = "itemGroupRepeatKey";
 
-						headColutFileOutputDelimited_1[14] = "endDate";
+						headColutFileOutputDelimited_1[14] = "startDate";
 
-						headColutFileOutputDelimited_1[15] = "source";
+						headColutFileOutputDelimited_1[15] = "endDate";
 
-						headColutFileOutputDelimited_1[16] = "sic";
+						headColutFileOutputDelimited_1[16] = "source";
 
-						headColutFileOutputDelimited_1[17] = "m_applied_path";
+						headColutFileOutputDelimited_1[17] = "sic";
+
+						headColutFileOutputDelimited_1[18] = "m_applied_path";
+
+						headColutFileOutputDelimited_1[19] = "mod_path";
+
+						headColutFileOutputDelimited_1[20] = "mod_item";
 
 						CsvWritertFileOutputDelimited_1
 								.writeNext(headColutFileOutputDelimited_1);
@@ -8154,7 +8270,11 @@ public class CSV_Patient_Data implements TalendJob {
 												}
 
 												fromPatient.PatientID = asd.PatientID;
-												fromPatient.EncounterID = asd.EncounterID;
+												if (asd.EncounterID.length() > 0)
+													fromPatient.EncounterID = Integer
+															.parseInt(asd.EncounterID);
+												else
+													fromPatient.EncounterID = 0;
 												fromPatient.ImportDate = asd.ImportDate;
 												fromPatient.UpdateDate = asd.UpdateDate;
 												fromPatient.DownloadDate = asd.DownloadDate;
@@ -8170,6 +8290,7 @@ public class CSV_Patient_Data implements TalendJob {
 													asd.DataType = "string";
 												}
 
+												fromPatient.mod_item = asd.Value;
 												// if (asd.itemCode == null){
 												if (asd.DataType.toLowerCase()
 														.trim()
@@ -8187,24 +8308,27 @@ public class CSV_Patient_Data implements TalendJob {
 
 												} else if (asd.DataType
 														.toLowerCase().trim()
-														.equals("float"))
+														.equals("float")) {
 													fromPatient.Path = asd.Path
 															+ "xml\\";
-												else if (asd.DataType
+													fromPatient.mod_item = "xml";
+												} else if (asd.DataType
 														.toLowerCase().trim()
-														.equals("integer"))
+														.equals("integer")) {
 													fromPatient.Path = asd.Path
 															+ "xml\\";
-												else if (asd.DataType
+													fromPatient.mod_item = "xml";
+												} else if (asd.DataType
 														.toLowerCase().trim()
 														.equals("date")
 														|| asd.DataType
 																.toLowerCase()
 																.trim()
-																.equals("partialDate"))
+																.equals("partialDate")) {
 													fromPatient.Path = asd.Path
 															+ "date\\";
-												else {
+													fromPatient.mod_item = "date";
+												} else {
 													String hash = asd.Path
 															+ asd.Value;
 													// fromPatient.Path =
@@ -8221,6 +8345,18 @@ public class CSV_Patient_Data implements TalendJob {
 
 												fromPatient.sic = asd.sic;
 												fromPatient.m_applied_path = asd.m_applied_path;
+
+												// if
+												// (!asd.m_applied_path.equalsIgnoreCase("@")){
+
+												// if (asd.Path.endsWith("\\"))
+												// fromPatient.Path=asd.Path.substring(0,asd.Path.length()-1)
+												// + asd.Item":"+asd.Value+"\\";
+												// else
+												// fromPatient.Path=asd.Path +
+												// asd.Item+":"+asd.Value+"\\";
+
+												// }
 
 												nb_line_tJavaRow_1++;
 
@@ -8282,12 +8418,16 @@ public class CSV_Patient_Data implements TalendJob {
 													toData_tmp.Import_Date = fromPatient.ImportDate;
 													toData_tmp.Download_Date = fromPatient.DownloadDate;
 													toData_tmp.StudyEventRepeatKey = fromPatient.EncounterID;
+													toData_tmp.FormRepeatKey = 0;
 													toData_tmp.itemGroupRepeatKey = fromPatient.instanceNum;
 													toData_tmp.startDate = fromPatient.StartDate;
 													toData_tmp.endDate = fromPatient.EndDate;
 													toData_tmp.source = fromPatient.SourceSystem;
 													toData_tmp.sic = fromPatient.sic;
 													toData_tmp.m_applied_path = fromPatient.m_applied_path;
+													toData_tmp.mod_path = fromPatient.PathID
+															+ "|";
+													toData_tmp.mod_item = fromPatient.mod_item;
 													toData = toData_tmp;
 
 													// # Output table : 'to_ont'
@@ -8397,7 +8537,7 @@ public class CSV_Patient_Data implements TalendJob {
 
 													currentComponent = "tFileOutputDelimited_1";
 
-													String[] rowtFileOutputDelimited_1 = new String[18];
+													String[] rowtFileOutputDelimited_1 = new String[21];
 
 													rowtFileOutputDelimited_1[0] = toData.itemID == null ? ""
 															: toData.itemID;
@@ -8442,31 +8582,40 @@ public class CSV_Patient_Data implements TalendJob {
 																			"dd-MM-yyyy");
 
 													rowtFileOutputDelimited_1[11] = toData.StudyEventRepeatKey == null ? ""
-															: toData.StudyEventRepeatKey;
+															: String.valueOf(toData.StudyEventRepeatKey);
 
-													rowtFileOutputDelimited_1[12] = toData.itemGroupRepeatKey == null ? ""
+													rowtFileOutputDelimited_1[12] = toData.FormRepeatKey == null ? ""
+															: String.valueOf(toData.FormRepeatKey);
+
+													rowtFileOutputDelimited_1[13] = toData.itemGroupRepeatKey == null ? ""
 															: toData.itemGroupRepeatKey;
 
-													rowtFileOutputDelimited_1[13] = toData.startDate == null ? ""
+													rowtFileOutputDelimited_1[14] = toData.startDate == null ? ""
 															: FormatterUtils
 																	.format_Date(
 																			toData.startDate,
 																			"dd-MM-yyyy");
 
-													rowtFileOutputDelimited_1[14] = toData.endDate == null ? ""
+													rowtFileOutputDelimited_1[15] = toData.endDate == null ? ""
 															: FormatterUtils
 																	.format_Date(
 																			toData.endDate,
 																			"dd-MM-yyyy");
 
-													rowtFileOutputDelimited_1[15] = toData.source == null ? ""
+													rowtFileOutputDelimited_1[16] = toData.source == null ? ""
 															: toData.source;
 
-													rowtFileOutputDelimited_1[16] = toData.sic == null ? ""
+													rowtFileOutputDelimited_1[17] = toData.sic == null ? ""
 															: toData.sic;
 
-													rowtFileOutputDelimited_1[17] = toData.m_applied_path == null ? ""
+													rowtFileOutputDelimited_1[18] = toData.m_applied_path == null ? ""
 															: toData.m_applied_path;
+
+													rowtFileOutputDelimited_1[19] = toData.mod_path == null ? ""
+															: toData.mod_path;
+
+													rowtFileOutputDelimited_1[20] = toData.mod_item == null ? ""
+															: toData.mod_item;
 
 													nb_line_tFileOutputDelimited_1++;
 													CsvWritertFileOutputDelimited_1
@@ -13785,15 +13934,15 @@ public class CSV_Patient_Data implements TalendJob {
 
 							rowtFileOutputDelimited_5[4] = row1.Update_Date == null ? ""
 									: FormatterUtils.format_Date(
-											row1.Update_Date, "yyyy-MM-dd");
+											row1.Update_Date, "dd-MM-yyyy");
 
 							rowtFileOutputDelimited_5[5] = row1.Import_Date == null ? ""
 									: FormatterUtils.format_Date(
-											row1.Import_Date, "yyyy-MM-dd");
+											row1.Import_Date, "dd-MM-yyyy");
 
 							rowtFileOutputDelimited_5[6] = row1.Download_Date == null ? ""
 									: FormatterUtils.format_Date(
-											row1.Download_Date, "yyyy-MM-dd");
+											row1.Download_Date, "dd-MM-yyyy");
 
 							rowtFileOutputDelimited_5[7] = row1.PathID == null ? ""
 									: row1.PathID;
@@ -15236,6 +15385,6 @@ public class CSV_Patient_Data implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 413054 characters generated by Talend Open Studio for Data Integration on the
- * March 5, 2014 1:16:43 PM CET
+ * 416672 characters generated by Talend Open Studio for Data Integration on the
+ * March 20, 2014 12:24:58 PM CET
  ************************************************************************************************/
