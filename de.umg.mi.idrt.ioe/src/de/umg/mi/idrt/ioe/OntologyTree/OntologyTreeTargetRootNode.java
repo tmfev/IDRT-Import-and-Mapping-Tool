@@ -14,7 +14,7 @@ public class OntologyTreeTargetRootNode extends OntologyTreeNode {
 
 
 	
-	private TargetProjects targetProjects = new TargetProjects();
+	private TargetInstances targetInstances = new TargetInstances();
 
 	
 	public OntologyTreeTargetRootNode(String name) {
@@ -23,8 +23,8 @@ public class OntologyTreeTargetRootNode extends OntologyTreeNode {
 		
 	}
 	
-	public TargetProjects getTargetProjects(){
-		return this.targetProjects;
+	public TargetInstances getTargetProjects(){
+		return this.targetInstances;
 	}
 
 }

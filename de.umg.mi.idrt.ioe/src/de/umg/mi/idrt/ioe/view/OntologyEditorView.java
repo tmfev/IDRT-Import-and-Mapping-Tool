@@ -97,8 +97,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNodeList;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.StyledViewTableLabelProvider;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
@@ -244,8 +244,8 @@ public class OntologyEditorView extends ViewPart {
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
 	}
-	public static TargetProject getInstance() {
-		return getTargetInstance().getSelectedTargetProject();
+	public static TargetInstance getInstance() {
+		return getTargetInstance().getSelectedTargetInstance();
 	}
 
 	public static MyOntologyTrees getMyOntologyTree(){
@@ -284,7 +284,7 @@ public class OntologyEditorView extends ViewPart {
 		return targetComposite.getLocation();
 	}
 
-	public static TargetProjects getTargetInstance(){
+	public static TargetInstances getTargetInstance(){
 		return ((OntologyTreeTargetRootNode)getOntologyTargetTree().getRootNode()).getTargetProjects();
 	}
 
@@ -1287,8 +1287,8 @@ public class OntologyEditorView extends ViewPart {
 			versionCombo.removeAll();
 			versionCombo.setText("");
 			ArrayList<Integer> list = new ArrayList<Integer>();
-			for (int i = 0; i<getTargetInstance().getSelectedTargetProject().getTargetsList().size();i++) {
-				list.add(getTargetInstance().getSelectedTargetProject().getTargetsList().get(i).getVersion());
+			for (int i = 0; i<getTargetInstance().getSelectedTargetInstance().getTargetsList().size();i++) {
+				list.add(getTargetInstance().getSelectedTargetInstance().getTargetsList().get(i).getVersion());
 			}
 			Collections.sort(list);
 			for (Integer i : list) {
@@ -1350,8 +1350,8 @@ public class OntologyEditorView extends ViewPart {
 
 	public static void setTargetInstance(String name, String description) {
 		instanceName.setText(name);
-		OntologyEditorView.getTargetInstance().getSelectedTargetProject().setName(name);
-		OntologyEditorView.getTargetInstance().getSelectedTargetProject().setDescription(description);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setName(name);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setDescription(description);
 	}
 
 	public static void setMyOntologyTree (MyOntologyTrees myOT){
@@ -1857,7 +1857,7 @@ public class OntologyEditorView extends ViewPart {
 			public void menuShown(MenuEvent e) {
 			}
 		});
-		setTargetInstance(getTargetInstance().getSelectedTargetProject().getName(),getTargetInstance().getSelectedTargetProject().getDescription());
+		setTargetInstance(getTargetInstance().getSelectedTargetInstance().getName(),getTargetInstance().getSelectedTargetInstance().getDescription());
 
 		//		versionCombo.removeAll();
 		targetComposite.layout();
@@ -1919,14 +1919,14 @@ public class OntologyEditorView extends ViewPart {
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
 				"images/IDRT.gif"));
 
-		TargetProjects targetProjects = new TargetProjects();
+		TargetInstances targetProjects = new TargetInstances();
 
-		TargetProject targetProject1 = new TargetProject();
+		TargetInstance targetProject1 = new TargetInstance();
 		targetProject1.setTargetProjectID(1);
 		targetProject1.setName("TargetProject1Name");
 		targetProject1.setDescription("TargetProject1Desc");
 
-		TargetProject targetProject2 = new TargetProject();
+		TargetInstance targetProject2 = new TargetInstance();
 		targetProject2.setTargetProjectID(3);
 		targetProject2.setName("TargetProject2Name");
 		targetProject2.setDescription("TargetProject2Desc");

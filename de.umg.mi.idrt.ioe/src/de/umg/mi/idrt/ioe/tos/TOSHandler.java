@@ -15,8 +15,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.ProgressView;
 import de.umg.mi.idrt.ioe.view.StatusView;
@@ -168,7 +168,7 @@ public class TOSHandler {
 	public static void  addTargetProjectToTargetProjects(int id,
 			String name, String description) {
 
-		TargetProject targetProject = new TargetProject();
+		TargetInstance targetProject = new TargetInstance();
 		targetProject.setTargetProjectID(id);
 		targetProject.setName(name);
 		targetProject.setDescription(description);
@@ -201,12 +201,12 @@ public class TOSHandler {
 	}
 
 	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
-		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
+		TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
 
 		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
 		targetProjects.getSelectedTarget().setTargetID(targetID);
 		targetProjects.getSelectedTarget().setVersion(version);
-		targetProjects.getSelectedTargetProject().setTargetProjectID(targetProjectID);
+		targetProjects.getSelectedTargetInstance().setTargetProjectID(targetProjectID);
 
 	}
 

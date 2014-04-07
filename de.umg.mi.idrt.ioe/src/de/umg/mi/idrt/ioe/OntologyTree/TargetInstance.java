@@ -7,7 +7,7 @@ import java.util.List;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
-public class TargetProject {
+public class TargetInstance {
 
 	/**
 	 * the id of the target project
@@ -28,7 +28,7 @@ public class TargetProject {
 	 */
 	private String description = "";
 
-	public TargetProject() {
+	public TargetInstance() {
 
 	}
 	
@@ -88,7 +88,7 @@ public class TargetProject {
 	/**
 	 * @return the targetProject
 	 */
-	public int getTargetProjectID() {
+	public int getTargetInstanceID() {
 		return targetProjectID;
 	}
 

@@ -22,7 +22,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
@@ -48,7 +48,7 @@ public class SaveTarget extends AbstractHandler {
 
 		String stringPath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
 		System.out.println("stringPath: " + stringPath);
-		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
+		TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
 //		System.out.println("stringPath: " + stringPath);
 
 		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){

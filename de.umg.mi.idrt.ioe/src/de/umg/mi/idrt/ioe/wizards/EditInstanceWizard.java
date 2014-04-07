@@ -2,7 +2,7 @@ package de.umg.mi.idrt.ioe.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
 
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**

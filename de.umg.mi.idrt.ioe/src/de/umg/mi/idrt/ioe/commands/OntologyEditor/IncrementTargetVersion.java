@@ -7,7 +7,7 @@ import org.eclipse.core.commands.ExecutionException;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -25,7 +25,7 @@ public class IncrementTargetVersion extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
+		TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
 
 		// save the old target project version
 		// if ( OntologyEditorView.isNotYetSaved() ) {

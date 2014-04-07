@@ -59,7 +59,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.equinox.p2.core;bundle-version="2.0.0",
  org.eclipse.equinox.p2.ui;bundle-version="2.0.0",
  org.eclipse.equinox.p2.metadata;bundle-version="2.0.0",
- de.umg.mi.idrt.IDRTImportTool;bundle-version="1.1.2"
+ de.umg.mi.idrt.IDRTImportTool;bundle-version="1.1.2",
+ org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Manifest-Version: 1.0
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true

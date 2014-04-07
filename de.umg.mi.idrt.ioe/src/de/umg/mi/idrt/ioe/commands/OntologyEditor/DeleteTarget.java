@@ -8,7 +8,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 /**
@@ -44,10 +44,10 @@ public class DeleteTarget extends AbstractHandler {
 				+ targetToDelete.getTargetID() + " and Version=" + targetToDelete.getVersion()
 				+ " of the TargetProject with ID="
 				+ OntologyEditorView.getTargetInstance()
-						.getSelectedTargetProject().getTargetProjectID() + " ");
+						.getSelectedTargetInstance().getTargetInstanceID() + " ");
 		
 		// check if there are more than one version available 
-		if (OntologyEditorView.getTargetInstance().getSelectedTargetProject().getTargetsList().size() <= 1){
+		if (OntologyEditorView.getTargetInstance().getSelectedTargetInstance().getTargetsList().size() <= 1){
 			message = "There is only one target version existing in this target instance. Deleting not aborted.";
 			Console.error(message);
 			StatusView.addErrorMessage(message);
@@ -67,7 +67,7 @@ public class DeleteTarget extends AbstractHandler {
 					+ targetID
 					+ " of the TargetProject with ID="
 					+ OntologyEditorView.getTargetInstance()
-							.getSelectedTargetProject().getTargetProjectID()
+							.getSelectedTargetInstance().getTargetInstanceID()
 					+ ". " + e.getMessage());
 			Console.error(message);
 			StatusView.addErrorMessage(message);
@@ -77,7 +77,7 @@ public class DeleteTarget extends AbstractHandler {
 		// deleting the target from the target projects object and the gui drop down menu
 		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
 		
-		OntologyEditorView.getTargetInstance().getSelectedTargetProject().removeTarget(targetToDelete);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().removeTarget(targetToDelete);
 		
 		// GUI stuff
 		//OntologyEditorView.removeVersionFromCombo(String.valueOf( targetToDelete.getVersion() ));
