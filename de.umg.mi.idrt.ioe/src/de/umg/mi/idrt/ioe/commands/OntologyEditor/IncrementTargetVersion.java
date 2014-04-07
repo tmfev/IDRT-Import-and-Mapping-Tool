@@ -25,7 +25,7 @@ public class IncrementTargetVersion extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
 
 		// save the old target project version
 		// if ( OntologyEditorView.isNotYetSaved() ) {

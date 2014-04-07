@@ -134,13 +134,13 @@ public class TargetProject {
 		OntologyEditorView.removeVersionFromCombo(String.valueOf( target.getVersion() ));
 		
 		
-		if (target == OntologyEditorView.getTargetProjects().getSelectedTarget()){
+		if (target == OntologyEditorView.getTargetInstance().getSelectedTarget()){
 			Console.info("Selected Target was deleted.");
 			highestTarget = null;
 			for (Target tmpTarget : list ){
 				checkHighestTargetVersion(tmpTarget);
 			}
-			OntologyEditorView.getTargetProjects().setSelectedTarget(highestTarget );
+			OntologyEditorView.getTargetInstance().setSelectedTarget(highestTarget );
 		}
 		
 		OntologyEditorView.refreshTargetVersionGUI();

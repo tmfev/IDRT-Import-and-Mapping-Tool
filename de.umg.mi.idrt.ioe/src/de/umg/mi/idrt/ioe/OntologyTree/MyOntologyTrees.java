@@ -361,11 +361,11 @@ public class MyOntologyTrees{
 
 	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, final OntologyTreeNode selectedTargetNode, final OntologyTreeNode selectedSourceNode) {
 		//TODO
-		System.out.println("target: " + target.getName() + " " + target.isModifier() + " " + target.getTreePath());
-		System.out.println("source: " + source.getName() + " " + source.isModifier()+ " " + source.getTreePath());
-		System.out.println("source parent: " + source.getParent().getName() + " " + source.getParent().isModifier()+ " " + source.getParent().getTreePath());
-		System.out.println("selectedTargetNode: " +selectedTargetNode.getName() + " " + selectedTargetNode.isModifier()+ " " + selectedTargetNode.getTreePath());
-		System.out.println("selectedSourceNode:" + selectedSourceNode.getName() + " " + selectedSourceNode.isModifier()+ " " + selectedSourceNode.getTreePath());
+//		System.out.println("target: " + target.getName() + " " + target.isModifier() + " " + target.getTreePath());
+//		System.out.println("source: " + source.getName() + " " + source.isModifier()+ " " + source.getTreePath());
+//		System.out.println("source parent: " + source.getParent().getName() + " " + source.getParent().isModifier()+ " " + source.getParent().getTreePath());
+//		System.out.println("selectedTargetNode: " +selectedTargetNode.getName() + " " + selectedTargetNode.isModifier()+ " " + selectedTargetNode.getTreePath());
+//		System.out.println("selectedSourceNode:" + selectedSourceNode.getName() + " " + selectedSourceNode.isModifier()+ " " + selectedSourceNode.getTreePath());
 		progress++;
 		if ((int) (progress/percent)>ProgressView.getValue()+10) {
 			//			System.out.println(progress + " " + percent + " " + counter + " " + progress/percent);
@@ -420,13 +420,14 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().setName(node.getName());
 		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
+		System.out.println("node.gettreepath: " + node.getTreePath());
 		if (testNode==null) {
 			
 			if (node.isModifier()){
 			boolean modifier = target.isModifier();
 			OntologyTreeNode parent = target;
 			while(modifier){
-				System.out.println("HILE : " + parent.getName() + " " + parent.isModifier());
+//				System.out.println("HILE : " + parent.getName() + " " + parent.isModifier());
 				parent = parent.getParent();
 				modifier= parent.isModifier();
 			}
@@ -441,6 +442,8 @@ public class MyOntologyTrees{
 			}
 		}
 		else {
+			System.out.println(testNode.getName() + " " + testNode.getOntologyCellAttributes().getC_FULLNAME());
+			
 			if (confirm<0) {
 				String folderOrItem = node.isLeaf()?"Item":"Folder";
 				IDRTMessageDialog dialog = new IDRTMessageDialog(

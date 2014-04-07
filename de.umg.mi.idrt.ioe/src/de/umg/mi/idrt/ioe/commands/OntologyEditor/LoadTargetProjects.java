@@ -30,7 +30,7 @@ public class LoadTargetProjects extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		// deleting old entries
-		OntologyEditorView.getTargetProjects().clear();
+		OntologyEditorView.getTargetInstance().clear();
 		
 		Console.info("Command: LoadTargetProjects");
 		
@@ -48,7 +48,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			
 			boolean newData = false;
 			
-			TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+			TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
 
 			if ( targetProjects.getSelectedTargetProject() == null ){
 				System.out.println("Loading: no TargetProjec -> creating new one");

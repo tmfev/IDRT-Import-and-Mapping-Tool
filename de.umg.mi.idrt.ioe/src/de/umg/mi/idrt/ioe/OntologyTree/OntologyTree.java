@@ -59,12 +59,11 @@ public class OntologyTree extends JTree {
 		OntologyTreeNode node = new OntologyTreeNode(item.getName());
 //		node.setModifier(true);
 		
-		System.out.println("mapplied: " + item.getM_applied_path());
-		System.out.println("treepath " +item.getTreePath());
+//		System.out.println("mapplied: " + item.getM_applied_path());
+//		System.out.println("treepath " +item.getTreePath());
 		String path = item.getM_applied_path().substring(0,
 				item.getM_applied_path().length() - 1)
 				+ item.getTreePath();
-		System.out.println("path: " + path);
 		node.setID(node.getIDFromPath(item.getTreePath()));
 		try {
 			this.getNodeLists().addOTTargetNode(item, node).add(node);
@@ -105,7 +104,7 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD, item.getValueTypeCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION, item.getStagingDimension());
-		
+		node.setTreePathLevel(item.getTreeLevel());
 		
 		if (nodeType != null) {
 			setI2B2RootNode(node);
@@ -115,7 +114,7 @@ public class OntologyTree extends JTree {
 	
 	public void addTargetNodeByPath(String i2b2Path, String name, String source,
 				OntologyItemTarget item, NodeType type) {
-	System.out.println("ADDING TARGETNODE BY PATH: " + name);
+//	System.out.println("ADDING TARGETNODE BY PATH: " + name);
 			OntologyTreeNode node = new OntologyTreeNode(name);
 			node.setID(node.getIDFromPath(i2b2Path));
 			try {
@@ -176,7 +175,6 @@ public class OntologyTree extends JTree {
 		}
 		node.setTreeAttributes();
 		node.setType(ontologySource);
-		
 		node.setOntologyCellAttributes(item);
 		
 		if (nodeType != null) {

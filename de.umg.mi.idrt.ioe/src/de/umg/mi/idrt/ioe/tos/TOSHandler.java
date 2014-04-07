@@ -90,7 +90,6 @@ public class TOSHandler {
 			final String M_APPLIED_PATH, final Date UPDATE_DATE, final Date DOWNLOAD_DATE,
 			final Date IMPORT_DATE, final String SOURCESYSTEM_CD, final String VALUETYPE_CD,
 			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL) {
-
 		setCounter(getCounter() + 1);
 		if (getCounter()%1000==0)
 			ProgressView.setProgress(0, "Importing...", getCounter()+"/??? items");

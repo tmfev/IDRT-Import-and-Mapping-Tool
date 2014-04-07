@@ -2,10 +2,12 @@ package de.umg.mi.idrt.ioe.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
 
+import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
+ * 		   Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de>
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
@@ -40,7 +42,10 @@ public class EditInstanceWizard extends Wizard {
 		System.out.println("Created: " + one.getCreated());
 		
 		//TODO DB Access
-		OntologyEditorView.setInstance(one.getNameText(),one.getDescriptionText());
+		OntologyEditorView.setTargetInstance(one.getNameText(),one.getDescriptionText());
+		
+		//TargetProjects targetProjects = OntologyEditorView.getTargetProjects().getSelectedTargetProject();
+		
 		return true;
 	}
 

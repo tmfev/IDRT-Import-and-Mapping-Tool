@@ -4466,6 +4466,12 @@ public class ODM_Extract_PD implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		public String itemID;
 
 		public String getItemID() {
@@ -4580,6 +4586,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_item;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -4620,6 +4648,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -4670,6 +4700,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -4758,7 +4792,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -6428,6 +6463,12 @@ public class ODM_Extract_PD implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		public String itemID;
 
 		public String getItemID() {
@@ -6542,6 +6583,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_item;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -6582,6 +6645,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -6632,6 +6697,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -6720,7 +6789,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -6783,6 +6853,12 @@ public class ODM_Extract_PD implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		public String itemID;
 
 		public String getItemID() {
@@ -6897,6 +6973,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_item;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -6937,6 +7035,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -6987,6 +7087,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -7075,7 +7179,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -7137,6 +7242,12 @@ public class ODM_Extract_PD implements TalendJob {
 			routines.system.IPersistableRow<row5Struct> {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
+
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
 
 		public String itemID;
 
@@ -7252,6 +7363,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_item;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -7292,6 +7425,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -7342,6 +7477,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -7430,7 +7569,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -7493,6 +7633,12 @@ public class ODM_Extract_PD implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		public String itemID;
 
 		public String getItemID() {
@@ -7601,6 +7747,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_path;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -7641,6 +7809,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -7689,6 +7859,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -7773,7 +7947,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -7835,6 +8010,12 @@ public class ODM_Extract_PD implements TalendJob {
 		final static byte[] commonByteArrayLock_TOS_ODM_Extract_PD = new byte[0];
 		static byte[] commonByteArray_TOS_ODM_Extract_PD = new byte[0];
 
+		public Integer HLEVEL;
+
+		public Integer getHLEVEL() {
+			return this.HLEVEL;
+		}
+
 		public String itemID;
 
 		public String getItemID() {
@@ -7943,6 +8124,28 @@ public class ODM_Extract_PD implements TalendJob {
 			return this.mod_path;
 		}
 
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos)
+				throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -7983,6 +8186,8 @@ public class ODM_Extract_PD implements TalendJob {
 				try {
 
 					int length = 0;
+
+					this.HLEVEL = readInteger(dis);
 
 					this.itemID = readString(dis);
 
@@ -8031,6 +8236,10 @@ public class ODM_Extract_PD implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
+
+				// Integer
+
+				writeInteger(this.HLEVEL, dos);
 
 				// String
 
@@ -8115,7 +8324,8 @@ public class ODM_Extract_PD implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("itemID=" + itemID);
+			sb.append("HLEVEL=" + String.valueOf(HLEVEL));
+			sb.append(",itemID=" + itemID);
 			sb.append(",Value=" + Value);
 			sb.append(",VisitID=" + VisitID);
 			sb.append(",FormID=" + FormID);
@@ -12106,6 +12316,12 @@ public class ODM_Extract_PD implements TalendJob {
 																row27.ItemGroupRepeatKey = row1.ItemGroupRepeatKey;
 															else
 																row27.ItemGroupRepeatKey = "0";
+															System.out
+																	.println(row27.StudyEventRepeatKey
+																			+ " "
+																			+ row27.FormRepeatKey
+																			+ " "
+																			+ row27.ItemGroupRepeatKey);
 
 															nb_line_tJavaRow_9++;
 
@@ -12542,6 +12758,7 @@ public class ODM_Extract_PD implements TalendJob {
 																		fromOnt.DataType != null
 
 																		) {
+																			out2_tmp.HLEVEL = fromOnt.HLEVEL;
 																			out2_tmp.itemID = fromPatient.itemID;
 																			out2_tmp.Value = fromPatient.Value;
 																			out2_tmp.VisitID = fromPatient.VisitID;
@@ -12616,6 +12833,16 @@ public class ODM_Extract_PD implements TalendJob {
 
 																		currentComponent = "tJavaRow_2";
 
+																		// Code
+																		// generated
+																		// according
+																		// to
+																		// input
+																		// schema
+																		// and
+																		// output
+																		// schema
+																		row5.HLEVEL = row26.HLEVEL;
 																		// Code
 																		// generated
 																		// according
@@ -12816,6 +13043,7 @@ public class ODM_Extract_PD implements TalendJob {
 																					.length() < 1
 
 																			) {
+																				outt123_tmp.HLEVEL = row5.HLEVEL;
 																				outt123_tmp.itemID = row5.itemID;
 																				outt123_tmp.Value = row5.Value;
 																				outt123_tmp.VisitID = row5.VisitID;
@@ -12853,6 +13081,7 @@ public class ODM_Extract_PD implements TalendJob {
 																					.length() > 0
 
 																			) {
+																				out4_tmp.HLEVEL = row5.HLEVEL;
 																				out4_tmp.itemID = row5.itemID;
 																				out4_tmp.Value = row5.Value;
 																				out4_tmp.VisitID = row5.VisitID;
@@ -12967,10 +13196,10 @@ public class ODM_Extract_PD implements TalendJob {
 																				out3_tmp.VisitID = outt123.VisitID;
 																				out3_tmp.FormID = outt123.FormID;
 																				out3_tmp.SubjectKey = outt123.SubjectKey;
-																				out3_tmp.Path = outt123.m_applied_path
-																						.equalsIgnoreCase("yes") ? "\\"
+																				out3_tmp.Path = !outt123.m_applied_path
+																						.equalsIgnoreCase("@") ? "\\"
 																						+ outt123.itemID
-																						+ ":"
+																						+ "\\"
 																						+ outt123.mod_item
 																						+ "\\"
 																						: outt123.Path;
@@ -12986,8 +13215,8 @@ public class ODM_Extract_PD implements TalendJob {
 																				out3_tmp.startDate = (Var.var3 && outt123.Value
 																						.length() >= 4) ? outt123.Value
 																						: "";
-																				out3_tmp.m_applied_path = outt123.m_applied_path
-																						.equalsIgnoreCase("yes") ? outt123.mod_path
+																				out3_tmp.m_applied_path = !outt123.m_applied_path
+																						.equalsIgnoreCase("@") ? outt123.m_applied_path
 																						: "@";
 																				out3_tmp.mod_path = outt123.mod_path;
 																				out3_tmp.mod_item = outt123.mod_item;
@@ -13007,15 +13236,13 @@ public class ODM_Extract_PD implements TalendJob {
 																						|| Var.var2
 
 																				) {
-																					to_ont_xml_tmp.HLEVEL = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? 1
-																							: 8;
+																					to_ont_xml_tmp.HLEVEL = outt123.HLEVEL + 1;
 																					to_ont_xml_tmp.Name = outt123.name
 																							+ " (Numerical Query)";
-																					to_ont_xml_tmp.Path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "\\"
+																					to_ont_xml_tmp.Path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? "\\"
 																							+ outt123.itemID
-																							+ ":"
+																							+ "\\"
 																							+ outt123.mod_item
 																							+ "\\"
 																							: outt123.Path;
@@ -13025,13 +13252,13 @@ public class ODM_Extract_PD implements TalendJob {
 																					to_ont_xml_tmp.Download_Date = outt123.Download_Date;
 																					to_ont_xml_tmp.PathID = outt123.PathID;
 																					to_ont_xml_tmp.visual = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "RAE"
-																							: "LAE";
+																							.equalsIgnoreCase("@") ? "LAE"
+																							: "RAE";
 																					to_ont_xml_tmp.codeList = "";
 																					to_ont_xml_tmp.source = "";
 																					to_ont_xml_tmp.xml = "xml";
-																					to_ont_xml_tmp.m_applied_path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? outt123.mod_path
+																					to_ont_xml_tmp.m_applied_path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? outt123.m_applied_path
 																							: "@";
 																					to_ont_xml = to_ont_xml_tmp;
 																				} // closing
@@ -13051,9 +13278,7 @@ public class ODM_Extract_PD implements TalendJob {
 																						|| Var.var1 || Var.var3)
 
 																				) {
-																					to_ont_tmp.HLEVEL = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? 1
-																							: 8;
+																					to_ont_tmp.HLEVEL = outt123.HLEVEL + 1;
 																					to_ont_tmp.Name = outt123.Value
 																							.replace(
 																									";",
@@ -13061,10 +13286,10 @@ public class ODM_Extract_PD implements TalendJob {
 																							.replace(
 																									".",
 																									",");
-																					to_ont_tmp.Path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "\\"
+																					to_ont_tmp.Path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? "\\"
 																							+ outt123.itemID
-																							+ ":"
+																							+ "\\"
 																							+ outt123.mod_item
 																							+ "\\"
 																							: outt123.Path;
@@ -13074,13 +13299,13 @@ public class ODM_Extract_PD implements TalendJob {
 																					to_ont_tmp.Download_Date = outt123.Download_Date;
 																					to_ont_tmp.PathID = outt123.PathID;
 																					to_ont_tmp.visual = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "RAE"
-																							: "LAE";
+																							.equalsIgnoreCase("@") ? "LAE"
+																							: "RAE";
 																					to_ont_tmp.codeList = "";
 																					to_ont_tmp.source = "";
 																					to_ont_tmp.xml = "";
-																					to_ont_tmp.m_applied_path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? outt123.mod_path
+																					to_ont_tmp.m_applied_path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? outt123.m_applied_path
 																							: "@";
 																					to_ont = to_ont_tmp;
 																				} // closing
@@ -13099,15 +13324,13 @@ public class ODM_Extract_PD implements TalendJob {
 																				Var.var3
 
 																				) {
-																					out7_tmp.HLEVEL = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? 1
-																							: 8;
+																					out7_tmp.HLEVEL = outt123.HLEVEL + 1;
 																					out7_tmp.Name = outt123.name
 																							+ " (Date)";
-																					out7_tmp.Path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "\\"
+																					out7_tmp.Path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? "\\"
 																							+ outt123.itemID
-																							+ ":"
+																							+ "\\"
 																							+ outt123.mod_item
 																							+ "\\"
 																							: outt123.Path;
@@ -13117,13 +13340,13 @@ public class ODM_Extract_PD implements TalendJob {
 																					out7_tmp.Download_Date = outt123.Download_Date;
 																					out7_tmp.PathID = outt123.PathID;
 																					out7_tmp.visual = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? "RAE"
-																							: "LAE";
+																							.equalsIgnoreCase("@") ? "LAE"
+																							: "RAE";
 																					out7_tmp.codeList = "";
 																					out7_tmp.source = "";
 																					out7_tmp.xml = "";
-																					out7_tmp.m_applied_path = outt123.m_applied_path
-																							.equalsIgnoreCase("yes") ? outt123.mod_path
+																					out7_tmp.m_applied_path = !outt123.m_applied_path
+																							.equalsIgnoreCase("@") ? outt123.m_applied_path
 																							: "@";
 																					out7 = out7_tmp;
 																				} // closing
@@ -13561,6 +13784,7 @@ public class ODM_Extract_PD implements TalendJob {
 																			// and
 																			// output
 																			// schema
+																			row25.HLEVEL = out4.HLEVEL;
 																			row25.itemID = out4.itemID;
 																			row25.Value = out4.Value;
 																			row25.VisitID = out4.VisitID;
@@ -13706,10 +13930,10 @@ public class ODM_Extract_PD implements TalendJob {
 																				out5_tmp.VisitID = row25.VisitID;
 																				out5_tmp.FormID = row25.FormID;
 																				out5_tmp.SubjectKey = row25.SubjectKey;
-																				out5_tmp.Path = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? "\\"
+																				out5_tmp.Path = !row25.m_applied_path
+																						.equalsIgnoreCase("@") ? "\\"
 																						+ row7.ItemGroupOID
-																						+ ":"
+																						+ "\\"
 																						+ row25.mod_item
 																						+ "\\"
 																						: row25.Path;
@@ -13723,8 +13947,8 @@ public class ODM_Extract_PD implements TalendJob {
 																				out5_tmp.itemGroupRepeatKey = row25.itemGroupRepeatKey;
 																				out5_tmp.itemCode = row25.itemCode;
 																				out5_tmp.startDate = null;
-																				out5_tmp.m_applied_path = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? row25.mod_path
+																				out5_tmp.m_applied_path = !row25.m_applied_path
+																						.equalsIgnoreCase("@") ? row25.m_applied_path
 																						: "@";
 																				out5_tmp.mod_path = row25.mod_path;
 																				out5_tmp.mod_item = row25.mod_item;
@@ -13735,14 +13959,12 @@ public class ODM_Extract_PD implements TalendJob {
 																				// table
 																				// :
 																				// 'out6'
-																				out6_tmp.HLEVEL = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? 1
-																						: 8;
+																				out6_tmp.HLEVEL = row25.HLEVEL + 1;
 																				out6_tmp.Name = row7.TranslatedText;
-																				out6_tmp.Path = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? "\\"
+																				out6_tmp.Path = !row25.m_applied_path
+																						.equalsIgnoreCase("@") ? "\\"
 																						+ row7.ItemGroupOID
-																						+ ":"
+																						+ "\\"
 																						+ row25.mod_item
 																						+ "\\"
 																						: row25.Path;
@@ -13752,13 +13974,13 @@ public class ODM_Extract_PD implements TalendJob {
 																				out6_tmp.Download_Date = row25.Download_Date;
 																				out6_tmp.PathID = row25.PathID;
 																				out6_tmp.visual = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? "RAE"
-																						: "LAE";
+																						.equalsIgnoreCase("@") ? "LAE"
+																						: "RAE";
 																				out6_tmp.codeList = "";
 																				out6_tmp.source = "";
 																				out6_tmp.xml = "";
-																				out6_tmp.m_applied_path = row25.m_applied_path
-																						.equalsIgnoreCase("yes") ? row25.mod_path
+																				out6_tmp.m_applied_path = !row25.m_applied_path
+																						.equalsIgnoreCase("@") ? row25.m_applied_path
 																						: "@";
 																				out6_tmp.mod_path = row25.mod_path;
 																				out6_tmp.mod_item = row25.mod_item;
@@ -16548,14 +16770,12 @@ public class ODM_Extract_PD implements TalendJob {
 												&& row22.CodeListItem != null
 
 										) {
-											out11_tmp.HLEVEL = row21.m_applied_path
-													.equalsIgnoreCase("yes") ? 1
-													: 8;
+											out11_tmp.HLEVEL = row21.HLEVEL + 1;
 											out11_tmp.Name = row22.TranslatedText;
-											out11_tmp.Path = row21.m_applied_path
-													.equalsIgnoreCase("yes") ? "\\"
+											out11_tmp.Path = !row21.m_applied_path
+													.equalsIgnoreCase("@") ? "\\"
 													+ row22.ItemGroupOID
-													+ ":"
+													+ "\\"
 													+ row22.CodeListItem + "\\"
 													: row22.CodeListItem
 															.length() < 20 ? row21.Path
@@ -16563,7 +16783,7 @@ public class ODM_Extract_PD implements TalendJob {
 															+ "\\"
 															: row21.Path
 																	+ (row21.Path
-																			+ ":" + row22.CodeListItem)
+																			+ "\\" + row22.CodeListItem)
 																			.hashCode()
 																	+ "\\";
 											out11_tmp.DataType = "String";
@@ -16572,14 +16792,12 @@ public class ODM_Extract_PD implements TalendJob {
 											out11_tmp.Download_Date = row21.Download_Date;
 											out11_tmp.PathID = row21.PathID;
 											out11_tmp.visual = row21.m_applied_path
-													.equalsIgnoreCase("yes") ? "RAE"
-													: "LAE";
+													.equalsIgnoreCase("@") ? "LAE"
+													: "RAE";
 											out11_tmp.codeList = "";
 											out11_tmp.source = row21.source;
 											out11_tmp.xml = "";
-											out11_tmp.m_applied_path = row21.m_applied_path
-													.equalsIgnoreCase("yes") ? row21.Path
-													: "@";
+											out11_tmp.m_applied_path = row21.m_applied_path;
 											out11 = out11_tmp;
 										} // closing filter/reject
 											// ###############################
@@ -23785,7 +24003,7 @@ public class ODM_Extract_PD implements TalendJob {
 									asdd_tmp.source = row29.source;
 									asdd_tmp.xml = row29.xml;
 									asdd_tmp.m_applied_path = row29.m_applied_path
-											.equalsIgnoreCase("yes") ? "@"
+											.equalsIgnoreCase("@") ? "@"
 											: row29.m_applied_path;
 									asdd = asdd_tmp;
 									// ###############################
@@ -28804,7 +29022,7 @@ public class ODM_Extract_PD implements TalendJob {
 										copyOfout2_tmp.Update_Date = row13.Update_Date;
 										copyOfout2_tmp.Import_Date = row13.Import_Date;
 										copyOfout2_tmp.Download_Date = row13.Download_Date;
-										copyOfout2_tmp.StudyEventRepeatKey = row20.EncounterNum;
+										copyOfout2_tmp.StudyEventRepeatKey = row13.StudyEventRepeatKey;
 										copyOfout2_tmp.FormRepeatKey = row13.FormRepeatKey;
 										copyOfout2_tmp.itemGroupRepeatKey = row13.itemGroupRepeatKey;
 										copyOfout2_tmp.startDate = row13.startDate;
@@ -29855,7 +30073,7 @@ public class ODM_Extract_PD implements TalendJob {
 										copyOfout2_tmp.Update_Date = row13.Update_Date;
 										copyOfout2_tmp.Import_Date = row13.Import_Date;
 										copyOfout2_tmp.Download_Date = row13.Download_Date;
-										copyOfout2_tmp.StudyEventRepeatKey = row20.EncounterNum;
+										copyOfout2_tmp.StudyEventRepeatKey = row13.StudyEventRepeatKey;
 										copyOfout2_tmp.FormRepeatKey = row13.FormRepeatKey;
 										copyOfout2_tmp.itemGroupRepeatKey = row13.itemGroupRepeatKey;
 										copyOfout2_tmp.startDate = row13.startDate;
@@ -37392,6 +37610,6 @@ public class ODM_Extract_PD implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1010337 characters generated by Talend Open Studio for Data Integration on
- * the March 20, 2014 12:27:06 PM CET
+ * 1015084 characters generated by Talend Open Studio for Data Integration on
+ * the April 7, 2014 1:24:12 PM CEST
  ************************************************************************************************/

@@ -14945,6 +14945,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.order;
 		}
 
+		public String repeating;
+
+		public String getRepeating() {
+			return this.repeating;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -14995,6 +15001,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.repeating = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -15023,6 +15031,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.repeating, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -15038,6 +15050,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
 			sb.append(",hidden=" + hidden);
 			sb.append(",order=" + order);
+			sb.append(",repeating=" + repeating);
 			sb.append("]");
 
 			return sb.toString();
@@ -15106,6 +15119,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.order;
 		}
 
+		public String repeating;
+
+		public String getRepeating() {
+			return this.repeating;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -15156,6 +15175,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.repeating = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -15184,6 +15205,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.repeating, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -15199,6 +15224,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
 			sb.append(",hidden=" + hidden);
 			sb.append(",order=" + order);
+			sb.append(",repeating=" + repeating);
 			sb.append("]");
 
 			return sb.toString();
@@ -15267,6 +15293,12 @@ public class ODM_Create_Ontology implements TalendJob {
 			return this.order;
 		}
 
+		public String repeating;
+
+		public String getRepeating() {
+			return this.repeating;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -15317,6 +15349,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 					this.order = readString(dis);
 
+					this.repeating = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -15345,6 +15379,10 @@ public class ODM_Create_Ontology implements TalendJob {
 
 				writeString(this.order, dos);
 
+				// String
+
+				writeString(this.repeating, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -15360,6 +15398,7 @@ public class ODM_Create_Ontology implements TalendJob {
 			sb.append(",ItemGroupOID=" + ItemGroupOID);
 			sb.append(",hidden=" + hidden);
 			sb.append(",order=" + order);
+			sb.append(",repeating=" + repeating);
 			sb.append("]");
 
 			return sb.toString();
@@ -16084,6 +16123,12 @@ public class ODM_Create_Ontology implements TalendJob {
 												"/ODM/Study/MetaDataVersion/ItemGroupDef/ItemRef"));
 						xTmp3_tFileInputXML_16
 								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_16);
+						org.dom4j.XPath xTmp4_tFileInputXML_16 = org.dom4j.DocumentHelper
+								.createXPath(nsTool_tFileInputXML_16
+										.addDefaultNSPrefix("../@Repeating",
+												"/ODM/Study/MetaDataVersion/ItemGroupDef/ItemRef"));
+						xTmp4_tFileInputXML_16
+								.setNamespaceURIs(xmlNameSpaceMap_tFileInputXML_16);
 
 						for (org.dom4j.tree.AbstractNode temp_tFileInputXML_16 : nodeList_tFileInputXML_16) {
 							nb_line_tFileInputXML_16++;
@@ -16259,6 +16304,48 @@ public class ODM_Create_Ontology implements TalendJob {
 								} else {
 									row27.order = str_tFileInputXML_16;
 								}
+								Object obj4_tFileInputXML_16 = xTmp4_tFileInputXML_16
+										.evaluate(temp_tFileInputXML_16);
+								if (obj4_tFileInputXML_16 == null) {
+									node_tFileInputXML_16 = null;
+									str_tFileInputXML_16 = "";
+
+								} else if (obj4_tFileInputXML_16 instanceof org.dom4j.Node) {
+									node_tFileInputXML_16 = (org.dom4j.Node) obj4_tFileInputXML_16;
+									str_tFileInputXML_16 = org.jaxen.function.StringFunction
+											.evaluate(
+													node_tFileInputXML_16,
+													org.jaxen.dom4j.DocumentNavigator
+															.getInstance());
+								} else if (obj4_tFileInputXML_16 instanceof String
+										|| obj4_tFileInputXML_16 instanceof Number) {
+									node_tFileInputXML_16 = temp_tFileInputXML_16;
+									str_tFileInputXML_16 = String
+											.valueOf(obj4_tFileInputXML_16);
+								} else if (obj4_tFileInputXML_16 instanceof java.util.List) {
+									java.util.List<org.dom4j.Node> nodes_tFileInputXML_16 = (java.util.List<org.dom4j.Node>) obj4_tFileInputXML_16;
+									node_tFileInputXML_16 = nodes_tFileInputXML_16
+											.size() > 0 ? nodes_tFileInputXML_16
+											.get(0) : null;
+									str_tFileInputXML_16 = node_tFileInputXML_16 == null ? ""
+											: org.jaxen.function.StringFunction
+													.evaluate(
+															node_tFileInputXML_16,
+															org.jaxen.dom4j.DocumentNavigator
+																	.getInstance());
+								}
+								if (xml_api_tFileInputXML_16
+										.isDefNull(node_tFileInputXML_16)) {
+									row27.repeating = null;
+								} else if (xml_api_tFileInputXML_16
+										.isEmpty(node_tFileInputXML_16)) {
+									row27.repeating = "";
+								} else if (xml_api_tFileInputXML_16
+										.isMissing(node_tFileInputXML_16)) {
+									row27.repeating = null;
+								} else {
+									row27.repeating = str_tFileInputXML_16;
+								}
 
 							} catch (java.lang.Exception e) {
 								whetherReject_tFileInputXML_16 = true;
@@ -16291,6 +16378,8 @@ public class ODM_Create_Ontology implements TalendJob {
 
 								// Code generated according to input schema and
 								// output schema
+								// Code generated according to input schema and
+								// output schema
 								fromItem.ItemOID = row27.ItemOID.trim();
 								fromItem.ItemGroupOID = row27.ItemGroupOID
 										.trim();
@@ -16303,6 +16392,8 @@ public class ODM_Create_Ontology implements TalendJob {
 									}
 								}
 								fromItem.order = row27.order.trim();
+
+								fromItem.repeating = row27.repeating;
 
 								nb_line_tJavaRow_2++;
 
@@ -23264,7 +23355,9 @@ public class ODM_Create_Ontology implements TalendJob {
 											.getCurrentDate();
 									out6_tmp.Download_Date = row5.Download_Date;
 									out6_tmp.PathID = row31.PathID;
-									out6_tmp.visual = "FAE";
+									out6_tmp.visual = row31.m_applied_path
+											.equalsIgnoreCase("@") ? "FAE"
+											: "DAE";
 									out6_tmp.itemCode = row31.itemCode;
 									out6_tmp.source = (row5.source != null) ? row5.source
 											+ " " + row5.SourceSystemVersion
@@ -23688,7 +23781,9 @@ public class ODM_Create_Ontology implements TalendJob {
 											.getCurrentDate();
 									out6_tmp.Download_Date = row5.Download_Date;
 									out6_tmp.PathID = row31.PathID;
-									out6_tmp.visual = "FAE";
+									out6_tmp.visual = row31.m_applied_path
+											.equalsIgnoreCase("@") ? "FAE"
+											: "DAE";
 									out6_tmp.itemCode = row31.itemCode;
 									out6_tmp.source = (row5.source != null) ? row5.source
 											+ " " + row5.SourceSystemVersion
@@ -24233,7 +24328,9 @@ public class ODM_Create_Ontology implements TalendJob {
 													.getCurrentDate();
 											out6_tmp.Download_Date = row5.Download_Date;
 											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
+											out6_tmp.visual = row31.m_applied_path
+													.equalsIgnoreCase("@") ? "FAE"
+													: "DAE";
 											out6_tmp.itemCode = row31.itemCode;
 											out6_tmp.source = (row5.source != null) ? row5.source
 													+ " "
@@ -24800,7 +24897,9 @@ public class ODM_Create_Ontology implements TalendJob {
 													.getCurrentDate();
 											out6_tmp.Download_Date = row5.Download_Date;
 											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
+											out6_tmp.visual = row31.m_applied_path
+													.equalsIgnoreCase("@") ? "FAE"
+													: "DAE";
 											out6_tmp.itemCode = row31.itemCode;
 											out6_tmp.source = (row5.source != null) ? row5.source
 													+ " "
@@ -25369,7 +25468,9 @@ public class ODM_Create_Ontology implements TalendJob {
 													.getCurrentDate();
 											out6_tmp.Download_Date = row5.Download_Date;
 											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
+											out6_tmp.visual = row31.m_applied_path
+													.equalsIgnoreCase("@") ? "FAE"
+													: "DAE";
 											out6_tmp.itemCode = row31.itemCode;
 											out6_tmp.source = (row5.source != null) ? row5.source
 													+ " "
@@ -25939,7 +26040,9 @@ public class ODM_Create_Ontology implements TalendJob {
 													.getCurrentDate();
 											out6_tmp.Download_Date = row5.Download_Date;
 											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
+											out6_tmp.visual = row31.m_applied_path
+													.equalsIgnoreCase("@") ? "FAE"
+													: "DAE";
 											out6_tmp.itemCode = row31.itemCode;
 											out6_tmp.source = (row5.source != null) ? row5.source
 													+ " "
@@ -26516,7 +26619,9 @@ public class ODM_Create_Ontology implements TalendJob {
 													.getCurrentDate();
 											out6_tmp.Download_Date = row5.Download_Date;
 											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
+											out6_tmp.visual = row31.m_applied_path
+													.equalsIgnoreCase("@") ? "FAE"
+													: "DAE";
 											out6_tmp.itemCode = row31.itemCode;
 											out6_tmp.source = (row5.source != null) ? row5.source
 													+ " "
@@ -26747,6 +26852,8 @@ public class ODM_Create_Ontology implements TalendJob {
 					copyOfcopyOfcopyOfout6_0_2Struct copyOfcopyOfcopyOfout6_0_2_tmp = new copyOfcopyOfcopyOfout6_0_2Struct();
 					// ###############################
 
+					List<copyOfcopyOfcopyOfout6_0_2Struct> copyOfcopyOfcopyOfout6_0_2_List = new java.util.ArrayList<copyOfcopyOfcopyOfout6_0_2Struct>();
+
 					/**
 					 * [tMap_23 begin ] stop
 					 */
@@ -26942,37 +27049,101 @@ public class ODM_Create_Ontology implements TalendJob {
 									// # Output tables
 
 									copyOfcopyOfcopyOfout6_0_2 = null;
+									copyOfcopyOfcopyOfout6_0_2_List.clear();
+
+									boolean rejected_tMap_23 = true;
 
 									// # Output table :
 									// 'copyOfcopyOfcopyOfout6_0_2'
-									copyOfcopyOfcopyOfout6_0_2_tmp.HLEVEL = row38.HLEVEL;
-									copyOfcopyOfcopyOfout6_0_2_tmp.Name = row38.Name;
-									copyOfcopyOfcopyOfout6_0_2_tmp.Path = "\\"
-											+ context.i2b2HeadNode + "\\"
-											+ context.MDPD + "\\"
-											+ row38.StudyID + "\\"
-											+ row38.MetaID + "\\"
-											+ row38.VisitID + "\\"
-											+ row38.FormID + "\\"
-											+ row38.QuestionID + "\\"
-											+ row38.ItemID;
-									copyOfcopyOfcopyOfout6_0_2_tmp.DataType = row38.item_Datatype;
-									copyOfcopyOfcopyOfout6_0_2_tmp.Update_Date = null;
-									copyOfcopyOfcopyOfout6_0_2_tmp.Import_Date = null;
-									copyOfcopyOfcopyOfout6_0_2_tmp.Download_Date = null;
-									copyOfcopyOfcopyOfout6_0_2_tmp.PathID = row38.MetaID
-											+ "|"
-											+ row38.VisitID
-											+ "|"
-											+ row38.FormID
-											+ "|"
-											+ row38.QuestionID
-											+ "|"
-											+ row38.ItemID;
-									copyOfcopyOfcopyOfout6_0_2_tmp.itemCode = row38.FormFamily;
-									copyOfcopyOfcopyOfout6_0_2_tmp.m_applied_path = row38.m_applied_path;
-									copyOfcopyOfcopyOfout6_0_2 = copyOfcopyOfcopyOfout6_0_2_tmp;
-									// ###############################
+									// # Filter conditions
+									if (
+
+									!row38.m_applied_path
+											.equalsIgnoreCase("yes")
+
+									) {
+										rejected_tMap_23 = false;
+										copyOfcopyOfcopyOfout6_0_2_tmp.HLEVEL = row38.HLEVEL;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Name = row38.Name;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Path = "\\"
+												+ context.i2b2HeadNode
+												+ "\\"
+												+ context.MDPD
+												+ "\\"
+												+ row38.StudyID
+												+ "\\"
+												+ row38.MetaID
+												+ "\\"
+												+ row38.VisitID
+												+ "\\"
+												+ row38.FormID
+												+ "\\"
+												+ row38.QuestionID
+												+ "\\"
+												+ row38.ItemID;
+										copyOfcopyOfcopyOfout6_0_2_tmp.DataType = row38.item_Datatype;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Update_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Import_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Download_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.PathID = row38.MetaID
+												+ "|"
+												+ row38.VisitID
+												+ "|"
+												+ row38.FormID
+												+ "|"
+												+ row38.QuestionID
+												+ "|"
+												+ row38.ItemID;
+										copyOfcopyOfcopyOfout6_0_2_tmp.itemCode = row38.FormFamily;
+										copyOfcopyOfcopyOfout6_0_2_tmp.m_applied_path = row38.m_applied_path;
+										copyOfcopyOfcopyOfout6_0_2_List
+												.add(copyOfcopyOfcopyOfout6_0_2_tmp);
+										copyOfcopyOfcopyOfout6_0_2 = copyOfcopyOfcopyOfout6_0_2_tmp;
+									} // closing filter/reject
+										// ###### START REJECTS #####
+
+									// # Output reject table : 'out2'
+									// # Filter conditions
+									if (rejected_tMap_23) {
+										copyOfcopyOfcopyOfout6_0_2_tmp = new copyOfcopyOfcopyOfout6_0_2Struct();
+
+										copyOfcopyOfcopyOfout6_0_2_tmp.HLEVEL = 1;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Name = row38.Name;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Path = "\\"
+												+ row38.ItemID;
+										copyOfcopyOfcopyOfout6_0_2_tmp.DataType = row38.item_Datatype;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Update_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Import_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.Download_Date = null;
+										copyOfcopyOfcopyOfout6_0_2_tmp.PathID = row38.MetaID
+												+ "|"
+												+ row38.VisitID
+												+ "|"
+												+ row38.FormID
+												+ "|"
+												+ row38.QuestionID
+												+ "|"
+												+ row38.ItemID;
+										copyOfcopyOfcopyOfout6_0_2_tmp.itemCode = row38.FormFamily;
+										copyOfcopyOfcopyOfout6_0_2_tmp.m_applied_path = "\\"
+												+ context.i2b2HeadNode
+												+ "\\"
+												+ context.MDPD
+												+ "\\"
+												+ row38.StudyID
+												+ "\\"
+												+ row38.MetaID
+												+ "\\"
+												+ row38.VisitID
+												+ "\\"
+												+ row38.FormID
+												+ "\\"
+												+ row38.QuestionID + "\\";
+										copyOfcopyOfcopyOfout6_0_2_List
+												.add(copyOfcopyOfcopyOfout6_0_2_tmp);
+										copyOfcopyOfcopyOfout6_0_2 = copyOfcopyOfcopyOfout6_0_2_tmp;
+									} // closing filter/reject
+										// ###############################
 
 								} // end of Var scope
 
@@ -26985,277 +27156,287 @@ public class ODM_Create_Ontology implements TalendJob {
 								 */
 								// Start of branch "copyOfcopyOfcopyOfout6_0_2"
 								if (copyOfcopyOfcopyOfout6_0_2 != null) {
-
-									/**
-									 * [tUnite_1 main ] start
-									 */
-
-									currentComponent = "tUnite_1";
-
-									// ////////
-
-									// for output
-									row31 = new row31Struct();
-
-									row31.HLEVEL = copyOfcopyOfcopyOfout6_0_2.HLEVEL;
-									row31.Name = copyOfcopyOfcopyOfout6_0_2.Name;
-									row31.Path = copyOfcopyOfcopyOfout6_0_2.Path;
-									row31.DataType = copyOfcopyOfcopyOfout6_0_2.DataType;
-									row31.Update_Date = copyOfcopyOfcopyOfout6_0_2.Update_Date;
-									row31.Import_Date = copyOfcopyOfcopyOfout6_0_2.Import_Date;
-									row31.Download_Date = copyOfcopyOfcopyOfout6_0_2.Download_Date;
-									row31.PathID = copyOfcopyOfcopyOfout6_0_2.PathID;
-									row31.itemCode = copyOfcopyOfcopyOfout6_0_2.itemCode;
-									row31.m_applied_path = copyOfcopyOfcopyOfout6_0_2.m_applied_path;
-
-									nb_line_tUnite_1++;
-
-									// ////////
-
-									tos_count_tUnite_1++;
-
-									/**
-									 * [tUnite_1 main ] stop
-									 */
-
-									/**
-									 * [tMap_10 main ] start
-									 */
-
-									currentComponent = "tMap_10";
-
-									boolean hasCasePrimitiveKeyWithNull_tMap_10 = false;
-
-									// ###############################
-									// # Input tables (lookups)
-									boolean rejectedInnerJoin_tMap_10 = false;
-									boolean mainRowRejected_tMap_10 = false;
-
-									// /////////////////////////////////////////////
-									// Starting Lookup Table "row5"
-									// /////////////////////////////////////////////
-
-									boolean forceLooprow5 = false;
-
-									row5Struct row5ObjectFromLookup = null;
-
-									if (!rejectedInnerJoin_tMap_10) { // G_TM_M_020
-
-										tHash_Lookup_row5.lookup(row5HashKey);
-
-										if (!tHash_Lookup_row5.hasNext()) { // G_TM_M_090
-
-											forceLooprow5 = true;
-
-										} // G_TM_M_090
-
-									} // G_TM_M_020
-
-									else { // G 20 - G 21
-										forceLooprow5 = true;
-									} // G 21
-
-									row5Struct row5 = null;
-
-									while ((tHash_Lookup_row5 != null && tHash_Lookup_row5
-											.hasNext()) || forceLooprow5) { // G_TM_M_043
-
-										// CALL close loop of lookup 'row5'
-
-										row5Struct fromLookup_row5 = null;
-										row5 = row5Default;
-
-										if (!forceLooprow5) { // G 46
-
-											fromLookup_row5 = tHash_Lookup_row5
-													.next();
-
-											if (fromLookup_row5 != null) {
-												row5 = fromLookup_row5;
-											}
-
-										} // G 46
-
-										forceLooprow5 = false;
-
-										// ###############################
-										{ // start of Var scope
-
-											// ###############################
-											// # Vars tables
-
-											Var__tMap_10__Struct Var = Var__tMap_10;
-											Var.var1 = false;// ###############################
-											// ###############################
-											// # Output tables
-
-											out6 = null;
-
-											// # Output table : 'out6'
-											out6_tmp.HLEVEL = row31.HLEVEL;
-											out6_tmp.Name = row31.Name;
-											out6_tmp.Path = row31.Path + "\\";
-											out6_tmp.DataType = row31.DataType;
-											out6_tmp.Update_Date = null;
-											out6_tmp.Import_Date = TalendDate
-													.getCurrentDate();
-											out6_tmp.Download_Date = row5.Download_Date;
-											out6_tmp.PathID = row31.PathID;
-											out6_tmp.visual = "FAE";
-											out6_tmp.itemCode = row31.itemCode;
-											out6_tmp.source = (row5.source != null) ? row5.source
-													+ " "
-													+ row5.SourceSystemVersion
-													: "";
-											out6_tmp.xml = null;
-											out6_tmp.m_applied_path = row31.m_applied_path;
-											out6 = out6_tmp;
-											// ###############################
-
-										} // end of Var scope
-
-										rejectedInnerJoin_tMap_10 = false;
-
-										tos_count_tMap_10++;
+									// start of joined table loop
+									for (copyOfcopyOfcopyOfout6_0_2Struct cur_copyOfcopyOfcopyOfout6_0_2 : copyOfcopyOfcopyOfout6_0_2_List) {
+										copyOfcopyOfcopyOfout6_0_2 = cur_copyOfcopyOfcopyOfout6_0_2;
 
 										/**
-										 * [tMap_10 main ] stop
+										 * [tUnite_1 main ] start
 										 */
-										// Start of branch "out6"
-										if (out6 != null) {
+
+										currentComponent = "tUnite_1";
+
+										// ////////
+
+										// for output
+										row31 = new row31Struct();
+
+										row31.HLEVEL = copyOfcopyOfcopyOfout6_0_2.HLEVEL;
+										row31.Name = copyOfcopyOfcopyOfout6_0_2.Name;
+										row31.Path = copyOfcopyOfcopyOfout6_0_2.Path;
+										row31.DataType = copyOfcopyOfcopyOfout6_0_2.DataType;
+										row31.Update_Date = copyOfcopyOfcopyOfout6_0_2.Update_Date;
+										row31.Import_Date = copyOfcopyOfcopyOfout6_0_2.Import_Date;
+										row31.Download_Date = copyOfcopyOfcopyOfout6_0_2.Download_Date;
+										row31.PathID = copyOfcopyOfcopyOfout6_0_2.PathID;
+										row31.itemCode = copyOfcopyOfcopyOfout6_0_2.itemCode;
+										row31.m_applied_path = copyOfcopyOfcopyOfout6_0_2.m_applied_path;
+
+										nb_line_tUnite_1++;
+
+										// ////////
+
+										tos_count_tUnite_1++;
+
+										/**
+										 * [tUnite_1 main ] stop
+										 */
+
+										/**
+										 * [tMap_10 main ] start
+										 */
+
+										currentComponent = "tMap_10";
+
+										boolean hasCasePrimitiveKeyWithNull_tMap_10 = false;
+
+										// ###############################
+										// # Input tables (lookups)
+										boolean rejectedInnerJoin_tMap_10 = false;
+										boolean mainRowRejected_tMap_10 = false;
+
+										// /////////////////////////////////////////////
+										// Starting Lookup Table "row5"
+										// /////////////////////////////////////////////
+
+										boolean forceLooprow5 = false;
+
+										row5Struct row5ObjectFromLookup = null;
+
+										if (!rejectedInnerJoin_tMap_10) { // G_TM_M_020
+
+											tHash_Lookup_row5
+													.lookup(row5HashKey);
+
+											if (!tHash_Lookup_row5.hasNext()) { // G_TM_M_090
+
+												forceLooprow5 = true;
+
+											} // G_TM_M_090
+
+										} // G_TM_M_020
+
+										else { // G 20 - G 21
+											forceLooprow5 = true;
+										} // G 21
+
+										row5Struct row5 = null;
+
+										while ((tHash_Lookup_row5 != null && tHash_Lookup_row5
+												.hasNext()) || forceLooprow5) { // G_TM_M_043
+
+											// CALL close loop of lookup 'row5'
+
+											row5Struct fromLookup_row5 = null;
+											row5 = row5Default;
+
+											if (!forceLooprow5) { // G 46
+
+												fromLookup_row5 = tHash_Lookup_row5
+														.next();
+
+												if (fromLookup_row5 != null) {
+													row5 = fromLookup_row5;
+												}
+
+											} // G 46
+
+											forceLooprow5 = false;
+
+											// ###############################
+											{ // start of Var scope
+
+												// ###############################
+												// # Vars tables
+
+												Var__tMap_10__Struct Var = Var__tMap_10;
+												Var.var1 = false;// ###############################
+												// ###############################
+												// # Output tables
+
+												out6 = null;
+
+												// # Output table : 'out6'
+												out6_tmp.HLEVEL = row31.HLEVEL;
+												out6_tmp.Name = row31.Name;
+												out6_tmp.Path = row31.Path
+														+ "\\";
+												out6_tmp.DataType = row31.DataType;
+												out6_tmp.Update_Date = null;
+												out6_tmp.Import_Date = TalendDate
+														.getCurrentDate();
+												out6_tmp.Download_Date = row5.Download_Date;
+												out6_tmp.PathID = row31.PathID;
+												out6_tmp.visual = row31.m_applied_path
+														.equalsIgnoreCase("@") ? "FAE"
+														: "DAE";
+												out6_tmp.itemCode = row31.itemCode;
+												out6_tmp.source = (row5.source != null) ? row5.source
+														+ " "
+														+ row5.SourceSystemVersion
+														: "";
+												out6_tmp.xml = null;
+												out6_tmp.m_applied_path = row31.m_applied_path;
+												out6 = out6_tmp;
+												// ###############################
+
+											} // end of Var scope
+
+											rejectedInnerJoin_tMap_10 = false;
+
+											tos_count_tMap_10++;
 
 											/**
-											 * [tUniqRow_9 main ] start
+											 * [tMap_10 main ] stop
 											 */
+											// Start of branch "out6"
+											if (out6 != null) {
 
-											currentComponent = "tUniqRow_9";
+												/**
+												 * [tUniqRow_9 main ] start
+												 */
 
-											row14 = null;
-											finder_tUniqRow_9.HLEVEL = out6.HLEVEL;
-											if (out6.Path == null) {
-												finder_tUniqRow_9.Path = null;
-											} else {
-												finder_tUniqRow_9.Path = out6.Path
-														.toLowerCase();
-											}
-											finder_tUniqRow_9.hashCodeDirty = true;
-											if (!keystUniqRow_9
-													.contains(finder_tUniqRow_9)) {
-												KeyStruct_tUniqRow_9 new_tUniqRow_9 = new KeyStruct_tUniqRow_9();
+												currentComponent = "tUniqRow_9";
 
-												new_tUniqRow_9.HLEVEL = out6.HLEVEL;
+												row14 = null;
+												finder_tUniqRow_9.HLEVEL = out6.HLEVEL;
 												if (out6.Path == null) {
-													new_tUniqRow_9.Path = null;
+													finder_tUniqRow_9.Path = null;
 												} else {
-													new_tUniqRow_9.Path = out6.Path
+													finder_tUniqRow_9.Path = out6.Path
 															.toLowerCase();
 												}
+												finder_tUniqRow_9.hashCodeDirty = true;
+												if (!keystUniqRow_9
+														.contains(finder_tUniqRow_9)) {
+													KeyStruct_tUniqRow_9 new_tUniqRow_9 = new KeyStruct_tUniqRow_9();
 
-												keystUniqRow_9
-														.add(new_tUniqRow_9);
-												if (row14 == null) {
-													row14 = new row14Struct();
+													new_tUniqRow_9.HLEVEL = out6.HLEVEL;
+													if (out6.Path == null) {
+														new_tUniqRow_9.Path = null;
+													} else {
+														new_tUniqRow_9.Path = out6.Path
+																.toLowerCase();
+													}
+
+													keystUniqRow_9
+															.add(new_tUniqRow_9);
+													if (row14 == null) {
+														row14 = new row14Struct();
+													}
+													row14.HLEVEL = out6.HLEVEL;
+													row14.Name = out6.Name;
+													row14.Path = out6.Path;
+													row14.DataType = out6.DataType;
+													row14.Update_Date = out6.Update_Date;
+													row14.Import_Date = out6.Import_Date;
+													row14.Download_Date = out6.Download_Date;
+													row14.PathID = out6.PathID;
+													row14.visual = out6.visual;
+													row14.itemCode = out6.itemCode;
+													row14.source = out6.source;
+													row14.xml = out6.xml;
+													row14.m_applied_path = out6.m_applied_path;
+													nb_uniques_tUniqRow_9++;
+												} else {
+													nb_duplicates_tUniqRow_9++;
 												}
-												row14.HLEVEL = out6.HLEVEL;
-												row14.Name = out6.Name;
-												row14.Path = out6.Path;
-												row14.DataType = out6.DataType;
-												row14.Update_Date = out6.Update_Date;
-												row14.Import_Date = out6.Import_Date;
-												row14.Download_Date = out6.Download_Date;
-												row14.PathID = out6.PathID;
-												row14.visual = out6.visual;
-												row14.itemCode = out6.itemCode;
-												row14.source = out6.source;
-												row14.xml = out6.xml;
-												row14.m_applied_path = out6.m_applied_path;
-												nb_uniques_tUniqRow_9++;
-											} else {
-												nb_duplicates_tUniqRow_9++;
-											}
 
-											tos_count_tUniqRow_9++;
-
-											/**
-											 * [tUniqRow_9 main ] stop
-											 */
-											// Start of branch "row14"
-											if (row14 != null) {
+												tos_count_tUniqRow_9++;
 
 												/**
-												 * [tFileOutputDelimited_26 main
-												 * ] start
+												 * [tUniqRow_9 main ] stop
 												 */
+												// Start of branch "row14"
+												if (row14 != null) {
 
-												currentComponent = "tFileOutputDelimited_26";
+													/**
+													 * [tFileOutputDelimited_26
+													 * main ] start
+													 */
 
-												String[] rowtFileOutputDelimited_26 = new String[13];
+													currentComponent = "tFileOutputDelimited_26";
 
-												rowtFileOutputDelimited_26[0] = row14.HLEVEL == null ? ""
-														: String.valueOf(row14.HLEVEL);
+													String[] rowtFileOutputDelimited_26 = new String[13];
 
-												rowtFileOutputDelimited_26[1] = row14.Name == null ? ""
-														: row14.Name;
+													rowtFileOutputDelimited_26[0] = row14.HLEVEL == null ? ""
+															: String.valueOf(row14.HLEVEL);
 
-												rowtFileOutputDelimited_26[2] = row14.Path == null ? ""
-														: row14.Path;
+													rowtFileOutputDelimited_26[1] = row14.Name == null ? ""
+															: row14.Name;
 
-												rowtFileOutputDelimited_26[3] = row14.DataType == null ? ""
-														: row14.DataType;
+													rowtFileOutputDelimited_26[2] = row14.Path == null ? ""
+															: row14.Path;
 
-												rowtFileOutputDelimited_26[4] = row14.Update_Date == null ? ""
-														: FormatterUtils
-																.format_Date(
-																		row14.Update_Date,
-																		"yyyy-MM-dd");
+													rowtFileOutputDelimited_26[3] = row14.DataType == null ? ""
+															: row14.DataType;
 
-												rowtFileOutputDelimited_26[5] = row14.Import_Date == null ? ""
-														: FormatterUtils
-																.format_Date(
-																		row14.Import_Date,
-																		"yyyy-MM-dd");
+													rowtFileOutputDelimited_26[4] = row14.Update_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row14.Update_Date,
+																			"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_26[6] = row14.Download_Date == null ? ""
-														: FormatterUtils
-																.format_Date(
-																		row14.Download_Date,
-																		"yyyy-MM-dd");
+													rowtFileOutputDelimited_26[5] = row14.Import_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row14.Import_Date,
+																			"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_26[7] = row14.PathID == null ? ""
-														: row14.PathID;
+													rowtFileOutputDelimited_26[6] = row14.Download_Date == null ? ""
+															: FormatterUtils
+																	.format_Date(
+																			row14.Download_Date,
+																			"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_26[8] = row14.visual == null ? ""
-														: row14.visual;
+													rowtFileOutputDelimited_26[7] = row14.PathID == null ? ""
+															: row14.PathID;
 
-												rowtFileOutputDelimited_26[9] = row14.itemCode == null ? ""
-														: row14.itemCode;
+													rowtFileOutputDelimited_26[8] = row14.visual == null ? ""
+															: row14.visual;
 
-												rowtFileOutputDelimited_26[10] = row14.source == null ? ""
-														: row14.source;
+													rowtFileOutputDelimited_26[9] = row14.itemCode == null ? ""
+															: row14.itemCode;
 
-												rowtFileOutputDelimited_26[11] = row14.xml == null ? ""
-														: row14.xml;
+													rowtFileOutputDelimited_26[10] = row14.source == null ? ""
+															: row14.source;
 
-												rowtFileOutputDelimited_26[12] = row14.m_applied_path == null ? ""
-														: row14.m_applied_path;
+													rowtFileOutputDelimited_26[11] = row14.xml == null ? ""
+															: row14.xml;
 
-												nb_line_tFileOutputDelimited_26++;
-												CsvWritertFileOutputDelimited_26
-														.writeNext(rowtFileOutputDelimited_26);
+													rowtFileOutputDelimited_26[12] = row14.m_applied_path == null ? ""
+															: row14.m_applied_path;
 
-												tos_count_tFileOutputDelimited_26++;
+													nb_line_tFileOutputDelimited_26++;
+													CsvWritertFileOutputDelimited_26
+															.writeNext(rowtFileOutputDelimited_26);
 
-												/**
-												 * [tFileOutputDelimited_26 main
-												 * ] stop
-												 */
+													tos_count_tFileOutputDelimited_26++;
 
-											} // End of branch "row14"
+													/**
+													 * [tFileOutputDelimited_26
+													 * main ] stop
+													 */
 
-										} // End of branch "out6"
+												} // End of branch "row14"
 
-									} // close loop of lookup 'row5' //
-										// G_TM_M_043
+											} // End of branch "out6"
+
+										} // close loop of lookup 'row5' //
+											// G_TM_M_043
+
+									} // end of joined table loop
+									copyOfcopyOfcopyOfout6_0_2_List.clear();
 
 								} // End of branch "copyOfcopyOfcopyOfout6_0_2"
 
@@ -45167,6 +45348,6 @@ public class ODM_Create_Ontology implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1237080 characters generated by Talend Open Studio for Data Integration on
- * the March 20, 2014 12:27:12 PM CET
+ * 1242044 characters generated by Talend Open Studio for Data Integration on
+ * the April 7, 2014 1:24:15 PM CEST
  ************************************************************************************************/

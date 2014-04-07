@@ -54,6 +54,9 @@ import java.util.Comparator;
 //the import part of tJavaRow_6
 //import java.util.List;
 
+//the import part of tJavaRow_12
+//import java.util.List;
+
 //the import part of tJava_1
 //import java.util.List;
 import java.util.HashMap;
@@ -15562,17 +15565,20 @@ public class IDRT_to_DB_Schema implements TalendJob {
 																	0,
 																	tmp1.lastIndexOf("|"));
 													// tmp3= tmp3.substring(6);
-													patientData.CONCEPT_CD = tmp3;
 
-													tmp0 = row15.mod_path
+													String tmp11 = row15.mod_path
 															.replaceAll("\\\\",
 																	"|");
-													tmp1 = tmp0
-															.substring(
-																	0,
-																	tmp0.lastIndexOf("|"));
-
+													if (tmp11.endsWith("|"))
+														tmp11 = tmp11
+																.substring(
+																		0,
+																		tmp11.length() - 1);
+													// tmp1 =
+													// tmp0.substring(0,tmp0.lastIndexOf("|"));
+													patientData.CONCEPT_CD = tmp0;
 													patientData.MODIFIER_CD = tmp1
+															+ tmp11
 															+ ":"
 															+ (row15.mod_item
 																	.length() > 10 ? row15.mod_item
@@ -23327,21 +23333,21 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.Download_Date;
 		}
 
-		public Integer StudyEventRepeatKey;
+		public String StudyEventRepeatKey;
 
-		public Integer getStudyEventRepeatKey() {
+		public String getStudyEventRepeatKey() {
 			return this.StudyEventRepeatKey;
 		}
 
-		public Integer FormRepeatKey;
+		public String FormRepeatKey;
 
-		public Integer getFormRepeatKey() {
+		public String getFormRepeatKey() {
 			return this.FormRepeatKey;
 		}
 
-		public Integer itemGroupRepeatKey;
+		public String itemGroupRepeatKey;
 
-		public Integer getItemGroupRepeatKey() {
+		public String getItemGroupRepeatKey() {
 			return this.itemGroupRepeatKey;
 		}
 
@@ -23449,28 +23455,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			}
 		}
 
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
 		public void readData(ObjectInputStream dis) {
 
 			synchronized (commonByteArrayLock_TOS_IDRT_to_DB_Schema) {
@@ -23501,11 +23485,11 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 					this.Download_Date = readDate(dis);
 
-					this.StudyEventRepeatKey = readInteger(dis);
+					this.StudyEventRepeatKey = readString(dis);
 
-					this.FormRepeatKey = readInteger(dis);
+					this.FormRepeatKey = readString(dis);
 
-					this.itemGroupRepeatKey = readInteger(dis);
+					this.itemGroupRepeatKey = readString(dis);
 
 					this.startDate = readDate(dis);
 
@@ -23582,17 +23566,17 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				writeDate(this.Download_Date, dos);
 
-				// Integer
+				// String
 
-				writeInteger(this.StudyEventRepeatKey, dos);
+				writeString(this.StudyEventRepeatKey, dos);
 
-				// Integer
+				// String
 
-				writeInteger(this.FormRepeatKey, dos);
+				writeString(this.FormRepeatKey, dos);
 
-				// Integer
+				// String
 
-				writeInteger(this.itemGroupRepeatKey, dos);
+				writeString(this.itemGroupRepeatKey, dos);
 
 				// java.util.Date
 
@@ -23648,11 +23632,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			sb.append(",Update_Date=" + String.valueOf(Update_Date));
 			sb.append(",Import_Date=" + String.valueOf(Import_Date));
 			sb.append(",Download_Date=" + String.valueOf(Download_Date));
-			sb.append(",StudyEventRepeatKey="
-					+ String.valueOf(StudyEventRepeatKey));
-			sb.append(",FormRepeatKey=" + String.valueOf(FormRepeatKey));
-			sb.append(",itemGroupRepeatKey="
-					+ String.valueOf(itemGroupRepeatKey));
+			sb.append(",StudyEventRepeatKey=" + StudyEventRepeatKey);
+			sb.append(",FormRepeatKey=" + FormRepeatKey);
+			sb.append(",itemGroupRepeatKey=" + itemGroupRepeatKey);
 			sb.append(",startDate=" + String.valueOf(startDate));
 			sb.append(",endDate=" + String.valueOf(endDate));
 			sb.append(",source=" + source);
@@ -25472,7 +25454,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				fromDataStruct fromData = new fromDataStruct();
 				fromStruct from = new fromStruct();
 				row66Struct row66 = new row66Struct();
-				row66Struct row7 = row66;
+				row7Struct row7 = new row7Struct();
 				to_obsStruct to_obs = new to_obsStruct();
 
 				/**
@@ -25790,6 +25772,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					currentComponent = "tJavaRow_12";
 
 					int tos_count_tJavaRow_12 = 0;
+
+					int nb_line_tJavaRow_12 = 0;
 
 					/**
 					 * [tJavaRow_12 begin ] stop
@@ -26674,7 +26658,74 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 										currentComponent = "tJavaRow_12";
 
-										row7 = row66;
+										// Code generated according to input
+										// schema and output schema
+										row7.itemID = row66.itemID;
+										row7.Value = row66.Value;
+										row7.VisitID = row66.VisitID;
+										row7.FormID = row66.FormID;
+										row7.SubjectKey = row66.SubjectKey;
+										row7.Path = row66.Path;
+										row7.PathID = row66.PathID;
+										row7.DataType = row66.DataType;
+										row7.Update_Date = row66.Update_Date;
+										row7.Import_Date = row66.Import_Date;
+										row7.Download_Date = row66.Download_Date;
+
+										row7.startDate = row66.startDate;
+										row7.endDate = row66.endDate;
+										row7.source = row66.source;
+										row7.CONCEPT_CD = row66.CONCEPT_CD;
+										row7.MODIFIER_CD = row66.MODIFIER_CD;
+										row7.m_applied_path = row66.m_applied_path;
+										row7.sic = row66.sic;
+										row7.SubjectKey_1 = row66.SubjectKey_1;
+
+										row7.StudyEventRepeatKey = "";
+										for (int i = 3; i >= 0; i--) {
+											if (row66.StudyEventRepeatKey < Math
+													.pow(10, i)) {
+												row7.StudyEventRepeatKey = "0"
+														+ row7.StudyEventRepeatKey;
+											} else {
+												row7.StudyEventRepeatKey = row7.StudyEventRepeatKey
+														+ ""
+														+ row66.StudyEventRepeatKey;
+												break;
+											}
+
+										}
+
+										row7.FormRepeatKey = "";
+										for (int i = 3; i >= 0; i--) {
+											if (row66.FormRepeatKey < Math.pow(
+													10, i)) {
+												row7.FormRepeatKey = "0"
+														+ row7.FormRepeatKey;
+											} else {
+												row7.FormRepeatKey = row7.FormRepeatKey
+														+ ""
+														+ row66.FormRepeatKey;
+												break;
+											}
+
+										}
+										row7.itemGroupRepeatKey = "";
+										for (int i = 3; i >= 0; i--) {
+											if (row66.itemGroupRepeatKey < Math
+													.pow(10, i)) {
+												row7.itemGroupRepeatKey = "0"
+														+ row7.itemGroupRepeatKey;
+											} else {
+												row7.itemGroupRepeatKey = row7.itemGroupRepeatKey
+														+ ""
+														+ row66.itemGroupRepeatKey;
+												break;
+											}
+
+										}
+
+										nb_line_tJavaRow_12++;
 
 										tos_count_tJavaRow_12++;
 
@@ -26860,12 +26911,14 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												to_obs_tmp.MODIFIER_CD = row7.m_applied_path
 														.equals("@") ? "@"
 														: row7.MODIFIER_CD;
-												to_obs_tmp.INSTANCE_NUM = ""
-														+ (row7.StudyEventRepeatKey * 1000)
-														+ ""
-														+ (row7.FormRepeatKey * 1000)
-														+ ""
-														+ (row7.itemGroupRepeatKey + 1);
+												to_obs_tmp.INSTANCE_NUM = row7.m_applied_path
+														.equals("@") ? "0"
+														: ""
+																+ row7.StudyEventRepeatKey
+																+ ""
+																+ row7.FormRepeatKey
+																+ ""
+																+ row7.itemGroupRepeatKey;
 												to_obs_tmp.VALTYPE_CD = Var.var2 ? "N"
 														: "T";
 												to_obs_tmp.TVAL_CHAR = Var.var2 ? "E"
@@ -27109,6 +27162,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					 */
 
 					currentComponent = "tJavaRow_12";
+
+					globalMap.put("tJavaRow_12_NB_LINE", nb_line_tJavaRow_12);
 
 					ok_Hash.put("tJavaRow_12", true);
 					end_Hash.put("tJavaRow_12", System.currentTimeMillis());
@@ -37373,6 +37428,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.m_applied_path;
 		}
 
+		public String dimcode;
+
+		public String getDimcode() {
+			return this.dimcode;
+		}
+
 		private Integer readInteger(ObjectInputStream dis) throws IOException {
 			Integer intReturn;
 			int length = 0;
@@ -37485,6 +37546,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 					this.m_applied_path = readString(dis);
 
+					this.dimcode = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -37549,6 +37612,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				writeString(this.m_applied_path, dos);
 
+				// String
+
+				writeString(this.dimcode, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -37573,6 +37640,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			sb.append(",source=" + source);
 			sb.append(",xml=" + xml);
 			sb.append(",m_applied_path=" + m_applied_path);
+			sb.append(",dimcode=" + dimcode);
 			sb.append("]");
 
 			return sb.toString();
@@ -39244,6 +39312,18 @@ public class IDRT_to_DB_Schema implements TalendJob {
 									row10.source = row101.source;
 									row10.xml = row101.xml;
 									row10.m_applied_path = row101.m_applied_path;
+									row10.dimcode = "";
+
+									if (row101.m_applied_path
+											.equalsIgnoreCase("@")) {
+										row10.dimcode = row101.Path.replaceAll(
+												"\\\\", "|");
+
+									} else {
+										row10.dimcode = row101.m_applied_path
+												.replaceAll("\\\\", "|");
+
+									}
 
 									nb_line_tJavaRow_10++;
 
@@ -39382,9 +39462,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												copyOfout6_tmp.C_SYNONYM_CD = "N";
 												copyOfout6_tmp.C_VISUALATTRIBUTES = row10.visual;
 												copyOfout6_tmp.C_TOTALNUM = null;
-												copyOfout6_tmp.C_BASECODE = row10.m_applied_path
-														.equals("@") ? ""
-														: "MOD:FAKEBASE";
+												copyOfout6_tmp.C_BASECODE = row10.dimcode;
 												copyOfout6_tmp.C_METADATAXML = Var.var1 ? "<?xml version=\"1.0\"?><ValueMetadata><Version>3.02</Version><CreationDateTime>"
 														+ TalendDate
 																.getDate("YYYY-MM-DD")
@@ -46642,6 +46720,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1276543 characters generated by Talend Open Studio for Data Integration on
- * the March 20, 2014 12:27:08 PM CET
+ * 1278254 characters generated by Talend Open Studio for Data Integration on
+ * the April 7, 2014 1:24:13 PM CEST
  ************************************************************************************************/
