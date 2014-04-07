@@ -174,7 +174,7 @@ public class TOSHandler {
 		targetProject.setName(name);
 		targetProject.setDescription(description);
 
-		OntologyEditorView.getTargetProjects().add(targetProject);
+		OntologyEditorView.getTargetInstance().add(targetProject);
 	}
 
 	public static void addTargetVersionToTargeProject(int targetID,
@@ -195,14 +195,14 @@ public class TOSHandler {
 
 		targetRootNode = ((OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode());
 
-		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
 		 */
-		OntologyEditorView.getTargetProjects().addTarget(target);
+		OntologyEditorView.getTargetInstance().addTarget(target);
 
 	}
 
 	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
-		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+		TargetProjects targetProjects = OntologyEditorView.getTargetInstance();
 
 		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
 		targetProjects.getSelectedTarget().setTargetID(targetID);
