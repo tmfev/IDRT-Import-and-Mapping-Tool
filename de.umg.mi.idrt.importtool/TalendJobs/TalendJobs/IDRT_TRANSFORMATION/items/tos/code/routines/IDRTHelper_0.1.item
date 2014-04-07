@@ -414,21 +414,51 @@ public class IDRTHelper {
 				ontLine[ONT_XML] = "";
 				ontLine[ONT_M_APPLIEDPATH] = "@";
 				ontOutput.writeNext(ontLine);
-
-				ontLine[ONT_HLEVEL] = "1";
-				ontLine[ONT_NAME] = tableName;	
-				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //TODO context variable
+				
+				ontLine[ONT_HLEVEL] = "2";
+				ontLine[ONT_NAME] = tableName;	//TODO context variable
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OID"+"\\" + tableName+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
 				ontLine[ONT_IMPORTDATE] = "";
 				ontLine[ONT_DOWNLOADDATE] = "";
 				ontLine[ONT_PATHID] = "";
-				ontLine[ONT_VISUAL] = "DA";
+				ontLine[ONT_VISUAL] = "FA";
 				ontLine[ONT_ITEMCODE] = "";
 				ontLine[ONT_SOURCE] = "";
 				ontLine[ONT_XML] = "";
-				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
+				ontLine[ONT_M_APPLIEDPATH] = "@";
 				ontOutput.writeNext(ontLine);
+				
+//				ontLine[ONT_HLEVEL] = "1";
+//				ontLine[ONT_NAME] = tableName;	
+//				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //TODO context variable
+//				ontLine[ONT_DATATYPE] = "";
+//				ontLine[ONT_UPDATEDATE] = "";
+//				ontLine[ONT_IMPORTDATE] = "";
+//				ontLine[ONT_DOWNLOADDATE] = "";
+//				ontLine[ONT_PATHID] = "";
+//				ontLine[ONT_VISUAL] = "DA";
+//				ontLine[ONT_ITEMCODE] = "";
+//				ontLine[ONT_SOURCE] = "";
+//				ontLine[ONT_XML] = "";
+//				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
+//				ontOutput.writeNext(ontLine);
+				
+//				ontLine[ONT_HLEVEL] = "1";
+//				ontLine[ONT_NAME] = tableName;	
+//				ontLine[ONT_PATH] = "\\"+tableName+"\\"; //TODO context variable
+//				ontLine[ONT_DATATYPE] = "";
+//				ontLine[ONT_UPDATEDATE] = "";
+//				ontLine[ONT_IMPORTDATE] = "";
+//				ontLine[ONT_DOWNLOADDATE] = "";
+//				ontLine[ONT_PATHID] = "";
+//				ontLine[ONT_VISUAL] = "DA";
+//				ontLine[ONT_ITEMCODE] = "";
+//				ontLine[ONT_SOURCE] = "";
+//				ontLine[ONT_XML] = "";
+//				ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\";
+//				ontOutput.writeNext(ontLine);
 
 				int columnNum = columnNames.size();
 				int colCounter = 0;
@@ -441,19 +471,19 @@ public class IDRTHelper {
 					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
-						ontLine[ONT_HLEVEL] = "2";
+						ontLine[ONT_HLEVEL] = "1";
 						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
-						ontLine[ONT_PATH] = "\\"+tableName+"\\"+string+"\\";
+						ontLine[ONT_PATH] = "\\"+string+"\\";
 						ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
 						ontLine[ONT_UPDATEDATE] = "";
 						ontLine[ONT_IMPORTDATE] = "";
 						ontLine[ONT_DOWNLOADDATE] = "";
-						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
+						ontLine[ONT_PATHID] = string;	
 						ontLine[ONT_VISUAL] = "DA";
 						ontLine[ONT_ITEMCODE] = "";
 						ontLine[ONT_SOURCE] = "";
 						ontLine[ONT_XML] = "";
-						ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\"; //"\\"+tableName+"\\"
+						ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\" + tableName+"\\";
 						ontOutput.writeNext(ontLine);
 					}
 					colCounter++;
