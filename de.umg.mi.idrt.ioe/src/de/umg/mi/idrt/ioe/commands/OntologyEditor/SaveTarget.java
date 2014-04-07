@@ -47,11 +47,11 @@ public class SaveTarget extends AbstractHandler {
 		Console.info("Saving Target Ontology.");
 
 		String stringPath = FileHandler.getTempFilePath(Resource.Files.TEMP_TOS_CONNECTOR_FILE);
-		System.out.println("stringPath: " + stringPath);
+//		System.out.println("stringPath: " + stringPath);
 		TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
 
 		if ( targetProjects != null && targetProjects.getSelectedTarget() != null ){
-			System.out.println(" *  targetProjects.getSelectedTarget():" + (  targetProjects.getSelectedTarget() == null ? "isNull" : "isNotNull" ));
+//			System.out.println(" *  targetProjects.getSelectedTarget():" + (  targetProjects.getSelectedTarget() == null ? "isNull" : "isNotNull" ));
 			// System.out.println(" *  targetProjects.getSelectedTarget().getTargetID():" + (  targetProjects.getSelectedTarget().getTargetID()  ));
 
 			targetID = String.valueOf( targetProjects.getSelectedTarget().getTargetID() );

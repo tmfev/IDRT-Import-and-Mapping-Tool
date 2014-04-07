@@ -1586,7 +1586,7 @@
     <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
     <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
     <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
     <elementParameter field="TEXT" name="HEADER" value="1"/>
     <elementParameter field="TEXT" name="FOOTER" value="0"/>
     <elementParameter field="TEXT" name="LIMIT" value=""/>
@@ -2629,7 +2629,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-224" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Uploading...&quot;);&#xA;System.out.println(&quot;Host: &quot; + context.DBHost);&#xA;System.out.println(&quot;Schema: &quot; + context.DBSchema);&#xA;System.out.println(context.coding);&#xA;StatusListener.setSubStatus(0.0f,(int)(float)(0.0f)+&quot;%&quot;);&#xA;//&quot;ALTER TABLE &quot; + context.DBSchema + &quot;.OBSERVATION_FACT MODIFY CONSTRAINT OBSERVATION_FACT_PK DISABLE&quot;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Uploading...&quot;);&#xA;System.out.println(&quot;Host: &quot; + context.DBHost);&#xA;System.out.println(&quot;Schema: &quot; + context.DBSchema);&#xA;System.out.println(context.coding);&#xA;StatusListener.setSubStatus(0.0f,(int)(float)(0.0f)+&quot;%&quot;);&#xA;context.counter=0;&#xA;//&quot;ALTER TABLE &quot; + context.DBSchema + &quot;.OBSERVATION_FACT MODIFY CONSTRAINT OBSERVATION_FACT_PK DISABLE&quot;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value=""/>
     <elementParameter field="TEXT" name="LABEL" value="Start"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -5652,13 +5652,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11"/>
   </connection>
-  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tJava_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError7"/>
-  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tOracleCommit_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12"/>
+  </connection>
+  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleOutput_8" offsetLabelX="0" offsetLabelY="0" source="tOracleOutput_8" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError7"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>

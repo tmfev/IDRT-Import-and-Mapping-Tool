@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="de.umg.mi.idrt.ioe.product" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="0.9.0.9" useFeatures="true" includeLaunchers="true">
+<product name="de.umg.mi.idrt.ioe.product" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="0.9.1.3" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -197,7 +197,7 @@
    </plugins>
 
    <features>
-      <feature id="de.umg.mi.ioe.feature" version="0.9.0.9"/>
+      <feature id="de.umg.mi.ioe.feature" version="0.9.1.qualifier"/>
    </features>
 
    <configurations>

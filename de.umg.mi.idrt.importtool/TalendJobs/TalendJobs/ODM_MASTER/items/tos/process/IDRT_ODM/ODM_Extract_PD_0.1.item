@@ -342,7 +342,7 @@
       <column comment="" key="false" name="mod_item" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfout2">
         <mapperTableEntries name="itemID" expression="row13.itemID" type="id_String" nullable="true"/>
@@ -356,7 +356,7 @@
         <mapperTableEntries name="Update_Date" expression="row13.Update_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="row13.Import_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="row13.Download_Date" type="id_String" nullable="true"/>
-        <mapperTableEntries name="StudyEventRepeatKey" expression="row20.EncounterNum " type="id_String" nullable="true"/>
+        <mapperTableEntries name="StudyEventRepeatKey" expression="row13.StudyEventRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="FormRepeatKey" expression="row13.FormRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemGroupRepeatKey" expression="row13.itemGroupRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="startDate" expression="row13.startDate " type="id_String" nullable="true"/>
@@ -602,7 +602,7 @@
       <column comment="" key="false" name="mod_item" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="outt1">
         <mapperTableEntries name="itemID" expression="copyOfout2.itemID" type="id_String" nullable="true"/>
@@ -1297,7 +1297,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_9"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value.replaceAll(&quot;\\\\&quot;,&quot;/&quot;);&#xA;output_row.itemGroupOID = input_row.itemGroupOID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.MetaDataVersionOID = input_row.MetaDataVersionOID;&#xA;output_row.TransactionType = input_row.TransactionType;&#xA;output_row.IsNull = input_row.IsNull;&#xA;if (input_row.FormRepeatKey!= null &amp;&amp; input_row.FormRepeatKey.length()>0)&#xA;output_row.FormRepeatKey = input_row.FormRepeatKey;&#xA;else&#xA;output_row.FormRepeatKey=&quot;0&quot;;&#xA;&#xA;if (input_row.StudyEventRepeatKey!= null &amp;&amp; input_row.StudyEventRepeatKey.length()>0)&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;else&#xA;output_row.StudyEventRepeatKey=&quot;0&quot;;&#xA;&#xA;if (input_row.ItemGroupRepeatKey!= null &amp;&amp; input_row.ItemGroupRepeatKey.length()>0)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey=&quot;0&quot;;&#xD;&#xA;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value.replaceAll(&quot;\\\\&quot;,&quot;/&quot;);&#xA;output_row.itemGroupOID = input_row.itemGroupOID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.MetaDataVersionOID = input_row.MetaDataVersionOID;&#xA;output_row.TransactionType = input_row.TransactionType;&#xA;output_row.IsNull = input_row.IsNull;&#xA;if (input_row.FormRepeatKey!= null &amp;&amp; input_row.FormRepeatKey.length()>0)&#xA;output_row.FormRepeatKey = input_row.FormRepeatKey;&#xA;else&#xA;output_row.FormRepeatKey=&quot;0&quot;;&#xA;&#xA;if (input_row.StudyEventRepeatKey!= null &amp;&amp; input_row.StudyEventRepeatKey.length()>0)&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;else&#xA;output_row.StudyEventRepeatKey=&quot;0&quot;;&#xA;&#xA;if (input_row.ItemGroupRepeatKey!= null &amp;&amp; input_row.ItemGroupRepeatKey.length()>0)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey=&quot;0&quot;;&#xD;&#xA;System.out.println(output_row.StudyEventRepeatKey + &quot; &quot; + output_row.FormRepeatKey + &quot; &quot; +output_row.ItemGroupRepeatKey);&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1468,6 +1468,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="out2">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1491,6 +1492,7 @@
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out2" expressionFilter="fromOnt.DataType!=null" activateExpressionFilter="true">
+        <mapperTableEntries name="HLEVEL" expression="fromOnt.HLEVEL " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" expression="fromPatient.itemID " type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" expression="fromPatient.Value " type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" expression="fromPatient.VisitID " type="id_String" nullable="true"/>
@@ -1808,6 +1810,8 @@
     <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
     <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
     <elementParameter field="TABLE" name="LENGTHS">
+      <elementValue elementRef="SCHEMA_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="LENGTH" value="10"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="itemID"/>
       <elementValue elementRef="LENGTH" value="10"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Value"/>
@@ -1851,6 +1855,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tLogRow_3">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1873,13 +1878,14 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+input_row.Value;&#xA;output_row.FormRepeatKey=input_row.FormRepeatKey;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;output_row.mod_item=&quot;&quot;+input_row.Value;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;float&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;xml&quot;;&#xA;&#x9;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;integer&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;xml&quot;;&#xA;&#x9;}&#xA;else if (input_row.DataType.toLowerCase().contains(&quot;date&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;date&quot;;&#xA;&#x9;}&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;}&#xA;}&#xA;else{&#xA;//if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;output_row.mod_item=input_row.Value;&#xA;&#x9;&#x9;}&#xA;else{&#xA;hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;}&#xA;//}&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xA;output_row.name = input_row.name;&#xA;&#xA;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;&#xD;&#xA;output_row.mod_path = input_row.mod_path;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xD;&#xA;//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+input_row.Value;&#xA;output_row.FormRepeatKey=input_row.FormRepeatKey;&#xA;if (input_row.DataType.length()&lt;1){&#xA;input_row.DataType = &quot;string&quot;;&#xA;}&#xA;if (input_row.itemCode == null){&#xA;input_row.itemCode = &quot;&quot;;&#xA;}&#xA;if (input_row.itemCode.length()&lt;1){&#xA;//if (input_row.itemCode == null){&#xA;if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;output_row.mod_item=&quot;&quot;+input_row.Value;&#xA;&#x9;&#x9;}&#xA;&#xA;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;float&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;xml&quot;;&#xA;&#x9;}&#xA;else if (input_row.DataType.equalsIgnoreCase(&quot;integer&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;xml\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;xml&quot;;&#xA;&#x9;}&#xA;else if (input_row.DataType.toLowerCase().contains(&quot;date&quot;)){&#xA;&#x9;output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;&#x9;output_row.mod_item=&quot;date&quot;;&#xA;&#x9;}&#xA;&#xA;//else if (input_row.DataType.toLowerCase().trim().equals(&quot;date&quot;)||input_row.DataType.toLowerCase().trim().equals(&quot;partialDate&quot;))&#xA;//output_row.Path = input_row.Path + &quot;date\\&quot;;&#xA;else{&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;}&#xA;}&#xA;else{&#xA;//if (input_row.DataType.equalsIgnoreCase(&quot;string&quot;)){&#xA;String hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;&#x9;if (input_row.Value.length()&lt;20){&#xA;&#x9;&#x9;output_row.Path = input_row.Path + input_row.Value+&quot;\\&quot;;&#xA;&#x9;&#x9;output_row.mod_item=input_row.Value;&#xA;&#x9;&#x9;}&#xA;else{&#xA;hash = input_row.Path + input_row.Value;&#xA;output_row.Path = input_row.Path+hash.hashCode() +&quot;\\&quot;;&#xA;output_row.mod_item=&quot;&quot;+hash.hashCode();&#xA;}&#xA;//}&#xA;}&#xA;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;//TODO&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;if (input_row.ItemGroupRepeatKey != null)&#xA;output_row.ItemGroupRepeatKey = input_row.ItemGroupRepeatKey;&#xA;else&#xA;output_row.ItemGroupRepeatKey = &quot;0&quot;;&#xA;output_row.itemCode = input_row.itemCode;&#xA;&#xA;output_row.name = input_row.name;&#xA;&#xA;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;&#xA;output_row.mod_path = input_row.mod_path;&#xA;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJavaRow_2">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1915,6 +1921,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" label="outt123" name="outt123">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1936,6 +1943,7 @@
       <column comment="" key="false" name="mod_item" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="FLOW" name="out4">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -1960,6 +1968,7 @@
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="outt123" expressionFilter="row5.itemCode.length()&lt;1" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="HLEVEL" expression="row5.HLEVEL " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" expression="row5.itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" expression="row5.Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" expression="row5.VisitID" type="id_String" nullable="true"/>
@@ -1981,6 +1990,7 @@
         <mapperTableEntries name="mod_item" expression="row5.mod_item " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="out4" expressionFilter="row5.itemCode.length()>0" activateExpressionFilter="true" activateCondensedTool="true">
+        <mapperTableEntries name="HLEVEL" expression="row5.HLEVEL " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" expression="row5.itemID " type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" expression="row5.Value " type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" expression="row5.VisitID " type="id_String" nullable="true"/>
@@ -2002,6 +2012,7 @@
         <mapperTableEntries name="mod_item" expression="row5.mod_item " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row5" activateExpressionFilter="true" matchingMode="ALL_ROWS" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" type="id_String" nullable="true"/>
@@ -2116,7 +2127,7 @@
         <mapperTableEntries name="VisitID" expression="outt123.VisitID" type="id_String" nullable="true"/>
         <mapperTableEntries name="FormID" expression="outt123.FormID" type="id_String" nullable="true"/>
         <mapperTableEntries name="SubjectKey" expression="outt123.SubjectKey" type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+outt123.itemID +&quot;:&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path      " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+outt123.itemID +&quot;\\&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path       " type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="outt123.PathID" type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="outt123.DataType" type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="outt123.Update_Date" type="id_String" nullable="true"/>
@@ -2127,56 +2138,57 @@
         <mapperTableEntries name="itemGroupRepeatKey" expression="outt123.itemGroupRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="outt123.itemCode " type="id_String" nullable="true"/>
         <mapperTableEntries name="startDate" expression="(Var.var3 &amp;&amp; outt123.Value.length() >= 4)? outt123.Value :&quot;&quot;  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?outt123.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?outt123.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_path" expression="outt123.mod_path " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_item" expression="outt123.mod_item " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="to_ont_xml" expressionFilter="Var.var1 || Var.var2" activateExpressionFilter="true">
-        <mapperTableEntries name="HLEVEL" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?1:8" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="outt123.HLEVEL +1" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="outt123.name + &quot; (Numerical Query)&quot;  " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+outt123.itemID +&quot;:&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path      " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+outt123.itemID +&quot;\\&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path       " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="outt123.DataType " type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="outt123.Update_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="outt123.Import_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="outt123.Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="outt123.PathID" type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;RAE&quot;:&quot;LAE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;xml&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?outt123.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?outt123.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="to_ont" expressionFilter="!(Var.var2 || Var.var1 || Var.var3)" activateExpressionFilter="true">
-        <mapperTableEntries name="HLEVEL" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?1:8" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="outt123.HLEVEL +1" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="outt123.Value.replace(&quot;;&quot;,&quot;,&quot;).replace(&quot;.&quot;, &quot;,&quot;) " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+outt123.itemID +&quot;:&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path      " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+outt123.itemID +&quot;\\&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path       " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="outt123.DataType " type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="outt123.Update_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="outt123.Import_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="outt123.Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="outt123.PathID" type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;RAE&quot;:&quot;LAE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?outt123.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?outt123.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="out7" expressionFilter="Var.var3" activateExpressionFilter="true">
-        <mapperTableEntries name="HLEVEL" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?1:8" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="outt123.HLEVEL +1" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="outt123.name +&quot; (Date)&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+outt123.itemID +&quot;:&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path      " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+outt123.itemID +&quot;\\&quot;+outt123.mod_item+&quot;\\&quot;:outt123.Path       " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="outt123.DataType " type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="outt123.Update_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="outt123.Import_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="outt123.Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="outt123.PathID" type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;RAE&quot;:&quot;LAE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="outt123.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?outt123.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!outt123.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?outt123.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="outt123" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" type="id_String" nullable="true"/>
@@ -2511,13 +2523,14 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-384" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_11"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.itemID = input_row.itemID;&#xD;&#xA;output_row.Value = input_row.Value;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xD;&#xA;output_row.Path = input_row.Path;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xD;&#xA;output_row.DataType = input_row.DataType;&#xD;&#xA;output_row.Update_Date = input_row.Update_Date;&#xD;&#xA;output_row.Import_Date = input_row.Import_Date;&#xD;&#xA;output_row.Download_Date = input_row.Download_Date;&#xD;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xD;&#xA;output_row.itemGroupRepeatKey = input_row.itemGroupRepeatKey;&#xD;&#xA;output_row.itemCode = input_row.itemCode;&#xD;&#xA;output_row.name = input_row.name;&#xD;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xD;&#xA;output_row.mod_path = input_row.mod_path;&#xD;&#xA;output_row.mod_item = input_row.mod_item;&#xA;output_row.FormRepeatKey=input_row.FormRepeatKey;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xD;&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;output_row.StudyEventRepeatKey = input_row.StudyEventRepeatKey;&#xA;output_row.itemGroupRepeatKey = input_row.itemGroupRepeatKey;&#xA;output_row.itemCode = input_row.itemCode;&#xA;output_row.name = input_row.name;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;output_row.mod_path = input_row.mod_path;&#xA;output_row.mod_item = input_row.mod_item;&#xA;output_row.FormRepeatKey=input_row.FormRepeatKey;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJavaRow_11">
+      <column comment="" key="false" name="HLEVEL" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="itemID" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="Value" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VisitID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -2599,7 +2612,7 @@
         <mapperTableEntries name="VisitID" expression="row25.VisitID" type="id_String" nullable="true"/>
         <mapperTableEntries name="FormID" expression="row25.FormID" type="id_String" nullable="true"/>
         <mapperTableEntries name="SubjectKey" expression="row25.SubjectKey" type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+row7.ItemGroupOID +&quot;:&quot;+row25.mod_item+&quot;\\&quot;:row25.Path     " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!row25.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+row7.ItemGroupOID +&quot;\\&quot;+row25.mod_item+&quot;\\&quot;:row25.Path     " type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row25.PathID" type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="&quot;String&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="row25.Update_Date" type="id_String" nullable="true"/>
@@ -2610,28 +2623,29 @@
         <mapperTableEntries name="itemGroupRepeatKey" expression="row25.itemGroupRepeatKey " type="id_String" nullable="true"/>
         <mapperTableEntries name="itemCode" expression="row25.itemCode" type="id_String" nullable="true"/>
         <mapperTableEntries name="startDate" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?row25.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!row25.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?row25.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_path" expression="row25.mod_path " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_item" expression="row25.mod_item " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="out6" activateExpressionFilter="true">
-        <mapperTableEntries name="HLEVEL" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?1:8" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="row25.HLEVEL +1" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="row7.TranslatedText " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+row7.ItemGroupOID +&quot;:&quot;+row25.mod_item+&quot;\\&quot;:row25.Path     " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!row25.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+row7.ItemGroupOID +&quot;\\&quot;+row25.mod_item+&quot;\\&quot;:row25.Path       " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="&quot;String&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="row25.Update_Date " type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="row25.Import_Date " type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="row25.Download_Date " type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row25.PathID " type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;RAE&quot;:&quot;LAE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="row25.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="row25.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?row25.mod_path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="!row25.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?row25.m_applied_path:&quot;@&quot;   " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_path" expression="row25.mod_path " type="id_String" nullable="true"/>
         <mapperTableEntries name="mod_item" expression="row25.mod_item " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row25" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="itemID" type="id_String" nullable="true"/>
         <mapperTableEntries name="Value" type="id_String" nullable="true"/>
         <mapperTableEntries name="VisitID" type="id_String" nullable="true"/>
@@ -3034,19 +3048,19 @@
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out11" expressionFilter="row21.Path != null &amp;&amp;  row22.CodeListItem != null" activateExpressionFilter="true" activateCondensedTool="true">
-        <mapperTableEntries name="HLEVEL" expression="row21.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?1:8" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="HLEVEL" expression="row21.HLEVEL +1" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="Name" expression="row22.TranslatedText " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Path" expression="row21.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;\\&quot;+row22.ItemGroupOID+&quot;:&quot;+row22.CodeListItem+&quot;\\&quot;:row22.CodeListItem.length()&lt;20?row21.Path+row22.CodeListItem+&quot;\\&quot;:row21.Path +(row21.Path +&quot;:&quot;+ row22.CodeListItem).hashCode()+&quot;\\&quot;     " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Path" expression="!row21.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;\\&quot;+row22.ItemGroupOID+&quot;\\&quot;+row22.CodeListItem+&quot;\\&quot;:row22.CodeListItem.length()&lt;20?row21.Path+row22.CodeListItem+&quot;\\&quot;:row21.Path +(row21.Path +&quot;\\&quot;+ row22.CodeListItem).hashCode()+&quot;\\&quot;       " type="id_String" nullable="true"/>
         <mapperTableEntries name="DataType" expression="&quot;String&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="Update_Date" expression="row21.Update_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Import_Date" expression="row21.Import_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="Download_Date" expression="row21.Download_Date" type="id_String" nullable="true"/>
         <mapperTableEntries name="PathID" expression="row21.PathID" type="id_String" nullable="true"/>
-        <mapperTableEntries name="visual" expression="row21.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;RAE&quot;:&quot;LAE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="visual" expression="row21.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;LAE&quot;:&quot;RAE&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="codeList" expression="&quot;&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="row21.source" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="&quot;&quot;" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="row21.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?row21.Path:&quot;@&quot;   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="row21.m_applied_path" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row21" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
@@ -4132,7 +4146,7 @@
         <mapperTableEntries name="codeList" expression="row29.itemCode " type="id_String" nullable="true"/>
         <mapperTableEntries name="source" expression="row29.source" type="id_String" nullable="true"/>
         <mapperTableEntries name="xml" expression="row29.xml" type="id_String" nullable="true"/>
-        <mapperTableEntries name="m_applied_path" expression="row29.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)?&quot;@&quot;:row29.m_applied_path " type="id_String" nullable="true"/>
+        <mapperTableEntries name="m_applied_path" expression="row29.m_applied_path.equalsIgnoreCase(&quot;@&quot;)?&quot;@&quot;:row29.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row29" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
@@ -5212,6 +5226,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="FormRepeatKey"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -5503,6 +5520,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="FormRepeatKey"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -5571,6 +5591,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="FormRepeatKey"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="HLEVEL"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>

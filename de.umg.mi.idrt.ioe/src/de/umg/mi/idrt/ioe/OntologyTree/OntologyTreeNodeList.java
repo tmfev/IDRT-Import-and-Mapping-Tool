@@ -84,7 +84,7 @@ public class OntologyTreeNodeList {
 
 		this.addNodyByPath( i2b2Path, node );
 
-		node.setTreePath( i2b2Path );
+		node.setTreePath(i2b2Path);
 		if ( parentNode != null )
 			node.setTreePathLevel( parentNode.getTreePathLevel() + 1 );
 
@@ -99,7 +99,6 @@ public class OntologyTreeNodeList {
 		String parentPath;
 		//if (item.getTreeLevel()==1)
 		if (!item.getM_applied_path().equals("@") && item.getTreeLevel()==1){
-			System.out.println("IIIIIFFFFFFFFFF " +item.getM_applied_path() +"    " + i2b2Path);
 			parentPath = item.getM_applied_path();
 		}
 		else
@@ -108,7 +107,6 @@ public class OntologyTreeNodeList {
 			System.err.println("Could not add node \"" + node.getName() +"\", because no parent path was given.");
 			return null;
 		} else {
-			System.out.println("parentpath: " + parentPath);
 			parentNode = this.getNodeByPath( parentPath );
 			if (parentNode == null){
 				System.err.println("no parent???");
@@ -128,7 +126,6 @@ public class OntologyTreeNodeList {
 		node.setTreePath( i2b2Path );
 		if ( parentNode != null )
 			node.setTreePathLevel( parentNode.getTreePathLevel() + 1 );
-
 		return parentNode;
 	}
 
