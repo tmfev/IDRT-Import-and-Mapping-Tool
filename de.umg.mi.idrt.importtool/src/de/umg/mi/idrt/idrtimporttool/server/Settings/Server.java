@@ -298,7 +298,6 @@ public class Server implements Serializable {
 				setNotStoredPassword(dialog.getPassword());
 			}
 		}
-		
 		if  (getNotStoredPassword()==null) {
 			throw new RuntimeException("PASSWORD NULL");
 		}

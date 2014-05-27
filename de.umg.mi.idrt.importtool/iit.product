@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="IDRT Import Tool" id="de.umg.mi.idrt.IDRTImportTool.product" application="de.umg.mi.idrt.IDRTImportTool.application" version="1.1.2.2" useFeatures="true" includeLaunchers="true">
+<product name="IDRT Import Tool" id="de.umg.mi.idrt.IDRTImportTool.product" application="de.umg.mi.idrt.IDRTImportTool.application" version="1.1.2.4" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="images/tmf.jpg"/>

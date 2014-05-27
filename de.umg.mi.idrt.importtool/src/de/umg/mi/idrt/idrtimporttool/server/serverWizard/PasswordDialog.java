@@ -11,8 +11,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
 
-import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-
 public class PasswordDialog extends Dialog {
 	private Text passwordField;
 	private String passwordString;

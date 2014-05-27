@@ -10,6 +10,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
 
@@ -25,11 +26,13 @@ public class OptionsWizard extends Wizard {
 
 	public OptionsWizard() {
 		super();
+		System.out.println("CONSTRUCTOR");
 		setNeedsProgressMonitor(true);
 	}
 
 	@Override
 	public void addPages() {
+		System.out.println("ADDING PAGES");
 		one = new OptionsWizardPage1();
 		addPage(one);
 	}

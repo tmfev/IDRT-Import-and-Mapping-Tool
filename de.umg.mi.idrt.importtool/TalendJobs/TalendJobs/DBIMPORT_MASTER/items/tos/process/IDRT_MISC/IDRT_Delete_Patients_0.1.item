@@ -5,7 +5,7 @@
     <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value="8Hm+c/CLC8Q="/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
     <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="hashSet" prompt="hashSet?" promptNeeded="false" type="id_Object" value=""/>
@@ -14,7 +14,7 @@
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
     <contextParameter comment="" name="hashSet" prompt="hashSet?" promptNeeded="false" type="id_Object" value=""/>
     <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.113.224&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value="8Hm+c/CLC8Q="/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2BB1&quot;"/>
     <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
@@ -531,8 +531,8 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DBSchema + &quot;.t_i2b2 AS (SELECT * FROM &quot; + context.DBSchema + &quot;.i2b2)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DBSchema + &quot;.t_totalnum AS SELECT i2b.c_tablename,i2b.c_fullname,COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DBSchema + &quot;.observation_fact  obs JOIN &quot; + context.DBSchema + &quot;.concept_dimension con ON obs.concept_cd   =    con.concept_cd  JOIN &quot; + context.DBSchema + &quot;.i2b2 i2b ON con.concept_path LIKE i2b.c_fullname || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DBSchema + &quot;.t_totalnum (c_tablename, c_fullname, c_totalnum) SELECT i2b.c_tablename, i2b.c_fullname, COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DBSchema + &quot;.observation_fact   obs  JOIN &quot; + context.DBSchema + &quot;.modifier_dimension con ON obs.modifier_cd   =    con.modifier_cd  JOIN &quot; + context.DBSchema + &quot;.i2b2               i2b ON con.modifier_path LIKE i2b.c_fullname || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DBSchema + &quot;.t_totalnum AS SELECT i2b.c_tablename,i2b.c_fullname,COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DBSchema + &quot;.observation_fact  obs JOIN &quot; + context.DBSchema + &quot;.concept_dimension con ON obs.concept_cd   =    con.concept_cd  JOIN &quot; + context.DBSchema + &quot;.i2b2 i2b ON con.concept_path LIKE i2b.c_dimcode || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DBSchema + &quot;.t_totalnum (c_tablename, c_fullname, c_totalnum) SELECT i2b.c_tablename, i2b.c_fullname, COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DBSchema + &quot;.observation_fact   obs  JOIN &quot; + context.DBSchema + &quot;.modifier_dimension con ON obs.modifier_cd   =    con.modifier_cd  JOIN &quot; + context.DBSchema + &quot;.i2b2               i2b ON con.modifier_path LIKE i2b.c_dimcode || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot; + context.DBSchema + &quot;.i2b2&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DBSchema + &quot;.i2b2 (c_hlevel, c_fullname, c_name, c_synonym_cd, c_visualattributes, c_totalnum, c_basecode, c_metadataxml, c_facttablecolumn, c_tablename, c_columnname, c_columndatatype, c_operator, c_dimcode, c_comment, c_tooltip, m_applied_path, update_date, download_date, import_date, sourcesystem_cd, valuetype_cd, m_exclusion_cd, c_path, c_symbol) SELECT i2b.c_hlevel, i2b.c_fullname, i2b.c_name, i2b.c_synonym_cd, i2b.c_visualattributes, NVL(tnm.c_totalnum, 0), i2b.c_basecode, i2b.c_metadataxml, i2b.c_facttablecolumn, i2b.c_tablename, i2b.c_columnname, i2b.c_columndatatype, i2b.c_operator, i2b.c_dimcode, i2b.c_comment, i2b.c_tooltip, i2b.m_applied_path, i2b.update_date, i2b.download_date, i2b.import_date, i2b.sourcesystem_cd, i2b.valuetype_cd, i2b.m_exclusion_cd, i2b.c_path, i2b.c_symbol  FROM    &quot; + context.DBSchema + &quot;.t_i2b2     i2b  LEFT JOIN &quot; + context.DBSchema + &quot;.t_totalnum tnm ON i2b.c_tablename = tnm.c_tablename AND i2b.c_fullname = tnm.c_fullname&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DBSchema + &quot;.t_totalnum&quot;"/>
@@ -618,17 +618,17 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tOracleConnection_1" target="tOracleInput_2">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tOracleConnection_1" target="tForeach_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tOracleConnection_1" target="tOracleInput_2">
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tOracleConnection_1" target="tOracleInput_5">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tOracleConnection_1" target="tOracleInput_5">
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tOracleConnection_1" target="tForeach_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
   </connection>
   <connection connectorName="FLOW" label="p_mapping" lineStyle="0" metaname="tOracleInput_2" offsetLabelX="0" offsetLabelY="0" source="tOracleInput_2" target="tMap_1">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>

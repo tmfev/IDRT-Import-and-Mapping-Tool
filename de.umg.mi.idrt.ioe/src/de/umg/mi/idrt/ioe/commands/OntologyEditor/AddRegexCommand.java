@@ -4,11 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.widgets.Shell;
-
 import de.umg.mi.idrt.ioe.Application;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
-import de.umg.mi.idrt.ioe.wizards.EditInstanceWizard;
 import de.umg.mi.idrt.ioe.wizards.RegexWizard;
 
 /**

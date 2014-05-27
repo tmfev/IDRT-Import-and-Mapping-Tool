@@ -28,6 +28,7 @@ public class DocumentationCommand extends AbstractHandler  {
 					"Do you want to open the PDF Documentation?");
 			if(result) {
 				URI uri = new URI(FileHandler.getBundleFile("/misc/IDRT-Documentation.pdf").getAbsolutePath().replaceAll("\\\\", "/"));
+				
 				Desktop.getDesktop().browse(uri);
 			}
 		} catch (URISyntaxException e) {

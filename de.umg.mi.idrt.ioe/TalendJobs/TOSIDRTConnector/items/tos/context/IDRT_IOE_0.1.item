@@ -5,7 +5,31 @@
     <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;I2B2T&quot;"/>
     <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_String" value="&quot;wc24gqd&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT&quot;"/>
+    <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="" name="SQLCommand" prompt="SQLCommand?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLCommand2" prompt="SQLCommand2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="SQLTable" prompt="SQLTable?" promptNeeded="false" type="id_String" value="&quot;oe_target_ontology&quot;"/>
+    <contextParameter comment="" name="SQLTable2" prompt="SQLTable2?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="TOSHandler" prompt="TOSHandler?" promptNeeded="false" type="id_Object" value=""/>
+    <contextParameter comment="" name="ErrorMessage" prompt="ErrorMessage?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="IfValue" prompt="IfValue?" promptNeeded="false" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="StatusMessage" prompt="StatusMessage?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="TableIEOTargetOntology" prompt="TableIEOTargetOntology?" promptNeeded="false" type="id_String" value="&quot;ioe_target_ontology&quot;"/>
+    <contextParameter comment="" name="TableIEOTarget" prompt="TableIEOTarget?" promptNeeded="false" type="id_String" value="&quot;ioe_target&quot;"/>
+    <contextParameter comment="" name="TableIEOTargetProject" prompt="TableIEOTargetProject?" promptNeeded="false" type="id_String" value="&quot;ioe_target_project&quot;"/>
+    <contextParameter comment="" name="JDBC_URL" prompt="JDBC_URL?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="JDBCDriver" prompt="JDBCDriver?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter comment="" name="TargetID" prompt="TargetID?" promptNeeded="true" type="id_Integer" value=""/>
+  </talendfile:ContextType>
+  <talendfile:ContextType confirmationNeeded="false" name="localhost">
+    <contextParameter comment="" name="DataFile" prompt="DataFile?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;xe&quot;"/>
+    <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;192.168.46.137&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
     <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;SYSTEM&quot;"/>
@@ -29,7 +53,7 @@
     <contextParameter comment="" name="Job" prompt="Job?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="OracleDB" prompt="OracleDB?" promptNeeded="false" type="id_String" value="&quot;I2B2T&quot;"/>
     <contextParameter comment="" name="OracleHost" prompt="OracleHost?" promptNeeded="true" type="id_String" value="&quot;134.76.113.224&quot;"/>
-    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_String" value="&quot;wc24gqd&quot;"/>
+    <contextParameter comment="" name="OraclePassword" prompt="OraclePassword?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="OraclePort" prompt="OraclePort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
     <contextParameter comment="" name="OracleSchema" prompt="OracleSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2BB3&quot;"/>
     <contextParameter comment="" name="OracleUsername" prompt="OracleUsername?" promptNeeded="false" type="id_String" value="&quot;SYSTEM&quot;"/>

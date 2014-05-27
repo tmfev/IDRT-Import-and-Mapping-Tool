@@ -45,6 +45,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
  */
 
 public class EditorTargetInfoView extends ViewPart {
+	public EditorTargetInfoView() {
+	}
 
 	private static Composite parentPane;
 	private static MutableTreeNode node;
@@ -68,38 +70,47 @@ public class EditorTargetInfoView extends ViewPart {
 			button.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove.gif"));
 			button.addSelectionListener(new SelectionListener() {
 
+				
+				/**
+		addColumItem(Resource.I2B2.NODE.TARGET.C_NAME,!grayed,row++); 0
+		addColumItem(Resource.I2B2.NODE.TARGET.C_TOOLTIP,!grayed,row++);1
+		addColumItem(Resource.I2B2.NODE.TARGET.C_COMMENT,!grayed,row++);2
+		addColumItem(Resource.I2B2.NODE.TARGET.C_METADATAXML,!grayed,row++);3
+		addColumItem(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,!grayed,row++);4
+		addColumItem(Resource.I2B2.NODE.TARGET.STARTDATE_STAGING_PATH,!grayed,row++);5
+		addColumItem(Resource.I2B2.NODE.TARGET.ENDDATE_STAGING_PATH,!grayed,row++);6
+				 */
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if (node instanceof OntologyTreeNode) {
 						final OntologyTreeNode treeNode = (OntologyTreeNode) node;
 						if (treeNode!=null) {
 							TargetNodeAttributes attributes = treeNode.getTargetNodeAttributes();
-
 							item.setText(1, "");
 							switch (row) {
-							case 1:
+							case 0:
 								treeNode.getTargetNodeAttributes().setName("");
 								treeNode.setName("");
 								break;
-							case 3:
+							case 5:
 								treeNode.getTargetNodeAttributes().setStartDateSourcePath("");
 								break;
-							case 4:
+							case 6:
 								treeNode.getTargetNodeAttributes().setEndDateSourcePath("");
 								break;
-							case 5:
+//							case 3:
 								//VA
-								break;
-							case 7:
+//								break;
+							case 3:
 								attributes.getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_METADATAXML,"");
 								break;
-							case 10:
+							case 2:
 								attributes.getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_COMMENT,"");
 								break;
-							case 11:
+							case 1:
 								attributes.getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,"");
 								break;
-							case 16:
+							case 4:
 								attributes.getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,"");
 								break;
 							default:
@@ -166,9 +177,28 @@ public class EditorTargetInfoView extends ViewPart {
 						old.dispose();
 					}
 					Point pt = new Point(event.x, event.y);
+//System.out.println(event.x + " " + event.y);
+					TableItem testItem = infoTable.getItem(pt);
+					if (testItem==null){
+						pt = new Point(0, event.y);
+					}
+					
 
 					final TableItem item = infoTable.getItem(pt);
-
+					
+					int select = 0;
+					for (int i = 0; i<item.getParent().getItems().length;i++){
+						if (item.getParent().getItem(i)==item){
+							select = i;
+						}
+						else {
+							item.getParent().deselect(i);
+						}
+					}
+					
+					item.getParent().select(select);
+					
+					
 
 					if (item != null) {
 						int row = infoTable.getSelectionIndex();
@@ -176,6 +206,7 @@ public class EditorTargetInfoView extends ViewPart {
 						final int col = 1;
 
 						if (column.equalsIgnoreCase("c_name")) { //row==1;
+							
 							final Text text = new Text(infoTable, SWT.NONE);
 							text.setForeground(item.getForeground());
 							text.setText(treeNode.getName());
@@ -472,34 +503,54 @@ public class EditorTargetInfoView extends ViewPart {
 				TableItem[] items = infoTable.getItems();
 
 				int row = 0;
-
-				addValueItem(items, row++, treeNode.getStagingPath());
-
-				addValueItem(items, row++, String.valueOf(treeNode.getStagingName()));
-				addValueItem(items, row++,
-						String.valueOf(attributes.getDimension()));
-				addValueItem(items, row++,
-						String.valueOf(treeNode.getTargetSubNodeAttributes().getStartDateSource()));
-				addValueItem(items, row++,
-						String.valueOf(treeNode.getTargetSubNodeAttributes().getEndDateSource()));
-				addValueItem(items, row++,
-						String.valueOf(attributes.getVisualattribute()));
-
-				addValueItem(items, row++, attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_BASECODE));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COMMENT));
+				addValueItem(items, row++, String.valueOf(treeNode.getParent().getName()));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COMMENT));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
+				addValueItem(items, row++,attributes.getStartDateSource());
+				addValueItem(items, row++,attributes.getEndDateSource());
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
-				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
+				addValueItem(items, row++,attributes.getVisualattribute());
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
+				addValueItem(items, row++,treeNode.getStagingPath());
+				addValueItem(items, row++,attributes.getDimension());
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_BASECODE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR));
+				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
 
 				addValueItem(items, row++,""+treeNode.getParent().getTreePathLevel());
 				addValueItem(items, row++,treeNode.getParent().getTreePath());
+//				addValueItem(items, row++, treeNode.getStagingPath());
+
+//				addValueItem(items, row++, String.valueOf(treeNode.getStagingName()));
+//				addValueItem(items, row++,
+//						String.valueOf(attributes.getDimension()));
+//				addValueItem(items, row++,
+//						String.valueOf(treeNode.getTargetSubNodeAttributes().getStartDateSource()));
+//				addValueItem(items, row++,
+//						String.valueOf(treeNode.getTargetSubNodeAttributes().getEndDateSource()));
+//				addValueItem(items, row++,
+//						String.valueOf(attributes.getVisualattribute()));
+//
+//				addValueItem(items, row++, attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_BASECODE));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_METADATAXML));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COMMENT));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.UPDATE_DATE));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.DOWNLOAD_DATE));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.IMPORT_DATE));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD));
+//				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH));
+//
+//				addValueItem(items, row++,""+treeNode.getParent().getTreePathLevel());
+//				addValueItem(items, row++,treeNode.getParent().getTreePath());
 
 
 				_editorComposite.update();

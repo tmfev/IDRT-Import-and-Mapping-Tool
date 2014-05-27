@@ -102,6 +102,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
+import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
 public class OntologyEditorView extends ViewPart {
 
@@ -328,7 +329,17 @@ public class OntologyEditorView extends ViewPart {
 			File[] listOfFiles = folder.listFiles();
 
 			for (File listOfFile : listOfFiles) {
-				if (listOfFile.getName().endsWith(".tmp") && !listOfFile.getName().equals("ph") ) { 
+				if (!listOfFile.getName().equals("ph") ) { 
+					//					System.out.println(listOfFile.getName() + " deleted");
+					listOfFile.delete();
+				}
+			}
+			
+			folder = FileHandler.getBundleFile("/temp/");
+			listOfFiles = folder.listFiles();
+
+			for (File listOfFile : listOfFiles) {
+				if (!listOfFile.getName().equals("ph") ) { 
 					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
@@ -398,20 +409,20 @@ public class OntologyEditorView extends ViewPart {
 				case SWT.MouseHover: {
 					Point coords = new Point(event.x, event.y);
 					TreeItem item = targetTreeViewer.getTree().getItem(coords);
-					MutableTreeNode nodse = null;
+					MutableTreeNode node = null;
 					String tooltip ="";
 					if (item != null) {
 						if (item.getData() instanceof OntologyTreeNode) {
-							nodse = (OntologyTreeNode) item.getData();
-							if (((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
+							node = (OntologyTreeNode) item.getData();
+							if (((OntologyTreeNode) node).getTargetNodeAttributes().getTargetNodeMap().
 									get(Resource.I2B2.NODE.TARGET.C_TOOLTIP) != null)
-								tooltip=((OntologyTreeNode) nodse).getTargetNodeAttributes().getTargetNodeMap().
+								tooltip=((OntologyTreeNode) node).getTargetNodeAttributes().getTargetNodeMap().
 								get(Resource.I2B2.NODE.TARGET.C_TOOLTIP);
 						}
 						else if (item.getData() instanceof OntologyTreeSubNode) {
-							nodse = (OntologyTreeSubNode) item.getData();
-							if (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP)!=null) {
-								tooltip = (((OntologyTreeSubNode) nodse).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
+							node = (OntologyTreeSubNode) item.getData();
+							if (((OntologyTreeSubNode) node).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP)!=null) {
+								tooltip = (((OntologyTreeSubNode) node).getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
 							}
 						}
 					}
@@ -1674,21 +1685,20 @@ public class OntologyEditorView extends ViewPart {
 		});
 
 		//TODO
-		new MenuItem(menu, SWT.SEPARATOR);
-
-		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
-		mntmgetChildren.setText("TEST");
-		mntmgetChildren.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-
-				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
+//		new MenuItem(menu, SWT.SEPARATOR);
+//		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+//		mntmgetChildren.setText("TEST");
+//		mntmgetChildren.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
+//			}
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent event) {
+//
+//				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
 
 				//				System.out.println("**** STAGING: ****");
 				//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
@@ -1710,8 +1720,8 @@ public class OntologyEditorView extends ViewPart {
 				//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
 
 				//				System.gc();
-			}
-		});
+//			}
+//		});
 		new MenuItem(menu, SWT.SEPARATOR);
 
 
@@ -1911,6 +1921,32 @@ public class OntologyEditorView extends ViewPart {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			File folder = FileHandler.getBundleFile("/temp/output/");
+			File[] listOfFiles = folder.listFiles();
+
+			for (File listOfFile : listOfFiles) {
+				if (!listOfFile.getName().equals("ph") ) { 
+					//					System.out.println(listOfFile.getName() + " deleted");
+					listOfFile.delete();
+				}
+			}
+			
+			folder = FileHandler.getBundleFile("/temp/");
+			listOfFiles = folder.listFiles();
+
+			for (File listOfFile : listOfFiles) {
+				if (!listOfFile.getName().equals("ph") ) { 
+					//					System.out.println(listOfFile.getName() + " deleted");
+					listOfFile.delete();
+				}
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		mainComposite = parent;
 		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
 		highlightedTargetNodes = new HashSet<OntologyTreeNode>();
@@ -1971,6 +2007,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 			@Override
 			public void drop(final DropTargetEvent event) {
+				TOSHandler.setCounter(0);
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
 					//					System.out.println("SERVER!");
@@ -2206,7 +2243,6 @@ public class OntologyEditorView extends ViewPart {
 			child.setName(newName);
 			child.getTargetNodeAttributes().setName(newName);
 			counter++;
-
 		}
 		targetTreeViewer.refresh();
 	}

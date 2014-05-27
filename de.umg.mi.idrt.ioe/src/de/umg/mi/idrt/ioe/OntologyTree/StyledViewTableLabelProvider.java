@@ -50,7 +50,10 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 			if (visual.toLowerCase().contains("h")) {
 
 			}
-			cell.setText(otNode.getName());
+//			if (otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
+//			cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
+//			else
+				cell.setText(otNode.getName());
 
 			if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE.equals( otNode.getType() ) || 
 					Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET.equals( otNode.getType() ) ) {

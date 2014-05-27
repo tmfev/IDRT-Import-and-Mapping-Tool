@@ -420,7 +420,7 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().setName(node.getName());
 		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
-		System.out.println("node.gettreepath: " + node.getTreePath());
+//		System.out.println("node.gettreepath: " + node.getTreePath());
 		if (testNode==null) {
 			
 			if (node.isModifier()){
@@ -706,6 +706,7 @@ public class MyOntologyTrees{
 		}
 		for (Regex r : CombineNodesCommand.getRegex()) {
 			final MenuItem item = new MenuItem(regMenu, SWT.PUSH);
+			System.out.println("current regex: " +r.getName());
 			item.setText(r.getName());
 			item.addSelectionListener(new SelectionListener() {
 
@@ -742,6 +743,7 @@ public class MyOntologyTrees{
 
 			}
 		});
+		regMenu.getParent().pack();
 	}
 
 	public OntologyTree getOntologyTreeTarget() {

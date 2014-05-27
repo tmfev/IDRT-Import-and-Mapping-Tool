@@ -46,12 +46,6 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Comparator;
 
-//the import part of tLibraryLoad_1
-import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
-
-//the import part of tJava_1
-//import java.util.List;
-
 //the import part of tJava_2
 //import java.util.List;
 
@@ -114,6 +108,15 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 
 //the import part of tJava_18
 //import java.util.List;
+
+//the import part of tJava_19
+//import java.util.List;
+
+//the import part of tJava_1
+//import java.util.List;
+
+//the import part of tLibraryLoad_1
+import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 
 @SuppressWarnings("unused")
 /**
@@ -542,168 +545,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				}
 			}
 		}
-	}
-
-	public void tCreateTemporaryFile_12_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_12", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_12_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_11_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_11", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_11_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_10_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_10", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_10_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_9_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_9", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_9_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_8_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_8", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_8_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_7_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_7", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_7_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_6_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_6", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_6_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_5_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_5", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_5_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_4_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_4", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_4_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_3_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_3", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_3_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_2_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_2", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_2_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tCreateTemporaryFile_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tCreateTemporaryFile_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tCreateTemporaryFile_1_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tLibraryLoad_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tLibraryLoad_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tJava_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tJava_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tJava_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tRunJob_3_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tRunJob_3", System.currentTimeMillis());
-
-		status = "failure";
-
-		tRunJob_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJDBCConnection_1_error(java.lang.Exception exception,
@@ -1440,61 +1281,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				globalMap);
 	}
 
-	public void tFileInputDelimited_29_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_29", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_29_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tUniqRow_11_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tUniqRow_11", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_29_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileOutputDelimited_33_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileOutputDelimited_33", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_29_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileInputDelimited_30_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileInputDelimited_30", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_30_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
-	public void tFileOutputDelimited_34_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tFileOutputDelimited_34", System.currentTimeMillis());
-
-		status = "failure";
-
-		tFileInputDelimited_30_onSubJobError(exception, errorComponent,
-				globalMap);
-	}
-
 	public void tJDBCClose_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1535,6 +1321,89 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		tJava_18_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tRunJob_4_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tRunJob_4", System.currentTimeMillis());
+
+		status = "failure";
+
+		tRunJob_4_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_19_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_19", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_19_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tRunJob_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tRunJob_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tRunJob_3_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tCreateTemporaryFile_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_1_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tLibraryLoad_1_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
+
+		status = "failure";
+
+		tLibraryLoad_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tCreateTemporaryFile_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_2", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_2_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_3_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
 	public void tFileInputDelimited_2_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1565,6 +1434,17 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		status = "failure";
 
 		tFileInputDelimited_32_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_4_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_4", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_4_onSubJobError(exception, errorComponent,
 				globalMap);
 	}
 
@@ -1656,6 +1536,72 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				globalMap);
 	}
 
+	public void tCreateTemporaryFile_5_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_5", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_5_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_6_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_6", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_6_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_7_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_7", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_7_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_8_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_8", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_8_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_9_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_9", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_9_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_10_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_10", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_10_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
 	public void tFileInputDelimited_15_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1741,6 +1687,28 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		status = "failure";
 
 		tFileInputDelimited_25_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_11_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_11", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_11_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
+	public void tCreateTemporaryFile_12_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tCreateTemporaryFile_12", System.currentTimeMillis());
+
+		status = "failure";
+
+		tCreateTemporaryFile_12_onSubJobError(exception, errorComponent,
 				globalMap);
 	}
 
@@ -2243,183 +2211,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				globalMap);
 	}
 
-	public void tCreateTemporaryFile_12_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_11_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_10_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_9_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_8_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_7_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_6_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_5_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_4_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_3_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_2_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tCreateTemporaryFile_1_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tLibraryLoad_1_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tJava_1_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tRunJob_3_onSubJobError(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
 	public void tJDBCConnection_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -2790,30 +2581,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 	}
 
-	public void tFileInputDelimited_29_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tFileInputDelimited_30_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
 	public void tJDBCClose_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -2858,6 +2625,97 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 	}
 
+	public void tRunJob_4_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_19_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tRunJob_3_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_1_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tLibraryLoad_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_2_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_3_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tFileInputDelimited_2_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
@@ -2883,6 +2741,18 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 	}
 
 	public void tFileInputDelimited_32_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_4_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -2990,6 +2860,78 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 	}
 
+	public void tCreateTemporaryFile_5_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_6_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_7_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_8_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_9_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tCreateTemporaryFile_10_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tFileInputDelimited_15_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
@@ -3086,7 +3028,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 	}
 
-	public void tFileInputDelimited_33_onSubJobError(
+	public void tCreateTemporaryFile_11_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -3098,1652 +3040,28 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 	}
 
-	public void tCreateTemporaryFile_12Process(
+	public void tCreateTemporaryFile_12_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_12_SUBPROCESS_STATE", 0);
 
-		final boolean execStat = this.execStat;
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_12 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_12", false);
-				start_Hash.put("tCreateTemporaryFile_12",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_12";
-
-				int tos_count_tCreateTemporaryFile_12 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_12 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_12.mkdirs();
-				String name_tCreateTemporaryFile_12 = "talend_12_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_12 = ("tmp".replaceAll(
-						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
-						"\\.", "");
-				java.io.File file_tCreateTemporaryFile_12 = new java.io.File(
-						dir_tCreateTemporaryFile_12,
-						name_tCreateTemporaryFile_12 + "."
-								+ suffix_tCreateTemporaryFile_12);
-				if (file_tCreateTemporaryFile_12.createNewFile()) {
-					file_tCreateTemporaryFile_12.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_12_FILEPATH",
-						file_tCreateTemporaryFile_12.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_12 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_12 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_12";
-
-				tos_count_tCreateTemporaryFile_12++;
-
-				/**
-				 * [tCreateTemporaryFile_12 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_12 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_12";
-
-				ok_Hash.put("tCreateTemporaryFile_12", true);
-				end_Hash.put("tCreateTemporaryFile_12",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_12 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_12:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_11Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_12_SUBPROCESS_STATE", 1);
 	}
 
-	public void tCreateTemporaryFile_11Process(
+	public void tFileInputDelimited_33_onSubJobError(
+			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_11_SUBPROCESS_STATE", 0);
 
-		final boolean execStat = this.execStat;
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
 
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_11 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_11", false);
-				start_Hash.put("tCreateTemporaryFile_11",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_11";
-
-				int tos_count_tCreateTemporaryFile_11 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_11 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_11.mkdirs();
-				String name_tCreateTemporaryFile_11 = "talend_11_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_11 = ("tmp".replaceAll(
-						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
-						"\\.", "");
-				java.io.File file_tCreateTemporaryFile_11 = new java.io.File(
-						dir_tCreateTemporaryFile_11,
-						name_tCreateTemporaryFile_11 + "."
-								+ suffix_tCreateTemporaryFile_11);
-				if (file_tCreateTemporaryFile_11.createNewFile()) {
-					file_tCreateTemporaryFile_11.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_11_FILEPATH",
-						file_tCreateTemporaryFile_11.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_11 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_11 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_11";
-
-				tos_count_tCreateTemporaryFile_11++;
-
-				/**
-				 * [tCreateTemporaryFile_11 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_11 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_11";
-
-				ok_Hash.put("tCreateTemporaryFile_11", true);
-				end_Hash.put("tCreateTemporaryFile_11",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_11 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_11:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_10Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_11_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_10Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_10_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_10 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_10", false);
-				start_Hash.put("tCreateTemporaryFile_10",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_10";
-
-				int tos_count_tCreateTemporaryFile_10 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_10 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_10.mkdirs();
-				String name_tCreateTemporaryFile_10 = "talend_10_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_10 = ("tmp".replaceAll(
-						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
-						"\\.", "");
-				java.io.File file_tCreateTemporaryFile_10 = new java.io.File(
-						dir_tCreateTemporaryFile_10,
-						name_tCreateTemporaryFile_10 + "."
-								+ suffix_tCreateTemporaryFile_10);
-				if (file_tCreateTemporaryFile_10.createNewFile()) {
-					file_tCreateTemporaryFile_10.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_10_FILEPATH",
-						file_tCreateTemporaryFile_10.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_10 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_10 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_10";
-
-				tos_count_tCreateTemporaryFile_10++;
-
-				/**
-				 * [tCreateTemporaryFile_10 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_10 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_10";
-
-				ok_Hash.put("tCreateTemporaryFile_10", true);
-				end_Hash.put("tCreateTemporaryFile_10",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_10 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_10:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_9Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_10_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_9Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_9_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_9 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_9", false);
-				start_Hash.put("tCreateTemporaryFile_9",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_9";
-
-				int tos_count_tCreateTemporaryFile_9 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_9 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_9.mkdirs();
-				String name_tCreateTemporaryFile_9 = "talend_09_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_9 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_9 = new java.io.File(
-						dir_tCreateTemporaryFile_9, name_tCreateTemporaryFile_9
-								+ "." + suffix_tCreateTemporaryFile_9);
-				if (file_tCreateTemporaryFile_9.createNewFile()) {
-					file_tCreateTemporaryFile_9.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_9_FILEPATH",
-						file_tCreateTemporaryFile_9.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_9 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_9 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_9";
-
-				tos_count_tCreateTemporaryFile_9++;
-
-				/**
-				 * [tCreateTemporaryFile_9 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_9 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_9";
-
-				ok_Hash.put("tCreateTemporaryFile_9", true);
-				end_Hash.put("tCreateTemporaryFile_9",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_9 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_9:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_8Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_9_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_8Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_8_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_8 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_8", false);
-				start_Hash.put("tCreateTemporaryFile_8",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_8";
-
-				int tos_count_tCreateTemporaryFile_8 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_8 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_8.mkdirs();
-				String name_tCreateTemporaryFile_8 = "talend_08_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_8 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_8 = new java.io.File(
-						dir_tCreateTemporaryFile_8, name_tCreateTemporaryFile_8
-								+ "." + suffix_tCreateTemporaryFile_8);
-				if (file_tCreateTemporaryFile_8.createNewFile()) {
-					file_tCreateTemporaryFile_8.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_8_FILEPATH",
-						file_tCreateTemporaryFile_8.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_8 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_8 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_8";
-
-				tos_count_tCreateTemporaryFile_8++;
-
-				/**
-				 * [tCreateTemporaryFile_8 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_8 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_8";
-
-				ok_Hash.put("tCreateTemporaryFile_8", true);
-				end_Hash.put("tCreateTemporaryFile_8",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_8 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_8:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_7Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_8_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_7Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_7_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_7 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_7", false);
-				start_Hash.put("tCreateTemporaryFile_7",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_7";
-
-				int tos_count_tCreateTemporaryFile_7 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_7 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_7.mkdirs();
-				String name_tCreateTemporaryFile_7 = "talend_07_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_7 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_7 = new java.io.File(
-						dir_tCreateTemporaryFile_7, name_tCreateTemporaryFile_7
-								+ "." + suffix_tCreateTemporaryFile_7);
-				if (file_tCreateTemporaryFile_7.createNewFile()) {
-					file_tCreateTemporaryFile_7.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_7_FILEPATH",
-						file_tCreateTemporaryFile_7.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_7 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_7 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_7";
-
-				tos_count_tCreateTemporaryFile_7++;
-
-				/**
-				 * [tCreateTemporaryFile_7 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_7 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_7";
-
-				ok_Hash.put("tCreateTemporaryFile_7", true);
-				end_Hash.put("tCreateTemporaryFile_7",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_7 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_7:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_6Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_7_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_6Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_6_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_6 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_6", false);
-				start_Hash.put("tCreateTemporaryFile_6",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_6";
-
-				int tos_count_tCreateTemporaryFile_6 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_6 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_6.mkdirs();
-				String name_tCreateTemporaryFile_6 = "talend_06_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_6 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_6 = new java.io.File(
-						dir_tCreateTemporaryFile_6, name_tCreateTemporaryFile_6
-								+ "." + suffix_tCreateTemporaryFile_6);
-				if (file_tCreateTemporaryFile_6.createNewFile()) {
-					file_tCreateTemporaryFile_6.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_6_FILEPATH",
-						file_tCreateTemporaryFile_6.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_6 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_6 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_6";
-
-				tos_count_tCreateTemporaryFile_6++;
-
-				/**
-				 * [tCreateTemporaryFile_6 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_6 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_6";
-
-				ok_Hash.put("tCreateTemporaryFile_6", true);
-				end_Hash.put("tCreateTemporaryFile_6",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_6 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_6:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_5Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_6_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_5Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_5_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_5 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_5", false);
-				start_Hash.put("tCreateTemporaryFile_5",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_5";
-
-				int tos_count_tCreateTemporaryFile_5 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_5 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_5.mkdirs();
-				String name_tCreateTemporaryFile_5 = "talend_05_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_5 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_5 = new java.io.File(
-						dir_tCreateTemporaryFile_5, name_tCreateTemporaryFile_5
-								+ "." + suffix_tCreateTemporaryFile_5);
-				if (file_tCreateTemporaryFile_5.createNewFile()) {
-					file_tCreateTemporaryFile_5.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_5_FILEPATH",
-						file_tCreateTemporaryFile_5.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_5 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_5 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_5";
-
-				tos_count_tCreateTemporaryFile_5++;
-
-				/**
-				 * [tCreateTemporaryFile_5 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_5 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_5";
-
-				ok_Hash.put("tCreateTemporaryFile_5", true);
-				end_Hash.put("tCreateTemporaryFile_5",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_5 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_5:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_4Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_5_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_4Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_4_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_4 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_4", false);
-				start_Hash.put("tCreateTemporaryFile_4",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_4";
-
-				int tos_count_tCreateTemporaryFile_4 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_4 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_4.mkdirs();
-				String name_tCreateTemporaryFile_4 = "talend_04_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_4 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_4 = new java.io.File(
-						dir_tCreateTemporaryFile_4, name_tCreateTemporaryFile_4
-								+ "." + suffix_tCreateTemporaryFile_4);
-				if (file_tCreateTemporaryFile_4.createNewFile()) {
-					file_tCreateTemporaryFile_4.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_4_FILEPATH",
-						file_tCreateTemporaryFile_4.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_4 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_4 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_4";
-
-				tos_count_tCreateTemporaryFile_4++;
-
-				/**
-				 * [tCreateTemporaryFile_4 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_4 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_4";
-
-				ok_Hash.put("tCreateTemporaryFile_4", true);
-				end_Hash.put("tCreateTemporaryFile_4",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_4 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_4:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_3Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_4_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_3Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_3_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_3 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_3", false);
-				start_Hash.put("tCreateTemporaryFile_3",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_3";
-
-				int tos_count_tCreateTemporaryFile_3 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_3 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_3.mkdirs();
-				String name_tCreateTemporaryFile_3 = "talend_03_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_3 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_3 = new java.io.File(
-						dir_tCreateTemporaryFile_3, name_tCreateTemporaryFile_3
-								+ "." + suffix_tCreateTemporaryFile_3);
-				if (file_tCreateTemporaryFile_3.createNewFile()) {
-					file_tCreateTemporaryFile_3.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_3_FILEPATH",
-						file_tCreateTemporaryFile_3.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_3 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_3 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_3";
-
-				tos_count_tCreateTemporaryFile_3++;
-
-				/**
-				 * [tCreateTemporaryFile_3 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_3 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_3";
-
-				ok_Hash.put("tCreateTemporaryFile_3", true);
-				end_Hash.put("tCreateTemporaryFile_3",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_3 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_3:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_2Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_3_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_2Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_2_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_2 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_2", false);
-				start_Hash.put("tCreateTemporaryFile_2",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_2";
-
-				int tos_count_tCreateTemporaryFile_2 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_2 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_2.mkdirs();
-				String name_tCreateTemporaryFile_2 = "talend_02_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_2 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_2 = new java.io.File(
-						dir_tCreateTemporaryFile_2, name_tCreateTemporaryFile_2
-								+ "." + suffix_tCreateTemporaryFile_2);
-				if (file_tCreateTemporaryFile_2.createNewFile()) {
-					file_tCreateTemporaryFile_2.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_2_FILEPATH",
-						file_tCreateTemporaryFile_2.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_2 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_2 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_2";
-
-				tos_count_tCreateTemporaryFile_2++;
-
-				/**
-				 * [tCreateTemporaryFile_2 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_2 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_2";
-
-				ok_Hash.put("tCreateTemporaryFile_2", true);
-				end_Hash.put("tCreateTemporaryFile_2",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_2 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_2:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tCreateTemporaryFile_1Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_2_SUBPROCESS_STATE", 1);
-	}
-
-	public void tCreateTemporaryFile_1Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tCreateTemporaryFile_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tCreateTemporaryFile_1 begin ] start
-				 */
-
-				ok_Hash.put("tCreateTemporaryFile_1", false);
-				start_Hash.put("tCreateTemporaryFile_1",
-						System.currentTimeMillis());
-				currentComponent = "tCreateTemporaryFile_1";
-
-				int tos_count_tCreateTemporaryFile_1 = 0;
-
-				java.io.File dir_tCreateTemporaryFile_1 = new java.io.File(
-						context.folderMain + context.folderOutput);
-				dir_tCreateTemporaryFile_1.mkdirs();
-				String name_tCreateTemporaryFile_1 = "talend_01_XXXX"
-						.replaceAll("XXXX", routines.TalendString
-								.getAsciiRandomString(4).toUpperCase());
-				String suffix_tCreateTemporaryFile_1 = ("tmp".replaceAll("\\.",
-						"").length() == 0) ? "tmp" : "tmp"
-						.replaceAll("\\.", "");
-				java.io.File file_tCreateTemporaryFile_1 = new java.io.File(
-						dir_tCreateTemporaryFile_1, name_tCreateTemporaryFile_1
-								+ "." + suffix_tCreateTemporaryFile_1);
-				if (file_tCreateTemporaryFile_1.createNewFile()) {
-					file_tCreateTemporaryFile_1.deleteOnExit();
-				}
-				globalMap.put("tCreateTemporaryFile_1_FILEPATH",
-						file_tCreateTemporaryFile_1.getCanonicalPath());
-
-				/**
-				 * [tCreateTemporaryFile_1 begin ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_1 main ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_1";
-
-				tos_count_tCreateTemporaryFile_1++;
-
-				/**
-				 * [tCreateTemporaryFile_1 main ] stop
-				 */
-				/**
-				 * [tCreateTemporaryFile_1 end ] start
-				 */
-
-				currentComponent = "tCreateTemporaryFile_1";
-
-				ok_Hash.put("tCreateTemporaryFile_1", true);
-				end_Hash.put("tCreateTemporaryFile_1",
-						System.currentTimeMillis());
-
-				/**
-				 * [tCreateTemporaryFile_1 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_1:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tLibraryLoad_1Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tLibraryLoad_1Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tLibraryLoad_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tLibraryLoad_1 begin ] start
-				 */
-
-				ok_Hash.put("tLibraryLoad_1", false);
-				start_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
-				currentComponent = "tLibraryLoad_1";
-
-				int tos_count_tLibraryLoad_1 = 0;
-
-				/**
-				 * [tLibraryLoad_1 begin ] stop
-				 */
-				/**
-				 * [tLibraryLoad_1 main ] start
-				 */
-
-				currentComponent = "tLibraryLoad_1";
-
-				tos_count_tLibraryLoad_1++;
-
-				/**
-				 * [tLibraryLoad_1 main ] stop
-				 */
-				/**
-				 * [tLibraryLoad_1 end ] start
-				 */
-
-				currentComponent = "tLibraryLoad_1";
-
-				ok_Hash.put("tLibraryLoad_1", true);
-				end_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
-
-				/**
-				 * [tLibraryLoad_1 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tLibraryLoad_1:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tJava_1Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tLibraryLoad_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tJava_1Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tJava_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tJava_1 begin ] start
-				 */
-
-				ok_Hash.put("tJava_1", false);
-				start_Hash.put("tJava_1", System.currentTimeMillis());
-				currentComponent = "tJava_1";
-
-				int tos_count_tJava_1 = 0;
-
-				// System.out.println("***********");
-				// System.out.println("Context: ");
-				// System.out.println(context.DB_TargetI2B2_Host);
-				// System.out.println(context.DB_TargetI2B2_Instance);
-				// System.out.println(context.DB_TargetI2B2_Port);
-				// System.out.println(context.DB_TargetI2B2_Password);
-				// System.out.println(context.DB_TargetI2B2_Schema);
-				// System.out.println(context.DB_TargetI2B2_Username);
-				// System.out.println("***********");
-
-				/**
-				 * [tJava_1 begin ] stop
-				 */
-				/**
-				 * [tJava_1 main ] start
-				 */
-
-				currentComponent = "tJava_1";
-
-				tos_count_tJava_1++;
-
-				/**
-				 * [tJava_1 main ] stop
-				 */
-				/**
-				 * [tJava_1 end ] start
-				 */
-
-				currentComponent = "tJava_1";
-
-				ok_Hash.put("tJava_1", true);
-				end_Hash.put("tJava_1", System.currentTimeMillis());
-
-				/**
-				 * [tJava_1 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJava_1:OnSubjobOk", "", Thread
-								.currentThread().getId() + "", "", "", "", "",
-						"");
-			}
-
-			tRunJob_3Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tJava_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tRunJob_3Process(final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tRunJob_3_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tRunJob_3 begin ] start
-				 */
-
-				ok_Hash.put("tRunJob_3", false);
-				start_Hash.put("tRunJob_3", System.currentTimeMillis());
-				currentComponent = "tRunJob_3";
-
-				int tos_count_tRunJob_3 = 0;
-
-				/**
-				 * [tRunJob_3 begin ] stop
-				 */
-				/**
-				 * [tRunJob_3 main ] start
-				 */
-
-				currentComponent = "tRunJob_3";
-
-				java.util.List<String> paraList_tRunJob_3 = new java.util.ArrayList<String>();
-				paraList_tRunJob_3.add("--father_pid=" + pid);
-
-				paraList_tRunJob_3.add("--root_pid=" + rootPid);
-
-				paraList_tRunJob_3.add("--father_node=tRunJob_3");
-
-				paraList_tRunJob_3.add("--context=Default");
-
-				// for feature:10589
-				paraList_tRunJob_3.add("--stat_port=" + portStats);
-
-				if (resuming_logs_dir_path != null) {
-					paraList_tRunJob_3.add("--resuming_logs_dir_path="
-							+ resuming_logs_dir_path);
-				}
-				String childResumePath_tRunJob_3 = ResumeUtil
-						.getChildJobCheckPointPath(resuming_checkpoint_path);
-				String tRunJobName_tRunJob_3 = ResumeUtil
-						.getRighttRunJob(resuming_checkpoint_path);
-				if ("tRunJob_3".equals(tRunJobName_tRunJob_3)
-						&& childResumePath_tRunJob_3 != null) {
-					paraList_tRunJob_3
-							.add("--resuming_checkpoint_path="
-									+ ResumeUtil
-											.getChildJobCheckPointPath(resuming_checkpoint_path));
-				}
-				paraList_tRunJob_3.add("--parent_part_launcher=JOB:" + jobName
-						+ "/NODE:tRunJob_3");
-
-				java.util.Map<String, Object> parentContextMap_tRunJob_3 = new java.util.HashMap<String, Object>();
-
-				context.synchronizeContext();
-				java.util.Enumeration<?> propertyNames_tRunJob_3 = context
-						.propertyNames();
-				while (propertyNames_tRunJob_3.hasMoreElements()) {
-					String key_tRunJob_3 = (String) propertyNames_tRunJob_3
-							.nextElement();
-					Object value_tRunJob_3 = (Object) context
-							.get(key_tRunJob_3);
-					paraList_tRunJob_3.add("--context_param " + key_tRunJob_3
-							+ "=" + value_tRunJob_3);
-				}
-
-				parentContextMap_tRunJob_3.put("folderOutput",
-						context.folderOutput);
-				parentContextMap_tRunJob_3
-						.put("folderMain", context.folderMain);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Host",
-						context.DB_StagingI2B2_Host);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Instance",
-						context.DB_StagingI2B2_Instance);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_jdbcurl",
-						context.DB_StagingI2B2_jdbcurl);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Password",
-						context.DB_StagingI2B2_Password);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Port",
-						context.DB_StagingI2B2_Port);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Schema",
-						context.DB_StagingI2B2_Schema);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_sqlclassname",
-						context.DB_StagingI2B2_sqlclassname);
-				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Username",
-						context.DB_StagingI2B2_Username);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Host",
-						context.DB_TargetI2B2_Host);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Instance",
-						context.DB_TargetI2B2_Instance);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_jdbcurl",
-						context.DB_TargetI2B2_jdbcurl);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Password",
-						context.DB_TargetI2B2_Password);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Port",
-						context.DB_TargetI2B2_Port);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Schema",
-						context.DB_TargetI2B2_Schema);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_sqlclassname",
-						context.DB_TargetI2B2_sqlclassname);
-				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Username",
-						context.DB_TargetI2B2_Username);
-				parentContextMap_tRunJob_3.put("TargetID", context.TargetID);
-				parentContextMap_tRunJob_3.put("sql", context.sql);
-
-				Object obj_tRunJob_3 = null;
-
-				obj_tRunJob_3 = context.DB_TargetI2B2_Host;
-				paraList_tRunJob_3.add("--context_param DBHost="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBHost", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Instance;
-				paraList_tRunJob_3.add("--context_param DBInstance="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBInstance", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Port;
-				paraList_tRunJob_3.add("--context_param DBPort="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBPort", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Password;
-				paraList_tRunJob_3.add("--context_param DBPassword="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBPassword", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
-				paraList_tRunJob_3.add("--context_param DBSchema="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBSchema", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Username;
-				paraList_tRunJob_3.add("--context_param DBUsername="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBUsername", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
-				paraList_tRunJob_3.add("--context_param project="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("project", obj_tRunJob_3);
-				obj_tRunJob_3 = true;
-				paraList_tRunJob_3.add("--context_param truncateQueries="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3
-						.put("truncateQueries", obj_tRunJob_3);
-				tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables childJob_tRunJob_3 = new tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables();
-				// pass DataSources
-				java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_3 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-						.get(KEY_DB_DATASOURCES);
-				if (null != talendDataSources_tRunJob_3) {
-					java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_3 = new java.util.HashMap<String, javax.sql.DataSource>();
-					for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_3 : talendDataSources_tRunJob_3
-							.entrySet()) {
-						dataSources_tRunJob_3.put(
-								talendDataSourceEntry_tRunJob_3.getKey(),
-								talendDataSourceEntry_tRunJob_3.getValue()
-										.getRawDataSource());
-					}
-					childJob_tRunJob_3.setDataSources(dataSources_tRunJob_3);
-				}
-				childJob_tRunJob_3.parentContextMap = parentContextMap_tRunJob_3;
-				String[][] childReturn_tRunJob_3 = childJob_tRunJob_3
-						.runJob((String[]) paraList_tRunJob_3
-								.toArray(new String[paraList_tRunJob_3.size()]));
-				errorCode = childJob_tRunJob_3.getErrorCode();
-
-				if (childJob_tRunJob_3.getErrorCode() == null) {
-					globalMap.put(
-							"tRunJob_3_CHILD_RETURN_CODE",
-							childJob_tRunJob_3.getStatus() != null
-									&& ("failure").equals(childJob_tRunJob_3
-											.getStatus()) ? 1 : 0);
-				} else {
-					globalMap.put("tRunJob_3_CHILD_RETURN_CODE",
-							childJob_tRunJob_3.getErrorCode());
-				}
-				if (childJob_tRunJob_3.getExceptionStackTrace() != null) {
-					globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
-							childJob_tRunJob_3.getExceptionStackTrace());
-				}
-
-				tos_count_tRunJob_3++;
-
-				/**
-				 * [tRunJob_3 main ] stop
-				 */
-				/**
-				 * [tRunJob_3 end ] start
-				 */
-
-				currentComponent = "tRunJob_3";
-
-				ok_Hash.put("tRunJob_3", true);
-				end_Hash.put("tRunJob_3", System.currentTimeMillis());
-
-				/**
-				 * [tRunJob_3 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tRunJob_3:OnSubjobOk", "", Thread
-								.currentThread().getId() + "", "", "", "", "",
-						"");
-			}
-
-			tJDBCConnection_1Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tRunJob_3_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJDBCConnection_1Process(
@@ -8428,7 +6746,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									new java.io.OutputStreamWriter(
 											new java.io.FileOutputStream(
 													fileName_tFileOutputDelimited_16,
-													false), "ISO-8859-15")));
+													false), "UTF-8")));
 					CsvWritertFileOutputDelimited_16
 							.setSeparator(csvSettings_tFileOutputDelimited_16
 									.getFieldDelim());
@@ -9357,7 +7675,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									new java.io.OutputStreamWriter(
 											new java.io.FileOutputStream(
 													fileName_tFileOutputDelimited_23,
-													false), "ISO-8859-15")));
+													false), "UTF-8")));
 					CsvWritertFileOutputDelimited_23
 							.setSeparator(csvSettings_tFileOutputDelimited_23
 									.getFieldDelim());
@@ -10469,7 +8787,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									new java.io.OutputStreamWriter(
 											new java.io.FileOutputStream(
 													fileName_tFileOutputDelimited_15,
-													false), "ISO-8859-15")));
+													false), "UTF-8")));
 					CsvWritertFileOutputDelimited_15
 							.setSeparator(csvSettings_tFileOutputDelimited_15
 									.getFieldDelim());
@@ -11826,7 +10144,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									new java.io.OutputStreamWriter(
 											new java.io.FileOutputStream(
 													fileName_tFileOutputDelimited_22,
-													true), "ISO-8859-15")));
+													true), "UTF-8")));
 					CsvWritertFileOutputDelimited_22
 							.setSeparator(csvSettings_tFileOutputDelimited_22
 									.getFieldDelim());
@@ -13098,26 +11416,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					String dbquery_tJDBCInput_5 = "SELECT *  FROM  "
 							+ context.DB_StagingI2B2_Schema
-							+ ".patient_mapping pat_map  where pat_map.patient_num in  (Select distinct patient_num from  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where modifier_cd in   (SELECT modifier_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".modifier_dimension modifier_dim  ON modifier_dim.modifier_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID
-							+ ")    UNION    (Select distinct patient_num from  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where concept_cd in   (SELECT concept_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".concept_dimension concept_dim  ON concept_dim.concept_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID + ")))";
+							+ ".patient_mapping ";
 
 					globalMap.put("tJDBCInput_5_QUERY", dbquery_tJDBCInput_5);
 
@@ -14214,26 +12513,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					String dbquery_tJDBCInput_6 = "SELECT * FROM  "
 							+ context.DB_StagingI2B2_Schema
-							+ ".patient_dimension pat_dim  where pat_dim.patient_num in    (Select distinct patient_num from  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where concept_cd in   (SELECT concept_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".concept_dimension concept_dim  ON concept_dim.concept_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID
-							+ ")    UNION    (Select distinct patient_num from  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where modifier_cd in   (SELECT modifier_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN  "
-							+ context.DB_StagingI2B2_Schema
-							+ ".modifier_dimension modifier_dim  ON modifier_dim.modifier_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID + ")))";
+							+ ".patient_dimension";
 
 					globalMap.put("tJDBCInput_6_QUERY", dbquery_tJDBCInput_6);
 
@@ -15419,26 +13699,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					String dbquery_tJDBCInput_7 = "SELECT *  FROM "
 							+ context.DB_StagingI2B2_Schema
-							+ ".encounter_mapping enc_map  where enc_map.encounter_num in  (Select distinct encounter_num from "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where concept_cd in   (SELECT concept_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".concept_dimension concept_dim  ON concept_dim.concept_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID
-							+ ")    UNION     (Select distinct encounter_num from "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where modifier_cd in   (SELECT modifier_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".modifier_dimension modifier_dim  ON modifier_dim.modifier_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID + ")))";
+							+ ".encounter_mapping";
 
 					globalMap.put("tJDBCInput_7_QUERY", dbquery_tJDBCInput_7);
 
@@ -16541,26 +14802,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					String dbquery_tJDBCInput_17 = "SELECT *  FROM "
 							+ context.DB_StagingI2B2_Schema
-							+ ".visit_dimension enc_map  where enc_map.encounter_num in  (Select distinct encounter_num from "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where concept_cd in   (SELECT concept_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".concept_dimension concept_dim  ON concept_dim.concept_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID
-							+ ")    UNION     (Select distinct encounter_num from "
-							+ context.DB_StagingI2B2_Schema
-							+ ".observation_fact where modifier_cd in   (SELECT modifier_cd  FROM "
-							+ context.DB_StagingI2B2_Schema
-							+ ".ioe_target_ontology ontology  INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".i2b2 i2b2  ON i2b2.c_fullname = ontology.staging_path   INNER JOIN "
-							+ context.DB_StagingI2B2_Schema
-							+ ".modifier_dimension modifier_dim  ON modifier_dim.modifier_path = ontology.staging_path  where ontology.target_id = "
-							+ context.TargetID + ")))";
+							+ ".visit_dimension";
 
 					globalMap.put("tJDBCInput_17_QUERY", dbquery_tJDBCInput_17);
 
@@ -21953,6 +20195,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							// ###############################
 							// # Vars initialization
 							class Var__tMap_1__Struct {
+								boolean var1;
 							}
 							Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
 							// ###############################
@@ -22609,7 +20852,13 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 												// ###############################
 												// # Vars tables
 
-												Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
+												Var__tMap_1__Struct Var = Var__tMap_1;
+												Var.var1 = (from_OE_ONT.BASECODE
+														.split(":").length > 1) ? (from_OE_ONT.BASECODE
+														.split(":")[1]
+														.equals("xml") ? true
+														: false) : false;
+												;// ###############################
 												// ###############################
 												// # Output tables
 
@@ -22629,9 +20878,17 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 													target_ont_tmp.C_NAME = from_OE_ONT.NAME;
 													target_ont_tmp.C_SYNONYM_CD = "N";
 													target_ont_tmp.C_VISUALATTRIBUTES = from_OE_ONT.VISUALATTRIBUTES;
-													target_ont_tmp.C_TOTALNUM = null;
-													target_ont_tmp.C_BASECODE = from_src_ont.C_BASECODE;
-													target_ont_tmp.C_METADATAXML = from_src_ont.C_METADATAXML;
+													target_ont_tmp.C_TOTALNUM = from_src_ont.C_TOTALNUM;
+													target_ont_tmp.C_BASECODE = from_OE_ONT.BASECODE;
+													target_ont_tmp.C_METADATAXML = Var.var1 ? "<?xml version=\"1.0\"?><ValueMetadata><Version>3.02</Version><CreationDateTime>"
+															+ TalendDate
+																	.getDate("YYYY-MM-DD")
+															+ "</CreationDateTime><TestID>U/UTP</TestID><TestName>"
+															+ from_OE_ONT.NAME
+															+ "</TestName><DataType>Integer</DataType><Flagstouse>HL</Flagstouse><Oktousevalues>Y</Oktousevalues><UnitValues><NormalUnits></NormalUnits><EqualUnits>"
+															+ from_OE_ONT.NAME
+															+ "</EqualUnits><ExcludingUnits/><ConvertingUnits><Units/><MultiplyingFactor/></ConvertingUnits></UnitValues><Analysis><Enums /><Counts /><New/></Analysis><i2b2><sourceDataType>durationDateTime</sourceDataType></i2b2></ValueMetadata>"
+															: "";
 													target_ont_tmp.C_FACTTABLECOLUMN = from_OE_ONT.STAGING_DIMENSION
 															.equalsIgnoreCase("concept_dimension") ? "concept_cd"
 															: "modifier_cd";
@@ -22641,7 +20898,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 															: "modifier_path";
 													target_ont_tmp.C_COLUMNDATATYPE = from_src_ont.C_COLUMNDATATYPE;
 													target_ont_tmp.C_OPERATOR = from_src_ont.C_OPERATOR;
-													target_ont_tmp.C_DIMCODE = from_OE_ONT.TREE_PATH;
+													target_ont_tmp.C_DIMCODE = from_OE_ONT.STAGING_PATH
+															.length() > 0 ? from_OE_ONT.STAGING_PATH
+															: from_OE_ONT.TREE_PATH;
 													target_ont_tmp.C_COMMENT = from_src_ont.C_COMMENT;
 													target_ont_tmp.C_TOOLTIP = from_src_ont.C_TOOLTIP;
 													target_ont_tmp.M_APPLIED_PATH = from_OE_ONT.M_APPLIED_PATH;
@@ -22667,11 +20926,11 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 															.startsWith("l")
 
 													) {
-														to_cd_dim_tmp.CONCEPT_PATH = from_OE_ONT.TREE_PATH;
-														to_cd_dim_tmp.CONCEPT_CD = from_OE_ONT.TREE_PATH
+														to_cd_dim_tmp.CONCEPT_PATH = from_OE_ONT.STAGING_PATH;
+														to_cd_dim_tmp.CONCEPT_CD = from_OE_ONT.STAGING_PATH
 																.substring(
 																		0,
-																		from_OE_ONT.TREE_PATH
+																		from_OE_ONT.STAGING_PATH
 																				.length() - 1)
 																.replaceAll(
 																		"\\\\",
@@ -22698,11 +20957,11 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 															.startsWith("r")
 
 													) {
-														to_mod_dim_tmp.MODIFIER_PATH = from_OE_ONT.TREE_PATH;
-														to_mod_dim_tmp.MODIFIER_CD = from_OE_ONT.TREE_PATH
+														to_mod_dim_tmp.MODIFIER_PATH = from_OE_ONT.STAGING_PATH;
+														to_mod_dim_tmp.MODIFIER_CD = from_OE_ONT.STAGING_PATH
 																.substring(
 																		0,
-																		from_OE_ONT.TREE_PATH
+																		from_OE_ONT.STAGING_PATH
 																				.length() - 1)
 																.replaceAll(
 																		"\\\\",
@@ -22735,14 +20994,16 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 													target_ont_tmp.C_SYNONYM_CD = "N";
 													target_ont_tmp.C_VISUALATTRIBUTES = from_OE_ONT.VISUALATTRIBUTES;
 													target_ont_tmp.C_TOTALNUM = from_src_ont.C_TOTALNUM;
-													target_ont_tmp.C_BASECODE = from_src_ont.C_BASECODE;
+													target_ont_tmp.C_BASECODE = from_OE_ONT.BASECODE;
 													target_ont_tmp.C_METADATAXML = from_src_ont.C_METADATAXML;
 													target_ont_tmp.C_FACTTABLECOLUMN = "concept_cd";
 													target_ont_tmp.C_TABLENAME = "concept_dimension";
 													target_ont_tmp.C_COLUMNNAME = "concept_path";
 													target_ont_tmp.C_COLUMNDATATYPE = "T";
 													target_ont_tmp.C_OPERATOR = "LIKE";
-													target_ont_tmp.C_DIMCODE = from_OE_ONT.TREE_PATH;
+													target_ont_tmp.C_DIMCODE = from_OE_ONT.STAGING_PATH
+															.length() > 0 ? from_OE_ONT.STAGING_PATH
+															: from_OE_ONT.TREE_PATH;
 													target_ont_tmp.C_COMMENT = from_src_ont.C_COMMENT;
 													target_ont_tmp.C_TOOLTIP = from_src_ont.C_TOOLTIP;
 													target_ont_tmp.M_APPLIED_PATH = "@";
@@ -22775,11 +21036,11 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 														)) {
 													to_cd_dim_tmp = new to_cd_dimStruct();
 
-													to_cd_dim_tmp.CONCEPT_PATH = from_OE_ONT.TREE_PATH;
-													to_cd_dim_tmp.CONCEPT_CD = from_OE_ONT.TREE_PATH
+													to_cd_dim_tmp.CONCEPT_PATH = from_OE_ONT.STAGING_PATH;
+													to_cd_dim_tmp.CONCEPT_CD = from_OE_ONT.STAGING_PATH
 															.substring(
 																	0,
-																	from_OE_ONT.TREE_PATH
+																	from_OE_ONT.STAGING_PATH
 																			.length() - 1)
 															.replaceAll("\\\\",
 																	"|");
@@ -22808,11 +21069,11 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 														)) {
 													to_mod_dim_tmp = new to_mod_dimStruct();
 
-													to_mod_dim_tmp.MODIFIER_PATH = from_OE_ONT.TREE_PATH;
-													to_mod_dim_tmp.MODIFIER_CD = from_OE_ONT.TREE_PATH
+													to_mod_dim_tmp.MODIFIER_PATH = from_OE_ONT.STAGING_PATH;
+													to_mod_dim_tmp.MODIFIER_CD = from_OE_ONT.STAGING_PATH
 															.substring(
 																	0,
-																	from_OE_ONT.TREE_PATH
+																	from_OE_ONT.STAGING_PATH
 																			.length() - 1)
 															.replaceAll("\\\\",
 																	"|");
@@ -25925,7 +24186,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 										if (!rejectedInnerJoin_tMap_21) {
 
 											// # Output table : 'toCD_Mod'
-											toCD_Mod_tmp.CONCEPT_PATH = row43.TREE_PATH;
+											toCD_Mod_tmp.CONCEPT_PATH = row43.STAGING_PATH;
 											toCD_Mod_tmp.CONCEPT_CD = row49.CONCEPT_CD;
 											toCD_Mod_tmp.NAME_CHAR = row43.NAME;
 											toCD_Mod_tmp.CONCEPT_BLOB = null;
@@ -29475,6 +27736,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.ENDDATE_SOURCE_PATH;
 		}
 
+		public String BASECODE;
+
+		public String getBASECODE() {
+			return this.BASECODE;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -29566,6 +27833,8 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.ENDDATE_SOURCE_PATH = readString(dis);
 
+					this.BASECODE = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -29626,6 +27895,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				writeString(this.ENDDATE_SOURCE_PATH, dos);
 
+				// String
+
+				writeString(this.BASECODE, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -29649,6 +27922,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
 			sb.append(",STARTDATE_SOURCE_PATH=" + STARTDATE_SOURCE_PATH);
 			sb.append(",ENDDATE_SOURCE_PATH=" + ENDDATE_SOURCE_PATH);
+			sb.append(",BASECODE=" + BASECODE);
 			sb.append("]");
 
 			return sb.toString();
@@ -31504,7 +29778,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_3_1> fsi_tMap_3_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_3_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_3_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_3_1 createRowInstance() {
 						return new SortableRow_tMap_3_1();
 					}
@@ -32210,6 +30484,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 					String to_tmap__UPLOAD_ID;
 					String to_tmap__STARTDATE_SOURCE_PATH;
 					String to_tmap__ENDDATE_SOURCE_PATH;
+					String to_tmap__BASECODE;
 
 					public void fillFrom(to_tmapStruct to_tmap,
 							String exprKey_from_srxc_obsfct__CONCEPT_CD) {
@@ -32226,6 +30501,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						this.to_tmap__UPLOAD_ID = to_tmap.UPLOAD_ID;
 						this.to_tmap__STARTDATE_SOURCE_PATH = to_tmap.STARTDATE_SOURCE_PATH;
 						this.to_tmap__ENDDATE_SOURCE_PATH = to_tmap.ENDDATE_SOURCE_PATH;
+						this.to_tmap__BASECODE = to_tmap.BASECODE;
 						this.exprKey_from_srxc_obsfct__CONCEPT_CD = exprKey_from_srxc_obsfct__CONCEPT_CD;
 
 					}
@@ -32244,6 +30520,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						to_tmap.UPLOAD_ID = this.to_tmap__UPLOAD_ID;
 						to_tmap.STARTDATE_SOURCE_PATH = this.to_tmap__STARTDATE_SOURCE_PATH;
 						to_tmap.ENDDATE_SOURCE_PATH = this.to_tmap__ENDDATE_SOURCE_PATH;
+						to_tmap.BASECODE = this.to_tmap__BASECODE;
 
 					}
 
@@ -32324,6 +30601,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						sb.append("=");
 						sb.append(String
 								.valueOf(this.to_tmap__ENDDATE_SOURCE_PATH));
+
+						sb.append(", ");
+
+						sb.append("to_tmap__BASECODE");
+						sb.append("=");
+						sb.append(String.valueOf(this.to_tmap__BASECODE));
 
 						sb.append("]");
 
@@ -32585,6 +30868,26 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								length = dis.readInt();
 								if (length == -1) {
+									this.to_tmap__BASECODE = null;
+								} else {
+									if (length > to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
+										if (length < 1024
+												&& to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length == 0) {
+											to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[1024];
+										} else {
+											to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[2 * length];
+										}
+									}
+									dis.readFully(
+											to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
+											0, length);
+									this.to_tmap__BASECODE = new String(
+											to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
+											0, length);
+								}
+
+								length = dis.readInt();
+								if (length == -1) {
 									this.exprKey_from_srxc_obsfct__CONCEPT_CD = null;
 								} else {
 									if (length > to_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
@@ -32721,6 +31024,15 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								dos.write(byteArray);
 							}
 
+							if (this.to_tmap__BASECODE == null) {
+								dos.writeInt(-1);
+							} else {
+								byte[] byteArray = this.to_tmap__BASECODE
+										.getBytes();
+								dos.writeInt(byteArray.length);
+								dos.write(byteArray);
+							}
+
 							if (this.exprKey_from_srxc_obsfct__CONCEPT_CD == null) {
 								dos.writeInt(-1);
 							} else {
@@ -32740,7 +31052,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_4_1> fsi_tMap_4_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_4_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_4_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_4_1 createRowInstance() {
 						return new SortableRow_tMap_4_1();
 					}
@@ -32901,6 +31213,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								to_tmap_tmp.UPLOAD_ID = from_src_conc_dim.UPLOAD_ID;
 								to_tmap_tmp.STARTDATE_SOURCE_PATH = from_oe_target_ont.STARTDATE_STAGING_PATH;
 								to_tmap_tmp.ENDDATE_SOURCE_PATH = from_oe_target_ont.ENDDATE_STAGING_PATH;
+								to_tmap_tmp.BASECODE = from_oe_target_ont.BASECODE;
 								to_tmap = to_tmap_tmp;
 							} // closing inner join bracket (2)
 								// ###############################
@@ -33986,7 +32299,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_9_1> fsi_tMap_9_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_9_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_9_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_9_1 createRowInstance() {
 						return new SortableRow_tMap_9_1();
 					}
@@ -35264,7 +33577,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_9_2> fsi_tMap_9_2 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_9_2>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_9_2",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_9_2 createRowInstance() {
 						return new SortableRow_tMap_9_2();
 					}
@@ -35363,8 +33676,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 						if (!tHash_Lookup_from_srxc_obsfct.hasNext()) { // G_TM_M_090
 
-							rejectedInnerJoin_tMap_4_TMAP_IN = true;
-
 							forceLoopfrom_srxc_obsfct = true;
 
 						} // G_TM_M_090
@@ -35410,36 +33721,33 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 							to_obs_fct = null;
 
-							if (!rejectedInnerJoin_tMap_4_TMAP_IN) {
-
-								// # Output table : 'to_obs_fct'
-								to_obs_fct_tmp.ENCOUNTER_NUM = from_srxc_obsfct.ENCOUNTER_NUM;
-								to_obs_fct_tmp.PATIENT_NUM = from_srxc_obsfct.PATIENT_NUM;
-								to_obs_fct_tmp.CONCEPT_CD = to_tmap.CONCEPT_CD;
-								to_obs_fct_tmp.PROVIDER_ID = from_srxc_obsfct.PROVIDER_ID;
-								to_obs_fct_tmp.START_DATE = from_srxc_obsfct.START_DATE;
-								to_obs_fct_tmp.MODIFIER_CD = from_srxc_obsfct.MODIFIER_CD;
-								to_obs_fct_tmp.INSTANCE_NUM = from_srxc_obsfct.INSTANCE_NUM;
-								to_obs_fct_tmp.VALTYPE_CD = from_srxc_obsfct.VALTYPE_CD;
-								to_obs_fct_tmp.TVAL_CHAR = from_srxc_obsfct.TVAL_CHAR;
-								to_obs_fct_tmp.NVAL_NUM = from_srxc_obsfct.NVAL_NUM;
-								to_obs_fct_tmp.VALUEFLAG_CD = from_srxc_obsfct.VALUEFLAG_CD;
-								to_obs_fct_tmp.QUANTITY_NUM = from_srxc_obsfct.QUANTITY_NUM;
-								to_obs_fct_tmp.UNITS_CD = from_srxc_obsfct.UNITS_CD;
-								to_obs_fct_tmp.END_DATE = from_srxc_obsfct.END_DATE;
-								to_obs_fct_tmp.LOCATION_CD = from_srxc_obsfct.LOCATION_CD;
-								to_obs_fct_tmp.OBSERVATION_BLOB = from_srxc_obsfct.OBSERVATION_BLOB;
-								to_obs_fct_tmp.CONFIDENCE_NUM = from_srxc_obsfct.CONFIDENCE_NUM;
-								to_obs_fct_tmp.UPDATE_DATE = from_srxc_obsfct.UPDATE_DATE;
-								to_obs_fct_tmp.DOWNLOAD_DATE = from_srxc_obsfct.DOWNLOAD_DATE;
-								to_obs_fct_tmp.IMPORT_DATE = from_srxc_obsfct.IMPORT_DATE;
-								to_obs_fct_tmp.SOURCESYSTEM_CD = from_srxc_obsfct.SOURCESYSTEM_CD;
-								to_obs_fct_tmp.UPLOAD_ID = from_srxc_obsfct.UPLOAD_ID;
-								to_obs_fct_tmp.STARTDATE_SOURCE_PATH = to_tmap.STARTDATE_SOURCE_PATH;
-								to_obs_fct_tmp.ENDDATE_SOURCE_PATH = to_tmap.ENDDATE_SOURCE_PATH;
-								to_obs_fct = to_obs_fct_tmp;
-							} // closing inner join bracket (2)
-								// ###############################
+							// # Output table : 'to_obs_fct'
+							to_obs_fct_tmp.ENCOUNTER_NUM = from_srxc_obsfct.ENCOUNTER_NUM;
+							to_obs_fct_tmp.PATIENT_NUM = from_srxc_obsfct.PATIENT_NUM;
+							to_obs_fct_tmp.CONCEPT_CD = to_tmap.BASECODE;
+							to_obs_fct_tmp.PROVIDER_ID = from_srxc_obsfct.PROVIDER_ID;
+							to_obs_fct_tmp.START_DATE = from_srxc_obsfct.START_DATE;
+							to_obs_fct_tmp.MODIFIER_CD = from_srxc_obsfct.MODIFIER_CD;
+							to_obs_fct_tmp.INSTANCE_NUM = from_srxc_obsfct.INSTANCE_NUM;
+							to_obs_fct_tmp.VALTYPE_CD = from_srxc_obsfct.VALTYPE_CD;
+							to_obs_fct_tmp.TVAL_CHAR = from_srxc_obsfct.TVAL_CHAR;
+							to_obs_fct_tmp.NVAL_NUM = from_srxc_obsfct.NVAL_NUM;
+							to_obs_fct_tmp.VALUEFLAG_CD = from_srxc_obsfct.VALUEFLAG_CD;
+							to_obs_fct_tmp.QUANTITY_NUM = from_srxc_obsfct.QUANTITY_NUM;
+							to_obs_fct_tmp.UNITS_CD = from_srxc_obsfct.UNITS_CD;
+							to_obs_fct_tmp.END_DATE = from_srxc_obsfct.END_DATE;
+							to_obs_fct_tmp.LOCATION_CD = from_srxc_obsfct.LOCATION_CD;
+							to_obs_fct_tmp.OBSERVATION_BLOB = from_srxc_obsfct.OBSERVATION_BLOB;
+							to_obs_fct_tmp.CONFIDENCE_NUM = from_srxc_obsfct.CONFIDENCE_NUM;
+							to_obs_fct_tmp.UPDATE_DATE = from_srxc_obsfct.UPDATE_DATE;
+							to_obs_fct_tmp.DOWNLOAD_DATE = from_srxc_obsfct.DOWNLOAD_DATE;
+							to_obs_fct_tmp.IMPORT_DATE = from_srxc_obsfct.IMPORT_DATE;
+							to_obs_fct_tmp.SOURCESYSTEM_CD = from_srxc_obsfct.SOURCESYSTEM_CD;
+							to_obs_fct_tmp.UPLOAD_ID = from_srxc_obsfct.UPLOAD_ID;
+							to_obs_fct_tmp.STARTDATE_SOURCE_PATH = to_tmap.STARTDATE_SOURCE_PATH;
+							to_obs_fct_tmp.ENDDATE_SOURCE_PATH = to_tmap.ENDDATE_SOURCE_PATH;
+							to_obs_fct = to_obs_fct_tmp;
+							// ###############################
 
 						} // end of Var scope
 
@@ -36476,7 +34784,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_8_1> fsi_tMap_8_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_8_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_8_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_8_1 createRowInstance() {
 						return new SortableRow_tMap_8_1();
 					}
@@ -37706,7 +36014,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_8_2> fsi_tMap_8_2 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_8_2>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_8_2",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_8_2 createRowInstance() {
 						return new SortableRow_tMap_8_2();
 					}
@@ -38526,7 +36834,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 					org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_6_1> fsi_tMap_6_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_6_1>(
 							context.folderMain + context.folderOutput + "/"
 									+ jobName + "_tMapData_" + pid
-									+ "_tMap_6_1", 2000000) {
+									+ "_tMap_6_1", 200000) {
 						public SortableRow_tMap_6_1 createRowInstance() {
 							return new SortableRow_tMap_6_1();
 						}
@@ -39917,7 +38225,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_7_1> fsi_tMap_7_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_7_1>(
 								context.folderMain + context.folderOutput + "/"
 										+ jobName + "_tMapData_" + pid
-										+ "_tMap_7_1", 2000000) {
+										+ "_tMap_7_1", 200000) {
 							public SortableRow_tMap_7_1 createRowInstance() {
 								return new SortableRow_tMap_7_1();
 							}
@@ -40016,172 +38324,196 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								tHash_Lookup_row9.lookup(row9HashKey);
 
+								if (!tHash_Lookup_row9.hasNext()) { // G_TM_M_090
+
+									rejectedInnerJoin_tMap_6_TMAP_IN = true;
+
+									forceLooprow9 = true;
+
+								} // G_TM_M_090
+
 							} // G_TM_M_020
+
+							else { // G 20 - G 21
+								forceLooprow9 = true;
+							} // G 21
 
 							row9Struct row9 = null;
 
-							row9Struct fromLookup_row9 = null;
-							row9 = row9Default;
+							while ((tHash_Lookup_row9 != null && tHash_Lookup_row9
+									.hasNext()) || forceLooprow9) { // G_TM_M_043
 
-							if (tHash_Lookup_row9 != null
-									&& tHash_Lookup_row9.hasNext()) { // G 099
+								// CALL close loop of lookup 'row9'
 
-								fromLookup_row9 = tHash_Lookup_row9.next();
+								row9Struct fromLookup_row9 = null;
+								row9 = row9Default;
 
-							} // G 099
+								if (!forceLooprow9) { // G 46
 
-							if (fromLookup_row9 != null) {
-								row9 = fromLookup_row9;
-							}
+									fromLookup_row9 = tHash_Lookup_row9.next();
 
-							// ###############################
-							{ // start of Var scope
+									if (fromLookup_row9 != null) {
+										row9 = fromLookup_row9;
+									}
+
+								} // G 46
+
+								forceLooprow9 = false;
 
 								// ###############################
-								// # Vars tables
+								{ // start of Var scope
 
-								Var__tMap_6_TMAP_IN__Struct Var = Var__tMap_6_TMAP_IN;// ###############################
-								// ###############################
-								// # Output tables
+									// ###############################
+									// # Vars tables
 
-								to_pat_mapping = null;
-								asdd = null;
+									Var__tMap_6_TMAP_IN__Struct Var = Var__tMap_6_TMAP_IN;// ###############################
+									// ###############################
+									// # Output tables
 
-								// # Output table : 'to_pat_mapping'
-								to_pat_mapping_tmp.PATIENT_IDE = row9.PATIENT_IDE;
-								to_pat_mapping_tmp.PATIENT_IDE_SOURCE = row9.PATIENT_IDE_SOURCE;
-								to_pat_mapping_tmp.PATIENT_NUM = to_patient_mapping.PATIENT_NUM;
-								to_pat_mapping_tmp.PATIENT_IDE_STATUS = row9.PATIENT_IDE_STATUS;
-								to_pat_mapping_tmp.UPLOAD_DATE = row9.UPLOAD_DATE;
-								to_pat_mapping_tmp.UPDATE_DATE = row9.UPDATE_DATE;
-								to_pat_mapping_tmp.DOWNLOAD_DATE = row9.DOWNLOAD_DATE;
-								to_pat_mapping_tmp.IMPORT_DATE = row9.IMPORT_DATE;
-								to_pat_mapping_tmp.SOURCESYSTEM_CD = row9.SOURCESYSTEM_CD;
-								to_pat_mapping_tmp.UPLOAD_ID = row9.UPLOAD_ID;
-								to_pat_mapping = to_pat_mapping_tmp;
+									to_pat_mapping = null;
+									asdd = null;
 
-								// # Output table : 'asdd'
-								asdd_tmp.PATIENT_IDE = row9.PATIENT_IDE;
-								asdd_tmp.PATIENT_IDE_SOURCE = row9.PATIENT_IDE_SOURCE;
-								asdd_tmp.PATIENT_NUM = row9.PATIENT_NUM;
-								asdd_tmp.PATIENT_IDE_STATUS = row9.PATIENT_IDE_STATUS;
-								asdd_tmp.UPLOAD_DATE = row9.UPLOAD_DATE;
-								asdd_tmp.UPDATE_DATE = row9.UPDATE_DATE;
-								asdd_tmp.DOWNLOAD_DATE = row9.DOWNLOAD_DATE;
-								asdd_tmp.IMPORT_DATE = row9.IMPORT_DATE;
-								asdd_tmp.SOURCESYSTEM_CD = row9.SOURCESYSTEM_CD;
-								asdd_tmp.UPLOAD_ID = row9.UPLOAD_ID;
-								asdd = asdd_tmp;
-								// ###############################
+									if (!rejectedInnerJoin_tMap_6_TMAP_IN) {
 
-							} // end of Var scope
+										// # Output table : 'to_pat_mapping'
+										to_pat_mapping_tmp.PATIENT_IDE = row9.PATIENT_IDE;
+										to_pat_mapping_tmp.PATIENT_IDE_SOURCE = row9.PATIENT_IDE_SOURCE;
+										to_pat_mapping_tmp.PATIENT_NUM = to_patient_mapping.PATIENT_NUM;
+										to_pat_mapping_tmp.PATIENT_IDE_STATUS = row9.PATIENT_IDE_STATUS;
+										to_pat_mapping_tmp.UPLOAD_DATE = row9.UPLOAD_DATE;
+										to_pat_mapping_tmp.UPDATE_DATE = row9.UPDATE_DATE;
+										to_pat_mapping_tmp.DOWNLOAD_DATE = row9.DOWNLOAD_DATE;
+										to_pat_mapping_tmp.IMPORT_DATE = row9.IMPORT_DATE;
+										to_pat_mapping_tmp.SOURCESYSTEM_CD = row9.SOURCESYSTEM_CD;
+										to_pat_mapping_tmp.UPLOAD_ID = row9.UPLOAD_ID;
+										to_pat_mapping = to_pat_mapping_tmp;
 
-							rejectedInnerJoin_tMap_6_TMAP_IN = false;
+										// # Output table : 'asdd'
+										asdd_tmp.PATIENT_IDE = row9.PATIENT_IDE;
+										asdd_tmp.PATIENT_IDE_SOURCE = row9.PATIENT_IDE_SOURCE;
+										asdd_tmp.PATIENT_NUM = row9.PATIENT_NUM;
+										asdd_tmp.PATIENT_IDE_STATUS = row9.PATIENT_IDE_STATUS;
+										asdd_tmp.UPLOAD_DATE = row9.UPLOAD_DATE;
+										asdd_tmp.UPDATE_DATE = row9.UPDATE_DATE;
+										asdd_tmp.DOWNLOAD_DATE = row9.DOWNLOAD_DATE;
+										asdd_tmp.IMPORT_DATE = row9.IMPORT_DATE;
+										asdd_tmp.SOURCESYSTEM_CD = row9.SOURCESYSTEM_CD;
+										asdd_tmp.UPLOAD_ID = row9.UPLOAD_ID;
+										asdd = asdd_tmp;
+									} // closing inner join bracket (2)
+										// ###############################
 
-							tos_count_tMap_6_TMAP_IN++;
+								} // end of Var scope
 
-							/**
-							 * [tMap_6_TMAP_IN main ] stop
-							 */
-							// Start of branch "to_pat_mapping"
-							if (to_pat_mapping != null) {
+								rejectedInnerJoin_tMap_6_TMAP_IN = false;
+
+								tos_count_tMap_6_TMAP_IN++;
 
 								/**
-								 * [tFileOutputDelimited_10 main ] start
+								 * [tMap_6_TMAP_IN main ] stop
 								 */
+								// Start of branch "to_pat_mapping"
+								if (to_pat_mapping != null) {
 
-								currentComponent = "tFileOutputDelimited_10";
+									/**
+									 * [tFileOutputDelimited_10 main ] start
+									 */
 
-								String[] rowtFileOutputDelimited_10 = new String[10];
+									currentComponent = "tFileOutputDelimited_10";
 
-								rowtFileOutputDelimited_10[0] = to_pat_mapping.PATIENT_IDE == null ? ""
-										: to_pat_mapping.PATIENT_IDE;
+									String[] rowtFileOutputDelimited_10 = new String[10];
 
-								rowtFileOutputDelimited_10[1] = to_pat_mapping.PATIENT_IDE_SOURCE == null ? ""
-										: to_pat_mapping.PATIENT_IDE_SOURCE;
+									rowtFileOutputDelimited_10[0] = to_pat_mapping.PATIENT_IDE == null ? ""
+											: to_pat_mapping.PATIENT_IDE;
 
-								rowtFileOutputDelimited_10[2] = to_pat_mapping.PATIENT_NUM == null ? ""
-										: to_pat_mapping.PATIENT_NUM
-												.toPlainString();
+									rowtFileOutputDelimited_10[1] = to_pat_mapping.PATIENT_IDE_SOURCE == null ? ""
+											: to_pat_mapping.PATIENT_IDE_SOURCE;
 
-								rowtFileOutputDelimited_10[3] = to_pat_mapping.PATIENT_IDE_STATUS == null ? ""
-										: to_pat_mapping.PATIENT_IDE_STATUS;
+									rowtFileOutputDelimited_10[2] = to_pat_mapping.PATIENT_NUM == null ? ""
+											: to_pat_mapping.PATIENT_NUM
+													.toPlainString();
 
-								rowtFileOutputDelimited_10[4] = to_pat_mapping.UPLOAD_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												to_pat_mapping.UPLOAD_DATE,
-												"dd-MM-yyyy");
+									rowtFileOutputDelimited_10[3] = to_pat_mapping.PATIENT_IDE_STATUS == null ? ""
+											: to_pat_mapping.PATIENT_IDE_STATUS;
 
-								rowtFileOutputDelimited_10[5] = to_pat_mapping.UPDATE_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												to_pat_mapping.UPDATE_DATE,
-												"dd-MM-yyyy");
+									rowtFileOutputDelimited_10[4] = to_pat_mapping.UPLOAD_DATE == null ? ""
+											: FormatterUtils.format_Date(
+													to_pat_mapping.UPLOAD_DATE,
+													"dd-MM-yyyy");
 
-								rowtFileOutputDelimited_10[6] = to_pat_mapping.DOWNLOAD_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												to_pat_mapping.DOWNLOAD_DATE,
-												"dd-MM-yyyy");
+									rowtFileOutputDelimited_10[5] = to_pat_mapping.UPDATE_DATE == null ? ""
+											: FormatterUtils.format_Date(
+													to_pat_mapping.UPDATE_DATE,
+													"dd-MM-yyyy");
 
-								rowtFileOutputDelimited_10[7] = to_pat_mapping.IMPORT_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												to_pat_mapping.IMPORT_DATE,
-												"dd-MM-yyyy");
+									rowtFileOutputDelimited_10[6] = to_pat_mapping.DOWNLOAD_DATE == null ? ""
+											: FormatterUtils
+													.format_Date(
+															to_pat_mapping.DOWNLOAD_DATE,
+															"dd-MM-yyyy");
 
-								rowtFileOutputDelimited_10[8] = to_pat_mapping.SOURCESYSTEM_CD == null ? ""
-										: to_pat_mapping.SOURCESYSTEM_CD;
+									rowtFileOutputDelimited_10[7] = to_pat_mapping.IMPORT_DATE == null ? ""
+											: FormatterUtils.format_Date(
+													to_pat_mapping.IMPORT_DATE,
+													"dd-MM-yyyy");
 
-								rowtFileOutputDelimited_10[9] = to_pat_mapping.UPLOAD_ID == null ? ""
-										: to_pat_mapping.UPLOAD_ID;
+									rowtFileOutputDelimited_10[8] = to_pat_mapping.SOURCESYSTEM_CD == null ? ""
+											: to_pat_mapping.SOURCESYSTEM_CD;
 
-								nb_line_tFileOutputDelimited_10++;
-								CsvWritertFileOutputDelimited_10
-										.writeNext(rowtFileOutputDelimited_10);
+									rowtFileOutputDelimited_10[9] = to_pat_mapping.UPLOAD_ID == null ? ""
+											: to_pat_mapping.UPLOAD_ID;
 
-								tos_count_tFileOutputDelimited_10++;
+									nb_line_tFileOutputDelimited_10++;
+									CsvWritertFileOutputDelimited_10
+											.writeNext(rowtFileOutputDelimited_10);
 
-								/**
-								 * [tFileOutputDelimited_10 main ] stop
-								 */
+									tos_count_tFileOutputDelimited_10++;
 
-							} // End of branch "to_pat_mapping"
+									/**
+									 * [tFileOutputDelimited_10 main ] stop
+									 */
 
-							// Start of branch "asdd"
-							if (asdd != null) {
+								} // End of branch "to_pat_mapping"
 
-								/**
-								 * [tMap_7_TMAP_OUT main ] start
-								 */
+								// Start of branch "asdd"
+								if (asdd != null) {
 
-								currentComponent = "tMap_7_TMAP_OUT";
+									/**
+									 * [tMap_7_TMAP_OUT main ] start
+									 */
 
-								boolean hasCasePrimitiveKeyWithNull_tMap_7_TMAP_OUT = false;
+									currentComponent = "tMap_7_TMAP_OUT";
 
-								hasCasePrimitiveKeyWithNull_tMap_7_TMAP_OUT = false;
+									boolean hasCasePrimitiveKeyWithNull_tMap_7_TMAP_OUT = false;
 
-								BigDecimal exprKey_row10__PATIENT_NUM = asdd.PATIENT_NUM;
+									hasCasePrimitiveKeyWithNull_tMap_7_TMAP_OUT = false;
 
-								SortableRow_tMap_7_1 sortableRow_tMap_7_1 = fsi_tMap_7_1
-										.getNextFreeRow();
+									BigDecimal exprKey_row10__PATIENT_NUM = asdd.PATIENT_NUM;
 
-								sortableRow_tMap_7_1.fillFrom(asdd,
-										exprKey_row10__PATIENT_NUM);
+									SortableRow_tMap_7_1 sortableRow_tMap_7_1 = fsi_tMap_7_1
+											.getNextFreeRow();
 
-								fsi_tMap_7_1.put(sortableRow_tMap_7_1);
+									sortableRow_tMap_7_1.fillFrom(asdd,
+											exprKey_row10__PATIENT_NUM);
 
-								// ###############################
-								// # Input tables (lookups)
-								boolean rejectedInnerJoin_tMap_7_TMAP_OUT = false;
-								boolean mainRowRejected_tMap_7_TMAP_OUT = false;
+									fsi_tMap_7_1.put(sortableRow_tMap_7_1);
 
-								// ###############################
+									// ###############################
+									// # Input tables (lookups)
+									boolean rejectedInnerJoin_tMap_7_TMAP_OUT = false;
+									boolean mainRowRejected_tMap_7_TMAP_OUT = false;
 
-								tos_count_tMap_7_TMAP_OUT++;
+									// ###############################
 
-								/**
-								 * [tMap_7_TMAP_OUT main ] stop
-								 */
+									tos_count_tMap_7_TMAP_OUT++;
 
-							} // End of branch "asdd"
+									/**
+									 * [tMap_7_TMAP_OUT main ] stop
+									 */
+
+								} // End of branch "asdd"
+
+							} // close loop of lookup 'row9' // G_TM_M_043
 
 						} // G_TM_M_250 close loop read file data '1'
 
@@ -44190,6 +42522,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.M_APPLIED_PATH;
 		}
 
+		public String BASECODE;
+
+		public String getBASECODE() {
+			return this.BASECODE;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -44283,6 +42621,8 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.M_APPLIED_PATH = readString(dis);
 
+					this.BASECODE = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -44347,6 +42687,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				writeString(this.M_APPLIED_PATH, dos);
 
+				// String
+
+				writeString(this.BASECODE, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -44371,6 +42715,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",STARTDATE_SOURCE_PATH=" + STARTDATE_SOURCE_PATH);
 			sb.append(",ENDDATE_SOURCE_PATH=" + ENDDATE_SOURCE_PATH);
 			sb.append(",M_APPLIED_PATH=" + M_APPLIED_PATH);
+			sb.append(",BASECODE=" + BASECODE);
 			sb.append("]");
 
 			return sb.toString();
@@ -46201,7 +44546,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_12_1> fsi_tMap_12_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_12_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_12_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_12_1 createRowInstance() {
 						return new SortableRow_tMap_12_1();
 					}
@@ -46897,6 +45242,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 					String copyOfto_tmap__STARTDATE_SOURCE_PATH;
 					String copyOfto_tmap__ENDDATE_SOURCE_PATH;
 					String copyOfto_tmap__M_APPLIED_PATH;
+					String copyOfto_tmap__BASECODE;
 
 					public void fillFrom(copyOfto_tmapStruct copyOfto_tmap,
 							String exprKey_row29__MODIFIER_CD) {
@@ -46914,6 +45260,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						this.copyOfto_tmap__STARTDATE_SOURCE_PATH = copyOfto_tmap.STARTDATE_SOURCE_PATH;
 						this.copyOfto_tmap__ENDDATE_SOURCE_PATH = copyOfto_tmap.ENDDATE_SOURCE_PATH;
 						this.copyOfto_tmap__M_APPLIED_PATH = copyOfto_tmap.M_APPLIED_PATH;
+						this.copyOfto_tmap__BASECODE = copyOfto_tmap.BASECODE;
 						this.exprKey_row29__MODIFIER_CD = exprKey_row29__MODIFIER_CD;
 
 					}
@@ -46933,6 +45280,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						copyOfto_tmap.STARTDATE_SOURCE_PATH = this.copyOfto_tmap__STARTDATE_SOURCE_PATH;
 						copyOfto_tmap.ENDDATE_SOURCE_PATH = this.copyOfto_tmap__ENDDATE_SOURCE_PATH;
 						copyOfto_tmap.M_APPLIED_PATH = this.copyOfto_tmap__M_APPLIED_PATH;
+						copyOfto_tmap.BASECODE = this.copyOfto_tmap__BASECODE;
 
 					}
 
@@ -47027,6 +45375,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						sb.append("=");
 						sb.append(String
 								.valueOf(this.copyOfto_tmap__M_APPLIED_PATH));
+
+						sb.append(", ");
+
+						sb.append("copyOfto_tmap__BASECODE");
+						sb.append("=");
+						sb.append(String.valueOf(this.copyOfto_tmap__BASECODE));
 
 						sb.append("]");
 
@@ -47308,6 +45662,26 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								length = dis.readInt();
 								if (length == -1) {
+									this.copyOfto_tmap__BASECODE = null;
+								} else {
+									if (length > copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
+										if (length < 1024
+												&& copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length == 0) {
+											copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[1024];
+										} else {
+											copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[2 * length];
+										}
+									}
+									dis.readFully(
+											copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
+											0, length);
+									this.copyOfto_tmap__BASECODE = new String(
+											copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
+											0, length);
+								}
+
+								length = dis.readInt();
+								if (length == -1) {
 									this.exprKey_row29__MODIFIER_CD = null;
 								} else {
 									if (length > copyOfto_tmapStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
@@ -47453,6 +45827,15 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								dos.write(byteArray);
 							}
 
+							if (this.copyOfto_tmap__BASECODE == null) {
+								dos.writeInt(-1);
+							} else {
+								byte[] byteArray = this.copyOfto_tmap__BASECODE
+										.getBytes();
+								dos.writeInt(byteArray.length);
+								dos.write(byteArray);
+							}
+
 							if (this.exprKey_row29__MODIFIER_CD == null) {
 								dos.writeInt(-1);
 							} else {
@@ -47472,7 +45855,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_13_1> fsi_tMap_13_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_13_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_13_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_13_1 createRowInstance() {
 						return new SortableRow_tMap_13_1();
 					}
@@ -47633,6 +46016,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								copyOfto_tmap_tmp.STARTDATE_SOURCE_PATH = row28.STARTDATE_STAGING_PATH;
 								copyOfto_tmap_tmp.ENDDATE_SOURCE_PATH = row28.ENDDATE_STAGING_PATH;
 								copyOfto_tmap_tmp.M_APPLIED_PATH = row28.M_APPLIED_PATH;
+								copyOfto_tmap_tmp.BASECODE = row28.BASECODE;
 								copyOfto_tmap = copyOfto_tmap_tmp;
 							} // closing inner join bracket (2)
 								// ###############################
@@ -48738,7 +47122,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_15_1> fsi_tMap_15_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_15_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_15_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_15_1 createRowInstance() {
 						return new SortableRow_tMap_15_1();
 					}
@@ -50036,7 +48420,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_15_2> fsi_tMap_15_2 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_15_2>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_15_2",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_15_2 createRowInstance() {
 						return new SortableRow_tMap_15_2();
 					}
@@ -50135,8 +48519,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 						if (!tHash_Lookup_row29.hasNext()) { // G_TM_M_090
 
-							rejectedInnerJoin_tMap_13_TMAP_IN = true;
-
 							forceLooprow29 = true;
 
 						} // G_TM_M_090
@@ -50181,36 +48563,33 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 							copyOfto_obs_fct = null;
 
-							if (!rejectedInnerJoin_tMap_13_TMAP_IN) {
-
-								// # Output table : 'copyOfto_obs_fct'
-								copyOfto_obs_fct_tmp.ENCOUNTER_NUM = row29.ENCOUNTER_NUM;
-								copyOfto_obs_fct_tmp.PATIENT_NUM = row29.PATIENT_NUM;
-								copyOfto_obs_fct_tmp.CONCEPT_CD = row29.CONCEPT_CD;
-								copyOfto_obs_fct_tmp.PROVIDER_ID = row29.PROVIDER_ID;
-								copyOfto_obs_fct_tmp.START_DATE = row29.START_DATE;
-								copyOfto_obs_fct_tmp.MODIFIER_CD = row29.MODIFIER_CD;
-								copyOfto_obs_fct_tmp.INSTANCE_NUM = row29.INSTANCE_NUM;
-								copyOfto_obs_fct_tmp.VALTYPE_CD = row29.VALTYPE_CD;
-								copyOfto_obs_fct_tmp.TVAL_CHAR = row29.TVAL_CHAR;
-								copyOfto_obs_fct_tmp.NVAL_NUM = row29.NVAL_NUM;
-								copyOfto_obs_fct_tmp.VALUEFLAG_CD = row29.VALUEFLAG_CD;
-								copyOfto_obs_fct_tmp.QUANTITY_NUM = row29.QUANTITY_NUM;
-								copyOfto_obs_fct_tmp.UNITS_CD = row29.UNITS_CD;
-								copyOfto_obs_fct_tmp.END_DATE = row29.END_DATE;
-								copyOfto_obs_fct_tmp.LOCATION_CD = row29.LOCATION_CD;
-								copyOfto_obs_fct_tmp.OBSERVATION_BLOB = row29.OBSERVATION_BLOB;
-								copyOfto_obs_fct_tmp.CONFIDENCE_NUM = row29.CONFIDENCE_NUM;
-								copyOfto_obs_fct_tmp.UPDATE_DATE = row29.UPDATE_DATE;
-								copyOfto_obs_fct_tmp.DOWNLOAD_DATE = row29.DOWNLOAD_DATE;
-								copyOfto_obs_fct_tmp.IMPORT_DATE = row29.IMPORT_DATE;
-								copyOfto_obs_fct_tmp.SOURCESYSTEM_CD = row29.SOURCESYSTEM_CD;
-								copyOfto_obs_fct_tmp.UPLOAD_ID = row29.UPLOAD_ID;
-								copyOfto_obs_fct_tmp.STARTDATE_SOURCE_PATH = copyOfto_tmap.STARTDATE_SOURCE_PATH;
-								copyOfto_obs_fct_tmp.ENDDATE_SOURCE_PATH = copyOfto_tmap.ENDDATE_SOURCE_PATH;
-								copyOfto_obs_fct = copyOfto_obs_fct_tmp;
-							} // closing inner join bracket (2)
-								// ###############################
+							// # Output table : 'copyOfto_obs_fct'
+							copyOfto_obs_fct_tmp.ENCOUNTER_NUM = row29.ENCOUNTER_NUM;
+							copyOfto_obs_fct_tmp.PATIENT_NUM = row29.PATIENT_NUM;
+							copyOfto_obs_fct_tmp.CONCEPT_CD = copyOfto_tmap.BASECODE;
+							copyOfto_obs_fct_tmp.PROVIDER_ID = row29.PROVIDER_ID;
+							copyOfto_obs_fct_tmp.START_DATE = row29.START_DATE;
+							copyOfto_obs_fct_tmp.MODIFIER_CD = row29.MODIFIER_CD;
+							copyOfto_obs_fct_tmp.INSTANCE_NUM = row29.INSTANCE_NUM;
+							copyOfto_obs_fct_tmp.VALTYPE_CD = row29.VALTYPE_CD;
+							copyOfto_obs_fct_tmp.TVAL_CHAR = row29.TVAL_CHAR;
+							copyOfto_obs_fct_tmp.NVAL_NUM = row29.NVAL_NUM;
+							copyOfto_obs_fct_tmp.VALUEFLAG_CD = row29.VALUEFLAG_CD;
+							copyOfto_obs_fct_tmp.QUANTITY_NUM = row29.QUANTITY_NUM;
+							copyOfto_obs_fct_tmp.UNITS_CD = row29.UNITS_CD;
+							copyOfto_obs_fct_tmp.END_DATE = row29.END_DATE;
+							copyOfto_obs_fct_tmp.LOCATION_CD = row29.LOCATION_CD;
+							copyOfto_obs_fct_tmp.OBSERVATION_BLOB = row29.OBSERVATION_BLOB;
+							copyOfto_obs_fct_tmp.CONFIDENCE_NUM = row29.CONFIDENCE_NUM;
+							copyOfto_obs_fct_tmp.UPDATE_DATE = row29.UPDATE_DATE;
+							copyOfto_obs_fct_tmp.DOWNLOAD_DATE = row29.DOWNLOAD_DATE;
+							copyOfto_obs_fct_tmp.IMPORT_DATE = row29.IMPORT_DATE;
+							copyOfto_obs_fct_tmp.SOURCESYSTEM_CD = row29.SOURCESYSTEM_CD;
+							copyOfto_obs_fct_tmp.UPLOAD_ID = row29.UPLOAD_ID;
+							copyOfto_obs_fct_tmp.STARTDATE_SOURCE_PATH = copyOfto_tmap.STARTDATE_SOURCE_PATH;
+							copyOfto_obs_fct_tmp.ENDDATE_SOURCE_PATH = copyOfto_tmap.ENDDATE_SOURCE_PATH;
+							copyOfto_obs_fct = copyOfto_obs_fct_tmp;
+							// ###############################
 
 						} // end of Var scope
 
@@ -51254,7 +49633,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_14_1> fsi_tMap_14_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_14_1>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_14_1",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_14_1 createRowInstance() {
 						return new SortableRow_tMap_14_1();
 					}
@@ -52493,7 +50872,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_14_2> fsi_tMap_14_2 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_14_2>(
 						context.folderMain + context.folderOutput + "/"
 								+ jobName + "_tMapData_" + pid + "_tMap_14_2",
-						2000000) {
+						200000) {
 					public SortableRow_tMap_14_2 createRowInstance() {
 						return new SortableRow_tMap_14_2();
 					}
@@ -52687,12 +51066,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						row32HashKey.MODIFIER_CD = rsc_tMap_15_2.exprKey_row32__MODIFIER_CD;
 
 						tHash_Lookup_row32.lookup(row32HashKey);
-
-						if (!tHash_Lookup_row32.hasNext()) { // G_TM_M_090
-
-							rejectedInnerJoin_tMap_15_TMAP_IN = true;
-
-						} // G_TM_M_090
 
 					} // G_TM_M_020
 
@@ -53320,7 +51693,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 					org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_17_1> fsi_tMap_17_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_17_1>(
 							context.folderMain + context.folderOutput + "/"
 									+ jobName + "_tMapData_" + pid
-									+ "_tMap_17_1", 2000000) {
+									+ "_tMap_17_1", 200000) {
 						public SortableRow_tMap_17_1 createRowInstance() {
 							return new SortableRow_tMap_17_1();
 						}
@@ -54727,7 +53100,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_18_1> fsi_tMap_18_1 = new org.talend.designer.components.lookup.persistent.PersistentRowSorterIterator<SortableRow_tMap_18_1>(
 								context.folderMain + context.folderOutput + "/"
 										+ jobName + "_tMapData_" + pid
-										+ "_tMap_18_1", 2000000) {
+										+ "_tMap_18_1", 200000) {
 							public SortableRow_tMap_18_1 createRowInstance() {
 								return new SortableRow_tMap_18_1();
 							}
@@ -54828,6 +53201,8 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								if (!tHash_Lookup_row35.hasNext()) { // G_TM_M_090
 
+									rejectedInnerJoin_tMap_17_TMAP_IN = true;
+
 									forceLooprow35 = true;
 
 								} // G_TM_M_090
@@ -54874,32 +53249,36 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									copyOfto_pat_mapping = null;
 									copyOfasdd = null;
 
-									// # Output table : 'copyOfto_pat_mapping'
-									copyOfto_pat_mapping_tmp.PATIENT_IDE = row35.PATIENT_IDE;
-									copyOfto_pat_mapping_tmp.PATIENT_IDE_SOURCE = row35.PATIENT_IDE_SOURCE;
-									copyOfto_pat_mapping_tmp.PATIENT_NUM = copyOfto_patient_mapping.PATIENT_NUM;
-									copyOfto_pat_mapping_tmp.PATIENT_IDE_STATUS = row35.PATIENT_IDE_STATUS;
-									copyOfto_pat_mapping_tmp.UPLOAD_DATE = row35.UPLOAD_DATE;
-									copyOfto_pat_mapping_tmp.UPDATE_DATE = row35.UPDATE_DATE;
-									copyOfto_pat_mapping_tmp.DOWNLOAD_DATE = row35.DOWNLOAD_DATE;
-									copyOfto_pat_mapping_tmp.IMPORT_DATE = row35.IMPORT_DATE;
-									copyOfto_pat_mapping_tmp.SOURCESYSTEM_CD = row35.SOURCESYSTEM_CD;
-									copyOfto_pat_mapping_tmp.UPLOAD_ID = row35.UPLOAD_ID;
-									copyOfto_pat_mapping = copyOfto_pat_mapping_tmp;
+									if (!rejectedInnerJoin_tMap_17_TMAP_IN) {
 
-									// # Output table : 'copyOfasdd'
-									copyOfasdd_tmp.PATIENT_IDE = row35.PATIENT_IDE;
-									copyOfasdd_tmp.PATIENT_IDE_SOURCE = row35.PATIENT_IDE_SOURCE;
-									copyOfasdd_tmp.PATIENT_NUM = row35.PATIENT_NUM;
-									copyOfasdd_tmp.PATIENT_IDE_STATUS = row35.PATIENT_IDE_STATUS;
-									copyOfasdd_tmp.UPLOAD_DATE = row35.UPLOAD_DATE;
-									copyOfasdd_tmp.UPDATE_DATE = row35.UPDATE_DATE;
-									copyOfasdd_tmp.DOWNLOAD_DATE = row35.DOWNLOAD_DATE;
-									copyOfasdd_tmp.IMPORT_DATE = row35.IMPORT_DATE;
-									copyOfasdd_tmp.SOURCESYSTEM_CD = row35.SOURCESYSTEM_CD;
-									copyOfasdd_tmp.UPLOAD_ID = row35.UPLOAD_ID;
-									copyOfasdd = copyOfasdd_tmp;
-									// ###############################
+										// # Output table :
+										// 'copyOfto_pat_mapping'
+										copyOfto_pat_mapping_tmp.PATIENT_IDE = row35.PATIENT_IDE;
+										copyOfto_pat_mapping_tmp.PATIENT_IDE_SOURCE = row35.PATIENT_IDE_SOURCE;
+										copyOfto_pat_mapping_tmp.PATIENT_NUM = copyOfto_patient_mapping.PATIENT_NUM;
+										copyOfto_pat_mapping_tmp.PATIENT_IDE_STATUS = row35.PATIENT_IDE_STATUS;
+										copyOfto_pat_mapping_tmp.UPLOAD_DATE = row35.UPLOAD_DATE;
+										copyOfto_pat_mapping_tmp.UPDATE_DATE = row35.UPDATE_DATE;
+										copyOfto_pat_mapping_tmp.DOWNLOAD_DATE = row35.DOWNLOAD_DATE;
+										copyOfto_pat_mapping_tmp.IMPORT_DATE = row35.IMPORT_DATE;
+										copyOfto_pat_mapping_tmp.SOURCESYSTEM_CD = row35.SOURCESYSTEM_CD;
+										copyOfto_pat_mapping_tmp.UPLOAD_ID = row35.UPLOAD_ID;
+										copyOfto_pat_mapping = copyOfto_pat_mapping_tmp;
+
+										// # Output table : 'copyOfasdd'
+										copyOfasdd_tmp.PATIENT_IDE = row35.PATIENT_IDE;
+										copyOfasdd_tmp.PATIENT_IDE_SOURCE = row35.PATIENT_IDE_SOURCE;
+										copyOfasdd_tmp.PATIENT_NUM = row35.PATIENT_NUM;
+										copyOfasdd_tmp.PATIENT_IDE_STATUS = row35.PATIENT_IDE_STATUS;
+										copyOfasdd_tmp.UPLOAD_DATE = row35.UPLOAD_DATE;
+										copyOfasdd_tmp.UPDATE_DATE = row35.UPDATE_DATE;
+										copyOfasdd_tmp.DOWNLOAD_DATE = row35.DOWNLOAD_DATE;
+										copyOfasdd_tmp.IMPORT_DATE = row35.IMPORT_DATE;
+										copyOfasdd_tmp.SOURCESYSTEM_CD = row35.SOURCESYSTEM_CD;
+										copyOfasdd_tmp.UPLOAD_ID = row35.UPLOAD_ID;
+										copyOfasdd = copyOfasdd_tmp;
+									} // closing inner join bracket (2)
+										// ###############################
 
 								} // end of Var scope
 
@@ -56680,14 +55059,14 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								csvReadertFileInputDelimited_26 = new com.talend.csv.CSVReader(
 										(java.io.InputStream) filename_tFileInputDelimited_26,
 										fieldSeparator_tFileInputDelimited_26[0],
-										"ISO-8859-15");
+										"UTF-8");
 							} else {
 								csvReadertFileInputDelimited_26 = new com.talend.csv.CSVReader(
 										new java.io.BufferedReader(
 												new java.io.InputStreamReader(
 														new java.io.FileInputStream(
 																String.valueOf(filename_tFileInputDelimited_26)),
-														"ISO-8859-15")),
+														"UTF-8")),
 										fieldSeparator_tFileInputDelimited_26[0]);
 							}
 
@@ -56746,14 +55125,14 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									csvReadertFileInputDelimited_26 = new com.talend.csv.CSVReader(
 											(java.io.InputStream) filename_tFileInputDelimited_26,
 											fieldSeparator_tFileInputDelimited_26[0],
-											"ISO-8859-15");
+											"UTF-8");
 								} else {
 									csvReadertFileInputDelimited_26 = new com.talend.csv.CSVReader(
 											new java.io.BufferedReader(
 													new java.io.InputStreamReader(
 															new java.io.FileInputStream(
 																	String.valueOf(filename_tFileInputDelimited_26)),
-															"ISO-8859-15")),
+															"UTF-8")),
 											fieldSeparator_tFileInputDelimited_26[0]);
 								}
 								csvReadertFileInputDelimited_26
@@ -58440,14 +56819,14 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								csvReadertFileInputDelimited_18 = new com.talend.csv.CSVReader(
 										(java.io.InputStream) filename_tFileInputDelimited_18,
 										fieldSeparator_tFileInputDelimited_18[0],
-										"ISO-8859-15");
+										"UTF-8");
 							} else {
 								csvReadertFileInputDelimited_18 = new com.talend.csv.CSVReader(
 										new java.io.BufferedReader(
 												new java.io.InputStreamReader(
 														new java.io.FileInputStream(
 																String.valueOf(filename_tFileInputDelimited_18)),
-														"ISO-8859-15")),
+														"UTF-8")),
 										fieldSeparator_tFileInputDelimited_18[0]);
 							}
 
@@ -58506,14 +56885,14 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									csvReadertFileInputDelimited_18 = new com.talend.csv.CSVReader(
 											(java.io.InputStream) filename_tFileInputDelimited_18,
 											fieldSeparator_tFileInputDelimited_18[0],
-											"ISO-8859-15");
+											"UTF-8");
 								} else {
 									csvReadertFileInputDelimited_18 = new com.talend.csv.CSVReader(
 											new java.io.BufferedReader(
 													new java.io.InputStreamReader(
 															new java.io.FileInputStream(
 																	String.valueOf(filename_tFileInputDelimited_18)),
-															"ISO-8859-15")),
+															"UTF-8")),
 											fieldSeparator_tFileInputDelimited_18[0]);
 								}
 								csvReadertFileInputDelimited_18
@@ -59211,3670 +57590,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								"", "", "", "");
 			}
 
-			tFileInputDelimited_29Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tCreateTemporaryFile_13_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row45Struct implements
-			routines.system.IPersistableRow<row45Struct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-
-		public BigDecimal ENCOUNTER_NUM;
-
-		public BigDecimal getENCOUNTER_NUM() {
-			return this.ENCOUNTER_NUM;
-		}
-
-		public BigDecimal PATIENT_NUM;
-
-		public BigDecimal getPATIENT_NUM() {
-			return this.PATIENT_NUM;
-		}
-
-		public String CONCEPT_CD;
-
-		public String getCONCEPT_CD() {
-			return this.CONCEPT_CD;
-		}
-
-		public String PROVIDER_ID;
-
-		public String getPROVIDER_ID() {
-			return this.PROVIDER_ID;
-		}
-
-		public java.util.Date START_DATE;
-
-		public java.util.Date getSTART_DATE() {
-			return this.START_DATE;
-		}
-
-		public String MODIFIER_CD;
-
-		public String getMODIFIER_CD() {
-			return this.MODIFIER_CD;
-		}
-
-		public String INSTANCE_NUM;
-
-		public String getINSTANCE_NUM() {
-			return this.INSTANCE_NUM;
-		}
-
-		public String VALTYPE_CD;
-
-		public String getVALTYPE_CD() {
-			return this.VALTYPE_CD;
-		}
-
-		public String TVAL_CHAR;
-
-		public String getTVAL_CHAR() {
-			return this.TVAL_CHAR;
-		}
-
-		public Float NVAL_NUM;
-
-		public Float getNVAL_NUM() {
-			return this.NVAL_NUM;
-		}
-
-		public String VALUEFLAG_CD;
-
-		public String getVALUEFLAG_CD() {
-			return this.VALUEFLAG_CD;
-		}
-
-		public String QUANTITY_NUM;
-
-		public String getQUANTITY_NUM() {
-			return this.QUANTITY_NUM;
-		}
-
-		public String UNITS_CD;
-
-		public String getUNITS_CD() {
-			return this.UNITS_CD;
-		}
-
-		public java.util.Date END_DATE;
-
-		public java.util.Date getEND_DATE() {
-			return this.END_DATE;
-		}
-
-		public String LOCATION_CD;
-
-		public String getLOCATION_CD() {
-			return this.LOCATION_CD;
-		}
-
-		public String OBSERVATION_BLOB;
-
-		public String getOBSERVATION_BLOB() {
-			return this.OBSERVATION_BLOB;
-		}
-
-		public String CONFIDENCE_NUM;
-
-		public String getCONFIDENCE_NUM() {
-			return this.CONFIDENCE_NUM;
-		}
-
-		public java.util.Date UPDATE_DATE;
-
-		public java.util.Date getUPDATE_DATE() {
-			return this.UPDATE_DATE;
-		}
-
-		public java.util.Date DOWNLOAD_DATE;
-
-		public java.util.Date getDOWNLOAD_DATE() {
-			return this.DOWNLOAD_DATE;
-		}
-
-		public java.util.Date IMPORT_DATE;
-
-		public java.util.Date getIMPORT_DATE() {
-			return this.IMPORT_DATE;
-		}
-
-		public String SOURCESYSTEM_CD;
-
-		public String getSOURCESYSTEM_CD() {
-			return this.SOURCESYSTEM_CD;
-		}
-
-		public String UPLOAD_ID;
-
-		public String getUPLOAD_ID() {
-			return this.UPLOAD_ID;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget) {
-
-				try {
-
-					int length = 0;
-
-					this.ENCOUNTER_NUM = (BigDecimal) dis.readObject();
-
-					this.PATIENT_NUM = (BigDecimal) dis.readObject();
-
-					this.CONCEPT_CD = readString(dis);
-
-					this.PROVIDER_ID = readString(dis);
-
-					this.START_DATE = readDate(dis);
-
-					this.MODIFIER_CD = readString(dis);
-
-					this.INSTANCE_NUM = readString(dis);
-
-					this.VALTYPE_CD = readString(dis);
-
-					this.TVAL_CHAR = readString(dis);
-
-					length = dis.readByte();
-					if (length == -1) {
-						this.NVAL_NUM = null;
-					} else {
-						this.NVAL_NUM = dis.readFloat();
-					}
-
-					this.VALUEFLAG_CD = readString(dis);
-
-					this.QUANTITY_NUM = readString(dis);
-
-					this.UNITS_CD = readString(dis);
-
-					this.END_DATE = readDate(dis);
-
-					this.LOCATION_CD = readString(dis);
-
-					this.OBSERVATION_BLOB = readString(dis);
-
-					this.CONFIDENCE_NUM = readString(dis);
-
-					this.UPDATE_DATE = readDate(dis);
-
-					this.DOWNLOAD_DATE = readDate(dis);
-
-					this.IMPORT_DATE = readDate(dis);
-
-					this.SOURCESYSTEM_CD = readString(dis);
-
-					this.UPLOAD_ID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				} catch (ClassNotFoundException eCNFE) {
-					throw new RuntimeException(eCNFE);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// BigDecimal
-
-				dos.writeObject(this.ENCOUNTER_NUM);
-
-				// BigDecimal
-
-				dos.writeObject(this.PATIENT_NUM);
-
-				// String
-
-				writeString(this.CONCEPT_CD, dos);
-
-				// String
-
-				writeString(this.PROVIDER_ID, dos);
-
-				// java.util.Date
-
-				writeDate(this.START_DATE, dos);
-
-				// String
-
-				writeString(this.MODIFIER_CD, dos);
-
-				// String
-
-				writeString(this.INSTANCE_NUM, dos);
-
-				// String
-
-				writeString(this.VALTYPE_CD, dos);
-
-				// String
-
-				writeString(this.TVAL_CHAR, dos);
-
-				// Float
-
-				if (this.NVAL_NUM == null) {
-					dos.writeByte(-1);
-				} else {
-					dos.writeByte(0);
-					dos.writeFloat(this.NVAL_NUM);
-				}
-
-				// String
-
-				writeString(this.VALUEFLAG_CD, dos);
-
-				// String
-
-				writeString(this.QUANTITY_NUM, dos);
-
-				// String
-
-				writeString(this.UNITS_CD, dos);
-
-				// java.util.Date
-
-				writeDate(this.END_DATE, dos);
-
-				// String
-
-				writeString(this.LOCATION_CD, dos);
-
-				// String
-
-				writeString(this.OBSERVATION_BLOB, dos);
-
-				// String
-
-				writeString(this.CONFIDENCE_NUM, dos);
-
-				// java.util.Date
-
-				writeDate(this.UPDATE_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.DOWNLOAD_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.IMPORT_DATE, dos);
-
-				// String
-
-				writeString(this.SOURCESYSTEM_CD, dos);
-
-				// String
-
-				writeString(this.UPLOAD_ID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("ENCOUNTER_NUM=" + String.valueOf(ENCOUNTER_NUM));
-			sb.append(",PATIENT_NUM=" + String.valueOf(PATIENT_NUM));
-			sb.append(",CONCEPT_CD=" + CONCEPT_CD);
-			sb.append(",PROVIDER_ID=" + PROVIDER_ID);
-			sb.append(",START_DATE=" + String.valueOf(START_DATE));
-			sb.append(",MODIFIER_CD=" + MODIFIER_CD);
-			sb.append(",INSTANCE_NUM=" + INSTANCE_NUM);
-			sb.append(",VALTYPE_CD=" + VALTYPE_CD);
-			sb.append(",TVAL_CHAR=" + TVAL_CHAR);
-			sb.append(",NVAL_NUM=" + String.valueOf(NVAL_NUM));
-			sb.append(",VALUEFLAG_CD=" + VALUEFLAG_CD);
-			sb.append(",QUANTITY_NUM=" + QUANTITY_NUM);
-			sb.append(",UNITS_CD=" + UNITS_CD);
-			sb.append(",END_DATE=" + String.valueOf(END_DATE));
-			sb.append(",LOCATION_CD=" + LOCATION_CD);
-			sb.append(",OBSERVATION_BLOB=" + OBSERVATION_BLOB);
-			sb.append(",CONFIDENCE_NUM=" + CONFIDENCE_NUM);
-			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
-			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
-			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
-			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
-			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row45Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public static class row44Struct implements
-			routines.system.IPersistableRow<row44Struct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-
-		public BigDecimal ENCOUNTER_NUM;
-
-		public BigDecimal getENCOUNTER_NUM() {
-			return this.ENCOUNTER_NUM;
-		}
-
-		public BigDecimal PATIENT_NUM;
-
-		public BigDecimal getPATIENT_NUM() {
-			return this.PATIENT_NUM;
-		}
-
-		public String CONCEPT_CD;
-
-		public String getCONCEPT_CD() {
-			return this.CONCEPT_CD;
-		}
-
-		public String PROVIDER_ID;
-
-		public String getPROVIDER_ID() {
-			return this.PROVIDER_ID;
-		}
-
-		public java.util.Date START_DATE;
-
-		public java.util.Date getSTART_DATE() {
-			return this.START_DATE;
-		}
-
-		public String MODIFIER_CD;
-
-		public String getMODIFIER_CD() {
-			return this.MODIFIER_CD;
-		}
-
-		public String INSTANCE_NUM;
-
-		public String getINSTANCE_NUM() {
-			return this.INSTANCE_NUM;
-		}
-
-		public String VALTYPE_CD;
-
-		public String getVALTYPE_CD() {
-			return this.VALTYPE_CD;
-		}
-
-		public String TVAL_CHAR;
-
-		public String getTVAL_CHAR() {
-			return this.TVAL_CHAR;
-		}
-
-		public Float NVAL_NUM;
-
-		public Float getNVAL_NUM() {
-			return this.NVAL_NUM;
-		}
-
-		public String VALUEFLAG_CD;
-
-		public String getVALUEFLAG_CD() {
-			return this.VALUEFLAG_CD;
-		}
-
-		public String QUANTITY_NUM;
-
-		public String getQUANTITY_NUM() {
-			return this.QUANTITY_NUM;
-		}
-
-		public String UNITS_CD;
-
-		public String getUNITS_CD() {
-			return this.UNITS_CD;
-		}
-
-		public java.util.Date END_DATE;
-
-		public java.util.Date getEND_DATE() {
-			return this.END_DATE;
-		}
-
-		public String LOCATION_CD;
-
-		public String getLOCATION_CD() {
-			return this.LOCATION_CD;
-		}
-
-		public String OBSERVATION_BLOB;
-
-		public String getOBSERVATION_BLOB() {
-			return this.OBSERVATION_BLOB;
-		}
-
-		public String CONFIDENCE_NUM;
-
-		public String getCONFIDENCE_NUM() {
-			return this.CONFIDENCE_NUM;
-		}
-
-		public java.util.Date UPDATE_DATE;
-
-		public java.util.Date getUPDATE_DATE() {
-			return this.UPDATE_DATE;
-		}
-
-		public java.util.Date DOWNLOAD_DATE;
-
-		public java.util.Date getDOWNLOAD_DATE() {
-			return this.DOWNLOAD_DATE;
-		}
-
-		public java.util.Date IMPORT_DATE;
-
-		public java.util.Date getIMPORT_DATE() {
-			return this.IMPORT_DATE;
-		}
-
-		public String SOURCESYSTEM_CD;
-
-		public String getSOURCESYSTEM_CD() {
-			return this.SOURCESYSTEM_CD;
-		}
-
-		public String UPLOAD_ID;
-
-		public String getUPLOAD_ID() {
-			return this.UPLOAD_ID;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget) {
-
-				try {
-
-					int length = 0;
-
-					this.ENCOUNTER_NUM = (BigDecimal) dis.readObject();
-
-					this.PATIENT_NUM = (BigDecimal) dis.readObject();
-
-					this.CONCEPT_CD = readString(dis);
-
-					this.PROVIDER_ID = readString(dis);
-
-					this.START_DATE = readDate(dis);
-
-					this.MODIFIER_CD = readString(dis);
-
-					this.INSTANCE_NUM = readString(dis);
-
-					this.VALTYPE_CD = readString(dis);
-
-					this.TVAL_CHAR = readString(dis);
-
-					length = dis.readByte();
-					if (length == -1) {
-						this.NVAL_NUM = null;
-					} else {
-						this.NVAL_NUM = dis.readFloat();
-					}
-
-					this.VALUEFLAG_CD = readString(dis);
-
-					this.QUANTITY_NUM = readString(dis);
-
-					this.UNITS_CD = readString(dis);
-
-					this.END_DATE = readDate(dis);
-
-					this.LOCATION_CD = readString(dis);
-
-					this.OBSERVATION_BLOB = readString(dis);
-
-					this.CONFIDENCE_NUM = readString(dis);
-
-					this.UPDATE_DATE = readDate(dis);
-
-					this.DOWNLOAD_DATE = readDate(dis);
-
-					this.IMPORT_DATE = readDate(dis);
-
-					this.SOURCESYSTEM_CD = readString(dis);
-
-					this.UPLOAD_ID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				} catch (ClassNotFoundException eCNFE) {
-					throw new RuntimeException(eCNFE);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// BigDecimal
-
-				dos.writeObject(this.ENCOUNTER_NUM);
-
-				// BigDecimal
-
-				dos.writeObject(this.PATIENT_NUM);
-
-				// String
-
-				writeString(this.CONCEPT_CD, dos);
-
-				// String
-
-				writeString(this.PROVIDER_ID, dos);
-
-				// java.util.Date
-
-				writeDate(this.START_DATE, dos);
-
-				// String
-
-				writeString(this.MODIFIER_CD, dos);
-
-				// String
-
-				writeString(this.INSTANCE_NUM, dos);
-
-				// String
-
-				writeString(this.VALTYPE_CD, dos);
-
-				// String
-
-				writeString(this.TVAL_CHAR, dos);
-
-				// Float
-
-				if (this.NVAL_NUM == null) {
-					dos.writeByte(-1);
-				} else {
-					dos.writeByte(0);
-					dos.writeFloat(this.NVAL_NUM);
-				}
-
-				// String
-
-				writeString(this.VALUEFLAG_CD, dos);
-
-				// String
-
-				writeString(this.QUANTITY_NUM, dos);
-
-				// String
-
-				writeString(this.UNITS_CD, dos);
-
-				// java.util.Date
-
-				writeDate(this.END_DATE, dos);
-
-				// String
-
-				writeString(this.LOCATION_CD, dos);
-
-				// String
-
-				writeString(this.OBSERVATION_BLOB, dos);
-
-				// String
-
-				writeString(this.CONFIDENCE_NUM, dos);
-
-				// java.util.Date
-
-				writeDate(this.UPDATE_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.DOWNLOAD_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.IMPORT_DATE, dos);
-
-				// String
-
-				writeString(this.SOURCESYSTEM_CD, dos);
-
-				// String
-
-				writeString(this.UPLOAD_ID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("ENCOUNTER_NUM=" + String.valueOf(ENCOUNTER_NUM));
-			sb.append(",PATIENT_NUM=" + String.valueOf(PATIENT_NUM));
-			sb.append(",CONCEPT_CD=" + CONCEPT_CD);
-			sb.append(",PROVIDER_ID=" + PROVIDER_ID);
-			sb.append(",START_DATE=" + String.valueOf(START_DATE));
-			sb.append(",MODIFIER_CD=" + MODIFIER_CD);
-			sb.append(",INSTANCE_NUM=" + INSTANCE_NUM);
-			sb.append(",VALTYPE_CD=" + VALTYPE_CD);
-			sb.append(",TVAL_CHAR=" + TVAL_CHAR);
-			sb.append(",NVAL_NUM=" + String.valueOf(NVAL_NUM));
-			sb.append(",VALUEFLAG_CD=" + VALUEFLAG_CD);
-			sb.append(",QUANTITY_NUM=" + QUANTITY_NUM);
-			sb.append(",UNITS_CD=" + UNITS_CD);
-			sb.append(",END_DATE=" + String.valueOf(END_DATE));
-			sb.append(",LOCATION_CD=" + LOCATION_CD);
-			sb.append(",OBSERVATION_BLOB=" + OBSERVATION_BLOB);
-			sb.append(",CONFIDENCE_NUM=" + CONFIDENCE_NUM);
-			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
-			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
-			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
-			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
-			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row44Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_29Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_29_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				row44Struct row44 = new row44Struct();
-				row45Struct row45 = new row45Struct();
-
-				/**
-				 * [tFileOutputDelimited_33 begin ] start
-				 */
-
-				ok_Hash.put("tFileOutputDelimited_33", false);
-				start_Hash.put("tFileOutputDelimited_33",
-						System.currentTimeMillis());
-				currentComponent = "tFileOutputDelimited_33";
-
-				int tos_count_tFileOutputDelimited_33 = 0;
-
-				String fileName_tFileOutputDelimited_33 = "";
-				fileName_tFileOutputDelimited_33 = (new java.io.File(
-						((String) globalMap
-								.get("tCreateTemporaryFile_13_FILEPATH"))))
-						.getAbsolutePath().replace("\\", "/");
-				String fullName_tFileOutputDelimited_33 = null;
-				String extension_tFileOutputDelimited_33 = null;
-				String directory_tFileOutputDelimited_33 = null;
-				if ((fileName_tFileOutputDelimited_33.indexOf("/") != -1)) {
-					if (fileName_tFileOutputDelimited_33.lastIndexOf(".") < fileName_tFileOutputDelimited_33
-							.lastIndexOf("/")) {
-						fullName_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33;
-						extension_tFileOutputDelimited_33 = "";
-					} else {
-						fullName_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33
-								.substring(0, fileName_tFileOutputDelimited_33
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33
-								.substring(fileName_tFileOutputDelimited_33
-										.lastIndexOf("."));
-					}
-					directory_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33
-							.substring(0, fileName_tFileOutputDelimited_33
-									.lastIndexOf("/"));
-				} else {
-					if (fileName_tFileOutputDelimited_33.lastIndexOf(".") != -1) {
-						fullName_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33
-								.substring(0, fileName_tFileOutputDelimited_33
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33
-								.substring(fileName_tFileOutputDelimited_33
-										.lastIndexOf("."));
-					} else {
-						fullName_tFileOutputDelimited_33 = fileName_tFileOutputDelimited_33;
-						extension_tFileOutputDelimited_33 = "";
-					}
-					directory_tFileOutputDelimited_33 = "";
-				}
-				boolean isFileGenerated_tFileOutputDelimited_33 = true;
-				java.io.File filetFileOutputDelimited_33 = new java.io.File(
-						fileName_tFileOutputDelimited_33);
-				globalMap.put("tFileOutputDelimited_33_FILE_NAME",
-						fileName_tFileOutputDelimited_33);
-
-				String[] headColutFileOutputDelimited_33 = new String[22];
-				class CSVBasicSet_tFileOutputDelimited_33 {
-					private char field_Delim;
-					private char row_Delim;
-					private char escape;
-					private char textEnclosure;
-					private boolean useCRLFRecordDelimiter;
-
-					public boolean isUseCRLFRecordDelimiter() {
-						return useCRLFRecordDelimiter;
-					}
-
-					public void setFieldSeparator(String fieldSep)
-							throws IllegalArgumentException {
-						char field_Delim_tFileOutputDelimited_33[] = null;
-
-						// support passing value (property: Field Separator) by
-						// 'context.fs' or 'globalMap.get("fs")'.
-						if (fieldSep.length() > 0) {
-							field_Delim_tFileOutputDelimited_33 = fieldSep
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Field Separator must be assigned a char.");
-						}
-						this.field_Delim = field_Delim_tFileOutputDelimited_33[0];
-					}
-
-					public char getFieldDelim() {
-						if (this.field_Delim == 0) {
-							setFieldSeparator(";");
-						}
-						return this.field_Delim;
-					}
-
-					public void setRowSeparator(String rowSep) {
-						if ("\r\n".equals(rowSep)) {
-							useCRLFRecordDelimiter = true;
-							return;
-						}
-						char row_DelimtFileOutputDelimited_33[] = null;
-
-						// support passing value (property: Row Separator) by
-						// 'context.rs' or 'globalMap.get("rs")'.
-						if (rowSep.length() > 0) {
-							row_DelimtFileOutputDelimited_33 = rowSep
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Row Separator must be assigned a char.");
-						}
-						this.row_Delim = row_DelimtFileOutputDelimited_33[0];
-					}
-
-					public char getRowDelim() {
-						if (this.row_Delim == 0) {
-							setRowSeparator("\n");
-						}
-						return this.row_Delim;
-					}
-
-					public void setEscapeAndTextEnclosure(String strEscape,
-							String strTextEnclosure)
-							throws IllegalArgumentException {
-						if (strEscape.length() <= 0) {
-							throw new IllegalArgumentException(
-									"Escape Char must be assigned a char.");
-						}
-
-						if ("".equals(strTextEnclosure))
-							strTextEnclosure = "\0";
-						char textEnclosure_tFileOutputDelimited_33[] = null;
-
-						if (strTextEnclosure.length() > 0) {
-							textEnclosure_tFileOutputDelimited_33 = strTextEnclosure
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Text Enclosure must be assigned a char.");
-						}
-
-						this.textEnclosure = textEnclosure_tFileOutputDelimited_33[0];
-
-						if (("\\").equals(strEscape)) {
-							this.escape = '\\';
-						} else if (strEscape.equals(strTextEnclosure)) {
-							this.escape = this.textEnclosure;
-						} else {
-							// the default escape mode is double escape
-							this.escape = this.textEnclosure;
-						}
-
-					}
-
-					public char getEscapeChar() {
-						return (char) this.escape;
-					}
-
-					public char getTextEnclosure() {
-						return this.textEnclosure;
-					}
-				}
-
-				int nb_line_tFileOutputDelimited_33 = 0;
-				int splitEvery_tFileOutputDelimited_33 = 1000;
-				int splitedFileNo_tFileOutputDelimited_33 = 0;
-				int currentRow_tFileOutputDelimited_33 = 0;
-
-				CSVBasicSet_tFileOutputDelimited_33 csvSettings_tFileOutputDelimited_33 = new CSVBasicSet_tFileOutputDelimited_33();
-				csvSettings_tFileOutputDelimited_33.setFieldSeparator(";");
-				csvSettings_tFileOutputDelimited_33.setRowSeparator("\n");
-				csvSettings_tFileOutputDelimited_33.setEscapeAndTextEnclosure(
-						"\"", "\"");
-				// create directory only if not exists
-				if (directory_tFileOutputDelimited_33 != null
-						&& directory_tFileOutputDelimited_33.trim().length() != 0) {
-					java.io.File dir_tFileOutputDelimited_33 = new java.io.File(
-							directory_tFileOutputDelimited_33);
-					if (!dir_tFileOutputDelimited_33.exists()) {
-						dir_tFileOutputDelimited_33.mkdirs();
-					}
-				}
-				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_33 = null;
-				try {
-					CsvWritertFileOutputDelimited_33 = new com.talend.csv.CSVWriter(
-							new java.io.BufferedWriter(
-									new java.io.OutputStreamWriter(
-											new java.io.FileOutputStream(
-													fileName_tFileOutputDelimited_33,
-													false), "ISO-8859-15")));
-					CsvWritertFileOutputDelimited_33
-							.setSeparator(csvSettings_tFileOutputDelimited_33
-									.getFieldDelim());
-
-					if (!csvSettings_tFileOutputDelimited_33
-							.isUseCRLFRecordDelimiter()
-							&& csvSettings_tFileOutputDelimited_33
-									.getRowDelim() != '\r'
-							&& csvSettings_tFileOutputDelimited_33
-									.getRowDelim() != '\n') {
-						CsvWritertFileOutputDelimited_33.setLineEnd(""
-								+ csvSettings_tFileOutputDelimited_33
-										.getRowDelim());
-					}
-
-					if (filetFileOutputDelimited_33.length() == 0) {
-
-						headColutFileOutputDelimited_33[0] = "ENCOUNTER_NUM";
-
-						headColutFileOutputDelimited_33[1] = "PATIENT_NUM";
-
-						headColutFileOutputDelimited_33[2] = "CONCEPT_CD";
-
-						headColutFileOutputDelimited_33[3] = "PROVIDER_ID";
-
-						headColutFileOutputDelimited_33[4] = "START_DATE";
-
-						headColutFileOutputDelimited_33[5] = "MODIFIER_CD";
-
-						headColutFileOutputDelimited_33[6] = "INSTANCE_NUM";
-
-						headColutFileOutputDelimited_33[7] = "VALTYPE_CD";
-
-						headColutFileOutputDelimited_33[8] = "TVAL_CHAR";
-
-						headColutFileOutputDelimited_33[9] = "NVAL_NUM";
-
-						headColutFileOutputDelimited_33[10] = "VALUEFLAG_CD";
-
-						headColutFileOutputDelimited_33[11] = "QUANTITY_NUM";
-
-						headColutFileOutputDelimited_33[12] = "UNITS_CD";
-
-						headColutFileOutputDelimited_33[13] = "END_DATE";
-
-						headColutFileOutputDelimited_33[14] = "LOCATION_CD";
-
-						headColutFileOutputDelimited_33[15] = "OBSERVATION_BLOB";
-
-						headColutFileOutputDelimited_33[16] = "CONFIDENCE_NUM";
-
-						headColutFileOutputDelimited_33[17] = "UPDATE_DATE";
-
-						headColutFileOutputDelimited_33[18] = "DOWNLOAD_DATE";
-
-						headColutFileOutputDelimited_33[19] = "IMPORT_DATE";
-
-						headColutFileOutputDelimited_33[20] = "SOURCESYSTEM_CD";
-
-						headColutFileOutputDelimited_33[21] = "UPLOAD_ID";
-
-						CsvWritertFileOutputDelimited_33
-								.writeNext(headColutFileOutputDelimited_33);
-						CsvWritertFileOutputDelimited_33.flush();
-
-					}
-
-					CsvWritertFileOutputDelimited_33
-							.setEscapeChar(csvSettings_tFileOutputDelimited_33
-									.getEscapeChar());
-					CsvWritertFileOutputDelimited_33
-							.setQuoteChar(csvSettings_tFileOutputDelimited_33
-									.getTextEnclosure());
-					CsvWritertFileOutputDelimited_33
-							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
-
-					/**
-					 * [tFileOutputDelimited_33 begin ] stop
-					 */
-
-					/**
-					 * [tUniqRow_11 begin ] start
-					 */
-
-					ok_Hash.put("tUniqRow_11", false);
-					start_Hash.put("tUniqRow_11", System.currentTimeMillis());
-					currentComponent = "tUniqRow_11";
-
-					int tos_count_tUniqRow_11 = 0;
-
-					class KeyStruct_tUniqRow_11 {
-
-						private static final int DEFAULT_HASHCODE = 1;
-						private static final int PRIME = 31;
-						private int hashCode = DEFAULT_HASHCODE;
-						public boolean hashCodeDirty = true;
-
-						BigDecimal ENCOUNTER_NUM;
-						String CONCEPT_CD;
-						String PROVIDER_ID;
-						java.util.Date START_DATE;
-						String MODIFIER_CD;
-						String INSTANCE_NUM;
-
-						@Override
-						public int hashCode() {
-							if (this.hashCodeDirty) {
-								final int prime = PRIME;
-								int result = DEFAULT_HASHCODE;
-
-								result = prime
-										* result
-										+ ((this.ENCOUNTER_NUM == null) ? 0
-												: this.ENCOUNTER_NUM.hashCode());
-
-								result = prime
-										* result
-										+ ((this.CONCEPT_CD == null) ? 0
-												: this.CONCEPT_CD.hashCode());
-
-								result = prime
-										* result
-										+ ((this.PROVIDER_ID == null) ? 0
-												: this.PROVIDER_ID.hashCode());
-
-								result = prime
-										* result
-										+ ((this.START_DATE == null) ? 0
-												: this.START_DATE.hashCode());
-
-								result = prime
-										* result
-										+ ((this.MODIFIER_CD == null) ? 0
-												: this.MODIFIER_CD.hashCode());
-
-								result = prime
-										* result
-										+ ((this.INSTANCE_NUM == null) ? 0
-												: this.INSTANCE_NUM.hashCode());
-
-								this.hashCode = result;
-								this.hashCodeDirty = false;
-							}
-							return this.hashCode;
-						}
-
-						@Override
-						public boolean equals(Object obj) {
-							if (this == obj)
-								return true;
-							if (obj == null)
-								return false;
-							if (getClass() != obj.getClass())
-								return false;
-							final KeyStruct_tUniqRow_11 other = (KeyStruct_tUniqRow_11) obj;
-
-							if (this.ENCOUNTER_NUM == null) {
-								if (other.ENCOUNTER_NUM != null)
-									return false;
-							} else if (!this.ENCOUNTER_NUM
-									.equals(other.ENCOUNTER_NUM))
-								return false;
-
-							if (this.CONCEPT_CD == null) {
-								if (other.CONCEPT_CD != null)
-									return false;
-							} else if (!this.CONCEPT_CD
-									.equals(other.CONCEPT_CD))
-								return false;
-
-							if (this.PROVIDER_ID == null) {
-								if (other.PROVIDER_ID != null)
-									return false;
-							} else if (!this.PROVIDER_ID
-									.equals(other.PROVIDER_ID))
-								return false;
-
-							if (this.START_DATE == null) {
-								if (other.START_DATE != null)
-									return false;
-							} else if (!this.START_DATE
-									.equals(other.START_DATE))
-								return false;
-
-							if (this.MODIFIER_CD == null) {
-								if (other.MODIFIER_CD != null)
-									return false;
-							} else if (!this.MODIFIER_CD
-									.equals(other.MODIFIER_CD))
-								return false;
-
-							if (this.INSTANCE_NUM == null) {
-								if (other.INSTANCE_NUM != null)
-									return false;
-							} else if (!this.INSTANCE_NUM
-									.equals(other.INSTANCE_NUM))
-								return false;
-
-							return true;
-						}
-
-					}
-
-					int nb_uniques_tUniqRow_11 = 0;
-					int nb_duplicates_tUniqRow_11 = 0;
-					KeyStruct_tUniqRow_11 finder_tUniqRow_11 = new KeyStruct_tUniqRow_11();
-					java.util.Set<KeyStruct_tUniqRow_11> keystUniqRow_11 = new java.util.HashSet<KeyStruct_tUniqRow_11>();
-
-					/**
-					 * [tUniqRow_11 begin ] stop
-					 */
-
-					/**
-					 * [tFileInputDelimited_29 begin ] start
-					 */
-
-					ok_Hash.put("tFileInputDelimited_29", false);
-					start_Hash.put("tFileInputDelimited_29",
-							System.currentTimeMillis());
-					currentComponent = "tFileInputDelimited_29";
-
-					int tos_count_tFileInputDelimited_29 = 0;
-
-					int nb_line_tFileInputDelimited_29 = 0;
-					int footer_tFileInputDelimited_29 = 0;
-					int totalLinetFileInputDelimited_29 = 0;
-					int limittFileInputDelimited_29 = -1;
-					int lastLinetFileInputDelimited_29 = -1;
-
-					char fieldSeparator_tFileInputDelimited_29[] = null;
-
-					// support passing value (property: Field Separator) by
-					// 'context.fs' or 'globalMap.get("fs")'.
-					if (((String) "\t").length() > 0) {
-						fieldSeparator_tFileInputDelimited_29 = ((String) "\t")
-								.toCharArray();
-					} else {
-						throw new IllegalArgumentException(
-								"Field Separator must be assigned a char.");
-					}
-
-					char rowSeparator_tFileInputDelimited_29[] = null;
-
-					// support passing value (property: Row Separator) by
-					// 'context.rs' or 'globalMap.get("rs")'.
-					if (((String) "\n").length() > 0) {
-						rowSeparator_tFileInputDelimited_29 = ((String) "\n")
-								.toCharArray();
-					} else {
-						throw new IllegalArgumentException(
-								"Row Separator must be assigned a char.");
-					}
-
-					Object filename_tFileInputDelimited_29 = /**
-					 * Start field
-					 * tFileInputDelimited_29:FILENAME
-					 */
-					context.folderMain + context.folderOutput
-							+ "/patient_data.csv"/**
-					 * End field
-					 * tFileInputDelimited_29:FILENAME
-					 */
-					;
-					com.talend.csv.CSVReader csvReadertFileInputDelimited_29 = null;
-
-					try {
-
-						String[] rowtFileInputDelimited_29 = null;
-						int currentLinetFileInputDelimited_29 = 0;
-						int outputLinetFileInputDelimited_29 = 0;
-						try {// TD110 begin
-							if (filename_tFileInputDelimited_29 instanceof java.io.InputStream) {
-
-								int footer_value_tFileInputDelimited_29 = 0;
-								if (footer_value_tFileInputDelimited_29 > 0) {
-									throw new java.lang.Exception(
-											"When the input source is a stream,footer shouldn't be bigger than 0.");
-								}
-
-								csvReadertFileInputDelimited_29 = new com.talend.csv.CSVReader(
-										(java.io.InputStream) filename_tFileInputDelimited_29,
-										fieldSeparator_tFileInputDelimited_29[0],
-										"UTF-8");
-							} else {
-								csvReadertFileInputDelimited_29 = new com.talend.csv.CSVReader(
-										new java.io.BufferedReader(
-												new java.io.InputStreamReader(
-														new java.io.FileInputStream(
-																String.valueOf(filename_tFileInputDelimited_29)),
-														"UTF-8")),
-										fieldSeparator_tFileInputDelimited_29[0]);
-							}
-
-							csvReadertFileInputDelimited_29
-									.setTrimWhitespace(false);
-							if ((rowSeparator_tFileInputDelimited_29[0] != '\n')
-									&& (rowSeparator_tFileInputDelimited_29[0] != '\r'))
-								csvReadertFileInputDelimited_29
-										.setLineEnd(""
-												+ rowSeparator_tFileInputDelimited_29[0]);
-
-							csvReadertFileInputDelimited_29.setQuoteChar('"');
-
-							csvReadertFileInputDelimited_29
-									.setEscapeChar(csvReadertFileInputDelimited_29
-											.getQuoteChar());
-
-							if (footer_tFileInputDelimited_29 > 0) {
-								for (totalLinetFileInputDelimited_29 = 0; totalLinetFileInputDelimited_29 < 1; totalLinetFileInputDelimited_29++) {
-									csvReadertFileInputDelimited_29.readNext();
-								}
-								csvReadertFileInputDelimited_29
-										.setSkipEmptyRecords(true);
-								while (csvReadertFileInputDelimited_29
-										.readNext()) {
-
-									rowtFileInputDelimited_29 = csvReadertFileInputDelimited_29
-											.getValues();
-									if (!(rowtFileInputDelimited_29.length == 1 && ("\015")
-											.equals(rowtFileInputDelimited_29[0]))) {// empty
-																						// line
-																						// when
-																						// row
-																						// separator
-																						// is
-																						// '\n'
-
-										totalLinetFileInputDelimited_29++;
-
-									}
-
-								}
-								int lastLineTemptFileInputDelimited_29 = totalLinetFileInputDelimited_29
-										- footer_tFileInputDelimited_29 < 0 ? 0
-										: totalLinetFileInputDelimited_29
-												- footer_tFileInputDelimited_29;
-								if (lastLinetFileInputDelimited_29 > 0) {
-									lastLinetFileInputDelimited_29 = lastLinetFileInputDelimited_29 < lastLineTemptFileInputDelimited_29 ? lastLinetFileInputDelimited_29
-											: lastLineTemptFileInputDelimited_29;
-								} else {
-									lastLinetFileInputDelimited_29 = lastLineTemptFileInputDelimited_29;
-								}
-
-								csvReadertFileInputDelimited_29.close();
-								if (filename_tFileInputDelimited_29 instanceof java.io.InputStream) {
-									csvReadertFileInputDelimited_29 = new com.talend.csv.CSVReader(
-											(java.io.InputStream) filename_tFileInputDelimited_29,
-											fieldSeparator_tFileInputDelimited_29[0],
-											"UTF-8");
-								} else {
-									csvReadertFileInputDelimited_29 = new com.talend.csv.CSVReader(
-											new java.io.BufferedReader(
-													new java.io.InputStreamReader(
-															new java.io.FileInputStream(
-																	String.valueOf(filename_tFileInputDelimited_29)),
-															"UTF-8")),
-											fieldSeparator_tFileInputDelimited_29[0]);
-								}
-								csvReadertFileInputDelimited_29
-										.setTrimWhitespace(false);
-								if ((rowSeparator_tFileInputDelimited_29[0] != '\n')
-										&& (rowSeparator_tFileInputDelimited_29[0] != '\r'))
-									csvReadertFileInputDelimited_29
-											.setLineEnd(""
-													+ rowSeparator_tFileInputDelimited_29[0]);
-
-								csvReadertFileInputDelimited_29
-										.setQuoteChar('"');
-
-								csvReadertFileInputDelimited_29
-										.setEscapeChar(csvReadertFileInputDelimited_29
-												.getQuoteChar());
-
-							}
-
-							if (limittFileInputDelimited_29 != 0) {
-								for (currentLinetFileInputDelimited_29 = 0; currentLinetFileInputDelimited_29 < 1; currentLinetFileInputDelimited_29++) {
-									csvReadertFileInputDelimited_29.readNext();
-								}
-							}
-							csvReadertFileInputDelimited_29
-									.setSkipEmptyRecords(true);
-
-						} catch (java.lang.Exception e) {
-
-							System.err.println(e.getMessage());
-
-						}// TD110 end
-
-						while (limittFileInputDelimited_29 != 0
-								&& csvReadertFileInputDelimited_29 != null
-								&& csvReadertFileInputDelimited_29.readNext()) {
-
-							rowtFileInputDelimited_29 = csvReadertFileInputDelimited_29
-									.getValues();
-
-							if (rowtFileInputDelimited_29.length == 1
-									&& ("\015")
-											.equals(rowtFileInputDelimited_29[0])) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
-								continue;
-							}
-
-							currentLinetFileInputDelimited_29++;
-
-							if (lastLinetFileInputDelimited_29 > -1
-									&& currentLinetFileInputDelimited_29 > lastLinetFileInputDelimited_29) {
-								break;
-							}
-							outputLinetFileInputDelimited_29++;
-							if (limittFileInputDelimited_29 > 0
-									&& outputLinetFileInputDelimited_29 > limittFileInputDelimited_29) {
-								break;
-							}
-
-							row44 = null;
-
-							boolean whetherReject_tFileInputDelimited_29 = false;
-							row44 = new row44Struct();
-							try {
-
-								if (rowtFileInputDelimited_29.length == 1
-										&& ("\015")
-												.equals(rowtFileInputDelimited_29[0])) {// empty
-																						// line
-																						// when
-																						// row
-																						// separator
-																						// is
-																						// '\n'
-
-									row44.ENCOUNTER_NUM = null;
-
-									row44.PATIENT_NUM = null;
-
-									row44.CONCEPT_CD = null;
-
-									row44.PROVIDER_ID = null;
-
-									row44.START_DATE = null;
-
-									row44.MODIFIER_CD = null;
-
-									row44.INSTANCE_NUM = null;
-
-									row44.VALTYPE_CD = null;
-
-									row44.TVAL_CHAR = null;
-
-									row44.NVAL_NUM = null;
-
-									row44.VALUEFLAG_CD = null;
-
-									row44.QUANTITY_NUM = null;
-
-									row44.UNITS_CD = null;
-
-									row44.END_DATE = null;
-
-									row44.LOCATION_CD = null;
-
-									row44.OBSERVATION_BLOB = null;
-
-									row44.CONFIDENCE_NUM = null;
-
-									row44.UPDATE_DATE = null;
-
-									row44.DOWNLOAD_DATE = null;
-
-									row44.IMPORT_DATE = null;
-
-									row44.SOURCESYSTEM_CD = null;
-
-									row44.UPLOAD_ID = null;
-
-								} else {
-
-									int columnIndexWithD_tFileInputDelimited_29 = 0; // Column
-																						// Index
-
-									columnIndexWithD_tFileInputDelimited_29 = 0;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.ENCOUNTER_NUM = ParserUtils
-													.parseTo_BigDecimal(rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]);
-
-										} else {
-											row44.ENCOUNTER_NUM = null;
-										}
-
-									} else {
-										row44.ENCOUNTER_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 1;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.PATIENT_NUM = ParserUtils
-													.parseTo_BigDecimal(rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]);
-
-										} else {
-											row44.PATIENT_NUM = null;
-										}
-
-									} else {
-										row44.PATIENT_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 2;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.CONCEPT_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.CONCEPT_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 3;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.PROVIDER_ID = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.PROVIDER_ID = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 4;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.START_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29],
-															"yyyy-MM-dd");
-
-										} else {
-											row44.START_DATE = null;
-										}
-
-									} else {
-										row44.START_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 5;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.MODIFIER_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.MODIFIER_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 6;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.INSTANCE_NUM = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.INSTANCE_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 7;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.VALTYPE_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.VALTYPE_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 8;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.TVAL_CHAR = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.TVAL_CHAR = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 9;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.NVAL_NUM = ParserUtils
-													.parseTo_Float(rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]);
-
-										} else {
-											row44.NVAL_NUM = null;
-										}
-
-									} else {
-										row44.NVAL_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 10;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.VALUEFLAG_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.VALUEFLAG_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 11;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.QUANTITY_NUM = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.QUANTITY_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 12;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.UNITS_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.UNITS_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 13;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.END_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29],
-															"yyyy-MM-dd");
-
-										} else {
-											row44.END_DATE = null;
-										}
-
-									} else {
-										row44.END_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 14;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.LOCATION_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.LOCATION_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 15;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.OBSERVATION_BLOB = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.OBSERVATION_BLOB = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 16;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.CONFIDENCE_NUM = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.CONFIDENCE_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 17;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.UPDATE_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29],
-															"yyyy-MM-dd");
-
-										} else {
-											row44.UPDATE_DATE = null;
-										}
-
-									} else {
-										row44.UPDATE_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 18;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.DOWNLOAD_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29],
-															"yyyy-MM-dd");
-
-										} else {
-											row44.DOWNLOAD_DATE = null;
-										}
-
-									} else {
-										row44.DOWNLOAD_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 19;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										if (rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29]
-												.length() > 0) {
-
-											row44.IMPORT_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29],
-															"yyyy-MM-dd");
-
-										} else {
-											row44.IMPORT_DATE = null;
-										}
-
-									} else {
-										row44.IMPORT_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 20;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.SOURCESYSTEM_CD = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.SOURCESYSTEM_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_29 = 21;
-
-									if (columnIndexWithD_tFileInputDelimited_29 < rowtFileInputDelimited_29.length) {
-
-										row44.UPLOAD_ID = rowtFileInputDelimited_29[columnIndexWithD_tFileInputDelimited_29];
-
-									} else {
-										row44.UPLOAD_ID = null;
-									}
-
-								}
-
-							} catch (java.lang.Exception e) {
-								whetherReject_tFileInputDelimited_29 = true;
-
-								System.err.println(e.getMessage());
-								row44 = null;
-
-							}
-
-							/**
-							 * [tFileInputDelimited_29 begin ] stop
-							 */
-							/**
-							 * [tFileInputDelimited_29 main ] start
-							 */
-
-							currentComponent = "tFileInputDelimited_29";
-
-							tos_count_tFileInputDelimited_29++;
-
-							/**
-							 * [tFileInputDelimited_29 main ] stop
-							 */
-							// Start of branch "row44"
-							if (row44 != null) {
-
-								/**
-								 * [tUniqRow_11 main ] start
-								 */
-
-								currentComponent = "tUniqRow_11";
-
-								row45 = null;
-								finder_tUniqRow_11.ENCOUNTER_NUM = row44.ENCOUNTER_NUM;
-								if (row44.CONCEPT_CD == null) {
-									finder_tUniqRow_11.CONCEPT_CD = null;
-								} else {
-									finder_tUniqRow_11.CONCEPT_CD = row44.CONCEPT_CD
-											.toLowerCase();
-								}
-								if (row44.PROVIDER_ID == null) {
-									finder_tUniqRow_11.PROVIDER_ID = null;
-								} else {
-									finder_tUniqRow_11.PROVIDER_ID = row44.PROVIDER_ID
-											.toLowerCase();
-								}
-								finder_tUniqRow_11.START_DATE = row44.START_DATE;
-								if (row44.MODIFIER_CD == null) {
-									finder_tUniqRow_11.MODIFIER_CD = null;
-								} else {
-									finder_tUniqRow_11.MODIFIER_CD = row44.MODIFIER_CD
-											.toLowerCase();
-								}
-								if (row44.INSTANCE_NUM == null) {
-									finder_tUniqRow_11.INSTANCE_NUM = null;
-								} else {
-									finder_tUniqRow_11.INSTANCE_NUM = row44.INSTANCE_NUM
-											.toLowerCase();
-								}
-								finder_tUniqRow_11.hashCodeDirty = true;
-								if (!keystUniqRow_11
-										.contains(finder_tUniqRow_11)) {
-									KeyStruct_tUniqRow_11 new_tUniqRow_11 = new KeyStruct_tUniqRow_11();
-
-									new_tUniqRow_11.ENCOUNTER_NUM = row44.ENCOUNTER_NUM;
-									if (row44.CONCEPT_CD == null) {
-										new_tUniqRow_11.CONCEPT_CD = null;
-									} else {
-										new_tUniqRow_11.CONCEPT_CD = row44.CONCEPT_CD
-												.toLowerCase();
-									}
-									if (row44.PROVIDER_ID == null) {
-										new_tUniqRow_11.PROVIDER_ID = null;
-									} else {
-										new_tUniqRow_11.PROVIDER_ID = row44.PROVIDER_ID
-												.toLowerCase();
-									}
-									new_tUniqRow_11.START_DATE = row44.START_DATE;
-									if (row44.MODIFIER_CD == null) {
-										new_tUniqRow_11.MODIFIER_CD = null;
-									} else {
-										new_tUniqRow_11.MODIFIER_CD = row44.MODIFIER_CD
-												.toLowerCase();
-									}
-									if (row44.INSTANCE_NUM == null) {
-										new_tUniqRow_11.INSTANCE_NUM = null;
-									} else {
-										new_tUniqRow_11.INSTANCE_NUM = row44.INSTANCE_NUM
-												.toLowerCase();
-									}
-
-									keystUniqRow_11.add(new_tUniqRow_11);
-									if (row45 == null) {
-										row45 = new row45Struct();
-									}
-									row45.ENCOUNTER_NUM = row44.ENCOUNTER_NUM;
-									row45.PATIENT_NUM = row44.PATIENT_NUM;
-									row45.CONCEPT_CD = row44.CONCEPT_CD;
-									row45.PROVIDER_ID = row44.PROVIDER_ID;
-									row45.START_DATE = row44.START_DATE;
-									row45.MODIFIER_CD = row44.MODIFIER_CD;
-									row45.INSTANCE_NUM = row44.INSTANCE_NUM;
-									row45.VALTYPE_CD = row44.VALTYPE_CD;
-									row45.TVAL_CHAR = row44.TVAL_CHAR;
-									row45.NVAL_NUM = row44.NVAL_NUM;
-									row45.VALUEFLAG_CD = row44.VALUEFLAG_CD;
-									row45.QUANTITY_NUM = row44.QUANTITY_NUM;
-									row45.UNITS_CD = row44.UNITS_CD;
-									row45.END_DATE = row44.END_DATE;
-									row45.LOCATION_CD = row44.LOCATION_CD;
-									row45.OBSERVATION_BLOB = row44.OBSERVATION_BLOB;
-									row45.CONFIDENCE_NUM = row44.CONFIDENCE_NUM;
-									row45.UPDATE_DATE = row44.UPDATE_DATE;
-									row45.DOWNLOAD_DATE = row44.DOWNLOAD_DATE;
-									row45.IMPORT_DATE = row44.IMPORT_DATE;
-									row45.SOURCESYSTEM_CD = row44.SOURCESYSTEM_CD;
-									row45.UPLOAD_ID = row44.UPLOAD_ID;
-									nb_uniques_tUniqRow_11++;
-								} else {
-									nb_duplicates_tUniqRow_11++;
-								}
-
-								tos_count_tUniqRow_11++;
-
-								/**
-								 * [tUniqRow_11 main ] stop
-								 */
-								// Start of branch "row45"
-								if (row45 != null) {
-
-									/**
-									 * [tFileOutputDelimited_33 main ] start
-									 */
-
-									currentComponent = "tFileOutputDelimited_33";
-
-									String[] rowtFileOutputDelimited_33 = new String[22];
-
-									rowtFileOutputDelimited_33[0] = row45.ENCOUNTER_NUM == null ? ""
-											: row45.ENCOUNTER_NUM
-													.toPlainString();
-
-									rowtFileOutputDelimited_33[1] = row45.PATIENT_NUM == null ? ""
-											: row45.PATIENT_NUM.toPlainString();
-
-									rowtFileOutputDelimited_33[2] = row45.CONCEPT_CD == null ? ""
-											: row45.CONCEPT_CD;
-
-									rowtFileOutputDelimited_33[3] = row45.PROVIDER_ID == null ? ""
-											: row45.PROVIDER_ID;
-
-									rowtFileOutputDelimited_33[4] = row45.START_DATE == null ? ""
-											: FormatterUtils.format_Date(
-													row45.START_DATE,
-													"yyyy-MM-dd");
-
-									rowtFileOutputDelimited_33[5] = row45.MODIFIER_CD == null ? ""
-											: row45.MODIFIER_CD;
-
-									rowtFileOutputDelimited_33[6] = row45.INSTANCE_NUM == null ? ""
-											: row45.INSTANCE_NUM;
-
-									rowtFileOutputDelimited_33[7] = row45.VALTYPE_CD == null ? ""
-											: row45.VALTYPE_CD;
-
-									rowtFileOutputDelimited_33[8] = row45.TVAL_CHAR == null ? ""
-											: row45.TVAL_CHAR;
-
-									rowtFileOutputDelimited_33[9] = row45.NVAL_NUM == null ? ""
-											: String.valueOf(row45.NVAL_NUM);
-
-									rowtFileOutputDelimited_33[10] = row45.VALUEFLAG_CD == null ? ""
-											: row45.VALUEFLAG_CD;
-
-									rowtFileOutputDelimited_33[11] = row45.QUANTITY_NUM == null ? ""
-											: row45.QUANTITY_NUM;
-
-									rowtFileOutputDelimited_33[12] = row45.UNITS_CD == null ? ""
-											: row45.UNITS_CD;
-
-									rowtFileOutputDelimited_33[13] = row45.END_DATE == null ? ""
-											: FormatterUtils.format_Date(
-													row45.END_DATE,
-													"yyyy-MM-dd");
-
-									rowtFileOutputDelimited_33[14] = row45.LOCATION_CD == null ? ""
-											: row45.LOCATION_CD;
-
-									rowtFileOutputDelimited_33[15] = row45.OBSERVATION_BLOB == null ? ""
-											: row45.OBSERVATION_BLOB;
-
-									rowtFileOutputDelimited_33[16] = row45.CONFIDENCE_NUM == null ? ""
-											: row45.CONFIDENCE_NUM;
-
-									rowtFileOutputDelimited_33[17] = row45.UPDATE_DATE == null ? ""
-											: FormatterUtils.format_Date(
-													row45.UPDATE_DATE,
-													"yyyy-MM-dd");
-
-									rowtFileOutputDelimited_33[18] = row45.DOWNLOAD_DATE == null ? ""
-											: FormatterUtils.format_Date(
-													row45.DOWNLOAD_DATE,
-													"yyyy-MM-dd");
-
-									rowtFileOutputDelimited_33[19] = row45.IMPORT_DATE == null ? ""
-											: FormatterUtils.format_Date(
-													row45.IMPORT_DATE,
-													"yyyy-MM-dd");
-
-									rowtFileOutputDelimited_33[20] = row45.SOURCESYSTEM_CD == null ? ""
-											: row45.SOURCESYSTEM_CD;
-
-									rowtFileOutputDelimited_33[21] = row45.UPLOAD_ID == null ? ""
-											: row45.UPLOAD_ID;
-
-									nb_line_tFileOutputDelimited_33++;
-									CsvWritertFileOutputDelimited_33
-											.writeNext(rowtFileOutputDelimited_33);
-
-									tos_count_tFileOutputDelimited_33++;
-
-									/**
-									 * [tFileOutputDelimited_33 main ] stop
-									 */
-
-								} // End of branch "row45"
-
-							} // End of branch "row44"
-
-							/**
-							 * [tFileInputDelimited_29 end ] start
-							 */
-
-							currentComponent = "tFileInputDelimited_29";
-
-							nb_line_tFileInputDelimited_29++;
-						}
-
-					} finally {
-						if (!(filename_tFileInputDelimited_29 instanceof java.io.InputStream)) {
-							if (csvReadertFileInputDelimited_29 != null) {
-								csvReadertFileInputDelimited_29.close();
-							}
-						}
-						if (csvReadertFileInputDelimited_29 != null) {
-							globalMap.put("tFileInputDelimited_29_NB_LINE",
-									nb_line_tFileInputDelimited_29);
-						}
-					}
-
-					ok_Hash.put("tFileInputDelimited_29", true);
-					end_Hash.put("tFileInputDelimited_29",
-							System.currentTimeMillis());
-
-					/**
-					 * [tFileInputDelimited_29 end ] stop
-					 */
-
-					/**
-					 * [tUniqRow_11 end ] start
-					 */
-
-					currentComponent = "tUniqRow_11";
-
-					globalMap.put("tUniqRow_11_NB_UNIQUES",
-							nb_uniques_tUniqRow_11);
-					globalMap.put("tUniqRow_11_NB_DUPLICATES",
-							nb_duplicates_tUniqRow_11);
-
-					ok_Hash.put("tUniqRow_11", true);
-					end_Hash.put("tUniqRow_11", System.currentTimeMillis());
-
-					/**
-					 * [tUniqRow_11 end ] stop
-					 */
-
-					/**
-					 * [tFileOutputDelimited_33 end ] start
-					 */
-
-					currentComponent = "tFileOutputDelimited_33";
-
-				} finally {
-
-					if (CsvWritertFileOutputDelimited_33 != null) {
-						CsvWritertFileOutputDelimited_33.close();
-					}
-					globalMap.put("tFileOutputDelimited_33_NB_LINE",
-							nb_line_tFileOutputDelimited_33);
-				} // finally
-
-				ok_Hash.put("tFileOutputDelimited_33", true);
-				end_Hash.put("tFileOutputDelimited_33",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileOutputDelimited_33 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tFileInputDelimited_29:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
-			tFileInputDelimited_30Process(globalMap);
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tFileInputDelimited_29_SUBPROCESS_STATE", 1);
-	}
-
-	public static class row46Struct implements
-			routines.system.IPersistableRow<row46Struct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
-
-		public BigDecimal ENCOUNTER_NUM;
-
-		public BigDecimal getENCOUNTER_NUM() {
-			return this.ENCOUNTER_NUM;
-		}
-
-		public BigDecimal PATIENT_NUM;
-
-		public BigDecimal getPATIENT_NUM() {
-			return this.PATIENT_NUM;
-		}
-
-		public String CONCEPT_CD;
-
-		public String getCONCEPT_CD() {
-			return this.CONCEPT_CD;
-		}
-
-		public String PROVIDER_ID;
-
-		public String getPROVIDER_ID() {
-			return this.PROVIDER_ID;
-		}
-
-		public java.util.Date START_DATE;
-
-		public java.util.Date getSTART_DATE() {
-			return this.START_DATE;
-		}
-
-		public String MODIFIER_CD;
-
-		public String getMODIFIER_CD() {
-			return this.MODIFIER_CD;
-		}
-
-		public String INSTANCE_NUM;
-
-		public String getINSTANCE_NUM() {
-			return this.INSTANCE_NUM;
-		}
-
-		public String VALTYPE_CD;
-
-		public String getVALTYPE_CD() {
-			return this.VALTYPE_CD;
-		}
-
-		public String TVAL_CHAR;
-
-		public String getTVAL_CHAR() {
-			return this.TVAL_CHAR;
-		}
-
-		public Float NVAL_NUM;
-
-		public Float getNVAL_NUM() {
-			return this.NVAL_NUM;
-		}
-
-		public String VALUEFLAG_CD;
-
-		public String getVALUEFLAG_CD() {
-			return this.VALUEFLAG_CD;
-		}
-
-		public String QUANTITY_NUM;
-
-		public String getQUANTITY_NUM() {
-			return this.QUANTITY_NUM;
-		}
-
-		public String UNITS_CD;
-
-		public String getUNITS_CD() {
-			return this.UNITS_CD;
-		}
-
-		public java.util.Date END_DATE;
-
-		public java.util.Date getEND_DATE() {
-			return this.END_DATE;
-		}
-
-		public String LOCATION_CD;
-
-		public String getLOCATION_CD() {
-			return this.LOCATION_CD;
-		}
-
-		public String OBSERVATION_BLOB;
-
-		public String getOBSERVATION_BLOB() {
-			return this.OBSERVATION_BLOB;
-		}
-
-		public String CONFIDENCE_NUM;
-
-		public String getCONFIDENCE_NUM() {
-			return this.CONFIDENCE_NUM;
-		}
-
-		public java.util.Date UPDATE_DATE;
-
-		public java.util.Date getUPDATE_DATE() {
-			return this.UPDATE_DATE;
-		}
-
-		public java.util.Date DOWNLOAD_DATE;
-
-		public java.util.Date getDOWNLOAD_DATE() {
-			return this.DOWNLOAD_DATE;
-		}
-
-		public java.util.Date IMPORT_DATE;
-
-		public java.util.Date getIMPORT_DATE() {
-			return this.IMPORT_DATE;
-		}
-
-		public String SOURCESYSTEM_CD;
-
-		public String getSOURCESYSTEM_CD() {
-			return this.SOURCESYSTEM_CD;
-		}
-
-		public String UPLOAD_ID;
-
-		public String getUPLOAD_ID() {
-			return this.UPLOAD_ID;
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget) {
-
-				try {
-
-					int length = 0;
-
-					this.ENCOUNTER_NUM = (BigDecimal) dis.readObject();
-
-					this.PATIENT_NUM = (BigDecimal) dis.readObject();
-
-					this.CONCEPT_CD = readString(dis);
-
-					this.PROVIDER_ID = readString(dis);
-
-					this.START_DATE = readDate(dis);
-
-					this.MODIFIER_CD = readString(dis);
-
-					this.INSTANCE_NUM = readString(dis);
-
-					this.VALTYPE_CD = readString(dis);
-
-					this.TVAL_CHAR = readString(dis);
-
-					length = dis.readByte();
-					if (length == -1) {
-						this.NVAL_NUM = null;
-					} else {
-						this.NVAL_NUM = dis.readFloat();
-					}
-
-					this.VALUEFLAG_CD = readString(dis);
-
-					this.QUANTITY_NUM = readString(dis);
-
-					this.UNITS_CD = readString(dis);
-
-					this.END_DATE = readDate(dis);
-
-					this.LOCATION_CD = readString(dis);
-
-					this.OBSERVATION_BLOB = readString(dis);
-
-					this.CONFIDENCE_NUM = readString(dis);
-
-					this.UPDATE_DATE = readDate(dis);
-
-					this.DOWNLOAD_DATE = readDate(dis);
-
-					this.IMPORT_DATE = readDate(dis);
-
-					this.SOURCESYSTEM_CD = readString(dis);
-
-					this.UPLOAD_ID = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				} catch (ClassNotFoundException eCNFE) {
-					throw new RuntimeException(eCNFE);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// BigDecimal
-
-				dos.writeObject(this.ENCOUNTER_NUM);
-
-				// BigDecimal
-
-				dos.writeObject(this.PATIENT_NUM);
-
-				// String
-
-				writeString(this.CONCEPT_CD, dos);
-
-				// String
-
-				writeString(this.PROVIDER_ID, dos);
-
-				// java.util.Date
-
-				writeDate(this.START_DATE, dos);
-
-				// String
-
-				writeString(this.MODIFIER_CD, dos);
-
-				// String
-
-				writeString(this.INSTANCE_NUM, dos);
-
-				// String
-
-				writeString(this.VALTYPE_CD, dos);
-
-				// String
-
-				writeString(this.TVAL_CHAR, dos);
-
-				// Float
-
-				if (this.NVAL_NUM == null) {
-					dos.writeByte(-1);
-				} else {
-					dos.writeByte(0);
-					dos.writeFloat(this.NVAL_NUM);
-				}
-
-				// String
-
-				writeString(this.VALUEFLAG_CD, dos);
-
-				// String
-
-				writeString(this.QUANTITY_NUM, dos);
-
-				// String
-
-				writeString(this.UNITS_CD, dos);
-
-				// java.util.Date
-
-				writeDate(this.END_DATE, dos);
-
-				// String
-
-				writeString(this.LOCATION_CD, dos);
-
-				// String
-
-				writeString(this.OBSERVATION_BLOB, dos);
-
-				// String
-
-				writeString(this.CONFIDENCE_NUM, dos);
-
-				// java.util.Date
-
-				writeDate(this.UPDATE_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.DOWNLOAD_DATE, dos);
-
-				// java.util.Date
-
-				writeDate(this.IMPORT_DATE, dos);
-
-				// String
-
-				writeString(this.SOURCESYSTEM_CD, dos);
-
-				// String
-
-				writeString(this.UPLOAD_ID, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("ENCOUNTER_NUM=" + String.valueOf(ENCOUNTER_NUM));
-			sb.append(",PATIENT_NUM=" + String.valueOf(PATIENT_NUM));
-			sb.append(",CONCEPT_CD=" + CONCEPT_CD);
-			sb.append(",PROVIDER_ID=" + PROVIDER_ID);
-			sb.append(",START_DATE=" + String.valueOf(START_DATE));
-			sb.append(",MODIFIER_CD=" + MODIFIER_CD);
-			sb.append(",INSTANCE_NUM=" + INSTANCE_NUM);
-			sb.append(",VALTYPE_CD=" + VALTYPE_CD);
-			sb.append(",TVAL_CHAR=" + TVAL_CHAR);
-			sb.append(",NVAL_NUM=" + String.valueOf(NVAL_NUM));
-			sb.append(",VALUEFLAG_CD=" + VALUEFLAG_CD);
-			sb.append(",QUANTITY_NUM=" + QUANTITY_NUM);
-			sb.append(",UNITS_CD=" + UNITS_CD);
-			sb.append(",END_DATE=" + String.valueOf(END_DATE));
-			sb.append(",LOCATION_CD=" + LOCATION_CD);
-			sb.append(",OBSERVATION_BLOB=" + OBSERVATION_BLOB);
-			sb.append(",CONFIDENCE_NUM=" + CONFIDENCE_NUM);
-			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
-			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
-			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
-			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
-			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(row46Struct other) {
-
-			int returnValue = -1;
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
-	}
-
-	public void tFileInputDelimited_30Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tFileInputDelimited_30_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				row46Struct row46 = new row46Struct();
-
-				/**
-				 * [tFileOutputDelimited_34 begin ] start
-				 */
-
-				ok_Hash.put("tFileOutputDelimited_34", false);
-				start_Hash.put("tFileOutputDelimited_34",
-						System.currentTimeMillis());
-				currentComponent = "tFileOutputDelimited_34";
-
-				int tos_count_tFileOutputDelimited_34 = 0;
-
-				String fileName_tFileOutputDelimited_34 = "";
-				fileName_tFileOutputDelimited_34 = (new java.io.File(
-						context.folderMain + context.folderOutput
-								+ "/patient_data.csv")).getAbsolutePath()
-						.replace("\\", "/");
-				String fullName_tFileOutputDelimited_34 = null;
-				String extension_tFileOutputDelimited_34 = null;
-				String directory_tFileOutputDelimited_34 = null;
-				if ((fileName_tFileOutputDelimited_34.indexOf("/") != -1)) {
-					if (fileName_tFileOutputDelimited_34.lastIndexOf(".") < fileName_tFileOutputDelimited_34
-							.lastIndexOf("/")) {
-						fullName_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34;
-						extension_tFileOutputDelimited_34 = "";
-					} else {
-						fullName_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34
-								.substring(0, fileName_tFileOutputDelimited_34
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34
-								.substring(fileName_tFileOutputDelimited_34
-										.lastIndexOf("."));
-					}
-					directory_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34
-							.substring(0, fileName_tFileOutputDelimited_34
-									.lastIndexOf("/"));
-				} else {
-					if (fileName_tFileOutputDelimited_34.lastIndexOf(".") != -1) {
-						fullName_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34
-								.substring(0, fileName_tFileOutputDelimited_34
-										.lastIndexOf("."));
-						extension_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34
-								.substring(fileName_tFileOutputDelimited_34
-										.lastIndexOf("."));
-					} else {
-						fullName_tFileOutputDelimited_34 = fileName_tFileOutputDelimited_34;
-						extension_tFileOutputDelimited_34 = "";
-					}
-					directory_tFileOutputDelimited_34 = "";
-				}
-				boolean isFileGenerated_tFileOutputDelimited_34 = true;
-				java.io.File filetFileOutputDelimited_34 = new java.io.File(
-						fileName_tFileOutputDelimited_34);
-				globalMap.put("tFileOutputDelimited_34_FILE_NAME",
-						fileName_tFileOutputDelimited_34);
-
-				String[] headColutFileOutputDelimited_34 = new String[22];
-				class CSVBasicSet_tFileOutputDelimited_34 {
-					private char field_Delim;
-					private char row_Delim;
-					private char escape;
-					private char textEnclosure;
-					private boolean useCRLFRecordDelimiter;
-
-					public boolean isUseCRLFRecordDelimiter() {
-						return useCRLFRecordDelimiter;
-					}
-
-					public void setFieldSeparator(String fieldSep)
-							throws IllegalArgumentException {
-						char field_Delim_tFileOutputDelimited_34[] = null;
-
-						// support passing value (property: Field Separator) by
-						// 'context.fs' or 'globalMap.get("fs")'.
-						if (fieldSep.length() > 0) {
-							field_Delim_tFileOutputDelimited_34 = fieldSep
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Field Separator must be assigned a char.");
-						}
-						this.field_Delim = field_Delim_tFileOutputDelimited_34[0];
-					}
-
-					public char getFieldDelim() {
-						if (this.field_Delim == 0) {
-							setFieldSeparator("\t");
-						}
-						return this.field_Delim;
-					}
-
-					public void setRowSeparator(String rowSep) {
-						if ("\r\n".equals(rowSep)) {
-							useCRLFRecordDelimiter = true;
-							return;
-						}
-						char row_DelimtFileOutputDelimited_34[] = null;
-
-						// support passing value (property: Row Separator) by
-						// 'context.rs' or 'globalMap.get("rs")'.
-						if (rowSep.length() > 0) {
-							row_DelimtFileOutputDelimited_34 = rowSep
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Row Separator must be assigned a char.");
-						}
-						this.row_Delim = row_DelimtFileOutputDelimited_34[0];
-					}
-
-					public char getRowDelim() {
-						if (this.row_Delim == 0) {
-							setRowSeparator("\n");
-						}
-						return this.row_Delim;
-					}
-
-					public void setEscapeAndTextEnclosure(String strEscape,
-							String strTextEnclosure)
-							throws IllegalArgumentException {
-						if (strEscape.length() <= 0) {
-							throw new IllegalArgumentException(
-									"Escape Char must be assigned a char.");
-						}
-
-						if ("".equals(strTextEnclosure))
-							strTextEnclosure = "\0";
-						char textEnclosure_tFileOutputDelimited_34[] = null;
-
-						if (strTextEnclosure.length() > 0) {
-							textEnclosure_tFileOutputDelimited_34 = strTextEnclosure
-									.toCharArray();
-						} else {
-							throw new IllegalArgumentException(
-									"Text Enclosure must be assigned a char.");
-						}
-
-						this.textEnclosure = textEnclosure_tFileOutputDelimited_34[0];
-
-						if (("\\").equals(strEscape)) {
-							this.escape = '\\';
-						} else if (strEscape.equals(strTextEnclosure)) {
-							this.escape = this.textEnclosure;
-						} else {
-							// the default escape mode is double escape
-							this.escape = this.textEnclosure;
-						}
-
-					}
-
-					public char getEscapeChar() {
-						return (char) this.escape;
-					}
-
-					public char getTextEnclosure() {
-						return this.textEnclosure;
-					}
-				}
-
-				int nb_line_tFileOutputDelimited_34 = 0;
-				int splitEvery_tFileOutputDelimited_34 = 1000;
-				int splitedFileNo_tFileOutputDelimited_34 = 0;
-				int currentRow_tFileOutputDelimited_34 = 0;
-
-				CSVBasicSet_tFileOutputDelimited_34 csvSettings_tFileOutputDelimited_34 = new CSVBasicSet_tFileOutputDelimited_34();
-				csvSettings_tFileOutputDelimited_34.setFieldSeparator("\t");
-				csvSettings_tFileOutputDelimited_34.setRowSeparator("\n");
-				csvSettings_tFileOutputDelimited_34.setEscapeAndTextEnclosure(
-						"\"", "\"");
-				// create directory only if not exists
-				if (directory_tFileOutputDelimited_34 != null
-						&& directory_tFileOutputDelimited_34.trim().length() != 0) {
-					java.io.File dir_tFileOutputDelimited_34 = new java.io.File(
-							directory_tFileOutputDelimited_34);
-					if (!dir_tFileOutputDelimited_34.exists()) {
-						dir_tFileOutputDelimited_34.mkdirs();
-					}
-				}
-				com.talend.csv.CSVWriter CsvWritertFileOutputDelimited_34 = null;
-				try {
-					CsvWritertFileOutputDelimited_34 = new com.talend.csv.CSVWriter(
-							new java.io.BufferedWriter(
-									new java.io.OutputStreamWriter(
-											new java.io.FileOutputStream(
-													fileName_tFileOutputDelimited_34,
-													false), "UTF-8")));
-					CsvWritertFileOutputDelimited_34
-							.setSeparator(csvSettings_tFileOutputDelimited_34
-									.getFieldDelim());
-
-					if (!csvSettings_tFileOutputDelimited_34
-							.isUseCRLFRecordDelimiter()
-							&& csvSettings_tFileOutputDelimited_34
-									.getRowDelim() != '\r'
-							&& csvSettings_tFileOutputDelimited_34
-									.getRowDelim() != '\n') {
-						CsvWritertFileOutputDelimited_34.setLineEnd(""
-								+ csvSettings_tFileOutputDelimited_34
-										.getRowDelim());
-					}
-
-					if (filetFileOutputDelimited_34.length() == 0) {
-
-						headColutFileOutputDelimited_34[0] = "ENCOUNTER_NUM";
-
-						headColutFileOutputDelimited_34[1] = "PATIENT_NUM";
-
-						headColutFileOutputDelimited_34[2] = "CONCEPT_CD";
-
-						headColutFileOutputDelimited_34[3] = "PROVIDER_ID";
-
-						headColutFileOutputDelimited_34[4] = "START_DATE";
-
-						headColutFileOutputDelimited_34[5] = "MODIFIER_CD";
-
-						headColutFileOutputDelimited_34[6] = "INSTANCE_NUM";
-
-						headColutFileOutputDelimited_34[7] = "VALTYPE_CD";
-
-						headColutFileOutputDelimited_34[8] = "TVAL_CHAR";
-
-						headColutFileOutputDelimited_34[9] = "NVAL_NUM";
-
-						headColutFileOutputDelimited_34[10] = "VALUEFLAG_CD";
-
-						headColutFileOutputDelimited_34[11] = "QUANTITY_NUM";
-
-						headColutFileOutputDelimited_34[12] = "UNITS_CD";
-
-						headColutFileOutputDelimited_34[13] = "END_DATE";
-
-						headColutFileOutputDelimited_34[14] = "LOCATION_CD";
-
-						headColutFileOutputDelimited_34[15] = "OBSERVATION_BLOB";
-
-						headColutFileOutputDelimited_34[16] = "CONFIDENCE_NUM";
-
-						headColutFileOutputDelimited_34[17] = "UPDATE_DATE";
-
-						headColutFileOutputDelimited_34[18] = "DOWNLOAD_DATE";
-
-						headColutFileOutputDelimited_34[19] = "IMPORT_DATE";
-
-						headColutFileOutputDelimited_34[20] = "SOURCESYSTEM_CD";
-
-						headColutFileOutputDelimited_34[21] = "UPLOAD_ID";
-
-						CsvWritertFileOutputDelimited_34
-								.writeNext(headColutFileOutputDelimited_34);
-						CsvWritertFileOutputDelimited_34.flush();
-
-					}
-
-					CsvWritertFileOutputDelimited_34
-							.setEscapeChar(csvSettings_tFileOutputDelimited_34
-									.getEscapeChar());
-					CsvWritertFileOutputDelimited_34
-							.setQuoteChar(csvSettings_tFileOutputDelimited_34
-									.getTextEnclosure());
-					CsvWritertFileOutputDelimited_34
-							.setQuoteStatus(com.talend.csv.CSVWriter.QuoteStatus.FORCE);
-
-					/**
-					 * [tFileOutputDelimited_34 begin ] stop
-					 */
-
-					/**
-					 * [tFileInputDelimited_30 begin ] start
-					 */
-
-					ok_Hash.put("tFileInputDelimited_30", false);
-					start_Hash.put("tFileInputDelimited_30",
-							System.currentTimeMillis());
-					currentComponent = "tFileInputDelimited_30";
-
-					int tos_count_tFileInputDelimited_30 = 0;
-
-					int nb_line_tFileInputDelimited_30 = 0;
-					int footer_tFileInputDelimited_30 = 0;
-					int totalLinetFileInputDelimited_30 = 0;
-					int limittFileInputDelimited_30 = -1;
-					int lastLinetFileInputDelimited_30 = -1;
-
-					char fieldSeparator_tFileInputDelimited_30[] = null;
-
-					// support passing value (property: Field Separator) by
-					// 'context.fs' or 'globalMap.get("fs")'.
-					if (((String) ";").length() > 0) {
-						fieldSeparator_tFileInputDelimited_30 = ((String) ";")
-								.toCharArray();
-					} else {
-						throw new IllegalArgumentException(
-								"Field Separator must be assigned a char.");
-					}
-
-					char rowSeparator_tFileInputDelimited_30[] = null;
-
-					// support passing value (property: Row Separator) by
-					// 'context.rs' or 'globalMap.get("rs")'.
-					if (((String) "\n").length() > 0) {
-						rowSeparator_tFileInputDelimited_30 = ((String) "\n")
-								.toCharArray();
-					} else {
-						throw new IllegalArgumentException(
-								"Row Separator must be assigned a char.");
-					}
-
-					Object filename_tFileInputDelimited_30 = /**
-					 * Start field
-					 * tFileInputDelimited_30:FILENAME
-					 */
-					((String) globalMap.get("tCreateTemporaryFile_13_FILEPATH"))/**
-					 * 
-					 * End field tFileInputDelimited_30:FILENAME
-					 */
-					;
-					com.talend.csv.CSVReader csvReadertFileInputDelimited_30 = null;
-
-					try {
-
-						String[] rowtFileInputDelimited_30 = null;
-						int currentLinetFileInputDelimited_30 = 0;
-						int outputLinetFileInputDelimited_30 = 0;
-						try {// TD110 begin
-							if (filename_tFileInputDelimited_30 instanceof java.io.InputStream) {
-
-								int footer_value_tFileInputDelimited_30 = 0;
-								if (footer_value_tFileInputDelimited_30 > 0) {
-									throw new java.lang.Exception(
-											"When the input source is a stream,footer shouldn't be bigger than 0.");
-								}
-
-								csvReadertFileInputDelimited_30 = new com.talend.csv.CSVReader(
-										(java.io.InputStream) filename_tFileInputDelimited_30,
-										fieldSeparator_tFileInputDelimited_30[0],
-										"UTF-8");
-							} else {
-								csvReadertFileInputDelimited_30 = new com.talend.csv.CSVReader(
-										new java.io.BufferedReader(
-												new java.io.InputStreamReader(
-														new java.io.FileInputStream(
-																String.valueOf(filename_tFileInputDelimited_30)),
-														"UTF-8")),
-										fieldSeparator_tFileInputDelimited_30[0]);
-							}
-
-							csvReadertFileInputDelimited_30
-									.setTrimWhitespace(false);
-							if ((rowSeparator_tFileInputDelimited_30[0] != '\n')
-									&& (rowSeparator_tFileInputDelimited_30[0] != '\r'))
-								csvReadertFileInputDelimited_30
-										.setLineEnd(""
-												+ rowSeparator_tFileInputDelimited_30[0]);
-
-							csvReadertFileInputDelimited_30.setQuoteChar('"');
-
-							csvReadertFileInputDelimited_30
-									.setEscapeChar(csvReadertFileInputDelimited_30
-											.getQuoteChar());
-
-							if (footer_tFileInputDelimited_30 > 0) {
-								for (totalLinetFileInputDelimited_30 = 0; totalLinetFileInputDelimited_30 < 1; totalLinetFileInputDelimited_30++) {
-									csvReadertFileInputDelimited_30.readNext();
-								}
-								csvReadertFileInputDelimited_30
-										.setSkipEmptyRecords(true);
-								while (csvReadertFileInputDelimited_30
-										.readNext()) {
-
-									rowtFileInputDelimited_30 = csvReadertFileInputDelimited_30
-											.getValues();
-									if (!(rowtFileInputDelimited_30.length == 1 && ("\015")
-											.equals(rowtFileInputDelimited_30[0]))) {// empty
-																						// line
-																						// when
-																						// row
-																						// separator
-																						// is
-																						// '\n'
-
-										totalLinetFileInputDelimited_30++;
-
-									}
-
-								}
-								int lastLineTemptFileInputDelimited_30 = totalLinetFileInputDelimited_30
-										- footer_tFileInputDelimited_30 < 0 ? 0
-										: totalLinetFileInputDelimited_30
-												- footer_tFileInputDelimited_30;
-								if (lastLinetFileInputDelimited_30 > 0) {
-									lastLinetFileInputDelimited_30 = lastLinetFileInputDelimited_30 < lastLineTemptFileInputDelimited_30 ? lastLinetFileInputDelimited_30
-											: lastLineTemptFileInputDelimited_30;
-								} else {
-									lastLinetFileInputDelimited_30 = lastLineTemptFileInputDelimited_30;
-								}
-
-								csvReadertFileInputDelimited_30.close();
-								if (filename_tFileInputDelimited_30 instanceof java.io.InputStream) {
-									csvReadertFileInputDelimited_30 = new com.talend.csv.CSVReader(
-											(java.io.InputStream) filename_tFileInputDelimited_30,
-											fieldSeparator_tFileInputDelimited_30[0],
-											"UTF-8");
-								} else {
-									csvReadertFileInputDelimited_30 = new com.talend.csv.CSVReader(
-											new java.io.BufferedReader(
-													new java.io.InputStreamReader(
-															new java.io.FileInputStream(
-																	String.valueOf(filename_tFileInputDelimited_30)),
-															"UTF-8")),
-											fieldSeparator_tFileInputDelimited_30[0]);
-								}
-								csvReadertFileInputDelimited_30
-										.setTrimWhitespace(false);
-								if ((rowSeparator_tFileInputDelimited_30[0] != '\n')
-										&& (rowSeparator_tFileInputDelimited_30[0] != '\r'))
-									csvReadertFileInputDelimited_30
-											.setLineEnd(""
-													+ rowSeparator_tFileInputDelimited_30[0]);
-
-								csvReadertFileInputDelimited_30
-										.setQuoteChar('"');
-
-								csvReadertFileInputDelimited_30
-										.setEscapeChar(csvReadertFileInputDelimited_30
-												.getQuoteChar());
-
-							}
-
-							if (limittFileInputDelimited_30 != 0) {
-								for (currentLinetFileInputDelimited_30 = 0; currentLinetFileInputDelimited_30 < 1; currentLinetFileInputDelimited_30++) {
-									csvReadertFileInputDelimited_30.readNext();
-								}
-							}
-							csvReadertFileInputDelimited_30
-									.setSkipEmptyRecords(true);
-
-						} catch (java.lang.Exception e) {
-
-							System.err.println(e.getMessage());
-
-						}// TD110 end
-
-						while (limittFileInputDelimited_30 != 0
-								&& csvReadertFileInputDelimited_30 != null
-								&& csvReadertFileInputDelimited_30.readNext()) {
-
-							rowtFileInputDelimited_30 = csvReadertFileInputDelimited_30
-									.getValues();
-
-							if (rowtFileInputDelimited_30.length == 1
-									&& ("\015")
-											.equals(rowtFileInputDelimited_30[0])) {// empty
-																					// line
-																					// when
-																					// row
-																					// separator
-																					// is
-																					// '\n'
-								continue;
-							}
-
-							currentLinetFileInputDelimited_30++;
-
-							if (lastLinetFileInputDelimited_30 > -1
-									&& currentLinetFileInputDelimited_30 > lastLinetFileInputDelimited_30) {
-								break;
-							}
-							outputLinetFileInputDelimited_30++;
-							if (limittFileInputDelimited_30 > 0
-									&& outputLinetFileInputDelimited_30 > limittFileInputDelimited_30) {
-								break;
-							}
-
-							row46 = null;
-
-							boolean whetherReject_tFileInputDelimited_30 = false;
-							row46 = new row46Struct();
-							try {
-
-								if (rowtFileInputDelimited_30.length == 1
-										&& ("\015")
-												.equals(rowtFileInputDelimited_30[0])) {// empty
-																						// line
-																						// when
-																						// row
-																						// separator
-																						// is
-																						// '\n'
-
-									row46.ENCOUNTER_NUM = null;
-
-									row46.PATIENT_NUM = null;
-
-									row46.CONCEPT_CD = null;
-
-									row46.PROVIDER_ID = null;
-
-									row46.START_DATE = null;
-
-									row46.MODIFIER_CD = null;
-
-									row46.INSTANCE_NUM = null;
-
-									row46.VALTYPE_CD = null;
-
-									row46.TVAL_CHAR = null;
-
-									row46.NVAL_NUM = null;
-
-									row46.VALUEFLAG_CD = null;
-
-									row46.QUANTITY_NUM = null;
-
-									row46.UNITS_CD = null;
-
-									row46.END_DATE = null;
-
-									row46.LOCATION_CD = null;
-
-									row46.OBSERVATION_BLOB = null;
-
-									row46.CONFIDENCE_NUM = null;
-
-									row46.UPDATE_DATE = null;
-
-									row46.DOWNLOAD_DATE = null;
-
-									row46.IMPORT_DATE = null;
-
-									row46.SOURCESYSTEM_CD = null;
-
-									row46.UPLOAD_ID = null;
-
-								} else {
-
-									int columnIndexWithD_tFileInputDelimited_30 = 0; // Column
-																						// Index
-
-									columnIndexWithD_tFileInputDelimited_30 = 0;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.ENCOUNTER_NUM = ParserUtils
-													.parseTo_BigDecimal(rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]);
-
-										} else {
-											row46.ENCOUNTER_NUM = null;
-										}
-
-									} else {
-										row46.ENCOUNTER_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 1;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.PATIENT_NUM = ParserUtils
-													.parseTo_BigDecimal(rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]);
-
-										} else {
-											row46.PATIENT_NUM = null;
-										}
-
-									} else {
-										row46.PATIENT_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 2;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.CONCEPT_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.CONCEPT_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 3;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.PROVIDER_ID = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.PROVIDER_ID = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 4;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.START_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30],
-															"yyyy-MM-dd");
-
-										} else {
-											row46.START_DATE = null;
-										}
-
-									} else {
-										row46.START_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 5;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.MODIFIER_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.MODIFIER_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 6;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.INSTANCE_NUM = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.INSTANCE_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 7;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.VALTYPE_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.VALTYPE_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 8;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.TVAL_CHAR = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.TVAL_CHAR = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 9;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.NVAL_NUM = ParserUtils
-													.parseTo_Float(rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]);
-
-										} else {
-											row46.NVAL_NUM = null;
-										}
-
-									} else {
-										row46.NVAL_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 10;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.VALUEFLAG_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.VALUEFLAG_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 11;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.QUANTITY_NUM = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.QUANTITY_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 12;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.UNITS_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.UNITS_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 13;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.END_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30],
-															"yyyy-MM-dd");
-
-										} else {
-											row46.END_DATE = null;
-										}
-
-									} else {
-										row46.END_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 14;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.LOCATION_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.LOCATION_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 15;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.OBSERVATION_BLOB = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.OBSERVATION_BLOB = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 16;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.CONFIDENCE_NUM = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.CONFIDENCE_NUM = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 17;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.UPDATE_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30],
-															"yyyy-MM-dd");
-
-										} else {
-											row46.UPDATE_DATE = null;
-										}
-
-									} else {
-										row46.UPDATE_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 18;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.DOWNLOAD_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30],
-															"yyyy-MM-dd");
-
-										} else {
-											row46.DOWNLOAD_DATE = null;
-										}
-
-									} else {
-										row46.DOWNLOAD_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 19;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										if (rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30]
-												.length() > 0) {
-
-											row46.IMPORT_DATE = ParserUtils
-													.parseTo_Date(
-															rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30],
-															"yyyy-MM-dd");
-
-										} else {
-											row46.IMPORT_DATE = null;
-										}
-
-									} else {
-										row46.IMPORT_DATE = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 20;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.SOURCESYSTEM_CD = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.SOURCESYSTEM_CD = null;
-									}
-
-									columnIndexWithD_tFileInputDelimited_30 = 21;
-
-									if (columnIndexWithD_tFileInputDelimited_30 < rowtFileInputDelimited_30.length) {
-
-										row46.UPLOAD_ID = rowtFileInputDelimited_30[columnIndexWithD_tFileInputDelimited_30];
-
-									} else {
-										row46.UPLOAD_ID = null;
-									}
-
-								}
-
-							} catch (java.lang.Exception e) {
-								whetherReject_tFileInputDelimited_30 = true;
-
-								System.err.println(e.getMessage());
-								row46 = null;
-
-							}
-
-							/**
-							 * [tFileInputDelimited_30 begin ] stop
-							 */
-							/**
-							 * [tFileInputDelimited_30 main ] start
-							 */
-
-							currentComponent = "tFileInputDelimited_30";
-
-							tos_count_tFileInputDelimited_30++;
-
-							/**
-							 * [tFileInputDelimited_30 main ] stop
-							 */
-							// Start of branch "row46"
-							if (row46 != null) {
-
-								/**
-								 * [tFileOutputDelimited_34 main ] start
-								 */
-
-								currentComponent = "tFileOutputDelimited_34";
-
-								String[] rowtFileOutputDelimited_34 = new String[22];
-
-								rowtFileOutputDelimited_34[0] = row46.ENCOUNTER_NUM == null ? ""
-										: row46.ENCOUNTER_NUM.toPlainString();
-
-								rowtFileOutputDelimited_34[1] = row46.PATIENT_NUM == null ? ""
-										: row46.PATIENT_NUM.toPlainString();
-
-								rowtFileOutputDelimited_34[2] = row46.CONCEPT_CD == null ? ""
-										: row46.CONCEPT_CD;
-
-								rowtFileOutputDelimited_34[3] = row46.PROVIDER_ID == null ? ""
-										: row46.PROVIDER_ID;
-
-								rowtFileOutputDelimited_34[4] = row46.START_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												row46.START_DATE, "yyyy-MM-dd");
-
-								rowtFileOutputDelimited_34[5] = row46.MODIFIER_CD == null ? ""
-										: row46.MODIFIER_CD;
-
-								rowtFileOutputDelimited_34[6] = row46.INSTANCE_NUM == null ? ""
-										: row46.INSTANCE_NUM;
-
-								rowtFileOutputDelimited_34[7] = row46.VALTYPE_CD == null ? ""
-										: row46.VALTYPE_CD;
-
-								rowtFileOutputDelimited_34[8] = row46.TVAL_CHAR == null ? ""
-										: row46.TVAL_CHAR;
-
-								rowtFileOutputDelimited_34[9] = row46.NVAL_NUM == null ? ""
-										: String.valueOf(row46.NVAL_NUM);
-
-								rowtFileOutputDelimited_34[10] = row46.VALUEFLAG_CD == null ? ""
-										: row46.VALUEFLAG_CD;
-
-								rowtFileOutputDelimited_34[11] = row46.QUANTITY_NUM == null ? ""
-										: row46.QUANTITY_NUM;
-
-								rowtFileOutputDelimited_34[12] = row46.UNITS_CD == null ? ""
-										: row46.UNITS_CD;
-
-								rowtFileOutputDelimited_34[13] = row46.END_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												row46.END_DATE, "yyyy-MM-dd");
-
-								rowtFileOutputDelimited_34[14] = row46.LOCATION_CD == null ? ""
-										: row46.LOCATION_CD;
-
-								rowtFileOutputDelimited_34[15] = row46.OBSERVATION_BLOB == null ? ""
-										: row46.OBSERVATION_BLOB;
-
-								rowtFileOutputDelimited_34[16] = row46.CONFIDENCE_NUM == null ? ""
-										: row46.CONFIDENCE_NUM;
-
-								rowtFileOutputDelimited_34[17] = row46.UPDATE_DATE == null ? ""
-										: FormatterUtils
-												.format_Date(row46.UPDATE_DATE,
-														"yyyy-MM-dd");
-
-								rowtFileOutputDelimited_34[18] = row46.DOWNLOAD_DATE == null ? ""
-										: FormatterUtils.format_Date(
-												row46.DOWNLOAD_DATE,
-												"yyyy-MM-dd");
-
-								rowtFileOutputDelimited_34[19] = row46.IMPORT_DATE == null ? ""
-										: FormatterUtils
-												.format_Date(row46.IMPORT_DATE,
-														"yyyy-MM-dd");
-
-								rowtFileOutputDelimited_34[20] = row46.SOURCESYSTEM_CD == null ? ""
-										: row46.SOURCESYSTEM_CD;
-
-								rowtFileOutputDelimited_34[21] = row46.UPLOAD_ID == null ? ""
-										: row46.UPLOAD_ID;
-
-								nb_line_tFileOutputDelimited_34++;
-								CsvWritertFileOutputDelimited_34
-										.writeNext(rowtFileOutputDelimited_34);
-
-								tos_count_tFileOutputDelimited_34++;
-
-								/**
-								 * [tFileOutputDelimited_34 main ] stop
-								 */
-
-							} // End of branch "row46"
-
-							/**
-							 * [tFileInputDelimited_30 end ] start
-							 */
-
-							currentComponent = "tFileInputDelimited_30";
-
-							nb_line_tFileInputDelimited_30++;
-						}
-
-					} finally {
-						if (!(filename_tFileInputDelimited_30 instanceof java.io.InputStream)) {
-							if (csvReadertFileInputDelimited_30 != null) {
-								csvReadertFileInputDelimited_30.close();
-							}
-						}
-						if (csvReadertFileInputDelimited_30 != null) {
-							globalMap.put("tFileInputDelimited_30_NB_LINE",
-									nb_line_tFileInputDelimited_30);
-						}
-					}
-
-					ok_Hash.put("tFileInputDelimited_30", true);
-					end_Hash.put("tFileInputDelimited_30",
-							System.currentTimeMillis());
-
-					/**
-					 * [tFileInputDelimited_30 end ] stop
-					 */
-
-					/**
-					 * [tFileOutputDelimited_34 end ] start
-					 */
-
-					currentComponent = "tFileOutputDelimited_34";
-
-				} finally {
-
-					if (CsvWritertFileOutputDelimited_34 != null) {
-						CsvWritertFileOutputDelimited_34.close();
-					}
-					globalMap.put("tFileOutputDelimited_34_NB_LINE",
-							nb_line_tFileOutputDelimited_34);
-				} // finally
-
-				ok_Hash.put("tFileOutputDelimited_34", true);
-				end_Hash.put("tFileOutputDelimited_34",
-						System.currentTimeMillis());
-
-				/**
-				 * [tFileOutputDelimited_34 end ] stop
-				 */
-
-			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil
-						.addLog("CHECKPOINT",
-								"CONNECTION:SUBJOB_OK:tFileInputDelimited_30:OnSubjobOk",
-								"", Thread.currentThread().getId() + "", "",
-								"", "", "", "");
-			}
-
 			tJDBCClose_1Process(globalMap);
 
 		} catch (java.lang.Exception e) {
@@ -62887,7 +57602,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 		}
 
-		globalMap.put("tFileInputDelimited_30_SUBPROCESS_STATE", 1);
+		globalMap.put("tCreateTemporaryFile_13_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJDBCClose_1Process(
@@ -63297,7 +58012,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				int tos_count_tJava_18 = 0;
 
-				StatusListener.setStatus(100, "Upload Complete...", "");
+				StatusListener.setStatus(90, "Upload Complete...", "");
 
 				/**
 				 * [tJava_18 begin ] stop
@@ -63328,6 +58043,15 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 			}// end the resume
 
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_18:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tRunJob_4Process(globalMap);
+
 		} catch (java.lang.Exception e) {
 
 			throw new TalendException(e, currentComponent, globalMap);
@@ -63339,6 +58063,974 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		}
 
 		globalMap.put("tJava_18_SUBPROCESS_STATE", 1);
+	}
+
+	public void tRunJob_4Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tRunJob_4_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tRunJob_4 begin ] start
+				 */
+
+				ok_Hash.put("tRunJob_4", false);
+				start_Hash.put("tRunJob_4", System.currentTimeMillis());
+				currentComponent = "tRunJob_4";
+
+				int tos_count_tRunJob_4 = 0;
+
+				/**
+				 * [tRunJob_4 begin ] stop
+				 */
+				/**
+				 * [tRunJob_4 main ] start
+				 */
+
+				currentComponent = "tRunJob_4";
+
+				java.util.List<String> paraList_tRunJob_4 = new java.util.ArrayList<String>();
+				paraList_tRunJob_4.add("--father_pid=" + pid);
+
+				paraList_tRunJob_4.add("--root_pid=" + rootPid);
+
+				paraList_tRunJob_4.add("--father_node=tRunJob_4");
+
+				paraList_tRunJob_4.add("--context=Default");
+
+				// for feature:10589
+				paraList_tRunJob_4.add("--stat_port=" + portStats);
+
+				if (resuming_logs_dir_path != null) {
+					paraList_tRunJob_4.add("--resuming_logs_dir_path="
+							+ resuming_logs_dir_path);
+				}
+				String childResumePath_tRunJob_4 = ResumeUtil
+						.getChildJobCheckPointPath(resuming_checkpoint_path);
+				String tRunJobName_tRunJob_4 = ResumeUtil
+						.getRighttRunJob(resuming_checkpoint_path);
+				if ("tRunJob_4".equals(tRunJobName_tRunJob_4)
+						&& childResumePath_tRunJob_4 != null) {
+					paraList_tRunJob_4
+							.add("--resuming_checkpoint_path="
+									+ ResumeUtil
+											.getChildJobCheckPointPath(resuming_checkpoint_path));
+				}
+				paraList_tRunJob_4.add("--parent_part_launcher=JOB:" + jobName
+						+ "/NODE:tRunJob_4");
+
+				java.util.Map<String, Object> parentContextMap_tRunJob_4 = new java.util.HashMap<String, Object>();
+
+				Object obj_tRunJob_4 = null;
+
+				obj_tRunJob_4 = context.DB_TargetI2B2_Host;
+				paraList_tRunJob_4.add("--context_param DBHost="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_4));
+				parentContextMap_tRunJob_4.put("DBHost", obj_tRunJob_4);
+				obj_tRunJob_4 = context.DB_TargetI2B2_Instance;
+				paraList_tRunJob_4.add("--context_param DBInstance="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_4));
+				parentContextMap_tRunJob_4.put("DBInstance", obj_tRunJob_4);
+				obj_tRunJob_4 = context.DB_TargetI2B2_Port;
+				paraList_tRunJob_4.add("--context_param DBPort="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_4));
+				parentContextMap_tRunJob_4.put("DBPort", obj_tRunJob_4);
+				obj_tRunJob_4 = context.DB_TargetI2B2_Password;
+				paraList_tRunJob_4.add("--context_param DBPassword="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_4));
+				parentContextMap_tRunJob_4.put("DBPassword", obj_tRunJob_4);
+				obj_tRunJob_4 = context.DB_TargetI2B2_Schema;
+				paraList_tRunJob_4.add("--context_param DBSchema="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_4));
+				parentContextMap_tRunJob_4.put("DBSchema", obj_tRunJob_4);
+				tos.idrt_delete_patients_0_1.IDRT_Delete_Patients childJob_tRunJob_4 = new tos.idrt_delete_patients_0_1.IDRT_Delete_Patients();
+				// pass DataSources
+				java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_4 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != talendDataSources_tRunJob_4) {
+					java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_4 = new java.util.HashMap<String, javax.sql.DataSource>();
+					for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_4 : talendDataSources_tRunJob_4
+							.entrySet()) {
+						dataSources_tRunJob_4.put(
+								talendDataSourceEntry_tRunJob_4.getKey(),
+								talendDataSourceEntry_tRunJob_4.getValue()
+										.getRawDataSource());
+					}
+					childJob_tRunJob_4.setDataSources(dataSources_tRunJob_4);
+				}
+				childJob_tRunJob_4.parentContextMap = parentContextMap_tRunJob_4;
+				String[][] childReturn_tRunJob_4 = childJob_tRunJob_4
+						.runJob((String[]) paraList_tRunJob_4
+								.toArray(new String[paraList_tRunJob_4.size()]));
+				errorCode = childJob_tRunJob_4.getErrorCode();
+
+				if (childJob_tRunJob_4.getErrorCode() == null) {
+					globalMap.put(
+							"tRunJob_4_CHILD_RETURN_CODE",
+							childJob_tRunJob_4.getStatus() != null
+									&& ("failure").equals(childJob_tRunJob_4
+											.getStatus()) ? 1 : 0);
+				} else {
+					globalMap.put("tRunJob_4_CHILD_RETURN_CODE",
+							childJob_tRunJob_4.getErrorCode());
+				}
+				if (childJob_tRunJob_4.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_4_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_4.getExceptionStackTrace());
+				}
+
+				if (childJob_tRunJob_4.getErrorCode() != null
+						|| ("failure").equals(childJob_tRunJob_4.getStatus())) {
+					throw new RuntimeException("Child job running failed");
+				}
+
+				tos_count_tRunJob_4++;
+
+				/**
+				 * [tRunJob_4 main ] stop
+				 */
+				/**
+				 * [tRunJob_4 end ] start
+				 */
+
+				currentComponent = "tRunJob_4";
+
+				ok_Hash.put("tRunJob_4", true);
+				end_Hash.put("tRunJob_4", System.currentTimeMillis());
+
+				/**
+				 * [tRunJob_4 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tRunJob_4:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJava_19Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tRunJob_4_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_19Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_19_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_19 begin ] start
+				 */
+
+				ok_Hash.put("tJava_19", false);
+				start_Hash.put("tJava_19", System.currentTimeMillis());
+				currentComponent = "tJava_19";
+
+				int tos_count_tJava_19 = 0;
+
+				StatusListener.setStatus(100, "Upload Complete...", "");
+
+				/**
+				 * [tJava_19 begin ] stop
+				 */
+				/**
+				 * [tJava_19 main ] start
+				 */
+
+				currentComponent = "tJava_19";
+
+				tos_count_tJava_19++;
+
+				/**
+				 * [tJava_19 main ] stop
+				 */
+				/**
+				 * [tJava_19 end ] start
+				 */
+
+				currentComponent = "tJava_19";
+
+				ok_Hash.put("tJava_19", true);
+				end_Hash.put("tJava_19", System.currentTimeMillis());
+
+				/**
+				 * [tJava_19 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_19_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_1Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_1 begin ] start
+				 */
+
+				ok_Hash.put("tJava_1", false);
+				start_Hash.put("tJava_1", System.currentTimeMillis());
+				currentComponent = "tJava_1";
+
+				int tos_count_tJava_1 = 0;
+
+				// System.out.println("***********");
+				// System.out.println("Context: ");
+				// System.out.println(context.DB_TargetI2B2_Host);
+				// System.out.println(context.DB_TargetI2B2_Instance);
+				// System.out.println(context.DB_TargetI2B2_Port);
+				// System.out.println(context.DB_TargetI2B2_Password);
+				// System.out.println(context.DB_TargetI2B2_Schema);
+				// System.out.println(context.DB_TargetI2B2_Username);
+				// System.out.println("***********");
+
+				/**
+				 * [tJava_1 begin ] stop
+				 */
+				/**
+				 * [tJava_1 main ] start
+				 */
+
+				currentComponent = "tJava_1";
+
+				tos_count_tJava_1++;
+
+				/**
+				 * [tJava_1 main ] stop
+				 */
+				/**
+				 * [tJava_1 end ] start
+				 */
+
+				currentComponent = "tJava_1";
+
+				ok_Hash.put("tJava_1", true);
+				end_Hash.put("tJava_1", System.currentTimeMillis());
+
+				/**
+				 * [tJava_1 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_1:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tRunJob_3Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tRunJob_3Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tRunJob_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tRunJob_3 begin ] start
+				 */
+
+				ok_Hash.put("tRunJob_3", false);
+				start_Hash.put("tRunJob_3", System.currentTimeMillis());
+				currentComponent = "tRunJob_3";
+
+				int tos_count_tRunJob_3 = 0;
+
+				/**
+				 * [tRunJob_3 begin ] stop
+				 */
+				/**
+				 * [tRunJob_3 main ] start
+				 */
+
+				currentComponent = "tRunJob_3";
+
+				java.util.List<String> paraList_tRunJob_3 = new java.util.ArrayList<String>();
+				paraList_tRunJob_3.add("--father_pid=" + pid);
+
+				paraList_tRunJob_3.add("--root_pid=" + rootPid);
+
+				paraList_tRunJob_3.add("--father_node=tRunJob_3");
+
+				paraList_tRunJob_3.add("--context=Default");
+
+				// for feature:10589
+				paraList_tRunJob_3.add("--stat_port=" + portStats);
+
+				if (resuming_logs_dir_path != null) {
+					paraList_tRunJob_3.add("--resuming_logs_dir_path="
+							+ resuming_logs_dir_path);
+				}
+				String childResumePath_tRunJob_3 = ResumeUtil
+						.getChildJobCheckPointPath(resuming_checkpoint_path);
+				String tRunJobName_tRunJob_3 = ResumeUtil
+						.getRighttRunJob(resuming_checkpoint_path);
+				if ("tRunJob_3".equals(tRunJobName_tRunJob_3)
+						&& childResumePath_tRunJob_3 != null) {
+					paraList_tRunJob_3
+							.add("--resuming_checkpoint_path="
+									+ ResumeUtil
+											.getChildJobCheckPointPath(resuming_checkpoint_path));
+				}
+				paraList_tRunJob_3.add("--parent_part_launcher=JOB:" + jobName
+						+ "/NODE:tRunJob_3");
+
+				java.util.Map<String, Object> parentContextMap_tRunJob_3 = new java.util.HashMap<String, Object>();
+
+				context.synchronizeContext();
+				java.util.Enumeration<?> propertyNames_tRunJob_3 = context
+						.propertyNames();
+				while (propertyNames_tRunJob_3.hasMoreElements()) {
+					String key_tRunJob_3 = (String) propertyNames_tRunJob_3
+							.nextElement();
+					Object value_tRunJob_3 = (Object) context
+							.get(key_tRunJob_3);
+					paraList_tRunJob_3.add("--context_param " + key_tRunJob_3
+							+ "=" + value_tRunJob_3);
+				}
+
+				parentContextMap_tRunJob_3.put("folderOutput",
+						context.folderOutput);
+				parentContextMap_tRunJob_3
+						.put("folderMain", context.folderMain);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Host",
+						context.DB_StagingI2B2_Host);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Instance",
+						context.DB_StagingI2B2_Instance);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_jdbcurl",
+						context.DB_StagingI2B2_jdbcurl);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Password",
+						context.DB_StagingI2B2_Password);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Port",
+						context.DB_StagingI2B2_Port);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Schema",
+						context.DB_StagingI2B2_Schema);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_sqlclassname",
+						context.DB_StagingI2B2_sqlclassname);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Username",
+						context.DB_StagingI2B2_Username);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Host",
+						context.DB_TargetI2B2_Host);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Instance",
+						context.DB_TargetI2B2_Instance);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_jdbcurl",
+						context.DB_TargetI2B2_jdbcurl);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Password",
+						context.DB_TargetI2B2_Password);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Port",
+						context.DB_TargetI2B2_Port);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Schema",
+						context.DB_TargetI2B2_Schema);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_sqlclassname",
+						context.DB_TargetI2B2_sqlclassname);
+				parentContextMap_tRunJob_3.put("DB_TargetI2B2_Username",
+						context.DB_TargetI2B2_Username);
+				parentContextMap_tRunJob_3.put("TargetID", context.TargetID);
+				parentContextMap_tRunJob_3.put("sql", context.sql);
+
+				Object obj_tRunJob_3 = null;
+
+				obj_tRunJob_3 = context.DB_TargetI2B2_Host;
+				paraList_tRunJob_3.add("--context_param DBHost="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBHost", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Instance;
+				paraList_tRunJob_3.add("--context_param DBInstance="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBInstance", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Port;
+				paraList_tRunJob_3.add("--context_param DBPort="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBPort", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Password;
+				paraList_tRunJob_3.add("--context_param DBPassword="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBPassword", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
+				paraList_tRunJob_3.add("--context_param DBSchema="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBSchema", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Username;
+				paraList_tRunJob_3.add("--context_param DBUsername="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DBUsername", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
+				paraList_tRunJob_3.add("--context_param project="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("project", obj_tRunJob_3);
+				obj_tRunJob_3 = true;
+				paraList_tRunJob_3.add("--context_param truncateQueries="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3
+						.put("truncateQueries", obj_tRunJob_3);
+				tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables childJob_tRunJob_3 = new tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables();
+				// pass DataSources
+				java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_3 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+						.get(KEY_DB_DATASOURCES);
+				if (null != talendDataSources_tRunJob_3) {
+					java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_3 = new java.util.HashMap<String, javax.sql.DataSource>();
+					for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_3 : talendDataSources_tRunJob_3
+							.entrySet()) {
+						dataSources_tRunJob_3.put(
+								talendDataSourceEntry_tRunJob_3.getKey(),
+								talendDataSourceEntry_tRunJob_3.getValue()
+										.getRawDataSource());
+					}
+					childJob_tRunJob_3.setDataSources(dataSources_tRunJob_3);
+				}
+				childJob_tRunJob_3.parentContextMap = parentContextMap_tRunJob_3;
+				String[][] childReturn_tRunJob_3 = childJob_tRunJob_3
+						.runJob((String[]) paraList_tRunJob_3
+								.toArray(new String[paraList_tRunJob_3.size()]));
+				errorCode = childJob_tRunJob_3.getErrorCode();
+
+				if (childJob_tRunJob_3.getErrorCode() == null) {
+					globalMap.put(
+							"tRunJob_3_CHILD_RETURN_CODE",
+							childJob_tRunJob_3.getStatus() != null
+									&& ("failure").equals(childJob_tRunJob_3
+											.getStatus()) ? 1 : 0);
+				} else {
+					globalMap.put("tRunJob_3_CHILD_RETURN_CODE",
+							childJob_tRunJob_3.getErrorCode());
+				}
+				if (childJob_tRunJob_3.getExceptionStackTrace() != null) {
+					globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE",
+							childJob_tRunJob_3.getExceptionStackTrace());
+				}
+
+				tos_count_tRunJob_3++;
+
+				/**
+				 * [tRunJob_3 main ] stop
+				 */
+				/**
+				 * [tRunJob_3 end ] start
+				 */
+
+				currentComponent = "tRunJob_3";
+
+				ok_Hash.put("tRunJob_3", true);
+				end_Hash.put("tRunJob_3", System.currentTimeMillis());
+
+				/**
+				 * [tRunJob_3 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tRunJob_3:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCConnection_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tRunJob_3_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_1 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_1", false);
+				start_Hash.put("tCreateTemporaryFile_1",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_1";
+
+				int tos_count_tCreateTemporaryFile_1 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_1 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_1.mkdirs();
+				String name_tCreateTemporaryFile_1 = "talend_01_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_1 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_1 = new java.io.File(
+						dir_tCreateTemporaryFile_1, name_tCreateTemporaryFile_1
+								+ "." + suffix_tCreateTemporaryFile_1);
+				if (file_tCreateTemporaryFile_1.createNewFile()) {
+					file_tCreateTemporaryFile_1.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_1_FILEPATH",
+						file_tCreateTemporaryFile_1.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_1 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_1 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_1";
+
+				tos_count_tCreateTemporaryFile_1++;
+
+				/**
+				 * [tCreateTemporaryFile_1 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_1 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_1";
+
+				ok_Hash.put("tCreateTemporaryFile_1", true);
+				end_Hash.put("tCreateTemporaryFile_1",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_1 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_1:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tLibraryLoad_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tLibraryLoad_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tLibraryLoad_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tLibraryLoad_1 begin ] start
+				 */
+
+				ok_Hash.put("tLibraryLoad_1", false);
+				start_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
+				currentComponent = "tLibraryLoad_1";
+
+				int tos_count_tLibraryLoad_1 = 0;
+
+				/**
+				 * [tLibraryLoad_1 begin ] stop
+				 */
+				/**
+				 * [tLibraryLoad_1 main ] start
+				 */
+
+				currentComponent = "tLibraryLoad_1";
+
+				tos_count_tLibraryLoad_1++;
+
+				/**
+				 * [tLibraryLoad_1 main ] stop
+				 */
+				/**
+				 * [tLibraryLoad_1 end ] start
+				 */
+
+				currentComponent = "tLibraryLoad_1";
+
+				ok_Hash.put("tLibraryLoad_1", true);
+				end_Hash.put("tLibraryLoad_1", System.currentTimeMillis());
+
+				/**
+				 * [tLibraryLoad_1 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tLibraryLoad_1:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tJava_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tLibraryLoad_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_2Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_2 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_2", false);
+				start_Hash.put("tCreateTemporaryFile_2",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_2";
+
+				int tos_count_tCreateTemporaryFile_2 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_2 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_2.mkdirs();
+				String name_tCreateTemporaryFile_2 = "talend_02_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_2 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_2 = new java.io.File(
+						dir_tCreateTemporaryFile_2, name_tCreateTemporaryFile_2
+								+ "." + suffix_tCreateTemporaryFile_2);
+				if (file_tCreateTemporaryFile_2.createNewFile()) {
+					file_tCreateTemporaryFile_2.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_2_FILEPATH",
+						file_tCreateTemporaryFile_2.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_2 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_2 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_2";
+
+				tos_count_tCreateTemporaryFile_2++;
+
+				/**
+				 * [tCreateTemporaryFile_2 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_2 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_2";
+
+				ok_Hash.put("tCreateTemporaryFile_2", true);
+				end_Hash.put("tCreateTemporaryFile_2",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_2 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_2:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_2_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_3Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_3 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_3", false);
+				start_Hash.put("tCreateTemporaryFile_3",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_3";
+
+				int tos_count_tCreateTemporaryFile_3 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_3 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_3.mkdirs();
+				String name_tCreateTemporaryFile_3 = "talend_03_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_3 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_3 = new java.io.File(
+						dir_tCreateTemporaryFile_3, name_tCreateTemporaryFile_3
+								+ "." + suffix_tCreateTemporaryFile_3);
+				if (file_tCreateTemporaryFile_3.createNewFile()) {
+					file_tCreateTemporaryFile_3.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_3_FILEPATH",
+						file_tCreateTemporaryFile_3.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_3 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_3 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_3";
+
+				tos_count_tCreateTemporaryFile_3++;
+
+				/**
+				 * [tCreateTemporaryFile_3 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_3 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_3";
+
+				ok_Hash.put("tCreateTemporaryFile_3", true);
+				end_Hash.put("tCreateTemporaryFile_3",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_3 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_3:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_2Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_3_SUBPROCESS_STATE", 1);
 	}
 
 	public static class from_src_ontStruct implements
@@ -66463,6 +62155,109 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		globalMap.put("tFileInputDelimited_32_SUBPROCESS_STATE", 1);
 	}
 
+	public void tCreateTemporaryFile_4Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_4_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_4 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_4", false);
+				start_Hash.put("tCreateTemporaryFile_4",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_4";
+
+				int tos_count_tCreateTemporaryFile_4 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_4 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_4.mkdirs();
+				String name_tCreateTemporaryFile_4 = "talend_04_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_4 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_4 = new java.io.File(
+						dir_tCreateTemporaryFile_4, name_tCreateTemporaryFile_4
+								+ "." + suffix_tCreateTemporaryFile_4);
+				if (file_tCreateTemporaryFile_4.createNewFile()) {
+					file_tCreateTemporaryFile_4.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_4_FILEPATH",
+						file_tCreateTemporaryFile_4.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_4 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_4 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_4";
+
+				tos_count_tCreateTemporaryFile_4++;
+
+				/**
+				 * [tCreateTemporaryFile_4 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_4 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_4";
+
+				ok_Hash.put("tCreateTemporaryFile_4", true);
+				end_Hash.put("tCreateTemporaryFile_4",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_4 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_4:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_3Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_4_SUBPROCESS_STATE", 1);
+	}
+
 	public static class from_src_conc_dimStruct
 			implements
 			routines.system.IPersistableComparableLookupRow<from_src_conc_dimStruct> {
@@ -66877,7 +62672,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -67960,7 +63755,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -69269,7 +65064,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -70385,7 +66180,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -71295,7 +67090,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -72395,7 +68190,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -73477,7 +69272,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				// linked node: tMap_6 - inputs:(to_patient_mapping,row9)
 				// outputs:(to_pat_mapping,asdd)
 
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row9 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row9 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.ALL_MATCHES;
 
 				org.talend.designer.components.lookup.persistent.PersistentSortedLookupManager<row9Struct> tHash_Lookup_row9 = new org.talend.designer.components.lookup.persistent.PersistentSortedLookupManager<row9Struct>(
 						matchingModeEnum_row9,
@@ -73490,7 +69285,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -74516,7 +70311,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -75162,6 +70957,625 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		globalMap.put("tFileInputDelimited_7_SUBPROCESS_STATE", 1);
 	}
 
+	public void tCreateTemporaryFile_5Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_5_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_5 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_5", false);
+				start_Hash.put("tCreateTemporaryFile_5",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_5";
+
+				int tos_count_tCreateTemporaryFile_5 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_5 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_5.mkdirs();
+				String name_tCreateTemporaryFile_5 = "talend_05_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_5 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_5 = new java.io.File(
+						dir_tCreateTemporaryFile_5, name_tCreateTemporaryFile_5
+								+ "." + suffix_tCreateTemporaryFile_5);
+				if (file_tCreateTemporaryFile_5.createNewFile()) {
+					file_tCreateTemporaryFile_5.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_5_FILEPATH",
+						file_tCreateTemporaryFile_5.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_5 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_5 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_5";
+
+				tos_count_tCreateTemporaryFile_5++;
+
+				/**
+				 * [tCreateTemporaryFile_5 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_5 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_5";
+
+				ok_Hash.put("tCreateTemporaryFile_5", true);
+				end_Hash.put("tCreateTemporaryFile_5",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_5 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_5:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_4Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_5_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_6Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_6_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_6 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_6", false);
+				start_Hash.put("tCreateTemporaryFile_6",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_6";
+
+				int tos_count_tCreateTemporaryFile_6 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_6 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_6.mkdirs();
+				String name_tCreateTemporaryFile_6 = "talend_06_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_6 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_6 = new java.io.File(
+						dir_tCreateTemporaryFile_6, name_tCreateTemporaryFile_6
+								+ "." + suffix_tCreateTemporaryFile_6);
+				if (file_tCreateTemporaryFile_6.createNewFile()) {
+					file_tCreateTemporaryFile_6.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_6_FILEPATH",
+						file_tCreateTemporaryFile_6.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_6 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_6 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_6";
+
+				tos_count_tCreateTemporaryFile_6++;
+
+				/**
+				 * [tCreateTemporaryFile_6 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_6 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_6";
+
+				ok_Hash.put("tCreateTemporaryFile_6", true);
+				end_Hash.put("tCreateTemporaryFile_6",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_6 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_6:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_5Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_6_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_7Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_7_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_7 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_7", false);
+				start_Hash.put("tCreateTemporaryFile_7",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_7";
+
+				int tos_count_tCreateTemporaryFile_7 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_7 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_7.mkdirs();
+				String name_tCreateTemporaryFile_7 = "talend_07_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_7 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_7 = new java.io.File(
+						dir_tCreateTemporaryFile_7, name_tCreateTemporaryFile_7
+								+ "." + suffix_tCreateTemporaryFile_7);
+				if (file_tCreateTemporaryFile_7.createNewFile()) {
+					file_tCreateTemporaryFile_7.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_7_FILEPATH",
+						file_tCreateTemporaryFile_7.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_7 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_7 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_7";
+
+				tos_count_tCreateTemporaryFile_7++;
+
+				/**
+				 * [tCreateTemporaryFile_7 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_7 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_7";
+
+				ok_Hash.put("tCreateTemporaryFile_7", true);
+				end_Hash.put("tCreateTemporaryFile_7",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_7 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_7:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_6Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_7_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_8Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_8_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_8 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_8", false);
+				start_Hash.put("tCreateTemporaryFile_8",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_8";
+
+				int tos_count_tCreateTemporaryFile_8 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_8 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_8.mkdirs();
+				String name_tCreateTemporaryFile_8 = "talend_08_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_8 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_8 = new java.io.File(
+						dir_tCreateTemporaryFile_8, name_tCreateTemporaryFile_8
+								+ "." + suffix_tCreateTemporaryFile_8);
+				if (file_tCreateTemporaryFile_8.createNewFile()) {
+					file_tCreateTemporaryFile_8.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_8_FILEPATH",
+						file_tCreateTemporaryFile_8.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_8 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_8 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_8";
+
+				tos_count_tCreateTemporaryFile_8++;
+
+				/**
+				 * [tCreateTemporaryFile_8 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_8 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_8";
+
+				ok_Hash.put("tCreateTemporaryFile_8", true);
+				end_Hash.put("tCreateTemporaryFile_8",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_8 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_8:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_7Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_8_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_9Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_9_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_9 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_9", false);
+				start_Hash.put("tCreateTemporaryFile_9",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_9";
+
+				int tos_count_tCreateTemporaryFile_9 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_9 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_9.mkdirs();
+				String name_tCreateTemporaryFile_9 = "talend_09_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_9 = ("tmp".replaceAll("\\.",
+						"").length() == 0) ? "tmp" : "tmp"
+						.replaceAll("\\.", "");
+				java.io.File file_tCreateTemporaryFile_9 = new java.io.File(
+						dir_tCreateTemporaryFile_9, name_tCreateTemporaryFile_9
+								+ "." + suffix_tCreateTemporaryFile_9);
+				if (file_tCreateTemporaryFile_9.createNewFile()) {
+					file_tCreateTemporaryFile_9.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_9_FILEPATH",
+						file_tCreateTemporaryFile_9.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_9 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_9 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_9";
+
+				tos_count_tCreateTemporaryFile_9++;
+
+				/**
+				 * [tCreateTemporaryFile_9 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_9 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_9";
+
+				ok_Hash.put("tCreateTemporaryFile_9", true);
+				end_Hash.put("tCreateTemporaryFile_9",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_9 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_9:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_8Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_9_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_10Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_10_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_10 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_10", false);
+				start_Hash.put("tCreateTemporaryFile_10",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_10";
+
+				int tos_count_tCreateTemporaryFile_10 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_10 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_10.mkdirs();
+				String name_tCreateTemporaryFile_10 = "talend_10_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_10 = ("tmp".replaceAll(
+						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
+						"\\.", "");
+				java.io.File file_tCreateTemporaryFile_10 = new java.io.File(
+						dir_tCreateTemporaryFile_10,
+						name_tCreateTemporaryFile_10 + "."
+								+ suffix_tCreateTemporaryFile_10);
+				if (file_tCreateTemporaryFile_10.createNewFile()) {
+					file_tCreateTemporaryFile_10.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_10_FILEPATH",
+						file_tCreateTemporaryFile_10.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_10 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_10 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_10";
+
+				tos_count_tCreateTemporaryFile_10++;
+
+				/**
+				 * [tCreateTemporaryFile_10 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_10 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_10";
+
+				ok_Hash.put("tCreateTemporaryFile_10", true);
+				end_Hash.put("tCreateTemporaryFile_10",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_10 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_10:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_9Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_10_SUBPROCESS_STATE", 1);
+	}
+
 	public static class row27Struct implements
 			routines.system.IPersistableComparableLookupRow<row27Struct> {
 		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_TransformationToTarget = new byte[0];
@@ -75572,7 +71986,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -76651,7 +73065,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -77767,7 +74181,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -78869,7 +75283,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -80177,7 +76591,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -81273,7 +77687,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -82302,7 +78716,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -83360,7 +79774,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 						}
 
-						, 2000000
+						, 200000
 
 				);
 
@@ -83858,6 +80272,214 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 		}
 
 		globalMap.put("tFileInputDelimited_25_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_11Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_11_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_11 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_11", false);
+				start_Hash.put("tCreateTemporaryFile_11",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_11";
+
+				int tos_count_tCreateTemporaryFile_11 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_11 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_11.mkdirs();
+				String name_tCreateTemporaryFile_11 = "talend_11_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_11 = ("tmp".replaceAll(
+						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
+						"\\.", "");
+				java.io.File file_tCreateTemporaryFile_11 = new java.io.File(
+						dir_tCreateTemporaryFile_11,
+						name_tCreateTemporaryFile_11 + "."
+								+ suffix_tCreateTemporaryFile_11);
+				if (file_tCreateTemporaryFile_11.createNewFile()) {
+					file_tCreateTemporaryFile_11.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_11_FILEPATH",
+						file_tCreateTemporaryFile_11.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_11 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_11 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_11";
+
+				tos_count_tCreateTemporaryFile_11++;
+
+				/**
+				 * [tCreateTemporaryFile_11 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_11 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_11";
+
+				ok_Hash.put("tCreateTemporaryFile_11", true);
+				end_Hash.put("tCreateTemporaryFile_11",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_11 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_11:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_10Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_11_SUBPROCESS_STATE", 1);
+	}
+
+	public void tCreateTemporaryFile_12Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tCreateTemporaryFile_12_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tCreateTemporaryFile_12 begin ] start
+				 */
+
+				ok_Hash.put("tCreateTemporaryFile_12", false);
+				start_Hash.put("tCreateTemporaryFile_12",
+						System.currentTimeMillis());
+				currentComponent = "tCreateTemporaryFile_12";
+
+				int tos_count_tCreateTemporaryFile_12 = 0;
+
+				java.io.File dir_tCreateTemporaryFile_12 = new java.io.File(
+						context.folderMain + context.folderOutput);
+				dir_tCreateTemporaryFile_12.mkdirs();
+				String name_tCreateTemporaryFile_12 = "talend_12_XXXX"
+						.replaceAll("XXXX", routines.TalendString
+								.getAsciiRandomString(4).toUpperCase());
+				String suffix_tCreateTemporaryFile_12 = ("tmp".replaceAll(
+						"\\.", "").length() == 0) ? "tmp" : "tmp".replaceAll(
+						"\\.", "");
+				java.io.File file_tCreateTemporaryFile_12 = new java.io.File(
+						dir_tCreateTemporaryFile_12,
+						name_tCreateTemporaryFile_12 + "."
+								+ suffix_tCreateTemporaryFile_12);
+				if (file_tCreateTemporaryFile_12.createNewFile()) {
+					file_tCreateTemporaryFile_12.deleteOnExit();
+				}
+				globalMap.put("tCreateTemporaryFile_12_FILEPATH",
+						file_tCreateTemporaryFile_12.getCanonicalPath());
+
+				/**
+				 * [tCreateTemporaryFile_12 begin ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_12 main ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_12";
+
+				tos_count_tCreateTemporaryFile_12++;
+
+				/**
+				 * [tCreateTemporaryFile_12 main ] stop
+				 */
+				/**
+				 * [tCreateTemporaryFile_12 end ] start
+				 */
+
+				currentComponent = "tCreateTemporaryFile_12";
+
+				ok_Hash.put("tCreateTemporaryFile_12", true);
+				end_Hash.put("tCreateTemporaryFile_12",
+						System.currentTimeMillis());
+
+				/**
+				 * [tCreateTemporaryFile_12 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tCreateTemporaryFile_12:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tCreateTemporaryFile_11Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tCreateTemporaryFile_12_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row49Struct implements
@@ -85145,6 +81767,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 2645917 characters generated by Talend Open Studio for Data Integration on
- * the March 31, 2014 10:55:36 AM CEST
+ * 2546075 characters generated by Talend Open Studio for Data Integration on
+ * the May 26, 2014 1:58:47 PM CEST
  ************************************************************************************************/

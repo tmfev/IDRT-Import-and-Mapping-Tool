@@ -114,9 +114,14 @@ public class OntologyTree extends JTree {
 	
 	public void addTargetNodeByPath(String i2b2Path, String name, String source,
 				OntologyItemTarget item, NodeType type) {
-//	System.out.println("ADDING TARGETNODE BY PATH: " + name);
+	System.out.println("ADDING TARGETNODE BY PATH: " + name);
 			OntologyTreeNode node = new OntologyTreeNode(name);
 			node.setID(node.getIDFromPath(i2b2Path));
+			OntologyTreeNode testNode = this.getNodeLists().getNodeByPath(i2b2Path);
+			if (testNode!=null){
+				testNode.getTargetNodeAttributes().addStagingPath(item.getStagingPath());
+			}
+			else {
 			try {
 				this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 			} catch (Exception e) {
@@ -150,6 +155,7 @@ public class OntologyTree extends JTree {
 				setI2B2RootNode(node);
 			}
 			OntologyEditorView.getOntologyTargetTree().getNodeLists().add(node);
+			}
 		}
 
 	/**

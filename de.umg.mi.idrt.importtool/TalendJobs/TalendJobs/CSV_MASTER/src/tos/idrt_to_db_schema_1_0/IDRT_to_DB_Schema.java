@@ -57,6 +57,12 @@ import java.util.Comparator;
 //the import part of tJavaRow_12
 //import java.util.List;
 
+//the import part of tJavaRow_14
+//import java.util.List;
+
+//the import part of tJava_4
+//import java.util.List;
+
 //the import part of tJava_1
 //import java.util.List;
 import java.util.HashMap;
@@ -69,6 +75,9 @@ import java.util.HashSet;
 //import java.util.List;
 
 //the import part of tJava_3
+//import java.util.List;
+
+//the import part of tJavaRow_15
 //import java.util.List;
 
 //the import part of tJavaRow_4
@@ -1401,6 +1410,17 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				globalMap);
 	}
 
+	public void tJavaRow_14_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJavaRow_14", System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_4_onSubJobError(exception, errorComponent,
+				globalMap);
+	}
+
 	public void tFileOutputDelimited_3_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -1420,6 +1440,16 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		status = "failure";
 
 		tOracleClose_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_4_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_4", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_4_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tFileInputDelimited_3_error(java.lang.Exception exception,
@@ -1637,6 +1667,26 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		status = "failure";
 
 		tOracleConnection_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tOracleInput_8_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tOracleInput_8", System.currentTimeMillis());
+
+		status = "failure";
+
+		tOracleInput_8_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJavaRow_15_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJavaRow_15", System.currentTimeMillis());
+
+		status = "failure";
+
+		tOracleInput_8_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tOracleInput_5_error(java.lang.Exception exception,
@@ -2276,6 +2326,17 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 	}
 
+	public void tJava_4_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tFileInputDelimited_3_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
@@ -2481,6 +2542,17 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	public void tOracleConnection_1_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tOracleInput_8_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
@@ -22832,6 +22904,449 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		globalMap.put("tFileInputDelimited_1_SUBPROCESS_STATE", 1);
 	}
 
+	public static class row11Struct implements
+			routines.system.IPersistableRow<row11Struct> {
+		final static byte[] commonByteArrayLock_TOS_IDRT_to_DB_Schema = new byte[0];
+		static byte[] commonByteArray_TOS_IDRT_to_DB_Schema = new byte[0];
+
+		public BigDecimal ENCOUNTER_NUM;
+
+		public BigDecimal getENCOUNTER_NUM() {
+			return this.ENCOUNTER_NUM;
+		}
+
+		public BigDecimal PATIENT_NUM;
+
+		public BigDecimal getPATIENT_NUM() {
+			return this.PATIENT_NUM;
+		}
+
+		public String CONCEPT_CD;
+
+		public String getCONCEPT_CD() {
+			return this.CONCEPT_CD;
+		}
+
+		public String PROVIDER_ID;
+
+		public String getPROVIDER_ID() {
+			return this.PROVIDER_ID;
+		}
+
+		public java.util.Date START_DATE;
+
+		public java.util.Date getSTART_DATE() {
+			return this.START_DATE;
+		}
+
+		public String MODIFIER_CD;
+
+		public String getMODIFIER_CD() {
+			return this.MODIFIER_CD;
+		}
+
+		public String INSTANCE_NUM;
+
+		public String getINSTANCE_NUM() {
+			return this.INSTANCE_NUM;
+		}
+
+		public String VALTYPE_CD;
+
+		public String getVALTYPE_CD() {
+			return this.VALTYPE_CD;
+		}
+
+		public String TVAL_CHAR;
+
+		public String getTVAL_CHAR() {
+			return this.TVAL_CHAR;
+		}
+
+		public Float NVAL_NUM;
+
+		public Float getNVAL_NUM() {
+			return this.NVAL_NUM;
+		}
+
+		public String VALUEFLAG_CD;
+
+		public String getVALUEFLAG_CD() {
+			return this.VALUEFLAG_CD;
+		}
+
+		public String QUANTITY_NUM;
+
+		public String getQUANTITY_NUM() {
+			return this.QUANTITY_NUM;
+		}
+
+		public String UNITS_CD;
+
+		public String getUNITS_CD() {
+			return this.UNITS_CD;
+		}
+
+		public java.util.Date END_DATE;
+
+		public java.util.Date getEND_DATE() {
+			return this.END_DATE;
+		}
+
+		public String LOCATION_CD;
+
+		public String getLOCATION_CD() {
+			return this.LOCATION_CD;
+		}
+
+		public String OBSERVATION_BLOB;
+
+		public String getOBSERVATION_BLOB() {
+			return this.OBSERVATION_BLOB;
+		}
+
+		public String CONFIDENCE_NUM;
+
+		public String getCONFIDENCE_NUM() {
+			return this.CONFIDENCE_NUM;
+		}
+
+		public java.util.Date UPDATE_DATE;
+
+		public java.util.Date getUPDATE_DATE() {
+			return this.UPDATE_DATE;
+		}
+
+		public java.util.Date DOWNLOAD_DATE;
+
+		public java.util.Date getDOWNLOAD_DATE() {
+			return this.DOWNLOAD_DATE;
+		}
+
+		public java.util.Date IMPORT_DATE;
+
+		public java.util.Date getIMPORT_DATE() {
+			return this.IMPORT_DATE;
+		}
+
+		public String SOURCESYSTEM_CD;
+
+		public String getSOURCESYSTEM_CD() {
+			return this.SOURCESYSTEM_CD;
+		}
+
+		public String UPLOAD_ID;
+
+		public String getUPLOAD_ID() {
+			return this.UPLOAD_ID;
+		}
+
+		public String m_applied_path;
+
+		public String getM_applied_path() {
+			return this.m_applied_path;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_TOS_IDRT_to_DB_Schema.length) {
+					if (length < 1024
+							&& commonByteArray_TOS_IDRT_to_DB_Schema.length == 0) {
+						commonByteArray_TOS_IDRT_to_DB_Schema = new byte[1024];
+					} else {
+						commonByteArray_TOS_IDRT_to_DB_Schema = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_TOS_IDRT_to_DB_Schema, 0, length);
+				strReturn = new String(commonByteArray_TOS_IDRT_to_DB_Schema,
+						0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos)
+				throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private java.util.Date readDate(ObjectInputStream dis)
+				throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(dis.readLong());
+			}
+			return dateReturn;
+		}
+
+		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
+				throws IOException {
+			if (date1 == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeLong(date1.getTime());
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_IDRT_to_DB_Schema) {
+
+				try {
+
+					int length = 0;
+
+					this.ENCOUNTER_NUM = (BigDecimal) dis.readObject();
+
+					this.PATIENT_NUM = (BigDecimal) dis.readObject();
+
+					this.CONCEPT_CD = readString(dis);
+
+					this.PROVIDER_ID = readString(dis);
+
+					this.START_DATE = readDate(dis);
+
+					this.MODIFIER_CD = readString(dis);
+
+					this.INSTANCE_NUM = readString(dis);
+
+					this.VALTYPE_CD = readString(dis);
+
+					this.TVAL_CHAR = readString(dis);
+
+					length = dis.readByte();
+					if (length == -1) {
+						this.NVAL_NUM = null;
+					} else {
+						this.NVAL_NUM = dis.readFloat();
+					}
+
+					this.VALUEFLAG_CD = readString(dis);
+
+					this.QUANTITY_NUM = readString(dis);
+
+					this.UNITS_CD = readString(dis);
+
+					this.END_DATE = readDate(dis);
+
+					this.LOCATION_CD = readString(dis);
+
+					this.OBSERVATION_BLOB = readString(dis);
+
+					this.CONFIDENCE_NUM = readString(dis);
+
+					this.UPDATE_DATE = readDate(dis);
+
+					this.DOWNLOAD_DATE = readDate(dis);
+
+					this.IMPORT_DATE = readDate(dis);
+
+					this.SOURCESYSTEM_CD = readString(dis);
+
+					this.UPLOAD_ID = readString(dis);
+
+					this.m_applied_path = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				} catch (ClassNotFoundException eCNFE) {
+					throw new RuntimeException(eCNFE);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// BigDecimal
+
+				dos.writeObject(this.ENCOUNTER_NUM);
+
+				// BigDecimal
+
+				dos.writeObject(this.PATIENT_NUM);
+
+				// String
+
+				writeString(this.CONCEPT_CD, dos);
+
+				// String
+
+				writeString(this.PROVIDER_ID, dos);
+
+				// java.util.Date
+
+				writeDate(this.START_DATE, dos);
+
+				// String
+
+				writeString(this.MODIFIER_CD, dos);
+
+				// String
+
+				writeString(this.INSTANCE_NUM, dos);
+
+				// String
+
+				writeString(this.VALTYPE_CD, dos);
+
+				// String
+
+				writeString(this.TVAL_CHAR, dos);
+
+				// Float
+
+				if (this.NVAL_NUM == null) {
+					dos.writeByte(-1);
+				} else {
+					dos.writeByte(0);
+					dos.writeFloat(this.NVAL_NUM);
+				}
+
+				// String
+
+				writeString(this.VALUEFLAG_CD, dos);
+
+				// String
+
+				writeString(this.QUANTITY_NUM, dos);
+
+				// String
+
+				writeString(this.UNITS_CD, dos);
+
+				// java.util.Date
+
+				writeDate(this.END_DATE, dos);
+
+				// String
+
+				writeString(this.LOCATION_CD, dos);
+
+				// String
+
+				writeString(this.OBSERVATION_BLOB, dos);
+
+				// String
+
+				writeString(this.CONFIDENCE_NUM, dos);
+
+				// java.util.Date
+
+				writeDate(this.UPDATE_DATE, dos);
+
+				// java.util.Date
+
+				writeDate(this.DOWNLOAD_DATE, dos);
+
+				// java.util.Date
+
+				writeDate(this.IMPORT_DATE, dos);
+
+				// String
+
+				writeString(this.SOURCESYSTEM_CD, dos);
+
+				// String
+
+				writeString(this.UPLOAD_ID, dos);
+
+				// String
+
+				writeString(this.m_applied_path, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("ENCOUNTER_NUM=" + String.valueOf(ENCOUNTER_NUM));
+			sb.append(",PATIENT_NUM=" + String.valueOf(PATIENT_NUM));
+			sb.append(",CONCEPT_CD=" + CONCEPT_CD);
+			sb.append(",PROVIDER_ID=" + PROVIDER_ID);
+			sb.append(",START_DATE=" + String.valueOf(START_DATE));
+			sb.append(",MODIFIER_CD=" + MODIFIER_CD);
+			sb.append(",INSTANCE_NUM=" + INSTANCE_NUM);
+			sb.append(",VALTYPE_CD=" + VALTYPE_CD);
+			sb.append(",TVAL_CHAR=" + TVAL_CHAR);
+			sb.append(",NVAL_NUM=" + String.valueOf(NVAL_NUM));
+			sb.append(",VALUEFLAG_CD=" + VALUEFLAG_CD);
+			sb.append(",QUANTITY_NUM=" + QUANTITY_NUM);
+			sb.append(",UNITS_CD=" + UNITS_CD);
+			sb.append(",END_DATE=" + String.valueOf(END_DATE));
+			sb.append(",LOCATION_CD=" + LOCATION_CD);
+			sb.append(",OBSERVATION_BLOB=" + OBSERVATION_BLOB);
+			sb.append(",CONFIDENCE_NUM=" + CONFIDENCE_NUM);
+			sb.append(",UPDATE_DATE=" + String.valueOf(UPDATE_DATE));
+			sb.append(",DOWNLOAD_DATE=" + String.valueOf(DOWNLOAD_DATE));
+			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
+			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
+			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
+			sb.append(",m_applied_path=" + m_applied_path);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row11Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
 	public static class to_obsStruct implements
 			routines.system.IPersistableRow<to_obsStruct> {
 		final static byte[] commonByteArrayLock_TOS_IDRT_to_DB_Schema = new byte[0];
@@ -22969,6 +23484,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.UPLOAD_ID;
 		}
 
+		public String m_applied_path;
+
+		public String getM_applied_path() {
+			return this.m_applied_path;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -23082,6 +23603,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 					this.UPLOAD_ID = readString(dis);
 
+					this.m_applied_path = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -23190,6 +23713,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				writeString(this.UPLOAD_ID, dos);
 
+				// String
+
+				writeString(this.m_applied_path, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -23223,6 +23750,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			sb.append(",IMPORT_DATE=" + String.valueOf(IMPORT_DATE));
 			sb.append(",SOURCESYSTEM_CD=" + SOURCESYSTEM_CD);
 			sb.append(",UPLOAD_ID=" + UPLOAD_ID);
+			sb.append(",m_applied_path=" + m_applied_path);
 			sb.append("]");
 
 			return sb.toString();
@@ -25456,6 +25984,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				row66Struct row66 = new row66Struct();
 				row7Struct row7 = new row7Struct();
 				to_obsStruct to_obs = new to_obsStruct();
+				row11Struct row11 = new row11Struct();
 
 				/**
 				 * [tFileOutputDelimited_3 begin ] start
@@ -25515,7 +26044,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					isFileGenerated_tFileOutputDelimited_3 = false;
 				}
 
-				String[] headColutFileOutputDelimited_3 = new String[22];
+				String[] headColutFileOutputDelimited_3 = new String[23];
 				class CSVBasicSet_tFileOutputDelimited_3 {
 					private char field_Delim;
 					private char row_Delim;
@@ -25704,6 +26233,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 						headColutFileOutputDelimited_3[21] = "UPLOAD_ID";
 
+						headColutFileOutputDelimited_3[22] = "m_applied_path";
+
 						CsvWritertFileOutputDelimited_3
 								.writeNext(headColutFileOutputDelimited_3);
 						CsvWritertFileOutputDelimited_3.flush();
@@ -25721,6 +26252,22 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 					/**
 					 * [tFileOutputDelimited_3 begin ] stop
+					 */
+
+					/**
+					 * [tJavaRow_14 begin ] start
+					 */
+
+					ok_Hash.put("tJavaRow_14", false);
+					start_Hash.put("tJavaRow_14", System.currentTimeMillis());
+					currentComponent = "tJavaRow_14";
+
+					int tos_count_tJavaRow_14 = 0;
+
+					int nb_line_tJavaRow_14 = 0;
+
+					/**
+					 * [tJavaRow_14 begin ] stop
 					 */
 
 					/**
@@ -26881,6 +27428,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												to_obs_tmp.IMPORT_DATE = row7.Import_Date;
 												to_obs_tmp.SOURCESYSTEM_CD = null;
 												to_obs_tmp.UPLOAD_ID = null;
+												to_obs_tmp.m_applied_path = row7.m_applied_path;
 												to_obs_List.add(to_obs_tmp);
 												to_obs = to_obs_tmp;
 											} // closing inner join bracket (1)
@@ -26918,7 +27466,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 																+ ""
 																+ row7.FormRepeatKey
 																+ ""
-																+ row7.itemGroupRepeatKey;
+																+ row7.itemGroupRepeatKey
+																+ 1;
 												to_obs_tmp.VALTYPE_CD = Var.var2 ? "N"
 														: "T";
 												to_obs_tmp.TVAL_CHAR = Var.var2 ? "E"
@@ -26951,6 +27500,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												to_obs_tmp.IMPORT_DATE = row7.Import_Date;
 												to_obs_tmp.SOURCESYSTEM_CD = null;
 												to_obs_tmp.UPLOAD_ID = null;
+												to_obs_tmp.m_applied_path = row7.m_applied_path;
 												to_obs_List.add(to_obs_tmp);
 												to_obs = to_obs_tmp;
 											} // closing filter/reject
@@ -26972,96 +27522,231 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												to_obs = cur_to_obs;
 
 												/**
+												 * [tJavaRow_14 main ] start
+												 */
+
+												currentComponent = "tJavaRow_14";
+
+												// Code generated according to
+												// input schema and output
+												// schema
+												row11.ENCOUNTER_NUM = to_obs.ENCOUNTER_NUM;
+												row11.PATIENT_NUM = to_obs.PATIENT_NUM;
+												row11.CONCEPT_CD = to_obs.CONCEPT_CD;
+												row11.PROVIDER_ID = to_obs.PROVIDER_ID;
+												row11.START_DATE = to_obs.START_DATE;
+												row11.MODIFIER_CD = to_obs.MODIFIER_CD;
+
+												// System.out.println("*****************************");
+												if (!to_obs.m_applied_path
+														.equalsIgnoreCase("@")) {
+													if (((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+															.containsKey(to_obs.PATIENT_NUM)) {
+														if (((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																.get(to_obs.PATIENT_NUM)
+																.containsKey(
+																		to_obs.m_applied_path)) {
+															if (((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																	.get(to_obs.PATIENT_NUM)
+																	.get(to_obs.m_applied_path)
+																	.containsKey(
+																			to_obs.INSTANCE_NUM)) {
+																row11.INSTANCE_NUM = ((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																		.get(to_obs.PATIENT_NUM)
+																		.get(to_obs.m_applied_path)
+																		.get(to_obs.INSTANCE_NUM)
+																		.toString();
+																// System.out.println("IF1");
+															} else {
+																row11.INSTANCE_NUM = context.maxInstance
+																		.add(new BigDecimal(
+																				1))
+																		.toString();
+																context.maxInstance = new BigDecimal(
+																		row11.INSTANCE_NUM);
+																((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																		.get(to_obs.PATIENT_NUM)
+																		.get(to_obs.m_applied_path)
+																		.put(to_obs.INSTANCE_NUM,
+																				new BigDecimal(
+																						row11.INSTANCE_NUM));// .put(CONCEPT_CD).put(INSTANCE_NUM,
+																												// maxInstance);
+																// System.out.println("ELSE1");
+															}
+														} else {
+															((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																	.get(to_obs.PATIENT_NUM)
+																	.put(to_obs.m_applied_path,
+																			new HashMap<String, BigDecimal>());
+															row11.INSTANCE_NUM = context.maxInstance
+																	.add(new BigDecimal(
+																			1))
+																	.toString();
+															context.maxInstance = new BigDecimal(
+																	row11.INSTANCE_NUM);
+															((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																	.get(to_obs.PATIENT_NUM)
+																	.get(to_obs.m_applied_path)
+																	.put(to_obs.INSTANCE_NUM,
+																			new BigDecimal(
+																					row11.INSTANCE_NUM));
+															// System.out.println("ELSE2");
+														}
+													} else {
+														((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																.put(to_obs.PATIENT_NUM,
+																		new HashMap<String, HashMap<String, BigDecimal>>());
+														((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																.get(to_obs.PATIENT_NUM)
+																.put(to_obs.m_applied_path,
+																		new HashMap<String, BigDecimal>());
+														row11.INSTANCE_NUM = context.maxInstance
+																.add(new BigDecimal(
+																		1))
+																.toString();
+
+														context.maxInstance = new BigDecimal(
+																row11.INSTANCE_NUM);
+														((HashMap<BigDecimal, HashMap<String, HashMap<String, BigDecimal>>>) context.instanceMap)
+																.get(to_obs.PATIENT_NUM)
+																.get(to_obs.m_applied_path)
+																.put(to_obs.INSTANCE_NUM,
+																		new BigDecimal(
+																				row11.INSTANCE_NUM));
+														// System.out.println("ELSE3");
+													}
+													// System.out.println("MPATH: "
+													// + to_obs.m_applied_path
+													// +" INSTANCE: " +
+													// to_obs.INSTANCE_NUM + " "
+													// + row11.INSTANCE_NUM +
+													// " PID " +
+													// to_obs.PATIENT_NUM);
+												} else {
+													row11.INSTANCE_NUM = "0";
+												}
+												int a = Integer
+														.parseInt(row11.INSTANCE_NUM) + 1;
+												row11.INSTANCE_NUM = "" + a;
+												row11.VALTYPE_CD = to_obs.VALTYPE_CD;
+												row11.TVAL_CHAR = to_obs.TVAL_CHAR;
+												row11.NVAL_NUM = to_obs.NVAL_NUM;
+												row11.VALUEFLAG_CD = to_obs.VALUEFLAG_CD;
+												row11.QUANTITY_NUM = to_obs.QUANTITY_NUM;
+												row11.UNITS_CD = to_obs.UNITS_CD;
+												row11.END_DATE = to_obs.END_DATE;
+												row11.LOCATION_CD = to_obs.LOCATION_CD;
+												row11.OBSERVATION_BLOB = to_obs.OBSERVATION_BLOB;
+												row11.CONFIDENCE_NUM = to_obs.CONFIDENCE_NUM;
+												row11.UPDATE_DATE = to_obs.UPDATE_DATE;
+												row11.DOWNLOAD_DATE = to_obs.DOWNLOAD_DATE;
+												row11.IMPORT_DATE = to_obs.IMPORT_DATE;
+												row11.SOURCESYSTEM_CD = to_obs.SOURCESYSTEM_CD;
+												row11.UPLOAD_ID = to_obs.UPLOAD_ID;
+												row11.m_applied_path = to_obs.m_applied_path;
+
+												nb_line_tJavaRow_14++;
+
+												tos_count_tJavaRow_14++;
+
+												/**
+												 * [tJavaRow_14 main ] stop
+												 */
+
+												/**
 												 * [tFileOutputDelimited_3 main
 												 * ] start
 												 */
 
 												currentComponent = "tFileOutputDelimited_3";
 
-												String[] rowtFileOutputDelimited_3 = new String[22];
+												String[] rowtFileOutputDelimited_3 = new String[23];
 
-												rowtFileOutputDelimited_3[0] = to_obs.ENCOUNTER_NUM == null ? ""
-														: to_obs.ENCOUNTER_NUM
+												rowtFileOutputDelimited_3[0] = row11.ENCOUNTER_NUM == null ? ""
+														: row11.ENCOUNTER_NUM
 																.toPlainString();
 
-												rowtFileOutputDelimited_3[1] = to_obs.PATIENT_NUM == null ? ""
-														: to_obs.PATIENT_NUM
+												rowtFileOutputDelimited_3[1] = row11.PATIENT_NUM == null ? ""
+														: row11.PATIENT_NUM
 																.toPlainString();
 
-												rowtFileOutputDelimited_3[2] = to_obs.CONCEPT_CD == null ? ""
-														: to_obs.CONCEPT_CD;
+												rowtFileOutputDelimited_3[2] = row11.CONCEPT_CD == null ? ""
+														: row11.CONCEPT_CD;
 
-												rowtFileOutputDelimited_3[3] = to_obs.PROVIDER_ID == null ? ""
-														: to_obs.PROVIDER_ID;
+												rowtFileOutputDelimited_3[3] = row11.PROVIDER_ID == null ? ""
+														: row11.PROVIDER_ID;
 
-												rowtFileOutputDelimited_3[4] = to_obs.START_DATE == null ? ""
+												rowtFileOutputDelimited_3[4] = row11.START_DATE == null ? ""
 														: FormatterUtils
 																.format_Date(
-																		to_obs.START_DATE,
+																		row11.START_DATE,
 																		"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_3[5] = to_obs.MODIFIER_CD == null ? ""
-														: to_obs.MODIFIER_CD;
+												rowtFileOutputDelimited_3[5] = row11.MODIFIER_CD == null ? ""
+														: row11.MODIFIER_CD;
 
-												rowtFileOutputDelimited_3[6] = to_obs.INSTANCE_NUM == null ? ""
-														: to_obs.INSTANCE_NUM;
+												rowtFileOutputDelimited_3[6] = row11.INSTANCE_NUM == null ? ""
+														: row11.INSTANCE_NUM;
 
-												rowtFileOutputDelimited_3[7] = to_obs.VALTYPE_CD == null ? ""
-														: to_obs.VALTYPE_CD;
+												rowtFileOutputDelimited_3[7] = row11.VALTYPE_CD == null ? ""
+														: row11.VALTYPE_CD;
 
-												rowtFileOutputDelimited_3[8] = to_obs.TVAL_CHAR == null ? ""
-														: to_obs.TVAL_CHAR;
+												rowtFileOutputDelimited_3[8] = row11.TVAL_CHAR == null ? ""
+														: row11.TVAL_CHAR;
 
-												rowtFileOutputDelimited_3[9] = to_obs.NVAL_NUM == null ? ""
-														: String.valueOf(to_obs.NVAL_NUM);
+												rowtFileOutputDelimited_3[9] = row11.NVAL_NUM == null ? ""
+														: String.valueOf(row11.NVAL_NUM);
 
-												rowtFileOutputDelimited_3[10] = to_obs.VALUEFLAG_CD == null ? ""
-														: to_obs.VALUEFLAG_CD;
+												rowtFileOutputDelimited_3[10] = row11.VALUEFLAG_CD == null ? ""
+														: row11.VALUEFLAG_CD;
 
-												rowtFileOutputDelimited_3[11] = to_obs.QUANTITY_NUM == null ? ""
-														: to_obs.QUANTITY_NUM;
+												rowtFileOutputDelimited_3[11] = row11.QUANTITY_NUM == null ? ""
+														: row11.QUANTITY_NUM;
 
-												rowtFileOutputDelimited_3[12] = to_obs.UNITS_CD == null ? ""
-														: to_obs.UNITS_CD;
+												rowtFileOutputDelimited_3[12] = row11.UNITS_CD == null ? ""
+														: row11.UNITS_CD;
 
-												rowtFileOutputDelimited_3[13] = to_obs.END_DATE == null ? ""
+												rowtFileOutputDelimited_3[13] = row11.END_DATE == null ? ""
 														: FormatterUtils
 																.format_Date(
-																		to_obs.END_DATE,
+																		row11.END_DATE,
 																		"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_3[14] = to_obs.LOCATION_CD == null ? ""
-														: to_obs.LOCATION_CD;
+												rowtFileOutputDelimited_3[14] = row11.LOCATION_CD == null ? ""
+														: row11.LOCATION_CD;
 
-												rowtFileOutputDelimited_3[15] = to_obs.OBSERVATION_BLOB == null ? ""
-														: to_obs.OBSERVATION_BLOB;
+												rowtFileOutputDelimited_3[15] = row11.OBSERVATION_BLOB == null ? ""
+														: row11.OBSERVATION_BLOB;
 
-												rowtFileOutputDelimited_3[16] = to_obs.CONFIDENCE_NUM == null ? ""
-														: to_obs.CONFIDENCE_NUM;
+												rowtFileOutputDelimited_3[16] = row11.CONFIDENCE_NUM == null ? ""
+														: row11.CONFIDENCE_NUM;
 
-												rowtFileOutputDelimited_3[17] = to_obs.UPDATE_DATE == null ? ""
+												rowtFileOutputDelimited_3[17] = row11.UPDATE_DATE == null ? ""
 														: FormatterUtils
 																.format_Date(
-																		to_obs.UPDATE_DATE,
+																		row11.UPDATE_DATE,
 																		"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_3[18] = to_obs.DOWNLOAD_DATE == null ? ""
+												rowtFileOutputDelimited_3[18] = row11.DOWNLOAD_DATE == null ? ""
 														: FormatterUtils
 																.format_Date(
-																		to_obs.DOWNLOAD_DATE,
+																		row11.DOWNLOAD_DATE,
 																		"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_3[19] = to_obs.IMPORT_DATE == null ? ""
+												rowtFileOutputDelimited_3[19] = row11.IMPORT_DATE == null ? ""
 														: FormatterUtils
 																.format_Date(
-																		to_obs.IMPORT_DATE,
+																		row11.IMPORT_DATE,
 																		"yyyy-MM-dd");
 
-												rowtFileOutputDelimited_3[20] = to_obs.SOURCESYSTEM_CD == null ? ""
-														: to_obs.SOURCESYSTEM_CD;
+												rowtFileOutputDelimited_3[20] = row11.SOURCESYSTEM_CD == null ? ""
+														: row11.SOURCESYSTEM_CD;
 
-												rowtFileOutputDelimited_3[21] = to_obs.UPLOAD_ID == null ? ""
-														: to_obs.UPLOAD_ID;
+												rowtFileOutputDelimited_3[21] = row11.UPLOAD_ID == null ? ""
+														: row11.UPLOAD_ID;
+
+												rowtFileOutputDelimited_3[22] = row11.m_applied_path == null ? ""
+														: row11.m_applied_path;
 
 												nb_line_tFileOutputDelimited_3++;
 												CsvWritertFileOutputDelimited_3
@@ -27073,6 +27758,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												 * [tFileOutputDelimited_3 main
 												 * ] stop
 												 */
+
 											} // end of joined table loop
 											to_obs_List.clear();
 
@@ -27192,6 +27878,21 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 					/**
 					 * [tMap_7 end ] stop
+					 */
+
+					/**
+					 * [tJavaRow_14 end ] start
+					 */
+
+					currentComponent = "tJavaRow_14";
+
+					globalMap.put("tJavaRow_14_NB_LINE", nb_line_tJavaRow_14);
+
+					ok_Hash.put("tJavaRow_14", true);
+					end_Hash.put("tJavaRow_14", System.currentTimeMillis());
+
+					/**
+					 * [tJavaRow_14 end ] stop
 					 */
 
 					/**
@@ -27331,6 +28032,16 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}// end the resume
 
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tOracleClose_1:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tJava_4Process(globalMap);
+
 		} catch (java.lang.Exception e) {
 
 			throw new TalendException(e, currentComponent, globalMap);
@@ -27342,6 +28053,81 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		}
 
 		globalMap.put("tOracleClose_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_4Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_4_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_4 begin ] start
+				 */
+
+				ok_Hash.put("tJava_4", false);
+				start_Hash.put("tJava_4", System.currentTimeMillis());
+				currentComponent = "tJava_4";
+
+				int tos_count_tJava_4 = 0;
+
+				String foo = "bar";
+				// System.out.println((HashMap<BigDecimal,HashMap<String,HashMap<String,BigDecimal>>>)context.instanceMap);
+
+				/**
+				 * [tJava_4 begin ] stop
+				 */
+				/**
+				 * [tJava_4 main ] start
+				 */
+
+				currentComponent = "tJava_4";
+
+				tos_count_tJava_4++;
+
+				/**
+				 * [tJava_4 main ] stop
+				 */
+				/**
+				 * [tJava_4 end ] start
+				 */
+
+				currentComponent = "tJava_4";
+
+				ok_Hash.put("tJava_4", true);
+				end_Hash.put("tJava_4", System.currentTimeMillis());
+
+				/**
+				 * [tJava_4 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
 	}
 
 	public static class from_encStruct implements
@@ -31213,6 +31999,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.dataRows = 0;
 
 				/**
+				 * INSTANCEMAP
+				 **/
+
+				context.instanceMap = new HashMap<String, HashMap<String, BigDecimal>>();
+
+				/**
 				 * [tJava_1 begin ] stop
 				 */
 				/**
@@ -34026,7 +34818,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 						"", "");
 			}
 
-			tOracleInput_5Process(globalMap);
+			tOracleInput_8Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -34039,6 +34831,303 @@ public class IDRT_to_DB_Schema implements TalendJob {
 		}
 
 		globalMap.put("tOracleConnection_1_SUBPROCESS_STATE", 1);
+	}
+
+	public static class row14Struct implements
+			routines.system.IPersistableRow<row14Struct> {
+		final static byte[] commonByteArrayLock_TOS_IDRT_to_DB_Schema = new byte[0];
+		static byte[] commonByteArray_TOS_IDRT_to_DB_Schema = new byte[0];
+
+		public BigDecimal instance_num;
+
+		public BigDecimal getInstance_num() {
+			return this.instance_num;
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_TOS_IDRT_to_DB_Schema) {
+
+				try {
+
+					int length = 0;
+
+					this.instance_num = (BigDecimal) dis.readObject();
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				} catch (ClassNotFoundException eCNFE) {
+					throw new RuntimeException(eCNFE);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// BigDecimal
+
+				dos.writeObject(this.instance_num);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("instance_num=" + String.valueOf(instance_num));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row14Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(),
+						object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tOracleInput_8Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tOracleInput_8_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				row14Struct row14 = new row14Struct();
+
+				/**
+				 * [tJavaRow_15 begin ] start
+				 */
+
+				ok_Hash.put("tJavaRow_15", false);
+				start_Hash.put("tJavaRow_15", System.currentTimeMillis());
+				currentComponent = "tJavaRow_15";
+
+				int tos_count_tJavaRow_15 = 0;
+
+				int nb_line_tJavaRow_15 = 0;
+
+				/**
+				 * [tJavaRow_15 begin ] stop
+				 */
+
+				/**
+				 * [tOracleInput_8 begin ] start
+				 */
+
+				ok_Hash.put("tOracleInput_8", false);
+				start_Hash.put("tOracleInput_8", System.currentTimeMillis());
+				currentComponent = "tOracleInput_8";
+
+				int tos_count_tOracleInput_8 = 0;
+
+				int nb_line_tOracleInput_8 = 0;
+				java.sql.Connection conn_tOracleInput_8 = null;
+				conn_tOracleInput_8 = (java.sql.Connection) globalMap
+						.get("conn_tOracleConnection_1");
+				if (null == conn_tOracleInput_8) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleInput_8 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					conn_tOracleInput_8 = dataSources_tOracleInput_8.get("")
+							.getConnection();
+					// globalMap.put("conn_tOracleConnection_1",
+					// conn_tOracleInput_8);
+				}
+				if (((oracle.jdbc.OracleConnection) conn_tOracleInput_8)
+						.getSessionTimeZone() == null) {
+					java.sql.Statement stmtGetTZ_tOracleInput_8 = conn_tOracleInput_8
+							.createStatement();
+					java.sql.ResultSet rsGetTZ_tOracleInput_8 = stmtGetTZ_tOracleInput_8
+							.executeQuery("select sessiontimezone from dual");
+					String sessionTimezone_tOracleInput_8 = java.util.TimeZone
+							.getDefault().getID();
+					while (rsGetTZ_tOracleInput_8.next()) {
+						sessionTimezone_tOracleInput_8 = rsGetTZ_tOracleInput_8
+								.getString(1);
+					}
+					((oracle.jdbc.OracleConnection) conn_tOracleInput_8)
+							.setSessionTimeZone(sessionTimezone_tOracleInput_8);
+				}
+
+				java.sql.Statement stmt_tOracleInput_8 = conn_tOracleInput_8
+						.createStatement();
+
+				String dbquery_tOracleInput_8 = "select max(instance_num) from "
+						+ context.DBSchema + ".observation_fact";
+
+				globalMap.put("tOracleInput_8_QUERY", dbquery_tOracleInput_8);
+
+				java.sql.ResultSet rs_tOracleInput_8 = stmt_tOracleInput_8
+						.executeQuery(dbquery_tOracleInput_8);
+				java.sql.ResultSetMetaData rsmd_tOracleInput_8 = rs_tOracleInput_8
+						.getMetaData();
+				int colQtyInRs_tOracleInput_8 = rsmd_tOracleInput_8
+						.getColumnCount();
+
+				String tmpContent_tOracleInput_8 = null;
+				int column_index_tOracleInput_8 = 1;
+				while (rs_tOracleInput_8.next()) {
+					nb_line_tOracleInput_8++;
+
+					column_index_tOracleInput_8 = 1;
+
+					if (colQtyInRs_tOracleInput_8 < column_index_tOracleInput_8) {
+						row14.instance_num = null;
+					} else {
+
+						if (rs_tOracleInput_8
+								.getObject(column_index_tOracleInput_8) != null) {
+							row14.instance_num = rs_tOracleInput_8
+									.getBigDecimal(column_index_tOracleInput_8);
+						} else {
+
+							row14.instance_num = null;
+						}
+
+					}
+
+					/**
+					 * [tOracleInput_8 begin ] stop
+					 */
+					/**
+					 * [tOracleInput_8 main ] start
+					 */
+
+					currentComponent = "tOracleInput_8";
+
+					tos_count_tOracleInput_8++;
+
+					/**
+					 * [tOracleInput_8 main ] stop
+					 */
+
+					/**
+					 * [tJavaRow_15 main ] start
+					 */
+
+					currentComponent = "tJavaRow_15";
+
+					if (row14.instance_num != null)
+						context.maxInstance = row14.instance_num;
+					else
+						context.maxInstance = new BigDecimal(0);
+					System.out.println("maxInstance: " + context.maxInstance);
+					nb_line_tJavaRow_15++;
+
+					tos_count_tJavaRow_15++;
+
+					/**
+					 * [tJavaRow_15 main ] stop
+					 */
+
+					/**
+					 * [tOracleInput_8 end ] start
+					 */
+
+					currentComponent = "tOracleInput_8";
+
+				}
+				stmt_tOracleInput_8.close();
+
+				globalMap.put("tOracleInput_8_NB_LINE", nb_line_tOracleInput_8);
+
+				ok_Hash.put("tOracleInput_8", true);
+				end_Hash.put("tOracleInput_8", System.currentTimeMillis());
+
+				/**
+				 * [tOracleInput_8 end ] stop
+				 */
+
+				/**
+				 * [tJavaRow_15 end ] start
+				 */
+
+				currentComponent = "tJavaRow_15";
+
+				globalMap.put("tJavaRow_15_NB_LINE", nb_line_tJavaRow_15);
+
+				ok_Hash.put("tJavaRow_15", true);
+				end_Hash.put("tJavaRow_15", System.currentTimeMillis());
+
+				/**
+				 * [tJavaRow_15 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil
+						.addLog("CHECKPOINT",
+								"CONNECTION:SUBJOB_OK:tOracleInput_8:OnSubjobOk",
+								"", Thread.currentThread().getId() + "", "",
+								"", "", "", "");
+			}
+
+			tOracleInput_5Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tOracleInput_8_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row28Struct implements
@@ -39318,11 +40407,42 @@ public class IDRT_to_DB_Schema implements TalendJob {
 											.equalsIgnoreCase("@")) {
 										row10.dimcode = row101.Path.replaceAll(
 												"\\\\", "|");
-
 									} else {
 										row10.dimcode = row101.m_applied_path
 												.replaceAll("\\\\", "|");
+										row10.dimcode = row10.dimcode
+												+ row101.Path.replaceAll(
+														"\\\\", "|").substring(
+														1);
+									}
+									// row10.dimcode = row10.dimcode +
+									// row101.PathID.replaceAll("\\\\","|");
+									// if
+									// (row101.visual.equalsIgnoreCase("la")||row101.visual.equalsIgnoreCase("ra")||row101.visual.equalsIgnoreCase("lae")||row101.visual.equalsIgnoreCase("rae"))
+									// row10.dimcode =
+									// row10.dimcode+"|"+(row101.Name.length()>10?row101.Name.hashCode():row101.Name);
+									// }
 
+									if (row10.dimcode.endsWith("|"))
+										row10.dimcode = row10.dimcode
+												.substring(
+														0,
+														row10.dimcode.length() - 1);
+
+									if (row10.visual.equalsIgnoreCase("lae")
+											|| row10.visual
+													.equalsIgnoreCase("rae")
+											|| row10.visual
+													.equalsIgnoreCase("la")
+											|| row10.visual
+													.equalsIgnoreCase("ra")) {
+										StringBuilder b = new StringBuilder(
+												row10.dimcode);
+										b.replace(
+												row10.dimcode.lastIndexOf("|"),
+												row10.dimcode.lastIndexOf("|") + 1,
+												":");
+										row10.dimcode = b.toString();
 									}
 
 									nb_line_tJavaRow_10++;
@@ -46720,6 +47840,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1278254 characters generated by Talend Open Studio for Data Integration on
- * the April 7, 2014 3:55:13 PM CEST
+ * 1307286 characters generated by Talend Open Studio for Data Integration on
+ * the May 25, 2014 7:32:40 PM CEST
  ************************************************************************************************/

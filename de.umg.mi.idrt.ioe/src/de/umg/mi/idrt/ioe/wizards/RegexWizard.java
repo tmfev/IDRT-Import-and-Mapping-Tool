@@ -3,17 +3,13 @@ package de.umg.mi.idrt.ioe.wizards;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.regex.Pattern;
-
 import org.eclipse.jface.wizard.Wizard;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.commands.OntologyEditor.CombineNodesCommand;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.Regex;
-import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

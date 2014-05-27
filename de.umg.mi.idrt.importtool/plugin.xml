@@ -137,11 +137,6 @@
             name="ImportSourceServer">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.OptionsCommand"
-            id="de.goettingen.i2b2.importtool.idrt.options"
-            name="Options">
-      </command>
-      <command
             defaultHandler="org.eclipselabs.p2.rcpupdate.utils.handler.InstallNewSoftwareHandler"
             id="org.eclipselabs.p2.rcpupdate.install"
             name="Install New Software">

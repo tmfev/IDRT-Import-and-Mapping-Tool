@@ -29,15 +29,16 @@ public class AddItemCommand extends AbstractHandler {
 		//		subRootNode.setTreeAttributes();
 		//		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
-		subRootNode.getTargetNodeAttributes().addStagingPath("");
+//		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("LAE");
 		subRootNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, "@");
 		currentNode.add(subRootNode);
 		subRootNode.setTreeAttributes();
-		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {
-			System.out.println(n.getTreePathLevel() + " " + n.getTreePath());
-		}
+		subRootNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_BASECODE, subRootNode.getTreePath().replaceAll("\\\\", "|").substring(0, subRootNode.getTreePath().length()-1));
+//		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {
+//			System.out.println(n.getTreePathLevel() + " " + n.getTreePath());
+//		}
 		int counter = 1;
 		while (OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(subRootNode.getTreePath())!=null) {
 			String oldPath = subRootNode.getID();
