@@ -72,8 +72,8 @@ public class UploadProjectCommand extends AbstractHandler {
 			contextMap.put("DB_StagingI2B2_Instance", stagingDBSID);
 			contextMap.put("DB_StagingI2B2_Port", stagingDBPort);
 			contextMap.put("DB_StagingI2B2_Schema", stagingDBSchema);
-			System.out.println("TARGETID: " + OntologyEditorView.getTargetProjects().getSelectedTarget().getTargetID());
-			contextMap.put("TargetID",""+ OntologyEditorView.getTargetProjects().getSelectedTarget().getTargetID());
+			System.out.println("TARGETID: " + OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
+			contextMap.put("TargetID",""+ OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 			TOSConnector.setCompleteContext(contextMap);
 			Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
 

@@ -40,7 +40,7 @@ public class NewInstanceWizard extends Wizard {
 		System.out.println("Created: " + one.getCreated());
 		
 		//TODO DB Access
-		OntologyEditorView.setInstance(one.getNameText(),one.getDescriptionText());
+		OntologyEditorView.setTargetInstance(one.getNameText(),one.getDescriptionText());
 		return true;
 	}
 

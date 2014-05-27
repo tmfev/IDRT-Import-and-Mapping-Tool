@@ -8,7 +8,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 /**
@@ -29,7 +29,7 @@ public class DeleteTarget extends AbstractHandler {
 
 		if ( version != null && !version.isEmpty() ){
 			
-			targetToDelete = OntologyEditorView.getTargetProjects().getTargetByVersion(Integer.valueOf( version ));
+			targetToDelete = OntologyEditorView.getTargetInstance().getTargetByVersion(Integer.valueOf( version ));
 			if (targetToDelete == null){
 				message = "Coudn't find the target for which a deletion was desired.";
 				Console.error(message);
@@ -37,17 +37,17 @@ public class DeleteTarget extends AbstractHandler {
 				return 1;
 			}
 		}else {
-			targetToDelete = OntologyEditorView.getTargetProjects().getSelectedTarget();
+			targetToDelete = OntologyEditorView.getTargetInstance().getSelectedTarget();
 		}
 		
 		Console.info("Deleting Target Ontology with the TargetID="
 				+ targetToDelete.getTargetID() + " and Version=" + targetToDelete.getVersion()
 				+ " of the TargetProject with ID="
-				+ OntologyEditorView.getTargetProjects()
-						.getSelectedTargetProject().getTargetProjectID() + " ");
+				+ OntologyEditorView.getTargetInstance()
+						.getSelectedTargetInstance().getTargetInstanceID() + " ");
 		
 		// check if there are more than one version available 
-		if (OntologyEditorView.getTargetProjects().getSelectedTargetProject().getTargetsList().size() <= 1){
+		if (OntologyEditorView.getTargetInstance().getSelectedTargetInstance().getTargetsList().size() <= 1){
 			message = "There is only one target version existing in this target instance. Deleting not aborted.";
 			Console.error(message);
 			StatusView.addErrorMessage(message);
@@ -66,8 +66,8 @@ public class DeleteTarget extends AbstractHandler {
 			message = ("Could not delete the Target Ontology with the TargetID="
 					+ targetID
 					+ " of the TargetProject with ID="
-					+ OntologyEditorView.getTargetProjects()
-							.getSelectedTargetProject().getTargetProjectID()
+					+ OntologyEditorView.getTargetInstance()
+							.getSelectedTargetInstance().getTargetInstanceID()
 					+ ". " + e.getMessage());
 			Console.error(message);
 			StatusView.addErrorMessage(message);
@@ -77,7 +77,7 @@ public class DeleteTarget extends AbstractHandler {
 		// deleting the target from the target projects object and the gui drop down menu
 		//Target oldTarget = OntologyEditorView.getTargetProjects().getTargetByID(Integer.valueOf( targetID ));
 		
-		OntologyEditorView.getTargetProjects().getSelectedTargetProject().removeTarget(targetToDelete);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().removeTarget(targetToDelete);
 		
 		// GUI stuff
 		//OntologyEditorView.removeVersionFromCombo(String.valueOf( targetToDelete.getVersion() ));

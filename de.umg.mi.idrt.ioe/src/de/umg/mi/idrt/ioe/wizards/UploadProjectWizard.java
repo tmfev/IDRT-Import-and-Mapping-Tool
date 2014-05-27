@@ -109,8 +109,8 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_Schema", stagingDBSchema);
 //					contextMap.put("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
 //					contextMap.put("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-					System.out.println("TARGETID: " + OntologyEditorView.getTargetProjects().getSelectedTarget().getTargetID());
-					contextMap.put("TargetID",""+ OntologyEditorView.getTargetProjects().getSelectedTarget().getTargetID());
+					System.out.println("TARGETID: " + OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
+					contextMap.put("TargetID",""+ OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 					
 					Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
 //					TOSConnector.setCompleteContext(contextMap);

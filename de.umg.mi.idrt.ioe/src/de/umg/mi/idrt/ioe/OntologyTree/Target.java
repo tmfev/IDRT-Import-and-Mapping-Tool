@@ -26,7 +26,7 @@ public class Target {
 	/**
 	 * a object for the project information
 	 */
-	private int targetProjectID = -1;
+	private int targetInstanceID = -1;
 	
 	/**
 	 * the version of this target
@@ -91,7 +91,7 @@ public class Target {
 	 * @return the targetProject
 	 */
 	public int getTargetProjectID() {
-		return targetProjectID;
+		return targetInstanceID;
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class Target {
 	 * @param targetProject the targetProject to set
 	 */
 	public void setTargetProjectID(int targetProjectID) {
-		this.targetProjectID = targetProjectID;
+		this.targetInstanceID = targetProjectID;
 	}
 
 	/**

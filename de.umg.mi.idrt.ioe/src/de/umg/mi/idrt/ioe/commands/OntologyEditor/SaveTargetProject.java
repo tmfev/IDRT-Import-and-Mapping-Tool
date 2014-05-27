@@ -14,7 +14,7 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
@@ -59,7 +59,7 @@ public class SaveTargetProject extends AbstractHandler {
 			
 			OntologyTreeTargetRootNode targetTreeRoot = (OntologyTreeTargetRootNode) OntologyEditorView.getOntologyTargetTree().getRootNode();
 			
-			TargetProject targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetProject();
+			TargetInstance targetProject = targetTreeRoot.getTargetProjects().getSelectedTargetInstance();
 			Target target = null;
 			
 			if (targetProject == null || targetTreeRoot.getTargetProjects().getSelectedTarget() == null ){
@@ -70,14 +70,14 @@ public class SaveTargetProject extends AbstractHandler {
 			}
 			
 			System.out.println("selected Target to save:");
-			System.out.println(" - " + String.valueOf(targetProject.getTargetProjectID()));
+			System.out.println(" - " + String.valueOf(targetProject.getTargetInstanceID()));
 			System.out.println(" - " + String.valueOf(target.getTargetID()));
 			System.out.println(" - " + targetProject.getName());
 			System.out.println(" - " + target.getTargetDBSchema());
 			
 			fields = new String[6];
 			
-			fields[0] = String.valueOf(targetProject.getTargetProjectID());
+			fields[0] = String.valueOf(targetProject.getTargetInstanceID());
 			fields[1] = String.valueOf(target.getTargetID());
 			fields[2] = targetProject.getName();
 			fields[3] = targetProject.getDescription();

@@ -11,8 +11,8 @@ import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProject;
-import de.umg.mi.idrt.ioe.OntologyTree.TargetProjects;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
+import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.StatusView;
 
@@ -30,7 +30,7 @@ public class LoadTargetProjects extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		// deleting old entries
-		OntologyEditorView.getTargetProjects().clear();
+		OntologyEditorView.getTargetInstance().clear();
 		
 		Console.info("Command: LoadTargetProjects");
 		
@@ -48,11 +48,11 @@ public class LoadTargetProjects extends AbstractHandler {
 			
 			boolean newData = false;
 			
-			TargetProjects targetProjects = OntologyEditorView.getTargetProjects();
+			TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
 
-			if ( targetProjects.getSelectedTargetProject() == null ){
+			if ( targetProjects.getSelectedTargetInstance() == null ){
 				System.out.println("Loading: no TargetProjec -> creating new one");
-				TargetProject targetProject = new TargetProject();
+				TargetInstance targetProject = new TargetInstance();
 				targetProject.setName( "new target instance" );
 				targetProject.setDescription( "description" );
 				targetProjects.add(targetProject);
@@ -64,7 +64,7 @@ public class LoadTargetProjects extends AbstractHandler {
 			if ( targetProjects.getSelectedTarget() == null ){
 				System.out.println("Loading: no Target -> creating new one");
 				Target target = new Target();
-				target.setTargetProjectID(targetProjects.getSelectedTargetProject().getTargetProjectID());
+				target.setTargetProjectID(targetProjects.getSelectedTargetInstance().getTargetInstanceID());
 				target.setTargetDBSchema("");
 				targetProjects.addTarget(target);
 		
