@@ -50,7 +50,7 @@ public class TargetNodeAttributes {
 //		System.out.println(stagingPath);
 		if (stagingPath == null)
 			stagingPath = "";
-		System.out.println("adding:  " + stagingPath);
+//		System.out.println("adding:  " + stagingPath);
 		if (stagingPath.startsWith("\\\\"))
 			stagingPath=stagingPath.substring(1); //removes wrong "\" from beginning of path
 		if (!stagingPath.endsWith("\\") && !stagingPath.isEmpty())

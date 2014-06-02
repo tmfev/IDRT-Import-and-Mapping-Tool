@@ -17,6 +17,8 @@ import org.eclipse.swt.widgets.Display;
 //import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
 
+
+import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.views.ServerView;
@@ -386,6 +388,8 @@ public class TOSConnector {
 				exit = tos.runJobInTOS((getARGV()));
 
 				if (exit==0) {
+					StatusListener.setStatus(0, "","");
+					StatusListener.setSubStatus(0, "");
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
 				}
 				else {

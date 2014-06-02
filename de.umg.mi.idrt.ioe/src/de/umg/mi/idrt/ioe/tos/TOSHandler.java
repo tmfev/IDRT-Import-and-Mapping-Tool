@@ -148,7 +148,7 @@ public class TOSHandler {
 				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes, basecode,
 				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
 				sourceSystemCD,	valueTypeCD,m_applied_path);
-		System.out.println("!!!adding: " + treePath);
+//		System.out.println("!!!adding: " + treePath);
 		if (treeLevel!=0) {
 			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path())) {
 				OntologyEditorView.getOntologyTargetTree().addTargetNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
