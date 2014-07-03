@@ -16,10 +16,6 @@ Bundle-ClassPath: .,
  TalendJobs/lib/dom4j-1.6.1.jar,
  TalendJobs/lib/jboss-serialization.jar,
  TalendJobs/lib/log4j-1.2.15.jar,
- TalendJobs/lib/ojdbc14-9i.jar,
- TalendJobs/lib/ojdbc14.jar,
- TalendJobs/lib/ojdbc5.jar,
- TalendJobs/lib/ojdbc6.jar,
  TalendJobs/lib/OpenCSV.jar,
  TalendJobs/lib/StatusListener29.jar,
  TalendJobs/lib/systemRoutines.jar,
@@ -63,7 +59,9 @@ Bundle-ClassPath: .,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar,
  TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar,
- TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar
+ TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar,
+ lib/ojdbc6.jar,
+ lib/ojdbc7.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -79,4 +77,4 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Manifest-Version: 1.0
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 0.9.1.6
+Bundle-Version: 0.9.2

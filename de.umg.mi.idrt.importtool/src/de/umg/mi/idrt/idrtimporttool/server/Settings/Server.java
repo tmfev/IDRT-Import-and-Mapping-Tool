@@ -19,7 +19,9 @@ import de.umi.mi.passwordcrypt.PasswordCrypt;
  */
 public class Server implements Serializable {
 
-	private static String ORACLEDRIVER = "oracle.jdbc.driver.OracleDriver";
+//	private static String ORACLEDRIVER = "oracle.jdbc.driver.OracleDriver";
+	private static String ORACLEDRIVER = "oracle.jdbc.OracleDriver";
+	
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static String MYSQLDRIVER = "com.mysql.jdbc.Driver";
 	//con=

@@ -41,6 +41,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	 */
 	private List<OntologyTreeNode> children;
 
+	private int test;
 	/**
 	 * the name of the node
 	 */

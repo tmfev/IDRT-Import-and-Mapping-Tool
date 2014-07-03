@@ -45,9 +45,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/jaxen-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/jboss-serialization.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/log4j-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc14.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc5.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/OpenCSV.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/saxon9.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/systemRoutines.jar"/>
@@ -62,10 +59,12 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
 	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/swt64.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

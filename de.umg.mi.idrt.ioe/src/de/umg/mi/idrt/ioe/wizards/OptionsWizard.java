@@ -32,7 +32,6 @@ public class OptionsWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		System.out.println("ADDING PAGES");
 		one = new OptionsWizardPage1();
 		addPage(one);
 	}

@@ -114,7 +114,7 @@ public class OntologyTree extends JTree {
 	
 	public void addTargetNodeByPath(String i2b2Path, String name, String source,
 				OntologyItemTarget item, NodeType type) {
-	System.out.println("ADDING TARGETNODE BY PATH: " + name);
+//	System.out.println("ADDING TARGETNODE BY PATH: " + name);
 			OntologyTreeNode node = new OntologyTreeNode(name);
 			node.setID(node.getIDFromPath(i2b2Path));
 			OntologyTreeNode testNode = this.getNodeLists().getNodeByPath(i2b2Path);

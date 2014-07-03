@@ -478,7 +478,7 @@ public class IDRTHelper {
 						ontLine[ONT_UPDATEDATE] = "";
 						ontLine[ONT_IMPORTDATE] = "";
 						ontLine[ONT_DOWNLOADDATE] = "";
-						ontLine[ONT_PATHID] = string;	
+						ontLine[ONT_PATHID] = input.getName().substring(0, input.getName().lastIndexOf("."))+"|"+string;	
 						ontLine[ONT_VISUAL] = "DA";
 						ontLine[ONT_ITEMCODE] = "";
 						ontLine[ONT_SOURCE] = "";

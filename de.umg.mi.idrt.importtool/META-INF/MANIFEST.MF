@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: IDRT Import Tool
 Bundle-SymbolicName: de.umg.mi.idrt.IDRTImportTool;singleton:=true
-Bundle-Version: 1.1.2.4
+Bundle-Version: 1.1.2.5
 Bundle-Activator: de.umg.mi.idrt.idrtimporttool.importidrt.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -25,9 +25,6 @@ Bundle-ClassPath: .,
  TalendJobs/TalendJobs/lib/jaxen-1.1.1.jar,
  TalendJobs/TalendJobs/lib/jboss-serialization.jar,
  TalendJobs/TalendJobs/lib/log4j-1.2.15.jar,
- TalendJobs/TalendJobs/lib/ojdbc14.jar,
- TalendJobs/TalendJobs/lib/ojdbc5.jar,
- TalendJobs/TalendJobs/lib/ojdbc6.jar,
  TalendJobs/TalendJobs/lib/OpenCSV.jar,
  TalendJobs/TalendJobs/lib/saxon9.jar,
  TalendJobs/TalendJobs/lib/StatusListener29.jar,
@@ -118,7 +115,9 @@ Bundle-ClassPath: .,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/items/,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/src/,
- TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/tos/
+ TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/tos/,
+ lib/ojdbc7.jar,
+ lib/ojdbc6.jar
 Bundle-Vendor: TMF - IDRT
 Export-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,
