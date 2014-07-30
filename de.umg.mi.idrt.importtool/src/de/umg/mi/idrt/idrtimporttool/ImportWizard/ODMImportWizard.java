@@ -11,6 +11,7 @@ import java.util.Properties;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
+
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
@@ -138,15 +139,17 @@ public class ODMImportWizard extends Wizard {
 			final String dbSID = selectedServer.getSID();
 			final String dbPort = selectedServer.getPort();
 			final String dbSchema = selectedServer.getSchema();
+			final String dbType = selectedServer.getDatabaseType().toLowerCase();
 			
-			System.out.println("DBSCHEMA: " + dbSchema);
-			contextMap.put("DBHost", ipText);
-			contextMap.put("DBPassword", passwordText);
-			contextMap.put("DBUsername", dbUserText);
-			contextMap.put("DBInstance", dbSID);
-			contextMap.put("DBPort", dbPort);
-			contextMap.put("DBSchema", dbSchema);
+			System.out.println("DBSCHEMA: " + dbSchema +  " TYPE " + dbType + " " + dbUserText);
+			contextMap.put("DB_StagingI2B2_Host", ipText);
+			contextMap.put("DB_StagingI2B2_Password", passwordText);
+			contextMap.put("DB_StagingI2B2_Username", dbUserText);
+			contextMap.put("DB_StagingI2B2_Instance", dbSID);
+			contextMap.put("DB_StagingI2B2_Port", dbPort);
+			contextMap.put("DB_StagingI2B2_Schema", dbSchema);
 			contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
+			contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 			/*
 			 * page 2
 			 */

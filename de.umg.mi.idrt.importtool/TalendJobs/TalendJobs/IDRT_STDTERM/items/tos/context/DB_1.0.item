@@ -18,6 +18,27 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="DBSchemaPG" prompt="DBSchemaPG?" promptNeeded="false" type="id_String" value="null"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType confirmationNeeded="false" name="postgres">
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="false" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="false" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" type="id_Boolean" value="false"/>
+    <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
+    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
+    <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="DBSchemaPG" prompt="DBSchemaPG?" promptNeeded="false" type="id_String" value="null"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.113.224&quot;"/>
@@ -37,5 +58,6 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="DBSchemaPG" prompt="DBSchemaPG?" promptNeeded="false" type="id_String" value="null"/>
   </talendfile:ContextType>
 </xmi:XMI>

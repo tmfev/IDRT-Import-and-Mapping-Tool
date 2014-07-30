@@ -237,14 +237,16 @@ public class DBImportWizard extends Wizard {
 			final String dbSID = selectedServer.getSID();
 			final String dbPort = selectedServer.getPort();
 			final String dbSchema = selectedServer.getSchema();
+			final String dbType = selectedServer.getDatabaseType();
 			
-			contextMap.put("DBHost", ipText);
-			contextMap.put("DBPassword", passwordText);
-			contextMap.put("DBUsername", dbUserText);
-			contextMap.put("DBInstance", dbSID);
-			contextMap.put("DBPort", dbPort);
-			contextMap.put("DBSchema", dbSchema);
+			contextMap.put("DB_StagingI2B2_Host", ipText);
+			contextMap.put("DB_StagingI2B2_Password", passwordText);
+			contextMap.put("DB_StagingI2B2_Username", dbUserText);
+			contextMap.put("DB_StagingI2B2_Instance", dbSID);
+			contextMap.put("DB_StagingI2B2_Port", dbPort);
+			contextMap.put("DB_StagingI2B2_Schema", dbSchema);
 			contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
+			contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 //			contextMap.put("DBHost", WizardPage1.getIpText());
 //			contextMap.put("DBPassword", WizardPage1.getDBUserPasswordText());
 //			contextMap.put("DBUsername", WizardPage1.getDBUserText());

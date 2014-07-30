@@ -117,7 +117,9 @@ Bundle-ClassPath: .,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/src/,
  TalendJobs/TalendJobs/P21_ERWEITERUNG_2011_2012/tos/,
  lib/ojdbc7.jar,
- lib/ojdbc6.jar
+ lib/ojdbc6.jar,
+ lib/postgresql-9.3-1102.jdbc4.jar,
+ lib/postgresql-9.3-1102.jdbc41.jar
 Bundle-Vendor: TMF - IDRT
 Export-Package: au.com.bytecode.opencsv,
  au.com.bytecode.opencsv.bean,

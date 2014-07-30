@@ -179,45 +179,37 @@ public class CSV_Import implements TalendJob {
 
 			}
 
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
-			if (DBInstance != null) {
-
-				this.setProperty("DBInstance", DBInstance.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
-
-			}
-
 			if (pidgen != null) {
 
 				this.setProperty("pidgen", pidgen.toString());
+
+			}
+
+			if (DB_StagingI2B2_DatabaseType != null) {
+
+				this.setProperty("DB_StagingI2B2_DatabaseType",
+						DB_StagingI2B2_DatabaseType.toString());
+
+			}
+
+			if (DB_StagingI2B2_DriverClass != null) {
+
+				this.setProperty("DB_StagingI2B2_DriverClass",
+						DB_StagingI2B2_DriverClass.toString());
+
+			}
+
+			if (DB_StagingI2B2_Host != null) {
+
+				this.setProperty("DB_StagingI2B2_Host",
+						DB_StagingI2B2_Host.toString());
+
+			}
+
+			if (DB_StagingI2B2_Instance != null) {
+
+				this.setProperty("DB_StagingI2B2_Instance",
+						DB_StagingI2B2_Instance.toString());
 
 			}
 
@@ -228,10 +220,38 @@ public class CSV_Import implements TalendJob {
 
 			}
 
+			if (DB_StagingI2B2_Password != null) {
+
+				this.setProperty("DB_StagingI2B2_Password",
+						DB_StagingI2B2_Password.toString());
+
+			}
+
+			if (DB_StagingI2B2_Port != null) {
+
+				this.setProperty("DB_StagingI2B2_Port",
+						DB_StagingI2B2_Port.toString());
+
+			}
+
+			if (DB_StagingI2B2_Schema != null) {
+
+				this.setProperty("DB_StagingI2B2_Schema",
+						DB_StagingI2B2_Schema.toString());
+
+			}
+
 			if (DB_StagingI2B2_sqlclassname != null) {
 
 				this.setProperty("DB_StagingI2B2_sqlclassname",
 						DB_StagingI2B2_sqlclassname.toString());
+
+			}
+
+			if (DB_StagingI2B2_Username != null) {
+
+				this.setProperty("DB_StagingI2B2_Username",
+						DB_StagingI2B2_Username.toString());
 
 			}
 
@@ -334,46 +354,34 @@ public class CSV_Import implements TalendJob {
 			return this.quoteChar;
 		}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
-		public String DBInstance;
-
-		public String getDBInstance() {
-			return this.DBInstance;
-		}
-
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
-		}
-
 		public Boolean pidgen;
 
 		public Boolean getPidgen() {
 			return this.pidgen;
+		}
+
+		public String DB_StagingI2B2_DatabaseType;
+
+		public String getDB_StagingI2B2_DatabaseType() {
+			return this.DB_StagingI2B2_DatabaseType;
+		}
+
+		public String DB_StagingI2B2_DriverClass;
+
+		public String getDB_StagingI2B2_DriverClass() {
+			return this.DB_StagingI2B2_DriverClass;
+		}
+
+		public String DB_StagingI2B2_Host;
+
+		public String getDB_StagingI2B2_Host() {
+			return this.DB_StagingI2B2_Host;
+		}
+
+		public String DB_StagingI2B2_Instance;
+
+		public String getDB_StagingI2B2_Instance() {
+			return this.DB_StagingI2B2_Instance;
 		}
 
 		public String DB_StagingI2B2_jdbcurl;
@@ -382,10 +390,34 @@ public class CSV_Import implements TalendJob {
 			return this.DB_StagingI2B2_jdbcurl;
 		}
 
+		public java.lang.String DB_StagingI2B2_Password;
+
+		public java.lang.String getDB_StagingI2B2_Password() {
+			return this.DB_StagingI2B2_Password;
+		}
+
+		public String DB_StagingI2B2_Port;
+
+		public String getDB_StagingI2B2_Port() {
+			return this.DB_StagingI2B2_Port;
+		}
+
+		public String DB_StagingI2B2_Schema;
+
+		public String getDB_StagingI2B2_Schema() {
+			return this.DB_StagingI2B2_Schema;
+		}
+
 		public String DB_StagingI2B2_sqlclassname;
 
 		public String getDB_StagingI2B2_sqlclassname() {
 			return this.DB_StagingI2B2_sqlclassname;
+		}
+
+		public String DB_StagingI2B2_Username;
+
+		public String getDB_StagingI2B2_Username() {
+			return this.DB_StagingI2B2_Username;
 		}
 
 		public String i2b2HeadNode;
@@ -701,10 +733,9 @@ public class CSV_Import implements TalendJob {
 
 				int tos_count_tJava_2 = 0;
 
-				context.DB_StagingI2B2_jdbcurl = "jdbc:oracle:thin:@"
-						+ context.DBHost + ":" + context.DBPort + ":"
-						+ context.DBInstance;
-				context.DB_StagingI2B2_sqlclassname = "oracle.jdbc.driver.OracleDriver";
+				// context.DB_StagingI2B2_jdbcurl =
+				// "jdbc:oracle:thin:@"+context.DBHost+":"+context.DBPort+":"+context.DBInstance;
+				// context.DB_StagingI2B2_sqlclassname="oracle.jdbc.driver.OracleDriver";
 
 				// jdbc:oracle:thin:@134.76.113.224:1521:i2b2t
 
@@ -800,8 +831,8 @@ public class CSV_Import implements TalendJob {
 
 				String url_tJDBCConnection_1 = context.DB_StagingI2B2_jdbcurl;
 
-				String userName_tJDBCConnection_1 = context.DBUsername;
-				String password_tJDBCConnection_1 = context.DBPassword;
+				String userName_tJDBCConnection_1 = context.DB_StagingI2B2_Username;
+				String password_tJDBCConnection_1 = context.DB_StagingI2B2_Password;
 
 				java.sql.Connection conn_tJDBCConnection_1 = null;
 
@@ -1036,8 +1067,11 @@ public class CSV_Import implements TalendJob {
 				java.sql.Statement stmt_tJDBCInput_1 = conn_tJDBCInput_1
 						.createStatement();
 
-				String dbquery_tJDBCInput_1 = "select max(instance_num) from "
-						+ context.DBSchema + ".observation_fact";
+				String dbquery_tJDBCInput_1 = context.DB_StagingI2B2_DatabaseType
+						.equalsIgnoreCase("postgres") ? "select max(instance_num) from i2b2demodata.observation_fact"
+						: "select max(instance_num) from "
+								+ context.DB_StagingI2B2_Schema
+								+ ".observation_fact";
 
 				globalMap.put("tJDBCInput_1_QUERY", dbquery_tJDBCInput_1);
 
@@ -1436,7 +1470,7 @@ public class CSV_Import implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "Default";
+	public String contextStr = "TestServer";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -1556,23 +1590,32 @@ public class CSV_Import implements TalendJob {
 			context.output = (String) context.getProperty("output");
 			context.quoteChar = new java.text.StringCharacterIterator(
 					context.getProperty("quoteChar")).first();
-			context.DBHost = (String) context.getProperty("DBHost");
-			context.DBInstance = (String) context.getProperty("DBInstance");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBPort = (String) context.getProperty("DBPort");
-			context.DBSchema = (String) context.getProperty("DBSchema");
-			context.DBUsername = (String) context.getProperty("DBUsername");
 			try {
 				context.pidgen = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("pidgen"));
 			} catch (NumberFormatException e) {
 				context.pidgen = null;
 			}
+			context.DB_StagingI2B2_DatabaseType = (String) context
+					.getProperty("DB_StagingI2B2_DatabaseType");
+			context.DB_StagingI2B2_DriverClass = (String) context
+					.getProperty("DB_StagingI2B2_DriverClass");
+			context.DB_StagingI2B2_Host = (String) context
+					.getProperty("DB_StagingI2B2_Host");
+			context.DB_StagingI2B2_Instance = (String) context
+					.getProperty("DB_StagingI2B2_Instance");
 			context.DB_StagingI2B2_jdbcurl = (String) context
 					.getProperty("DB_StagingI2B2_jdbcurl");
+			context.DB_StagingI2B2_Password = (java.lang.String) context
+					.getProperty("DB_StagingI2B2_Password");
+			context.DB_StagingI2B2_Port = (String) context
+					.getProperty("DB_StagingI2B2_Port");
+			context.DB_StagingI2B2_Schema = (String) context
+					.getProperty("DB_StagingI2B2_Schema");
 			context.DB_StagingI2B2_sqlclassname = (String) context
 					.getProperty("DB_StagingI2B2_sqlclassname");
+			context.DB_StagingI2B2_Username = (String) context
+					.getProperty("DB_StagingI2B2_Username");
 			context.i2b2HeadNode = (String) context.getProperty("i2b2HeadNode");
 			context.i2b2HeadNodeName = (String) context
 					.getProperty("i2b2HeadNodeName");
@@ -1628,37 +1671,48 @@ public class CSV_Import implements TalendJob {
 				context.quoteChar = (Character) parentContextMap
 						.get("quoteChar");
 			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
-			if (parentContextMap.containsKey("DBInstance")) {
-				context.DBInstance = (String) parentContextMap
-						.get("DBInstance");
-			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
-			}
 			if (parentContextMap.containsKey("pidgen")) {
 				context.pidgen = (Boolean) parentContextMap.get("pidgen");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DatabaseType")) {
+				context.DB_StagingI2B2_DatabaseType = (String) parentContextMap
+						.get("DB_StagingI2B2_DatabaseType");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DriverClass")) {
+				context.DB_StagingI2B2_DriverClass = (String) parentContextMap
+						.get("DB_StagingI2B2_DriverClass");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Host")) {
+				context.DB_StagingI2B2_Host = (String) parentContextMap
+						.get("DB_StagingI2B2_Host");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Instance")) {
+				context.DB_StagingI2B2_Instance = (String) parentContextMap
+						.get("DB_StagingI2B2_Instance");
 			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_jdbcurl")) {
 				context.DB_StagingI2B2_jdbcurl = (String) parentContextMap
 						.get("DB_StagingI2B2_jdbcurl");
 			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Password")) {
+				context.DB_StagingI2B2_Password = (java.lang.String) parentContextMap
+						.get("DB_StagingI2B2_Password");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Port")) {
+				context.DB_StagingI2B2_Port = (String) parentContextMap
+						.get("DB_StagingI2B2_Port");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Schema")) {
+				context.DB_StagingI2B2_Schema = (String) parentContextMap
+						.get("DB_StagingI2B2_Schema");
+			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
 				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
 						.get("DB_StagingI2B2_sqlclassname");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Username")) {
+				context.DB_StagingI2B2_Username = (String) parentContextMap
+						.get("DB_StagingI2B2_Username");
 			}
 			if (parentContextMap.containsKey("i2b2HeadNode")) {
 				context.i2b2HeadNode = (String) parentContextMap
@@ -1823,6 +1877,6 @@ public class CSV_Import implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 50577 characters generated by Talend Open Studio for Data Integration on the
- * July 2, 2014 12:12:05 PM CEST
+ * 52826 characters generated by Talend Open Studio for Data Integration on the
+ * July 30, 2014 3:47:46 PM CEST
  ************************************************************************************************/

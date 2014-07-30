@@ -209,6 +209,7 @@ public class CSVImportWizard extends Wizard {
 		final String dbSID = selectedServer.getSID();
 		final String dbPort = selectedServer.getPort();
 		final String dbSchema = selectedServer.getSchema();
+		final String dbType = selectedServer.getDatabaseType();
 		
 		
 //		final String ipText = WizardPage1.getIpText();
@@ -277,12 +278,13 @@ public class CSVImportWizard extends Wizard {
 					/**
 					 * page 1
 					 */
-					contextMap.put("DBHost", ipText);
-					contextMap.put("DBPassword", passwordText);
-					contextMap.put("DBUsername", dbUserText);
-					contextMap.put("DBInstance", dbSID);
-					contextMap.put("DBPort", dbPort);
-					contextMap.put("DBSchema", dbSchema);
+					contextMap.put("DB_StagingI2B2_Host", ipText);
+					contextMap.put("DB_StagingI2B2_Password", passwordText);
+					contextMap.put("DB_StagingI2B2_Username", dbUserText);
+					contextMap.put("DB_StagingI2B2_Instance", dbSID);
+					contextMap.put("DB_StagingI2B2_Port", dbPort);
+					contextMap.put("DB_StagingI2B2_Schema", dbSchema);
+					contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 					contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 
 					/**

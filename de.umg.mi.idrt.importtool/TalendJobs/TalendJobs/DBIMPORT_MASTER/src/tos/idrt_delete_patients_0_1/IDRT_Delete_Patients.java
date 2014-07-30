@@ -97,45 +97,9 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 		public void synchronizeContext() {
 
-			if (DBInstance != null) {
-
-				this.setProperty("DBInstance", DBInstance.toString());
-
-			}
-
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
 			if (project != null) {
 
 				this.setProperty("project", project.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -145,24 +109,69 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 			}
 
-		}
+			if (DB_StagingI2B2_DatabaseType != null) {
 
-		public String DBInstance;
+				this.setProperty("DB_StagingI2B2_DatabaseType",
+						DB_StagingI2B2_DatabaseType.toString());
 
-		public String getDBInstance() {
-			return this.DBInstance;
-		}
+			}
 
-		public String DBHost;
+			if (DB_StagingI2B2_DriverClass != null) {
 
-		public String getDBHost() {
-			return this.DBHost;
-		}
+				this.setProperty("DB_StagingI2B2_DriverClass",
+						DB_StagingI2B2_DriverClass.toString());
 
-		public String DBPort;
+			}
 
-		public String getDBPort() {
-			return this.DBPort;
+			if (DB_StagingI2B2_Host != null) {
+
+				this.setProperty("DB_StagingI2B2_Host",
+						DB_StagingI2B2_Host.toString());
+
+			}
+
+			if (DB_StagingI2B2_Instance != null) {
+
+				this.setProperty("DB_StagingI2B2_Instance",
+						DB_StagingI2B2_Instance.toString());
+
+			}
+
+			if (DB_StagingI2B2_jdbcurl != null) {
+
+				this.setProperty("DB_StagingI2B2_jdbcurl",
+						DB_StagingI2B2_jdbcurl.toString());
+
+			}
+
+			if (DB_StagingI2B2_Password != null) {
+
+				this.setProperty("DB_StagingI2B2_Password",
+						DB_StagingI2B2_Password.toString());
+
+			}
+
+			if (DB_StagingI2B2_Port != null) {
+
+				this.setProperty("DB_StagingI2B2_Port",
+						DB_StagingI2B2_Port.toString());
+
+			}
+
+			if (DB_StagingI2B2_Schema != null) {
+
+				this.setProperty("DB_StagingI2B2_Schema",
+						DB_StagingI2B2_Schema.toString());
+
+			}
+
+			if (DB_StagingI2B2_Username != null) {
+
+				this.setProperty("DB_StagingI2B2_Username",
+						DB_StagingI2B2_Username.toString());
+
+			}
+
 		}
 
 		public String project;
@@ -171,28 +180,64 @@ public class IDRT_Delete_Patients implements TalendJob {
 			return this.project;
 		}
 
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
-		}
-
 		public Object hashSet;
 
 		public Object getHashSet() {
 			return this.hashSet;
+		}
+
+		public String DB_StagingI2B2_DatabaseType;
+
+		public String getDB_StagingI2B2_DatabaseType() {
+			return this.DB_StagingI2B2_DatabaseType;
+		}
+
+		public String DB_StagingI2B2_DriverClass;
+
+		public String getDB_StagingI2B2_DriverClass() {
+			return this.DB_StagingI2B2_DriverClass;
+		}
+
+		public String DB_StagingI2B2_Host;
+
+		public String getDB_StagingI2B2_Host() {
+			return this.DB_StagingI2B2_Host;
+		}
+
+		public String DB_StagingI2B2_Instance;
+
+		public String getDB_StagingI2B2_Instance() {
+			return this.DB_StagingI2B2_Instance;
+		}
+
+		public String DB_StagingI2B2_jdbcurl;
+
+		public String getDB_StagingI2B2_jdbcurl() {
+			return this.DB_StagingI2B2_jdbcurl;
+		}
+
+		public java.lang.String DB_StagingI2B2_Password;
+
+		public java.lang.String getDB_StagingI2B2_Password() {
+			return this.DB_StagingI2B2_Password;
+		}
+
+		public String DB_StagingI2B2_Port;
+
+		public String getDB_StagingI2B2_Port() {
+			return this.DB_StagingI2B2_Port;
+		}
+
+		public String DB_StagingI2B2_Schema;
+
+		public String getDB_StagingI2B2_Schema() {
+			return this.DB_StagingI2B2_Schema;
+		}
+
+		public String DB_StagingI2B2_Username;
+
+		public String getDB_StagingI2B2_Username() {
+			return this.DB_StagingI2B2_Username;
 		}
 	}
 
@@ -328,14 +373,14 @@ public class IDRT_Delete_Patients implements TalendJob {
 		tJava_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleConnection_1_error(java.lang.Exception exception,
+	public void tJDBCConnection_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleConnection_1", System.currentTimeMillis());
+		end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
 
 		status = "failure";
 
-		tOracleConnection_1_onSubJobError(exception, errorComponent, globalMap);
+		tJDBCConnection_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tForeach_1_error(java.lang.Exception exception,
@@ -358,10 +403,10 @@ public class IDRT_Delete_Patients implements TalendJob {
 		tForeach_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tOracleRow_5_error(java.lang.Exception exception,
+	public void tJDBCRow_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		end_Hash.put("tOracleRow_5", System.currentTimeMillis());
+		end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
 
 		try {
 
@@ -376,16 +421,6 @@ public class IDRT_Delete_Patients implements TalendJob {
 		}
 
 		tForeach_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tOracleCommit_1_error(java.lang.Exception exception,
-			String errorComponent, final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		end_Hash.put("tOracleCommit_1", System.currentTimeMillis());
-
-		status = "failure";
-
-		tOracleCommit_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJava_2_error(java.lang.Exception exception,
@@ -409,19 +444,7 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 	}
 
-	public void tOracleConnection_1_onSubJobError(
-			java.lang.Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
-				.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(),
-				ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tForeach_1_onSubJobError(java.lang.Exception exception,
+	public void tJDBCConnection_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -432,7 +455,7 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 	}
 
-	public void tOracleCommit_1_onSubJobError(java.lang.Exception exception,
+	public void tForeach_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -522,7 +545,7 @@ public class IDRT_Delete_Patients implements TalendJob {
 						"");
 			}
 
-			tOracleConnection_1Process(globalMap);
+			tJDBCConnection_1Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -537,10 +560,10 @@ public class IDRT_Delete_Patients implements TalendJob {
 		globalMap.put("tJava_1_SUBPROCESS_STATE", 1);
 	}
 
-	public void tOracleConnection_1Process(
+	public void tJDBCConnection_1Process(
 			final java.util.Map<String, Object> globalMap)
 			throws TalendException {
-		globalMap.put("tOracleConnection_1_SUBPROCESS_STATE", 0);
+		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -559,89 +582,78 @@ public class IDRT_Delete_Patients implements TalendJob {
 				globalResumeTicket = true;
 
 				/**
-				 * [tOracleConnection_1 begin ] start
+				 * [tJDBCConnection_1 begin ] start
 				 */
 
-				ok_Hash.put("tOracleConnection_1", false);
-				start_Hash.put("tOracleConnection_1",
-						System.currentTimeMillis());
-				currentComponent = "tOracleConnection_1";
+				ok_Hash.put("tJDBCConnection_1", false);
+				start_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
+				currentComponent = "tJDBCConnection_1";
 
-				int tos_count_tOracleConnection_1 = 0;
+				int tos_count_tJDBCConnection_1 = 0;
 
-				String url_tOracleConnection_1 = "jdbc:oracle:thin:@"
-						+ context.DBHost + ":" + context.DBPort + ":"
-						+ context.DBInstance;
-				globalMap.put("connectionType_" + "tOracleConnection_1",
-						"ORACLE_SID");
+				String url_tJDBCConnection_1 = context.DB_StagingI2B2_jdbcurl;
 
-				String userName_tOracleConnection_1 = context.DBUsername;
-				String password_tOracleConnection_1 = context.DBPassword;
+				String userName_tJDBCConnection_1 = context.DB_StagingI2B2_Username;
+				String password_tJDBCConnection_1 = context.DB_StagingI2B2_Password;
 
-				java.sql.Connection conn_tOracleConnection_1 = null;
+				java.sql.Connection conn_tJDBCConnection_1 = null;
 
 				if ((null == globalMap.get(KEY_DB_DATASOURCES))
 						|| "".equals("")) {
 
-					java.lang.Class.forName("oracle.jdbc.OracleDriver");
+					java.lang.Class.forName(context.DB_StagingI2B2_DriverClass);
 
-					conn_tOracleConnection_1 = java.sql.DriverManager
-							.getConnection(url_tOracleConnection_1,
-									userName_tOracleConnection_1,
-									password_tOracleConnection_1);
-					globalMap.put("conn_tOracleConnection_1",
-							conn_tOracleConnection_1);
+					conn_tJDBCConnection_1 = java.sql.DriverManager
+							.getConnection(url_tJDBCConnection_1,
+									userName_tJDBCConnection_1,
+									password_tJDBCConnection_1);
+					globalMap.put("conn_tJDBCConnection_1",
+							conn_tJDBCConnection_1);
 				}
-				if (null != conn_tOracleConnection_1) {
+				if (null != conn_tJDBCConnection_1) {
 
-					conn_tOracleConnection_1.setAutoCommit(true);
+					conn_tJDBCConnection_1.setAutoCommit(false);
 				}
-				globalMap.put("host_" + "tOracleConnection_1", context.DBHost);
-				globalMap.put("port_" + "tOracleConnection_1", context.DBPort);
-				globalMap.put("dbname_" + "tOracleConnection_1",
-						context.DBInstance);
 
-				globalMap.put("conn_" + "tOracleConnection_1",
-						conn_tOracleConnection_1);
-				globalMap.put("dbschema_" + "tOracleConnection_1",
-						context.DBSchema);
-				globalMap.put("username_" + "tOracleConnection_1",
-						context.DBUsername);
-				globalMap.put("password_" + "tOracleConnection_1",
-						context.DBPassword);
+				globalMap.put("conn_tJDBCConnection_1", conn_tJDBCConnection_1);
+				globalMap.put("url_tJDBCConnection_1", url_tJDBCConnection_1);
+				// globalMap.put("user_tJDBCConnection_1",
+				// userName_tJDBCConnection_1);
+				// globalMap.put("pass_tJDBCConnection_1",
+				// password_tJDBCConnection_1);
 
 				/**
-				 * [tOracleConnection_1 begin ] stop
+				 * [tJDBCConnection_1 begin ] stop
 				 */
 				/**
-				 * [tOracleConnection_1 main ] start
+				 * [tJDBCConnection_1 main ] start
 				 */
 
-				currentComponent = "tOracleConnection_1";
+				currentComponent = "tJDBCConnection_1";
 
-				tos_count_tOracleConnection_1++;
+				tos_count_tJDBCConnection_1++;
 
 				/**
-				 * [tOracleConnection_1 main ] stop
+				 * [tJDBCConnection_1 main ] stop
 				 */
 				/**
-				 * [tOracleConnection_1 end ] start
+				 * [tJDBCConnection_1 end ] start
 				 */
 
-				currentComponent = "tOracleConnection_1";
+				currentComponent = "tJDBCConnection_1";
 
-				ok_Hash.put("tOracleConnection_1", true);
-				end_Hash.put("tOracleConnection_1", System.currentTimeMillis());
+				ok_Hash.put("tJDBCConnection_1", true);
+				end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
 
 				/**
-				 * [tOracleConnection_1 end ] stop
+				 * [tJDBCConnection_1 end ] stop
 				 */
 
 			}// end the resume
 
 			if (resumeEntryMethodName == null || globalResumeTicket) {
 				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tOracleConnection_1:OnSubjobOk",
+						"CONNECTION:SUBJOB_OK:tJDBCConnection_1:OnSubjobOk",
 						"", Thread.currentThread().getId() + "", "", "", "",
 						"", "");
 			}
@@ -658,7 +670,7 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 		}
 
-		globalMap.put("tOracleConnection_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tJDBCConnection_1_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row4Struct implements
@@ -837,32 +849,31 @@ public class IDRT_Delete_Patients implements TalendJob {
 					iterateLoop++;
 
 					/**
-					 * [tOracleRow_5 begin ] start
+					 * [tJDBCRow_1 begin ] start
 					 */
 
-					ok_Hash.put("tOracleRow_5", false);
-					start_Hash.put("tOracleRow_5", System.currentTimeMillis());
-					currentComponent = "tOracleRow_5";
+					ok_Hash.put("tJDBCRow_1", false);
+					start_Hash.put("tJDBCRow_1", System.currentTimeMillis());
+					currentComponent = "tJDBCRow_1";
 
-					int tos_count_tOracleRow_5 = 0;
+					int tos_count_tJDBCRow_1 = 0;
 
-					java.sql.Connection conn_tOracleRow_5 = null;
-					conn_tOracleRow_5 = (java.sql.Connection) globalMap
-							.get("conn_tOracleConnection_1");
-					if (null == conn_tOracleRow_5) {
-						java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleRow_5 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+					java.sql.Connection connection_tJDBCRow_1 = (java.sql.Connection) globalMap
+							.get("conn_tJDBCConnection_1");
+					if (null == connection_tJDBCRow_1) {
+						java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCRow_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
 								.get(KEY_DB_DATASOURCES);
-						conn_tOracleRow_5 = dataSources_tOracleRow_5.get("")
+						connection_tJDBCRow_1 = dataSources_tJDBCRow_1.get("")
 								.getConnection();
 					}
 
-					java.sql.Statement stmt_tOracleRow_5 = conn_tOracleRow_5
+					java.sql.Statement stmt_tJDBCRow_1 = connection_tJDBCRow_1
 							.createStatement();
-					String query_tOracleRow_5 = "";
-					boolean whetherReject_tOracleRow_5 = false;
+					String query_tJDBCRow_1 = "";
+					boolean whetherReject_tJDBCRow_1 = false;
 
 					/**
-					 * [tOracleRow_5 begin ] stop
+					 * [tJDBCRow_1 begin ] stop
 					 */
 
 					/**
@@ -894,31 +905,30 @@ public class IDRT_Delete_Patients implements TalendJob {
 					 */
 
 					/**
-					 * [tOracleRow_5 main ] start
+					 * [tJDBCRow_1 main ] start
 					 */
 
-					currentComponent = "tOracleRow_5";
+					currentComponent = "tJDBCRow_1";
 
-					query_tOracleRow_5 = ((String) globalMap
+					query_tJDBCRow_1 = ((String) globalMap
 							.get("tForeach_1_CURRENT_VALUE"));
-					whetherReject_tOracleRow_5 = false;
-
-					globalMap.put("tOracleRow_5_QUERY", query_tOracleRow_5);
+					whetherReject_tJDBCRow_1 = false;
+					globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
 					try {
-						stmt_tOracleRow_5.execute(query_tOracleRow_5);
+						stmt_tJDBCRow_1.execute(query_tJDBCRow_1);
 
 					} catch (java.lang.Exception e) {
-						whetherReject_tOracleRow_5 = true;
+						whetherReject_tJDBCRow_1 = true;
 						System.err.print(e.getMessage());
 					}
 
-					if (!whetherReject_tOracleRow_5) {
+					if (!whetherReject_tJDBCRow_1) {
 					}
 
-					tos_count_tOracleRow_5++;
+					tos_count_tJDBCRow_1++;
 
 					/**
-					 * [tOracleRow_5 main ] stop
+					 * [tJDBCRow_1 main ] stop
 					 */
 
 					/**
@@ -935,20 +945,18 @@ public class IDRT_Delete_Patients implements TalendJob {
 					 */
 
 					/**
-					 * [tOracleRow_5 end ] start
+					 * [tJDBCRow_1 end ] start
 					 */
 
-					currentComponent = "tOracleRow_5";
+					currentComponent = "tJDBCRow_1";
 
-					stmt_tOracleRow_5.close();
+					stmt_tJDBCRow_1.close();
 
-					ok_Hash.put("tOracleRow_5", true);
-					end_Hash.put("tOracleRow_5", System.currentTimeMillis());
-
-					tOracleCommit_1Process(globalMap);
+					ok_Hash.put("tJDBCRow_1", true);
+					end_Hash.put("tJDBCRow_1", System.currentTimeMillis());
 
 					/**
-					 * [tOracleRow_5 end ] stop
+					 * [tJDBCRow_1 end ] stop
 					 */
 
 					/**
@@ -979,98 +987,6 @@ public class IDRT_Delete_Patients implements TalendJob {
 		}
 
 		globalMap.put("tForeach_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tOracleCommit_1Process(
-			final java.util.Map<String, Object> globalMap)
-			throws TalendException {
-		globalMap.put("tOracleCommit_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-		int iterateLoop = 0;
-		String currentComponent = "";
-
-		try {
-
-			String currentMethodName = new java.lang.Exception()
-					.getStackTrace()[0].getMethodName();
-			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
-			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
-																					// the
-																					// resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tOracleCommit_1 begin ] start
-				 */
-
-				ok_Hash.put("tOracleCommit_1", false);
-				start_Hash.put("tOracleCommit_1", System.currentTimeMillis());
-				currentComponent = "tOracleCommit_1";
-
-				int tos_count_tOracleCommit_1 = 0;
-
-				/**
-				 * [tOracleCommit_1 begin ] stop
-				 */
-				/**
-				 * [tOracleCommit_1 main ] start
-				 */
-
-				currentComponent = "tOracleCommit_1";
-
-				java.sql.Connection conn_tOracleCommit_1 = (java.sql.Connection) globalMap
-						.get("conn_tOracleConnection_1");
-
-				if (null == conn_tOracleCommit_1) {
-					java.util.Map<String, routines.system.TalendDataSource> dataSources_tOracleCommit_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-							.get(KEY_DB_DATASOURCES);
-					if (dataSources_tOracleCommit_1 != null) {
-						if (dataSources_tOracleCommit_1.get("") != null) {
-							conn_tOracleCommit_1 = dataSources_tOracleCommit_1
-									.get("").getConnection();
-						}
-					}
-				}
-
-				if (conn_tOracleCommit_1 != null
-						&& !conn_tOracleCommit_1.isClosed()) {
-					conn_tOracleCommit_1.commit();
-				}
-
-				tos_count_tOracleCommit_1++;
-
-				/**
-				 * [tOracleCommit_1 main ] stop
-				 */
-				/**
-				 * [tOracleCommit_1 end ] start
-				 */
-
-				currentComponent = "tOracleCommit_1";
-
-				ok_Hash.put("tOracleCommit_1", true);
-				end_Hash.put("tOracleCommit_1", System.currentTimeMillis());
-
-				/**
-				 * [tOracleCommit_1 end ] stop
-				 */
-
-			}// end the resume
-
-		} catch (java.lang.Exception e) {
-
-			throw new TalendException(e, currentComponent, globalMap);
-
-		} catch (java.lang.Error error) {
-
-			throw error;
-
-		}
-
-		globalMap.put("tOracleCommit_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJava_2Process(final java.util.Map<String, Object> globalMap)
@@ -1159,7 +1075,7 @@ public class IDRT_Delete_Patients implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "Default";
+	public String contextStr = "TestServer";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -1260,15 +1176,26 @@ public class IDRT_Delete_Patients implements TalendJob {
 			if (!context_param.isEmpty()) {
 				context.putAll(context_param);
 			}
-			context.DBInstance = (String) context.getProperty("DBInstance");
-			context.DBHost = (String) context.getProperty("DBHost");
-			context.DBPort = (String) context.getProperty("DBPort");
 			context.project = (String) context.getProperty("project");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBSchema = (String) context.getProperty("DBSchema");
-			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.hashSet = (Object) context.getProperty("hashSet");
+			context.DB_StagingI2B2_DatabaseType = (String) context
+					.getProperty("DB_StagingI2B2_DatabaseType");
+			context.DB_StagingI2B2_DriverClass = (String) context
+					.getProperty("DB_StagingI2B2_DriverClass");
+			context.DB_StagingI2B2_Host = (String) context
+					.getProperty("DB_StagingI2B2_Host");
+			context.DB_StagingI2B2_Instance = (String) context
+					.getProperty("DB_StagingI2B2_Instance");
+			context.DB_StagingI2B2_jdbcurl = (String) context
+					.getProperty("DB_StagingI2B2_jdbcurl");
+			context.DB_StagingI2B2_Password = (java.lang.String) context
+					.getProperty("DB_StagingI2B2_Password");
+			context.DB_StagingI2B2_Port = (String) context
+					.getProperty("DB_StagingI2B2_Port");
+			context.DB_StagingI2B2_Schema = (String) context
+					.getProperty("DB_StagingI2B2_Schema");
+			context.DB_StagingI2B2_Username = (String) context
+					.getProperty("DB_StagingI2B2_Username");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -1276,32 +1203,47 @@ public class IDRT_Delete_Patients implements TalendJob {
 
 		// get context value from parent directly
 		if (parentContextMap != null && !parentContextMap.isEmpty()) {
-			if (parentContextMap.containsKey("DBInstance")) {
-				context.DBInstance = (String) parentContextMap
-						.get("DBInstance");
-			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
 			if (parentContextMap.containsKey("project")) {
 				context.project = (String) parentContextMap.get("project");
 			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
-			}
 			if (parentContextMap.containsKey("hashSet")) {
 				context.hashSet = (Object) parentContextMap.get("hashSet");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DatabaseType")) {
+				context.DB_StagingI2B2_DatabaseType = (String) parentContextMap
+						.get("DB_StagingI2B2_DatabaseType");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DriverClass")) {
+				context.DB_StagingI2B2_DriverClass = (String) parentContextMap
+						.get("DB_StagingI2B2_DriverClass");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Host")) {
+				context.DB_StagingI2B2_Host = (String) parentContextMap
+						.get("DB_StagingI2B2_Host");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Instance")) {
+				context.DB_StagingI2B2_Instance = (String) parentContextMap
+						.get("DB_StagingI2B2_Instance");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_jdbcurl")) {
+				context.DB_StagingI2B2_jdbcurl = (String) parentContextMap
+						.get("DB_StagingI2B2_jdbcurl");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Password")) {
+				context.DB_StagingI2B2_Password = (java.lang.String) parentContextMap
+						.get("DB_StagingI2B2_Password");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Port")) {
+				context.DB_StagingI2B2_Port = (String) parentContextMap
+						.get("DB_StagingI2B2_Port");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Schema")) {
+				context.DB_StagingI2B2_Schema = (String) parentContextMap
+						.get("DB_StagingI2B2_Schema");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_Username")) {
+				context.DB_StagingI2B2_Username = (String) parentContextMap
+						.get("DB_StagingI2B2_Username");
 			}
 		}
 
@@ -1453,6 +1395,6 @@ public class IDRT_Delete_Patients implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 41437 characters generated by Talend Open Studio for Data Integration on the
- * July 2, 2014 12:12:36 PM CEST
+ * 40584 characters generated by Talend Open Studio for Data Integration on the
+ * July 30, 2014 3:48:18 PM CEST
  ************************************************************************************************/

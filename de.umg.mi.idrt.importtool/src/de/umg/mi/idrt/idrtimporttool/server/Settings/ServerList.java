@@ -750,6 +750,11 @@ public class ServerList {
 
 					users = getResultSet(resultSet, server);
 				}
+				else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+					users = new HashSet<String>();
+					users.add("i2b2metadata");
+					users.add("i2b2demodata");
+				}
 				else {
 					users = new HashSet<String>();
 					users.add(server.getUser());

@@ -18,6 +18,15 @@
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy, hh:mm:ss&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
   </context>
+  <context confirmationNeeded="false" name="postgres">
+    <contextParameter comment="" name="idFile" prompt="idFile?" promptNeeded="true" type="id_String" value=""/>
+    <contextParameter comment="" name="pidMap" prompt="pidMap?" promptNeeded="false" type="id_Object" value=""/>
+    <contextParameter comment="" name="counter" prompt="counter?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="counter2" prompt="counter2?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="progress" prompt="progress?" promptNeeded="false" type="id_Integer" value=""/>
+    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy, hh:mm:ss&quot;"/>
+    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
+  </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="false"/>

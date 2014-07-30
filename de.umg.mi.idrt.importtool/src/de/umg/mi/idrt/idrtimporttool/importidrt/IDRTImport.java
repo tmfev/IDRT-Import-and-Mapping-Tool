@@ -6,7 +6,6 @@ import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
 import tos.odm_master_0_1.ODM_MASTER;
-import tos.server_freelocks_0_1.SERVER_FreeLocks;
 
 import java.io.File;
 import java.sql.Connection;
@@ -19,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
+
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.ExportDB.ExportDB;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
@@ -200,14 +200,14 @@ public class IDRTImport {
 		StatusListener.startLogging();
 		ServerView.stdImportStarted = true;
 		HashMap<String, String> contextMap = new HashMap<String, String>();
-
-		contextMap.put("DBHost", server.getIp());
-		contextMap.put("DBPassword", server.getPassword());
-		contextMap.put("DBUsername", server.getUser());
-		contextMap.put("DBInstance", server.getSID());
-		contextMap.put("DBPort", server.getPort());
-		contextMap.put("DBSchema", project);
-
+		final String dbType = server.getDatabaseType();
+		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		/**
 		 * ST-Import
 		 */
@@ -267,14 +267,14 @@ public class IDRTImport {
 		StatusListener.startLogging();
 		ServerView.stdImportStarted = true;
 		HashMap<String, String> contextMap = new HashMap<String, String>();
-
-		contextMap.put("DBHost", server.getIp());
-		contextMap.put("DBPassword", server.getPassword());
-		contextMap.put("DBUsername", server.getUser());
-		contextMap.put("DBInstance", server.getSID());
-		contextMap.put("DBPort", server.getPort());
-		contextMap.put("DBSchema", project);
-
+		final String dbType = server.getDatabaseType();
+		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		/**
 		 * ST-Import
 		 */
@@ -404,21 +404,23 @@ public class IDRTImport {
 	public static void runRemoveLocks(Server server, String project) {
 		StatusListener.startLogging();
 		HashMap<String, String> contextMap = new HashMap<String, String>();
-		contextMap.put("DBHost", server.getIp());
-		contextMap.put("DBPassword", server.getPassword());
-		contextMap.put("DBUsername", server.getUser());
-		contextMap.put("DBInstance", server.getSID());
-		contextMap.put("DBPort", server.getPort());
-		contextMap.put("DBSchema", project);
+		final String dbType = server.getDatabaseType();
+		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		setCompleteContext(contextMap);
 
 
 		Thread workerThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
+//				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
 				ServerView.btnStopSetEnabled(true);
-				exitCode = 	freeLocks.runJobInTOS(getARGV());
+//				exitCode = 	freeLocks.runJobInTOS(getARGV());
 				ServerView.btnStopSetEnabled(false);
 
 				Display.getDefault().syncExec(new Runnable() {
@@ -455,13 +457,14 @@ public class IDRTImport {
 				ServerView.btnStopSetEnabled(true);
 				IDRT_Truncate_Tables truncJob = new IDRT_Truncate_Tables();
 				HashMap<String, String> contextMap = new HashMap<String, String>();
-
-				contextMap.put("DBHost", server.getIp());
-				contextMap.put("DBPassword", server.getPassword());
-				contextMap.put("DBUsername", server.getUser());
-				contextMap.put("DBInstance", server.getSID());
-				contextMap.put("DBPort", server.getPort());
-				contextMap.put("DBSchema", project);
+				final String dbType = server.getDatabaseType();
+				contextMap.put("DB_StagingI2B2_Host", server.getIp());
+				contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+				contextMap.put("DB_StagingI2B2_Username", server.getUser());
+				contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+				contextMap.put("DB_StagingI2B2_Port", server.getPort());
+				contextMap.put("DB_StagingI2B2_Schema", project);
+				contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 				contextMap.put("truncateQueries", "true");
 				setCompleteContext(contextMap);
 				StatusListener.setStatus(0f, "Truncating Project", "");

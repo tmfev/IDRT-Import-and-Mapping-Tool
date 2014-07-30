@@ -24,9 +24,11 @@ public class Server implements Serializable {
 	
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static String MYSQLDRIVER = "com.mysql.jdbc.Driver";
+	private static String POSTGRESDRIVER = "org.postgresql.Driver";
+	
 	//con=
 	private static String error;
-	private static String[] comboItems = {"Oracle","MSSQL","MySQL"};
+	private static String[] comboItems = {"Oracle","Postgres","MSSQL","MySQL"};
 	private static final long serialVersionUID = 1L;
 
 	public static String[] getComboItems() {
@@ -246,6 +248,11 @@ public class Server implements Serializable {
 					}
 
 				}
+			}
+			else if (this.getDatabaseType().equalsIgnoreCase("postgres")) {
+				Class.forName(POSTGRESDRIVER);
+				return DriverManager.getConnection("jdbc:postgresql://" + getIp() + ":" 
+						+ getPort()+"/" + getSID(), getUser(), getPassword());
 			}
 			else {
 				return null;
