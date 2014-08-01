@@ -41,6 +41,8 @@ public class EditServerPageOne extends WizardPage {
 	private static Label DBUser;
 	private static Label lblSavePassword;
 	private static Button chkSavePassword;
+	private static Combo DB_WH_Combo;
+	private static Label DB_WH_label;
 	public static boolean getCheckStorePassword() {
 		return chkSavePassword.getSelection();
 	}
@@ -54,6 +56,10 @@ public class EditServerPageOne extends WizardPage {
 	 */
 	public static String getDBSIDText() {
 		return DBSIDText.getText();
+	}
+
+	public static String getDB_WH_Combo(){
+		return DB_WH_Combo.getText();
 	}
 
 	/**
@@ -254,6 +260,19 @@ public class EditServerPageOne extends WizardPage {
 				}
 			}
 		});
+		DB_WH_label = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
+		DB_WH_label.setText("WH Type");
+
+		DB_WH_Combo = new Combo(container1, SWT.READ_ONLY);
+		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart"});
+		DB_WH_Combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		for (int i = 0; i < DB_WH_Combo.getItems().length; i++) {
+			if (DB_WH_Combo.getItem(i).equalsIgnoreCase(server.getWhType())) {
+				DB_WH_Combo.select(i);
+			}
+		}
+
+
 
 		DBTypeLabel = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		DBTypeLabel.setText(Messages.EditServerPageOne_DBType);

@@ -750,10 +750,12 @@ public class ServerList {
 
 					users = getResultSet(resultSet, server);
 				}
-				else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+				else if (server.getWhType().equalsIgnoreCase("transmart")){
 					users = new HashSet<String>();
 					users.add("i2b2metadata");
 					users.add("i2b2demodata");
+					userServer.put("i2b2demodata", server.getName());
+					userServer.put("i2b2metadata", server.getName());
 				}
 				else {
 					users = new HashSet<String>();

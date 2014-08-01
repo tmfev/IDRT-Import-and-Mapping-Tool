@@ -125,18 +125,8 @@ public class TOSConnector {
 
 				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
-				System.out
-				.println("OracleUsername2: " + currentServer.getUser());
 
-				setContextVariable("OracleHost", currentServer.getIp());
-				setContextVariable("OraclePort", currentServer.getPort());
-				setContextVariable("OracleSid", currentServer.getSID());
-				setContextVariable("OracleUsername", currentServer.getUser());
-				setContextVariable("OraclePassword",
-						currentServer.getPassword());
-				setContextVariable("OracleDB", currentServer.getSID());
 				setContextVariable("SQLTable", currentServer.getTable());
-				setContextVariable("OracleSchema", currentServer.getSchema());
 
 				setContextVariable("DB_StagingI2B2_Host",
 						currentServer.getIp());
@@ -152,10 +142,10 @@ public class TOSConnector {
 						currentServer.getPassword());
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-
+//				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 
@@ -175,11 +165,11 @@ public class TOSConnector {
 							OntologyEditorView.getTargetSchemaName());
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
+					setContextVariable("DB_TargetI2B2_DatabaseType", targetServer.getDatabaseType());
 
-
-					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
+//					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
-				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 
 				setContextVariable("TableIOETargetOntology", "IOE_TARGET_ONTOLOGY");
 				setContextVariable("TableIOETarget", "IOE_TARGET");
@@ -311,9 +301,10 @@ public class TOSConnector {
 						currentServer.getPassword());
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
 
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
@@ -336,11 +327,12 @@ public class TOSConnector {
 							OntologyEditorView.getTargetSchemaName());
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
+					setContextVariable("DB_TargetI2B2_DatabaseType", targetServer.getDatabaseType());
 
 
-					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
+//					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
-				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				
 
 				Console.info(currentServer.getSchema());
@@ -377,9 +369,9 @@ public class TOSConnector {
 
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
+//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 
 
 				//				try {

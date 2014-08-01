@@ -22,7 +22,7 @@ public class ServerLabelProvider extends LabelProvider {
 
 		File imgImportFile = FileHandler.getBundleFile("/images/i2b2_16.png");
 		File tmImageFile = FileHandler.getBundleFile("/images/searchtool.ico");
-		
+
 
 		Device device = new Device() {
 
@@ -39,21 +39,15 @@ public class ServerLabelProvider extends LabelProvider {
 		Image imgImport = new Image(device, imgImportFile.getAbsolutePath());
 		Image tmImage = new Image(device, tmImageFile.getAbsolutePath());
 		if (element instanceof Server) {
-			if (((Server)element).getDatabaseType().equalsIgnoreCase("postgres")){
+			if (((Server)element).getWhType().equalsIgnoreCase("transmart")){
 				return tmImage;
 			}
 			else {
-			return PlatformUI.getWorkbench().getSharedImages()
-					.getImage(ISharedImages.IMG_OBJ_FOLDER);
+				return PlatformUI.getWorkbench().getSharedImages()
+						.getImage(ISharedImages.IMG_OBJ_FOLDER);
 			}
 		}
 		return imgImport;
-		// return PlatformUI.getWorkbench().getSharedImages()
-		// .getImage(ISharedImages.IMG_OBJ_FILE);
-
-		// PlatformUI.getWorkbench().getSharedImages()
-		// .getImage(ISharedImages.IMG_OBJ_FOLDER);
-
 	}
 
 	@Override

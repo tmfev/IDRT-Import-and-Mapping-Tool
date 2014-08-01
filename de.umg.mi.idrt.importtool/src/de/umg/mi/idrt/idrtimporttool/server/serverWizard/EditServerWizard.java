@@ -44,6 +44,7 @@ public class EditServerWizard extends Wizard {
 				EditServerPageOne.getDBUserPasswordText(),
 				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth(),
 				EditServerPageOne.getCheckStorePassword());
+		editedServer.setWhType(EditServerPageOne.getDB_WH_Combo());
 
 		if (!ServerList.getSourceServers().containsKey(
 				editedServer.getUniqueID())

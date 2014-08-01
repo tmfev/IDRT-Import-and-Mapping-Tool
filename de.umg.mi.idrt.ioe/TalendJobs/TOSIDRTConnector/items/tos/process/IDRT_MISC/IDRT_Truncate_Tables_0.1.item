@@ -2,23 +2,29 @@
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.OracleDriver&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.124.17:1521:i2b2t"/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
   </context>
   <context confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.113.224&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2BB1&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.OracleDriver&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.113.224&quot;"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.113.224:1521:i2b2t"/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB1&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
@@ -58,7 +64,7 @@
   </parameters>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Truncating Tables for schema: &quot; + context.DBSchema);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Truncating Tables for schema: &quot; + context.DB_StagingI2B2_Schema);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)){&#xA;context.DB_StagingI2B2_jdbcurl = &quot;jdbc:postgresql://&quot;+context.DB_StagingI2B2_Host+&quot;:&quot;+context.DB_StagingI2B2_Port+&quot;/&quot;+context.DB_StagingI2B2_Instance;&#xA;context.DB_StagingI2B2_DriverClass = &quot;org.postgresql.Driver&quot;;&#xA;System.out.println(&quot;Postgres Database&quot;);&#xA;}&#xA;else {&#xA;System.out.println(&quot;Oracle Database&quot;);&#xA;context.DB_StagingI2B2_DriverClass = &quot;oracle.jdbc.driver.OracleDriver&quot;;&#xA;context.DB_StagingI2B2_jdbcurl = &quot;jdbc:oracle:thin:@&quot;+context.DB_StagingI2B2_Host +&quot;:&quot; + context.DB_StagingI2B2_Port + &quot;:&quot; + context.DB_StagingI2B2_Instance;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -67,51 +73,18 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tOracleConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleConnection_1"/>
-    <elementParameter field="CLOSED_LIST" name="CONNECTION_TYPE" value="ORACLE_SID"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_10"/>
-    <elementParameter field="TEXT" name="RAC_URL" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="USE_TNS_FILE" value="false"/>
-    <elementParameter field="FILE" name="TNS_FILE" value="&quot;&quot;"/>
-    <elementParameter field="TNS_EDITOR" name="TNS_EDITOR" value=""/>
-    <elementParameter field="TEXT" name="HOST" value="context.DBHost"/>
-    <elementParameter field="TEXT" name="TYPE" value="ORACLE_SID"/>
-    <elementParameter field="TEXT" name="PORT" value="context.DBPort"/>
-    <elementParameter field="TEXT" name="DBNAME" value="context.DBInstance"/>
-    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="SCHEMA_DB" value="context.DBSchema"/>
-    <elementParameter field="TEXT" name="USER" value="context.DBUsername"/>
-    <elementParameter field="TEXT" name="PASS" value="context.DBPassword"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="*Note: Example for Additional JDBC Parameters: &quot;parameterName1=value1&amp;&amp;parameterName2=value2&quot;"/>
-    <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="SHARED_CONNECTION_NAME" value=""/>
-    <elementParameter field="LABEL" name="NOTE" value="*Note: Example for Additional JDBC Parameters: &quot;parameterName1=value1&amp;&amp;parameterName2=value2&quot;"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="JDBC_URL" value="&quot;jdbc:oracle:thin:USER/MDP@server&quot;"/>
-    <elementParameter field="CHECK" name="AUTO_COMMIT" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="OracleConnection"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
-    <elementParameter field="MEMO" name="COMMENT" value=""/>
-    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-  </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="160">
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
     <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.I2B2&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.CONCEPT_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.MODIFIER_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.OBSERVATION_FACT&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.PATIENT_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.PATIENT_MAPPING&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.MASTER_QUERY_GLOBAL_TEMP&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.ENCOUNTER_MAPPING&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.VISIT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.I2B2&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.CONCEPT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MODIFIER_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.OBSERVATION_FACT&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_MAPPING&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MASTER_QUERY_GLOBAL_TEMP&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.ENCOUNTER_MAPPING&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.VISIT_DIMENSION&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="select tables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -119,35 +92,25 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tOracleRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleRow_1"/>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tOracleConnection_1"/>
-    <elementParameter field="CLOSED_LIST" name="CONNECTION_TYPE" value="ORACLE_SID"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_11-6"/>
-    <elementParameter field="TEXT" name="RAC_URL" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;134.76.124.17&quot;"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;1521&quot;"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;I2B2T&quot;"/>
-    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;I2B2IDRT&quot;"/>
-    <elementParameter field="TEXT" name="TYPE" value="ORACLE_SID"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;SYSTEM&quot;"/>
-    <elementParameter field="TEXT" name="PASS" value="&quot;wc24gqd&quot;"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;I2B2&quot;"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_1_CURRENT_VALUE&quot;))"/>
-    <elementParameter field="CLOSED_LIST" name="USE_NB_LINE" value="NONE"/>
-    <elementParameter field="LABEL" name="USE_NB_LINE_NOTE" value="* Just the Query is Insert/Update/Delete SQL."/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="*Note: Example for Additional JDBC Parameters: &quot;parameterName1=value1&amp;&amp;parameterName2=value2&quot;"/>
     <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
     <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
     <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
@@ -155,12 +118,11 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="LABEL" value="truncate"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tOracleRow_1"/>
+    <metadata connector="FLOW" name="tJDBCRow_2"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -188,8 +150,175 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="352">
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="256">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.QT_PATIENT_SET_COLLECTION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.QT_PDO_QUERY_MASTER&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.QT_XML_RESULT&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;update &quot;+context.DB_StagingI2B2_Schema+ &quot;.qt_query_result_instance set delete_flag='Y'&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;update &quot;+context.DB_StagingI2B2_Schema+ &quot;.qt_query_instance set delete_flag='Y'&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;update &quot;+context.DB_StagingI2B2_Schema+ &quot;.qt_query_master set delete_flag='Y'&quot;"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="select tables"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+  </node>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1088" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_1"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;))"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJDBCRow_1"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJDBCConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR">
+      <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
+      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
+    <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
+    <elementParameter field="TEXT" name="PASS" value="context.DB_StagingI2B2_Password"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="SHARED_CONNECTION_NAME" value=""/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="IS_USE_AUTO_COMMIT" value="true"/>
+    <elementParameter field="CHECK" name="AUTO_COMMIT" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_3"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="ORACLE"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_4"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="448">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Postgres Truncate NYI&quot;);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="POSTGRES"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_5"/>
+  </node>
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.I2B2&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.CONCEPT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.MODIFIER_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.OBSERVATION_FACT&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.PATIENT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.PATIENT_MAPPING&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.MASTER_QUERY_GLOBAL_TEMP&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.ENCOUNTER_MAPPING&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.VISIT_DIMENSION&quot;"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="select tables"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+  </node>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_3"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;tForeach_1_CURRENT_VALUE&quot;))"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJDBCRow_3"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.QT_PATIENT_SET_COLLECTION&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DBSchema+ &quot;.QT_PDO_QUERY_MASTER&quot;"/>
@@ -204,35 +333,26 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tOracleRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleRow_2"/>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1088" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_4"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tOracleConnection_1"/>
-    <elementParameter field="CLOSED_LIST" name="CONNECTION_TYPE" value="ORACLE_SID"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_11-6"/>
-    <elementParameter field="TEXT" name="RAC_URL" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;134.76.124.17&quot;"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;1521&quot;"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;I2B2T&quot;"/>
-    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;I2B2IDRT&quot;"/>
-    <elementParameter field="TEXT" name="TYPE" value="ORACLE_SID"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;SYSTEM&quot;"/>
-    <elementParameter field="TEXT" name="PASS" value="&quot;wc24gqd&quot;"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;I2B2&quot;"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;))"/>
-    <elementParameter field="CLOSED_LIST" name="USE_NB_LINE" value="NONE"/>
-    <elementParameter field="LABEL" name="USE_NB_LINE_NOTE" value="* Just the Query is Insert/Update/Delete SQL."/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;tForeach_2_CURRENT_VALUE&quot;))"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="*Note: Example for Additional JDBC Parameters: &quot;parameterName1=value1&amp;&amp;parameterName2=value2&quot;"/>
     <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
     <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
     <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
@@ -240,37 +360,27 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="LABEL" value="truncate"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tOracleRow_2"/>
+    <metadata connector="FLOW" name="tJDBCRow_4"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tOracleConnection_1">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tJDBCConnection_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" source="tOracleConnection_1" target="tForeach_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" source="tOracleConnection_1" target="tForeach_2">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.truncateQueries"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
-  </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" source="tForeach_1" target="tOracleRow_1">
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" source="tForeach_1" target="tJDBCRow_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1"/>
   </connection>
-  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tOracleRow_1" offsetLabelX="0" offsetLabelY="0" source="tOracleRow_1" target="tJava_2">
+  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tJDBCRow_2" offsetLabelX="0" offsetLabelY="0" source="tJDBCRow_2" target="tJava_2">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError1"/>
   </connection>
@@ -278,19 +388,58 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
   </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_2" offsetLabelX="0" offsetLabelY="0" source="tForeach_2" target="tOracleRow_2">
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_2" offsetLabelX="0" offsetLabelY="0" source="tForeach_2" target="tJDBCRow_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate2"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tJava_3">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_3" target="tJava_4">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_3" target="tJava_5">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tForeach_2">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.truncateQueries"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tForeach_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tForeach_3">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk5"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tForeach_4">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.truncateQueries"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If3"/>
+  </connection>
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_3" offsetLabelX="0" offsetLabelY="0" source="tForeach_3" target="tJDBCRow_3">
+    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
+    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate3"/>
+  </connection>
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_4" offsetLabelX="0" offsetLabelY="0" source="tForeach_4" target="tJDBCRow_4">
+    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
+    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate4"/>
+  </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleConnection_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
@@ -311,6 +460,36 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCConnection_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>

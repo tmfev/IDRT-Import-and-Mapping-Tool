@@ -55,6 +55,12 @@ import de.umg.mi.idrt.ioe.tos.TOSHandler;
 //the import part of tJava_2
 //import java.util.List;
 
+//the import part of tJava_3
+//import java.util.List;
+
+//the import part of tJava_4
+//import java.util.List;
+
 @SuppressWarnings("unused")
 /**
  * Job: TOSIDRTCommand_DeleteTarget Purpose: <br>
@@ -108,6 +114,27 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 			}
 
+			if (DB_StagingI2B2_sqlclassname != null) {
+
+				this.setProperty("DB_StagingI2B2_sqlclassname",
+						DB_StagingI2B2_sqlclassname.toString());
+
+			}
+
+			if (DB_StagingI2B2_DatabaseType != null) {
+
+				this.setProperty("DB_StagingI2B2_DatabaseType",
+						DB_StagingI2B2_DatabaseType.toString());
+
+			}
+
+			if (DB_StagingI2B2_DriverClass != null) {
+
+				this.setProperty("DB_StagingI2B2_DriverClass",
+						DB_StagingI2B2_DriverClass.toString());
+
+			}
+
 			if (DB_StagingI2B2_Host != null) {
 
 				this.setProperty("DB_StagingI2B2_Host",
@@ -150,17 +177,24 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 			}
 
-			if (DB_StagingI2B2_sqlclassname != null) {
-
-				this.setProperty("DB_StagingI2B2_sqlclassname",
-						DB_StagingI2B2_sqlclassname.toString());
-
-			}
-
 			if (DB_StagingI2B2_Username != null) {
 
 				this.setProperty("DB_StagingI2B2_Username",
 						DB_StagingI2B2_Username.toString());
+
+			}
+
+			if (DB_TargetI2B2_DatabaseType != null) {
+
+				this.setProperty("DB_TargetI2B2_DatabaseType",
+						DB_TargetI2B2_DatabaseType.toString());
+
+			}
+
+			if (DB_TargetI2B2_DriverClass != null) {
+
+				this.setProperty("DB_TargetI2B2_DriverClass",
+						DB_TargetI2B2_DriverClass.toString());
 
 			}
 
@@ -354,12 +388,36 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 			}
 
+			if (currentQuery != null) {
+
+				this.setProperty("currentQuery", currentQuery.toString());
+
+			}
+
 		}
 
 		public Integer currentTargetProjectID;
 
 		public Integer getCurrentTargetProjectID() {
 			return this.currentTargetProjectID;
+		}
+
+		public String DB_StagingI2B2_sqlclassname;
+
+		public String getDB_StagingI2B2_sqlclassname() {
+			return this.DB_StagingI2B2_sqlclassname;
+		}
+
+		public String DB_StagingI2B2_DatabaseType;
+
+		public String getDB_StagingI2B2_DatabaseType() {
+			return this.DB_StagingI2B2_DatabaseType;
+		}
+
+		public String DB_StagingI2B2_DriverClass;
+
+		public String getDB_StagingI2B2_DriverClass() {
+			return this.DB_StagingI2B2_DriverClass;
 		}
 
 		public String DB_StagingI2B2_Host;
@@ -398,16 +456,22 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			return this.DB_StagingI2B2_Schema;
 		}
 
-		public String DB_StagingI2B2_sqlclassname;
-
-		public String getDB_StagingI2B2_sqlclassname() {
-			return this.DB_StagingI2B2_sqlclassname;
-		}
-
 		public String DB_StagingI2B2_Username;
 
 		public String getDB_StagingI2B2_Username() {
 			return this.DB_StagingI2B2_Username;
+		}
+
+		public String DB_TargetI2B2_DatabaseType;
+
+		public String getDB_TargetI2B2_DatabaseType() {
+			return this.DB_TargetI2B2_DatabaseType;
+		}
+
+		public String DB_TargetI2B2_DriverClass;
+
+		public String getDB_TargetI2B2_DriverClass() {
+			return this.DB_TargetI2B2_DriverClass;
 		}
 
 		public String DB_TargetI2B2_Host;
@@ -589,6 +653,12 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 		public Object getTOSHandler() {
 			return this.TOSHandler;
 		}
+
+		public String currentQuery;
+
+		public String getCurrentQuery() {
+			return this.currentQuery;
+		}
 	}
 
 	private ContextProperties context = new ContextProperties();
@@ -764,6 +834,16 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 		tDie_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tJava_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_3", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_3_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tJDBCRow_1_error(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -772,6 +852,16 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 		status = "failure";
 
 		tJDBCRow_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_4_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		end_Hash.put("tJava_4", System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_4_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJDBCRow_2_error(java.lang.Exception exception,
@@ -839,7 +929,29 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 	}
 
+	public void tJava_3_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tJDBCRow_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJava_4_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -1170,7 +1282,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 						"");
 			}
 
-			tJDBCRow_1Process(globalMap);
+			tJava_3Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -1275,6 +1387,100 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 		globalMap.put("tDie_1_SUBPROCESS_STATE", 1);
 	}
 
+	public void tJava_3Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_3 begin ] start
+				 */
+
+				ok_Hash.put("tJava_3", false);
+				start_Hash.put("tJava_3", System.currentTimeMillis());
+				currentComponent = "tJava_3";
+
+				int tos_count_tJava_3 = 0;
+
+				if (context.DB_StagingI2B2_DatabaseType
+						.equalsIgnoreCase("oracle"))
+					context.currentQuery = "DELETE FROM "
+							+ context.DB_StagingI2B2_Schema + "."
+							+ context.TableIEOTargetOntology
+							+ "  WHERE target_id = '" + context.TargetID + "'";
+				else {
+					context.currentQuery = "DELETE FROM i2b2metadata."
+							+ context.TableIEOTargetOntology
+							+ "  WHERE target_id = '" + context.TargetID + "'";
+
+				}
+
+				/**
+				 * [tJava_3 begin ] stop
+				 */
+				/**
+				 * [tJava_3 main ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				tos_count_tJava_3++;
+
+				/**
+				 * [tJava_3 main ] stop
+				 */
+				/**
+				 * [tJava_3 end ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				ok_Hash.put("tJava_3", true);
+				end_Hash.put("tJava_3", System.currentTimeMillis());
+
+				/**
+				 * [tJava_3 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_3:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCRow_1Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_3_SUBPROCESS_STATE", 1);
+	}
+
 	public void tJDBCRow_1Process(final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 0);
@@ -1312,8 +1518,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 					connection_tJDBCRow_1 = dataSources_tJDBCRow_1.get("")
 							.getConnection();
 				} else {
-					java.lang.Class
-							.forName(context.DB_StagingI2B2_sqlclassname);
+					java.lang.Class.forName(context.DB_StagingI2B2_DriverClass);
 					String connectionString_tJDBCRow_1 = context.DB_StagingI2B2_jdbcurl;
 					connection_tJDBCRow_1 = java.sql.DriverManager
 							.getConnection(connectionString_tJDBCRow_1,
@@ -1339,10 +1544,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				currentComponent = "tJDBCRow_1";
 
-				query_tJDBCRow_1 = "DELETE FROM "
-						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTargetOntology
-						+ "  WHERE target_id = '" + context.TargetID + "'";
+				query_tJDBCRow_1 = context.currentQuery;
 				whetherReject_tJDBCRow_1 = false;
 				globalMap.put("tJDBCRow_1_QUERY", query_tJDBCRow_1);
 				try {
@@ -1397,7 +1599,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 								"", "", "", "");
 			}
 
-			tJDBCRow_2Process(globalMap);
+			tJava_4Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -1410,6 +1612,100 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 		}
 
 		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJava_4Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJava_4_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJava_4 begin ] start
+				 */
+
+				ok_Hash.put("tJava_4", false);
+				start_Hash.put("tJava_4", System.currentTimeMillis());
+				currentComponent = "tJava_4";
+
+				int tos_count_tJava_4 = 0;
+
+				if (context.DB_StagingI2B2_DatabaseType
+						.equalsIgnoreCase("oracle"))
+					context.currentQuery = "DELETE FROM "
+							+ context.DB_StagingI2B2_Schema + "."
+							+ context.TableIEOTarget + "  WHERE target_id = '"
+							+ context.TargetID + "'";
+				else {
+					context.currentQuery = "DELETE FROM i2b2metadata."
+							+ context.TableIEOTarget + "  WHERE target_id = '"
+							+ context.TargetID + "'";
+
+				}
+
+				/**
+				 * [tJava_4 begin ] stop
+				 */
+				/**
+				 * [tJava_4 main ] start
+				 */
+
+				currentComponent = "tJava_4";
+
+				tos_count_tJava_4++;
+
+				/**
+				 * [tJava_4 main ] stop
+				 */
+				/**
+				 * [tJava_4 end ] start
+				 */
+
+				currentComponent = "tJava_4";
+
+				ok_Hash.put("tJava_4", true);
+				end_Hash.put("tJava_4", System.currentTimeMillis());
+
+				/**
+				 * [tJava_4 end ] stop
+				 */
+
+			}// end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_4:OnSubjobOk", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCRow_2Process(globalMap);
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJava_4_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJDBCRow_2Process(final java.util.Map<String, Object> globalMap)
@@ -1449,8 +1745,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 					connection_tJDBCRow_2 = dataSources_tJDBCRow_2.get("")
 							.getConnection();
 				} else {
-					java.lang.Class
-							.forName(context.DB_StagingI2B2_sqlclassname);
+					java.lang.Class.forName(context.DB_StagingI2B2_DriverClass);
 					String connectionString_tJDBCRow_2 = context.DB_StagingI2B2_jdbcurl;
 					connection_tJDBCRow_2 = java.sql.DriverManager
 							.getConnection(connectionString_tJDBCRow_2,
@@ -1476,10 +1771,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 
 				currentComponent = "tJDBCRow_2";
 
-				query_tJDBCRow_2 = "DELETE FROM "
-						+ context.DB_StagingI2B2_Schema + "."
-						+ context.TableIEOTarget + "  WHERE target_id = '"
-						+ context.TargetID + "'";
+				query_tJDBCRow_2 = context.currentQuery;
 				whetherReject_tJDBCRow_2 = false;
 				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
 				try {
@@ -1657,6 +1949,12 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			} catch (NumberFormatException e) {
 				context.currentTargetProjectID = null;
 			}
+			context.DB_StagingI2B2_sqlclassname = (String) context
+					.getProperty("DB_StagingI2B2_sqlclassname");
+			context.DB_StagingI2B2_DatabaseType = (String) context
+					.getProperty("DB_StagingI2B2_DatabaseType");
+			context.DB_StagingI2B2_DriverClass = (String) context
+					.getProperty("DB_StagingI2B2_DriverClass");
 			context.DB_StagingI2B2_Host = (String) context
 					.getProperty("DB_StagingI2B2_Host");
 			context.DB_StagingI2B2_Instance = (String) context
@@ -1669,10 +1967,12 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 					.getProperty("DB_StagingI2B2_Port");
 			context.DB_StagingI2B2_Schema = (String) context
 					.getProperty("DB_StagingI2B2_Schema");
-			context.DB_StagingI2B2_sqlclassname = (String) context
-					.getProperty("DB_StagingI2B2_sqlclassname");
 			context.DB_StagingI2B2_Username = (String) context
 					.getProperty("DB_StagingI2B2_Username");
+			context.DB_TargetI2B2_DatabaseType = (String) context
+					.getProperty("DB_TargetI2B2_DatabaseType");
+			context.DB_TargetI2B2_DriverClass = (String) context
+					.getProperty("DB_TargetI2B2_DriverClass");
 			context.DB_TargetI2B2_Host = (String) context
 					.getProperty("DB_TargetI2B2_Host");
 			context.DB_TargetI2B2_Instance = (String) context
@@ -1727,6 +2027,7 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 				context.TargetID = null;
 			}
 			context.TOSHandler = (Object) context.getProperty("TOSHandler");
+			context.currentQuery = (String) context.getProperty("currentQuery");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -1737,6 +2038,18 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			if (parentContextMap.containsKey("currentTargetProjectID")) {
 				context.currentTargetProjectID = (Integer) parentContextMap
 						.get("currentTargetProjectID");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
+				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
+						.get("DB_StagingI2B2_sqlclassname");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DatabaseType")) {
+				context.DB_StagingI2B2_DatabaseType = (String) parentContextMap
+						.get("DB_StagingI2B2_DatabaseType");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_DriverClass")) {
+				context.DB_StagingI2B2_DriverClass = (String) parentContextMap
+						.get("DB_StagingI2B2_DriverClass");
 			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_Host")) {
 				context.DB_StagingI2B2_Host = (String) parentContextMap
@@ -1762,13 +2075,17 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 				context.DB_StagingI2B2_Schema = (String) parentContextMap
 						.get("DB_StagingI2B2_Schema");
 			}
-			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
-				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
-						.get("DB_StagingI2B2_sqlclassname");
-			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_Username")) {
 				context.DB_StagingI2B2_Username = (String) parentContextMap
 						.get("DB_StagingI2B2_Username");
+			}
+			if (parentContextMap.containsKey("DB_TargetI2B2_DatabaseType")) {
+				context.DB_TargetI2B2_DatabaseType = (String) parentContextMap
+						.get("DB_TargetI2B2_DatabaseType");
+			}
+			if (parentContextMap.containsKey("DB_TargetI2B2_DriverClass")) {
+				context.DB_TargetI2B2_DriverClass = (String) parentContextMap
+						.get("DB_TargetI2B2_DriverClass");
 			}
 			if (parentContextMap.containsKey("DB_TargetI2B2_Host")) {
 				context.DB_TargetI2B2_Host = (String) parentContextMap
@@ -1881,6 +2198,10 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 			if (parentContextMap.containsKey("TOSHandler")) {
 				context.TOSHandler = (Object) parentContextMap
 						.get("TOSHandler");
+			}
+			if (parentContextMap.containsKey("currentQuery")) {
+				context.currentQuery = (String) parentContextMap
+						.get("currentQuery");
 			}
 		}
 
@@ -2045,6 +2366,6 @@ public class TOSIDRTCommand_DeleteTarget implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 57098 characters generated by Talend Open Studio for Data Integration on the
- * May 26, 2014 1:58:50 PM CEST
+ * 65415 characters generated by Talend Open Studio for Data Integration on the
+ * August 1, 2014 1:51:09 PM CEST
  ************************************************************************************************/

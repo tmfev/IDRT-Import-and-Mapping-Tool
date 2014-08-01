@@ -129,6 +129,7 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProject;
 	public static String ServerView_TruncateProjectConfirmText;
 	public static String ServerView_TruncateProjectQuestion;
+	public static String AddServerPageOne_lblWhType_text;
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

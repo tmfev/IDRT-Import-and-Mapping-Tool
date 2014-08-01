@@ -19,13 +19,12 @@ import de.umi.mi.passwordcrypt.PasswordCrypt;
  */
 public class Server implements Serializable {
 
-//	private static String ORACLEDRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static String ORACLEDRIVER = "oracle.jdbc.OracleDriver";
-	
+
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static String MYSQLDRIVER = "com.mysql.jdbc.Driver";
 	private static String POSTGRESDRIVER = "org.postgresql.Driver";
-	
+
 	//con=
 	private static String error;
 	private static String[] comboItems = {"Oracle","Postgres","MSSQL","MySQL"};
@@ -47,6 +46,7 @@ public class Server implements Serializable {
 	private String user;
 	private String password;
 	private String sid;
+	private String whType;
 	private String schema;
 	private String table;
 	private String patients;
@@ -448,5 +448,14 @@ public class Server implements Serializable {
 	@Override
 	public String toString() {
 		return uniqueID + " " + ip;
+	}
+	public String getWhType() {
+		if (whType==null)
+			return "i2b2";
+		else
+			return whType;
+	}
+	public void setWhType(String whType) {
+		this.whType = whType;
 	}
 }

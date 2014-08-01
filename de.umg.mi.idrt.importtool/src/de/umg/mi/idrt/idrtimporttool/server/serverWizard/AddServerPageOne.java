@@ -53,6 +53,8 @@ public class AddServerPageOne extends WizardPage {
 	private Label lblSavePassword;
 
 	private static Button chkSavePassword;
+	private static Combo DB_WH_Combo;
+	private static Label DB_WH_label;
 
 	/**
 	 * @return
@@ -73,6 +75,10 @@ public class AddServerPageOne extends WizardPage {
 	 */
 	public static String getDBSIDText() {
 		return DBSIDText.getText();
+	}
+
+	public static String getDB_WH_Combo(){
+		return DB_WH_Combo.getText();
 	}
 
 	/**
@@ -272,14 +278,14 @@ public class AddServerPageOne extends WizardPage {
 				false, 1, 1));
 		DBUserPasswordText.setText(""); //$NON-NLS-1$
 		DBUserPasswordText.setEchoChar('*');
-		
+
 		lblSavePassword = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		lblSavePassword.setText("Save Password?");
-		
+
 		chkSavePassword = new Button(container1, SWT.CHECK);
-//		Label savePassword = new Label(container1, SWT.FILL | SWT.CENTER);
-//		savePassword.setText(Messages.AddServerPageOne_SavePassword);
-//		new Label(container1, SWT.NONE);
+		//		Label savePassword = new Label(container1, SWT.FILL | SWT.CENTER);
+		//		savePassword.setText(Messages.AddServerPageOne_SavePassword);
+		//		new Label(container1, SWT.NONE);
 		// DBUserPasswordText.addKeyListener(new KeyListener() {
 		// public void keyPressed(KeyEvent e) {
 		// }
@@ -296,7 +302,14 @@ public class AddServerPageOne extends WizardPage {
 		DBSIDText = new Text(container1, SWT.FILL);
 		DBSIDText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false,
 				1, 1));
-		DBSIDText.setText(""); //$NON-NLS-1$
+		DBSIDText.setText("");
+
+		DB_WH_label = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
+		DB_WH_label.setText("WH Type");
+
+		DB_WH_Combo = new Combo(container1, SWT.READ_ONLY);
+		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart"});
+		DB_WH_Combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		DBTypeLabel = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		DBTypeLabel.setText(Messages.AddServerPageOne_DBType);
@@ -328,7 +341,7 @@ public class AddServerPageOne extends WizardPage {
 					DBIntegratedSecurity.setEnabled(false);
 					DBMSSQLUseWinAuth.setEnabled(false);
 					DBMSSQLUseWinAuth.setSelection(false);
-					
+
 				}
 			}
 		});

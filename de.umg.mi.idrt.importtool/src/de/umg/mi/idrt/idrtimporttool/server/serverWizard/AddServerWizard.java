@@ -38,6 +38,7 @@ public class AddServerWizard extends Wizard {
 				AddServerPageOne.getDBUserText(),
 				AddServerPageOne.getDBUserPasswordText(),
 				AddServerPageOne.getDBSIDText(),AddServerPageOne.getDBType(),AddServerPageOne.getCheckUseWinAuth(),AddServerPageOne.getCheckStorePassword());
+		newServer.setWhType(AddServerPageOne.getDB_WH_Combo());
 
 		if (IDRTImport.testDB(newServer)) {
 			ServerList.addServer(newServer);
