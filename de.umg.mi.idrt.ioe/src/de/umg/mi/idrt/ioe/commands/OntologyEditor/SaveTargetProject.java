@@ -23,7 +23,7 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
  *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
  * 
- *         
+ *         de.umg.mi.idrt.ioe.SaveTargetProject
   */
 
 public class SaveTargetProject extends AbstractHandler {

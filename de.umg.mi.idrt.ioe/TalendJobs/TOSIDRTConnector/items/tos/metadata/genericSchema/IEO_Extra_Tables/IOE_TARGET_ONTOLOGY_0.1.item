@@ -8,7 +8,7 @@
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fOqNkCp6EeOfMeL2lyOGsQ" name="TREE_PATH" label="TREE_PATH" length="1000" talendType="id_String" originalLength="3500"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_lutaMCp6EeOfMeL2lyOGsQ" name="STAGING_PATH" label="STAGING_PATH" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_ut7_ACp6EeOfMeL2lyOGsQ" name="STAGING_DIMENSION" label="STAGING_DIMENSION" length="1000" talendType="id_String" originalLength="1000"/>
-      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_noN5gCp6EeOfMeL2lyOGsQ" name="NAME" label="NAME" length="1000" talendType="id_String" originalLength="1000"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_noN5gCp6EeOfMeL2lyOGsQ" name="C_NAME" label="C_NAME" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_qatPQCp6EeOfMeL2lyOGsQ" name="STARTDATE_STAGING_PATH" label="STARTDATE_STAGING_PATH" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_sHp5QCp6EeOfMeL2lyOGsQ" name="ENDDATE_STAGING_PATH" label="ENDDATE_STAGING_PATH" length="1000" talendType="id_String" originalLength="1000"/>
       <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_tGWWICp6EeOfMeL2lyOGsQ" name="VISUALATTRIBUTES" label="VISUALATTRIBUTES" length="3" talendType="id_String" originalLength="3"/>

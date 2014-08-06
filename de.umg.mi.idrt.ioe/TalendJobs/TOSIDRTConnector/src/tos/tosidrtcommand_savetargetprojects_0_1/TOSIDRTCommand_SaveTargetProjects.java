@@ -1079,8 +1079,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 		status = "failure";
 
-		tFileInputDelimited_2_onSubJobError(exception, errorComponent,
-				globalMap);
+		tJDBCCommit_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tJava_6_error(java.lang.Exception exception,
@@ -1295,6 +1294,17 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	public void tFileInputDelimited_2_onSubJobError(
 			java.lang.Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCCommit_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
@@ -4497,12 +4507,20 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 			if (resumeEntryMethodName == null || globalResumeTicket) {
 				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJava_11:OnSubjobOk", "", Thread
+						"CONNECTION:SUBJOB_OK:tJava_11:OnSubjobOk1", "", Thread
 								.currentThread().getId() + "", "", "", "", "",
 						"");
 			}
 
 			tFileInputDelimited_2Process(globalMap);
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT",
+						"CONNECTION:SUBJOB_OK:tJava_11:OnSubjobOk2", "", Thread
+								.currentThread().getId() + "", "", "", "", "",
+						"");
+			}
+
+			tJDBCCommit_1Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -4515,318 +4533,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		}
 
 		globalMap.put("tJava_11_SUBPROCESS_STATE", 1);
-	}
-
-	public static class commitStruct implements
-			routines.system.IPersistableRow<commitStruct> {
-		final static byte[] commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
-		static byte[] commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[0];
-		protected static final int DEFAULT_HASHCODE = 1;
-		protected static final int PRIME = 31;
-		protected int hashCode = DEFAULT_HASHCODE;
-		public boolean hashCodeDirty = true;
-
-		public String loopKey;
-
-		public Integer TARGET_ID;
-
-		public Integer getTARGET_ID() {
-			return this.TARGET_ID;
-		}
-
-		public Integer TARGETPROJECT_ID;
-
-		public Integer getTARGETPROJECT_ID() {
-			return this.TARGETPROJECT_ID;
-		}
-
-		public Integer VERSION;
-
-		public Integer getVERSION() {
-			return this.VERSION;
-		}
-
-		public java.util.Date CREATED;
-
-		public java.util.Date getCREATED() {
-			return this.CREATED;
-		}
-
-		public java.util.Date LAST_MODIFIED;
-
-		public java.util.Date getLAST_MODIFIED() {
-			return this.LAST_MODIFIED;
-		}
-
-		public String USER_ID;
-
-		public String getUSER_ID() {
-			return this.USER_ID;
-		}
-
-		public String TARGET_DB_SCHEMA;
-
-		public String getTARGET_DB_SCHEMA() {
-			return this.TARGET_DB_SCHEMA;
-		}
-
-		@Override
-		public int hashCode() {
-			if (this.hashCodeDirty) {
-				final int prime = PRIME;
-				int result = DEFAULT_HASHCODE;
-
-				result = prime
-						* result
-						+ ((this.TARGET_ID == null) ? 0 : this.TARGET_ID
-								.hashCode());
-
-				this.hashCode = result;
-				this.hashCodeDirty = false;
-			}
-			return this.hashCode;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final commitStruct other = (commitStruct) obj;
-
-			if (this.TARGET_ID == null) {
-				if (other.TARGET_ID != null)
-					return false;
-			} else if (!this.TARGET_ID.equals(other.TARGET_ID))
-				return false;
-
-			return true;
-		}
-
-		public void copyDataTo(commitStruct other) {
-
-			other.TARGET_ID = this.TARGET_ID;
-			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
-			other.VERSION = this.VERSION;
-			other.CREATED = this.CREATED;
-			other.LAST_MODIFIED = this.LAST_MODIFIED;
-			other.USER_ID = this.USER_ID;
-			other.TARGET_DB_SCHEMA = this.TARGET_DB_SCHEMA;
-
-		}
-
-		public void copyKeysDataTo(commitStruct other) {
-
-			other.TARGET_ID = this.TARGET_ID;
-
-		}
-
-		private Integer readInteger(ObjectInputStream dis) throws IOException {
-			Integer intReturn;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				intReturn = null;
-			} else {
-				intReturn = dis.readInt();
-			}
-			return intReturn;
-		}
-
-		private void writeInteger(Integer intNum, ObjectOutputStream dos)
-				throws IOException {
-			if (intNum == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeInt(intNum);
-			}
-		}
-
-		private java.util.Date readDate(ObjectInputStream dis)
-				throws IOException {
-			java.util.Date dateReturn = null;
-			int length = 0;
-			length = dis.readByte();
-			if (length == -1) {
-				dateReturn = null;
-			} else {
-				dateReturn = new Date(dis.readLong());
-			}
-			return dateReturn;
-		}
-
-		private void writeDate(java.util.Date date1, ObjectOutputStream dos)
-				throws IOException {
-			if (date1 == null) {
-				dos.writeByte(-1);
-			} else {
-				dos.writeByte(0);
-				dos.writeLong(date1.getTime());
-			}
-		}
-
-		private String readString(ObjectInputStream dis) throws IOException {
-			String strReturn = null;
-			int length = 0;
-			length = dis.readInt();
-			if (length == -1) {
-				strReturn = null;
-			} else {
-				if (length > commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects.length) {
-					if (length < 1024
-							&& commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects.length == 0) {
-						commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[1024];
-					} else {
-						commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects = new byte[2 * length];
-					}
-				}
-				dis.readFully(
-						commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects,
-						0, length);
-				strReturn = new String(
-						commonByteArray_TOS_TOSIDRTCommand_SaveTargetProjects,
-						0, length, utf8Charset);
-			}
-			return strReturn;
-		}
-
-		private void writeString(String str, ObjectOutputStream dos)
-				throws IOException {
-			if (str == null) {
-				dos.writeInt(-1);
-			} else {
-				byte[] byteArray = str.getBytes(utf8Charset);
-				dos.writeInt(byteArray.length);
-				dos.write(byteArray);
-			}
-		}
-
-		public void readData(ObjectInputStream dis) {
-
-			synchronized (commonByteArrayLock_TOS_TOSIDRTCommand_SaveTargetProjects) {
-
-				try {
-
-					int length = 0;
-
-					this.TARGET_ID = readInteger(dis);
-
-					this.TARGETPROJECT_ID = readInteger(dis);
-
-					this.VERSION = readInteger(dis);
-
-					this.CREATED = readDate(dis);
-
-					this.LAST_MODIFIED = readDate(dis);
-
-					this.USER_ID = readString(dis);
-
-					this.TARGET_DB_SCHEMA = readString(dis);
-
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-
-				}
-
-			}
-
-		}
-
-		public void writeData(ObjectOutputStream dos) {
-			try {
-
-				// Integer
-
-				writeInteger(this.TARGET_ID, dos);
-
-				// Integer
-
-				writeInteger(this.TARGETPROJECT_ID, dos);
-
-				// Integer
-
-				writeInteger(this.VERSION, dos);
-
-				// java.util.Date
-
-				writeDate(this.CREATED, dos);
-
-				// java.util.Date
-
-				writeDate(this.LAST_MODIFIED, dos);
-
-				// String
-
-				writeString(this.USER_ID, dos);
-
-				// String
-
-				writeString(this.TARGET_DB_SCHEMA, dos);
-
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-
-		public String toString() {
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(super.toString());
-			sb.append("[");
-			sb.append("TARGET_ID=" + String.valueOf(TARGET_ID));
-			sb.append(",TARGETPROJECT_ID=" + String.valueOf(TARGETPROJECT_ID));
-			sb.append(",VERSION=" + String.valueOf(VERSION));
-			sb.append(",CREATED=" + String.valueOf(CREATED));
-			sb.append(",LAST_MODIFIED=" + String.valueOf(LAST_MODIFIED));
-			sb.append(",USER_ID=" + USER_ID);
-			sb.append(",TARGET_DB_SCHEMA=" + TARGET_DB_SCHEMA);
-			sb.append("]");
-
-			return sb.toString();
-		}
-
-		/**
-		 * Compare keys
-		 */
-		public int compareTo(commitStruct other) {
-
-			int returnValue = -1;
-
-			returnValue = checkNullsAndCompare(this.TARGET_ID, other.TARGET_ID);
-			if (returnValue != 0) {
-				return returnValue;
-			}
-
-			return returnValue;
-		}
-
-		private int checkNullsAndCompare(Object object1, Object object2) {
-			int returnValue = 0;
-			if (object1 instanceof Comparable && object2 instanceof Comparable) {
-				returnValue = ((Comparable) object1).compareTo(object2);
-			} else if (object1 != null && object2 != null) {
-				returnValue = compareStrings(object1.toString(),
-						object2.toString());
-			} else if (object1 == null && object2 != null) {
-				returnValue = 1;
-			} else if (object1 != null && object2 == null) {
-				returnValue = -1;
-			} else {
-				returnValue = 0;
-			}
-
-			return returnValue;
-		}
-
-		private int compareStrings(String string1, String string2) {
-			return string1.compareTo(string2);
-		}
-
 	}
 
 	public static class writeTargetProjectsStruct implements
@@ -4846,10 +4552,10 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			return this.TARGETPROJECT_ID;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String DESCRIPTION;
@@ -4897,7 +4603,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		public void copyDataTo(writeTargetProjectsStruct other) {
 
 			other.TARGETPROJECT_ID = this.TARGETPROJECT_ID;
-			other.NAME = this.NAME;
+			other.C_NAME = this.C_NAME;
 			other.DESCRIPTION = this.DESCRIPTION;
 
 		}
@@ -4976,7 +4682,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 					this.TARGETPROJECT_ID = readInteger(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.DESCRIPTION = readString(dis);
 
@@ -4998,7 +4704,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -5016,7 +4722,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("TARGETPROJECT_ID=" + String.valueOf(TARGETPROJECT_ID));
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",DESCRIPTION=" + DESCRIPTION);
 			sb.append("]");
 
@@ -5610,7 +5316,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				tmpFileRowStruct tmpFileRow = new tmpFileRowStruct();
 				writeTargetProjectsStruct writeTargetProjects = new writeTargetProjectsStruct();
 				writeTargetVersionsStruct writeTargetVersions = new writeTargetVersionsStruct();
-				commitStruct commit = new commitStruct();
 
 				/**
 				 * [tJDBCOutput_1 begin ] start
@@ -5661,35 +5366,22 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 								+ context.TableIEOTargetProject
 								+ " WHERE TARGETPROJECT_ID = ?");
 				String insert_tJDBCOutput_1 = "INSERT INTO "
-						+ context.currentQuery + "."
+						+ context.currentQuery
+						+ "."
 						+ context.TableIEOTargetProject
-						+ " (TARGETPROJECT_ID,NAME,DESCRIPTION) VALUES (?,?,?)";
+						+ " (TARGETPROJECT_ID,C_NAME,DESCRIPTION) VALUES (?,?,?)";
 				java.sql.PreparedStatement pstmtInsert_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement(insert_tJDBCOutput_1);
 				String update_tJDBCOutput_1 = "UPDATE "
 						+ context.currentQuery
 						+ "."
 						+ context.TableIEOTargetProject
-						+ " SET NAME = ?,DESCRIPTION = ? WHERE TARGETPROJECT_ID = ?";
+						+ " SET C_NAME = ?,DESCRIPTION = ? WHERE TARGETPROJECT_ID = ?";
 				java.sql.PreparedStatement pstmtUpdate_tJDBCOutput_1 = connection_tJDBCOutput_1
 						.prepareStatement(update_tJDBCOutput_1);
 
 				/**
 				 * [tJDBCOutput_1 begin ] stop
-				 */
-
-				/**
-				 * [tJDBCCommit_1 begin ] start
-				 */
-
-				ok_Hash.put("tJDBCCommit_1", false);
-				start_Hash.put("tJDBCCommit_1", System.currentTimeMillis());
-				currentComponent = "tJDBCCommit_1";
-
-				int tos_count_tJDBCCommit_1 = 0;
-
-				/**
-				 * [tJDBCCommit_1 begin ] stop
 				 */
 
 				/**
@@ -6180,7 +5872,7 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 								// # Output table : 'writeTargetProjects'
 								writeTargetProjects_tmp.TARGETPROJECT_ID = Var.TargetProjectID;
-								writeTargetProjects_tmp.NAME = tmpFileRow.NAME;
+								writeTargetProjects_tmp.C_NAME = tmpFileRow.NAME;
 								writeTargetProjects_tmp.DESCRIPTION = tmpFileRow.DESCRIPTION;
 								writeTargetProjects = writeTargetProjects_tmp;
 
@@ -6231,12 +5923,12 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 											.getInt(1);
 								}
 								if (checkCount_tJDBCOutput_1 > 0) {
-									if (writeTargetProjects.NAME == null) {
+									if (writeTargetProjects.C_NAME == null) {
 										pstmtUpdate_tJDBCOutput_1.setNull(1,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtUpdate_tJDBCOutput_1.setString(1,
-												writeTargetProjects.NAME);
+												writeTargetProjects.C_NAME);
 									}
 
 									if (writeTargetProjects.DESCRIPTION == null) {
@@ -6276,12 +5968,12 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 														writeTargetProjects.TARGETPROJECT_ID);
 									}
 
-									if (writeTargetProjects.NAME == null) {
+									if (writeTargetProjects.C_NAME == null) {
 										pstmtInsert_tJDBCOutput_1.setNull(2,
 												java.sql.Types.VARCHAR);
 									} else {
 										pstmtInsert_tJDBCOutput_1.setString(2,
-												writeTargetProjects.NAME);
+												writeTargetProjects.C_NAME);
 									}
 
 									if (writeTargetProjects.DESCRIPTION == null) {
@@ -6322,7 +6014,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 
 								currentComponent = "tJDBCOutput_2";
 
-								commit = null;
 								whetherReject_tJDBCOutput_2 = false;
 								if (writeTargetVersions.TARGET_ID == null) {
 									pstmt_tJDBCOutput_2.setNull(1,
@@ -6493,59 +6184,12 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 									}
 								}
 								nb_line_tJDBCOutput_2++;
-								if (!whetherReject_tJDBCOutput_2) {
-									commit = new commitStruct();
-									commit.TARGET_ID = writeTargetVersions.TARGET_ID;
-									commit.TARGETPROJECT_ID = writeTargetVersions.TARGETPROJECT_ID;
-									commit.VERSION = writeTargetVersions.VERSION;
-									commit.CREATED = writeTargetVersions.CREATED;
-									commit.LAST_MODIFIED = writeTargetVersions.LAST_MODIFIED;
-									commit.USER_ID = writeTargetVersions.USER_ID;
-									commit.TARGET_DB_SCHEMA = writeTargetVersions.TARGET_DB_SCHEMA;
-								}
 
 								tos_count_tJDBCOutput_2++;
 
 								/**
 								 * [tJDBCOutput_2 main ] stop
 								 */
-								// Start of branch "commit"
-								if (commit != null) {
-
-									/**
-									 * [tJDBCCommit_1 main ] start
-									 */
-
-									currentComponent = "tJDBCCommit_1";
-
-									java.sql.Connection conn_tJDBCCommit_1 = (java.sql.Connection) globalMap
-											.get("conn_tJDBCConnection_3");
-									if (null == conn_tJDBCCommit_1) {
-										java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCCommit_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
-												.get(KEY_DB_DATASOURCES);
-										if (dataSources_tJDBCCommit_1 != null) {
-											if (dataSources_tJDBCCommit_1
-													.get("") != null) {
-												conn_tJDBCCommit_1 = dataSources_tJDBCCommit_1
-														.get("")
-														.getConnection();
-											}
-										}
-									}
-
-									if (conn_tJDBCCommit_1 != null
-											&& !conn_tJDBCCommit_1.isClosed()) {
-										conn_tJDBCCommit_1.commit();
-										conn_tJDBCCommit_1.close();
-									}
-
-									tos_count_tJDBCCommit_1++;
-
-									/**
-									 * [tJDBCCommit_1 main ] stop
-									 */
-
-								} // End of branch "commit"
 
 							} // End of branch "writeTargetVersions"
 
@@ -6646,21 +6290,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 				 */
 
 				/**
-				 * [tJDBCCommit_1 end ] start
-				 */
-
-				currentComponent = "tJDBCCommit_1";
-
-				ok_Hash.put("tJDBCCommit_1", true);
-				end_Hash.put("tJDBCCommit_1", System.currentTimeMillis());
-
-				tJava_6Process(globalMap);
-
-				/**
-				 * [tJDBCCommit_1 end ] stop
-				 */
-
-				/**
 				 * [tJDBCOutput_1 end ] start
 				 */
 
@@ -6721,6 +6350,100 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 		}
 
 		globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCCommit_1Process(
+			final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCCommit_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+		int iterateLoop = 0;
+		String currentComponent = "";
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCCommit_1 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCCommit_1", false);
+				start_Hash.put("tJDBCCommit_1", System.currentTimeMillis());
+				currentComponent = "tJDBCCommit_1";
+
+				int tos_count_tJDBCCommit_1 = 0;
+
+				/**
+				 * [tJDBCCommit_1 begin ] stop
+				 */
+				/**
+				 * [tJDBCCommit_1 main ] start
+				 */
+
+				currentComponent = "tJDBCCommit_1";
+
+				java.sql.Connection conn_tJDBCCommit_1 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_3");
+				if (null == conn_tJDBCCommit_1) {
+					java.util.Map<String, routines.system.TalendDataSource> dataSources_tJDBCCommit_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+							.get(KEY_DB_DATASOURCES);
+					if (dataSources_tJDBCCommit_1 != null) {
+						if (dataSources_tJDBCCommit_1.get("") != null) {
+							conn_tJDBCCommit_1 = dataSources_tJDBCCommit_1.get(
+									"").getConnection();
+						}
+					}
+				}
+
+				if (conn_tJDBCCommit_1 != null
+						&& !conn_tJDBCCommit_1.isClosed()) {
+					conn_tJDBCCommit_1.commit();
+					conn_tJDBCCommit_1.close();
+				}
+
+				tos_count_tJDBCCommit_1++;
+
+				/**
+				 * [tJDBCCommit_1 main ] stop
+				 */
+				/**
+				 * [tJDBCCommit_1 end ] start
+				 */
+
+				currentComponent = "tJDBCCommit_1";
+
+				ok_Hash.put("tJDBCCommit_1", true);
+				end_Hash.put("tJDBCCommit_1", System.currentTimeMillis());
+
+				tJava_6Process(globalMap);
+
+				/**
+				 * [tJDBCCommit_1 end ] stop
+				 */
+
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			throw new TalendException(e, currentComponent, globalMap);
+
+		} catch (java.lang.Error error) {
+
+			throw error;
+
+		}
+
+		globalMap.put("tJDBCCommit_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tJava_6Process(final java.util.Map<String, Object> globalMap)
@@ -7363,6 +7086,6 @@ public class TOSIDRTCommand_SaveTargetProjects implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 201390 characters generated by Talend Open Studio for Data Integration on the
- * August 1, 2014 1:51:09 PM CEST
+ * 194028 characters generated by Talend Open Studio for Data Integration on the
+ * August 5, 2014 12:33:28 PM CEST
  ************************************************************************************************/

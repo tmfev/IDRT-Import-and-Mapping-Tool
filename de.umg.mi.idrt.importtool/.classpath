@@ -70,6 +70,7 @@
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/lib/postgresql-8.4-703.jdbc4.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/lib/StatusListener29.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TalendJobs/ODM_MASTER/copy_of_idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/TalendJobs/DropIOETables/dropioetables_0_1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

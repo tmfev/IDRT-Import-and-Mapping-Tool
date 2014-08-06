@@ -243,7 +243,7 @@
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx4096M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="320"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="352"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="256"/>
     <elementParameter field="TEXT" name="SCHEMA_OPTIONS" value="none"/>
     <elementParameter field="TEXT" name="OEM_CUSTOM_ATTRIBUTE" value=""/>
@@ -277,7 +277,7 @@
   </parameters>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1184" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tJDBCOutput_1_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_2_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_3_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_4_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_5_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_6_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_7_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_8_ERROR_MESSAGE&quot;)));&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tJDBCOutput_1_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_2_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_3_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_4_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_5_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_6_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_7_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_8_ERROR_MESSAGE&quot;)));&#xA;System.out.println(((String)globalMap.get(&quot;tJDBCOutput_12_ERROR_MESSAGE&quot;)));&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="log: error"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -849,12 +849,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -873,12 +873,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -890,7 +890,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="192" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM.add(new BigDecimal(10000));&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xD;&#xA;output_row.INSTANCE_NUM = input_row.INSTANCE_NUM;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xA;if (input_row.QUANTITY_NUM==null)&#xA;input_row.QUANTITY_NUM = 0;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xA;if (input_row.CONFIDENCE_NUM==null)&#xA;input_row.CONFIDENCE_NUM=0;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xA;if (input_row.UPLOAD_ID==null)&#xA;input_row.UPLOAD_ID=0;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM.add(new BigDecimal(10000));&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xD;&#xA;output_row.INSTANCE_NUM = input_row.INSTANCE_NUM;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xA;if (input_row.QUANTITY_NUM==null)&#xA;input_row.QUANTITY_NUM = 0f;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xA;if (input_row.CONFIDENCE_NUM==null)&#xA;input_row.CONFIDENCE_NUM=0f;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xA;if (input_row.UPLOAD_ID==null)&#xA;input_row.UPLOAD_ID=0;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -908,12 +908,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -1011,12 +1011,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -1035,12 +1035,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -1059,12 +1059,12 @@
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -1218,23 +1218,23 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJDBCOutput_1">
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="true" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="true" name="CONCEPT_CD" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="true" name="PROVIDER_ID" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="true" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="true" name="MODIFIER_CD" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VALTYPE_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -1242,23 +1242,23 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="true" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="true" name="CONCEPT_CD" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="true" name="PROVIDER_ID" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="true" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="true" name="MODIFIER_CD" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VALTYPE_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="TVAL_CHAR" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="VALUEFLAG_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="QUANTITY_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UNITS_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="END_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="LOCATION_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="OBSERVATION_BLOB" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="CONFIDENCE_NUM" nullable="true" pattern="" sourceType="" type="id_Float" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -2200,7 +2200,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="835">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="771">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_14"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -2281,7 +2281,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="256" posY="835">
+  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="256" posY="771">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUniqRow_2"/>
     <elementParameter field="TABLE" name="UNIQUE_KEY">
       <elementValue elementRef="SCHEMA_COLUMN" value="MODIFIER_PATH"/>
@@ -2354,7 +2354,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="835">
+  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="771">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCOutput_7"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -2455,7 +2455,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="-9" offsetLabelY="0" posX="96" posY="928">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="-9" offsetLabelY="0" posX="96" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_16"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -2560,7 +2560,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="928">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_4"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM.add(new BigDecimal(10000));&#xD;&#xA;output_row.ACTIVE_STATUS_CD = input_row.ACTIVE_STATUS_CD;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.INOUT_CD = input_row.INOUT_CD;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.LOCATION_PATH = input_row.LOCATION_PATH;&#xD;&#xA;output_row.LENGTH_OF_STAY = input_row.LENGTH_OF_STAY;&#xD;&#xA;output_row.VISIT_BLOB = input_row.VISIT_BLOB;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -2586,7 +2586,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="928">
+  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCOutput_8"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -3309,7 +3309,7 @@
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE i2b2metadata.I2B2 ALTER  C_FULLNAME TYPE character varying(2000)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE i2b2metadata.I2B2 ALTER  C_BASECODE TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + &quot; i2b2metadata&quot; + &quot;.I2B2 ALTER  C_DIMCODE TYPE character varying(2000)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + &quot; i2b2metadata&quot; + &quot;.I2B2_secure ALTER  C_DIMCODE TYPE character varying(2000)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + &quot; i2b2metadata&quot; + &quot;.I2B2_secure ALTER  C_FULLNAME TYPE character varying(2000)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + &quot; i2b2metadata&quot; + &quot;.I2B2_secure ALTER  C_BASECODE TYPE character varying(2000)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + &quot; i2b2metadata&quot; + &quot;.I2B2_secure ALTER  C_DIMCODE TYPE character varying(2000)&quot;"/>
@@ -3342,7 +3342,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="384">
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-320" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_1"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
@@ -3379,7 +3379,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-160" posY="-32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value=""/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//System.out.println(&quot;context.DB_StagingI2B2_jdbcurl &quot; + context.DB_StagingI2B2_jdbcurl);&#xA;//System.out.println(&quot;context.DB_StagingI2B2_DriverClass &quot; + context.DB_StagingI2B2_DriverClass);&#xA;//System.out.println(&quot;context.DB_StagingI2B2_Username &quot; + context.DB_StagingI2B2_Username);&#xA;//System.out.println(&quot;context.DB_StagingI2B2_Password &quot; + context.DB_StagingI2B2_Password);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -3520,7 +3520,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;);&#xA;System.out.println(&quot;Starting Import: Observation Fact&quot;);&#xA;StatusListener.setSubStatus(0.0f,(int)(float)(0.0f)+&quot;%&quot;);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;);&#xA;System.out.println(&quot;Starting Import: Observation Fact; table: &quot; + context.currentTable);&#xA;StatusListener.setSubStatus(0.0f,(int)(float)(0.0f)+&quot;%&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -3578,7 +3578,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_12"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-64" posY="832">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_13"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)? &quot;i2b2demodata.modifier_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.modifier_dimension&quot;);&#xA;System.out.println(&quot;Starting Import: Modifier/Visit Dimension&quot;);&#xA;StatusListener.setSubStatus(80.0f,(int)(float)(80.0f)+&quot;%&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -3588,7 +3588,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_13"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-64" posY="928">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-32" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_14"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?&quot;i2b2demodata.visit_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.visit_dimension&quot;);&#xA;StatusListener.setSubStatus(90.0f,(int)(float)(90.0f)+&quot;%&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -3620,7 +3620,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-192" posY="384">
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-224" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_3"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
@@ -3651,6 +3651,303 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJDBCRow_3"/>
     <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="-64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_16"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = &quot;i2b2metadata.table_access&quot;;&#xA;StatusListener.setSubStatus(99.0f,(int)(float)(90.0f)+&quot;%&quot;);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_16"/>
+  </node>
+  <node componentName="tRowGenerator" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="-64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRowGenerator_1"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
+    <elementParameter field="TEXT" name="NB_ROWS" value="1"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="SCHEMA_COLUMN" value="newColumn"/>
+      <elementValue elementRef="ARRAY" value="TalendString.getAsciiRandomString(6)"/>
+    </elementParameter>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tRowGenerator_1">
+      <column comment="" key="false" name="newColumn" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="672" posY="-64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_3"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_2MMpkBPYEeSOr_xm2eWHfg-tMap_3-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="out1">
+      <column comment="" key="false" name="c_table_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_table_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_protected_access" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_hlevel" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_fullname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_synonym_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_visualattributes" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_totalnum" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_basecode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_metadataxml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_facttablecolumn" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimtablename" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columnname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columndatatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_operator" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimcode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_comment" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_tooltip" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_entry_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_change_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_status_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="valuetype_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out1">
+        <mapperTableEntries name="c_table_cd" expression="&quot;Private Studies&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_table_name" expression="&quot;i2b2_secure&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_protected_access" expression="&quot;N&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_hlevel" expression="-1" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="c_fullname" expression="&quot;\\i2b2\\&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_name" expression="&quot;Private Studies&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_synonym_cd" expression="&quot;N&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_visualattributes" expression="&quot;CA &quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_totalnum" expression="0" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="c_basecode" expression="&quot;&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_metadataxml" expression="&quot;&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_facttablecolumn" expression="&quot;concept-cd&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_dimtablename" expression="&quot;concept_dimension&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_columnname" expression="&quot;concept_path&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_columndatatype" expression="&quot;T&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_operator" expression="&quot;LIKE&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_dimcode" expression="&quot;\\i2b2\\&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_comment" expression="&quot;&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_tooltip" expression="&quot;Private Studies&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="c_entry_date" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="c_change_date" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="c_status_cd" type="id_String" nullable="true"/>
+        <mapperTableEntries name="valuetype_cd" type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row3" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="newColumn" type="id_String" nullable="true"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="-64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCOutput_12"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
+    <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TABLE" name="ADD_COLS"/>
+    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
+    <elementParameter field="TABLE" name="FIELD_OPTIONS">
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_table_cd"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_table_name"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_protected_access"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_hlevel"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_fullname"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_name"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_synonym_cd"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_visualattributes"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_totalnum"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_basecode"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_metadataxml"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_facttablecolumn"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_dimtablename"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_columnname"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_columndatatype"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_operator"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_dimcode"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_comment"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_tooltip"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_entry_date"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_change_date"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="c_status_cd"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="valuetype_cd"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJDBCOutput_12">
+      <column comment="" key="true" name="c_table_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_table_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_protected_access" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_hlevel" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_fullname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_synonym_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_visualattributes" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_totalnum" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_basecode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_metadataxml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_facttablecolumn" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimtablename" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columnname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columndatatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_operator" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimcode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_comment" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_tooltip" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_entry_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_change_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_status_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="valuetype_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="REJECT" name="REJECT">
+      <column comment="" key="false" name="c_table_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_table_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_protected_access" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_hlevel" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_fullname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_synonym_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_visualattributes" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_totalnum" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="c_basecode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_metadataxml" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_facttablecolumn" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimtablename" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columnname" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_columndatatype" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_operator" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_dimcode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_comment" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_tooltip" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="c_entry_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_change_date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="c_status_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="valuetype_cd" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -4914,9 +5211,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" source="tForeach_1" target="tJDBCRow_3">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tForeach_1" target="tJDBCRow_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk21"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tForeach_1" target="tJava_16">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk23"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tJDBCRow_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -4997,6 +5298,112 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk20"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_16" offsetLabelX="0" offsetLabelY="0" source="tJava_16" target="tRowGenerator_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk22"/>
+  </connection>
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tMap_3">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="newColumn"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3"/>
+  </connection>
+  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_3" target="tJDBCOutput_12">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="c_table_cd"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_table_name"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_protected_access"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_hlevel"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_fullname"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_name"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_synonym_cd"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_visualattributes"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_totalnum"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_basecode"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_metadataxml"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_facttablecolumn"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_dimtablename"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_columnname"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_columndatatype"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_operator"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_dimcode"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_comment"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_tooltip"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_entry_date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_change_date"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="c_status_cd"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="valuetype_cd"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="out1"/>
+  </connection>
+  <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tJDBCOutput_12" offsetLabelX="0" offsetLabelY="0" source="tJDBCOutput_12" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError10"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
@@ -5149,6 +5556,16 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_16"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRowGenerator_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>

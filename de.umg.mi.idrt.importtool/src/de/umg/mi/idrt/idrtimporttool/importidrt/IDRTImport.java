@@ -2,6 +2,7 @@ package de.umg.mi.idrt.idrtimporttool.importidrt;
 
 import tos.csv_master_0_1.CSV_MASTER;
 import tos.dbimport_master_0_1.DBIMPORT_MASTER;
+import tos.dropioetables_0_1.DropIOETables;
 import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
@@ -420,7 +421,7 @@ public class IDRTImport {
 			public void run() {
 //				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
 				ServerView.btnStopSetEnabled(true);
-//				exitCode = 	freeLocks.runJobInTOS(getARGV());
+				exitCode = -1;	//freeLocks.runJobInTOS(getARGV());
 				ServerView.btnStopSetEnabled(false);
 
 				Display.getDefault().syncExec(new Runnable() {
@@ -442,6 +443,50 @@ public class IDRTImport {
 		});
 		workerThread.start();
 
+	}
+	
+
+	public static void dropIOETables(Server server, String project) {
+		// TODO Auto-generated method stub
+		StatusListener.startLogging();
+		HashMap<String, String> contextMap = new HashMap<String, String>();
+		final String dbType = server.getDatabaseType();
+		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
+		setCompleteContext(contextMap);
+
+
+		Thread workerThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				DropIOETables dropTables = new DropIOETables();
+				ServerView.btnStopSetEnabled(true);
+				exitCode = 	dropTables.runJobInTOS(getARGV());
+				ServerView.btnStopSetEnabled(false);
+
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						StatusListener.stopLogging();
+						if (exitCode == 0) {
+
+							StatusListener.setStatus(100f, "Tables Dropped.","");
+							MessageDialog.openInformation(Application.getShell(),"Tables Dropped!", "Tables Dropped!");
+						}
+						else {
+							MessageDialog.openError(Application.getShell(), "Dropping Tables failed!", "Dropping Tables failed!");
+						}
+					}
+				});
+
+			}
+		});
+		workerThread.start();
 	}
 
 	/**
@@ -612,4 +657,5 @@ public class IDRTImport {
 		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
 
 	}
+
 }

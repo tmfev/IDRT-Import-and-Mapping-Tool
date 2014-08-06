@@ -31,6 +31,10 @@ public class UploadProjectCommand extends AbstractHandler {
 		if (OntologyEditorView.isInit() && !OntologyEditorView.getTargetSchemaName().isEmpty() && !OntologyEditorView.getTargetSchemaName().startsWith("Drop i2b2")) {
 			String stagingServerName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
 			Server stagingServer = ServerList.getTargetServers().get(stagingServerName);
+			if (stagingServer==null){
+				MessageDialog.openError(Application.getShell(), "Target Server null", "Please expand the target server in the Server View and retry!");
+			}
+			else {
 			final String targetIPText = stagingServer.getIp();
 			final String targetPasswordText = stagingServer.getPassword();
 			final String targetDBUserText = stagingServer.getUser();
@@ -76,6 +80,7 @@ public class UploadProjectCommand extends AbstractHandler {
 			contextMap.put("TargetID",""+ OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 			TOSConnector.setCompleteContext(contextMap);
 			Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
+			}
 
 			//			WizardDialog wizardDialog = new WizardDialog(OntologyEditorView.getTargetTreeViewer().getControl().getShell(), new UploadProjectWizard());
 			//			wizardDialog.open();

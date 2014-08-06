@@ -108,7 +108,7 @@ public class OntologyEditorView extends ViewPart {
 
 	private static MyOntologyTrees myOntologyTree;
 
-	private static boolean notYetSaved = true;
+	private static boolean notYetSaved = false;
 
 	private static OntologyTreeNode currentStagingNode;
 
@@ -319,11 +319,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-		//		Shell shell = new Shell();
-		//		shell.setSize(844, 536);
-		//		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//		mainComposite = new Composite(shell, SWT.NONE);
-		//		mainComposite.setLayout(new BorderLayout(0, 0));
+//				Shell shell = new Shell();
+//				shell.setSize(844, 536);
+//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//				mainComposite = new Composite(shell, SWT.NONE);
+//				mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -718,7 +718,6 @@ public class OntologyEditorView extends ViewPart {
 			protected Object getValue(Object element) {
 				return ((OntologyTreeNode) element).getName();
 			}
-			//TODO
 			protected void setValue(Object element, Object value) {
 				((OntologyTreeNode) element).getTargetNodeAttributes().setName((String)value);
 				((OntologyTreeNode) element).setName((String)value);
@@ -1126,6 +1125,7 @@ public class OntologyEditorView extends ViewPart {
 				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
 				//				System.out.println("childCount: " + bla.getChildCount());
+				System.out.println(isNotYetSaved());
 				if (bla.getChildCount()>0 && isNotYetSaved()) {
 					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
 							"do you want to save it first?");

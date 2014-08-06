@@ -3457,10 +3457,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -3652,7 +3652,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -3718,7 +3718,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -3796,7 +3796,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -4084,7 +4084,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 						headColutFileOutputDelimited_1[4] = "STAGING_DIMENSION";
 
-						headColutFileOutputDelimited_1[5] = "NAME";
+						headColutFileOutputDelimited_1[5] = "C_NAME";
 
 						headColutFileOutputDelimited_1[6] = "STARTDATE_STAGING_PATH";
 
@@ -4270,19 +4270,19 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						column_index_tJDBCInput_1 = 6;
 
 						if (colQtyInRs_tJDBCInput_1 < column_index_tJDBCInput_1) {
-							row1.NAME = null;
+							row1.C_NAME = null;
 						} else {
 
 							tmpContent_tJDBCInput_1 = rs_tJDBCInput_1
 									.getString(column_index_tJDBCInput_1);
 							if (tmpContent_tJDBCInput_1 != null) {
-								row1.NAME = tmpContent_tJDBCInput_1;
+								row1.C_NAME = tmpContent_tJDBCInput_1;
 							} else {
-								row1.NAME = null;
+								row1.C_NAME = null;
 							}
 
 							if (rs_tJDBCInput_1.wasNull()) {
-								row1.NAME = null;
+								row1.C_NAME = null;
 							}
 						}
 						column_index_tJDBCInput_1 = 7;
@@ -4600,8 +4600,8 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						rowtFileOutputDelimited_1[4] = row1.STAGING_DIMENSION == null ? ""
 								: row1.STAGING_DIMENSION;
 
-						rowtFileOutputDelimited_1[5] = row1.NAME == null ? ""
-								: row1.NAME;
+						rowtFileOutputDelimited_1[5] = row1.C_NAME == null ? ""
+								: row1.C_NAME;
 
 						rowtFileOutputDelimited_1[6] = row1.STARTDATE_STAGING_PATH == null ? ""
 								: row1.STARTDATE_STAGING_PATH;
@@ -8885,10 +8885,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.ENCOUNTER_NUM = rs_tJDBCInput_8
 										.getBigDecimal(column_index_tJDBCInput_8);
 							} else {
-								throw new RuntimeException(
-										"Null value in non-Nullable column");
+								row20.ENCOUNTER_NUM = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.ENCOUNTER_NUM = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 2;
 
@@ -8901,10 +8903,12 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.PATIENT_NUM = rs_tJDBCInput_8
 										.getBigDecimal(column_index_tJDBCInput_8);
 							} else {
-								throw new RuntimeException(
-										"Null value in non-Nullable column");
+								row20.PATIENT_NUM = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.PATIENT_NUM = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 3;
 
@@ -8920,6 +8924,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.CONCEPT_CD = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.CONCEPT_CD = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 4;
 
@@ -8935,6 +8942,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.PROVIDER_ID = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.PROVIDER_ID = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 5;
 
@@ -8952,6 +8962,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 							}
 							row20.START_DATE = date_tJDBCInput_8;
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.START_DATE = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 6;
 
@@ -8967,6 +8980,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.MODIFIER_CD = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.MODIFIER_CD = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 7;
 
@@ -8982,6 +8998,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								row20.INSTANCE_NUM = null;
 							}
 
+							if (rs_tJDBCInput_8.wasNull()) {
+								row20.INSTANCE_NUM = null;
+							}
 						}
 						column_index_tJDBCInput_8 = 8;
 
@@ -17042,10 +17061,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -17237,7 +17256,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -17303,7 +17322,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -17381,7 +17400,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -17471,10 +17490,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -17666,7 +17685,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -17732,7 +17751,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -17810,7 +17829,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -19204,7 +19223,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 											from_OE_ONT.STAGING_DIMENSION = null;
 
-											from_OE_ONT.NAME = null;
+											from_OE_ONT.C_NAME = null;
 
 											from_OE_ONT.STARTDATE_STAGING_PATH = null;
 
@@ -19311,10 +19330,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 											if (columnIndexWithD_tFileInputDelimited_1 < rowtFileInputDelimited_1.length) {
 
-												from_OE_ONT.NAME = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
+												from_OE_ONT.C_NAME = rowtFileInputDelimited_1[columnIndexWithD_tFileInputDelimited_1];
 
 											} else {
-												from_OE_ONT.NAME = null;
+												from_OE_ONT.C_NAME = null;
 											}
 
 											columnIndexWithD_tFileInputDelimited_1 = 6;
@@ -19626,7 +19645,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 													// 'target_ont'
 													target_ont_tmp.C_HLEVEL = from_OE_ONT.TREE_LEVEL;
 													target_ont_tmp.C_FULLNAME = from_OE_ONT.TREE_PATH;
-													target_ont_tmp.C_NAME = from_OE_ONT.NAME;
+													target_ont_tmp.C_NAME = from_OE_ONT.C_NAME;
 													target_ont_tmp.C_SYNONYM_CD = "N";
 													target_ont_tmp.C_VISUALATTRIBUTES = from_OE_ONT.VISUALATTRIBUTES;
 													target_ont_tmp.C_TOTALNUM = from_src_ont.C_TOTALNUM;
@@ -19635,9 +19654,9 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 															+ TalendDate
 																	.getDate("YYYY-MM-DD")
 															+ "</CreationDateTime><TestID>U/UTP</TestID><TestName>"
-															+ from_OE_ONT.NAME
+															+ from_OE_ONT.C_NAME
 															+ "</TestName><DataType>Integer</DataType><Flagstouse>HL</Flagstouse><Oktousevalues>Y</Oktousevalues><UnitValues><NormalUnits></NormalUnits><EqualUnits>"
-															+ from_OE_ONT.NAME
+															+ from_OE_ONT.C_NAME
 															+ "</EqualUnits><ExcludingUnits/><ConvertingUnits><Units/><MultiplyingFactor/></ConvertingUnits></UnitValues><Analysis><Enums /><Counts /><New/></Analysis><i2b2><sourceDataType>durationDateTime</sourceDataType></i2b2></ValueMetadata>"
 															: "";
 													target_ont_tmp.C_FACTTABLECOLUMN = from_OE_ONT.STAGING_DIMENSION
@@ -19686,7 +19705,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 																.replaceAll(
 																		"\\\\",
 																		"|");
-														to_cd_dim_tmp.NAME_CHAR = from_OE_ONT.NAME;
+														to_cd_dim_tmp.NAME_CHAR = from_OE_ONT.C_NAME;
 														to_cd_dim_tmp.CONCEPT_BLOB = null;
 														to_cd_dim_tmp.UPDATE_DATE = from_src_ont.UPDATE_DATE;
 														to_cd_dim_tmp.DOWNLOAD_DATE = from_src_ont.DOWNLOAD_DATE;
@@ -19717,7 +19736,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 																.replaceAll(
 																		"\\\\",
 																		"|");
-														to_mod_dim_tmp.NAME_CHAR = from_OE_ONT.NAME;
+														to_mod_dim_tmp.NAME_CHAR = from_OE_ONT.C_NAME;
 														to_mod_dim_tmp.MODIFIER_BLOB = null;
 														to_mod_dim_tmp.UPDATE_DATE = from_src_ont.UPDATE_DATE;
 														to_mod_dim_tmp.DOWNLOAD_DATE = from_src_ont.DOWNLOAD_DATE;
@@ -19741,7 +19760,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 													target_ont_tmp.C_HLEVEL = from_OE_ONT.TREE_LEVEL;
 													target_ont_tmp.C_FULLNAME = from_OE_ONT.TREE_PATH;
-													target_ont_tmp.C_NAME = from_OE_ONT.NAME;
+													target_ont_tmp.C_NAME = from_OE_ONT.C_NAME;
 													target_ont_tmp.C_SYNONYM_CD = "N";
 													target_ont_tmp.C_VISUALATTRIBUTES = from_OE_ONT.VISUALATTRIBUTES;
 													target_ont_tmp.C_TOTALNUM = from_src_ont.C_TOTALNUM;
@@ -19795,7 +19814,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 																			.length() - 1)
 															.replaceAll("\\\\",
 																	"|");
-													to_cd_dim_tmp.NAME_CHAR = from_OE_ONT.NAME;
+													to_cd_dim_tmp.NAME_CHAR = from_OE_ONT.C_NAME;
 													to_cd_dim_tmp.CONCEPT_BLOB = null;
 													to_cd_dim_tmp.UPDATE_DATE = from_src_ont.UPDATE_DATE;
 													to_cd_dim_tmp.DOWNLOAD_DATE = from_src_ont.DOWNLOAD_DATE;
@@ -19828,7 +19847,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 																			.length() - 1)
 															.replaceAll("\\\\",
 																	"|");
-													to_mod_dim_tmp.NAME_CHAR = from_OE_ONT.NAME;
+													to_mod_dim_tmp.NAME_CHAR = from_OE_ONT.C_NAME;
 													to_mod_dim_tmp.MODIFIER_BLOB = null;
 													to_mod_dim_tmp.UPDATE_DATE = from_src_ont.UPDATE_DATE;
 													to_mod_dim_tmp.DOWNLOAD_DATE = from_src_ont.DOWNLOAD_DATE;
@@ -21174,10 +21193,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -21369,7 +21388,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -21435,7 +21454,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -21513,7 +21532,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -21603,10 +21622,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -21798,7 +21817,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -21864,7 +21883,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -21942,7 +21961,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -22534,7 +22553,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 									row43.STAGING_DIMENSION = null;
 
-									row43.NAME = null;
+									row43.C_NAME = null;
 
 									row43.STARTDATE_STAGING_PATH = null;
 
@@ -22641,10 +22660,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 									if (columnIndexWithD_tFileInputDelimited_28 < rowtFileInputDelimited_28.length) {
 
-										row43.NAME = rowtFileInputDelimited_28[columnIndexWithD_tFileInputDelimited_28];
+										row43.C_NAME = rowtFileInputDelimited_28[columnIndexWithD_tFileInputDelimited_28];
 
 									} else {
-										row43.NAME = null;
+										row43.C_NAME = null;
 									}
 
 									columnIndexWithD_tFileInputDelimited_28 = 6;
@@ -22939,7 +22958,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 											// # Output table : 'toCD_Mod'
 											toCD_Mod_tmp.CONCEPT_PATH = row43.STAGING_PATH;
 											toCD_Mod_tmp.CONCEPT_CD = row49.CONCEPT_CD;
-											toCD_Mod_tmp.NAME_CHAR = row43.NAME;
+											toCD_Mod_tmp.NAME_CHAR = row43.C_NAME;
 											toCD_Mod_tmp.CONCEPT_BLOB = null;
 											toCD_Mod_tmp.UPDATE_DATE = row43.UPDATE_DATE;
 											toCD_Mod_tmp.DOWNLOAD_DATE = row43.DOWNLOAD_DATE;
@@ -26748,10 +26767,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -26943,7 +26962,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -27009,7 +27028,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -27087,7 +27106,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -27177,10 +27196,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			return this.STAGING_DIMENSION;
 		}
 
-		public String NAME;
+		public String C_NAME;
 
-		public String getNAME() {
-			return this.NAME;
+		public String getC_NAME() {
+			return this.C_NAME;
 		}
 
 		public String STARTDATE_STAGING_PATH;
@@ -27372,7 +27391,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 					this.STAGING_DIMENSION = readString(dis);
 
-					this.NAME = readString(dis);
+					this.C_NAME = readString(dis);
 
 					this.STARTDATE_STAGING_PATH = readString(dis);
 
@@ -27438,7 +27457,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 				// String
 
-				writeString(this.NAME, dos);
+				writeString(this.C_NAME, dos);
 
 				// String
 
@@ -27516,7 +27535,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 			sb.append(",TREE_PATH=" + TREE_PATH);
 			sb.append(",STAGING_PATH=" + STAGING_PATH);
 			sb.append(",STAGING_DIMENSION=" + STAGING_DIMENSION);
-			sb.append(",NAME=" + NAME);
+			sb.append(",C_NAME=" + C_NAME);
 			sb.append(",STARTDATE_STAGING_PATH=" + STARTDATE_STAGING_PATH);
 			sb.append(",ENDDATE_STAGING_PATH=" + ENDDATE_STAGING_PATH);
 			sb.append(",VISUALATTRIBUTES=" + VISUALATTRIBUTES);
@@ -27658,7 +27677,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 					String from_oe_target_ont__TREE_PATH;
 					String from_oe_target_ont__STAGING_PATH;
 					String from_oe_target_ont__STAGING_DIMENSION;
-					String from_oe_target_ont__NAME;
+					String from_oe_target_ont__C_NAME;
 					String from_oe_target_ont__STARTDATE_STAGING_PATH;
 					String from_oe_target_ont__ENDDATE_STAGING_PATH;
 					String from_oe_target_ont__VISUALATTRIBUTES;
@@ -27684,7 +27703,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						this.from_oe_target_ont__TREE_PATH = from_oe_target_ont.TREE_PATH;
 						this.from_oe_target_ont__STAGING_PATH = from_oe_target_ont.STAGING_PATH;
 						this.from_oe_target_ont__STAGING_DIMENSION = from_oe_target_ont.STAGING_DIMENSION;
-						this.from_oe_target_ont__NAME = from_oe_target_ont.NAME;
+						this.from_oe_target_ont__C_NAME = from_oe_target_ont.C_NAME;
 						this.from_oe_target_ont__STARTDATE_STAGING_PATH = from_oe_target_ont.STARTDATE_STAGING_PATH;
 						this.from_oe_target_ont__ENDDATE_STAGING_PATH = from_oe_target_ont.ENDDATE_STAGING_PATH;
 						this.from_oe_target_ont__VISUALATTRIBUTES = from_oe_target_ont.VISUALATTRIBUTES;
@@ -27712,7 +27731,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 						from_oe_target_ont.TREE_PATH = this.from_oe_target_ont__TREE_PATH;
 						from_oe_target_ont.STAGING_PATH = this.from_oe_target_ont__STAGING_PATH;
 						from_oe_target_ont.STAGING_DIMENSION = this.from_oe_target_ont__STAGING_DIMENSION;
-						from_oe_target_ont.NAME = this.from_oe_target_ont__NAME;
+						from_oe_target_ont.C_NAME = this.from_oe_target_ont__C_NAME;
 						from_oe_target_ont.STARTDATE_STAGING_PATH = this.from_oe_target_ont__STARTDATE_STAGING_PATH;
 						from_oe_target_ont.ENDDATE_STAGING_PATH = this.from_oe_target_ont__ENDDATE_STAGING_PATH;
 						from_oe_target_ont.VISUALATTRIBUTES = this.from_oe_target_ont__VISUALATTRIBUTES;
@@ -27772,9 +27791,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 						sb.append(", ");
 
-						sb.append("from_oe_target_ont__NAME");
+						sb.append("from_oe_target_ont__C_NAME");
 						sb.append("=");
-						sb.append(String.valueOf(this.from_oe_target_ont__NAME));
+						sb.append(String
+								.valueOf(this.from_oe_target_ont__C_NAME));
 
 						sb.append(", ");
 
@@ -28013,7 +28033,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								length = dis.readInt();
 								if (length == -1) {
-									this.from_oe_target_ont__NAME = null;
+									this.from_oe_target_ont__C_NAME = null;
 								} else {
 									if (length > from_oe_target_ontStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget.length) {
 										if (length < 1024
@@ -28026,7 +28046,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 									dis.readFully(
 											from_oe_target_ontStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
 											0, length);
-									this.from_oe_target_ont__NAME = new String(
+									this.from_oe_target_ont__C_NAME = new String(
 											from_oe_target_ontStruct.commonByteArray_TOS_TOSIDRTCommand_TransformationToTarget,
 											0, length);
 								}
@@ -28369,10 +28389,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 								dos.write(byteArray);
 							}
 
-							if (this.from_oe_target_ont__NAME == null) {
+							if (this.from_oe_target_ont__C_NAME == null) {
 								dos.writeInt(-1);
 							} else {
-								byte[] byteArray = this.from_oe_target_ont__NAME
+								byte[] byteArray = this.from_oe_target_ont__C_NAME
 										.getBytes();
 								dos.writeInt(byteArray.length);
 								dos.write(byteArray);
@@ -28769,7 +28789,7 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								from_oe_target_ont.STAGING_DIMENSION = null;
 
-								from_oe_target_ont.NAME = null;
+								from_oe_target_ont.C_NAME = null;
 
 								from_oe_target_ont.STARTDATE_STAGING_PATH = null;
 
@@ -28876,10 +28896,10 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 
 								if (columnIndexWithD_tFileInputDelimited_5 < rowtFileInputDelimited_5.length) {
 
-									from_oe_target_ont.NAME = rowtFileInputDelimited_5[columnIndexWithD_tFileInputDelimited_5];
+									from_oe_target_ont.C_NAME = rowtFileInputDelimited_5[columnIndexWithD_tFileInputDelimited_5];
 
 								} else {
-									from_oe_target_ont.NAME = null;
+									from_oe_target_ont.C_NAME = null;
 								}
 
 								columnIndexWithD_tFileInputDelimited_5 = 6;
@@ -56683,6 +56703,20 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				paraList_tRunJob_2.add("--context_param coding="
 						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_2));
 				parentContextMap_tRunJob_2.put("coding", obj_tRunJob_2);
+				obj_tRunJob_2 = context.DB_TargetI2B2_jdbcurl;
+				paraList_tRunJob_2
+						.add("--context_param DB_StagingI2B2_jdbcurl="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_2));
+				parentContextMap_tRunJob_2.put("DB_StagingI2B2_jdbcurl",
+						obj_tRunJob_2);
+				obj_tRunJob_2 = context.DB_TargetI2B2_DriverClass;
+				paraList_tRunJob_2
+						.add("--context_param DB_StagingI2B2_DriverClass="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_2));
+				parentContextMap_tRunJob_2.put("DB_StagingI2B2_DriverClass",
+						obj_tRunJob_2);
 				tos.copy_of_idrt_jdbc_upload_1_0.Copy_of_IDRT_JDBC_Upload childJob_tRunJob_2 = new tos.copy_of_idrt_jdbc_upload_1_0.Copy_of_IDRT_JDBC_Upload();
 				// pass DataSources
 				java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
@@ -57066,38 +57100,57 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 				Object obj_tRunJob_3 = null;
 
 				obj_tRunJob_3 = context.DB_TargetI2B2_Host;
-				paraList_tRunJob_3.add("--context_param DBHost="
+				paraList_tRunJob_3.add("--context_param DB_StagingI2B2_Host="
 						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBHost", obj_tRunJob_3);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Host",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = context.DB_TargetI2B2_Instance;
-				paraList_tRunJob_3.add("--context_param DBInstance="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBInstance", obj_tRunJob_3);
+				paraList_tRunJob_3
+						.add("--context_param DB_StagingI2B2_Instance="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Instance",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = context.DB_TargetI2B2_Port;
-				paraList_tRunJob_3.add("--context_param DBPort="
+				paraList_tRunJob_3.add("--context_param DB_StagingI2B2_Port="
 						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBPort", obj_tRunJob_3);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Port",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = context.DB_TargetI2B2_Password;
-				paraList_tRunJob_3.add("--context_param DBPassword="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBPassword", obj_tRunJob_3);
+				paraList_tRunJob_3
+						.add("--context_param DB_StagingI2B2_Password="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Password",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
-				paraList_tRunJob_3.add("--context_param DBSchema="
+				paraList_tRunJob_3.add("--context_param DB_StagingI2B2_Schema="
 						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBSchema", obj_tRunJob_3);
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Schema",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = context.DB_TargetI2B2_Username;
-				paraList_tRunJob_3.add("--context_param DBUsername="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("DBUsername", obj_tRunJob_3);
-				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
-				paraList_tRunJob_3.add("--context_param project="
-						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
-				parentContextMap_tRunJob_3.put("project", obj_tRunJob_3);
+				paraList_tRunJob_3
+						.add("--context_param DB_StagingI2B2_Username="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_Username",
+						obj_tRunJob_3);
 				obj_tRunJob_3 = true;
 				paraList_tRunJob_3.add("--context_param truncateQueries="
 						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
 				parentContextMap_tRunJob_3
 						.put("truncateQueries", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_Schema;
+				paraList_tRunJob_3.add("--context_param project="
+						+ RuntimeUtils.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("project", obj_tRunJob_3);
+				obj_tRunJob_3 = context.DB_TargetI2B2_DatabaseType;
+				paraList_tRunJob_3
+						.add("--context_param DB_StagingI2B2_DatabaseType="
+								+ RuntimeUtils
+										.tRunJobConvertContext(obj_tRunJob_3));
+				parentContextMap_tRunJob_3.put("DB_StagingI2B2_DatabaseType",
+						obj_tRunJob_3);
 				tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables childJob_tRunJob_3 = new tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables();
 				// pass DataSources
 				java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_3 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
@@ -80331,6 +80384,6 @@ public class TOSIDRTCommand_TransformationToTarget implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 2499217 characters generated by Talend Open Studio for Data Integration on
- * the August 1, 2014 1:51:08 PM CEST
+ * 2500771 characters generated by Talend Open Studio for Data Integration on
+ * the August 5, 2014 12:33:27 PM CEST
  ************************************************************************************************/

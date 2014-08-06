@@ -206,7 +206,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STARTDATE_STAGING_PATH"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -250,7 +250,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -281,8 +281,6 @@
     <elementParameter field="CHECK" name="APPEND" value="false"/>
     <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
     <elementParameter field="CHECK" name="COMPRESS" value="false"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_IPaDkCp6EeOfMeL2lyOGsQ - IOE_TARGET_ONTOLOGY"/>
     <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
     <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
     <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
@@ -309,7 +307,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -583,7 +581,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STARTDATE_STAGING_PATH"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -634,7 +632,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -657,7 +655,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -740,19 +738,19 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="(from_OE_ONT.BASECODE.split(&quot;:&quot;).length>1)?&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(from_OE_ONT.BASECODE.split(&quot;:&quot;)[1].equals(&quot;xml&quot;)?true:false):false; " type="id_Boolean"/>
       </varTables>
       <outputTables sizeState="INTERMEDIATE" name="target_ont">
         <mapperTableEntries name="C_HLEVEL" expression="from_OE_ONT.TREE_LEVEL " type="id_Integer"/>
         <mapperTableEntries name="C_FULLNAME" expression="from_OE_ONT.TREE_PATH " type="id_String"/>
-        <mapperTableEntries name="C_NAME" expression="from_OE_ONT.NAME " type="id_String"/>
+        <mapperTableEntries name="C_NAME" expression="from_OE_ONT.C_NAME " type="id_String"/>
         <mapperTableEntries name="C_SYNONYM_CD" expression="&quot;N&quot;" type="id_String"/>
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="from_OE_ONT.VISUALATTRIBUTES " type="id_String"/>
         <mapperTableEntries name="C_TOTALNUM" expression="from_src_ont.C_TOTALNUM " type="id_BigDecimal" nullable="true"/>
         <mapperTableEntries name="C_BASECODE" expression="from_OE_ONT.BASECODE " type="id_String" nullable="true"/>
-        <mapperTableEntries name="C_METADATAXML" expression="Var.var1 ? &quot;&lt;?xml version=\&quot;1.0\&quot;?>&lt;ValueMetadata>&lt;Version>3.02&lt;/Version>&lt;CreationDateTime>&quot;+TalendDate.getDate(&quot;YYYY-MM-DD&quot;)+&quot;&lt;/CreationDateTime>&lt;TestID>U/UTP&lt;/TestID>&lt;TestName>&quot;+from_OE_ONT.NAME+&quot;&lt;/TestName>&lt;DataType>Integer&lt;/DataType>&lt;Flagstouse>HL&lt;/Flagstouse>&lt;Oktousevalues>Y&lt;/Oktousevalues>&lt;UnitValues>&lt;NormalUnits>&lt;/NormalUnits>&lt;EqualUnits>&quot;+from_OE_ONT.NAME+&quot;&lt;/EqualUnits>&lt;ExcludingUnits/>&lt;ConvertingUnits>&lt;Units/>&lt;MultiplyingFactor/>&lt;/ConvertingUnits>&lt;/UnitValues>&lt;Analysis>&lt;Enums />&lt;Counts />&lt;New/>&lt;/Analysis>&lt;i2b2>&lt;sourceDataType>durationDateTime&lt;/sourceDataType>&lt;/i2b2>&lt;/ValueMetadata>&quot;:&quot;&quot;                   " type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_METADATAXML" expression="Var.var1 ? &quot;&lt;?xml version=\&quot;1.0\&quot;?>&lt;ValueMetadata>&lt;Version>3.02&lt;/Version>&lt;CreationDateTime>&quot;+TalendDate.getDate(&quot;YYYY-MM-DD&quot;)+&quot;&lt;/CreationDateTime>&lt;TestID>U/UTP&lt;/TestID>&lt;TestName>&quot;+from_OE_ONT.C_NAME+&quot;&lt;/TestName>&lt;DataType>Integer&lt;/DataType>&lt;Flagstouse>HL&lt;/Flagstouse>&lt;Oktousevalues>Y&lt;/Oktousevalues>&lt;UnitValues>&lt;NormalUnits>&lt;/NormalUnits>&lt;EqualUnits>&quot;+from_OE_ONT.C_NAME+&quot;&lt;/EqualUnits>&lt;ExcludingUnits/>&lt;ConvertingUnits>&lt;Units/>&lt;MultiplyingFactor/>&lt;/ConvertingUnits>&lt;/UnitValues>&lt;Analysis>&lt;Enums />&lt;Counts />&lt;New/>&lt;/Analysis>&lt;i2b2>&lt;sourceDataType>durationDateTime&lt;/sourceDataType>&lt;/i2b2>&lt;/ValueMetadata>&quot;:&quot;&quot;                    " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_FACTTABLECOLUMN" expression="from_OE_ONT.STAGING_DIMENSION.equalsIgnoreCase(&quot;concept_dimension&quot;)?&quot;concept_cd&quot;:&quot;modifier_cd&quot; " type="id_String"/>
         <mapperTableEntries name="C_TABLENAME" expression="from_OE_ONT.STAGING_DIMENSION " type="id_String"/>
         <mapperTableEntries name="C_COLUMNNAME" expression="from_OE_ONT.STAGING_DIMENSION.equalsIgnoreCase(&quot;concept_dimension&quot;)?&quot;concept_path&quot;:&quot;modifier_path&quot;  " type="id_String"/>
@@ -774,7 +772,7 @@
       <outputTables sizeState="INTERMEDIATE" name="out4" activateCondensedTool="true" reject="true" rejectInnerJoin="true" isJoinTableOf="target_ont">
         <mapperTableEntries name="C_HLEVEL" expression="from_OE_ONT.TREE_LEVEL " type="id_Integer"/>
         <mapperTableEntries name="C_FULLNAME" expression="from_OE_ONT.TREE_PATH " type="id_String"/>
-        <mapperTableEntries name="C_NAME" expression="from_OE_ONT.NAME " type="id_String"/>
+        <mapperTableEntries name="C_NAME" expression="from_OE_ONT.C_NAME " type="id_String"/>
         <mapperTableEntries name="C_SYNONYM_CD" expression="&quot;N&quot;" type="id_String"/>
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="from_OE_ONT.VISUALATTRIBUTES " type="id_String"/>
         <mapperTableEntries name="C_TOTALNUM" expression="from_src_ont.C_TOTALNUM " type="id_BigDecimal" nullable="true"/>
@@ -801,7 +799,7 @@
       <outputTables sizeState="INTERMEDIATE" name="to_cd_dim" expressionFilter="from_OE_ONT.VISUALATTRIBUTES.toLowerCase().startsWith(&quot;l&quot;)" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="CONCEPT_PATH" expression="from_OE_ONT.STAGING_PATH " type="id_String"/>
         <mapperTableEntries name="CONCEPT_CD" expression="from_OE_ONT.STAGING_PATH.substring(0,from_OE_ONT.STAGING_PATH.length()-1).replaceAll(&quot;\\\\&quot;,&quot;|&quot;)   " type="id_String"/>
-        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.NAME " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.C_NAME " type="id_String" nullable="true"/>
         <mapperTableEntries name="CONCEPT_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="from_src_ont.UPDATE_DATE " type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="from_src_ont.DOWNLOAD_DATE " type="id_Date" nullable="true"/>
@@ -812,7 +810,7 @@
       <outputTables sizeState="INTERMEDIATE" name="out5" expressionFilter="from_OE_ONT.VISUALATTRIBUTES.toLowerCase().startsWith(&quot;l&quot;)" activateExpressionFilter="true" activateCondensedTool="true" reject="true" rejectInnerJoin="true" isJoinTableOf="to_cd_dim">
         <mapperTableEntries name="CONCEPT_PATH" expression="from_OE_ONT.STAGING_PATH " type="id_String"/>
         <mapperTableEntries name="CONCEPT_CD" expression="from_OE_ONT.STAGING_PATH.substring(0,from_OE_ONT.STAGING_PATH.length()-1).replaceAll(&quot;\\\\&quot;,&quot;|&quot;)   " type="id_String"/>
-        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.NAME " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.C_NAME " type="id_String" nullable="true"/>
         <mapperTableEntries name="CONCEPT_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="from_src_ont.UPDATE_DATE " type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="from_src_ont.DOWNLOAD_DATE " type="id_Date" nullable="true"/>
@@ -823,7 +821,7 @@
       <outputTables sizeState="INTERMEDIATE" name="to_mod_dim" expressionFilter="from_OE_ONT.VISUALATTRIBUTES.toLowerCase().startsWith(&quot;r&quot;)" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="MODIFIER_PATH" expression="from_OE_ONT.STAGING_PATH " type="id_String"/>
         <mapperTableEntries name="MODIFIER_CD" expression="from_OE_ONT.STAGING_PATH.substring(0,from_OE_ONT.STAGING_PATH.length()-1).replaceAll(&quot;\\\\&quot;,&quot;|&quot;)   " type="id_String"/>
-        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.NAME " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.C_NAME " type="id_String" nullable="true"/>
         <mapperTableEntries name="MODIFIER_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="from_src_ont.UPDATE_DATE " type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="from_src_ont.DOWNLOAD_DATE " type="id_Date" nullable="true"/>
@@ -834,7 +832,7 @@
       <outputTables sizeState="INTERMEDIATE" name="out6" expressionFilter="from_OE_ONT.VISUALATTRIBUTES.toLowerCase().startsWith(&quot;r&quot;)" activateExpressionFilter="true" activateCondensedTool="true" reject="true" rejectInnerJoin="true" isJoinTableOf="to_mod_dim">
         <mapperTableEntries name="MODIFIER_PATH" expression="from_OE_ONT.STAGING_PATH " type="id_String"/>
         <mapperTableEntries name="MODIFIER_CD" expression="from_OE_ONT.STAGING_PATH.substring(0,from_OE_ONT.STAGING_PATH.length()-1).replaceAll(&quot;\\\\&quot;,&quot;|&quot;)   " type="id_String"/>
-        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.NAME " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME_CHAR" expression="from_OE_ONT.C_NAME " type="id_String" nullable="true"/>
         <mapperTableEntries name="MODIFIER_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="from_src_ont.UPDATE_DATE " type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="from_src_ont.DOWNLOAD_DATE " type="id_Date" nullable="true"/>
@@ -848,7 +846,7 @@
         <mapperTableEntries name="TREE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_DIMENSION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="NAME" type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_NAME" type="id_String" nullable="true"/>
         <mapperTableEntries name="STARTDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENDDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="VISUALATTRIBUTES" type="id_String" nullable="true"/>
@@ -1887,7 +1885,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STARTDATE_STAGING_PATH"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -1938,7 +1936,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -1961,7 +1959,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -2033,7 +2031,7 @@
         <mapperTableEntries name="TREE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_DIMENSION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="NAME" type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_NAME" type="id_String" nullable="true"/>
         <mapperTableEntries name="STARTDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENDDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="VISUALATTRIBUTES" type="id_String" nullable="true"/>
@@ -3830,6 +3828,10 @@
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_DatabaseType"/>
       <elementValue elementRef="PARAM_NAME_COLUMN" value="coding"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="&quot;UTF-8&quot;"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_jdbcurl"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_jdbcurl"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_DriverClass"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_DriverClass"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true"/>
@@ -4135,22 +4137,24 @@
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
     <elementParameter field="TABLE" name="CONTEXTPARAMS">
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBHost"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Host"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Host"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBInstance"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Instance"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Instance"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBPort"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Port"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Port"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBPassword"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Password"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Password"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBSchema"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Schema"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Schema"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="DBUsername"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_Username"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Username"/>
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="project"/>
-      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Schema"/>
       <elementValue elementRef="PARAM_NAME_COLUMN" value="truncateQueries"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="true"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="project"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_Schema"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="DB_StagingI2B2_DatabaseType"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.DB_TargetI2B2_DatabaseType"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true"/>
@@ -4413,13 +4417,13 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJDBCInput_8">
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" name="CONCEPT_CD" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="PROVIDER_ID" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="MODIFIER_CD" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="true" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="CONCEPT_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PROVIDER_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="START_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="MODIFIER_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="INSTANCE_NUM" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VALTYPE_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="255" name="TVAL_CHAR" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="FLOAT" type="id_Float" usefulColumn="true"/>
@@ -4471,13 +4475,13 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tFileOutputDelimited_15">
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" name="CONCEPT_CD" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="PROVIDER_ID" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="START_DATE" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="MODIFIER_CD" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="INSTANCE_NUM" nullable="false" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="true" pattern="" sourceType="DEC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="CONCEPT_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PROVIDER_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="START_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="MODIFIER_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="INSTANCE_NUM" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="VALTYPE_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="255" name="TVAL_CHAR" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="NVAL_NUM" nullable="true" pattern="" sourceType="FLOAT" type="id_Float" usefulColumn="true"/>
@@ -7541,7 +7545,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STARTDATE_STAGING_PATH"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -7592,7 +7596,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -7615,7 +7619,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -7660,12 +7664,12 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="toCD_Mod" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="CONCEPT_PATH" expression="row43.STAGING_PATH " type="id_String"/>
         <mapperTableEntries name="CONCEPT_CD" expression="row49.CONCEPT_CD " type="id_String"/>
-        <mapperTableEntries name="NAME_CHAR" expression="row43.NAME " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME_CHAR" expression="row43.C_NAME " type="id_String" nullable="true"/>
         <mapperTableEntries name="CONCEPT_BLOB" type="id_String" nullable="true"/>
         <mapperTableEntries name="UPDATE_DATE" expression="row43.UPDATE_DATE " type="id_Date" nullable="true"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="row43.DOWNLOAD_DATE " type="id_Date" nullable="true"/>
@@ -7679,7 +7683,7 @@
         <mapperTableEntries name="TREE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="STAGING_DIMENSION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="NAME" type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_NAME" type="id_String" nullable="true"/>
         <mapperTableEntries name="STARTDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENDDATE_STAGING_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="VISUALATTRIBUTES" type="id_String" nullable="true"/>

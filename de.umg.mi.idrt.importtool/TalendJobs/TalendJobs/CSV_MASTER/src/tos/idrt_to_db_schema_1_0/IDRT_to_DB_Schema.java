@@ -214,6 +214,25 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
+			if (DB_StagingI2B2_sqlclassname != null) {
+
+				this.setProperty("DB_StagingI2B2_sqlclassname",
+						DB_StagingI2B2_sqlclassname.toString());
+
+			}
+
+			if (currentQuery != null) {
+
+				this.setProperty("currentQuery", currentQuery.toString());
+
+			}
+
+			if (datePattern != null) {
+
+				this.setProperty("datePattern", datePattern.toString());
+
+			}
+
 			if (fileName != null) {
 
 				this.setProperty("fileName", fileName.toString());
@@ -232,45 +251,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (DBHost != null) {
-
-				this.setProperty("DBHost", DBHost.toString());
-
-			}
-
 			if (dbImport != null) {
 
 				this.setProperty("dbImport", dbImport.toString());
-
-			}
-
-			if (DBInstance != null) {
-
-				this.setProperty("DBInstance", DBInstance.toString());
-
-			}
-
-			if (DBPassword != null) {
-
-				this.setProperty("DBPassword", DBPassword.toString());
-
-			}
-
-			if (DBPort != null) {
-
-				this.setProperty("DBPort", DBPort.toString());
-
-			}
-
-			if (DBSchema != null) {
-
-				this.setProperty("DBSchema", DBSchema.toString());
-
-			}
-
-			if (DBUsername != null) {
-
-				this.setProperty("DBUsername", DBUsername.toString());
 
 			}
 
@@ -369,13 +352,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				this.setProperty("DB_StagingI2B2_Schema",
 						DB_StagingI2B2_Schema.toString());
-
-			}
-
-			if (DB_StagingI2B2_sqlclassname != null) {
-
-				this.setProperty("DB_StagingI2B2_sqlclassname",
-						DB_StagingI2B2_sqlclassname.toString());
 
 			}
 
@@ -621,12 +597,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 			}
 
-			if (currentQuery != null) {
-
-				this.setProperty("currentQuery", currentQuery.toString());
-
-			}
-
 		}
 
 		public Boolean importTerms;
@@ -701,6 +671,24 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.instanceMap;
 		}
 
+		public String DB_StagingI2B2_sqlclassname;
+
+		public String getDB_StagingI2B2_sqlclassname() {
+			return this.DB_StagingI2B2_sqlclassname;
+		}
+
+		public String currentQuery;
+
+		public String getCurrentQuery() {
+			return this.currentQuery;
+		}
+
+		public String datePattern;
+
+		public String getDatePattern() {
+			return this.datePattern;
+		}
+
 		public String fileName;
 
 		public String getFileName() {
@@ -719,46 +707,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.coding;
 		}
 
-		public String DBHost;
-
-		public String getDBHost() {
-			return this.DBHost;
-		}
-
 		public Boolean dbImport;
 
 		public Boolean getDbImport() {
 			return this.dbImport;
-		}
-
-		public String DBInstance;
-
-		public String getDBInstance() {
-			return this.DBInstance;
-		}
-
-		public java.lang.String DBPassword;
-
-		public java.lang.String getDBPassword() {
-			return this.DBPassword;
-		}
-
-		public String DBPort;
-
-		public String getDBPort() {
-			return this.DBPort;
-		}
-
-		public String DBSchema;
-
-		public String getDBSchema() {
-			return this.DBSchema;
-		}
-
-		public String DBUsername;
-
-		public String getDBUsername() {
-			return this.DBUsername;
 		}
 
 		public String exportDBConfig;
@@ -849,12 +801,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		public String getDB_StagingI2B2_Schema() {
 			return this.DB_StagingI2B2_Schema;
-		}
-
-		public String DB_StagingI2B2_sqlclassname;
-
-		public String getDB_StagingI2B2_sqlclassname() {
-			return this.DB_StagingI2B2_sqlclassname;
 		}
 
 		public String DB_StagingI2B2_Username;
@@ -1083,12 +1029,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 		public String getXslt_namespace() {
 			return this.xslt_namespace;
-		}
-
-		public String currentQuery;
-
-		public String getCurrentQuery() {
-			return this.currentQuery;
 		}
 	}
 
@@ -33899,10 +33839,15 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					context.dataMod = context.dataRows / 100;
 				if (context.ontRows / 100 > 0)
 					context.ontMod = context.ontRows / 100;
+
+				if (context.datePattern.length() <= 0) {
+					context.datePattern = "yyyy-MM-dd";
+				}
 				System.out.println("context.dataRows= " + context.dataRows);
 				System.out.println("context.ontRows= " + context.ontRows);
 				System.out.println("ontMod= " + context.ontMod);
 				System.out.println("dataMod= " + context.dataMod);
+				System.out.println("datePattern= " + context.datePattern);
 				StatusListener.setSubStatus(0.0f, ((int) (float) (0.0f)) + "%");
 
 				/**
@@ -37657,6 +37602,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			return this.C_SYMBOL;
 		}
 
+		public String secure_obj;
+
+		public String getSecure_obj() {
+			return this.secure_obj;
+		}
+
 		private String readString(ObjectInputStream dis) throws IOException {
 			String strReturn = null;
 			int length = 0;
@@ -37770,6 +37721,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					this.C_PATH = readString(dis);
 
 					this.C_SYMBOL = readString(dis);
+
+					this.secure_obj = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -37886,6 +37839,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 				writeString(this.C_SYMBOL, dos);
 
+				// String
+
+				writeString(this.secure_obj, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -37922,6 +37879,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			sb.append(",M_EXCLUSION_CD=" + M_EXCLUSION_CD);
 			sb.append(",C_PATH=" + C_PATH);
 			sb.append(",C_SYMBOL=" + C_SYMBOL);
+			sb.append(",secure_obj=" + secure_obj);
 			sb.append("]");
 
 			return sb.toString();
@@ -39271,7 +39229,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				globalMap.put("tFileOutputDelimited_2_FILE_NAME",
 						fileName_tFileOutputDelimited_2);
 
-				String[] headColutFileOutputDelimited_2 = new String[25];
+				String[] headColutFileOutputDelimited_2 = new String[26];
 				class CSVBasicSet_tFileOutputDelimited_2 {
 					private char field_Delim;
 					private char row_Delim;
@@ -39465,6 +39423,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 						headColutFileOutputDelimited_2[23] = "C_PATH";
 
 						headColutFileOutputDelimited_2[24] = "C_SYMBOL";
+
+						headColutFileOutputDelimited_2[25] = "secure_obj";
 
 						CsvWritertFileOutputDelimited_2
 								.writeNext(headColutFileOutputDelimited_2);
@@ -40397,6 +40357,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 												copyOfout6_tmp.M_EXCLUSION_CD = null;
 												copyOfout6_tmp.C_PATH = row10.Path;
 												copyOfout6_tmp.C_SYMBOL = null;
+												copyOfout6_tmp.secure_obj = context.fileName;
 												copyOfout6 = copyOfout6_tmp;
 											} // closing filter/reject
 												// ###############################
@@ -40420,7 +40381,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 											currentComponent = "tFileOutputDelimited_2";
 
-											String[] rowtFileOutputDelimited_2 = new String[25];
+											String[] rowtFileOutputDelimited_2 = new String[26];
 
 											rowtFileOutputDelimited_2[0] = copyOfout6.C_HLEVEL == null ? ""
 													: copyOfout6.C_HLEVEL
@@ -40513,6 +40474,9 @@ public class IDRT_to_DB_Schema implements TalendJob {
 
 											rowtFileOutputDelimited_2[24] = copyOfout6.C_SYMBOL == null ? ""
 													: copyOfout6.C_SYMBOL;
+
+											rowtFileOutputDelimited_2[25] = copyOfout6.secure_obj == null ? ""
+													: copyOfout6.secure_obj;
 
 											nb_line_tFileOutputDelimited_2++;
 											CsvWritertFileOutputDelimited_2
@@ -46393,7 +46357,7 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	public int portTraces = 4334;
 	public String clientHost;
 	public String defaultClientHost = "localhost";
-	public String contextStr = "TestServer";
+	public String contextStr = "Default";
 	public boolean isDefaultContext = true;
 	public String pid = "0";
 	public String rootPid = null;
@@ -46552,6 +46516,10 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.maxInstance = null;
 			}
 			context.instanceMap = (Object) context.getProperty("instanceMap");
+			context.DB_StagingI2B2_sqlclassname = (String) context
+					.getProperty("DB_StagingI2B2_sqlclassname");
+			context.currentQuery = (String) context.getProperty("currentQuery");
+			context.datePattern = (String) context.getProperty("datePattern");
 			context.fileName = (String) context.getProperty("fileName");
 			try {
 				context.cleanUp = routines.system.ParserUtils
@@ -46560,19 +46528,12 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.cleanUp = null;
 			}
 			context.coding = (String) context.getProperty("coding");
-			context.DBHost = (String) context.getProperty("DBHost");
 			try {
 				context.dbImport = routines.system.ParserUtils
 						.parseTo_Boolean(context.getProperty("dbImport"));
 			} catch (NumberFormatException e) {
 				context.dbImport = null;
 			}
-			context.DBInstance = (String) context.getProperty("DBInstance");
-			context.DBPassword = (java.lang.String) context
-					.getProperty("DBPassword");
-			context.DBPort = (String) context.getProperty("DBPort");
-			context.DBSchema = (String) context.getProperty("DBSchema");
-			context.DBUsername = (String) context.getProperty("DBUsername");
 			context.exportDBConfig = (String) context
 					.getProperty("exportDBConfig");
 			context.FTPPassword = (java.lang.String) context
@@ -46608,8 +46569,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 					.getProperty("DB_StagingI2B2_Port");
 			context.DB_StagingI2B2_Schema = (String) context
 					.getProperty("DB_StagingI2B2_Schema");
-			context.DB_StagingI2B2_sqlclassname = (String) context
-					.getProperty("DB_StagingI2B2_sqlclassname");
 			context.DB_StagingI2B2_Username = (String) context
 					.getProperty("DB_StagingI2B2_Username");
 			context.concept_cd = (String) context.getProperty("concept_cd");
@@ -46678,7 +46637,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			context.xslt = (String) context.getProperty("xslt");
 			context.xslt_namespace = (String) context
 					.getProperty("xslt_namespace");
-			context.currentQuery = (String) context.getProperty("currentQuery");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -46730,6 +46688,18 @@ public class IDRT_to_DB_Schema implements TalendJob {
 				context.instanceMap = (Object) parentContextMap
 						.get("instanceMap");
 			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
+				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
+						.get("DB_StagingI2B2_sqlclassname");
+			}
+			if (parentContextMap.containsKey("currentQuery")) {
+				context.currentQuery = (String) parentContextMap
+						.get("currentQuery");
+			}
+			if (parentContextMap.containsKey("datePattern")) {
+				context.datePattern = (String) parentContextMap
+						.get("datePattern");
+			}
 			if (parentContextMap.containsKey("fileName")) {
 				context.fileName = (String) parentContextMap.get("fileName");
 			}
@@ -46739,29 +46709,8 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("coding")) {
 				context.coding = (String) parentContextMap.get("coding");
 			}
-			if (parentContextMap.containsKey("DBHost")) {
-				context.DBHost = (String) parentContextMap.get("DBHost");
-			}
 			if (parentContextMap.containsKey("dbImport")) {
 				context.dbImport = (Boolean) parentContextMap.get("dbImport");
-			}
-			if (parentContextMap.containsKey("DBInstance")) {
-				context.DBInstance = (String) parentContextMap
-						.get("DBInstance");
-			}
-			if (parentContextMap.containsKey("DBPassword")) {
-				context.DBPassword = (java.lang.String) parentContextMap
-						.get("DBPassword");
-			}
-			if (parentContextMap.containsKey("DBPort")) {
-				context.DBPort = (String) parentContextMap.get("DBPort");
-			}
-			if (parentContextMap.containsKey("DBSchema")) {
-				context.DBSchema = (String) parentContextMap.get("DBSchema");
-			}
-			if (parentContextMap.containsKey("DBUsername")) {
-				context.DBUsername = (String) parentContextMap
-						.get("DBUsername");
 			}
 			if (parentContextMap.containsKey("exportDBConfig")) {
 				context.exportDBConfig = (String) parentContextMap
@@ -46818,10 +46767,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("DB_StagingI2B2_Schema")) {
 				context.DB_StagingI2B2_Schema = (String) parentContextMap
 						.get("DB_StagingI2B2_Schema");
-			}
-			if (parentContextMap.containsKey("DB_StagingI2B2_sqlclassname")) {
-				context.DB_StagingI2B2_sqlclassname = (String) parentContextMap
-						.get("DB_StagingI2B2_sqlclassname");
 			}
 			if (parentContextMap.containsKey("DB_StagingI2B2_Username")) {
 				context.DB_StagingI2B2_Username = (String) parentContextMap
@@ -46967,10 +46912,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 			if (parentContextMap.containsKey("xslt_namespace")) {
 				context.xslt_namespace = (String) parentContextMap
 						.get("xslt_namespace");
-			}
-			if (parentContextMap.containsKey("currentQuery")) {
-				context.currentQuery = (String) parentContextMap
-						.get("currentQuery");
 			}
 		}
 
@@ -47122,6 +47063,6 @@ public class IDRT_to_DB_Schema implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 1288581 characters generated by Talend Open Studio for Data Integration on
- * the July 30, 2014 3:48:16 PM CEST
+ * 1287178 characters generated by Talend Open Studio for Data Integration on
+ * the August 6, 2014 10:10:05 AM CEST
  ************************************************************************************************/

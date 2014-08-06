@@ -283,7 +283,7 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="STARTDATE_STAGING_PATH"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -334,7 +334,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -357,7 +357,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -429,7 +429,7 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NAME"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -524,7 +524,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -547,7 +547,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -696,7 +696,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="192" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_11"/>
-    <elementParameter field="CHECK" name="START" value="true"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="((TOSHandler)context.TOSHandler).status(&quot;Error while connection to the db. (JDBC)&quot;);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -1113,7 +1112,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="NAME" nullable="true" originalDbColumnName="C_NAME" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -1155,7 +1154,7 @@
       <column comment="" key="false" length="1000" name="TREE_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="3500" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STAGING_DIMENSION" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="STARTDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="1000" name="ENDDATE_STAGING_PATH" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="VISUALATTRIBUTES" nullable="true" pattern="" precision="0" type="id_String" originalLength="3" usefulColumn="true"/>
@@ -1441,7 +1440,7 @@
       <elementValue elementRef="TRACE_COLUMN" value="STAGING_DIMENSION"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="NAME"/>
+      <elementValue elementRef="TRACE_COLUMN" value="C_NAME"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="STARTDATE_STAGING_PATH"/>

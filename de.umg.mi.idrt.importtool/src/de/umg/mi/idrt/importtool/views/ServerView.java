@@ -900,7 +900,7 @@ public static String getCsvPathSpecific() {
 			//TODO CREATE MENU AND SET IT
 			
 
-			MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
+			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
 			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
 
@@ -919,7 +919,25 @@ public static String getCsvPathSpecific() {
 					}
 				}
 			});
+			final MenuItem dropIOETablesMenuItem = new MenuItem(mainMenu, SWT.NONE);
+			dropIOETablesMenuItem.setText("Drop IOE Tables");
+			dropIOETablesMenuItem.addSelectionListener(new SelectionListener() {
 
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					boolean result = MessageDialog.openConfirm(Application.getShell(),
+							"Drop IOE Tables?",
+							"Do you really want to drop the IOE specific tables?");
+					if(result) {
+						IDRTImport.dropIOETables(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+					}
+				}
+			});
 			new MenuItem(mainMenu, SWT.SEPARATOR);
 			MenuItem addServerMenuItem = new MenuItem(mainMenu, SWT.PUSH);
 			addServerMenuItem.setText(Messages.ServerView_AddServer);
@@ -1026,6 +1044,8 @@ public static String getCsvPathSpecific() {
 						if (targetServerViewer.getTree().getSelection()[0].getParentItem() == null) {
 							importMenuItem.setEnabled(false);
 							truncateMenuItem.setEnabled(false);
+							dropIOETablesMenuItem.setEnabled(false);
+							removeLocksMenuItem.setEnabled(false);
 							loadOntologyMenuItem.setEnabled(false);
 							importTermsMenuItem.setEnabled(false);
 							deleteServerMenuItem.setEnabled(true);
@@ -1036,6 +1056,8 @@ public static String getCsvPathSpecific() {
 							exportServerMenuItem.setEnabled(false);
 							importMenuItem.setEnabled(true);
 							truncateMenuItem.setEnabled(true);
+							dropIOETablesMenuItem.setEnabled(true);
+							removeLocksMenuItem.setEnabled(true);
 
 							if (!command.isEnabled()) {
 								loadOntologyMenuItem.setEnabled(false);
@@ -1050,6 +1072,8 @@ public static String getCsvPathSpecific() {
 						deleteServerMenuItem.setEnabled(false);
 						importMenuItem.setEnabled(false);
 						truncateMenuItem.setEnabled(false);
+						removeLocksMenuItem.setEnabled(false);
+						dropIOETablesMenuItem.setEnabled(false);
 						loadOntologyMenuItem.setEnabled(false);
 						importTermsMenuItem.setEnabled(false);
 						exportServerMenuItem.setEnabled(false);
