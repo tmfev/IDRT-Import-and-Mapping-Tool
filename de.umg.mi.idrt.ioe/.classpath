@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.umg.mi.idrt.importtool"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/copy_of_idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createieotables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createtargetproject_0_1.jar"/>
@@ -51,5 +50,6 @@
 	<classpathentry kind="lib" path="TalendJobs/lib/trove.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/userRoutines.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/xdb.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

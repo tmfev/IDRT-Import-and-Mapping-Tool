@@ -588,7 +588,6 @@ public static String getCsvPathSpecific() {
 			} catch (BackingStoreException e1) {
 				e1.printStackTrace();
 			}
-
 			parent.pack();
 			parent.setLayout(new GridLayout(1, false));
 
@@ -598,7 +597,6 @@ public static String getCsvPathSpecific() {
 			final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
 			final Transfer[] transferTypes = new Transfer[] { TextTransfer
 					.getInstance() };
-
 			Composite leftSideComposite = new Composite(sashForm, SWT.NONE);
 			leftSideComposite.setLayout(new BorderLayout(0, 0));
 
@@ -614,7 +612,6 @@ public static String getCsvPathSpecific() {
 
 			targetServercomposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
 			targetServercomposite.setLayout(new BorderLayout(0, 0));
-
 			sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
 			sourceServerComposite.setLayout(new BorderLayout(0, 0));
 
@@ -651,11 +648,9 @@ public static String getCsvPathSpecific() {
 			sourceServerViewer.setInput(new ServerImportDBModel());
 			sourceServerViewer.setAutoExpandLevel(1);
 			sourceServerViewer.setSorter(new ViewerSorter());
-			sourceServerViewer.getTree().setData("org.eclipse.swtbot.widget.key","sourceServerTree");
 			/**
 			 * Menu for the source servers
 			 */
-
 			layoutSourceServerContextMenu();
 
 			/**
@@ -665,17 +660,15 @@ public static String getCsvPathSpecific() {
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
-			targetServerViewer.getTree().setData("org.eclipse.swtbot.widget.key","targetServerTree");
-
-			Tree targetServerTree = targetServerViewer.getTree();
-			targetServerTree.setLayoutData(BorderLayout.CENTER);
+			
 			targetServerViewer.setContentProvider(new ServerContentProvider());
-			targetServerViewer.setLabelProvider(new ServerLabelProvider());
 			targetServerViewer.setInput(new ServerModel());
+			
+			targetServerViewer.setLabelProvider(new ServerLabelProvider());
 			//			targetServerViewer.setAutoExpandLevel(2);
-
 			targetServerViewer.setSorter(new ViewerSorter());
-
+//			Tree targetServerTree = targetServerViewer.getTree();
+//			targetServerTree.setLayoutData(BorderLayout.CENTER);
 			targetServerViewer.getTree().addSelectionListener(new SelectionListener() {
 
 				@Override
@@ -683,7 +676,6 @@ public static String getCsvPathSpecific() {
 				}
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-
 					TreeItem selectedItem = (TreeItem) e.item;
 					final String selectedItemString = selectedItem.getText();
 					if (ServerList.isServer(selectedItemString)) {
@@ -706,7 +698,6 @@ public static String getCsvPathSpecific() {
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText("..."); 
 						lblPatientsCurrent.setText("..."); 
-
 
 						//Displays "Loading..." while DB loads.
 						new Thread(new Runnable() {
@@ -731,7 +722,6 @@ public static String getCsvPathSpecific() {
 					}
 				}
 			});
-
 			targetServerViewer.getTree().addMouseListener(new MouseListener() {
 				@Override
 				public void mouseDoubleClick(MouseEvent e) {
@@ -756,13 +746,11 @@ public static String getCsvPathSpecific() {
 				}
 			});
 			mainMenu = new Menu(targetServerViewer.getTree());
-
 			targetServerViewer.refresh();
 
 			targetServerViewer.getTree().setMenu(mainMenu);
 			targetServerViewer.addDragSupport(operations, transferTypes,
 					new ServerDragSourceListener(targetServerViewer));
-
 			/**
 			 * Check if Load Ontology Command is enabled
 			 */
@@ -833,7 +821,6 @@ public static String getCsvPathSpecific() {
 			});
 
 
-
 			MenuItem importCSVMenuItem = new MenuItem(importMenu, SWT.PUSH);
 			importCSVMenuItem.setText(Messages.ServerView_ImportCSV);
 			importCSVMenuItem.addSelectionListener(new SelectionListener() {
@@ -893,12 +880,10 @@ public static String getCsvPathSpecific() {
 				
 				@Override
 				public void widgetArmed(ArmEvent e) {
-					System.out.println("ARMED");
 					createMDRMenu();
 				}
 			});
 			//TODO CREATE MENU AND SET IT
-			
 
 			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			removeLocksMenuItem.setText("Remove Locks");
@@ -1081,30 +1066,6 @@ public static String getCsvPathSpecific() {
 				}
 			});
 
-			sourceServerViewer = new TreeViewer(sourceTreeComp, SWT.MULTI
-					| SWT.H_SCROLL | SWT.V_SCROLL); // parent
-			sourceServerViewer.addDropSupport(operations, transferTypes,
-					new ServerDropTargetListener(sourceServerViewer));
-			sourceServerViewer.getTree().addMouseListener(new MouseListener() {
-
-				@Override
-				public void mouseDoubleClick(MouseEvent e) {
-					importDB();
-				}
-
-				@Override
-				public void mouseDown(MouseEvent e) {
-				}
-
-				@Override
-				public void mouseUp(MouseEvent e) {
-				}
-			});
-			sourceServerViewer.setContentProvider(new ServerSourceContentProvider());
-			sourceServerViewer.setLabelProvider(new ServerImportDBLabelProvider());
-			sourceServerViewer.setInput(new ServerImportDBModel());
-			sourceServerViewer.setAutoExpandLevel(1);
-			sourceServerViewer.setSorter(new ViewerSorter());
 			importSourceServerMenu = new Menu(sourceServerViewer.getTree());
 
 			/*
@@ -1124,7 +1085,6 @@ public static String getCsvPathSpecific() {
 					addSourceServer();
 				}
 			});
-
 			MenuItem editSourceServerMenuItem = new MenuItem(
 					importSourceServerMenu, SWT.PUSH);
 			editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
@@ -1215,7 +1175,6 @@ public static String getCsvPathSpecific() {
 			else {
 				sourceServerDisposed=false;
 			}
-
 			Composite showHideSourceServerButtonComp = new Composite(leftSideComposite, SWT.NONE);
 			showHideSourceServerButtonComp.setLayoutData(BorderLayout.SOUTH);
 			showHideSourceServerButtonComp.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -1375,7 +1334,6 @@ public static String getCsvPathSpecific() {
 			});
 			new Label(progressBarComp, SWT.NONE);
 			new Label(progressBarComp, SWT.NONE);
-
 			subProgressLabel = new Label(progressBarComp, SWT.NONE);
 			subProgressLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 			subProgressLabel.setText("");

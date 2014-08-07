@@ -159,7 +159,6 @@ public class ServerList {
 			Server server = (Server) is.readObject();
 			is.close();
 			return server;
-
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -979,32 +978,32 @@ public class ServerList {
 		}
 	}
 
-	
-//	private static ResultSet test(Server server) {
-//		try {
-//			DriverManager.setLoginTimeout(2);
-//			connect = server.getConnection();
-//			ResultSet resultSet = null;
-//			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
-//					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
-//					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
-//					"    ? := b;  END LOOP;END;");
-//			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
-//
-//
-//			statement.setInt(1, 21);
-//			statement.setInt(2, 21);
-//			statement.registerOutParameter(1, Types.VARCHAR);
-//			statement.execute(sql);
-//
-//			System.out.println("RESULT: " + statement.getObject(1));
-//
-//			return resultSet;
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
+
+	//	private static ResultSet test(Server server) {
+	//		try {
+	//			DriverManager.setLoginTimeout(2);
+	//			connect = server.getConnection();
+	//			ResultSet resultSet = null;
+	//			String sql = ("declare b varchar2(3500 byte); BEGIN   FOR emp IN  (    SELECT staging_path" +
+	//					"    FROM I2B2IDRT.ioe_target_ontology where target_id = ?  )  LOOP " +
+	//					"   select c_fullname into b from i2b2idrt.i2b2  where c_fullname = emp.staging_path;" +
+	//					"    ? := b;  END LOOP;END;");
+	//			CallableStatement  statement = connect.prepareCall(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);//prepareCall(sql);
+	//
+	//
+	//			statement.setInt(1, 21);
+	//			statement.setInt(2, 21);
+	//			statement.registerOutParameter(1, Types.VARCHAR);
+	//			statement.execute(sql);
+	//
+	//			System.out.println("RESULT: " + statement.getObject(1));
+	//
+	//			return resultSet;
+	//		} catch (SQLException e) {
+	//			e.printStackTrace();
+	//		}
+	//		return null;
+	//	}
 
 	public static void unAssignUserFromProject(String username, String project,
 			Server server) {

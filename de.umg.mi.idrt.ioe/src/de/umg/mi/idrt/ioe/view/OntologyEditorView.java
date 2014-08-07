@@ -1120,7 +1120,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
-				ProgressView.setProgress(0, "Uploading...", "");
+				
 				//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
@@ -1136,7 +1136,7 @@ public class OntologyEditorView extends ViewPart {
 					}
 				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
-				ProgressView.setProgress(100, "Uploading...(done)", "");
+				
 			}
 		});
 
@@ -1530,7 +1530,6 @@ public class OntologyEditorView extends ViewPart {
 //		if (targetTreeViewer.getTree().getItems().length>=2)
 		targetTreeViewer.expandToLevel(3);
 		
-		targetTreeViewer.getTree().setData("org.eclipse.swtbot.widget.key", "targetTree");
 		final Tree tree = targetTreeViewer.getTree();
 		tree.addListener(SWT.MeasureItem, new Listener() {
 			public void handleEvent(Event event) {

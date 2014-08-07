@@ -17,6 +17,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.misc.IDRTMessageDialog;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.ProgressView;
 
 public class UploadProjectCommand extends AbstractHandler {
 	private HashMap<String, String> contextMap;
@@ -24,10 +25,14 @@ public class UploadProjectCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("OntologyEditorView " + OntologyEditorView.isInit());
 		System.out.println("schema: " + OntologyEditorView.getTargetSchemaName());
-	boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Warning", "This will TRUNCATE the target project!\nDo you want to" +
-				" proceed?");
+		boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Warning", "Do you want to upload the current target project?");
+		
+		if(confirm) {
+			ProgressView.setProgress(0, "Uploading...", "");
+		boolean truncate = MessageDialog.openQuestion(Application.getShell(), "Truncate Target Project?", "Do you want to truncate the target project?");
+System.out.println("Truncate? " + truncate);
 	
-	if(confirm) {
+
 		if (OntologyEditorView.isInit() && !OntologyEditorView.getTargetSchemaName().isEmpty() && !OntologyEditorView.getTargetSchemaName().startsWith("Drop i2b2")) {
 			String stagingServerName = ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName());
 			Server stagingServer = ServerList.getTargetServers().get(stagingServerName);
@@ -41,7 +46,8 @@ public class UploadProjectCommand extends AbstractHandler {
 			final String targetDBSID = stagingServer.getSID();
 			final String targetDBPort = stagingServer.getPort();
 			final String targetDBSchema = OntologyEditorView.getTargetSchemaName();
-
+			
+			
 			String targetServerName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
 			Server currentServer = ServerList.getTargetServers().get(targetServerName);
 			currentServer.setSchema(OntologyEditorView.getStagingSchemaName());
@@ -78,6 +84,9 @@ public class UploadProjectCommand extends AbstractHandler {
 			contextMap.put("DB_StagingI2B2_Schema", stagingDBSchema);
 			System.out.println("TARGETID: " + OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 			contextMap.put("TargetID",""+ OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
+			
+			contextMap.put("truncateProject", String.valueOf(truncate));
+			contextMap.put("truncateQueries", String.valueOf(truncate));
 			TOSConnector.setCompleteContext(contextMap);
 			Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
 			}
@@ -89,6 +98,7 @@ public class UploadProjectCommand extends AbstractHandler {
 			MessageDialog.openError(Application.getShell(), "No Target Project", "No Target Project given!");
 		}
 	}
+		ProgressView.setProgress(0, "", "");
 		return null;
 	}
 }

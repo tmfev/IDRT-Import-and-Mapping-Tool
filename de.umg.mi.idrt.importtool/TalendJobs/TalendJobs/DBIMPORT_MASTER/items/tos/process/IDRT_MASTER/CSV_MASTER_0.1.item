@@ -26,7 +26,7 @@
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
-    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
+    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -76,7 +76,7 @@
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
-    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
+    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -87,56 +87,6 @@
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB1&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
-    <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
-    <contextParameter comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;i2b2&quot;"/>
-    <contextParameter comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Ontology&quot;"/>
-    <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="MDPD" prompt="MDPD?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;PD&quot;"/>
-    <contextParameter comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Patientendaten&quot;"/>
-    <contextParameter comment="" name="counter" prompt="counter?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Integer" value=""/>
-    <contextParameter comment="" name="currentCounter" prompt="currentCounter?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Integer" value=""/>
-    <contextParameter comment="" name="status" prompt="status?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
-    <contextParameter comment="" name="statusTmp" prompt="statusTmp?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
-  </context>
-  <context confirmationNeeded="false" name="localhost">
-    <contextParameter comment="" name="startDate" prompt="startDate?" promptNeeded="false" type="id_Long" value=""/>
-    <contextParameter comment="" name="OID" prompt="OID?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="" name="continueImport" prompt="continueImport?" promptNeeded="false" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="currentConfig" prompt="currentConfig?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="" name="pidMap" prompt="pidMap?" promptNeeded="false" type="id_Object" value=""/>
-    <contextParameter comment="&quot;Std. Terminologien importieren?&quot;" name="importTerms" prompt="importTerms?" promptNeeded="true" type="id_Boolean" value="false"/>
-    <contextParameter comment="&quot;&quot;" name="folderMainCSV" prompt="folderMainCSV?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop/CSV/&quot;"/>
-    <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
-    <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.cfg.csv&quot;"/>
-    <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.csv&quot;"/>
-    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy, hh:mm:ss&quot;"/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;DIVI-Auszug&quot;"/>
-    <contextParameter comment="&quot;Ordner mit CSV Dateien&quot;" name="folderCSV" prompt="folderCSV?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_Directory" value="C:/Desktop/CSV/CSV/"/>
-    <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_Directory" value="&quot;C:/Desktop/CSV/&quot;"/>
-    <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output/&quot;"/>
-    <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output.csv&quot;"/>
-    <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_Character" value="&quot;"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
-    <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
-    <contextParameter comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
-    <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
-    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.OracleDriver&quot;"/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;192.168.46.137&quot;"/>
-    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;xe&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@192.168.46.137:1521:xe"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="OFXAOKOg6NM="/>
-    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -176,7 +126,7 @@
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
-    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;https://st03.mi.med.uni-goettingen.de/psx/cgi-psx/psx-soap.cgi?ctx=req&amp;sts=1&quot;"/>
+    <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
@@ -184,7 +134,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.102.4&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.102.4:5432/transmart"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="OFXAOKOg6NM="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value=""/>
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
@@ -285,7 +235,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value=""/>
-    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="Copy_of_IDRT_JDBC_Upload"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="IDRT_JDBC_Upload"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_2MMpkBPYEeSOr_xm2eWHfg"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>

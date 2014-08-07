@@ -1,12 +1,14 @@
 package de.umg.mi.idrt.idrtimporttool.server.serverWizard;
 
 import java.io.File;
+
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.GCData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
@@ -21,8 +23,13 @@ public class ServerLabelProvider extends LabelProvider {
 	public Image getImage(Object element) {
 
 		File imgImportFile = FileHandler.getBundleFile("/images/i2b2_16.png");
-		File tmImageFile = FileHandler.getBundleFile("/images/searchtool.ico");
-
+		File tmImageFile = FileHandler.getBundleFile("/images/searchtool.png");
+if (tmImageFile== null)
+	try {
+		throw new Exception();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 
 		Device device = new Device() {
 

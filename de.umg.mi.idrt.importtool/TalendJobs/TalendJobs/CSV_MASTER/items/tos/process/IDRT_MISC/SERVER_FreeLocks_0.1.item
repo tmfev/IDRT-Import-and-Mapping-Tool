@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;SYSTEM&quot;"/>
   </context>
   <context confirmationNeeded="false" name="TestServer">
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.113.224&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2BB1&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.113.224&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2BB1&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" type="id_String" value="&quot;i2b2t&quot;"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="false" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="false" type="id_String" value="&quot;i2b2t&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
@@ -168,19 +168,19 @@
   <node componentName="tOracleRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleRow_1"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tOracleConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="CONNECTION_TYPE" value="ORACLE_SID"/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_11-6"/>
     <elementParameter field="TEXT" name="RAC_URL" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;134.76.124.17&quot;"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;1521&quot;"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;I2B2T&quot;"/>
+    <elementParameter field="TEXT" name="HOST" value=""/>
+    <elementParameter field="TEXT" name="PORT" value=""/>
+    <elementParameter field="TEXT" name="DBNAME" value=""/>
     <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;I2B2IDRT&quot;"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value=""/>
     <elementParameter field="TEXT" name="TYPE" value="ORACLE_SID"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;SYSTEM&quot;"/>
-    <elementParameter field="TEXT" name="PASS" value="&quot;wc24gqd&quot;"/>
+    <elementParameter field="TEXT" name="USER" value=""/>
+    <elementParameter field="TEXT" name="PASS" value=""/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;I2B2&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>

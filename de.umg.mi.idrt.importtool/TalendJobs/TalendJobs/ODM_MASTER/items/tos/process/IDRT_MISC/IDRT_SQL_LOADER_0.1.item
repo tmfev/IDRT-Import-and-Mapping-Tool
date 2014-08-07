@@ -2,28 +2,28 @@
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.124.17&quot;"/>
     <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;SYSTEM&quot;"/>
   </context>
   <context confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
     <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.113.224&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2BB1&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;SYSTEM&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="true" type="id_String" value="&quot;134.76.113.224&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2BB1&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;SYSTEM&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="true" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="true" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
@@ -32,12 +32,12 @@
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
     <contextParameter comment="&quot;SQL*LOADER Folder&quot;" name="patientDataFolder" prompt="patientDataFolder?" promptNeeded="true" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="uploadFolder" prompt="uploadFolder?" promptNeeded="false" type="id_Directory" value="C:/Desktop/IDRT/output/"/>
-    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;134.76.124.17&quot;"/>
-    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
-    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
-    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;i2b2t&quot;"/>
+    <contextParameter comment="&quot;DB IP&quot;" name="DBHost" prompt="DBHost?" promptNeeded="false" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter comment="&quot;DBPassword for DBUsername&quot;" name="DBPassword" prompt="DBPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter comment="&quot;Oracle User (schema)&quot;" name="DBSchema" prompt="DBSchema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTIMPORT&quot;"/>
+    <contextParameter comment="&quot;DB username&quot;" name="DBUsername" prompt="DBUsername?" promptNeeded="true" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="&quot;DB Port&quot;" name="DBPort" prompt="DBPort?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter comment="&quot;Oracle DB&quot;" name="DBInstance" prompt="DBInstance?" promptNeeded="false" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>

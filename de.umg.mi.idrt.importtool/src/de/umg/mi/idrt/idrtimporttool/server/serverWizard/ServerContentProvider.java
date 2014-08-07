@@ -31,7 +31,6 @@ public class ServerContentProvider implements ITreeContentProvider {
 
 		if (parentElement instanceof Server) {
 			Server server = (Server) parentElement;
-
 //			if (!server.isSavePassword() && server.getNotStoredPassword() == null) {
 //				PasswordDialog dialog = new PasswordDialog(new Shell());
 //			    dialog.open();
@@ -48,7 +47,6 @@ public class ServerContentProvider implements ITreeContentProvider {
 //			}
 //			else {
 //				MessageDialog.openError(Application.getShell(), "NYI", "NYI");
-//				server.setPassword("wc24gqd");
 //			}
 		}
 		return null;

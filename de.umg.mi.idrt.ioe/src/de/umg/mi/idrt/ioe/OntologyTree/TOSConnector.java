@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Display;
 
 
 
+
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -27,6 +28,7 @@ import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.tos.TOSHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
+import de.umg.mi.idrt.ioe.view.ProgressView;
 
 /**
  * @author Christian Bauer
@@ -382,9 +384,11 @@ public class TOSConnector {
 				if (exit==0) {
 					StatusListener.setStatus(0, "","");
 					StatusListener.setSubStatus(0, "");
+					ProgressView.setProgress(100, "Uploading...(done)", "");
 					MessageDialog.openInformation(Application.getShell(), "Success!", "Upload Done!");
 				}
 				else {
+					ProgressView.setProgress(0, "", "");
 					MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
 				}
 				//				} catch (Exception e) {
