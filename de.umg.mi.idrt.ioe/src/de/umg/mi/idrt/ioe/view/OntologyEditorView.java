@@ -563,7 +563,7 @@ public class OntologyEditorView extends ViewPart {
 				}
 			}
 		};
-
+a
 		stagingTreeViewer.getTree().addListener (SWT.Dispose, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.KeyDown, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.MouseMove, stagingTreeListener);
