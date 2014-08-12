@@ -383,6 +383,7 @@ public class OntologyItem {
 	String M_EXCLUSION_CD;
 	String C_PATH;
 	String C_SYMBOL;
+	String SEC_OBJ;
 
 	/**
 	 * 
@@ -411,8 +412,8 @@ public class OntologyItem {
 			String VALUETYPE_CD,
 			String M_EXCLUSION_CD,
 			String C_PATH,
-			String C_SYMBOL) {
-
+			String C_SYMBOL,
+			String SEC_OBJ) {
 		this.C_HLEVEL=C_HLEVEL;
 		this.C_FULLNAME=C_FULLNAME;
 		this.C_NAME=C_NAME;
@@ -438,5 +439,10 @@ public class OntologyItem {
 		this.M_EXCLUSION_CD=M_EXCLUSION_CD;
 		this.C_PATH=C_PATH;
 		this.C_SYMBOL=C_SYMBOL;
+		this.SEC_OBJ = SEC_OBJ;
+	}
+
+	public String getSEC_OBJ() {
+		return SEC_OBJ;
 	}
 }

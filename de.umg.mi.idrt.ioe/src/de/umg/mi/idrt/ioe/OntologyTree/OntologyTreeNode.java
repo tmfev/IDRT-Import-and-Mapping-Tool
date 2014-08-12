@@ -440,7 +440,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 			Object C_COMMENT, String C_TOOLTIP, String M_APPLIED_PATH,
 			Date UPDATE_DATE, Date DOWNLOAD_DATE, Date IMPORT_DATE,
 			String SOURCESYSTEM_CD, String VALUETYPE_CD, String M_EXCLUSION_CD,
-			String C_PATH, String C_SYMBOL) {
+			String C_PATH, String C_SYMBOL, String sec_obj) {
 		this.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
 		ontologyCellAttributes.setC_HLEVEL(C_HLEVEL);
 		ontologyCellAttributes.setC_FULLNAME(C_FULLNAME);
@@ -467,6 +467,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 		ontologyCellAttributes.setM_EXCLUSION_CD(M_EXCLUSION_CD);
 		ontologyCellAttributes.setC_PATH(C_PATH);
 		ontologyCellAttributes.setC_SYMBOL(C_SYMBOL);
+		ontologyCellAttributes.setSEC_OBJ(sec_obj);
 	}
 
 	public void setOntologyCellAttributes(OntologyItem item) {
@@ -498,6 +499,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 		ontologyCellAttributes.setM_EXCLUSION_CD(item.getM_EXCLUSION_CD());
 		ontologyCellAttributes.setC_PATH(item.getC_PATH());
 		ontologyCellAttributes.setC_SYMBOL(item.getC_SYMBOL());
+		ontologyCellAttributes.setSEC_OBJ(item.getSEC_OBJ());
 	}
 
 	public void setSearchResult(boolean searchResult) {

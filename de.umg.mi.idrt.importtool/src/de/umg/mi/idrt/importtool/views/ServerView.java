@@ -694,7 +694,10 @@ public static String getCsvPathSpecific() {
 						final Server server = ServerList.getTargetServers().get(
 								parentServer);
 						labelIpCurrent.setText(server.getIp());
-						labelDBUserCurrent.setText(selectedItemString);
+						if (server.getWhType().equals("transmart"))
+						labelDBUserCurrent.setText(server.getWhType());
+						else
+							labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText("..."); 
 						lblPatientsCurrent.setText("..."); 

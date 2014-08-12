@@ -164,7 +164,6 @@ public class Server implements Serializable {
 		this.port = port;
 		this.user = user;
 		this.sid = sid;
-		System.out.println("NEW SERVER: " + schema);
 		this.schema = schema;
 		this.table = table;
 		this.databaseType = databaseType;
@@ -189,9 +188,17 @@ public class Server implements Serializable {
 			if (!user.toLowerCase().startsWith("i2b2")) {
 				user = "i2b2" + user;
 			}
-			ResultSet resultSet = statement
-					.executeQuery("select count(*) as concepts from " + user
-							+ ".observation_fact");
+			ResultSet resultSet;
+
+			if (getWhType().equals("transmart")){
+				resultSet= statement
+						.executeQuery("select count(*) as concepts from i2b2demodata.observation_fact");
+			}
+			else {
+				resultSet= statement
+						.executeQuery("select count(*) as concepts from " + user
+								+ ".observation_fact");
+			}
 			while (resultSet.next()) {
 				concepts = resultSet.getString("concepts");
 			}
@@ -322,9 +329,16 @@ public class Server implements Serializable {
 			if (!user.toLowerCase().startsWith("i2b2")) {
 				user = "i2b2" + user;
 			}
-			ResultSet resultSet = statement
+			ResultSet resultSet;
+			if (getWhType().equals("transmart")){
+				resultSet= statement
+						.executeQuery("select count(*) as patients from i2b2demodata.patient_dimension");
+			}
+			else {
+			resultSet= statement
 					.executeQuery("select count(*) as patients from " + user
 							+ ".patient_dimension");
+			}
 			while (resultSet.next()) {
 				patients = resultSet.getString("patients");
 			}

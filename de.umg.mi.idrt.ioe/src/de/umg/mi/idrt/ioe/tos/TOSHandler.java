@@ -89,7 +89,8 @@ public class TOSHandler {
 			final String C_DIMCODE, final String C_COMMENT, final String C_TOOLTIP,
 			final String M_APPLIED_PATH, final Date UPDATE_DATE, final Date DOWNLOAD_DATE,
 			final Date IMPORT_DATE, final String SOURCESYSTEM_CD, final String VALUETYPE_CD,
-			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL) {
+			final String M_EXCLUSION_CD, final String C_PATH, final String C_SYMBOL, 
+			final String SEC_OBJ) {
 		setCounter(getCounter() + 1);
 		if (getCounter()%1000==0)
 			ProgressView.setProgress(0, "Importing...", getCounter()+"/??? items");
@@ -97,7 +98,7 @@ public class TOSHandler {
 				C_VISUALATTRIBUTES, C_TOTALNUM, C_BASECODE, C_METADATAXML, C_FACTTABLECOLUMN, 
 				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
 				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
-				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL);
+				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL,SEC_OBJ);
 
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
@@ -120,7 +121,7 @@ public class TOSHandler {
 			Date importDate, String sourcesysteCD, String uploadID) {
 	}
 
-	public void addTargetOntologyItemToTree(
+	public static void addTargetOntologyItemToTree(
 			int treeLevel, 
 			String treePath,
 			String stagingPath,

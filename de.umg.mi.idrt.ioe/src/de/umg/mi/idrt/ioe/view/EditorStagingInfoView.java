@@ -120,6 +120,8 @@ public class EditorStagingInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.M_EXCLUSION_CD);
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_PATH);
 		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.C_SYMBOL);
+		addColumItem(Resource.I2B2.TABLE.ONTOLOGY.SEC_OBJ);
+		
 
 	}
 	
@@ -162,6 +164,7 @@ public class EditorStagingInfoView extends ViewPart {
 		addValueItem(items, row++,  attributes.getM_EXCLUSION_CD() );
 		addValueItem(items, row++,  attributes.getC_PATH() );
 		addValueItem(items, row++,  attributes.getC_SYMBOL() );
+		addValueItem(items, row++,  attributes.getSEC_OBJ() );
 		
 //		TreeNode[] path = _node.getPath();
 		

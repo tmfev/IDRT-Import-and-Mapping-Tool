@@ -212,6 +212,15 @@ public class OntologyCellAttributes {
 	public String getVALUETYPE_CD() {
 		return ontologyTable.get("VALUETYPE_CD".toLowerCase());
 	}
+	
+
+	public String getSEC_OBJ() {
+		return ontologyTable.get("SEC_OBJ");
+	}
+	
+	public String setSEC_OBJ(String sec_obj) {
+		return ontologyTable.put("SEC_OBJ",sec_obj);
+	}
 
 	/**
 	 * @param c_BASECODE the c_BASECODE to set
@@ -388,6 +397,8 @@ public class OntologyCellAttributes {
 	public void setVALUETYPE_CD(String vALUETYPE_CD) {
 		ontologyTable.put("vALUETYPE_CD".toLowerCase(), vALUETYPE_CD);
 	}
+
+
 
 
 	

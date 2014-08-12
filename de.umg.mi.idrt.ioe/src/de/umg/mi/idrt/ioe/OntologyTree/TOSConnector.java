@@ -19,6 +19,9 @@ import org.eclipse.swt.widgets.Display;
 
 
 
+
+
+import tos.deletetransmartproject_0_1.deleteTransmartProject;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -399,15 +402,7 @@ public class TOSConnector {
 			}
 		});
 
-		workerThread = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		workerThread.run();
+		
 		return exit;
 
 	}
@@ -441,6 +436,39 @@ public class TOSConnector {
 
 		getConnection().runJobInTOS((getARGV()));
 
+	}
+
+	public static void deleteStudy(Server currentServer, String studyID) {
+		
+		setContextVariable("DB_StagingI2B2_Host",
+				currentServer.getIp());
+		setContextVariable("DB_StagingI2B2_Port",
+				currentServer.getPort());
+		setContextVariable("DB_StagingI2B2_Instance",
+				currentServer.getSID());
+		
+		setContextVariable("DB_StagingI2B2_Username",
+				currentServer.getUser());
+		setContextVariable("DB_StagingI2B2_Instance",
+				currentServer.getSID());
+		setContextVariable("DB_StagingI2B2_Password",
+				currentServer.getPassword());
+		setContextVariable("DB_StagingI2B2_Schema",
+				OntologyEditorView.getStagingSchemaName());
+		setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
+		setContextVariable("studyID", studyID);
+		
+		workerThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				//TODO CREATE AND OPEN NEW TOS JOB
+				deleteTransmartProject deleteProject = new deleteTransmartProject();
+				int exit = deleteProject.runJobInTOS(getARGV());
+				System.out.println("JOB DONE: " + exit);
+			}
+		});
+		workerThread.run();
 	}
 
 }

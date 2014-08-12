@@ -97,6 +97,7 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNodeList;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeSubNode;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.StyledViewTableLabelProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
@@ -563,7 +564,6 @@ public class OntologyEditorView extends ViewPart {
 				}
 			}
 		};
-a
 		stagingTreeViewer.getTree().addListener (SWT.Dispose, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.KeyDown, stagingTreeListener);
 		stagingTreeViewer.getTree().addListener (SWT.MouseMove, stagingTreeListener);
@@ -1403,7 +1403,27 @@ a
 		OntologyEditorView.getOntologyStagingTree().setTreeViewer(stagingTreeViewer);
 
 		Menu menu = new Menu(stagingTreeViewer.getTree());
-
+		MenuItem deleteStudy = new MenuItem(menu, SWT.PUSH);
+		deleteStudy.setText("Delete Study");
+		deleteStudy.addSelectionListener(new SelectionListener() {
+			//TODO
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				String studyID = currentStagingNode.getOntologyCellAttributes().getSEC_OBJ();
+				System.out.println("DELETING: " + studyID);
+				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Delete Study?", "Do you really want to delete: " + studyID+"?");
+				if (confirm){
+					TOSConnector.deleteStudy(currentStagingServer,studyID);
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+			}
+		});
+		new MenuItem(menu, SWT.SEPARATOR);
+		
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
 		mntmExpandChildren.setText("Expand All Children");
 		mntmExpandChildren.addSelectionListener(new SelectionListener() {
