@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.ioe.view;
 
+import java.awt.Color;
 import java.awt.MouseInfo;
 import java.io.File;
 import java.io.IOException;
@@ -1411,9 +1412,23 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent e) {
 				String studyID = currentStagingNode.getOntologyCellAttributes().getSEC_OBJ();
 				System.out.println("DELETING: " + studyID);
-				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Delete Study?", "Do you really want to delete: " + studyID+"?");
+				
+				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Delete "+ studyID + "?", "Do you really want to delete the complete study: " + studyID+"?");
 				if (confirm){
 					TOSConnector.deleteStudy(currentStagingServer,studyID);
+					OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
+					//				System.out.println("childCount: " + bla.getChildCount());
+					System.out.println(isNotYetSaved());
+					if (bla.getChildCount()>0 && isNotYetSaved()) {
+						confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
+								"do you want to save it?");
+						if (confirm)
+						{
+							//save target
+							Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
+						}
+					}
+					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 				}
 			}
 			

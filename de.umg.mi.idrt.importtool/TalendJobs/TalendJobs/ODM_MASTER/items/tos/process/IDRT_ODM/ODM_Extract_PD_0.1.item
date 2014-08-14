@@ -3107,7 +3107,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out11" expressionFilter="row21.Path != null &amp;&amp;  row22.CodeListItem != null" activateExpressionFilter="true" activateCondensedTool="true">
         <mapperTableEntries name="HLEVEL" expression="row21.HLEVEL +1" type="id_Integer" nullable="true"/>

@@ -438,7 +438,7 @@ public class TOSConnector {
 
 	}
 
-	public static void deleteStudy(Server currentServer, String studyID) {
+	public static void deleteStudy(Server currentServer, final String studyID) {
 		
 		setContextVariable("DB_StagingI2B2_Host",
 				currentServer.getIp());
@@ -465,6 +465,9 @@ public class TOSConnector {
 				//TODO CREATE AND OPEN NEW TOS JOB
 				deleteTransmartProject deleteProject = new deleteTransmartProject();
 				int exit = deleteProject.runJobInTOS(getARGV());
+				
+				if (exit == 0)
+					MessageDialog.openInformation(Application.getShell(), "Study Deleted!", "Study: " + studyID + " deleted!");
 				System.out.println("JOB DONE: " + exit);
 			}
 		});
