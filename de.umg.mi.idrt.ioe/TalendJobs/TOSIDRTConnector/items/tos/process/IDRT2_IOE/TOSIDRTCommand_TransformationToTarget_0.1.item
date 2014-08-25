@@ -717,7 +717,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="(from_OE_ONT.BASECODE.split(&quot;:&quot;).length>1)?&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(from_OE_ONT.BASECODE.split(&quot;:&quot;)[1].equals(&quot;xml&quot;)?true:false):false; " type="id_Boolean"/>
       </varTables>
@@ -736,8 +736,8 @@
         <mapperTableEntries name="C_COLUMNDATATYPE" expression="from_src_ont.C_COLUMNDATATYPE " type="id_String"/>
         <mapperTableEntries name="C_OPERATOR" expression="from_src_ont.C_OPERATOR " type="id_String"/>
         <mapperTableEntries name="C_DIMCODE" expression="from_OE_ONT.STAGING_PATH.length()>0?from_OE_ONT.STAGING_PATH:from_OE_ONT.TREE_PATH" type="id_String"/>
-        <mapperTableEntries name="C_COMMENT" expression="from_src_ont.C_COMMENT " type="id_Object" nullable="true"/>
-        <mapperTableEntries name="C_TOOLTIP" expression="from_src_ont.C_TOOLTIP " type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_COMMENT" expression="from_OE_ONT.C_COMMENT " type="id_Object" nullable="true"/>
+        <mapperTableEntries name="C_TOOLTIP" expression="from_OE_ONT.TOOLTIP " type="id_String" nullable="true"/>
         <mapperTableEntries name="M_APPLIED_PATH" expression="from_OE_ONT.M_APPLIED_PATH " type="id_String"/>
         <mapperTableEntries name="UPDATE_DATE" expression="from_src_ont.UPDATE_DATE" type="id_Date"/>
         <mapperTableEntries name="DOWNLOAD_DATE" expression="from_src_ont.DOWNLOAD_DATE" type="id_Date" nullable="true"/>
@@ -1985,6 +1985,7 @@
       <column comment="" key="false" length="3500" name="STARTDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="BASECODE" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -2003,6 +2004,7 @@
         <mapperTableEntries name="STARTDATE_SOURCE_PATH" expression="from_oe_target_ont.STARTDATE_STAGING_PATH " type="id_String" nullable="true"/>
         <mapperTableEntries name="ENDDATE_SOURCE_PATH" expression="from_oe_target_ont.ENDDATE_STAGING_PATH " type="id_String" nullable="true"/>
         <mapperTableEntries name="BASECODE" expression="from_oe_target_ont.BASECODE " type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_NAME" expression="from_oe_target_ont.C_NAME " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="from_oe_target_ont" expressionFilter="from_oe_target_ont.M_APPLIED_PATH.equals(&quot;@&quot;)" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="TARGET_ID" type="id_Integer" nullable="true"/>
@@ -2173,7 +2175,7 @@
         <mapperTableEntries name="MODIFIER_CD" expression="from_srxc_obsfct.MODIFIER_CD" type="id_String"/>
         <mapperTableEntries name="INSTANCE_NUM" expression="from_srxc_obsfct.INSTANCE_NUM" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="from_srxc_obsfct.VALTYPE_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TVAL_CHAR" expression="from_srxc_obsfct.TVAL_CHAR" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TVAL_CHAR" expression="from_srxc_obsfct.VALTYPE_CD.equalsIgnoreCase(&quot;t&quot;)?to_tmap.C_NAME  : from_srxc_obsfct.TVAL_CHAR  " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="from_srxc_obsfct.NVAL_NUM" type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" expression="from_srxc_obsfct.VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" expression="from_srxc_obsfct.QUANTITY_NUM" type="id_String" nullable="true"/>
@@ -2204,6 +2206,7 @@
         <mapperTableEntries name="STARTDATE_SOURCE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENDDATE_SOURCE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="BASECODE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_NAME" type="id_String" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="from_srxc_obsfct" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="ALL_MATCHES" lookupMode="LOAD_ONCE" persistent="true">
         <mapperTableEntries name="ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -5102,6 +5105,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="M_APPLIED_PATH" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="0" name="BASECODE" nullable="true" pattern="" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
       <uiProperties/>
@@ -5121,6 +5125,7 @@
         <mapperTableEntries name="ENDDATE_SOURCE_PATH" expression="row28.ENDDATE_STAGING_PATH " type="id_String" nullable="true"/>
         <mapperTableEntries name="M_APPLIED_PATH" expression="row28.M_APPLIED_PATH " type="id_String" nullable="true"/>
         <mapperTableEntries name="BASECODE" expression="row28.BASECODE " type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME" expression="row28.NAME " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row28" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="TARGET_ID" type="id_Integer" nullable="true"/>
@@ -5209,7 +5214,7 @@
         <mapperTableEntries name="MODIFIER_CD" expression="row29.MODIFIER_CD " type="id_String"/>
         <mapperTableEntries name="INSTANCE_NUM" expression="row29.INSTANCE_NUM" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="row29.VALTYPE_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TVAL_CHAR" expression="row29.TVAL_CHAR" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TVAL_CHAR" expression="row29.VALTYPE_CD.equalsIgnoreCase(&quot;t&quot;)?copyOfto_tmap.NAME : row29.TVAL_CHAR" type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="row29.NVAL_NUM" type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" expression="row29.VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" expression="row29.QUANTITY_NUM" type="id_String" nullable="true"/>
@@ -5241,6 +5246,7 @@
         <mapperTableEntries name="ENDDATE_SOURCE_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="M_APPLIED_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="BASECODE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="NAME" type="id_String" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="row29" activateExpressionFilter="true" activateCondensedTool="true" matchingMode="ALL_MATCHES" lookupMode="LOAD_ONCE" persistent="true">
         <mapperTableEntries name="ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -9727,6 +9733,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="BASECODE"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="C_NAME"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
@@ -11692,6 +11701,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="BASECODE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NAME"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>

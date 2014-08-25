@@ -1,2 +1,4 @@
-PID;OID;EncounterID;downloadDate;importDate;startDate;updateDate;endDate
-PID;SIC;EncID;downloadDate;importDate;startDate;updateDate;endDate
+PID	OID	EncounterID	downloadDate	importDate	startDate	updateDate	endDate
+PID	SIC	EncID	downloadDate	importDate	startDate	updateDate	endDate
+PatientID	BioID						
+Patient							

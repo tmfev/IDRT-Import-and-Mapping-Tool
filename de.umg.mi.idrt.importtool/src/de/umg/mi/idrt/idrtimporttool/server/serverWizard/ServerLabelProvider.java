@@ -23,13 +23,13 @@ public class ServerLabelProvider extends LabelProvider {
 	public Image getImage(Object element) {
 
 		File imgImportFile = FileHandler.getBundleFile("/images/i2b2_16.png");
-		File tmImageFile = FileHandler.getBundleFile("/images/searchtool.png");
-if (tmImageFile== null)
-	try {
-		throw new Exception();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+		File tmImageFile = FileHandler.getBundleFile("/images/searchtool16.png");
+		if (tmImageFile== null)
+			try {
+				throw new Exception();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		Device device = new Device() {
 
