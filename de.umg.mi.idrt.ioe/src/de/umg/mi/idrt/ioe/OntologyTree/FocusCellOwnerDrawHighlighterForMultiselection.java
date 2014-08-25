@@ -11,13 +11,15 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.ViewerRow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.GCData;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Widget;
+
+import de.umg.mi.idrt.ioe.Application;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * Hack for solving the jface Bug 268135 (https://bugs.eclipse.org/bugs/show_bug.cgi?id=268135) [Viewers] [CellEditors]
@@ -66,21 +68,9 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
      * @return the color or <code>null</code> to use the default
      */
     protected Color getSelectedCellBackgroundColor(ViewerCell cell) {
-    	Device dev = new Device() {
-			
-			@Override
-			public void internal_dispose_GC(long hDC, GCData data) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public long internal_new_GC(GCData data) {
-				// TODO Auto-generated method stub
-				return 0;
-			}
-		};
-		Color col = new Color(dev,203,232,246);
+    	Color col =Application.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
+    	//203,232,246
+//		Color col = C
 		return col;
 //        return cell.getItem().getDisplay().getSystemColor(new Color(dev,203,232,246));
     }

@@ -177,27 +177,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 													SWT.NONE);
 											newItem.setText(item);
 											newItem.setData(item);
-											// newItem.setImage(new Image(new
-											// Device() {
-											//
-											// @Override
-											// public int internal_new_GC(GCData
-											// data) {
-											// // TODO Auto-generated method
-											// stub
-											// return 0;
-											// }
-											//
-											// @Override
-											// public void
-											// internal_dispose_GC(int hDC,
-											// GCData data) {
-											// // TODO Auto-generated method
-											// stub
-											//
-											// }
-											// }, new
-											// ImageData("C:/Desktop/1.png")));
 										}
 									}
 									projectTab_assignedUserTree.removeAll();
