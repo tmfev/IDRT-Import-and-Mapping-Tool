@@ -34,21 +34,6 @@
          </property>
       </product>
    </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="de.umg.mi.idrt.importtool.IDRT"
-            name="IDRT">
-      </category>
-      <view
-            allowMultiple="false"
-            category="de.umg.mi.idrt.importtool.IDRT"
-            class="de.umg.mi.idrt.importtool.views.ServerView"
-            icon="images/addServer.png"
-            id="de.umg.mi.idrt.importtool.ServerView"
-            name="IDRT Import Tool">
-      </view>
-   </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
