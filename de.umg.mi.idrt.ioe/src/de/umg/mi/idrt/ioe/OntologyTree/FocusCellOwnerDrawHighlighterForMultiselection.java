@@ -14,6 +14,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.GCData;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Widget;
@@ -68,11 +69,13 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
      * @return the color or <code>null</code> to use the default
      */
     protected Color getSelectedCellBackgroundColor(ViewerCell cell) {
-    	Color col =Application.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
+//    	Color col =Application.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT);
+//    	Color c = getSelectedCellBackgroundColor(cell);
     	//203,232,246
 //		Color col = C
-		return col;
-//        return cell.getItem().getDisplay().getSystemColor(new Color(dev,203,232,246));
+//		return col;
+//        return cell.getItem().getDisplay().getSystemColor(new Color(Display.getCurrent(),203,232,246))
+    	return new Color(Display.getCurrent(),203,232,246);
     }
   
     /**
@@ -91,6 +94,7 @@ public class FocusCellOwnerDrawHighlighterForMultiselection extends FocusCellHig
      * @return the color or <code>null</code> to use the default
      */
     protected Color getSelectedCellForegroundColor(ViewerCell cell) {
+//    	return new Color(Display.getCurrent(),255,255,0);
         return null;
     }
 

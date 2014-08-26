@@ -107,7 +107,7 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 		else if (element instanceof OntologyTreeSubNode) {
 			OntologyTreeSubNode subNode = (OntologyTreeSubNode)element;
 			if (subNode.getStagingName()!=null)
-				cell.setText("(" + (subNode.getStagingName()+")"));
+				cell.setText("(asd" + (subNode.getStagingName()+")"));
 			else {
 //				System.out.println(subNode.getParent().getName());
 				cell.setText("{no mapping found}");

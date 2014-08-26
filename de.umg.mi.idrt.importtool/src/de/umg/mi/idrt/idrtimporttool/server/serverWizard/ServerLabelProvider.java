@@ -26,8 +26,8 @@ public class ServerLabelProvider extends LabelProvider {
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
-		Image tmImage = ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/searchtool16.png");
-		Image imgImport = ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/i2b2_16.png");
+		Image tmImage = ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/searchtool16.png");
+		Image imgImport = ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/i2b2_16.png");
 //		Image imgImport = new Image(device, imgImportFile.getAbsolutePath());
 //		Image tmImage = new Image(device, tmImageFile.getAbsolutePath());
 		if (element instanceof Server) {
