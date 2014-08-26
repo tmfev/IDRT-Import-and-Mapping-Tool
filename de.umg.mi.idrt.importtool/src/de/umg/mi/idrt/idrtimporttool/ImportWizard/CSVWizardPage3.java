@@ -1143,7 +1143,7 @@ public class CSVWizardPage3 extends WizardPage {
 					clearTables.notifyListeners(SWT.Selection, new Event());
 				}
 			});
-			refreshBtn.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/refresh.gif"));
+			refreshBtn.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/refresh.gif"));
 			clearTables = new Button(buttonComposite, SWT.PUSH);
 			clearTables.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 			clearTables.setText(Messages.CSVWizardPageThree_ClearTable);

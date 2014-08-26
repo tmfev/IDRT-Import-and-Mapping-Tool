@@ -15,7 +15,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="de.umg.mi.idrt.IDRTImportTool.application"
+            application="de.umg.mi.idrt.importtool.application"
             name="IDRT Import Tool">
          <property
                name="appName"

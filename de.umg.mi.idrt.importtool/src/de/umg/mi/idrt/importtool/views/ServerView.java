@@ -1310,7 +1310,7 @@ public static String getCsvPathSpecific() {
 					true, 1, 1));
 
 			btnStop = new Button(progressBarComp, SWT.PUSH);
-			btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.IDRTImportTool", "images/terminate_co.gif"));
+			btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/terminate_co.gif"));
 			btnStop.setToolTipText("Terminate Import!");
 			btnStop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 			btnStop.setEnabled(false);
