@@ -10,22 +10,19 @@
   	<module>de.umg.mi.idrt.ioe.feature</module>
     <module>de.umg.mi.idrt.importtool</module>
     <module>de.umg.mi.idrt.ioe</module>
+     <module>de.umg.mi.idrt.ioe.master</module>
   </modules>
-
-  
   <properties>
     <tycho.version>0.19.0</tycho.version>
-
     <kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>
   </properties>
-
+  
   <repositories>
     <repository>
       <id>kepler</id>
-      <url>${kepler-repo.url}</url>
       <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/kepler</url>
     </repository>
-
   </repositories>
 
   <build>

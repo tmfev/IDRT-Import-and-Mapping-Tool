@@ -49,7 +49,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
       <plugin id="ch.qos.logback.slf4j" fragment="true"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ning.async-http-client"/>
-      <plugin id="de.umg.mi.idrt.IDRTImportTool"/>
+      <plugin id="de.umg.mi.idrt.importtool"/>
       <plugin id="de.umg.mi.idrt.ioe"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
