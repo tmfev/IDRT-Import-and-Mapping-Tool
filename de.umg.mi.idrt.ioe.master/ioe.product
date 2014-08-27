@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.1.2" useFeatures="true" includeLaunchers="true">
+<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="images/tmf.jpg"/>
@@ -20,6 +20,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </aboutInfo>
 
    <configIni use="default">
+      <win32></win32>
    </configIni>
 
    <launcherArgs>
@@ -29,14 +30,12 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
 
    <windowImages/>
 
-
    <launcher name="IOE">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
       <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>
@@ -215,7 +214,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </plugins>
 
    <features>
-      <feature id="de.umg.mi.ioe.feature" version="1.1.2.qualifier"/>
+      <feature id="de.umg.mi.ioe.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>
