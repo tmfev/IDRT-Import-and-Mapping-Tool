@@ -123,6 +123,47 @@
             </command>
          </menu>
          <menu
+               label="Server">
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.addServer"
+                  label="New Target Server..."
+                  style="push">
+            </command>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.editServer"
+                  label="Edit Target Server"
+                  style="push">
+            </command>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.deleteServer"
+                  label="Delete Target Server"
+                  style="push">
+            </command>
+            <separator
+                  name="de.umg.mi.idrt.ioe.separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.addSourceServer"
+                  label="New Source Server..."
+                  style="push">
+            </command>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.editSourceServer"
+                  label="Edit Source Server"
+                  style="push">
+            </command>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.deleteSourceServer"
+                  label="Delete Source Server"
+                  style="push">
+            </command>
+            <separator
+                  name="de.umg.mi.idrt.ioe.separator2"
+                  visible="true">
+            </separator>
+         </menu>
+         <menu
                label="Target i2b2">
             <command
                   commandId="de.umg.mi.idrt.ioe.newInstance"
@@ -131,18 +172,15 @@
             </command>
          </menu>
          <menu
-               label="Expert Options">
-            <command
-                  commandId="de.umg.mi.idrt.ioe.addRegex"
-                  label="Add Regular Expression"
-                  style="push">
-            </command>
-         </menu>
-         <menu
                label="Options">
             <command
                   commandId="de.umg.mi.idrt.ioe.options"
-                  label="Options"
+                  label="Options..."
+                  style="push">
+            </command>
+            <command
+                  commandId="de.umg.mi.idrt.ioe.addRegex"
+                  label="Add Regular Expression..."
                   style="push">
             </command>
          </menu>

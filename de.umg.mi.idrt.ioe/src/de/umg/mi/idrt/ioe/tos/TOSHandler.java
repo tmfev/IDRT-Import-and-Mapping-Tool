@@ -106,10 +106,13 @@ public class TOSHandler {
 			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
 		}
 		else {
+			if (item.getM_APPLIED_PATH() == null){
+				item.setM_APPLIED_PATH("@");
+			}
 			if (item.getM_APPLIED_PATH().equals("@"))
 				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
 			else {
-//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+				//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
 				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
 			}
 		}
@@ -149,13 +152,13 @@ public class TOSHandler {
 				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes, basecode,
 				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
 				sourceSystemCD,	valueTypeCD,m_applied_path);
-//		System.out.println("!!!adding: " + treePath);
+		//		System.out.println("!!!adding: " + treePath);
 		if (treeLevel!=0) {
 			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path())) {
 				OntologyEditorView.getOntologyTargetTree().addTargetNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
-				
+
 			}
-				else {
+			else {
 				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
 			}
 

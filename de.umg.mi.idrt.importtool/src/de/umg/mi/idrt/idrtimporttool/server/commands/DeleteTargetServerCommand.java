@@ -30,8 +30,15 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 					"Delete Multiple Servers?",
 					"Do you really want to delete the selected servers?");
 		} else {
-			String currentServerName = viewer.getTree().getSelection()[0]
-					.getText();
+			String currentServerName="";
+			if (viewer.getTree().getSelection().length == 0){
+				MessageDialog.openInformation(Application.getShell(), "No Server", "Please select a target server first!");
+				return false;
+			}
+			else 
+				currentServerName = viewer.getTree().getSelection()[0]
+						.getText();
+
 			result = MessageDialog.openConfirm(Application.getShell(), "Delete "
 					+ currentServerName + "?",
 					"Do you really want to delete the server "
