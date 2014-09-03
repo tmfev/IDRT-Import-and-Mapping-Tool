@@ -62,8 +62,11 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
+
+import au.com.bytecode.opencsv.CSVReader;
 import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerTable;
@@ -89,6 +92,10 @@ public class DBWizardPage2 extends WizardPage {
 	private static Server server;
 	private static Menu importServerMenu;
 	private static String tableName;
+	
+	private static char DEFAULTDELIM = ';';
+
+	private static char QUOTECHAR='\"';
 	/**
 	 * 
 	 * @return all checked tables
@@ -200,7 +207,254 @@ public class DBWizardPage2 extends WizardPage {
 	//
 	// return metaString;
 	// }
+	public static Table fillTable(Table table) {
+		try {
 
+			
+			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
+
+			char inputDelim = DEFAULTDELIM;
+			CSVReader reader = new CSVReader(
+					new FileReader(schemaFile),
+					inputDelim);
+			String[] testLine = reader.readNext();
+			reader.close();
+
+			HashMap<Integer,String> patientIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> objectIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> encounterIDMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> downloadDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> importDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> startDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> updateDateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> endDateMap = new HashMap<Integer, String>();
+
+
+			if (testLine != null) {
+
+				if (testLine.length == 1) {
+					System.err
+					.println("Wrong delimiter?"); 
+					if (inputDelim == DEFAULTDELIM) {
+						inputDelim = '\t';
+						System.err
+						.println("Delimiter set to: \\t"); 
+					} else {
+						inputDelim = DEFAULTDELIM;
+						System.err
+						.println("Delimiter set to: " 
+								+ DEFAULTDELIM);
+					}
+				}
+
+				reader = new CSVReader(new FileReader(
+						schemaFile), inputDelim, QUOTECHAR);
+
+				String [] schemaContent = reader.readNext();
+
+
+
+				int counter = 0;
+				while ((schemaContent = reader.readNext()) != null) {
+					if (schemaContent[0] != null && schemaContent[0].length()>0)
+						patientIDMap.put(counter, schemaContent[0]);
+					if (schemaContent[1] != null && schemaContent[1].length()>0)
+						objectIDMap.put(counter, schemaContent[1]);
+					if (schemaContent[2] != null && schemaContent[2].length()>0)
+						encounterIDMap.put(counter, schemaContent[2]);
+					if (schemaContent[3] != null && schemaContent[3].length()>0)
+						downloadDateMap.put(counter, schemaContent[3]);
+					if (schemaContent[4] != null && schemaContent[4].length()>0)
+						importDateMap.put(counter, schemaContent[4]);
+					if (schemaContent[5] != null && schemaContent[5].length()>0)
+						startDateMap.put(counter, schemaContent[5]);
+					if (schemaContent[6] != null && schemaContent[6].length()>0)
+						updateDateMap.put(counter, schemaContent[6]);
+					if (schemaContent[7] != null && schemaContent[7].length()>0)
+						endDateMap.put(counter, schemaContent[7]);
+					counter++;
+				}
+				//				System.out.println(objectIDMap);
+				//				System.out.println(encounterIDMap);
+				//				System.out.println(downloadDateMap);
+				//				System.out.println(importDateMap);
+				//				System.out.println(startDateMap);
+				//				System.out.println(updateDateMap);
+			}
+			int pidLocation = -1;
+			int pidWeight = 99999;
+			int objLocation = -1;
+			int objWeight = 99999;
+			int encLocation = -1;
+			int encWeight = 99999;
+			int dwnLocation = -1;
+			int dwnWeight = 99999;
+			int impLocation = -1;
+			int impWeight = 99999;
+			int srtLocation = -1;
+			int strWeight = 99999;
+			int updLocation = -1;
+			int updWeight = 99999;
+			int endLocation = -1;
+			int endWeight = 99999;
+			TableItem[] items = table.getItems();
+			for (int i = 0; i < items.length; i++) {
+
+				int pidmapSize = patientIDMap.size()-1;
+				int objmapSize = objectIDMap.size()-1;
+				int encmapSize = encounterIDMap.size()-1;
+				int dwnmapSize = downloadDateMap.size()-1;
+				int impmapSize = importDateMap.size()-1;
+				int srtmapSize = startDateMap.size()-1;
+				int updmapSize = updateDateMap.size()-1;
+				int endmapSize = endDateMap.size()-1;
+
+				for (int i2 = pidmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
+						if (pidLocation>=0) {
+							if (i2 < pidWeight) {
+								table.getItems()[pidLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+								pidWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							pidLocation = i;
+							pidWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = objmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
+						if (objLocation>=0) {
+							if (i2 < objWeight) {
+								table.getItems()[objLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+								objWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							objLocation = i;
+							objWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = encmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
+						if (encLocation>=0) {
+							if (i2 < encWeight) {
+								table.getItems()[encLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+								encWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							encLocation = i;
+							encWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = dwnmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
+						if (dwnLocation>=0) {
+							if (i2 < dwnWeight) {
+								table.getItems()[dwnLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+								dwnWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							dwnLocation = i;
+							dwnWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = impmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
+						if (impLocation>=0) {
+							if (i2 < impWeight) {
+								table.getItems()[impLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+								impWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							impLocation = i;
+							impWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = srtmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
+						if (srtLocation>=0) {
+							if (i2 < strWeight) {
+								table.getItems()[srtLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+								strWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							srtLocation = i;
+							strWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = updmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
+						if (updLocation>=0) {
+							if (i2 < updWeight) {
+								table.getItems()[updLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+								updWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							updLocation = i;
+							updWeight = i2;
+						}
+					}
+				}
+
+				for (int i2 = endmapSize; i2 >=0; i2--) {
+					if (items[i].getText(0).toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
+						if (endLocation>=0) {
+							if (i2 < endWeight) {
+								table.getItems()[endLocation].setText(3, "");
+								table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+								endWeight = i2;
+							}
+						}
+						else {
+							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							endLocation = i;
+							endWeight = i2;
+						}
+					}
+				}
+
+			}
+
+			return table;
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	@SuppressWarnings("unchecked")
 	private static void clearSingleTable() {
 		try {
@@ -416,61 +670,9 @@ public class DBWizardPage2 extends WizardPage {
 			tblclmnMetadata.setWidth(100);
 			tblclmnMetadata.setText("Metadata");
 
-			// tblclmnPIDGen = new TableColumn(table, SWT.NONE);
-			// tblclmnPIDGen.setWidth(100);
-			// tblclmnPIDGen.setText("PID-Generator");
-
 			composite = new Composite(compositeTables, SWT.NONE);
 			composite.setLayoutData(BorderLayout.SOUTH);
 			composite.setLayout(new GridLayout(3, false));
-			// btnSaveTable = new Button(composite, SWT.NONE);
-			// btnSaveTable.addSelectionListener(new SelectionAdapter() {
-			// @Override
-			// public void widgetSelected(SelectionEvent e) {
-			// saveCurrentTable();
-			// }
-			// });
-			//
-			// btnSaveTable.setText("Save Config Table");
-			// btnLoadTable = new Button(composite, SWT.NONE);
-			// btnLoadTable.setText("Load Config Table");
-			// btnLoadTable.addSelectionListener(new SelectionListener() {
-			//
-			// @Override
-			// public void widgetSelected(SelectionEvent e) {
-			// loadCurrentTableFromDisc();
-			// }
-			//
-			// @Override
-			// public void widgetDefaultSelected(SelectionEvent e) {
-			// }
-			// });
-			// AUTOLOADANDSAVE
-			// btnAutoLoadNSave = new Button(composite, SWT.CHECK);
-			// btnAutoLoadNSave.setText("Auto Load and Save");
-			// btnAutoLoadNSave.setSelection(Boolean.parseBoolean(defaultProps.getProperty(("autoLoadAndSave"))));
-			// btnAutoLoadNSave.addSelectionListener(new SelectionListener() {
-			//
-			// @Override
-			// public void widgetSelected(SelectionEvent e) {
-			// if(btnAutoLoadNSave.getSelection()){
-			// defaultProps.setProperty(("autoLoadAndSave"),"true");
-			// }
-			// else {
-			// defaultProps.setProperty(("autoLoadAndSave"),"false");
-			// }
-			// try {
-			// defaultProps.store(new FileWriter(new
-			// File(properties.getAbsolutePath())), "");
-			// } catch (IOException e1) {
-			// e1.printStackTrace();
-			// }
-			// }
-			//
-			// @Override
-			// public void widgetDefaultSelected(SelectionEvent e) {
-			// }
-			// });
 
 			Button btnGuessSchema = new Button(composite, SWT.PUSH);
 			btnGuessSchema.setText("Guess Schema");
@@ -493,40 +695,11 @@ public class DBWizardPage2 extends WizardPage {
 					if (cont) {
 						DBWizardPage2.this.clearMetaDataFromTable();
 
-						TableItem[] items = table.getItems();
-
-						for (int i = 0; i < items.length; i++) {
-
-							if (items[i].getText(0).toLowerCase()
-									.contains("patient")
-									|| items[i].getText(0).toLowerCase()
-									.contains("pid")) {
-								table.getItems()[i].setText(3, "PatientID");
-								continue;
-							} else if (items[i].getText(0).toLowerCase()
-									.contains("encounter")
-									|| items[i].getText(0).toLowerCase()
-									.contains("enc")) {
-								table.getItems()[i].setText(3, "EncounterID");
-								continue;
-							} else if (items[i].getText(0).toLowerCase()
-									.contains("update")) {
-								table.getItems()[i].setText(3, "UpdateDate");
-								continue;
-							} else if (items[i].getText(0).toLowerCase()
-									.contains("import")) {
-								table.getItems()[i].setText(3, "ImportDate");
-								continue;
-							} else if (items[i].getText(0).toLowerCase()
-									.contains("download")) {
-								table.getItems()[i].setText(3, "DownloadDate");
-								continue;
-							} else if (items[i].getText(0).toLowerCase()
-									.contains("source")) {
-								table.getItems()[i].setText(3, "SourceSystem");
-								continue;
-							}
-						}
+						
+						
+						fillTable(table);
+						
+					
 					}
 				}
 			});
@@ -718,8 +891,7 @@ public class DBWizardPage2 extends WizardPage {
 																.getParentItem()
 																.getParentItem()
 																.getText());
-										DBWizardPage2.this
-										.loadCurrentTableFromDB();
+										loadCurrentTableFromDB();
 									}
 									// if (btnAutoLoadNSave.getSelection()){
 									if (serverViewer.getTree().getSelection()[0]

@@ -182,13 +182,14 @@ public class CSVWizardPage2 extends WizardPage {
 			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
 
-			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-			labelCleanUp.setText(Messages.CSVWizardPageTwo_CleanUp);
+			//TODO REIMPLEMENT
+//			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+//			labelCleanUp.setText(Messages.CSVWizardPageTwo_CleanUp);
 
-			cleanUpBtn = new Button(container, SWT.CHECK);
-			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
-					.getProperty("cleanUp"))); 
-			new Label(container, SWT.NONE);
+//			cleanUpBtn = new Button(container, SWT.CHECK);
+//			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
+//					.getProperty("cleanUp"))); 
+//			new Label(container, SWT.NONE);
 
 			Label folder = new Label(container, SWT.FILL | SWT.CENTER);
 			folder.setText(Messages.CSVWizardPageTwo_CSVFolder);
@@ -352,14 +353,15 @@ public class CSVWizardPage2 extends WizardPage {
 
 			new Label(container, SWT.NONE);
 			
-			Label labelImportTerms = new Label(container, SWT.NONE);
-			labelImportTerms.setText(Messages.CSVWizardPageTwo_ImpAndMapST);
-			labelImportTerms
-					.setToolTipText(Messages.CSVWizardPageTwo_ImpAndMapSTToolTip);
-			checkTerms = new Button(container, SWT.CHECK);
-			checkTerms.setSelection(false);
-
-			new Label(container, SWT.NONE);
+			//TODO REIMPLEMENT
+//			Label labelImportTerms = new Label(container, SWT.NONE);
+//			labelImportTerms.setText(Messages.CSVWizardPageTwo_ImpAndMapST);
+//			labelImportTerms
+//					.setToolTipText(Messages.CSVWizardPageTwo_ImpAndMapSTToolTip);
+//			checkTerms = new Button(container, SWT.CHECK);
+//			checkTerms.setSelection(false);
+//
+//			new Label(container, SWT.NONE);
 
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText(Messages.CSVWizardPageTwo_SaveSettings);

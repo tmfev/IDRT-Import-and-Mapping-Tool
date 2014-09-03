@@ -442,7 +442,7 @@ public class MyOntologyTrees{
 			}
 		}
 		else {
-			System.out.println(testNode.getName() + " " + testNode.getOntologyCellAttributes().getC_FULLNAME());
+//			System.out.println(testNode.getName() + " " + testNode.getOntologyCellAttributes().getC_FULLNAME());
 			
 			if (confirm<0) {
 				String folderOrItem = node.isLeaf()?"Item":"Folder";
@@ -817,7 +817,12 @@ public class MyOntologyTrees{
 		if (sourceNode.getOntologyCellAttributes() != null) {
 			newNode.getTargetNodeAttributes().setSubNodeList((
 					sourceNode.getTargetNodeAttributes().getSubNodeList()));
-
+			
+			for (OntologyTreeSubNode subNode : sourceNode.getTargetNodeAttributes().getSubNodeList()){
+				subNode.setParent(newNode);
+//				newNode.getTargetNodeAttributes().getSubNodeList().add(subNode);
+			}
+			
 			newNode.getTargetNodeAttributes().setVisualattributes(
 					sourceNode.getTargetNodeAttributes().getVisualattribute());
 			newNode.getTargetNodeAttributes().setName(sourceNode.getName());
@@ -835,7 +840,6 @@ public class MyOntologyTrees{
 		OntologyEditorView.getTargetTreeViewer().setExpandedState(newNode, true);
 		OntologyEditorView.getTargetTreeViewer().refresh();
 		this.getOntologyTreeTarget().getNodeLists().add(newNode);
-
 		if (sourceNode.hasChildren()) {
 			for (int x = 0; x < sourceNode.getChildCount(); x++) {
 				OntologyTreeNode child = (OntologyTreeNode) sourceNode

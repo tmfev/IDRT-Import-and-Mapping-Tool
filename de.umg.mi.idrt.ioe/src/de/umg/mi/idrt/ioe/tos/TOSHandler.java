@@ -146,6 +146,7 @@ public class TOSHandler {
 			String valueTypeCD,
 			String m_applied_path){
 		//TODO FIX META ALWAYS NULL
+		
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 

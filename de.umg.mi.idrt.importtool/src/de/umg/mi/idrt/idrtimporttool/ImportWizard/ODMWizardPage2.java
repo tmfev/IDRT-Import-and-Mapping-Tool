@@ -135,13 +135,14 @@ public class ODMWizardPage2 extends WizardPage {
 			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
 
-			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
+			//TODO REIMPLEMENT
+//			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+//			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
 
-			checkCleanUp = new Button(container, SWT.CHECK);
-			checkCleanUp.setSelection(Boolean.parseBoolean(defaultProps
-					.getProperty("cleanUp"))); 
-			new Label(container, SWT.NONE);
+//			checkCleanUp = new Button(container, SWT.CHECK);
+//			checkCleanUp.setSelection(Boolean.parseBoolean(defaultProps
+//					.getProperty("cleanUp"))); 
+//			new Label(container, SWT.NONE);
 
 			Label folder = new Label(container, SWT.FILL | SWT.CENTER);
 			folder.setText(Messages.ODMWizardPageTwo_ODMFolder);
@@ -202,13 +203,14 @@ public class ODMWizardPage2 extends WizardPage {
 
 			new Label(container, SWT.NONE);
 
-			Label labelImportTerms = new Label(container, SWT.NONE);
-			labelImportTerms.setText(Messages.ODMWizardPageTwo_ImportSTandMap);
-			labelImportTerms
-					.setToolTipText(Messages.ODMWizardPageTwo_ImportSTandMapToolTip);
-			checkTerms = new Button(container, SWT.CHECK);
-			checkTerms.setSelection(false);
-			new Label(container, SWT.NONE);
+			//TODO REIMPLEMENT
+//			Label labelImportTerms = new Label(container, SWT.NONE);
+//			labelImportTerms.setText(Messages.ODMWizardPageTwo_ImportSTandMap);
+//			labelImportTerms
+//					.setToolTipText(Messages.ODMWizardPageTwo_ImportSTandMapToolTip);
+//			checkTerms = new Button(container, SWT.CHECK);
+//			checkTerms.setSelection(false);
+//			new Label(container, SWT.NONE);
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText(Messages.ODMWizardPageTwo_SaveSettings);
 			checkContext = new Button(container, SWT.CHECK);

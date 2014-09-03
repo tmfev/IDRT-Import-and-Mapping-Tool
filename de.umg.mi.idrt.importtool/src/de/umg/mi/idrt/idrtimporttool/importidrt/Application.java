@@ -13,7 +13,6 @@ import org.eclipse.ui.PlatformUI;
 public class Application implements IApplication {
 
 	public static Shell getShell() {
-	
 		return PlatformUI.getWorkbench().getDisplay().getActiveShell();
 	}
 	/*

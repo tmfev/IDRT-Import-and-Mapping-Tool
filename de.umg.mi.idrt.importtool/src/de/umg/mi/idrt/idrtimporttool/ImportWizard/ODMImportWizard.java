@@ -18,7 +18,6 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
 
@@ -116,8 +115,8 @@ public class ODMImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			final boolean cleanUp = ODMWizardPage2.getCleanUp();
-			final boolean terms = ODMWizardPage2.getTerms();
+			final boolean cleanUp = false;//ODMWizardPage2.getCleanUp();
+			final boolean terms = false;//ODMWizardPage2.getTerms();
 			final boolean truncateQueries = ODMWizardPage2.getTruncateQueries();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
@@ -163,7 +162,7 @@ public class ODMImportWizard extends Wizard {
 
 			contextMap.put("folderMain", miscPathReplaced); 
 
-			if (ODMWizardPage2.getTerms()) {
+			if (terms) {
 				/**
 				 * ST-Import
 				 */

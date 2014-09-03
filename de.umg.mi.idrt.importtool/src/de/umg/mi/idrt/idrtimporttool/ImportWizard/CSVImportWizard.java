@@ -13,8 +13,6 @@ import java.util.Properties;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -220,7 +218,7 @@ public class CSVImportWizard extends Wizard {
 //		final String dbSchema = WizardPage1.getDBSchemaText();
 		final boolean truncate = CSVWizardPage2.getTruncate();
 		final boolean truncateQueries = CSVWizardPage2.getTruncateQueries();
-		final boolean cleanUp = CSVWizardPage2.getCleanUp();
+		final boolean cleanUp = false;//CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
 	
 		final String quoteChar = CSVWizardPage2.getQuoteCharText();
@@ -234,7 +232,7 @@ public class CSVImportWizard extends Wizard {
 
 		final String externalIDFilePath = CSVWizardPage2
 				.getExternalIDFilePath();
-		final boolean terms = CSVWizardPage2.getTerms();
+		final boolean terms = false;//CSVWizardPage2.getTerms();
 		final boolean save = CSVWizardPage2.getSaveContext();
 
 		// saving the last table before import

@@ -528,7 +528,7 @@ public class CSVWizardPage3 extends WizardPage {
 						reader.close();
 						boolean fine = false;
 						for (int i = 1; i < line1.length; i++) {
-							System.out.println(line4[i]);
+//							System.out.println(line4[i]);
 							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") )
 							{
 								fine=true;
@@ -983,10 +983,10 @@ public class CSVWizardPage3 extends WizardPage {
 									tmp = tmp + ".cfg.csv";
 									String newConfig = tmp;
 
-									System.out.println(newConfig);
+//									System.out.println(newConfig);
 									configList.add(newConfig);
-									System.out.println("added " + serverListViewer.getTable()
-											.getSelection()[0].getText());
+//									System.out.println("added " + serverListViewer.getTable()
+//											.getSelection()[0].getText());
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
 									table.removeAll();

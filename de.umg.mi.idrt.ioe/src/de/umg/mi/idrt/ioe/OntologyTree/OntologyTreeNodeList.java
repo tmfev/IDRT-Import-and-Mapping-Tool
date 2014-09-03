@@ -29,7 +29,6 @@ public class OntologyTreeNodeList {
 //	}
 
 	public void add( OntologyTreeNode node ){
-
 		this.addNodyByPath( node.getTreePath(), node );
 	}
 
