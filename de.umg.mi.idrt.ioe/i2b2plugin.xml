@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:tab xmlns:tns="http://www.example.org/i2b2plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/i2b2plugin i2b2plugin.xsd ">
+  <tns:tabName>tns:tabName</tns:tabName>
+  <tns:column>
+    <tns:header>tns:header</tns:header>
+    <tns:modifier>true</tns:modifier>
+    <tns:observation>
+      <tns:patient_id>tns:patient_id</tns:patient_id>
+      <tns:event_id>tns:event_id</tns:event_id>
+      <tns:instance_num>tns:instance_num</tns:instance_num>
+      <tns:value>tns:value</tns:value>
+      <tns:start_date>tns:start_date</tns:start_date>
+      <tns:end_date>tns:end_date</tns:end_date>
+    </tns:observation>
+  </tns:column>
+</tns:tab>

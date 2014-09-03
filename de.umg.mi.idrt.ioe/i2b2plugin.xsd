@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/i2b2plugin" xmlns:tns="http://www.example.org/i2b2plugin" elementFormDefault="qualified">
+
+
+
+    <complexType name="observation">
+    	<sequence>
+    		<element name="patient_id" type="string"></element>
+    		<element name="event_id" type="string"></element>
+            <element name="instance_num" type="string"></element>
+            <element name="value" type="string"></element>
+    		<element name="start_date" type="string"></element>
+    		<element name="end_date" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="column">
+    	<sequence>
+            <element name="header" type="string"></element>
+            <element name="modifier" type="boolean"></element>
+            <element name="observation" type="tns:observation"></element>
+    	</sequence>
+    </complexType>
+
+
+
+    <complexType name="tab">
+    	<sequence>
+            <element name="tabName" type="string"></element>
+            <element name="column" type="tns:column"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="tab" type="tns:tab"></element>
+</schema>

@@ -27,7 +27,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowPerspectiveBar(false);
 		configurer.setShowProgressIndicator(false);
 		//configurer.setShowPerspectiveBar(true);
-		configurer.setTitle("I2B2 Ontology Editor V"
+		configurer.setTitle("i2b2 Ontology Editor V"
 				+ Activator.getDefault().getBundle().getVersion());
 //		IPreferenceStore apiStore = PlatformUI.getPreferenceStore();
 //		apiStore.setValue(IWorkbenchPreferenceConstants.DOCK_PERSPECTIVE_BAR,

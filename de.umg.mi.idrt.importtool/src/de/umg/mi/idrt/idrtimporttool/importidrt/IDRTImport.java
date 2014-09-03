@@ -415,7 +415,6 @@ public class IDRTImport {
 		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		setCompleteContext(contextMap);
 
-
 		Thread workerThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -496,6 +495,7 @@ public class IDRTImport {
 	 * @param project The i2b2 project within the server.
 	 */
 	public static void runTruncateProject(final Server server, final String project) {
+		System.out.println("trunc: " + project);
 		Thread workerThread = new Thread(new Runnable() {
 			@Override
 			public void run() {

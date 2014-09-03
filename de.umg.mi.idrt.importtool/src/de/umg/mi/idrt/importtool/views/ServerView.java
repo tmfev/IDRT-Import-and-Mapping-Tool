@@ -818,7 +818,7 @@ public static String getCsvPathSpecific() {
 							Messages.ServerView_TruncateProjectQuestion,
 							Messages.ServerView_TruncateProjectConfirmText);
 					if(result) {
-						IDRTImport.runTruncateProject(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+						IDRTImport.runTruncateProject(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 					}
 				}
 			});
@@ -873,7 +873,7 @@ public static String getCsvPathSpecific() {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 				}
 			});
 
@@ -888,25 +888,26 @@ public static String getCsvPathSpecific() {
 			});
 			//TODO CREATE MENU AND SET IT
 
-			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
-			removeLocksMenuItem.setText("Remove Locks");
-			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
-
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-
-				}
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					boolean result = MessageDialog.openConfirm(Application.getShell(),
-							"Remove Locks?",
-							"Do you really want to remove ALL locks from the database?\nSYSDBA REQUIRED!");
-					if(result) {
-						IDRTImport.runRemoveLocks(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
-					}
-				}
-			});
+			//TODO REIMPLEMENT REMOVELOCKs
+//			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
+//			removeLocksMenuItem.setText("Remove Locks");
+//			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
+//
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//
+//				}
+//
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					boolean result = MessageDialog.openConfirm(Application.getShell(),
+//							"Remove Locks?",
+//							"Do you really want to remove ALL locks from the database?\nSYSDBA REQUIRED!");
+//					if(result) {
+//						IDRTImport.runRemoveLocks(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+//					}
+//				}
+//			});
 			final MenuItem dropIOETablesMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			dropIOETablesMenuItem.setText("Drop IOE Tables");
 			dropIOETablesMenuItem.addSelectionListener(new SelectionListener() {
@@ -922,7 +923,7 @@ public static String getCsvPathSpecific() {
 							"Drop IOE Tables?",
 							"Do you really want to drop the IOE specific tables?");
 					if(result) {
-						IDRTImport.dropIOETables(ServerList.getTargetServers().get(labelNameCurrent.getText()),labelDBUserCurrent.getText());
+						IDRTImport.dropIOETables(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 					}
 				}
 			});
@@ -1033,7 +1034,7 @@ public static String getCsvPathSpecific() {
 							importMenuItem.setEnabled(false);
 							truncateMenuItem.setEnabled(false);
 							dropIOETablesMenuItem.setEnabled(false);
-							removeLocksMenuItem.setEnabled(false);
+//							removeLocksMenuItem.setEnabled(false);
 							loadOntologyMenuItem.setEnabled(false);
 							importTermsMenuItem.setEnabled(false);
 							deleteServerMenuItem.setEnabled(true);
@@ -1045,7 +1046,7 @@ public static String getCsvPathSpecific() {
 							importMenuItem.setEnabled(true);
 							truncateMenuItem.setEnabled(true);
 							dropIOETablesMenuItem.setEnabled(true);
-							removeLocksMenuItem.setEnabled(true);
+//							removeLocksMenuItem.setEnabled(true);
 
 							if (!command.isEnabled()) {
 								loadOntologyMenuItem.setEnabled(false);
@@ -1060,7 +1061,7 @@ public static String getCsvPathSpecific() {
 						deleteServerMenuItem.setEnabled(false);
 						importMenuItem.setEnabled(false);
 						truncateMenuItem.setEnabled(false);
-						removeLocksMenuItem.setEnabled(false);
+//						removeLocksMenuItem.setEnabled(false);
 						dropIOETablesMenuItem.setEnabled(false);
 						loadOntologyMenuItem.setEnabled(false);
 						importTermsMenuItem.setEnabled(false);

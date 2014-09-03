@@ -5,7 +5,8 @@
          id="application"
          point="org.eclipse.core.runtime.applications">
       <application
-            icon="images/i2b2_16.png">
+            icon="images/tmf.png"
+            visible="true">
          <run
                class="de.umg.mi.idrt.ioe.Application">
          </run>
@@ -41,6 +42,10 @@
          <property
                name="aboutText"
                value="The IDRT Import Tool is part of the Integrated Data Repository Toolkit (http://www.tmf-ev.de/Themen/Projekte/V091_MI_IDRT.aspx) which was funded by TMF – Infrastructures for Medical Research (http://www.tmf-ev.de).&#x0A;Data integration jobs created using &lt;Talend Open Studio for Data Integration&gt; with the job files being freely available under GNU LGPL (http://www.gnu.org/licenses/lgpl.html) at http://idrt.imise.uni-leipzig.de. GUI and platform created using &lt;Eclipse Rich Client Platform&gt;.&#x0A;&#x0A;License condition and copyright: &#x0A;This software, including all of its parts and accompanying documents, is protected by copyright. The rights belong to TMF unless otherwise indicated. TMF is unable to give a guarantee with regard to the accuracy of content and error-free operation. Source code is made available by TMF for the purpose of customizing and improving the software. Inasmuch as software based on changed source code is used in practice, the changed source code shall be made available to TMF in digitized form free of charge, without any exploitation restrictions, for the purpose of further developing and improving the software, to the extent not precluded by legal regulations or contractual obligations (including those toward third parties). Reproduction and transmission, also of changed source code, are permitted. Any references to TMF&apos;s copyright shall be left in the code and the text file with the references to TMF&apos;s conditions of use shall be enclosed.&#x0A;&#x0A;Contact:&#x0A;IDRT Import Tool and CSV-, SQL-, ODM-Import-Modules: benjamin.baum@med.uni-goettingen.de; christian.bauer@med.uni-goettingen.de&#x0A;§21-Import-Module: igor.engel@imi.med.uni-erlangen.de; thomas.ganslandt@uk-erlangen.de&#x0A;Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebastian.staeubert@imise.uni-leipzig.de">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/i2b2_hive_16.gif,icons/i2b2_hive_32.gif,icons/i2b2_hive_48.gif,icons/i2b2_hive_64.gif,icons/i2b2_hive_128.gif">
          </property>
       </product>
    </extension>
@@ -162,6 +167,16 @@
                   name="de.umg.mi.idrt.ioe.separator2"
                   visible="true">
             </separator>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.importServer"
+                  label="Import Target Server"
+                  style="push">
+            </command>
+            <command
+                  commandId="de.goettingen.i2b2.importtool.idrt.exportServer"
+                  label="Export Target Server"
+                  style="push">
+            </command>
          </menu>
          <menu
                label="Target i2b2">

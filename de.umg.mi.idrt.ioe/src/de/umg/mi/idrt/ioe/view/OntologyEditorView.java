@@ -1984,10 +1984,10 @@ public class OntologyEditorView extends ViewPart {
 		mainComposite = parent;
 		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
 		highlightedTargetNodes = new HashSet<OntologyTreeNode>();
-		Label label = new Label(mainComposite, SWT.LEFT);
+		Label label = new Label(mainComposite, SWT.CENTER);
 		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
-				"images/IDRT.gif"));
+				"images/idrt_01.png"));
 
 		TargetInstances targetProjects = new TargetInstances();
 

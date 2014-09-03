@@ -20,22 +20,30 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </aboutInfo>
 
    <configIni use="default">
-      <win32></win32>
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.6 -Xms1024m -Xmx2048m</vmArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms512m -Xmx1024m</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16.gif" i32="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32.gif" i48="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48.gif" i64="/de.umg.mi.idrt.ioe/icons/i2b2_hive_64.gif" i128="/de.umg.mi.idrt.ioe/icons/i2b2_hive_128.gif"/>
+
 
    <launcher name="IOE">
+      <macosx icon="/de.umg.mi.idrt.ioe/icons/Mac.icns"/>
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16_32.bmp"
+            winSmallLow="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16_8.bmp"
+            winMediumHigh="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32_32.bmp"
+            winMediumLow="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32_8.bmp"
+            winLargeHigh="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48_32.bmp"
+            winLargeLow="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48_8.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
       <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>

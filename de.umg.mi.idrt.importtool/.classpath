@@ -31,7 +31,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/postgresql-8.4-703.jdbc4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/postgresql-9.3-1102.jdbc4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/saxon9.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/StatusListener29.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/systemRoutines.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend_file_enhanced_20070724.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TalendJobs/lib/talend-oracle-timestamptz.jar"/>

@@ -12,7 +12,6 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_DatabaseType" prompt="DB_TargetI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="null"/>
   </context>
   <context confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
@@ -26,7 +25,6 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_DatabaseType" prompt="DB_TargetI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="null"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
     <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
@@ -40,7 +38,19 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value=""/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_DatabaseType" prompt="DB_TargetI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
+  </context>
+  <context confirmationNeeded="false" name="gmds">
+    <contextParameter comment="&quot;I2B2IDRT&quot;" name="project" prompt="project?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRTDEMO&quot;"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;192.168.46.132&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value=""/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="stwQ41hL4Fv096uhdGeE6g=="/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;xe&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@192.168.46.132:1521:xe"/>
+    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle.jdbc.OracleDriver&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M"/>
@@ -92,15 +102,15 @@
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
     <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.I2B2&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.CONCEPT_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MODIFIER_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.OBSERVATION_FACT&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_DIMENSION&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_MAPPING&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MASTER_QUERY_GLOBAL_TEMP&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.ENCOUNTER_MAPPING&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.VISIT_DIMENSION&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.I2B2 drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.CONCEPT_DIMENSION drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MODIFIER_DIMENSION drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.OBSERVATION_FACT drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_DIMENSION drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.PATIENT_MAPPING drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.MASTER_QUERY_GLOBAL_TEMP drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.ENCOUNTER_MAPPING drop storage&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot;+context.DB_StagingI2B2_Schema+ &quot;.VISIT_DIMENSION drop storage&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="select tables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
