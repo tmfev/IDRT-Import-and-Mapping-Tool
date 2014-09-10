@@ -91,4 +91,4 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Manifest-Version: 1.0
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.0.0.qualifier

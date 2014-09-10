@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="2.0.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="images/tmf.jpg"/>
@@ -29,7 +29,6 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
 
    <windowImages i16="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16.gif" i32="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32.gif" i48="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48.gif" i64="/de.umg.mi.idrt.ioe/icons/i2b2_hive_64.gif" i128="/de.umg.mi.idrt.ioe/icons/i2b2_hive_128.gif"/>
 
-
    <launcher name="IOE">
       <macosx icon="/de.umg.mi.idrt.ioe/icons/Mac.icns"/>
       <solaris/>
@@ -43,7 +42,6 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
             winLargeLow="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48_8.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
       <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>
@@ -222,7 +220,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </plugins>
 
    <features>
-      <feature id="de.umg.mi.ioe.feature" version="1.0.0.qualifier"/>
+      <feature id="de.umg.mi.ioe.feature"/>
    </features>
 
    <configurations>

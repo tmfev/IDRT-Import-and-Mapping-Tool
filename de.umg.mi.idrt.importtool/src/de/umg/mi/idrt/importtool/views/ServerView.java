@@ -55,7 +55,6 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -309,6 +308,7 @@ public static String getCsvPathSpecific() {
 				stringBuilder.append(ls);
 				counter++;
 			}
+			reader.close();
 			return stringBuilder.toString();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -863,19 +863,20 @@ public static String getCsvPathSpecific() {
 				}
 			});
 			new MenuItem(importMenu, SWT.SEPARATOR);
-			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
-			importTermsMenuItem.setText(Messages.ServerView_ImportST);
-			importTermsMenuItem.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-
-				}
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
-				}
-			});
+			//TODO REIMPLEMENT
+//			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
+//			importTermsMenuItem.setText(Messages.ServerView_ImportST);
+//			importTermsMenuItem.addSelectionListener(new SelectionListener() {
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//
+//				}
+//
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+//				}
+//			});
 
 			importMDRMenuItem = new MenuItem(importMenu, SWT.CASCADE);
 			importMDRMenuItem.setText("Import from MDR");
@@ -1036,7 +1037,7 @@ public static String getCsvPathSpecific() {
 							dropIOETablesMenuItem.setEnabled(false);
 //							removeLocksMenuItem.setEnabled(false);
 							loadOntologyMenuItem.setEnabled(false);
-							importTermsMenuItem.setEnabled(false);
+//							importTermsMenuItem.setEnabled(false);
 							deleteServerMenuItem.setEnabled(true);
 							editServerMenuItem.setEnabled(true);
 							exportServerMenuItem.setEnabled(true);
@@ -1054,7 +1055,7 @@ public static String getCsvPathSpecific() {
 							else {
 								loadOntologyMenuItem.setEnabled(true);
 							}
-							importTermsMenuItem.setEnabled(true);
+//							importTermsMenuItem.setEnabled(true);
 						}
 					} else {
 						editServerMenuItem.setEnabled(false);
@@ -1064,7 +1065,7 @@ public static String getCsvPathSpecific() {
 //						removeLocksMenuItem.setEnabled(false);
 						dropIOETablesMenuItem.setEnabled(false);
 						loadOntologyMenuItem.setEnabled(false);
-						importTermsMenuItem.setEnabled(false);
+//						importTermsMenuItem.setEnabled(false);
 						exportServerMenuItem.setEnabled(false);
 					}
 				}
