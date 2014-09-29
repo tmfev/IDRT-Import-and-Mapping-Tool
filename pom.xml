@@ -19,7 +19,7 @@
   
   <repositories>
     <repository>
-      <id>kepler</id>
+      <id>kepler_2</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/kepler</url>
     </repository>

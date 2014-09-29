@@ -23,7 +23,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms512m -Xmx1024m</vmArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms512m -Xmx1024m -Dosgi.nl=en</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
