@@ -22,6 +22,7 @@ public class AddTargetServerCommand extends AbstractHandler {
 
 		WizardDialog wizardDialog = new WizardDialog(viewer.getControl()
 				.getShell(), new AddServerWizard());
+		
 		wizardDialog.open();
 		viewer.refresh();
 
