@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
-  <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="C:/Desktop/IDRT22/"/>
+  <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
   <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
   <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
   <contextParameter comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
@@ -31,7 +31,7 @@
   <contextParameter comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" type="id_String" value="&quot;Patientendaten&quot;"/>
   <contextParameter comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" type="id_String" value="&quot;Ontology&quot;"/>
   <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" type="id_Boolean" value="false"/>
-  <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop/IDRT22/ODM/&quot;"/>
+  <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
   <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
   <contextParameter comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
   <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" type="id_String" value="&quot;ISO-8859-1&quot;"/>
