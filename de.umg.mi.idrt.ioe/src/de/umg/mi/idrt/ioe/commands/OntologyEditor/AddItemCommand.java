@@ -22,7 +22,7 @@ public class AddItemCommand extends AbstractHandler {
 		System.out.println("Adding Item");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
-		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
+		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node",true);
 
 		subRootNode.setID("customItem");
 		//		subRootNode.setTreePath("\\i2b2\\customNode\\");
@@ -50,15 +50,8 @@ public class AddItemCommand extends AbstractHandler {
 			counter++;
 		}
 
-
 		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		subRootNode.setTreeAttributes();
-		//			currentNode.add(subRootNode);
-		//			OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
-
-
-
-
 
 		OntologyEditorView.setCurrentTargetNode(subRootNode);
 
@@ -68,16 +61,11 @@ public class AddItemCommand extends AbstractHandler {
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
 
-
-
 		targetTreeViewer.refresh();
 		//		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
 
 		TreeViewerColumn column = OntologyEditorView.getTargetTreeViewerColumn();
 		column.getViewer().editElement(subRootNode, 0);
-		//		subRootNode.setID(subRootNode.getName());
-		//		subRootNode.setTreeAttributes();
-		//		System.out.println(test.getName());		
 		return null;
 	}
 }

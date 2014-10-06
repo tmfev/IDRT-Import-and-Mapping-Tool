@@ -20,6 +20,13 @@ public class TargetNodeAttributes {
 	private OntologyTreeNode parent;
 	private HashMap<String, String> targetNodeMap;
 	
+	public String getC_Basecode(){
+		return this.targetNodeMap.get(Resource.I2B2.NODE.TARGET.C_BASECODE);
+	}
+	public void setC_Basecode(String basecode){
+		this.targetNodeMap.put(Resource.I2B2.NODE.TARGET.C_BASECODE, basecode);
+	}
+	
 	/**
 	 * @return the targetNodeMap
 	 */

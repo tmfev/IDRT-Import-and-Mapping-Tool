@@ -163,7 +163,7 @@ public class MyOntologyTrees{
 		Console.info("Creating the source tree ...");
 
 		OntologyTreeNode rootNode = new OntologyTreeNode(
-				"OntologyTreeSourceRootNode");
+				"OntologyTreeSourceRootNode",false);
 		rootNode.setID("root");
 		rootNode.setTreePath("\\");
 		rootNode.setNodeType(NodeType.TREEROOT);
@@ -231,7 +231,7 @@ public class MyOntologyTrees{
 
 		this.setTargetRootNode(rootNode);
 
-		OntologyTreeNode targetOntologyi2b2RootNode = new OntologyTreeNode("Target-Ontology");
+		OntologyTreeNode targetOntologyi2b2RootNode = new OntologyTreeNode("Target-Ontology",false);
 		targetOntologyi2b2RootNode.setID("i2b2");
 		targetOntologyi2b2RootNode.setTreePath("\\i2b2\\");
 		targetOntologyi2b2RootNode.setTreePathLevel(0);
@@ -805,7 +805,7 @@ public class MyOntologyTrees{
 	public OntologyTreeNode moveTargetNode(OntologyTreeNode sourceNode,
 			OntologyTreeNode targetNode) {
 		OntologyTreeNode newNode = new OntologyTreeNode(
-				sourceNode.getName());
+				sourceNode.getName(), sourceNode.isCustomNode());
 
 		newNode.setID(sourceNode.getID());
 		newNode.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET);
@@ -832,7 +832,6 @@ public class MyOntologyTrees{
 		//		else {
 		//			System.out.println("sourceNode.getOntologyCellAttributes() == null");
 		//		}
-
 		newNode.setTreePath(targetNode.getTreePath() + sourceNode.getID() + "\\");
 		newNode.setTreePathLevel(targetNode.getTreePathLevel() + 1);
 		

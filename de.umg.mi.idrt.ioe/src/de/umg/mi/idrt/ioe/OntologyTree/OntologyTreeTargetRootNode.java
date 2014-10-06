@@ -18,7 +18,7 @@ public class OntologyTreeTargetRootNode extends OntologyTreeNode {
 
 	
 	public OntologyTreeTargetRootNode(String name) {
-		super(name);
+		super(name,false);
 		
 		
 	}

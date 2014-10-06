@@ -383,7 +383,6 @@ public class TOSConnector {
 				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			
 				exit = tos.runJobInTOS((getARGV()));
-
 				if (exit==0) {
 					StatusListener.setStatus(0, "","");
 					StatusListener.setSubStatus(0, "");
@@ -393,6 +392,9 @@ public class TOSConnector {
 				else {
 					ProgressView.setProgress(0, "", "");
 					MessageDialog.openError(Application.getShell(), "Failure!", "Upload failed!");
+					StatusListener.setStatus(0, "","");
+					StatusListener.setSubStatus(0, "");
+					ProgressView.setProgress(0);
 				}
 				//				} catch (Exception e) {
 				//					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "

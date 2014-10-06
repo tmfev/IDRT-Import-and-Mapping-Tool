@@ -31,6 +31,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	/**
 	 * 
 	 */
+	private boolean isCustomNode = false;
 	private static final long serialVersionUID = -874444767245977081L;
 	private boolean searchResult = false;
 	private boolean highlighted = false;
@@ -103,10 +104,11 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	 * 
 	 * @param name
 	 *            the name of the new node
+	 * @param isCustomNode 
 	 */
-	public OntologyTreeNode(String name) {
+	public OntologyTreeNode(String name, boolean isCustomNode) {
 		this.children = new ArrayList<OntologyTreeNode>();
-
+		this.isCustomNode = isCustomNode;
 		this.ontologyCellAttributes = new OntologyCellAttributes();
 		this.setName(name);
 		//		counter++;
@@ -134,12 +136,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	 * <code>child</code> is 167: * <code>null</code>. 168:
 	 */
 	public void add(OntologyTreeNode child) {
-//		System.out.println("ADD " + this.getName());
+		//		System.out.println("ADD " + this.getName());
 		this.getChildren().add(child);
-//		if (!this.isModifier()){
-//		child.setTreePath(this.getTreePath() + child.getID() + "\\");
-//		child.setTreePathLevel(this.getTreePathLevel() + 1);
-//		}
+		//		if (!this.isModifier()){
+		//		child.setTreePath(this.getTreePath() + child.getID() + "\\");
+		//		child.setTreePathLevel(this.getTreePathLevel() + 1);
+		//		}
 		super.add(child);
 		/* adding stuff the child now */
 
@@ -277,22 +279,22 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	}
 
 	public boolean isModifier() {
-		
+
 		isModifier = this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("r") 
 				|| this.getTargetNodeAttributes().getVisualattribute().toLowerCase().startsWith("d");
-				//|| 	(this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d"):false 
-				//|| (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r"):false;
+		//|| 	(this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d"):false 
+		//|| (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null)?this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r"):false;
 		boolean isModifier2 = false;
 		if (this.getOntologyCellAttributes().getC_VISUALATTRIBUTES()!=null){
-		isModifier2 = this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d")
-							|| this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r");
+			isModifier2 = this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("d")
+					|| this.getOntologyCellAttributes().getC_VISUALATTRIBUTES().toLowerCase().startsWith("r");
 		}
-		
-		
-		
+
+
+
 		isModifier = isModifier||isModifier2;
 		return isModifier;
-				
+
 	}
 
 	public boolean isSearchResult() {
@@ -515,10 +517,10 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 			//		} else if (getTreePath() == null) {
 		} else {
 			if (!this.isModifier()){
-			this.setTreePath(((OntologyTreeNode) parent).getTreePath()
-					+ this.id + "\\");
-			this.setTreePathLevel(((OntologyTreeNode) parent)
-					.getTreePathLevel() + 1);
+				this.setTreePath(((OntologyTreeNode) parent).getTreePath()
+						+ this.id + "\\");
+				this.setTreePathLevel(((OntologyTreeNode) parent)
+						.getTreePathLevel() + 1);
 			}
 		}
 	}
@@ -549,7 +551,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	 *            the level of this node in a tree
 	 */
 	public void setTreePathLevel(int treePathLevel) {
-//		System.out.println("SETTING TREEPATHLEVEL: " + treePathLevel + " FOR " + this.getName());
+		//		System.out.println("SETTING TREEPATHLEVEL: " + treePathLevel + " FOR " + this.getName());
 		this.treePathLevel = treePathLevel;
 	}
 
@@ -602,6 +604,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	public int compareTo(Object o) {
 		return ((OntologyTreeNode) o).getName().compareTo(this.getName());
 		//		return 0;
+	}
+	public boolean isCustomNode() {
+		return isCustomNode;
+	}
+	public void setCustomNode(boolean isCustomNode) {
+		this.isCustomNode = isCustomNode;
 	}
 
 }

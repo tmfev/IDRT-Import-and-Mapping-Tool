@@ -23,9 +23,9 @@ public class AddFolderCommand extends AbstractHandler {
 		System.out.println("Adding Node");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
-		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node");
+		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node",true);
 
-		subRootNode.setID("customNode");
+		
 		//		subRootNode.setTreePath("\\i2b2\\customNode\\");
 		//		subRootNode.setTreeAttributes();
 		//		subRootNode.setTreePathLevel(1);
@@ -34,8 +34,15 @@ public class AddFolderCommand extends AbstractHandler {
 		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
 		subRootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		subRootNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, "@");
-		
+		subRootNode.setID("customNode");
+		subRootNode.setCustomNode(true);
 		currentNode.add(subRootNode);
+		
+		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
+		//		targetTreeViewer.expandToLevel(subRootNode, 10);
+		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
+		targetTreeViewer.editElement(subRootNode, 0);
+		
 		subRootNode.setTreeAttributes();
 //		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {
 //			System.out.println(n.getTreePathLevel() + " " + n.getTreePath());
@@ -53,7 +60,6 @@ public class AddFolderCommand extends AbstractHandler {
 			counter++;
 		}
 
-
 		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		subRootNode.setTreeAttributes();
 		//			currentNode.add(subRootNode);
@@ -66,10 +72,7 @@ public class AddFolderCommand extends AbstractHandler {
 		OntologyEditorView.setCurrentTargetNode(subRootNode);
 
 
-		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-		//		targetTreeViewer.expandToLevel(subRootNode, 10);
-		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
-		targetTreeViewer.editElement(subRootNode, 0);
+		
 
 
 

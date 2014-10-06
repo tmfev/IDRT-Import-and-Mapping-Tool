@@ -321,11 +321,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-//				Shell shell = new Shell();
-//				shell.setSize(844, 536);
-//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//				mainComposite = new Composite(shell, SWT.NONE);
-//				mainComposite.setLayout(new BorderLayout(0, 0));
+		//				Shell shell = new Shell();
+		//				shell.setSize(844, 536);
+		//				shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//				mainComposite = new Composite(shell, SWT.NONE);
+		//				mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -336,7 +336,7 @@ public class OntologyEditorView extends ViewPart {
 					listOfFile.delete();
 				}
 			}
-			
+
 			folder = FileHandler.getBundleFile("/temp/");
 			listOfFiles = folder.listFiles();
 
@@ -709,7 +709,14 @@ public class OntologyEditorView extends ViewPart {
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		targetColumn.setEditingSupport(new EditingSupport(targetTreeViewer) {
 			protected boolean canEdit(Object element) {
-				return true;
+				OntologyTreeNode treeNode = ((OntologyTreeNode) element);
+				System.out.println(treeNode.getName());
+				if ((OntologyTreeNode)element == OntologyEditorView.getOntologyTargetTree().getI2B2RootNode()){
+					System.err.println("You cannot rename the root node!");
+					return false;
+				}
+				else			
+					return true;
 			}
 
 			protected CellEditor getCellEditor(Object element) {
@@ -720,10 +727,48 @@ public class OntologyEditorView extends ViewPart {
 				return ((OntologyTreeNode) element).getName();
 			}
 			protected void setValue(Object element, Object value) {
-				((OntologyTreeNode) element).getTargetNodeAttributes().setName((String)value);
-				((OntologyTreeNode) element).setName((String)value);
+				String newName = (String)value;
+				OntologyTreeNode treeNode = ((OntologyTreeNode) element);
+				setPath(treeNode, newName, treeNode.getTreePathLevel());
+				treeNode.getTargetNodeAttributes().setName(newName);
+				treeNode.setName(newName);
+				treeNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,newName);
 				targetTreeViewer.update(element, null);
+				setNotYetSaved(true);
 				EditorTargetInfoView.refresh();
+			}
+			protected void setPath(OntologyTreeNode treeNode, String value, int hlevel){
+				if (treeNode.isCustomNode()){
+					
+					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
+					System.out.println("aa: " + baseSplit[hlevel+1]);
+					baseSplit[hlevel+1] =value;
+					String newBase = "";
+					for (int i = 0; i < baseSplit.length; i++){
+						newBase += baseSplit[i]+"|";
+					}
+					newBase = newBase.substring(0, newBase.length()-1);
+					System.out.println(newBase);
+					treeNode.getTargetNodeAttributes().setC_Basecode(newBase);
+					treeNode.setID(value);
+					System.out.println("CUSTOMNODE");
+				}
+				
+				String treePath = treeNode.getTreePath();
+//				System.out.println(treeNode.getTreePath() + " "  + hlevel);
+				String [] pathSplit = treePath.split("\\\\");
+//				System.out.println(pathSplit[1]);
+				pathSplit[hlevel+1]=value;
+				String newPath = "";
+				for (int i = 0; i<pathSplit.length; i++){
+					newPath+=pathSplit[i]+"\\";
+				}
+				treeNode.setTreePath(newPath);
+//				System.out.println("new path: " + newPath);
+//				System.out.println("new name: " + (String)value);
+				for (OntologyTreeNode child : treeNode.getChildren()){
+					setPath(child, value, hlevel);
+				}
 			}
 		});
 
@@ -1121,7 +1166,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
-				
+
 				//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
 				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
@@ -1137,7 +1182,7 @@ public class OntologyEditorView extends ViewPart {
 					}
 				}
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
-				
+
 			}
 		});
 
@@ -1412,7 +1457,7 @@ public class OntologyEditorView extends ViewPart {
 			public void widgetSelected(SelectionEvent e) {
 				String studyID = currentStagingNode.getOntologyCellAttributes().getSEC_OBJ();
 				System.out.println("DELETING: " + studyID);
-				
+
 				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Delete "+ studyID + "?", "Do you really want to delete the complete study: " + studyID+"?");
 				if (confirm){
 					TOSConnector.deleteStudy(currentStagingServer,studyID);
@@ -1431,14 +1476,14 @@ public class OntologyEditorView extends ViewPart {
 					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 				}
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
-		
+
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
 		mntmExpandChildren.setText("Expand All Children");
 		mntmExpandChildren.addSelectionListener(new SelectionListener() {
@@ -1562,9 +1607,9 @@ public class OntologyEditorView extends ViewPart {
 		targetTreeViewer.setContentProvider(treeContentProvider);
 		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		targetTreeViewer.setInput(new OntologyTreeContentProvider().getTargetModel());
-//		if (targetTreeViewer.getTree().getItems().length>=2)
+		//		if (targetTreeViewer.getTree().getItems().length>=2)
 		targetTreeViewer.expandToLevel(3);
-		
+
 		final Tree tree = targetTreeViewer.getTree();
 		tree.addListener(SWT.MeasureItem, new Listener() {
 			public void handleEvent(Event event) {
@@ -1658,7 +1703,7 @@ public class OntologyEditorView extends ViewPart {
 				}
 				highlightedStagingNodes.clear();
 				if (stagingTreeViewer.getTree().getItemCount()>0)
-				stagingTreeViewer.refresh();
+					stagingTreeViewer.refresh();
 			}
 
 			@Override
@@ -1719,43 +1764,43 @@ public class OntologyEditorView extends ViewPart {
 		});
 
 		//TODO
-//		new MenuItem(menu, SWT.SEPARATOR);
-//		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
-//		mntmgetChildren.setText("TEST");
-//		mntmgetChildren.addSelectionListener(new SelectionListener() {
-//
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//
-//			}
-//
-//			@Override
-//			public void widgetSelected(SelectionEvent event) {
-//
-//				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
+		//		new MenuItem(menu, SWT.SEPARATOR);
+		//		MenuItem mntmgetChildren = new MenuItem(menu, SWT.PUSH);
+		//		mntmgetChildren.setText("TEST");
+		//		mntmgetChildren.addSelectionListener(new SelectionListener() {
+		//
+		//			@Override
+		//			public void widgetDefaultSelected(SelectionEvent e) {
+		//
+		//			}
+		//
+		//			@Override
+		//			public void widgetSelected(SelectionEvent event) {
+		//
+		//				System.out.println(getMyOntologyTree().getOntologyTreeSource().getNodeLists().getStringPathToNode().size());
 
-				//				System.out.println("**** STAGING: ****");
-				//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
-				//					System.out.println(child.getName());
-				//					for (OntologyTreeNode cchild : child.getChildren()) {
-				//						System.out.println("\t"+cchild.getName());
-				//					}
-				//				}
-				//				System.out.println("*****************");
-				//				System.out.println("**** TARGET: ****");
-				//				for (OntologyTreeNode child : getOntologyTargetTree().getRootNode().getChildren()) {
-				//					System.out.println(child.getName());
-				//					for (OntologyTreeNode cchild : child.getChildren()) {
-				//						System.out.println("\t"+cchild.getName());
-				//					}
-				//				}
-				//				System.out.println("*****************");
-				//				System.out.println("TARGET: " +getOntologyTargetTree().getNodeLists().getNumberOfItemNodes());
-				//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
+		//				System.out.println("**** STAGING: ****");
+		//				for (OntologyTreeNode child : getOntologyStagingTree().getRootNode().getChildren()) {
+		//					System.out.println(child.getName());
+		//					for (OntologyTreeNode cchild : child.getChildren()) {
+		//						System.out.println("\t"+cchild.getName());
+		//					}
+		//				}
+		//				System.out.println("*****************");
+		//				System.out.println("**** TARGET: ****");
+		//				for (OntologyTreeNode child : getOntologyTargetTree().getRootNode().getChildren()) {
+		//					System.out.println(child.getName());
+		//					for (OntologyTreeNode cchild : child.getChildren()) {
+		//						System.out.println("\t"+cchild.getName());
+		//					}
+		//				}
+		//				System.out.println("*****************");
+		//				System.out.println("TARGET: " +getOntologyTargetTree().getNodeLists().getNumberOfItemNodes());
+		//				System.out.println("STAGING:" +getOntologyStagingTree().getNodeLists().getNumberOfItemNodes());
 
-				//				System.gc();
-//			}
-//		});
+		//				System.gc();
+		//			}
+		//		});
 		new MenuItem(menu, SWT.SEPARATOR);
 
 
@@ -1955,7 +2000,7 @@ public class OntologyEditorView extends ViewPart {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -1966,7 +2011,7 @@ public class OntologyEditorView extends ViewPart {
 					listOfFile.delete();
 				}
 			}
-			
+
 			folder = FileHandler.getBundleFile("/temp/");
 			listOfFiles = folder.listFiles();
 
@@ -1976,11 +2021,11 @@ public class OntologyEditorView extends ViewPart {
 					listOfFile.delete();
 				}
 			}
-			
+
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		mainComposite = parent;
 		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
 		highlightedTargetNodes = new HashSet<OntologyTreeNode>();
@@ -2264,7 +2309,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 			else 
 				sortNumber = name;
-			
+
 			String newName;
 			if (sortNumber.matches("[0-9]{"+leading+"}")){
 				newName = name.substring(leading, name.length()).trim();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="2.0.0" useFeatures="true" includeLaunchers="true">
+<product name="de.umg.mi.idrt.ioe.product" uid="de.umg.mi.idrt.product.id" id="de.umg.mi.idrt.ioe.product" application="de.umg.mi.idrt.ioe.application" version="2.0.1" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="images/tmf.jpg"/>

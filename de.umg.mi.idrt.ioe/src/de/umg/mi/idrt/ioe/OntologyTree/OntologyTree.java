@@ -56,7 +56,7 @@ public class OntologyTree extends JTree {
 	 * @param nodeType
 	 */
 	public void addTargetModifierNodeByPath(OntologyItemTarget item, String ontologySource, Object nodeType) {
-		OntologyTreeNode node = new OntologyTreeNode(item.getName());
+		OntologyTreeNode node = new OntologyTreeNode(item.getName(),false);
 //		node.setModifier(true);
 		
 //		System.out.println("mapplied: " + item.getM_applied_path());
@@ -115,7 +115,7 @@ public class OntologyTree extends JTree {
 	public void addTargetNodeByPath(String i2b2Path, String name, String source,
 				OntologyItemTarget item, NodeType type) {
 //	System.out.println("ADDING TARGETNODE BY PATH: " + name);
-			OntologyTreeNode node = new OntologyTreeNode(name);
+			OntologyTreeNode node = new OntologyTreeNode(name,false);
 			node.setID(node.getIDFromPath(i2b2Path));
 			OntologyTreeNode testNode = this.getNodeLists().getNodeByPath(i2b2Path);
 			if (testNode!=null){
@@ -165,7 +165,7 @@ public class OntologyTree extends JTree {
 	 */
 	public void addModifierNodeByPath(OntologyItem item, String ontologySource,
 			NodeType nodeType) {
-		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME());
+		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME(),false);
 		node.setModifier(true);
 		String path = item.getM_APPLIED_PATH().substring(0,
 				item.getM_APPLIED_PATH().length() - 1)
@@ -191,7 +191,7 @@ public class OntologyTree extends JTree {
 	public void addNodeByPath(String i2b2Path, String name, String source,
 			OntologyItem item, NodeType type) {
 
-		OntologyTreeNode node = new OntologyTreeNode(name);
+		OntologyTreeNode node = new OntologyTreeNode(name,false);
 		node.setID(node.getIDFromPath(i2b2Path));
 		if (item != null)
 			node.setOntologyCellAttributes(item);

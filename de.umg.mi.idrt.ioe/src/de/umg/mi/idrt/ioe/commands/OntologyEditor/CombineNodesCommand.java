@@ -213,7 +213,7 @@ public class CombineNodesCommand extends AbstractHandler {
 			if (!found) {
 				numberOfNotFoundItems++;
 				if (numberOfNotFoundItems==1) {
-					unmatchedFolder = new OntologyTreeNode("Unmerged");
+					unmatchedFolder = new OntologyTreeNode("Unmerged",true);
 					unmatchedFolder.setID("Unmerged");
 					((OntologyTreeNode)NodeDropListener.getTargetNode()).add(unmatchedFolder);
 					unmatchedFolder.getOntologyCellAttributes().setC_VISUALATTRIBUTES("FA");

@@ -20,7 +20,7 @@ public class AddModifierCommand extends AbstractHandler {
 		System.out.println("Adding Modifier");
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
-		OntologyTreeNode modifierNode = new OntologyTreeNode("New Modifier");
+		OntologyTreeNode modifierNode = new OntologyTreeNode("New Modifier",true);
 
 		modifierNode.setID("customModifier");
 		//		subRootNode.setTreePath("\\i2b2\\customNode\\");
