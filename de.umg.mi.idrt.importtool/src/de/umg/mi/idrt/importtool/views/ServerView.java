@@ -703,23 +703,29 @@ public static String getCsvPathSpecific() {
 						lblPatientsCurrent.setText("..."); 
 
 						//Displays "Loading..." while DB loads.
+						Display.getDefault().asyncExec(new Runnable() {
+							
+							@Override
+							public void run() {
+							}
+						});
 						new Thread(new Runnable() {
 
 							@Override
 							public void run() {
-								File imgLoadingFile = FileHandler.getBundleFile("/images/loading.png");
-								Image imgLoading = new Image(parent.getDisplay(),
-										imgLoadingFile.getAbsolutePath());
-								final Shell loadingShell = new Shell(SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);//(SWT.NO_TRIM ); //SWT.ON_TOP
-								loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
-								loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
-								loadingShell.setBackgroundImage(imgLoading);
-								loadingShell.open();
+//								File imgLoadingFile = FileHandler.getBundleFile("/images/loading.png");
+//								Image imgLoading = new Image(parent.getDisplay(),
+//										imgLoadingFile.getAbsolutePath());
+//								final Shell loadingShell = new Shell(SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);//(SWT.NO_TRIM ); //SWT.ON_TOP
+//								loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
+//								loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
+//								loadingShell.setBackgroundImage(imgLoading);
+//								loadingShell.open();
 								lblObservationsCurrent.setText(server
 										.getConcepts(selectedItemString));
 								lblPatientsCurrent.setText(server
 										.getPatients(selectedItemString));
-								loadingShell.close();
+//								loadingShell.close();
 							}
 						}).run();
 					}
