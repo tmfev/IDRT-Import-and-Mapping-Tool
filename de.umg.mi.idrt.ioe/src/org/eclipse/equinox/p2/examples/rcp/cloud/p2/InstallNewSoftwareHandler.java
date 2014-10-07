@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipselabs.p2.rcpupdate.utils.handler;
+package org.eclipse.equinox.p2.examples.rcp.cloud.p2;
 
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob;

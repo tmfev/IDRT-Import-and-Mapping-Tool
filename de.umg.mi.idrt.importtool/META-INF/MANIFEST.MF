@@ -131,8 +131,5 @@ Export-Package: au.com.bytecode.opencsv,
  de.umg.mi.idrt.idrtimporttool.table,
  de.umg.mi.idrt.importtool.misc,
  de.umg.mi.idrt.importtool.views,
- de.umi.mi.passwordcrypt,
- org.eclipselabs.p2.rcpupdate.utils,
- org.eclipselabs.p2.rcpupdate.utils.handler,
- org.eclipselabs.p2.rcpupdate.utils.plugin
+ de.umi.mi.passwordcrypt
 

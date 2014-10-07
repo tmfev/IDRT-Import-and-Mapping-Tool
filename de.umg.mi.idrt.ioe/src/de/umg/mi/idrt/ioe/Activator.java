@@ -1,8 +1,13 @@
 package de.umg.mi.idrt.ioe;
 
+import org.eclipse.equinox.p2.examples.cloud.p2.CloudPolicy;
+import org.eclipse.equinox.p2.ui.Policy;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -11,8 +16,9 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.umg.mi.idrt.ioe"; //$NON-NLS-1$
-    
-	
+    public static CloudPolicy policy;
+    ServiceRegistration policyRegistration;
+	IPropertyChangeListener preferenceListener;
 	// The shared instance
 	private static Activator plugin;
 
@@ -35,13 +41,24 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-
-		// adding local log file listener
-		
-//		listener = new LogListener();
-//		Platform.addLogListener(listener);
+		registerP2Policy(context);
+		getPreferenceStore().addPropertyChangeListener(getPreferenceListener());
 	}
-
+	private IPropertyChangeListener getPreferenceListener() {
+		if (preferenceListener == null) {
+			preferenceListener = new IPropertyChangeListener() {
+				public void propertyChange(PropertyChangeEvent event) {
+					policy.updateForPreferences();
+				}
+			};
+		}
+		return preferenceListener;
+	}
+	private void registerP2Policy(BundleContext context) {
+		policy = new CloudPolicy();
+		policy.updateForPreferences();
+		policyRegistration = context.registerService(Policy.class.getName(), policy, null);
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
@@ -53,6 +70,10 @@ public class Activator extends AbstractUIPlugin {
 //	    listener = null;
 		
 		plugin = null;
+		policyRegistration.unregister();
+		policyRegistration = null;
+		getPreferenceStore().removePropertyChangeListener(preferenceListener);
+		preferenceListener = null;
 		super.stop(context);
 		
 	}

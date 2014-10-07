@@ -8,13 +8,17 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipselabs.p2.rcpupdate.utils.handler;
+package org.eclipse.equinox.p2.examples.rcp.cloud.p2;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.equinox.p2.operations.RepositoryTracker;
 import org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob;
 import org.eclipse.equinox.p2.ui.ProvisioningUI;
 import org.eclipse.swt.widgets.Shell;
@@ -33,6 +37,15 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 	 */
 	public PreloadingRepositoryHandler() {
 		// constructor
+		RepositoryTracker repoMan = getProvisioningUI().getRepositoryTracker();
+		try {
+			System.out.println("ADDING");
+			repoMan.addRepository(new URI("http://i2b2.mi.med.uni-goettingen.de/iitupdateSite/"), "i2b2 goe", getProvisioningUI().getSession());
+			System.out.println("ADDED");
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -45,6 +58,7 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 
 	void doExecuteAndLoad() {
 		if (preloadRepositories()) {
+			
 			//cancel any load that is already running
 			Job.getJobManager().cancel(LoadMetadataRepositoryJob.LOAD_FAMILY);
 			final LoadMetadataRepositoryJob loadJob = new LoadMetadataRepositoryJob(getProvisioningUI());

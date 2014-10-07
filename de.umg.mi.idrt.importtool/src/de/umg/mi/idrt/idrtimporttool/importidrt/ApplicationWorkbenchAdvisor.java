@@ -4,7 +4,6 @@ import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
-import org.eclipselabs.p2.rcpupdate.utils.P2Util;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
@@ -28,7 +27,6 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
     @Override
     public void preStartup() {
-    	 P2Util.checkForUpdates();
     }
     
 }

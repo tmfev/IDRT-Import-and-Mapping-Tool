@@ -8,7 +8,10 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipselabs.p2.rcpupdate.utils.handler;
+package org.eclipse.equinox.p2.examples.rcp.cloud.p2;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.eclipse.equinox.internal.p2.ui.dialogs.UpdateSingleIUWizard;
 import org.eclipse.equinox.p2.operations.RepositoryTracker;
@@ -27,6 +30,7 @@ public class UpdateHandler extends PreloadingRepositoryHandler {
 
 	protected void doExecute(LoadMetadataRepositoryJob job) {
 		if (hasNoRepos) {
+			System.out.println("no repos");
 			return;
 		}
 		UpdateOperation operation = getProvisioningUI().getUpdateOperation(null, null);
