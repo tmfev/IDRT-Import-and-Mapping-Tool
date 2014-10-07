@@ -9,7 +9,9 @@ Import-Package: au.com.bytecode.opencsv,
  de.umg.mi.idrt.idrtimporttool.server.Settings,
  de.umg.mi.idrt.importtool.misc,
  de.umg.mi.idrt.importtool.views,
- org.eclipselabs.p2.rcpupdate.utils
+ org.eclipselabs.p2.rcpupdate.utils,
+ org.eclipselabs.p2.rcpupdate.utils.handler,
+ org.eclipselabs.p2.rcpupdate.utils.plugin
 Bundle-ClassPath: .,
  lib/cdatetime-0.14.0.jar,
  lib/commons-lang-2.5.jar,
@@ -87,7 +89,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.equinox.p2.metadata;bundle-version="2.0.0",
  org.eclipse.equinox.event;bundle-version="1.3.0",
  org.eclipse.equinox.util;bundle-version="1.0.500",
- org.eclipse.equinox.ds;bundle-version="1.4.101"
+ org.eclipse.equinox.ds;bundle-version="1.4.101",
+ org.eclipse.equinox.p2.engine;bundle-version="2.3.0",
+ org.eclipse.equinox.p2.metadata.repository;bundle-version="1.2.100",
+ org.eclipse.equinox.p2.touchpoint.eclipse;bundle-version="2.1.200",
+ org.eclipse.equinox.p2.touchpoint.natives;bundle-version="1.1.100"
 Bundle-ActivationPolicy: lazy
 Manifest-Version: 1.0
 Bundle-SymbolicName: de.umg.mi.idrt.ioe;singleton:=true
