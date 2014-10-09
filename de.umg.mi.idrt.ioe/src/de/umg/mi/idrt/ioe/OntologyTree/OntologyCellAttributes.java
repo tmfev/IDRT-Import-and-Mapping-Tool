@@ -13,7 +13,7 @@ public class OntologyCellAttributes {
 
 	int C_HLEVEL;
 	int C_TOTALNUM;
-	Object C_METADATAXML;
+	String C_METADATAXML;
 	String C_COMMENT;
 	Date UPDATE_DATE;
 	Date DOWNLOAD_DATE;
@@ -88,7 +88,7 @@ public class OntologyCellAttributes {
 	 * @return the c_METADATAXML
 	 */
 	public String getC_METADATAXML() {
-		return ontologyTable.get("C_METADATAXML".toLowerCase());
+		return C_METADATAXML;
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class OntologyCellAttributes {
 	/**
 	 * @param c_METADATAXML the c_METADATAXML to set
 	 */
-	public void setC_METADATAXML(Object c_METADATAXML) {
+	public void setC_METADATAXML(String c_METADATAXML) {
 		C_METADATAXML = c_METADATAXML;
 	}
 

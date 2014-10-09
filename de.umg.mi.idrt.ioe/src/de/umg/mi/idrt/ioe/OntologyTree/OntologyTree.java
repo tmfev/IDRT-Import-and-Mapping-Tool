@@ -190,7 +190,7 @@ public class OntologyTree extends JTree {
 	
 	public void addNodeByPath(String i2b2Path, String name, String source,
 			OntologyItem item, NodeType type) {
-
+System.out.println("ITEM META: " + item.getC_METADATAXML());
 		OntologyTreeNode node = new OntologyTreeNode(name,false);
 		node.setID(node.getIDFromPath(i2b2Path));
 		if (item != null)

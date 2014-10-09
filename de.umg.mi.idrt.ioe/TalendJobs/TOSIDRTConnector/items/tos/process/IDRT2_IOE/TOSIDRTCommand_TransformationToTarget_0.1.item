@@ -746,7 +746,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="(from_OE_ONT.BASECODE.split(&quot;:&quot;).length>1)?&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(from_OE_ONT.BASECODE.split(&quot;:&quot;)[1].equals(&quot;xml&quot;)?true:false):false; " type="id_Boolean"/>
       </varTables>
@@ -758,7 +758,7 @@
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="from_OE_ONT.VISUALATTRIBUTES " type="id_String"/>
         <mapperTableEntries name="C_TOTALNUM" expression="from_src_ont.C_TOTALNUM " type="id_BigDecimal" nullable="true"/>
         <mapperTableEntries name="C_BASECODE" expression="from_OE_ONT.BASECODE " type="id_String" nullable="true"/>
-        <mapperTableEntries name="C_METADATAXML" expression="Var.var1 ? &quot;&lt;?xml version=\&quot;1.0\&quot;?>&lt;ValueMetadata>&lt;Version>3.02&lt;/Version>&lt;CreationDateTime>&quot;+TalendDate.getDate(&quot;YYYY-MM-DD&quot;)+&quot;&lt;/CreationDateTime>&lt;TestID>U/UTP&lt;/TestID>&lt;TestName>&quot;+from_OE_ONT.C_NAME+&quot;&lt;/TestName>&lt;DataType>Integer&lt;/DataType>&lt;Flagstouse>HL&lt;/Flagstouse>&lt;Oktousevalues>Y&lt;/Oktousevalues>&lt;UnitValues>&lt;NormalUnits>&lt;/NormalUnits>&lt;EqualUnits>&quot;+from_OE_ONT.C_NAME+&quot;&lt;/EqualUnits>&lt;ExcludingUnits/>&lt;ConvertingUnits>&lt;Units/>&lt;MultiplyingFactor/>&lt;/ConvertingUnits>&lt;/UnitValues>&lt;Analysis>&lt;Enums />&lt;Counts />&lt;New/>&lt;/Analysis>&lt;i2b2>&lt;sourceDataType>durationDateTime&lt;/sourceDataType>&lt;/i2b2>&lt;/ValueMetadata>&quot;:&quot;&quot;                    " type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_METADATAXML" expression="from_OE_ONT.METADATAXML " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_FACTTABLECOLUMN" expression="from_OE_ONT.STAGING_DIMENSION.equalsIgnoreCase(&quot;concept_dimension&quot;)?&quot;concept_cd&quot;:&quot;modifier_cd&quot; " type="id_String"/>
         <mapperTableEntries name="C_TABLENAME" expression="from_OE_ONT.STAGING_DIMENSION " type="id_String"/>
         <mapperTableEntries name="C_COLUMNNAME" expression="from_OE_ONT.STAGING_DIMENSION.equalsIgnoreCase(&quot;concept_dimension&quot;)?&quot;concept_path&quot;:&quot;modifier_path&quot;  " type="id_String"/>

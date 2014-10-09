@@ -146,7 +146,7 @@ public class EditorStagingInfoView extends ViewPart {
 		addValueItem(items, row++,  attributes.getC_VISUALATTRIBUTES() );
 		addValueItem(items, row++,  String.valueOf( attributes.getC_TOTALNUM() ) );
 		addValueItem(items, row++,  attributes.getC_BASECODE() );
-		addValueItem(items, row++,  String.valueOf( attributes.getC_METADATAXML() ) );
+		addValueItem(items, row++,  attributes.getC_METADATAXML() );
 		addValueItem(items, row++,  attributes.getC_FACTTABLECOLUMN() );
 		addValueItem(items, row++,  attributes.getC_TABLENAME() );
 		addValueItem(items, row++,  attributes.getC_COLUMNNAME() );

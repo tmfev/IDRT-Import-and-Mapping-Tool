@@ -436,7 +436,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 
 	public void setOntologyCellAttributes(int C_HLEVEL, String C_FULLNAME,
 			String C_NAME, String C_SYNONYM_CD, String C_VISUALATTRIBUTES,
-			int C_TOTALNUM, String C_BASECODE, Object C_METADATAXML,
+			int C_TOTALNUM, String C_BASECODE, String C_METADATAXML,
 			String C_FACTTABLECOLUMN, String C_TABLENAME, String C_COLUMNNAME,
 			String C_COLUMNDATATYPE, String C_OPERATOR, String C_DIMCODE,
 			Object C_COMMENT, String C_TOOLTIP, String M_APPLIED_PATH,
