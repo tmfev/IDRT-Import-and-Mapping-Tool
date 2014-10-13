@@ -29,6 +29,8 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/items/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/tos/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/deletetransmartproject_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/cdatetime-0.14.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.5.jar"/>

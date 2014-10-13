@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Display;
 
 
 
+
 import tos.deletetransmartproject_0_1.deleteTransmartProject;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -306,17 +307,12 @@ public class TOSConnector {
 						currentServer.getPassword());
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-//				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
 
-				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 
 				if (targetServer!=null) {
 					System.out.println("TargetServerName" + targetServer.getName()); 
-					//				targetServer.setSchema(OntologyEditorView.getTargetSchemaName());
 
 					setContextVariable("DB_TargetI2B2_Host",
 							targetServer.getIp());
@@ -333,18 +329,10 @@ public class TOSConnector {
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
 					setContextVariable("DB_TargetI2B2_DatabaseType", targetServer.getDatabaseType());
-
-
-//					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
-//				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				
 
 				Console.info(currentServer.getSchema());
-				//			if (serverUniqueName != null) {
-				//				currentServer = ServerList.getTargetServers().get(
-				//						serverUniqueName);
-				//			}
 
 				Console.info("Current server: " + currentServer.toString());
 
@@ -352,19 +340,11 @@ public class TOSConnector {
 						+ currentServer.getName() + "(\""
 						+ currentServer.getSchema() + "\")\" for db query.");
 
-				//				currentServer.setSchema(schema);
-				//				OntologyEditorView.setCurrentServer(currentServer);
-
 				Console.info("currentSchema:" + currentServer.getSchema());
 				Console.info("sid: " + currentServer.getSID());
 				System.out
 				.println("OracleUsername1: " + currentServer.getUser());
 
-				//
-
-				//setContextVariable("OracleHost", currentServer.getIp());
-				//setContextVariable("OraclePort", currentServer.getPort());
-				//setContextVariable("OracleSid", currentServer.getSID());
 				setContextVariable("DB_StagingI2B2_Username",
 						currentServer.getUser());
 				setContextVariable("DB_StagingI2B2_Password",
@@ -374,12 +354,6 @@ public class TOSConnector {
 
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-//				setContextVariable("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@" + currentServer.getIp() + ":" + currentServer.getPort() + ":" + currentServer.getSID());
-//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-//				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
-
-
-				//				try {
 				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			
 				exit = tos.runJobInTOS((getARGV()));
@@ -396,11 +370,6 @@ public class TOSConnector {
 					StatusListener.setSubStatus(0, "");
 					ProgressView.setProgress(0);
 				}
-				//				} catch (Exception e) {
-				//					Console.error("Error while using a TOS-plugin with for job \"etlStagingI2B2ToTargetI2B2\": "
-				//							+ e.getMessage());
-				//				}
-
 			}
 		});
 
@@ -428,16 +397,11 @@ public class TOSConnector {
 	}
 
 	public TOSConnector() {
-
 		Console.info("TOSConnector: establising a TOS connection");
 	}
 
-
-
 	public void runJob() {
-
 		getConnection().runJobInTOS((getARGV()));
-
 	}
 
 	public static void deleteStudy(Server currentServer, final String studyID) {

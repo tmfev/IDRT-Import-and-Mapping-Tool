@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.Wizard;
@@ -36,8 +37,6 @@ public class UploadProjectWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-//		two = new UploadProjectWizardPage2();
-//		addPage(two);
 	}
 
 	@Override
@@ -45,6 +44,7 @@ public class UploadProjectWizard extends Wizard {
 		return true;
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean performFinish() {
 		
@@ -98,8 +98,6 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_TargetI2B2_Instance", targetDBSID);
 					contextMap.put("DB_TargetI2B2_Port", targetDBPort);
 					contextMap.put("DB_TargetI2B2_Schema", targetDBSchema);
-//					contextMap.put("DB_TargetI2B2_jdbcurl","jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
-//					contextMap.put("DB_TargetI2B2_sqlclassname","oracle.jdbc.driver.OracleDriver");
 					
 					contextMap.put("DB_StagingI2B2_Host", stagingIPText);
 					contextMap.put("DB_StagingI2B2_Password", stagingPasswordText);
@@ -107,16 +105,10 @@ public class UploadProjectWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_Instance", stagingDBSID);
 					contextMap.put("DB_StagingI2B2_Port", stagingDBPort);
 					contextMap.put("DB_StagingI2B2_Schema", stagingDBSchema);
-//					contextMap.put("DB_StagingI2B2_jdbcurl", "jdbc:oracle:thin:@134.76.124.17:1521:i2b2t");
-//					contextMap.put("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 					System.out.println("TARGETID: " + OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 					contextMap.put("TargetID",""+ OntologyEditorView.getTargetInstance().getSelectedTarget().getTargetID());
 					
 					Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
-//					TOSConnector.setCompleteContext(contextMap);
-//					int exitCode = TOSConnector.uploadProject();
-//					System.out.println("job finshed: " + exitCode);
-					
 				}catch (Exception e) {
 					e.printStackTrace();
 					Console.error(e);

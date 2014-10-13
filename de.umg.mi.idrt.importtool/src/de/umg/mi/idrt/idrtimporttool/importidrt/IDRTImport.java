@@ -115,7 +115,7 @@ public class IDRTImport {
 				exitCode = transform.runJobInTOS(getARGV());
 
 			}
-			StatusListener.clearStatus();
+//			StatusListener.clearStatus();
 			ServerView.btnStopSetEnabled(false);
 			StatusListener.stopLogging();
 			return exitCode;

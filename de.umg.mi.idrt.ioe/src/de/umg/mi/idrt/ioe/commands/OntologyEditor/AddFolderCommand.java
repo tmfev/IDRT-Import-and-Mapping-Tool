@@ -10,10 +10,7 @@ import org.eclipse.jface.viewers.TreeViewerColumn;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.OntologyTree.Dimension;
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
-import de.umg.mi.idrt.ioe.OntologyTree.NodeType;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
-import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNodeList;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class AddFolderCommand extends AbstractHandler {
@@ -24,11 +21,7 @@ public class AddFolderCommand extends AbstractHandler {
 		OntologyTreeNode currentNode = OntologyEditorView.getCurrentTargetNode();
 
 		OntologyTreeNode subRootNode = new OntologyTreeNode("New Node",true);
-
 		
-		//		subRootNode.setTreePath("\\i2b2\\customNode\\");
-		//		subRootNode.setTreeAttributes();
-		//		subRootNode.setTreePathLevel(1);
 		subRootNode.setType(TYPE.ONTOLOGY_TARGET);
 		subRootNode.getTargetNodeAttributes().addStagingPath("");
 		subRootNode.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
@@ -39,14 +32,10 @@ public class AddFolderCommand extends AbstractHandler {
 		currentNode.add(subRootNode);
 		
 		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-		//		targetTreeViewer.expandToLevel(subRootNode, 10);
 		targetTreeViewer.setSelection(new StructuredSelection(subRootNode), true);
 		targetTreeViewer.editElement(subRootNode, 0);
 		
 		subRootNode.setTreeAttributes();
-//		for (OntologyTreeNode n : OntologyEditorView.getOntologyTargetTree().getNodeLists().getStringPathToNode().values()) {
-//			System.out.println(n.getTreePathLevel() + " " + n.getTreePath());
-//		}
 		int counter = 1;
 		while (OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(subRootNode.getTreePath())!=null) {
 //			System.out.println(subRootNode.getTreePath());
@@ -62,19 +51,9 @@ public class AddFolderCommand extends AbstractHandler {
 
 		OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		subRootNode.setTreeAttributes();
-		//			currentNode.add(subRootNode);
-		//			OntologyEditorView.getOntologyTargetTree().getNodeLists().add(subRootNode);
 		subRootNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_BASECODE, subRootNode.getTreePath().replaceAll("\\\\", "|").substring(0, subRootNode.getTreePath().length()-1));
 
-
-
-
 		OntologyEditorView.setCurrentTargetNode(subRootNode);
-
-
-		
-
-
 
 		targetTreeViewer.refresh();
 		//		OntologyTreeNode test = (OntologyTreeNode) OntologyEditorView.getOntologyTargetTree().getRootNode().getNextNode();
