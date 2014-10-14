@@ -243,11 +243,11 @@
             </command>
              <command
                    commandId="org.eclipse.equinox.p2.examples.rcp.cloud.command.install"
-                   label="INSTALL"
+                   label="Install New Software..."
                    style="push"/>
         <command
               commandId="org.eclipse.equinox.p2.examples.rcp.cloud.command.update"
-              label="UPDATE"
+              label="Update Software..."
               style="push"/>
          </menu>
       </menuContribution>

@@ -39,9 +39,7 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 		// constructor
 		RepositoryTracker repoMan = getProvisioningUI().getRepositoryTracker();
 		try {
-			System.out.println("ADDING");
-			repoMan.addRepository(new URI("http://i2b2.mi.med.uni-goettingen.de/iitupdateSite/"), "i2b2 goe", getProvisioningUI().getSession());
-			System.out.println("ADDED");
+			repoMan.addRepository(new URI("https://dev.mi.med.uni-goettingen.de/bamboo/downloads/"), "i2b2 Goettingen", getProvisioningUI().getSession());
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

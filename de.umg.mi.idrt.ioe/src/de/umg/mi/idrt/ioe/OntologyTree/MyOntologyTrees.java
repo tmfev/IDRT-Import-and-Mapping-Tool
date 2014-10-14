@@ -241,6 +241,7 @@ public class MyOntologyTrees{
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setDimension("concept_dimension");
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setVisualattributes("FAE");
 		targetOntologyi2b2RootNode.getTargetNodeAttributes().setName("i2b2");
+		targetOntologyi2b2RootNode.getTargetNodeAttributes().setC_Basecode("|i2b2");
 
 		rootNode.add(targetOntologyi2b2RootNode);
 

@@ -73,22 +73,22 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 
 					String visualAttribute = visualAttributeFull.substring(0, 1);
 
-					if ("F".equals(visualAttribute))
+					if ("f".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-					else if ("C".equals(visualAttribute))
+					else if ("m".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_CA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-					else if ("M".equals(visualAttribute))
+					else if ("m".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_MA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-					else if ("L".equals(visualAttribute))
+					else if ("l".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
-					else if ("D".equals(visualAttribute))
+					else if ("d".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_DA));
-					else if ("R".equals(visualAttribute))
+					else if ("r".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_RA));
 					else
