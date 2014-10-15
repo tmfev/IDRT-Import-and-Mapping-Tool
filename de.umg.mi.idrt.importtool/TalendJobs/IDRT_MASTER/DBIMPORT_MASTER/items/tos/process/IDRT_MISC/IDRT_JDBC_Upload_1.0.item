@@ -589,7 +589,7 @@
     <elementParameter field="TABLE" name="UNIQUE_KEY">
       <elementValue elementRef="SCHEMA_COLUMN" value="CONCEPT_PATH"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="CONCEPT_CD"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -660,7 +660,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="672">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.CONCEPT_PATH = input_row.CONCEPT_PATH.toLowerCase();&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD.toLowerCase();&#xD;&#xA;output_row.NAME_CHAR = input_row.NAME_CHAR;&#xD;&#xA;output_row.CONCEPT_BLOB = input_row.CONCEPT_BLOB;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.CONCEPT_PATH = input_row.CONCEPT_PATH;&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.NAME_CHAR = input_row.NAME_CHAR;&#xD;&#xA;output_row.CONCEPT_BLOB = input_row.CONCEPT_BLOB;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -918,7 +918,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM;//.add(new BigDecimal(10000));&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD.toLowerCase();&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD.toLowerCase();&#xD;&#xA;output_row.INSTANCE_NUM = input_row.INSTANCE_NUM;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xA;if (input_row.QUANTITY_NUM==null)&#xA;input_row.QUANTITY_NUM = 0f;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xA;if (input_row.CONFIDENCE_NUM==null)&#xA;input_row.CONFIDENCE_NUM=0f;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xA;if (input_row.UPLOAD_ID==null)&#xA;input_row.UPLOAD_ID=0;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM;//.add(new BigDecimal(10000));&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xD;&#xA;output_row.INSTANCE_NUM = input_row.INSTANCE_NUM;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xA;if (input_row.QUANTITY_NUM==null)&#xA;input_row.QUANTITY_NUM = 0f;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xA;if (input_row.CONFIDENCE_NUM==null)&#xA;input_row.CONFIDENCE_NUM=0f;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xA;if (input_row.UPLOAD_ID==null)&#xA;input_row.UPLOAD_ID=0;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -960,7 +960,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="CONCEPT_CD"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="PROVIDER_ID"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -969,7 +969,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MODIFIER_CD"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="INSTANCE_NUM"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -1484,23 +1484,23 @@
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="outt" expressionFilter="row9.C_NAME.length()>0" activateExpressionFilter="true">
         <mapperTableEntries name="C_HLEVEL" expression="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?row9.C_HLEVEL-1:row9.C_HLEVEL" type="id_Integer"/>
-        <mapperTableEntries name="C_FULLNAME" expression="row9.C_FULLNAME.toLowerCase()" type="id_String"/>
+        <mapperTableEntries name="C_FULLNAME" expression="row9.C_FULLNAME" type="id_String"/>
         <mapperTableEntries name="C_NAME" expression="row9.C_NAME  " type="id_String"/>
         <mapperTableEntries name="C_SYNONYM_CD" expression="row9.C_SYNONYM_CD" type="id_String"/>
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="row9.C_VISUALATTRIBUTES" type="id_String"/>
         <mapperTableEntries name="C_TOTALNUM" expression="row9.C_TOTALNUM" type="id_BigDecimal" nullable="true"/>
-        <mapperTableEntries name="C_BASECODE" expression="row9.C_BASECODE.toLowerCase()" type="id_String" nullable="true"/>
+        <mapperTableEntries name="C_BASECODE" expression="row9.C_BASECODE" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_METADATAXML" expression="row9.C_METADATAXML" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_FACTTABLECOLUMN" expression="row9.C_FACTTABLECOLUMN" type="id_String"/>
         <mapperTableEntries name="C_TABLENAME" expression="row9.C_TABLENAME" type="id_String"/>
         <mapperTableEntries name="C_COLUMNNAME" expression="row9.C_COLUMNNAME" type="id_String"/>
         <mapperTableEntries name="C_COLUMNDATATYPE" expression="row9.C_COLUMNDATATYPE" type="id_String"/>
         <mapperTableEntries name="C_OPERATOR" expression="row9.C_OPERATOR" type="id_String"/>
-        <mapperTableEntries name="C_DIMCODE" expression="row9.C_DIMCODE.toLowerCase()" type="id_String"/>
+        <mapperTableEntries name="C_DIMCODE" expression="row9.C_DIMCODE" type="id_String"/>
         <mapperTableEntries name="C_COMMENT" expression="row9.C_COMMENT" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_TOOLTIP" expression="row9.C_TOOLTIP" type="id_String" nullable="true"/>
         <mapperTableEntries name="M_APPLIED_PATH" expression="row9.M_APPLIED_PATH" type="id_String"/>
@@ -1550,7 +1550,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_FULLNAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -2053,7 +2053,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_IDE_SOURCE"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_NUM"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -2349,7 +2349,7 @@
     <elementParameter field="TABLE" name="UNIQUE_KEY">
       <elementValue elementRef="SCHEMA_COLUMN" value="MODIFIER_PATH"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="MODIFIER_CD"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -2420,7 +2420,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="768">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_8"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.MODIFIER_PATH = input_row.MODIFIER_PATH.toLowerCase();&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD.toLowerCase();&#xD;&#xA;output_row.NAME_CHAR = input_row.NAME_CHAR;&#xD;&#xA;output_row.MODIFIER_BLOB = input_row.MODIFIER_BLOB;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.MODIFIER_PATH = input_row.MODIFIER_PATH;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xD;&#xA;output_row.NAME_CHAR = input_row.NAME_CHAR;&#xD;&#xA;output_row.MODIFIER_BLOB = input_row.MODIFIER_BLOB;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -4324,7 +4324,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_FULLNAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>

@@ -3651,7 +3651,7 @@
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Path"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="DataType"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
