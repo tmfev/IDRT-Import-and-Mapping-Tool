@@ -148,15 +148,17 @@ public class StatusListener {
 	}
 
 	public static void setStatus(float percentage, String currentFile) {
-		File fileName = new File(currentFile);
+		File fileName = new File("STATUS: " + percentage + " " +currentFile);
 		perc = percentage;
 		status = "Getting PIDs...";
 		file = fileName.getName();
 		ServerView.updateStatus();
+		System.out.println("STATUS: " + currentFile);
 	}
 
 	public static void setStatus(float percentage, final String statusMsg,
 			final String currentFile) {
+		System.out.println("STATUS: " + percentage + " " +statusMsg);
 		File fileName = new File(currentFile);
 		perc = percentage;
 		status = statusMsg;
@@ -173,6 +175,7 @@ public class StatusListener {
 	}
 	
 	public static void setStatus(final String statusMsg) {
+		System.out.println("STATUS: " + statusMsg);
 		status = statusMsg;
 		ServerView.updateStatus();
 		Display.getDefault().syncExec(new Runnable() {
@@ -185,6 +188,7 @@ public class StatusListener {
 	
 	public static void setStatusPID(float percentage, String msg,
 			String currentFile) {
+		System.out.println("STATUS: " + percentage + " "  + msg);
 		File fileName = new File(currentFile);
 		perc = percentage;
 		status = msg;
@@ -200,6 +204,7 @@ public class StatusListener {
 	}
 
 	public static void setSubStatus(float percentage, final String statusMsg) {
+		System.out.println("SUBSTATUS: " + statusMsg);
 		subPerc = percentage;
 		subStatus = statusMsg;
 		ServerView.updateStatus();
