@@ -44,7 +44,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.113.224&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.113.224:1521:i2b2t"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="8Hm+c/CLC8Q="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB3&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
@@ -53,7 +53,7 @@
     <contextParameter comment="" name="DB_TargetI2B2_Host" prompt="DB_TargetI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.113.224&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.113.224:1521:i2b2t"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="8Hm+c/CLC8Q="/>
+    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;1521&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB4&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
@@ -102,10 +102,10 @@
     <contextParameter comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;xe&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2GMDS2&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;1521&quot;"/>
-    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="stwQ41hL4Fv096uhdGeE6g=="/>
+    <contextParameter comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;192.168.46.145&quot;"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2GMDS1&quot;"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="stwQ41hL4Fv096uhdGeE6g=="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;xe&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@192.168.46.145:1521:xe"/>
@@ -2324,6 +2324,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_2"/>
   </node>
   <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="5" offsetLabelY="0" posX="0" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_7"/>
@@ -2730,7 +2731,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="416">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_15"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -2830,7 +2831,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="416">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_22"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -4114,7 +4115,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_7"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="416">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(50, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot; + context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select startdate_staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where target_id = &quot; + context.TargetID+&quot;)) or concept_cd in (select concept_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where concept_path in (select enddate_staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;))&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -4184,7 +4185,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_13"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="640">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_14"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;Extracting Concept Data...&quot;);&#xA;StatusListener.setStatus(40, &quot;Transforming Staging to Target&quot;, &quot;&quot;);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -4771,7 +4772,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="to_obs_fct" expressionFilter="row6.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row6.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -6195,7 +6196,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfto_obs_fct" expressionFilter="!row29.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row29.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -7098,7 +7099,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="512">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_20"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(60, &quot;Getting Staging Patient_Mapping...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;//context.currentQuery = &quot;SELECT * FROM  &quot;+ context.DB_StagingI2B2_Schema+&quot;.patient_mapping &quot;;&#xA;context.currentQuery = &quot;select DISTINCT * from &quot;+ context.DB_StagingI2B2_Schema+&quot;.PATIENT_MAPPING where PATIENT_NUM in(select patient_num from &quot;+ context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;  ))or modifier_cd in (  select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where MODIFIER_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;    )))&quot;;    &#xA;&#xA;&#xA;&#xA;&#xA;&#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM  i2b2demodata.patient_mapping &quot;;&#xA;&#xA;}"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(60, &quot;Getting Staging Patient_Mapping...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;//context.currentQuery = &quot;SELECT * FROM  &quot;+ context.DB_StagingI2B2_Schema+&quot;.patient_mapping &quot;;&#xA;context.currentQuery = &quot;select DISTINCT * from &quot;+ context.DB_StagingI2B2_Schema+&quot;.PATIENT_MAPPING where PATIENT_NUM in(select patient_num from &quot;+ context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;)))&quot;;    &#xA;&#xA;&#xA;&#xA;&#xA;&#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM  i2b2demodata.patient_mapping &quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -7107,7 +7108,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_20"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="608">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_21"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(70, &quot;Getting Staging Patient_Dimension...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;//context.currentQuery = &quot;SELECT * FROM  &quot;+ context.DB_StagingI2B2_Schema+&quot;.patient_dimension&quot;;&#xA;context.currentQuery = &quot;select DISTINCT * from &quot;+ context.DB_StagingI2B2_Schema+&quot;.PATIENT_DIMENSION where PATIENT_NUM in(select patient_num from &quot;+ context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;  ))or modifier_cd in (  select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where MODIFIER_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;    )))&quot;;   &#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM  i2b2demodata.patient_dimension&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -7118,7 +7119,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_21"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="704">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_22"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(80, &quot;Getting Staging Encounter_Mapping...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;context.currentQuery = &quot;SELECT * FROM &quot;+ context.DB_StagingI2B2_Schema+&quot;.encounter_mapping&quot;;&#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM i2b2demodata.encounter_mapping&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -7239,7 +7240,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="608">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_4"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -7330,7 +7331,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="608">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -7385,7 +7386,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="5" offsetLabelY="0" posX="576" posY="704">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="5" offsetLabelY="0" posX="576" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_10"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -7455,7 +7456,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="704">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_7"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -7503,7 +7504,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="5" offsetLabelY="0" posX="576" posY="800">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="5" offsetLabelY="0" posX="576" posY="896">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_11"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -7582,7 +7583,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="800">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="896">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_12"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -7633,7 +7634,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="800">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="896">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_23"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(90, &quot;Getting Staging Visit_Dimension...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;context.currentQuery = &quot;SELECT * FROM &quot;+ context.DB_StagingI2B2_Schema+&quot;.visit_dimension&quot;;&#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM i2b2demodata.visit_dimension&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -8626,7 +8627,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="320">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_24"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(40, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where modifier_cd in (select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where modifier_path in (select staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;))&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -8637,7 +8638,7 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_24"/>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="320">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="608" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_12"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -8737,7 +8738,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="320">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_13"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -8793,6 +8794,127 @@
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="608">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_25"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(60, &quot;Getting Staging Patient_Mapping...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;))&#xA;//context.currentQuery = &quot;SELECT * FROM  &quot;+ context.DB_StagingI2B2_Schema+&quot;.patient_mapping &quot;;&#xA;context.currentQuery = &quot;select DISTINCT * from &quot;+ context.DB_StagingI2B2_Schema+&quot;.PATIENT_MAPPING where PATIENT_NUM in(select patient_num from &quot;+ context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where modifier_cd in (  select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where MODIFIER_PATH in     (     select staging_path from &quot;+ context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;    )))&quot;;    &#xA;&#xA;&#xA;&#xA;&#xA;&#xA;else {&#xA;context.currentQuery = &quot;SELECT * FROM  i2b2demodata.patient_mapping &quot;;&#xA;&#xA;}"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="status"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJava_25"/>
+  </node>
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="608">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_13"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="Mtxo8Z/lyyY=Encrypt"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;PATIENT_MAPPING&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="context.currentQuery"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_IDE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_IDE_SOURCE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_NUM"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_IDE_STATUS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPLOAD_DATE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPDATE_DATE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DOWNLOAD_DATE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IMPORT_DATE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SOURCESYSTEM_CD"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPLOAD_ID"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="pat_mapping"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tJDBCInput_13">
+      <column comment="" key="false" name="PATIENT_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="608">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_17"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.folderMain+context.folderOutput + &quot;/patient_mapping.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="false"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_17">
+      <column comment="" key="false" name="PATIENT_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tJava_2">
@@ -12775,9 +12897,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row30"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_20" offsetLabelX="0" offsetLabelY="0" source="tJava_20" target="tJDBCInput_3">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_20" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_20" target="tJDBCInput_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk13"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_20" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_20" target="tJava_25">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk75"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" source="tJava_21" target="tJDBCInput_4">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -14025,6 +14151,149 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row38"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_25" offsetLabelX="0" offsetLabelY="0" source="tJava_25" target="tJDBCInput_13">
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk74"/>
+  </connection>
+  <connection connectorName="FLOW" label="row43" lineStyle="0" metaname="tJDBCInput_13" offsetLabelX="0" offsetLabelY="0" source="tJDBCInput_13" target="tFileOutputDelimited_17">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CONCEPT_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PROVIDER_ID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="START_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MODIFIER_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="INSTANCE_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="VALTYPE_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TVAL_CHAR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NVAL_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="VALUEFLAG_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="QUANTITY_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UNITS_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="END_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="LOCATION_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="OBSERVATION_BLOB"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CONFIDENCE_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPDATE_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="DOWNLOAD_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IMPORT_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SOURCESYSTEM_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_ID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CONCEPT_PATH"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CONCEPT_BLOB"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NAME_CHAR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ZIP_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="DEATH_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="AGE_IN_YEARS_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SEX_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_BLOB"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="RACE_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="RELIGION_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="INCOME_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="VITAL_STATUS_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="LANGUAGE_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARITAL_STATUS_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="BIRTH_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="STATECITYZIP_PATH"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_IDE_SOURCE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_IDE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_IDE_STATUS"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row43"/>
+  </connection>
   <note opaque="true" posX="-576" posY="736" sizeHeight="64" sizeWidth="168" text="Correlates Concepts&#xD;&#xA;">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="255;255;203"/>
     <elementParameter field="COLOR" name="NOTETXT_COLOR" value="0;0;0"/>
@@ -14393,6 +14662,16 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_12"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_25"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_13"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>

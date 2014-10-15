@@ -1424,7 +1424,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSelection(OntologyTreeNode node) {
-		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
+//		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
 	}
