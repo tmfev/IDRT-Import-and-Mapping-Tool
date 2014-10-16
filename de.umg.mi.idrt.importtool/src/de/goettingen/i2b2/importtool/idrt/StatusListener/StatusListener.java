@@ -69,7 +69,7 @@ public class StatusListener {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
-				interruptExtern(error, fileName);
+//				interruptExtern(error, fileName);
 				Log.addLog(1, msg + " - " + error);
 			}
 		});

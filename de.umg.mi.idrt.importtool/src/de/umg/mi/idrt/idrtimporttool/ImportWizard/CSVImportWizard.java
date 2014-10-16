@@ -464,6 +464,23 @@ public class CSVImportWizard extends Wizard {
 								}
 							});
 						}
+						else {
+							Display.getDefault().syncExec(new Runnable() {
+								@Override
+								public void run() {
+									long end = System.currentTimeMillis();
+									//
+									long time = end - start;
+									//									closeBar("CSV Import Finished!", 0);
+									Log.addLog(0, "CSV Import Failed!");
+									Log.addLog(0, "Duration: " + (time / 1000)
+											+ " s");
+									MessageDialog.openError(Application.getShell(),
+											"Import Failed",
+											"Import Failed!");
+								}
+							});
+						}
 					}
 
 					// WITHOUT PIDGEN
@@ -559,6 +576,23 @@ public class CSVImportWizard extends Wizard {
 													}
 												}
 											});
+								}
+								else {
+									Display.getDefault().syncExec(new Runnable() {
+										@Override
+										public void run() {
+											long end = System.currentTimeMillis();
+											//
+											long time = end - start;
+											//									closeBar("CSV Import Finished!", 0);
+											Log.addLog(0, "CSV Import Failed!");
+											Log.addLog(0, "Duration: " + (time / 1000)
+													+ " s");
+											MessageDialog.openError(Application.getShell(),
+													"Import Failed",
+													"Import Failed!");
+										}
+									});
 								}
 							}
 						});
