@@ -6409,11 +6409,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.OF_CTX_BLOB unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_DIMCODE  VARCHAR2(3500 BYTE)&quot;"/>
@@ -8098,6 +8093,7 @@
   </node>
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX rebuild&quot;"/>
@@ -8113,6 +8109,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-192" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_3_CURRENT_VALUE&quot;)));"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -8123,6 +8120,7 @@
   </node>
   <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_4"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
@@ -11927,13 +11925,13 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk6"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_7" target="tForeach_3">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk36"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_7" target="tJava_8">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_7" target="tJava_8">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_7" target="tForeach_3">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk36"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_8" target="tFileInputDelimited_10">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -12574,11 +12572,11 @@
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_3" offsetLabelX="0" offsetLabelY="0" source="tForeach_3" target="tJava_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate3"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tJDBCRow_4">
-    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3"/>
   </connection>
   <note opaque="true" posX="-352" posY="-32" sizeHeight="3073" sizeWidth="1473" text="i2b2">
