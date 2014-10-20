@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/tos/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_patient_data_0_1.jar"/>
