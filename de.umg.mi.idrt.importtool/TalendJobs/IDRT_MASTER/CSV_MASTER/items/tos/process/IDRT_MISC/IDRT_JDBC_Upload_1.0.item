@@ -8099,6 +8099,7 @@
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
     <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX rebuild&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX rebuild&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB rebuild&quot;"/>
@@ -8242,6 +8243,44 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_25"/>
+  </node>
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-448" posY="0">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
+    <elementParameter field="CHECK" name="START" value="true"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX unusable&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX unusable&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB unusable&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.OF_CTX_BLOB unusable&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_DIMCODE  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_PATH  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_CD  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_PATH  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_CD  VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  MODIFIER_CD  VARCHAR2(2800 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  CONCEPT_CD  VARCHAR2(2800 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_mapping MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_dimension MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_enc_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY CONCEPT_CD VARCHAR2(3500 BYTE)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ENABLE constraint OBSERVATION_FACT_PK&quot;"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
   <connection connectorName="FLOW" label="row6" lineStyle="0" metaname="tFileInputDelimited_6" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_6" target="tJavaRow_3">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
@@ -12830,6 +12869,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_25"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
