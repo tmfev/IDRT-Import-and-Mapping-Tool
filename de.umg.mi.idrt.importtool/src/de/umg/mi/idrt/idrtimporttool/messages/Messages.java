@@ -129,6 +129,13 @@ public class Messages extends NLS {
 	public static String ServerView_TruncateProject;
 	public static String ServerView_TruncateProjectConfirmText;
 	public static String ServerView_TruncateProjectQuestion;
+	public static String CSVWizardPage2_button_1_text;
+	public static String CSVWizardPage2_lblStopDatabaseIndexing_text;
+	public static String CSVWizardPage2_lblDropDatabaseIndexes_text;
+	public static String CSVWizardPage2_btnStop_text;
+	public static String CSVWizardPage2_btnDrop_text;
+	public static String CSVWizardPage2_btnIgnore_text;
+	public static String DBWizardPage3_btnNewButton_text;
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

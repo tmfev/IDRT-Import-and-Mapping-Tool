@@ -220,7 +220,9 @@ public class CSVImportWizard extends Wizard {
 		final boolean truncateQueries = CSVWizardPage2.getTruncateQueries();
 		final boolean cleanUp = false;//CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
-	
+		
+		final boolean stopIndex = CSVWizardPage2.getStopIndex();
+		final boolean dropIndex = CSVWizardPage2.getDropIndex();
 		final String quoteChar = CSVWizardPage2.getQuoteCharText();
 		final boolean usePIDGenerator = CSVWizardPage2.getUsePid();
 
@@ -306,6 +308,28 @@ public class CSVImportWizard extends Wizard {
 						contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
 						contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
 					} 
+					
+					if (dropIndex){
+						defaultProps.setProperty("IndexStop", "false");
+						contextMap.put("IndexStop", "false");
+						
+						defaultProps.setProperty("IndexDrop", "true");
+						contextMap.put("IndexDrop", "true");
+					}
+					else if (stopIndex){
+						defaultProps.setProperty("IndexStop", "true");
+						contextMap.put("IndexStop", "true");
+						defaultProps.setProperty("IndexDrop", "false");
+						contextMap.put("IndexDrop", "false");
+					}
+					else {
+						defaultProps.setProperty("IndexStop", "false");
+						contextMap.put("IndexStop", "false");
+						defaultProps.setProperty("IndexDrop", "false");
+						contextMap.put("IndexDrop", "false");
+					
+						
+					}
 
 					if (truncate) {
 						contextMap.put("truncateProject", "true");

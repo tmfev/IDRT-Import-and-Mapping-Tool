@@ -54,6 +54,13 @@ public class DBWizardPage3 extends WizardPage {
 	private static Button cleanUpBtn;
 	private Label label;
 
+	private static Button btnIgnore;
+	private static Button btnStop;
+	private static Button btnDrop;
+	private Label lblStopDatabaseIndexing;
+	private Composite composite2;
+	private Button btnNewButton;
+	
 	public static boolean getCleanUp() {
 		return cleanUpBtn.getSelection();
 	}
@@ -131,6 +138,35 @@ public class DBWizardPage3 extends WizardPage {
 			checkTruncateQueries.setSelection(false);
 			new Label(composite, SWT.NONE);
 
+			
+			
+			lblStopDatabaseIndexing = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
+			lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
+			lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);
+			
+			composite2 = new Composite(composite, SWT.NONE);
+			composite2.setLayout(new FillLayout(SWT.VERTICAL));
+			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, false, false, 1,3);
+			gd_composite.widthHint = 91;
+			composite2.setLayoutData(gd_composite);
+			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
+			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
+		
+			btnIgnore = new Button(composite2, SWT.RADIO);
+			btnIgnore.setText(Messages.CSVWizardPage2_btnIgnore_text);
+			btnIgnore.setSelection(!(indexStop||indexDrop));
+			btnStop = new Button(composite2, SWT.RADIO);
+			btnStop.setText(Messages.CSVWizardPage2_btnStop_text);
+			btnStop.setSelection(indexStop);
+			btnDrop = new Button(composite2, SWT.RADIO);
+			btnDrop.setText(Messages.CSVWizardPage2_btnDrop_text);
+			btnDrop.setSelection(indexDrop);
+			new Label(composite, SWT.NONE);
+//			
+			new Label(composite, SWT.NONE);
+			new Label(composite, SWT.NONE);
+			new Label(composite, SWT.NONE);
+			new Label(composite, SWT.NONE);
 			cleanUpLabel = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
 			cleanUpLabel.setText(Messages.CSVWizardPageTwo_CleanUp);
 
@@ -153,6 +189,11 @@ public class DBWizardPage3 extends WizardPage {
 			checkContext = new Button(composite, SWT.CHECK);
 			checkContext.setSelection(false);
 			new Label(composite, SWT.NONE);
+			
+			btnNewButton = new Button(composite, SWT.NONE);
+			btnNewButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+			btnNewButton.setText(Messages.DBWizardPage3_btnNewButton_text);
+			new Label(composite, SWT.NONE);
 
 			mainPath = defaultProps.getProperty("folderMainCSV");
 			final DirectoryDialog dlgMain = new DirectoryDialog(
@@ -173,6 +214,8 @@ public class DBWizardPage3 extends WizardPage {
 			final DirectoryDialog dlg = new DirectoryDialog(parent.getShell());
 			dlg.setText("DB Folder");
 			dlg.setFilterPath(defaultProps.getProperty("folderCSV"));
+			//			composite2.setLayoutData(gd_composite);
+						
 
 			composite_1 = new Composite(sashForm, SWT.NONE);
 			composite_1.setLayout(null);
@@ -184,6 +227,7 @@ public class DBWizardPage3 extends WizardPage {
 			list = new List(composite_1, SWT.BORDER | SWT.H_SCROLL
 					| SWT.V_SCROLL);
 			list.setBounds(5, 25, 276, 247);
+			sashForm.setWeights(new int[] {3, 2});
 			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPage2
 					.getCheckedTables();
 			if (tables != null) {
@@ -209,7 +253,6 @@ public class DBWizardPage3 extends WizardPage {
 					}
 				}
 			}
-			sashForm.setWeights(new int[] { 2, 1 });
 			setPageComplete(true);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -231,5 +274,11 @@ public class DBWizardPage3 extends WizardPage {
 	@Override
 	public boolean isPageComplete() {
 		return true;
+	}
+	public static boolean getDropIndex(){
+		return btnDrop.getSelection();
+	}
+	public static boolean getStopIndex(){
+		return btnStop.getSelection();
 	}
 }

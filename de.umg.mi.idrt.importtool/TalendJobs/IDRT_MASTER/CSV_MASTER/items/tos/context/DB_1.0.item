@@ -12,6 +12,8 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="true"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="gmds">
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="true"/>
@@ -25,6 +27,8 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="true"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="postgres">
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
@@ -38,6 +42,8 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="false"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
@@ -51,5 +57,7 @@
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="true"/>
   </talendfile:ContextType>
 </xmi:XMI>

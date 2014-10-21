@@ -12,6 +12,7 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -19,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
@@ -42,6 +44,12 @@ public class ODMWizardPage2 extends WizardPage {
 	private static Button checkTerms;
 	private static Button checkCleanUp;
 	private static Button checkCompleteCodelists;
+	
+	private static Button btnIgnore;
+	private static Button btnStop;
+	private static Button btnDrop;
+	private Label lblStopDatabaseIndexing;
+	private Composite composite;
 	private Label label;
 
 	public static boolean getTruncateQueries() {
@@ -116,13 +124,14 @@ public class ODMWizardPage2 extends WizardPage {
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
 			container = new Composite(parent, SWT.NULL);
-			GridLayout layout = new GridLayout(3, true);
+			GridLayout layout = new GridLayout(3, false);
 			container.setLayout(layout);
 
 			Label truncateLabel = new Label(container, SWT.FILL | SWT.CENTER);
 			truncateLabel.setText(Messages.ODMWizardPageTwo_TruncateProject);
 			truncateLabel.setToolTipText(Messages.ODMWizardPageTwo_TruncateProjToolTip);
 			checkTruncate = new Button(container, SWT.CHECK);
+			checkTruncate.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 			checkTruncate.setSelection(false);
 
 			new Label(container, SWT.NONE);
@@ -132,9 +141,33 @@ public class ODMWizardPage2 extends WizardPage {
 			label.setText("Truncate Previous Queries?");
 			
 			checkTruncateQueries = new Button(container, SWT.CHECK);
+			checkTruncateQueries.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 			checkTruncateQueries.setSelection(false);
 			new Label(container, SWT.NONE);
-
+			lblStopDatabaseIndexing = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
+			lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);
+			
+			composite = new Composite(container, SWT.NONE);
+			composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+			gd_composite.widthHint = 91;
+			composite.setLayoutData(gd_composite);
+			
+			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
+			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
+		
+			btnIgnore = new Button(composite, SWT.RADIO);
+			btnIgnore.setText(Messages.CSVWizardPage2_btnIgnore_text);
+			btnIgnore.setSelection(!(indexStop||indexDrop));
+			btnStop = new Button(composite, SWT.RADIO);
+			btnStop.setText(Messages.CSVWizardPage2_btnStop_text);
+			btnStop.setSelection(indexStop);
+			btnDrop = new Button(composite, SWT.RADIO);
+			btnDrop.setText(Messages.CSVWizardPage2_btnDrop_text);
+			btnDrop.setSelection(indexDrop);
+			
+			new Label(container, SWT.NONE);
 			//TODO REIMPLEMENT
 //			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 //			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
@@ -155,7 +188,7 @@ public class ODMWizardPage2 extends WizardPage {
 			dlg.setFilterPath(defaultProps.getProperty("folderODM")); 
 
 			folderODMText = new Text(container, SWT.FILL);
-			folderODMText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+			folderODMText.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, true,
 					false, 1, 1));
 			folderODMText.setText(odmPath);
 			folderODMText.setEditable(false);
@@ -192,6 +225,7 @@ public class ODMWizardPage2 extends WizardPage {
 			completeCodelist = defaultProps.getProperty("importCodelist","false");
 			
 			checkCompleteCodelists = new Button(container, SWT.CHECK);
+			checkCompleteCodelists.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 			checkCompleteCodelists.setSelection(Boolean.parseBoolean(completeCodelist));
 			
 			new Label(container, SWT.NONE);
@@ -199,6 +233,7 @@ public class ODMWizardPage2 extends WizardPage {
 			Label labelCheck = new Label(container, SWT.NONE);
 			labelCheck.setText(Messages.ODMWizardPageTwo_IncludePid);
 			checkIncludePids = new Button(container, SWT.CHECK);
+			checkIncludePids.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 			checkIncludePids.setSelection(false);
 
 			new Label(container, SWT.NONE);
@@ -214,6 +249,7 @@ public class ODMWizardPage2 extends WizardPage {
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText(Messages.ODMWizardPageTwo_SaveSettings);
 			checkContext = new Button(container, SWT.CHECK);
+			checkContext.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 			checkContext.setSelection(false);
 			setControl(container);
 			new Label(container, SWT.NONE);
@@ -223,5 +259,11 @@ public class ODMWizardPage2 extends WizardPage {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}
+	public static boolean getDropIndex(){
+		return btnDrop.getSelection();
+	}
+	public static boolean getStopIndex(){
+		return btnStop.getSelection();
 	}
 }

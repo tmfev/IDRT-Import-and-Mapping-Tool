@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Text;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
+import org.eclipse.swt.layout.FillLayout;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -64,6 +65,12 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Button cleanUpBtn;
 	private Label label;
 	private static Button checkTruncateQueries;
+	private Label lblStopDatabaseIndexing;
+	private static Button btnIgnore;
+	private static Button btnStop;
+	private static Button btnDrop;
+	
+	private Composite composite;
 
 	public static boolean getBtnRADIOCsvfile() {
 		return btnRADIOCsvfile.getSelection();
@@ -180,6 +187,30 @@ public class CSVWizardPage2 extends WizardPage {
 			
 			checkTruncateQueries = new Button(container, SWT.CHECK);
 			checkTruncateQueries.setSelection(false);
+			new Label(container, SWT.NONE);
+			
+			lblStopDatabaseIndexing = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
+			lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);
+			
+			composite = new Composite(container, SWT.NONE);
+			composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+			gd_composite.widthHint = 91;
+			composite.setLayoutData(gd_composite);
+			
+			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
+			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
+		
+			btnIgnore = new Button(composite, SWT.RADIO);
+			btnIgnore.setText(Messages.CSVWizardPage2_btnIgnore_text);
+			btnIgnore.setSelection(!(indexStop||indexDrop));
+			btnStop = new Button(composite, SWT.RADIO);
+			btnStop.setText(Messages.CSVWizardPage2_btnStop_text);
+			btnStop.setSelection(indexStop);
+			btnDrop = new Button(composite, SWT.RADIO);
+			btnDrop.setText(Messages.CSVWizardPage2_btnDrop_text);
+			btnDrop.setSelection(indexDrop);
 			new Label(container, SWT.NONE);
 
 			//TODO REIMPLEMENT
@@ -382,5 +413,12 @@ public class CSVWizardPage2 extends WizardPage {
 	public IWizardPage getNextPage() {
 		CSVImportWizard.setThree(new CSVWizardPage3());
 		return CSVImportWizard.three;
+	}
+
+	public static boolean getDropIndex(){
+		return btnDrop.getSelection();
+	}
+	public static boolean getStopIndex(){
+		return btnStop.getSelection();
 	}
 }

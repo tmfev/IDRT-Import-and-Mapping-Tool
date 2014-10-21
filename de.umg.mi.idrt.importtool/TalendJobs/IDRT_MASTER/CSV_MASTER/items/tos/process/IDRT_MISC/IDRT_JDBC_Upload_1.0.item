@@ -430,7 +430,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out17" activateCondensedTool="true" rejectInnerJoin="true">
         <mapperTableEntries name="PATIENT_IDE" expression="row1.PATIENT_IDE " type="id_String"/>
@@ -6409,6 +6409,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_DIMCODE  VARCHAR2(3500 BYTE)&quot;"/>
@@ -6430,6 +6431,7 @@
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ENABLE constraint OBSERVATION_FACT_PK&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -8100,6 +8102,7 @@
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX rebuild&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB rebuild&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.OF_CTX_BLOB rebuild&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -8242,9 +8245,8 @@
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
     <metadata connector="FLOW" name="tJava_25"/>
   </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-448" posY="0">
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-448" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
-    <elementParameter field="CHECK" name="START" value="true"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
@@ -8274,6 +8276,7 @@
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ENABLE constraint OBSERVATION_FACT_PK&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>

@@ -118,6 +118,8 @@ public class ODMImportWizard extends Wizard {
 			final boolean cleanUp = false;//ODMWizardPage2.getCleanUp();
 			final boolean terms = false;//ODMWizardPage2.getTerms();
 			final boolean truncateQueries = ODMWizardPage2.getTruncateQueries();
+			final boolean stopIndex = ODMWizardPage2.getStopIndex();
+			final boolean dropIndex = ODMWizardPage2.getDropIndex();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -184,7 +186,26 @@ public class ODMImportWizard extends Wizard {
 				defaultProps.setProperty("cleanUp", "false");  
 				contextMap.put("cleanUp", "false");  
 			}
-
+			
+			if (dropIndex){
+				defaultProps.setProperty("IndexStop", "false");
+				contextMap.put("IndexStop", "false");
+				
+				defaultProps.setProperty("IndexDrop", "true");
+				contextMap.put("IndexDrop", "true");
+			}
+			else if (stopIndex){
+				defaultProps.setProperty("IndexStop", "true");
+				contextMap.put("IndexStop", "true");
+				defaultProps.setProperty("IndexDrop", "false");
+				contextMap.put("IndexDrop", "false");
+			}
+			else {
+				defaultProps.setProperty("IndexStop", "false");
+				contextMap.put("IndexStop", "false");
+				defaultProps.setProperty("IndexDrop", "false");
+				contextMap.put("IndexDrop", "false");
+			}
 			
 			if (ODMWizardPage2.getCompleteCodelist()) {
 				contextMap.put("importCodelist", "true");  

@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_create_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_drop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_rebuild_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_stop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DropIOETables/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_TRANSFORMATION/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_create_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_drop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_rebuild_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_stop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/database_create_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/database_drop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/database_rebuild_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/database_stop_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_patient_data_0_1.jar"/>

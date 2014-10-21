@@ -155,6 +155,9 @@ public class DBImportWizard extends Wizard {
 			final boolean cleanUp = DBWizardPage3.getCleanUp();
 			final boolean terms = DBWizardPage3.getTerms();
 			final boolean truncateQueries = DBWizardPage3.getTruncateQueries();
+			
+			final boolean stopIndex = DBWizardPage3.getStopIndex();
+			final boolean dropIndex = DBWizardPage3.getDropIndex();
 			// FOLDERMAIN = DBWizardPageThree.getFolderMainText();
 			FOLDERCSV = DBWizardPage3.getCSVPath();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -282,6 +285,27 @@ public class DBImportWizard extends Wizard {
 			} else {
 				defaultProps.setProperty("cleanUp", "false");
 				contextMap.put("cleanUp", "false");
+			}
+			
+			
+			if (dropIndex){
+				defaultProps.setProperty("IndexStop", "false");
+				contextMap.put("IndexStop", "false");
+				
+				defaultProps.setProperty("IndexDrop", "true");
+				contextMap.put("IndexDrop", "true");
+			}
+			else if (stopIndex){
+				defaultProps.setProperty("IndexStop", "true");
+				contextMap.put("IndexStop", "true");
+				defaultProps.setProperty("IndexDrop", "false");
+				contextMap.put("IndexDrop", "false");
+			}
+			else {
+				defaultProps.setProperty("IndexStop", "false");
+				contextMap.put("IndexStop", "false");
+				defaultProps.setProperty("IndexDrop", "false");
+				contextMap.put("IndexDrop", "false");
 			}
 			
 			if (DBWizardPage3.getSaveContext()) {
