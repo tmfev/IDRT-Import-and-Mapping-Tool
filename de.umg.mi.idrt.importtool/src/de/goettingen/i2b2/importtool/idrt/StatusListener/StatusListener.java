@@ -1,6 +1,8 @@
 package de.goettingen.i2b2.importtool.idrt.StatusListener;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -153,12 +155,19 @@ public class StatusListener {
 		status = "Getting PIDs...";
 		file = fileName.getName();
 		ServerView.updateStatus();
-		System.out.println("STATUS: " + currentFile);
+		System.out.println(getTime() + " STATUS: " + currentFile);
+	}
+	private static String getTime(){
+		String DATE_FORMAT_NOW = "HH:mm:ss";
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+		String time = sdf.format(cal.getTime());
+		return time;
 	}
 
 	public static void setStatus(float percentage, final String statusMsg,
 			final String currentFile) {
-		System.out.println("STATUS: " + percentage + " " +statusMsg);
+		System.out.println(getTime() + " STATUS: " + percentage + " " +statusMsg);
 		File fileName = new File(currentFile);
 		perc = percentage;
 		status = statusMsg;
@@ -175,7 +184,7 @@ public class StatusListener {
 	}
 	
 	public static void setStatus(final String statusMsg) {
-		System.out.println("STATUS: " + statusMsg);
+		System.out.println(getTime() + " STATUS: " + statusMsg);
 		status = statusMsg;
 		ServerView.updateStatus();
 		Display.getDefault().syncExec(new Runnable() {
@@ -188,7 +197,7 @@ public class StatusListener {
 	
 	public static void setStatusPID(float percentage, String msg,
 			String currentFile) {
-		System.out.println("STATUS: " + percentage + " "  + msg);
+		System.out.println(getTime() + " STATUS: " + percentage + " "  + msg);
 		File fileName = new File(currentFile);
 		perc = percentage;
 		status = msg;
@@ -204,7 +213,7 @@ public class StatusListener {
 	}
 
 	public static void setSubStatus(float percentage, final String statusMsg) {
-		System.out.println("SUBSTATUS: " + statusMsg);
+		System.out.println(getTime() + " SUBSTATUS: " + statusMsg);
 		subPerc = percentage;
 		subStatus = statusMsg;
 		ServerView.updateStatus();
