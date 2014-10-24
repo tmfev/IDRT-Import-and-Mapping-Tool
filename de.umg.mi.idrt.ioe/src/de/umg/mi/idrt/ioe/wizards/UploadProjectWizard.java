@@ -117,7 +117,7 @@ public class UploadProjectWizard extends Wizard {
 								final String stagingDBPort = currentServer.getPort();
 								final String stagingDBSchema = currentServer.getSchema();
 
-								File outputFolder = FileHandler.getBundleFile("/temp/");
+								File outputFolder = de.umg.mi.idrt.ioe.misc.FileHandler.getBundleFile("/temp/");
 								System.out.println("outputFolder " + outputFolder.getAbsolutePath());
 								contextMap = new HashMap<String, String>();
 
