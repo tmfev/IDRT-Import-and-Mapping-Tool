@@ -141,7 +141,7 @@ public class DBWizardPage3 extends WizardPage {
 			
 			
 			lblStopDatabaseIndexing = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
-			lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
+			lblStopDatabaseIndexing.setToolTipText("Handles the database indexes");
 			lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);
 			
 			composite2 = new Composite(composite, SWT.NONE);

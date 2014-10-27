@@ -190,7 +190,7 @@ public class CSVWizardPage2 extends WizardPage {
 			new Label(container, SWT.NONE);
 			
 			lblStopDatabaseIndexing = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-			lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
+			lblStopDatabaseIndexing.setToolTipText("Handles the database indexes");
 			lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);
 			
 			composite = new Composite(container, SWT.NONE);
