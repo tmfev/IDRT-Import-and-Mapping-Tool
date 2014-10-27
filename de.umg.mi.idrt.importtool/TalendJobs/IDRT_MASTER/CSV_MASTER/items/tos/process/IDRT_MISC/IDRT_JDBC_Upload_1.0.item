@@ -257,7 +257,7 @@
     <contextParameter comment="" name="currentTable" prompt="currentTable?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;DIVI-Auszug&quot;"/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
@@ -2708,7 +2708,7 @@
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out12" activateCondensedTool="true" rejectInnerJoin="true">
         <mapperTableEntries name="C_HLEVEL" expression="row24.C_HLEVEL " type="id_Integer"/>
@@ -2808,7 +2808,7 @@
         <mapperTableEntries name="C_DIMCODE" type="id_String"/>
         <mapperTableEntries name="C_COMMENT" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_TOOLTIP" type="id_String" nullable="true"/>
-        <mapperTableEntries name="M_APPLIED_PATH" type="id_String"/>
+        <mapperTableEntries name="M_APPLIED_PATH" expression="row24.M_APPLIED_PATH " type="id_String" operator="="/>
         <mapperTableEntries name="UPDATE_DATE" type="id_Date"/>
         <mapperTableEntries name="DOWNLOAD_DATE" type="id_Date" nullable="true"/>
         <mapperTableEntries name="IMPORT_DATE" type="id_Date" nullable="true"/>
@@ -6458,7 +6458,7 @@
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-352" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
     <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 DROP CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME, M_APPLIED_PATH ) ENABLE&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>

@@ -269,6 +269,14 @@ public class IDRTHelper {
 					System.out.println("ignoring: " + (k-1));
 				}
 			}
+			
+			System.out.println("****");
+			if (PID < 0 && objectID>=0){
+				PID = objectID;
+				System.out.println("Modifier");
+				System.out.println("PID: "+ PID);
+			}
+			System.out.println("****");
 
 			List<String> columnNames = new LinkedList<String>();
 
@@ -401,8 +409,8 @@ public class IDRTHelper {
 			if (objectID>=0) { 
 				System.out.println("GOING FOR MODIFIERS");
 				ontLine[ONT_HLEVEL] = "1";
-				ontLine[ONT_NAME] = "Objects";	//TODO context variable
-				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OID"+"\\"; //TODO context variable
+				ontLine[ONT_NAME] = "Modifier";	//TODO context variable
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"mod"+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
 				ontLine[ONT_IMPORTDATE] = "";
@@ -417,7 +425,7 @@ public class IDRTHelper {
 				
 				ontLine[ONT_HLEVEL] = "2";
 				ontLine[ONT_NAME] = tableName;	//TODO context variable
-				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"OID"+"\\" + tableName+"\\"; //TODO context variable
+				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"mod"+"\\" + tableName+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
 				ontLine[ONT_IMPORTDATE] = "";
@@ -483,7 +491,7 @@ public class IDRTHelper {
 						ontLine[ONT_ITEMCODE] = "";
 						ontLine[ONT_SOURCE] = "";
 						ontLine[ONT_XML] = "";
-						ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"OID"+"\\" + tableName+"\\";
+						ontLine[ONT_M_APPLIEDPATH] = "\\"+headnode+"\\"+"mod"+"\\" + tableName+"\\";
 						ontOutput.writeNext(ontLine);
 					}
 					colCounter++;
@@ -702,7 +710,9 @@ public class IDRTHelper {
 
 						if (PID>=0)
 							nextOutputLine[OBS_PATIENTID] = nextLine[PID];
-						else 
+						else if (objectID>=0 && PID < 0)
+							nextOutputLine[OBS_PATIENTID] = nextLine[objectID];
+						else
 							nextOutputLine[OBS_PATIENTID] = "";
 
 						if (EncounterID>=0)
