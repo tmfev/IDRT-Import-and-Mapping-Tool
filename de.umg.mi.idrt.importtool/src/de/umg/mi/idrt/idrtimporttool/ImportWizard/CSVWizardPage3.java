@@ -69,7 +69,7 @@ import org.eclipse.wb.swt.ResourceManager;
 public class CSVWizardPage3 extends WizardPage {
 
 
-	public static Table fillTable(Table table, String[] nextLine) {
+	public static Table fillTable(Table table, String[] nextLine, String file) {
 		try {
 
 			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
@@ -158,6 +158,11 @@ public class CSVWizardPage3 extends WizardPage {
 			int updWeight = 99999;
 			int endLocation = -1;
 			int endWeight = 99999;
+
+
+			CSVReader fileReader = new CSVReader(
+					new FileReader(file),
+					inputDelim,QUOTECHAR);
 			for (int i = 0; i < nextLine.length; i++) {
 
 
@@ -305,9 +310,24 @@ public class CSVWizardPage3 extends WizardPage {
 						}
 					}
 				}
-
+			
 			}
-
+			String[] nextFileLine = fileReader.readNext();
+			HashSet<String> pidSet = new HashSet<String>();
+			
+			while ((nextFileLine = fileReader.readNext()) != null) {
+				if (!pidSet.add(nextFileLine[pidLocation])){
+					System.out.println("PID DOUBLE:");
+					System.out.println(nextFileLine[pidLocation]);
+					
+					boolean cont = MessageDialog.openQuestion(Application.getShell(), "Duplicate Found", "A duplicate of the PatientID: " 
+						+ nextFileLine[pidLocation] + " has been found. Treat " + file +" as Modifier?");
+					if (cont)
+					table.getItems()[pidLocation].setText(3, Messages.ConfigMetaData_ObjectID); 
+					break;
+				}
+			}
+			fileReader.close();
 			return table;
 		} catch (IOException e) {
 
@@ -528,8 +548,8 @@ public class CSVWizardPage3 extends WizardPage {
 						reader.close();
 						boolean fine = false;
 						for (int i = 1; i < line1.length; i++) {
-//							System.out.println(line4[i]);
-							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") )
+							//							System.out.println(line4[i]);
+							if (line4[i].equalsIgnoreCase("patientid") ||line4[i].equalsIgnoreCase("encounterid") || line4[i].equalsIgnoreCase("objectid") )
 							{
 								fine=true;
 								break;
@@ -541,7 +561,7 @@ public class CSVWizardPage3 extends WizardPage {
 						else {
 							filesOK=false;
 							setPageComplete(false);
-							setErrorMessage("No PatientID or EncounterID found in " + table + "!");
+							setErrorMessage("No PatientID or ObjectID found in " + table + "!");
 							incompleteConfigs.add(table);
 						}
 					}
@@ -983,10 +1003,10 @@ public class CSVWizardPage3 extends WizardPage {
 									tmp = tmp + ".cfg.csv";
 									String newConfig = tmp;
 
-//									System.out.println(newConfig);
+									//									System.out.println(newConfig);
 									configList.add(newConfig);
-//									System.out.println("added " + serverListViewer.getTable()
-//											.getSelection()[0].getText());
+									//									System.out.println("added " + serverListViewer.getTable()
+									//											.getSelection()[0].getText());
 									lastTable = serverListViewer.getTable()
 											.getSelection()[0].getText();
 									table.removeAll();
@@ -1324,7 +1344,11 @@ public class CSVWizardPage3 extends WizardPage {
 							nextLine = reader.readNext();
 							reader.close();
 
-							fillTable(table, nextLine);
+							fillTable(table, nextLine,
+									csvFolder
+									+ serverListViewer.getTable()
+									.getSelection()[0]
+											.getText());
 							checkTables();
 							saveTable();
 						} catch (FileNotFoundException e1) {
