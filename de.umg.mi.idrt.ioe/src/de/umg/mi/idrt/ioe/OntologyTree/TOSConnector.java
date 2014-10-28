@@ -152,6 +152,7 @@ public class TOSConnector {
 //				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 //				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
+				setContextVariable("DB_StagingI2B2_WHType", currentServer.getWhType());
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 
@@ -172,7 +173,7 @@ public class TOSConnector {
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
 					setContextVariable("DB_TargetI2B2_DatabaseType", targetServer.getDatabaseType());
-
+					setContextVariable("DB_TargetI2B2_WHType", targetServer.getWhType());
 //					setContextVariable("DB_TargetI2B2_jdbcurl", "jdbc:oracle:thin:@" + targetServer.getIp() + ":" + targetServer.getPort() + ":" + targetServer.getSID());
 				}
 //				setContextVariable("DB_TargetI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
@@ -329,6 +330,7 @@ public class TOSConnector {
 					setContextVariable("DB_TargetI2B2_Instance",
 							targetServer.getSID());
 					setContextVariable("DB_TargetI2B2_DatabaseType", targetServer.getDatabaseType());
+					setContextVariable("DB_TargetI2B2_WHType", targetServer.getWhType());
 				}
 				
 
@@ -422,6 +424,7 @@ public class TOSConnector {
 		setContextVariable("DB_StagingI2B2_Schema",
 				OntologyEditorView.getStagingSchemaName());
 		setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
+		setContextVariable("DB_StagingI2B2_WHType", currentServer.getWhType());
 		setContextVariable("studyID", studyID);
 		
 		workerThread = new Thread(new Runnable() {

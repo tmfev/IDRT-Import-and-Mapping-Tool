@@ -464,6 +464,7 @@ public class Server implements Serializable {
 		return uniqueID + " " + ip;
 	}
 	public String getWhType() {
+		System.out.println("return: " +whType + " for " + uniqueID + " " + this.databaseType);
 		if (whType==null)
 			return "i2b2";
 		else
