@@ -15,7 +15,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_patient_data_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/idrt_delete_patients_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/idrt_to_db_schema_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/idrt_truncate_tables_0_1.jar"/>
@@ -23,7 +22,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/dbimport_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/idrt_stdterm_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_TRANSFORMATION/idrt_transformation_0_5.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/idrt_delete_patients_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/idrt_to_db_schema_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/idrt_truncate_tables_0_1.jar"/>
@@ -68,7 +66,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_patient_data_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/idrt_delete_patients_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/idrt_to_db_schema_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/idrt_truncate_tables_0_1.jar"/>

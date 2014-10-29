@@ -1305,7 +1305,7 @@ public class CSVWizardPage3 extends WizardPage {
 
 									// try float
 									try {
-										Float.parseFloat(next);
+										Float.parseFloat(next.replaceAll("," ,"."));
 										countFloat++;
 										minusString = true;
 									} catch (Exception e4) {
@@ -1315,12 +1315,13 @@ public class CSVWizardPage3 extends WizardPage {
 										countString--;
 									}
 								}
-
+								System.out.println(i + " " +table.getItems()[i].getText(0) + ": f" +countFloat + " s" + countString + " i" + countInt);
 								if ((countFloat == 0) && (countInt == 0)
 										&& (countString > 0)) {
 									table.getItems()[i].setText(2, "String"); 
 								} else if ((countFloat > countInt)
 										&& (countString <= 0)) {
+									
 									table.getItems()[i].setText(2, "Float"); 
 								} else if ((countInt > countFloat)
 										&& (countString <= 0) && countString ==0) {

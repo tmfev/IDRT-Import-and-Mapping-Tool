@@ -17,12 +17,6 @@ import org.eclipse.swt.widgets.Display;
 //import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
 
-
-
-
-
-
-import tos.deletetransmartproject_0_1.deleteTransmartProject;
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -432,12 +426,12 @@ public class TOSConnector {
 			@Override
 			public void run() {
 				//TODO CREATE AND OPEN NEW TOS JOB
-				deleteTransmartProject deleteProject = new deleteTransmartProject();
-				int exit = deleteProject.runJobInTOS(getARGV());
+//				deleteTransmartProject deleteProject = new deleteTransmartProject();
+//				int exit = deleteProject.runJobInTOS(getARGV());
 				
-				if (exit == 0)
-					MessageDialog.openInformation(Application.getShell(), "Study Deleted!", "Study: " + studyID + " deleted!");
-				System.out.println("JOB DONE: " + exit);
+//				if (exit == 0)
+//					MessageDialog.openInformation(Application.getShell(), "Study Deleted!", "Study: " + studyID + " deleted!");
+//				System.out.println("JOB DONE: " + exit);
 			}
 		});
 		workerThread.run();

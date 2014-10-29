@@ -6282,7 +6282,7 @@
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-352" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
     <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 DROP CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME, M_APPLIED_PATH ) ENABLE&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 DROP CONSTRAINT I2B2_PK&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>

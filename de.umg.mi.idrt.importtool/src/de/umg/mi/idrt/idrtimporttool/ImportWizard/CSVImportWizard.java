@@ -218,7 +218,7 @@ public class CSVImportWizard extends Wizard {
 //		final String dbSchema = WizardPage1.getDBSchemaText();
 		final boolean truncate = CSVWizardPage2.getTruncate();
 		final boolean truncateQueries = CSVWizardPage2.getTruncateQueries();
-		final boolean cleanUp = false;//CSVWizardPage2.getCleanUp();
+		final boolean cleanUp = CSVWizardPage2.getCleanUp();
 		final String pattern = CSVWizardPage2.getPattern();
 		
 		final boolean stopIndex = CSVWizardPage2.getStopIndex();

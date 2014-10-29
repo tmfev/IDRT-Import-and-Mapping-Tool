@@ -214,13 +214,13 @@ public class CSVWizardPage2 extends WizardPage {
 			new Label(container, SWT.NONE);
 
 			//TODO REIMPLEMENT
-//			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-//			labelCleanUp.setText(Messages.CSVWizardPageTwo_CleanUp);
+			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			labelCleanUp.setText(Messages.CSVWizardPageTwo_CleanUp);
 
-//			cleanUpBtn = new Button(container, SWT.CHECK);
-//			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
-//					.getProperty("cleanUp"))); 
-//			new Label(container, SWT.NONE);
+			cleanUpBtn = new Button(container, SWT.CHECK);
+			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
+					.getProperty("cleanUp"))); 
+			new Label(container, SWT.NONE);
 
 			Label folder = new Label(container, SWT.FILL | SWT.CENTER);
 			folder.setText(Messages.CSVWizardPageTwo_CSVFolder);

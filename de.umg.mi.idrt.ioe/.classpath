@@ -2,6 +2,18 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.umg.mi.idrt.importtool"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_rebuild_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_stop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createieotables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createtargetproject_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/dom4j-1.6.1.jar"/>
@@ -21,17 +33,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/TOSHandler021.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/trove.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/userRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createieotables_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createtargetproject_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/tos/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/deleteTransmartProject/deletetransmartproject_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/cdatetime-0.14.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/cwt-0.9.0.jar"/>
