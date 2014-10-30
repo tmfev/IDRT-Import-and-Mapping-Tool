@@ -1,6 +1,0 @@
-"TARGET_ID";"TREE_LEVEL";"TREE_PATH";"STAGING_PATH";"STAGING_DIMENSION";"C_NAME";"STARTDATE_STAGING_PATH";"ENDDATE_STAGING_PATH";"VISUALATTRIBUTES";"C_BASECODE";"C_METADATAXML";"C_COLUMNDATATYPE";"C_OPERATOR";"C_COMMENT";"C_TOOLTIP";"UPDATE_DATE";"DOWNLOAD_DATE";"IMPORT_DATE";"SOURCESYSTEM_CD";"VALUETYPE_CD";"M_APPLIED_PATH"
-"0";"0";"\i2b2\";"\i2b2\";"concept_dimension";"i2b2";"";"";"FAE";"|i2b2";;;;;;;;;;;"@"
-"0";"1";"\i2b2\PD\";"\i2b2\PD\";"concept_dimension";"Patientdata";;;"FA ";"|i2b2|PD";"null";"T";"null";"null";"Patientdata";;;;"null";"T";"@"
-"0";"2";"\i2b2\PD\16S_raw\";"\i2b2\PD\16S_raw\";"concept_dimension";"16S_raw";;;"FA ";"|i2b2|PD|16S_raw";"null";"T";"null";"null";"16S_raw";;;;"null";"T";"@"
-"0";"3";"\i2b2\PD\16S_raw\X16S_Rohdaten\";"\i2b2\PD\16S_raw\X16S_Rohdaten\";"concept_dimension";"X16S_Rohdaten";;;"FA ";"|i2b2|PD|16S_raw|X16S_Rohdaten";"null";"T";"null";"null";"X16S_Rohdaten";;;;"null";"T";"@"
-"0";"4";"\i2b2\PD\16S_raw\X16S_Rohdaten\available\";"\i2b2\PD\16S_raw\X16S_Rohdaten\available\";"concept_dimension";"available";;;"LA ";"|i2b2|PD|16S_raw|X16S_Rohdaten:available";"null";"T";"null";"null";"available";;;;"null";"T";"@"

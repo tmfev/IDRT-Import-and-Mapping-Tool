@@ -16,15 +16,12 @@ import org.eclipse.swt.widgets.Display;
 
 //import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
-
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-import de.umg.mi.idrt.importtool.views.ServerView;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
-import de.umg.mi.idrt.ioe.tos.TOSHandler;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.ProgressView;
 
