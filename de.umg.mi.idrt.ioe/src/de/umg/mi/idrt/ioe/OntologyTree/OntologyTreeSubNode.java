@@ -31,6 +31,7 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 		else {
 			System.err.println("Parent null");
 		}
+//		this.setStagingParentNode(parent);
 	}
 	
 
@@ -79,7 +80,6 @@ public class OntologyTreeSubNode extends DefaultMutableTreeNode{
 	 */
 	public void setHighlighted(boolean b) {
 		this.highlighted = b;
-
 	}
 
 	/**

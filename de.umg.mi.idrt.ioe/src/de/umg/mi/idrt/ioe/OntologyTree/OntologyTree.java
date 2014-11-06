@@ -24,7 +24,7 @@ public class OntologyTree extends JTree {
 
 	private OntologyTreeNode treeRoot;
 	private OntologyTreeNodeList nodeLists;
-
+	private OntologyTreeNodeList modifierNodeLists;
 	private OntologyTreeNode i2b2RootNode;
 	private TreeViewer treeViewer;
 
@@ -104,6 +104,25 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD, item.getValueTypeCD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION, item.getStagingDimension());
+		
+		System.out.println("ADD MOD:");	
+		
+		//TODO
+				System.out.println(item.getStagingPath());
+				OntologyTreeNode node2 = getNodeLists().getNodeByPath(item.getStagingPath());
+//				node.getTargetNodeAttributes().setStagingParent(stagingParent);
+				System.out.println("STAGIN NODE MAP: " + node2.getName() + " " + node2.getOntologyCellAttributes().getC_BASECODE());
+		
+				
+				
+		OntologyTreeNode stagingParent = null;
+		
+		node.getTargetNodeAttributes().setStagingParent(stagingParent);
+		
+		
+		
+		
+		node.setStagingModifierPath(item.getStaging_m_applied_path());
 		node.setTreePathLevel(item.getTreeLevel());
 		
 		if (nodeType != null) {
@@ -151,6 +170,10 @@ public class OntologyTree extends JTree {
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_TOOLTIP, ""+item.getTooltip());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.SOURCESYSTEM_CD, ""+item.getSourceSystemCD());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.VALUETYPE_CD, ""+item.getValueTypeCD());
+			
+		
+			
+			node.setStagingModifierPath(item.getStaging_m_applied_path());
 			if (type != null) {
 				setI2B2RootNode(node);
 			}
@@ -165,11 +188,15 @@ public class OntologyTree extends JTree {
 	 */
 	public void addModifierNodeByPath(OntologyItem item, String ontologySource,
 			NodeType nodeType) {
+		
+	
 		OntologyTreeNode node = new OntologyTreeNode(item.getC_NAME(),false);
 		node.setModifier(true);
-		String path = item.getM_APPLIED_PATH().substring(0,
-				item.getM_APPLIED_PATH().length() - 1)
-				+ item.getC_FULLNAME();
+//		String path = item.getM_APPLIED_PATH().substring(0,
+//				item.getM_APPLIED_PATH().length() - 1)
+//				+ item.getC_FULLNAME();
+		
+		
 		node.setID(node.getIDFromPath(item.getC_FULLNAME()));
 		try {
 //			this.getNodeLists().addOTNode(path, node).add(node);
@@ -179,6 +206,7 @@ public class OntologyTree extends JTree {
 			Console.error("Could not add node \"" + item.getC_NAME()
 					+ "\" to the tree, because there is no parent node for it.");
 		}
+		
 		node.setTreeAttributes();
 		node.setType(ontologySource);
 		node.setOntologyCellAttributes(item);
@@ -266,6 +294,14 @@ public class OntologyTree extends JTree {
 
 	public void setI2B2RootNode(OntologyTreeNode tmpi2b2RootNode) {
 		i2b2RootNode = tmpi2b2RootNode;
+	}
+
+	public OntologyTreeNodeList getModifierNodeLists() {
+		return modifierNodeLists;
+	}
+
+	public void setModifierNodeLists(OntologyTreeNodeList modifierNodeLists) {
+		this.modifierNodeLists = modifierNodeLists;
 	}
 
 }

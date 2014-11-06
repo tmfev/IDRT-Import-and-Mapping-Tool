@@ -31,6 +31,9 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	/**
 	 * 
 	 */
+	
+	private String stagingModifierPath;
+	
 	private boolean isCustomNode = false;
 	private static final long serialVersionUID = -874444767245977081L;
 	private boolean searchResult = false;
@@ -610,6 +613,12 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	}
 	public void setCustomNode(boolean isCustomNode) {
 		this.isCustomNode = isCustomNode;
+	}
+	public String getStagingModifierPath() {
+		return stagingModifierPath;
+	}
+	public void setStagingModifierPath(String stagingModifierPath) {
+		this.stagingModifierPath = stagingModifierPath;
 	}
 
 }

@@ -144,7 +144,8 @@ public class TOSHandler {
 			Date importDate,
 			String sourceSystemCD,
 			String valueTypeCD,
-			String m_applied_path){
+			String m_applied_path,
+			String staging_m_applied_path){
 		//TODO FIX META ALWAYS NULL
 		
 		if (ontologyStagingTree == null)
@@ -152,17 +153,16 @@ public class TOSHandler {
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
 				stagingDimension, name, startdateStagingPath, enddateStagingPath, visualattributes, basecode,
 				metadataxml,columndatatype,	c_operator,	c_comment,tooltip,updateDate, downloadDate,	importDate,
-				sourceSystemCD,	valueTypeCD,m_applied_path);
+				sourceSystemCD,	valueTypeCD,m_applied_path,staging_m_applied_path);
 		//		System.out.println("!!!adding: " + treePath);
 		if (treeLevel!=0) {
 			if ( item.getM_applied_path() == null || "@".equals(item.getM_applied_path())) {
 				OntologyEditorView.getOntologyTargetTree().addTargetNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
-
 			}
 			else {
+				System.out.println("ADD MODIFIER");
 				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
 			}
-
 		}
 	}
 

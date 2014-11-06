@@ -28,6 +28,7 @@ public class OntologyItemTarget {
 	private String sourceSystemCD;
 	private String valueTypeCD;
 	private String m_applied_path;
+	private String staging_m_applied_path;
 
 
 	public OntologyItemTarget(int treeLevel, 
@@ -41,7 +42,7 @@ public class OntologyItemTarget {
 			//NEW
 			String basecode, String metadataxml, String columndatatype, 
 			String c_operator, String c_comment, String tooltip, Date updateDate, Date downloadDate, 
-			Date importDate, String sourceSystemCD, String valueTypeCD, String m_applied_path) {
+			Date importDate, String sourceSystemCD, String valueTypeCD, String m_applied_path, String staging_m_applied_path) {
 
 		this.treeLevel=treeLevel;
 		this.treePath=treePath;
@@ -65,7 +66,7 @@ public class OntologyItemTarget {
 		this.sourceSystemCD=sourceSystemCD;
 		this.valueTypeCD=valueTypeCD;
 		this.m_applied_path=m_applied_path;
-
+		this.setStaging_m_applied_path(staging_m_applied_path);
 	}
 
 	/**
@@ -367,6 +368,14 @@ public class OntologyItemTarget {
 	 */
 	public String getDownloadDateAsString() {
 		return downloadDate!=null?downloadDate.toString():"";
+	}
+
+	public String getStaging_m_applied_path() {
+		return staging_m_applied_path;
+	}
+
+	public void setStaging_m_applied_path(String staging_m_applied_path) {
+		this.staging_m_applied_path = staging_m_applied_path;
 	}
 
 }

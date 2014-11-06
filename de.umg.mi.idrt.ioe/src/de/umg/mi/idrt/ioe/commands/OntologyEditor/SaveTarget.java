@@ -143,7 +143,7 @@ public class SaveTarget extends AbstractHandler {
 	private void writeNode(OntologyTreeNode node) {
 
 		for (OntologyTreeSubNode subNode : node.getTargetNodeAttributes().getSubNodeList()) {
-			String[] fields = new String[21];
+			String[] fields = new String[22];
 
 			fields[0] = targetID;
 			if (!node.isModifier()){
@@ -160,7 +160,9 @@ public class SaveTarget extends AbstractHandler {
 						(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
 //				System.out.println("APPLIEDPATH:_ "+appliedPath);
 				String treePath = subNode.getParent().getTreePath();
-//				System.out.println("TREEPATH:"  + treePath);
+				String stagingPath = subNode.getParent().getTargetNodeAttributes().getSourcePath();
+				System.out.println("appliedPath:" + appliedPath);
+				System.out.println("TREEPATH:"  + treePath);
 				fields[2] = treePath.substring(treePath.indexOf(appliedPath)+appliedPath.length()-1);	
 			}
 			fields[3] = subNode.getStagingPath();
@@ -195,6 +197,8 @@ public class SaveTarget extends AbstractHandler {
 			fields[18] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD);
 			fields[19] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.VALUETYPE_CD);
 			fields[20] = subNode.getParent().getTargetNodeAttributes().getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
+			fields[21] = node.getStagingModifierPath();
+			
 			writer.writeNext(fields);
 		}
 

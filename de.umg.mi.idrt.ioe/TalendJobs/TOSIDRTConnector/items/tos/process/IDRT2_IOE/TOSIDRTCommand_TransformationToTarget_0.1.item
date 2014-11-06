@@ -1124,15 +1124,15 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="992">
+  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="992">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUniqRow_4"/>
     <elementParameter field="TABLE" name="UNIQUE_KEY">
       <elementValue elementRef="SCHEMA_COLUMN" value="C_HLEVEL"/>
-      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_FULLNAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="C_NAME"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -1176,8 +1176,8 @@
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="M_APPLIED_PATH"/>
-      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="UPDATE_DATE"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -1294,7 +1294,7 @@
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="832" posY="992">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="992">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_4"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -2496,7 +2496,7 @@
     <elementParameter field="MEMO" name="COMMENT" value=""/>
     <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="192">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="14" offsetLabelY="0" posX="576" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_8"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -3726,7 +3726,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(40, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot; + context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where target_id = &quot; + context.TargetID+&quot;))&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(40, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where concept_cd in (  select concept_cd from &quot; + context.DB_StagingI2B2_Schema+&quot;.CONCEPT_DIMENSION where CONCEPT_PATH in     (     select staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where target_id = &quot; + context.TargetID+&quot;)) and modifier_cd like '@'&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -8650,7 +8650,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="288">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_24"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(40, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where modifier_cd in (select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where modifier_path in (select staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;))&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(40, &quot;Getting Staging Observation_Fact...&quot;);&#xA;if (context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)){&#xA;//context.currentQuery = &quot;Select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.observation_fact&quot;;&#xA;&#xA;context.currentQuery = &quot;select * from &quot; + context.DB_StagingI2B2_Schema+&quot;.OBSERVATION_FACT where modifier_cd in (select modifier_cd from &quot;+ context.DB_StagingI2B2_Schema+&quot;.MODIFIER_DIMENSION where modifier_path in (select staging_path from &quot; + context.DB_StagingI2B2_Schema+&quot;.IOE_TARGET_ONTOLOGY where TARGET_ID=&quot; + context.TargetID+&quot;)) and modifier_cd not like '@'&quot;;&#xA;}&#xA;else {&#xA;context.currentQuery = &quot;Select * from i2b2demodata.observation_fact&quot;;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>

@@ -441,6 +441,9 @@ public class EditorTargetInfoView extends ViewPart {
 		addColumItem(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE,true,row++);
 		addColumItem(Resource.I2B2.NODE.TARGET.C_OPERATOR,true,row++);
 		addColumItem(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,true,row++);
+		
+		addColumItem(Resource.I2B2.NODE.TARGET.STAGING_M_APPLIED_PATH ,true,row++);
+		
 		addColumItem("TREE_PATHLEVEL",true,row++);
 		addColumItem("TREE_PATH",true,row++);
 	}
@@ -484,6 +487,8 @@ public class EditorTargetInfoView extends ViewPart {
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
 
+				addValueItem(items, row++,treeNode.getStagingModifierPath());
+				
 				addValueItem(items, row++,""+treeNode.getTreePathLevel());
 				addValueItem(items, row++,treeNode.getTreePath());
 
@@ -501,7 +506,7 @@ public class EditorTargetInfoView extends ViewPart {
 
 			if (!infoTable.isDisposed()) {
 				TableItem[] items = infoTable.getItems();
-
+				
 				int row = 0;
 				addValueItem(items, row++, String.valueOf(treeNode.getParent().getName()));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_TOOLTIP));
@@ -521,7 +526,9 @@ public class EditorTargetInfoView extends ViewPart {
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_COLUMNDATATYPE));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.C_OPERATOR));
 				addValueItem(items, row++,attributes.getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD));
-
+				
+				addValueItem(items, row++,treeNode.getParent().getStagingModifierPath());
+				
 				addValueItem(items, row++,""+treeNode.getParent().getTreePathLevel());
 				addValueItem(items, row++,treeNode.getParent().getTreePath());
 //				addValueItem(items, row++, treeNode.getStagingPath());

@@ -306,6 +306,7 @@ public class Resource {
 				public final static String	M_EXCLUSION_CD = "M_EXCLUSION_CD";
 				public final static String	C_PATH = "C_PATH";
 				public final static String	C_SYMBOL = "C_SYMBOL";
+				public static final String STAGING_M_APPLIED_PATH = "STAGING_M_APPLIED_PATH";
 
 			}
 

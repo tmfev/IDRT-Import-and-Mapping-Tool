@@ -479,6 +479,7 @@ public class IDRTHelper {
 					){ //&& colCounter != bioSic && colCounter != imageSic && colCounter != otherSic
 
 						String string = columnNames.get(i);	
+						string = input.getName().substring(0, input.getName().lastIndexOf("."))+"_" +string;
 						ontLine[ONT_HLEVEL] = "1";
 						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
 						ontLine[ONT_PATH] = "\\"+string+"\\";
@@ -746,7 +747,9 @@ public class IDRTHelper {
 						}
 						else
 							nextOutputLine[OBS_DOWNLOADDATE] = "";
-
+						if (objectID>=0)
+							nextOutputLine[OBS_ITEM] =  input.getName().substring(0, input.getName().lastIndexOf("."))+"_" +currentColumn;
+						else
 						nextOutputLine[OBS_ITEM] = currentColumn;
 						if (nextLine[columnCounter].length()>180)
 							nextOutputLine[OBS_VALUE] = nextLine[columnCounter].substring(0, 179);

@@ -16,6 +16,7 @@ public class TargetNodeAttributes {
 	private String visualattribute = "";
 	private String dimension = "concept_dimension";
 	private LinkedHashSet<OntologyTreeSubNode> subNodeList;
+	private OntologyTreeNode stagingParent;
 
 	private OntologyTreeNode parent;
 	private HashMap<String, String> targetNodeMap;
@@ -234,6 +235,18 @@ public class TargetNodeAttributes {
 			}
 		}
 		return found;
+	}
+	public OntologyTreeNode getStagingParent() {
+		return stagingParent;
+	}
+	public void setStagingParent(OntologyTreeNode stagingParent) {
+		this.stagingParent = stagingParent;
+	}
+	public String getM_applied_path() {
+		return getTargetNodeMap().get(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH);
+	}
+	public void setM_applied_path(String m_applied_path) {
+		getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH,m_applied_path);
 	}
 
 }

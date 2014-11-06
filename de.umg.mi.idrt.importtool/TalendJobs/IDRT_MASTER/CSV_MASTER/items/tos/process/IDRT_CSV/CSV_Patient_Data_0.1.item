@@ -10,7 +10,7 @@
     <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.cfg.csv&quot;"/>
     <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.csv&quot;"/>
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yyyy, hh:mm:ss&quot;"/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;DIVI-Auszug&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
     <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_Directory" value="&quot;C:/Desktop_Workspace/CSV/&quot;"/>
     <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output.csv&quot;"/>
@@ -23,10 +23,10 @@
     <contextParameter comment="" name="ontOutputMod" prompt="ontOutputMod?" promptNeeded="false" type="id_Integer" value="1"/>
     <contextParameter comment="" name="csvOutputCurrent" prompt="csvOutputCurrent?" promptNeeded="false" type="id_Integer" value="0"/>
     <contextParameter comment="" name="ontOutputCurrent" prompt="ontOutputCurrent?" promptNeeded="false" type="id_Integer" value="0"/>
-    <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\starlims.cfg.csv&quot;"/>
-    <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop\CSV\CSV\starlims.csv&quot;"/>
+    <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\starlims.cfg.csv&quot;"/>
+    <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\starlims.csv&quot;"/>
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd-MM-yyyy&quot;"/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;DIVI-Auszug&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
     <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_Directory" value="&quot;C:/Desktop_Workspace/CSV/&quot;"/>
     <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;output.csv&quot;"/>
@@ -223,7 +223,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="asd">
         <mapperTableEntries name="PatientID" expression="fromOutput.PatientID" type="id_String" nullable="true"/>
@@ -245,7 +245,7 @@
         <mapperTableEntries name="sic" expression="fromOutput.sic " type="id_String" nullable="true"/>
         <mapperTableEntries name="m_applied_path" expression="fromOnt.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
-      <inputTables sizeState="INTERMEDIATE" name="fromOutput" minimized="true" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="fromOutput" minimized="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="PatientID" type="id_String" nullable="true"/>
         <mapperTableEntries name="EncounterID" type="id_String" nullable="true"/>
         <mapperTableEntries name="ImportDate" type="id_Date" nullable="true"/>
@@ -265,7 +265,7 @@
         <mapperTableEntries name="modifierType" type="id_String" nullable="true"/>
         <mapperTableEntries name="sic" type="id_String" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="fromOnt" minimized="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="fromOnt" minimized="true" activateExpressionFilter="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="HLEVEL" type="id_String" nullable="true"/>
         <mapperTableEntries name="Name" type="id_String" nullable="true"/>
         <mapperTableEntries name="Path" type="id_String" nullable="true"/>
@@ -494,7 +494,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" expression="fromPatient.DataType.toLowerCase().equals(&quot;float&quot;)" type="id_Boolean"/>
         <mapperTableEntries name="var3" expression="fromPatient.DataType.toLowerCase().equals(&quot;date&quot;)" type="id_Boolean"/>

@@ -21,12 +21,6 @@ public class OntologyTreeNodeList {
 	public OntologyTreeNodeList(){
 		stringPathToNode = new HashMap<String, OntologyTreeNode>();
 	}
-//	
-//	public Collection<OntologyTreeNode> getStringPathToNode(){
-//		
-//		return stringPathToNode.values();
-//		
-//	}
 
 	public void add( OntologyTreeNode node ){
 		this.addNodyByPath( node.getTreePath(), node );
@@ -40,12 +34,6 @@ public class OntologyTreeNodeList {
 	}
 
 	public void addNodyByPath( String stringPath, OntologyTreeNode node ){
-		//		if ( stringPathToNode.size() < 30 || stringPathToNode.size() % 1000 == 0 ) {
-		//			long newTime = System.currentTimeMillis();
-		//
-		//			System.out.println((newTime-time)+ "ms: addOTNode # " + stringPathToNode.size() +" " + node.getName() + "  -> " + node.getTreePath());
-		//			time = newTime;
-		//		}
 		this.stringPathToNode.put( stringPath, node );
 	}
 	/**
@@ -80,7 +68,6 @@ public class OntologyTreeNodeList {
 				}
 			}
 		}
-
 		this.addNodyByPath( i2b2Path, node );
 
 		node.setTreePath(i2b2Path);

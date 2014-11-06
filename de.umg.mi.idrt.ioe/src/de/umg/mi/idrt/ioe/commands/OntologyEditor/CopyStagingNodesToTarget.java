@@ -17,15 +17,16 @@ public class CopyStagingNodesToTarget extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
-
+		System.out.println("@Execute");
 		if (NodeDropListener.getTargetNode() instanceof OntologyTreeNode) {
 			OntologyTreeNode targetNode = (OntologyTreeNode) NodeDropListener.getTargetNode();
 //			System.out.println("targetNodePath "+targetNodePath);
 			if (targetNode != null) {
+				System.out.println("TRUE");
 				OntologyEditorView.getMyOntologyTree().copySourceNodeToTarget(null,targetNode);
 
 			} else {
+				System.out.println("ELSE");
 //				System.err.println("Error while copying nodes: SourceNode (\""
 //						+ sourceNodePath + "\") "
 //						+ ") and TargetNode (\"" + targetNodePath + "\") "
@@ -33,6 +34,7 @@ public class CopyStagingNodesToTarget extends AbstractHandler {
 			}
 		}
 		else if (NodeDropListener.getTargetNode() instanceof OntologyTreeSubNode) {
+			System.out.println("ELSE IF");
 			OntologyTreeSubNode subNode = (OntologyTreeSubNode) NodeDropListener.getTargetNode();
 			System.out.println("DROPPED ON SUBNODE");
 			OntologyEditorView.getMyOntologyTree().copySourceNodeToTarget(null,subNode.getParent());

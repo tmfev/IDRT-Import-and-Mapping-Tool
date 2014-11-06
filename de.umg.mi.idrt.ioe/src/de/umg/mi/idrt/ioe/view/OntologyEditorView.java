@@ -321,11 +321,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-//						Shell shell = new Shell();
-//						shell.setSize(844, 536);
-//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-//						mainComposite = new Composite(shell, SWT.NONE);
-//						mainComposite.setLayout(new BorderLayout(0, 0));
+		//						Shell shell = new Shell();
+		//						shell.setSize(844, 536);
+		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+		//						mainComposite = new Composite(shell, SWT.NONE);
+		//						mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -704,6 +704,9 @@ public class OntologyEditorView extends ViewPart {
 				| ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
 				| ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
+		/**
+		 * RENAME NODE
+		 */
 		final TextCellEditor textCellEditor = new TextCellEditor(targetTreeViewer.getTree(),SWT.NONE);
 		targetColumn = new TreeViewerColumn(targetTreeViewer, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
@@ -729,7 +732,8 @@ public class OntologyEditorView extends ViewPart {
 			protected void setValue(Object element, Object value) {
 				String newName = (String)value;
 				OntologyTreeNode treeNode = ((OntologyTreeNode) element);
-				setPath(treeNode, newName, treeNode.getTreePathLevel());
+				if (!treeNode.isModifier())
+					setPath(treeNode, newName, treeNode.getTreePathLevel());
 				treeNode.getTargetNodeAttributes().setName(newName);
 				treeNode.setName(newName);
 				treeNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,newName);
@@ -739,37 +743,79 @@ public class OntologyEditorView extends ViewPart {
 			}
 			protected void setPath(OntologyTreeNode treeNode, String value, int hlevel){
 				if (treeNode.isCustomNode()){
-					
 					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
-					System.out.println("aa: " + baseSplit[hlevel+1]);
 					baseSplit[hlevel+1] =value;
 					String newBase = "";
 					for (int i = 0; i < baseSplit.length; i++){
 						newBase += baseSplit[i]+"|";
 					}
 					newBase = newBase.substring(0, newBase.length()-1);
-					System.out.println(newBase);
+					//					System.out.println(newBase);
 					treeNode.getTargetNodeAttributes().setC_Basecode(newBase);
 					treeNode.setID(value);
-					System.out.println("CUSTOMNODE");
 				}
-				
+
 				String treePath = treeNode.getTreePath();
-//				System.out.println(treeNode.getTreePath() + " "  + hlevel);
+
+				if (treeNode.isModifier()){
+					System.out.println("MAPP: " + treeNode.getTargetNodeAttributes().getM_applied_path());
+				}
+
 				String [] pathSplit = treePath.split("\\\\");
-//				System.out.println(pathSplit[1]);
+				//				System.out.println(pathSplit[1]);
 				pathSplit[hlevel+1]=value;
 				String newPath = "";
 				for (int i = 0; i<pathSplit.length; i++){
 					newPath+=pathSplit[i]+"\\";
 				}
 				treeNode.setTreePath(newPath);
-//				System.out.println("new path: " + newPath);
-//				System.out.println("new name: " + (String)value);
+				//				System.out.println("new path: " + newPath);
+				//				System.out.println("new name: " + (String)value);
 				for (OntologyTreeNode child : treeNode.getChildren()){
-					setPath(child, value, hlevel);
+					setPathChildren(child, value, hlevel, treeNode.getTreePath());
 				}
 			}
+
+			protected void setPathChildren(OntologyTreeNode treeNode, String value, int hlevel, String applied_path){
+				//				System.out.println("######");
+				//				System.out.println("NODE: " + treeNode.getName());
+				//				System.out.println("VALUE: " + value);
+				//				System.out.println("HLEVEL: " + hlevel);
+
+
+				if (treeNode.isCustomNode()){
+					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
+					baseSplit[hlevel+1] =value;
+					String newBase = "";
+					for (int i = 0; i < baseSplit.length; i++){
+						newBase += baseSplit[i]+"|";
+					}
+					newBase = newBase.substring(0, newBase.length()-1);
+					//					System.out.println(newBase);
+					treeNode.getTargetNodeAttributes().setC_Basecode(newBase);
+					treeNode.setID(value);
+					//					System.out.println("CUSTOMNODE");
+				}
+
+				String treePath = treeNode.getTreePath();
+
+				if (treeNode.isModifier()){
+					treeNode.getTargetNodeAttributes().setM_applied_path(applied_path);
+				}
+
+				String [] pathSplit = treePath.split("\\\\");
+				//				System.out.println(pathSplit[1]);
+				pathSplit[hlevel+1]=value;
+				String newPath = "";
+				for (int i = 0; i<pathSplit.length; i++){
+					newPath+=pathSplit[i]+"\\";
+				}
+				treeNode.setTreePath(newPath);
+				for (OntologyTreeNode child : treeNode.getChildren()){
+					setPathChildren(child, value, hlevel, applied_path);
+				}
+			}
+
 		});
 
 		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
@@ -1165,8 +1211,8 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-				
+
+
 
 				//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
 				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
@@ -1305,7 +1351,6 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	private static void markNodes(OntologyTreeNode node, String text, TreeViewer viewer) {
-
 		for (OntologyTreeNode child : node.getChildren()) {
 			markNodes(child, text,viewer);
 		}
@@ -1425,7 +1470,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSelection(OntologyTreeNode node) {
-//		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
+		//		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
 	}
@@ -1564,9 +1609,19 @@ public class OntologyEditorView extends ViewPart {
 								//Timeout, if it takes to long.
 								break;
 							}
-							if (fullname.equals(target.getTargetNodeAttributes().getSourcePath()))
-								target.setHighlighted(true);
-							highlightedTargetNodes.add(target);
+							if (fullname.equals(target.getTargetNodeAttributes().getSourcePath())){
+								if (target.isModifier()){
+									if (node.getOntologyCellAttributes().getM_APPLIED_PATH().equals(target.getStagingModifierPath()))
+										target.setHighlighted(true);
+								}
+								else{
+									target.setHighlighted(true);
+								}
+
+								if (target.isHighlighted()){
+									highlightedTargetNodes.add(target);
+								}
+							}
 						}
 					}
 				}
@@ -1721,7 +1776,6 @@ public class OntologyEditorView extends ViewPart {
 				if (a!=null) {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
-
 						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
 							if (subNode.getStagingParentNode()!=null) {
 								highlightedStagingNodes.add(subNode.getStagingParentNode());

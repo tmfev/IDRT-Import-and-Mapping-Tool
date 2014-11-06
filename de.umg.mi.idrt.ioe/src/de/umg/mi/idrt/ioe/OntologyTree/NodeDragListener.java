@@ -30,7 +30,7 @@ public class NodeDragListener implements DragSourceListener {
 
 	@Override
 	public void dragSetData(DragSourceEvent event) {
-		Console.info("dragSetData");
+		Console.info("dragSetData2");
 		event.doit=true;
 		event.data="stagingTreeViewer";
 	}

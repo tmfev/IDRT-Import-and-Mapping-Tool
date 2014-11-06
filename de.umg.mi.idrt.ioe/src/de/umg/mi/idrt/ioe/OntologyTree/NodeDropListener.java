@@ -62,15 +62,15 @@ public class NodeDropListener extends ViewerDropAdapter {
 			event.item.setData(targetNode);
 		}
 		if(event.item.getData() instanceof OntologyTreeNode) {
-//			System.out.println("TRUE");
+			System.out.println("TRUE");
 			targetNode = (OntologyTreeNode) determineTarget(event);
 			if (((OntologyTreeNode)targetNode).isLeaf()) {
-//				System.out.println("isLeaf");
+				System.out.println("isLeaf");
 				OntologyEditorView.setNotYetSaved(true);
 				super.drop(event);
 			}
 			else {
-//				System.out.println("ELSE");
+				System.out.println("ELSE");
 				OntologyEditorView.setNotYetSaved(true);
 
 				super.drop(event);
@@ -96,7 +96,7 @@ public class NodeDropListener extends ViewerDropAdapter {
 		Console.info(" - data_toString: " + (String) path);
 
 		if (data.toString().equals("stagingTreeViewer")){
-//			System.out.println("data = stagingTreeViewer");
+			System.out.println("data = stagingTreeViewer");
 			//			if (targetNode instanceof OntologyTreeNode) {
 			//				if (targetNode.isLeaf()) {
 			myOT.dropCommandCopyNodes(dropOperation);
