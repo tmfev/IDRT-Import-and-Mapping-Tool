@@ -164,6 +164,7 @@ public class CSVWizardPage2 extends WizardPage {
 	@Override
 	public void createControl(final Composite parent) {
 		try {
+			System.out.println("CSV super: " + super.getShell().getSize());
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			final Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -171,11 +172,10 @@ public class CSVWizardPage2 extends WizardPage {
 			container = new Composite(parent, SWT.NULL);
 			GridLayout layout = new GridLayout(3, false);
 			container.setLayout(layout);
-
 			Label truncateLabel = new Label(container, SWT.FILL | SWT.CENTER);
 			truncateLabel.setText(Messages.CSVWizardPageTwo_TruncateProject);
 			truncateLabel.setToolTipText(Messages.CSVWizardPageTwo_TruncateProjectToolTip);
-
+			System.out.println(container.getSize());
 			checkTruncate = new Button(container, SWT.CHECK);
 			checkTruncate.setSelection(false);
 
@@ -196,7 +196,7 @@ public class CSVWizardPage2 extends WizardPage {
 			composite = new Composite(container, SWT.NONE);
 			composite.setLayout(new FillLayout(SWT.HORIZONTAL));
 			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-			gd_composite.widthHint = 91;
+//			gd_composite.widthHint = 91;
 			composite.setLayoutData(gd_composite);
 			
 			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));

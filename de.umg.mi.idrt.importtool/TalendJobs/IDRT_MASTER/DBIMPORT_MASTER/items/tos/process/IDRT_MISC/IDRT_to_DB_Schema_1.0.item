@@ -40,7 +40,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -114,7 +114,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -188,7 +188,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -262,7 +262,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -336,7 +336,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -401,7 +401,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -475,7 +475,7 @@
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
     <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
-    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/CSV/"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -655,7 +655,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1696" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_10"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;context.currentOntRow++;&#xA;&#xA;if (context.currentOntRow%(context.ontMod)==0){&#xA;StatusListener.setSubStatus((float)context.currentOntRow/context.ontRows,(int)((float)context.currentOntRow/context.ontRows)+&quot;%&quot;);&#xA;}&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xA;output_row.Name = input_row.Name;&#xA;output_row.Path = input_row.Path;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;output_row.PathID = input_row.PathID;&#xA;if (input_row.visual.equalsIgnoreCase(&quot;lae&quot;))&#xA;input_row.visual  = &quot;LA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;rae&quot;))&#xA;input_row.visual  = &quot;RA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;fae&quot;))&#xA;input_row.visual  = &quot;FA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;dae&quot;))&#xA;input_row.visual  = &quot;DA &quot;;&#xA;output_row.visual = input_row.visual;&#xA;output_row.codeList = input_row.codeList;&#xA;output_row.source = input_row.source;&#xA;output_row.xml = input_row.xml;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;output_row.dimcode=&quot;&quot;;&#xA;&#xA;&#xA;if (input_row.m_applied_path.equalsIgnoreCase(&quot;@&quot;)){&#xA;output_row.dimcode = input_row.Path.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//System.out.println(&quot;IF1: &quot;  + output_row.dimcode);&#xA;}&#xA;else {&#xA;output_row.dimcode = input_row.m_applied_path.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;output_row.dimcode = output_row.dimcode;// + input_row.PathID.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//System.out.println(&quot;ELSE1: &quot;  + output_row.dimcode);&#xA;}&#xA;//output_row.dimcode = output_row.dimcode  + input_row.PathID.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//if (input_row.visual.equalsIgnoreCase(&quot;la&quot;)||input_row.visual.equalsIgnoreCase(&quot;ra&quot;)||input_row.visual.equalsIgnoreCase(&quot;lae&quot;)||input_row.visual.equalsIgnoreCase(&quot;rae&quot;))&#xA;//output_row.dimcode = output_row.dimcode+&quot;|&quot;+(input_row.Name.length()>10?input_row.Name.hashCode():input_row.Name);&#xA;//}&#xA;&#xA;if (output_row.dimcode.endsWith(&quot;|&quot;)){&#xA;output_row.dimcode = output_row.dimcode.substring(0,output_row.dimcode.length()-1);&#xA;//System.out.println(&quot;IF2: &quot;  + output_row.dimcode);&#xA;}&#xA;if (output_row.visual.equalsIgnoreCase(&quot;la&quot;) || output_row.visual.equalsIgnoreCase(&quot;ra&quot;) || output_row.visual.equalsIgnoreCase(&quot;la &quot;) || output_row.visual.equalsIgnoreCase(&quot;ra &quot;)){&#xA;StringBuilder b = new StringBuilder(output_row.dimcode);&#xA;b.replace(output_row.dimcode.lastIndexOf(&quot;|&quot;), output_row.dimcode.lastIndexOf(&quot;|&quot;) + 1, &quot;:&quot; );&#xA;output_row.dimcode = b.toString();&#xA;//System.out.println(&quot;IF3: &quot;  + output_row.dimcode);&#xA;}&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;context.currentOntRow++;&#xA;&#xA;if (context.currentOntRow%(context.ontMod)==0){&#xA;StatusListener.setSubStatus((float)context.currentOntRow/context.ontRows,(int)((float)context.currentOntRow/context.ontRows)+&quot;%&quot;);&#xA;}&#xA;output_row.HLEVEL = input_row.HLEVEL;&#xA;output_row.Name = input_row.Name;&#xA;output_row.Path = input_row.Path;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;output_row.PathID = input_row.PathID;&#xA;if (input_row.visual.equalsIgnoreCase(&quot;lae&quot;))&#xA;input_row.visual  = &quot;LA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;rae&quot;))&#xA;input_row.visual  = &quot;RA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;fae&quot;))&#xA;input_row.visual  = &quot;FA &quot;;&#xA;else if (input_row.visual.equalsIgnoreCase(&quot;dae&quot;))&#xA;input_row.visual  = &quot;DA &quot;;&#xA;output_row.visual = input_row.visual;&#xA;output_row.codeList = input_row.codeList;&#xA;output_row.source = input_row.source;&#xA;output_row.xml = input_row.xml;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;output_row.dimcode=&quot;&quot;;&#xA;&#xA;&#xA;if (input_row.m_applied_path.equalsIgnoreCase(&quot;@&quot;)){&#xA;output_row.dimcode = input_row.Path.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//System.out.println(&quot;IF1: &quot;  + output_row.dimcode);&#xA;}&#xA;else {&#xA;output_row.dimcode = input_row.m_applied_path.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;output_row.dimcode = output_row.dimcode + input_row.PathID.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//System.out.println(&quot;ELSE1: &quot;  + output_row.dimcode);&#xA;}&#xA;//output_row.dimcode = output_row.dimcode  + input_row.PathID.replaceAll(&quot;\\\\&quot;,&quot;|&quot;);&#xA;//if (input_row.visual.equalsIgnoreCase(&quot;la&quot;)||input_row.visual.equalsIgnoreCase(&quot;ra&quot;)||input_row.visual.equalsIgnoreCase(&quot;lae&quot;)||input_row.visual.equalsIgnoreCase(&quot;rae&quot;))&#xA;//output_row.dimcode = output_row.dimcode+&quot;|&quot;+(input_row.Name.length()>10?input_row.Name.hashCode():input_row.Name);&#xA;//}&#xA;&#xA;if (output_row.dimcode.endsWith(&quot;|&quot;)){&#xA;output_row.dimcode = output_row.dimcode.substring(0,output_row.dimcode.length()-1);&#xA;//System.out.println(&quot;IF2: &quot;  + output_row.dimcode);&#xA;}&#xA;if (output_row.visual.equalsIgnoreCase(&quot;la&quot;) || output_row.visual.equalsIgnoreCase(&quot;ra&quot;) || output_row.visual.equalsIgnoreCase(&quot;la &quot;) || output_row.visual.equalsIgnoreCase(&quot;ra &quot;)){&#xA;StringBuilder b = new StringBuilder(output_row.dimcode);&#xA;b.replace(output_row.dimcode.lastIndexOf(&quot;|&quot;), output_row.dimcode.lastIndexOf(&quot;|&quot;) + 1, &quot;:&quot; );&#xA;output_row.dimcode = b.toString();&#xA;//System.out.println(&quot;IF3: &quot;  + output_row.dimcode);&#xA;}&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -1717,8 +1717,8 @@
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="itemGroupRepeatKey"/>
-      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Update_Date"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -1729,8 +1729,8 @@
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="StudyEventRepeatKey"/>
-      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="startDate"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -3682,55 +3682,6 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="896">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
-    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
-    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream"/>
-    <elementParameter field="FILE" name="FILENAME" value="context.folderMain+context.folderOutput+&quot;encounter_mapping.csv&quot;"/>
-    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
-    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
-    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
-    <elementParameter field="CHECK" name="APPEND" value="false"/>
-    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
-    <elementParameter field="CHECK" name="COMPRESS" value="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CREATE" value="true"/>
-    <elementParameter field="CHECK" name="SPLIT" value="false"/>
-    <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
-    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
-    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1"/>
-    <elementParameter field="CHECK" name="ROW_MODE" value="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="context.coding"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
-    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90"/>
-    <elementParameter field="TEXT" name="LABEL" value="encounter_mapping"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
-    <elementParameter field="MEMO" name="COMMENT" value=""/>
-    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
-    <metadata connector="FLOW" name="tFileOutputDelimited_5">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_4"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
@@ -3783,6 +3734,116 @@
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="736">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="DUMMY" value="true"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
+    <elementParameter field="TABLE" name="LENGTHS">
+      <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_IDE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_IDE_SOURCE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_NUM"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_IDE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_IDE_SOURCE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ENCOUNTER_IDE_STATUS"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPLOAD_DATE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPDATE_DATE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DOWNLOAD_DATE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IMPORT_DATE"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SOURCESYSTEM_CD"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UPLOAD_ID"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tLogRow_1">
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="928">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_5"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.folderMain+context.folderOutput+&quot;encounter_mapping.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;\t&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="false"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="1000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="context.coding"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="encounter_mapping"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="INFORMATION" value="false"/>
+    <elementParameter field="MEMO" name="COMMENT" value=""/>
+    <elementParameter field="CHECK" name="VALIDATION_RULES" value="false"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_5">
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -4899,9 +4960,10 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="SubjectKey_1" nullable="true" originalDbColumnName="SubjectKey" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="EncounterNum" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="row66">
         <mapperTableEntries name="itemID" expression="from.itemID " type="id_String" nullable="true"/>
@@ -4926,6 +4988,7 @@
         <mapperTableEntries name="m_applied_path" expression="from.m_applied_path " type="id_String" nullable="true"/>
         <mapperTableEntries name="sic" expression="from.sic " type="id_String" nullable="true"/>
         <mapperTableEntries name="SubjectKey_1" expression="from.SubjectKey " type="id_String" nullable="true"/>
+        <mapperTableEntries name="EncounterNum" expression="from.EncounterNum " type="id_BigDecimal" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="from" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="itemID" type="id_String" nullable="true"/>
@@ -5427,7 +5490,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1280" posY="544">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_12"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.itemID = input_row.itemID;&#xD;&#xA;output_row.Value = input_row.Value;&#xD;&#xA;output_row.VisitID = input_row.VisitID;&#xD;&#xA;output_row.FormID = input_row.FormID;&#xD;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xD;&#xA;output_row.Path = input_row.Path;&#xD;&#xA;output_row.PathID = input_row.PathID;&#xD;&#xA;output_row.DataType = input_row.DataType;&#xD;&#xA;output_row.Update_Date = input_row.Update_Date;&#xD;&#xA;output_row.Import_Date = input_row.Import_Date;&#xD;&#xA;output_row.Download_Date = input_row.Download_Date;&#xD;&#xA;&#xD;&#xA;output_row.startDate = input_row.startDate;&#xD;&#xA;output_row.endDate = input_row.endDate;&#xD;&#xA;output_row.source = input_row.source;&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xD;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xD;&#xA;output_row.sic = input_row.sic;&#xD;&#xA;output_row.SubjectKey_1 = input_row.SubjectKey_1;&#xA;&#xA;&#xA;output_row.StudyEventRepeatKey=input_row.StudyEventRepeatKey;&#xA;&#xA;//for (int i = 3; i >=0 ; i--){&#xA;//&#x9;&#x9;&#x9;if (input_row.StudyEventRepeatKey&lt;Math.pow(10, i)){&#xA;//&#x9;&#x9;&#x9;&#x9;output_row.StudyEventRepeatKey = &quot;0&quot;+output_row.StudyEventRepeatKey;&#xA;//&#x9;&#x9;&#x9;}&#xA;//&#x9;&#x9;&#x9;else {&#xA;//&#x9;&#x9;&#x9;&#x9;output_row.StudyEventRepeatKey = output_row.StudyEventRepeatKey + &quot;&quot; + input_row.StudyEventRepeatKey;&#xA;//&#x9;&#x9;&#x9;&#x9;break;&#xA;//&#x9;&#x9;&#x9;}&#xA;//&#x9;&#x9;&#x9;&#xA;//&#x9;&#x9;}&#xA;&#xA;&#xA;output_row.FormRepeatKey = &quot;&quot;;&#xA;for (int i = 3; i >=0 ; i--){&#xA;&#x9;&#x9;&#x9;if (input_row.FormRepeatKey&lt;Math.pow(10, i)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.FormRepeatKey = &quot;0&quot;+output_row.FormRepeatKey;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.FormRepeatKey = output_row.FormRepeatKey + &quot;&quot; + input_row.FormRepeatKey;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;output_row.itemGroupRepeatKey = &quot;&quot;;&#xA;for (int i = 3; i >=0 ; i--){&#xA;&#x9;&#x9;&#x9;if (input_row.itemGroupRepeatKey&lt;Math.pow(10, i)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.itemGroupRepeatKey = &quot;0&quot;+output_row.itemGroupRepeatKey;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.itemGroupRepeatKey = output_row.itemGroupRepeatKey + &quot;&quot; + input_row.itemGroupRepeatKey;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;output_row.itemID = input_row.itemID;&#xA;output_row.Value = input_row.Value;&#xA;output_row.VisitID = input_row.VisitID;&#xA;output_row.FormID = input_row.FormID;&#xA;output_row.SubjectKey = input_row.SubjectKey;&#xA;output_row.Path = input_row.Path;&#xA;output_row.PathID = input_row.PathID;&#xA;output_row.DataType = input_row.DataType;&#xA;output_row.Update_Date = input_row.Update_Date;&#xA;output_row.Import_Date = input_row.Import_Date;&#xA;output_row.Download_Date = input_row.Download_Date;&#xA;&#xA;output_row.startDate = input_row.startDate;&#xA;output_row.endDate = input_row.endDate;&#xA;output_row.source = input_row.source;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xA;output_row.sic = input_row.sic;&#xA;&#xA;&#xA;&#xA;output_row.StudyEventRepeatKey=input_row.StudyEventRepeatKey;&#xA;&#xA;//for (int i = 3; i >=0 ; i--){&#xA;//&#x9;&#x9;&#x9;if (input_row.StudyEventRepeatKey&lt;Math.pow(10, i)){&#xA;//&#x9;&#x9;&#x9;&#x9;output_row.StudyEventRepeatKey = &quot;0&quot;+output_row.StudyEventRepeatKey;&#xA;//&#x9;&#x9;&#x9;}&#xA;//&#x9;&#x9;&#x9;else {&#xA;//&#x9;&#x9;&#x9;&#x9;output_row.StudyEventRepeatKey = output_row.StudyEventRepeatKey + &quot;&quot; + input_row.StudyEventRepeatKey;&#xA;//&#x9;&#x9;&#x9;&#x9;break;&#xA;//&#x9;&#x9;&#x9;}&#xA;//&#x9;&#x9;&#x9;&#xA;//&#x9;&#x9;}&#xA;&#xA;&#xA;output_row.FormRepeatKey = &quot;&quot;;&#xA;for (int i = 3; i >=0 ; i--){&#xA;&#x9;&#x9;&#x9;if (input_row.FormRepeatKey&lt;Math.pow(10, i)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.FormRepeatKey = &quot;0&quot;+output_row.FormRepeatKey;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.FormRepeatKey = output_row.FormRepeatKey + &quot;&quot; + input_row.FormRepeatKey;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;output_row.itemGroupRepeatKey = &quot;&quot;;&#xA;for (int i = 3; i >=0 ; i--){&#xA;&#x9;&#x9;&#x9;if (input_row.itemGroupRepeatKey&lt;Math.pow(10, i)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.itemGroupRepeatKey = &quot;0&quot;+output_row.itemGroupRepeatKey;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.itemGroupRepeatKey = output_row.itemGroupRepeatKey + &quot;&quot; + input_row.itemGroupRepeatKey;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;}&#xA;//System.out.println(&quot;1: &quot; + input_row.EncounterNum);&#xA;&#xD;&#xA;output_row.EncounterNum = input_row.EncounterNum;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -5455,7 +5518,7 @@
       <column comment="" key="false" name="MODIFIER_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="SubjectKey_1" nullable="true" originalDbColumnName="SubjectKey" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="EncounterNum" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="1568" posY="576">
@@ -5498,13 +5561,13 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var2" expression="row7.DataType.toLowerCase().equals(&quot;float&quot;)||row7.DataType.toLowerCase().equals(&quot;integer&quot;)  " type="id_Boolean"/>
         <mapperTableEntries name="var1" expression="row7.StudyEventRepeatKey != null " type="id_Boolean"/>
       </varTables>
       <outputTables sizeState="INTERMEDIATE" name="to_obs">
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="row7.StudyEventRepeatKey" type="id_BigDecimal"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="row7.EncounterNum " type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_NUM" expression="row7.SubjectKey" type="id_BigDecimal"/>
         <mapperTableEntries name="CONCEPT_CD" expression="row7.m_applied_path.equals(&quot;@&quot;)?row7.CONCEPT_CD:row7.CONCEPT_CD     " type="id_String"/>
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
@@ -5529,7 +5592,7 @@
         <mapperTableEntries name="m_applied_path" expression="row7.m_applied_path " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="out8" activateExpressionFilter="true" activateCondensedTool="true" rejectInnerJoin="true" isJoinTableOf="to_obs">
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="row7.StudyEventRepeatKey  " type="id_BigDecimal"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="row7.EncounterNum " type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_NUM" expression="row7.SubjectKey" type="id_BigDecimal"/>
         <mapperTableEntries name="CONCEPT_CD" expression="row7.m_applied_path.equals(&quot;@&quot;)?row7.CONCEPT_CD:row7.CONCEPT_CD     " type="id_String"/>
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
@@ -5575,7 +5638,7 @@
         <mapperTableEntries name="MODIFIER_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
         <mapperTableEntries name="sic" type="id_String" nullable="true"/>
-        <mapperTableEntries name="SubjectKey_1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="EncounterNum" type="id_BigDecimal" nullable="true"/>
       </inputTables>
       <inputTables sizeState="INTERMEDIATE" name="row32" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE" innerJoin="true">
         <mapperTableEntries name="PATIENT_NUM" expression="row7.SubjectKey " type="id_BigDecimal" operator="="/>
@@ -5584,7 +5647,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1344" posY="608">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1280" posY="608">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_21"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false"/>
@@ -5644,7 +5707,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1728" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_14"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;if (input_row.ENCOUNTER_NUM.equals(new BigDecimal(0)))&#xA;output_row.ENCOUNTER_NUM=new BigDecimal(input_row.PATIENT_NUM.hashCode());&#xA;else&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM;&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xA;&#xA;//System.out.println(&quot;*****************************&quot;);&#xA;if (!input_row.m_applied_path.equalsIgnoreCase(&quot;@&quot;)){&#xA;&#x9;if (((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).containsKey(input_row.PATIENT_NUM)){&#xA;&#x9;&#x9;if (((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).containsKey(input_row.m_applied_path)){&#xA;&#x9;&#x9;&#x9;if(((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).containsKey(input_row.INSTANCE_NUM)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.INSTANCE_NUM&#x9;=&#xA;&#x9;&#x9;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).get(input_row.INSTANCE_NUM).toString();&#xA;&#x9;&#x9;&#x9;&#x9;//System.out.println(&quot;IF1&quot;);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#x9;&#x9;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;&#x9;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM,new &#x9;&#x9;&#x9;&#x9;BigDecimal(output_row.INSTANCE_NUM));//.put(CONCEPT_CD).put(INSTANCE_NUM, maxInstance);&#xA;&#x9;&#x9;&#x9;&#x9;//System.out.println(&quot;ELSE1&quot;);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;else {&#xA;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).put(input_row.m_applied_path,new HashMap&lt;String,BigDecimal>());&#xA;&#x9;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM,new &#x9;&#x9;BigDecimal(output_row.INSTANCE_NUM));&#xA;&#x9;&#x9;//System.out.println(&quot;ELSE2&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else {&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).put(input_row.PATIENT_NUM,new HashMap&lt;String, HashMap&lt;String,BigDecimal>>());&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).put(input_row.m_applied_path, new HashMap&lt;String, BigDecimal>());&#xA;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#xA;&#x9;&#xA;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM, new &#x9;BigDecimal(output_row.INSTANCE_NUM));&#xA;&#x9;//System.out.println(&quot;ELSE3&quot;);&#xA;&#x9;}&#xA;//&#x9;System.out.println(&quot;MPATH: &quot; + input_row.m_applied_path +&quot; INSTANCE: &quot; + input_row.INSTANCE_NUM + &quot; &quot; + output_row.INSTANCE_NUM + &quot; PID &quot; + input_row.PATIENT_NUM);&#xA;}&#xA;else {&#xA;&#x9;output_row.INSTANCE_NUM = &quot;0&quot;;&#xA;}&#xA;int a = Integer.parseInt(output_row.INSTANCE_NUM) + 1;&#xA;output_row.INSTANCE_NUM = &quot;&quot;+a;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xA;output_row.m_applied_path = input_row.m_applied_path;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;&#xA;if (input_row.ENCOUNTER_NUM.equals(new BigDecimal(0)))&#xA;output_row.ENCOUNTER_NUM=new BigDecimal(input_row.PATIENT_NUM.hashCode());&#xA;else&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_NUM = input_row.PATIENT_NUM;&#xD;&#xA;output_row.CONCEPT_CD = input_row.CONCEPT_CD;&#xD;&#xA;output_row.PROVIDER_ID = input_row.PROVIDER_ID;&#xD;&#xA;output_row.START_DATE = input_row.START_DATE;&#xD;&#xA;output_row.MODIFIER_CD = input_row.MODIFIER_CD;&#xA;&#xA;//System.out.println(&quot;*****************************&quot;);&#xA;if (!input_row.m_applied_path.equalsIgnoreCase(&quot;@&quot;)){&#xA;&#x9;if (((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).containsKey(input_row.PATIENT_NUM)){&#xA;&#x9;&#x9;if (((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).containsKey(input_row.m_applied_path)){&#xA;&#x9;&#x9;&#x9;if(((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).containsKey(input_row.INSTANCE_NUM)){&#xA;&#x9;&#x9;&#x9;&#x9;output_row.INSTANCE_NUM&#x9;=&#xA;&#x9;&#x9;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).get(input_row.INSTANCE_NUM).toString();&#xA;&#x9;&#x9;&#x9;&#x9;//System.out.println(&quot;IF1&quot;);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#x9;&#x9;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;&#x9;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM,new &#x9;&#x9;&#x9;&#x9;BigDecimal(output_row.INSTANCE_NUM));//.put(CONCEPT_CD).put(INSTANCE_NUM, maxInstance);&#xA;&#x9;&#x9;&#x9;&#x9;//System.out.println(&quot;ELSE1&quot;);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;else {&#xA;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).put(input_row.m_applied_path,new HashMap&lt;String,BigDecimal>());&#xA;&#x9;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM,new &#x9;&#x9;BigDecimal(output_row.INSTANCE_NUM));&#xA;&#x9;&#x9;//System.out.println(&quot;ELSE2&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else {&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).put(input_row.PATIENT_NUM,new HashMap&lt;String, HashMap&lt;String,BigDecimal>>());&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).put(input_row.m_applied_path, new HashMap&lt;String, BigDecimal>());&#xA;&#x9;output_row.INSTANCE_NUM = context.maxInstance.add(new BigDecimal(1)).toString();&#xA;&#x9;&#xA;&#x9;&#xA;&#x9;context.maxInstance = new BigDecimal(output_row.INSTANCE_NUM);&#xA;&#x9;((HashMap&lt;BigDecimal,HashMap&lt;String,HashMap&lt;String,BigDecimal>>>)context.instanceMap).get(input_row.PATIENT_NUM).get(input_row.m_applied_path).put(input_row.INSTANCE_NUM, new &#x9;BigDecimal(output_row.INSTANCE_NUM));&#xA;&#x9;//System.out.println(&quot;ELSE3&quot;);&#xA;&#x9;}&#xA;//&#x9;System.out.println(&quot;MPATH: &quot; + input_row.m_applied_path +&quot; INSTANCE: &quot; + input_row.INSTANCE_NUM + &quot; &quot; + output_row.INSTANCE_NUM + &quot; PID &quot; + input_row.PATIENT_NUM);&#xA;}&#xA;else {&#xA;&#x9;output_row.INSTANCE_NUM = &quot;0&quot;;&#xA;}&#xA;int a = Integer.parseInt(output_row.INSTANCE_NUM) + 1;&#xA;output_row.INSTANCE_NUM = &quot;&quot;+a;&#xD;&#xA;output_row.VALTYPE_CD = input_row.VALTYPE_CD;&#xD;&#xA;output_row.TVAL_CHAR = input_row.TVAL_CHAR;&#xD;&#xA;output_row.NVAL_NUM = input_row.NVAL_NUM;&#xD;&#xA;output_row.VALUEFLAG_CD = input_row.VALUEFLAG_CD;&#xD;&#xA;output_row.QUANTITY_NUM = input_row.QUANTITY_NUM;&#xD;&#xA;output_row.UNITS_CD = input_row.UNITS_CD;&#xD;&#xA;output_row.END_DATE = input_row.END_DATE;&#xD;&#xA;output_row.LOCATION_CD = input_row.LOCATION_CD;&#xD;&#xA;output_row.OBSERVATION_BLOB = input_row.OBSERVATION_BLOB;&#xD;&#xA;output_row.CONFIDENCE_NUM = input_row.CONFIDENCE_NUM;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="false"/>
@@ -5673,7 +5736,6 @@
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="-15" offsetLabelY="1" posX="1920" posY="576">
@@ -5733,7 +5795,6 @@
       <column comment="" key="false" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="SOURCESYSTEM_CD" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="992" posY="224">
@@ -7711,7 +7772,7 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iut1"/>
   </connection>
-  <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tSplitRow_1" offsetLabelX="0" offsetLabelY="0" source="tSplitRow_1" target="tFileOutputDelimited_5">
+  <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tSplitRow_1" offsetLabelX="0" offsetLabelY="0" source="tSplitRow_1" target="tLogRow_1">
     <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
       <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_IDE"/>
@@ -8241,6 +8302,55 @@
     <elementParameter field="TABLE" name="THRESHLODS"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row37"/>
+  </connection>
+  <connection connectorName="FLOW" label="row23" lineStyle="0" metaname="tLogRow_1" offsetLabelX="0" offsetLabelY="0" source="tLogRow_1" target="tFileOutputDelimited_5">
+    <elementParameter field="CHECK" name="TRACES_CONNECTION_ENABLE" value="true"/>
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_IDE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_IDE_SOURCE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_IDE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PATIENT_IDE_SOURCE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_IDE_STATUS"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPDATE_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="DOWNLOAD_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IMPORT_DATE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SOURCESYSTEM_CD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_ID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="USEROWLABEL" value="true"/>
+    <elementParameter field="TEXT" name="METTERLABEL" value="&quot;MyLabel&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="ABSOLUTE" value="Absolute"/>
+    <elementParameter field="CONNECTION_LIST" name="CONNECTIONS" value=""/>
+    <elementParameter field="TABLE" name="THRESHLODS"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row23"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tFileInputDelimited_16">
     <elementParameter field="CHECK" name="ACTIVATE" value="true"/>
@@ -8937,6 +9047,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="SubjectKey_1"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="EncounterNum"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>

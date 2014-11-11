@@ -150,8 +150,9 @@ public class CSVImportWizard extends Wizard {
 	@Override
 	public void addPages() {
 //		one = new WizardPage1();
-		three = new CSVWizardPage3();
 		two = new CSVWizardPage2();
+		three = new CSVWizardPage3();
+		
 //		addPage(one);
 		addPage(two);
 		addPage(three);

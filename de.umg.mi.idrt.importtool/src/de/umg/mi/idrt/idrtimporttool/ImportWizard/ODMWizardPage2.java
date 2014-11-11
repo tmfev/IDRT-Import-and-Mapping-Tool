@@ -120,6 +120,7 @@ public class ODMWizardPage2 extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		try {
+			System.out.println("ODM: " + super.getShell().getSize());
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));

@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
 import java.util.prefs.BackingStoreException;
+
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -86,6 +87,7 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerModel;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerSourceContentProvider;
+import de.umg.mi.idrt.importtool.misc.DatabaseStatsThread;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 /**
@@ -125,6 +127,12 @@ public class ServerView extends ViewPart {
 	private static SashForm sourceAndTargetServercomposite;
 
 	private static Label lblObservationsCurrent;
+	public static void setLblObservationsCurrent(String lblObservationsCurrent) {
+		ServerView.lblObservationsCurrent.setText(lblObservationsCurrent);
+	}
+	public static void setLblPatientsCurrent(String lblPatientsCurrent) {
+		ServerView.lblPatientsCurrent.setText(lblPatientsCurrent);
+	}
 	private static Label lblPatientsCurrent;
 	private static Label progressLabelTop;
 	private static Label progressLabelBottom;
@@ -157,7 +165,7 @@ public class ServerView extends ViewPart {
 
 	private static Properties defaultProps;
 	private static Text logText;
-	
+
 	public static void copyFile(File inputFile, File outputFile) {
 		try {
 			FileReader in = new FileReader(inputFile);
@@ -187,7 +195,7 @@ public class ServerView extends ViewPart {
 		for (String s : ServerList.getSourceServers().keySet()) {
 			Server current = ServerList.getSourceServers().get(s);
 			if (current.getDatabaseType().equalsIgnoreCase("oracle")) {
-				
+
 				System.out.println(current.getUniqueID());
 				final MenuItem item = new MenuItem(mdrMenu, SWT.PUSH);
 				item.setText(current.getUniqueID());
@@ -207,7 +215,7 @@ public class ServerView extends ViewPart {
 		}
 		importMDRMenuItem.setMenu(mdrMenu);
 	}
-public static String getCsvPathSpecific() {
+	public static String getCsvPathSpecific() {
 		return csvPathSpecific;
 	}
 
@@ -380,7 +388,7 @@ public static String getCsvPathSpecific() {
 		if (title==null)
 			subProgressLabel.setText("");
 		else
-		subProgressLabel.setText(title);
+			subProgressLabel.setText(title);
 	}
 	public static void updateStatus() {
 		Display.getDefault().syncExec(new Runnable() {
@@ -660,15 +668,15 @@ public static String getCsvPathSpecific() {
 			targetServerLabel.setLayoutData(BorderLayout.NORTH);
 			targetServerLabel.setText(Messages.ServerView_TargetServer);
 			targetServerViewer = new TreeViewer(targetServercomposite, SWT.MULTI); // parent
-			
+
 			targetServerViewer.setContentProvider(new ServerContentProvider());
 			targetServerViewer.setInput(new ServerModel());
-			
+
 			targetServerViewer.setLabelProvider(new ServerLabelProvider());
 			//			targetServerViewer.setAutoExpandLevel(2);
 			targetServerViewer.setSorter(new ViewerSorter());
-//			Tree targetServerTree = targetServerViewer.getTree();
-//			targetServerTree.setLayoutData(BorderLayout.CENTER);
+			//			Tree targetServerTree = targetServerViewer.getTree();
+			//			targetServerTree.setLayoutData(BorderLayout.CENTER);
 			targetServerViewer.getTree().addSelectionListener(new SelectionListener() {
 
 				@Override
@@ -695,39 +703,21 @@ public static String getCsvPathSpecific() {
 								parentServer);
 						labelIpCurrent.setText(server.getIp());
 						if (server.getWhType().equals("transmart"))
-						labelDBUserCurrent.setText(server.getWhType());
+							labelDBUserCurrent.setText(server.getWhType());
 						else
 							labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText("..."); 
 						lblPatientsCurrent.setText("..."); 
 
-						//Displays "Loading..." while DB loads.
-						Display.getDefault().asyncExec(new Runnable() {
+						Display.getCurrent().asyncExec(new Runnable() {
 							
 							@Override
 							public void run() {
+								DatabaseStatsThread a = new DatabaseStatsThread();
+								a.run(server, selectedItemString);
 							}
 						});
-						new Thread(new Runnable() {
-
-							@Override
-							public void run() {
-//								File imgLoadingFile = FileHandler.getBundleFile("/images/loading.png");
-//								Image imgLoading = new Image(parent.getDisplay(),
-//										imgLoadingFile.getAbsolutePath());
-//								final Shell loadingShell = new Shell(SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);//(SWT.NO_TRIM ); //SWT.ON_TOP
-//								loadingShell.setSize(imgLoading.getBounds().width,imgLoading.getBounds().height);
-//								loadingShell.setLocation(Display.getCurrent().getCursorLocation().x,Display.getCurrent().getCursorLocation().y);
-//								loadingShell.setBackgroundImage(imgLoading);
-//								loadingShell.open();
-								lblObservationsCurrent.setText(server
-										.getConcepts(selectedItemString));
-								lblPatientsCurrent.setText(server
-										.getPatients(selectedItemString));
-//								loadingShell.close();
-							}
-						}).run();
 					}
 				}
 			});
@@ -870,24 +860,24 @@ public static String getCsvPathSpecific() {
 			});
 			new MenuItem(importMenu, SWT.SEPARATOR);
 			//TODO REIMPLEMENT
-//			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
-//			importTermsMenuItem.setText(Messages.ServerView_ImportST);
-//			importTermsMenuItem.addSelectionListener(new SelectionListener() {
-//				@Override
-//				public void widgetDefaultSelected(SelectionEvent e) {
-//
-//				}
-//
-//				@Override
-//				public void widgetSelected(SelectionEvent e) {
-//					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
-//				}
-//			});
+			//			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
+			//			importTermsMenuItem.setText(Messages.ServerView_ImportST);
+			//			importTermsMenuItem.addSelectionListener(new SelectionListener() {
+			//				@Override
+			//				public void widgetDefaultSelected(SelectionEvent e) {
+			//
+			//				}
+			//
+			//				@Override
+			//				public void widgetSelected(SelectionEvent e) {
+			//					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+			//				}
+			//			});
 
 			importMDRMenuItem = new MenuItem(importMenu, SWT.CASCADE);
 			importMDRMenuItem.setText("Import from MDR");
 			importMDRMenuItem.addArmListener(new ArmListener() {
-				
+
 				@Override
 				public void widgetArmed(ArmEvent e) {
 					createMDRMenu();
@@ -896,25 +886,25 @@ public static String getCsvPathSpecific() {
 			//TODO CREATE MENU AND SET IT
 
 			//TODO REIMPLEMENT REMOVELOCKs
-//			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
-//			removeLocksMenuItem.setText("Remove Locks");
-//			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
-//
-//				@Override
-//				public void widgetDefaultSelected(SelectionEvent e) {
-//
-//				}
-//
-//				@Override
-//				public void widgetSelected(SelectionEvent e) {
-//					boolean result = MessageDialog.openConfirm(Application.getShell(),
-//							"Remove Locks?",
-//							"Do you really want to remove ALL locks from the database?\nSYSDBA REQUIRED!");
-//					if(result) {
-//						IDRTImport.runRemoveLocks(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
-//					}
-//				}
-//			});
+			//			final MenuItem removeLocksMenuItem = new MenuItem(mainMenu, SWT.NONE);
+			//			removeLocksMenuItem.setText("Remove Locks");
+			//			removeLocksMenuItem.addSelectionListener(new SelectionListener() {
+			//
+			//				@Override
+			//				public void widgetDefaultSelected(SelectionEvent e) {
+			//
+			//				}
+			//
+			//				@Override
+			//				public void widgetSelected(SelectionEvent e) {
+			//					boolean result = MessageDialog.openConfirm(Application.getShell(),
+			//							"Remove Locks?",
+			//							"Do you really want to remove ALL locks from the database?\nSYSDBA REQUIRED!");
+			//					if(result) {
+			//						IDRTImport.runRemoveLocks(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+			//					}
+			//				}
+			//			});
 			final MenuItem dropIOETablesMenuItem = new MenuItem(mainMenu, SWT.NONE);
 			dropIOETablesMenuItem.setText("Drop IOE Tables");
 			dropIOETablesMenuItem.addSelectionListener(new SelectionListener() {
@@ -1014,21 +1004,21 @@ public static String getCsvPathSpecific() {
 				}
 			});
 
-//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-//						new MenuItem(mainMenu, SWT.SEPARATOR);
-//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//						adminMenuItem.setText("Administration");
-//						adminMenuItem.addSelectionListener(new SelectionListener() {
-//							@Override
-//							public void widgetSelected(SelectionEvent e) {
-//								adminTargetServer();
-//							}
-//			
-//							@Override
-//							public void widgetDefaultSelected(SelectionEvent e) {
-//			
-//							}
-//						});
+			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
+			//						new MenuItem(mainMenu, SWT.SEPARATOR);
+			//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//						adminMenuItem.setText("Administration");
+			//						adminMenuItem.addSelectionListener(new SelectionListener() {
+			//							@Override
+			//							public void widgetSelected(SelectionEvent e) {
+			//								adminTargetServer();
+			//							}
+			//			
+			//							@Override
+			//							public void widgetDefaultSelected(SelectionEvent e) {
+			//			
+			//							}
+			//						});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1041,9 +1031,9 @@ public static String getCsvPathSpecific() {
 							importMenuItem.setEnabled(false);
 							truncateMenuItem.setEnabled(false);
 							dropIOETablesMenuItem.setEnabled(false);
-//							removeLocksMenuItem.setEnabled(false);
+							//							removeLocksMenuItem.setEnabled(false);
 							loadOntologyMenuItem.setEnabled(false);
-//							importTermsMenuItem.setEnabled(false);
+							//							importTermsMenuItem.setEnabled(false);
 							deleteServerMenuItem.setEnabled(true);
 							editServerMenuItem.setEnabled(true);
 							exportServerMenuItem.setEnabled(true);
@@ -1053,7 +1043,7 @@ public static String getCsvPathSpecific() {
 							importMenuItem.setEnabled(true);
 							truncateMenuItem.setEnabled(true);
 							dropIOETablesMenuItem.setEnabled(true);
-//							removeLocksMenuItem.setEnabled(true);
+							//							removeLocksMenuItem.setEnabled(true);
 
 							if (!command.isEnabled()) {
 								loadOntologyMenuItem.setEnabled(false);
@@ -1061,17 +1051,17 @@ public static String getCsvPathSpecific() {
 							else {
 								loadOntologyMenuItem.setEnabled(true);
 							}
-//							importTermsMenuItem.setEnabled(true);
+							//							importTermsMenuItem.setEnabled(true);
 						}
 					} else {
 						editServerMenuItem.setEnabled(false);
 						deleteServerMenuItem.setEnabled(false);
 						importMenuItem.setEnabled(false);
 						truncateMenuItem.setEnabled(false);
-//						removeLocksMenuItem.setEnabled(false);
+						//						removeLocksMenuItem.setEnabled(false);
 						dropIOETablesMenuItem.setEnabled(false);
 						loadOntologyMenuItem.setEnabled(false);
-//						importTermsMenuItem.setEnabled(false);
+						//						importTermsMenuItem.setEnabled(false);
 						exportServerMenuItem.setEnabled(false);
 					}
 				}
