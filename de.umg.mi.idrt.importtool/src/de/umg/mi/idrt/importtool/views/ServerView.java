@@ -98,6 +98,7 @@ import de.umg.mi.idrt.importtool.misc.FileHandler;
  *         www.mi.med.uni-goettingen.de
  * 
  */
+@SuppressWarnings("unused")
 public class ServerView extends ViewPart {
 
 	private static MenuItem importMDRMenuItem;
@@ -462,7 +463,6 @@ public class ServerView extends ViewPart {
 	/**
 	 * Admin Control for the TARGET server/project.
 	 */
-	@SuppressWarnings("unused")
 	private void adminTargetServer() {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
@@ -711,7 +711,7 @@ public class ServerView extends ViewPart {
 						lblPatientsCurrent.setText("..."); 
 
 						Display.getCurrent().asyncExec(new Runnable() {
-							
+
 							@Override
 							public void run() {
 								DatabaseStatsThread a = new DatabaseStatsThread();

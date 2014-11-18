@@ -1,6 +1,5 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.awt.Color;
 import java.awt.MouseInfo;
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +59,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -188,9 +188,6 @@ public class OntologyEditorView extends ViewPart {
 	private static void addNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
 	}
-	private static void addModifier() {
-		Application.executeCommand("de.umg.mi.idrt.ioe.addModifierNode");
-	}
 
 	public static void addVersionName(String name) {
 		boolean contains = false;
@@ -222,20 +219,6 @@ public class OntologyEditorView extends ViewPart {
 	private static void deleteNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
 	}
-	//	private static void expandStagingChildren(OntologyTreeNode node, boolean state) {
-	//
-	//		for (OntologyTreeNode child : node.getChildren())
-	//			expandStagingChildren(child,state);
-	//		stagingTreeViewer.setExpandedState(node, state);
-	//	}
-	//
-	//	private static void expandTargetChildren(OntologyTreeNode node, boolean state) {
-	//
-	//		for (OntologyTreeNode child : node.getChildren())
-	//			expandTargetChildren(child,state);
-	//		targetTreeViewer.setExpandedState(node, state);
-	//
-	//	}
 
 	/**
 	 * @return the currentStagingNode
@@ -292,11 +275,7 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static String getTargetSchemaName() {
-		if (lblTargetName!=null)
-			return lblTargetName.getText();
-		else 
-			return "";
-		//		return "";
+		return lblTargetName!=null?lblTargetName.getText():"";
 	}
 
 	public static TreeViewer getTargetTreeViewer() {
@@ -332,7 +311,6 @@ public class OntologyEditorView extends ViewPart {
 
 			for (File listOfFile : listOfFiles) {
 				if (!listOfFile.getName().equals("ph") ) { 
-					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -342,7 +320,6 @@ public class OntologyEditorView extends ViewPart {
 
 			for (File listOfFile : listOfFiles) {
 				if (!listOfFile.getName().equals("ph") ) { 
-					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -459,16 +436,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 		targetComposite.layout();
-		//		targetColumn.getColumn().setMoveable(false);
-		//		column.getColumn().setText("");
-		//		targetColumn.setLabelProvider(new ColumnLabelProvider() {
-		//
-		//			public String getText(Object element) {
-		//				return element.toString();
-		//			}
-		//
-		//		});
-
 
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[] { TextTransfer.getInstance() };
@@ -580,7 +547,6 @@ public class OntologyEditorView extends ViewPart {
 			public String getText(Object element) {
 				return element.toString();
 			}
-
 		});
 
 		composite_8 = new Composite(stagingComposite, SWT.NONE);
@@ -594,19 +560,42 @@ public class OntologyEditorView extends ViewPart {
 		searchText = new Text(composite_8, SWT.BORDER);
 		searchText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		searchText.setToolTipText("Search");
+		searchText.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.keyCode == SWT.CR){
+					Display.getCurrent().asyncExec(new Runnable() {
+						public void run() {
+							clearSearch(getOntologyStagingTree().getNodeLists(),stagingTreeViewer);
+							searchNode(getOntologyStagingTree().getNodeLists(),searchText.getText(), getOntologyStagingTree().getI2B2RootNode(),stagingTreeViewer);
+							stagingTreeViewer.refresh();
+							stagingComposite.redraw();
+							sash.redraw();
+						}
+					});
+				}
+			}
+		});
 		searchText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				new Thread(new Runnable() {
-
-					@Override
+				Display.getCurrent().syncExec(new Runnable() {
 					public void run() {
-						searchNode(getOntologyStagingTree().getNodeLists(),searchText.getText(), getOntologyStagingTree().getI2B2RootNode(),stagingTreeViewer);
-						stagingTreeViewer.refresh();
-						stagingComposite.redraw();
-						sash.redraw();
+						if (searchText.getText().length()>3){
+							clearSearch(getOntologyStagingTree().getNodeLists(),stagingTreeViewer);
+							searchNode(getOntologyStagingTree().getNodeLists(),searchText.getText(), getOntologyStagingTree().getI2B2RootNode(),stagingTreeViewer);
+							stagingTreeViewer.refresh();
+							stagingComposite.redraw();
+							sash.redraw();
+						}
 					}
-				}).run();
+				});
 			}
 		});
 		btnClearSearch = new Button(composite_8, SWT.NO_BACKGROUND);
@@ -621,6 +610,10 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				searchText.setText("");
+				clearSearch(getOntologyStagingTree().getNodeLists(),stagingTreeViewer);
+				stagingTreeViewer.refresh();
+				stagingComposite.redraw();
+				sash.redraw();
 			}
 		});
 		composite_9 = new Composite(targetComposite, SWT.NONE);
@@ -634,23 +627,65 @@ public class OntologyEditorView extends ViewPart {
 		searchTextTarget = new Text(composite_9, SWT.BORDER);
 		searchTextTarget.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		searchTextTarget.setToolTipText("Search");
+
+
+		searchTextTarget.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.keyCode == SWT.CR){
+					Display.getCurrent().asyncExec(new Runnable() {
+						public void run() {
+							clearSearch(getOntologyTargetTree().getNodeLists(),targetTreeViewer);
+							searchNode(getOntologyTargetTree().getNodeLists(),searchTextTarget.getText(), getOntologyTargetTree().getI2B2RootNode(),targetTreeViewer);
+							targetTreeViewer.refresh();
+							targetComposite.redraw();
+							sash.redraw();
+						}
+					});
+				}
+			}
+		});
 		searchTextTarget.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				new Thread(new Runnable() {
-					@Override
+				Display.getCurrent().syncExec(new Runnable() {
 					public void run() {
-						searchNode(getOntologyTargetTree().getNodeLists(), searchTextTarget.getText(), getOntologyTargetTree().getI2B2RootNode(), targetTreeViewer);
-						targetTreeViewer.refresh();
-						targetComposite.redraw();
-						sash.redraw();
+						if (searchTextTarget.getText().length()>3){
+							clearSearch(getOntologyTargetTree().getNodeLists(),targetTreeViewer);
+							searchNode(getOntologyTargetTree().getNodeLists(),searchTextTarget.getText(), getOntologyTargetTree().getI2B2RootNode(),targetTreeViewer);
+							targetTreeViewer.refresh();
+							targetComposite.redraw();
+							sash.redraw();
+						}
 					}
-				}).run();
+				});
 			}
 		});
+
 		searchClearButtonTarget = new Button(composite_9, SWT.NONE);
 		searchClearButtonTarget.setToolTipText("Clear Search");
 		searchClearButtonTarget.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe", "images/remove-grouping.png"));
+		searchClearButtonTarget.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				searchTextTarget.setText("");
+				clearSearch(getOntologyTargetTree().getNodeLists(),targetTreeViewer);
+				targetTreeViewer.refresh();
+				targetComposite.redraw();
+				sash.redraw();
+			}
+		});
 
 		composite_12 = new Composite(targetComposite, SWT.NONE);
 		composite_12.setLayoutData(BorderLayout.CENTER);
@@ -1423,16 +1458,44 @@ public class OntologyEditorView extends ViewPart {
 
 	}
 
-	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
-		int size = nodeLists.getNumberOfItemNodes();
-		if (text.isEmpty()) {
-			unmarkAllNodes(rootNode);	
+
+	private static void clearSearch(OntologyTreeNodeList nodeLists, TreeViewer treeViewer) {
+		for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
+			node.setSearchResult(false);
 		}
-		else {
-			if (size<1000 || text.length()>=3) {
-				markNodes(rootNode,text,treeViewer);
+	}
+
+
+
+
+	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
+
+		if (text.isEmpty()) {
+			System.out.println("TEXT EMPTY");
+			for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
+				node.setSearchResult(false);
 			}
 		}
+		else {
+			for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
+				if (node.getName().toLowerCase().contains(text.toLowerCase())){
+					node.setSearchResult(true);
+					while (node.getParent()!=null) {
+						node = node.getParent();
+						treeViewer.setExpandedState(node, true);
+					}
+				}
+			}
+		}
+		//		int size = nodeLists.getNumberOfItemNodes();
+		//		if (text.isEmpty()) {
+		//			unmarkAllNodes(rootNode);	
+		//		}
+		//		else {
+		//			if (size<500 || text.length()>=3) {
+		//				markNodes(rootNode,text,treeViewer);
+		//			}
+		//		}
 	}
 	/**
 	 * @param column the column to set
