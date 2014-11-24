@@ -541,7 +541,6 @@ public class OntologyEditorView extends ViewPart {
 		stagingColumn = new TreeViewerColumn(stagingTreeViewer, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		stagingColumn.getColumn().setMoveable(false);
-		//		column.getColumn().setText("");
 		stagingColumn.setLabelProvider(new ColumnLabelProvider() {
 
 			public String getText(Object element) {
@@ -561,10 +560,8 @@ public class OntologyEditorView extends ViewPart {
 		searchText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		searchText.setToolTipText("Search");
 		searchText.addKeyListener(new KeyListener() {
-
 			@Override
 			public void keyReleased(KeyEvent e) {
-
 			}
 
 			@Override
@@ -604,7 +601,6 @@ public class OntologyEditorView extends ViewPart {
 		btnClearSearch.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -628,12 +624,10 @@ public class OntologyEditorView extends ViewPart {
 		searchTextTarget.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		searchTextTarget.setToolTipText("Search");
 
-
 		searchTextTarget.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-
 			}
 
 			@Override
@@ -674,7 +668,6 @@ public class OntologyEditorView extends ViewPart {
 		searchClearButtonTarget.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -728,7 +721,6 @@ public class OntologyEditorView extends ViewPart {
 		ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(targetTreeViewer) {
 			protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
 				return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
-						//						|| event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
 						|| (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
 						|| event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC
 						|| (event.keyCode == SWT.F2);
@@ -785,7 +777,6 @@ public class OntologyEditorView extends ViewPart {
 						newBase += baseSplit[i]+"|";
 					}
 					newBase = newBase.substring(0, newBase.length()-1);
-					//					System.out.println(newBase);
 					treeNode.getTargetNodeAttributes().setC_Basecode(newBase);
 					treeNode.setID(value);
 				}
@@ -797,27 +788,18 @@ public class OntologyEditorView extends ViewPart {
 				}
 
 				String [] pathSplit = treePath.split("\\\\");
-				//				System.out.println(pathSplit[1]);
 				pathSplit[hlevel+1]=value;
 				String newPath = "";
 				for (int i = 0; i<pathSplit.length; i++){
 					newPath+=pathSplit[i]+"\\";
 				}
 				treeNode.setTreePath(newPath);
-				//				System.out.println("new path: " + newPath);
-				//				System.out.println("new name: " + (String)value);
 				for (OntologyTreeNode child : treeNode.getChildren()){
 					setPathChildren(child, value, hlevel, treeNode.getTreePath());
 				}
 			}
 
 			protected void setPathChildren(OntologyTreeNode treeNode, String value, int hlevel, String applied_path){
-				//				System.out.println("######");
-				//				System.out.println("NODE: " + treeNode.getName());
-				//				System.out.println("VALUE: " + value);
-				//				System.out.println("HLEVEL: " + hlevel);
-
-
 				if (treeNode.isCustomNode()){
 					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
 					baseSplit[hlevel+1] =value;
@@ -826,10 +808,8 @@ public class OntologyEditorView extends ViewPart {
 						newBase += baseSplit[i]+"|";
 					}
 					newBase = newBase.substring(0, newBase.length()-1);
-					//					System.out.println(newBase);
 					treeNode.getTargetNodeAttributes().setC_Basecode(newBase);
 					treeNode.setID(value);
-					//					System.out.println("CUSTOMNODE");
 				}
 
 				String treePath = treeNode.getTreePath();
@@ -839,7 +819,6 @@ public class OntologyEditorView extends ViewPart {
 				}
 
 				String [] pathSplit = treePath.split("\\\\");
-				//				System.out.println(pathSplit[1]);
 				pathSplit[hlevel+1]=value;
 				String newPath = "";
 				for (int i = 0; i<pathSplit.length; i++){
@@ -850,7 +829,6 @@ public class OntologyEditorView extends ViewPart {
 					setPathChildren(child, value, hlevel, applied_path);
 				}
 			}
-
 		});
 
 		targetTreeViewer.addDragSupport(operations, transferTypes, new NodeMoveDragListener(
@@ -891,16 +869,13 @@ public class OntologyEditorView extends ViewPart {
 					setCurrentTargetNode(subNode.getParent());
 					EditorTargetInfoView.setNode(subNode);
 				}
-
 			}
 		});
-
 
 		targetTreeViewer.addDoubleClickListener(doubleClickListener); 
 		searchClearButtonTarget.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -939,7 +914,6 @@ public class OntologyEditorView extends ViewPart {
 		composite_1.setLayoutData(BorderLayout.NORTH);
 		composite_1.setLayout(new GridLayout(2, false));
 
-
 		composite_3 = new Composite(composite_1, SWT.NONE);
 		composite_3.setLayout(new GridLayout(3, false));
 		composite_3.setSize(828,66);
@@ -970,21 +944,7 @@ public class OntologyEditorView extends ViewPart {
 		lblStagingName.setEditable(false);
 		new Label(composite_3, SWT.NONE);
 		new Label(composite_3, SWT.NONE);
-		//		btnCancel = new Button(composite_3, SWT.NONE);
-		//		btnCancel.setText("CANCEL");
-		//		btnCancel.addSelectionListener(new SelectionListener() {
-		//
-		//			@Override
-		//			public void widgetSelected(SelectionEvent arg0) {
-		//				ReadTarget.killImport();	
-		//			}
-		//
-		//			@Override
-		//			public void widgetDefaultSelected(SelectionEvent arg0) {
-		//
-		//			}
-		//		});
-		//		new Label(composite_3, SWT.NONE);
+
 		composite_5 = new Composite(composite_3, SWT.NONE);
 		composite_5.setLayout(new GridLayout(2, false));
 		composite_5.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 3, 1));
@@ -1021,7 +981,6 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-
 		lblInstance = new Label(composite_7, SWT.NONE);
 		lblInstance.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
 		lblInstance.setText("Instance:");
@@ -1053,12 +1012,10 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				//				clearTargetName();
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.DELETETARGET);
 				command.addParameter(Resource.ID.Command.IOE.DELETETARGET_ATTRIBUTE_TARGETID, versionCombo.getText());
 				Application.executeCommand(command);
 
-				//versionCombo.setText(""+getTargetProjects().getPreviousSelectedVersion().getVersion());
 				versionCombo.setText(""+getTargetInstance().getSelectedTarget().getVersion());
 				versionCombo.getParent().setFocus();
 			}
@@ -1083,19 +1040,15 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//incrementVersion();
 				ActionCommand command  = new ActionCommand(Resource.ID.Command.IOE.INCREMENTTARGETVERSION);
 				Application.executeCommand(command);
 
 			}
 		});
-
-
 
 		versionCombo.addSelectionListener(new SelectionListener() {
 
@@ -1148,8 +1101,6 @@ public class OntologyEditorView extends ViewPart {
 							Application.executeCommand(command);
 
 							versionCombo.setText(""+getTargetInstance().getSelectedTarget().getVersion());
-							//							versionCombo.setText(versionCombo.getItem(versionCombo.getItems().length-1));
-
 							versionCombo.getParent().setFocus();
 						}
 					});
@@ -1161,7 +1112,6 @@ public class OntologyEditorView extends ViewPart {
 
 						@Override
 						public void widgetDefaultSelected(SelectionEvent e) {
-
 						}
 
 						@Override
@@ -1174,7 +1124,6 @@ public class OntologyEditorView extends ViewPart {
 					actionMenu.pack();
 					dialog.pack();
 					dialog.open();
-
 				}
 			}
 		});
@@ -1184,7 +1133,6 @@ public class OntologyEditorView extends ViewPart {
 		composite_4 = new Composite(composite_2, SWT.NONE);
 		composite_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		composite_4.setLayout(new GridLayout(6, false));
-
 
 		DropTarget dropTarget3 = new DropTarget(composite_4, operations);
 		dropTarget3.setTransfer(transferTypes);
@@ -1241,30 +1189,27 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
-
-
-				//				OntologyTree ontologyTreeTarget = OntologyEditorView.getOntologyTargetTree();
-				//				System.out.println(((OntologyTreeNode) ontologyTreeTarget.getRootNode()).getName());
-				OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
-				//				System.out.println("childCount: " + bla.getChildCount());
+				OntologyTreeNode node = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
 				System.out.println(isNotYetSaved());
-				if (bla.getChildCount()>0 && isNotYetSaved()) {
+				if (node.getChildCount()>0 && isNotYetSaved()) {
 					boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
 							"do you want to save it first?");
 					if (confirm)
 					{
-						//save target
+						/**
+						 * SaveTarget
+						 */
 						Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
 					}
 				}
+				/**
+				 * UploadProjectCommand
+				 */
 				Application.executeCommand("de.umg.mi.idrt.ioe.uploadProject");
-
 			}
 		});
 
@@ -1443,8 +1388,8 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
-	public static void removeVersionFromCombo(String version) {
 
+	public static void removeVersionFromCombo(String version) {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetInstance().getPreviousSelectedVersion().getVersion());
 			versionCombo.remove(version);
@@ -1453,11 +1398,10 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't remove an entry from it");
 		}
 	}
+	
 	private static void renameNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
-
 	}
-
 
 	private static void clearSearch(OntologyTreeNodeList nodeLists, TreeViewer treeViewer) {
 		for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
@@ -1465,11 +1409,7 @@ public class OntologyEditorView extends ViewPart {
 		}
 	}
 
-
-
-
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
-
 		if (text.isEmpty()) {
 			System.out.println("TEXT EMPTY");
 			for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
@@ -1487,15 +1427,6 @@ public class OntologyEditorView extends ViewPart {
 				}
 			}
 		}
-		//		int size = nodeLists.getNumberOfItemNodes();
-		//		if (text.isEmpty()) {
-		//			unmarkAllNodes(rootNode);	
-		//		}
-		//		else {
-		//			if (size<500 || text.length()>=3) {
-		//				markNodes(rootNode,text,treeViewer);
-		//			}
-		//		}
 	}
 	/**
 	 * @param column the column to set
@@ -1521,7 +1452,6 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setMyOntologyTree (MyOntologyTrees myOT){
-		//		System.out.println("********* SETTING OT **********");
 		myOntologyTree = myOT;
 	}
 
@@ -1533,7 +1463,6 @@ public class OntologyEditorView extends ViewPart {
 	}
 
 	public static void setSelection(OntologyTreeNode node) {
-		//		getTargetTreeViewer().expandToLevel(node, node.getTreePathLevel());
 		getTargetTreeViewer().setSelection(new StructuredSelection(node), true);
 		getTargetTreeViewer().refresh();
 	}
@@ -1588,7 +1517,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1599,7 +1527,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -1618,7 +1545,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -1639,7 +1565,6 @@ public class OntologyEditorView extends ViewPart {
 					node.setHighlighted(false);
 					highlightedTargetNodes.remove(node);
 				}
-
 			}
 
 			@Override
@@ -1711,12 +1636,8 @@ public class OntologyEditorView extends ViewPart {
 	 * @param currentStagingServer
 	 */
 	public static void setStagingServer(Server currentServer2) {
-
 		currentStagingServer = new Server(currentServer2);
-		//		System.out.println("setting staging server to: " + currentServer2.toString() + " " + currentServer2.getSchema());
 	}
-
-
 
 	public static void setTargetContent(OntologyTree oTTarget) {
 		targetTreeViewer.getTree().removeAll();
@@ -1929,7 +1850,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -1944,7 +1864,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -1952,22 +1871,6 @@ public class OntologyEditorView extends ViewPart {
 				addItem();
 			}
 		});
-		//		new MenuItem(menu, SWT.SEPARATOR);
-		//
-		//		MenuItem mntmAddModifier = new MenuItem(menu, SWT.PUSH);
-		//		mntmAddModifier.setText("Add Modifier");
-		//		mntmAddModifier.addSelectionListener(new SelectionListener() {
-		//
-		//			@Override
-		//			public void widgetDefaultSelected(SelectionEvent e) {
-		//
-		//			}
-		//
-		//			@Override
-		//			public void widgetSelected(SelectionEvent event) {
-		//				addModifier();
-		//			}
-		//		});
 		new MenuItem(menu, SWT.SEPARATOR);
 		MenuItem mntmExpandChildren = new MenuItem(menu, SWT.PUSH);
 		mntmExpandChildren.setText("Expand All Children");
@@ -1975,12 +1878,10 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-
 				OntologyTreeNode node = OntologyEditorView.getCurrentTargetNode();
 				targetComposite.setRedraw(false);
 				//				expandTargetChildren(node, true);
@@ -1994,7 +1895,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -2014,7 +1914,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -2029,7 +1928,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -2044,7 +1942,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
 			}
 
 			@Override
@@ -2099,12 +1996,12 @@ public class OntologyEditorView extends ViewPart {
 		composite_2.layout();
 	}
 
-	private static void unmarkAllNodes(OntologyTreeNode node) {
-
-		for (OntologyTreeNode child : node.getChildren()) 
-			unmarkAllNodes(child);
-		node.setSearchResult(false);
-	}
+//	private static void unmarkAllNodes(OntologyTreeNode node) {
+//
+//		for (OntologyTreeNode child : node.getChildren()) 
+//			unmarkAllNodes(child);
+//		node.setSearchResult(false);
+//	}
 
 	@Override
 	public void createPartControl(final Composite parent) {
@@ -2125,7 +2022,6 @@ public class OntologyEditorView extends ViewPart {
 
 			for (File listOfFile : listOfFiles) {
 				if (!listOfFile.getName().equals("ph") ) { 
-					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -2135,7 +2031,6 @@ public class OntologyEditorView extends ViewPart {
 
 			for (File listOfFile : listOfFiles) {
 				if (!listOfFile.getName().equals("ph") ) { 
-					//					System.out.println(listOfFile.getName() + " deleted");
 					listOfFile.delete();
 				}
 			}
@@ -2167,18 +2062,6 @@ public class OntologyEditorView extends ViewPart {
 		targetProjects.add(targetProject1);
 		targetProjects.add(targetProject2);
 
-		//		System.out.println("TargetProjects:");
-		//		List<TargetProject> list = targetProjects.getTargetProjectsList();
-		//		for ( TargetProject tmpTargetProject : list ){
-		//			System.out.println("TargetProject: " + tmpTargetProject.getTargetProjectID() + "||" + tmpTargetProject.getName() + "|" + tmpTargetProject.getDescription() );
-		//		}
-		//		System.out.println("---");
-		//		System.out.println("getTargetProject with ID 3:" + targetProjects.getTargetProjectByID(3).getName());
-
-
-
-		//targetProjects.getSelectedTargetProject()
-
 		final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
 		final Transfer[] transferTypes = new Transfer[] { TextTransfer
 				.getInstance() };
@@ -2207,7 +2090,6 @@ public class OntologyEditorView extends ViewPart {
 				TOSHandler.setCounter(0);
 				System.out.println("DROPPED! " + event.data);
 				if (ServerList.getTargetServers().containsKey(event.data) ) {
-					//					System.out.println("SERVER!");
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
@@ -2340,7 +2222,6 @@ public class OntologyEditorView extends ViewPart {
 					}
 					else 
 						break;
-
 				}
 			}
 		}
@@ -2405,9 +2286,9 @@ public class OntologyEditorView extends ViewPart {
 
 				}
 			}
-
 		}
 	}
+
 	private static void sortNode(OntologyTreeNode node){
 		int counter = 1;
 		int max = node.getChildren().size();
