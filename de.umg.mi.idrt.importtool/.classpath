@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/advancedPersistentLookupLib-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/commons-collections-3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/external_sort.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/filecopy.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/jakarta-oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/jboss-serialization.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/json_simple-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/jsonpath.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/jxl.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/ojdbc14.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/ojdbc6.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/OpenCSV.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/postgresql-8.4-703.jdbc4.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/postgresql-9.2-1003.jdbc3.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/postgresql-9.3-1102.jdbc4.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/StatusListener29.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/systemRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/talend_file_enhanced_20070724.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/talendcsv.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/trove.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/lib/userRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/items/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/tos/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/idrt_to_db_schema_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_check_root_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_create_conceptdimension_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_idrt_anbindung_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_init_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_postprocessing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_query_contexts_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_query_dataelements_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_query_dataelements_datatype_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_query_dataelements_unitofmeasure_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_query_dataelements_uom_dt_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung_0.1/MDR_IDRT_Anbindung/mdr_stack_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_create_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_drop_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/database_rebuild_indexing_0_1.jar"/>

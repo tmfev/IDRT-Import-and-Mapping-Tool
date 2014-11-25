@@ -884,7 +884,7 @@ public class OntologyEditorView extends ViewPart {
 			}
 		});
 
-		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener());
+		stagingTreeViewer.addDragSupport(operations, transferTypes, new NodeDragListener(stagingTreeViewer));
 		stagingTreeViewer.setSorter(new ViewerSorter());
 		stagingTreeViewer.getTree().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {

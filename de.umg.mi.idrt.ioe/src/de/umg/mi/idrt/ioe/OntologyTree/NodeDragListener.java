@@ -19,8 +19,9 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class NodeDragListener implements DragSourceListener {
 
-
-	public NodeDragListener() {
+	private TreeViewer viewer;
+	public NodeDragListener(TreeViewer viewer) {
+		this.viewer = viewer;
 	}
 
 	@Override
@@ -37,8 +38,23 @@ public class NodeDragListener implements DragSourceListener {
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
-		Console.info("Start Drag");
-		event.doit = true;
+		
+		IStructuredSelection selection = (IStructuredSelection) viewer
+				.getSelection();
+		if (selection.getFirstElement() instanceof OntologyTreeNode) {
+			OntologyTreeNode firstElement = (OntologyTreeNode) selection
+					.getFirstElement();
+			if (firstElement.isModifier()){
+				System.out.println("MODIFIERS");
+				event.doit=false;
+			}
+			else {
+				Console.info("Start Drag");
+				event.doit = true;
+			}
+			
+		}
+		
 	}
 
 }

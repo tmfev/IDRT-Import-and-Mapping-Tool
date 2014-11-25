@@ -6,6 +6,8 @@ import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.TextTransfer;
 
+import de.umg.mi.idrt.ioe.Console;
+
 /**
  * @author Benjamin Baum
  * <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -42,13 +44,19 @@ public class NodeMoveDragListener implements DragSourceListener {
 
 	@Override
 	public void dragSetData(DragSourceEvent event) {
+		
+		
 		System.out.println("dragSetData");
 		IStructuredSelection selection = (IStructuredSelection) viewer
 				.getSelection();
 		if (selection.getFirstElement() instanceof OntologyTreeNode) {
 			OntologyTreeNode firstElement = (OntologyTreeNode) selection
 					.getFirstElement();
-			if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+			if (firstElement.isModifier()){
+				event.data = null;
+				System.out.println("Modifier!");
+			}
+			else if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
 				event.data = firstElement.getTreePath();
 			}
 		}
@@ -62,6 +70,34 @@ public class NodeMoveDragListener implements DragSourceListener {
 	@Override
 	public void dragStart(DragSourceEvent event) {
 		System.out.println("@dragStart");
+		IStructuredSelection selection = (IStructuredSelection) viewer
+				.getSelection();
+		if (selection.getFirstElement() instanceof OntologyTreeNode) {
+			OntologyTreeNode firstElement = (OntologyTreeNode) selection
+					.getFirstElement();
+			if (firstElement.isModifier()){
+				System.out.println("MODIFIERS");
+				event.doit=false;
+			}
+			else {
+				Console.info("Start Drag");
+				event.doit = true;
+			}
+			
+		}
+		else if (selection.getFirstElement() instanceof OntologyTreeSubNode){
+			OntologyTreeSubNode firstElement = (OntologyTreeSubNode) selection
+					.getFirstElement();
+			if (firstElement.getParent().isModifier()){
+				System.out.println("MODIFIERS");
+				event.doit=false;
+			}
+			else {
+				Console.info("Start Drag");
+				event.doit = true;
+			}
+		}
 	}
+	
 
 }

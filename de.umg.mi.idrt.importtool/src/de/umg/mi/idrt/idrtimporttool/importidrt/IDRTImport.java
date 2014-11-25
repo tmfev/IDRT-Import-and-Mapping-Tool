@@ -6,6 +6,7 @@ import tos.dropioetables_0_1.DropIOETables;
 import tos.idrt_stdterm_0_1.IDRT_STDTERM;
 import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
+import tos.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
 import tos.odm_master_0_1.ODM_MASTER;
 
 import java.io.File;
@@ -89,6 +90,13 @@ public class IDRTImport {
 		ServerView.stdImportStarted = false;
 	}
 
+	
+	public static int runMDRImport(){
+		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
+		exitCode = mdr.runJobInTOS(getARGV());
+			return exitCode;
+	}
+	
 	/**
 	 * TOS-Job which imports several CSV-Files in a Folder.
 	 * <p><strong>Note:</strong> CSV-File delimiter: tabulator, semicolon</p>
@@ -192,6 +200,9 @@ public class IDRTImport {
 			return exitCode;
 		}
 	}
+	
+	
+	
 
 	/**
 	 * Imports the standard terminologies.

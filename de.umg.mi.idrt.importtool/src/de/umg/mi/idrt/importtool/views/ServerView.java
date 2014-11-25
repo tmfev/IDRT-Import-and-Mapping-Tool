@@ -833,6 +833,9 @@ public class ServerView extends ViewPart {
 				}
 			});
 
+
+
+
 			MenuItem importDBMenuItem = new MenuItem(importMenu, SWT.PUSH);
 			importDBMenuItem.setText(Messages.ServerView_ImportDB);
 			importDBMenuItem.addSelectionListener(new SelectionListener() {
@@ -876,13 +879,24 @@ public class ServerView extends ViewPart {
 
 			importMDRMenuItem = new MenuItem(importMenu, SWT.CASCADE);
 			importMDRMenuItem.setText("Import from MDR");
-			importMDRMenuItem.addArmListener(new ArmListener() {
+			importMDRMenuItem.addSelectionListener(new SelectionListener() {
 
 				@Override
-				public void widgetArmed(ArmEvent e) {
-					createMDRMenu();
+				public void widgetSelected(SelectionEvent e) {
+					importMDR();					
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 			});
+			//			importMDRMenuItem.addArmListener(new ArmListener() {
+			//
+			//				@Override
+			//				public void widgetArmed(ArmEvent e) {
+			//					createMDRMenu();
+			//				}
+			//			});
 			//TODO CREATE MENU AND SET IT
 
 			//TODO REIMPLEMENT REMOVELOCKs
@@ -1534,6 +1548,18 @@ public class ServerView extends ViewPart {
 		try {
 			handlerService.executeCommand(
 					"de.goettingen.i2b2.importtool.idrt.exportServer", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void importMDR(){
+
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.umg.mi.idrt.importtool.MDRImport", null); 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

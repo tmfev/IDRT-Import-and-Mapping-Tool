@@ -99,6 +99,11 @@
             id="de.umg.mi.idrt.importtool.documentation"
             name="Documentation">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.MDRImportCommand"
+            id="de.umg.mi.idrt.importtool.MDRImport"
+            name="MDRImport">
+      </command>
    </extension>
   <!-- <extension
          point="org.eclipse.ui.installationPages">
