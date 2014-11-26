@@ -170,23 +170,6 @@ public class MDRImportWizard extends Wizard {
 		super.dispose();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#getPageCount()
-	 */
-	@Override
-	public int getPageCount() {
-		// TODO Auto-generated method stub
-		return 2;
-	}
-
-	@Override
-	public boolean performCancel() {
-		if (CSVWizardPage3.lastTable != null) {
-			CSVWizardPage3.saveTable();
-		}
-		return super.performCancel();
-	}
-
 	@Override
 	public boolean performFinish() {
 
@@ -207,31 +190,22 @@ public class MDRImportWizard extends Wizard {
 		//		final String dbSID = WizardPage1.getDBSIDText();
 		//		final String dbPort = WizardPage1.getPortText();
 		//		final String dbSchema = WizardPage1.getDBSchemaText();
-		final boolean truncate = MDRWizardPage2.getTruncate();
-		final boolean truncateQueries = MDRWizardPage2.getTruncateQueries();
-
-		final boolean stopIndex = MDRWizardPage2.getStopIndex();
-		final boolean dropIndex = MDRWizardPage2.getDropIndex();
 
 		final int mdrInstance = MDRWizardPage2.getMDRInstance();
-		final boolean terms = false;//CSVWizardPage2.getTerms();
-		final boolean save = MDRWizardPage2.getSaveContext();
 
 		// saving the last table before import
-
-		final List<String> configs = new LinkedList<String>();
 
 		importThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
+					StatusListener.setStatus(1f, "Importing from MDR", "Instance: "+mdrInstance);
 					File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 					defaultProps = new Properties();
 					defaultProps.load(new FileReader(properties));
 
 					contextMap = new HashMap<String, String>();
 
-					
 					/**
 					 * page 1
 					 */
@@ -253,71 +227,22 @@ public class MDRImportWizard extends Wizard {
 					String miscPathReplaced = misc.getAbsolutePath()
 							.replaceAll("\\\\", "/") + "/";
 
-
-					if (dropIndex){
-						defaultProps.setProperty("IndexStop", "false");
-						contextMap.put("IndexStop", "false");
-
-						defaultProps.setProperty("IndexDrop", "true");
-						contextMap.put("IndexDrop", "true");
-					}
-					else if (stopIndex){
-						defaultProps.setProperty("IndexStop", "true");
-						contextMap.put("IndexStop", "true");
-						defaultProps.setProperty("IndexDrop", "false");
-						contextMap.put("IndexDrop", "false");
-					}
-					else {
-						defaultProps.setProperty("IndexStop", "false");
-						contextMap.put("IndexStop", "false");
-						defaultProps.setProperty("IndexDrop", "false");
-						contextMap.put("IndexDrop", "false");
-
-
-					}
-
-					if (truncate) {
-						contextMap.put("truncateProject", "true");
-					} else {
-						contextMap.put("truncateProject", "false");
-					}
-					contextMap.put("PIDURL", defaultProps.getProperty("PIDURL"));
-
 					contextMap.put("folderMain", miscPathReplaced);
-
 
 					contextMap.put("MDRStartDesignation", ""+mdrInstance);
 					defaultProps.setProperty("MDRStartDesignation", ""+mdrInstance);
-
-					if (save) {
-						defaultProps.store(new FileWriter(properties), "");
-					}
-
-					if (truncate) {
-						contextMap.put("truncateProject", "true");
-					} else {
-						contextMap.put("truncateProject", "false");
-					}
-
-					if (truncateQueries){
-						contextMap.put("truncateQueries", "true");
-					}
-					else {
-						contextMap.put("truncateQueries", "false");
-					}
 
 					b = new Thread(new Runnable() {
 
 						@Override
 						public void run() {
+							StatusListener.setStatus(1f, "Importing from MDR", "Instance: "+mdrInstance);
 							started = true;
 							final long start = System.currentTimeMillis();
 							IDRTImport.setCompleteContext(contextMap);
 							exitCode = IDRTImport.runMDRImport();
-							StatusListener.setStatus(0, "", "");  
-							StatusListener.setSubStatus(0, "");
-							StatusListener.notifyListener();
-							started = false;
+							StatusListener.setStatus(100f, "Importing done:", "Instance: "+mdrInstance);
+							
 							if (exitCode == 0) {
 								Display.getDefault().syncExec(
 										new Runnable() {
@@ -354,6 +279,10 @@ public class MDRImportWizard extends Wizard {
 															"Import Finished",
 															"Import finished.");
 												}
+												StatusListener.setStatus(0, "", "");  
+												StatusListener.setSubStatus(0, "");
+												StatusListener.notifyListener();
+												started = false;
 											}
 										});
 							}
@@ -380,6 +309,7 @@ public class MDRImportWizard extends Wizard {
 					if (!started) {
 						b.start();
 					}
+					
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
