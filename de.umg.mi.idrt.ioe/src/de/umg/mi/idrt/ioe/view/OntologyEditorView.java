@@ -300,11 +300,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 
 		//TODO HERE
-		//						Shell shell = new Shell();
-		//						shell.setSize(844, 536);
-		//						shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//						mainComposite = new Composite(shell, SWT.NONE);
-		//						mainComposite.setLayout(new BorderLayout(0, 0));
+//								Shell shell = new Shell();
+//								shell.setSize(844, 536);
+//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//								mainComposite = new Composite(shell, SWT.NONE);
+//								mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
@@ -2089,7 +2089,7 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(final DropTargetEvent event) {
 				TOSHandler.setCounter(0);
 				System.out.println("DROPPED! " + event.data);
-				if (ServerList.getTargetServers().containsKey(event.data) ) {
+				if (ServerList.getTargetServers().containsKey(event.data) && !ServerList.getUsersTargetServer(ServerList.getTargetServers().get(event.data)).contains(event.data) ) {
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {
