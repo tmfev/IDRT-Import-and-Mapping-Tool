@@ -734,7 +734,6 @@ public class ServerList {
 					if (server.getUser().toLowerCase().equals("system")) {
 						resultSet = statement
 								.executeQuery("select username from all_users");
-						System.out.println("SQL?");
 						users = getResultSet(resultSet, server);
 
 					} else {
@@ -775,8 +774,9 @@ public class ServerList {
 	}
 
 	public static boolean isServer(String uniqueID) {
-		if ((servers.get(uniqueID) != null)
-				|| (importDBServers.get(uniqueID) != null)) {
+		if (((servers.get(uniqueID) != null)
+				|| (importDBServers.get(uniqueID) != null)) 
+				&& !ServerList.getUsersTargetServer(ServerList.getTargetServers().get(uniqueID)).contains(uniqueID)) {
 			return true;
 		} else {
 			return false;

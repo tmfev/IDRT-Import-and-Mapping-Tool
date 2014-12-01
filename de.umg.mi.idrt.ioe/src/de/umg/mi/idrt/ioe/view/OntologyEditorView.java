@@ -2089,7 +2089,7 @@ public class OntologyEditorView extends ViewPart {
 			public void drop(final DropTargetEvent event) {
 				TOSHandler.setCounter(0);
 				System.out.println("DROPPED! " + event.data);
-				if (ServerList.getTargetServers().containsKey(event.data) && !ServerList.getUsersTargetServer(ServerList.getTargetServers().get(event.data)).contains(event.data) ) {
+				if (ServerList.isServer((String)event.data) ) {
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
 				}
 				else if (((String)(event.data)).startsWith("\\i2b2")) {

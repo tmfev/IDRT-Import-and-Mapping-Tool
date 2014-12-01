@@ -697,27 +697,37 @@ public class ServerView extends ViewPart {
 						lblObservationsCurrent.setText(""); 
 						lblPatientsCurrent.setText(""); 
 					} else {
-						String parentServer = selectedItem.getParentItem()
-								.getText();
-						final Server server = ServerList.getTargetServers().get(
-								parentServer);
-						labelIpCurrent.setText(server.getIp());
-						if (server.getWhType().equals("transmart"))
-							labelDBUserCurrent.setText(server.getWhType());
-						else
-							labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
-						labelNameCurrent.setText(server.getName());
-						lblObservationsCurrent.setText("..."); 
-						lblPatientsCurrent.setText("..."); 
+						try{
+							String parentServer = selectedItem.getParentItem()
+									.getText();
+							final Server server = ServerList.getTargetServers().get(
+									parentServer);
+							labelIpCurrent.setText(server.getIp());
+							if (server.getWhType().equals("transmart"))
+								labelDBUserCurrent.setText(server.getWhType());
+							else
+								labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
+							labelNameCurrent.setText(server.getName());
+							lblObservationsCurrent.setText("..."); 
+							lblPatientsCurrent.setText("..."); 
 
-						Display.getCurrent().asyncExec(new Runnable() {
+							Display.getCurrent().asyncExec(new Runnable() {
 
-							@Override
-							public void run() {
-								DatabaseStatsThread a = new DatabaseStatsThread();
-								a.run(server, selectedItemString);
-							}
-						});
+								@Override
+								public void run() {
+									DatabaseStatsThread a = new DatabaseStatsThread();
+									a.run(server, selectedItemString);
+								}
+							});
+						}catch(Exception e2){
+							Server server = ServerList.getTargetServers().get(
+									selectedItem.getText());
+								labelDBUserCurrent.setText("");
+							labelNameCurrent.setText(server.getName());
+							lblObservationsCurrent.setText(""); 
+							lblPatientsCurrent.setText(""); 
+						}
+					
 					}
 				}
 			});
