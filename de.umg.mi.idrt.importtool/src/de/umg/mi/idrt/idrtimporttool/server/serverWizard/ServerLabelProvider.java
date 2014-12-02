@@ -6,6 +6,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.ResourceManager;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 
 /**
@@ -48,7 +49,10 @@ public class ServerLabelProvider extends LabelProvider {
 			Server server = (Server) element;
 			return server.getName();
 		}
-		return element.toString();
+		else if (element instanceof I2b2Project)
+		return ((I2b2Project) element).getName();
+		else
+			return element.toString();
 		// return ((Todo) element).getSummary();
 	}
 

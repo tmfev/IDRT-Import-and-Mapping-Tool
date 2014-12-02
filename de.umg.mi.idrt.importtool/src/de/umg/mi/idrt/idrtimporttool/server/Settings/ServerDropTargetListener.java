@@ -24,30 +24,24 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 	@Override
 	public void drop(DropTargetEvent event) {
 		int location = determineLocation(event);
-		// String target = ((Server) determineTarget(event)).getUniqueID();
-		String translatedLocation = "";
 		switch (location) {
 			case 1:
-				translatedLocation = "Dropped before the target ";
-				break;
+			break;
 			case 2:
-				translatedLocation = "Dropped after the target ";
-				break;
+			break;
 			case 3:
-				translatedLocation = "Dropped on the target ";
-				break;
+			break;
 			case 4:
-				translatedLocation = "Dropped into nothing ";
-				break;
+			break;
 		}
 		super.drop(event);
 	}
 
 	@Override
-	public boolean performDrop(Object data) {
-		Server draggedServer = ServerList.getTargetServers().get(data);
+	public boolean performDrop(Object object) {
 		
-		if (draggedServer != null) {
+		if (object instanceof Server) {
+			Server draggedServer = (Server) object;
 		Server newServer = new Server("copy of " + draggedServer.getUniqueID(),
 				draggedServer.getIp(), draggedServer.getPort(),
 				draggedServer.getUser(), draggedServer.getPassword(),
@@ -58,7 +52,7 @@ public class ServerDropTargetListener extends ViewerDropAdapter {
 		viewer.refresh();
 		}
 		else {
-			MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+			MessageDialog.openError(Application.getShell(), "Error!", "You cannot drop this item here!");
 			}
 		return false;
 	}

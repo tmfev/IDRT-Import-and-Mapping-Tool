@@ -28,8 +28,6 @@ public class ServerDragSourceListener implements DragSourceListener {
 
 	@Override
 	public void dragSetData(DragSourceEvent event) {
-		System.out.println("SET DRAG");
-		System.out.println(event.dataType);
 //		try {
 //			IStructuredSelection selection = (IStructuredSelection) viewer
 //					.getSelection();
@@ -60,7 +58,6 @@ public class ServerDragSourceListener implements DragSourceListener {
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
-		System.out.println("DRAG START");
 //		IStructuredSelection selection = (IStructuredSelection) viewer
 //				.getSelection();
 //

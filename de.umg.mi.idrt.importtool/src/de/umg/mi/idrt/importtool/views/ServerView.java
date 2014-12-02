@@ -83,6 +83,7 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerDragSourceListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerDropTargetListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2ProjectTransferType;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerTransferType;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerContentProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
@@ -605,8 +606,7 @@ public class ServerView extends ViewPart {
 			sashForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 			final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
-			final Transfer[] transferTypes = new Transfer[] { TextTransfer
-					.getInstance() };
+			final Transfer[] transferTypes = new Transfer[] {I2b2ProjectTransferType.getInstance(),ServerTransferType.getInstance() };
 			Composite leftSideComposite = new Composite(sashForm, SWT.NONE);
 			leftSideComposite.setLayout(new BorderLayout(0, 0));
 
@@ -634,7 +634,8 @@ public class ServerView extends ViewPart {
 
 			sourceServerViewer = new TreeViewer(sourceTreeComp, SWT.MULTI
 					| SWT.H_SCROLL | SWT.V_SCROLL); // parent
-			sourceServerViewer.addDropSupport(operations, transferTypes,
+			Transfer[] transferTypesSource = new Transfer[] {ServerTransferType.getInstance() };
+			sourceServerViewer.addDropSupport(operations, transferTypesSource,
 					new ServerDropTargetListener(sourceServerViewer));
 
 			sourceServerViewer.getTree().addMouseListener(new MouseListener() {
@@ -752,7 +753,7 @@ public class ServerView extends ViewPart {
 
 			targetServerViewer.getTree().setMenu(mainMenu);
 			
-			Transfer[] transferTypesTarget = new Transfer[] { I2b2ProjectTransferType.getInstance()}; //TextTransfer.getInstance()
+			Transfer[] transferTypesTarget = new Transfer[] { I2b2ProjectTransferType.getInstance(), ServerTransferType.getInstance()}; //TextTransfer.getInstance()
 			targetServerViewer.addDragSupport(operations, transferTypesTarget,
 					new ServerDragSourceListener(targetServerViewer));
 			/**
@@ -1222,8 +1223,10 @@ public class ServerView extends ViewPart {
 
 						sourceServerViewer = new TreeViewer(sourceTreeComp,
 								SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+						//TODO
+						Transfer[] transferTypesSource = new Transfer[] {ServerTransferType.getInstance() };
 						sourceServerViewer.addDropSupport(operations,
-								transferTypes, new ServerDropTargetListener(
+								transferTypesSource, new ServerDropTargetListener(
 										sourceServerViewer));
 						sourceServerViewer.getTree().addMouseListener(
 								new MouseListener() {
