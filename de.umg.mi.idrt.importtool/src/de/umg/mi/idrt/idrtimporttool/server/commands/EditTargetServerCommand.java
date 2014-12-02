@@ -7,6 +7,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.TreeItem;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditServerWizard;
@@ -28,7 +29,7 @@ public class EditTargetServerCommand extends AbstractHandler {
 			TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
 			String serverUniqueID = currentTreeItem.getText();
 
-			if (ServerList.isServer(serverUniqueID)) {
+			if (currentTreeItem.getData() instanceof Server) {
 				Server currentServer = ServerList.getTargetServers().get(
 						serverUniqueID);
 				WizardDialog wizardDialog = new WizardDialog(viewer
@@ -36,7 +37,7 @@ public class EditTargetServerCommand extends AbstractHandler {
 						currentServer, true));
 				
 				wizardDialog.open();
-			} else {
+			} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();
 				serverUniqueID = parentTreeitem.getText();
 				Server currentServer = ServerList.getTargetServers().get(

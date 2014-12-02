@@ -8,6 +8,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.TreeItem;
 
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBWizardPage2;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditServerWizard;
@@ -30,7 +31,7 @@ public class EditSourceServerCommand extends AbstractHandler {
 		if (viewer.getTree().getSelection().length > 0) {
 			TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
 			String serverUniqueID = currentTreeItem.getText();
-			if (ServerList.isServer(serverUniqueID)) {
+			if (currentTreeItem.getData() instanceof Server) {
 				Server currentServer = ServerList.getSourceServers().get(
 						serverUniqueID);
 				if (currentServer == null) {
@@ -42,7 +43,7 @@ public class EditSourceServerCommand extends AbstractHandler {
 						.getControl().getShell(), new EditServerWizard(
 						currentServer, false));
 				wizardDialog.open();
-			} else {
+			} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();
 				serverUniqueID = parentTreeitem.getText();
 				Server currentServer = ServerList.getSourceServers().get(

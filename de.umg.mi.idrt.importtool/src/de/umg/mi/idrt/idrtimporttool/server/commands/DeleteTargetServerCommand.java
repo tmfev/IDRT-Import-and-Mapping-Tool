@@ -9,6 +9,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
 
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.views.ServerView;
@@ -53,10 +54,10 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 					TreeItem currentTreeItem = viewer.getTree().getSelection()[i];
 					String serverUniqueID = currentTreeItem.getText();
 					Server currentServer = null;
-					if (ServerList.isServer(serverUniqueID)) {
+					if (currentTreeItem.getData() instanceof Server) {
 						currentServer = ServerList.getTargetServers().get(
 								serverUniqueID);
-					} else {
+					} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
 						TreeItem parentTreeitem = currentTreeItem
 								.getParentItem();
 						serverUniqueID = parentTreeitem.getText();
@@ -70,10 +71,10 @@ public class DeleteTargetServerCommand extends AbstractHandler {
 				TreeItem currentTreeItem = viewer.getTree().getSelection()[0];
 				String serverUniqueID = currentTreeItem.getText();
 				Server currentServer = null;
-				if (ServerList.isServer(serverUniqueID)) {
+				if (currentTreeItem.getData() instanceof Server) {
 					currentServer = ServerList.getTargetServers().get(serverUniqueID);
 
-				} else {
+				} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
 					TreeItem parentTreeitem = currentTreeItem.getParentItem();
 					serverUniqueID = parentTreeitem.getText();
 					currentServer = ServerList.getTargetServers().get(serverUniqueID);

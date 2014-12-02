@@ -1,16 +1,19 @@
 package de.umg.mi.idrt.idrtimporttool.server.Settings;
 
+import java.io.Serializable;
+
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class User {
+public class I2b2Project implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private Server server;
 
-	public User(String name, Server server) {
+	public I2b2Project(String name, Server server) {
 		this.name = name;
 		this.server = server;
 	}
@@ -25,8 +28,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return name;
+		return "I2b2Project: " + name + " @ " + server.toString();
 	}
 
 }

@@ -32,6 +32,7 @@ import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.SWTResourceManager;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.AddUserWizard;
@@ -145,7 +146,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 								// Log.addLog(0,"selected: " +
 								// selectedItemString);
 
-								if (ServerList.isServer(selectedItemString)) {
+								if (selectedItem.getData() instanceof Server) {
 									String currentServerID = selectedItem
 											.getText();
 									Server server = ServerList.getTargetServers()
@@ -183,7 +184,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 									projectTab_userInfoComposite
 											.setRedraw(true);
 
-								} else {
+								} else if (selectedItem.getData() instanceof I2b2Project) {
 									String parentServer = selectedItem
 											.getParentItem().getText();
 									Server server = ServerList.getTargetServers()

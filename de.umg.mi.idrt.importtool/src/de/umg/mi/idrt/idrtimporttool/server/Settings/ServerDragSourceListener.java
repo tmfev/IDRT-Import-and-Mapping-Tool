@@ -28,31 +28,51 @@ public class ServerDragSourceListener implements DragSourceListener {
 
 	@Override
 	public void dragSetData(DragSourceEvent event) {
-		// Here you do the convertion to the type which is expected.
-		try {
-			IStructuredSelection selection = (IStructuredSelection) viewer
-					.getSelection();
-
-			if (selection.getFirstElement() instanceof Server) {
-				Server server = (Server) selection.getFirstElement();
-				System.out.println(server.getName());
-				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
-					event.data = server.getUniqueID();
-				}
-			}
-			else {
-				event.data = selection.getFirstElement();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			MessageDialog.openError(Application.getShell(), "Failure",
-					"You cannot drop this target here.");
-		}
-
+		System.out.println("SET DRAG");
+		System.out.println(event.dataType);
+//		try {
+//			IStructuredSelection selection = (IStructuredSelection) viewer
+//					.getSelection();
+//
+//			if (selection.getFirstElement() instanceof Server) {
+//				System.out.println("SERVER DRAG");
+//				Server server = (Server) selection.getFirstElement();
+//				System.out.println(server.getName());
+//				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+//					System.out.println("is supported");
+//					event.data = server.getUniqueID();
+//				}
+//				else
+//					System.out.println("is not supported");
+//			}
+//			else {
+//				event.data = selection.getFirstElement();
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			MessageDialog.openError(Application.getShell(), "Failure",
+//					"You cannot drop this target here.");
+//		}
+		IStructuredSelection selection = (IStructuredSelection) viewer
+				.getSelection();
+		event.data = selection.getFirstElement();
 	}
 
 	@Override
 	public void dragStart(DragSourceEvent event) {
+		System.out.println("DRAG START");
+//		IStructuredSelection selection = (IStructuredSelection) viewer
+//				.getSelection();
+//
+//		if (selection.getFirstElement() instanceof I2b2Project) {
+//			System.out.println("PROJECT");
+//			event.data = selection.getFirstElement();
+//		}
+//		else if (selection.getFirstElement() instanceof Server){
+//			System.out.println("SERVER");
+//			event.data = selection.getFirstElement();
+//		}
+		 
 	}
 
 }

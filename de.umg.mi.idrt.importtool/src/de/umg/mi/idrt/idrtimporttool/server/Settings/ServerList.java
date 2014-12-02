@@ -507,7 +507,7 @@ public class ServerList {
 	 * @param user
 	 * @return ServerTables
 	 */
-	public static List<ServerTable> getTables(User user) {
+	public static List<ServerTable> getTables(I2b2Project user) {
 		try {
 			tableMap = new HashMap<String, ServerTable>();
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -654,13 +654,13 @@ public class ServerList {
 	 * @param server
 	 * @return users form DBImport
 	 */
-	public static List<User> getUsersSourceServer(Server server) {
+	public static List<I2b2Project> getUsersSourceServer(Server server) {
 		try {
 			DriverManager.setLoginTimeout(1);
 			connect = server.getConnection();
 
 			statement = connect.createStatement();
-			List<User> userList = new LinkedList<User>();
+			List<I2b2Project> userList = new LinkedList<I2b2Project>();
 
 			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 				if (server.getUser().toLowerCase().equals("system")) {
@@ -670,11 +670,11 @@ public class ServerList {
 
 					while (resultSet.next()) {
 						String user = resultSet.getString("username");
-						User newUser = new User(user, server);
+						I2b2Project newUser = new I2b2Project(user, server);
 						userList.add(newUser);
 					}
 				} else {
-					User newUser = new User(server.getUser(), server);
+					I2b2Project newUser = new I2b2Project(server.getUser(), server);
 					userList.add(newUser);
 				}
 			}
@@ -685,7 +685,7 @@ public class ServerList {
 
 				while (resultSet.next()) {
 					String user = resultSet.getString("Database");
-					User newUser = new User(user, server);
+					I2b2Project newUser = new I2b2Project(user, server);
 					userList.add(newUser);
 				}
 			}
@@ -697,7 +697,7 @@ public class ServerList {
 
 				while (resultSet.next()) {
 					String user = resultSet.getString("name");
-					User newUser = new User(user, server);
+					I2b2Project newUser = new I2b2Project(user, server);
 					userList.add(newUser);
 				}
 				//					User newUser = new User(server.getUser(), server);
@@ -721,7 +721,7 @@ public class ServerList {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static HashSet<String> getUsersTargetServer(Server server) {
+	public static HashSet<I2b2Project> getUsersTargetServer(Server server) {
 		try {
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
@@ -729,7 +729,7 @@ public class ServerList {
 			if (connect!=null) {
 				statement = connect.createStatement();
 				// Result set get the result of the SQL query
-				HashSet<String> users;
+				HashSet<I2b2Project> users;
 				if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 					if (server.getUser().toLowerCase().equals("system")) {
 						resultSet = statement
@@ -737,8 +737,8 @@ public class ServerList {
 						users = getResultSet(resultSet, server);
 
 					} else {
-						users = new HashSet<String>();
-						users.add(server.getUser());
+						users = new HashSet<I2b2Project>();
+						users.add(new I2b2Project(server.getUser(),server));
 						userServer.put(server.getUser(), server.getName());
 					}
 				}
@@ -749,15 +749,15 @@ public class ServerList {
 					users = getResultSet(resultSet, server);
 				}
 				else if (server.getWhType().equalsIgnoreCase("transmart")){
-					users = new HashSet<String>();
-					users.add("i2b2metadata");
-					users.add("i2b2demodata");
+					users = new HashSet<I2b2Project>();
+					users.add(new I2b2Project("i2b2metadata", server));
+					users.add(new I2b2Project("i2b2demodata", server));
 					userServer.put("i2b2demodata", server.getName());
 					userServer.put("i2b2metadata", server.getName());
 				}
 				else {
-					users = new HashSet<String>();
-					users.add(server.getUser());
+					users = new HashSet<I2b2Project>();
+					users.add(new I2b2Project(server.getUser(), server));
 				}
 				connect.close();
 				return users;
@@ -773,15 +773,16 @@ public class ServerList {
 
 	}
 
-	public static boolean isServer(String uniqueID) {
-		if (((servers.get(uniqueID) != null)
-				|| (importDBServers.get(uniqueID) != null)) 
-				&& !ServerList.getUsersTargetServer(ServerList.getTargetServers().get(uniqueID)).contains(uniqueID)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public static boolean isServer(String uniqueID) {
+//
+//			if (((servers.get(uniqueID) != null)
+//					|| (importDBServers.get(uniqueID) != null))){
+//				return true;
+//			}
+//			else 
+//				return false;
+////			else if (ServerList.getTargetServers().get(uniqueID).get
+//	}
 
 	public static void loadServersfromProps() throws BackingStoreException {
 		File serverStorage = FileHandler.getBundleFile("/cfg/server");
@@ -1022,7 +1023,7 @@ public class ServerList {
 		}
 	}
 
-	private static HashSet<String> getResultSet(ResultSet resultSet,
+	private static HashSet<I2b2Project> getResultSet(ResultSet resultSet,
 			Server server) throws SQLException {
 		try {
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -1033,17 +1034,17 @@ public class ServerList {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		HashSet<String> users = new HashSet<String>();
+		HashSet<I2b2Project> users = new HashSet<I2b2Project>();
 		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
 			while (resultSet.next()) {
 				String user = resultSet.getString("username");
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.startsWith("I2B2")
 							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
-						users.add(user);
+						users.add(new I2b2Project(user, server));
 					}
 				} else {
-					users.add(user);
+					users.add(new I2b2Project(user, server));
 				}
 			}
 		}
@@ -1051,7 +1052,7 @@ public class ServerList {
 			while (resultSet.next()) {
 				String user = resultSet.getString("Database");
 
-				users.add(user);
+				users.add(new I2b2Project(user,server));
 			}
 		}
 		else {
@@ -1061,16 +1062,16 @@ public class ServerList {
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.startsWith("I2B2")
 							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
-						users.add(user);
+						users.add(new I2b2Project(user,server));
 					}
 				} else {
-					users.add(user);
+					users.add(new I2b2Project(user,server));
 				}
 			}	
 		}
-		for (String user : users) {
+		for (I2b2Project user : users) {
 			//			System.out.println("adding: " + user + " to " + server.getName());
-			userServer.put(user, server.getName());
+			userServer.put(user.getName(), server.getName());
 		}
 		return users;
 	}

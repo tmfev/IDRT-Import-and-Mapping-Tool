@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Shell;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.importtool.views.ServerView;
 
 /**
@@ -36,7 +37,7 @@ public class ServerContentProvider implements ITreeContentProvider {
 //			    dialog.open();
 //				server.setNotStoredPassword(dialog.getPassword());
 //			}
-				HashSet<String> users = ServerList.getUsersTargetServer(server);
+				HashSet<I2b2Project> users = ServerList.getUsersTargetServer(server);
 				if (users != null)
 					return users.toArray();
 				else {

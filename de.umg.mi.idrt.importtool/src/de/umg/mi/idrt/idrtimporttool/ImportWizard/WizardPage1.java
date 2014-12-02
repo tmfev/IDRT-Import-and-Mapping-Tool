@@ -22,10 +22,12 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
 
@@ -170,15 +172,15 @@ public class WizardPage1 extends WizardPage {
 					setSelectedServer(selectedServer);
 
 					int selectedUserIndex = 0;
-					HashSet<String> users = ServerList.getUsersTargetServer(selectedServer);
+					HashSet<I2b2Project> users = ServerList.getUsersTargetServer(selectedServer);
 
 					if (users != null) {
 						String[] userList = new String[users.size()];
 
-						Iterator<String> it = users.iterator();
+						Iterator<I2b2Project> it = users.iterator();
 						int i = 0;
 						while (it.hasNext()) {
-							userList[i] = it.next();
+							userList[i] = it.next().getName();
 							if (schema.equals(userList[i])) {
 								selectedUserIndex = i;
 							}
@@ -370,14 +372,14 @@ public class WizardPage1 extends WizardPage {
 			int selectedUserIndex = 0;
 			String[] userList;
 			if (currentServer != null) {
-				HashSet<String> users = ServerList.getUsersTargetServer(currentServer);
+				HashSet<I2b2Project> users = ServerList.getUsersTargetServer(currentServer);
 				if (users != null) {
 					userList = new String[users.size()];
 
-					Iterator<String> it = users.iterator();
+					Iterator<I2b2Project> it = users.iterator();
 					int i = 0;
 					while (it.hasNext()) {
-						userList[i] = it.next();
+						userList[i] = it.next().getName();
 						if (schema.equals(userList[i])) {
 							selectedUserIndex = i;
 						}

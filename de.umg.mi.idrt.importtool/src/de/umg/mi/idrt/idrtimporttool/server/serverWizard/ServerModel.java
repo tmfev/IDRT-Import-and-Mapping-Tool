@@ -32,20 +32,20 @@ public class ServerModel {
 		return categories;
 	}
 
-	public List<String> getCategoriesString() {
-		List<String> categories = new ArrayList<String>();
-
-		HashMap<String, Server> serverList = ServerList.getTargetServers();
-		Set<String> serverNames = serverList.keySet();
-		Iterator<String> it = serverNames.iterator();
-
-		while (it.hasNext()) {
-			String server = it.next();
-			Server currentServer = serverList.get(server);
-			categories.add(currentServer.getUniqueID());
-		}
-
-		return categories;
-	}
+//	public List<String> getCategoriesString() {
+//		List<String> categories = new ArrayList<String>();
+//
+//		HashMap<String, Server> serverList = ServerList.getTargetServers();
+//		Set<String> serverNames = serverList.keySet();
+//		Iterator<String> it = serverNames.iterator();
+//
+//		while (it.hasNext()) {
+//			String server = it.next();
+//			Server currentServer = serverList.get(server);
+//			categories.add(currentServer.getUniqueID());
+//		}
+//
+//		return categories;
+//	}
 
 }

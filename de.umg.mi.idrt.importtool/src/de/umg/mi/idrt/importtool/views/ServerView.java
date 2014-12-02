@@ -77,10 +77,12 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.importidrt.SWTResourceManager;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerDragSourceListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerDropTargetListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2ProjectTransferType;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerContentProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBLabelProvider;
 import de.umg.mi.idrt.idrtimporttool.server.serverWizard.ServerImportDBModel;
@@ -686,7 +688,7 @@ public class ServerView extends ViewPart {
 				public void widgetSelected(SelectionEvent e) {
 					TreeItem selectedItem = (TreeItem) e.item;
 					final String selectedItemString = selectedItem.getText();
-					if (ServerList.isServer(selectedItemString)) {
+					if (selectedItem.getData() instanceof Server) {
 						String currentServerID = selectedItem.getText();
 						Server server = ServerList.getTargetServers().get(
 								currentServerID);
@@ -696,38 +698,29 @@ public class ServerView extends ViewPart {
 						labelNameCurrent.setText(server.getName());
 						lblObservationsCurrent.setText(""); 
 						lblPatientsCurrent.setText(""); 
-					} else {
-						try{
-							String parentServer = selectedItem.getParentItem()
-									.getText();
-							final Server server = ServerList.getTargetServers().get(
-									parentServer);
-							labelIpCurrent.setText(server.getIp());
-							if (server.getWhType().equals("transmart"))
-								labelDBUserCurrent.setText(server.getWhType());
-							else
-								labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
-							labelNameCurrent.setText(server.getName());
-							lblObservationsCurrent.setText("..."); 
-							lblPatientsCurrent.setText("..."); 
+					} else if (selectedItem.getData() instanceof I2b2Project){
+						String parentServer = selectedItem.getParentItem()
+								.getText();
+						final Server server = ServerList.getTargetServers().get(
+								parentServer);
+						labelIpCurrent.setText(server.getIp());
+						if (server.getWhType().equals("transmart"))
+							labelDBUserCurrent.setText(server.getWhType());
+						else
+							labelDBUserCurrent.setText(server.getWhType() + ": " +selectedItemString);
+						labelNameCurrent.setText(server.getName());
+						lblObservationsCurrent.setText("..."); 
+						lblPatientsCurrent.setText("..."); 
 
-							Display.getCurrent().asyncExec(new Runnable() {
+						Display.getCurrent().asyncExec(new Runnable() {
 
-								@Override
-								public void run() {
-									DatabaseStatsThread a = new DatabaseStatsThread();
-									a.run(server, selectedItemString);
-								}
-							});
-						}catch(Exception e2){
-							Server server = ServerList.getTargetServers().get(
-									selectedItem.getText());
-								labelDBUserCurrent.setText("");
-							labelNameCurrent.setText(server.getName());
-							lblObservationsCurrent.setText(""); 
-							lblPatientsCurrent.setText(""); 
-						}
-					
+							@Override
+							public void run() {
+								DatabaseStatsThread a = new DatabaseStatsThread();
+								a.run(server, selectedItemString);
+							}
+						});
+
 					}
 				}
 			});
@@ -758,7 +751,9 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 
 			targetServerViewer.getTree().setMenu(mainMenu);
-			targetServerViewer.addDragSupport(operations, transferTypes,
+			
+			Transfer[] transferTypesTarget = new Transfer[] { I2b2ProjectTransferType.getInstance()}; //TextTransfer.getInstance()
+			targetServerViewer.addDragSupport(operations, transferTypesTarget,
 					new ServerDragSourceListener(targetServerViewer));
 			/**
 			 * Check if Load Ontology Command is enabled

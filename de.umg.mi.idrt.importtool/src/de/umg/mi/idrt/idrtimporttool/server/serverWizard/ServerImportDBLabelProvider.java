@@ -7,7 +7,7 @@ import org.eclipse.ui.PlatformUI;
 
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerTable;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.User;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -31,8 +31,8 @@ public class ServerImportDBLabelProvider extends LabelProvider {
 		if (element instanceof Server) {
 			Server server = (Server) element;
 			return server.getName();
-		} else if (element instanceof User) {
-			return ((User) element).getName();
+		} else if (element instanceof I2b2Project) {
+			return ((I2b2Project) element).getName();
 		}
 
 		else if (element instanceof ServerTable) {

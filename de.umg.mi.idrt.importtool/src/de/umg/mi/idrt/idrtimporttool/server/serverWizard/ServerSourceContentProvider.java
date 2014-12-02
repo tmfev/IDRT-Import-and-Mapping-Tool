@@ -7,7 +7,7 @@ import org.eclipse.jface.viewers.Viewer;
 
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.User;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
@@ -28,15 +28,15 @@ public class ServerSourceContentProvider implements ITreeContentProvider {
 
 			Server server = (Server) parentElement;
 
-			List<User> users = ServerList.getUsersSourceServer(server);
+			List<I2b2Project> users = ServerList.getUsersSourceServer(server);
 			if (users != null) {
 				return users.toArray();
 			} else {
 				return null;
 			}
 
-		} else if (parentElement instanceof User) {
-			User user = (User) parentElement;
+		} else if (parentElement instanceof I2b2Project) {
+			I2b2Project user = (I2b2Project) parentElement;
 			return ServerList.getTables(user).toArray();
 		} else {
 			return null;
@@ -55,7 +55,7 @@ public class ServerSourceContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		if ((element instanceof Server) || (element instanceof User)) {
+		if ((element instanceof Server) || (element instanceof I2b2Project)) {
 			return true;
 		}
 		return false;
