@@ -36,7 +36,6 @@ import de.umg.mi.idrt.importtool.views.ServerView;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-@Deprecated
 public class WizardPage1 extends WizardPage {
 
 	private static Text ipText;

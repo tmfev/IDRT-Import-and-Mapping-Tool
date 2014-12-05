@@ -5119,7 +5119,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="to_obs_fct" expressionFilter="row6.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row6.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -5130,7 +5130,7 @@
         <mapperTableEntries name="MODIFIER_CD" expression="row6.MODIFIER_CD" type="id_String"/>
         <mapperTableEntries name="INSTANCE_NUM" expression="row6.INSTANCE_NUM" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="row6.VALTYPE_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TVAL_CHAR" expression="row6.VALTYPE_CD.equalsIgnoreCase(&quot;t&quot;)?to_tmap.C_NAME  : row6.TVAL_CHAR  " type="id_String" nullable="true"/>
+        <mapperTableEntries name="TVAL_CHAR" expression="row6.TVAL_CHAR   " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="row6.NVAL_NUM" type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" expression="row6.VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" expression="row6.QUANTITY_NUM" type="id_String" nullable="true"/>
@@ -6543,7 +6543,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfto_obs_fct" expressionFilter="!row29.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row29.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -6554,7 +6554,7 @@
         <mapperTableEntries name="MODIFIER_CD" expression="row29.MODIFIER_CD " type="id_String"/>
         <mapperTableEntries name="INSTANCE_NUM" expression="row29.INSTANCE_NUM" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="row29.VALTYPE_CD" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TVAL_CHAR" expression="row29.VALTYPE_CD.equalsIgnoreCase(&quot;t&quot;)?copyOfto_tmap.NAME : row29.TVAL_CHAR" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TVAL_CHAR" expression="row29.TVAL_CHAR " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="row29.NVAL_NUM" type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" expression="row29.VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" expression="row29.QUANTITY_NUM" type="id_String" nullable="true"/>

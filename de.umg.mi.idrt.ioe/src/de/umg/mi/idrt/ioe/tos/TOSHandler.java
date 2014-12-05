@@ -160,7 +160,7 @@ public class TOSHandler {
 				OntologyEditorView.getOntologyTargetTree().addTargetNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
 			}
 			else {
-				System.out.println("ADD MODIFIER");
+//				System.out.println("ADD MODIFIER");
 				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
 			}
 		}

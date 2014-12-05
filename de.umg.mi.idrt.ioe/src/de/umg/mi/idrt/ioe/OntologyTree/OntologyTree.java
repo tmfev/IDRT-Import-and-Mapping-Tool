@@ -105,13 +105,13 @@ public class OntologyTree extends JTree {
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, item.getM_applied_path());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.STAGING_DIMENSION, item.getStagingDimension());
 		
-		System.out.println("ADD MOD:");	
+//		System.out.println("ADD MOD:");	
 		
 		//TODO
-				System.out.println(item.getStagingPath());
+//				System.out.println(item.getStagingPath());
 				OntologyTreeNode node2 = getNodeLists().getNodeByPath(item.getStagingPath());
 //				node.getTargetNodeAttributes().setStagingParent(stagingParent);
-				System.out.println("STAGIN NODE MAP: " + node2.getName() + " " + node2.getOntologyCellAttributes().getC_BASECODE());
+//				System.out.println("STAGIN NODE MAP: " + node2.getName() + " " + node2.getOntologyCellAttributes().getC_BASECODE());
 		
 				
 				

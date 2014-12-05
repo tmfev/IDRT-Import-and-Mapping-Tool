@@ -27,7 +27,7 @@ public class Server implements Serializable {
 
 	//con=
 	private static String error;
-	private static String[] comboItems = {"Oracle","Postgres","MSSQL","MySQL"};
+	private static String[] comboItems = {"Oracle","Postgres"};//,"MSSQL","MySQL"};
 	private static final long serialVersionUID = 1L;
 
 	public static String[] getComboItems() {
