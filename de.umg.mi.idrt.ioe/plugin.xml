@@ -97,7 +97,7 @@
             class="de.umg.mi.idrt.ioe.view.OntologyEditorView"
             icon="images/format-justify-fill.png"
             id="de.umg.mi.idrt.ioe.OntologyEditor"
-            name="Ontology Editor"
+            name="i2b2 Ontology Editor"
             restorable="true">
       </view>
       <view
