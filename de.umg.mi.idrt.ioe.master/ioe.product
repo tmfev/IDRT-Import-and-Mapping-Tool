@@ -29,7 +29,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
 
    <windowImages i16="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16.gif" i32="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32.gif" i48="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48.gif" i64="/de.umg.mi.idrt.ioe/icons/i2b2_hive_64.gif" i128="/de.umg.mi.idrt.ioe/icons/i2b2_hive_128.gif"/>
 
-   <launcher name="IOE">
+   <launcher name="IDRTImportTool">
       <macosx icon="/de.umg.mi.idrt.ioe/icons/Mac.icns"/>
       <solaris/>
       <win useIco="false">

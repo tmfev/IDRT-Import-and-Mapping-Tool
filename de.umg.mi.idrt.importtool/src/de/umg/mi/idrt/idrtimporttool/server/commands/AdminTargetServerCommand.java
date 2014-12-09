@@ -204,7 +204,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 									projectTab_observations_answer.pack();
 									projectTab_patients_answer.setText("...");
 									projectTab_patients_answer.pack();
-
 									projectTab_projectName_answer.setText(server
 											.getProjectName(selectedItemString));
 									projectTab_projectName_answer.pack();
@@ -1034,11 +1033,10 @@ public class AdminTargetServerCommand extends AbstractHandler {
 		allUserList = ServerList.getAllUsersFromServer(server);
 		userList = ServerList.getAssignedUsersFromProject(server,
 				projectTab_projects_answer.getText());
-
 		projectTab_allUserTree.removeAll();
 		if (allUserList != null) {
 			for (String item : allUserList) {
-				if (!userList.contains(item)) {
+				if (!userList.contains(item.toLowerCase())) {
 					TreeItem newItem = new TreeItem(projectTab_allUserTree,
 							SWT.NONE);
 					newItem.setText(item);

@@ -289,7 +289,7 @@ public class ServerList {
 				while (resultSet.next()) {
 					String user = resultSet.getString("user_id");
 					if (!user.contains("SERVICE_ACCOUNT")) {
-						users.add(user);
+						users.add(user.toLowerCase());
 					}
 				}
 				connect.close();
@@ -328,8 +328,8 @@ public class ServerList {
 				// Result set get the result of the SQL query
 
 				resultSet = statement
-						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where project_id='"
-								+ project + "' order by user_id asc");
+						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where UPPER(project_id)=UPPER('"
+								+ project + "') order by user_id asc");
 
 				while (resultSet.next()) {
 					String user = resultSet.getString("user_id");
@@ -394,16 +394,17 @@ public class ServerList {
 			Server server) {
 
 		try {
+			user = user.toUpperCase();
 			I2B2User i2b2User = new I2B2User(user);
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
-
+			
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
 			resultSet = statement
-					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id='"
+					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id=UPPER('"
 							+ user
-							+ "' order by entry_date desc) where rownum <=1");
+							+ "') order by entry_date desc) where rownum <=1");
 			i2b2User.setLastLogin(null);
 			while (resultSet.next()) {
 				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
@@ -435,16 +436,18 @@ public class ServerList {
 	public static boolean getManager(Server server, String username,
 			String project) {
 		try {
+			username = username.toUpperCase();
+			project = project.toUpperCase();
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 
 			statement = connect.createStatement();
 			connect.setAutoCommit(true);
-			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
+			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id=UPPER('"
 					+ username
-					+ "' and project_id='"
+					+ "') and project_id=UPPER('"
 					+ project
-					+ "' and user_role_cd='MANAGER'";
+					+ "') and user_role_cd='MANAGER'";
 			resultSet = statement.executeQuery(sql);
 			String admin = "";
 			while (resultSet.next()) {

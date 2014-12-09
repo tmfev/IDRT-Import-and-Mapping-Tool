@@ -19,6 +19,9 @@ import de.umi.mi.passwordcrypt.PasswordCrypt;
  */
 public class Server implements Serializable {
 
+	
+	//TODO IMPLEMENT
+	private static boolean isSourceServer;
 	private static String ORACLEDRIVER = "oracle.jdbc.OracleDriver";
 
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -28,6 +31,7 @@ public class Server implements Serializable {
 	//con=
 	private static String error;
 	private static String[] comboItems = {"Oracle","Postgres"};//,"MSSQL","MySQL"};
+	private static String[] comboSourceItems = {"Oracle","Postgres","MSSQL","MySQL"};
 	private static final long serialVersionUID = 1L;
 
 	public static String[] getComboItems() {
@@ -60,6 +64,11 @@ public class Server implements Serializable {
 	private boolean savePassword;
 
 	private boolean useWinAuth;
+	
+	public static String[] getSourceComboItems() {
+		return comboSourceItems;
+	}
+	
 	/**
 	 * @param currentServer2
 	 */
@@ -362,11 +371,12 @@ public class Server implements Serializable {
 			DriverManager.setLoginTimeout(2);
 			Statement statement = connect.createStatement();
 			ResultSet resultSet = statement
-					.executeQuery("select project_name from i2b2pm.pm_project_data where project_id='"
-							+ project + "'");
+					.executeQuery("select project_name from i2b2pm.pm_project_data where UPPER(project_id)=UPPER('"
+							+ project + "')");
 			while (resultSet.next()) {
 				projectName = resultSet.getString("project_name");
 			}
+			System.out.println(projectName);
 			connect.close();
 			return projectName;
 		} catch (SQLException e) {
@@ -472,4 +482,5 @@ public class Server implements Serializable {
 	public void setWhType(String whType) {
 		this.whType = whType;
 	}
+
 }

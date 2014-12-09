@@ -5,6 +5,7 @@ import java.util.HashSet;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
+import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 
@@ -26,8 +27,8 @@ public class AdminServerContentProvider implements ITreeContentProvider {
 
 		if (parentElement instanceof Server) {
 			Server server = (Server) parentElement;
-
-			HashSet<String> users = ServerList.getI2B2Projects(server);
+			HashSet<I2b2Project> users = ServerList.getUsersTargetServer(server);
+//			HashSet<String> users = ServerList.getI2B2Projects(server);
 			return users.toArray();
 		}
 		return null;

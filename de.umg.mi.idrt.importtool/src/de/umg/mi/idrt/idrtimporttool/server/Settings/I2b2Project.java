@@ -31,4 +31,8 @@ public class I2b2Project implements Serializable{
 		return "I2b2Project: " + name + " @ " + server.toString();
 	}
 
+	public String getShortName() {
+		return getName().substring(4, getName().length());
+	}
+
 }

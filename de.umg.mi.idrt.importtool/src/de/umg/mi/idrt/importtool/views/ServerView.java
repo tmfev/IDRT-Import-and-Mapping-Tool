@@ -1025,20 +1025,20 @@ public class ServerView extends ViewPart {
 			});
 
 			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			//						new MenuItem(mainMenu, SWT.SEPARATOR);
-			//						MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			//						adminMenuItem.setText("Administration");
-			//						adminMenuItem.addSelectionListener(new SelectionListener() {
-			//							@Override
-			//							public void widgetSelected(SelectionEvent e) {
-			//								adminTargetServer();
-			//							}
-			//			
-			//							@Override
-			//							public void widgetDefaultSelected(SelectionEvent e) {
-			//			
-			//							}
-			//						});
+									new MenuItem(mainMenu, SWT.SEPARATOR);
+									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+									adminMenuItem.setText("Administration");
+									adminMenuItem.addSelectionListener(new SelectionListener() {
+										@Override
+										public void widgetSelected(SelectionEvent e) {
+											adminTargetServer();
+										}
+						
+										@Override
+										public void widgetDefaultSelected(SelectionEvent e) {
+						
+										}
+									});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
