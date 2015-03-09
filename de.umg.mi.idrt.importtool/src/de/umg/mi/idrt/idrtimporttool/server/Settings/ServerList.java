@@ -758,6 +758,14 @@ public class ServerList {
 					userServer.put("i2b2demodata", server.getName());
 					userServer.put("i2b2metadata", server.getName());
 				}
+				else if (server.getWhType().equalsIgnoreCase("i2b2") && server.getDatabaseType().equalsIgnoreCase("postgres")){
+					System.out.println("POSTGRES");
+					users = new HashSet<I2b2Project>();
+					resultSet = statement
+							.executeQuery("select schema_name from information_schema.schemata");
+					
+					users = getResultSet(resultSet, server);
+				}
 				else {
 					users = new HashSet<I2b2Project>();
 					users.add(new I2b2Project(server.getUser(), server));
@@ -1044,6 +1052,19 @@ public class ServerList {
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.startsWith("I2B2")
 							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
+						users.add(new I2b2Project(user, server));
+					}
+				} else {
+					users.add(new I2b2Project(user, server));
+				}
+			}
+		}
+		else if (server.getDatabaseType().equalsIgnoreCase("postgres") && server.getWhType().equalsIgnoreCase("i2b2")) {
+			while (resultSet.next()) {
+				String user = resultSet.getString("schema_name");
+				if (defaultProps.getProperty("filter").equals("true")) {
+					if (user.toLowerCase().startsWith("i2b2")
+							&& !((user.toLowerCase().equals("i2b2hive") || (user.toLowerCase().equals("i2b2pm"))))) {
 						users.add(new I2b2Project(user, server));
 					}
 				} else {

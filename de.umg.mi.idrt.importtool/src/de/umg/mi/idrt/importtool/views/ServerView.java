@@ -869,19 +869,19 @@ public class ServerView extends ViewPart {
 			});
 			new MenuItem(importMenu, SWT.SEPARATOR);
 			//TODO REIMPLEMENT
-			//			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
-			//			importTermsMenuItem.setText(Messages.ServerView_ImportST);
-			//			importTermsMenuItem.addSelectionListener(new SelectionListener() {
-			//				@Override
-			//				public void widgetDefaultSelected(SelectionEvent e) {
-			//
-			//				}
-			//
-			//				@Override
-			//				public void widgetSelected(SelectionEvent e) {
-			//					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
-			//				}
-			//			});
+						final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
+						importTermsMenuItem.setText(Messages.ServerView_ImportST);
+						importTermsMenuItem.addSelectionListener(new SelectionListener() {
+							@Override
+							public void widgetDefaultSelected(SelectionEvent e) {
+			
+							}
+			
+							@Override
+							public void widgetSelected(SelectionEvent e) {
+								IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+							}
+						});
 
 			importMDRMenuItem = new MenuItem(importMenu, SWT.CASCADE);
 			importMDRMenuItem.setText("Import from MDR");
@@ -1025,20 +1025,20 @@ public class ServerView extends ViewPart {
 			});
 
 			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-									new MenuItem(mainMenu, SWT.SEPARATOR);
-									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-									adminMenuItem.setText("Administration");
-									adminMenuItem.addSelectionListener(new SelectionListener() {
-										@Override
-										public void widgetSelected(SelectionEvent e) {
-											adminTargetServer();
-										}
-						
-										@Override
-										public void widgetDefaultSelected(SelectionEvent e) {
-						
-										}
-									});
+//									new MenuItem(mainMenu, SWT.SEPARATOR);
+//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+//									adminMenuItem.setText("Administration");
+//									adminMenuItem.addSelectionListener(new SelectionListener() {
+//										@Override
+//										public void widgetSelected(SelectionEvent e) {
+//											adminTargetServer();
+//										}
+//						
+//										@Override
+//										public void widgetDefaultSelected(SelectionEvent e) {
+//						
+//										}
+//									});
 
 			/*
 			 * Dis-/Enables the mainMenu items.

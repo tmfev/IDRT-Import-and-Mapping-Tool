@@ -204,6 +204,8 @@ public class AdminTargetServerCommand extends AbstractHandler {
 									projectTab_observations_answer.pack();
 									projectTab_patients_answer.setText("...");
 									projectTab_patients_answer.pack();
+									if (server
+											.getProjectName(selectedItemString)!=null)
 									projectTab_projectName_answer.setText(server
 											.getProjectName(selectedItemString));
 									projectTab_projectName_answer.pack();

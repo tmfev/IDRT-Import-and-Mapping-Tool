@@ -281,13 +281,20 @@ public class IDRTImport {
 		ServerView.stdImportStarted = true;
 		HashMap<String, String> contextMap = new HashMap<String, String>();
 		final String dbType = server.getDatabaseType();
-		contextMap.put("DB_StagingI2B2_Host", server.getIp());
-		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
-		contextMap.put("DB_StagingI2B2_Username", server.getUser());
-		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
-		contextMap.put("DB_StagingI2B2_Port", server.getPort());
-		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DBHost", server.getIp());
+		contextMap.put("DBPassword", server.getPassword());
+		contextMap.put("DBUsername", server.getUser());
+		contextMap.put("DBInstance", server.getSID());
+		contextMap.put("DBPort", server.getPort());
+		contextMap.put("DBSchema", project);
 		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
+//		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+//		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+//		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+//		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+//		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+//		contextMap.put("DB_StagingI2B2_Schema", project);
+//		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		/**
 		 * ST-Import
 		 */
