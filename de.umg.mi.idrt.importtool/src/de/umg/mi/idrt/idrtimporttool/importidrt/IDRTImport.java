@@ -1,13 +1,14 @@
 package de.umg.mi.idrt.idrtimporttool.importidrt;
 
-import tos.csv_master_0_1.CSV_MASTER;
-import tos.dbimport_master_0_1.DBIMPORT_MASTER;
-import tos.dropioetables_0_1.DropIOETables;
-import tos.idrt_stdterm_0_1.IDRT_STDTERM;
-import tos.idrt_transformation_0_5.IDRT_TRANSFORMATION;
-import tos.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
-import tos.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
-import tos.odm_master_0_1.ODM_MASTER;
+import i2b2_postgres2.csv_master_0_1.CSV_MASTER;
+import i2b2_postgres2.dbimport_master_0_1.DBIMPORT_MASTER;
+import i2b2_postgres2.dropioetables_0_1.DropIOETables;
+import i2b2_postgres2.idrt_stdterm_0_1.IDRT_STDTERM;
+import i2b2_postgres2.idrt_transformation_0_5.IDRT_TRANSFORMATION;
+import i2b2_postgres2.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
+//TODO FIX
+//import tos.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
+import i2b2_postgres2.odm_master_0_1.ODM_MASTER;
 
 import java.io.File;
 import java.sql.Connection;
@@ -92,8 +93,8 @@ public class IDRTImport {
 
 	
 	public static int runMDRImport(){
-		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
-		exitCode = mdr.runJobInTOS(getARGV());
+//		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
+//		exitCode = mdr.runJobInTOS(getARGV());
 			return exitCode;
 	}
 	

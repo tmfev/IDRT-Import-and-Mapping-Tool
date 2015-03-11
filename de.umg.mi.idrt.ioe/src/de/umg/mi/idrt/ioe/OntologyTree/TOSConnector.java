@@ -65,13 +65,13 @@ public class TOSConnector {
 		return (String[]) parameters.toArray(new String[0]);
 	}
 
-	public static tos.tosidrtconnector_0_4.TOSIDRTConnector getConnection() {
+	public static i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector getConnection() {
 		Console.info("TOSConnector: gettingen Connection");
 
-		tos.tosidrtconnector_0_4.TOSIDRTConnector tos = null;
+		i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector tos = null;
 
 		try {
-			tos = new tos.tosidrtconnector_0_4.TOSIDRTConnector();
+			tos = new i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector();
 
 			contextName = "Default";
 
@@ -79,7 +79,7 @@ public class TOSConnector {
 			// in the servereditor
 
 			// VM-Server
-			tos = new tos.tosidrtconnector_0_4.TOSIDRTConnector();
+			tos = new i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector();
 
 			// if there is a i2b2-project selected in the server view, use it as
 			// the
@@ -222,7 +222,7 @@ public class TOSConnector {
 				setContextVariable("DataFile", tmpDataFile);
 
 				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 					exit = tos.runJobInTOS((getARGV()));
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -244,7 +244,7 @@ public class TOSConnector {
 				setContextVariable("Job", "read_target_ontology");
 				setContextVariable("Var1", "1");
 				try {
-					tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+					i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 					tos.runJobInTOS((getARGV()));
 				} catch (Exception e) {
 					Console.error("Error while using a TOS-plugin with function readTargetOntology(): "
@@ -300,7 +300,7 @@ public class TOSConnector {
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
 				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
-
+				setContextVariable("DB_StagingI2B2_WHType", currentServer.getWhType());
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 
 				if (targetServer!=null) {
@@ -347,7 +347,7 @@ public class TOSConnector {
 
 				setContextVariable("DB_StagingI2B2_Schema",
 						OntologyEditorView.getStagingSchemaName());
-				tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+				i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			
 				exit = tos.runJobInTOS((getARGV()));
 				if (exit==0) {
@@ -378,7 +378,7 @@ public class TOSConnector {
 		setContextVariable("DataFile", tmpDataFile);
 
 		try {
-			tos.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
+			i2b2_postgres2.tosidrtconnector_0_4.TOSIDRTConnector tos = getConnection();
 			tos.runJobInTOS((getARGV()));
 		} catch (Exception e) {
 			Console.error("Error while using a TOS-plugin with function writeTargetOntology(): "
