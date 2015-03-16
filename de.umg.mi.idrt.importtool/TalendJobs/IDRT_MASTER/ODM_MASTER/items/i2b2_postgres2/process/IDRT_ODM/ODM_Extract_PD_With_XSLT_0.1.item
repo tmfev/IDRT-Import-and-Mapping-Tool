@@ -5,7 +5,7 @@
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value=""/>
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
-    <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
@@ -13,12 +13,12 @@
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value=""/>
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
-    <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
   </context>
   <parameters>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="32"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true"/>
@@ -112,9 +112,9 @@
   <node componentName="tXSLT" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="32" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tXSLT_1"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="FILE" name="XML_FILE" value="context.folderMain+context.output+&quot;no_namespaces.xml&quot;"/>
+    <elementParameter field="FILE" name="XML_FILE" value="context.folderMain+context.folderOutput+&quot;no_namespaces.xml&quot;"/>
     <elementParameter field="FILE" name="XSLT_FILE" value="context.folderMain+context.xslt"/>
-    <elementParameter field="FILE" name="OUTPUT_FILE" value="context.folderMain+context.output+&quot;Only_PD.xml&quot;"/>
+    <elementParameter field="FILE" name="OUTPUT_FILE" value="context.folderMain+context.folderOutput+&quot;Only_PD.xml&quot;"/>
     <elementParameter field="TABLE" name="PARAMS"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tXSLT_1"/>
@@ -132,7 +132,7 @@
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="FILE" name="XML_FILE" value="context.currentFile"/>
     <elementParameter field="FILE" name="XSLT_FILE" value="context.folderMain+context.xslt_namespace"/>
-    <elementParameter field="FILE" name="OUTPUT_FILE" value="context.folderMain+context.output+&quot;no_namespaces.xml&quot;"/>
+    <elementParameter field="FILE" name="OUTPUT_FILE" value="context.folderMain+context.folderOutput+&quot;no_namespaces.xml&quot;"/>
     <elementParameter field="TABLE" name="PARAMS"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tXSLT_2"/>

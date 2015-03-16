@@ -63,16 +63,12 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/xercesImpl.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/xpathutil-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/idrt_stdterm_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_TRANSFORMATION/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_TRANSFORMATION/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_TRANSFORMATION/idrt_transformation_0_5.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DropIOETables/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DropIOETables/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DropIOETables/dropioetables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/csv_patient_data_0_1.jar"/>
@@ -86,7 +82,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/idrt_truncate_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/CSV_MASTER/pidgenerator_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_import_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/csv_patient_data_0_1.jar"/>
@@ -101,7 +96,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/idrt_truncate_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/DBIMPORT_MASTER/pidgenerator_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_create_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_drop_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_rebuild_indexing_0_1.jar"/>
@@ -115,10 +109,8 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/odm_extract_pd_with_xslt_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/odm_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2010/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2010/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2010/p21_erweiterung_2010_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2011_2012/items/"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2011_2012/src/"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2011_2012/p21_erweiterung_2011_2012_0_1.jar"/>
 	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
 	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
