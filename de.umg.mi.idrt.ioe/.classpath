@@ -59,5 +59,7 @@
 	<classpathentry kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/trove.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/userRoutines.jar"/>
+	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

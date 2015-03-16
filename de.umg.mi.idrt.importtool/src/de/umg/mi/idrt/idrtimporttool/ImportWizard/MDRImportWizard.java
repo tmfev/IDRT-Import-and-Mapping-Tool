@@ -89,7 +89,7 @@ public class MDRImportWizard extends Wizard {
 				@Override
 				public void run() {
 					//					closeBar("CSV Import Failed!", 1);
-					Log.addLog(1, "CSV Import Failed!");
+					Log.addLog(1, "MDR Import Failed!");
 					MessageDialog
 					.openError(Application.getShell(),
 							"Import Failed!",
@@ -113,7 +113,7 @@ public class MDRImportWizard extends Wizard {
 				@Override
 				public void run() {
 					//					closeBar(error, fileName, 1);
-					Log.addLog(1, "CSV Import Failed: " + error);
+					Log.addLog(1, "MDR Import Failed: " + error);
 					MessageDialog.openError(Application.getShell(), "Import Failed!",
 							"Import failed. Please see the log.");
 				}
@@ -242,7 +242,7 @@ public class MDRImportWizard extends Wizard {
 							IDRTImport.setCompleteContext(contextMap);
 							exitCode = IDRTImport.runMDRImport();
 							StatusListener.setStatus(100f, "Importing done:", "Instance: "+mdrInstance);
-							
+							System.out.println("exitCode: " + exitCode);
 							if (exitCode == 0) {
 								Display.getDefault().syncExec(
 										new Runnable() {

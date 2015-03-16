@@ -6,8 +6,7 @@ import i2b2_postgres2.dropioetables_0_1.DropIOETables;
 import i2b2_postgres2.idrt_stdterm_0_1.IDRT_STDTERM;
 import i2b2_postgres2.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import i2b2_postgres2.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
-//TODO FIX
-//import tos.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
+import i2b2_postgres2.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
 import i2b2_postgres2.odm_master_0_1.ODM_MASTER;
 
 import java.io.File;
@@ -93,8 +92,8 @@ public class IDRTImport {
 
 	
 	public static int runMDRImport(){
-//		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
-//		exitCode = mdr.runJobInTOS(getARGV());
+		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
+		exitCode = mdr.runJobInTOS(getARGV());
 			return exitCode;
 	}
 	

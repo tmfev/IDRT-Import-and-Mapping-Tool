@@ -62,6 +62,9 @@ import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 //the import part of tJava_2
 //import java.util.List;
 
+//the import part of tJava_3
+//import java.util.List;
+
 @SuppressWarnings("unused")
 /**
  * Job: Database_Drop_Indexing Purpose: <br>
@@ -171,6 +174,13 @@ public class Database_Drop_Indexing implements TalendJob {
 
 			}
 
+			if (DB_StagingI2B2_WHType != null) {
+
+				this.setProperty("DB_StagingI2B2_WHType",
+						DB_StagingI2B2_WHType.toString());
+
+			}
+
 		}
 
 		public String DB_StagingI2B2_DatabaseType;
@@ -225,6 +235,12 @@ public class Database_Drop_Indexing implements TalendJob {
 
 		public String getDB_StagingI2B2_Username() {
 			return this.DB_StagingI2B2_Username;
+		}
+
+		public String DB_StagingI2B2_WHType;
+
+		public String getDB_StagingI2B2_WHType() {
+			return this.DB_StagingI2B2_WHType;
 		}
 	}
 
@@ -446,6 +462,39 @@ public class Database_Drop_Indexing implements TalendJob {
 		tJDBCRow_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tForeach_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tForeach_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJava_3_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tForeach_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tJDBCRow_2_error(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tJDBCRow_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tLibraryLoad_1_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
@@ -491,6 +540,28 @@ public class Database_Drop_Indexing implements TalendJob {
 	}
 
 	public void tJDBCRow_1_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tForeach_2_onSubJobError(java.lang.Exception exception,
+			String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread
+				.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(),
+				ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tJDBCRow_2_onSubJobError(java.lang.Exception exception,
 			String errorComponent, final java.util.Map<String, Object> globalMap)
 			throws TalendException {
 
@@ -809,19 +880,26 @@ public class Database_Drop_Indexing implements TalendJob {
 				ok_Hash.put("tJDBCConnection_1", true);
 				end_Hash.put("tJDBCConnection_1", System.currentTimeMillis());
 
+				if (context.DB_StagingI2B2_DatabaseType
+						.equalsIgnoreCase("oracle")
+						&& context.DB_StagingI2B2_WHType
+								.equalsIgnoreCase("i2b2")) {
+
+					tForeach_1Process(globalMap);
+				}
+
+				if (context.DB_StagingI2B2_DatabaseType
+						.equalsIgnoreCase("postgres")
+						&& context.DB_StagingI2B2_WHType
+								.equalsIgnoreCase("i2b2")) {
+
+					tForeach_2Process(globalMap);
+				}
+
 				/**
 				 * [tJDBCConnection_1 end ] stop
 				 */
 			}// end the resume
-
-			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT",
-						"CONNECTION:SUBJOB_OK:tJDBCConnection_1:OnSubjobOk",
-						"", Thread.currentThread().getId() + "", "", "", "",
-						"", "");
-			}
-
-			tForeach_1Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -1146,6 +1224,305 @@ public class Database_Drop_Indexing implements TalendJob {
 		globalMap.put("tJDBCRow_1_SUBPROCESS_STATE", 1);
 	}
 
+	public void tForeach_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tForeach_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tForeach_2 begin ] start
+				 */
+
+				int NB_ITERATE_tJava_3 = 0; // for statistics
+
+				ok_Hash.put("tForeach_2", false);
+				start_Hash.put("tForeach_2", System.currentTimeMillis());
+
+				currentComponent = "tForeach_2";
+
+				int tos_count_tForeach_2 = 0;
+
+				Object[] values_tForeach_2 = new Object[] {
+						"DROP index IF EXISTS  "
+								+ context.DB_StagingI2B2_Schema
+								+ ".of_idx_allobservation_fact",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_clusteredconcept",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_encounter_patient",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_modifier",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_sourcesystem_cd",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_start_date",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_idx_uploadid",
+						"DROP index IF EXISTS " + context.DB_StagingI2B2_Schema
+								+ ".of_text_search_unique", "commit", };
+
+				for (Object tmp_tForeach_2 : values_tForeach_2) {
+
+					globalMap.put("tForeach_2_CURRENT_VALUE", tmp_tForeach_2);
+
+					/**
+					 * [tForeach_2 begin ] stop
+					 */
+
+					/**
+					 * [tForeach_2 main ] start
+					 */
+
+					currentComponent = "tForeach_2";
+
+					tos_count_tForeach_2++;
+
+					/**
+					 * [tForeach_2 main ] stop
+					 */
+					NB_ITERATE_tJava_3++;
+
+					/**
+					 * [tJava_3 begin ] start
+					 */
+
+					ok_Hash.put("tJava_3", false);
+					start_Hash.put("tJava_3", System.currentTimeMillis());
+
+					currentComponent = "tJava_3";
+
+					int tos_count_tJava_3 = 0;
+
+					System.out.println(((String) globalMap
+							.get("tForeach_2_CURRENT_VALUE")));
+
+					/**
+					 * [tJava_3 begin ] stop
+					 */
+
+					/**
+					 * [tJava_3 main ] start
+					 */
+
+					currentComponent = "tJava_3";
+
+					tos_count_tJava_3++;
+
+					/**
+					 * [tJava_3 main ] stop
+					 */
+
+					/**
+					 * [tJava_3 end ] start
+					 */
+
+					currentComponent = "tJava_3";
+
+					ok_Hash.put("tJava_3", true);
+					end_Hash.put("tJava_3", System.currentTimeMillis());
+
+					tJDBCRow_2Process(globalMap);
+
+					/**
+					 * [tJava_3 end ] stop
+					 */
+
+					/**
+					 * [tForeach_2 end ] start
+					 */
+
+					currentComponent = "tForeach_2";
+
+				}
+
+				ok_Hash.put("tForeach_2", true);
+				end_Hash.put("tForeach_2", System.currentTimeMillis());
+
+				/**
+				 * [tForeach_2 end ] stop
+				 */
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent,
+					globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tForeach_2 finally ] start
+				 */
+
+				currentComponent = "tForeach_2";
+
+				/**
+				 * [tForeach_2 finally ] stop
+				 */
+
+				/**
+				 * [tJava_3 finally ] start
+				 */
+
+				currentComponent = "tJava_3";
+
+				/**
+				 * [tJava_3 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tForeach_2_SUBPROCESS_STATE", 1);
+	}
+
+	public void tJDBCRow_2Process(final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+
+			String currentMethodName = new java.lang.Exception()
+					.getStackTrace()[0].getMethodName();
+			boolean resumeIt = currentMethodName.equals(resumeEntryMethodName);
+			if (resumeEntryMethodName == null || resumeIt || globalResumeTicket) {// start
+																					// the
+																					// resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tJDBCRow_2 begin ] start
+				 */
+
+				ok_Hash.put("tJDBCRow_2", false);
+				start_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+				currentComponent = "tJDBCRow_2";
+
+				int tos_count_tJDBCRow_2 = 0;
+
+				java.sql.Connection conn_tJDBCRow_2 = null;
+				String query_tJDBCRow_2 = "";
+				boolean whetherReject_tJDBCRow_2 = false;
+				conn_tJDBCRow_2 = (java.sql.Connection) globalMap
+						.get("conn_tJDBCConnection_1");
+
+				java.sql.Statement stmt_tJDBCRow_2 = conn_tJDBCRow_2
+						.createStatement();
+
+				/**
+				 * [tJDBCRow_2 begin ] stop
+				 */
+
+				/**
+				 * [tJDBCRow_2 main ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				query_tJDBCRow_2 = ((String) globalMap
+						.get("tForeach_2_CURRENT_VALUE"));
+				whetherReject_tJDBCRow_2 = false;
+				globalMap.put("tJDBCRow_2_QUERY", query_tJDBCRow_2);
+				try {
+					stmt_tJDBCRow_2.execute(query_tJDBCRow_2);
+
+				} catch (java.lang.Exception e) {
+					whetherReject_tJDBCRow_2 = true;
+
+					System.err.print(e.getMessage());
+
+				}
+
+				tos_count_tJDBCRow_2++;
+
+				/**
+				 * [tJDBCRow_2 main ] stop
+				 */
+
+				/**
+				 * [tJDBCRow_2 end ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				stmt_tJDBCRow_2.close();
+
+				ok_Hash.put("tJDBCRow_2", true);
+				end_Hash.put("tJDBCRow_2", System.currentTimeMillis());
+
+				/**
+				 * [tJDBCRow_2 end ] stop
+				 */
+			}// end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent,
+					globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tJDBCRow_2 finally ] start
+				 */
+
+				currentComponent = "tJDBCRow_2";
+
+				/**
+				 * [tJDBCRow_2 finally ] stop
+				 */
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tJDBCRow_2_SUBPROCESS_STATE", 1);
+	}
+
 	public String resuming_logs_dir_path = null;
 	public String resuming_checkpoint_path = null;
 	public String parent_part_launcher = null;
@@ -1313,6 +1690,8 @@ public class Database_Drop_Indexing implements TalendJob {
 					.getProperty("DB_StagingI2B2_Schema");
 			context.DB_StagingI2B2_Username = (String) context
 					.getProperty("DB_StagingI2B2_Username");
+			context.DB_StagingI2B2_WHType = (String) context
+					.getProperty("DB_StagingI2B2_WHType");
 		} catch (java.io.IOException ie) {
 			System.err.println("Could not load context " + contextStr);
 			ie.printStackTrace();
@@ -1355,6 +1734,10 @@ public class Database_Drop_Indexing implements TalendJob {
 			if (parentContextMap.containsKey("DB_StagingI2B2_Username")) {
 				context.DB_StagingI2B2_Username = (String) parentContextMap
 						.get("DB_StagingI2B2_Username");
+			}
+			if (parentContextMap.containsKey("DB_StagingI2B2_WHType")) {
+				context.DB_StagingI2B2_WHType = (String) parentContextMap
+						.get("DB_StagingI2B2_WHType");
 			}
 		}
 
@@ -1548,6 +1931,6 @@ public class Database_Drop_Indexing implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 43788 characters generated by Talend Open Studio for Data Integration on the
- * March 10, 2015 3:56:17 PM CET
+ * 52847 characters generated by Talend Open Studio for Data Integration on the
+ * March 11, 2015 1:17:36 PM CET
  ************************************************************************************************/
