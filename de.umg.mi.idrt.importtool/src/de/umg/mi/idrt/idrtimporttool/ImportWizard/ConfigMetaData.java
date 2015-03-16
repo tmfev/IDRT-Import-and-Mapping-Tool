@@ -38,6 +38,8 @@ public class ConfigMetaData {
 
 		boolean objectID = false;
 		
+		boolean blob = false;
+		
 		for (TableItem item : items) {
 			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_PatientID)) { 
 				patientID = true;
@@ -62,6 +64,9 @@ public class ConfigMetaData {
 			}
 			if (item.getText(3).equalsIgnoreCase(Messages.ConfigMetaData_ObjectID)) {
 				objectID = true;
+			}
+			if (item.getText(3).equalsIgnoreCase("blob")) {
+				blob = true;
 			}
 		}
 		List<String> metaOptionList = new LinkedList<String>();
@@ -98,7 +103,7 @@ public class ConfigMetaData {
 		if (!objectID) {
 			metaOptionList.add(Messages.ConfigMetaData_ObjectID);
 		}
-		
+			metaOptionList.add("BLOB");
 		metaOptionList.add("ignore");
 		
 		String[] metaString = new String[metaOptionList.size()];
