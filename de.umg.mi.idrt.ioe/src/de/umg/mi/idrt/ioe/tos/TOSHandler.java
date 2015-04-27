@@ -17,6 +17,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeTargetRootNode;
 import de.umg.mi.idrt.ioe.OntologyTree.Target;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTreeItem;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 import de.umg.mi.idrt.ioe.view.ProgressView;
 import de.umg.mi.idrt.ioe.view.StatusView;
@@ -33,14 +35,13 @@ import de.umg.mi.idrt.ioe.view.StatusView;
 public class TOSHandler {
 
 	static OntologyTree ontologyStagingTree = null;
-
+	
 	private static int counter=0;
 	public static final String TableIEOTargetOntology = "ioe_target_ontology";
 	public static final String TableIEOTarget = "ioe_target";
 	public static final String TableIEOTargetProject = "ioe_target_project";
 
 	public TOSHandler() {
-
 		boolean nullError = false;
 
 		// try to get the current ot from the view
@@ -99,21 +100,47 @@ public class TOSHandler {
 				C_TABLENAME, C_COLUMNNAME, C_COLUMNDATATYPE, C_OPERATOR, C_DIMCODE, C_COMMENT, 
 				C_TOOLTIP, M_APPLIED_PATH, UPDATE_DATE, DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, 
 				VALUETYPE_CD, M_EXCLUSION_CD, C_PATH, C_SYMBOL,SEC_OBJ);
-
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
-		if (C_HLEVEL == 0) {
-			ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
-		}
-		else {
-			if (item.getM_APPLIED_PATH() == null){
-				item.setM_APPLIED_PATH("@");
+
+
+		if (OntologyEditorView.getStagingServer().getWhType().equalsIgnoreCase("i2b2")){
+			if (C_HLEVEL == 0) {
+				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
 			}
-			if (item.getM_APPLIED_PATH().equals("@"))
-				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
 			else {
-				//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
-				ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+				if (item.getM_APPLIED_PATH() == null){
+					item.setM_APPLIED_PATH("@");
+				}
+				if (item.getM_APPLIED_PATH().equals("@"))
+					ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+				else {
+					//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+					ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+				}
+			}
+		}
+		else if (OntologyEditorView.getStagingServer().getWhType().equalsIgnoreCase("transmart")){
+			
+//			OntologyEditorView.getTransmartTree().setRoot(new TransmartOntologyTreeItem(C_FULLNAME, C_HLEVEL, C_FULLNAME));
+//			else{
+//				OntologyEditorView.getTransmartTree().addNodeByPath(new TransmartOntologyTreeItem(C_NAME, C_HLEVEL, C_FULLNAME, item));
+//			}
+			
+			//TODO UNCOMMENT
+			if (C_HLEVEL == -1) {
+				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(),item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,NodeType.I2B2ROOT);
+			}
+			else {
+				if (item.getM_APPLIED_PATH() == null){
+					item.setM_APPLIED_PATH("@");
+				}
+				if (item.getM_APPLIED_PATH().equals("@"))
+					ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+				else {
+					//				ontologyStagingTree.addNodeByPath(item.getC_FULLNAME(), item.getC_NAME(),Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE,item,null);
+					ontologyStagingTree.addModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE, null);
+				}
 			}
 		}
 	}
@@ -147,7 +174,7 @@ public class TOSHandler {
 			String m_applied_path,
 			String staging_m_applied_path){
 		//TODO FIX META ALWAYS NULL
-		
+
 		if (ontologyStagingTree == null)
 			ontologyStagingTree = OntologyEditorView.getOntologyStagingTree();
 		OntologyItemTarget item = new OntologyItemTarget(treeLevel, treePath, stagingPath, 
@@ -160,7 +187,7 @@ public class TOSHandler {
 				OntologyEditorView.getOntologyTargetTree().addTargetNodeByPath(item.getTreePath(),item.getName(),Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET,item,null);
 			}
 			else {
-//				System.out.println("ADD MODIFIER");
+				//				System.out.println("ADD MODIFIER");
 				OntologyEditorView.getOntologyTargetTree().addTargetModifierNodeByPath(item, Resource.I2B2.NODE.TYPE.ONTOLOGY_TARGET, null);
 			}
 		}

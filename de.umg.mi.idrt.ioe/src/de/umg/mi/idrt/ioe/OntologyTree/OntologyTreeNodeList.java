@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import de.umg.mi.idrt.ioe.Console;
 import de.umg.mi.idrt.ioe.Resource;
 import de.umg.mi.idrt.ioe.Resource.OntologyTreeHelpers.PathAndID;
+import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 /**
  * @author Christian Bauer <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> 
@@ -34,6 +35,7 @@ public class OntologyTreeNodeList {
 	}
 
 	public void addNodyByPath( String stringPath, OntologyTreeNode node ){
+
 		this.stringPathToNode.put( stringPath, node );
 	}
 	/**
@@ -73,11 +75,10 @@ public class OntologyTreeNodeList {
 		node.setTreePath(i2b2Path);
 		if ( parentNode != null )
 			node.setTreePathLevel( parentNode.getTreePathLevel() + 1 );
-
 		return parentNode;
 	}
-	
-	
+
+
 	public OntologyTreeNode addOTTargetNode(OntologyItemTarget item, OntologyTreeNode node) {
 		String i2b2Path=item.getTreePath();
 		OntologyTreeNode parentNode = null;
@@ -115,7 +116,7 @@ public class OntologyTreeNodeList {
 		return parentNode;
 	}
 
-	
+
 	public OntologyTreeNode addOTNode( String i2b2Path, OntologyTreeNode node ){
 		OntologyTreeNode parentNode = null;
 		PathAndID pathAndID = Resource.OntologyTreeHelpers.getParentPathAndIDFromI2B2Path( i2b2Path);
@@ -129,8 +130,10 @@ public class OntologyTreeNodeList {
 				String path = pathAndID.getParentPath().substring(0, pathAndID.getParentPath().length()-1);
 				node.setID(path.substring(path.lastIndexOf("\\")+1,path.length()));
 				path = path.substring(0,path.lastIndexOf("\\"))+"\\";
+//				System.out.println("CHECKING: " + path);
 				parentNode =  this.getNodeByPath(path);
 				if (parentNode == null) {
+					System.out.println("ERROR!");
 					Console.info("The node \"" + node.getName() +"\" ( parentPath:" + pathAndID.getParentPath() +" ) could not be added, because the path for its parent node \"" + pathAndID.getParentPath() + "\" did not lead to a node.");
 					return null;
 				}
@@ -142,7 +145,9 @@ public class OntologyTreeNodeList {
 		node.setTreePath( i2b2Path );
 		if ( parentNode != null )
 			node.setTreePathLevel( parentNode.getTreePathLevel() + 1 );
-
+		if (parentNode.equals(OntologyEditorView.getOntologyStagingTree().getRootNode())){
+			return OntologyEditorView.getOntologyStagingTree().getI2B2RootNode();
+		}
 		return parentNode;
 	}
 

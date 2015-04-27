@@ -114,7 +114,7 @@ public class TOSConnector {
 			//			}
 
 			Console.info("Current server: " + currentServer.toString() + " " + currentServer.getSchema());
-
+			System.out.println(currentServer);
 			if (currentServer != null) {
 				Console.info("Using selected server \""
 						+ currentServer.getName() + "(\""
@@ -147,6 +147,7 @@ public class TOSConnector {
 //				setContextVariable("DB_StagingI2B2_sqlclassname", "oracle.jdbc.driver.OracleDriver");
 				setContextVariable("DB_StagingI2B2_DatabaseType", currentServer.getDatabaseType());
 				setContextVariable("DB_StagingI2B2_WHType", currentServer.getWhType());
+				System.out.println("WHTYPEWHTYPEWHTYPEWHTYPEWHTYPE " + currentServer.getWhType());
 				//
 				Server targetServer = ServerList.getTargetServers().get(ServerList.getUserServer().get(OntologyEditorView.getTargetSchemaName()));
 

@@ -1,0 +1,58 @@
+package de.umg.mi.idrt.ioe.OntologyTree;
+
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.Viewer;
+
+import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
+
+public class TransmartTreeStagingContentProvider implements ITreeContentProvider {
+
+	private TransmartOntologyTreeContentProvider model;
+	public TransmartTreeStagingContentProvider() {
+		model = new TransmartOntologyTreeContentProvider();
+	}
+
+	@Override
+	public void dispose() {
+		// unused
+	}
+
+	@Override
+	public Object[] getChildren(Object element) {
+		if (element instanceof TransmartOntologyTreeItem) {
+			return ((TransmartOntologyTreeItem)element).getChildren().toArray();
+		}
+		else
+			return null;
+	}
+
+	@Override
+	public Object[] getElements(Object inputElement) {
+		try {
+			if (model.getStagingModel() != null)
+				return model.getStagingModel().toArray();
+			else
+			{
+				throw new ProjectEmptyException();
+			}
+		}catch (ProjectEmptyException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	@Override
+	public Object getParent(Object element) {
+		return ((TransmartOntologyTreeItem) element).getParent();
+	}
+
+	@Override
+	public boolean hasChildren(Object element) {
+		return ((TransmartOntologyTreeItem) element).getChildCount() > 0;
+	}
+
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// unused
+	}
+}

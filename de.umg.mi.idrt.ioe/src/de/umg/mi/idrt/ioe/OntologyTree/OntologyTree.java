@@ -109,7 +109,7 @@ public class OntologyTree extends JTree {
 		
 		//TODO
 //				System.out.println(item.getStagingPath());
-				OntologyTreeNode node2 = getNodeLists().getNodeByPath(item.getStagingPath());
+//				OntologyTreeNode node2 = getNodeLists().getNodeByPath(item.getStagingPath());
 //				node.getTargetNodeAttributes().setStagingParent(stagingParent);
 //				System.out.println("STAGIN NODE MAP: " + node2.getName() + " " + node2.getOntologyCellAttributes().getC_BASECODE());
 		
@@ -237,7 +237,7 @@ public class OntologyTree extends JTree {
 			Console.error("Could not add node \"" + name
 					+ "\" to the tree, because there is no parent node for it.");
 		}
-		node.setTreeAttributes();
+//		node.setTreeAttributes();
 		node.setType(source);
 		
 		

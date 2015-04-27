@@ -105,6 +105,10 @@ import de.umg.mi.idrt.ioe.OntologyTree.StyledViewTableLabelProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTree;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTreeContentProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartStyledViewTableLabelProvider;
+import de.umg.mi.idrt.ioe.OntologyTree.TransmartTreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
@@ -112,6 +116,7 @@ import de.umg.mi.idrt.ioe.tos.TOSHandler;
 
 public class OntologyEditorView extends ViewPart {
 
+	private static TransmartOntologyTree transmartTree;
 	private static MyOntologyTrees myOntologyTree;
 
 	private static boolean notYetSaved = false;
@@ -174,6 +179,10 @@ public class OntologyEditorView extends ViewPart {
 	private static Composite composite_12;
 	private static Composite composite_11;
 
+	public OntologyEditorView() {
+		// TODO Auto-generated constructor stub
+//		transmartTree = new TransmartOntologyTree();
+	}
 
 	private static void createDirs(File mainPath) {
 		File misc = new File(mainPath.getAbsolutePath()+"/temp/");
@@ -302,7 +311,7 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void init() {
 		System.out.println("INIT!");
-
+		
 		//TODO HERE
 		//								Shell shell = new Shell();
 		//								shell.setSize(844, 536);
@@ -898,9 +907,12 @@ public class OntologyEditorView extends ViewPart {
 					return;
 				}
 				if (e.item.getData() instanceof OntologyTreeNode) {
+					
 					OntologyTreeNode node = (OntologyTreeNode) e.item.getData();
+					
 					setCurrentStagingNode(node);
 					if (node != null) {
+						System.out.println("node treepath: "+ node.getTreePath());
 						EditorStagingInfoView.setNode(node);
 					} else {
 						StatusView
@@ -1483,7 +1495,12 @@ public class OntologyEditorView extends ViewPart {
 		if (!init) {
 			init();
 		}
+		
+		//TODO
 		stagingTreeViewer.getTree().removeAll();
+//		stagingTreeViewer.setContentProvider(new TransmartTreeStagingContentProvider());		
+//		stagingTreeViewer.setLabelProvider(new TransmartStyledViewTableLabelProvider());
+//		stagingTreeViewer.setInput(new TransmartOntologyTreeContentProvider().getStagingModel());
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
 		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
 		stagingTreeViewer.setInput(new OntologyTreeContentProvider().getStagingModel());
@@ -1620,6 +1637,8 @@ public class OntologyEditorView extends ViewPart {
 				targetTreeViewer.refresh();
 			}
 		});
+//		transmartTree.tryToAddNodes();
+//		transmartTree.display();
 		stagingTreeViewer.getTree().setMenu(menu);
 		stagingComposite.layout();
 		mainComposite.layout();
@@ -2094,7 +2113,7 @@ public class OntologyEditorView extends ViewPart {
 			@Override
 			public void drop(final DropTargetEvent event) {
 				TOSHandler.setCounter(0);
-				System.out.println("DROPPED! " + event.data);
+				System.out.println("???DROPPED! " + event.data);
 
 				if (event.data instanceof Server){
 					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
@@ -2171,7 +2190,7 @@ public class OntologyEditorView extends ViewPart {
 		}
 		@Override
 		public void drop(DropTargetEvent event) {
-			System.out.println("DROPPED! " + event.data);
+			System.out.println("!!!DROPPED! " + event.data);
 			if (event.data instanceof I2b2Project){
 				I2b2Project project = (I2b2Project)event.data;
 				setTargetNameVersion(project.getName(), getLatestVersion(project.getName()));
@@ -2363,4 +2382,9 @@ private static void sortNode(OntologyTreeNode node){
 	}
 	targetTreeViewer.refresh();
 }
+
+public static TransmartOntologyTree getTransmartTree() {
+	return transmartTree;
+}
+
 }

@@ -83,6 +83,7 @@ public class Server implements Serializable {
 		this.databaseType = currentServer2.getDatabaseType();
 		this.setUseWinAuth(currentServer2.isUseWinAuth());
 		this.setSavePassword(currentServer2.isSavePassword());
+		this.setWhType(currentServer2.getWhType());
 		if (savePassword)
 			setPassword(currentServer2.getPassword());
 		else {
@@ -469,10 +470,7 @@ public class Server implements Serializable {
 	public void setUseWinAuth(boolean useWinAuth) {
 		this.useWinAuth = useWinAuth;
 	}
-	@Override
-	public String toString() {
-		return uniqueID + " " + ip;
-	}
+	
 	public String getWhType() {
 		if (whType==null)
 			return "i2b2";
@@ -480,7 +478,12 @@ public class Server implements Serializable {
 			return whType;
 	}
 	public void setWhType(String whType) {
+		System.out.println("SETTING WH TYPE: " + whType);
 		this.whType = whType;
 	}
 
+	@Override
+	public String toString() {
+		return "SERVER:\n"+"-- uniqueID: " +uniqueID + "\n-- ip: " + ip + "\n-- port: " + port + "\n-- sid: " + sid + "\n-- whType: " + whType;
+	}
 }

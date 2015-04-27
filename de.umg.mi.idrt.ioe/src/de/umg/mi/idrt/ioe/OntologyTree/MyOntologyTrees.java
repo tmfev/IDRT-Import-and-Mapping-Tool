@@ -362,11 +362,11 @@ public class MyOntologyTrees{
 
 	public void deepCopy(final OntologyTreeNode source, final OntologyTreeNode target, final OntologyTreeNode selectedTargetNode, final OntologyTreeNode selectedSourceNode) {
 		//TODO
-		System.out.println("target: " + target.getName() + " " + target.isModifier() + " " + target.getTreePath());
-		System.out.println("source: " + source.getName() + " " + source.isModifier()+ " " + source.getTreePath());
-		System.out.println("source parent: " + source.getParent().getName() + " " + source.getParent().isModifier()+ " " + source.getParent().getTreePath());
-		System.out.println("selectedTargetNode: " +selectedTargetNode.getName() + " " + selectedTargetNode.isModifier()+ " " + selectedTargetNode.getTreePath());
-		System.out.println("selectedSourceNode:" + selectedSourceNode.getName() + " " + selectedSourceNode.isModifier()+ " " + selectedSourceNode.getTreePath());
+//		System.out.println("target: " + target.getName() + " " + target.isModifier() + " " + target.getTreePath());
+//		System.out.println("source: " + source.getName() + " " + source.isModifier()+ " " + source.getTreePath());
+//		System.out.println("source parent: " + source.getParent().getName() + " " + source.getParent().isModifier()+ " " + source.getParent().getTreePath());
+//		System.out.println("selectedTargetNode: " +selectedTargetNode.getName() + " " + selectedTargetNode.isModifier()+ " " + selectedTargetNode.getTreePath());
+//		System.out.println("selectedSourceNode:" + selectedSourceNode.getName() + " " + selectedSourceNode.isModifier()+ " " + selectedSourceNode.getTreePath());
 		progress++;
 		if ((int) (progress/percent)>ProgressView.getValue()+10) {
 			//			System.out.println(progress + " " + percent + " " + counter + " " + progress/percent);
@@ -404,7 +404,6 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.SOURCESYSTEM_CD,source.getOntologyCellAttributes().getSOURCESYSTEM_CD());
 		node.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.VALUETYPE_CD,source.getOntologyCellAttributes().getVALUETYPE_CD());
 		node.setStagingModifierPath(source.getOntologyCellAttributes().getM_APPLIED_PATH());
-		System.out.println("SETTING: " + source.getTreePath() + " as PARENT FOR " + node.getName());
 		node.getTargetNodeAttributes().setStagingParent(source);
 		node.setTreePath(target.getTreePath() + node.getID() + "\\");
 
@@ -425,6 +424,7 @@ public class MyOntologyTrees{
 		node.getTargetNodeAttributes().setDimension(source.getOntologyCellAttributes().getC_TABLENAME());
 		OntologyTreeNode testNode =	OntologyEditorView.getOntologyTargetTree().getNodeLists().getNodeByPath(node.getTreePath());
 //		System.out.println("node.gettreepath: " + node.getTreePath());
+//		System.out.println("TESTNODE: " + testNode.getName());
 		if (testNode==null) {
 			
 			if (node.isModifier()){
@@ -446,7 +446,6 @@ public class MyOntologyTrees{
 			}
 		}
 		else {
-//			System.out.println(testNode.getName() + " " + testNode.getOntologyCellAttributes().getC_FULLNAME());
 			
 			if (confirm<0) {
 				String folderOrItem = node.isLeaf()?"Item":"Folder";

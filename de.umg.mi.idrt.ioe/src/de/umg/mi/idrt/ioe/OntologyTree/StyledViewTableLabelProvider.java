@@ -4,6 +4,8 @@ import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.umg.mi.idrt.ioe.GUITools;
@@ -91,6 +93,11 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					else if ("r".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_RA));
+					//TODO replace image
+					//ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/searchtool16.png")
+					else if ("c".equals(visualAttribute.toLowerCase()))
+						cell.setImage(GUITools
+								.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA));
 					else
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));

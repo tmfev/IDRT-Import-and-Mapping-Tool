@@ -45,7 +45,8 @@ public class EditServerWizard extends Wizard {
 				EditServerPageOne.getDBSIDText(),EditServerPageOne.getDBType(),EditServerPageOne.getCheckUseWinAuth(),
 				EditServerPageOne.getCheckStorePassword());
 		editedServer.setWhType(EditServerPageOne.getDB_WH_Combo());
-
+		System.out.println("EDITED SERVER");
+		System.out.println(editedServer);
 		if (!ServerList.getSourceServers().containsKey(
 				editedServer.getUniqueID())
 				&& isTargetServer) { // !ServerList.getServers().containsKey(editedServer.getUniqueID())
@@ -125,13 +126,14 @@ public class EditServerWizard extends Wizard {
 					}
 				}
 			}
+			
 			return true;
 		} else {
 			MessageDialog.openInformation(Application.getShell(), "Server already exists.",
 					"The Server already exists. Please choose another Name.");
 			return false;
 		}
-
+	
 	}
 
 }
