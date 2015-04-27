@@ -923,6 +923,7 @@ public class MyOntologyTrees{
 
 			EditorStagingInfoView.setNode(node);
 
+			
 			message = "Selection in source tree changed to \'" + node.getName()
 					+ "\'.";
 
