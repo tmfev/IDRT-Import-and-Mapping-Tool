@@ -538,16 +538,6 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	}
 
 	/**
-	 * Sets the visual attribute (key to connect items and user data) for I2B2.
-	 * 
-	 * @param visualattribute
-	 *            the basecode
-	 */
-	// public void setVisualattribute(String visualattribute) {
-	// this.visualattribute = visualattribute;
-	// }
-
-	/**
 	 * Sets the level attribute for this node.
 	 * 
 	 * @param treePathLevel
