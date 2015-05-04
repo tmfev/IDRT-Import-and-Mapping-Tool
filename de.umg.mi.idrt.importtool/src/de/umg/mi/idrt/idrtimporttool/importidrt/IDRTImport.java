@@ -48,6 +48,63 @@ public class IDRTImport {
 	}
 
 	/**
+	 * Deletes all unneeded input files from previous imports.
+	 */
+	private static void clearInputFolder() {
+
+		File inputFolder = FileHandler.getBundleFile("/misc/input/");
+		File[] listOfInputFiles = inputFolder.listFiles();
+
+		for (File listOfInputFile : listOfInputFiles) {
+			if (listOfInputFile.getName().endsWith(".csv")) {
+				listOfInputFile.delete();
+			}
+		}
+	}
+
+	public static void dropIOETables(Server server, String project) {
+		// TODO Auto-generated method stub
+		StatusListener.startLogging();
+		HashMap<String, String> contextMap = new HashMap<String, String>();
+		final String dbType = server.getDatabaseType();
+		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		contextMap.put("DB_StagingI2B2_Schema", project);
+		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
+		setCompleteContext(contextMap);
+
+
+		Thread workerThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				DropIOETables dropTables = new DropIOETables();
+				ServerView.btnStopSetEnabled(true);
+				exitCode = 	dropTables.runJobInTOS(getARGV());
+				ServerView.btnStopSetEnabled(false);
+
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						StatusListener.stopLogging();
+						if (exitCode == 0) {
+
+							StatusListener.setStatus(100f, "Tables Dropped.","");
+							MessageDialog.openInformation(Application.getShell(),"Tables Dropped!", "Tables Dropped!");
+						}
+						else {
+							MessageDialog.openError(Application.getShell(), "Dropping Tables failed!", "Dropping Tables failed!");
+						}
+					}
+				});
+
+			}
+		});
+		workerThread.start();
+	}
+	/**
 	 * Sets all context variables
 	 * @return String[] of all CV
 	 * @See contextVariables
@@ -65,9 +122,11 @@ public class IDRTImport {
 		return parameters.toArray(new String[0]);
 	}
 
+
 	public static int getStatus() {
 		return status;
 	}
+
 	@SuppressWarnings("deprecation")
 	public static void killThread() {
 
@@ -89,14 +148,6 @@ public class IDRTImport {
 		}
 		ServerView.stdImportStarted = false;
 	}
-
-	
-	public static int runMDRImport(){
-		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
-		exitCode = mdr.runJobInTOS(getARGV());
-			return exitCode;
-	}
-	
 	/**
 	 * TOS-Job which imports several CSV-Files in a Folder.
 	 * <p><strong>Note:</strong> CSV-File delimiter: tabulator, semicolon</p>
@@ -124,7 +175,7 @@ public class IDRTImport {
 				exitCode = transform.runJobInTOS(getARGV());
 
 			}
-//			StatusListener.clearStatus();
+			//			StatusListener.clearStatus();
 			ServerView.btnStopSetEnabled(false);
 			StatusListener.stopLogging();
 			return exitCode;
@@ -134,6 +185,7 @@ public class IDRTImport {
 			return exitCode;
 		}
 	}
+
 	/**
 	 * TOS-Job which imports data from another sql database.
 	 * @param importTerms Import the standard terminologies?
@@ -166,6 +218,9 @@ public class IDRTImport {
 			return exitCode;
 		}
 	}
+
+
+
 
 	/**
 	 * 
@@ -200,9 +255,6 @@ public class IDRTImport {
 			return exitCode;
 		}
 	}
-	
-	
-	
 
 	/**
 	 * Imports the standard terminologies.
@@ -288,13 +340,13 @@ public class IDRTImport {
 		contextMap.put("DBPort", server.getPort());
 		contextMap.put("DBSchema", project);
 		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
-//		contextMap.put("DB_StagingI2B2_Host", server.getIp());
-//		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
-//		contextMap.put("DB_StagingI2B2_Username", server.getUser());
-//		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
-//		contextMap.put("DB_StagingI2B2_Port", server.getPort());
-//		contextMap.put("DB_StagingI2B2_Schema", project);
-//		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
+		//		contextMap.put("DB_StagingI2B2_Host", server.getIp());
+		//		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+		//		contextMap.put("DB_StagingI2B2_Username", server.getUser());
+		//		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+		//		contextMap.put("DB_StagingI2B2_Port", server.getPort());
+		//		contextMap.put("DB_StagingI2B2_Schema", project);
+		//		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 		/**
 		 * ST-Import
 		 */
@@ -349,6 +401,12 @@ public class IDRTImport {
 		workerThread.start();
 	}
 
+	public static int runMDRImport(){
+		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
+		exitCode = mdr.runJobInTOS(getARGV());
+		return exitCode;
+	}
+
 	/**
 	 * TOS-Job which imports data from ODM files in a folder.
 	 * @param importTerms Import the standard terminologies?
@@ -382,8 +440,9 @@ public class IDRTImport {
 		}
 	}
 
+
 	/**
-	 * TOS-Job which imports the §21 dataset.
+	 * TOS-Job that imports the §21 dataset.
 	 * @param oldVersion old or new version of §21
 	 * @param importTerms Import the standard terminologies?
 	 * @return Exitcode from TOS (0=success)
@@ -437,7 +496,7 @@ public class IDRTImport {
 		Thread workerThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-//				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
+				//				SERVER_FreeLocks freeLocks = new SERVER_FreeLocks();
 				ServerView.btnStopSetEnabled(true);
 				exitCode = -1;	//freeLocks.runJobInTOS(getARGV());
 				ServerView.btnStopSetEnabled(false);
@@ -461,50 +520,6 @@ public class IDRTImport {
 		});
 		workerThread.start();
 
-	}
-	
-
-	public static void dropIOETables(Server server, String project) {
-		// TODO Auto-generated method stub
-		StatusListener.startLogging();
-		HashMap<String, String> contextMap = new HashMap<String, String>();
-		final String dbType = server.getDatabaseType();
-		contextMap.put("DB_StagingI2B2_Host", server.getIp());
-		contextMap.put("DB_StagingI2B2_Password", server.getPassword());
-		contextMap.put("DB_StagingI2B2_Username", server.getUser());
-		contextMap.put("DB_StagingI2B2_Instance", server.getSID());
-		contextMap.put("DB_StagingI2B2_Port", server.getPort());
-		contextMap.put("DB_StagingI2B2_Schema", project);
-		contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
-		setCompleteContext(contextMap);
-
-
-		Thread workerThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				DropIOETables dropTables = new DropIOETables();
-				ServerView.btnStopSetEnabled(true);
-				exitCode = 	dropTables.runJobInTOS(getARGV());
-				ServerView.btnStopSetEnabled(false);
-
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						StatusListener.stopLogging();
-						if (exitCode == 0) {
-
-							StatusListener.setStatus(100f, "Tables Dropped.","");
-							MessageDialog.openInformation(Application.getShell(),"Tables Dropped!", "Tables Dropped!");
-						}
-						else {
-							MessageDialog.openError(Application.getShell(), "Dropping Tables failed!", "Dropping Tables failed!");
-						}
-					}
-				});
-
-			}
-		});
-		workerThread.start();
 	}
 
 	/**
@@ -591,6 +606,24 @@ public class IDRTImport {
 	}
 
 	/**
+	 * @param contextMap 
+	 * 
+	 */
+	private static void setSTContext(HashMap<String, String> contextMap) {
+		// TODO Auto-generated method stub
+		File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
+		contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+		contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+		contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+		contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+		contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+		contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+		contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
+
+	}
+
+	/**
 	 * Tests the connection to a servers database.
 	 * @param server The database to be tested.
 	 * @return Success=true Error=Failure
@@ -642,39 +675,6 @@ public class IDRTImport {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * Deletes all unneeded input files from previous imports.
-	 */
-	private static void clearInputFolder() {
-
-		File inputFolder = FileHandler.getBundleFile("/misc/input/");
-		File[] listOfInputFiles = inputFolder.listFiles();
-
-		for (File listOfInputFile : listOfInputFiles) {
-			if (listOfInputFile.getName().endsWith(".csv")) {
-				listOfInputFile.delete();
-			}
-		}
-	}
-
-	/**
-	 * @param contextMap 
-	 * 
-	 */
-	private static void setSTContext(HashMap<String, String> contextMap) {
-		// TODO Auto-generated method stub
-		File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
-		contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
-		contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
-		contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
-		contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
-		contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
-		contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
-		contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
-		contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
-
 	}
 
 }

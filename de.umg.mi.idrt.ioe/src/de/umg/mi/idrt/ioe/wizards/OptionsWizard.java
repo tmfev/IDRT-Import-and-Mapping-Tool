@@ -21,14 +21,14 @@ import de.umg.mi.idrt.importtool.views.ServerView;
  */
 public class OptionsWizard extends Wizard {
 
-	private Properties defaultProps;
-	protected OptionsWizardPage1 one;
-
 	public OptionsWizard() {
 		super();
 		System.out.println("CONSTRUCTOR");
 		setNeedsProgressMonitor(true);
 	}
+	private Properties defaultProps;
+
+	protected OptionsWizardPage1 one;
 
 	@Override
 	public void addPages() {

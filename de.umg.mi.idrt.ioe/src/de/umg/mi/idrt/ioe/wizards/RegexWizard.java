@@ -18,12 +18,12 @@ import de.umg.mi.idrt.ioe.misc.Regex;
  */
 public class RegexWizard extends Wizard {
 
-	protected RegexWizardPage1 one;
-
 	public RegexWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
+
+	protected RegexWizardPage1 one;
 
 	@Override
 	public void addPages() {

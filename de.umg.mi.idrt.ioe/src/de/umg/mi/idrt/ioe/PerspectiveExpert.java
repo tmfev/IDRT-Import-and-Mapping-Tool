@@ -6,6 +6,24 @@ import org.eclipse.ui.IPerspectiveFactory;
 public class PerspectiveExpert implements IPerspectiveFactory {
 
 	/**
+	 * Add fast views to the perspective.
+	 */
+	private void addFastViews(IPageLayout layout) {
+	}
+
+	/**
+	 * Add perspective shortcuts to the perspective.
+	 */
+	private void addPerspectiveShortcuts(IPageLayout layout) {
+	}
+
+	/**
+	 * Add view shortcuts to the perspective.
+	 */
+	private void addViewShortcuts(IPageLayout layout) {
+	}
+
+	/**
 	 * Creates the initial layout for a page.
 	 */
 	public void createInitialLayout(IPageLayout layout) {
@@ -21,24 +39,6 @@ public class PerspectiveExpert implements IPerspectiveFactory {
 		addViewShortcuts(layout);
 		addPerspectiveShortcuts(layout);
 		System.out.println("READY");
-	}
-
-	/**
-	 * Add fast views to the perspective.
-	 */
-	private void addFastViews(IPageLayout layout) {
-	}
-
-	/**
-	 * Add view shortcuts to the perspective.
-	 */
-	private void addViewShortcuts(IPageLayout layout) {
-	}
-
-	/**
-	 * Add perspective shortcuts to the perspective.
-	 */
-	private void addPerspectiveShortcuts(IPageLayout layout) {
 	}
 	
 	

@@ -17,6 +17,11 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		return new ApplicationActionBarAdvisor(configurer);
 	}
 
+	public void postWindowCreate(){
+
+		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
+		configurer.getWindow().getShell().setMaximized( true );
+	}
 	public void preWindowOpen() {
 
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
@@ -37,11 +42,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 //		apiStore.setValue(IWorkbenchPreferenceConstants.DOCK_PERSPECTIVE_BAR,
 //				"TOP_RIGHT");
 
-	}
-	public void postWindowCreate(){
-
-		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-		configurer.getWindow().getShell().setMaximized( true );
 	}
 
 

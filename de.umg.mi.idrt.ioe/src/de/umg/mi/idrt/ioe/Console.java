@@ -10,42 +10,15 @@ package de.umg.mi.idrt.ioe;
 
 public class Console {
 	
-	public static void section(String text){
+	public static void error(Exception exception){
+		error(exception.getLocalizedMessage());
+		exception.printStackTrace();
+	}
+	
+	public static void error(Exception exception, boolean dialog){
+		exception.printStackTrace();
+		error(exception.getLocalizedMessage(), dialog);
 		
-		String line = "";
-		for (int x = 0; x < text.length()+3; x++){
-			line += "*";
-		}
-		
-		System.out.println("");
-		System.out.println("/"+line);
-		System.out.println("* " + text + " *");
-		System.out.println(""+line+"/");
-	}
-	
-	public static void info(String text){
-		System.out.println("* " + text);
-	}
-	
-	public static void info(String text, Object object){
-		info(text + ": '" + object.toString() + "'");
-	}
-	
-	public static void subinfo(String text){
-		System.out.println("* - " + text);
-	}
-	
-	public static void subinfo(String text, Object object){
-		subinfo(text + ": '" + object.toString() + "'");
-	}
-	
-	public static void infoLine(String text){
-		System.out.println(text);
-		//System.out.print(text);
-	}
-	
-	public static void infoNoLine(String text){
-		System.out.print(text);
 	}
 	
 	public static void error(String text){
@@ -63,17 +36,22 @@ public class Console {
 		exception.printStackTrace();
 	}
 	
-	public static void error(Exception exception){
-		error(exception.getLocalizedMessage());
-		exception.printStackTrace();
+	public static void info(String text){
+		System.out.println("* " + text);
 	}
 	
-	public static void error(Exception exception, boolean dialog){
-		exception.printStackTrace();
-		error(exception.getLocalizedMessage(), dialog);
-		
+	public static void info(String text, Object object){
+		info(text + ": '" + object.toString() + "'");
 	}
 	
+	public static void infoLine(String text){
+		System.out.println(text);
+		//System.out.print(text);
+	}
+	
+	public static void infoNoLine(String text){
+		System.out.print(text);
+	}
 	
 	public static void message(String text){
 		String border = "";
@@ -85,5 +63,27 @@ public class Console {
 		System.out.println("  | " + text + " |");
 		System.out.println("  ----" + border + "/");
 		System.out.println(" ");
+	}
+	
+	public static void section(String text){
+		
+		String line = "";
+		for (int x = 0; x < text.length()+3; x++){
+			line += "*";
+		}
+		
+		System.out.println("");
+		System.out.println("/"+line);
+		System.out.println("* " + text + " *");
+		System.out.println(""+line+"/");
+	}
+	
+	public static void subinfo(String text){
+		System.out.println("* - " + text);
+	}
+	
+	
+	public static void subinfo(String text, Object object){
+		subinfo(text + ": '" + object.toString() + "'");
 	}
 }

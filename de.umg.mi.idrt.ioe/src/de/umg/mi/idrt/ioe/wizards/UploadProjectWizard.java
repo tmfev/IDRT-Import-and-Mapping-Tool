@@ -28,12 +28,12 @@ public class UploadProjectWizard extends Wizard {
 	protected UploadProjectWizardPage2 two;
 
 	private static Thread importThread;
-	private HashMap<String, String> contextMap;
-
 	public UploadProjectWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
+
+	private HashMap<String, String> contextMap;
 
 	@Override
 	public void addPages() {

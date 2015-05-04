@@ -31,14 +31,6 @@ public class InstallNewSoftwareHandler extends PreloadingRepositoryHandler {
 		getProvisioningUI().openInstallWizard(null, null, job);
 	}
 
-	protected boolean waitForPreload() {
-		// If the user cannot see repositories, then we may as well wait
-		// for existing repos to load so that content is available.  
-		// If the user can manipulate the repositories, then we don't wait, 
-		// because we don't know which ones they want to work with.
-		return !getProvisioningUI().getPolicy().getRepositoriesVisible();
-	}
-
 	protected void setLoadJobProperties(Job loadJob) {
 		super.setLoadJobProperties(loadJob);
 		// If we are doing a background load, we do not wish to authenticate, as the
@@ -47,5 +39,13 @@ public class InstallNewSoftwareHandler extends PreloadingRepositoryHandler {
 			loadJob.setProperty(LoadMetadataRepositoryJob.SUPPRESS_AUTHENTICATION_JOB_MARKER, Boolean.toString(true));
 			loadJob.setProperty(LoadMetadataRepositoryJob.SUPPRESS_REPOSITORY_EVENTS, Boolean.toString(true));
 		}
+	}
+
+	protected boolean waitForPreload() {
+		// If the user cannot see repositories, then we may as well wait
+		// for existing repos to load so that content is available.  
+		// If the user can manipulate the repositories, then we don't wait, 
+		// because we don't know which ones they want to work with.
+		return !getProvisioningUI().getPolicy().getRepositoriesVisible();
 	}
 }

@@ -39,8 +39,23 @@ public class CombineNodesCommand extends AbstractHandler {
 		regexSet.add(regex);
 	}
 
+	/**
+	 * 
+	 */
+	public static void clear() {
+		regexSet.clear();
+
+	}
+
 	public static LinkedHashSet<Regex> getRegex(){
 		return regexSet;
+	}
+	/**
+	 * @param regex
+	 */
+	public static void removeRegex(Regex regex) {
+		regexSet.remove(regex);
+
 	}
 
 	@Override
@@ -95,6 +110,7 @@ public class CombineNodesCommand extends AbstractHandler {
 		}
 
 	}
+
 	private void generatePerfectPath(List<OntologyTreeNode> oldTreeNodeList2, List<OntologyTreeNode> newTreeNodeList2, String regex) {
 		//TODO MAGICALLY MERGE
 		Regex currentRegex = null;
@@ -126,7 +142,6 @@ public class CombineNodesCommand extends AbstractHandler {
 		}
 		System.out.println("perfectPath: " + perfectPath);
 	}
-
 	private void getnewTargetNodes(OntologyTreeNode child){
 		if (child.hasChildren()) {
 			for (OntologyTreeNode child2 : child.getChildren()) {
@@ -147,6 +162,7 @@ public class CombineNodesCommand extends AbstractHandler {
 			}
 		}
 	}
+
 	/**
 	 * @param oldTreeNodeList2
 	 * @param newTreeNodeList2
@@ -237,21 +253,5 @@ public class CombineNodesCommand extends AbstractHandler {
 			ProgressView.setProgress(100,"Merging... (Finished)","OK");
 		}
 		System.out.println("not found: " + numberOfNotFoundItems);
-	}
-
-	/**
-	 * @param regex
-	 */
-	public static void removeRegex(Regex regex) {
-		regexSet.remove(regex);
-
-	}
-
-	/**
-	 * 
-	 */
-	public static void clear() {
-		regexSet.clear();
-
 	}
 }

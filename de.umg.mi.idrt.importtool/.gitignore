@@ -1,5 +1,6 @@
-/log/log.log
-/bin
+log/log.log
+bin
 .project
 .settings
-/workspace
+workspace
+target

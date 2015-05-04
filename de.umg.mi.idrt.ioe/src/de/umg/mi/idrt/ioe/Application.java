@@ -25,6 +25,84 @@ import de.umg.mi.idrt.ioe.misc.Regex;
 public class Application implements IApplication {
 
 
+	public static void executeCommand(ActionCommand command) {
+
+		if (command.hasParameters()) {
+			Application.executeCommand(command.getParameterizedCommand());
+		} else {
+			Application.executeCommand(command.getCommandID());
+		}
+	}
+
+	// doc
+	public static void executeCommand(ParameterizedCommand parameterizedCommand) {
+		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
+				.getWorkbench().getActiveWorkbenchWindow();
+
+		if (activeWorkbenchWindow != null) {
+			IHandlerService handlerService = (IHandlerService) activeWorkbenchWindow
+					.getService(IHandlerService.class);
+			if (handlerService != null) {
+				try {
+					handlerService.executeCommand(parameterizedCommand, null);
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+				} catch (NotDefinedException e) {
+					e.printStackTrace();
+				} catch (NotEnabledException e) {
+					e.printStackTrace();
+				} catch (NotHandledException e) {
+					e.printStackTrace();
+				}
+
+			}
+		}
+	}
+
+	// doc
+	public static void executeCommand(String commandID) {
+		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
+				.getWorkbench().getActiveWorkbenchWindow();
+		System.out.println("ExecuteCommand: " + commandID);
+		if (activeWorkbenchWindow != null) {
+			IHandlerService handlerService = (IHandlerService) activeWorkbenchWindow
+					.getService(IHandlerService.class);
+			try {
+				handlerService.executeCommand(commandID, null);
+			} catch (NotHandledException ne) {
+				ne.printStackTrace();
+				Console.error("NotHandledException while executing command \""
+						+ commandID + "\"");
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} catch (NotDefinedException e) {
+				e.printStackTrace();
+			} catch (NotEnabledException e) {
+				e.printStackTrace();
+			} 
+		}
+	}
+
+	// doc
+	public static Display getDisplay() {
+		return PlatformUI.getWorkbench().getDisplay();
+	}
+
+	// doc
+	public static Resource getResource() {
+		return Activator.getDefault().getResource();
+	}
+
+	// doc
+	public static Shell getShell() {
+		return PlatformUI.getWorkbench().getDisplay().getActiveShell();
+	}
+
+	// doc
+	public void setResource(Resource resource) {
+		// this._resource = resource;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -72,84 +150,6 @@ public class Application implements IApplication {
 					workbench.close();
 			}
 		});
-	}
-
-	// doc
-	public void setResource(Resource resource) {
-		// this._resource = resource;
-	}
-
-	// doc
-	public static Resource getResource() {
-		return Activator.getDefault().getResource();
-	}
-
-	// doc
-	public static Display getDisplay() {
-		return PlatformUI.getWorkbench().getDisplay();
-	}
-
-	// doc
-	public static Shell getShell() {
-		return PlatformUI.getWorkbench().getDisplay().getActiveShell();
-	}
-
-	// doc
-	public static void executeCommand(String commandID) {
-		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
-				.getWorkbench().getActiveWorkbenchWindow();
-		System.out.println("ExecuteCommand: " + commandID);
-		if (activeWorkbenchWindow != null) {
-			IHandlerService handlerService = (IHandlerService) activeWorkbenchWindow
-					.getService(IHandlerService.class);
-			try {
-				handlerService.executeCommand(commandID, null);
-			} catch (NotHandledException ne) {
-				ne.printStackTrace();
-				Console.error("NotHandledException while executing command \""
-						+ commandID + "\"");
-			} catch (ExecutionException e) {
-				e.printStackTrace();
-			} catch (NotDefinedException e) {
-				e.printStackTrace();
-			} catch (NotEnabledException e) {
-				e.printStackTrace();
-			} 
-		}
-	}
-
-	// doc
-	public static void executeCommand(ParameterizedCommand parameterizedCommand) {
-		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
-				.getWorkbench().getActiveWorkbenchWindow();
-
-		if (activeWorkbenchWindow != null) {
-			IHandlerService handlerService = (IHandlerService) activeWorkbenchWindow
-					.getService(IHandlerService.class);
-			if (handlerService != null) {
-				try {
-					handlerService.executeCommand(parameterizedCommand, null);
-				} catch (ExecutionException e) {
-					e.printStackTrace();
-				} catch (NotDefinedException e) {
-					e.printStackTrace();
-				} catch (NotEnabledException e) {
-					e.printStackTrace();
-				} catch (NotHandledException e) {
-					e.printStackTrace();
-				}
-
-			}
-		}
-	}
-
-	public static void executeCommand(ActionCommand command) {
-
-		if (command.hasParameters()) {
-			Application.executeCommand(command.getParameterizedCommand());
-		} else {
-			Application.executeCommand(command.getCommandID());
-		}
 	}
 
 }

@@ -16,24 +16,104 @@ import javax.swing.JTextPane;
 
 public class SystemMessage {
 
-	String messageText = "";
-	MessageType messageTypeVar = MessageType.INFO;
-	MessageLocation messageLocationVar = MessageLocation.MAIN;
-	int messageTime = 0;
-	MessageLooks messageLooks = new MessageLooks(MessageType.INFO);
-	boolean isDialogMessage = false;
+	public enum MessageLocation {
+		MAIN, NODEEDITOR, PREFERENCES, POPUP
+	}
+	class MessageLooks {
 
+		public MessageLooks(SystemMessage.MessageType messageType) {
+			if (messageType.equals(SystemMessage.MessageType.SUCCESS)) {
+				// actionMessagePane.setBackground( Color.GREEN );
+				color = Resource.COLOR_SUCCESS_HTML;
+				colorLight = Resource.COLOR_SUCCESS_HTML_LIGHT;
+				iconName = "sign-success.png";
+			} else if (messageType.equals(SystemMessage.MessageType.ERROR)) {
+				// actionMessagePane.setBackground( Color.RED );
+				color = Resource.COLOR_ERROR_HTML;
+				colorLight = Resource.COLOR_ERROR_HTML_LIGHT;
+				iconName = "sign-error.png";
+			} else {
+				// actionMessagePane.setBackground( Color.LIGHT_GRAY );
+				color = Resource.COLOR_INFO_HTML;
+				colorLight = Resource.COLOR_INFO_HTML_LIGHT;
+				iconName = "sign-info.png";
+			}
+		}
+		String color = "";
+		String colorLight = "";
+
+		String iconName = "";
+
+		/**
+		 * @return the color
+		 */
+		public String getColor() {
+			return color;
+		}
+
+		/**
+		 * @return the colorLight
+		 */
+		public String getColorLight() {
+			return colorLight;
+		}
+
+		/**
+		 * @return the icon
+		 */
+		public String getIcon() {
+			return System.getProperty("user.dir").replace("\\", "/")
+					+ "/images/" + this.getIconName();
+		}
+
+		/**
+		 * @return the icon
+		 */
+		public String getIconName() {
+			return iconName;
+		}
+
+		/**
+		 * @param color
+		 *            the color to set
+		 */
+		public void setColor(String color) {
+			this.color = color;
+		}
+
+		/**
+		 * @param colorLight
+		 *            the colorLight to set
+		 */
+		public void setColorLight(String colorLight) {
+			this.colorLight = colorLight;
+		}
+
+		/**
+		 * @param icon
+		 *            the icon to set
+		 */
+		public void setIconName(String icon) {
+			this.iconName = icon;
+		}
+
+	}
+	public enum MessageSize {
+		STANDARD, EDITOR, POPUP
+	}
+	public enum MessageType {
+		INFO, SUCCESS, ERROR
+	}
+	public SystemMessage(String messageText, MessageType messageTypeVar) {
+		setMessageText(messageText);
+		setMessageType(messageTypeVar);
+		setMessageLocation(SystemMessage.MessageLocation.MAIN);
+	}
 	public SystemMessage(String messageText, MessageType messageTypeVar,
 			MessageLocation messageLocationVar) {
 		setMessageText(messageText);
 		setMessageType(messageTypeVar);
 		setMessageLocation(messageLocationVar);
-	}
-	
-	public SystemMessage(String messageText, MessageType messageTypeVar) {
-		setMessageText(messageText);
-		setMessageType(messageTypeVar);
-		setMessageLocation(SystemMessage.MessageLocation.MAIN);
 	}
 
 	public SystemMessage(String messageText, MessageType messageTypeVar,
@@ -43,56 +123,18 @@ public class SystemMessage {
 		setMessageLocation(messageLocationVar);
 		setMessageTime(messageTime);
 	}
+	
+	String messageText = "";
 
-	public void setMessageText(String messageText) {
-		this.messageText = messageText;
-	}
+	MessageType messageTypeVar = MessageType.INFO;
 
-	public String getMessageText() {
-		return this.messageText;
-	}
+	MessageLocation messageLocationVar = MessageLocation.MAIN;
 
-	public void setMessageType(MessageType messageTypeVar) {
-		this.messageTypeVar = messageTypeVar;
-		// also set the message look
-		setMessageLooks(messageTypeVar);
-	}
+	int messageTime = 0;
 
-	public MessageLooks getMessageLooks() {
-		return this.messageLooks;
-	}
+	MessageLooks messageLooks = new MessageLooks(MessageType.INFO);
 
-	public MessageType getMessageType() {
-		return this.messageTypeVar;
-	}
-
-	public void setMessageLocation(MessageLocation messageLocationVar) {
-		this.messageLocationVar = messageLocationVar;
-	}
-
-	public MessageLocation getMessageLocation() {
-		return this.messageLocationVar;
-	}
-
-	public void setMessageTime(int messageTime) {
-		this.messageTime = messageTime;
-	}
-
-	public int getMessageTime() {
-		return this.messageTime;
-	}
-
-	public enum MessageType {
-		INFO, SUCCESS, ERROR
-	}
-
-	public enum MessageLocation {
-		MAIN, NODEEDITOR, PREFERENCES, POPUP
-	}
-
-	public enum MessageSize {
-		STANDARD, EDITOR, POPUP
-	}
+	boolean isDialogMessage = false;
 
 	public JTextPane getFormattedMessage(Double width,
 			SystemMessage.MessageSize messageSize) {
@@ -138,14 +180,6 @@ public class SystemMessage {
 		return actionMessagePane;
 	}
 
-	public boolean isNegativeMessage() {
-		if (this.getMessageType().equals(SystemMessage.MessageType.ERROR)) {
-			return true;
-		}
-		return false;
-	}
-
-	
 	public JTextPane getFormattedSlim() {
 		
 		JTextPane actionMessagePane = new JTextPane();
@@ -164,97 +198,63 @@ public class SystemMessage {
 
 		return actionMessagePane;
 	}
-	
-	private void setMessageLooks(SystemMessage.MessageType messageType) {
-		this.messageLooks = new MessageLooks(messageType);
+
+	public MessageLocation getMessageLocation() {
+		return this.messageLocationVar;
+	}
+
+	public MessageLooks getMessageLooks() {
+		return this.messageLooks;
+	}
+
+	public String getMessageText() {
+		return this.messageText;
+	}
+
+	public int getMessageTime() {
+		return this.messageTime;
+	}
+
+	public MessageType getMessageType() {
+		return this.messageTypeVar;
 	}
 
 	public boolean isDialogMessage() {
 		return this.isDialogMessage;
 	}
 
+	public boolean isNegativeMessage() {
+		if (this.getMessageType().equals(SystemMessage.MessageType.ERROR)) {
+			return true;
+		}
+		return false;
+	}
+
 	public void setIsDialogMessage(boolean isDialogMessage) {
 		this.isDialogMessage = isDialogMessage;
 	}
 
-	class MessageLooks {
+	
+	public void setMessageLocation(MessageLocation messageLocationVar) {
+		this.messageLocationVar = messageLocationVar;
+	}
+	
+	private void setMessageLooks(SystemMessage.MessageType messageType) {
+		this.messageLooks = new MessageLooks(messageType);
+	}
 
-		String color = "";
-		String colorLight = "";
-		String iconName = "";
+	public void setMessageText(String messageText) {
+		this.messageText = messageText;
+	}
 
-		public MessageLooks(SystemMessage.MessageType messageType) {
-			if (messageType.equals(SystemMessage.MessageType.SUCCESS)) {
-				// actionMessagePane.setBackground( Color.GREEN );
-				color = Resource.COLOR_SUCCESS_HTML;
-				colorLight = Resource.COLOR_SUCCESS_HTML_LIGHT;
-				iconName = "sign-success.png";
-			} else if (messageType.equals(SystemMessage.MessageType.ERROR)) {
-				// actionMessagePane.setBackground( Color.RED );
-				color = Resource.COLOR_ERROR_HTML;
-				colorLight = Resource.COLOR_ERROR_HTML_LIGHT;
-				iconName = "sign-error.png";
-			} else {
-				// actionMessagePane.setBackground( Color.LIGHT_GRAY );
-				color = Resource.COLOR_INFO_HTML;
-				colorLight = Resource.COLOR_INFO_HTML_LIGHT;
-				iconName = "sign-info.png";
-			}
-		}
+	public void setMessageTime(int messageTime) {
+		this.messageTime = messageTime;
+	}
 
-		/**
-		 * @return the color
-		 */
-		public String getColor() {
-			return color;
-		}
-
-		/**
-		 * @param color
-		 *            the color to set
-		 */
-		public void setColor(String color) {
-			this.color = color;
-		}
-
-		/**
-		 * @return the colorLight
-		 */
-		public String getColorLight() {
-			return colorLight;
-		}
-
-		/**
-		 * @param colorLight
-		 *            the colorLight to set
-		 */
-		public void setColorLight(String colorLight) {
-			this.colorLight = colorLight;
-		}
-
-		/**
-		 * @return the icon
-		 */
-		public String getIconName() {
-			return iconName;
-		}
-
-		/**
-		 * @param icon
-		 *            the icon to set
-		 */
-		public void setIconName(String icon) {
-			this.iconName = icon;
-		}
-
-		/**
-		 * @return the icon
-		 */
-		public String getIcon() {
-			return System.getProperty("user.dir").replace("\\", "/")
-					+ "/images/" + this.getIconName();
-		}
-
+	public void setMessageType(MessageType messageTypeVar) {
+		this.messageTypeVar = messageTypeVar;
+		// also set the message look
+		setMessageLooks(messageTypeVar);
 	}
 
 }

@@ -22,15 +22,15 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  *         www.mi.med.uni-goettingen.de
  */
 public class EditInstanceWizardPage1 extends WizardPage {
-	private Text nameText;
-	private Text descrText;
-	private Text dateText;
-
 	public EditInstanceWizardPage1() {
 		super("Edit Instance");
 		setTitle("Edit Instance");
 		setDescription("Edit a i2b2 Target Instance");
 	}
+	private Text nameText;
+	private Text descrText;
+
+	private Text dateText;
 
 	@Override
 	public void createControl(Composite parent) {

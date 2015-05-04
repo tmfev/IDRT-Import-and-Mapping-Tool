@@ -42,6 +42,12 @@ public class OptionsWizardPage1 extends WizardPage {
 	private static Button hideTempTablesButton;
 	private static Properties defaultProps;
 	private static boolean changed = false;
+	public OptionsWizardPage1() {
+		super("Options");
+		setTitle("Options");
+		setDescription("Edit your Settings");
+		System.out.println("OptionsWizardPage1"); 
+	}
 	public static String getSysoLogPath() {
 		return sysoLogPath;
 	}
@@ -49,6 +55,7 @@ public class OptionsWizardPage1 extends WizardPage {
 		return txtPIDURL.getText();
 	}
 	private Text sysoLogLocationPath;
+
 	private static Text guessRowtext;
 
 	private static Text targetFolderText;
@@ -84,13 +91,6 @@ public class OptionsWizardPage1 extends WizardPage {
 
 	public static String getTxtLog() {
 		return txtLlogPath.getText();
-	}
-
-	public OptionsWizardPage1() {
-		super("Options");
-		setTitle("Options");
-		setDescription("Edit your Settings");
-		System.out.println("OptionsWizardPage1"); 
 	}
 
 	@Override

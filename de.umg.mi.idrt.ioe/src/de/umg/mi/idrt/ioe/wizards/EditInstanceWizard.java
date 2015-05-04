@@ -13,12 +13,12 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  */
 public class EditInstanceWizard extends Wizard {
 
-	protected EditInstanceWizardPage1 one;
-
 	public EditInstanceWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
+
+	protected EditInstanceWizardPage1 one;
 
 	@Override
 	public void addPages() {

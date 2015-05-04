@@ -66,12 +66,6 @@ public class StatusView extends ViewPart {
 				SystemMessage.MessageLocation.MAIN));
 	}
 
-	public void addMessage(String message,
-			SystemMessage.MessageType messageType,
-			SystemMessage.MessageLocation messageLocation) {
-		addMessage(new SystemMessage(message, messageType, messageLocation));
-	}
-
 	public static void addMessage(SystemMessage message) {
 
 		Console.message(message.getMessageText());
@@ -118,6 +112,19 @@ public class StatusView extends ViewPart {
 				SystemMessage.MessageLocation.MAIN));
 	}
 
+	public static void refresh() {
+
+		_tableColumn.pack();
+		_tableColumn2.pack();
+		// _table.update();
+	}
+
+	public void addMessage(String message,
+			SystemMessage.MessageType messageType,
+			SystemMessage.MessageLocation messageLocation) {
+		addMessage(new SystemMessage(message, messageType, messageLocation));
+	}
+
 	@Override
 	public void createPartControl(Composite parent) {
 		// parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -158,11 +165,9 @@ public class StatusView extends ViewPart {
 		refresh();
 	}
 
-	public static void refresh() {
-
-		_tableColumn.pack();
-		_tableColumn2.pack();
-		// _table.update();
+	@Override
+	public void setFocus() {
+		
 	}
 
 	public void update() {
@@ -187,11 +192,6 @@ public class StatusView extends ViewPart {
 		_parent.layout();
 		_parent.redraw();
 
-	}
-
-	@Override
-	public void setFocus() {
-		
 	}
 
 	/*

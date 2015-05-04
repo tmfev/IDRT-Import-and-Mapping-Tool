@@ -74,6 +74,47 @@ public class ProgressView extends ViewPart {
 	//		return pro;
 	//	}
 
+	public static void clearProgress() {
+		indeterminateThread.interrupt();
+		setProgressTitle("No operations to display at this time.");
+		setCurrentAction("");
+		setProgressValue(0);
+		updateProgressBar();
+	}
+
+	/**
+	 * @return the currentAction
+	 */
+	private static String getCurrentAction() {
+		return currentAction;
+	}
+
+	/**
+	 * @return the title
+	 */
+	private static String getProgressTitle() {
+		return title;
+	}
+
+	private static int getProgressValue() {
+		return value;
+	}
+
+	public static int getValue() {
+		if (progressBar!=null) {
+			return progressBar.getSelection();
+		}
+		else
+			return 0;
+	}
+
+	/**
+	 * @param currentAction the currentAction to set
+	 */
+	private static void setCurrentAction(String currentAction) {
+		ProgressView.currentAction = currentAction;
+	}
+
 	public static void setProgress(boolean indeterminate, String title, String currentAction) {
 
 		//		progressBar.dispose();
@@ -87,12 +128,33 @@ public class ProgressView extends ViewPart {
 
 	}
 
-	public static void clearProgress() {
-		indeterminateThread.interrupt();
-		setProgressTitle("No operations to display at this time.");
-		setCurrentAction("");
-		setProgressValue(0);
+	public static void setProgress(int value) {
+		setProgressValue(value);
 		updateProgressBar();
+	}
+
+	public static void setProgress(int value, String currentAction) {
+		setProgressValue(value);
+		setCurrentAction(currentAction);
+		updateProgressBar();
+	}
+
+	public static void setProgress(int value, String title, String currentAction) {
+		setProgressValue(value);
+		setProgressTitle(title);
+		setCurrentAction(currentAction);
+
+		updateProgressBar();
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public static void setProgressTitle(String title) {
+		ProgressView.title = title;
+	}
+	private static void setProgressValue(int value) {
+		ProgressView.value = value;
 	}
 
 	public static void updateProgressBar() {
@@ -106,33 +168,6 @@ public class ProgressView extends ViewPart {
 			composite.update();
 			composite.redraw();
 		}
-	}
-
-	public static void setProgress(int value, String title, String currentAction) {
-		setProgressValue(value);
-		setProgressTitle(title);
-		setCurrentAction(currentAction);
-
-		updateProgressBar();
-	}
-
-	public static int getValue() {
-		if (progressBar!=null) {
-			return progressBar.getSelection();
-		}
-		else
-			return 0;
-	}
-
-	public static void setProgress(int value) {
-		setProgressValue(value);
-		updateProgressBar();
-	}
-
-	public static void setProgress(int value, String currentAction) {
-		setProgressValue(value);
-		setCurrentAction(currentAction);
-		updateProgressBar();
 	}
 
 	@Override
@@ -178,41 +213,6 @@ public class ProgressView extends ViewPart {
 
 	@Override
 	public void setFocus() {
-	}
-
-	private static int getProgressValue() {
-		return value;
-	}
-
-	private static void setProgressValue(int value) {
-		ProgressView.value = value;
-	}
-	/**
-	 * @return the title
-	 */
-	private static String getProgressTitle() {
-		return title;
-	}
-
-	/**
-	 * @param title the title to set
-	 */
-	public static void setProgressTitle(String title) {
-		ProgressView.title = title;
-	}
-
-	/**
-	 * @return the currentAction
-	 */
-	private static String getCurrentAction() {
-		return currentAction;
-	}
-
-	/**
-	 * @param currentAction the currentAction to set
-	 */
-	private static void setCurrentAction(String currentAction) {
-		ProgressView.currentAction = currentAction;
 	}
 
 }

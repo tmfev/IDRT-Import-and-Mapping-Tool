@@ -25,14 +25,14 @@ public class FileHandler {
 
 	}
 
-	public static String getTempFilePath(String filename){
-System.out.println(getBundleFile("/temp/").getAbsolutePath().replaceAll("\\\\", "/")+"/"+filename);
-		return getBundleFile("/temp/").getAbsolutePath().replaceAll("\\\\", "/")+"/"+filename;
-
-	}
 	public static String getCFGFilePath(String filename){
 
 		return getBundleFile("/cfg/").getAbsolutePath().replaceAll("\\\\", "/")+"/"+filename;
+
+	}
+	public static String getTempFilePath(String filename){
+System.out.println(getBundleFile("/temp/").getAbsolutePath().replaceAll("\\\\", "/")+"/"+filename);
+		return getBundleFile("/temp/").getAbsolutePath().replaceAll("\\\\", "/")+"/"+filename;
 
 	}
 

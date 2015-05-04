@@ -11,10 +11,6 @@ import java.util.Date;
 
 public class LogFile {
 
-	final String LOG_FILENAME = "iitlog";
-	final String LOG_FILENAME_TYPE = "txt";
-	public PrintWriter out = null;
-
 	public LogFile(String message) throws IOException {
 		File outputDir = new File("log");
 		File file = null;
@@ -50,5 +46,9 @@ public class LogFile {
 		}
 
 	}
+	final String LOG_FILENAME = "iitlog";
+	final String LOG_FILENAME_TYPE = "txt";
+
+	public PrintWriter out = null;
 
 }

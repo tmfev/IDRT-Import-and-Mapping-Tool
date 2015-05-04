@@ -184,24 +184,13 @@ public class OntologyEditorView extends ViewPart {
 //		transmartTree = new TransmartOntologyTree();
 	}
 
-	private static void createDirs(File mainPath) {
-		File misc = new File(mainPath.getAbsolutePath()+"/temp/");
-
-		if (!misc.exists()) 
-			misc.mkdir();
-
-		File miscInput = new File(mainPath.getAbsolutePath()+"/temp/output/");
-		if (!miscInput.exists()) 
-			miscInput.mkdir();
-	}
-
 	private static void addItem() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addItem");
 	}
+
 	private static void addNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.addNode");
 	}
-
 	public static void addVersionName(String name) {
 		boolean contains = false;
 		for (String item : versionCombo.getItems())
@@ -216,6 +205,12 @@ public class OntologyEditorView extends ViewPart {
 		}
 
 	}
+
+	private static void clearSearch(OntologyTreeNodeList nodeLists, TreeViewer treeViewer) {
+		for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
+			node.setSearchResult(false);
+		}
+	}
 	public static void clearTargetName(){
 		lblTargetName.setText("Drop i2b2 target here!");
 		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
@@ -229,6 +224,17 @@ public class OntologyEditorView extends ViewPart {
 					targetTreeViewer.setExpandedState((OntologyTreeNode)node2, state);
 		}
 	}
+	private static void createDirs(File mainPath) {
+		File misc = new File(mainPath.getAbsolutePath()+"/temp/");
+
+		if (!misc.exists()) 
+			misc.mkdir();
+
+		File miscInput = new File(mainPath.getAbsolutePath()+"/temp/output/");
+		if (!miscInput.exists()) 
+			miscInput.mkdir();
+	}
+
 	private static void deleteNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.deletenode");
 	}
@@ -239,10 +245,10 @@ public class OntologyEditorView extends ViewPart {
 	public static OntologyTreeNode getCurrentStagingNode() {
 		return currentStagingNode;
 	}
-
 	public static OntologyTreeNode getCurrentTargetNode() {
 		return currentTargetNode;
 	}
+
 	public static TargetInstance getInstance() {
 		return getTargetInstance().getSelectedTargetInstance();
 	}
@@ -261,17 +267,17 @@ public class OntologyEditorView extends ViewPart {
 		else 
 			return null;
 	}
-
 	public static String getStagingSchemaName() {
 		return sourceSchema;
 	}
+
 	public static Server getStagingServer() {
 		return currentStagingServer;
 	}
-
 	public static TreeViewer getStagingTreeViewer() {
 		return stagingTreeViewer;
 	}
+
 	/**
 	 * 
 	 */
@@ -300,6 +306,10 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static TreeViewerColumn getTargetTreeViewerColumn() {
 		return targetColumn;
+	}
+
+	public static TransmartOntologyTree getTransmartTree() {
+		return transmartTree;
 	}
 
 	private static void hideNode() {
@@ -574,10 +584,6 @@ public class OntologyEditorView extends ViewPart {
 		searchText.setToolTipText("Search");
 		searchText.addKeyListener(new KeyListener() {
 			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-
-			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.CR){
 					Display.getCurrent().asyncExec(new Runnable() {
@@ -590,6 +596,10 @@ public class OntologyEditorView extends ViewPart {
 						}
 					});
 				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
 			}
 		});
 		searchText.addModifyListener(new ModifyListener() {
@@ -640,10 +650,6 @@ public class OntologyEditorView extends ViewPart {
 		searchTextTarget.addKeyListener(new KeyListener() {
 
 			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-
-			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.CR){
 					Display.getCurrent().asyncExec(new Runnable() {
@@ -656,6 +662,10 @@ public class OntologyEditorView extends ViewPart {
 						}
 					});
 				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
 			}
 		});
 		searchTextTarget.addModifyListener(new ModifyListener() {
@@ -769,18 +779,6 @@ public class OntologyEditorView extends ViewPart {
 			protected Object getValue(Object element) {
 				return ((OntologyTreeNode) element).getName();
 			}
-			protected void setValue(Object element, Object value) {
-				String newName = (String)value;
-				OntologyTreeNode treeNode = ((OntologyTreeNode) element);
-				if (!treeNode.isModifier())
-					setPath(treeNode, newName, treeNode.getTreePathLevel());
-				treeNode.getTargetNodeAttributes().setName(newName);
-				treeNode.setName(newName);
-				treeNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,newName);
-				targetTreeViewer.update(element, null);
-				setNotYetSaved(true);
-				EditorTargetInfoView.refresh();
-			}
 			protected void setPath(OntologyTreeNode treeNode, String value, int hlevel){
 				if (treeNode.isCustomNode()){
 					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
@@ -811,7 +809,6 @@ public class OntologyEditorView extends ViewPart {
 					setPathChildren(child, value, hlevel, treeNode.getTreePath());
 				}
 			}
-
 			protected void setPathChildren(OntologyTreeNode treeNode, String value, int hlevel, String applied_path){
 				if (treeNode.isCustomNode()){
 					String[] baseSplit = treeNode.getTargetNodeAttributes().getC_Basecode().split("\\|");
@@ -841,6 +838,19 @@ public class OntologyEditorView extends ViewPart {
 				for (OntologyTreeNode child : treeNode.getChildren()){
 					setPathChildren(child, value, hlevel, applied_path);
 				}
+			}
+
+			protected void setValue(Object element, Object value) {
+				String newName = (String)value;
+				OntologyTreeNode treeNode = ((OntologyTreeNode) element);
+				if (!treeNode.isModifier())
+					setPath(treeNode, newName, treeNode.getTreePathLevel());
+				treeNode.getTargetNodeAttributes().setName(newName);
+				treeNode.setName(newName);
+				treeNode.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_TOOLTIP,newName);
+				targetTreeViewer.update(element, null);
+				setNotYetSaved(true);
+				EditorTargetInfoView.refresh();
 			}
 		});
 
@@ -912,7 +922,6 @@ public class OntologyEditorView extends ViewPart {
 					
 					setCurrentStagingNode(node);
 					if (node != null) {
-						System.out.println("node treepath: "+ node.getTreePath());
 						EditorStagingInfoView.setNode(node);
 					} else {
 						StatusView
@@ -1362,6 +1371,130 @@ public class OntologyEditorView extends ViewPart {
 		}
 	}
 
+	private static void moveNodeDown(){
+		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
+		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
+				.getSelection();
+	
+		List<MutableTreeNode> nodeList = selection.toList();
+	
+		for (int i = nodeList.size()-1;i>=0;i--){
+			MutableTreeNode mNode = nodeList.get(i);
+			if ( mNode instanceof OntologyTreeNode) {
+				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				OntologyTreeNode parent = node.getParent();
+	
+				int max = parent.getChildren().size();
+				int leading = 2;
+				int zeros = max/10;
+				while(zeros>1){
+					zeros=zeros/10;
+					leading++;
+				}
+				boolean isSorted = false;
+				if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
+					boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
+					if (cont){
+						sortNode(parent);
+						isSorted=true;
+					}
+				}
+				else 
+					isSorted=true;
+	
+				if (isSorted){
+					//find next item
+					String nodeNumber = node.getName().substring(0,leading);
+					int nextNumber = Integer.parseInt(nodeNumber)+1;
+					if (nextNumber<=parent.getChildren().size()){
+						for (OntologyTreeNode neighbors : parent.getChildren()){
+							String name = neighbors.getName();
+	
+							if (name.startsWith(String.format("%0"+leading+"d", nextNumber))){
+								//got previous item
+								String newName;
+								newName = name.substring(leading, name.length()).trim();
+								newName=""+String.format("%0"+leading+"d", nextNumber-1)+" " +newName;
+								neighbors.setName(newName);
+								neighbors.getTargetNodeAttributes().setName(newName);
+								newName = node.getName().substring(leading, node.getName().length()).trim();
+								newName=""+String.format("%0"+leading+"d", nextNumber)+" " +newName;
+								node.setName(newName);
+								node.getTargetNodeAttributes().setName(newName);
+								break;
+							}
+						}
+						targetTreeViewer.refresh();
+					}
+					else 
+						break;
+				}
+			}
+		}
+	}
+
+	private static void moveNodeUp(){
+		TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
+		IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
+				.getSelection();
+	
+		List<MutableTreeNode> nodeList = selection.toList();
+		for (int i = 0; i<nodeList.size();i++){
+			MutableTreeNode mNode = nodeList.get(i);
+			if ( mNode instanceof OntologyTreeNode) {
+				OntologyTreeNode node = (OntologyTreeNode) mNode;
+				OntologyTreeNode parent = node.getParent();
+	
+				int max = parent.getChildren().size();
+				int leading = 2;
+				int zeros = max/10;
+				while(zeros>1){
+					zeros=zeros/10;
+					leading++;
+				}
+				boolean isSorted = false;
+				if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
+					boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
+					if (cont){
+						sortNode(parent);
+						isSorted=true;
+					}
+				}
+				else 
+					isSorted=true;
+	
+				if (isSorted){
+					//find next item
+					String nodeNumber = node.getName().substring(0,leading);
+					int prevNumber = Integer.parseInt(nodeNumber)-1;
+					if (prevNumber>0){
+						for (OntologyTreeNode neighbors : parent.getChildren()){
+							String name = neighbors.getName();
+	
+							if (name.startsWith(String.format("%0"+leading+"d", prevNumber))){
+								//got previous item
+								String newName;
+								newName = name.substring(leading, name.length()).trim();
+								newName=""+String.format("%0"+leading+"d", prevNumber+1)+" " +newName;
+								neighbors.setName(newName);
+								neighbors.getTargetNodeAttributes().setName(newName);
+								newName = node.getName().substring(leading, node.getName().length()).trim();
+								newName=""+String.format("%0"+leading+"d", prevNumber)+" " +newName;
+								node.setName(newName);
+								node.getTargetNodeAttributes().setName(newName);
+								break;
+							}
+						}
+						targetTreeViewer.refresh();
+					}
+					else 
+						break;
+	
+				}
+			}
+		}
+	}
+
 	public static void refreshTargetName() {
 		if(lblTargetName != null) {
 			if (getTargetInstance().getSelectedTarget() != null && !getTargetInstance().getSelectedTarget().getTargetDBSchema().isEmpty()) {
@@ -1404,7 +1537,6 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't refresh the version number");
 		}
 	}
-
 	public static void removeVersionFromCombo(String version) {
 		if ( versionCombo != null ){
 			System.out.println("VERSION: " + version + " / oldSelectedVersion:" + getTargetInstance().getPreviousSelectedVersion().getVersion());
@@ -1414,15 +1546,8 @@ public class OntologyEditorView extends ViewPart {
 			Console.error("versionCombo is null, so don't remove an entry from it");
 		}
 	}
-
 	private static void renameNode() {
 		Application.executeCommand("de.umg.mi.idrt.ioe.renameNode");
-	}
-
-	private static void clearSearch(OntologyTreeNodeList nodeLists, TreeViewer treeViewer) {
-		for (OntologyTreeNode node : nodeLists.getStringPathToNode().values()){
-			node.setSearchResult(false);
-		}
 	}
 
 	private static void searchNode(OntologyTreeNodeList nodeLists, String text, OntologyTreeNode rootNode, TreeViewer treeViewer) {
@@ -1444,12 +1569,14 @@ public class OntologyEditorView extends ViewPart {
 			}
 		}
 	}
+
 	/**
 	 * @param column the column to set
 	 */
 	public static void setColumn(TreeViewerColumn column) {
 		OntologyEditorView.targetColumn = column;
 	}
+
 	/**
 	 * @param currentStagingNode the currentStagingNode to set
 	 */
@@ -1459,12 +1586,6 @@ public class OntologyEditorView extends ViewPart {
 
 	public static void setCurrentTargetNode(OntologyTreeNode node) {
 		currentTargetNode = node;
-	}
-
-	public static void setTargetInstance(String name, String description) {
-		instanceName.setText(name);
-		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setName(name);
-		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setDescription(description);
 	}
 
 	public static void setMyOntologyTree (MyOntologyTrees myOT){
@@ -1511,6 +1632,10 @@ public class OntologyEditorView extends ViewPart {
 		MenuItem deleteStudy = new MenuItem(menu, SWT.PUSH);
 		deleteStudy.setText("Delete Study");
 		deleteStudy.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+
 			//TODO
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -1534,10 +1659,6 @@ public class OntologyEditorView extends ViewPart {
 					}
 					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
 				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 		new MenuItem(menu, SWT.SEPARATOR);
@@ -1660,7 +1781,8 @@ public class OntologyEditorView extends ViewPart {
 	 */
 	public static void setStagingServer(Server currentServer2) {
 		currentStagingServer = new Server(currentServer2);
-	}
+	}	
+
 
 	public static void setTargetContent(OntologyTree oTTarget) {
 		targetTreeViewer.getTree().removeAll();
@@ -1993,32 +2115,6 @@ public class OntologyEditorView extends ViewPart {
 		refreshTargetVersionGUI();
 	}
 
-	public static void setTargetNameVersion(String version) {
-		addVersionName(version);
-		versionCombo.setText(version);
-		composite_2.layout();
-	}	
-
-
-	public static void setTargetNameVersion(String name, String version) {
-		System.out.println("SETTING: " + name + " " + version);
-		if (name != null) {
-			lblTargetName.setText(name);
-			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
-		}
-		else {
-			lblTargetName.setText("Drop i2b2 target here!");
-			lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		}
-
-		//		addVersionName(version);
-		//		versionCombo.setText(version);
-		//		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
-		getTargetInstance().getSelectedTarget().setTargetDBSchema(name);
-
-		composite_2.layout();
-	}
-
 	//	private static void unmarkAllNodes(OntologyTreeNode node) {
 	//
 	//		for (OntologyTreeNode child : node.getChildren()) 
@@ -2026,327 +2122,35 @@ public class OntologyEditorView extends ViewPart {
 	//		node.setSearchResult(false);
 	//	}
 
-	@Override
-	public void createPartControl(final Composite parent) {
-
-		Bundle bundle = Activator.getDefault().getBundle();
-		URL mainURL = FileLocator.find(bundle, new Path(""), null);
-		try {
-			URL mainFileUrl = FileLocator.toFileURL(mainURL);
-			File mainPath = new File(mainFileUrl.getPath());	
-			createDirs(mainPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			File folder = FileHandler.getBundleFile("/temp/output/");
-			File[] listOfFiles = folder.listFiles();
-
-			for (File listOfFile : listOfFiles) {
-				if (!listOfFile.getName().equals("ph") ) { 
-					listOfFile.delete();
-				}
-			}
-
-			folder = FileHandler.getBundleFile("/temp/");
-			listOfFiles = folder.listFiles();
-
-			for (File listOfFile : listOfFiles) {
-				if (!listOfFile.getName().equals("ph") ) { 
-					listOfFile.delete();
-				}
-			}
-
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		mainComposite = parent;
-		highlightedStagingNodes = new HashSet<OntologyTreeNode>();
-		highlightedTargetNodes = new HashSet<OntologyTreeNode>();
-		Label label = new Label(mainComposite, SWT.CENTER);
-		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
-				"images/idrt_01.png"));
-
-		TargetInstances targetProjects = new TargetInstances();
-
-		TargetInstance targetProject1 = new TargetInstance();
-		targetProject1.setTargetProjectID(1);
-		targetProject1.setName("TargetProject1Name");
-		targetProject1.setDescription("TargetProject1Desc");
-
-		TargetInstance targetProject2 = new TargetInstance();
-		targetProject2.setTargetProjectID(3);
-		targetProject2.setName("TargetProject2Name");
-		targetProject2.setDescription("TargetProject2Desc");
-
-		targetProjects.add(targetProject1);
-		targetProjects.add(targetProject2);
-		final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
-		final Transfer[] transferTypes = new Transfer[] { TextTransfer
-				.getInstance(), I2b2ProjectTransferType.getInstance()};
-
-		DropTarget dropTarget = new DropTarget(mainComposite, operations);
-		dropTarget.setTransfer(transferTypes);
-
-		dropListenerStaging = new DropTargetListener() {
-
-			@Override
-			public void dragEnter(DropTargetEvent event) {
-				System.out.println("drag enter");
-				System.out.println(event.toString());
-				System.out.println(event.data);
-			}
-
-			@Override
-			public void dragLeave(DropTargetEvent event) {
-			}
-
-			@Override
-			public void dragOperationChanged(DropTargetEvent event) {
-			}
-			@Override
-			public void dragOver(DropTargetEvent event) {
-			}
-			@Override
-			public void drop(final DropTargetEvent event) {
-				TOSHandler.setCounter(0);
-				System.out.println("???DROPPED! " + event.data);
-
-				if (event.data instanceof Server){
-					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
-				}
-				else if (event.data instanceof I2b2Project){
-					I2b2Project project = (I2b2Project) event.data;
-					if (OntologyEditorView.getOntologyTargetTree()!=null) {
-						OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
-						if (bla.getChildCount()>0 && isNotYetSaved()) {
-							boolean confirm = MessageDialog.openQuestion(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
-									"do you want to save it first?");
-							if (confirm)
-							{
-								Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
-							}
-						}
-					}
-					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
-					setTargetNameVersion(getLatestVersion(project.getName()));
-			}
-
-			//				TreeViewer targetTreeViewer = ServerView.getSourceServerViewer();
-			//				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
-			//						.getSelection();
-			//				System.out.println(event.data);
-			//				
-			////				if (ServerList.isServer((String)event.data) ) {
-			//				if (selection.getFirstElement() instanceof Server){
-			//					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
-			//				}
-			//				else if (((String)(event.data)).startsWith("\\i2b2")) {
-			//					//do nothing
-			//				}
-			//				else if (((String)(event.data)).equals("stagingTreeViewer")) {
-			//					System.err.println("staging node dropped");
-			//				}
-			//				else {
-			//					if (OntologyEditorView.getOntologyTargetTree()!=null) {
-			//						OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
-			//						if (bla.getChildCount()>0 && isNotYetSaved()) {
-			//							boolean confirm = MessageDialog.openQuestion(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
-			//									"do you want to save it first?");
-			//							if (confirm)
-			//							{
-			//								Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
-			//							}
-			//						}
-			//					}
-			//					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
-			//					setTargetNameVersion(getLatestVersion((String)(event.data)));
-			//				}
-		}
-		@Override
-		public void dropAccept(DropTargetEvent event) {
-		}
-	};
-	dropTarget.addDropListener(dropListenerStaging);
-
-	dropListenerTarget = new DropTargetListener() {
-
-		@Override
-		public void dragEnter(DropTargetEvent event) {
-		}
-
-		@Override
-		public void dragLeave(DropTargetEvent event) {
-		}
-
-		@Override
-		public void dragOperationChanged(DropTargetEvent event) {
-		}
-		@Override
-		public void dragOver(DropTargetEvent event) {
-		}
-		@Override
-		public void drop(DropTargetEvent event) {
-			System.out.println("!!!DROPPED! " + event.data);
-			if (event.data instanceof I2b2Project){
-				I2b2Project project = (I2b2Project)event.data;
-				setTargetNameVersion(project.getName(), getLatestVersion(project.getName()));
-				
-			}
-			
-//			if (ServerList.getTargetServers().containsKey(event.data) ) {
-//				MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
-//			}
-//			else if (((String)(event.data)).startsWith("\\i2b2")) {
-//				//do nothing
-//			}
-//			else {
-//				setTargetNameVersion((String)event.data, getLatestVersion((String)(event.data)));
-//			}
-		}
-		@Override
-		public void dropAccept(DropTargetEvent event) {
-		}
-	};
-}
-
-private String getLatestVersion(String string) {
-	if (  getTargetInstance().getSelectedTarget() != null ){ 
-		return String.valueOf( getTargetInstance().getSelectedTarget().getVersion() ) ;
-	} else {
-		return "0";
+	public static void setTargetInstance(String name, String description) {
+		instanceName.setText(name);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setName(name);
+		OntologyEditorView.getTargetInstance().getSelectedTargetInstance().setDescription(description);
 	}
+
+public static void setTargetNameVersion(String version) {
+	addVersionName(version);
+	versionCombo.setText(version);
+	composite_2.layout();
 }
-@Override
-public void setFocus() {
-}
-private static void moveNodeDown(){
-	TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-	IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
-			.getSelection();
-
-	List<MutableTreeNode> nodeList = selection.toList();
-
-	for (int i = nodeList.size()-1;i>=0;i--){
-		MutableTreeNode mNode = nodeList.get(i);
-		if ( mNode instanceof OntologyTreeNode) {
-			OntologyTreeNode node = (OntologyTreeNode) mNode;
-			OntologyTreeNode parent = node.getParent();
-
-			int max = parent.getChildren().size();
-			int leading = 2;
-			int zeros = max/10;
-			while(zeros>1){
-				zeros=zeros/10;
-				leading++;
-			}
-			boolean isSorted = false;
-			if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
-				boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
-				if (cont){
-					sortNode(parent);
-					isSorted=true;
-				}
-			}
-			else 
-				isSorted=true;
-
-			if (isSorted){
-				//find next item
-				String nodeNumber = node.getName().substring(0,leading);
-				int nextNumber = Integer.parseInt(nodeNumber)+1;
-				if (nextNumber<=parent.getChildren().size()){
-					for (OntologyTreeNode neighbors : parent.getChildren()){
-						String name = neighbors.getName();
-
-						if (name.startsWith(String.format("%0"+leading+"d", nextNumber))){
-							//got previous item
-							String newName;
-							newName = name.substring(leading, name.length()).trim();
-							newName=""+String.format("%0"+leading+"d", nextNumber-1)+" " +newName;
-							neighbors.setName(newName);
-							neighbors.getTargetNodeAttributes().setName(newName);
-							newName = node.getName().substring(leading, node.getName().length()).trim();
-							newName=""+String.format("%0"+leading+"d", nextNumber)+" " +newName;
-							node.setName(newName);
-							node.getTargetNodeAttributes().setName(newName);
-							break;
-						}
-					}
-					targetTreeViewer.refresh();
-				}
-				else 
-					break;
-			}
-		}
+public static void setTargetNameVersion(String name, String version) {
+	System.out.println("SETTING: " + name + " " + version);
+	if (name != null) {
+		lblTargetName.setText(name);
+		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 	}
-}
-
-private static void moveNodeUp(){
-	TreeViewer targetTreeViewer = OntologyEditorView.getTargetTreeViewer();
-	IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
-			.getSelection();
-
-	List<MutableTreeNode> nodeList = selection.toList();
-	for (int i = 0; i<nodeList.size();i++){
-		MutableTreeNode mNode = nodeList.get(i);
-		if ( mNode instanceof OntologyTreeNode) {
-			OntologyTreeNode node = (OntologyTreeNode) mNode;
-			OntologyTreeNode parent = node.getParent();
-
-			int max = parent.getChildren().size();
-			int leading = 2;
-			int zeros = max/10;
-			while(zeros>1){
-				zeros=zeros/10;
-				leading++;
-			}
-			boolean isSorted = false;
-			if (!node.getName().substring(0,leading).matches("[0-9]{"+leading+"}")){
-				boolean cont = MessageDialog.openConfirm(Application.getShell(), "Sort Items?", "You have to sort the items first!\nContinue?");
-				if (cont){
-					sortNode(parent);
-					isSorted=true;
-				}
-			}
-			else 
-				isSorted=true;
-
-			if (isSorted){
-				//find next item
-				String nodeNumber = node.getName().substring(0,leading);
-				int prevNumber = Integer.parseInt(nodeNumber)-1;
-				if (prevNumber>0){
-					for (OntologyTreeNode neighbors : parent.getChildren()){
-						String name = neighbors.getName();
-
-						if (name.startsWith(String.format("%0"+leading+"d", prevNumber))){
-							//got previous item
-							String newName;
-							newName = name.substring(leading, name.length()).trim();
-							newName=""+String.format("%0"+leading+"d", prevNumber+1)+" " +newName;
-							neighbors.setName(newName);
-							neighbors.getTargetNodeAttributes().setName(newName);
-							newName = node.getName().substring(leading, node.getName().length()).trim();
-							newName=""+String.format("%0"+leading+"d", prevNumber)+" " +newName;
-							node.setName(newName);
-							node.getTargetNodeAttributes().setName(newName);
-							break;
-						}
-					}
-					targetTreeViewer.refresh();
-				}
-				else 
-					break;
-
-			}
-		}
+	else {
+		lblTargetName.setText("Drop i2b2 target here!");
+		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 	}
-}
 
+	//		addVersionName(version);
+	//		versionCombo.setText(version);
+	//		System.out.println("Setting selectedTarget.setTargetDBSchema:" + name + "!");
+	getTargetInstance().getSelectedTarget().setTargetDBSchema(name);
+
+	composite_2.layout();
+}
 private static void sortNode(OntologyTreeNode node){
 	int counter = 1;
 	int max = node.getChildren().size();
@@ -2383,8 +2187,203 @@ private static void sortNode(OntologyTreeNode node){
 	targetTreeViewer.refresh();
 }
 
-public static TransmartOntologyTree getTransmartTree() {
-	return transmartTree;
+@Override
+public void createPartControl(final Composite parent) {
+
+	Bundle bundle = Activator.getDefault().getBundle();
+	URL mainURL = FileLocator.find(bundle, new Path(""), null);
+	try {
+		URL mainFileUrl = FileLocator.toFileURL(mainURL);
+		File mainPath = new File(mainFileUrl.getPath());	
+		createDirs(mainPath);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+
+	try {
+		File folder = FileHandler.getBundleFile("/temp/output/");
+		File[] listOfFiles = folder.listFiles();
+
+		for (File listOfFile : listOfFiles) {
+			if (!listOfFile.getName().equals("ph") ) { 
+				listOfFile.delete();
+			}
+		}
+
+		folder = FileHandler.getBundleFile("/temp/");
+		listOfFiles = folder.listFiles();
+
+		for (File listOfFile : listOfFiles) {
+			if (!listOfFile.getName().equals("ph") ) { 
+				listOfFile.delete();
+			}
+		}
+
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	mainComposite = parent;
+	highlightedStagingNodes = new HashSet<OntologyTreeNode>();
+	highlightedTargetNodes = new HashSet<OntologyTreeNode>();
+	Label label = new Label(mainComposite, SWT.CENTER);
+	label.setBackground(SWTResourceManager.getColor(255, 255, 255));
+	label.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.ioe",
+			"images/idrt_01.png"));
+
+	TargetInstances targetProjects = new TargetInstances();
+
+	TargetInstance targetProject1 = new TargetInstance();
+	targetProject1.setTargetProjectID(1);
+	targetProject1.setName("TargetProject1Name");
+	targetProject1.setDescription("TargetProject1Desc");
+
+	TargetInstance targetProject2 = new TargetInstance();
+	targetProject2.setTargetProjectID(3);
+	targetProject2.setName("TargetProject2Name");
+	targetProject2.setDescription("TargetProject2Desc");
+
+	targetProjects.add(targetProject1);
+	targetProjects.add(targetProject2);
+	final int operations = DND.DROP_COPY | DND.DROP_MOVE; //
+	final Transfer[] transferTypes = new Transfer[] { TextTransfer
+			.getInstance(), I2b2ProjectTransferType.getInstance()};
+
+	DropTarget dropTarget = new DropTarget(mainComposite, operations);
+	dropTarget.setTransfer(transferTypes);
+
+	dropListenerStaging = new DropTargetListener() {
+
+		@Override
+		public void dragEnter(DropTargetEvent event) {
+			System.out.println("drag enter");
+			System.out.println(event.toString());
+			System.out.println(event.data);
+		}
+
+		@Override
+		public void dragLeave(DropTargetEvent event) {
+		}
+
+		@Override
+		public void dragOperationChanged(DropTargetEvent event) {
+		}
+		@Override
+		public void dragOver(DropTargetEvent event) {
+		}
+		@Override
+		public void drop(final DropTargetEvent event) {
+			TOSHandler.setCounter(0);
+			System.out.println("???DROPPED! " + event.data);
+
+			if (event.data instanceof Server){
+				MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+			}
+			else if (event.data instanceof I2b2Project){
+				I2b2Project project = (I2b2Project) event.data;
+				if (OntologyEditorView.getOntologyTargetTree()!=null) {
+					OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
+					if (bla.getChildCount()>0 && isNotYetSaved()) {
+						boolean confirm = MessageDialog.openQuestion(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
+								"do you want to save it first?");
+						if (confirm)
+						{
+							Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
+						}
+					}
+				}
+				Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
+				setTargetNameVersion(getLatestVersion(project.getName()));
+		}
+
+		//				TreeViewer targetTreeViewer = ServerView.getSourceServerViewer();
+		//				IStructuredSelection selection = (IStructuredSelection) targetTreeViewer
+		//						.getSelection();
+		//				System.out.println(event.data);
+		//				
+		////				if (ServerList.isServer((String)event.data) ) {
+		//				if (selection.getFirstElement() instanceof Server){
+		//					MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+		//				}
+		//				else if (((String)(event.data)).startsWith("\\i2b2")) {
+		//					//do nothing
+		//				}
+		//				else if (((String)(event.data)).equals("stagingTreeViewer")) {
+		//					System.err.println("staging node dropped");
+		//				}
+		//				else {
+		//					if (OntologyEditorView.getOntologyTargetTree()!=null) {
+		//						OntologyTreeNode bla = OntologyEditorView.getOntologyTargetTree().getI2B2RootNode();
+		//						if (bla.getChildCount()>0 && isNotYetSaved()) {
+		//							boolean confirm = MessageDialog.openQuestion(Application.getShell(), "Target not saved!","The target tree has not been saved,\n" +
+		//									"do you want to save it first?");
+		//							if (confirm)
+		//							{
+		//								Application.executeCommand("de.umg.mi.idrt.ioe.SaveTarget");
+		//							}
+		//						}
+		//					}
+		//					Application.executeCommand("edu.goettingen.i2b2.importtool.OntologyEditorLoad");
+		//					setTargetNameVersion(getLatestVersion((String)(event.data)));
+		//				}
+	}
+	@Override
+	public void dropAccept(DropTargetEvent event) {
+	}
+};
+dropTarget.addDropListener(dropListenerStaging);
+
+dropListenerTarget = new DropTargetListener() {
+
+	@Override
+	public void dragEnter(DropTargetEvent event) {
+	}
+
+	@Override
+	public void dragLeave(DropTargetEvent event) {
+	}
+
+	@Override
+	public void dragOperationChanged(DropTargetEvent event) {
+	}
+	@Override
+	public void dragOver(DropTargetEvent event) {
+	}
+	@Override
+	public void drop(DropTargetEvent event) {
+		System.out.println("!!!DROPPED! " + event.data);
+		if (event.data instanceof I2b2Project){
+			I2b2Project project = (I2b2Project)event.data;
+			setTargetNameVersion(project.getName(), getLatestVersion(project.getName()));
+			
+		}
+		
+//			if (ServerList.getTargetServers().containsKey(event.data) ) {
+//				MessageDialog.openError(Application.getShell(), "Error", "You cannot drop this item here!");
+//			}
+//			else if (((String)(event.data)).startsWith("\\i2b2")) {
+//				//do nothing
+//			}
+//			else {
+//				setTargetNameVersion((String)event.data, getLatestVersion((String)(event.data)));
+//			}
+	}
+	@Override
+	public void dropAccept(DropTargetEvent event) {
+	}
+};
+}
+
+private String getLatestVersion(String string) {
+	if (  getTargetInstance().getSelectedTarget() != null ){ 
+		return String.valueOf( getTargetInstance().getSelectedTarget().getVersion() ) ;
+	} else {
+		return "0";
+	}
+}
+
+@Override
+public void setFocus() {
 }
 
 }

@@ -15,6 +15,11 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 
 	@Override
+	public String getInitialWindowPerspectiveId() {
+		return PERSPECTIVE_ID;
+	}
+
+	@Override
 	public void initialize(IWorkbenchConfigurer configurer) {
 		super.initialize(configurer);
 		configurer.setSaveAndRestore(true);
@@ -22,10 +27,5 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	@Override
 	public void preStartup() {
-	}
-
-	@Override
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
 	}
 }

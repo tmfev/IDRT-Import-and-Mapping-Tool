@@ -23,6 +23,10 @@ public class ReadTarget extends AbstractHandler {
 
 	public static Thread readTargetOntThread;
 	
+	public ReadTarget(){
+		super();
+	}
+	
 	public static Thread getReadTargetOntThread() {
 		return readTargetOntThread;
 	}
@@ -32,12 +36,8 @@ public class ReadTarget extends AbstractHandler {
 		readTargetOntThread.stop();
 		System.out.println("killed");
 	}
-	
-	private ExecutionEvent _event;
 
-	public ReadTarget(){
-		super();
-	}
+	private ExecutionEvent _event;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

@@ -18,8 +18,6 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
  *         www.mi.med.uni-goettingen.de
  */
 public class ExportDB {
-
-	
 	
 	private static Connection connect = null;
 	private static Statement statement = null;

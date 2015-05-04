@@ -46,13 +46,7 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 		}
 	}
 
-	/**
-	 * Execute the command.
-	 */
-	public Object execute(ExecutionEvent event) {
-		doExecuteAndLoad();
-		return null;
-	}
+	protected abstract void doExecute(LoadMetadataRepositoryJob job);
 
 	void doExecuteAndLoad() {
 		if (preloadRepositories()) {
@@ -88,18 +82,12 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 		}
 	}
 
-	protected abstract void doExecute(LoadMetadataRepositoryJob job);
-
-	protected boolean preloadRepositories() {
-		return true;
-	}
-
-	protected boolean waitForPreload() {
-		return true;
-	}
-
-	protected void setLoadJobProperties(Job loadJob) {
-		loadJob.setProperty(LoadMetadataRepositoryJob.ACCUMULATE_LOAD_ERRORS, Boolean.toString(true));
+	/**
+	 * Execute the command.
+	 */
+	public Object execute(ExecutionEvent event) {
+		doExecuteAndLoad();
+		return null;
 	}
 
 	protected ProvisioningUI getProvisioningUI() {
@@ -112,5 +100,17 @@ abstract class PreloadingRepositoryHandler extends AbstractHandler {
 	 */
 	protected Shell getShell() {
 		return PlatformUI.getWorkbench().getModalDialogShellProvider().getShell();
+	}
+
+	protected boolean preloadRepositories() {
+		return true;
+	}
+
+	protected void setLoadJobProperties(Job loadJob) {
+		loadJob.setProperty(LoadMetadataRepositoryJob.ACCUMULATE_LOAD_ERRORS, Boolean.toString(true));
+	}
+
+	protected boolean waitForPreload() {
+		return true;
 	}
 }

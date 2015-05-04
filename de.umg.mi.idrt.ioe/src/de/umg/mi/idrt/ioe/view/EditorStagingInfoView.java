@@ -55,28 +55,6 @@ public class EditorStagingInfoView extends ViewPart {
 	}
 
 
-	@Override
-	public void createPartControl(Composite parent) {
-
-		_parent = parent;
-		parent.setLayout(new GridLayout(1, false));
-
-		//createInfoGroup();
-
-		_editorComposite = new Composite(parent, SWT.NONE);
-		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		_editorComposite.setLayout(new FillLayout(SWT.VERTICAL));
-		
-
-		createTable();
-		
-		//item.setImage (image);
-
-		parentPane = parent.getParent();
-	}
-	
-	
-	
 	private static void createTable() {
 		
 		if (_infoTable != null)
@@ -124,6 +102,8 @@ public class EditorStagingInfoView extends ViewPart {
 		
 
 	}
+	
+	
 	
 	public static void executeRefresh(){
 		
@@ -184,16 +164,41 @@ public class EditorStagingInfoView extends ViewPart {
 		_parent.layout();
 	}
 	
-//	public Resource getResource(){
-//		return this._resource;
-//	}
-	
 	public static void refresh(){
 		new Thread(new Runnable() {
 		    public void run(){
 		    	executeRefresh();
 		    }
 		  }).run();
+	}
+	
+//	public Resource getResource(){
+//		return this._resource;
+//	}
+	
+	public static void setNode(OntologyTreeNode node){
+		_node = node;
+		refresh();
+	}
+	
+	@Override
+	public void createPartControl(Composite parent) {
+
+		_parent = parent;
+		parent.setLayout(new GridLayout(1, false));
+
+		//createInfoGroup();
+
+		_editorComposite = new Composite(parent, SWT.NONE);
+		_editorComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		_editorComposite.setLayout(new FillLayout(SWT.VERTICAL));
+		
+
+		createTable();
+		
+		//item.setImage (image);
+
+		parentPane = parent.getParent();
 	}
 	
 	public void setComposite(Composite pane){
@@ -207,11 +212,6 @@ public class EditorStagingInfoView extends ViewPart {
 	@Override
 	public void setFocus() {
 
-	}
-	
-	public static void setNode(OntologyTreeNode node){
-		_node = node;
-		refresh();
 	}
 
 //	public void setResource(Resource resource){

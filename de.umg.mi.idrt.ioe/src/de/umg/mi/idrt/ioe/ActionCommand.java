@@ -19,13 +19,6 @@ import org.eclipse.ui.commands.ICommandService;
 
 public class ActionCommand {
 
-	private String _commandID = "";
-	private Map<String, Object> _params = new HashMap<String, Object>();
-
-	public ActionCommand(String commandID) {
-		_commandID = commandID;
-	}
-
 	public ActionCommand(ExecutionEvent event) {
 		Map<String, String> parameters = event.getParameters();
 		Iterator<String> parametersIterator = parameters.keySet().iterator();
@@ -36,12 +29,13 @@ public class ActionCommand {
 					checkParameter(parameters.get(parameterKey)));
 		}
 	}
-
-	public void addParameter(String id, Object value) {
-		System.out
-				.println("addingParamter " + id + ":" + String.valueOf(value));
-		_params.put(id, value);
+	public ActionCommand(String commandID) {
+		_commandID = commandID;
 	}
+
+	private String _commandID = "";
+
+	private Map<String, Object> _params = new HashMap<String, Object>();
 
 	public void addParameter(String id, boolean value) {
 
@@ -52,45 +46,10 @@ public class ActionCommand {
 		_params.put(id, String.valueOf(value));
 	}
 
-	public ParameterizedCommand getParameterizedCommand() {
-		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
-				.getWorkbench().getActiveWorkbenchWindow();
-
-		if (activeWorkbenchWindow != null) {
-			ICommandService commandService = (ICommandService) activeWorkbenchWindow
-					.getService(ICommandService.class);
-			if (commandService != null) {
-				ParameterizedCommand parameterizedCommand = ParameterizedCommand
-						.generateCommand(commandService.getCommand(_commandID),
-								_params);
-				return parameterizedCommand;
-			}
-		}
-		return null;
-	}
-
-	public ParameterizedCommand getCommand() {
-		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
-				.getWorkbench().getActiveWorkbenchWindow();
-
-		
-		if (activeWorkbenchWindow != null) {
-
-			ICommandService commandService = (ICommandService) activeWorkbenchWindow
-					.getService(ICommandService.class);
-
-
-			if (commandService != null) {
-
-
-				// commandService.
-				ParameterizedCommand parameterizedCommand = ParameterizedCommand
-						.generateCommand(commandService.getCommand(_commandID),
-								_params);
-				return parameterizedCommand;
-			}
-		}
-		return null;
+	public void addParameter(String id, Object value) {
+		System.out
+				.println("addingParamter " + id + ":" + String.valueOf(value));
+		_params.put(id, value);
 	}
 
 	public Object checkParameter(String value) {
@@ -112,15 +71,6 @@ public class ActionCommand {
 		}
 
 		return value;
-	}
-
-	public Map<String, Object> getParameters() {
-		return _params;
-	}
-
-	public Object getParameter(String key) {
-
-		return _params.get(key);
 	}
 
 	public Boolean getBoolean(String key) {
@@ -149,6 +99,34 @@ public class ActionCommand {
 
 	}
 
+	public ParameterizedCommand getCommand() {
+		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
+				.getWorkbench().getActiveWorkbenchWindow();
+
+		
+		if (activeWorkbenchWindow != null) {
+
+			ICommandService commandService = (ICommandService) activeWorkbenchWindow
+					.getService(ICommandService.class);
+
+
+			if (commandService != null) {
+
+
+				// commandService.
+				ParameterizedCommand parameterizedCommand = ParameterizedCommand
+						.generateCommand(commandService.getCommand(_commandID),
+								_params);
+				return parameterizedCommand;
+			}
+		}
+		return null;
+	}
+
+	public String getCommandID() {
+		return _commandID;
+	}
+
 	public int getInteger(String key) {
 
 		// check if parameter is really there
@@ -169,6 +147,32 @@ public class ActionCommand {
 		return 0;
 	}
 
+	public Object getParameter(String key) {
+
+		return _params.get(key);
+	}
+
+	public ParameterizedCommand getParameterizedCommand() {
+		IWorkbenchWindow activeWorkbenchWindow = Activator.getDefault()
+				.getWorkbench().getActiveWorkbenchWindow();
+
+		if (activeWorkbenchWindow != null) {
+			ICommandService commandService = (ICommandService) activeWorkbenchWindow
+					.getService(ICommandService.class);
+			if (commandService != null) {
+				ParameterizedCommand parameterizedCommand = ParameterizedCommand
+						.generateCommand(commandService.getCommand(_commandID),
+								_params);
+				return parameterizedCommand;
+			}
+		}
+		return null;
+	}
+
+	public Map<String, Object> getParameters() {
+		return _params;
+	}
+
 	public String getString(String key) {
 
 		// check if parameter is really there
@@ -186,8 +190,8 @@ public class ActionCommand {
 		return "";
 	}
 
-	public String getCommandID() {
-		return _commandID;
+	public boolean hasParameters() {
+		return _params.size() > 0 ? true : false;
 	}
 
 	private boolean isNull(Object object) {
@@ -196,10 +200,6 @@ public class ActionCommand {
 			return true;
 		}
 		return false;
-	}
-
-	public boolean hasParameters() {
-		return _params.size() > 0 ? true : false;
 	}
 
 }

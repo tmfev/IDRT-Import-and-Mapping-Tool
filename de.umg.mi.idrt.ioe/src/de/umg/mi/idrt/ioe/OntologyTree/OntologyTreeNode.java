@@ -519,7 +519,7 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 			//		} else if (getTreePath() == null) {
 		} else {
 			if (!this.isModifier()){
-				System.out.println("ADDING I2b2?");
+//				System.out.println("ADDING I2b2?");
 				this.setTreePath(((OntologyTreeNode) parent).getTreePath()
 						+ this.id + "\\");
 				this.setTreePathLevel(((OntologyTreeNode) parent)

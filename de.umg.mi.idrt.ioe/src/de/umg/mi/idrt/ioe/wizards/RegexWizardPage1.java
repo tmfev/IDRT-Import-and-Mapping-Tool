@@ -39,17 +39,17 @@ import org.eclipse.swt.layout.GridLayout;
  *         www.mi.med.uni-goettingen.de
  */
 public class RegexWizardPage1 extends WizardPage {
-	private TableColumn column_1;
-	private TableColumn column_2;
-	private TableViewer viewer;
-	private Map<Object, Button> buttons;
-	private List<Regex> regexs;
-
 	public RegexWizardPage1() {
 		super("Edit Regular Expressions");
 		setTitle("Edit Regular Expressions");
 		setDescription("Edit Regular Expressions");
 	}
+	private TableColumn column_1;
+	private TableColumn column_2;
+	private TableViewer viewer;
+	private Map<Object, Button> buttons;
+
+	private List<Regex> regexs;
 
 	@Override
 	public void createControl(Composite parent) {
@@ -73,13 +73,13 @@ public class RegexWizardPage1 extends WizardPage {
 		button_1.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-				CombineNodesCommand.addRegEx(new Regex("new","new","c_basecode"));
-				setInput();
+			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent e) {
+				CombineNodesCommand.addRegEx(new Regex("new","new","c_basecode"));
+				setInput();
 			}
 		});
 		Composite composite_1 = new Composite(comp, SWT.NONE);
@@ -222,15 +222,15 @@ public class RegexWizardPage1 extends WizardPage {
 					button.addSelectionListener(new SelectionListener() {
 
 						@Override
+						public void widgetDefaultSelected(SelectionEvent e) {
+						}
+
+						@Override
 						public void widgetSelected(SelectionEvent e) {
 							Regex regex = (Regex) button.getData();
 							CombineNodesCommand.removeRegex(regex);
 							button.dispose();
 							setInput();
-						}
-
-						@Override
-						public void widgetDefaultSelected(SelectionEvent e) {
 						}
 					});
 					buttons.put(cell.getElement(), button);

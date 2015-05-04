@@ -6,6 +6,24 @@ import org.eclipse.ui.IPerspectiveFactory;
 public class PerspectiveSimple implements IPerspectiveFactory {
 
 	/**
+	 * Add fast views to the perspective.
+	 */
+	private void addFastViews(IPageLayout layout) {
+	}
+
+	/**
+	 * Add perspective shortcuts to the perspective.
+	 */
+	private void addPerspectiveShortcuts(IPageLayout layout) {
+	}
+
+	/**
+	 * Add view shortcuts to the perspective.
+	 */
+	private void addViewShortcuts(IPageLayout layout) {
+	}
+
+	/**
 	 * Creates the initial layout for a page.
 	 */
 	public void createInitialLayout(IPageLayout layout) {
@@ -19,24 +37,6 @@ public class PerspectiveSimple implements IPerspectiveFactory {
 		addFastViews(layout);
 		addViewShortcuts(layout);
 		addPerspectiveShortcuts(layout);
-	}
-
-	/**
-	 * Add fast views to the perspective.
-	 */
-	private void addFastViews(IPageLayout layout) {
-	}
-
-	/**
-	 * Add view shortcuts to the perspective.
-	 */
-	private void addViewShortcuts(IPageLayout layout) {
-	}
-
-	/**
-	 * Add perspective shortcuts to the perspective.
-	 */
-	private void addPerspectiveShortcuts(IPageLayout layout) {
 	}
 
 }

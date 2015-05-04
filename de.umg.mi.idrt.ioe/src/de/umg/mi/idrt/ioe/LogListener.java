@@ -24,8 +24,6 @@ public class LogListener implements ILogListener {
 	private final static String ERROR_LOG_FILE = "iit_error";
 	private final static String ERROR_TIMESTAMP_FORMAT = "yyyyMMdd HH:mm:ss";
 
-	private File logFile = null;
-
 	public LogListener(){
 
 //		File outputDir = new File( LOG_DIRECTORY );
@@ -40,28 +38,6 @@ public class LogListener implements ILogListener {
 		logFile = FileHandler.getBundleFile("/"+LOG_DIRECTORY + "/" + ERROR_LOG_FILE + "." + FILENAME_EXTENSION);
 		try {
 			logFile.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void logging(IStatus status, String plugin) {
-		try {
-			DateFormat dateFormat = new SimpleDateFormat( ERROR_TIMESTAMP_FORMAT );
-			Date date = new Date();
-
-			BufferedWriter bos = new BufferedWriter( new FileWriter(logFile,true) );
-			StringBuffer str = new StringBuffer(plugin);
-			str.append( " - " + dateFormat.format(date) + ": ");
-			str.append( status.getMessage() );
-			String stackTrace = getStackTraceAsString( (Exception) status.getException() );
-			str.append( stackTrace );
-			str.append( "\n" );
-			bos.write( str.toString()  );
-			bos.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -89,5 +65,29 @@ public class LogListener implements ILogListener {
 					+ "Exception was " + ioe.toString());
 		}
 		return text;
+	}
+
+	private File logFile = null;
+
+	@Override
+	public void logging(IStatus status, String plugin) {
+		try {
+			DateFormat dateFormat = new SimpleDateFormat( ERROR_TIMESTAMP_FORMAT );
+			Date date = new Date();
+
+			BufferedWriter bos = new BufferedWriter( new FileWriter(logFile,true) );
+			StringBuffer str = new StringBuffer(plugin);
+			str.append( " - " + dateFormat.format(date) + ": ");
+			str.append( status.getMessage() );
+			String stackTrace = getStackTraceAsString( (Exception) status.getException() );
+			str.append( stackTrace );
+			str.append( "\n" );
+			bos.write( str.toString()  );
+			bos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

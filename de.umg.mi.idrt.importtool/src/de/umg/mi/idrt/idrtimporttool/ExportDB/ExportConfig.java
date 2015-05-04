@@ -8,15 +8,17 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
  *         www.mi.med.uni-goettingen.de
  */
 public class ExportConfig {
-	private Server server;
-	private String schema;
-	private String table;
 
 	public ExportConfig(Server server, String schema, String table) {
 		setServer(server);
 		setSchema(schema);
 		setTable(table);
 	}
+
+	private Server server;
+	private String schema;
+
+	private String table;
 
 	public String getSchema() {
 		return schema;

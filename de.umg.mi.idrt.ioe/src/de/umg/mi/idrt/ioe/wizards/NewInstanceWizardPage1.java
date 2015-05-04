@@ -20,15 +20,15 @@ import org.eclipse.swt.widgets.Text;
  *         www.mi.med.uni-goettingen.de
  */
 public class NewInstanceWizardPage1 extends WizardPage {
-	private Text nameText;
-	private Text descrText;
-	private Text dateText;
-
 	public NewInstanceWizardPage1() {
 		super("New Instance");
 		setTitle("New Instance");
 		setDescription("Create a new i2b2 Target Instance");
 	}
+	private Text nameText;
+	private Text descrText;
+
+	private Text dateText;
 
 	@Override
 	public void createControl(Composite parent) {

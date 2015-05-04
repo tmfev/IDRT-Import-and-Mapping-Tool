@@ -40,19 +40,42 @@ public class UploadProjectWizardPage2 extends WizardPage {
 	private static Button btnStop;
 	private static Button btnDrop;
 	
-	private Composite composite;
-
 	public UploadProjectWizardPage2() {
 		super("Upload Project");
 		setTitle("Upload Project");
 		setDescription("Please enter your settings.");
 	}
 
+	public static boolean getDropIndex(){
+		return btnDrop.getSelection();
+	}
+
+	public static boolean getSaveContext() {
+		return checkSaveSettings.getSelection();
+	}
+
+	public static boolean getStopIndex(){
+		return btnStop.getSelection();
+	}
+
+	public static boolean getTerms() {
+		return checkTerms.getSelection();
+	}
+	
+	public static boolean getTruncate() {
+		return checkTruncate.getSelection();
+	}
+
+	public static boolean getTruncateQueries() {
+		return checkTruncateQueries.getSelection();
+	}
+
+	private Composite composite;
+
 	@Override
 	public boolean canFlipToNextPage() {
 		return true;
 	}
-
 	@Override
 	public void createControl(final Composite parent) {
 		try{
@@ -114,31 +137,8 @@ public class UploadProjectWizardPage2 extends WizardPage {
 		e1.printStackTrace();
 	}
 	}
-
 	@Override
 	public IWizardPage getNextPage() {
 		return super.getNextPage();
-	}
-	
-	public static boolean getTruncateQueries() {
-		return checkTruncateQueries.getSelection();
-	}
-
-	public static boolean getSaveContext() {
-		return checkSaveSettings.getSelection();
-	}
-
-	public static boolean getTerms() {
-		return checkTerms.getSelection();
-	}
-
-	public static boolean getTruncate() {
-		return checkTruncate.getSelection();
-	}
-	public static boolean getDropIndex(){
-		return btnDrop.getSelection();
-	}
-	public static boolean getStopIndex(){
-		return btnStop.getSelection();
 	}
 }

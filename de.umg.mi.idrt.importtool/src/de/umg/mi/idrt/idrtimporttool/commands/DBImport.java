@@ -22,43 +22,40 @@ public class DBImport {
 	private static ResultSet rset;
 	private static Server server;
 
-	public static void exportData(Server server) {
-
-		try {
-			int count = rset.getMetaData().getColumnCount();
-			for (int i = 1; i <= count; i++) {
-//				System.out.print(rset.getMetaData().getColumnClassName(i));
-//				System.out.print(" | ");
-			}
-			for (int i = 1; i <= count; i++) {
-//				System.out.print(rset.getMetaData().getColumnName(i));
-//				System.out.print(" | ");
-			}
-
-			while (rset.next()) {
-
-				for (int i = 1; i <= count; i++) {
-//					System.out.print(rset.getString(i));
-//					System.out.print(" | ");
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	/**
+	 * Constructor
+	 * @param server
+	 */
+	public DBImport(Server server) {
+		DBImport.server = server;
+		connect();
 	}
 
 	public static ResultSet getRset() {
 		return rset;
 	}
 
-	public DBImport(Server server) {
-		DBImport.server = server;
-		connect();
-	}
-
 	public void connect() {
 		connect = server.getConnection();
+	}
+
+	/**
+	 * Retrieves coloumn names from db table
+	 * @return
+	 */
+	public String[] getColoumnNames() {
+		try {
+			int count = rset.getMetaData().getColumnCount();
+			String[] names = new String[count + 1];
+			names[0] = "Spaltenname (Pflicht)";
+			for (int i = 1; i <= count; i++) {
+				names[i] = rset.getMetaData().getColumnName(i);
+			}
+			return names;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public String[] getDataTypes() {
@@ -86,6 +83,9 @@ public class DBImport {
 		return null;
 	}
 
+	/**
+	 * Returns the resultset
+	 */
 	public void getResultSet() {
 		Statement stmt;
 		try {
@@ -98,23 +98,13 @@ public class DBImport {
 		}
 	}
 
-	public String[] getTableNames() {
-		try {
-			int count = rset.getMetaData().getColumnCount();
-			String[] names = new String[count + 1];
-			names[0] = "Spaltenname (Pflicht)";
-			for (int i = 1; i <= count; i++) {
-				names[i] = rset.getMetaData().getColumnName(i);
-			}
-			return names;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
+	/**
+	 * Writes data from exported db file
+	 * @param file
+	 * @param names
+	 * @param fileDelim
+	 */
 	public void writeData(File file, String[] names, char fileDelim) {
-
 		try {
 			CSVWriter dbOutput = new CSVWriter(new FileWriter(file), fileDelim);
 
@@ -128,14 +118,14 @@ public class DBImport {
 			dbOutput.writeNext(newNames);
 			while (rset.next()) {
 				for (int i = 1; i <= count; i++) {
-					if (rset.getMetaData().getColumnTypeName(i).toLowerCase()
-							.equals("date")) {
+					if (rset.getMetaData().getColumnTypeName(i)
+							.equalsIgnoreCase("date")) {
 						String date = rset.getDate(i).toString();
 						String[] dateSplit = date.split("-");
 						output[i - 1] = dateSplit[2] + "." + dateSplit[1] + "."
 								+ dateSplit[0];
 					} else if (rset.getMetaData().getColumnTypeName(i)
-							.toLowerCase().equals("number")) {
+							.equalsIgnoreCase("number")) {
 						output[i - 1] = rset.getString(i);
 					} else {
 						output[i - 1] = rset.getString(i);
@@ -153,6 +143,15 @@ public class DBImport {
 
 	}
 
+	/**
+	 * Writes Metadata file needed for import
+	 * @param file
+	 * @param names
+	 * @param types
+	 * @param niceNames
+	 * @param metaInfos
+	 * @param fileDelim
+	 */
 	public void writeMetaDataFile(File file, String[] names, String[] types,
 			String[] niceNames, String[] metaInfos, char fileDelim) {
 

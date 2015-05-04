@@ -393,6 +393,25 @@ public class SWTResourceManager {
 		return image;
 	}
 	/**
+	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
+	 * 
+	 * @param stream
+	 *            the {@link InputStream} encoding the image data
+	 * @return the {@link Image} encoded by the specified input stream
+	 */
+	protected static Image getImage(InputStream stream) throws IOException {
+		try {
+			Display display = Display.getCurrent();
+			ImageData data = new ImageData(stream);
+			if (data.transparentPixel > 0) {
+				return new Image(display, data, data.getTransparencyMask());
+			}
+			return new Image(display, data);
+		} finally {
+			stream.close();
+		}
+	}
+	/**
 	 * Returns an {@link Image} stored in the file at the specified path.
 	 * 
 	 * @param path
@@ -424,24 +443,5 @@ public class SWTResourceManager {
 		gc.dispose();
 		//
 		return image;
-	}
-	/**
-	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
-	 * 
-	 * @param stream
-	 *            the {@link InputStream} encoding the image data
-	 * @return the {@link Image} encoded by the specified input stream
-	 */
-	protected static Image getImage(InputStream stream) throws IOException {
-		try {
-			Display display = Display.getCurrent();
-			ImageData data = new ImageData(stream);
-			if (data.transparentPixel > 0) {
-				return new Image(display, data, data.getTransparencyMask());
-			}
-			return new Image(display, data);
-		} finally {
-			stream.close();
-		}
 	}
 }

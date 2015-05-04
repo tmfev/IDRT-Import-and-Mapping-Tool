@@ -17,67 +17,21 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.umg.mi.idrt.ioe"; //$NON-NLS-1$
     public static CloudPolicy policy;
-    ServiceRegistration policyRegistration;
-	IPropertyChangeListener preferenceListener;
-	// The shared instance
-	private static Activator plugin;
-
-	private Resource _resource;
-	
-//	private ILogListener listener;	
-	
-	/**
+    /**
 	 * The constructor
 	 */
 	public Activator() {
 		// create new resource for this program
 		
 	}
+	ServiceRegistration policyRegistration;
+	IPropertyChangeListener preferenceListener;
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-	 */
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		plugin = this;
-		registerP2Policy(context);
-		getPreferenceStore().addPropertyChangeListener(getPreferenceListener());
-	}
-	private IPropertyChangeListener getPreferenceListener() {
-		if (preferenceListener == null) {
-			preferenceListener = new IPropertyChangeListener() {
-				public void propertyChange(PropertyChangeEvent event) {
-					policy.updateForPreferences();
-				}
-			};
-		}
-		return preferenceListener;
-	}
-	private void registerP2Policy(BundleContext context) {
-		policy = new CloudPolicy();
-		policy.updateForPreferences();
-		policyRegistration = context.registerService(Policy.class.getName(), policy, null);
-	}
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-	 */
-	public void stop(BundleContext context) throws Exception {
-		
-		// removing local log file listener
-//		Platform.removeLogListener(listener);
-//	    listener = null;
-		
-		plugin = null;
-		policyRegistration.unregister();
-		policyRegistration = null;
-		getPreferenceStore().removePropertyChangeListener(preferenceListener);
-		preferenceListener = null;
-		super.stop(context);
-		
-	}
-
+	// The shared instance
+	private static Activator plugin;
+	
+//	private ILogListener listener;	
+	
 	/**
 	 * Returns the shared instance
 	 *
@@ -97,17 +51,63 @@ public class Activator extends AbstractUIPlugin {
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
-	
+	private Resource _resource;
 	public void createResource(){
 		this.setResource(new Resource());
+	}
+	private IPropertyChangeListener getPreferenceListener() {
+		if (preferenceListener == null) {
+			preferenceListener = new IPropertyChangeListener() {
+				public void propertyChange(PropertyChangeEvent event) {
+					policy.updateForPreferences();
+				}
+			};
+		}
+		return preferenceListener;
+	}
+
+	public Resource getResource(){
+		return this._resource;
+	}
+
+	private void registerP2Policy(BundleContext context) {
+		policy = new CloudPolicy();
+		policy.updateForPreferences();
+		policyRegistration = context.registerService(Policy.class.getName(), policy, null);
 	}
 	
 	public void setResource(Resource resource){
 		this._resource = resource;
 	}
 	
-	public Resource getResource(){
-		return this._resource;
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 */
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
+		plugin = this;
+		registerP2Policy(context);
+		getPreferenceStore().addPropertyChangeListener(getPreferenceListener());
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 */
+	public void stop(BundleContext context) throws Exception {
+		
+		// removing local log file listener
+//		Platform.removeLogListener(listener);
+//	    listener = null;
+		
+		plugin = null;
+		policyRegistration.unregister();
+		policyRegistration = null;
+		getPreferenceStore().removePropertyChangeListener(preferenceListener);
+		preferenceListener = null;
+		super.stop(context);
+		
 	}
 	
 }

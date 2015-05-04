@@ -45,10 +45,8 @@ import de.umg.mi.idrt.ioe.OntologyTree.TargetNodeAttributes;
  */
 
 public class EditorTargetInfoView extends ViewPart {
-	public EditorTargetInfoView() {
-	}
-
 	private static Composite parentPane;
+
 	private static MutableTreeNode node;
 	private static Composite _editorComposite;
 	private static Composite _parent;
@@ -56,6 +54,8 @@ public class EditorTargetInfoView extends ViewPart {
 	private static TableColumn infoTableDBColumn;
 	private static TableColumn infoTableValue;
 	private static TableColumn infoTableBtn;
+	public EditorTargetInfoView() {
+	}
 
 	private static TableItem addColumItem(String text, boolean grayed, final int row) {
 		final TableItem item = new TableItem(infoTable, SWT.NONE);
@@ -71,6 +71,9 @@ public class EditorTargetInfoView extends ViewPart {
 			button.addSelectionListener(new SelectionListener() {
 
 				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
 				/**
 		addColumItem(Resource.I2B2.NODE.TARGET.C_NAME,!grayed,row++); 0
 		addColumItem(Resource.I2B2.NODE.TARGET.C_TOOLTIP,!grayed,row++);1
@@ -119,9 +122,6 @@ public class EditorTargetInfoView extends ViewPart {
 							OntologyEditorView.getTargetTreeViewer().update(treeNode, null);
 						}
 					}
-				}
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 			});
 			button.pack();

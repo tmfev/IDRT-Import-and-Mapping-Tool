@@ -64,24 +64,6 @@ public class TOSHandler {
 		 */
 	}
 
-	public static void status(String status) {
-		Console.info("TOS: " + status);
-	}
-
-	public static void statusSuccess(String status) {
-		StatusView
-		.addMessage(
-				new SystemMessage(status, SystemMessage.MessageType.SUCCESS));
-
-	}
-
-	public static void statusError(String status) {
-		Console.error("TOS error:" + status);
-		StatusView
-		.addMessage(
-				new SystemMessage(status, SystemMessage.MessageType.ERROR));
-	}
-
 	public static void addi2b2OntologyItemToTree(final int C_HLEVEL,
 			final String C_FULLNAME,final String C_NAME,final String C_SYNONYM_CD,final
 			String C_VISUALATTRIBUTES,final int C_TOTALNUM,final String C_BASECODE,final
@@ -145,10 +127,14 @@ public class TOSHandler {
 		}
 	}
 
-	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,
-			String dimensionPath, String dimensionCD, String nameChar,
-			String dimensionBlob, Date updateDate, Date downloadDate,
-			Date importDate, String sourcesysteCD, String uploadID) {
+	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
+		TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
+
+		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
+		targetProjects.getSelectedTarget().setTargetID(targetID);
+		targetProjects.getSelectedTarget().setVersion(version);
+		targetProjects.getSelectedTargetInstance().setTargetProjectID(targetProjectID);
+
 	}
 
 	public static void addTargetOntologyItemToTree(
@@ -193,11 +179,6 @@ public class TOSHandler {
 		}
 	}
 
-	public void writeTargetOntology(int targetID, String treeNodePath,
-			int treeLevel, String sourceNodePath, int changed,
-			String startdateSourcePath, String enddateSourcePath) {
-	}
-
 	public static void  addTargetProjectToTargetProjects(int id,
 			String name, String description) {
 
@@ -233,22 +214,41 @@ public class TOSHandler {
 
 	}
 
-	public static void addIDsToSelectedTarget(int targetProjectID, int targetID, int version){		
-		TargetInstances targetProjects = OntologyEditorView.getTargetInstance();
-
-		targetProjects.getSelectedTarget().setTargetProjectID(targetProjectID);
-		targetProjects.getSelectedTarget().setTargetID(targetID);
-		targetProjects.getSelectedTarget().setVersion(version);
-		targetProjects.getSelectedTargetInstance().setTargetProjectID(targetProjectID);
-
-	}
-
 	public static int getCounter() {
 		return counter;
 	}
 
 	public static void setCounter(int counter) {
 		TOSHandler.counter = counter;
+	}
+
+	public static void status(String status) {
+		Console.info("TOS: " + status);
+	}
+
+	public static void statusError(String status) {
+		Console.error("TOS error:" + status);
+		StatusView
+		.addMessage(
+				new SystemMessage(status, SystemMessage.MessageType.ERROR));
+	}
+
+	public static void statusSuccess(String status) {
+		StatusView
+		.addMessage(
+				new SystemMessage(status, SystemMessage.MessageType.SUCCESS));
+
+	}
+
+	public void addi2b2ConceptDimensionItemToTree(boolean isConceptDimension,
+			String dimensionPath, String dimensionCD, String nameChar,
+			String dimensionBlob, Date updateDate, Date downloadDate,
+			Date importDate, String sourcesysteCD, String uploadID) {
+	}
+
+	public void writeTargetOntology(int targetID, String treeNodePath,
+			int treeLevel, String sourceNodePath, int changed,
+			String startdateSourcePath, String enddateSourcePath) {
 	}
 
 }
