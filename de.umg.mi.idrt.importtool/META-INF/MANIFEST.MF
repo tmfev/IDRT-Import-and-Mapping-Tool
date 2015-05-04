@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: IDRT Import Tool
 Bundle-SymbolicName: de.umg.mi.idrt.importtool;singleton:=true
-Bundle-Version: 2.0.2.qualifier
+Bundle-Version: 2.0.0.0
 Bundle-Activator: de.umg.mi.idrt.idrtimporttool.importidrt.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
