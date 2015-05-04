@@ -25,16 +25,6 @@ public class LogListener implements ILogListener {
 	private final static String ERROR_TIMESTAMP_FORMAT = "yyyyMMdd HH:mm:ss";
 
 	public LogListener(){
-
-//		File outputDir = new File( LOG_DIRECTORY );
-//		if (!outputDir.exists()) {
-//			try {
-//				outputDir.mkdir();
-//			} catch (SecurityException se) {
-//				System.err.println(se.toString());
-//			}
-//		}
-
 		logFile = FileHandler.getBundleFile("/"+LOG_DIRECTORY + "/" + ERROR_LOG_FILE + "." + FILENAME_EXTENSION);
 		try {
 			logFile.createNewFile();
@@ -44,7 +34,6 @@ public class LogListener implements ILogListener {
 	}
 
 	public static String getStackTraceAsString(Throwable exception){
-
 		String text = "";
 
 		try { 
