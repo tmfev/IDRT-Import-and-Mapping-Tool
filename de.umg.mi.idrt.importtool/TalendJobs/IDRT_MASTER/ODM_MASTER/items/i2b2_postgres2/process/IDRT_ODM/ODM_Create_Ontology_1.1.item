@@ -1558,7 +1558,7 @@
         <mapperTableEntries name="HLEVEL" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="m_applied_path" type="id_String" nullable="true"/>
       </inputTables>
-      <inputTables sizeState="INTERMEDIATE" name="fromItemNames" activateCondensedTool="true" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+      <inputTables sizeState="INTERMEDIATE" name="fromItemNames" activateCondensedTool="true" matchingMode="ALL_MATCHES" lookupMode="LOAD_ONCE" innerJoin="true">
         <mapperTableEntries name="ItemGroupOID" expression="fromItem.ItemOID " type="id_String" nullable="true" operator="="/>
         <mapperTableEntries name="Name" type="id_String" nullable="true"/>
         <mapperTableEntries name="TransText" type="id_String" nullable="true"/>
@@ -3361,7 +3361,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfcopyOfcopyOfout6_0_2" expressionFilter="!row38.m_applied_path.equalsIgnoreCase(&quot;yes&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="HLEVEL" expression="row38.HLEVEL" type="id_Integer" nullable="true"/>

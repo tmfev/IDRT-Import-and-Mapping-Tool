@@ -423,6 +423,8 @@ public class OntologyTreeNode extends DefaultMutableTreeNode implements Comparab
 	 *            the name of the node
 	 */
 	public void setName(String name) {
+		if (this.getTargetNodeAttributes()!=null)
+		this.getTargetNodeAttributes().setName(name);
 		this.name = name;
 	}
 

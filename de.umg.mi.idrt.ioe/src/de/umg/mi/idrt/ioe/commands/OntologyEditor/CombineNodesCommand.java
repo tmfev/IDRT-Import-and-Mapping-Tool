@@ -10,15 +10,18 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Application;
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.Dimension;
 import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 import de.umg.mi.idrt.ioe.OntologyTree.NodeDropListener;
 import de.umg.mi.idrt.ioe.OntologyTree.OntologyTreeNode;
+import de.umg.mi.idrt.ioe.Resource.I2B2.NODE.TYPE;
 import de.umg.mi.idrt.ioe.misc.Progress;
 import de.umg.mi.idrt.ioe.misc.Regex;
 import de.umg.mi.idrt.ioe.view.EditorTargetInfoView;
@@ -194,8 +197,6 @@ public class CombineNodesCommand extends AbstractHandler {
 			if (counter%(mod)==0 || counter==allRows){
 				StatusListener.setSubStatus((float)counter/allRows*100, (int)((float)counter/allRows*100)+"% " + "Merging: " + counter + "/"+allRows);
 				ProgressView.setProgress(counter/allRows*100, "Merging...", counter + "/"+allRows);
-
-
 				ProgressView.updateProgressBar();
 			}
 			boolean found = false;
@@ -230,16 +231,28 @@ public class CombineNodesCommand extends AbstractHandler {
 				numberOfNotFoundItems++;
 				if (numberOfNotFoundItems==1) {
 					unmatchedFolder = new OntologyTreeNode("Unmerged",true);
+					
+					unmatchedFolder.setType(TYPE.ONTOLOGY_TARGET);
+					unmatchedFolder.getTargetNodeAttributes().addStagingPath("");
+					unmatchedFolder.getTargetNodeAttributes().setDimension(Dimension.CONCEPT_DIMENSION);
+					unmatchedFolder.getTargetNodeAttributes().setVisualattributes("FAE");
+					unmatchedFolder.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.M_APPLIED_PATH, "@");
 					unmatchedFolder.setID("Unmerged");
+					unmatchedFolder.setName("Unmerged");
+//					unmatchedFolder.getOntologyCellAttributes().setC_NAME("Unmerged");
+					unmatchedFolder.setCustomNode(true);
 					((OntologyTreeNode)NodeDropListener.getTargetNode()).add(unmatchedFolder);
-					unmatchedFolder.getOntologyCellAttributes().setC_VISUALATTRIBUTES("FA");
-					unmatchedFolder.getTargetNodeAttributes().setVisualattributes("FA");
-					unmatchedFolder.setType(Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE);
 					unmatchedFolder.setTreeAttributes();
-					unmatchedFolder.setNodeType(null);
+					unmatchedFolder.getTargetNodeAttributes().getTargetNodeMap().put(Resource.I2B2.NODE.TARGET.C_BASECODE, unmatchedFolder.getTreePath().replaceAll("\\\\", "|").substring(0, unmatchedFolder.getTreePath().length()-1));
+					OntologyEditorView.getOntologyTargetTree().getNodeLists().add(unmatchedFolder);
 				}
 				oldNode.getTargetNodeAttributes().addStagingPath(perfectPath+oldNode.getID()+"\\");
 				unmatchedFolder.add(oldNode);
+				oldNode.setTreeAttributes();
+				
+//				unmatchedFolder.setTreeAttributes();
+				
+				
 				OntologyEditorView.getOntologyTargetTree().getNodeLists().add(oldNode);
 			}
 		}
@@ -247,7 +260,6 @@ public class CombineNodesCommand extends AbstractHandler {
 		if (numberOfNotFoundItems>0) {
 			ProgressView.setProgress(100,"Merging... (Finished)", numberOfNotFoundItems + " items not merged!");
 			MessageDialog.openConfirm(Application.getShell(), "Merging finished!", "Merging finished. " + numberOfNotFoundItems + " items not merged!\nSee \"Unmerged\" Folder!");
-
 		}
 		else {
 			ProgressView.setProgress(100,"Merging... (Finished)","OK");
