@@ -329,6 +329,11 @@ public class IDRTImport {
 	}
 
 	public static void runImportST_NoMap(Server server, String project) {
+		
+//		boolean confirm = 
+		
+		if (MessageDialog.openConfirm(Application.getShell(), "Import Standard Terminologies?", 
+				"Do you really want to import the standard terminologies?")){
 		StatusListener.startLogging();
 		ServerView.stdImportStarted = true;
 		HashMap<String, String> contextMap = new HashMap<String, String>();
@@ -382,14 +387,14 @@ public class IDRTImport {
 					@Override
 					public void run() {
 						if (exitCode == 0) {
-							StatusListener.setStatus(100f, "Import and Mapping done","");
+							StatusListener.setStatus(100f, "Import done","");
 							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openInformation(Application.getShell(),"Import and Mapping Complete!", "Import and Mapping Complete!");
+							MessageDialog.openInformation(Application.getShell(),"Import Complete!", "Import Complete!");
 							StatusListener.setStatus(0.0f, "","");
 							StatusListener.setSubStatus(0.0f, "");
 						}
 						else {
-							StatusListener.setStatus(100f, "Import and Mapping failed","");
+							StatusListener.setStatus(100f, "Import failed","");
 							StatusListener.setSubStatus(0.0f, "");
 							MessageDialog.openError(Application.getShell(), "Import failed!", "Import failed!");
 							StatusListener.setStatus(0.0f, "","");
@@ -400,6 +405,7 @@ public class IDRTImport {
 			}
 		});
 		workerThread.start();
+		}
 	}
 
 	public static int runMDRImport(){

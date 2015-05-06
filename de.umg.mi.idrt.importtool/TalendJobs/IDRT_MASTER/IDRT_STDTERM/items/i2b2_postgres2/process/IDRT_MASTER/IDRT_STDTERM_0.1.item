@@ -1876,7 +1876,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="576">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;P21 import ended.&quot;);&#xA;StatusListener.setSubStatus(10.0f,&quot;P21 import ended.&quot;);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;P21 generation ended.&quot;);&#xA;StatusListener.setSubStatus(10.0f,&quot;P21 generation ended.&quot;);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -1911,7 +1911,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="1088">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;DRG import ended.&quot;);&#xA;StatusListener.setSubStatus(15.0f,&quot;DRG import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;DRG generation ended.&quot;);&#xA;StatusListener.setSubStatus(15.0f,&quot;DRG generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -2634,7 +2634,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="1408">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;ICD import ended.&quot;);&#xA;StatusListener.setSubStatus(25.0f,&quot;ICD import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;ICD generation ended.&quot;);&#xA;StatusListener.setSubStatus(25.0f,&quot;ICD generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -2669,7 +2669,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="1696">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;OPS import ended.&quot;);&#xA;StatusListener.setSubStatus(35.0f,&quot;OPS import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;OPS generation ended.&quot;);&#xA;StatusListener.setSubStatus(35.0f,&quot;OPS generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -2704,7 +2704,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="1984">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;LOINC import ended.&quot;);&#xA;StatusListener.setSubStatus(50.0f,&quot;LOINC import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;LOINC generation ended.&quot;);&#xA;StatusListener.setSubStatus(50.0f,&quot;LOINC generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -5072,7 +5072,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="1856">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;ICD-O import ended.&quot;);&#xA;StatusListener.setSubStatus(55.0f,&quot;ICD-O import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;ICD-O generation ended.&quot;);&#xA;StatusListener.setSubStatus(55.0f,&quot;ICD-O generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -5593,7 +5593,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="1600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_9"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;TNM import ended.&quot;);&#xA;StatusListener.setSubStatus(60.0f,&quot;TNM import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;TNM generation ended.&quot;);&#xA;StatusListener.setSubStatus(60.0f,&quot;TNM generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -5628,7 +5628,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="1056">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_10"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;MedDRA import ended.&quot;);&#xA;StatusListener.setSubStatus(70.0f,&quot;MedDRA import ended.&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;MedDRA generation ended.&quot;);&#xA;StatusListener.setSubStatus(70.0f,&quot;MedDRA generation ended.&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
