@@ -1,4 +1,12 @@
-target
+log.log
+bin
+.project
 .settings
 workspace
-temp_TOS_Connector_file.csv
+target
+.metadata
+.eclipseproduct
+temp
+/bin
+temptemp_TOS_Connector_file.csv
+.classpath

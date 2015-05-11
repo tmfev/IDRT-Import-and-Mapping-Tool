@@ -1,12 +1,6 @@
 package de.umg.mi.idrt.ioe;
-import javax.swing.ImageIcon;
-
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.wb.swt.ResourceManager;
-
-import de.umg.mi.idrt.ioe.OntologyTree.MyOntologyTrees;
 
 
 /**

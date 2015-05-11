@@ -26,8 +26,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/postgresql-9.2-1003.jdbc3.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
-	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_rebuild_indexing_0_1.jar"/>
@@ -40,5 +38,7 @@
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
+	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

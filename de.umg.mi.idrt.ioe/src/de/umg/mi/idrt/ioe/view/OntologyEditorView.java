@@ -323,11 +323,11 @@ public class OntologyEditorView extends ViewPart {
 		System.out.println("INIT!");
 		
 		//TODO HERE
-		//								Shell shell = new Shell();
-		//								shell.setSize(844, 536);
-		//								shell.setLayout(new FillLayout(SWT.HORIZONTAL));
-		//								mainComposite = new Composite(shell, SWT.NONE);
-		//								mainComposite.setLayout(new BorderLayout(0, 0));
+//										Shell shell = new Shell();
+//										shell.setSize(844, 536);
+//										shell.setLayout(new FillLayout(SWT.HORIZONTAL));
+//										mainComposite = new Composite(shell, SWT.NONE);
+//										mainComposite.setLayout(new BorderLayout(0, 0));
 		try {
 			File folder = FileHandler.getBundleFile("/temp/output/");
 			File[] listOfFiles = folder.listFiles();
