@@ -23,7 +23,6 @@ public class OptionsWizard extends Wizard {
 
 	public OptionsWizard() {
 		super();
-		System.out.println("CONSTRUCTOR");
 		setNeedsProgressMonitor(true);
 	}
 	private Properties defaultProps;
@@ -58,6 +57,8 @@ public class OptionsWizard extends Wizard {
 					OptionsWizardPage1.getHideTempTablesButton());
 			defaultProps.setProperty("MDPDName",
 					OptionsWizardPage1.getTargetFolderText());
+			defaultProps.setProperty("showTotalNum",
+					OptionsWizardPage1.getShowTotalnumButton());
 			defaultProps.store(new FileWriter(properties), "");
 			boolean restart = false;
 			if (OptionsWizardPage1.getChanged()) {

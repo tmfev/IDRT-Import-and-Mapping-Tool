@@ -1,5 +1,11 @@
 package de.umg.mi.idrt.ioe.OntologyTree;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
@@ -8,6 +14,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.ioe.GUITools;
 import de.umg.mi.idrt.ioe.Resource;
 /**
@@ -28,6 +35,14 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 	 */
 	@Override
 	public void update(ViewerCell cell) {
+		File properties = FileHandler.getBundleFile("/cfg/Default.properties");
+		Properties defaultProps = new Properties();
+		try {
+			defaultProps.load(new FileReader(properties));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		Object element = cell.getElement();
 		Color hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
 		Color activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
@@ -52,9 +67,12 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 			if (visual.toLowerCase().contains("h")) {
 
 			}
-//			if (otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
-//			cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
-//			else
+			boolean checkShowTotalNum = ((defaultProps.getProperty("showTotalNum")
+					.equals("true")) ? true : false);
+			
+			if (checkShowTotalNum)// && otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
+			cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
+			else
 				cell.setText(otNode.getName());
 
 			if ( Resource.I2B2.NODE.TYPE.ONTOLOGY_SOURCE.equals( otNode.getType() ) || 

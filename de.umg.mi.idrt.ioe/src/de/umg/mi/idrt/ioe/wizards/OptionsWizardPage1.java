@@ -31,7 +31,7 @@ import de.umg.mi.idrt.importtool.misc.FileHandler;
  *         www.mi.med.uni-goettingen.de
  */
 public class OptionsWizardPage1 extends WizardPage {
-
+	private static Button showTotalNumButton;
 	private static Text txtPIDURL;
 	private static String pidURL;
 	private static String exportLogPath;
@@ -46,10 +46,13 @@ public class OptionsWizardPage1 extends WizardPage {
 		super("Options");
 		setTitle("Options");
 		setDescription("Edit your Settings");
-		System.out.println("OptionsWizardPage1"); 
+		System.out.println("OptionsWizardPage1@IOE"); 
 	}
 	public static String getSysoLogPath() {
 		return sysoLogPath;
+	}
+	public static String getShowTotalnumButton() {
+		return String.valueOf(showTotalNumButton.getSelection());
 	}
 	public static String getTxtPIDURL() {
 		return txtPIDURL.getText();
@@ -96,24 +99,19 @@ public class OptionsWizardPage1 extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		try {
-			int i = 0;
-			System.out.println("createControl"+ i++);
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
-			System.out.println("createControl"+ i++);
 			pidURL = defaultProps.getProperty("PIDURL");
 			exportLogPath = defaultProps.getProperty("log");
 			targetFolder = defaultProps.getProperty("MDPDName");
 			Composite composite = new Composite(parent, SWT.NONE);
 			setControl(composite);
 			composite.setLayout(new GridLayout(3, false));
-			System.out.println("createControl"+ i++);
 			Label lblTargetFolder = new Label(composite, SWT.NONE);
 			lblTargetFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 1, 1));
 			lblTargetFolder.setText("Target Folder:");
-			System.out.println("createControl"+ i++);
 			targetFolderText = new Text(composite, SWT.BORDER);
 			targetFolderText.setText(targetFolder);
 			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -137,7 +135,6 @@ public class OptionsWizardPage1 extends WizardPage {
 				}
 			});
 			new Label(composite, SWT.NONE);
-			System.out.println("createControl"+ i++);
 			Label label_6 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 			label_6.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
 					false, 2, 1));
@@ -153,7 +150,6 @@ public class OptionsWizardPage1 extends WizardPage {
 			txtPIDURL.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
 			new Label(composite, SWT.NONE);
-			System.out.println("createControl"+ i++);
 			Label label = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
 					false, 2, 1));
@@ -168,7 +164,6 @@ public class OptionsWizardPage1 extends WizardPage {
 			txtLlogPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
 			txtLlogPath.setText(exportLogPath);
-			System.out.println("createControl"+ i++);
 			final FileDialog fd = new FileDialog(parent.getShell());
 			fd.setText("ID File");
 			fd.setFilterPath(defaultProps.getProperty("idFile"));
@@ -191,7 +186,6 @@ public class OptionsWizardPage1 extends WizardPage {
 					changed = true;
 				}
 			});
-			System.out.println("createControl"+ i++);
 			Label label_1 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 			label_1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 2, 1));
@@ -211,7 +205,6 @@ public class OptionsWizardPage1 extends WizardPage {
 					changed = true;
 				}
 			});
-			System.out.println("createControl"+ i++);
 			new Label(composite, SWT.NONE);
 
 			Label lblSysologLocation = new Label(composite, SWT.NONE);
@@ -241,7 +234,6 @@ public class OptionsWizardPage1 extends WizardPage {
 					changed = true;
 				}
 			});
-			System.out.println("createControl"+ i++);
 			Label label_2 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 			label_2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 2, 1));
@@ -265,7 +257,6 @@ public class OptionsWizardPage1 extends WizardPage {
 				}
 			});
 			new Label(composite, SWT.NONE);
-			System.out.println("createControl"+ i++);
 			Label lblHideTemporaryTables = new Label(composite, SWT.NONE);
 			lblHideTemporaryTables.setText("Hide Temporary/Secondary Tables:");
 
@@ -274,6 +265,15 @@ public class OptionsWizardPage1 extends WizardPage {
 			hideTempTablesButton = new Button(composite, SWT.CHECK);
 			hideTempTablesButton.setSelection(checkHideTemp);
 
+			new Label(composite, SWT.NONE);
+
+			Label lblShowTotalNumber = new Label(composite, SWT.NONE);
+			lblShowTotalNumber.setText("Show Total Number of Patients:");
+
+			boolean checkShowTotalNum = ((defaultProps.getProperty("showTotalNum")
+					.equals("true")) ? true : false);
+			showTotalNumButton = new Button(composite, SWT.CHECK);
+			showTotalNumButton.setSelection(checkShowTotalNum);
 			new Label(composite, SWT.NONE);
 
 			Label label_3 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
@@ -313,7 +313,7 @@ public class OptionsWizardPage1 extends WizardPage {
 					}
 				}
 			});
-			System.out.println("createControl"+ i++);
+			
 			btnClearChecks.setText("Clear Checks");
 			new Label(composite, SWT.NONE);
 			new Label(composite, SWT.NONE);

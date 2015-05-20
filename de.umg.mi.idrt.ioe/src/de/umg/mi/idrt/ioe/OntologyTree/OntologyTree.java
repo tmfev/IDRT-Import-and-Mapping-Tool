@@ -15,11 +15,8 @@ import de.umg.mi.idrt.ioe.view.OntologyEditorView;
  * @author Christian Bauer
  *         <christian(dot)bauer(at)med(dot)uni-goettingen(dot)de> Department of
  *         Medical Informatics Goettingen www.mi.med.uni-goettingen.de
- * 
- * 
  */
 
-@SuppressWarnings("serial")
 public class OntologyTree extends JTree {
 
 	private OntologyTreeNode treeRoot;
@@ -159,9 +156,6 @@ public class OntologyTree extends JTree {
 					item.getStartdateStagingPath());
 			node.getTargetNodeAttributes().setName(item.getName());
 			
-	//		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.TREE_LEVEL, ""+item.getTreeLevel());
-	//		node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.TREE_PATH, ""+item.getTreePath());
-			
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_BASECODE, ""+item.getBasecode());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_METADATAXML, ""+item.getMetadataxml());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_COLUMNDATATYPE, ""+item.getColumndatatype());
@@ -170,8 +164,6 @@ public class OntologyTree extends JTree {
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.C_TOOLTIP, ""+item.getTooltip());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.SOURCESYSTEM_CD, ""+item.getSourceSystemCD());
 			node.getTargetNodeAttributes().getTargetNodeMap().put(I2B2.NODE.TARGET.VALUETYPE_CD, ""+item.getValueTypeCD());
-			
-		
 			
 			node.setStagingModifierPath(item.getStaging_m_applied_path());
 			if (type != null) {
@@ -234,7 +226,7 @@ public class OntologyTree extends JTree {
 			this.getNodeLists().addOTNode(i2b2Path, node).add(node);
 		} catch (Exception e) {
 			 e.printStackTrace();
-			Console.error("Could not add node \"" + name
+			Console.error("Could not add node \"" + name + " " + i2b2Path
 					+ "\" to the tree, because there is no parent node for it.");
 		}
 //		node.setTreeAttributes();
