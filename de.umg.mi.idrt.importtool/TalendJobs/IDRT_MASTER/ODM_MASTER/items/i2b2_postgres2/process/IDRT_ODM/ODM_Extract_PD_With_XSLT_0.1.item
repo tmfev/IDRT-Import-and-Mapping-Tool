@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/IDRT22/&quot;"/>
+    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop_Workspace/IDRT22/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value=""/>
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
@@ -9,7 +9,7 @@
     <contextParameter comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
-    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/IDRT22/&quot;"/>
+    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop_Workspace/IDRT22/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value=""/>
     <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>

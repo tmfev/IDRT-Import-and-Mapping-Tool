@@ -76,7 +76,7 @@
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -141,20 +141,20 @@
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
-    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
-    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2metadata&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2idrttest1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
@@ -208,14 +208,14 @@
     <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
     <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
-    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
-    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.102.3&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.102.3:5432/transmart"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
@@ -405,7 +405,7 @@
     <elementParameter field="MEMO" name="COMMENT" value="This SubJob creates the i2b2-database-schema with the received EAV-schema."/>
     <metadata connector="FLOW" name="tRunJob_3"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="160">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
@@ -517,30 +517,6 @@
     <elementParameter field="CHECK" name="INFORMATION" value="true"/>
     <elementParameter field="MEMO" name="COMMENT" value="This SubJob truncates all project specific tables in the i2b2 database. Only the project related tables will be truncated.&#xD;&#xA;That includes e.g.:&#xD;&#xA;- i2b2&#xD;&#xA;- Patient_Dimension&#xD;&#xA;- Patient_Mapping&#xD;&#xA;- Encounter_Mapping&#xD;&#xA;- ..."/>
     <metadata connector="FLOW" name="tRunJob_12"/>
-  </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="832" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
-    <elementParameter field="TEXT" name="CONTEXT_JOB" value=""/>
-    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="IDRT_SQL_LOADER"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_mQJ4kMslEeGIsbZ3iOyg6A"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
-    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default"/>
-    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
-    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
-    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
-    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="SQL_LOADER"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="INFORMATION" value="true"/>
-    <elementParameter field="MEMO" name="COMMENT" value="Dieser SubJob lädt die vorverarbeiteten CSV-Dateien in die Datenbank mit dem SQL*LOADER. &#xD;&#xA;ACHTUNG: SQL*LOADER muss dafür installiert sein!&#xD;&#xA;&#xD;&#xA;Eingang: Mehrere CSV-Dateien, in SQL-Tabellenform.&#xD;&#xA;- patient_mapping&#xD;&#xA;- patient_dimension&#xD;&#xA;- concept_dimension&#xD;&#xA;- encounter_mapping&#xD;&#xA;- patient_data (entspricht observation_fact)&#xD;&#xA;- ontology (entspricht i2b2)&#xD;&#xA;&#xD;&#xA;Ausgang:&#xD;&#xA;Gefüllte i2b2-Datenbank."/>
-    <metadata connector="FLOW" name="tRunJob_8"/>
   </node>
   <node componentName="tFileList" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-64" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileList_2"/>
@@ -817,7 +793,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_27"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="160">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1056" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_28"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.error(&quot;Error whileuploading&quot;,((String)globalMap.get(&quot;tRunJob_4_CHILD_EXCEPTION_STACKTRACE&quot;)),context.currentFile);"/>
@@ -912,7 +888,7 @@
     <elementParameter field="CHECK" name="AUTO_COMMIT" value="true"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="608" posY="-416">
+  <node componentName="tJDBCInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="-480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCInput_1"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -947,7 +923,7 @@
       <column comment="" key="false" name="value" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="-288">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="-480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;if (row21.value.toLowerCase().contains(&quot;utf&quot;)){&#xA;context.coding = &quot;UTF-8&quot;;&#xA;}&#xA;else {&#xA;context.coding = &quot;ISO-8859-15&quot;;&#xA;}&#xA;System.out.println(context.coding);&#xA;System.out.println(row21.value);"/>
@@ -1123,6 +1099,27 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
   </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="-2" offsetLabelY="0" posX="928" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_13"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value=""/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="IDRT_JDBC_Upload_transmart"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_ubuOoPfcEeSHw5dj9tQdfA"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true"/>
+    <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_13"/>
+  </node>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tJava_8">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!StatusListener.getInterrupt()"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If8"/>
@@ -1229,9 +1226,13 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_8" offsetLabelX="0" offsetLabelY="-10" source="tJava_8" target="tFileInputXML_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk11"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_9" offsetLabelX="-12" offsetLabelY="20" source="tJava_9" target="tRunJob_4">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="!StatusListener.getInterrupt()"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_9" offsetLabelX="-12" offsetLabelY="20" outputId="1" source="tJava_9" target="tRunJob_4">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="!StatusListener.getInterrupt() &amp;&amp; context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_9" target="tRunJob_13">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="!StatusListener.getInterrupt() &amp;&amp; context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If24"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_10" offsetLabelX="9" offsetLabelY="1" source="tJava_10" target="tRunJob_5">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk12"/>
@@ -1360,13 +1361,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_12"/>
     <elementParameter field="TEXT" name="SUBJOB_TITLE" value="Truncate Project"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;128;255"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_8"/>
-    <elementParameter field="TEXT" name="SUBJOB_TITLE" value="Load"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;255;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
@@ -1563,6 +1557,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_13"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>

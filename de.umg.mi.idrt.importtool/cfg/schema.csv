@@ -2,7 +2,7 @@ PID	OID	EncounterID	downloadDate	importDate	startDate	updateDate	endDate
 PID	SIC	EncID	downloadDate	importDate	startDate	updateDate	endDate
 PatientID	BioID	EncounterID	Download Date	Import Date	Start Date	Update Date	End Date
 Patient		Encounter ID					
-		Casenumber					
-		Case Number					
+patcode		Casenumber					
+pat code		Case Number					
 		Fallnummer					
 		Fall Nummer					

@@ -65,13 +65,13 @@
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
-    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2metadata&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2idrttest1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="Base directory for G-DRG data" name="drgDir" prompt="drgDir?" promptNeeded="false" repositoryContextId="_bXVj8C3VEeKfgb7fVTMfSA" type="id_String" value="&quot;C:\idrt-svn\300 Arbeitspakete\AP04 Semantische Integration\Standardterminologien\DRG\&quot;"/>
     <contextParameter comment="Base directory for ICD-10-GM data" name="icd10Dir" prompt="icd10Dir?" promptNeeded="false" repositoryContextId="_bXVj8C3VEeKfgb7fVTMfSA" type="id_String" value="&quot;C:\idrt-svn\300 Arbeitspakete\AP04 Semantische Integration\Standardterminologien\ICD-10-GM\&quot;"/>
     <contextParameter comment="" name="icd10Year" prompt="icd10Year?" promptNeeded="false" repositoryContextId="_bXVj8C3VEeKfgb7fVTMfSA" type="id_String" value="2012"/>
@@ -92,9 +92,9 @@
     <contextParameter comment="" name="basedir" prompt="basedir?" promptNeeded="false" type="id_String" value="&quot;R:\IFB\Sonstiges\workspace_TOS\IDRT_STDTERM\00_basedir\&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.102.3&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.102.3:5432/transmart"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
@@ -3056,7 +3056,7 @@
       <column comment="" key="false" length="100" name="C_SYMBOL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="ICD10_Folder">
         <mapperTableEntries name="C_HLEVEL" expression="row19.level - 1" type="id_Integer" nullable="true"/>
