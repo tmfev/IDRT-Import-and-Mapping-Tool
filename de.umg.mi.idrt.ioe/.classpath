@@ -40,5 +40,6 @@
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
 	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
 	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -225,6 +225,7 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
 
    <features>
       <feature id="de.umg.mi.ioe.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
    </features>
 
    <configurations>
