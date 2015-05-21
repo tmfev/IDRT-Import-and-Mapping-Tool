@@ -11,8 +11,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/gallery-0.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/grid-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ojdbc6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ojdbc7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/passwordCrypt.jar"/>
@@ -24,7 +22,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/swt_win64.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swt-grouplayout.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="TalendJobs/lib/postgresql-9.2-1003.jdbc3.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
@@ -41,5 +38,6 @@
 	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
 	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

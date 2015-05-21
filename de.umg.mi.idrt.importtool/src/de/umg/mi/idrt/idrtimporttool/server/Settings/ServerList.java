@@ -1064,7 +1064,7 @@ public class ServerList {
 				String user = resultSet.getString("schema_name");
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.toLowerCase().startsWith("i2b2")
-							&& !((user.toLowerCase().equals("i2b2hive") || (user.toLowerCase().equals("i2b2pm"))))) {
+							&& !((user.toLowerCase().equals("i2b2hive") || (user.toLowerCase().equals("i2b2pm"))|| (user.toLowerCase().equals("i2b2imdata"))|| (user.toLowerCase().equals("i2b2workdata"))))) {
 						users.add(new I2b2Project(user, server));
 					}
 				} else {

@@ -213,7 +213,7 @@ public class StatusListener {
 	}
 
 	public static void setSubStatus(float percentage, final String statusMsg) {
-		System.out.println(getTime() + " SUBSTATUS: " + statusMsg);
+//		System.out.println(getTime() + " SUBSTATUS: " + statusMsg);
 		subPerc = percentage;
 		subStatus = statusMsg;
 		ServerView.updateStatus();
