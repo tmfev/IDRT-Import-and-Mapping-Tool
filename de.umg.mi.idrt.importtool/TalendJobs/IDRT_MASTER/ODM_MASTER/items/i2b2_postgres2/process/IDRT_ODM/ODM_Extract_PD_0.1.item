@@ -19,6 +19,7 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2IDRT&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
@@ -77,6 +78,7 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
@@ -135,6 +137,7 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2idrttest1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
@@ -193,6 +196,7 @@
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
@@ -4863,7 +4867,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1219" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?&quot;i2b2demodata.observation_fact&quot;:context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;;&#xA;context.currentQuery = context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)?&quot;select max(instance_num) from i2b2demodata.observation_fact&quot;:&quot;select max(instance_num) from &quot;+context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.observation_fact&quot;:context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;;&#xA;context.currentQuery = context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;select max(instance_num) from i2b2demodata.observation_fact&quot;:&quot;select max(instance_num) from &quot;+context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_8"/>

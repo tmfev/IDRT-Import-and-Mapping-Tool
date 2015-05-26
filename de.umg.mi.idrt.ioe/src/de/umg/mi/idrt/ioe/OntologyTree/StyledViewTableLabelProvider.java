@@ -71,7 +71,7 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					.equals("true")) ? true : false);
 			
 			if (checkShowTotalNum)// && otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
-			cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
+				cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
 			else
 				cell.setText(otNode.getName());
 

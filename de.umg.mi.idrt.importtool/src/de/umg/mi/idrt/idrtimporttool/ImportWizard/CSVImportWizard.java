@@ -330,8 +330,6 @@ public class CSVImportWizard extends Wizard {
 						contextMap.put("IndexStop", "false");
 						defaultProps.setProperty("IndexDrop", "false");
 						contextMap.put("IndexDrop", "false");
-					
-						
 					}
 
 					if (truncate) {

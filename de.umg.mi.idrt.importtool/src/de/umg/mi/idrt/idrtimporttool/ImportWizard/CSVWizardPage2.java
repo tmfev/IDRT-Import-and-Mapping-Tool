@@ -58,11 +58,11 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Button btnRADIOCsvfile;
 	private Label lblDatePattern;
 	private static Combo datePatternCombo;
-	private Label labelCleanUp;
+	private Label labelSetTotalNum;
 
 	// private static Text csvSeperatorext;
 
-	private static Button cleanUpBtn;
+	private static Button setTotalNumBtn;
 	private Label label;
 	private static Button checkTruncateQueries;
 	private Label lblStopDatabaseIndexing;
@@ -81,7 +81,7 @@ public class CSVWizardPage2 extends WizardPage {
 	}
 
 	public static boolean getCleanUp() {
-		return cleanUpBtn.getSelection();
+		return setTotalNumBtn.getSelection();
 	}
 
 	/**
@@ -214,11 +214,11 @@ public class CSVWizardPage2 extends WizardPage {
 			new Label(container, SWT.NONE);
 
 			//TODO REIMPLEMENT
-			labelCleanUp = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-			labelCleanUp.setText(Messages.CSVWizardPageTwo_CleanUp);
+			labelSetTotalNum = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			labelSetTotalNum.setText(Messages.CSVWizardPageTwo_CleanUp);
 
-			cleanUpBtn = new Button(container, SWT.CHECK);
-			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
+			setTotalNumBtn = new Button(container, SWT.CHECK);
+			setTotalNumBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp"))); 
 			new Label(container, SWT.NONE);
 

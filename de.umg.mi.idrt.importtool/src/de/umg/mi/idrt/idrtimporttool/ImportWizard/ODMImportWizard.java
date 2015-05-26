@@ -115,7 +115,7 @@ public class ODMImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			final boolean cleanUp = false;//ODMWizardPage2.getCleanUp();
+			final boolean cleanUp = ODMWizardPage2.getCleanUp();
 			final boolean terms = false;//ODMWizardPage2.getTerms();
 			final boolean truncateQueries = ODMWizardPage2.getTruncateQueries();
 			final boolean stopIndex = ODMWizardPage2.getStopIndex();
@@ -180,7 +180,6 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
 				contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/"); 
 			}
-
 			if (cleanUp) {
 				defaultProps.setProperty("cleanUp", "true");  
 				contextMap.put("cleanUp", "true");  

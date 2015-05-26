@@ -44,7 +44,8 @@ public class ODMWizardPage2 extends WizardPage {
 	private static Button checkTerms;
 	private static Button checkCleanUp;
 	private static Button checkCompleteCodelists;
-	
+	private Label labelSetTotalNum;
+	private static Button setTotalNumBtn;
 	private static Button btnIgnore;
 	private static Button btnStop;
 	private static Button btnDrop;
@@ -57,7 +58,7 @@ public class ODMWizardPage2 extends WizardPage {
 	}
 
 	public static boolean getCleanUp() {
-		return checkCleanUp.getSelection();
+		return setTotalNumBtn.getSelection();
 	}
 	
 	/**
@@ -170,13 +171,13 @@ public class ODMWizardPage2 extends WizardPage {
 			
 			new Label(container, SWT.NONE);
 			//TODO REIMPLEMENT
-//			Label cleanUplabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-//			cleanUplabel.setText(Messages.ODMWizardPageTwo_CleanUp);
-
-//			checkCleanUp = new Button(container, SWT.CHECK);
-//			checkCleanUp.setSelection(Boolean.parseBoolean(defaultProps
-//					.getProperty("cleanUp"))); 
-//			new Label(container, SWT.NONE);
+			labelSetTotalNum = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+			labelSetTotalNum.setText(Messages.CSVWizardPageTwo_CleanUp);
+System.out.println("CLEANUP " + Boolean.parseBoolean(defaultProps.getProperty("cleanUp")));
+			setTotalNumBtn = new Button(container, SWT.CHECK);
+			setTotalNumBtn.setSelection(Boolean.parseBoolean(defaultProps
+					.getProperty("cleanUp"))); 
+			new Label(container, SWT.NONE);
 
 			Label folder = new Label(container, SWT.FILL | SWT.CENTER);
 			folder.setText(Messages.ODMWizardPageTwo_ODMFolder);

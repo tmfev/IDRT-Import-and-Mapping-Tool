@@ -67,9 +67,9 @@ public class MDRWizardPage2 extends WizardPage {
 	}
 
 
-	public static String getQuoteCharText() {
-		return MDRStartText.getText();
-	}
+//	public static String getQuoteCharText() {
+//		return MDRStartText.getText();
+//	}
 
 	public static boolean getTerms() {
 		return checkTerms.getSelection();
