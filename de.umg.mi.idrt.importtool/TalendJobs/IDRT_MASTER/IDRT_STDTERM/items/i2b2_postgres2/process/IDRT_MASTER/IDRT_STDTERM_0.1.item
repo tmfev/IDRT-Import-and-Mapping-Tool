@@ -7292,7 +7292,7 @@
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="AUTOCAST" value="true"/>
     <elementParameter field="TABLE" name="MANUALTABLE"/>
-    <elementParameter field="CHECK" name="EMPTYTONULL" value="false"/>
+    <elementParameter field="CHECK" name="EMPTYTONULL" value="true"/>
     <elementParameter field="CHECK" name="DIEONERROR" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tConvertType_1">
@@ -7301,7 +7301,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -7323,31 +7323,31 @@
       <column comment="" key="false" length="100" name="C_SYMBOL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" label="metadata" name="REJECT">
-      <column comment="" key="false" length="1" name="C_HLEVEL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="C_FULLNAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="500" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Character" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="200" usefulColumn="true"/>
-      <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="4000" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="50" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_TABLENAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_COLUMNNAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_COLUMNDATATYPE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Character" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="C_OPERATOR" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="10" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="C_DIMCODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_COMMENT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="C_TOOLTIP" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="500" usefulColumn="true"/>
-      <column comment="" key="false" length="1000" name="M_APPLIED_PATH" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Character" originalLength="1000" usefulColumn="true"/>
-      <column comment="" key="false" length="19" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="19" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="19" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="SOURCESYSTEM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="VALUETYPE_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="M_EXCLUSION_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_PATH" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
-      <column comment="" key="false" length="100" name="C_SYMBOL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="C_HLEVEL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_FULLNAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
+      <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_TABLENAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_COLUMNNAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_COLUMNDATATYPE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="C_OPERATOR" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="10" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="C_DIMCODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_COMMENT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="500" name="C_TOOLTIP" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="M_APPLIED_PATH" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" originalLength="1000" usefulColumn="true"/>
+      <column comment="" key="false" length="19" name="UPDATE_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="19" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="19" name="IMPORT_DATE" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="SOURCESYSTEM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="VALUETYPE_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="M_EXCLUSION_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_PATH" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="C_SYMBOL" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="100" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -7479,7 +7479,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -7506,7 +7506,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -7533,7 +7533,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -7562,7 +7562,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -7708,8 +7707,8 @@
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="true"/>
-    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="false"/>
     <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tJDBCOutput_2">
@@ -7718,7 +7717,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -7745,7 +7744,7 @@
       <column comment="" key="false" length="500" name="C_NAME" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="500" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="CHAR" type="id_Character" usefulColumn="true"/>
       <column comment="" key="false" length="3" name="C_VISUALATTRIBUTES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="C_TOTALNUM" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="200" name="C_BASECODE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="200" usefulColumn="true"/>
       <column comment="" key="false" length="4000" name="C_METADATAXML" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="4000" usefulColumn="true"/>
       <column comment="" key="false" length="100" name="C_FACTTABLECOLUMN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR2" type="id_String" originalLength="50" usefulColumn="true"/>
@@ -8565,7 +8564,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1376" posY="864">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_15"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentQuery = &quot;&quot;;&#xA;if (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)){&#xA;context.currentQuery = &quot;INSERT INTO &quot;+context.DB_StagingI2B2_Schema+&quot;.concept_dimension&quot;+&#xA;       &quot;(concept_path, concept_cd, name_char, concept_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id)&quot;+&#xA;&quot;SELECT DISTINCT&quot;+&#xA;&quot;       i2b2.c_fullname       AS concept_path,&quot;+&#xA;&quot;       i2b2.c_basecode       AS concept_cd,&quot;+&#xA;&quot;       i2b2.c_name           AS name_char,&quot;+&#xA;&quot;       NULL                  AS concept_blob,&quot;+&#xA;&quot;       i2b2.update_date,&quot;+&#xA;&quot;       i2b2.download_date,&quot;+&#xA;&quot;       i2b2.import_date,&quot;+&#xA;&quot;       i2b2.sourcesystem_cd,&quot;+&#xA;&quot;       NULL                  AS upload_id&quot;+&#xA;&quot;  FROM &quot;+context.DB_StagingI2B2_Schema+&quot;.i2b2&quot;+&#xA;&quot; WHERE i2b2.c_visualattributes LIKE 'LA%'&quot;+&#xA;&quot;   AND i2b2.c_basecode LIKE 'ST|%'&quot;;&#xA;}&#xA;else{&#xA;context.currentQuery = &quot;INSERT INTO i2b2demodata.concept_dimension&quot;+&#xA;       &quot;(concept_path, concept_cd, name_char, concept_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id)&quot;+&#xA;&quot;SELECT DISTINCT&quot;+&#xA;&quot;       i2b2.c_fullname       AS concept_path,&quot;+&#xA;&quot;       i2b2.c_basecode       AS concept_cd,&quot;+&#xA;&quot;       i2b2.c_name           AS name_char,&quot;+&#xA;&quot;       NULL                  AS concept_blob,&quot;+&#xA;&quot;       i2b2.update_date,&quot;+&#xA;&quot;       i2b2.download_date,&quot;+&#xA;&quot;       i2b2.import_date,&quot;+&#xA;&quot;       i2b2.sourcesystem_cd,&quot;+&#xA;&quot;       NULL                  AS upload_id&quot;+&#xA;&quot;  FROM i2b2metadata.i2b2_secure&quot;+&#xA;&quot; WHERE i2b2.c_visualattributes LIKE 'LA%'&quot;+&#xA;&quot;   AND i2b2.c_basecode LIKE 'ST|%'&quot;;&#xA;}&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentQuery = &quot;&quot;;&#xA;if (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)){&#xA;context.currentQuery = &quot;INSERT INTO &quot;+context.DB_StagingI2B2_Schema+&quot;.concept_dimension&quot;+&#xA;       &quot;(concept_path, concept_cd, name_char, concept_blob, update_date, download_date, import_date, sourcesystem_cd)&quot;+&#xA;&quot;SELECT DISTINCT&quot;+&#xA;&quot;       i2b2.c_fullname       AS concept_path,&quot;+&#xA;&quot;       i2b2.c_basecode       AS concept_cd,&quot;+&#xA;&quot;       i2b2.c_name           AS name_char,&quot;+&#xA;&quot;       NULL                  AS concept_blob,&quot;+&#xA;&quot;       i2b2.update_date,&quot;+&#xA;&quot;       i2b2.download_date,&quot;+&#xA;&quot;       i2b2.import_date,&quot;+&#xA;&quot;       i2b2.sourcesystem_cd&quot;+&#xA;&#xA;&quot;  FROM &quot;+context.DB_StagingI2B2_Schema+&quot;.i2b2&quot;+&#xA;&quot; WHERE i2b2.c_visualattributes LIKE 'LA%'&quot;+&#xA;&quot;   AND i2b2.c_basecode LIKE 'ST|%'&quot;;&#xA;}&#xA;else{&#xA;context.currentQuery = &quot;INSERT INTO i2b2demodata.concept_dimension&quot;+&#xA;       &quot;(concept_path, concept_cd, name_char, concept_blob, update_date, download_date, import_date, sourcesystem_cd, upload_id)&quot;+&#xA;&quot;SELECT DISTINCT&quot;+&#xA;&quot;       i2b2.c_fullname       AS concept_path,&quot;+&#xA;&quot;       i2b2.c_basecode       AS concept_cd,&quot;+&#xA;&quot;       i2b2.c_name           AS name_char,&quot;+&#xA;&quot;       NULL                  AS concept_blob,&quot;+&#xA;&quot;       i2b2.update_date,&quot;+&#xA;&quot;       i2b2.download_date,&quot;+&#xA;&quot;       i2b2.import_date,&quot;+&#xA;&quot;       i2b2.sourcesystem_cd,&quot;+&#xA;&quot;       NULL                  AS upload_id&quot;+&#xA;&quot;  FROM i2b2metadata.i2b2_secure&quot;+&#xA;&quot; WHERE i2b2.c_visualattributes LIKE 'LA%'&quot;+&#xA;&quot;   AND i2b2.c_basecode LIKE 'ST|%'&quot;;&#xA;}&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_15"/>

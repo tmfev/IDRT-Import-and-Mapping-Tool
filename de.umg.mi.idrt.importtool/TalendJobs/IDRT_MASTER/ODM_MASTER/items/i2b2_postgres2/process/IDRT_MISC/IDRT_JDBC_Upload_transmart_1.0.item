@@ -434,7 +434,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.patient_mapping&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -722,7 +722,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.concept_dimension&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1190,7 +1190,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.observation_fact&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1852,7 +1852,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2metadata.i2b2&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -2515,7 +2515,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.patient_dimension&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -2923,7 +2923,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.encounter_mapping&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -3225,7 +3225,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.modifier_dimension&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -3578,7 +3578,7 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;i2b2demodata.visit_dimension&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -7458,21 +7458,21 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJDBCConnection_1" target="tJava_15">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk19"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_4" target="tJava_7">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="true&#xA;"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If6"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_4" target="tForeach_5">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;) &amp;&amp; context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_4" target="tJDBCRow_3">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_4" target="tForeach_2">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_4" target="tForeach_2">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="4" source="tJava_4" target="tForeach_5">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;) &amp;&amp; context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_4" target="tJava_7">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="true&#xA;"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If6"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="4" source="tJava_4" target="tJDBCRow_3">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_2" offsetLabelX="0" offsetLabelY="0" source="tForeach_2" target="tJava_5">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>

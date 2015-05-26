@@ -200,7 +200,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M -XX:-UseConcMarkSweepGC -XX:-UseGCOverheadLimit "/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="128"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="96"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="64"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true"/>

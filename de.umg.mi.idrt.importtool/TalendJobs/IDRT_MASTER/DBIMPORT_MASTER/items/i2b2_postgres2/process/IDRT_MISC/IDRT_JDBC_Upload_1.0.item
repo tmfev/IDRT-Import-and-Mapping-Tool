@@ -550,7 +550,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -667,7 +666,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -1069,7 +1067,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -1179,7 +1176,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -1894,7 +1890,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -1910,7 +1905,7 @@
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="500000"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="50000"/>
     <elementParameter field="TABLE" name="ADD_COLS"/>
     <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="FIELD_OPTIONS">
@@ -2027,7 +2022,7 @@
     </elementParameter>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
     <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
-    <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="25000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_19">
       <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
@@ -2118,7 +2113,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -2250,7 +2244,7 @@
       <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
-    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
     <elementParameter field="TEXT" name="BATCH_SIZE" value="50000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_1">
@@ -2974,7 +2968,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -3120,7 +3113,7 @@
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="true"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
     <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
     <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -3196,7 +3189,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -4023,7 +4015,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -4203,7 +4194,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -4776,7 +4766,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -4907,7 +4896,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -5323,7 +5311,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -5433,7 +5420,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -5934,7 +5920,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
@@ -6086,7 +6071,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
