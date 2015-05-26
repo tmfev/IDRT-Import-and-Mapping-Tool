@@ -32,7 +32,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowPerspectiveBar(false);
 		configurer.setShowProgressIndicator(false);
 		//configurer.setShowPerspectiveBar(true);
-		configurer.setTitle("i2b2 Ontology Editor V"
+		configurer.setTitle("IDRT Import and Mapping Tool V"
 				+ Activator.getDefault().getBundle().getVersion());
 		
 		//TODO

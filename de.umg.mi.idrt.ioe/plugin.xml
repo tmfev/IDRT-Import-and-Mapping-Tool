@@ -63,7 +63,7 @@
             class="de.umg.mi.idrt.importtool.views.ServerView"
             icon="images/addServer.png"
             id="de.umg.mi.idrt.importtool.ServerView"
-            name="IDRT Import Tool">
+            name="Import Browser">
       </view>
       <view
             allowMultiple="true"
@@ -97,7 +97,7 @@
             class="de.umg.mi.idrt.ioe.view.OntologyEditorView"
             icon="images/format-justify-fill.png"
             id="de.umg.mi.idrt.ioe.OntologyEditor"
-            name="i2b2 Ontology Editor"
+            name="Mapping Editor"
             restorable="true">
       </view>
       <view
@@ -105,7 +105,7 @@
             class="de.umg.mi.idrt.ioe.view.ProgressView"
             icon="images/progress_none.gif"
             id="de.umg.mi.idrt.ioe.ProgressView"
-            name="Progress"
+            name="Mapping Editor Progress"
             restorable="true">
       </view>
       <view
