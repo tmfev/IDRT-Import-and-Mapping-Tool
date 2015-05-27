@@ -39,5 +39,7 @@
 	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>
 	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_alter_tables_0_1.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_set_patient_count_0_1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
