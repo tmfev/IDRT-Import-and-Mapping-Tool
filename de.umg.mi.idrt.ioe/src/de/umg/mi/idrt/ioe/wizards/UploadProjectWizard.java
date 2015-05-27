@@ -73,7 +73,7 @@ public class UploadProjectWizard extends Wizard {
 		final boolean truncate = UploadProjectWizardPage2.getTruncate();
 		final boolean truncateQueries = UploadProjectWizardPage2.getTruncateQueries();
 		final boolean save = UploadProjectWizardPage2.getSaveContext();
-
+		final boolean cleanUp = UploadProjectWizardPage2.getCleanUp();
 		importThread = new Thread(new Runnable() {
 
 			@Override
@@ -168,6 +168,14 @@ public class UploadProjectWizard extends Wizard {
 									contextMap.put("IndexStop", "false");
 									defaultProps.setProperty("IndexDrop", "false");
 									contextMap.put("IndexDrop", "false");
+								}
+								
+								if (cleanUp) {
+									defaultProps.setProperty("cleanUp", "true");
+									contextMap.put("cleanUp", "true");
+								} else {
+									defaultProps.setProperty("cleanUp", "false");
+									contextMap.put("cleanUp", "false");
 								}
 								
 								if (save) {

@@ -29,8 +29,8 @@ public class UploadProjectWizardPage2 extends WizardPage {
 	private static Button checkSaveSettings;
 	private static Button checkTruncate;
 	private static Button checkTerms;
-	
-
+	private Label labelSetTotalNum;
+	private static Button setTotalNumBtn;
 	// private static Text csvSeperatorext;
 
 	private Label label;
@@ -65,7 +65,9 @@ public class UploadProjectWizardPage2 extends WizardPage {
 	public static boolean getTruncate() {
 		return checkTruncate.getSelection();
 	}
-
+	public static boolean getCleanUp() {
+		return setTotalNumBtn.getSelection();
+	}
 	public static boolean getTruncateQueries() {
 		return checkTruncateQueries.getSelection();
 	}
@@ -100,7 +102,12 @@ public class UploadProjectWizardPage2 extends WizardPage {
 		
 		checkTruncateQueries = new Button(container, SWT.CHECK);
 		checkTruncateQueries.setSelection(false);
-		
+		labelSetTotalNum = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
+		labelSetTotalNum.setText(Messages.CSVWizardPageTwo_CleanUp);
+
+		setTotalNumBtn = new Button(container, SWT.CHECK);
+		setTotalNumBtn.setSelection(Boolean.parseBoolean(defaultProps
+				.getProperty("cleanUp"))); 
 		lblStopDatabaseIndexing = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 		lblStopDatabaseIndexing.setToolTipText("Truncates the Project!");
 		lblStopDatabaseIndexing.setText(Messages.CSVWizardPage2_lblStopDatabaseIndexing_text);

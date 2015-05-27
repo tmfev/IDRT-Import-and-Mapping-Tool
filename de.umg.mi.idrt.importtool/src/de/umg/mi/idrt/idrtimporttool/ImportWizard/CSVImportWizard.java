@@ -448,7 +448,13 @@ public class CSVImportWizard extends Wizard {
 													+ currentConfig));
 								}
 							}
-
+							if (cleanUp) {
+								defaultProps.setProperty("cleanUp", "true");
+								contextMap.put("cleanUp", "true");
+							} else {
+								defaultProps.setProperty("cleanUp", "false");
+								contextMap.put("cleanUp", "false");
+							}
 							if (save) {
 								defaultProps
 								.setProperty("folderCSV", folderCSV);
