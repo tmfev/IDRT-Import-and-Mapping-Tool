@@ -781,7 +781,7 @@ public class ServerView extends ViewPart {
 
 			if (!command.isEnabled()) {
 				loadOntologyMenuItem.setEnabled(false);
-				loadOntologyMenuItem.setText("Load Ontology (IOE only)"); 
+				loadOntologyMenuItem.setText("Load Ontology (IMT only)"); 
 			}
 
 			new MenuItem(mainMenu, SWT.SEPARATOR);
@@ -926,7 +926,7 @@ public class ServerView extends ViewPart {
 			//				}
 			//			});
 			final MenuItem dropIOETablesMenuItem = new MenuItem(mainMenu, SWT.NONE);
-			dropIOETablesMenuItem.setText("Drop IOE Tables");
+			dropIOETablesMenuItem.setText("Drop IMT Tables");
 			dropIOETablesMenuItem.addSelectionListener(new SelectionListener() {
 
 				@Override
@@ -937,8 +937,8 @@ public class ServerView extends ViewPart {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					boolean result = MessageDialog.openConfirm(Application.getShell(),
-							"Drop IOE Tables?",
-							"Do you really want to drop the IOE specific tables?");
+							"Drop IMT Tables?",
+							"Do you really want to drop the IMT specific tables?");
 					if(result) {
 						IDRTImport.dropIOETables(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 					}

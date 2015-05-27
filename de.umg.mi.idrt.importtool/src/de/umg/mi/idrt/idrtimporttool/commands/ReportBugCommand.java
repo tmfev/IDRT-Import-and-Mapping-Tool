@@ -18,7 +18,7 @@ import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 
 public class ReportBugCommand extends AbstractHandler {
 
-	private static String url = "https://vm04.mi.med.uni-goettingen.de/jira/secure/CreateIssue!default.jspa";
+	private static String url = "https://github.com/tmfev/IDRT-Import-and-Mapping-Tool/issues";
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
