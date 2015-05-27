@@ -1623,7 +1623,7 @@ public class OntologyEditorView extends ViewPart {
 //		stagingTreeViewer.setLabelProvider(new TransmartStyledViewTableLabelProvider());
 //		stagingTreeViewer.setInput(new TransmartOntologyTreeContentProvider().getStagingModel());
 		stagingTreeViewer.setContentProvider(new TreeStagingContentProvider());		
-		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
+		stagingTreeViewer.setLabelProvider(new StyledViewTableLabelProvider("staging"));
 		stagingTreeViewer.setInput(new OntologyTreeContentProvider().getStagingModel());
 		stagingTreeViewer.expandToLevel(2);
 		OntologyEditorView.getOntologyStagingTree().setTreeViewer(stagingTreeViewer);
@@ -1790,7 +1790,7 @@ public class OntologyEditorView extends ViewPart {
 		TreeTargetContentProvider treeContentProvider = new TreeTargetContentProvider();
 
 		targetTreeViewer.setContentProvider(treeContentProvider);
-		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider());
+		targetTreeViewer.setLabelProvider(new StyledViewTableLabelProvider("target"));
 		targetTreeViewer.setInput(new OntologyTreeContentProvider().getTargetModel());
 		//		if (targetTreeViewer.getTree().getItems().length>=2)
 		targetTreeViewer.expandToLevel(3);

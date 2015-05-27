@@ -25,9 +25,10 @@ import de.umg.mi.idrt.ioe.Resource;
  */
 public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 
-	
+	private boolean stagingTree;
 
-	public StyledViewTableLabelProvider() {
+	public StyledViewTableLabelProvider(String tree) {
+		this.stagingTree = tree.equalsIgnoreCase("staging");
 	}
 
 	/* (non-Javadoc)
@@ -70,7 +71,7 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 			boolean checkShowTotalNum = ((defaultProps.getProperty("showTotalNum")
 					.equals("true")) ? true : false);
 			
-			if (checkShowTotalNum)// && otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
+			if (stagingTree && checkShowTotalNum && otNode.getOntologyCellAttributes().getC_TOTALNUM()>0)
 				cell.setText(otNode.getName() + " - ["+otNode.getOntologyCellAttributes().getC_TOTALNUM()+"]");
 			else
 				cell.setText(otNode.getName());
