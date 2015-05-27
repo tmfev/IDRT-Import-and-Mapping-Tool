@@ -1,4 +1,4 @@
-# IDRT-App
+# IDRT-Import and Mapping Tool
 TODO: update README
 
 The IDRT Import Tool is part of the Integrated Data Repository Toolkit (http://www.tmf-ev.de/Themen/Projekte/V091_MI_IDRT.aspx) which was funded by TMF – Infrastructures for Medical Research (http://www.tmf-ev.de).
