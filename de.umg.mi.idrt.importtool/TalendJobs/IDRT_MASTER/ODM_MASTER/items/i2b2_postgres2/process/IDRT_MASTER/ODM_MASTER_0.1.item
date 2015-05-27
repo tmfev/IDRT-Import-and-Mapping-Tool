@@ -871,8 +871,7 @@
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
@@ -1051,7 +1050,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_13"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="32" posY="-224">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_8"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
@@ -1104,7 +1103,7 @@
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!context.importSingleFile"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If14"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tCreateTemporaryFile_2" offsetLabelX="0" offsetLabelY="0" source="tCreateTemporaryFile_2" target="tRunJob_8">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tCreateTemporaryFile_2" offsetLabelX="0" offsetLabelY="0" source="tCreateTemporaryFile_2" target="tJava_21">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk5"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tJava_6">
@@ -1208,8 +1207,11 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_21" target="tJDBCConnection_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk15"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_21" target="tJDBCClose_1">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_21" target="tRunJob_8">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk16"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_21" target="tJava_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk26"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_21" target="tRunJob_6">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.IndexStop"/>
@@ -1218,9 +1220,6 @@
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_21" target="tRunJob_7">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.IndexDrop"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If20"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_21" target="tJava_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk24"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tJDBCInput_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk18"/>
@@ -1245,8 +1244,8 @@
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.IndexStop"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If22"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_8" offsetLabelX="0" offsetLabelY="0" source="tRunJob_8" target="tJava_21">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk26"/>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_8" offsetLabelX="0" offsetLabelY="0" source="tRunJob_8" target="tJDBCClose_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk24"/>
   </connection>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>

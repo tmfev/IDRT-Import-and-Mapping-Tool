@@ -31,21 +31,21 @@
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
-    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2metadata&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2postgresbb1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
   </context>
   <context confirmationNeeded="false" name="transmart">
     <contextParameter comment="" name="hashSet" prompt="hashSet?" promptNeeded="false" type="id_Object" value=""/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.102.3&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.102.3:5432/transmart"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
@@ -580,13 +580,16 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE IF EXISTS &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE IF EXISTS &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2 AS (SELECT * FROM &quot; +context.DB_StagingI2B2_Schema+ &quot;.i2b2)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum AS SELECT i2b.c_tablename,i2b.c_fullname,COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact  obs JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.concept_dimension con ON obs.concept_cd   =    con.concept_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 i2b ON con.concept_path LIKE i2b.c_dimcode || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum (c_tablename, c_fullname, c_totalnum) SELECT i2b.c_tablename, i2b.c_fullname, COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact   obs  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.modifier_dimension con ON obs.modifier_cd   =    con.modifier_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2               i2b ON con.modifier_path LIKE i2b.c_dimcode || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum AS SELECT i2b.c_tablename,i2b.c_fullname,COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact  obs JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.concept_dimension con ON obs.concept_cd   =    con.concept_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 i2b ON con.concept_path like replace(i2b.c_dimcode,'\\','\\\\') || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum (c_tablename, c_fullname, c_totalnum) SELECT i2b.c_tablename, i2b.c_fullname, COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact   obs  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.modifier_dimension con ON obs.modifier_cd   =    con.modifier_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2               i2b ON con.modifier_path LIKE replace(i2b.c_dimcode,'\\','\\\\') || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 (c_hlevel, c_fullname, c_name, c_synonym_cd, c_visualattributes, c_totalnum, c_basecode, c_metadataxml, c_facttablecolumn, c_tablename, c_columnname, c_columndatatype, c_operator, c_dimcode, c_comment, c_tooltip, m_applied_path, update_date, download_date, import_date, sourcesystem_cd, valuetype_cd, m_exclusion_cd, c_path, c_symbol) SELECT i2b.c_hlevel, i2b.c_fullname, i2b.c_name, i2b.c_synonym_cd, i2b.c_visualattributes, NVL(tnm.c_totalnum, 0), i2b.c_basecode, i2b.c_metadataxml, i2b.c_facttablecolumn, i2b.c_tablename, i2b.c_columnname, i2b.c_columndatatype, i2b.c_operator, i2b.c_dimcode, i2b.c_comment, i2b.c_tooltip, i2b.m_applied_path, i2b.update_date, i2b.download_date, i2b.import_date, i2b.sourcesystem_cd, i2b.valuetype_cd, i2b.m_exclusion_cd, i2b.c_path, i2b.c_symbol  FROM    &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2     i2b  LEFT JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum tnm ON i2b.c_tablename = tnm.c_tablename AND i2b.c_fullname = tnm.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 (c_hlevel, c_fullname, c_name, c_synonym_cd, c_visualattributes, c_totalnum, c_basecode, c_metadataxml, c_facttablecolumn, c_tablename, c_columnname, c_columndatatype, c_operator, c_dimcode, c_comment, c_tooltip, m_applied_path, update_date, download_date, import_date, sourcesystem_cd, valuetype_cd, m_exclusion_cd, c_path, c_symbol) SELECT i2b.c_hlevel, i2b.c_fullname, i2b.c_name, i2b.c_synonym_cd, i2b.c_visualattributes, coalesce(tnm.c_totalnum, 0), i2b.c_basecode, i2b.c_metadataxml, i2b.c_facttablecolumn, i2b.c_tablename, i2b.c_columnname, i2b.c_columndatatype, i2b.c_operator, i2b.c_dimcode, i2b.c_comment, i2b.c_tooltip, i2b.m_applied_path, i2b.update_date, i2b.download_date, i2b.import_date, i2b.sourcesystem_cd, i2b.valuetype_cd, i2b.m_exclusion_cd, i2b.c_path, i2b.c_symbol  FROM    &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2     i2b  LEFT JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum tnm ON i2b.c_tablename = tnm.c_tablename AND i2b.c_fullname = tnm.c_fullname&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum&quot;"/>
       <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="select tables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -649,7 +652,7 @@
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.2-1003.jdbc3.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
@@ -665,13 +668,74 @@
     <elementParameter field="CHECK" name="AUTO_COMMIT" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tOracleConnection_1" target="tOracleInput_2">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tOracleConnection_1" target="tOracleInput_5">
+  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum IF EXISTS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2 IF EXISTS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2 AS (SELECT * FROM &quot; +context.DB_StagingI2B2_Schema+ &quot;.i2b2)&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;CREATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum AS SELECT i2b.c_tablename,i2b.c_fullname,COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact  obs JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.concept_dimension con ON obs.concept_cd   =    con.concept_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 i2b ON con.concept_path like replace(i2b.c_dimcode,'\\','\\\\') || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum (c_tablename, c_fullname, c_totalnum) SELECT i2b.c_tablename, i2b.c_fullname, COUNT(DISTINCT obs.patient_num) AS c_totalnum FROM &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact   obs  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.modifier_dimension con ON obs.modifier_cd   =    con.modifier_cd  JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2               i2b ON con.modifier_path LIKE replace(i2b.c_dimcode,'\\','\\\\') || '%' GROUP BY i2b.c_tablename,i2b.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;TRUNCATE TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;INSERT INTO &quot; + context.DB_StagingI2B2_Schema + &quot;.i2b2 (c_hlevel, c_fullname, c_name, c_synonym_cd, c_visualattributes, c_totalnum, c_basecode, c_metadataxml, c_facttablecolumn, c_tablename, c_columnname, c_columndatatype, c_operator, c_dimcode, c_comment, c_tooltip, m_applied_path, update_date, download_date, import_date, sourcesystem_cd, valuetype_cd, m_exclusion_cd, c_path, c_symbol) SELECT i2b.c_hlevel, i2b.c_fullname, i2b.c_name, i2b.c_synonym_cd, i2b.c_visualattributes, coalesce(tnm.c_totalnum, 0), i2b.c_basecode, i2b.c_metadataxml, i2b.c_facttablecolumn, i2b.c_tablename, i2b.c_columnname, i2b.c_columndatatype, i2b.c_operator, i2b.c_dimcode, i2b.c_comment, i2b.c_tooltip, i2b.m_applied_path, i2b.update_date, i2b.download_date, i2b.import_date, i2b.sourcesystem_cd, i2b.valuetype_cd, i2b.m_exclusion_cd, i2b.c_path, i2b.c_symbol  FROM    &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2     i2b  LEFT JOIN &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum tnm ON i2b.c_tablename = tnm.c_tablename AND i2b.c_fullname = tnm.c_fullname&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_totalnum&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;DROP TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.t_i2b2&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="select tables"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="288" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;)));"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_4">
+      <column comment="" defaultValue="" key="false" length="38" name="ENCOUNTER_NUM" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;))"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJDBCRow_2"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tOracleConnection_1" target="tOracleInput_5">
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tOracleConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tOracleConnection_1" target="tOracleInput_2">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="FLOW" label="p_mapping" lineStyle="0" metaname="tOracleInput_2" offsetLabelX="0" offsetLabelY="0" source="tOracleInput_2" target="tMap_1">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
@@ -775,9 +839,27 @@
   <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tJDBCRow_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCRow_1" target="tJava_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError1"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tForeach_1">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;) &amp;&amp; context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJDBCConnection_1" target="tForeach_1">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;) &amp;&amp; context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJDBCConnection_1" target="tForeach_2">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;) &amp;&amp; context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;oracle&quot;)"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2"/>
+  </connection>
+  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_2" offsetLabelX="0" offsetLabelY="0" source="tForeach_2" target="tJava_4">
+    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
+    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate2"/>
+  </connection>
+  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tJDBCRow_2">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
+      <elementValue elementRef="TRACE_COLUMN" value="ENCOUNTER_NUM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row5"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tOracleConnection_1"/>
@@ -800,7 +882,9 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
+    <elementParameter field="TEXT" name="SUBJOB_TITLE" value="POSTGRES"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
@@ -811,6 +895,13 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCConnection_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
+    <elementParameter field="TEXT" name="SUBJOB_TITLE" value="ORACLE"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
