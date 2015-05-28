@@ -701,12 +701,12 @@ public class MyOntologyTrees{
 	}
 
 	public static void createRegexMenu() {
-		if (regMenu!= null)
-			regMenu.dispose();
+//		if (regMenu!= null)
+//			regMenu.dispose();
 		regMenu = new Menu(dialog, SWT.DROP_DOWN);
-		for (MenuItem m : regMenu.getItems()) {
-			m.dispose();
-		}
+//		for (MenuItem m : regMenu.getItems()) {
+//			m.dispose();
+//		}
 		for (Regex r : CombineNodesCommand.getRegex()) {
 			final MenuItem item = new MenuItem(regMenu, SWT.PUSH);
 			System.out.println("current regex: " +r.getName());

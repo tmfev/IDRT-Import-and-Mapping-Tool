@@ -197,13 +197,10 @@ public class IDRTImport {
 		DBIMPORT_MASTER db = new DBIMPORT_MASTER();
 		exitCode = db.runJobInTOS(getARGV());
 		clearInputFolder();
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
+		ServerView.btnStopSetEnabled(false);
+		StatusListener.stopLogging();
+		return exitCode;
 	}
-
-
-
 
 	/**
 	 * 
@@ -312,82 +309,82 @@ public class IDRTImport {
 	}
 
 	public static void runImportST_NoMap(Server server, String project) {
-		
-//		boolean confirm = 
-		
+
+		//		boolean confirm = 
+
 		if (MessageDialog.openConfirm(Application.getShell(), "Import Standard Terminologies?", 
 				"Do you really want to import the standard terminologies?")){
-		StatusListener.startLogging();
-		ServerView.stdImportStarted = true;
-		HashMap<String, String> contextMap = new HashMap<String, String>();
-		final String dbType = server.getDatabaseType();
-//		contextMap.put("DBHost", server.getIp());
-//		contextMap.put("DBPassword", server.getPassword());
-//		contextMap.put("DBUsername", server.getUser());
-//		contextMap.put("DBInstance", server.getSID());
-//		contextMap.put("DBPort", server.getPort());
-//		contextMap.put("DBSchema", project);
-		
-				contextMap.put("DB_StagingI2B2_Host", server.getIp());
-				contextMap.put("DB_StagingI2B2_Password", server.getPassword());
-				contextMap.put("DB_StagingI2B2_Username", server.getUser());
-				contextMap.put("DB_StagingI2B2_Instance", server.getSID());
-				contextMap.put("DB_StagingI2B2_Port", server.getPort());
-				contextMap.put("DB_StagingI2B2_Schema", project);
-				contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
-				contextMap.put("DB_StagingI2B2_WHType", server.getWhType());
-		/**
-		 * ST-Import
-		 */
-		setSTContext(contextMap);
-		setCompleteContext(contextMap);
+			StatusListener.startLogging();
+			ServerView.stdImportStarted = true;
+			HashMap<String, String> contextMap = new HashMap<String, String>();
+			final String dbType = server.getDatabaseType();
+			//		contextMap.put("DBHost", server.getIp());
+			//		contextMap.put("DBPassword", server.getPassword());
+			//		contextMap.put("DBUsername", server.getUser());
+			//		contextMap.put("DBInstance", server.getSID());
+			//		contextMap.put("DBPort", server.getPort());
+			//		contextMap.put("DBSchema", project);
 
-		StatusListener.setStatus(1f, "Importing Terminologies", "");
-		Display.getDefault().syncExec(new Runnable() {
+			contextMap.put("DB_StagingI2B2_Host", server.getIp());
+			contextMap.put("DB_StagingI2B2_Password", server.getPassword());
+			contextMap.put("DB_StagingI2B2_Username", server.getUser());
+			contextMap.put("DB_StagingI2B2_Instance", server.getSID());
+			contextMap.put("DB_StagingI2B2_Port", server.getPort());
+			contextMap.put("DB_StagingI2B2_Schema", project);
+			contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
+			contextMap.put("DB_StagingI2B2_WHType", server.getWhType());
+			/**
+			 * ST-Import
+			 */
+			setSTContext(contextMap);
+			setCompleteContext(contextMap);
 
-			@Override
-			public void run() {
-				ServerView.setProgress((int) StatusListener.getPercentage());
-				ServerView.setProgressTop(StatusListener.getFile());
-				ServerView.setProgressBottom(""
-						+ StatusListener.getStatus());
-			}
-		});
+			StatusListener.setStatus(1f, "Importing Terminologies", "");
+			Display.getDefault().syncExec(new Runnable() {
 
-		workerThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				ServerView.btnStopSetEnabled(true);
-				System.out.println("yes");
-				IDRT_STDTERM std = new IDRT_STDTERM();
-				//				IDRT_STDTERM std = new IDRT_STDTERM();
-				System.out.println("2");
-				exitCode = 	std.runJobInTOS(getARGV());
-				System.out.println("3");
-				StatusListener.stopLogging();
+				@Override
+				public void run() {
+					ServerView.setProgress((int) StatusListener.getPercentage());
+					ServerView.setProgressTop(StatusListener.getFile());
+					ServerView.setProgressBottom(""
+							+ StatusListener.getStatus());
+				}
+			});
 
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						if (exitCode == 0) {
-							StatusListener.setStatus(100f, "Import done","");
-							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openInformation(Application.getShell(),"Import Complete!", "Import Complete!");
-							StatusListener.setStatus(0.0f, "","");
-							StatusListener.setSubStatus(0.0f, "");
+			workerThread = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					ServerView.btnStopSetEnabled(true);
+					System.out.println("yes");
+					IDRT_STDTERM std = new IDRT_STDTERM();
+					//				IDRT_STDTERM std = new IDRT_STDTERM();
+					System.out.println("2");
+					exitCode = 	std.runJobInTOS(getARGV());
+					System.out.println("3");
+					StatusListener.stopLogging();
+
+					Display.getDefault().syncExec(new Runnable() {
+						@Override
+						public void run() {
+							if (exitCode == 0) {
+								StatusListener.setStatus(100f, "Import done","");
+								StatusListener.setSubStatus(0.0f, "");
+								MessageDialog.openInformation(Application.getShell(),"Import Complete!", "Import Complete!");
+								StatusListener.setStatus(0.0f, "","");
+								StatusListener.setSubStatus(0.0f, "");
+							}
+							else {
+								StatusListener.setStatus(100f, "Import failed","");
+								StatusListener.setSubStatus(0.0f, "");
+								MessageDialog.openError(Application.getShell(), "Import failed!", "Import failed!");
+								StatusListener.setStatus(0.0f, "","");
+								StatusListener.setSubStatus(0.0f, "");
+							}
 						}
-						else {
-							StatusListener.setStatus(100f, "Import failed","");
-							StatusListener.setSubStatus(0.0f, "");
-							MessageDialog.openError(Application.getShell(), "Import failed!", "Import failed!");
-							StatusListener.setStatus(0.0f, "","");
-							StatusListener.setSubStatus(0.0f, "");
-						}
-					}
-				});
-			}
-		});
-		workerThread.start();
+					});
+				}
+			});
+			workerThread.start();
 		}
 	}
 
