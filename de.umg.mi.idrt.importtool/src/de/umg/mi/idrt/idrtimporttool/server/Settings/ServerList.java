@@ -486,6 +486,11 @@ public class ServerList {
 				ServerTable currentTable = getTableMap().get(table);
 				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());// + " where rownum <= 5");
 			}
+			else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+				System.out.println("POSTGRES");
+				ServerTable currentTable = getTableMap().get(table);
+				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getName());// + " where rownum <= 5");
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -625,6 +630,30 @@ public class ServerList {
 				//						tables.add(newTable);
 				//					}
 			}
+			else if(user.getServer().getDatabaseType().equalsIgnoreCase("postgres")) {
+//				statement.execute("use " + user.getName());
+				System.out.println("USER: " + user.getName());
+				resultSet = statement
+						.executeQuery("SELECT * FROM information_schema.tables where table_schema = '"+user.getName()+"'");
+				while (resultSet.next()) {
+					String table = resultSet.getString("table_name");
+					String schema = resultSet.getString("table_schema");
+					ServerTable newTable = new ServerTable(server,
+							user.getName(), table);
+					newTable.setDatabaseSchema(schema);
+					tables.add(newTable);
+					tableMap.put(table, newTable);
+				}
+
+				//					resultSet = statement
+				//							.executeQuery("SELECT name FROM sysobjects WHERE xtype = 'v'");
+				//					while (resultSet.next()) {
+				//						String table = resultSet.getString("name");
+				//						ServerTable newTable = new ServerTable(server,
+				//								user.getName(), table);
+				//						tables.add(newTable);
+				//					}
+			}
 			connect.close();
 			return tables;
 
@@ -706,6 +735,19 @@ public class ServerList {
 				//					User newUser = new User(server.getUser(), server);
 				//					userList.add(newUser);
 			}
+			else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+//TODO
+				//SELECT * FROM sys.databases
+				resultSet = statement
+						.executeQuery("select schema_name from information_schema.schemata");
+				while (resultSet.next()) {
+					String user = resultSet.getString("schema_name");
+					I2b2Project newUser = new I2b2Project(user, server);
+					userList.add(newUser);
+				}
+				//					User newUser = new User(server.getUser(), server);
+				//					userList.add(newUser);
+			}
 
 			connect.close();
 			return userList;
@@ -763,7 +805,6 @@ public class ServerList {
 					users = new HashSet<I2b2Project>();
 					resultSet = statement
 							.executeQuery("select schema_name from information_schema.schemata");
-					
 					users = getResultSet(resultSet, server);
 				}
 				else {

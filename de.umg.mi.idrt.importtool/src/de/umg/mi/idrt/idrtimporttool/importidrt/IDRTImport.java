@@ -191,32 +191,15 @@ public class IDRTImport {
 	 * @param importTerms Import the standard terminologies?
 	 * @return Exitcode from TOS (0=success)
 	 */
-	public static int runDBImport(boolean importTerms) {
+	public static int runDBImport() {
 		StatusListener.startLogging();
 		ServerView.btnStopSetEnabled(true);
 		DBIMPORT_MASTER db = new DBIMPORT_MASTER();
 		exitCode = db.runJobInTOS(getARGV());
 		clearInputFolder();
-		if (exitCode == 0 && importTerms) {
-			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			//			exitCode = stdTerm.runJobInTOS(getARGV());
-			if (exitCode == 0) {
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-				setCompleteContext(contextMap);
-				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
-				exitCode = transform.runJobInTOS(getARGV());
-			}
 			ServerView.btnStopSetEnabled(false);
 			StatusListener.stopLogging();
 			return exitCode;
-		} else {
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		}
 	}
 
 

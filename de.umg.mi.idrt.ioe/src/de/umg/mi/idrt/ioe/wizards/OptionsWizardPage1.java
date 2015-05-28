@@ -183,7 +183,7 @@ public class OptionsWizardPage1 extends WizardPage {
 						exportLogPath += ".log";
 					}
 					txtLlogPath.setText(exportLogPath);
-					changed = true;
+//					changed = true;
 				}
 			});
 			Label label_1 = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);

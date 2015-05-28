@@ -153,7 +153,6 @@ public class DBImportWizard extends Wizard {
 		try {
 
 			final boolean cleanUp = DBWizardPage3.getCleanUp();
-			final boolean terms = DBWizardPage3.getTerms();
 			final boolean truncateQueries = DBWizardPage3.getTruncateQueries();
 			
 			final boolean stopIndex = DBWizardPage3.getStopIndex();
@@ -263,24 +262,6 @@ public class DBImportWizard extends Wizard {
 			/**
 			 * page 2
 			 */
-			//
-			if (DBWizardPage3.getTerms()) {
-
-				/**
-				 * ST-Import
-				 */
-				File rootDir = FileHandler.getBundleFile("/cfg/Standardterminologien/");
-				contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
-				contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
-				contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
-				contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
-				contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
-				contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
-				contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
-				contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
-			} else {
-			}
-
 			if (cleanUp) {
 				defaultProps.setProperty("cleanUp", "true");
 				contextMap.put("cleanUp", "true");
@@ -350,7 +331,7 @@ public class DBImportWizard extends Wizard {
 					started = true;
 					final long start = System.currentTimeMillis();
 					IDRTImport.setCompleteContext(contextMap);
-					int exitCode = IDRTImport.runDBImport(terms);
+					int exitCode = IDRTImport.runDBImport();
 					done = true;
 					StatusListener.setStatus(0, "", "");  
 					StatusListener.setSubStatus(0.0f, "");

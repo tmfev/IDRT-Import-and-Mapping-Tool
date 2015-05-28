@@ -89,9 +89,6 @@ public class DBWizardPage3 extends WizardPage {
 		return checkContext.getSelection();
 	}
 
-	public static boolean getTerms() {
-		return checkTerms.getSelection();
-	}
 
 	public static boolean getTruncate() {
 		return checkTruncate.getSelection();
@@ -176,24 +173,12 @@ public class DBWizardPage3 extends WizardPage {
 
 			new Label(composite, SWT.NONE);
 			
-			Label labelImportTerms = new Label(composite, SWT.NONE);
-			labelImportTerms.setText("Import and Map Standardterminologies?");
-			labelImportTerms
-					.setToolTipText("Importiert die Standardterminologien");
-			checkTerms = new Button(composite, SWT.CHECK);
-			checkTerms.setSelection(false);
-			new Label(composite, SWT.NONE);
-
 			Label labelSaveContext = new Label(composite, SWT.NONE);
 			labelSaveContext.setText("Save Settings?");
 			checkContext = new Button(composite, SWT.CHECK);
 			checkContext.setSelection(false);
 			new Label(composite, SWT.NONE);
 			
-			btnNewButton = new Button(composite, SWT.NONE);
-			btnNewButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
-			btnNewButton.setText(Messages.DBWizardPage3_btnNewButton_text);
-			new Label(composite, SWT.NONE);
 
 			mainPath = defaultProps.getProperty("folderMainCSV");
 			final DirectoryDialog dlgMain = new DirectoryDialog(

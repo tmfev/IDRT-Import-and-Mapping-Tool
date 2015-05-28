@@ -18,6 +18,7 @@ public class ExportDB {
 	private static String ORACLEDRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static String MSSQLDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static String MYSQLDRIVER = "com.mysql.jdbc.Driver";
+	private static String POSTGRESDRIVER = "org.postgresql.Driver";
 	private static Connection connect = null;
 	private static Statement statement = null;
 	private static ResultSet resultSet = null;
@@ -64,6 +65,11 @@ public class ExportDB {
 					else {
 						connect = DriverManager.getConnection("jdbc:sqlserver://" + serverIP, serverUsername, serverPassword);
 					}
+			}
+			else if (databaseType.equalsIgnoreCase("postgres")) {
+				Class.forName(POSTGRESDRIVER);
+				connect = DriverManager.getConnection("jdbc:postgresql://" + serverIP + ":" 
+						+ serverPort+"/" + serverSID, serverUsername, serverPassword);
 			}
 			connect.setAutoCommit(false);
 //			statement = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 

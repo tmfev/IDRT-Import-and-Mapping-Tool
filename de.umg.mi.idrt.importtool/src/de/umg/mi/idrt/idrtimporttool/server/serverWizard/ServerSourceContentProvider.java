@@ -25,7 +25,7 @@ public class ServerSourceContentProvider implements ITreeContentProvider {
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof Server) {
-
+			System.out.println("SERVER");
 			Server server = (Server) parentElement;
 
 			List<I2b2Project> users = ServerList.getUsersSourceServer(server);
@@ -36,7 +36,9 @@ public class ServerSourceContentProvider implements ITreeContentProvider {
 			}
 
 		} else if (parentElement instanceof I2b2Project) {
+			
 			I2b2Project user = (I2b2Project) parentElement;
+			System.out.println("I2b2Project " + user);
 			return ServerList.getTables(user).toArray();
 		} else {
 			return null;

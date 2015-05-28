@@ -261,7 +261,6 @@ public class Server implements Serializable {
 					else {
 						return DriverManager.getConnection("jdbc:sqlserver://"+getIp()
 								+";databaseName="+this.getSID()+";integratedSecurity=true");
-
 					}
 
 				}
