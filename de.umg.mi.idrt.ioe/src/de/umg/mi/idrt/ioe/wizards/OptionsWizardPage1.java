@@ -3,7 +3,6 @@ package de.umg.mi.idrt.ioe.wizards;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -111,7 +110,7 @@ public class OptionsWizardPage1 extends WizardPage {
 			Label lblTargetFolder = new Label(composite, SWT.NONE);
 			lblTargetFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 1, 1));
-			lblTargetFolder.setText("Target Folder:");
+			lblTargetFolder.setText("Target Folder Name:");
 			targetFolderText = new Text(composite, SWT.BORDER);
 			targetFolderText.setText(targetFolder);
 			targetFolderText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -158,7 +157,7 @@ public class OptionsWizardPage1 extends WizardPage {
 			Label lblExportlog = new Label(composite, SWT.NONE);
 			lblExportlog.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 1, 1));
-			lblExportlog.setText("Export-Log Location:");
+			lblExportlog.setText("Export Log Location:");
 
 			txtLlogPath = new Text(composite, SWT.BORDER);
 			txtLlogPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
@@ -191,7 +190,7 @@ public class OptionsWizardPage1 extends WizardPage {
 					false, 2, 1));
 			new Label(composite, SWT.NONE);
 			Label lblSysolog = new Label(composite, SWT.NONE);
-			lblSysolog.setText("Syso-Log:");
+			lblSysolog.setText("Syso Log:");
 			lblSysolog.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false,
 					false, 1, 1));
 			boolean sysoLog = ((defaultProps.getProperty("sysoLog")
@@ -210,7 +209,7 @@ public class OptionsWizardPage1 extends WizardPage {
 			Label lblSysologLocation = new Label(composite, SWT.NONE);
 			lblSysologLocation.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
 					false, false, 1, 1));
-			lblSysologLocation.setText("Syso-Log Location:");
+			lblSysologLocation.setText("Syso Log Location:");
 
 			sysoLogLocationPath = new Text(composite, SWT.BORDER);
 			sysoLogLocationPath.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
@@ -296,27 +295,6 @@ public class OptionsWizardPage1 extends WizardPage {
 			GridData gd_label_7 = new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1);
 			gd_label_7.widthHint = 101;
 			label_7.setLayoutData(gd_label_7);
-			new Label(composite, SWT.NONE);
-			Button btnClearChecks = new Button(composite, SWT.NONE);
-			btnClearChecks.addSelectionListener(new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					File properties = de.umg.mi.idrt.ioe.misc.FileHandler.getBundleFile("/cfg/Default.properties");
-					try {
-						defaultProps.load(new FileReader(properties));
-						defaultProps.setProperty("loadProjectDontAskAgain", "false");
-						defaultProps.store(new FileWriter(properties), "");
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
-			});
-			
-			btnClearChecks.setText("Clear Checks");
-			new Label(composite, SWT.NONE);
-			new Label(composite, SWT.NONE);
 			setPageComplete(true);
 
 		} catch (FileNotFoundException e) {
