@@ -48,6 +48,7 @@ import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -1698,15 +1699,17 @@ public class OntologyEditorView extends ViewPart {
 				stagingComposite.setRedraw(true);
 			}
 		});
-
 		stagingTreeViewer.getTree().addMouseTrackListener(new MouseTrackListener() {
 
 			@Override
 			public void mouseEnter(MouseEvent arg0) {
+				System.out.println("ENTERING ");
 				for (OntologyTreeNode node : highlightedTargetNodes) {
 					node.setHighlighted(false);
 					highlightedTargetNodes.remove(node);
 				}
+				
+				
 			}
 
 			@Override
@@ -1730,12 +1733,17 @@ public class OntologyEditorView extends ViewPart {
 
 				Point p = new Point(arg0.x,arg0.y);
 				final TreeItem a = stagingTreeViewer.getTree().getItem(p);
+				
 				if (a!=null) {
 					if (a.getData() instanceof OntologyTreeNode) {
+				
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
+						System.out.println("HOVERING " + node.getName());
 						String fullname = node.getOntologyCellAttributes().getC_FULLNAME();
 						for (OntologyTreeNode target : myOntologyTree.getOntologyTreeTarget().getNodeLists().getStringPathToNode().values()) {
+							System.out.println("FOR " + (System.currentTimeMillis()-time) );
 							if (System.currentTimeMillis()-time>500) {
+								System.out.println("TIMEOUT");
 								//Timeout, if it takes to long.
 								break;
 							}
@@ -1747,10 +1755,10 @@ public class OntologyEditorView extends ViewPart {
 								else{
 									target.setHighlighted(true);
 								}
-
-								if (target.isHighlighted()){
-									highlightedTargetNodes.add(target);
-								}
+								highlightedTargetNodes.add(target);
+//								if (target.isHighlighted()){
+									
+//								}
 							}
 						}
 					}
@@ -1899,13 +1907,20 @@ public class OntologyEditorView extends ViewPart {
 					}
 					highlightedStagingNodes.clear();
 				}
-
+				long time = System.currentTimeMillis();
 				Point p = new Point(arg0.x,arg0.y);
 				final TreeItem a = targetTreeViewer.getTree().getItem(p);
 				if (a!=null) {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
+							System.out.println("FOR " +(System.currentTimeMillis()-time) );
+							if (System.currentTimeMillis()-time>500) {
+								System.out.println("TIMEOUT");
+								//Timeout, if it takes to long.
+								break;
+							}
+							
 							if (subNode.getStagingParentNode()!=null) {
 								highlightedStagingNodes.add(subNode.getStagingParentNode());
 								subNode.getStagingParentNode().setHighlighted(true);

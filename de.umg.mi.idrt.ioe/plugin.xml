@@ -222,16 +222,6 @@
                   style="push">
             </command>
             <command
-                  commandId="org.eclipselabs.p2.rcpupdate.install"
-                  label="Install New Software"
-                  style="push">
-            </command>
-            <command
-                  commandId="org.eclipselabs.p2.rcpupdate.update"
-                  label="Update Software"
-                  style="push">
-            </command>
-            <command
                   commandId="de.umg.mi.idrt.importtool.reportBug"
                   label="Report a Bug"
                   style="push">

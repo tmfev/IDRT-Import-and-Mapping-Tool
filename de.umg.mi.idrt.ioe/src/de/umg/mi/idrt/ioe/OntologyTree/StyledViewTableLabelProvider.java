@@ -26,9 +26,28 @@ import de.umg.mi.idrt.ioe.Resource;
 public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 
 	private boolean stagingTree;
-
+	private Properties defaultProps;
+	
+	private Color hiddenColor;
+	private Color activeColor;
+	private Color nodeHighlightedColor;	
+	private Color nodeSearchResultColor;
+	
 	public StyledViewTableLabelProvider(String tree) {
 		this.stagingTree = tree.equalsIgnoreCase("staging");
+		File properties = FileHandler.getBundleFile("/cfg/Default.properties");
+		defaultProps = new Properties();
+		
+		
+		hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+		activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+		nodeHighlightedColor = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
+		nodeSearchResultColor = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
+		try {
+			defaultProps.load(new FileReader(properties));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* (non-Javadoc)
@@ -36,37 +55,25 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 	 */
 	@Override
 	public void update(ViewerCell cell) {
-		File properties = FileHandler.getBundleFile("/cfg/Default.properties");
-		Properties defaultProps = new Properties();
-		try {
-			defaultProps.load(new FileReader(properties));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 		
 		Object element = cell.getElement();
-		Color hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
-		Color activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+		
 		if (element instanceof OntologyTreeNode) {
 			OntologyTreeNode otNode = ((OntologyTreeNode) element);
 
 			//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 			//		cell.setBackground(color);
 			if (otNode.isHighlighted()) {
-				Color color = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-				cell.setBackground(color);	
+				
+				cell.setBackground(nodeHighlightedColor);	
 			}
 			else if (otNode.isSearchResult()) {
-				Color color = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
-				cell.setBackground(color);	
+				cell.setBackground(nodeSearchResultColor);	
 			}
 			else {
 				//			Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 				cell.setBackground(null);	
-			}
-			String visual = otNode.getTargetNodeAttributes().getVisualattribute();
-			if (visual.toLowerCase().contains("h")) {
-
 			}
 			boolean checkShowTotalNum = ((defaultProps.getProperty("showTotalNum")
 					.equals("true")) ? true : false);
@@ -120,9 +127,8 @@ public class StyledViewTableLabelProvider extends StyledCellLabelProvider  {
 					else
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));
-					String hidden =  visualAttributeFull.substring(1, 2);
 
-					if (hidden.toLowerCase().equals("h"))
+					if (visualAttributeFull.substring(1, 2).toLowerCase().equals("h"))
 						cell.setForeground(hiddenColor);
 					else
 						cell.setForeground(activeColor);
