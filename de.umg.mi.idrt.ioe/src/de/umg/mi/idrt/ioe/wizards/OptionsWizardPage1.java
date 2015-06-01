@@ -45,7 +45,6 @@ public class OptionsWizardPage1 extends WizardPage {
 		super("Options");
 		setTitle("Options");
 		setDescription("Edit your Settings");
-		System.out.println("OptionsWizardPage1@IOE"); 
 	}
 	public static String getSysoLogPath() {
 		return sysoLogPath;

@@ -17,12 +17,9 @@ public class OptionsCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-System.out.println("OPTIONS");
 		WizardDialog wizardDialog = new WizardDialog(Application.getShell(),
 				new OptionsWizard());
-		System.out.println("OPTIONS B4 OPEN");
 		wizardDialog.open();
-		System.out.println("OPTIONS AF OPEN");
 		return null;
 
 	}
