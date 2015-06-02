@@ -1203,10 +1203,19 @@ public class OntologyEditorView extends ViewPart {
 		lblProject.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, true, 1, 1));
 		lblProject.setText("Target Project:");
 
+		DropTarget dropTarget6 = new DropTarget(lblProject, operations);
+		dropTarget6.setTransfer(transferTypes);
+		dropTarget6.addDropListener(dropListenerTarget);
+		
 		lblTargetName = new Text(composite_4, SWT.NONE);
 		lblTargetName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
 		lblTargetName.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW));
 		lblTargetName.setEditable(false);
+
+		DropTarget dropTarget7 = new DropTarget(lblTargetName, operations);
+		dropTarget7.setTransfer(transferTypes);
+		dropTarget7.addDropListener(dropListenerTarget);
+		
 		btnGo = new Button(composite_4, SWT.NONE);
 		btnGo.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, true, 1, 1));
 		btnGo.setText("Upload");
