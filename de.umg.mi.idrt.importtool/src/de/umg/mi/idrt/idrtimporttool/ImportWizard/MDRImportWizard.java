@@ -191,7 +191,9 @@ public class MDRImportWizard extends Wizard {
 		//		final String dbPort = WizardPage1.getPortText();
 		//		final String dbSchema = WizardPage1.getDBSchemaText();
 
-		final int mdrInstance = MDRWizardPage2.getMDRInstance();
+		final int mdrDesignation = MDRWizardPage2.getMDRDesignation();
+		final String mdrInstance = MDRWizardPage2.getMDRInstance();
+		final String mdrBaseURL = MDRWizardPage2.getMDRBaseURL();
 
 		// saving the last table before import
 
@@ -229,9 +231,14 @@ public class MDRImportWizard extends Wizard {
 
 					contextMap.put("folderMain", miscPathReplaced);
 
-					contextMap.put("MDRStartDesignation", ""+mdrInstance);
-					defaultProps.setProperty("MDRStartDesignation", ""+mdrInstance);
+					contextMap.put("MDRStartDesignation", ""+mdrDesignation);
+					defaultProps.setProperty("MDRStartDesignation", ""+mdrDesignation);
 
+					contextMap.put("MDRBaseURL", ""+mdrBaseURL);
+					defaultProps.setProperty("MDRBaseURL", ""+mdrBaseURL);
+					
+					contextMap.put("MDRInstance", ""+mdrInstance);
+					defaultProps.setProperty("MDRInstance", ""+mdrInstance);
 					b = new Thread(new Runnable() {
 
 						@Override

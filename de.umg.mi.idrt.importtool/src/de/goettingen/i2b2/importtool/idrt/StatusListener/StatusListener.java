@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Display;
 
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.CSVImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.DBImportWizard;
+import de.umg.mi.idrt.idrtimporttool.ImportWizard.MDRImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.ODMImportWizard;
 import de.umg.mi.idrt.idrtimporttool.ImportWizard.P21ImportWizard;
 import de.umg.mi.idrt.idrtimporttool.Log.Log;
@@ -131,6 +132,7 @@ public class StatusListener {
 		ODMImportWizard.killThread();
 		DBImportWizard.killThread();
 		P21ImportWizard.killThread();
+		MDRImportWizard.killThread();
 	}
 	
 	public static void interruptExtern(String error, String fileName) {
@@ -139,6 +141,7 @@ public class StatusListener {
 		ODMImportWizard.killThreadRemote(error,fileName);
 		DBImportWizard.killThreadRemote(error,fileName);
 		P21ImportWizard.killThreadRemote(error,fileName);
+		MDRImportWizard.killThreadRemote(error,fileName);
 	}
 
 	public static void notifyListener() {

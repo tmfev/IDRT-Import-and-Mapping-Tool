@@ -46,7 +46,13 @@ public class MDRWizardPage2 extends WizardPage {
 	private static String CSVpath = ""; 
 	private static String mainPath = "";
 	private static Button checkTerms;
-	private static Text MDRStartText;
+	private static Text MDRDesignation;
+	private static Text MDRBaseURL;
+	private static Text MDRInstance;
+	
+	private String MDRDESIGNATION = "27678";
+	private String MDRBASEURL = "https://mdr.imise.uni-leipzig.de";
+	private String MDRINSTANCE = "IDRT";
 
 	/**
 	 * @return the folderMainText
@@ -109,23 +115,58 @@ public class MDRWizardPage2 extends WizardPage {
 			labelMDRStart.setText("MDR Start Designation:");
 			labelMDRStart.setToolTipText("MDR Start Designation:");
 			
-			MDRStartText = new Text(container, SWT.FILL);
-			MDRStartText.setText("27678");
-			MDRStartText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+			MDRDesignation = new Text(container, SWT.FILL);
+			MDRDesignation.setText(MDRDESIGNATION);
+			MDRDesignation.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 					false, 1, 1));
-			MDRStartText.setEditable(true);
-			MDRStartText.addModifyListener(new ModifyListener() {
+			MDRDesignation.setEditable(true);
+			MDRDesignation.addModifyListener(new ModifyListener() {
 
 				@Override
 				public void modifyText(ModifyEvent e) {
 					checkFinish();
 				}
 			});
+
+			Label labelMDRBaseURL = new Label(container, SWT.NONE);
+			labelMDRBaseURL.setText("MDR BaseURL:");
+			labelMDRBaseURL.setToolTipText("MDR BaseURL:");
+			
+			MDRBaseURL = new Text(container, SWT.FILL);
+			MDRBaseURL.setText(MDRBASEURL);
+			MDRBaseURL.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+					false, 1, 1));
+			MDRBaseURL.setEditable(true);
+			MDRBaseURL.addModifyListener(new ModifyListener() {
+
+				@Override
+				public void modifyText(ModifyEvent e) {
+					checkFinish();
+				}
+			});
+			
+			Label labelMDRInstance = new Label(container, SWT.NONE);
+			labelMDRInstance.setText("MDR Instance:");
+			labelMDRInstance.setToolTipText("MDR BaseURL:");
+			
+			MDRInstance = new Text(container, SWT.FILL);
+			MDRInstance.setText(MDRINSTANCE);
+			MDRInstance.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+					false, 1, 1));
+			MDRInstance.setEditable(true);
+			MDRInstance.addModifyListener(new ModifyListener() {
+
+				@Override
+				public void modifyText(ModifyEvent e) {
+					checkFinish();
+				}
+			});
+			
 			checkFinish();
 			System.out.println(container.getSize());
 
-			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
-			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
+//			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
+//			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
 
 			CSVpath = defaultProps.getProperty("folderCSV");
 
@@ -141,8 +182,8 @@ public class MDRWizardPage2 extends WizardPage {
 	private void checkFinish(){
 		try{
 			int start;
-			start = Integer.parseInt(MDRStartText.getText());
-			if (start>0){
+			start = Integer.parseInt(MDRDesignation.getText());
+			if (start>0 && !getMDRBaseURL().isEmpty() && !getMDRInstance().isEmpty()){
 				setErrorMessage(null);
 				canFinish=true;
 			}
@@ -153,13 +194,11 @@ public class MDRWizardPage2 extends WizardPage {
 		}				
 		catch (Exception e2) {
 			canFinish=false;
-			if (MDRStartText.getText().isEmpty())
+			if (MDRDesignation.getText().isEmpty())
 				setErrorMessage("MDR Start Designation is empty");
 			else
 			setErrorMessage("MDR Start Designation is not a number!");
-
 		}
-		
 		getWizard().getContainer().updateButtons();
 	}
 
@@ -169,7 +208,15 @@ public class MDRWizardPage2 extends WizardPage {
 		return CSVImportWizard.three;
 	}
 
-	public static int getMDRInstance() {
-		return Integer.parseInt(MDRStartText.getText());
+	public static int getMDRDesignation() {
+		return Integer.parseInt(MDRDesignation.getText());
+	}
+
+	public static String getMDRInstance() {
+		return MDRInstance.getText();
+	}
+
+	public static String getMDRBaseURL() {
+		return MDRBaseURL.getText();
 	}
 }

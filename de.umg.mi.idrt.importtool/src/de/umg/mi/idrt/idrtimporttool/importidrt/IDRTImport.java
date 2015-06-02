@@ -389,8 +389,10 @@ public class IDRTImport {
 	}
 
 	public static int runMDRImport(){
+		ServerView.btnStopSetEnabled(true);
 		MDR_IDRT_Anbindung mdr = new MDR_IDRT_Anbindung();
 		exitCode = mdr.runJobInTOS(getARGV());
+		ServerView.btnStopSetEnabled(false);
 		return exitCode;
 	}
 
