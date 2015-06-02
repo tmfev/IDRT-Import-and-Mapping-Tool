@@ -131,17 +131,17 @@
                label="Server">
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.addServer"
-                  label="New Target Server..."
+                  label="Add Staging I2B2Server..."
                   style="push">
             </command>
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.editServer"
-                  label="Edit Target Server"
+                  label="Edit Staging I2B2Server..."
                   style="push">
             </command>
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.deleteServer"
-                  label="Delete Target Server"
+                  label="Delete Staging I2B2Server"
                   style="push">
             </command>
             <separator
@@ -151,18 +151,18 @@
             
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.addSourceServer"
-                  label="New Source Server..."
+                  label="New Datasource Server..."
                   style="push">
             </command>
             
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.editSourceServer"
-                  label="Edit Source Server"
+                  label="Edit Datasource Server..."
                   style="push">
             </command>
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.deleteSourceServer"
-                  label="Delete Source Server"
+                  label="Delete Datasource Server"
                   style="push">
             </command>
             <separator
@@ -171,12 +171,12 @@
             </separator>
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.importServer"
-                  label="Import Target Server"
+                  label="Import Staging I2B2Server..."
                   style="push">
             </command>
             <command
                   commandId="de.goettingen.i2b2.importtool.idrt.exportServer"
-                  label="Export Target Server"
+                  label="Export Staging I2B2Server..."
                   style="push">
             </command>
          </menu>
