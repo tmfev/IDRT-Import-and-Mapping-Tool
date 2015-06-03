@@ -14,6 +14,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
+import restAPI.BambooRESTApi;
 import de.umg.mi.idrt.ioe.misc.Regex;
 
 /**
@@ -113,7 +114,7 @@ public class Application implements IApplication {
 		Display display = PlatformUI.createDisplay();
 
 //		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
-
+System.out.println("START");
 		Activator.getDefault().createResource();
 
 		Regex.loadRegex();
@@ -151,5 +152,7 @@ public class Application implements IApplication {
 			}
 		});
 	}
+	
+	
 
 }
