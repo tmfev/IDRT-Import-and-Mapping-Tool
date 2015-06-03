@@ -152,7 +152,7 @@ public class P21WizardPage2 extends WizardPage {
 			new Label(container, SWT.NONE);
 
 			cleanUpLabel = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
-			cleanUpLabel.setText("CleanUp after Import (Slow)");
+			cleanUpLabel.setText(Messages.P21WizardPage2_cleanUpLabel_text);
 
 			cleanUpBtn = new Button(container, SWT.CHECK);
 			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
@@ -249,14 +249,13 @@ public class P21WizardPage2 extends WizardPage {
 			});
 			new Label(container, SWT.NONE);
 
-			Label labelImportTerms = new Label(container, SWT.NONE);
-			labelImportTerms.setText("Import and Map Standardterminologies?");
-			labelImportTerms
-					.setToolTipText("Importiert die Standardterminologien");
-			checkTerms = new Button(container, SWT.CHECK);
-			checkTerms.setSelection(false);
-
-			new Label(container, SWT.NONE);
+//			Label labelImportTerms = new Label(container, SWT.NONE);
+//			labelImportTerms.setText("Import and Map Standardterminologies?");
+//			labelImportTerms
+//					.setToolTipText("Importiert die Standardterminologien");
+//			checkTerms = new Button(container, SWT.CHECK);
+//			checkTerms.setSelection(false);
+//			new Label(container, SWT.NONE);
 
 			Label labelSaveContext = new Label(container, SWT.NONE);
 			labelSaveContext.setText("Save Settings?");

@@ -1712,7 +1712,6 @@ public class OntologyEditorView extends ViewPart {
 
 			@Override
 			public void mouseEnter(MouseEvent arg0) {
-				System.out.println("ENTERING ");
 				for (OntologyTreeNode node : highlightedTargetNodes) {
 					node.setHighlighted(false);
 					highlightedTargetNodes.remove(node);
@@ -1747,10 +1746,8 @@ public class OntologyEditorView extends ViewPart {
 					if (a.getData() instanceof OntologyTreeNode) {
 				
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
-						System.out.println("HOVERING " + node.getName());
 						String fullname = node.getOntologyCellAttributes().getC_FULLNAME();
 						for (OntologyTreeNode target : myOntologyTree.getOntologyTreeTarget().getNodeLists().getStringPathToNode().values()) {
-							System.out.println("FOR " + (System.currentTimeMillis()-time) );
 							if (System.currentTimeMillis()-time>500) {
 								System.out.println("TIMEOUT");
 								//Timeout, if it takes to long.

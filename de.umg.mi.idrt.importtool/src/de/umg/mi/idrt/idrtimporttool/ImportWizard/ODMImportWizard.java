@@ -143,7 +143,7 @@ public class ODMImportWizard extends Wizard {
 			final String dbType = selectedServer.getDatabaseType().toLowerCase();
 			final String whType = selectedServer.getWhType().toLowerCase();
 			
-			System.out.println("DBSCHEMA: " + dbSchema +  " TYPE " + dbType + " " + dbUserText);
+//			System.out.println("DBSCHEMA: " + dbSchema +  " TYPE " + dbType + " " + dbUserText);
 			contextMap.put("DB_StagingI2B2_Host", ipText);
 			contextMap.put("DB_StagingI2B2_Password", passwordText);
 			contextMap.put("DB_StagingI2B2_Username", dbUserText);

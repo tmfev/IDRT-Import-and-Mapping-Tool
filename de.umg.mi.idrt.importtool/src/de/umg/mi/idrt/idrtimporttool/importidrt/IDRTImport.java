@@ -117,7 +117,7 @@ public class IDRTImport {
 		for (String key : contextVariables.keySet()) {
 			parameters.add("--context_param");
 			parameters.add(key + "=" + contextVariables.get(key));
-			System.out.println("--context_param"+ key+ "="+contextVariables.get(key));
+//			System.out.println("--context_param"+ key+ "="+contextVariables.get(key));
 		}
 		return parameters.toArray(new String[0]);
 	}
@@ -160,7 +160,6 @@ public class IDRTImport {
 		ServerView.btnStopSetEnabled(true);
 		CSV_MASTER CSVImport = new CSV_MASTER();
 		exitCode = CSVImport.runJobInTOS(getARGV());
-		System.out.println("exitCode " + exitCode);
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
@@ -355,12 +354,9 @@ public class IDRTImport {
 				@Override
 				public void run() {
 					ServerView.btnStopSetEnabled(true);
-					System.out.println("yes");
 					IDRT_STDTERM std = new IDRT_STDTERM();
 					//				IDRT_STDTERM std = new IDRT_STDTERM();
-					System.out.println("2");
 					exitCode = 	std.runJobInTOS(getARGV());
-					System.out.println("3");
 					StatusListener.stopLogging();
 
 					Display.getDefault().syncExec(new Runnable() {
@@ -518,7 +514,6 @@ public class IDRTImport {
 	 * @param project The i2b2 project within the server.
 	 */
 	public static void runTruncateProject(final Server server, final String project) {
-		System.out.println("trunc: " + project);
 		Thread workerThread = new Thread(new Runnable() {
 			@Override
 			public void run() {

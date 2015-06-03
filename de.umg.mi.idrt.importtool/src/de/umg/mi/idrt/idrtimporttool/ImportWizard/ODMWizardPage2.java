@@ -121,7 +121,6 @@ public class ODMWizardPage2 extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		try {
-			System.out.println("ODM: " + super.getShell().getSize());
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -173,7 +172,6 @@ public class ODMWizardPage2 extends WizardPage {
 			//TODO REIMPLEMENT
 			labelSetTotalNum = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			labelSetTotalNum.setText(Messages.CSVWizardPageTwo_CleanUp);
-System.out.println("CLEANUP " + Boolean.parseBoolean(defaultProps.getProperty("cleanUp")));
 			setTotalNumBtn = new Button(container, SWT.CHECK);
 			setTotalNumBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp"))); 

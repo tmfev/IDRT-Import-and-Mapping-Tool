@@ -136,6 +136,7 @@ public class Messages extends NLS {
 	public static String CSVWizardPage2_btnDrop_text;
 	public static String CSVWizardPage2_btnIgnore_text;
 	public static String DBWizardPage3_btnNewButton_text;
+	public static String P21WizardPage2_cleanUpLabel_text;
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
