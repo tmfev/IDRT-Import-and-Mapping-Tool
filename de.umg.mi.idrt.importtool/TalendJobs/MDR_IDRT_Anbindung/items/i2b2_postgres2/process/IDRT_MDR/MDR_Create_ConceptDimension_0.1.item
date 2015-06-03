@@ -2,8 +2,8 @@
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="&quot;Zieldatei mit der i2b2-Ontologie im IDRT-Format zur Weiterverarbeitung.&quot;" name="fileOnt" prompt="fileOnt?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="ont.csv"/>
-    <contextParameter comment="&quot;Verzeichnis für temp. Dateien&quot;" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp\"/>
-    <contextParameter comment="&quot;Basisverzeichnis für die IDRT-Tools.&quot;" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:\temp\MDR\"/>
+    <contextParameter comment="&quot;Verzeichnis für temp. Dateien&quot;" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp/"/>
+    <contextParameter comment="&quot;Basisverzeichnis für die IDRT-Tools.&quot;" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:/temp/MDR/"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -11,17 +11,17 @@
   </context>
   <context confirmationNeeded="false" name="TestServer">
     <contextParameter comment="" name="fileOnt" prompt="fileOnt?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="ont.csv"/>
-    <contextParameter comment="" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp\"/>
-    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:\temp\MDR\"/>
+    <contextParameter comment="" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp/"/>
+    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:/temp/MDR/"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
-    <contextParameter comment="&quot;Zieldatei mit der i2b2-Ontologie im IDRT-Format zur Weiterverarbeitung.&quot;" name="fileOnt" prompt="fileOnt?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="ont.csv"/>
-    <contextParameter comment="&quot;Verzeichnis für temp. Dateien&quot;" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp\"/>
-    <contextParameter comment="&quot;Basisverzeichnis für die IDRT-Tools.&quot;" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:\temp\MDR\"/>
+    <contextParameter comment="" name="fileOnt" prompt="fileOnt?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="ont.csv"/>
+    <contextParameter comment="" name="folderTemp" prompt="folderTemp?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="MDR_temp/"/>
+    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" repositoryContextId="_onoTQDRDEeS-9rgAdomOsQ" type="id_String" value="C:/temp/MDR/"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>

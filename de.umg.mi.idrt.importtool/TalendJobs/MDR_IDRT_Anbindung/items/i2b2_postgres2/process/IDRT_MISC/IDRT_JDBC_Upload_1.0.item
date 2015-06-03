@@ -6,7 +6,7 @@
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentTable" prompt="currentTable?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="bio_experiment_id" prompt="bio_experiment_id?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -21,7 +21,7 @@
     <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -52,7 +52,7 @@
     <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -68,9 +68,9 @@
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="" name="currentTable" prompt="currentTable?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="bio_experiment_id" prompt="bio_experiment_id?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;Test1_Modifier_Complete&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
@@ -78,12 +78,12 @@
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
-    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2postgresbb2&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2postgresbb1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -99,14 +99,14 @@
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="" name="currentTable" prompt="currentTable?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="bio_experiment_id" prompt="bio_experiment_id?" promptNeeded="false" type="id_Integer" value=""/>
-    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
-    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
-    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.102.3&quot;"/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
-    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.102.3:5432/transmart"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
     <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
@@ -114,7 +114,7 @@
     <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
     <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
@@ -127,12 +127,12 @@
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms1024M -Xmx4096M -XX:-UseConcMarkSweepGC -XX:-UseGCOverheadLimit "/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="640"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="544"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="896"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" value="false"/>
     <elementParameter field="RADIO" name="FROM_DATABASE_FLAG_IMPLICIT_CONTEXT" value="false"/>
@@ -156,8 +156,8 @@
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value=""/>
-    <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value="Warning"/>
+    <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value="Warning"/>
     <elementParameter field="CHECK" name="PRINT_OPERATIONS" value="false"/>
     <elementParameter field="CHECK" name="DISABLE_ERROR" value="false"/>
     <elementParameter field="CHECK" name="DISABLE_WARNINGS" value="false"/>
@@ -515,12 +515,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_mapping&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select PATIENT_IDE, PATIENT_IDE_SOURCE from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select PATIENT_IDE, PATIENT_IDE_SOURCE from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_mapping&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -550,14 +550,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_mapping&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -667,14 +666,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_mapping&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1037,12 +1035,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.concept_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.concept_dimension&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select CONCEPT_PATH from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select CONCEPT_PATH from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.concept_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.concept_dimension&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -1069,14 +1067,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.concept_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.concept_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1179,14 +1176,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.concept_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.concept_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1847,12 +1843,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_NUM, CONCEPT_CD, PROVIDER_ID, START_DATE,MODIFIER_CD,INSTANCE_NUM from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_NUM, CONCEPT_CD, PROVIDER_ID, START_DATE,MODIFIER_CD,INSTANCE_NUM from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -1876,7 +1872,7 @@
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="ENABLE_MAPPING" value="false"/>
-    <elementParameter field="CLOSED_LIST" name="MAPPING" value="mysql_id"/>
+    <elementParameter field="CLOSED_LIST" name="MAPPING" value="postgres_id"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCInput_3">
       <column comment="" key="true" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
@@ -1894,14 +1890,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -1910,7 +1905,7 @@
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="500000"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="50000"/>
     <elementParameter field="TABLE" name="ADD_COLS"/>
     <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="FIELD_OPTIONS">
@@ -2027,7 +2022,7 @@
     </elementParameter>
     <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
     <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
-    <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="25000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_19">
       <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
@@ -2118,14 +2113,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.observation_fact&quot;:(context.DB_StagingI2B2_Schema +&quot;.observation_fact&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -2134,7 +2128,7 @@
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="500000"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="100000"/>
     <elementParameter field="TABLE" name="ADD_COLS"/>
     <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="FIELD_OPTIONS">
@@ -2249,9 +2243,9 @@
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="true"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
     <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
-    <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="50000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_1">
       <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
@@ -2942,12 +2936,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2metadata.i2b2&quot;:context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;)"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select C_DIMCODE from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select C_DIMCODE from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2metadata.i2b2&quot;:context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;)"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -2974,14 +2968,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2metadata.i2b2&quot;:context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;)"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -3120,7 +3113,7 @@
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
-    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="true"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
     <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
     <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -3196,14 +3189,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2metadata.i2b2&quot;:context.DB_StagingI2B2_Schema + &quot;.i2b2&quot;)"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -3991,12 +3983,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_dimension&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select PATIENT_NUM from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select PATIENT_NUM from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_dimension&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -4023,14 +4015,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -4203,14 +4194,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.patient_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.patient_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -4463,9 +4453,9 @@
     <elementParameter field="TEXT" name="LABEL" value="encounter_mapping"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileInputDelimited_12">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4477,9 +4467,9 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4496,13 +4486,13 @@
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="832">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_7"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.ENCOUNTER_IDE = input_row.ENCOUNTER_IDE;&#xD;&#xA;output_row.ENCOUNTER_IDE_SOURCE = input_row.ENCOUNTER_IDE_SOURCE;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;//.add(new BigDecimal(10000));&#xD;&#xA;output_row.PATIENT_IDE = input_row.PATIENT_IDE;&#xD;&#xA;output_row.PATIENT_IDE_SOURCE = input_row.PATIENT_IDE_SOURCE;&#xD;&#xA;output_row.ENCOUNTER_IDE_STATUS = input_row.ENCOUNTER_IDE_STATUS;&#xD;&#xA;output_row.UPLOAD_DATE = input_row.UPLOAD_DATE;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xD;&#xA;output_row.ENCOUNTER_IDE = input_row.ENCOUNTER_IDE;&#xD;&#xA;output_row.ENCOUNTER_IDE_SOURCE = input_row.ENCOUNTER_IDE_SOURCE;&#xD;&#xA;output_row.ENCOUNTER_NUM = input_row.ENCOUNTER_NUM;&#xD;&#xA;output_row.PATIENT_IDE = input_row.PATIENT_IDE;&#xD;&#xA;output_row.PATIENT_IDE_SOURCE = input_row.PATIENT_IDE_SOURCE;&#xD;&#xA;output_row.ENCOUNTER_IDE_STATUS = input_row.ENCOUNTER_IDE_STATUS;&#xD;&#xA;output_row.UPLOAD_DATE = input_row.UPLOAD_DATE;&#xD;&#xA;output_row.UPDATE_DATE = input_row.UPDATE_DATE;&#xD;&#xA;output_row.DOWNLOAD_DATE = input_row.DOWNLOAD_DATE;&#xD;&#xA;output_row.IMPORT_DATE = input_row.IMPORT_DATE;&#xD;&#xA;output_row.SOURCESYSTEM_CD = input_row.SOURCESYSTEM_CD;&#xD;&#xA;output_row.UPLOAD_ID = input_row.UPLOAD_ID;&#xD;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_7">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4562,9 +4552,9 @@
     <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tUniqRow_4">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4576,9 +4566,9 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <metadata connector="UNIQUE" name="UNIQUE">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4590,9 +4580,9 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <metadata connector="DUPLICATE" name="DUPLICATE">
-      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4708,9 +4698,9 @@
         <mapperTableEntries name="duration" type="id_Long" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row21" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
-        <mapperTableEntries name="ENCOUNTER_IDE" type="id_String"/>
-        <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" type="id_String"/>
-        <mapperTableEntries name="ENCOUNTER_NUM" type="id_Integer"/>
+        <mapperTableEntries name="ENCOUNTER_IDE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE" type="id_String" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE_SOURCE" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENCOUNTER_IDE_STATUS" type="id_String" nullable="true"/>
@@ -4741,12 +4731,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.encounter_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.encounter_mapping&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_IDE, ENCOUNTER_IDE_SOURCE from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_IDE, ENCOUNTER_IDE_SOURCE from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.encounter_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.encounter_mapping&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -4776,14 +4766,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.encounter_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.encounter_mapping&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -4907,14 +4896,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.encounter_mapping&quot;:(context.DB_StagingI2B2_Schema + &quot;.encounter_mapping&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -4996,9 +4984,9 @@
       <column comment="" key="true" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="true" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -5010,9 +4998,9 @@
       <column comment="" key="true" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="true" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -5291,12 +5279,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.modifier_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.modifier_dimension&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select MODIFIER_PATH from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select MODIFIER_PATH from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.modifier_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.modifier_dimension&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -5323,14 +5311,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.modifier_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.modifier_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -5433,14 +5420,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)? &quot;i2b2demodata.modifier_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.modifier_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -5899,12 +5885,12 @@
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.visit_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.visit_dimension&quot;))"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_NUM, PATIENT_NUM from &quot; + context.currentTable"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select ENCOUNTER_NUM, PATIENT_NUM from &quot; + (context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.visit_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.visit_dimension&quot;))"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
@@ -5934,14 +5920,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.visit_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.visit_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -6086,14 +6071,13 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
     <elementParameter field="TEXT" name="USER" value="context.DB_StagingI2B2_Username"/>
     <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kuf21oMCt/gcQaOd7rvS43jViVfQzv00lYw="/>
-    <elementParameter field="TEXT" name="TABLE" value="context.currentTable"/>
+    <elementParameter field="TEXT" name="TABLE" value="(context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)?&quot;i2b2demodata.visit_dimension&quot;:(context.DB_StagingI2B2_Schema + &quot;.visit_dimension&quot;))"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
     <elementParameter field="CHECK" name="CLEAR_TABLE" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
@@ -6233,6 +6217,7 @@
   </node>
   <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="TABLE" name="VALUES">
       <elementValue elementRef="VALUE" value="&quot;ALTER TABLE i2b2metadata.I2B2 ALTER  C_FULLNAME TYPE character varying(2000)&quot;"/>
@@ -6262,6 +6247,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_1_CURRENT_VALUE&quot;)));"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -6270,6 +6256,7 @@
   </node>
   <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="704" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
@@ -6309,14 +6296,12 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
   </node>
-  <node componentName="tJDBCConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="0" posY="-288">
+  <node componentName="tJDBCConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCConnection_1"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
-      <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
@@ -6340,84 +6325,6 @@
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_4"/>
-  </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-352" posY="-128">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 DROP CONSTRAINT I2B2_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_DIMCODE  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_PATH  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_CD  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_PATH  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_CD  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  MODIFIER_CD  VARCHAR2(2800 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  CONCEPT_CD  VARCHAR2(2800 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_mapping MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_dimension MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_enc_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY CONCEPT_CD VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ENABLE constraint OBSERVATION_FACT_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING DROP CONSTRAINT PATIENT_MAPPING_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING ADD CONSTRAINT PATIENT_MAPPING_PK PRIMARY KEY (  PATIENT_IDE , PATIENT_IDE_SOURCE )USING INDEX PM_ENCPNUM_IDX ENABLE&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING MODIFY (PROJECT_ID NULL)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING DROP CONSTRAINT ENCOUNTER_MAPPING_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING ADD CONSTRAINT ENCOUNTER_MAPPING_PK PRIMARY KEY (  ENCOUNTER_IDE , ENCOUNTER_IDE_SOURCE , PATIENT_IDE , PATIENT_IDE_SOURCE ) USING INDEX EM_IDX_ENCPATH ENABLE&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING MODIFY (PROJECT_ID NULL)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-448" posY="-128">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;)));"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_5"/>
-  </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-544" posY="-128">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
-    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
-    <elementParameter field="TABLE" name="DRIVER_JAR"/>
-    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_2_CURRENT_VALUE&quot;))"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
-    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
-    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJDBCRow_2"/>
-    <metadata connector="REJECT" name="REJECT">
-      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7"/>
@@ -6500,7 +6407,7 @@
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="-224">
+  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="-320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_3"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
@@ -6633,7 +6540,7 @@
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
@@ -6825,7 +6732,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="-448">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="-448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_15"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -7026,7 +6933,7 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="608" posY="-448">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="704" posY="-448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_4"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
@@ -7064,6 +6971,7 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
@@ -7095,6 +7003,7 @@
         <mapperTableEntries name="M_EXCLUSION_CD" expression="row4.M_EXCLUSION_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_PATH" expression="row4.C_PATH" type="id_String" nullable="true"/>
         <mapperTableEntries name="C_SYMBOL" expression="row4.C_SYMBOL" type="id_String" nullable="true"/>
+        <mapperTableEntries name="i2b2_id" expression="null" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="secure_obj_token" expression="(row4.C_HLEVEL>1)?(&quot;Study:&quot;+row4.secure_obj):&quot;EXP:PUBLIC&quot; " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row4" matchingMode="ALL_ROWS" lookupMode="LOAD_ONCE">
@@ -7127,7 +7036,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="768" posY="-448">
+  <node componentName="tUniqRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="-448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUniqRow_9"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="TABLE" name="UNIQUE_KEY">
@@ -7206,6 +7115,9 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="C_SYMBOL"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="i2b2_id"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="secure_obj_token"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
       <elementValue elementRef="CASE_SENSITIVE" value="false"/>
@@ -7242,6 +7154,7 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="UNIQUE" name="UNIQUE">
@@ -7270,6 +7183,7 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="DUPLICATE" name="DUPLICATE">
@@ -7298,10 +7212,11 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="-448">
+  <node componentName="tJDBCOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="-448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCOutput_8"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
@@ -7309,7 +7224,7 @@
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
@@ -7453,6 +7368,11 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="i2b2_id"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="secure_obj_token"/>
       <elementValue elementRef="UPDATE_KEY" value="false"/>
       <elementValue elementRef="DELETE_KEY" value="false"/>
@@ -7464,7 +7384,7 @@
     <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_8">
-      <column comment="" defaultValue="" key="false" length="22" name="C_HLEVEL" nullable="false" pattern="" precision="0" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="true" length="22" name="C_HLEVEL" nullable="false" pattern="" precision="0" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="true" length="3500" name="C_FULLNAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2000" name="C_NAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7477,7 +7397,7 @@
       <column comment="" key="false" length="50" name="C_COLUMNNAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_COLUMNDATATYPE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="C_OPERATOR" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3500" name="C_DIMCODE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" length="3500" name="C_DIMCODE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="C_COMMENT" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="900" name="C_TOOLTIP" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="M_APPLIED_PATH" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7489,10 +7409,11 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" defaultValue="" key="false" length="22" name="C_HLEVEL" nullable="false" pattern="" precision="0" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="true" length="22" name="C_HLEVEL" nullable="false" pattern="" precision="0" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="true" length="3500" name="C_FULLNAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="2000" name="C_NAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="C_SYNONYM_CD" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7505,7 +7426,7 @@
       <column comment="" key="false" length="50" name="C_COLUMNNAME" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_COLUMNDATATYPE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="C_OPERATOR" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3500" name="C_DIMCODE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="true" length="3500" name="C_DIMCODE" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="C_COMMENT" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="900" name="C_TOOLTIP" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="M_APPLIED_PATH" nullable="false" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7517,6 +7438,7 @@
       <column comment="" key="false" length="25" name="M_EXCLUSION_CD" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="700" name="C_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="50" name="C_SYMBOL" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="i2b2_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" name="secure_obj_token" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7525,7 +7447,7 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="-448">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_17"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = &quot;i2b2metadata.i2b2_secure&quot;;&#xA;StatusListener.setSubStatus(90.0f,(int)(float)(90.0f)+&quot;%&quot;);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.currentTable = &quot;i2b2metadata.i2b2_secure&quot;;&#xA;StatusListener.setSubStatus(90.0f,(int)(float)(90.0f)+&quot;%&quot;);&#xA;System.out.println(context.DB_StagingI2B2_jdbcurl);&#xA;System.out.println(context.DB_StagingI2B2_DriverClass);&#xA;System.out.println(context.DB_StagingI2B2_Username);&#xA;System.out.println(context.currentTable);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_17"/>
@@ -7568,7 +7490,7 @@
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="-704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_5"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;System.out.println(&quot;input_row.bio_experiment_id &quot; + input_row.bio_experiment_id);&#xA;&#xD;&#xA;output_row.bio_experiment_id = input_row.bio_experiment_id;&#xA;context.bio_experiment_id= input_row.bio_experiment_id;&#xA;StatusListener.setSubStatus(99.0f,(int)(float)(90.0f)+&quot;%&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;System.out.println(&quot;input_row.bio_experiment_id &quot; + input_row.bio_experiment_id);&#xA;if (input_row.bio_experiment_id==null)&#xA;input_row.bio_experiment_id=0;&#xA;&#xA;&#xD;&#xA;output_row.bio_experiment_id = input_row.bio_experiment_id;&#xA;context.bio_experiment_id= input_row.bio_experiment_id;&#xA;StatusListener.setSubStatus(99.0f,(int)(float)(90.0f)+&quot;%&quot;);&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_5">
@@ -7647,7 +7569,7 @@
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
@@ -7907,7 +7829,7 @@
     <elementParameter field="TEXT" name="URL" value="context.DB_StagingI2B2_jdbcurl"/>
     <elementParameter field="TABLE" name="DRIVER_JAR">
       <elementValue elementRef="JAR_NAME" value="ojdbc6.jar"/>
-      <elementValue elementRef="JAR_NAME" value="postgresql-8.4-703.jdbc4.jar"/>
+      <elementValue elementRef="JAR_NAME" value="postgresql-9.3-1102.jdbc4.jar"/>
       <elementValue elementRef="JAR_NAME" value="ojdbc14.jar"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DRIVER_CLASS" value="context.DB_StagingI2B2_DriverClass"/>
@@ -8011,71 +7933,14 @@
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="-704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_19"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;&#xA;System.out.println(context.fileName);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_19">
       <column comment="" key="false" name="bio_experiment_id" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX rebuild&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX rebuild&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB rebuild&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.OF_CTX_BLOB rebuild&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-192" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_3_CURRENT_VALUE&quot;)));"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_1"/>
-  </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-288" posY="160">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
-    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
-    <elementParameter field="TABLE" name="DRIVER_JAR"/>
-    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_3_CURRENT_VALUE&quot;))"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
-    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
-    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJDBCRow_4"/>
-    <metadata connector="REJECT" name="REJECT">
-      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="32">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="StatusListener.setSubStatus(StatusListener.getSubPerc(),&quot;Observation Fact done! &quot; + context.counter + &quot; rows imported.&quot;);"/>
@@ -8146,42 +8011,6 @@
     <elementParameter field="TEXT" name="LABEL" value="import status"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_25"/>
-  </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="-1" offsetLabelY="-3" posX="-448" posY="32">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ADD CONSTRAINT I2B2_PK PRIMARY KEY (C_HLEVEL, C_FULLNAME ) ENABLE&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_CNPT_PAT_ENCT_IDX unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_PATCON_DATE_PRVD_IDX unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.FACT_NOLOB unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER index  &quot; + context.DB_StagingI2B2_Schema + &quot;.OF_CTX_BLOB unusable&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT DISABLE constraint OBSERVATION_FACT_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_FULLNAME  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_BASECODE  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 MODIFY  C_DIMCODE  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_PATH  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.CONCEPT_DIMENSION MODIFY  CONCEPT_CD  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_PATH  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.MODIFIER_DIMENSION MODIFY  MODIFIER_CD  VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  MODIFIER_CD  VARCHAR2(2800 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT MODIFY  CONCEPT_CD  VARCHAR2(2800 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_mapping MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.patient_dimension MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_enc_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection MODIFY  PATIENT_NUM NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.DX MODIFY PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY CONCEPT_CD VARCHAR2(3500 BYTE)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY  PATIENT_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.QUERY_GLOBAL_TEMP MODIFY ENCOUNTER_NUM  NUMBER(38)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ENABLE constraint OBSERVATION_FACT_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;commit&quot;"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <node componentName="tDie" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="704">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDie_1"/>
@@ -8343,71 +8172,10 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDie_16"/>
   </node>
-  <node componentName="tForeach" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="-96">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_5"/>
+  <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-512" posY="-288">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="TABLE" name="VALUES">
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ALTER  C_FULLNAME TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ALTER  C_BASECODE TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.I2B2 ALTER  C_DIMCODE TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; +context.DB_StagingI2B2_Schema  + &quot;.CONCEPT_DIMENSION ALTER  CONCEPT_CD  TYPE character varying&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema  + &quot;.MODIFIER_DIMENSION ALTER  MODIFIER_CD TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.OBSERVATION_FACT ALTER  MODIFIER_CD TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema  + &quot;.OBSERVATION_FACT ALTER  CONCEPT_CD TYPE character varying(2000)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema  + &quot;.patient_mapping ALTER PATIENT_NUM TYPE numeric(38,0)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema  + &quot;.patient_dimension ALTER PATIENT_NUM TYPE numeric(38,0)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.observation_fact ALTER  PATIENT_NUM  TYPE numeric(38,0)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_enc_collection ALTER  PATIENT_NUM TYPE numeric(38,0)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.qt_patient_set_collection ALTER PATIENT_NUM TYPE numeric(38,0)&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING DROP CONSTRAINT IF EXISTS PATIENT_MAPPING_PK&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING ADD CONSTRAINT PATIENT_MAPPING_PK PRIMARY KEY (  PATIENT_IDE , PATIENT_IDE_SOURCE )&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.PATIENT_MAPPING alter column PROJECT_ID  drop not null&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING DROP CONSTRAINT IF EXISTS encounter_mapping_pk&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING ADD CONSTRAINT encounter_mapping_pk PRIMARY KEY (  ENCOUNTER_IDE , ENCOUNTER_IDE_SOURCE , PATIENT_IDE , PATIENT_IDE_SOURCE )&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;ALTER TABLE &quot; + context.DB_StagingI2B2_Schema + &quot;.ENCOUNTER_MAPPING alter column PROJECT_ID  drop not null&quot;"/>
-    </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="256" posY="-96">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_26"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(((String)globalMap.get(&quot;tForeach_5_CURRENT_VALUE&quot;)));"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_26"/>
-  </node>
-  <node componentName="tJDBCRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="448" posY="-96">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_5"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tJDBCConnection_1"/>
-    <elementParameter field="TEXT" name="URL" value="&quot;jdbc:&quot;"/>
-    <elementParameter field="TABLE" name="DRIVER_JAR"/>
-    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;tForeach_5_CURRENT_VALUE&quot;))"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
-    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value=""/>
-    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
-    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJDBCRow_5"/>
-    <metadata connector="REJECT" name="REJECT">
-      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
   </node>
   <connection connectorName="FLOW" label="row6" lineStyle="0" metaname="tFileInputDelimited_6" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_6" target="tUniqRow_7">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
@@ -10812,6 +10580,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_ID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="project_id"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row13"/>
@@ -10941,6 +10712,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_ID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="project_id"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out15"/>
@@ -10981,6 +10755,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="UPLOAD_ID"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="project_id"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
@@ -11728,103 +11505,83 @@
   <connection connectorName="COMPONENT_ERROR" label="OnComponentError" lineStyle="5" metaname="tJDBCOutput_16" offsetLabelX="0" offsetLabelY="0" source="tJDBCOutput_16" target="tDie_15">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentError15"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tForeach_1" target="tJava_17">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk23"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tForeach_1" target="tJDBCRow_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk21"/>
-  </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_1" offsetLabelX="0" offsetLabelY="0" source="tForeach_1" target="tJava_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tJDBCRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk6"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tJDBCConnection_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="-8" offsetLabelY="-1" outputId="1" source="tJDBCConnection_1" target="tJava_4">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJDBCConnection_1" target="tJava_15">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tJava_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk19"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="-8" offsetLabelY="0" source="tJava_4" target="tJava_7">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk11"/>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCConnection_1" offsetLabelX="0" offsetLabelY="0" source="tJDBCConnection_1" target="tJDBCRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_4" target="tForeach_1">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_4" target="tJava_7">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;i2b2&quot;)&#xA;"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If6"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_4" target="tJDBCConnection_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_WHType.equalsIgnoreCase(&quot;transmart&quot;)"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_4" target="tForeach_2">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="!context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_4" target="tForeach_5">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.DB_StagingI2B2_DatabaseType.equalsIgnoreCase(&quot;postgres&quot;)"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4"/>
-  </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_2" offsetLabelX="0" offsetLabelY="0" source="tForeach_2" target="tJava_5">
-    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
-    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate2"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tJDBCRow_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2"/>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tJava_15">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_7" target="tFileInputDelimited_9">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk6"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_7" target="tJava_8">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" outputId="3" source="tJava_7" target="tForeach_3">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk36"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk32"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_8" target="tFileInputDelimited_10">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk12"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_8" target="tJava_9">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk33"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_9" target="tFileInputDelimited_12">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk8"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_9" target="tJava_10">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk13"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk34"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_10" target="tFileInputDelimited_6">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk14"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_10" target="tJava_11">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk9"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk35"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_11" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_11" target="tFileInputDelimited_7">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk15"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_11" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_11" target="tJava_12">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk10"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk37"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_12" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_12" target="tFileInputDelimited_8">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk16"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_12" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_12" target="tJava_13">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk11"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk46"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_13" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_13" target="tFileInputDelimited_14">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk17"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_13" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_13" target="tJava_14">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk12"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk47"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_14" offsetLabelX="0" offsetLabelY="0" source="tJava_14" target="tFileInputDelimited_16">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk18"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk20"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJDBCRow_3" offsetLabelX="0" offsetLabelY="0" source="tJDBCRow_3" target="tJava_17">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk23"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_16" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_16" target="tRowGenerator_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk22"/>
@@ -12081,6 +11838,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="secure_obj_token"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="i2b2_id"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="copyOfoutt"/>
@@ -12317,25 +12077,10 @@
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="row16.bio_experiment_id == null"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If3"/>
   </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_3" offsetLabelX="0" offsetLabelY="0" source="tForeach_3" target="tJava_1">
-    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
-    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate3"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tLibraryLoad_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tJDBCRow_4">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3"/>
-  </connection>
-  <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tForeach_5" offsetLabelX="0" offsetLabelY="0" source="tForeach_5" target="tJava_26">
-    <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
-    <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate4"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_26" offsetLabelX="-4" offsetLabelY="2" source="tJava_26" target="tJDBCRow_5">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4"/>
-  </connection>
-  <note opaque="true" posX="-320" posY="32" sizeHeight="3073" sizeWidth="1473" text="i2b2 1.7 PostgreSQL und womöglich auch 1.7 mit Oracle (untested)">
+  <note opaque="true" posX="-192" posY="0" sizeHeight="3073" sizeWidth="1473" text="i2b2 1.7 PostgreSQL und womöglich auch 1.7 mit Oracle (untested)">
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
     <elementParameter field="RADIO" name="NOTELABEL_CENTER" value="false"/>
@@ -12345,14 +12090,6 @@
   </note>
   <note opaque="true" posX="416" posY="1600" sizeHeight="97" sizeWidth="193" text="Transmart">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="155;199;204"/>
-    <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
-    <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
-    <elementParameter field="RADIO" name="NOTELABEL_CENTER" value="false"/>
-    <elementParameter field="RADIO" name="NOTETXT_TOP" value="true"/>
-    <elementParameter field="TEXT" name="FONT_SIZE" value="12"/>
-    <elementParameter field="CHECK" name="FONT_BOLD" value="true"/>
-  </note>
-  <note opaque="true" posX="-640" posY="-224" sizeHeight="193" sizeWidth="448" text="Disable Oracle Indexes">
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
     <elementParameter field="RADIO" name="NOTELABEL_CENTER" value="false"/>
@@ -12451,16 +12188,6 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
@@ -12551,16 +12278,6 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_3"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_4"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
@@ -12597,11 +12314,6 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_25"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_4"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
@@ -12686,13 +12398,9 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tForeach_5"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJDBCRow_5"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="160;190;240"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="230;100;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;220;180"/>
   </subjob>
 </talendfile:ProcessType>

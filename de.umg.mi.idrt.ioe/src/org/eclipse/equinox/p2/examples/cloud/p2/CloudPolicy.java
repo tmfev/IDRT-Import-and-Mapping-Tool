@@ -11,12 +11,10 @@ import de.umg.mi.idrt.ioe.Activator;
 public class CloudPolicy extends Policy {
 	public CloudPolicy() {
 		// XXX User has no visibility for repos
-		System.out.println("this");
 		setRepositoriesVisible(false);
 	}
 	
 	public void updateForPreferences() {
-		System.out.println("update");
 		IPreferenceStore prefs = Activator.getDefault().getPreferenceStore();
 		setRepositoriesVisible(prefs
 				.getBoolean(PreferenceConstants.REPOSITORIES_VISIBLE));

@@ -8,8 +8,8 @@
     <contextParameter comment="&quot;Name der MDR-Instanz&quot;" name="MDRInstance" prompt="MDRInstance?" promptNeeded="false" type="id_String" value="&quot;IDRT&quot;"/>
     <contextParameter comment="&quot;ID (MDR:Designation) des Startknotens, ab dem im MDR Contexte gesucht werden.&quot;" name="MDRStartDesignation" prompt="MDRStartDesignation?" promptNeeded="true" type="id_String" value="20049"/>
     <contextParameter comment="&quot;Zieldatei mit der i2b2-Ontologie im IDRT-Format zur Weiterverarbeitung.&quot;" name="fileOnt" prompt="fileOnt?" promptNeeded="false" type="id_String" value="ont.csv"/>
-    <contextParameter comment="&quot;Verzeichnis für temp. Dateien&quot;" name="folderTemp" prompt="folderTemp?" promptNeeded="false" type="id_String" value="MDR_temp\"/>
-    <contextParameter comment="&quot;Basisverzeichnis für die IDRT-Tools.&quot;" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="C:\temp\MDR\"/>
+    <contextParameter comment="&quot;Verzeichnis für temp. Dateien&quot;" name="folderTemp" prompt="folderTemp?" promptNeeded="false" type="id_String" value="MDR_temp/"/>
+    <contextParameter comment="&quot;Basisverzeichnis für die IDRT-Tools.&quot;" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="C:/temp/MDR/"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;DB IP&quot;" name="MDRBaseURL" prompt="MDRBaseURL?" promptNeeded="false" type="id_String" value="&quot;https://mdr.imise.uni-leipzig.de&quot;"/>
@@ -19,7 +19,7 @@
     <contextParameter comment="&quot;Oracle DB&quot;" name="MDRInstance" prompt="MDRInstance?" promptNeeded="true" type="id_String" value="&quot;IDRT&quot;"/>
     <contextParameter comment="" name="MDRStartDesignation" prompt="MDRStartDesignation?" promptNeeded="true" type="id_String" value="27678"/>
     <contextParameter comment="" name="fileOnt" prompt="fileOnt?" promptNeeded="false" type="id_String" value="ont.csv"/>
-    <contextParameter comment="" name="folderTemp" prompt="folderTemp?" promptNeeded="false" type="id_String" value="MDR_temp\"/>
-    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="C:\temp\MDR\"/>
+    <contextParameter comment="" name="folderTemp" prompt="folderTemp?" promptNeeded="false" type="id_String" value="MDR_temp/"/>
+    <contextParameter comment="" name="folderMain" prompt="folderMain?" promptNeeded="false" type="id_String" value="C:/temp/MDR/"/>
   </talendfile:ContextType>
 </xmi:XMI>

@@ -24,7 +24,7 @@
     <contextParameter comment="" name="ItemDataTime" prompt="ItemDataTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataTime&quot;"/>
     <contextParameter comment="" name="ItemDataURI" prompt="ItemDataURI?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataURI&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
@@ -64,7 +64,7 @@
     <contextParameter comment="" name="ItemDataTime" prompt="ItemDataTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataTime&quot;"/>
     <contextParameter comment="" name="ItemDataURI" prompt="ItemDataURI?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataURI&quot;"/>
     <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
-    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_File" value="C:/Desktop/IDRT22/ODM/IDRT-ODM-Sample.xml"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
     <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
