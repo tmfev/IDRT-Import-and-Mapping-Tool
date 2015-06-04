@@ -11,6 +11,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -85,6 +86,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.Bundle;
 
 import restAPI.BambooRESTApi;
+import restAPI.IMTUpdate;
+import routines.TalendDate;
 import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -2401,64 +2404,11 @@ public class OntologyEditorView extends ViewPart {
 			}
 		};
 
-		checkForUpdates();
+		BambooRESTApi.checkForUpdates();
 
 	}
 
-	private void checkForUpdates() {
-		try {
-			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
-			final Properties defaultProps = new Properties();
-			defaultProps.load(new FileReader(properties));
 
-			String savedVersion = defaultProps.getProperty("latestVersion",null);
-			String URI = defaultProps.getProperty("bambooURI","https://dev.mi.med.uni-goettingen.de/bamboo/rest/api/latest/result/IDRT-IDRT2/");
-			String URIBuild = defaultProps.getProperty("bambooURIBuild","https://dev.mi.med.uni-goettingen.de/bamboo/browse/IDRT-IDRT2/latest");
-			System.out.println(URI);
-			String latest = BambooRESTApi.getLatestBuild(URI);
-			if (savedVersion == null){
-				savedVersion="0";
-			}
-			if (!savedVersion.equals(latest) && latest != null){
-				System.out.println("OLD VERSION!");
-				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Newer Version", "There is a newer Version available.\nOpen Download Page in Browser?");
-				
-				if (confirm){
-					if(java.awt.Desktop.isDesktopSupported() ) {
-				        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
-				 
-				        if(desktop.isSupported(java.awt.Desktop.Action.BROWSE) ) {
-				          java.net.URI uri;
-						
-							uri = new java.net.URI(URIBuild);
-						
-				              desktop.browse(uri);
-				        }
-				      }
-					defaultProps.setProperty("latestVersion", latest);
-					defaultProps.store(new FileWriter(properties), "");
-				}
-				
-			}
-			else {
-				System.out.println("No newer Version online");
-			}
-			
-			
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-	}
 
 	private String getLatestVersion(String string) {
 		if (  getTargetInstance().getSelectedTarget() != null ){ 

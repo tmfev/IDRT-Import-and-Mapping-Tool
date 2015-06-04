@@ -7,7 +7,6 @@ drgDir=
 datePattern=yyyy-MM-dd
 includePids=false
 log=
-latestVersion=134
 hideTemp=false
 ItemDataInteger=/ODM/ClinicalData/SubjectData/ItemDataInteger
 ItemDataDouble=/ODM/ClinicalData/SubjectData/ItemDataDouble
