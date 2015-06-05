@@ -580,7 +580,6 @@ public class ServerView extends ViewPart {
 				}
 			}
 			properties = new File(mainPath.getAbsolutePath()+"/cfg/Default.properties");
-			System.out.println(properties.getAbsolutePath());
 
 			defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));

@@ -22,7 +22,7 @@ import org.xml.sax.InputSource;
 
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
-import de.umg.mi.idrt.ioe.misc.FileHandler;
+import de.umg.mi.idrt.importtool.misc.FileHandler;
 
 public class BambooRESTApi {
 	
