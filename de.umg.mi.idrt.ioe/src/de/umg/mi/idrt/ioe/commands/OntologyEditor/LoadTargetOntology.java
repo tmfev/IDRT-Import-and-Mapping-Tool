@@ -30,65 +30,72 @@ public class LoadTargetOntology extends AbstractHandler {
 
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute(final ExecutionEvent event) throws ExecutionException {
 
-		Target target;
-		Console.info("Command: LoadTargetOntology");
+//		new Thread (new Runnable() {
+//			@Override
+//			public void run() {
+				System.out.println("RUNNING LOAD TARGET THREAD");
+				Target target;
+				Console.info("Command: LoadTargetOntology");
 
-		String version = event
-				.getParameter(Resource.ID.Command.IOE.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
+				String version = event
+						.getParameter(Resource.ID.Command.IOE.LOADTARGETONTOLOGY_ATTRIBUTE_VERSION);
 
-		if ( version != null && !version.isEmpty() ){
-			System.out.println("STRINGVERSION:" + version);
-			target = OntologyEditorView.getTargetInstance().getTargetByVersion(Integer.valueOf( version ));
-			if (target == null){
-				Console.error("Coudn't find the target to load.");
-				return null;
-			} else {
-				OntologyEditorView.getTargetInstance().setSelectedTarget(target);
-			}
-		}else
-			target = OntologyEditorView.getTargetInstance().getSelectedTarget();
+				if ( version != null && !version.isEmpty() ){
+					System.out.println("STRINGVERSION:" + version);
+					target = OntologyEditorView.getTargetInstance().getTargetByVersion(Integer.valueOf( version ));
+					if (target == null){
+						Console.error("Coudn't find the target to load.");
+//						return null;
+					} else {
+						OntologyEditorView.getTargetInstance().setSelectedTarget(target);
+					}
+				}else
+					target = OntologyEditorView.getTargetInstance().getSelectedTarget();
 
-		TOSConnector tos = new TOSConnector();
-		//Clears the TargetOntologyTree
-		if (OntologyEditorView.getTargetTreeViewer()!=null) {
-			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().removeFromParent();
-			OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren().clear();
-			OntologyEditorView.getOntologyTargetTree()
-			.getNodeLists().add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
-//			for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
-//				OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
+				TOSConnector tos = new TOSConnector();
+				//Clears the TargetOntologyTree
+				if (OntologyEditorView.getTargetTreeViewer()!=null) {
+					OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().removeFromParent();
+					OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren().clear();
+					OntologyEditorView.getOntologyTargetTree()
+					.getNodeLists().add(OntologyEditorView.getOntologyTargetTree().getI2B2RootNode());
+//					for (OntologyTreeNode child : OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().getChildren()) {
+//						OntologyEditorView.getOntologyTargetTree().getI2B2RootNode().remove(child);
+//					}
+
+				}
+
+				if ( target  == null ){
+					Console.error("Can not load target ontology, because no target is selected or version found.");
+//					return null;
+				}
+
+				Console.info("Loading target ontology for TargetID=" + target.getTargetID() + " and Version=" + target.getVersion());
+
+
+				try {
+					tos.setContextVariable("Job", "LoadTargetOntology");
+					tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
+
+					tos.runJob();
+					if (OntologyEditorView.getTargetTreeViewer() != null)
+						OntologyEditorView.getTargetTreeViewer().refresh();
+				} catch (Exception e) {
+					e.printStackTrace();
+					String message = "Error while using a TOS-plugin for job \"LoadTargetOntology\": "
+							+ e.getMessage();
+					Console.error(message);
+					StatusView.addErrorMessage(message);
+
+
+				}
+
+				OntologyEditorView.refreshTargetVersionGUI();
 //			}
-
-		}
-
-		if ( target  == null ){
-			Console.error("Can not load target ontology, because no target is selected or version found.");
-			return null;
-		}
-
-		Console.info("Loading target ontology for TargetID=" + target.getTargetID() + " and Version=" + target.getVersion());
-
-
-		try {
-			tos.setContextVariable("Job", "LoadTargetOntology");
-			tos.setContextVariable("TargetID", String.valueOf(target.getTargetID()));
-
-			tos.runJob();
-			if (OntologyEditorView.getTargetTreeViewer() != null)
-				OntologyEditorView.getTargetTreeViewer().refresh();
-		} catch (Exception e) {
-			e.printStackTrace();
-			String message = "Error while using a TOS-plugin for job \"LoadTargetOntology\": "
-					+ e.getMessage();
-			Console.error(message);
-			StatusView.addErrorMessage(message);
-
-
-		}
-
-		OntologyEditorView.refreshTargetVersionGUI();
+//		}).run();
+		
 
 
 		return null;

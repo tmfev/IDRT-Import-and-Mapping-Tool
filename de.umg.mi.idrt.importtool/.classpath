@@ -120,6 +120,24 @@
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/IDRT_STDTERM/database_alter_tables_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/database_alter_tables_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/idrt_jdbc_upload_transmart_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/idrt_to_db_schema_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/starlims_master_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/stg_locations_to_ont_data_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/stg_metadata_to_ont_data_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/stg_parallel_0_1.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/stg_to_data_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/STARLIMS_MASTER/stg_to_ont_1_0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/poi-3.10-FINAL-20140219_modified_talend.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/poi-ooxml-3.10-FINAL-20140219_modified_talend.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/poi-scratchpad-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-8.4-703.jdbc4.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.2-1003.jdbc3.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

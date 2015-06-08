@@ -8,6 +8,7 @@ import i2b2_postgres2.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import i2b2_postgres2.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
 import i2b2_postgres2.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
 import i2b2_postgres2.odm_master_0_1.ODM_MASTER;
+import i2b2_postgres2.starlims_master_1_0.STARLIMS_MASTER;
 
 import java.io.File;
 import java.sql.Connection;
@@ -117,7 +118,7 @@ public class IDRTImport {
 		for (String key : contextVariables.keySet()) {
 			parameters.add("--context_param");
 			parameters.add(key + "=" + contextVariables.get(key));
-//			System.out.println("--context_param"+ key+ "="+contextVariables.get(key));
+			//			System.out.println("--context_param"+ key+ "="+contextVariables.get(key));
 		}
 		return parameters.toArray(new String[0]);
 	}
@@ -392,6 +393,18 @@ public class IDRTImport {
 		return exitCode;
 	}
 
+	public static int runStarLIMSImport() {
+System.out.println("RUNNING STARLIMSIMPORT@IDRTImport");
+		StatusListener.startLogging();
+		ServerView.btnStopSetEnabled(true);
+		STARLIMS_MASTER StarlimsImport = new STARLIMS_MASTER();
+		exitCode = StarlimsImport.runJobInTOS(getARGV());
+		clearInputFolder();
+		ServerView.btnStopSetEnabled(false);
+		StatusListener.stopLogging();
+		return exitCode;
+	}
+
 	/**
 	 * TOS-Job which imports data from ODM files in a folder.
 	 * @param importTerms Import the standard terminologies?
@@ -424,7 +437,10 @@ public class IDRTImport {
 			return exitCode;
 		}
 	}
-
+	public static void runImportBiobank(Server server, String currentSchema) {
+		// TODO Auto-generated method stub
+		System.out.println("NYI IMPORT FROM BIOBANK");
+	}
 
 	/**
 	 * TOS-Job that imports the §21 dataset.
@@ -660,5 +676,9 @@ public class IDRTImport {
 		}
 		return true;
 	}
+
+
+
+
 
 }

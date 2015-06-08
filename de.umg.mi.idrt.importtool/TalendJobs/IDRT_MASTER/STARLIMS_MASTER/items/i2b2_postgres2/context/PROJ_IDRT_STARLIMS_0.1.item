@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
+  <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/ont.csv&quot;"/>
+  <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/data.csv&quot;"/>
+  <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/SPREC.xlsx&quot;"/>
+  <contextParameter comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" type="id_String" value="Internal"/>
+  <contextParameter comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" type="id_String" value="GCKD-Studie"/>
+  <contextParameter comment="" name="language" prompt="language?" promptNeeded="false" type="id_String" value="ENG"/>
+</talendfile:ContextType>

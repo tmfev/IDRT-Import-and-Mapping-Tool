@@ -104,6 +104,11 @@
             id="de.umg.mi.idrt.importtool.MDRImport"
             name="MDRImport">
       </command>
+      <command
+            defaultHandler="de.umg.mi.idrt.idrtimporttool.commands.BiobankImportCommand"
+            id="de.umg.mi.idrt.importtool.BiobankImport"
+            name="BiobankImport">
+      </command>
    </extension>
   <!-- <extension
          point="org.eclipse.ui.installationPages">

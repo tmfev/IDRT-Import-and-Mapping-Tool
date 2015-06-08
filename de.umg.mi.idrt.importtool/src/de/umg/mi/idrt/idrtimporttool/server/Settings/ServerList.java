@@ -800,7 +800,7 @@ public class ServerList {
 					userServer.put("i2b2demodata", server.getName());
 					userServer.put("i2b2metadata", server.getName());
 				}
-				else if (server.getWhType().equalsIgnoreCase("i2b2") && server.getDatabaseType().equalsIgnoreCase("postgres")){
+				else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
 					System.out.println("POSTGRES");
 					users = new HashSet<I2b2Project>();
 					resultSet = statement
@@ -1100,7 +1100,7 @@ public class ServerList {
 				}
 			}
 		}
-		else if (server.getDatabaseType().equalsIgnoreCase("postgres") && server.getWhType().equalsIgnoreCase("i2b2")) {
+		else if (server.getDatabaseType().equalsIgnoreCase("postgres")) {
 			while (resultSet.next()) {
 				String user = resultSet.getString("schema_name");
 				if (defaultProps.getProperty("filter").equals("true")) {

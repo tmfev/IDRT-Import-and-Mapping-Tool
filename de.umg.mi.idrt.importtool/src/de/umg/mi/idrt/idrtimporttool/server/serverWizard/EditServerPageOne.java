@@ -264,7 +264,7 @@ public class EditServerPageOne extends WizardPage {
 		DB_WH_label.setText("WH Type");
 
 		DB_WH_Combo = new Combo(container1, SWT.READ_ONLY);
-		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart"});
+		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart", "starLIMS"});
 		DB_WH_Combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		for (int i = 0; i < DB_WH_Combo.getItems().length; i++) {
 			if (DB_WH_Combo.getItem(i).equalsIgnoreCase(server.getWhType())) {

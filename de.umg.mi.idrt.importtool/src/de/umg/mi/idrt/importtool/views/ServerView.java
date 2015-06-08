@@ -261,6 +261,38 @@ public class ServerView extends ViewPart {
 		return serverNames;
 	}
 
+	public static String[] getCurrentSourceServers() {
+		selectedServerIndex = 0;
+		if (sourceServerViewer.getTree().isDisposed()){
+			System.out.println("DISPOSED");
+			
+			return null;
+		}
+		else {
+		TreeItem[] treeItems = sourceServerViewer.getTree().getItems();
+		String[] serverNames = new String[treeItems.length];
+		for (int i = 0; i < treeItems.length; i++) {
+			serverNames[i] = treeItems[i].getText();
+			if (sourceServerViewer.getTree().getSelectionCount() > 0) {
+				if (sourceServerViewer.getTree().getSelection()[0].getParentItem() != null) {
+					if (treeItems[i].getText().equals(
+							sourceServerViewer.getTree().getSelection()[0].getParentItem()
+							.getText())) {
+						selectedServerIndex = i;
+					}
+				} else if (sourceServerViewer.getTree().getSelection()[0] != null) {
+					if (treeItems[i].getText().equals(
+							sourceServerViewer.getTree().getSelection()[0].getText())) {
+						selectedServerIndex = i;
+					}
+				}
+			} else {
+				selectedServerIndex = 0;
+			}
+		}
+		return serverNames;
+		}
+	}
 	/**
 	 * @return the fileName
 	 */
@@ -751,7 +783,7 @@ public class ServerView extends ViewPart {
 			targetServerViewer.refresh();
 
 			targetServerViewer.getTree().setMenu(mainMenu);
-			
+
 			Transfer[] transferTypesTarget = new Transfer[] { I2b2ProjectTransferType.getInstance(), ServerTransferType.getInstance()}; //TextTransfer.getInstance()
 			targetServerViewer.addDragSupport(operations, transferTypesTarget,
 					new ServerDragSourceListener(targetServerViewer));
@@ -867,20 +899,36 @@ public class ServerView extends ViewPart {
 				}
 			});
 			new MenuItem(importMenu, SWT.SEPARATOR);
+			final MenuItem importBiobankMenuItem = new MenuItem(importMenu, SWT.PUSH);
+			importBiobankMenuItem.setText("Import from starLIMS");
+			importBiobankMenuItem.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					importBiobank();
+				}
+
+			
+			});
+			
 			//TODO REIMPLEMENT
-						final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
-						importTermsMenuItem.setText(Messages.ServerView_ImportST);
-						importTermsMenuItem.addSelectionListener(new SelectionListener() {
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-			
-							}
-			
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
-							}
-						});
+			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
+			importTermsMenuItem.setText(Messages.ServerView_ImportST);
+			importTermsMenuItem.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					IDRTImport.runImportST_NoMap(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+				}
+			});
 
 			importMDRMenuItem = new MenuItem(importMenu, SWT.CASCADE);
 			importMDRMenuItem.setText("Import from MDR");
@@ -1024,20 +1072,20 @@ public class ServerView extends ViewPart {
 			});
 
 			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-//									new MenuItem(mainMenu, SWT.SEPARATOR);
-//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-//									adminMenuItem.setText("Administration");
-//									adminMenuItem.addSelectionListener(new SelectionListener() {
-//										@Override
-//										public void widgetSelected(SelectionEvent e) {
-//											adminTargetServer();
-//										}
-//						
-//										@Override
-//										public void widgetDefaultSelected(SelectionEvent e) {
-//						
-//										}
-//									});
+			//									new MenuItem(mainMenu, SWT.SEPARATOR);
+			//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+			//									adminMenuItem.setText("Administration");
+			//									adminMenuItem.addSelectionListener(new SelectionListener() {
+			//										@Override
+			//										public void widgetSelected(SelectionEvent e) {
+			//											adminTargetServer();
+			//										}
+			//						
+			//										@Override
+			//										public void widgetDefaultSelected(SelectionEvent e) {
+			//						
+			//										}
+			//									});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
@@ -1584,6 +1632,18 @@ public class ServerView extends ViewPart {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	private void importBiobank() {
+		IHandlerService handlerService = (IHandlerService) getSite()
+				.getService(IHandlerService.class);
+		try {
+			handlerService.executeCommand(
+					"de.umg.mi.idrt.importtool.BiobankImport", null); 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+//		IDRTImport.runImportBiobank(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 	}
 
 	/**

@@ -1,21 +1,13 @@
 package de.umg.mi.idrt.ioe.view;
 
-import java.awt.Desktop;
 import java.awt.MouseInfo;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
-
 import javax.swing.tree.MutableTreeNode;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -39,7 +31,6 @@ import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetEvent;
@@ -55,7 +46,6 @@ import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -86,14 +76,10 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.Bundle;
 
 import restAPI.BambooRESTApi;
-import restAPI.IMTUpdate;
-import routines.TalendDate;
 import swing2swt.layout.BorderLayout;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2Project;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
-import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2b2ProjectTransferType;
-import de.umg.mi.idrt.importtool.views.ServerView;
 import de.umg.mi.idrt.ioe.ActionCommand;
 import de.umg.mi.idrt.ioe.Activator;
 import de.umg.mi.idrt.ioe.Application;
@@ -117,9 +103,6 @@ import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
 import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTree;
-import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTreeContentProvider;
-import de.umg.mi.idrt.ioe.OntologyTree.TransmartStyledViewTableLabelProvider;
-import de.umg.mi.idrt.ioe.OntologyTree.TransmartTreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
@@ -193,6 +176,7 @@ public class OntologyEditorView extends ViewPart {
 	public OntologyEditorView() {
 		// TODO Auto-generated constructor stub
 		//		transmartTree = new TransmartOntologyTree();
+		
 	}
 
 	private static void addItem() {
@@ -1930,7 +1914,7 @@ public class OntologyEditorView extends ViewPart {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
-							System.out.println("FOR " +(System.currentTimeMillis()-time) );
+//							System.out.println("FOR " +(System.currentTimeMillis()-time) );
 							if (System.currentTimeMillis()-time>500) {
 								System.out.println("TIMEOUT");
 								//Timeout, if it takes to long.

@@ -29,7 +29,12 @@ public class LoadStagingOntology extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		Console.info("Command: LoadStagingOntology");
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+				System.out.println("RUNNING LOAD STAGING THREAD");
+				
+				Console.info("Command: LoadStagingOntology");
 
 				TOSConnector tos = new TOSConnector();
 
@@ -38,6 +43,9 @@ public class LoadStagingOntology extends AbstractHandler {
 
 					tos.runJob();
 
+//			}
+//		}).run();
+		
 		return null;
 	}
 }
