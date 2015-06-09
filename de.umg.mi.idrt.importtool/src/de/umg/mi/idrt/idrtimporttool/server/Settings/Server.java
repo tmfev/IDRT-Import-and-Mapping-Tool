@@ -30,7 +30,7 @@ public class Server implements Serializable {
 
 	//con=
 	private static String error;
-	private static String[] comboItems = {"Oracle","Postgres"};//,"MSSQL","MySQL"};
+	private static String[] comboItems = {"Oracle","Postgres","MSSQL"};//,"MSSQL","MySQL"};
 	private static String[] comboSourceItems = {"Oracle","Postgres","MSSQL","MySQL"};
 	private static final long serialVersionUID = 1L;
 
@@ -166,6 +166,34 @@ public class Server implements Serializable {
 	//		return ontology;
 	//	}
 
+	public String getJDBCDriver(){
+		if (this.getDatabaseType().equalsIgnoreCase("postgres")){
+			return POSTGRESDRIVER;
+		}
+		else if (this.getDatabaseType().equalsIgnoreCase("oracle")){
+			return ORACLEDRIVER;
+		}
+		else if (this.getDatabaseType().equalsIgnoreCase("mssql")){
+			return MSSQLDRIVER;
+		}
+		else 
+			return "";
+	}
+	
+	public String getJDBCURL(){
+		if (this.getDatabaseType().equalsIgnoreCase("postgres")){
+			return "jdbc:postgresql://"+this.getIp()+":"+this.getPort()+"/"+this.getSID();
+		}
+		else if (this.getDatabaseType().equalsIgnoreCase("oracle")){
+			return "jdbc:oracle:thin:@"+this.getIp() +":" + this.getPort() + ":" + this.getSID();
+		}
+		else if (this.getDatabaseType().equalsIgnoreCase("mssql")){
+			return "jdbc:sqlserver://" + getIp() + ":" + getPort();
+		}
+		else 
+			return "";
+	}
+	
 	public Server(String uniqueID, String ip, String port, String user,
 			String passWord, String sid,String databaseType, String schema, boolean useWinAuth, String table) {
 		this.uniqueID = uniqueID;

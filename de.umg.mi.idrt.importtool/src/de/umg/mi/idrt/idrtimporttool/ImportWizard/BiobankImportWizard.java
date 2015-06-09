@@ -22,6 +22,7 @@ import de.umg.mi.idrt.idrtimporttool.Log.Log;
 import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
+import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
 
@@ -186,7 +187,7 @@ public class BiobankImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
-		Server selectedServer = ServerView.getSelectedServer();
+		final Server selectedServer = ServerView.getSelectedServer();
 		final String ipText = selectedServer.getIp();
 		final String passwordText = selectedServer.getPassword();
 		final String dbUserText = selectedServer.getUser();
@@ -196,6 +197,8 @@ public class BiobankImportWizard extends Wizard {
 		final String dbType = selectedServer.getDatabaseType();
 		final String whType = selectedServer.getWhType().toLowerCase();
 
+		
+		final Server bioServer = ServerList.getSourceServers().get(BiobankWizardPage1.getCurrentServerString());
 		final String ipTextBio = BiobankWizardPage1.getIpText();
 		final String passwordTextBio = BiobankWizardPage1.getDBUserPasswordText();
 		final String dbUserTextBio = BiobankWizardPage1.getDBUserText();
@@ -252,26 +255,27 @@ public class BiobankImportWizard extends Wizard {
 					 * 
 					 */
 
-					contextMap.put("ont_path", miscPathReplaced+"/output/ont.csv");
-					contextMap.put("data_path", miscPathReplaced+"/output/data.csv");
+					contextMap.put("ont_path", miscPathReplaced+"output/ont.csv");
+					contextMap.put("data_path", miscPathReplaced+"output/data.csv");
 					contextMap.put("language", language);
 					contextMap.put("rasclientid", rasclientid);
 					contextMap.put("rasprojectno", rasprojectno);
-					contextMap.put("sprec_path", "SPRECPATH");
+					File sprec = FileHandler.getBundleFile("/misc/SPREC.xlsx");
+					contextMap.put("sprec_path", sprec.getAbsolutePath());
 					
-					String PRJ_IDRT_STARLIMS_JdbcUrl = "";
-					String PRJ_IDRT_STARLIMS_ClassName ="";
-					if (dbWH_Type.equalsIgnoreCase("postgres")){
-						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:postgresql://"+ipTextBio+":"+dbPortBio+"/"+dbSIDBio;
-						PRJ_IDRT_STARLIMS_ClassName = "org.postgresql.Driver";
-					}
-					else if (dbWH_Type.equalsIgnoreCase("oracle")){
-						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:oracle:thin:@"+ipTextBio +":" + dbPortBio + ":" + dbSIDBio;
-						PRJ_IDRT_STARLIMS_ClassName = "oracle.jdbc.driver.OracleDriver";
-					}
+//					String PRJ_IDRT_STARLIMS_JdbcUrl = "";
+//					String PRJ_IDRT_STARLIMS_ClassName ="";
+//					if (dbWH_Type.equalsIgnoreCase("postgres")){
+//						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:postgresql://"+ipTextBio+":"+dbPortBio+"/"+dbSIDBio;
+//						PRJ_IDRT_STARLIMS_ClassName = "org.postgresql.Driver";
+//					}
+//					else if (dbWH_Type.equalsIgnoreCase("oracle")){
+//						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:oracle:thin:@"+ipTextBio +":" + dbPortBio + ":" + dbSIDBio;
+//						PRJ_IDRT_STARLIMS_ClassName = "oracle.jdbc.driver.OracleDriver";
+//					}
 
-					contextMap.put("PRJ_IDRT_STARLIMS_JdbcUrl", PRJ_IDRT_STARLIMS_JdbcUrl);
-					contextMap.put("PRJ_IDRT_STARLIMS_ClassName", PRJ_IDRT_STARLIMS_ClassName);
+					contextMap.put("PRJ_IDRT_STARLIMS_JdbcUrl", bioServer.getJDBCURL());
+					contextMap.put("PRJ_IDRT_STARLIMS_ClassName", bioServer.getJDBCDriver());
 					
 					
 					/**
@@ -285,6 +289,9 @@ public class BiobankImportWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_Schema", dbSchema);
 					contextMap.put("DB_StagingI2B2_DatabaseType", dbType);
 					contextMap.put("DB_StagingI2B2_WHType", whType);
+					
+					contextMap.put("DB_StagingI2B2_jdbcurl", selectedServer.getJDBCURL());
+					
 
 					contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 
