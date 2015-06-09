@@ -254,7 +254,6 @@ public class BiobankImportWizard extends Wizard {
 					 * STARLIMS
 					 * 
 					 */
-
 					contextMap.put("ont_path", miscPathReplaced+"output/ont.csv");
 					contextMap.put("data_path", miscPathReplaced+"output/data.csv");
 					contextMap.put("language", language);
@@ -262,21 +261,9 @@ public class BiobankImportWizard extends Wizard {
 					contextMap.put("rasprojectno", rasprojectno);
 					File sprec = FileHandler.getBundleFile("/misc/SPREC.xlsx");
 					contextMap.put("sprec_path", sprec.getAbsolutePath().replaceAll("\\\\", "/"));
-					
-//					String PRJ_IDRT_STARLIMS_JdbcUrl = "";
-//					String PRJ_IDRT_STARLIMS_ClassName ="";
-//					if (dbWH_Type.equalsIgnoreCase("postgres")){
-//						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:postgresql://"+ipTextBio+":"+dbPortBio+"/"+dbSIDBio;
-//						PRJ_IDRT_STARLIMS_ClassName = "org.postgresql.Driver";
-//					}
-//					else if (dbWH_Type.equalsIgnoreCase("oracle")){
-//						PRJ_IDRT_STARLIMS_JdbcUrl = "jdbc:oracle:thin:@"+ipTextBio +":" + dbPortBio + ":" + dbSIDBio;
-//						PRJ_IDRT_STARLIMS_ClassName = "oracle.jdbc.driver.OracleDriver";
-//					}
 
 					contextMap.put("PRJ_IDRT_STARLIMS_JdbcUrl", bioServer.getJDBCURL());
 					contextMap.put("PRJ_IDRT_STARLIMS_ClassName", bioServer.getJDBCDriver());
-					
 					
 					/**
 					 * page 1
@@ -291,7 +278,6 @@ public class BiobankImportWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_WHType", whType);
 					
 					contextMap.put("DB_StagingI2B2_jdbcurl", selectedServer.getJDBCURL());
-					
 
 					contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 
@@ -318,11 +304,6 @@ public class BiobankImportWizard extends Wizard {
 						contextMap.put("IndexDrop", "false");
 					}
 
-					if (truncate) {
-						contextMap.put("truncateProject", "true");
-					} else {
-						contextMap.put("truncateProject", "false");
-					}
 					contextMap.put("PIDURL", defaultProps.getProperty("PIDURL"));
 
 					contextMap.put("folderMain", miscPathReplaced);

@@ -22,12 +22,12 @@
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="PRJ_IDRT_STARLIMS"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="oracle_id"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
-    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/data.csv&quot;"/>
+    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/data.csv&quot;"/>
     <contextParameter comment="" name="language" prompt="language?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="ENG"/>
-    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/ont.csv&quot;"/>
+    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/ont.csv&quot;"/>
     <contextParameter comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="Internal"/>
     <contextParameter comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="GCKD-Studie"/>
-    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/SPREC.xlsx&quot;"/>
+    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:\Users\Benjamin\eclipse\workspace_kepler_idrt\de.umg.mi.idrt.ioe.git\de.umg.mi.idrt.importtool\misc\SPREC.xlsx&quot;"/>
   </context>
   <context confirmationNeeded="false" name="transmart">
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
@@ -51,12 +51,12 @@
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="PRJ_IDRT_STARLIMS"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="oracle_id"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
-    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/data.csv&quot;"/>
+    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/data.csv&quot;"/>
     <contextParameter comment="" name="language" prompt="language?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="ENG"/>
-    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/ont.csv&quot;"/>
+    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/ont.csv&quot;"/>
     <contextParameter comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="Internal"/>
     <contextParameter comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="GCKD-Studie"/>
-    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/SPREC.xlsx&quot;"/>
+    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:\Users\Benjamin\eclipse\workspace_kepler_idrt\de.umg.mi.idrt.ioe.git\de.umg.mi.idrt.importtool\misc\SPREC.xlsx&quot;"/>
   </context>
   <context confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
@@ -80,12 +80,12 @@
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="PRJ_IDRT_STARLIMS"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="oracle_id"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
-    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/data.csv&quot;"/>
+    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/data.csv&quot;"/>
     <contextParameter comment="" name="language" prompt="language?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="ENG"/>
-    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/ont.csv&quot;"/>
+    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/ont.csv&quot;"/>
     <contextParameter comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="Internal"/>
     <contextParameter comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="GCKD-Studie"/>
-    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/SPREC.xlsx&quot;"/>
+    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:\Users\Benjamin\eclipse\workspace_kepler_idrt\de.umg.mi.idrt.ioe.git\de.umg.mi.idrt.importtool\misc\SPREC.xlsx&quot;"/>
   </context>
   <context confirmationNeeded="false" name="postgres">
     <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
@@ -109,12 +109,12 @@
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="PRJ_IDRT_STARLIMS"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_String" value="oracle_id"/>
     <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" repositoryContextId="_NseSIKnPEeONZc4l36FLLA" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
-    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/data.csv&quot;"/>
+    <contextParameter comment="" name="data_path" prompt="data_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/data.csv&quot;"/>
     <contextParameter comment="" name="language" prompt="language?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="ENG"/>
-    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/Test/ODM MainFolder/output/ont.csv&quot;"/>
+    <contextParameter comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Desktop_Workspace/ont.csv&quot;"/>
     <contextParameter comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="Internal"/>
     <contextParameter comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="GCKD-Studie"/>
-    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:/Users/engelir/Desktop/IDRT_2_WORK/SPREC.xlsx&quot;"/>
+    <contextParameter comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" repositoryContextId="_AN_vIK3SEeOns6j7vqgB9w" type="id_String" value="&quot;C:\Users\Benjamin\eclipse\workspace_kepler_idrt\de.umg.mi.idrt.ioe.git\de.umg.mi.idrt.importtool\misc\SPREC.xlsx&quot;"/>
   </context>
   <parameters>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
@@ -212,7 +212,7 @@
     <routinesParameter id="_ifyQUJSXEeOimdwB7b2jHA" name="Visit"/>
     <routinesParameter id="_wQvjsLuCEeGuiKzODJ-eDg" name="enc_num_routine"/>
   </parameters>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="256">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="416">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
@@ -224,7 +224,7 @@
     <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default"/>
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
-    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
     <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="true"/>
@@ -254,7 +254,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_6"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="96">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
@@ -317,7 +317,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="256">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="256">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_7"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
@@ -346,10 +346,11 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tRunJob_7">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk6"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tRunJob_5">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.truncateProject"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tRunJob_5">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tRunJob_7">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk5"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_4" offsetLabelX="0" offsetLabelY="0" source="tRunJob_4" target="tRunJob_6">
