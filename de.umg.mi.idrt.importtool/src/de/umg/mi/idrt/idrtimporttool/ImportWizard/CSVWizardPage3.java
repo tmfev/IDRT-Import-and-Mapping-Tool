@@ -68,9 +68,12 @@ import org.eclipse.wb.swt.ResourceManager;
  */
 public class CSVWizardPage3 extends WizardPage {
 
+	char[] DELIMITERS = {';','\t',','};
 
 	public static Table fillTable(Table table, String[] nextLine, String file) {
 		try {
+			
+			
 
 			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
 
@@ -310,20 +313,20 @@ public class CSVWizardPage3 extends WizardPage {
 						}
 					}
 				}
-			
+
 			}
 			String[] nextFileLine = fileReader.readNext();
 			HashSet<String> pidSet = new HashSet<String>();
-			
+
 			while ((nextFileLine = fileReader.readNext()) != null) {
 				if (!pidSet.add(nextFileLine[pidLocation])){
 					System.out.println("PID DOUBLE:");
 					System.out.println(nextFileLine[pidLocation]);
-					
+
 					boolean cont = MessageDialog.openQuestion(Application.getShell(), "Duplicate Found", "A duplicate of the PatientID: " 
-						+ nextFileLine[pidLocation] + " has been found. Treat " + file +" as Modifier?");
+							+ nextFileLine[pidLocation] + " has been found. Treat " + file +" as Modifier?");
 					if (cont)
-					table.getItems()[pidLocation].setText(3, Messages.ConfigMetaData_ObjectID); 
+						table.getItems()[pidLocation].setText(3, Messages.ConfigMetaData_ObjectID); 
 					break;
 				}
 			}
@@ -479,15 +482,6 @@ public class CSVWizardPage3 extends WizardPage {
 		} 
 	}
 
-	private static int getHeadLine() {
-		try {
-			return Integer.parseInt(headLineText.getText());
-		}catch (Exception e) {
-			System.err.println("Error @ Config:Headline");
-			return 0;
-		}
-	}
-
 	private Button refreshBtn;
 
 	private HashSet<String> incompleteConfigs;
@@ -501,6 +495,44 @@ public class CSVWizardPage3 extends WizardPage {
 		setWizard(CSVImportCommand.getWizard());
 		setDescription(Messages.CSVWizardPageThree_CSVImportSettings); 
 	}
+
+
+	private char getDelimiter(String string) {
+
+		CSVReader reader;
+		char dEFAULTDELIM = DELIMITERS[0];
+		try {
+			
+			for (int i = 0; i < DELIMITERS.length; i++){
+				dEFAULTDELIM = DELIMITERS[i];
+					reader = new CSVReader(
+							new FileReader(string),	dEFAULTDELIM, QUOTECHAR, getHeadLine());
+
+					String[] testLine = reader.readNext();
+					reader.close();
+					if (testLine.length > 1) {
+						break;
+					}
+			}
+			
+			System.out.println("DELIMITER IS " +dEFAULTDELIM);
+			return dEFAULTDELIM;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	private static int getHeadLine() {
+		try {
+			return Integer.parseInt(headLineText.getText());
+		}catch (Exception e) {
+			System.err.println("Error @ Config:Headline");
+			return 0;
+		}
+	}
+
 
 	public boolean checkTables() {
 		boolean filesOK = true;
@@ -1011,30 +1043,11 @@ public class CSVWizardPage3 extends WizardPage {
 											.getSelection()[0].getText();
 									table.removeAll();
 									table.clearAll();
-									char inputDelim = DEFAULTDELIM;
-									CSVReader reader = new CSVReader(
-											new FileReader(csvFolder
-													+ serverListViewer
-													.getTable()
-													.getSelection()[0]
-															.getText()),
-															DEFAULTDELIM,QUOTECHAR,getHeadLine());
-									String[] testLine = reader.readNext();
-									reader.close();
-
-									if (testLine.length == 1) {
-										System.err.println("Wrong delimiter?"); 
-										if (inputDelim == DEFAULTDELIM) {
-											inputDelim = '\t';
-											System.err
-											.println("Delimiter set to: \\t"); 
-										} else {
-											inputDelim = DEFAULTDELIM;
-											System.err
-											.println("Delimiter set to: " 
-													+ DEFAULTDELIM);
-										}
-									}
+									char inputDelim = getDelimiter(csvFolder
+											+ serverListViewer
+											.getTable()
+											.getSelection()[0]
+													.getText());
 									//									DEFAULTDELIM = inputDelim;
 									String tmpElement = serverListViewer
 											.getTable().getSelection()[0]
@@ -1050,7 +1063,7 @@ public class CSVWizardPage3 extends WizardPage {
 															+ extension);
 
 									headLineText.setText(""+getHeadLine());
-									reader = new CSVReader(new FileReader(
+									CSVReader reader = new CSVReader(new FileReader(
 											csvFolder
 											+ serverListViewer
 											.getTable()
@@ -1125,6 +1138,7 @@ public class CSVWizardPage3 extends WizardPage {
 							}
 							serverListViewer.refresh(true,true);
 						}
+
 					});
 
 			startLineLabel = new Label(buttonComposite, SWT.NONE);
@@ -1205,34 +1219,18 @@ public class CSVWizardPage3 extends WizardPage {
 						clearMetaDataFromTable();
 
 						try {
-							char inputDelim = ';';
-							CSVReader reader = new CSVReader(new FileReader(
-									csvFolder
+							char inputDelim = getDelimiter(csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0]
-											.getText()), inputDelim,QUOTECHAR,getHeadLine());
+											.getText());
 
-							String[] nextLine = reader.readNext();
-							if (nextLine.length == 1) {
-								System.err.println("Wrong delimiter?"); 
-								if (inputDelim == DEFAULTDELIM) {
-									inputDelim = '\t';
-									System.err.println("Delimiter set to: \\t"); 
-								} else {
-									inputDelim = DEFAULTDELIM;
-									System.err.println("Delimiter set to: " 
-											+ DEFAULTDELIM);
-								}
-							}
-							reader.close();
-
-							reader = new CSVReader(new FileReader(csvFolder
+							CSVReader reader = new CSVReader(new FileReader(csvFolder
 									+ serverListViewer.getTable()
 									.getSelection()[0].getText()),
 									inputDelim,QUOTECHAR,getHeadLine());
 							//							DEFAULTDELIM = inputDelim;
 
-							nextLine = reader.readNext();
+							String[] nextLine = reader.readNext();
 
 							int k = 0;
 							HashMap<Integer, HashSet<String>> content = new HashMap<Integer, HashSet<String>>();
@@ -1321,7 +1319,7 @@ public class CSVWizardPage3 extends WizardPage {
 									table.getItems()[i].setText(2, "String"); 
 								} else if ((countFloat > countInt)
 										&& (countString <= 0)) {
-									
+
 									table.getItems()[i].setText(2, "Float"); 
 								} else if ((countInt > countFloat)
 										&& (countString <= 0) && countString ==0) {
@@ -1401,25 +1399,10 @@ public class CSVWizardPage3 extends WizardPage {
 					filename + ".cfg" + extension); 
 
 			// Read File to generate new Config
-			char inputDelim = ';';
+			char inputDelim = getDelimiter(csvFolder
+					+ serverListViewer.getTable().getSelection()[0].getText());
+
 			CSVReader reader = new CSVReader(new FileReader(csvFolder
-					+ serverListViewer.getTable().getSelection()[0].getText()),
-					inputDelim,QUOTECHAR,getHeadLine());
-
-			String[] nextLine = reader.readNext();
-			if (nextLine.length == 1) {
-				System.err.println("Wrong delimiter?"); 
-				if (inputDelim == DEFAULTDELIM) {
-					inputDelim = '\t';
-					System.err.println("Delimiter set to: \\t"); 
-				} else {
-					inputDelim = DEFAULTDELIM;
-
-					System.err.println("Delimiter set to: " + DEFAULTDELIM); 
-				}
-			}
-			reader.close();
-			reader = new CSVReader(new FileReader(csvFolder
 					+ serverListViewer.getTable().getSelection()[0].getText()),
 					inputDelim,QUOTECHAR,getHeadLine());
 
@@ -1460,23 +1443,11 @@ public class CSVWizardPage3 extends WizardPage {
 			// Read File to generate new Config
 			File newConf = new File(csvFolder
 					+ serverListViewer.getTable().getSelection()[0].getText());
-			char inputDelim = DEFAULTDELIM;
-			CSVReader reader = new CSVReader(new FileReader(newConf),
-					inputDelim,QUOTECHAR,getHeadLine());
+			//TODO
+			char inputDelim = getDelimiter(newConf.getAbsoluteFile().getAbsolutePath());
 
-			String[] nextLine = reader.readNext();
-			if (nextLine.length == 1) {
-				System.err.println("Wrong delimiter?"); 
-				if (inputDelim == DEFAULTDELIM) {
-					inputDelim = '\t';
-					System.err.println("Delimiter set to: \\t"); 
-				} else {
-					inputDelim = DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM); 
-				}
-			}
-			reader.close();
-			reader = new CSVReader(new FileReader(newConf), inputDelim,QUOTECHAR,getHeadLine());
+			String[] nextLine;
+			CSVReader reader = new CSVReader(new FileReader(newConf), inputDelim,QUOTECHAR,getHeadLine());
 			//			DEFAULTDELIM = inputDelim;
 			String[] line1 = reader.readNext();
 			for (String element : line1) {

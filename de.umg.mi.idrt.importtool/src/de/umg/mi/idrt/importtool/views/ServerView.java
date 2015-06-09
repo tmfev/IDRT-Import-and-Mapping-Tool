@@ -1247,7 +1247,11 @@ public class ServerView extends ViewPart {
 			showHideSourceServerButtonComp.setLayoutData(BorderLayout.SOUTH);
 			showHideSourceServerButtonComp.setLayout(new FillLayout(SWT.HORIZONTAL));
 			final Button btnShowAndHideSourceServer = new Button(showHideSourceServerButtonComp, SWT.NONE);
+			if (sourceServerComposite.isDisposed()) {
 			btnShowAndHideSourceServer.setText(Messages.ServerView_ShowSourceServer);
+			}
+			else
+				btnShowAndHideSourceServer.setText(Messages.ServerView_HideSourceServer);	
 			btnShowAndHideSourceServer.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {

@@ -26,17 +26,16 @@ public class LoadEverything extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		Console.info("Command: LoadTargetProjects");
+				Console.info("Command: LoadTargetProjects");
 
-		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IOE.LOADTARGETPROJECTS));
+				Application.executeCommand(new ActionCommand(
+						Resource.ID.Command.IOE.LOADTARGETPROJECTS));
 
-		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IOE.LOADSTAGINGONTOLOGY));
+				Application.executeCommand(new ActionCommand(
+						Resource.ID.Command.IOE.LOADSTAGINGONTOLOGY));
 
-		Application.executeCommand(new ActionCommand(
-				Resource.ID.Command.IOE.LOADTARGETONTOLOGY));
-
+				Application.executeCommand(new ActionCommand(
+						Resource.ID.Command.IOE.LOADTARGETONTOLOGY));
 		
 		return null;
 	}

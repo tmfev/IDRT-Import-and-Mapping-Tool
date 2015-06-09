@@ -8,7 +8,6 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -119,6 +118,34 @@ public class IDRTHelper {
 	public IDRTHelper(){
 		IDRTItemMap = new HashMap<Integer, IDRTItem>();
 	}
+	char[] DELIMITERS = {';','\t',','};
+	private static char QUOTECHAR='\"';
+	private char getDelimiter(String string) {
+
+		CSVReader reader;
+		char dEFAULTDELIM = DELIMITERS[0];
+		try {
+			
+			for (int i = 0; i < DELIMITERS.length; i++){
+				dEFAULTDELIM = DELIMITERS[i];
+					reader = new CSVReader(
+							new FileReader(string),	dEFAULTDELIM, QUOTECHAR);
+
+					String[] testLine = reader.readNext();
+					reader.close();
+					if (testLine.length > 1) {
+						break;
+					}
+			}
+			
+			System.out.println("DELIMITER IS " +dEFAULTDELIM);
+			return dEFAULTDELIM;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 
 	//	public IDRTHelper(String host, String port, String sid, String username, String password) {
@@ -185,26 +212,11 @@ public class IDRTHelper {
 			EndDate = -1;
 			objectID = -1;
 
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(config.getAbsolutePath());
 			ignoreList = new LinkedList<Integer>();
 			blobList = new LinkedList<Integer>();
-			CSVReader CSVInput = new CSVReader(new FileReader(config), inputDelim, quoteChar);
-			String []line1 = CSVInput.readNext();
-
-			if (line1.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(config), inputDelim);
-			line1 = CSVInput.readNext();
+			CSVReader CSVInput = new CSVReader(new FileReader(config), inputDelim);
+			String[] line1 = CSVInput.readNext();
 			String []dataType = CSVInput.readNext();
 			String []niceName = CSVInput.readNext();
 			String []configRow = CSVInput.readNext();
@@ -343,7 +355,7 @@ public class IDRTHelper {
 			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB) throws SQLException {
 		try {
 			long start = System.currentTimeMillis();
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(input.getAbsolutePath());
 			char outputDelim = '\t';
 			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
@@ -352,22 +364,6 @@ public class IDRTHelper {
 				allRows++;
 			}
 			System.out.println("ROWS: " + allRows);
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
-			nextLine = CSVInput.readNext();
-
-			if (nextLine.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			System.out.println("quote: " + quoteChar);
 			CSVInput.close();
 			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline); //
 
@@ -882,7 +878,7 @@ public class IDRTHelper {
 			long start = System.currentTimeMillis();
 			HashMap<String,Integer>patientInstanceNumMap = new HashMap<String, Integer>();
 			System.out.println("PIDGENROTATE");
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(input.getAbsolutePath());
 			char outputDelim = '\t';
 			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
@@ -891,22 +887,6 @@ public class IDRTHelper {
 				allRows++;
 			}
 			System.out.println("ROWS: " + allRows);
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
-			nextLine = CSVInput.readNext();
-
-			if (nextLine.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			System.out.println("quote: " + quoteChar);
 
 
 			CSVInput.close();

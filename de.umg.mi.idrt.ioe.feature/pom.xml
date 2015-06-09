@@ -10,5 +10,4 @@
 	</parent>
 	<artifactId>de.umg.mi.ioe.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
-	
 </project> 
