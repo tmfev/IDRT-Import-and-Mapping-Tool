@@ -15,15 +15,16 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 public class AddServerWizard extends Wizard {
 
 	protected AddServerPageOne one;
-
-	public AddServerWizard() {
+	private String activator;
+	public AddServerWizard(String activator) {
 		super();
 		setNeedsProgressMonitor(true);
+		this.activator = activator;
 	}
 
 	@Override
 	public void addPages() {
-		one = new AddServerPageOne();
+		one = new AddServerPageOne(activator);
 		// two = new CSVWizardPageTwo();
 		addPage(one);
 		// addPage(two);

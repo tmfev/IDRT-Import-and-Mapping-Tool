@@ -25,7 +25,7 @@ public class AddSourceServerCommand extends AbstractHandler {
 			viewer = DBWizardPage2.getImportDBViewer();
 		}
 		WizardDialog wizardDialog = new WizardDialog(viewer.getControl()
-				.getShell(), new AddSourceServerWizard());
+				.getShell(), new AddSourceServerWizard("source"));
 		wizardDialog.open();
 		if (((DBWizardPage2.getImportDBViewer() != null) && !DBWizardPage2
 				.getImportDBViewer().getTree().isDisposed())

@@ -365,7 +365,7 @@ public class BiobankWizardPage1 extends WizardPage {
 			DBIntegratedSecurity = new Label(container, SWT.SHADOW_IN | SWT.CENTER);
 			DBMSSQLUseWinAuth = new Button(container, SWT.CHECK);
 			DBTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			DBTypeCombo.setItems(Server.getComboItems());
+			DBTypeCombo.setItems(Server.getComboItems("source"));
 			for (int i = 0; i < DBTypeCombo.getItems().length; i++) {
 				if (DBTypeCombo.getItem(i).equalsIgnoreCase(currentServer.getDatabaseType())) {
 					DBTypeCombo.select(i);

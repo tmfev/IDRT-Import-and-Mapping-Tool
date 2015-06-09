@@ -1,5 +1,8 @@
 package de.umg.mi.idrt.idrtimporttool.server.serverWizard;
 
+import java.applet.Applet;
+
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -19,6 +22,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -31,6 +35,7 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
  */
 public class AddServerPageOne extends WizardPage {
 
+	private String activator;
 	private static Text ipText;
 	private static Text PortText;
 	private static Text DBUserText;
@@ -123,10 +128,12 @@ public class AddServerPageOne extends WizardPage {
 		return uniqueIDText.getText();
 	}
 
-	public AddServerPageOne() {
+	public AddServerPageOne(String activator) {
+		
 		super(Messages.AddServerPageOne_ServerSetup);
 		setTitle(Messages.AddServerPageOne_1);
 		setDescription(Messages.AddServerPageOne_EditYourServer);
+		this.setActivator(activator);
 	}
 
 	@Override
@@ -308,7 +315,7 @@ public class AddServerPageOne extends WizardPage {
 		DB_WH_label.setText("WH Type");
 
 		DB_WH_Combo = new Combo(container1, SWT.READ_ONLY);
-		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart", "starLIMS"});
+		DB_WH_Combo.setItems(Server.getWHItems(activator));
 		DB_WH_Combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		DBTypeLabel = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
@@ -316,7 +323,7 @@ public class AddServerPageOne extends WizardPage {
 
 		DBTypeCombo = new Combo(container1, SWT.READ_ONLY);
 		DBTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		DBTypeCombo.setItems(Server.getComboItems());
+		DBTypeCombo.setItems(Server.getComboItems(getActivator()));
 		DBTypeCombo.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -332,6 +339,8 @@ public class AddServerPageOne extends WizardPage {
 					DBUserPasswordText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 					DBUser.setEnabled(!DBMSSQLUseWinAuth.getSelection());
 					DBUserText.setEnabled(!DBMSSQLUseWinAuth.getSelection());
+//					if (getActivator().equalsIgnoreCase("target"))
+//					MessageDialog.openInformation(Application.getShell(), "MS SQL Information", "MS SQL works only as a data source!");
 				}
 				else {
 					DBUserPassword.setEnabled(true);
@@ -410,6 +419,14 @@ public class AddServerPageOne extends WizardPage {
 		DBTest = new Label(container1, SWT.FILL | SWT.CENTER);
 		DBTest.setText("?"); //$NON-NLS-1$
 		setPageComplete(false);
+	}
+
+	public String getActivator() {
+		return activator;
+	}
+
+	public void setActivator(String activator) {
+		this.activator = activator;
 	}
 
 }

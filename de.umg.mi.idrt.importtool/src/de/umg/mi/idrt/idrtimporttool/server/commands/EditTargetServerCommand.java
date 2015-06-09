@@ -34,7 +34,7 @@ public class EditTargetServerCommand extends AbstractHandler {
 						serverUniqueID);
 				WizardDialog wizardDialog = new WizardDialog(viewer
 						.getControl().getShell(), new EditServerWizard(
-						currentServer, true));
+						currentServer, true,"target"));
 				
 				wizardDialog.open();
 			} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
@@ -45,7 +45,7 @@ public class EditTargetServerCommand extends AbstractHandler {
 
 				WizardDialog wizardDialog = new WizardDialog(viewer
 						.getControl().getShell(), new EditServerWizard(
-						currentServer, true));
+						currentServer, true,"target"));
 				wizardDialog.open();
 			}
 

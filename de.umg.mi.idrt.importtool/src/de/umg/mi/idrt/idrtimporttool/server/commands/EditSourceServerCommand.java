@@ -41,7 +41,7 @@ public class EditSourceServerCommand extends AbstractHandler {
 				}
 				WizardDialog wizardDialog = new WizardDialog(viewer
 						.getControl().getShell(), new EditServerWizard(
-						currentServer, false));
+						currentServer, false,"source"));
 				wizardDialog.open();
 			} else 	if (currentTreeItem.getData() instanceof I2b2Project) {
 				TreeItem parentTreeitem = currentTreeItem.getParentItem();
@@ -51,7 +51,7 @@ public class EditSourceServerCommand extends AbstractHandler {
 
 				WizardDialog wizardDialog = new WizardDialog(viewer
 						.getControl().getShell(), new EditServerWizard(
-						currentServer, false));
+						currentServer, false,"source"));
 				wizardDialog.open();
 			}
 

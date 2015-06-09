@@ -108,13 +108,14 @@ public class EditServerPageOne extends WizardPage {
 	// }
 
 	private Server server;
-
+	private String activator;
 	private Label DBTypeLabel;
-	public EditServerPageOne(Server server) {
+	public EditServerPageOne(Server server, String activator) {
 		super(Messages.EditServerPageOne_ServerSetup);
 		this.server = server;
 		setTitle(Messages.EditServerPageOne_ServerSetup);
 		setDescription(Messages.EditServerPageOne_EditServer);
+		this.activator = activator;
 	}
 	@Override
 	public void createControl(Composite parent) {
@@ -264,7 +265,7 @@ public class EditServerPageOne extends WizardPage {
 		DB_WH_label.setText("WH Type");
 
 		DB_WH_Combo = new Combo(container1, SWT.READ_ONLY);
-		DB_WH_Combo.setItems(new String[] {"i2b2", "transmart", "starLIMS"});
+		DB_WH_Combo.setItems(Server.getWHItems(activator));
 		DB_WH_Combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		for (int i = 0; i < DB_WH_Combo.getItems().length; i++) {
 			if (DB_WH_Combo.getItem(i).equalsIgnoreCase(server.getWhType())) {
@@ -281,7 +282,7 @@ public class EditServerPageOne extends WizardPage {
 		DBIntegratedSecurity = new Label(container1, SWT.SHADOW_IN | SWT.CENTER);
 		DBMSSQLUseWinAuth = new Button(container1, SWT.CHECK);
 		DBTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		DBTypeCombo.setItems(Server.getComboItems());
+		DBTypeCombo.setItems(Server.getComboItems(activator));
 		for (int i = 0; i < DBTypeCombo.getItems().length; i++) {
 			if (DBTypeCombo.getItem(i).equalsIgnoreCase(server.getDatabaseType())) {
 				DBTypeCombo.select(i);

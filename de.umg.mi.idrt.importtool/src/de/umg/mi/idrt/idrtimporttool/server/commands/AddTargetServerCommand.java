@@ -21,7 +21,7 @@ public class AddTargetServerCommand extends AbstractHandler {
 		TreeViewer viewer = ServerView.getTargetServersViewer();
 
 		WizardDialog wizardDialog = new WizardDialog(viewer.getControl()
-				.getShell(), new AddServerWizard());
+				.getShell(), new AddServerWizard("target"));
 		
 		wizardDialog.open();
 		viewer.refresh();

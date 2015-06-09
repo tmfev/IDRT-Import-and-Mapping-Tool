@@ -20,18 +20,20 @@ public class EditServerWizard extends Wizard {
 	private Server server;
 	private String serverUniqueID;
 	private boolean isTargetServer;
+	private String activator;
 
-	public EditServerWizard(Server server, boolean isTargetServer) {
+	public EditServerWizard(Server server, boolean isTargetServer, String activator) {
 		super();
 		this.isTargetServer = isTargetServer;
 		this.server = server;
 		serverUniqueID = server.getUniqueID();
 		setNeedsProgressMonitor(true);
+		this.activator = activator;
 	}
 
 	@Override
 	public void addPages() {
-		one = new EditServerPageOne(server);
+		one = new EditServerPageOne(server,activator);
 		addPage(one);
 	}
 

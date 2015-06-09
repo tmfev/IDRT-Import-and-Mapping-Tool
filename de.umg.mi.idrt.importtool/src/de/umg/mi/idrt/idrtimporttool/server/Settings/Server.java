@@ -19,7 +19,7 @@ import de.umi.mi.passwordcrypt.PasswordCrypt;
  */
 public class Server implements Serializable {
 
-	
+
 	//TODO IMPLEMENT
 	private static boolean isSourceServer;
 	private static String ORACLEDRIVER = "oracle.jdbc.OracleDriver";
@@ -30,12 +30,18 @@ public class Server implements Serializable {
 
 	//con=
 	private static String error;
-	private static String[] comboItems = {"Oracle","Postgres","MSSQL"};//,"MSSQL","MySQL"};
+	private static String[] comboItems = {"Oracle","Postgres"};//,"MSSQL","MySQL"};
+	private static String[] comboItemsSource = {"Oracle","Postgres","MSSQL"};//,"MSSQL","MySQL"};
 	private static String[] comboSourceItems = {"Oracle","Postgres","MSSQL","MySQL"};
+	private static String[] WHCOMBOTARGET = {"i2b2", "transmart"};
+	private static String[] WHCOMBOSOURCE = {"i2b2", "transmart", "starLIMS"};
 	private static final long serialVersionUID = 1L;
 
-	public static String[] getComboItems() {
-		return comboItems;
+	public static String[] getComboItems(String activator) {
+		if (activator.equalsIgnoreCase("target"))
+			return comboItems;
+		else			
+			return comboItemsSource;
 	}
 	public static String getError() {
 		return error;
@@ -64,11 +70,11 @@ public class Server implements Serializable {
 	private boolean savePassword;
 
 	private boolean useWinAuth;
-	
+
 	public static String[] getSourceComboItems() {
 		return comboSourceItems;
 	}
-	
+
 	/**
 	 * @param currentServer2
 	 */
@@ -179,7 +185,7 @@ public class Server implements Serializable {
 		else 
 			return "";
 	}
-	
+
 	public String getJDBCURL(){
 		if (this.getDatabaseType().equalsIgnoreCase("postgres")){
 			return "jdbc:postgresql://"+this.getIp()+":"+this.getPort()+"/"+this.getSID();
@@ -193,7 +199,7 @@ public class Server implements Serializable {
 		else 
 			return "";
 	}
-	
+
 	public Server(String uniqueID, String ip, String port, String user,
 			String passWord, String sid,String databaseType, String schema, boolean useWinAuth, String table) {
 		this.uniqueID = uniqueID;
@@ -372,9 +378,9 @@ public class Server implements Serializable {
 						.executeQuery("select count(*) as patients from i2b2demodata.patient_dimension");
 			}
 			else {
-			resultSet= statement
-					.executeQuery("select count(*) as patients from " + user
-							+ ".patient_dimension");
+				resultSet= statement
+						.executeQuery("select count(*) as patients from " + user
+								+ ".patient_dimension");
 			}
 			while (resultSet.next()) {
 				patients = resultSet.getString("patients");
@@ -497,7 +503,7 @@ public class Server implements Serializable {
 	public void setUseWinAuth(boolean useWinAuth) {
 		this.useWinAuth = useWinAuth;
 	}
-	
+
 	public String getWhType() {
 		if (whType==null)
 			return "i2b2";
@@ -512,5 +518,11 @@ public class Server implements Serializable {
 	@Override
 	public String toString() {
 		return "SERVER:\n"+"-- uniqueID: " +uniqueID + "\n-- ip: " + ip + "\n-- port: " + port + "\n-- sid: " + sid + "\n-- whType: " + whType;
+	}
+	public static String[] getWHItems(String activator) {
+		if (activator.equalsIgnoreCase("target"))
+			return WHCOMBOTARGET;
+		else
+			return WHCOMBOSOURCE;
 	}
 }
