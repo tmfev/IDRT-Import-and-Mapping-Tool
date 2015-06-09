@@ -261,7 +261,7 @@ public class BiobankImportWizard extends Wizard {
 					contextMap.put("rasclientid", rasclientid);
 					contextMap.put("rasprojectno", rasprojectno);
 					File sprec = FileHandler.getBundleFile("/misc/SPREC.xlsx");
-					contextMap.put("sprec_path", sprec.getAbsolutePath());
+					contextMap.put("sprec_path", sprec.getAbsolutePath().replaceAll("\\\\", "/"));
 					
 //					String PRJ_IDRT_STARLIMS_JdbcUrl = "";
 //					String PRJ_IDRT_STARLIMS_ClassName ="";
