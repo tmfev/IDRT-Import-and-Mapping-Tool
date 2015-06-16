@@ -122,7 +122,7 @@ public class DBWizardPage3 extends WizardPage {
 			composite.setLayout(new GridLayout(2, false));
 			Label truncateLabel = new Label(composite, SWT.FILL | SWT.CENTER);
 			truncateLabel.setText("Truncate i2b2 Project?");
-			truncateLabel.setToolTipText("Löscht den Inhalt des Projektes!");
+			truncateLabel.setToolTipText("Truncates the whole project!");
 
 			checkTruncate = new Button(composite, SWT.CHECK);
 			checkTruncate.setSelection(false);
