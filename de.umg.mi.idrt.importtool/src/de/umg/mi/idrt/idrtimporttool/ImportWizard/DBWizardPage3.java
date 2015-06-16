@@ -125,6 +125,7 @@ public class DBWizardPage3 extends WizardPage {
 			truncateLabel.setToolTipText("Truncates the whole project!");
 
 			checkTruncate = new Button(composite, SWT.CHECK);
+			checkTruncate.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 			checkTruncate.setSelection(false);
 //			new Label(composite, SWT.NONE);
 			
@@ -132,6 +133,7 @@ public class DBWizardPage3 extends WizardPage {
 			label.setToolTipText("Truncates the previous queries!");
 			label.setText("Truncate Previous Queries?");
 			checkTruncateQueries = new Button(composite, SWT.CHECK);
+			checkTruncateQueries.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 			checkTruncateQueries.setSelection(false);
 //			new Label(composite, SWT.NONE);
 
@@ -143,7 +145,7 @@ public class DBWizardPage3 extends WizardPage {
 			
 			composite2 = new Composite(composite, SWT.NONE);
 			composite2.setLayout(new FillLayout(SWT.VERTICAL));
-			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, false, false, 1,3);
+			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1,3);
 			gd_composite.widthHint = 91;
 			composite2.setLayoutData(gd_composite);
 			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
@@ -168,6 +170,7 @@ public class DBWizardPage3 extends WizardPage {
 			cleanUpLabel.setText(Messages.CSVWizardPageTwo_CleanUp);
 
 			cleanUpBtn = new Button(composite, SWT.CHECK);
+			cleanUpBtn.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp")));
 
@@ -176,6 +179,7 @@ public class DBWizardPage3 extends WizardPage {
 			Label labelSaveContext = new Label(composite, SWT.NONE);
 			labelSaveContext.setText("Save Settings?");
 			checkContext = new Button(composite, SWT.CHECK);
+			checkContext.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 			checkContext.setSelection(false);
 //			new Label(composite, SWT.NONE);
 			
@@ -203,15 +207,17 @@ public class DBWizardPage3 extends WizardPage {
 						
 
 			composite_1 = new Composite(sashForm, SWT.NONE);
-			composite_1.setLayout(null);
+			composite_1.setLayout(new GridLayout(2, false));
 
-			lblImportingTables = new Label(composite_1, SWT.NONE);
-			lblImportingTables.setBounds(5, 5, 93, 15);
+			lblImportingTables = new Label(composite_1, SWT.FILL | SWT.CENTER);
+			lblImportingTables.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+//			lblImportingTables.setBounds(5, 5, 93, 15);
 			lblImportingTables.setText("Tables to Import:");
-
-			list = new List(composite_1, SWT.BORDER | SWT.H_SCROLL
-					| SWT.V_SCROLL);
-			list.setBounds(5, 25, 276, 247);
+			new Label(composite_1, SWT.NONE);
+			
+						list = new List(composite_1, SWT.BORDER | SWT.H_SCROLL
+								| SWT.V_SCROLL);
+						list.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 			sashForm.setWeights(new int[] {3, 2});
 			HashMap<Server, HashMap<String, java.util.List<String>>> tables = DBWizardPage2
 					.getCheckedTables();
