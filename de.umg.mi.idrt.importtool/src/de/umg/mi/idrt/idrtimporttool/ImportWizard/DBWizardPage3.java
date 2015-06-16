@@ -119,21 +119,21 @@ public class DBWizardPage3 extends WizardPage {
 			sashForm = new SashForm(container, SWT.NONE);
 
 			composite = new Composite(sashForm, SWT.NONE);
-			composite.setLayout(new GridLayout(3, false));
+			composite.setLayout(new GridLayout(2, false));
 			Label truncateLabel = new Label(composite, SWT.FILL | SWT.CENTER);
 			truncateLabel.setText("Truncate i2b2 Project?");
 			truncateLabel.setToolTipText("Löscht den Inhalt des Projektes!");
 
 			checkTruncate = new Button(composite, SWT.CHECK);
 			checkTruncate.setSelection(false);
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 			
 			label = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
 			label.setToolTipText("Truncates the previous queries!");
 			label.setText("Truncate Previous Queries?");
 			checkTruncateQueries = new Button(composite, SWT.CHECK);
 			checkTruncateQueries.setSelection(false);
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 
 			
 			
@@ -158,12 +158,12 @@ public class DBWizardPage3 extends WizardPage {
 			btnDrop = new Button(composite2, SWT.RADIO);
 			btnDrop.setText(Messages.CSVWizardPage2_btnDrop_text);
 			btnDrop.setSelection(indexDrop);
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 //			
 			new Label(composite, SWT.NONE);
 			new Label(composite, SWT.NONE);
-			new Label(composite, SWT.NONE);
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 			cleanUpLabel = new Label(composite, SWT.SHADOW_IN | SWT.CENTER);
 			cleanUpLabel.setText(Messages.CSVWizardPageTwo_CleanUp);
 
@@ -171,13 +171,13 @@ public class DBWizardPage3 extends WizardPage {
 			cleanUpBtn.setSelection(Boolean.parseBoolean(defaultProps
 					.getProperty("cleanUp")));
 
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 			
 			Label labelSaveContext = new Label(composite, SWT.NONE);
 			labelSaveContext.setText("Save Settings?");
 			checkContext = new Button(composite, SWT.CHECK);
 			checkContext.setSelection(false);
-			new Label(composite, SWT.NONE);
+//			new Label(composite, SWT.NONE);
 			
 
 			mainPath = defaultProps.getProperty("folderMainCSV");
@@ -238,6 +238,8 @@ public class DBWizardPage3 extends WizardPage {
 					}
 				}
 			}
+			composite.pack();
+			composite_1.pack();
 			setPageComplete(true);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
