@@ -229,7 +229,6 @@ public class BiobankImportWizard extends Wizard {
 			@Override
 			public void run() {
 				try {
-					final long start = System.currentTimeMillis();
 
 					File inputFolder = FileHandler.getBundleFile("/misc/input/");
 					File outputFolder = FileHandler.getBundleFile("/misc/output/");

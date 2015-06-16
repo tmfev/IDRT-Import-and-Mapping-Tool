@@ -717,7 +717,7 @@ public class MyOntologyTrees{
 				public void widgetSelected(SelectionEvent e) {
 					setCurrentRegEx(item.getText());
 					dialog.close();
-
+					
 					ActionCommand command2 = new ActionCommand(
 							Resource.ID.Command.COMBINENODE);
 					Application.executeCommand(command2);

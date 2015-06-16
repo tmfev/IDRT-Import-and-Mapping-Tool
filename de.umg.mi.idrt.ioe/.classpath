@@ -41,5 +41,6 @@
 	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_alter_tables_0_1.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_set_patient_count_0_1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
