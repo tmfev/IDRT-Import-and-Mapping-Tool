@@ -139,7 +139,6 @@
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-8.4-703.jdbc4.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.2-1003.jdbc3.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="lib/sqljdbc.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>
