@@ -45,7 +45,7 @@ public class BambooRESTApi {
 				version = 0;
 			}
 
-			System.out.println("CURRENTVERSION: "+ version);
+//			System.out.println("CURRENTVERSION: "+ version);
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			final Properties defaultProps = new Properties();
 			defaultProps.load(new FileReader(properties));
@@ -55,9 +55,9 @@ public class BambooRESTApi {
 
 			IMTUpdate latest = BambooRESTApi.getLatestBuild(URI);
 			String URIBuild = latest.getArtifactURI();
-			System.out.println("LATEST VERSION: " + latest.getBuildNumber());
+//			System.out.println("LATEST VERSION: " + latest.getBuildNumber());
 			if (version < latest.getBuildNumber() && version!=0){
-				System.out.println("OLD VERSION!");
+//				System.out.println("OLD VERSION!");
 				boolean confirm = MessageDialog.openConfirm(Application.getShell(), "Newer Version", "There is a newer Version available.\nOpen Download Page in Browser?");
 
 				if (confirm){
@@ -104,7 +104,7 @@ public class BambooRESTApi {
 
 			String output = br.readLine();
 
-			System.out.println(output);
+//			System.out.println(output);
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			
 			InputSource source1 = new InputSource(new StringReader(output));
@@ -114,7 +114,7 @@ public class BambooRESTApi {
 			String repo = xpath.evaluate(FIND_REPOSITORY_Expression, source1);
 			String buildNumber = xpath.evaluate(FIND_LATEST_BUILD_Expression, source2);
 			String buildTime = xpath.evaluate(BUILD_COMPLETED_TIME_Expression, source3);
-			System.out.println("BUILD: " + buildNumber + " REPO: " + repo);
+//			System.out.println("BUILD: " + buildNumber + " REPO: " + repo);
 			
 			IMTUpdate update = new IMTUpdate();
 			update.setArtifactURI(repo);
