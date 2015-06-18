@@ -78,11 +78,7 @@ public class BambooRESTApi {
 				System.out.println("No newer Version online");
 			}
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

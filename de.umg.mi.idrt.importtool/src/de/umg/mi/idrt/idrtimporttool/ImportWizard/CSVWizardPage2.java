@@ -27,7 +27,9 @@ import org.eclipse.swt.widgets.Text;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.importtool.misc.FileHandler;
 import de.umg.mi.idrt.importtool.views.ServerView;
+
 import org.eclipse.swt.layout.FillLayout;
+
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>

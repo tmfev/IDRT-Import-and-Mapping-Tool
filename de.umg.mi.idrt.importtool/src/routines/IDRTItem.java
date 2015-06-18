@@ -10,6 +10,7 @@ public class IDRTItem {
 	private String columnName;
 	private String dataType;
 	private String niceName;
+	private String tooltip;
 
 	public IDRTItem(String columnName, String dataType, String niceName) {
 		setColumnName(columnName);
@@ -44,6 +45,14 @@ public class IDRTItem {
 	@Override
 	public String toString() {
 		return columnName + " " + niceName + " " + dataType;
+	}
+
+	public String getTooltip() {
+		return tooltip;
+	}
+
+	public void setTooltip(String tooltip) {
+		this.tooltip = tooltip;
 	}
 
 }

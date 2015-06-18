@@ -264,6 +264,72 @@
     <contextParameter comment="" name="status" prompt="status?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
     <contextParameter comment="" name="statusTmp" prompt="statusTmp?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
   </context>
+  <context confirmationNeeded="false" name="localhost">
+    <contextParameter comment="&quot;Std. Terminologien importieren?&quot;" name="importTerms" prompt="importTerms?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="basedir" prompt="basedir?" promptNeeded="false" type="id_String" value="&quot;R:\IFB\Sonstiges\workspace_TOS\IDRT_STDTERM\00_basedir\&quot;"/>
+    <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" repositoryContextId="_tGl7UMwqEeGSQ4LgUNlR2g" type="id_String" value="&quot;starlims&quot;"/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Password" value=""/>
+    <contextParameter comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
+    <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;ISO-8859-1&quot;"/>
+    <contextParameter comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
+    <contextParameter comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
+    <contextParameter comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;tmp/&quot;"/>
+    <contextParameter comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Ontology&quot;"/>
+    <contextParameter comment="" name="importCodelist" prompt="importCodelist?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="true"/>
+    <contextParameter comment="" name="importSingleFile" prompt="importSingleFile?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value=""/>
+    <contextParameter comment="" name="includePids" prompt="includePids?" promptNeeded="true" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_Boolean" value="false"/>
+    <contextParameter comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
+    <contextParameter comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
+    <contextParameter comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
+    <contextParameter comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
+    <contextParameter comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
+    <contextParameter comment="" name="ItemDataDate" prompt="ItemDataDate?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDate&quot;"/>
+    <contextParameter comment="" name="ItemDataDatetime" prompt="ItemDataDatetime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDatetime&quot;"/>
+    <contextParameter comment="" name="ItemDataDouble" prompt="ItemDataDouble?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDouble&quot;"/>
+    <contextParameter comment="" name="ItemDataDurationDatetime" prompt="ItemDataDurationDatetime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDurationDatetime&quot;"/>
+    <contextParameter comment="" name="ItemDataFloat" prompt="ItemDataFloat?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataFloat&quot;"/>
+    <contextParameter comment="" name="ItemDataHexBinary" prompt="ItemDataHexBinary?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexBinary&quot;"/>
+    <contextParameter comment="" name="ItemDataHexFloat" prompt="ItemDataHexFloat?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexFloat&quot;"/>
+    <contextParameter comment="" name="ItemDataIncompleteDatetime" prompt="ItemDataIncompleteDatetime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIncompleteDatetime&quot;"/>
+    <contextParameter comment="" name="ItemDataInteger" prompt="ItemDataInteger?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataInteger&quot;"/>
+    <contextParameter comment="" name="ItemDataIntervalDatetime" prompt="ItemDataIntervalDatetime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIntervalDatetime&quot;"/>
+    <contextParameter comment="" name="ItemDataPartialDate" prompt="ItemDataPartialDate?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDate&quot;"/>
+    <contextParameter comment="" name="ItemDataPartialDatetime" prompt="ItemDataPartialDatetime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDatetime&quot;"/>
+    <contextParameter comment="" name="ItemDataPartialTime" prompt="ItemDataPartialTime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialTime&quot;"/>
+    <contextParameter comment="" name="ItemDataString" prompt="ItemDataString?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataString&quot;"/>
+    <contextParameter comment="" name="ItemDataTime" prompt="ItemDataTime?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataTime&quot;"/>
+    <contextParameter comment="" name="ItemDataURI" prompt="ItemDataURI?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataURI&quot;"/>
+    <contextParameter comment="" name="MDPD" prompt="MDPD?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;PD&quot;"/>
+    <contextParameter comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;Patientendaten&quot;"/>
+    <contextParameter comment="" name="xslt" prompt="xslt?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;IDRT.xslt&quot;"/>
+    <contextParameter comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" repositoryContextId="_IG7PQMEhEeGMW7kE4_4cwQ" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
+    <contextParameter comment="" name="counter" prompt="counter?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Integer" value=""/>
+    <contextParameter comment="" name="currentCounter" prompt="currentCounter?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Integer" value=""/>
+    <contextParameter comment="" name="status" prompt="status?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
+    <contextParameter comment="" name="statusTmp" prompt="statusTmp?" promptNeeded="false" repositoryContextId="_VD59UPtcEeGy_bm70zBQWg" type="id_Float" value=""/>
+    <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;192.168.224.129&quot;"/>
+    <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2idrtdemodataproject&quot;"/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="zVL2YvEPjlc="/>
+    <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
+    <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://192.168.224.129:5432/i2b2"/>
+    <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
+    <contextParameter comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
+  </context>
   <parameters>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms512M -Xmx2048M"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>

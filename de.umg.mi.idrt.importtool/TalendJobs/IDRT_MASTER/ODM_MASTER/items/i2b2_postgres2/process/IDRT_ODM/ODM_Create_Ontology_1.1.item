@@ -3424,9 +3424,9 @@
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -3435,7 +3435,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var1" type="id_Boolean"/>
       </varTables>
@@ -3634,9 +3634,9 @@
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -3649,9 +3649,9 @@
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -3664,9 +3664,9 @@
       <column comment="" key="false" name="Name" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="Path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="DataType" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Update_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Import_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" name="Download_Date" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="PathID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="visual" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="itemCode" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -7636,6 +7636,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="m_applied_path"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Tooltip"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>

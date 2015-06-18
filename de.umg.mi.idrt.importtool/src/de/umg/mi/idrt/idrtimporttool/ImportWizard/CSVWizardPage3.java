@@ -68,12 +68,19 @@ import org.eclipse.wb.swt.ResourceManager;
  */
 public class CSVWizardPage3 extends WizardPage {
 
+	
+	private static int HEADERCOLUMN = 0;
+	private static int NAMECOLUMN = 1;
+	private static int TOOLTIPCOLUMN = 2;
+	private static int DATATYPECOLUMN = 3;
+	private static int METADATACOLUMN = 4;
+	private static int PIDGENCOLUMN = 5;
 	char[] DELIMITERS = {';','\t',','};
 
 	public static Table fillTable(Table table, String[] nextLine, String file) {
 		try {
-			
-			
+
+
 
 			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
 
@@ -182,13 +189,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
 						if (pidLocation>=0) {
 							if (i2 < pidWeight) {
-								table.getItems()[pidLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+								table.getItems()[pidLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_PatientID); 
 								pidWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_PatientID); 
 							pidLocation = i;
 							pidWeight = i2;
 						}
@@ -199,13 +206,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
 						if (objLocation>=0) {
 							if (i2 < objWeight) {
-								table.getItems()[objLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+								table.getItems()[objLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ObjectID); 
 								objWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ObjectID); 
 							objLocation = i;
 							objWeight = i2;
 						}
@@ -216,13 +223,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
 						if (encLocation>=0) {
 							if (i2 < encWeight) {
-								table.getItems()[encLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+								table.getItems()[encLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EncounterID); 
 								encWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EncounterID); 
 							encLocation = i;
 							encWeight = i2;
 						}
@@ -233,13 +240,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
 						if (dwnLocation>=0) {
 							if (i2 < dwnWeight) {
-								table.getItems()[dwnLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+								table.getItems()[dwnLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_DownloadDate); 
 								dwnWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_DownloadDate); 
 							dwnLocation = i;
 							dwnWeight = i2;
 						}
@@ -250,13 +257,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
 						if (impLocation>=0) {
 							if (i2 < impWeight) {
-								table.getItems()[impLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+								table.getItems()[impLocation].setText(DATATYPECOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ImportDate); 
 								impWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ImportDate); 
 							impLocation = i;
 							impWeight = i2;
 						}
@@ -267,13 +274,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
 						if (srtLocation>=0) {
 							if (i2 < strWeight) {
-								table.getItems()[srtLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+								table.getItems()[srtLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_StartDate); 
 								strWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_StartDate); 
 							srtLocation = i;
 							strWeight = i2;
 						}
@@ -284,13 +291,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
 						if (updLocation>=0) {
 							if (i2 < updWeight) {
-								table.getItems()[updLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+								table.getItems()[updLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_UpdateDate); 
 								updWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_UpdateDate); 
 							updLocation = i;
 							updWeight = i2;
 						}
@@ -301,13 +308,13 @@ public class CSVWizardPage3 extends WizardPage {
 					if (nextLine[i].toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
 						if (endLocation>=0) {
 							if (i2 < endWeight) {
-								table.getItems()[endLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+								table.getItems()[endLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EndDate); 
 								endWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EndDate); 
 							endLocation = i;
 							endWeight = i2;
 						}
@@ -326,7 +333,7 @@ public class CSVWizardPage3 extends WizardPage {
 					boolean cont = MessageDialog.openQuestion(Application.getShell(), "Duplicate Found", "A duplicate of the PatientID: " 
 							+ nextFileLine[pidLocation] + " has been found. Treat " + file +" as Modifier?");
 					if (cont)
-						table.getItems()[pidLocation].setText(3, Messages.ConfigMetaData_ObjectID); 
+						table.getItems()[pidLocation].setText(METADATACOLUMN, Messages.ConfigMetaData_ObjectID); 
 					break;
 				}
 			}
@@ -352,6 +359,7 @@ public class CSVWizardPage3 extends WizardPage {
 	private TableColumn tblclmnDatatype;
 	private TableColumn tblclmnMetadata;
 	private TableColumn tblclmnName;
+	private TableColumn tblclmnToolTip;
 	private TableColumn tblclmnPIDGen;
 	private Composite compositeTables;
 
@@ -444,31 +452,38 @@ public class CSVWizardPage3 extends WizardPage {
 				if (tableItems != null) {
 					nextLine[0] = "Spaltenname (Pflicht)"; 
 					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(0);
+						nextLine[i + 1] = tableItems[i].getText(HEADERCOLUMN);
 					}
 					rotatedOutput.writeNext(nextLine);
 
 					nextLine[0] = "Datentyp (Pflicht)"; 
 					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(2);
+						nextLine[i + 1] = tableItems[i].getText(DATATYPECOLUMN);
 					}
 					rotatedOutput.writeNext(nextLine);
 
 					nextLine[0] = "Name (kann leer sein)"; 
 					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(1);
+						nextLine[i + 1] = tableItems[i].getText(NAMECOLUMN);
+					}
+					rotatedOutput.writeNext(nextLine);
+
+					//TODO Tooltip
+					nextLine[0] = "Tooltip (kann leer sein)"; 
+					for (int i = 0; i < tableItems.length; i++) {
+						nextLine[i + 1] = tableItems[i].getText(TOOLTIPCOLUMN);
 					}
 					rotatedOutput.writeNext(nextLine);
 
 					nextLine[0] = "Metainformationen"; 
 					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(3);
+						nextLine[i + 1] = tableItems[i].getText(METADATACOLUMN);
 					}
 					rotatedOutput.writeNext(nextLine);
 
 					nextLine[0] = "PID-Generator"; 
 					for (int i = 0; i < tableItems.length; i++) {
-						nextLine[i + 1] = tableItems[i].getText(4);
+						nextLine[i + 1] = tableItems[i].getText(PIDGENCOLUMN);
 					}
 					rotatedOutput.writeNext(nextLine);
 					nextLine[0] = "Headline"; 
@@ -502,19 +517,19 @@ public class CSVWizardPage3 extends WizardPage {
 		CSVReader reader;
 		char dEFAULTDELIM = DELIMITERS[0];
 		try {
-			
+
 			for (int i = 0; i < DELIMITERS.length; i++){
 				dEFAULTDELIM = DELIMITERS[i];
-					reader = new CSVReader(
-							new FileReader(string),	dEFAULTDELIM, QUOTECHAR, getHeadLine());
+				reader = new CSVReader(
+						new FileReader(string),	dEFAULTDELIM, QUOTECHAR, getHeadLine());
 
-					String[] testLine = reader.readNext();
-					reader.close();
-					if (testLine.length > 1) {
-						break;
-					}
+				String[] testLine = reader.readNext();
+				reader.close();
+				if (testLine.length > 1) {
+					break;
+				}
 			}
-			
+
 			System.out.println("DELIMITER IS " +dEFAULTDELIM);
 			return dEFAULTDELIM;
 		} catch (IOException e) {
@@ -574,6 +589,7 @@ public class CSVWizardPage3 extends WizardPage {
 						reader = new CSVReader(new FileReader(
 								configFile), inputDelim, QUOTECHAR);
 						String[] line1 = reader.readNext();
+						reader.readNext();
 						reader.readNext();
 						reader.readNext();
 						String[] line4 = reader.readNext();
@@ -712,7 +728,7 @@ public class CSVWizardPage3 extends WizardPage {
 							}
 						}
 						// The "nice name" of the column.
-						if (column == 1) {
+						if (column == NAMECOLUMN) {
 							final Text text = new Text(table, SWT.NONE);
 							text.setForeground(item.getForeground());
 							text.setText(item.getText(column));
@@ -739,9 +755,37 @@ public class CSVWizardPage3 extends WizardPage {
 									text.dispose();
 								}
 							});
+							//TODO
+							// Tooltip
+						}else if (column == TOOLTIPCOLUMN) {
+							final Text text = new Text(table, SWT.NONE);
+							text.setForeground(item.getForeground());
+							text.setText(item.getText(column));
+							text.setForeground(item.getForeground());
+							text.selectAll();
+							text.setFocus();
+							editor.minimumWidth = text.getBounds().width;
+							editor.setEditor(text, item, column);
+							final int col = column;
+							text.addModifyListener(new ModifyListener() {
+								@Override
+								public void modifyText(ModifyEvent event) {
+									item.setText(col, text.getText());
+								}
+							});
+							text.addFocusListener(new FocusListener() {
+								@Override
+								public void focusGained(FocusEvent e) {
+								}
 
+								@Override
+								public void focusLost(FocusEvent e) {
+									item.setText(col, text.getText());
+									text.dispose();
+								}
+							});
 							// Datatype of the column
-						} else if (column == 2) {
+						} else if (column == DATATYPECOLUMN) {
 							final CCombo combo = new CCombo(table,
 									SWT.READ_ONLY);
 							for (String element : ConfigMetaData.optionsData) {
@@ -763,7 +807,7 @@ public class CSVWizardPage3 extends WizardPage {
 								}
 							});
 							// 	i2b2 Metadata of the column (e.g. patient id)
-						} else if (column == 3) {
+						} else if (column == METADATACOLUMN) {
 							String[] optionMetas = ConfigMetaData.getMetaCombo(
 									table.getItems(),
 									item.getText(column));
@@ -789,7 +833,7 @@ public class CSVWizardPage3 extends WizardPage {
 								}
 							});
 							// PID-Generator specific Metadata (e.g. bday, name, lastname...)
-						} else if ((column == 4)
+						} else if ((column == 5)
 								&& CSVWizardPage2.getBtnRADIOCsvfile()
 								&& CSVWizardPage2.getUsePid()) {
 							final CCombo combo = new CCombo(table,
@@ -914,6 +958,10 @@ public class CSVWizardPage3 extends WizardPage {
 			tblclmnName.setWidth(100);
 			tblclmnName.setText("Name"); 
 
+			tblclmnToolTip = new TableColumn(table, SWT.NONE);
+			tblclmnToolTip.setWidth(100);
+			tblclmnToolTip.setText("Tooltip"); 
+
 			tblclmnDatatype = new TableColumn(table, SWT.NONE);
 			tblclmnDatatype.setWidth(100);
 			tblclmnDatatype.setText("Datatype"); 
@@ -991,17 +1039,18 @@ public class CSVWizardPage3 extends WizardPage {
 										//										DEFAULTDELIM = inputDelim;
 										reader = new CSVReader(new FileReader(
 												configFile), inputDelim, QUOTECHAR);
-										String[] line1 = reader.readNext();
-										String[] line2 = reader.readNext();
-										String[] line3 = reader.readNext();
-										String[] line4 = reader.readNext();
-										String[] line5 = reader.readNext();
-										String[] line6 = reader.readNext();
+										String[] headLine1 = reader.readNext();
+										String[] datatype2 = reader.readNext();
+										String[] nicename3 = reader.readNext();
+										String[] tooltip4 = reader.readNext();
+										String[] metainformation5 = reader.readNext();
+										String[] pidgen6 = reader.readNext();
+										String[] headline6 = reader.readNext();
 										//TODO read header line from config, pidgen?
 										//										System.out.println("READ: " + line6[0]);
-										if (line6!=null) {
-											headLineText.setText(line6[1]);
-											oldHeadlineNumber = line6[1];
+										if (headline6!=null) {
+											headLineText.setText(headline6[1]);
+											oldHeadlineNumber = headline6[1];
 										}
 										else {
 											headLineText.setText("0");
@@ -1014,16 +1063,17 @@ public class CSVWizardPage3 extends WizardPage {
 												.getSelection()[0].getText();
 										table.removeAll();
 										table.clearAll();
-										for (int i = 1; i < line1.length; i++) {
+										for (int i = 1; i < headLine1.length; i++) {
 
 											final TableItem item = new TableItem(
 													table, SWT.NONE);
-											item.setText(0, line1[i]);
-											item.setText(1, line3[i]);
-											item.setText(2, line2[i]);
-											item.setText(3, line4[i]);
-											if (line5!= null)
-												item.setText(4, line5[i]);
+											item.setText(HEADERCOLUMN, headLine1[i]);
+											item.setText(NAMECOLUMN, nicename3[i]);
+											item.setText(TOOLTIPCOLUMN, tooltip4[i]);
+											item.setText(DATATYPECOLUMN, datatype2[i]);
+											item.setText(METADATACOLUMN, metainformation5[i]);
+											if (metainformation5!= null)
+												item.setText(METADATACOLUMN, metainformation5[i]);
 										}
 									}
 									//new config
@@ -1075,10 +1125,11 @@ public class CSVWizardPage3 extends WizardPage {
 									for (String element : line1) {
 										final TableItem item = new TableItem(
 												table, SWT.NONE);
-										item.setText(0, element);
-										item.setText(1, ""); 
-										item.setText(2, ""); 
-										item.setText(3, ""); 
+										item.setText(HEADERCOLUMN, element);
+										item.setText(NAMECOLUMN, ""); 
+										item.setText(TOOLTIPCOLUMN, ""); 
+										item.setText(DATATYPECOLUMN, "");
+										item.setText(METADATACOLUMN, ""); 
 									}
 
 									File tmpTableFile = new File(csvFolder
@@ -1101,28 +1152,35 @@ public class CSVWizardPage3 extends WizardPage {
 											nextLine[0] = "Spaltenname (Pflicht)"; 
 											for (int i = 0; i < tableItems.length; i++) {
 												nextLine[i + 1] = tableItems[i]
-														.getText(0);
+														.getText(HEADERCOLUMN);
 											}
 											rotatedOutput.writeNext(nextLine);
 
 											nextLine[0] = "Datentyp (Pflicht)"; 
 											for (int i = 0; i < tableItems.length; i++) {
 												nextLine[i + 1] = tableItems[i]
-														.getText(2);
+														.getText(DATATYPECOLUMN);
 											}
 											rotatedOutput.writeNext(nextLine);
 
 											nextLine[0] = "Name (kann leer sein)"; 
 											for (int i = 0; i < tableItems.length; i++) {
 												nextLine[i + 1] = tableItems[i]
-														.getText(1);
+														.getText(NAMECOLUMN);
+											}
+											rotatedOutput.writeNext(nextLine);
+
+											nextLine[0] = "Tooltip (kann leer sein)"; 
+											for (int i = 0; i < tableItems.length; i++) {
+												nextLine[i + 1] = tableItems[i]
+														.getText(TOOLTIPCOLUMN);
 											}
 											rotatedOutput.writeNext(nextLine);
 
 											nextLine[0] = "Metainformationen"; 
 											for (int i = 0; i < tableItems.length; i++) {
 												nextLine[i + 1] = tableItems[i]
-														.getText(3);
+														.getText(METADATACOLUMN);
 											}
 											rotatedOutput.writeNext(nextLine);
 										}
@@ -1200,6 +1258,7 @@ public class CSVWizardPage3 extends WizardPage {
 			btnGuessSchema = new Button(buttonComposite, SWT.NONE);
 			btnGuessSchema.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 			btnGuessSchema.setText(Messages.CSVWizardPageThree_GuessSchema);
+			sashForm.setWeights(new int[] {195, 476});
 			btnGuessSchema.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
@@ -1316,22 +1375,22 @@ public class CSVWizardPage3 extends WizardPage {
 								System.out.println(i + " " +table.getItems()[i].getText(0) + ": f" +countFloat + " s" + countString + " i" + countInt);
 								if ((countFloat == 0) && (countInt == 0)
 										&& (countString > 0)) {
-									table.getItems()[i].setText(2, "String"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "String"); 
 								} else if ((countFloat > countInt)
 										&& (countString <= 0)) {
 
-									table.getItems()[i].setText(2, "Float"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "Float"); 
 								} else if ((countInt > countFloat)
 										&& (countString <= 0) && countString ==0) {
-									table.getItems()[i].setText(2, "Integer"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "Integer"); 
 								} else if ((countFloat == countInt)
 										&& (countFloat != 0) && countString ==0) {
-									table.getItems()[i].setText(2, "Integer"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "Integer"); 
 								} else if ((countDate > 0)
 										&& (countString <= 0)) {
-									table.getItems()[i].setText(2, "Date"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "Date"); 
 								} else {
-									table.getItems()[i].setText(2, "String"); 
+									table.getItems()[i].setText(DATATYPECOLUMN, "String"); 
 								}
 							}
 							reader = new CSVReader(new FileReader(csvFolder
@@ -1359,8 +1418,6 @@ public class CSVWizardPage3 extends WizardPage {
 					}
 				}
 			});
-
-			sashForm.setWeights(new int[] { 192, 379 });
 			setControl(container);
 
 			setPageComplete(checkTables());
@@ -1416,10 +1473,11 @@ public class CSVWizardPage3 extends WizardPage {
 			String[] line1 = reader.readNext();
 			for (int i = 0; i < line1.length; i++) {
 				final TableItem item = new TableItem(table, SWT.NONE);
-				item.setText(0, line1[i]);
-				item.setText(1, names.get(i));
-				item.setText(2, ""); 
-				item.setText(3, ""); 
+				item.setText(HEADERCOLUMN, line1[i]);
+				item.setText(NAMECOLUMN, names.get(i));
+				item.setText(TOOLTIPCOLUMN, ""); 
+				item.setText(DATATYPECOLUMN, ""); 
+				item.setText(METADATACOLUMN, ""); 
 			}
 			reader.close();
 			checkTables();
@@ -1452,10 +1510,11 @@ public class CSVWizardPage3 extends WizardPage {
 			String[] line1 = reader.readNext();
 			for (String element : line1) {
 				final TableItem item = new TableItem(table, SWT.NONE);
-				item.setText(0, element);
-				item.setText(1, ""); 
-				item.setText(2, ""); 
-				item.setText(3, ""); 
+				item.setText(HEADERCOLUMN, element);
+				item.setText(NAMECOLUMN, ""); 
+				item.setText(TOOLTIPCOLUMN, ""); 
+				item.setText(DATATYPECOLUMN, "");
+				item.setText(METADATACOLUMN, ""); 
 			}
 			//			headLineText.setText("0");
 

@@ -6,11 +6,21 @@ public class IDRTItem {
 	private String columnName;
 	private String dataType;
 	private String niceName;
+	private String tooltip;
+
+	public String getTooltip() {
+		return tooltip;
+	}
+
+	public void setTooltip(String tooltip) {
+		this.tooltip = tooltip;
+	}
 
 	public IDRTItem(String columnName, String dataType, String niceName) {
 		this.setColumnName(columnName);
 		this.setDataType(dataType);
 		this.setNiceName(niceName);
+		
 	}
 
 	public String getNiceName() {
