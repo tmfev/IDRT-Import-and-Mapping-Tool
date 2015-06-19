@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.poi.hslf.blip.Metafile.Header;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -38,7 +39,12 @@ import de.umg.mi.idrt.importtool.views.ServerView;
  *         www.mi.med.uni-goettingen.de
  */
 public class DBImportWizard extends Wizard {
-	
+	private static int HEADERCOLUMN = 0;
+	private static int NAMECOLUMN = 1;
+	private static int TOOLTIPCOLUMN = 2;
+	private static int DATATYPECOLUMN = 3;
+	private static int METADATACOLUMN = 4;
+	private static int PIDGENCOLUMN = 5;
 	private Properties defaultProps;
 	private static Thread b;
 	public static DBWizardPage3 getThree() {
@@ -428,20 +434,24 @@ public class DBImportWizard extends Wizard {
 			nextLine[0] = "configTmp";
 			if (itemList != null) {
 				for (int i = 0; i < itemList.size(); i++) {
-					nextLine[i + 1] = itemList.get(i).get(0);
+					nextLine[i + 1] = itemList.get(i).get(HEADERCOLUMN);
 				}
 				rotatedOutput.writeNext(nextLine);
 
 				for (int i = 0; i < itemList.size(); i++) {
-					nextLine[i + 1] = itemList.get(i).get(2);
+					nextLine[i + 1] = itemList.get(i).get(DATATYPECOLUMN);
 				}
 				rotatedOutput.writeNext(nextLine);
 				for (int i = 0; i < itemList.size(); i++) {
-					nextLine[i + 1] = itemList.get(i).get(1);
+					nextLine[i + 1] = itemList.get(i).get(NAMECOLUMN);
 				}
 				rotatedOutput.writeNext(nextLine);
 				for (int i = 0; i < itemList.size(); i++) {
-					nextLine[i + 1] = itemList.get(i).get(3);
+					nextLine[i + 1] = itemList.get(i).get(TOOLTIPCOLUMN);
+				}
+				rotatedOutput.writeNext(nextLine);
+				for (int i = 0; i < itemList.size(); i++) {
+					nextLine[i + 1] = itemList.get(i).get(METADATACOLUMN);
 				}
 				rotatedOutput.writeNext(nextLine);
 			}

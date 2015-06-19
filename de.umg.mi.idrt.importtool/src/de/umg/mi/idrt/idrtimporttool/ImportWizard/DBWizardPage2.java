@@ -83,6 +83,13 @@ import de.umg.mi.idrt.importtool.misc.FileHandler;
  */
 public class DBWizardPage2 extends WizardPage {
 
+	private static int HEADERCOLUMN = 0;
+	private static int NAMECOLUMN = 1;
+	private static int TOOLTIPCOLUMN = 2;
+	private static int DATATYPECOLUMN = 3;
+	private static int METADATACOLUMN = 4;
+	private static int PIDGENCOLUMN = 5;
+	
 	private static List<TableRow> tableRows;// = new LinkedList<TableRow>();
 	private static List<TableItem> tableItems;
 	private static HashMap<String, HashMap<String, List<List<String>>>> tableMap;
@@ -113,6 +120,7 @@ public class DBWizardPage2 extends WizardPage {
 	private TableColumn tblclmnDatatype;
 	private TableColumn tblclmnMetadata;
 	private TableColumn tblclmnName;
+	private TableColumn tblclmnTooltip;
 	private Composite composite;
 	private static Control old;
 	private static TableItem item;
@@ -313,13 +321,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(patientIDMap.get(i2).toLowerCase())) {
 						if (pidLocation>=0) {
 							if (i2 < pidWeight) {
-								table.getItems()[pidLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+								table.getItems()[pidLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_PatientID); 
 								pidWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_PatientID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_PatientID); 
 							pidLocation = i;
 							pidWeight = i2;
 						}
@@ -330,13 +338,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
 						if (objLocation>=0) {
 							if (i2 < objWeight) {
-								table.getItems()[objLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+								table.getItems()[objLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ObjectID); 
 								objWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ObjectID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ObjectID); 
 							objLocation = i;
 							objWeight = i2;
 						}
@@ -347,13 +355,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(encounterIDMap.get(i2).toLowerCase())) {
 						if (encLocation>=0) {
 							if (i2 < encWeight) {
-								table.getItems()[encLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+								table.getItems()[encLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EncounterID); 
 								encWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EncounterID); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EncounterID); 
 							encLocation = i;
 							encWeight = i2;
 						}
@@ -364,13 +372,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(downloadDateMap.get(i2).toLowerCase())) {
 						if (dwnLocation>=0) {
 							if (i2 < dwnWeight) {
-								table.getItems()[dwnLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+								table.getItems()[dwnLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_DownloadDate); 
 								dwnWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_DownloadDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_DownloadDate); 
 							dwnLocation = i;
 							dwnWeight = i2;
 						}
@@ -381,13 +389,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(importDateMap.get(i2).toLowerCase())) {
 						if (impLocation>=0) {
 							if (i2 < impWeight) {
-								table.getItems()[impLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+								table.getItems()[impLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ImportDate); 
 								impWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_ImportDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_ImportDate); 
 							impLocation = i;
 							impWeight = i2;
 						}
@@ -398,13 +406,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(startDateMap.get(i2).toLowerCase())) {
 						if (srtLocation>=0) {
 							if (i2 < strWeight) {
-								table.getItems()[srtLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+								table.getItems()[srtLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_StartDate); 
 								strWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_StartDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_StartDate); 
 							srtLocation = i;
 							strWeight = i2;
 						}
@@ -415,13 +423,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(updateDateMap.get(i2).toLowerCase())) {
 						if (updLocation>=0) {
 							if (i2 < updWeight) {
-								table.getItems()[updLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+								table.getItems()[updLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_UpdateDate); 
 								updWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_UpdateDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_UpdateDate); 
 							updLocation = i;
 							updWeight = i2;
 						}
@@ -432,13 +440,13 @@ public class DBWizardPage2 extends WizardPage {
 					if (items[i].getText(0).toLowerCase().contains(endDateMap.get(i2).toLowerCase())) {
 						if (endLocation>=0) {
 							if (i2 < endWeight) {
-								table.getItems()[endLocation].setText(3, "");
-								table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+								table.getItems()[endLocation].setText(METADATACOLUMN, "");
+								table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EndDate); 
 								endWeight = i2;
 							}
 						}
 						else {
-							table.getItems()[i].setText(3, Messages.ConfigMetaData_EndDate); 
+							table.getItems()[i].setText(METADATACOLUMN, Messages.ConfigMetaData_EndDate); 
 							endLocation = i;
 							endWeight = i2;
 						}
@@ -542,7 +550,38 @@ public class DBWizardPage2 extends WizardPage {
 								break;
 							}
 						}
-						if (column == 1) {
+						if (column == NAMECOLUMN) {
+							final Text text = new Text(table, SWT.NONE);
+							text.setForeground(item.getForeground());
+
+							text.setText(item.getText(column));
+							text.setForeground(item.getForeground());
+							text.selectAll();
+							text.setFocus();
+							editor.minimumWidth = text.getBounds().width;
+							editor.setEditor(text, item, column);
+							final int col = column;
+							text.addModifyListener(new ModifyListener() {
+
+								@Override
+								public void modifyText(ModifyEvent event) {
+									item.setText(col, text.getText());
+								}
+							});
+							text.addFocusListener(new FocusListener() {
+
+								@Override
+								public void focusGained(FocusEvent e) {
+								}
+
+								@Override
+								public void focusLost(FocusEvent e) {
+									item.setText(col, text.getText());
+									text.dispose();
+								}
+							});
+						}
+						else if (column == TOOLTIPCOLUMN){
 							final Text text = new Text(table, SWT.NONE);
 							text.setForeground(item.getForeground());
 
@@ -574,7 +613,7 @@ public class DBWizardPage2 extends WizardPage {
 							});
 						}
 
-						else if (column == 2) {
+						else if (column == DATATYPECOLUMN) {
 							final CCombo combo = new CCombo(table,
 									SWT.READ_ONLY);
 							for (String element : ConfigMetaData.optionsData) {
@@ -596,7 +635,7 @@ public class DBWizardPage2 extends WizardPage {
 									combo.dispose();
 								}
 							});
-						} else if (column == 3) {
+						} else if (column == METADATACOLUMN) {
 							String[] optionMetas = ConfigMetaData.getMetaCombo(
 									table.getItems(),
 									item.getText(column));
@@ -624,29 +663,6 @@ public class DBWizardPage2 extends WizardPage {
 								}
 							});
 						}
-						// PID-Generator Column
-						// else if (column == 4) {
-						// final CCombo combo = new CCombo(table,
-						// SWT.READ_ONLY);
-						// String[] optionMetas =
-						// getMetaComboPIDGen(optionsPIDGen,table.getItems(),item.getText(column));
-						// for (int i = 0, n = optionMetas.length; i < n; i++) {
-						// combo.add(optionMetas[i]);
-						// }
-						// combo.select(combo.indexOf(item.getText(column)));
-						// editor.minimumWidth = combo.computeSize(SWT.DEFAULT,
-						// SWT.DEFAULT).x;
-						// combo.setFocus();
-						// editor.setEditor(combo, item, column);
-						//
-						// final int col = column;
-						// combo.addSelectionListener(new SelectionAdapter() {
-						// public void widgetSelected(SelectionEvent event) {
-						// item.setText(col, combo.getText());
-						// combo.dispose();
-						// }
-						// });
-						// }
 					}
 				}
 
@@ -661,6 +677,10 @@ public class DBWizardPage2 extends WizardPage {
 			tblclmnName = new TableColumn(table, SWT.NONE);
 			tblclmnName.setWidth(100);
 			tblclmnName.setText("Name");
+			
+			tblclmnTooltip = new TableColumn(table, SWT.NONE);
+			tblclmnTooltip.setWidth(100);
+			tblclmnTooltip.setText("Tooltip");
 
 			tblclmnDatatype = new TableColumn(table, SWT.NONE);
 			tblclmnDatatype.setWidth(100);
@@ -764,8 +784,6 @@ public class DBWizardPage2 extends WizardPage {
 					}
 				}
 			});
-
-			sashForm.setWeights(new int[] { 1, 2 });
 			serverViewer = new CheckboxTreeViewer(compositeServer, SWT.CHECK);
 			serverViewer
 			.setContentProvider(new ServerSourceContentProvider());
@@ -994,6 +1012,7 @@ public class DBWizardPage2 extends WizardPage {
 			MenuItem refreshImportDBServerMenuItem = new MenuItem(
 					importServerMenu, SWT.PUSH);
 			refreshImportDBServerMenuItem.setText("Refresh");
+			sashForm.setWeights(new int[] {233, 513});
 			refreshImportDBServerMenuItem
 			.addSelectionListener(new SelectionListener() {
 
@@ -1059,7 +1078,7 @@ public class DBWizardPage2 extends WizardPage {
 		getWizard().getContainer().updateButtons();
 		TableItem[] items = table.getItems();
 		for (TableItem item2 : items) {
-			if (item2.getText(3).toLowerCase().equals("patientid")) {
+			if (item2.getText(METADATACOLUMN).toLowerCase().equals("patientid")) {
 				pid = true;
 				break;
 			}
@@ -1186,9 +1205,10 @@ public class DBWizardPage2 extends WizardPage {
 
 				final TableItem item = new TableItem(table, SWT.NONE);
 				item.setText(0, rset.getMetaData().getColumnName(i));
-				item.setText(1, "");
-				item.setText(2, dataType);
-				item.setText(3, "");
+				item.setText(NAMECOLUMN, "");
+				item.setText(TOOLTIPCOLUMN, "");
+				item.setText(DATATYPECOLUMN, dataType);
+				item.setText(METADATACOLUMN, "");
 				item.setData(rowContent);
 				tableItems.add(item);
 				tableRows.add(tableRow);
