@@ -290,7 +290,6 @@ public class TOSConnector {
 			
 			@Override
 			public void run() {
-				StatusListener.startImport();
 				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
@@ -361,7 +360,6 @@ public class TOSConnector {
 				TOSIDRTConnector tos = getConnection();
 			
 				exit = tos.runJobInTOS((getARGV()));
-				StatusListener.stopImport();
 				if (exit==0) {
 					StatusListener.setStatus(0, "","");
 					StatusListener.setSubStatus(0, "");
