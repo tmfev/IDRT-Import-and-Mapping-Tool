@@ -26,6 +26,7 @@ import de.umg.mi.idrt.ioe.view.ProgressView;
 public class UploadProjectWizard extends Wizard {
 
 	protected UploadProjectWizardPage2 two;
+	private static boolean threadRunning = false;
 
 	private static Thread importThread;
 	public UploadProjectWizard() {
@@ -45,6 +46,8 @@ public class UploadProjectWizard extends Wizard {
 	public boolean canFinish() {
 		return true;
 	}
+	
+
 
 	@Override
 	public boolean performFinish() {
@@ -184,6 +187,7 @@ public class UploadProjectWizard extends Wizard {
 								}
 								TOSConnector.setCompleteContext(contextMap);
 								Application.executeCommand(Resource.ID.Command.IOE.STAGINGTOTARGET);
+								
 							}
 						}
 						else {

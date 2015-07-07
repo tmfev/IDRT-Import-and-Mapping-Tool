@@ -438,15 +438,20 @@ public class Resource {
 		public final static int EDITOR_SOURCE_TREE_OPENING_LEVEL = 8;
 
 	}
-	public class TOSConnector {
+//	public class TOSConnector {
 
-		public class Command {
+//		public class Command {
 
-			public static final String CHECK_ONTOLOGY_EMPTY = "check_ontology_empty";
+//			public static final String CHECK_ONTOLOGY_EMPTY = "check_ontology_empty";
 
-		}
+//		}
 
-	}
+//		public static void killThread() {
+			// TODO Auto-generated method stub
+			
+//		}
+
+//	}
 	public static final String ICON_PATH = "icons" + File.separator;
 	public static final String IMAGE_PATH = "/images/";
 	public static final String ICO_WORKING = ICON_PATH + "working.png";

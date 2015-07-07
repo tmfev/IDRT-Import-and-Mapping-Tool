@@ -1,6 +1,8 @@
 package de.goettingen.i2b2.importtool.idrt.StatusListener;
 
+
 import java.io.File;
+import java.lang.annotation.Target;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.Executors;
@@ -133,8 +135,17 @@ public class StatusListener {
 		DBImportWizard.killThread();
 		P21ImportWizard.killThread();
 		MDRImportWizard.killThread();
+//		TOSConnector.killThread();
 	}
 	
+public static void startImport(){
+	System.out.println("STARTING IMPORT");
+	ServerView.btnStopSetEnabled(true);
+	}
+public static void stopImport(){
+	System.out.println("STOPPING IMPORT");
+	ServerView.btnStopSetEnabled(false);
+}
 	public static void interruptExtern(String error, String fileName) {
 		interrupted = true;
 		CSVImportWizard.killThreadRemote(error,fileName);

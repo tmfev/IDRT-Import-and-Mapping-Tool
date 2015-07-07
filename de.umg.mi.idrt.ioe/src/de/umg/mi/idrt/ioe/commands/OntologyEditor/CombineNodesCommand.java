@@ -228,6 +228,7 @@ public class CombineNodesCommand extends AbstractHandler {
 						else{
 							System.out.println(currentRegex.getName() + " " + oldNode.getID() + " IN " + newNode.getID());
 							//						newNode.getTargetNodeAttributes().removeAllStagingPaths();
+							newNode.getTargetNodeAttributes().removeAllStagingPaths();
 							newNode.getTargetNodeAttributes().addStagingPath(oldNode.getTargetNodeAttributes().getSourcePath());
 
 
@@ -240,14 +241,18 @@ public class CombineNodesCommand extends AbstractHandler {
 						}
 					}
 				}
-				newNode.setMerged(true);
+				//newNode.setMerged(true);
 				//				oldNode.setMerged(true);
 				if (found) {
 					break;
 				}
 				else {
-					//					newNode.getTargetNodeAttributes().removeAllStagingPaths();
+					if (!newNode.isMerged()){
+						newNode.setMerged(true);
+					System.out.println("ADDING PATH: " + perfectPath+newNode.getID()+"\\");
+					newNode.getTargetNodeAttributes().removeAllStagingPaths();
 					newNode.getTargetNodeAttributes().addStagingPath(perfectPath+newNode.getID()+"\\");
+					}
 				}
 			}
 			if (!found) {

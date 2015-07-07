@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Display;
 //import tos.idrtcommand_transformationtotarget_0_1.IDRTCommand_TransformationToTarget;
 
 
+
 import de.goettingen.i2b2.importtool.idrt.StatusListener.StatusListener;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
@@ -39,6 +40,7 @@ import de.umg.mi.idrt.ioe.view.ProgressView;
 
 public class TOSConnector {
 
+	private static Thread importThread;
 	private static Thread workerThread;
 	public static String DEFAULT_CONTEXTNAME = "empty_export";//"Default";
 	private static int exit;
@@ -276,14 +278,19 @@ public class TOSConnector {
 	public static void setContextVariable(String key, String value) {
 		contextVariables.put(key, value);
 	}
+	
+	public static void killThread(){
+			System.out.println("killing thread");
+			importThread.interrupt();
+	}
 
 	public static int uploadProject() {
 
-		Display display = Application.getDisplay();
-		display.asyncExec(new Runnable() {
-
+		importThread = new Thread (new Runnable() {
+			
 			@Override
 			public void run() {
+				StatusListener.startImport();
 				// TODO Auto-generated method stub
 				setContextVariable("Job", "etlStagingI2B2ToTargetI2B2");
 				Server currentServer = OntologyEditorView.getStagingServer();
@@ -354,6 +361,7 @@ public class TOSConnector {
 				TOSIDRTConnector tos = getConnection();
 			
 				exit = tos.runJobInTOS((getARGV()));
+				StatusListener.stopImport();
 				if (exit==0) {
 					StatusListener.setStatus(0, "","");
 					StatusListener.setSubStatus(0, "");
@@ -369,7 +377,9 @@ public class TOSConnector {
 				}
 			}
 		});
-		return exit;
+		
+		importThread.run();
+		return exit;			
 	}
 	
 	@Deprecated
