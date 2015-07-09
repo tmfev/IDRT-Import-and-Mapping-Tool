@@ -277,7 +277,7 @@ public class ServerList {
 		try {
 
 			if (server.getUser().toLowerCase().equals("system")
-					|| server.getUser().toLowerCase().equals("sys")) {
+					|| server.getUser().toLowerCase().equals("sys") || server.getUser().toLowerCase().equals("postgres") ) {
 				DriverManager.setLoginTimeout(2);
 				connect = server.getConnection();
 				statement = connect.createStatement();
@@ -404,14 +404,14 @@ public class ServerList {
 			resultSet = statement
 					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id=UPPER('"
 							+ user
-							+ "') order by entry_date desc) where rownum <=1");
+							+ "') order by entry_date desc) as foo limit 1");
 			i2b2User.setLastLogin(null);
 			while (resultSet.next()) {
 				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
 			}
 			i2b2User.setLastQuery(null);
 			resultSet = statement
-					.executeQuery("select *from i2b2pm.pm_user_data where user_id='"
+					.executeQuery("select * from i2b2pm.pm_user_data where user_id='"
 							+ user + "'");
 			i2b2User.setFullname("");
 			i2b2User.setEmail("");
@@ -426,7 +426,7 @@ public class ServerList {
 			connect.close();
 			return i2b2User;
 		} catch (SQLException e) {
-			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
+//			MessageDialog.openError(Application.getShell(), "Error", e.getMessage());
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return null;

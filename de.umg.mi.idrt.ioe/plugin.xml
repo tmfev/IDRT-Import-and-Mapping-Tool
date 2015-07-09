@@ -181,14 +181,6 @@
             </command>
          </menu>
          <menu
-               label="Target i2b2">
-            <command
-                  commandId="de.umg.mi.idrt.ioe.newInstance"
-                  label="New Instance..."
-                  style="push">
-            </command>
-         </menu>
-         <menu
                label="Options">
             <command
                   commandId="de.umg.mi.idrt.ioe.options"

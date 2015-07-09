@@ -44,7 +44,7 @@ public class LoadStagingOntology extends AbstractHandler {
 					tos.runJob();
 
 //			}
-//		}).run();
+//		}).start();
 		
 		return null;
 	}

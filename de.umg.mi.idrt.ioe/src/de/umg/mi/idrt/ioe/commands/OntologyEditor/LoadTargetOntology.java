@@ -32,7 +32,7 @@ public class LoadTargetOntology extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 
-//		new Thread (new Runnable() {
+//		Thread a = new Thread (new Runnable() {
 //			@Override
 //			public void run() {
 				System.out.println("RUNNING LOAD TARGET THREAD");
@@ -94,8 +94,14 @@ public class LoadTargetOntology extends AbstractHandler {
 
 				OntologyEditorView.refreshTargetVersionGUI();
 //			}
-//		}).run();
-		
+//		});
+//		a.start();
+//		try {
+//			a.join();
+//		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 
 		return null;

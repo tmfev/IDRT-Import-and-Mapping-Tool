@@ -236,7 +236,7 @@ public class TOSConnector {
 							+ e.getMessage());
 				}
 			}
-		}).run();
+		}).start();
 
 		return exit;
 	}
@@ -257,7 +257,7 @@ public class TOSConnector {
 							+ e.getMessage());
 				}
 			}
-		}).run();
+		}).start();
 
 	}
 

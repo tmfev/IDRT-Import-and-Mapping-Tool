@@ -8,7 +8,6 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,18 +30,19 @@ public class IDRTHelper {
 
 	private static int ONT_HLEVEL = 0;
 	private static int ONT_NAME = 1;
-	private static int ONT_PATH = 2;
-	private static int ONT_DATATYPE = 3;
-	private static int ONT_UPDATEDATE= 4;
-	private static int ONT_IMPORTDATE = 5;
-	private static int ONT_DOWNLOADDATE = 6;
-	private static int ONT_PATHID = 7;
-	private static int ONT_VISUAL = 8;
-	private static int ONT_ITEMCODE = 9;
-	private static int ONT_SOURCE = 10;
-	private static int ONT_XML = 11;
-	private static int ONT_M_APPLIEDPATH = 12;
-	private static int ONT_LENGTH = 13;
+	private static int ONT_TOOLTIP = 2;
+	private static int ONT_PATH = 3;
+	private static int ONT_DATATYPE = 4;
+	private static int ONT_UPDATEDATE= 5;
+	private static int ONT_IMPORTDATE = 6;
+	private static int ONT_DOWNLOADDATE = 7;
+	private static int ONT_PATHID = 8;
+	private static int ONT_VISUAL = 9;
+	private static int ONT_ITEMCODE = 10;
+	private static int ONT_SOURCE = 11;
+	private static int ONT_XML = 12;
+	private static int ONT_M_APPLIEDPATH = 13;
+	private static int ONT_LENGTH = 14;
 
 	private static int OBS_PATIENTID = 0;
 	private static int OBS_ENCOUNTERID = 1;
@@ -71,7 +71,13 @@ public class IDRTHelper {
 
 	private static int OBS_LENGTH = 22;
 
-
+	private static int HEADERCOLUMN = 0;
+	private static int NAMECOLUMN = 1;
+	private static int TOOLTIPCOLUMN = 2;
+	private static int DATATYPECOLUMN = 3;
+	private static int METADATACOLUMN = 4;
+	private static int PIDGENCOLUMN = 5;
+	
 	private static int PID = -1;
 	private static int UpdateDate = -1;
 	private static int ImportDate = -1;
@@ -118,6 +124,34 @@ public class IDRTHelper {
 
 	public IDRTHelper(){
 		IDRTItemMap = new HashMap<Integer, IDRTItem>();
+	}
+	char[] DELIMITERS = {';','\t',','};
+	private static char QUOTECHAR='\"';
+	private char getDelimiter(String string) {
+
+		CSVReader reader;
+		char dEFAULTDELIM = DELIMITERS[0];
+		try {
+			
+			for (int i = 0; i < DELIMITERS.length; i++){
+				dEFAULTDELIM = DELIMITERS[i];
+					reader = new CSVReader(
+							new FileReader(string),	dEFAULTDELIM, QUOTECHAR);
+
+					String[] testLine = reader.readNext();
+					reader.close();
+					if (testLine.length > 1) {
+						break;
+					}
+			}
+			
+			System.out.println("DELIMITER IS " +dEFAULTDELIM);
+			return dEFAULTDELIM;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 
@@ -185,28 +219,14 @@ public class IDRTHelper {
 			EndDate = -1;
 			objectID = -1;
 
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(config.getAbsolutePath());
 			ignoreList = new LinkedList<Integer>();
 			blobList = new LinkedList<Integer>();
-			CSVReader CSVInput = new CSVReader(new FileReader(config), inputDelim, quoteChar);
-			String []line1 = CSVInput.readNext();
-
-			if (line1.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(config), inputDelim);
-			line1 = CSVInput.readNext();
+			CSVReader CSVInput = new CSVReader(new FileReader(config), inputDelim);
+			String[] line1 = CSVInput.readNext();
 			String []dataType = CSVInput.readNext();
 			String []niceName = CSVInput.readNext();
+			String []tooltip = CSVInput.readNext();
 			String []configRow = CSVInput.readNext();
 			CSVInput.readNext(); //pidrow
 			String []headerRow = CSVInput.readNext();
@@ -326,6 +346,9 @@ public class IDRTHelper {
 						idrtItem = new IDRTItem(line1[i], dataType[i], line1[i]);
 						System.out.println("kein nicename@" + line1[i] + " " + dataType[i]);
 					}
+					if (tooltip[i].length() > 0){
+						idrtItem.setTooltip(tooltip[i]);
+					}
 					//					System.out.println("Put: " + (i-1) + ":"+idrtItem.getColumnName()+"-"+idrtItem.getNiceName());
 					IDRTItemMap.put(i-1, idrtItem);
 				}
@@ -343,7 +366,7 @@ public class IDRTHelper {
 			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB) throws SQLException {
 		try {
 			long start = System.currentTimeMillis();
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(input.getAbsolutePath());
 			char outputDelim = '\t';
 			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
@@ -352,22 +375,6 @@ public class IDRTHelper {
 				allRows++;
 			}
 			System.out.println("ROWS: " + allRows);
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
-			nextLine = CSVInput.readNext();
-
-			if (nextLine.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			System.out.println("quote: " + quoteChar);
 			CSVInput.close();
 			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline); //
 
@@ -396,6 +403,7 @@ public class IDRTHelper {
 			String[] ontLine = new String[ONT_LENGTH];
 			ontLine[ONT_HLEVEL] = "HLEVEL";
 			ontLine[ONT_NAME] = "Name";
+			ontLine[ONT_TOOLTIP] = "Tooltip";
 			ontLine[ONT_PATH] = "Path";
 			ontLine[ONT_DATATYPE] = "DataType";
 			ontLine[ONT_UPDATEDATE] = "Update_Date";
@@ -412,6 +420,7 @@ public class IDRTHelper {
 			//
 			ontLine[ONT_HLEVEL] = "0";
 			ontLine[ONT_NAME] = "Ontology";
+			ontLine[ONT_TOOLTIP] = "Ontology";
 			ontLine[ONT_PATH] = "\\"+headnode+"\\";
 			ontLine[ONT_DATATYPE] = "";
 			ontLine[ONT_UPDATEDATE] = "";
@@ -432,6 +441,7 @@ public class IDRTHelper {
 				System.out.println("GOING FOR MODIFIERS");
 				ontLine[ONT_HLEVEL] = "1";
 				ontLine[ONT_NAME] = "Modifier";	//TODO context variable
+				ontLine[ONT_TOOLTIP] = "Modifier";
 				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"mod"+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
@@ -447,6 +457,7 @@ public class IDRTHelper {
 				
 				ontLine[ONT_HLEVEL] = "2";
 				ontLine[ONT_NAME] = tableName;	//TODO context variable
+				ontLine[ONT_TOOLTIP] = tableName;
 				ontLine[ONT_PATH] = "\\"+headnode+"\\"+"mod"+"\\" + tableName+"\\"; //TODO context variable
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
@@ -504,6 +515,7 @@ public class IDRTHelper {
 						string = input.getName().substring(0, input.getName().lastIndexOf("."))+"_" +string;
 						ontLine[ONT_HLEVEL] = "1";
 						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+						ontLine[ONT_TOOLTIP] = IDRTItemMap.get(colCounter).getTooltip();
 						ontLine[ONT_PATH] = "\\"+string+"\\";
 						ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
 						ontLine[ONT_UPDATEDATE] = "";
@@ -527,6 +539,7 @@ public class IDRTHelper {
 				//No Modifiers
 				ontLine[ONT_HLEVEL] = "1";
 				ontLine[ONT_NAME] = pdName;
+				ontLine[ONT_TOOLTIP] = pdName;
 				ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\";
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
@@ -542,6 +555,7 @@ public class IDRTHelper {
 
 				ontLine[ONT_HLEVEL] = "2";
 				ontLine[ONT_NAME] = tableName;
+				ontLine[ONT_TOOLTIP] = tableName;
 				ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
 				ontLine[ONT_DATATYPE] = "";
 				ontLine[ONT_UPDATEDATE] = "";
@@ -572,6 +586,7 @@ public class IDRTHelper {
 						String string = columnNames.get(i);	
 						ontLine[ONT_HLEVEL] = "3";
 						ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+						ontLine[ONT_TOOLTIP] = IDRTItemMap.get(colCounter).getTooltip();
 						ontLine[ONT_PATH] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
 						ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
 						ontLine[ONT_UPDATEDATE] = "";
@@ -882,7 +897,7 @@ public class IDRTHelper {
 			long start = System.currentTimeMillis();
 			HashMap<String,Integer>patientInstanceNumMap = new HashMap<String, Integer>();
 			System.out.println("PIDGENROTATE");
-			char inputDelim = '\t';
+			char inputDelim = getDelimiter(input.getAbsolutePath());
 			char outputDelim = '\t';
 			CSVReader CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
 			int allRows = 1;
@@ -891,22 +906,6 @@ public class IDRTHelper {
 				allRows++;
 			}
 			System.out.println("ROWS: " + allRows);
-			CSVInput.close();
-			CSVInput = new CSVReader(new FileReader(input), inputDelim, quoteChar, headline);
-			nextLine = CSVInput.readNext();
-
-			if (nextLine.length==1){
-				System.err.println("Wrong delimiter?");
-				if (inputDelim==DEFAULTDELIM){
-					inputDelim='\t';
-					System.err.println("Delimiter set to: \\t");
-				}
-				else{
-					inputDelim=DEFAULTDELIM;
-					System.err.println("Delimiter set to: " + DEFAULTDELIM);
-				}
-			}
-			System.out.println("quote: " + quoteChar);
 
 
 			CSVInput.close();
@@ -934,6 +933,7 @@ public class IDRTHelper {
 			String[] ontLine = new String[ONT_LENGTH];
 			ontLine[ONT_HLEVEL] = "HLEVEL";
 			ontLine[ONT_NAME] = "Name";
+			ontLine[ONT_TOOLTIP] = "Name";
 			ontLine[ONT_PATH] = "Path";
 			ontLine[ONT_DATATYPE] = "DataType";
 			ontLine[ONT_UPDATEDATE] = "Update_Date";
@@ -950,6 +950,7 @@ public class IDRTHelper {
 			//
 			ontLine[ONT_HLEVEL] = "0";
 			ontLine[ONT_NAME] = "Ontology";
+			ontLine[ONT_TOOLTIP] = "Ontology";
 			ontLine[ONT_PATH] = "\\"+headnode+"\\";
 			ontLine[ONT_DATATYPE] = "";
 			ontLine[ONT_UPDATEDATE] = "";
@@ -965,6 +966,7 @@ public class IDRTHelper {
 
 			ontLine[ONT_HLEVEL] = "1";
 			ontLine[ONT_NAME] = pdName;
+			ontLine[ONT_TOOLTIP] = pdName;
 			ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\";
 			ontLine[ONT_DATATYPE] = "";
 			ontLine[ONT_UPDATEDATE] = "";
@@ -981,6 +983,7 @@ public class IDRTHelper {
 
 			ontLine[ONT_HLEVEL] = "2";
 			ontLine[ONT_NAME] = tableName;
+			ontLine[ONT_TOOLTIP] = tableName;
 			ontLine[ONT_PATH] = "\\"+headnode+"\\"+pd+"\\"+tableName+"\\";
 			ontLine[ONT_DATATYPE] = "";
 			ontLine[ONT_UPDATEDATE] = "";
@@ -1011,6 +1014,7 @@ public class IDRTHelper {
 					String string = columnNames.get(i);	
 					ontLine[ONT_HLEVEL] = "3";
 					ontLine[ONT_NAME] = IDRTItemMap.get(colCounter).getNiceName();
+					ontLine[ONT_TOOLTIP] = IDRTItemMap.get(colCounter).getTooltip();
 					ontLine[ONT_PATH] = "\\i2b2\\"+pd+"\\"+tableName+"\\"+string+"\\";
 					ontLine[ONT_DATATYPE] = IDRTItemMap.get(colCounter).getDataType();
 					ontLine[ONT_UPDATEDATE] = "";

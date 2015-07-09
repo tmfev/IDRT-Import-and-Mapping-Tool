@@ -165,11 +165,11 @@ public class EditorStagingInfoView extends ViewPart {
 	}
 	
 	public static void refresh(){
-		new Thread(new Runnable() {
-		    public void run(){
+//		new Thread(new Runnable() {
+//		    public void run(){
 		    	executeRefresh();
-		    }
-		  }).run();
+//		    }
+//		  }).start();
 	}
 	
 //	public Resource getResource(){

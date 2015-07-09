@@ -265,32 +265,32 @@ public class ServerView extends ViewPart {
 		selectedServerIndex = 0;
 		if (sourceServerViewer.getTree().isDisposed()){
 			System.out.println("DISPOSED");
-			
+
 			return null;
 		}
 		else {
-		TreeItem[] treeItems = sourceServerViewer.getTree().getItems();
-		String[] serverNames = new String[treeItems.length];
-		for (int i = 0; i < treeItems.length; i++) {
-			serverNames[i] = treeItems[i].getText();
-			if (sourceServerViewer.getTree().getSelectionCount() > 0) {
-				if (sourceServerViewer.getTree().getSelection()[0].getParentItem() != null) {
-					if (treeItems[i].getText().equals(
-							sourceServerViewer.getTree().getSelection()[0].getParentItem()
-							.getText())) {
-						selectedServerIndex = i;
+			TreeItem[] treeItems = sourceServerViewer.getTree().getItems();
+			String[] serverNames = new String[treeItems.length];
+			for (int i = 0; i < treeItems.length; i++) {
+				serverNames[i] = treeItems[i].getText();
+				if (sourceServerViewer.getTree().getSelectionCount() > 0) {
+					if (sourceServerViewer.getTree().getSelection()[0].getParentItem() != null) {
+						if (treeItems[i].getText().equals(
+								sourceServerViewer.getTree().getSelection()[0].getParentItem()
+								.getText())) {
+							selectedServerIndex = i;
+						}
+					} else if (sourceServerViewer.getTree().getSelection()[0] != null) {
+						if (treeItems[i].getText().equals(
+								sourceServerViewer.getTree().getSelection()[0].getText())) {
+							selectedServerIndex = i;
+						}
 					}
-				} else if (sourceServerViewer.getTree().getSelection()[0] != null) {
-					if (treeItems[i].getText().equals(
-							sourceServerViewer.getTree().getSelection()[0].getText())) {
-						selectedServerIndex = i;
-					}
+				} else {
+					selectedServerIndex = 0;
 				}
-			} else {
-				selectedServerIndex = 0;
 			}
-		}
-		return serverNames;
+			return serverNames;
 		}
 	}
 	/**
@@ -912,9 +912,9 @@ public class ServerView extends ViewPart {
 					importBiobank();
 				}
 
-			
+
 			});
-			
+
 			//TODO REIMPLEMENT
 			final MenuItem importTermsMenuItem = new MenuItem(importMenu, SWT.PUSH);
 			importTermsMenuItem.setText(Messages.ServerView_ImportST);
@@ -1072,426 +1072,426 @@ public class ServerView extends ViewPart {
 			});
 
 			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			//									new MenuItem(mainMenu, SWT.SEPARATOR);
-			//									MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-			//									adminMenuItem.setText("Administration");
-			//									adminMenuItem.addSelectionListener(new SelectionListener() {
-			//										@Override
-			//										public void widgetSelected(SelectionEvent e) {
-			//											adminTargetServer();
-			//										}
-			//						
-			//										@Override
-			//										public void widgetDefaultSelected(SelectionEvent e) {
-			//						
-			//										}
-			//									});
+//			new MenuItem(mainMenu, SWT.SEPARATOR);
+//			MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+//			adminMenuItem.setText("Administration");
+//			adminMenuItem.addSelectionListener(new SelectionListener() {
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					adminTargetServer();
+//				}
+//
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//
+//				}
+//			});
 
 			/*
 			 * Dis-/Enables the mainMenu items.
 			 */
-			mainMenu.addListener(SWT.Show, new Listener() {
-				@Override
-				public void handleEvent(Event event) {
-					if (targetServerViewer.getTree().getSelectionCount() > 0) {
-						if (targetServerViewer.getTree().getSelection()[0].getParentItem() == null) {
-							importMenuItem.setEnabled(false);
-							truncateMenuItem.setEnabled(false);
-							dropIOETablesMenuItem.setEnabled(false);
-							//							removeLocksMenuItem.setEnabled(false);
-							loadOntologyMenuItem.setEnabled(false);
-							//							importTermsMenuItem.setEnabled(false);
-							deleteServerMenuItem.setEnabled(true);
-							editServerMenuItem.setEnabled(true);
-							exportServerMenuItem.setEnabled(true);
-						} else {
-							deleteServerMenuItem.setEnabled(false);
-							exportServerMenuItem.setEnabled(false);
-							importMenuItem.setEnabled(true);
-							truncateMenuItem.setEnabled(true);
-							dropIOETablesMenuItem.setEnabled(true);
-							//							removeLocksMenuItem.setEnabled(true);
+			 mainMenu.addListener(SWT.Show, new Listener() {
+				 @Override
+				 public void handleEvent(Event event) {
+					 if (targetServerViewer.getTree().getSelectionCount() > 0) {
+						 if (targetServerViewer.getTree().getSelection()[0].getParentItem() == null) {
+							 importMenuItem.setEnabled(false);
+							 truncateMenuItem.setEnabled(false);
+							 dropIOETablesMenuItem.setEnabled(false);
+							 //							removeLocksMenuItem.setEnabled(false);
+							 loadOntologyMenuItem.setEnabled(false);
+							 //							importTermsMenuItem.setEnabled(false);
+							 deleteServerMenuItem.setEnabled(true);
+							 editServerMenuItem.setEnabled(true);
+							 exportServerMenuItem.setEnabled(true);
+						 } else {
+							 deleteServerMenuItem.setEnabled(false);
+							 exportServerMenuItem.setEnabled(false);
+							 importMenuItem.setEnabled(true);
+							 truncateMenuItem.setEnabled(true);
+							 dropIOETablesMenuItem.setEnabled(true);
+							 //							removeLocksMenuItem.setEnabled(true);
 
-							if (!command.isEnabled()) {
-								loadOntologyMenuItem.setEnabled(false);
-							}
-							else {
-								loadOntologyMenuItem.setEnabled(true);
-							}
-							//							importTermsMenuItem.setEnabled(true);
-						}
-					} else {
-						editServerMenuItem.setEnabled(false);
-						deleteServerMenuItem.setEnabled(false);
-						importMenuItem.setEnabled(false);
-						truncateMenuItem.setEnabled(false);
-						//						removeLocksMenuItem.setEnabled(false);
-						dropIOETablesMenuItem.setEnabled(false);
-						loadOntologyMenuItem.setEnabled(false);
-						//						importTermsMenuItem.setEnabled(false);
-						exportServerMenuItem.setEnabled(false);
-					}
-				}
-			});
+							 if (!command.isEnabled()) {
+								 loadOntologyMenuItem.setEnabled(false);
+							 }
+							 else {
+								 loadOntologyMenuItem.setEnabled(true);
+							 }
+							 //							importTermsMenuItem.setEnabled(true);
+						 }
+					 } else {
+						 editServerMenuItem.setEnabled(false);
+						 deleteServerMenuItem.setEnabled(false);
+						 importMenuItem.setEnabled(false);
+						 truncateMenuItem.setEnabled(false);
+						 //						removeLocksMenuItem.setEnabled(false);
+						 dropIOETablesMenuItem.setEnabled(false);
+						 loadOntologyMenuItem.setEnabled(false);
+						 //						importTermsMenuItem.setEnabled(false);
+						 exportServerMenuItem.setEnabled(false);
+					 }
+				 }
+			 });
 
-			importSourceServerMenu = new Menu(sourceServerViewer.getTree());
+			 importSourceServerMenu = new Menu(sourceServerViewer.getTree());
 
-			/*
-			 * SOURCE server menu
-			 */
-			MenuItem addSourceServerMenuItem = new MenuItem(importSourceServerMenu,
-					SWT.PUSH);
-			addSourceServerMenuItem.setText(Messages.ServerView_AddDatasourceServer);
-			addSourceServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 /*
+			  * SOURCE server menu
+			  */
+			 MenuItem addSourceServerMenuItem = new MenuItem(importSourceServerMenu,
+					 SWT.PUSH);
+			 addSourceServerMenuItem.setText(Messages.ServerView_AddDatasourceServer);
+			 addSourceServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					addSourceServer();
-				}
-			});
-			MenuItem editSourceServerMenuItem = new MenuItem(
-					importSourceServerMenu, SWT.PUSH);
-			editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
-			editSourceServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 addSourceServer();
+				 }
+			 });
+			 MenuItem editSourceServerMenuItem = new MenuItem(
+					 importSourceServerMenu, SWT.PUSH);
+			 editSourceServerMenuItem.setText(Messages.ServerView_EditDatasourceServer);
+			 editSourceServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					editSourceServer();
-				}
-			});
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 editSourceServer();
+				 }
+			 });
 
-			MenuItem deleteSourceServerMenuItem = new MenuItem(
-					importSourceServerMenu, SWT.PUSH);
-			deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteDatasourceServer);
-			deleteSourceServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 MenuItem deleteSourceServerMenuItem = new MenuItem(
+					 importSourceServerMenu, SWT.PUSH);
+			 deleteSourceServerMenuItem.setText(Messages.ServerView_DeleteDatasourceServer);
+			 deleteSourceServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					deleteSourceServer();
-				}
-			});
-			new MenuItem(importSourceServerMenu, SWT.SEPARATOR);
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 deleteSourceServer();
+				 }
+			 });
+			 new MenuItem(importSourceServerMenu, SWT.SEPARATOR);
 
-			MenuItem exportImportDBServerMenuItem = new MenuItem(
-					importSourceServerMenu, SWT.PUSH);
-			exportImportDBServerMenuItem.setText(Messages.ServerView_ExportDatasourceServer);
-			exportImportDBServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 MenuItem exportImportDBServerMenuItem = new MenuItem(
+					 importSourceServerMenu, SWT.PUSH);
+			 exportImportDBServerMenuItem.setText(Messages.ServerView_ExportDatasourceServer);
+			 exportImportDBServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					exportSourceServer();
-				}
-			});
-			MenuItem importSourceServerMenuItem = new MenuItem(
-					importSourceServerMenu, SWT.PUSH);
-			importSourceServerMenuItem.setText(Messages.ServerView_ImportDatasourceServer);
-			importSourceServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 exportSourceServer();
+				 }
+			 });
+			 MenuItem importSourceServerMenuItem = new MenuItem(
+					 importSourceServerMenu, SWT.PUSH);
+			 importSourceServerMenuItem.setText(Messages.ServerView_ImportDatasourceServer);
+			 importSourceServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					importSourceServer();
-				}
-			});
-			new MenuItem(importSourceServerMenu, SWT.SEPARATOR);
-			MenuItem refreshSourceServerMenuItem = new MenuItem(
-					importSourceServerMenu, SWT.PUSH);
-			refreshSourceServerMenuItem.setText(Messages.ServerView_Refresh);
-			refreshSourceServerMenuItem
-			.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 importSourceServer();
+				 }
+			 });
+			 new MenuItem(importSourceServerMenu, SWT.SEPARATOR);
+			 MenuItem refreshSourceServerMenuItem = new MenuItem(
+					 importSourceServerMenu, SWT.PUSH);
+			 refreshSourceServerMenuItem.setText(Messages.ServerView_Refresh);
+			 refreshSourceServerMenuItem
+			 .addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					refresh();
-				}
-			});
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 refresh();
+				 }
+			 });
 
-			sourceServerViewer.getTree().setMenu(importSourceServerMenu);
+			 sourceServerViewer.getTree().setMenu(importSourceServerMenu);
 
-			//Load weights from disc
-			int x = Integer.parseInt(defaultProps.getProperty("sashx")); 
-			int y = Integer.parseInt(defaultProps.getProperty("sashy")); 
-			sourceAndTargetServercomposite.setWeights(new int[] { x, y });
-			weights = sourceAndTargetServercomposite.getWeights();
+			 //Load weights from disc
+			 int x = Integer.parseInt(defaultProps.getProperty("sashx")); 
+			 int y = Integer.parseInt(defaultProps.getProperty("sashy")); 
+			 sourceAndTargetServercomposite.setWeights(new int[] { x, y });
+			 weights = sourceAndTargetServercomposite.getWeights();
 
-			if (defaultProps.getProperty("showSourceServer").equals("false")) {  
-				sourceServerDisposed = true;
-				sourceServerComposite.dispose();
-			}
-			else {
-				sourceServerDisposed=false;
-			}
-			Composite showHideSourceServerButtonComp = new Composite(leftSideComposite, SWT.NONE);
-			showHideSourceServerButtonComp.setLayoutData(BorderLayout.SOUTH);
-			showHideSourceServerButtonComp.setLayout(new FillLayout(SWT.HORIZONTAL));
-			final Button btnShowAndHideSourceServer = new Button(showHideSourceServerButtonComp, SWT.NONE);
-			if (sourceServerComposite.isDisposed()) {
-			btnShowAndHideSourceServer.setText(Messages.ServerView_ShowSourceServer);
-			}
-			else
-				btnShowAndHideSourceServer.setText(Messages.ServerView_HideSourceServer);	
-			btnShowAndHideSourceServer.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 if (defaultProps.getProperty("showSourceServer").equals("false")) {  
+				 sourceServerDisposed = true;
+				 sourceServerComposite.dispose();
+			 }
+			 else {
+				 sourceServerDisposed=false;
+			 }
+			 Composite showHideSourceServerButtonComp = new Composite(leftSideComposite, SWT.NONE);
+			 showHideSourceServerButtonComp.setLayoutData(BorderLayout.SOUTH);
+			 showHideSourceServerButtonComp.setLayout(new FillLayout(SWT.HORIZONTAL));
+			 final Button btnShowAndHideSourceServer = new Button(showHideSourceServerButtonComp, SWT.NONE);
+			 if (sourceServerComposite.isDisposed()) {
+				 btnShowAndHideSourceServer.setText(Messages.ServerView_ShowSourceServer);
+			 }
+			 else
+				 btnShowAndHideSourceServer.setText(Messages.ServerView_HideSourceServer);	
+			 btnShowAndHideSourceServer.addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					if (sourceServerComposite.isDisposed()) {
-						sourceServerDisposed = false;
-						sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
-						sourceServerComposite.setLayout(new BorderLayout(0, 0));
-						sourceTreeComp = new Composite(sourceServerComposite,
-								SWT.NONE);
-						sourceTreeComp.setLayoutData(BorderLayout.CENTER);
-						sourceTreeComp.setLayout(new BorderLayout(0, 0));
-						Label labelSourceServer = new Label(sourceTreeComp,
-								SWT.NONE);
-						labelSourceServer.setLayoutData(BorderLayout.NORTH);
-						labelSourceServer.setText(Messages.ServerView_SourceServer);
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 if (sourceServerComposite.isDisposed()) {
+						 sourceServerDisposed = false;
+						 sourceServerComposite = new Composite(sourceAndTargetServercomposite, SWT.NONE);
+						 sourceServerComposite.setLayout(new BorderLayout(0, 0));
+						 sourceTreeComp = new Composite(sourceServerComposite,
+								 SWT.NONE);
+						 sourceTreeComp.setLayoutData(BorderLayout.CENTER);
+						 sourceTreeComp.setLayout(new BorderLayout(0, 0));
+						 Label labelSourceServer = new Label(sourceTreeComp,
+								 SWT.NONE);
+						 labelSourceServer.setLayoutData(BorderLayout.NORTH);
+						 labelSourceServer.setText(Messages.ServerView_SourceServer);
 
-						sourceServerViewer = new TreeViewer(sourceTreeComp,
-								SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-						//TODO
-						Transfer[] transferTypesSource = new Transfer[] {ServerTransferType.getInstance() };
-						sourceServerViewer.addDropSupport(operations,
-								transferTypesSource, new ServerDropTargetListener(
-										sourceServerViewer));
-						sourceServerViewer.getTree().addMouseListener(
-								new MouseListener() {
+						 sourceServerViewer = new TreeViewer(sourceTreeComp,
+								 SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+						 //TODO
+						 Transfer[] transferTypesSource = new Transfer[] {ServerTransferType.getInstance() };
+						 sourceServerViewer.addDropSupport(operations,
+								 transferTypesSource, new ServerDropTargetListener(
+										 sourceServerViewer));
+						 sourceServerViewer.getTree().addMouseListener(
+								 new MouseListener() {
 
-									@Override
-									public void mouseDoubleClick(MouseEvent e) {
-										importDB();
-									}
+									 @Override
+									 public void mouseDoubleClick(MouseEvent e) {
+										 importDB();
+									 }
 
-									@Override
-									public void mouseDown(MouseEvent e) {
-									}
+									 @Override
+									 public void mouseDown(MouseEvent e) {
+									 }
 
-									@Override
-									public void mouseUp(MouseEvent e) {
-									}
-								});
-						sourceServerViewer
-						.setContentProvider(new ServerSourceContentProvider());
-						sourceServerViewer
-						.setLabelProvider(new ServerImportDBLabelProvider());
-						sourceServerViewer.setInput(new ServerImportDBModel());
-						sourceServerViewer.setAutoExpandLevel(1);
-						sourceServerViewer.setSorter(new ViewerSorter());
+									 @Override
+									 public void mouseUp(MouseEvent e) {
+									 }
+								 });
+						 sourceServerViewer
+						 .setContentProvider(new ServerSourceContentProvider());
+						 sourceServerViewer
+						 .setLabelProvider(new ServerImportDBLabelProvider());
+						 sourceServerViewer.setInput(new ServerImportDBModel());
+						 sourceServerViewer.setAutoExpandLevel(1);
+						 sourceServerViewer.setSorter(new ViewerSorter());
 
-						layoutSourceServerContextMenu();
-						sourceServerViewer.getTree().setMenu(importSourceServerMenu);
-						sourceAndTargetServercomposite.setWeights(weights);
-						btnShowAndHideSourceServer.setText(Messages.ServerView_HideSourceServer);
-					} else {
-						sourceServerDisposed = true;
-						btnShowAndHideSourceServer.setText(Messages.ServerView_ShowSourceServer);
-						weights = sourceAndTargetServercomposite.getWeights();
-						sourceServerComposite.dispose();
-					}
-					sourceAndTargetServercomposite.layout();
-				}
-			});
+						 layoutSourceServerContextMenu();
+						 sourceServerViewer.getTree().setMenu(importSourceServerMenu);
+						 sourceAndTargetServercomposite.setWeights(weights);
+						 btnShowAndHideSourceServer.setText(Messages.ServerView_HideSourceServer);
+					 } else {
+						 sourceServerDisposed = true;
+						 btnShowAndHideSourceServer.setText(Messages.ServerView_ShowSourceServer);
+						 weights = sourceAndTargetServercomposite.getWeights();
+						 sourceServerComposite.dispose();
+					 }
+					 sourceAndTargetServercomposite.layout();
+				 }
+			 });
 
-			SashForm infoBoxSash = new SashForm(sashForm, SWT.VERTICAL);
-			infoBoxSash.setLayout(new FillLayout(SWT.VERTICAL));
+			 SashForm infoBoxSash = new SashForm(sashForm, SWT.VERTICAL);
+			 infoBoxSash.setLayout(new FillLayout(SWT.VERTICAL));
 
-			labelNameComposite = new Composite(infoBoxSash, SWT.NONE);
-			labelNameComposite.setLayout(new GridLayout(2, false));
-			labelNameComposite.pack();
+			 labelNameComposite = new Composite(infoBoxSash, SWT.NONE);
+			 labelNameComposite.setLayout(new GridLayout(2, false));
+			 labelNameComposite.pack();
 
-			labelName = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelName.setText(Messages.ServerView_Name);
+			 labelName = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelName.setText(Messages.ServerView_Name);
 
-			labelNameCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelNameCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			labelNameCurrent.setText("");
+			 labelNameCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelNameCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+			 labelNameCurrent.setText("");
 
-			labelIp = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelIp.setText(Messages.ServerView_IP);
+			 labelIp = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelIp.setText(Messages.ServerView_IP);
 
-			labelIpCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelIpCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			labelIpCurrent.setText("");
+			 labelIpCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelIpCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+			 labelIpCurrent.setText("");
 
-			labelDBUser = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelDBUser.setAlignment(SWT.LEFT);
-			labelDBUser.setText(Messages.ServerView_Project);
+			 labelDBUser = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelDBUser.setAlignment(SWT.LEFT);
+			 labelDBUser.setText(Messages.ServerView_Project);
 
-			labelDBUserCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
-			labelDBUserCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			labelDBUserCurrent.setText("");
+			 labelDBUserCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 labelDBUserCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+			 labelDBUserCurrent.setText("");
 
-			Label lblPatients = new Label(labelNameComposite, SWT.SHADOW_IN);
-			lblPatients.setText(Messages.ServerView_Patients);
+			 Label lblPatients = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 lblPatients.setText(Messages.ServerView_Patients);
 
-			lblPatientsCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
-			lblPatientsCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			lblPatientsCurrent.setText("");
+			 lblPatientsCurrent = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 lblPatientsCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+			 lblPatientsCurrent.setText("");
 
-			Label lblObservations = new Label(labelNameComposite, SWT.SHADOW_IN);
-			lblObservations.setText(Messages.ServerView_Observations);
+			 Label lblObservations = new Label(labelNameComposite, SWT.SHADOW_IN);
+			 lblObservations.setText(Messages.ServerView_Observations);
 
-			lblObservationsCurrent = new Label(labelNameComposite,
-					SWT.SHADOW_IN);
-			lblObservationsCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			lblObservationsCurrent.setText("");
-			Composite sashForm_1 = new Composite(infoBoxSash, SWT.NONE);
-			sashForm_1.setLayout(new BorderLayout(0, 0));
+			 lblObservationsCurrent = new Label(labelNameComposite,
+					 SWT.SHADOW_IN);
+			 lblObservationsCurrent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+			 lblObservationsCurrent.setText("");
+			 Composite sashForm_1 = new Composite(infoBoxSash, SWT.NONE);
+			 sashForm_1.setLayout(new BorderLayout(0, 0));
 
-			Composite progressBarComp = new Composite(sashForm_1, SWT.NONE);
-			progressBarComp.setLayoutData(BorderLayout.NORTH);
-			GridLayout gl_progressComp = new GridLayout(2, false);
-			gl_progressComp.marginWidth = 0;
-			progressBarComp.setLayout(gl_progressComp);
+			 Composite progressBarComp = new Composite(sashForm_1, SWT.NONE);
+			 progressBarComp.setLayoutData(BorderLayout.NORTH);
+			 GridLayout gl_progressComp = new GridLayout(2, false);
+			 gl_progressComp.marginWidth = 0;
+			 progressBarComp.setLayout(gl_progressComp);
 
-			progressLabelTop = new Label(progressBarComp, SWT.NONE);
-			progressLabelTop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-			progressLabelTop.setText("");
-			progressLabelBottom = new Label(progressBarComp, SWT.NONE);
-			progressLabelBottom.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-			progressLabelBottom.setText("");
+			 progressLabelTop = new Label(progressBarComp, SWT.NONE);
+			 progressLabelTop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+			 progressLabelTop.setText("");
+			 progressLabelBottom = new Label(progressBarComp, SWT.NONE);
+			 progressLabelBottom.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+			 progressLabelBottom.setText("");
 
-			progressBar = new ProgressBar(progressBarComp, SWT.SMOOTH);
-			progressBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-					true, 1, 1));
+			 progressBar = new ProgressBar(progressBarComp, SWT.SMOOTH);
+			 progressBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+					 true, 1, 1));
 
-			btnStop = new Button(progressBarComp, SWT.PUSH);
-			btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/terminate_co.gif"));
-			btnStop.setToolTipText("Terminate Import!");
-			btnStop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-			btnStop.setEnabled(false);
-			btnStop.addSelectionListener(new SelectionListener() {
+			 btnStop = new Button(progressBarComp, SWT.PUSH);
+			 btnStop.setImage(ResourceManager.getPluginImage("de.umg.mi.idrt.importtool", "images/terminate_co.gif"));
+			 btnStop.setToolTipText("Terminate Import!");
+			 btnStop.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+			 btnStop.setEnabled(false);
+			 btnStop.addSelectionListener(new SelectionListener() {
 
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					if (importStarted()) {
-						progressBar.setSelection(0);
-						progressBar2.setSelection(0);
-						subProgressLabel.setText("");
-						progressLabelTop.setText(""); 
-						progressLabelBottom.setText(Messages.ServerView_ImportStopped);
-						progressLabelBottom.setForeground(SWTResourceManager
-								.getColor(SWT.COLOR_RED));
-						StatusListener.interrupt();
-						btnStop.setEnabled(false);
-					} 
-				}
-			});
-			new Label(progressBarComp, SWT.NONE);
-			new Label(progressBarComp, SWT.NONE);
-			subProgressLabel = new Label(progressBarComp, SWT.NONE);
-			subProgressLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-			subProgressLabel.setText("");
-			progressBar2 = new ProgressBar(progressBarComp, SWT.SMOOTH);
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 if (importStarted()) {
+						 progressBar.setSelection(0);
+						 progressBar2.setSelection(0);
+						 subProgressLabel.setText("");
+						 progressLabelTop.setText(""); 
+						 progressLabelBottom.setText(Messages.ServerView_ImportStopped);
+						 progressLabelBottom.setForeground(SWTResourceManager
+								 .getColor(SWT.COLOR_RED));
+						 StatusListener.interrupt();
+						 btnStop.setEnabled(false);
+					 } 
+				 }
+			 });
+			 new Label(progressBarComp, SWT.NONE);
+			 new Label(progressBarComp, SWT.NONE);
+			 subProgressLabel = new Label(progressBarComp, SWT.NONE);
+			 subProgressLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+			 subProgressLabel.setText("");
+			 progressBar2 = new ProgressBar(progressBarComp, SWT.SMOOTH);
 
-			GridData gd_progressBar2 = new GridData(SWT.FILL, SWT.FILL, true,
-					true, 1, 1);
-			gd_progressBar2.heightHint = 20;
-			progressBar2.setLayoutData(gd_progressBar2);
-			new Label(progressBarComp, SWT.NONE);
-			Composite logComposite = new Composite(sashForm_1, SWT.NONE);
-			logComposite.setLayoutData(BorderLayout.CENTER);
-			logComposite.setLayout(new BorderLayout(0, 0));
+			 GridData gd_progressBar2 = new GridData(SWT.FILL, SWT.FILL, true,
+					 true, 1, 1);
+			 gd_progressBar2.heightHint = 20;
+			 progressBar2.setLayoutData(gd_progressBar2);
+			 new Label(progressBarComp, SWT.NONE);
+			 Composite logComposite = new Composite(sashForm_1, SWT.NONE);
+			 logComposite.setLayoutData(BorderLayout.CENTER);
+			 logComposite.setLayout(new BorderLayout(0, 0));
 
-			Label lblLog = new Label(logComposite, SWT.NONE);
-			lblLog.setLayoutData(BorderLayout.NORTH);
-			lblLog.setText(Messages.ServerView_Log);
+			 Label lblLog = new Label(logComposite, SWT.NONE);
+			 lblLog.setLayoutData(BorderLayout.NORTH);
+			 lblLog.setText(Messages.ServerView_Log);
 
-			logButtonAndTextComposite = new Composite(logComposite, SWT.NONE);
-			logButtonAndTextComposite.setLayoutData(BorderLayout.CENTER);
-			logButtonAndTextComposite.setBounds(0, 0, 64, 64);
-			logButtonAndTextComposite.setLayout(new BorderLayout(0, 0));
+			 logButtonAndTextComposite = new Composite(logComposite, SWT.NONE);
+			 logButtonAndTextComposite.setLayoutData(BorderLayout.CENTER);
+			 logButtonAndTextComposite.setBounds(0, 0, 64, 64);
+			 logButtonAndTextComposite.setLayout(new BorderLayout(0, 0));
 
-			Composite logButtonComposite = new Composite(logButtonAndTextComposite, SWT.NONE);
-			logButtonComposite.setLayoutData(BorderLayout.SOUTH);
-			logButtonComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
+			 Composite logButtonComposite = new Composite(logButtonAndTextComposite, SWT.NONE);
+			 logButtonComposite.setLayoutData(BorderLayout.SOUTH);
+			 logButtonComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-			Button btnClearLog = new Button(logButtonComposite, SWT.NONE);
-			btnClearLog.setText(Messages.ServerView_ClearLog);
-			btnClearLog.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 Button btnClearLog = new Button(logButtonComposite, SWT.NONE);
+			 btnClearLog.setText(Messages.ServerView_ClearLog);
+			 btnClearLog.addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					logString="";
-					writeLog();
-					logText.setText("");
-				}
-			});
-			Button btnExportLog = new Button(logButtonComposite, SWT.CENTER);
-			btnExportLog.setText(Messages.ServerView_ExportLog);
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 logString="";
+					 writeLog();
+					 logText.setText("");
+				 }
+			 });
+			 Button btnExportLog = new Button(logButtonComposite, SWT.CENTER);
+			 btnExportLog.setText(Messages.ServerView_ExportLog);
 
-			Composite logTextComposite = new Composite(logButtonAndTextComposite,  SWT.BORDER);
-			logTextComposite.setLayoutData(BorderLayout.CENTER);
-			logTextComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
+			 Composite logTextComposite = new Composite(logButtonAndTextComposite,  SWT.BORDER);
+			 logTextComposite.setLayoutData(BorderLayout.CENTER);
+			 logTextComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-			logText = new Text(logTextComposite, SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
-			logText.addListener(SWT.Modify, new Listener(){
-				@Override
-				public void handleEvent(Event e){
-					logText.setTopIndex(0);
-					logText.getParent().layout();
-				}
-			});
-			logText.setText(logString);
-			infoBoxSash.setWeights(new int[] {2, 7});
-			btnExportLog.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-				}
+			 logText = new Text(logTextComposite, SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+			 logText.addListener(SWT.Modify, new Listener(){
+				 @Override
+				 public void handleEvent(Event e){
+					 logText.setTopIndex(0);
+					 logText.getParent().layout();
+				 }
+			 });
+			 logText.setText(logString);
+			 infoBoxSash.setWeights(new int[] {2, 7});
+			 btnExportLog.addSelectionListener(new SelectionListener() {
+				 @Override
+				 public void widgetDefaultSelected(SelectionEvent e) {
+				 }
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					try {
-						File properties = FileHandler.getBundleFile("/cfg/Default.properties");
-						defaultProps.load(new FileReader(properties));
+				 @Override
+				 public void widgetSelected(SelectionEvent e) {
+					 try {
+						 File properties = FileHandler.getBundleFile("/cfg/Default.properties");
+						 defaultProps.load(new FileReader(properties));
 
-						String fileName = defaultProps.getProperty("log"); 
-						File log = new File(fileName);
+						 String fileName = defaultProps.getProperty("log"); 
+						 File log = new File(fileName);
 
-						Log.addLog(0,Messages.ServerView_ExportLogTo + log.getAbsolutePath());
+						 Log.addLog(0,Messages.ServerView_ExportLogTo + log.getAbsolutePath());
 
-						FileWriter outFile = new FileWriter(log);
-						PrintWriter out = new PrintWriter(outFile);
-						out.print(logText.getText());
-						out.close();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
-			});
-			sashForm.setWeights(new int[] { 2, 2 });
+						 FileWriter outFile = new FileWriter(log);
+						 PrintWriter out = new PrintWriter(outFile);
+						 out.print(logText.getText());
+						 out.close();
+					 } catch (IOException e1) {
+						 e1.printStackTrace();
+					 }
+				 }
+			 });
+			 sashForm.setWeights(new int[] { 2, 2 });
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
@@ -1637,7 +1637,7 @@ public class ServerView extends ViewPart {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	private void importBiobank() {
 		IHandlerService handlerService = (IHandlerService) getSite()
 				.getService(IHandlerService.class);
@@ -1647,7 +1647,7 @@ public class ServerView extends ViewPart {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-//		IDRTImport.runImportBiobank(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
+		//		IDRTImport.runImportBiobank(ServerList.getTargetServers().get(labelNameCurrent.getText()),getCurrentSchema());
 	}
 
 	/**
