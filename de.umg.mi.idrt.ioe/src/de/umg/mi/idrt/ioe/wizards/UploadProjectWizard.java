@@ -201,7 +201,7 @@ public class UploadProjectWizard extends Wizard {
 				}
 			}
 		});
-		importThread.run();
+		importThread.start();
 		return true;
 	}
 

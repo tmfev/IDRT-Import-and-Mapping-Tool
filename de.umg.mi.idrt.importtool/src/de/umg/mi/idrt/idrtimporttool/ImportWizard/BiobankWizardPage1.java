@@ -1,5 +1,6 @@
 package de.umg.mi.idrt.idrtimporttool.ImportWizard;
 
+import java.applet.Applet;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -24,6 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import de.umg.mi.idrt.idrtimporttool.importidrt.Application;
 import de.umg.mi.idrt.idrtimporttool.importidrt.IDRTImport;
 import de.umg.mi.idrt.idrtimporttool.messages.Messages;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
@@ -154,14 +157,20 @@ public class BiobankWizardPage1 extends WizardPage {
 			//comboDB.setItems(ServerView.getCurrentSourceServers());
 //			comboDB.setItems(asddd);
 			comboDB.select(0);
+			if (comboDB.getItemCount() == 0){
+				System.out.println("CONBO DB ZERO");
+				MessageDialog.openError(Application.getShell(), "No Server defined", "There is no starLIMS Database-Server defined.");
+				return;
+			}
 			String serverUniqueName = comboDB.getText();
 			if (serverUniqueName == null) {
 				serverUniqueName = comboDB.getItem(comboDB.getSelectionIndex());
 			}
 			Server currentServer = null;
 			if (serverUniqueName != null) {
+				System.out.println("UNIQUE " + serverUniqueName);
 				currentServer = ServerList.getSourceServers().get(serverUniqueName);
-				currentServer.toString();
+				System.out.println(currentServer.toString());
 			}
 			comboDB.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 					false, 1, 1));
