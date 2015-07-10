@@ -194,7 +194,8 @@ public class Server implements Serializable {
 			return "jdbc:oracle:thin:@"+this.getIp() +":" + this.getPort() + ":" + this.getSID();
 		}
 		else if (this.getDatabaseType().equalsIgnoreCase("mssql")){
-			return "jdbc:sqlserver://" + getIp() + ":" + getPort();
+			return "jdbc:sqlserver://" + getIp() + ":" + getPort()+";databaseName="+this.getSID();
+			//return "jdbc:sqlserver://" + getIp() + ":" + getPort()+"\\"+this.getSID();
 		}
 		else 
 			return "";
