@@ -77,10 +77,10 @@ public class UploadProjectWizard extends Wizard {
 		final boolean truncateQueries = UploadProjectWizardPage2.getTruncateQueries();
 		final boolean save = UploadProjectWizardPage2.getSaveContext();
 		final boolean cleanUp = UploadProjectWizardPage2.getCleanUp();
-		importThread = new Thread(new Runnable() {
+//		importThread = new Thread(new Runnable() {
 
-			@Override
-			public void run() {
+//			@Override
+//			public void run() {
 				try {
 					
 					File properties = FileHandler.getBundleFile("/cfg/Default.properties");
@@ -110,8 +110,8 @@ public class UploadProjectWizard extends Wizard {
 								final String targetDBSchema = OntologyEditorView.getTargetSchemaName();
 
 
-								String targetServerName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
-								Server currentServer = ServerList.getTargetServers().get(targetServerName);
+								targetServerName = ServerList.getUserServer().get(OntologyEditorView.getStagingSchemaName());
+								currentServer = ServerList.getTargetServers().get(targetServerName);
 								currentServer.setSchema(OntologyEditorView.getStagingSchemaName());
 								final String stagingIPText = currentServer.getIp();
 								final String stagingPasswordText = currentServer.getPassword();
@@ -199,9 +199,9 @@ public class UploadProjectWizard extends Wizard {
 					e.printStackTrace();
 					Console.error(e);
 				}
-			}
-		});
-		importThread.start();
+			
+//		});
+//		importThread.start();
 		return true;
 	}
 

@@ -8,7 +8,7 @@
     <contextParameter comment="" name="sql" prompt="sql?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentQuery" prompt="currentQuery?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -40,7 +40,7 @@
     <contextParameter comment="" name="sql" prompt="sql?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentQuery" prompt="currentQuery?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;oracle&quot;"/>
@@ -72,7 +72,7 @@
     <contextParameter comment="" name="DB_StagingI2B2_sqlclassname" prompt="DB_StagingI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentQuery" prompt="currentQuery?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
@@ -104,7 +104,7 @@
     <contextParameter comment="" name="sql" prompt="sql?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentQuery" prompt="currentQuery?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
@@ -136,7 +136,7 @@
     <contextParameter comment="" name="sql" prompt="sql?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="DB_TargetI2B2_sqlclassname" prompt="DB_TargetI2B2_sqlclassname?" promptNeeded="true" type="id_String" value="&quot;oracle.jdbc.driver.OracleDriver&quot;"/>
     <contextParameter comment="" name="currentQuery" prompt="currentQuery?" promptNeeded="false" type="id_String" value="null"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" repositoryContextId="_VAT9QMG1EeG1wekDVkmAnw" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://192.168.224.129:5432/i2b2"/>
@@ -912,7 +912,7 @@
         <mapperTableEntries name="C_NAME" expression="from_OE_ONT.C_NAME " type="id_String"/>
         <mapperTableEntries name="C_SYNONYM_CD" expression="&quot;N&quot;" type="id_String"/>
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="from_OE_ONT.VISUALATTRIBUTES " type="id_String"/>
-        <mapperTableEntries name="C_TOTALNUM" expression="new BigDecimal(0)" type="id_BigDecimal" nullable="true"/>
+        <mapperTableEntries name="C_TOTALNUM" expression="null" type="id_BigDecimal" nullable="true"/>
         <mapperTableEntries name="C_BASECODE" expression="from_OE_ONT.BASECODE " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_METADATAXML" expression="from_OE_ONT.METADATAXML " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_FACTTABLECOLUMN" expression="from_OE_ONT.STAGING_DIMENSION.equalsIgnoreCase(&quot;concept_dimension&quot;)?&quot;concept_cd&quot;:&quot;modifier_cd&quot; " type="id_String"/>
@@ -939,7 +939,7 @@
         <mapperTableEntries name="C_NAME" expression="from_OE_ONT.C_NAME " type="id_String"/>
         <mapperTableEntries name="C_SYNONYM_CD" expression="&quot;N&quot;" type="id_String"/>
         <mapperTableEntries name="C_VISUALATTRIBUTES" expression="from_OE_ONT.VISUALATTRIBUTES " type="id_String"/>
-        <mapperTableEntries name="C_TOTALNUM" expression="from_src_ont.C_TOTALNUM " type="id_BigDecimal" nullable="true"/>
+        <mapperTableEntries name="C_TOTALNUM" expression="null" type="id_BigDecimal" nullable="true"/>
         <mapperTableEntries name="C_BASECODE" expression="from_OE_ONT.BASECODE " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_METADATAXML" expression="from_src_ont.C_METADATAXML " type="id_String" nullable="true"/>
         <mapperTableEntries name="C_FACTTABLECOLUMN" expression="&quot;concept_cd&quot;" type="id_String"/>
@@ -1653,7 +1653,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="1" offsetLabelY="-2" posX="672" posY="1536">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="1" offsetLabelY="-2" posX="768" posY="1536">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_29"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
@@ -5105,7 +5105,7 @@
       <column comment="" key="false" length="1000" name="C_NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="to_tmap" activateExpressionFilter="true">
         <mapperTableEntries name="TREE_PATH" expression="from_oe_target_ont.TREE_PATH " type="id_String" nullable="true"/>
@@ -5298,7 +5298,7 @@
       <column comment="" key="false" length="3500" name="ENDDATE_SOURCE_PATH" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="to_obs_fct" expressionFilter="row6.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row6.ENCOUNTER_NUM" type="id_BigDecimal"/>
@@ -6832,7 +6832,7 @@
       <column comment="" key="false" length="1000" name="NAME" nullable="true" pattern="" precision="0" type="id_String" originalLength="1000" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="copyOfto_tmap" activateCondensedTool="true">
         <mapperTableEntries name="TREE_PATH" expression="row28.TREE_PATH " type="id_String" nullable="true"/>
@@ -6931,7 +6931,7 @@
       <outputTables sizeState="INTERMEDIATE" name="copyOfto_obs_fct" expressionFilter="!row29.MODIFIER_CD.equals(&quot;@&quot;)" activateExpressionFilter="true">
         <mapperTableEntries name="ENCOUNTER_NUM" expression="row29.ENCOUNTER_NUM" type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_NUM" expression="row29.PATIENT_NUM" type="id_BigDecimal"/>
-        <mapperTableEntries name="CONCEPT_CD" expression="copyOfto_tmap.BASECODE " type="id_String"/>
+        <mapperTableEntries name="CONCEPT_CD" expression="row29.CONCEPT_CD " type="id_String"/>
         <mapperTableEntries name="PROVIDER_ID" expression="row29.PROVIDER_ID" type="id_String"/>
         <mapperTableEntries name="START_DATE" expression="row29.START_DATE " type="id_String"/>
         <mapperTableEntries name="MODIFIER_CD" expression="row29.MODIFIER_CD " type="id_String"/>
