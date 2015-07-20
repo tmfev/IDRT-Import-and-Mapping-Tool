@@ -9,7 +9,7 @@
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
@@ -24,7 +24,7 @@
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
@@ -39,7 +39,7 @@
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
@@ -54,7 +54,7 @@
     <contextParameter comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
     <contextParameter comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
-    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
     <contextParameter comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
     <contextParameter comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
     <contextParameter comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>

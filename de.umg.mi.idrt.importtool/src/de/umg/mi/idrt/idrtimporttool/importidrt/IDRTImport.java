@@ -57,7 +57,7 @@ public class IDRTImport {
 		File[] listOfInputFiles = inputFolder.listFiles();
 
 		for (File listOfInputFile : listOfInputFiles) {
-			if (listOfInputFile.getName().endsWith(".csv")) {
+			if (listOfInputFile.getName().toLowerCase().endsWith(".csv")) {
 				listOfInputFile.delete();
 			}
 		}

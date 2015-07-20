@@ -656,10 +656,10 @@ public class CSVWizardPage3 extends WizardPage {
 				list = new Vector<String>();
 				if (listOfFiles!=null) {
 					for (int i = 0; i < listOfFiles.length; i++) {
-						if (listOfFiles[i].getName().endsWith(".cfg.csv")) { 
+						if (listOfFiles[i].getName().toLowerCase().endsWith(".cfg.csv")) { 
 							configList.add(listOfFiles[i].getName());
 						}
-						if (!listOfFiles[i].getName().endsWith(".cfg.csv") 
+						if (!listOfFiles[i].getName().toLowerCase().endsWith(".cfg.csv") 
 								&& listOfFiles[i].isFile()) {
 							list.add(listOfFiles[i].getName());
 						}

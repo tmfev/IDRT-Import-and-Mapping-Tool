@@ -236,7 +236,7 @@ public class BiobankImportWizard extends Wizard {
 					File[] listOfInputFiles = inputFolder.listFiles();
 
 					for (File listOfInputFile : listOfInputFiles) {
-						if (listOfInputFile.getName().endsWith(".csv")) {
+						if (listOfInputFile.getName().toLowerCase().endsWith(".csv")) {
 							boolean delete = listOfInputFile.delete();
 						}
 					}

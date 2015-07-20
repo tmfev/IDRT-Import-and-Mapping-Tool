@@ -265,7 +265,7 @@ public class CSVImportWizard extends Wizard {
 					File[] listOfInputFiles = inputFolder.listFiles();
 
 					for (File listOfInputFile : listOfInputFiles) {
-						if (listOfInputFile.getName().endsWith(".csv")) {
+						if (listOfInputFile.getName().toLowerCase().endsWith(".csv")) {
 							boolean delete = listOfInputFile.delete();
 						}
 					}
@@ -352,7 +352,7 @@ public class CSVImportWizard extends Wizard {
 
 						for (int i = 0; i < configs.size(); i++) {
 							for (File listOfInputFile : listOfInputFiles) {
-								if (listOfInputFile.getName().endsWith(".csv")) {
+								if (listOfInputFile.getName().toLowerCase().endsWith(".csv")) {
 									boolean delete = listOfInputFile.delete();
 								}
 							}
