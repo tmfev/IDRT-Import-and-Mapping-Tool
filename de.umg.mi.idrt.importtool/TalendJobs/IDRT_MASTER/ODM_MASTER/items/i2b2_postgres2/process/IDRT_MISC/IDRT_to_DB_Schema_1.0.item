@@ -2754,7 +2754,7 @@
       <column comment="" key="false" name="sic" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out3">
         <mapperTableEntries name="itemID" expression="noSubjKey.itemID " type="id_String" nullable="true"/>
@@ -3316,12 +3316,12 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var2" expression="row5.DataType.toLowerCase().equals(&quot;float&quot;)||row5.DataType.toLowerCase().equals(&quot;integer&quot;)   " type="id_Boolean"/>
       </varTables>
       <outputTables sizeState="INTERMEDIATE" name="copyOfto_obs">
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="new BigDecimal(IDRTHelper.convertAlphanumericPIDtoNumber(&quot;&quot;+row5.StudyEventRepeatKey)) " type="id_BigDecimal"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="new BigDecimal(row5.StudyEventRepeatKey)" type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_NUM" expression="new BigDecimal(row5.SubjectKey)" type="id_BigDecimal"/>
         <mapperTableEntries name="CONCEPT_CD" expression="row5.m_applied_path.equals(&quot;@&quot;)?row5.CONCEPT_CD:row5.CONCEPT_CD.substring(0,row5.CONCEPT_CD.indexOf(&quot;:&quot;))" type="id_String"/>
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
@@ -3345,16 +3345,16 @@
         <mapperTableEntries name="UPLOAD_ID" type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="out6" activateCondensedTool="true" rejectInnerJoin="true" isJoinTableOf="copyOfto_obs">
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="new BigDecimal(IDRTHelper.convertAlphanumericPIDtoNumber(&quot;&quot;+row5.StudyEventRepeatKey)) " type="id_BigDecimal"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="new BigDecimal(row5.StudyEventRepeatKey)" type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_NUM" expression="new BigDecimal(row5.SubjectKey)" type="id_BigDecimal"/>
         <mapperTableEntries name="CONCEPT_CD" expression="row5.m_applied_path.equals(&quot;@&quot;)?row5.CONCEPT_CD:row5.CONCEPT_CD.substring(0,row5.CONCEPT_CD.indexOf(&quot;:&quot;))    " type="id_String"/>
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
         <mapperTableEntries name="START_DATE" expression="row5.startDate != null?row5.startDate:TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,&quot;1900-01-01&quot;)      " type="id_Date"/>
         <mapperTableEntries name="MODIFIER_CD" expression="row5.m_applied_path.equals(&quot;@&quot;)?&quot;@&quot;:row5.MODIFIER_CD  " type="id_String"/>
-        <mapperTableEntries name="INSTANCE_NUM" expression="&quot;&quot;+(row5.StudyEventRepeatKey*1000)+&quot;&quot;+(row5.itemGroupRepeatKey*1000)   +&quot;&quot;+(row5.FormRepeatKey+1)   " type="id_String"/>
+        <mapperTableEntries name="INSTANCE_NUM" expression="&quot;1&quot;" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="Var.var2?&quot;N&quot;:&quot;T&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="TVAL_CHAR" expression="Var.var2?&quot;E&quot;:row5.Value.length()>254?row5.Value.replaceAll(&quot;;&quot;, &quot; &quot;).substring(0, 253): row5.Value.replaceAll(&quot;;&quot;, &quot; &quot;)     " type="id_String" nullable="true"/>
-        <mapperTableEntries name="NVAL_NUM" expression="Var.var2&amp;&amp;row5.Value.length()>0?Float.parseFloat(row5.Value.replace(&quot;,&quot;,&quot;.&quot;)) :null  " type="id_Float" nullable="true"/>
+        <mapperTableEntries name="NVAL_NUM" expression="Var.var2&amp;&amp;row5.Value.length()>0?Float.parseFloat(row5.Value.replace(&quot;,&quot;,&quot;.&quot;)) :null " type="id_Float" nullable="true"/>
         <mapperTableEntries name="VALUEFLAG_CD" type="id_String" nullable="true"/>
         <mapperTableEntries name="QUANTITY_NUM" type="id_String" nullable="true"/>
         <mapperTableEntries name="UNITS_CD" type="id_String" nullable="true"/>
@@ -3375,7 +3375,7 @@
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
         <mapperTableEntries name="START_DATE" expression="row5.startDate != null?row5.startDate:TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,&quot;1900-01-01&quot;)      " type="id_Date"/>
         <mapperTableEntries name="MODIFIER_CD" expression="&quot;@&quot;" type="id_String"/>
-        <mapperTableEntries name="INSTANCE_NUM" expression="&quot;&quot;+(row5.StudyEventRepeatKey*1000)+&quot;&quot;+(row5.itemGroupRepeatKey*1000)   +&quot;&quot;+(row5.FormRepeatKey+1)  " type="id_String"/>
+        <mapperTableEntries name="INSTANCE_NUM" expression="&quot;1&quot;" type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="&quot;T&quot;" type="id_String" nullable="true"/>
         <mapperTableEntries name="TVAL_CHAR" expression="row5.sic " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="null" type="id_Float" nullable="true"/>
@@ -3479,7 +3479,7 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="160">
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_20"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\ToS\TOS_561\TOS_DI-Win32-20141207_1530-V5.6.1\configuration\lib\java"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
@@ -6326,7 +6326,7 @@
       <column comment="" key="false" name="m_applied_path" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var">
         <mapperTableEntries name="var2" expression="row7.DataType.toLowerCase().equals(&quot;float&quot;)||row7.DataType.toLowerCase().equals(&quot;integer&quot;)  " type="id_Boolean"/>
         <mapperTableEntries name="var1" expression="row7.StudyEventRepeatKey != null " type="id_Boolean"/>
@@ -6363,7 +6363,7 @@
         <mapperTableEntries name="PROVIDER_ID" expression="&quot;IDRT&quot;" type="id_String"/>
         <mapperTableEntries name="START_DATE" expression="row7.startDate != null?row7.startDate:TalendDate.parseDate(&quot;yyyy-MM-dd&quot;,&quot;1900-01-01&quot;)    " type="id_Date"/>
         <mapperTableEntries name="MODIFIER_CD" expression="row7.m_applied_path.equals(&quot;@&quot;)?&quot;@&quot;:row7.MODIFIER_CD" type="id_String"/>
-        <mapperTableEntries name="INSTANCE_NUM" expression="row7.m_applied_path.equals(&quot;@&quot;)?&quot;0&quot;:&quot;&quot;+row7.StudyEventRepeatKey+&quot;&quot;+row7.FormRepeatKey+&quot;&quot;+row7.itemGroupRepeatKey+1         " type="id_String"/>
+        <mapperTableEntries name="INSTANCE_NUM" expression="row7.m_applied_path.equals(&quot;@&quot;)?&quot;0&quot;:&quot;&quot;+row7.StudyEventRepeatKey+&quot;&quot;+row7.FormRepeatKey+&quot;&quot;+row7.itemGroupRepeatKey+1 " type="id_String"/>
         <mapperTableEntries name="VALTYPE_CD" expression="row7.Blob.length()>0?&quot;B&quot;:Var.var2?&quot;N&quot;:&quot;T&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="TVAL_CHAR" expression="row7.Blob.length()>0?null:Var.var2?&quot;E&quot;:row7.Value.length()>254?row7.Value.replaceAll(&quot;;&quot;, &quot; &quot;).substring(0, 253): row7.Value.replaceAll(&quot;;&quot;, &quot; &quot;)      " type="id_String" nullable="true"/>
         <mapperTableEntries name="NVAL_NUM" expression="row7.Blob.length()>0?null:Var.var2&amp;&amp;row7.Value.length()>0?Float.parseFloat(row7.Value.replace(&quot;,&quot;,&quot;.&quot;)) :null " type="id_Float" nullable="true"/>
@@ -7824,7 +7824,7 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out3"/>
   </connection>
-  <connection connectorName="FLOW" label="out12" lineStyle="0" metaname="out12" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_16" target="tUniqRow_7">
+  <connection connectorName="FLOW" label="out12" lineStyle="0" metaname="out12" offsetLabelX="-10" offsetLabelY="1" outputId="2" source="tMap_16" target="tUniqRow_7">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER">
       <elementValue elementRef="TRACE_COLUMN" value="itemID"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>

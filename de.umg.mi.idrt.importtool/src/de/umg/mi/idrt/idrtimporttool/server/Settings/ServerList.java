@@ -261,7 +261,7 @@ public class ServerList {
 				admin = resultSet.getString("user_role_cd");
 			}
 			connect.close();
-			if (admin.toLowerCase().equals("admin")) {
+			if (admin.equalsIgnoreCase("admin")) {
 				return true;
 			} else {
 				return false;
@@ -289,7 +289,7 @@ public class ServerList {
 				while (resultSet.next()) {
 					String user = resultSet.getString("user_id");
 					if (!user.contains("SERVICE_ACCOUNT")) {
-						users.add(user.toLowerCase());
+						users.add(user);
 					}
 				}
 				connect.close();
@@ -328,8 +328,8 @@ public class ServerList {
 				// Result set get the result of the SQL query
 
 				resultSet = statement
-						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where UPPER(project_id)=UPPER('"
-								+ project + "') order by user_id asc");
+						.executeQuery("select distinct user_id from i2b2pm.pm_project_user_roles where project_id='"
+								+ project + "' order by user_id asc");
 
 				while (resultSet.next()) {
 					String user = resultSet.getString("user_id");
@@ -351,6 +351,7 @@ public class ServerList {
 
 	public static HashSet<String> getI2B2Projects(Server server) {
 		try {
+			System.out.println("@getI2B2Projects(Server server)");
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 
@@ -394,17 +395,24 @@ public class ServerList {
 			Server server) {
 
 		try {
-			user = user.toUpperCase();
 			I2B2User i2b2User = new I2B2User(user);
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 			
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
+			
+			if (server.isPostgres()){
 			resultSet = statement
-					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id=UPPER('"
+					.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id='"
 							+ user
-							+ "') order by entry_date desc) as foo limit 1");
+							+ "' order by entry_date desc) as foo limit 1");
+			}
+			else if (server.isOracle()){
+				resultSet = statement
+						.executeQuery("select * from (select entry_date from i2b2pm.pm_user_session where user_id='"+user+"' and rownum = 1 order by entry_date desc) ");
+				
+			}
 			i2b2User.setLastLogin(null);
 			while (resultSet.next()) {
 				i2b2User.setLastLogin(resultSet.getTimestamp("entry_date"));
@@ -436,25 +444,32 @@ public class ServerList {
 	public static boolean getManager(Server server, String username,
 			String project) {
 		try {
-			username = username.toUpperCase();
-			project = project.toUpperCase();
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 
 			statement = connect.createStatement();
 			connect.setAutoCommit(true);
-			String sql = "select user_role_cd from i2b2pm.pm_project_user_roles where user_id=UPPER('"
+			String sql = "";
+			if (server.isOracle())
+			sql= "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
 					+ username
-					+ "') and project_id=UPPER('"
+					+ "' and project_id='"
 					+ project
-					+ "') and user_role_cd='MANAGER'";
+					+ "' and user_role_cd='MANAGER'";
+			else if (server.isPostgres())
+				sql= "select user_role_cd from i2b2pm.pm_project_user_roles where user_id='"
+						+ username
+						+ "' and project_id='"
+						+ project
+						+ "' and user_role_cd='MANAGER'";
+			
 			resultSet = statement.executeQuery(sql);
 			String admin = "";
 			while (resultSet.next()) {
 				admin = resultSet.getString("user_role_cd");
 			}
 			connect.close();
-			if (admin.toLowerCase().equals("manager")) {
+			if (admin.equalsIgnoreCase("manager")) {
 				return true;
 			} else {
 				return false;
@@ -475,7 +490,7 @@ public class ServerList {
 
 			statement = connect.createStatement();
 
-			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+			if (server.isOracle()) {
 				resultSet = statement.executeQuery("select * from " + schema + "."
 						+ table + " where rownum <= 5");
 			}
@@ -486,7 +501,7 @@ public class ServerList {
 				ServerTable currentTable = getTableMap().get(table);
 				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getDatabaseSchema()+"."+currentTable.getName());// + " where rownum <= 5");
 			}
-			else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+			else if (server.isPostgres()){
 				System.out.println("POSTGRES");
 				ServerTable currentTable = getTableMap().get(table);
 				resultSet = statement.executeQuery("select * from " + currentTable.getDatabaseUser()+"."+currentTable.getName());// + " where rownum <= 5");
@@ -528,7 +543,7 @@ public class ServerList {
 			List<ServerTable> tables = new LinkedList<ServerTable>();
 			statement = connect.createStatement();
 			if(user.getServer().getDatabaseType().equalsIgnoreCase("oracle")) {
-				if (user.getServer().getUser().toLowerCase().equals("system")) {
+				if (user.getServer().getUser().equalsIgnoreCase("system")) {
 					resultSet = statement
 							.executeQuery("select table_name,temporary,secondary from dba_tables where owner='"
 									+ user.getName() + "'");
@@ -694,8 +709,8 @@ public class ServerList {
 			statement = connect.createStatement();
 			List<I2b2Project> userList = new LinkedList<I2b2Project>();
 
-			if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
-				if (server.getUser().toLowerCase().equals("system")) {
+			if (server.isOracle()) {
+				if (server.getUser().equalsIgnoreCase("system")) {
 					// Result set get the result of the SQL query
 					resultSet = statement
 							.executeQuery("select username from all_users");
@@ -735,7 +750,7 @@ public class ServerList {
 				//					User newUser = new User(server.getUser(), server);
 				//					userList.add(newUser);
 			}
-			else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+			else if (server.isPostgres()){
 //TODO
 				//SELECT * FROM sys.databases
 				resultSet = statement
@@ -768,6 +783,7 @@ public class ServerList {
 	 */
 	public static HashSet<I2b2Project> getUsersTargetServer(Server server) {
 		try {
+			System.out.println("@getUsersTargetServer(Server server)");
 			DriverManager.setLoginTimeout(2);
 			connect = server.getConnection();
 
@@ -775,11 +791,12 @@ public class ServerList {
 				statement = connect.createStatement();
 				// Result set get the result of the SQL query
 				HashSet<I2b2Project> users;
-				if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+				if (server.isOracle()) {
 					if (server.getUser().toLowerCase().equals("system")) {
 						resultSet = statement
 								.executeQuery("select username from all_users");
-						users = getResultSet(resultSet, server);
+//						resultSet = statement.executeQuery("select project_id from i2b2pm.pm_project_data");
+						users = getResultSet(resultSet, server, "username");
 
 					} else {
 						users = new HashSet<I2b2Project>();
@@ -791,7 +808,7 @@ public class ServerList {
 					resultSet = statement
 							.executeQuery("show databases");
 
-					users = getResultSet(resultSet, server);
+					users = getResultSet(resultSet, server, "username");
 				}
 				else if (server.getWhType().equalsIgnoreCase("transmart")){
 					users = new HashSet<I2b2Project>();
@@ -800,12 +817,12 @@ public class ServerList {
 					userServer.put("i2b2demodata", server.getName());
 					userServer.put("i2b2metadata", server.getName());
 				}
-				else if (server.getDatabaseType().equalsIgnoreCase("postgres")){
+				else if (server.isPostgres()){
 					System.out.println("POSTGRES");
 					users = new HashSet<I2b2Project>();
 					resultSet = statement
 							.executeQuery("select schema_name from information_schema.schemata");
-					users = getResultSet(resultSet, server);
+					users = getResultSet(resultSet, server, null);
 				}
 				else {
 					users = new HashSet<I2b2Project>();
@@ -1076,7 +1093,7 @@ public class ServerList {
 	}
 
 	private static HashSet<I2b2Project> getResultSet(ResultSet resultSet,
-			Server server) throws SQLException {
+			Server server, String columnName) throws SQLException {
 		try {
 			File properties = FileHandler.getBundleFile("/cfg/Default.properties");
 			defaultProps = new Properties();
@@ -1087,12 +1104,11 @@ public class ServerList {
 			e.printStackTrace();
 		}
 		HashSet<I2b2Project> users = new HashSet<I2b2Project>();
-		if (server.getDatabaseType().equalsIgnoreCase("oracle")) {
+		if (server.isOracle()) {
 			while (resultSet.next()) {
-				String user = resultSet.getString("username");
+				String user = resultSet.getString(columnName);
 				if (defaultProps.getProperty("filter").equals("true")) {
-					if (user.startsWith("I2B2")
-							&& !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
+					if (user.startsWith("I2B2") && !((user.equals("I2B2HIVE") || (user.equals("I2B2PM"))))) {
 						users.add(new I2b2Project(user, server));
 					}
 				} else {
@@ -1100,12 +1116,13 @@ public class ServerList {
 				}
 			}
 		}
-		else if (server.getDatabaseType().equalsIgnoreCase("postgres")) {
+		else if (server.isPostgres()) {
 			while (resultSet.next()) {
 				String user = resultSet.getString("schema_name");
 				if (defaultProps.getProperty("filter").equals("true")) {
 					if (user.toLowerCase().startsWith("i2b2")
-							&& !((user.toLowerCase().equals("i2b2hive") || (user.toLowerCase().equals("i2b2pm"))|| (user.toLowerCase().equals("i2b2imdata"))|| (user.toLowerCase().equals("i2b2workdata"))))) {
+							&& !((user.toLowerCase().equals("i2b2hive") || (user.toLowerCase().equals("i2b2pm"))
+									|| (user.toLowerCase().equals("i2b2imdata"))|| (user.toLowerCase().equals("i2b2workdata"))))) {
 						users.add(new I2b2Project(user, server));
 					}
 				} else {

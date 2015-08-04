@@ -77,19 +77,14 @@ public class CSVWizardPage3 extends WizardPage {
 	private static int PIDGENCOLUMN = 5;
 	char[] DELIMITERS = {';','\t',','};
 
-	public static Table fillTable(Table table, String[] nextLine, String file) {
+	public Table fillTable(Table table, String[] nextLine, String file) {
 		try {
 
 
 
 			File schemaFile = FileHandler.getBundleFile("/cfg/schema.csv");
 
-			char inputDelim = DEFAULTDELIM;
-			CSVReader reader = new CSVReader(
-					new FileReader(schemaFile),
-					inputDelim);
-			String[] testLine = reader.readNext();
-			reader.close();
+			char inputDelim = getDelimiter(schemaFile.getAbsoluteFile().getAbsolutePath());
 
 			HashMap<Integer,String> patientIDMap = new HashMap<Integer, String>();
 			HashMap<Integer,String> objectIDMap = new HashMap<Integer, String>();
@@ -101,24 +96,9 @@ public class CSVWizardPage3 extends WizardPage {
 			HashMap<Integer,String> endDateMap = new HashMap<Integer, String>();
 
 
-			if (testLine != null) {
+				
 
-				if (testLine.length == 1) {
-					System.err
-					.println("Wrong delimiter?"); 
-					if (inputDelim == DEFAULTDELIM) {
-						inputDelim = '\t';
-						System.err
-						.println("Delimiter set to: \\t"); 
-					} else {
-						inputDelim = DEFAULTDELIM;
-						System.err
-						.println("Delimiter set to: " 
-								+ DEFAULTDELIM);
-					}
-				}
-
-				reader = new CSVReader(new FileReader(
+			CSVReader reader = new CSVReader(new FileReader(
 						schemaFile), inputDelim, QUOTECHAR);
 
 				String [] schemaContent = reader.readNext();
@@ -145,13 +125,13 @@ public class CSVWizardPage3 extends WizardPage {
 						endDateMap.put(counter, schemaContent[7]);
 					counter++;
 				}
+				reader.close();
 				//				System.out.println(objectIDMap);
 				//				System.out.println(encounterIDMap);
 				//				System.out.println(downloadDateMap);
 				//				System.out.println(importDateMap);
 				//				System.out.println(startDateMap);
 				//				System.out.println(updateDateMap);
-			}
 			int pidLocation = -1;
 			int pidWeight = 99999;
 			int objLocation = -1;
@@ -169,7 +149,7 @@ public class CSVWizardPage3 extends WizardPage {
 			int endLocation = -1;
 			int endWeight = 99999;
 
-
+			inputDelim = getDelimiter(file);
 			CSVReader fileReader = new CSVReader(
 					new FileReader(file),
 					inputDelim,QUOTECHAR);
@@ -201,7 +181,6 @@ public class CSVWizardPage3 extends WizardPage {
 						}
 					}
 				}
-
 				for (int i2 = objmapSize; i2 >=0; i2--) {
 					if (nextLine[i].toLowerCase().contains(objectIDMap.get(i2).toLowerCase())) {
 						if (objLocation>=0) {
@@ -326,7 +305,8 @@ public class CSVWizardPage3 extends WizardPage {
 			HashSet<String> pidSet = new HashSet<String>();
 
 			while ((nextFileLine = fileReader.readNext()) != null) {
-				if (!pidSet.add(nextFileLine[pidLocation])){
+				System.out.println(nextFileLine[0].toString());
+				if (pidLocation>=0 && !pidSet.add(nextFileLine[pidLocation])){
 					System.out.println("PID DOUBLE:");
 					System.out.println(nextFileLine[pidLocation]);
 
@@ -1013,29 +993,9 @@ public class CSVWizardPage3 extends WizardPage {
 													.getTable()
 													.getSelection()[0]
 															.getText()));
-									char inputDelim = DEFAULTDELIM;
-									CSVReader reader = new CSVReader(
-											new FileReader(configFile),
-											inputDelim);
-									String[] testLine = reader.readNext();
-									reader.close();
-									if (testLine != null) {
+									CSVReader reader;
 
-										if (testLine.length == 1) {
-											System.err
-											.println("Wrong delimiter?"); 
-											System.err.println(inputDelim + "==" + DEFAULTDELIM);
-											if (inputDelim == DEFAULTDELIM) {
-												inputDelim = '\t';
-												System.err
-												.println("Delimiter set to: \\t"); 
-											} else {
-												inputDelim = DEFAULTDELIM;
-												System.err
-												.println("DefDelimiter set to: " 
-														+ DEFAULTDELIM);
-											}
-										}
+										char inputDelim = getDelimiter(configFile.getAbsoluteFile().getAbsolutePath());
 										//										DEFAULTDELIM = inputDelim;
 										reader = new CSVReader(new FileReader(
 												configFile), inputDelim, QUOTECHAR);
@@ -1075,9 +1035,9 @@ public class CSVWizardPage3 extends WizardPage {
 											if (metainformation5!= null)
 												item.setText(METADATACOLUMN, metainformation5[i]);
 										}
-									}
 									//new config
-								} else {
+								} 
+								else {
 
 									String tmp = serverListViewer.getTable()
 											.getSelection()[0].getText();

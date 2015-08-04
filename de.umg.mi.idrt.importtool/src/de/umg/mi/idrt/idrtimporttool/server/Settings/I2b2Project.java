@@ -32,7 +32,10 @@ public class I2b2Project implements Serializable{
 	}
 
 	public String getShortName() {
+		if (getName().startsWith("I2B2"))
 		return getName().substring(4, getName().length());
+		else
+			return getName();
 	}
 
 }

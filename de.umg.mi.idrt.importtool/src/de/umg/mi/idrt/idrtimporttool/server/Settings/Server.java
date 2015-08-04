@@ -63,7 +63,7 @@ public class Server implements Serializable {
 
 	private String concepts;
 
-	private String projectName;
+//	private String projectName;
 
 	private String databaseType;
 
@@ -402,22 +402,25 @@ public class Server implements Serializable {
 
 	public String getProjectName(String project) {
 		try {
+			String projectName = "";
 			Connection connect = getConnection();
 			DriverManager.setLoginTimeout(2);
 			Statement statement = connect.createStatement();
+			String sql = "select project_name from i2b2pm.pm_project_data where project_id='"
+					+ project + "'";
+			System.out.println("PERFORMING SQL: " + sql);
 			ResultSet resultSet = statement
-					.executeQuery("select project_name from i2b2pm.pm_project_data where UPPER(project_id)=UPPER('"
-							+ project + "')");
+					.executeQuery(sql);
 			while (resultSet.next()) {
 				projectName = resultSet.getString("project_name");
 			}
-			System.out.println(projectName);
+			System.out.println("projectName " + projectName + " for project" + project);
 			connect.close();
 			return projectName;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Not a valid i2b2 project: No Patients found!");
-			projectName = "";
+			String projectName = "";
 			return projectName;
 		}
 	}
@@ -525,5 +528,11 @@ public class Server implements Serializable {
 			return WHCOMBOTARGET;
 		else
 			return WHCOMBOSOURCE;
+	}
+	public boolean isPostgres() {
+		return getDatabaseType().equalsIgnoreCase("postgres");
+	}
+	public boolean isOracle() {
+		return getDatabaseType().equalsIgnoreCase("oracle");
 	}
 }

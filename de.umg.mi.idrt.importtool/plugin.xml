@@ -45,7 +45,7 @@
             name="DeleteAllTargetServers">
       </command>
       <command
-            defaultHandler="de.umg.mi.idrt.idrtimporttool.server.commands.AdminTargetServerCommand"
+            defaultHandler="de.umg.mi.idrt.importtool.views.AdminTargetServerView"
             id="de.goettingen.i2b2.importtool.idrt.adminServer"
             name="AdminTargetServer">
       </command>

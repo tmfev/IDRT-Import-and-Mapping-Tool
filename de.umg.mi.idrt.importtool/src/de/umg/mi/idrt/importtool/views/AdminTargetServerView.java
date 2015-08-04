@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.idrtimporttool.server.commands;
+package de.umg.mi.idrt.importtool.views;
 
 import java.util.LinkedList;
 
@@ -46,7 +46,7 @@ import de.umg.mi.idrt.idrtimporttool.server.serverWizard.EditUserWizard;
  *         Department of Medical Informatics Goettingen
  *         www.mi.med.uni-goettingen.de
  */
-public class AdminTargetServerCommand extends AbstractHandler {
+public class AdminTargetServerView extends AbstractHandler {
 
 	private Label txtAssignedUsers;
 	private Label serverInfo;
@@ -82,6 +82,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 	// private Label userTab_numberOfQueries_answer;
 	private static Text userTab_status_answer;
 
+	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -89,7 +90,6 @@ public class AdminTargetServerCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		Thread a = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				// THREAD START
@@ -122,7 +122,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 				projectListComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 				projectTab_serverViewer = new TreeViewer(projectListComposite,
-						SWT.MULTI); // parent
+						SWT.MULTI); //parent
 				projectTab_serverViewer
 						.setContentProvider(new AdminServerContentProvider());
 				projectTab_serverViewer
@@ -147,6 +147,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 								// selectedItemString);
 
 								if (selectedItem.getData() instanceof Server) {
+									System.out.println("Instance of Server");
 									String currentServerID = selectedItem
 											.getText();
 									Server server = ServerList.getTargetServers()
@@ -185,6 +186,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 											.setRedraw(true);
 
 								} else if (selectedItem.getData() instanceof I2b2Project) {
+									System.out.println("Instance of I2b2Project");
 									String parentServer = selectedItem
 											.getParentItem().getText();
 									Server server = ServerList.getTargetServers()
@@ -909,6 +911,9 @@ public class AdminTargetServerCommand extends AbstractHandler {
 		refresh();
 	}
 
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	private static void createUser(Shell shell, Server server) {
 		WizardDialog wizardDialog = new WizardDialog(shell, new AddUserWizard(
 				server));
@@ -964,7 +969,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 	}
 
 	private static void assignAllUsersToProject(String project) {
-
+System.out.println("ASSIGN ALL USERS");
 		TreeItem[] items = projectTab_allUserTree.getItems();
 		for (TreeItem item : items) {
 			String username = item.getText();
@@ -1007,6 +1012,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 	}
 
 	public static void refresh() {
+		System.out.println("@refresh()");
 		Server server = ServerList.getTargetServers().get(
 				projectTab_projectID_answer.getText());
 		I2B2User i2b2user = ServerList.getI2B2UserData(
@@ -1038,7 +1044,7 @@ public class AdminTargetServerCommand extends AbstractHandler {
 		projectTab_allUserTree.removeAll();
 		if (allUserList != null) {
 			for (String item : allUserList) {
-				if (!userList.contains(item.toLowerCase())) {
+				if (!userList.contains(item)) {
 					TreeItem newItem = new TreeItem(projectTab_allUserTree,
 							SWT.NONE);
 					newItem.setText(item);
