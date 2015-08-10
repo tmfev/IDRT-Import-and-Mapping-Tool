@@ -27,7 +27,8 @@ public class AdminServerContentProvider implements ITreeContentProvider {
 
 		if (parentElement instanceof Server) {
 			Server server = (Server) parentElement;
-			HashSet<I2b2Project> users = ServerList.getUsersTargetServer(server);
+			HashSet<I2b2Project> users = ServerList.getUsersForAdministrationTargetServer(server);
+			System.out.println("USERS: " + users);
 //			HashSet<String> users = ServerList.getI2B2Projects(server);
 			return users.toArray();
 		}
