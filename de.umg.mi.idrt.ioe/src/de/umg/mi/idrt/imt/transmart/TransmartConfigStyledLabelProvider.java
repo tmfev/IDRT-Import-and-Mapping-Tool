@@ -1,11 +1,10 @@
-package de.umg.mi.idrt.ioe.OntologyTree;
+package de.umg.mi.idrt.imt.transmart;
+
 
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.umg.mi.idrt.ioe.GUITools;
@@ -16,46 +15,32 @@ import de.umg.mi.idrt.ioe.Resource;
  * 			Department of Medical Informatics Goettingen 
  * 			www.mi.med.uni-goettingen.de
  */
-public class TransmartStyledViewTableLabelProvider extends StyledCellLabelProvider  {
+public class TransmartConfigStyledLabelProvider extends StyledCellLabelProvider  {
 
+	private Color hiddenColor;
+	private Color activeColor;
+	private Color nodeHighlightedColor;	
+	private Color nodeSearchResultColor;
 	
-
-	public TransmartStyledViewTableLabelProvider() {
+	public TransmartConfigStyledLabelProvider() {
+		hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+		activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+		nodeHighlightedColor = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
+		nodeSearchResultColor = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.StyledCellLabelProvider#update(org.eclipse.jface.viewers.ViewerCell)
-	 */
 	@Override
 	public void update(ViewerCell cell) {
+		
+		
 		Object element = cell.getElement();
-		Color hiddenColor = SWTResourceManager.getColor(SWT.COLOR_GRAY);
-		Color activeColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-		if (element instanceof TransmartOntologyTreeItem) {
-			TransmartOntologyTreeItem otNode = ((TransmartOntologyTreeItem) element);
+		
+		if (element instanceof TransmartConfigTreeItem) {
+			TransmartConfigTreeItem otNode = ((TransmartConfigTreeItem) element);
 
 			//		Color color = SWTResourceManager.getColor(SWT.COLOR_BLUE);
 			//		cell.setBackground(color);
-			if (otNode.isHighlighted()) {
-				Color color = SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-				cell.setBackground(color);	
-			}
-			else if (otNode.isSearchResult()) {
-				Color color = SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION);
-				cell.setBackground(color);	
-			}
-			else {
-				cell.setBackground(null);	
-			}
-				cell.setText(otNode.getName());
-
-				String visualAttributeFull = otNode.getOntologyCellAttributes().getC_VISUALATTRIBUTES();
-
-				//			System.out.println("visualAttributeFull: " + visualAttributeFull);
-				if ( visualAttributeFull != null && !visualAttributeFull.isEmpty()) {
-
-					String visualAttribute = visualAttributeFull.substring(0, 1);
-
+				String visualAttribute = otNode.getVisualAttribute();
 					if ("f".equals(visualAttribute.toLowerCase()))
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_FA));// GUITools.createImage(Resource.OntologyTree.ICON_ANSWERGROUP);
@@ -82,13 +67,9 @@ public class TransmartStyledViewTableLabelProvider extends StyledCellLabelProvid
 					else
 						cell.setImage(GUITools
 								.getImage(Resource.OntologyTree.VISIBILITY_ICON_LA));
-					String hidden =  visualAttributeFull.substring(1, 2);
+					
+					cell.setText(((TransmartConfigTreeItem) element).getName());
 
-					if (hidden.toLowerCase().equals("h"))
-						cell.setForeground(hiddenColor);
-					else
-						cell.setForeground(activeColor);
-				}
 			}
 
 		super.update(cell);

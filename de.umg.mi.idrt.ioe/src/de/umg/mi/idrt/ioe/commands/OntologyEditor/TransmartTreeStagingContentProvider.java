@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.ioe.OntologyTree;
+package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;

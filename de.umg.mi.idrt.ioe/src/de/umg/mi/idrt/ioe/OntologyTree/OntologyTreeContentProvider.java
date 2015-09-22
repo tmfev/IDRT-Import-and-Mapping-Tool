@@ -3,7 +3,6 @@ package de.umg.mi.idrt.ioe.OntologyTree;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.umg.mi.idrt.ioe.misc.ProjectEmptyException;
 import de.umg.mi.idrt.ioe.view.OntologyEditorView;
 
 public class OntologyTreeContentProvider {

@@ -1,6 +1,5 @@
-package de.umg.mi.idrt.ioe.OntologyTree;
+package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;

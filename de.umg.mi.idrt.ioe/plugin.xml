@@ -114,6 +114,12 @@
             name="Help"
             restorable="true">
       </view>
+      <view
+            class="de.umg.mi.idrt.ioe.view.TransmartConfigEditorView"
+            id="de.umg.mi.idrt.ioe.transmartConfigEditorView"
+            name="Transmart Config Editor"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

@@ -13,8 +13,8 @@
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="postgres">
-    <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\starlims.cfg.csv&quot;"/>
-    <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\starlims.csv&quot;"/>
+    <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\ICD.cfg.csv&quot;"/>
+    <contextParameter comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\ICD.csv&quot;"/>
     <contextParameter comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
     <contextParameter comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/CSV/&quot;"/>
     <contextParameter comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>

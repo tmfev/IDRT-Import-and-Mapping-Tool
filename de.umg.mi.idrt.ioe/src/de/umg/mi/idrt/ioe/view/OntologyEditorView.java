@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+
 import javax.swing.tree.MutableTreeNode;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -102,9 +103,9 @@ import de.umg.mi.idrt.ioe.OntologyTree.StyledViewTableLabelProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TOSConnector;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstance;
 import de.umg.mi.idrt.ioe.OntologyTree.TargetInstances;
-import de.umg.mi.idrt.ioe.OntologyTree.TransmartOntologyTree;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeStagingContentProvider;
 import de.umg.mi.idrt.ioe.OntologyTree.TreeTargetContentProvider;
+import de.umg.mi.idrt.ioe.commands.OntologyEditor.TransmartOntologyTree;
 import de.umg.mi.idrt.ioe.misc.FileHandler;
 import de.umg.mi.idrt.ioe.tos.TOSHandler;
 

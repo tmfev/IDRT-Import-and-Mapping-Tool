@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.ioe.OntologyTree;
+package de.umg.mi.idrt.ioe.commands.OntologyEditor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import de.umg.mi.idrt.ioe.Resource;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyCellAttributes;
+import de.umg.mi.idrt.ioe.OntologyTree.OntologyItem;
 
 
 public class TransmartOntologyTreeItem extends DefaultMutableTreeNode{
