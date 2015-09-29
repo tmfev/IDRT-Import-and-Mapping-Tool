@@ -60,6 +60,7 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Button btnRADIOCsvfile;
 	private Label lblDatePattern;
 	private static Combo datePatternCombo;
+	private static Combo encodingCombo;
 	private Label labelSetTotalNum;
 
 	// private static Text csvSeperatorext;
@@ -73,7 +74,12 @@ public class CSVWizardPage2 extends WizardPage {
 	private static Button btnDrop;
 	
 	private Composite composite;
+	private Label lblEncoding;
 
+	public static String getEncoding(){
+		return encodingCombo.getText();
+	}
+	
 	public static boolean getBtnRADIOCsvfile() {
 		return btnRADIOCsvfile.getSelection();
 	}
@@ -197,9 +203,8 @@ public class CSVWizardPage2 extends WizardPage {
 			
 			composite = new Composite(container, SWT.NONE);
 			composite.setLayout(new FillLayout(SWT.HORIZONTAL));
-			GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 //			gd_composite.widthHint = 91;
-			composite.setLayoutData(gd_composite);
+			composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 			
 			boolean indexStop = Boolean.parseBoolean(defaultProps.getProperty("IndexStop","false"));
 			boolean indexDrop = Boolean.parseBoolean(defaultProps.getProperty("IndexDrop","false"));
@@ -384,6 +389,18 @@ public class CSVWizardPage2 extends WizardPage {
 			quoteCharText.setText(defaultProps.getProperty("quoteChar")); 
 			quoteCharText.setEditable(true);
 
+			new Label(container, SWT.NONE);
+			
+			lblEncoding = new Label(container, SWT.NONE);
+			lblEncoding.setToolTipText("Character Quotation");
+			lblEncoding.setText("Encoding");
+			
+			encodingCombo = new Combo(container, SWT.NONE);
+
+			encodingCombo.setItems(new String[] { "UTF-8","ISO-8859-15" }); 
+			encodingCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+					true, false, 1, 1));
+			encodingCombo.setText(defaultProps.getProperty("encoding")); 
 			new Label(container, SWT.NONE);
 			
 			//TODO REIMPLEMENT

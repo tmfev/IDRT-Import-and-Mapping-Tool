@@ -210,7 +210,7 @@ public class CSVImportWizard extends Wizard {
 		final String dbSchema = selectedServer.getSchema();
 		final String dbType = selectedServer.getDatabaseType();
 		final String whType = selectedServer.getWhType().toLowerCase();
-		
+		final String encoding = CSVWizardPage2.getEncoding();
 //		final String ipText = WizardPage1.getIpText();
 //		final String passwordText = WizardPage1.getDBUserPasswordText();
 //		final String dbUserText = WizardPage1.getDBUserText();
@@ -289,7 +289,8 @@ public class CSVImportWizard extends Wizard {
 					contextMap.put("DB_StagingI2B2_WHType", whType);
 					
 					contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
-
+					
+					contextMap.put("encoding", encoding);
 					/**
 					 * page 2
 					 */

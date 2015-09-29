@@ -11,6 +11,7 @@
     <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
     <contextParameter comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="postgres">
     <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\ICD.cfg.csv&quot;"/>
@@ -23,6 +24,7 @@
     <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
     <contextParameter comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
   </talendfile:ContextType>
   <talendfile:ContextType confirmationNeeded="false" name="TestServer">
     <contextParameter comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\Test1_Modifier_Complete.cfg.csv&quot;"/>
@@ -35,5 +37,6 @@
     <contextParameter comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
     <contextParameter comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
     <contextParameter comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
   </talendfile:ContextType>
 </xmi:XMI>
