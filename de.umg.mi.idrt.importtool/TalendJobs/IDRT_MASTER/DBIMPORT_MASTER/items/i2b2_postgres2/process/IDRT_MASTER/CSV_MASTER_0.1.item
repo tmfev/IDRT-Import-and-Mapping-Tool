@@ -254,7 +254,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value=" -Xms256M -Xmx1024M -XX:-UseConcMarkSweepGC -XX:-UseGCOverheadLimit "/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="96"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="64"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="96"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true"/>
@@ -996,7 +996,7 @@
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="load into DB"/>
+    <elementParameter field="TEXT" name="LABEL" value="transmart"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <elementParameter field="CHECK" name="INFORMATION" value="true"/>
     <elementParameter field="MEMO" name="COMMENT" value="This SubJob simply loads the generated data into the i2b2-database.&#xD;&#xA;&#xD;&#xA;Input: Several CSV-Files, in i2b2-database-table-form.&#xD;&#xA;- patient_mapping&#xD;&#xA;- patient_dimension&#xD;&#xA;- concept_dimension&#xD;&#xA;- encounter_mapping&#xD;&#xA;- observation_fact&#xD;&#xA;- ontology (=i2b2)&#xD;&#xA;&#xD;&#xA;Output:&#xD;&#xA;full i2b2-datenbase."/>
