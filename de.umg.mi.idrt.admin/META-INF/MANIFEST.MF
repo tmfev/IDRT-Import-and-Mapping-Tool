@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: i2b2Admin
+Bundle-SymbolicName: de.umg.mi.idrt.admin;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: de.umg.mi.idrt.admin.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.umg.mi.idrt.importtool
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/passwordCrypt.jar,
+ lib/swing2swt.jar,
+ .

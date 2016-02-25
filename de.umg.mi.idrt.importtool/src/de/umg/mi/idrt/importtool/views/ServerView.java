@@ -1072,24 +1072,24 @@ public class ServerView extends ViewPart {
 			});
 
 			//						 TODO REMOVE COMMENTATION FOR ADMINISTRATION
-			boolean admin = ((defaultProps.getProperty("adminView") 
-					.equals("true")) ? true : false); 
-			if (admin){
-				new MenuItem(mainMenu, SWT.SEPARATOR);
-				MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
-				adminMenuItem.setText("Administration");
-				adminMenuItem.addSelectionListener(new SelectionListener() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						adminTargetServer();
-					}
-
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {
-
-					}
-				});
-			}
+//			boolean admin = ((defaultProps.getProperty("adminView") 
+//					.equals("true")) ? true : false); 
+//			if (admin){
+//				new MenuItem(mainMenu, SWT.SEPARATOR);
+//				MenuItem adminMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+//				adminMenuItem.setText("Administration");
+//				adminMenuItem.addSelectionListener(new SelectionListener() {
+//					@Override
+//					public void widgetSelected(SelectionEvent e) {
+//						adminTargetServer();
+//					}
+//
+//					@Override
+//					public void widgetDefaultSelected(SelectionEvent e) {
+//
+//					}
+//				});
+//			}
 			
 
 			/*

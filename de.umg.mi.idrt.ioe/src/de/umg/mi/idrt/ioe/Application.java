@@ -1,10 +1,15 @@
 package de.umg.mi.idrt.ioe;
 
+import java.net.URL;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
@@ -14,7 +19,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import restAPI.BambooRESTApi;
 import de.umg.mi.idrt.ioe.misc.Regex;
 
 /**
@@ -25,7 +29,7 @@ import de.umg.mi.idrt.ioe.misc.Regex;
  */
 public class Application implements IApplication {
 
-
+	
 	public static void executeCommand(ActionCommand command) {
 
 		if (command.hasParameters()) {
@@ -114,7 +118,7 @@ public class Application implements IApplication {
 		Display display = PlatformUI.createDisplay();
 
 //		OntologyEditorView.setMyOntologyTree(new MyOntologyTrees());
-System.out.println("START");
+		 
 		Activator.getDefault().createResource();
 
 		Regex.loadRegex();

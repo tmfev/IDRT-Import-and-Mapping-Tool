@@ -1494,8 +1494,8 @@
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="PATIENT_NUM"/>
-      <elementValue elementRef="KEY_ATTRIBUTE" value="false"/>
-      <elementValue elementRef="CASE_SENSITIVE" value="false"/>
+      <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
+      <elementValue elementRef="CASE_SENSITIVE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="CONCEPT_CD"/>
       <elementValue elementRef="KEY_ATTRIBUTE" value="true"/>
       <elementValue elementRef="CASE_SENSITIVE" value="true"/>
@@ -4486,7 +4486,7 @@
     <metadata connector="FLOW" name="tFileInputDelimited_12">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4500,7 +4500,7 @@
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4523,7 +4523,7 @@
     <metadata connector="FLOW" name="tJavaRow_7">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4585,7 +4585,7 @@
     <metadata connector="FLOW" name="tUniqRow_4">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4599,7 +4599,7 @@
     <metadata connector="UNIQUE" name="UNIQUE">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4613,7 +4613,7 @@
     <metadata connector="DUPLICATE" name="DUPLICATE">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="true" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4640,7 +4640,7 @@
     <metadata connector="FLOW" name="out15">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4654,7 +4654,7 @@
     <metadata connector="FLOW" name="out16">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4682,12 +4682,12 @@
       <column defaultValue="" key="false" length="8" name="duration" nullable="true" precision="0" sourceType="" type="id_Long" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out15" activateCondensedTool="true" rejectInnerJoin="true">
         <mapperTableEntries name="ENCOUNTER_IDE" expression="row21.ENCOUNTER_IDE " type="id_String"/>
         <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" expression="row21.ENCOUNTER_IDE_SOURCE " type="id_String"/>
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="row21.ENCOUNTER_NUM " type="id_Integer"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="row21.ENCOUNTER_NUM " type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_IDE" expression="row21.PATIENT_IDE " type="id_String" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE_SOURCE" expression="row21.PATIENT_IDE_SOURCE " type="id_String" nullable="true"/>
         <mapperTableEntries name="ENCOUNTER_IDE_STATUS" expression="row21.ENCOUNTER_IDE_STATUS " type="id_String" nullable="true"/>
@@ -4701,7 +4701,7 @@
       <outputTables sizeState="INTERMEDIATE" name="out16">
         <mapperTableEntries name="ENCOUNTER_IDE" expression="row21.ENCOUNTER_IDE " type="id_String"/>
         <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" expression="row21.ENCOUNTER_IDE_SOURCE " type="id_String"/>
-        <mapperTableEntries name="ENCOUNTER_NUM" expression="row21.ENCOUNTER_NUM " type="id_Integer"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" expression="row21.ENCOUNTER_NUM " type="id_BigDecimal"/>
         <mapperTableEntries name="PATIENT_IDE" expression="row21.PATIENT_IDE " type="id_String" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE_SOURCE" expression="row21.PATIENT_IDE_SOURCE " type="id_String" nullable="true"/>
         <mapperTableEntries name="ENCOUNTER_IDE_STATUS" expression="row21.ENCOUNTER_IDE_STATUS " type="id_String" nullable="true"/>
@@ -4731,7 +4731,7 @@
       <inputTables sizeState="INTERMEDIATE" name="row21" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ENCOUNTER_IDE" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENCOUNTER_IDE_SOURCE" type="id_String" nullable="true"/>
-        <mapperTableEntries name="ENCOUNTER_NUM" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="ENCOUNTER_NUM" type="id_BigDecimal" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE" type="id_String" nullable="true"/>
         <mapperTableEntries name="PATIENT_IDE_SOURCE" type="id_String" nullable="true"/>
         <mapperTableEntries name="ENCOUNTER_IDE_STATUS" type="id_String" nullable="true"/>
@@ -4884,7 +4884,7 @@
     <metadata connector="FLOW" name="tJDBCOutput_2">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -4898,7 +4898,7 @@
     <metadata connector="REJECT" name="REJECT">
       <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -5012,12 +5012,12 @@
     <elementParameter field="TEXT" name="BATCH_SIZE" value="250000"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJDBCOutput_20">
-      <column comment="" key="true" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
@@ -5026,12 +5026,12 @@
       <column comment="" key="false" name="UPLOAD_ID" nullable="true" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="true" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="true" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_SOURCE" nullable="false" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_NUM" nullable="false" pattern="" sourceType="" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="PATIENT_IDE_SOURCE" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" name="ENCOUNTER_IDE_STATUS" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="UPLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="UPDATE_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" name="DOWNLOAD_DATE" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" sourceType="" type="id_Date" usefulColumn="true"/>

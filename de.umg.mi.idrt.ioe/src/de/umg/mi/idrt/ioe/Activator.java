@@ -1,5 +1,10 @@
 package de.umg.mi.idrt.ioe;
 
+import java.net.URL;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.equinox.p2.examples.cloud.p2.CloudPolicy;
 import org.eclipse.equinox.p2.ui.Policy;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -13,25 +18,25 @@ import org.osgi.framework.ServiceRegistration;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
-
+	final static Logger logger = Logger.getLogger(Activator.class);
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.umg.mi.idrt.ioe"; //$NON-NLS-1$
-    public static CloudPolicy policy;
-    /**
+	public static CloudPolicy policy;
+	/**
 	 * The constructor
 	 */
 	public Activator() {
 		// create new resource for this program
-		
+
 	}
 	ServiceRegistration policyRegistration;
 	IPropertyChangeListener preferenceListener;
 
 	// The shared instance
 	private static Activator plugin;
-	
-//	private ILogListener listener;	
-	
+
+	//	private ILogListener listener;	
+
 	/**
 	 * Returns the shared instance
 	 *
@@ -75,11 +80,11 @@ public class Activator extends AbstractUIPlugin {
 		policy.updateForPreferences();
 		policyRegistration = context.registerService(Policy.class.getName(), policy, null);
 	}
-	
+
 	public void setResource(Resource resource){
 		this._resource = resource;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -89,25 +94,29 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		registerP2Policy(context);
 		getPreferenceStore().addPropertyChangeListener(getPreferenceListener());
+		URL confURL = getBundle().getEntry("log4j.properties");
+		PropertyConfigurator.configure( FileLocator.toFileURL(confURL).getFile());
+		logger.info("Logging using log4j and configuration " + FileLocator.toFileURL(confURL).getFile());
+		logger.debug("START");
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		
+
 		// removing local log file listener
-//		Platform.removeLogListener(listener);
-//	    listener = null;
-		
+		//		Platform.removeLogListener(listener);
+		//	    listener = null;
+
 		plugin = null;
 		policyRegistration.unregister();
 		policyRegistration = null;
 		getPreferenceStore().removePropertyChangeListener(preferenceListener);
 		preferenceListener = null;
 		super.stop(context);
-		
+
 	}
-	
+
 }

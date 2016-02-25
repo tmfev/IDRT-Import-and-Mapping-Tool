@@ -11,6 +11,7 @@
   	<module>de.umg.mi.idrt.ioe.feature</module>
     <module>de.umg.mi.idrt.importtool</module>
     <module>de.umg.mi.idrt.ioe</module>
+    <module>de.umg.mi.idrt.admin</module>
     <module>de.umg.mi.idrt.ioe.master</module>
   </modules>
   <properties>
@@ -38,7 +39,6 @@
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
-       
           <environments>
             <environment>
               <os>linux</os>
@@ -64,7 +64,5 @@
         </configuration>
       </plugin>
     </plugins>
-
   </build>
-
 </project> 

@@ -82,7 +82,7 @@ public class AdminTargetServerView extends AbstractHandler {
 	// private Label userTab_numberOfQueries_answer;
 	private static Text userTab_status_answer;
 
-	
+
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -124,9 +124,9 @@ public class AdminTargetServerView extends AbstractHandler {
 				projectTab_serverViewer = new TreeViewer(projectListComposite,
 						SWT.MULTI); //parent
 				projectTab_serverViewer
-						.setContentProvider(new AdminServerContentProvider());
+				.setContentProvider(new AdminServerContentProvider());
 				projectTab_serverViewer
-						.setLabelProvider(new AdminServerLabelProvider());
+				.setLabelProvider(new AdminServerLabelProvider());
 				projectTab_serverViewer.setInput(new AdminServerModel());
 				projectTab_serverViewer.setAutoExpandLevel(1);
 				projectTab_serverViewer.setSorter(new ViewerSorter());
@@ -153,7 +153,7 @@ public class AdminTargetServerView extends AbstractHandler {
 									Server server = ServerList.getTargetServers()
 											.get(currentServerID);
 									projectTab_userInfoComposite
-											.setRedraw(false);
+									.setRedraw(false);
 									projectTab_IP_answer.setText(server.getIp());
 									projectTab_IP_answer.pack();
 									projectTab_projectID_answer.setText(server
@@ -183,7 +183,7 @@ public class AdminTargetServerView extends AbstractHandler {
 									}
 									projectTab_assignedUserTree.removeAll();
 									projectTab_userInfoComposite
-											.setRedraw(true);
+									.setRedraw(true);
 
 								} else if (selectedItem.getData() instanceof I2b2Project) {
 									System.out.println("Instance of I2b2Project");
@@ -192,24 +192,24 @@ public class AdminTargetServerView extends AbstractHandler {
 									Server server = ServerList.getTargetServers()
 											.get(parentServer);
 									projectTab_userInfoComposite
-											.setRedraw(false);
+									.setRedraw(false);
 									projectTab_IP_answer.setText(server.getIp());
 									projectTab_IP_answer.pack();
 									projectTab_projects_answer
-											.setText(selectedItemString);
+									.setText(selectedItemString);
 									projectTab_projects_answer.pack();
 									projectTab_projectID_answer.setText(server
 											.getName());
 									projectTab_projectID_answer.pack();
 									projectTab_observations_answer
-											.setText("...");
+									.setText("...");
 									projectTab_observations_answer.pack();
 									projectTab_patients_answer.setText("...");
 									projectTab_patients_answer.pack();
 									if (server
 											.getProjectName(selectedItemString)!=null)
-									projectTab_projectName_answer.setText(server
-											.getProjectName(selectedItemString));
+										projectTab_projectName_answer.setText(server
+												.getProjectName(selectedItemString));
 									projectTab_projectName_answer.pack();
 									projectTab_observations_answer.setText(server
 											.getConcepts(selectedItemString));
@@ -218,7 +218,7 @@ public class AdminTargetServerView extends AbstractHandler {
 											.getPatients(selectedItemString));
 									projectTab_patients_answer.pack();
 									projectTab_userInfoComposite
-											.setRedraw(true);
+									.setRedraw(true);
 									refresh();
 									// allUserList =
 									// ServerList.getAllUsersFromServer(server);
@@ -275,11 +275,11 @@ public class AdminTargetServerView extends AbstractHandler {
 				projectTab_userInfoComposite = new Composite(composite_2,
 						SWT.NONE);
 				projectTab_userInfoComposite
-						.setLayoutData(gd_usersInfoComposite);
+				.setLayoutData(gd_usersInfoComposite);
 				projectTab_userInfoComposite.setEnabled(true);
 				// usersInfoComposite.setLayoutData(BorderLayout.CENTER);
 				projectTab_userInfoComposite
-						.setLayout(new GridLayout(2, false));
+				.setLayout(new GridLayout(2, false));
 
 				Label lblName = new Label(projectTab_userInfoComposite,
 						SWT.NONE);
@@ -384,52 +384,52 @@ public class AdminTargetServerView extends AbstractHandler {
 				projectTab_allUserTree = new Tree(allUsersComposite, SWT.BORDER
 						| SWT.MULTI);
 				projectTab_allUserTree
-						.addSelectionListener(new SelectionListener() {
+				.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								TreeItem selectedItem = (TreeItem) e.item;
-								projectTab_assignedUserTree.deselectAll();
-								Server server = ServerList.getTargetServers().get(
-										projectTab_projectID_answer.getText());
-								I2B2User i2b2user = ServerList.getI2B2UserData(
-										selectedItem.getText(), null, server);
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						TreeItem selectedItem = (TreeItem) e.item;
+						projectTab_assignedUserTree.deselectAll();
+						Server server = ServerList.getTargetServers().get(
+								projectTab_projectID_answer.getText());
+						I2B2User i2b2user = ServerList.getI2B2UserData(
+								selectedItem.getText(), null, server);
 
-								userInfoComposite.setRedraw(false);
+						userInfoComposite.setRedraw(false);
 
-								userTab_userName_answer.setText(i2b2user
-										.getUserName());
-								userTab_userName_answer.pack();
-								userTab_eMail_answer.setText(i2b2user
-										.getEmail());
-								userTab_eMail_answer.pack();
-								userTab_fullname_answer.setText(i2b2user
-										.getFullname());
-								userTab_fullname_answer.pack();
-								userTab_lastlogin_answer.setText(i2b2user
-										.getLastLogin());
-								userTab_lastlogin_answer.pack();
-								userTab_status_answer.setText(i2b2user
-										.getStatus());
-								userTab_status_answer.pack();
-								userTab_lastQuery_answer.setText("");
-								userTab_lastQuery_answer.pack();
-								// adminCheckButton.setSelection(ServerList.getAdmin(server,userTab_userName_answer.getText(),projectTab_projects_answer.getText()));
-								adminCheckButton.setSelection(false);
-								adminCheckButton.setEnabled(false);
-								managerCheckButton.setEnabled(false);
-								managerCheckButton.setSelection(false);
-								lblAdmin.setEnabled(false);
-								lblManager.setEnabled(false);
-								// userTab_lastQuery_answer.setEnabled(false);
-								lblLastQuery.setEnabled(false);
-								userInfoComposite.setRedraw(true);
-							}
+						userTab_userName_answer.setText(i2b2user
+								.getUserName());
+						userTab_userName_answer.pack();
+						userTab_eMail_answer.setText(i2b2user
+								.getEmail());
+						userTab_eMail_answer.pack();
+						userTab_fullname_answer.setText(i2b2user
+								.getFullname());
+						userTab_fullname_answer.pack();
+						userTab_lastlogin_answer.setText(i2b2user
+								.getLastLogin());
+						userTab_lastlogin_answer.pack();
+						userTab_status_answer.setText(i2b2user
+								.getStatus());
+						userTab_status_answer.pack();
+						userTab_lastQuery_answer.setText("");
+						userTab_lastQuery_answer.pack();
+						// adminCheckButton.setSelection(ServerList.getAdmin(server,userTab_userName_answer.getText(),projectTab_projects_answer.getText()));
+						adminCheckButton.setSelection(false);
+						adminCheckButton.setEnabled(false);
+						managerCheckButton.setEnabled(false);
+						managerCheckButton.setSelection(false);
+						lblAdmin.setEnabled(false);
+						lblManager.setEnabled(false);
+						// userTab_lastQuery_answer.setEnabled(false);
+						lblLastQuery.setEnabled(false);
+						userInfoComposite.setRedraw(true);
+					}
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-							}
-						});
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+					}
+				});
 
 				Label label_1 = new Label(allUsersComposite, SWT.SHADOW_IN);
 				label_1.setFont(SWTResourceManager.getFont("Segoe UI", 10,
@@ -473,21 +473,21 @@ public class AdminTargetServerView extends AbstractHandler {
 						SWT.CENTER, true, false, 1, 1));
 				unAssignSingleButton.setText("<");
 				unAssignSingleButton
-						.addSelectionListener(new SelectionListener() {
+				.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								String project = projectTab_projects_answer
-										.getText();
-								if (!project.isEmpty()) {
-									unAssignUserFromProject(project);
-								}
-							}
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						String project = projectTab_projects_answer
+								.getText();
+						if (!project.isEmpty()) {
+							unAssignUserFromProject(project);
+						}
+					}
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-							}
-						});
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+					}
+				});
 
 				Button assignSingleButton = new Button(assignBarComposite,
 						SWT.NONE);
@@ -495,23 +495,23 @@ public class AdminTargetServerView extends AbstractHandler {
 						SWT.CENTER, true, false, 1, 1));
 				assignSingleButton.setText(">");
 				assignSingleButton
-						.addSelectionListener(new SelectionListener() {
+				.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
 
-								String project = projectTab_projects_answer
-										.getText();
-								if (!project.isEmpty()) {
-									assignUserToProject(project);
-								}
-							}
+						String project = projectTab_projects_answer
+								.getText();
+						if (!project.isEmpty()) {
+							assignUserToProject(project);
+						}
+					}
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
 
-							}
-						});
+					}
+				});
 
 				Button assignAllButton = new Button(assignBarComposite,
 						SWT.NONE);
@@ -548,64 +548,64 @@ public class AdminTargetServerView extends AbstractHandler {
 						SWT.BORDER | SWT.MULTI);
 
 				projectTab_assignedUserTree
-						.addSelectionListener(new SelectionListener() {
+				.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								TreeItem selectedItem = (TreeItem) e.item;
-								Server server = ServerList.getTargetServers().get(
-										projectTab_projectID_answer.getText());
-								I2B2User i2b2user = ServerList.getI2B2UserData(
-										selectedItem.getText(),
-										projectTab_projects_answer.getText(),
-										server);
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						TreeItem selectedItem = (TreeItem) e.item;
+						Server server = ServerList.getTargetServers().get(
+								projectTab_projectID_answer.getText());
+						I2B2User i2b2user = ServerList.getI2B2UserData(
+								selectedItem.getText(),
+								projectTab_projects_answer.getText(),
+								server);
 
-								projectTab_allUserTree.deselectAll();
-								userInfoComposite.setRedraw(false);
-								userTab_userName_answer.setText(i2b2user
-										.getUserName());
-								userTab_userName_answer.pack();
-								userTab_eMail_answer.setText(i2b2user
-										.getEmail());
-								userTab_eMail_answer.pack();
-								userTab_fullname_answer.setText(i2b2user
-										.getFullname());
-								userTab_fullname_answer.pack();
-								userTab_lastlogin_answer.setText(i2b2user
-										.getLastLogin());
-								userTab_lastlogin_answer.pack();
-								userTab_status_answer.setText(i2b2user
-										.getStatus());
-								userTab_status_answer.pack();
-								userTab_lastQuery_answer.setText(i2b2user
-										.getLastQuery());
-								userTab_lastQuery_answer.pack();
-								// refresh();
-								// userTab_lastQuery_answer.setEnabled(true);
-								lblLastQuery.setEnabled(true);
-								lblAdmin.setEnabled(true);
-								lblManager.setEnabled(true);
-								adminCheckButton.setEnabled(true);
-								adminCheckButton.setSelection(ServerList
-										.getAdmin(server,
-												userTab_userName_answer
-														.getText(),
-												projectTab_projects_answer
-														.getText()));
-								managerCheckButton.setEnabled(true);
-								managerCheckButton.setSelection(ServerList
-										.getManager(server,
-												userTab_userName_answer
-														.getText(),
-												projectTab_projects_answer
-														.getText()));
-								userInfoComposite.setRedraw(true);
-							}
+						projectTab_allUserTree.deselectAll();
+						userInfoComposite.setRedraw(false);
+						userTab_userName_answer.setText(i2b2user
+								.getUserName());
+						userTab_userName_answer.pack();
+						userTab_eMail_answer.setText(i2b2user
+								.getEmail());
+						userTab_eMail_answer.pack();
+						userTab_fullname_answer.setText(i2b2user
+								.getFullname());
+						userTab_fullname_answer.pack();
+						userTab_lastlogin_answer.setText(i2b2user
+								.getLastLogin());
+						userTab_lastlogin_answer.pack();
+						userTab_status_answer.setText(i2b2user
+								.getStatus());
+						userTab_status_answer.pack();
+						userTab_lastQuery_answer.setText(i2b2user
+								.getLastQuery());
+						userTab_lastQuery_answer.pack();
+						// refresh();
+						// userTab_lastQuery_answer.setEnabled(true);
+						lblLastQuery.setEnabled(true);
+						lblAdmin.setEnabled(true);
+						lblManager.setEnabled(true);
+						adminCheckButton.setEnabled(true);
+						adminCheckButton.setSelection(ServerList
+								.getAdmin(server,
+										userTab_userName_answer
+										.getText(),
+										projectTab_projects_answer
+										.getText()));
+						managerCheckButton.setEnabled(true);
+						managerCheckButton.setSelection(ServerList
+								.getManager(server,
+										userTab_userName_answer
+										.getText(),
+										projectTab_projects_answer
+										.getText()));
+						userInfoComposite.setRedraw(true);
+					}
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
-							}
-						});
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+					}
+				});
 
 				Composite composite_5 = new Composite(sashForm_4, SWT.NONE);
 				composite_5.setLayout(new BorderLayout(0, 0));
@@ -726,23 +726,23 @@ public class AdminTargetServerView extends AbstractHandler {
 				managerCheckButton.setLayoutData(new GridData(SWT.FILL,
 						SWT.CENTER, false, false, 1, 1));
 				managerCheckButton
-						.addSelectionListener(new SelectionListener() {
+				.addSelectionListener(new SelectionListener() {
 
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								String project = projectTab_projects_answer
-										.getText();
-								if (!project.isEmpty()) {
-									setManager(project,
-											managerCheckButton.getSelection());
-								}
-							}
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						String project = projectTab_projects_answer
+								.getText();
+						if (!project.isEmpty()) {
+							setManager(project,
+									managerCheckButton.getSelection());
+						}
+					}
 
-							@Override
-							public void widgetDefaultSelected(SelectionEvent e) {
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
 
-							}
-						});
+					}
+				});
 
 				Label lblNewLabel = new Label(composite_5, SWT.NONE);
 				lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 10,
@@ -969,7 +969,7 @@ public class AdminTargetServerView extends AbstractHandler {
 	}
 
 	private static void assignAllUsersToProject(String project) {
-System.out.println("ASSIGN ALL USERS");
+		System.out.println("ASSIGN ALL USERS");
 		TreeItem[] items = projectTab_allUserTree.getItems();
 		for (TreeItem item : items) {
 			String username = item.getText();

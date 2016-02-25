@@ -177,7 +177,7 @@ public class OntologyEditorView extends ViewPart {
 	public OntologyEditorView() {
 		// TODO Auto-generated constructor stub
 		//		transmartTree = new TransmartOntologyTree();
-		
+
 	}
 
 	private static void addItem() {
@@ -527,20 +527,25 @@ public class OntologyEditorView extends ViewPart {
 								if (item.getBounds(i).contains(coords)) {
 									if (tip != null  && !tip.isDisposed ())
 										tip.dispose ();
-									tip = new Shell (stagingTreeViewer.getTree().getShell(), SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
-									tip.setBackground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
+									tip = new Shell (stagingTreeViewer.getTree().getShell()
+											, SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
+									tip.setBackground (stagingTreeViewer.getTree().getDisplay()
+											.getSystemColor (SWT.COLOR_INFO_BACKGROUND));
 									FillLayout layout = new FillLayout ();
 									layout.marginWidth = 2;
 									tip.setLayout (layout);
 									label = new Label (tip, SWT.NONE);
-									label.setForeground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_FOREGROUND));
-									label.setBackground (stagingTreeViewer.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
+									label.setForeground (stagingTreeViewer.getTree().getDisplay()
+											.getSystemColor (SWT.COLOR_INFO_FOREGROUND));
+									label.setBackground (stagingTreeViewer.getTree().getDisplay()
+											.getSystemColor (SWT.COLOR_INFO_BACKGROUND));
 									label.setData ("_TABLEITEM", item);
 									label.setText(tooltip);
 									label.addListener (SWT.MouseExit, stagingTreeLabelListener);
 									label.addListener (SWT.MouseDown, stagingTreeLabelListener);
 									Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
-									tip.setBounds (MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y-size.y, size.x, size.y);
+									tip.setBounds (MouseInfo.getPointerInfo().getLocation().x
+											, MouseInfo.getPointerInfo().getLocation().y-size.y, size.x, size.y);
 									tip.setVisible (true);
 									break;
 								}
@@ -1915,7 +1920,7 @@ public class OntologyEditorView extends ViewPart {
 					if (a.getData() instanceof OntologyTreeNode) {
 						OntologyTreeNode node = (OntologyTreeNode) a.getData();
 						for (OntologyTreeSubNode subNode: node.getTargetNodeAttributes().getSubNodeList()) {
-//							System.out.println("FOR " +(System.currentTimeMillis()-time) );
+							//							System.out.println("FOR " +(System.currentTimeMillis()-time) );
 							if (System.currentTimeMillis()-time>500) {
 								System.out.println("TIMEOUT");
 								//Timeout, if it takes to long.
