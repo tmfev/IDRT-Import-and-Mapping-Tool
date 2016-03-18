@@ -1,14 +1,14 @@
 package de.umg.mi.idrt.idrtimporttool.importidrt;
 
-import i2b2_postgres2.csv_master_0_1.CSV_MASTER;
-import i2b2_postgres2.dbimport_master_0_1.DBIMPORT_MASTER;
-import i2b2_postgres2.dropioetables_0_1.DropIOETables;
-import i2b2_postgres2.idrt_stdterm_0_1.IDRT_STDTERM;
-import i2b2_postgres2.idrt_transformation_0_5.IDRT_TRANSFORMATION;
-import i2b2_postgres2.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
 import i2b2_postgres2.mdr_idrt_anbindung_0_1.MDR_IDRT_Anbindung;
-import i2b2_postgres2.odm_master_0_1.ODM_MASTER;
-import i2b2_postgres2.starlims_master_1_0.STARLIMS_MASTER;
+import i2b2transmart.csv_master_0_1.CSV_MASTER;
+import i2b2transmart.dbimport_master_0_1.DBIMPORT_MASTER;
+import i2b2transmart.dropioetables_0_1.DropIOETables;
+import i2b2transmart.idrt_stdterm_0_1.IDRT_STDTERM;
+import i2b2transmart.idrt_transformation_0_5.IDRT_TRANSFORMATION;
+import i2b2transmart.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
+import i2b2transmart.odm_master_0_1.ODM_MASTER;
+import i2b2transmart.starlims_master_1_0.STARLIMS_MASTER;
 
 import java.io.File;
 import java.sql.Connection;
