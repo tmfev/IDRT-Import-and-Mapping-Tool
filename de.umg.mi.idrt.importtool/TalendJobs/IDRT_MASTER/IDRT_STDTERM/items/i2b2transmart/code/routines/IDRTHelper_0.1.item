@@ -749,9 +749,10 @@ public class IDRTHelper {
 				//
 				//					currentColumn = coulumnNameIterator.next();
 				int columnNumber = columnNames.size();
+				//System.out.println("COLUMNNUMBER: " +columnNumber);
 				//				System.out.println(columnNumber);
 				//				while(coulumnNameIterator.hasNext()){
-				for (int i= 0; i<columnNumber;i++){
+				for (int i= 0; i<nextLine.length && i < columnNames.size() ;i++){
 					//					currentColumn = coulumnNameIterator.next();
 					currentColumn = columnNames.get(i);				
 										//System.out.println("currentColumn: " + currentColumn); 
@@ -765,8 +766,8 @@ public class IDRTHelper {
 					/**
 					 * skip PID Column
 					 */
-
-					if ( !nextLine[columnCounter].isEmpty() && !nextLine[columnCounter].equals("\"") &&!ignoreList.contains(columnCounter) && columnCounter!=PID && 
+					//System.out.println( nextLine.length + " " + rows + " " + columnCounter + " " +nextLine[columnCounter]);
+					if ( nextLine.length > columnCounter && !nextLine[columnCounter].isEmpty() && !nextLine[columnCounter].equals("\"") &&!ignoreList.contains(columnCounter) && columnCounter!=PID && 
 							columnCounter!= Sourcesystem && columnCounter != DownloadDate && 
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 

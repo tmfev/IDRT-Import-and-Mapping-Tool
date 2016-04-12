@@ -67,7 +67,7 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-8.4-703.jdbc4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.2-1003.jdbc3.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.3-1102.jdbc4.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/routines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/routines.jar" sourcepath="TalendJobs/lib/systemRoutines.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/saxon9.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/StatusListener29.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/talend_file_enhanced_20070724.jar"/>
