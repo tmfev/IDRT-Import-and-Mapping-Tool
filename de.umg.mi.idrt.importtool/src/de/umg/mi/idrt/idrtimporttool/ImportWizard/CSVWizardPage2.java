@@ -55,6 +55,7 @@ public class CSVWizardPage2 extends WizardPage {
 
 	private static Label lblIdfile;
 	private static Text quoteCharText;
+	private static Text escapeCharText;
 	private static Text idText;
 	private static Button btnRADIOIdfile;
 	private static Button btnRADIOCsvfile;
@@ -123,6 +124,11 @@ public class CSVWizardPage2 extends WizardPage {
 
 	public static String getQuoteCharText() {
 		return quoteCharText.getText();
+	}
+	
+
+	public static String getEscapeChar() {
+		return escapeCharText.getText();
 	}
 
 	public static boolean getSaveContext() {
@@ -391,6 +397,19 @@ public class CSVWizardPage2 extends WizardPage {
 
 			new Label(container, SWT.NONE);
 			
+			Label labelEscapeChar = new Label(container, SWT.NONE);
+			labelEscapeChar.setText("Escape Character");
+			labelEscapeChar.setToolTipText("Escape Character");
+
+			escapeCharText = new Text(container, SWT.FILL);
+			escapeCharText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+					false, 1, 1));
+			escapeCharText.setText(defaultProps.getProperty("escapeChar","")); 
+			escapeCharText.setEditable(true);
+
+			new Label(container, SWT.NONE);
+			
+			
 			lblEncoding = new Label(container, SWT.NONE);
 			lblEncoding.setToolTipText("Character Quotation");
 			lblEncoding.setText("Encoding");
@@ -402,6 +421,8 @@ public class CSVWizardPage2 extends WizardPage {
 					true, false, 1, 1));
 			encodingCombo.setText(defaultProps.getProperty("encoding")); 
 			new Label(container, SWT.NONE);
+			
+			
 			
 			//TODO REIMPLEMENT
 //			Label labelImportTerms = new Label(container, SWT.NONE);
@@ -440,4 +461,5 @@ public class CSVWizardPage2 extends WizardPage {
 	public static boolean getStopIndex(){
 		return btnStop.getSelection();
 	}
+
 }

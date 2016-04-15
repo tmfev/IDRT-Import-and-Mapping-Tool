@@ -641,7 +641,8 @@ public class CSVWizardPage3 extends WizardPage {
 						}
 						if (!listOfFiles[i].getName().toLowerCase().endsWith(".cfg.csv") 
 								&& listOfFiles[i].isFile()) {
-							list.add(listOfFiles[i].getName());
+							if (listOfFiles[i].getName().toLowerCase().endsWith(".csv"))
+								list.add(listOfFiles[i].getName());
 						}
 					}
 

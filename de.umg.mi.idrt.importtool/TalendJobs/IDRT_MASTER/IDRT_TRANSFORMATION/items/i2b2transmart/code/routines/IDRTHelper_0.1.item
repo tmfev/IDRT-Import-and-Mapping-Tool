@@ -133,7 +133,7 @@ public class IDRTHelper {
 	}
 	char[] DELIMITERS = {';','\t',','};
 	private static char QUOTECHAR='\"';
-	private char getDelimiter(String string) {
+	private char getDelimiter(String string, char escapeChar) {
 
 		CSVReader reader;
 		char dEFAULTDELIM = DELIMITERS[0];
@@ -142,7 +142,7 @@ public class IDRTHelper {
 			for (int i = 0; i < DELIMITERS.length; i++){
 				dEFAULTDELIM = DELIMITERS[i];
 					reader = new CSVReader(
-							new FileReader(string),	dEFAULTDELIM, QUOTECHAR);
+							new FileReader(string),	dEFAULTDELIM, QUOTECHAR, escapeChar);
 
 					String[] testLine = reader.readNext();
 					reader.close();
@@ -229,7 +229,7 @@ public class IDRTHelper {
 			EndDate = -1;
 			objectID = -1;
 
-			char inputDelim = getDelimiter(config.getAbsolutePath());
+			char inputDelim = getDelimiter(config.getAbsolutePath(), '\0');
 			ignoreList = new LinkedList<Integer>();
 			blobList = new LinkedList<Integer>();
 			CSVReader CSVInput = new CSVReader(new FileReader(config), inputDelim);
@@ -373,15 +373,15 @@ public class IDRTHelper {
 	//NO pidgen
 	//input,output,ont,context.i2b2HeadNode,context.MDPDName,context.MDPD,context.fileName,context.quoteChar, context.datePattern
 	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, 
-			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB, String encoding) throws SQLException {
+			String tableName, char quoteChar, String pattern, BigDecimal instanceNumDB, String encoding, char escapeChar) throws SQLException {
 		try {
 			BufferedReader in = new BufferedReader(
 					   new InputStreamReader(
 			                      new FileInputStream(input), encoding));
 			long start = System.currentTimeMillis();
-			char inputDelim = getDelimiter(input.getAbsolutePath());
+			char inputDelim = getDelimiter(input.getAbsolutePath(), escapeChar);
 			char outputDelim = '\t';
-			CSVReader CSVInput = new CSVReader(in, inputDelim, quoteChar, headline); //
+			CSVReader CSVInput = new CSVReader(in, inputDelim, quoteChar,escapeChar,headline); //
 			int allRows = 1;
 			String []nextLine = CSVInput.readNext();
 			while((nextLine = CSVInput.readNext()) != null){
@@ -393,7 +393,7 @@ public class IDRTHelper {
 			in = new BufferedReader(
 					   new InputStreamReader(
 			                      new FileInputStream(input), encoding));
-			CSVInput = new CSVReader(in, inputDelim, quoteChar, headline); //
+			CSVInput = new CSVReader(in, inputDelim, quoteChar, escapeChar ,headline); //
 			
 			BufferedWriter out = new BufferedWriter(
 					   new OutputStreamWriter(
@@ -749,10 +749,9 @@ public class IDRTHelper {
 				//
 				//					currentColumn = coulumnNameIterator.next();
 				int columnNumber = columnNames.size();
-				//System.out.println("COLUMNNUMBER: " +columnNumber);
 				//				System.out.println(columnNumber);
 				//				while(coulumnNameIterator.hasNext()){
-				for (int i= 0; i<nextLine.length && i < columnNames.size() ;i++){
+				for (int i= 0; i<columnNumber;i++){
 					//					currentColumn = coulumnNameIterator.next();
 					currentColumn = columnNames.get(i);				
 										//System.out.println("currentColumn: " + currentColumn); 
@@ -766,8 +765,8 @@ public class IDRTHelper {
 					/**
 					 * skip PID Column
 					 */
-					//System.out.println( nextLine.length + " " + rows + " " + columnCounter + " " +nextLine[columnCounter]);
-					if ( nextLine.length > columnCounter && !nextLine[columnCounter].isEmpty() && !nextLine[columnCounter].equals("\"") &&!ignoreList.contains(columnCounter) && columnCounter!=PID && 
+
+					if ( !nextLine[columnCounter].isEmpty() && !nextLine[columnCounter].equals("\"") &&!ignoreList.contains(columnCounter) && columnCounter!=PID && 
 							columnCounter!= Sourcesystem && columnCounter != DownloadDate && 
 							columnCounter != ImportDate && columnCounter != UpdateDate && 
 							columnCounter != EncounterID && columnCounter != DeathDay && 
@@ -915,16 +914,16 @@ public class IDRTHelper {
 
 	// pidgen
 	public void rotateData(File input, File output, File ont, String headnode, String pdName, String pd, String tableName, 
-			char quoteChar, HashMap<String,String>pidMap, String pattern,BigDecimal instanceNumDB, String encoding) throws SQLException {
+			char quoteChar, HashMap<String,String>pidMap, String pattern,BigDecimal instanceNumDB, String encoding, char escapeChar) throws SQLException {
 
 		try {
 			BufferedReader in = new BufferedReader(
 					   new InputStreamReader(
 			                      new FileInputStream(input), encoding));
 			long start = System.currentTimeMillis();
-			char inputDelim = getDelimiter(input.getAbsolutePath());
+			char inputDelim = getDelimiter(input.getAbsolutePath(), escapeChar);
 			char outputDelim = '\t';
-			CSVReader CSVInput = new CSVReader(in, inputDelim, quoteChar, headline); //
+			CSVReader CSVInput = new CSVReader(in, inputDelim, quoteChar, escapeChar ,headline); //
 			int allRows = 1;
 			String []nextLine = CSVInput.readNext();
 			while((nextLine = CSVInput.readNext()) != null){
@@ -936,7 +935,7 @@ public class IDRTHelper {
 			in = new BufferedReader(
 					   new InputStreamReader(
 			                      new FileInputStream(input), encoding));
-			CSVInput = new CSVReader(in, inputDelim, quoteChar, headline); //
+			CSVInput = new CSVReader(in, inputDelim, quoteChar, escapeChar , headline); //
 			
 			BufferedWriter out = new BufferedWriter(
 					   new OutputStreamWriter(

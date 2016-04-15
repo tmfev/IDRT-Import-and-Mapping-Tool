@@ -211,6 +211,7 @@ public class CSVImportWizard extends Wizard {
 		final String dbType = selectedServer.getDatabaseType();
 		final String whType = selectedServer.getWhType().toLowerCase();
 		final String encoding = CSVWizardPage2.getEncoding();
+		final String escapeChar = CSVWizardPage2.getEscapeChar();
 //		final String ipText = WizardPage1.getIpText();
 //		final String passwordText = WizardPage1.getDBUserPasswordText();
 //		final String dbUserText = WizardPage1.getDBUserText();
@@ -291,6 +292,8 @@ public class CSVImportWizard extends Wizard {
 					contextMap.put("MDPDName", defaultProps.getProperty("MDPDName"));
 					
 					contextMap.put("encoding", encoding);
+				
+					
 					/**
 					 * page 2
 					 */
@@ -347,6 +350,10 @@ public class CSVImportWizard extends Wizard {
 					
 					contextMap.put("quoteChar", quoteChar);
 					defaultProps.setProperty("quoteChar", quoteChar);
+					
+					contextMap.put("escapeChar", escapeChar);
+					defaultProps.setProperty("escapeChar", escapeChar);
+					
 					// WITH PIDGEN!
 					if (usePIDGenerator && IDinCSVFile) {
 						// Int. Import

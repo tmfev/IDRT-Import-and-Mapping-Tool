@@ -160,7 +160,9 @@ public class IDRTImport {
 		StatusListener.startLogging();
 		ServerView.btnStopSetEnabled(true);
 		CSV_MASTER CSVImport = new CSV_MASTER();
-		exitCode = CSVImport.runJobInTOS(getARGV());
+		
+			exitCode = CSVImport.runJobInTOS(getARGV());
+		
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
