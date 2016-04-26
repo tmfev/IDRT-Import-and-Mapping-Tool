@@ -56,7 +56,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;134.76.113.224&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2t&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:oracle:thin:@134.76.113.224:1521:i2b2t"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="1521"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;I2B2BB1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;system&quot;"/>
@@ -89,7 +89,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2postgresbb1&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
@@ -122,7 +122,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;141.5.103.47&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;transmart&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/transmart"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="4Sv1E6pGuLA="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>
@@ -155,7 +155,7 @@
     <contextParameter comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;192.168.224.129&quot;"/>
     <contextParameter comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="jdbc:postgresql://192.168.224.129:5432/i2b2"/>
-    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value="zVL2YvEPjlc="/>
+    <contextParameter comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_Password" value=""/>
     <contextParameter comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="5432"/>
     <contextParameter comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;i2b2idrtdemodataproject&quot;"/>
     <contextParameter comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" repositoryContextId="_oZz0sBbVEeOuHN-6heRoKw" type="id_String" value="&quot;postgres&quot;"/>

@@ -206,11 +206,12 @@ public class IDRTHelper {
 	}
 	public String replaceIDRT(String toReplace){
 		return toReplace.replaceAll("Ä„", "AE").replaceAll("ä", "ae").replaceAll("Ö", "OE").replaceAll("ö", "oe")
-				.replaceAll("ü", "ue").replaceAll("Ü","ue").replaceAll("-", "_").replaceAll("\"", "'").replaceAll("\t", " ");
+				.replaceAll("ü", "ue").replaceAll("Ü","ue").replaceAll("-", "_").replaceAll("\"", "'").replaceAll("\t", " ")
+				;
 
 	}
 	public static String replaceUnwantedStrings(String toReplace){
-		return toReplace.replaceAll("\"", "'").replaceAll("\t", " ");
+		return toReplace.replaceAll("\"", "'").replaceAll("\t", " ").replaceAll("\n"," ");
 
 	}
 	public void readConfig(File config, char quoteChar) {

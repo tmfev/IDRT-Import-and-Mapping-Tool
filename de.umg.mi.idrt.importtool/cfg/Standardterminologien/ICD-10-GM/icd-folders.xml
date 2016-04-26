@@ -1939,6 +1939,12 @@
 		<level>6</level>
 	</class>
 	<class>
+		<code>D68.2</code>
+		<label>Hereditärer Mangel an sonstigen Gerinnungsfaktoren</label>
+		<path>\i2b2\ST\ICD-10-GM\III\D65-D69\D68\D68.2\</path>
+		<level>7</level>
+	</class>
+	<class>
 		<code>D68.3</code>
 		<label>Hämorrhagische Diathese durch Antikoagulanzien und Antikörper</label>
 		<path>\i2b2\ST\ICD-10-GM\III\D65-D69\D68\D68.3\</path>
@@ -4154,7 +4160,7 @@
 	</class>
 	<class>
 		<code>I48</code>
-		<label>Vorhofflattern und Vorhofflimmern</label>
+		<label>Vorhofflimmern und Vorhofflattern</label>
 		<path>\i2b2\ST\ICD-10-GM\IX\I30-I52\I48\</path>
 		<level>6</level>
 	</class>
@@ -4378,12 +4384,6 @@
 		<code>I83</code>
 		<label>Varizen der unteren Extremitäten</label>
 		<path>\i2b2\ST\ICD-10-GM\IX\I80-I89\I83\</path>
-		<level>6</level>
-	</class>
-	<class>
-		<code>I84</code>
-		<label>Hämorrhoiden</label>
-		<path>\i2b2\ST\ICD-10-GM\IX\I80-I89\I84\</path>
 		<level>6</level>
 	</class>
 	<class>
@@ -5023,6 +5023,24 @@
 		<level>6</level>
 	</class>
 	<class>
+		<code>K43.6</code>
+		<label>Sonstige und nicht näher bezeichnete Hernia ventralis mit Einklemmung, ohne Gangrän</label>
+		<path>\i2b2\ST\ICD-10-GM\XI\K40-K46\K43\K43.6\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>K43.7</code>
+		<label>Sonstige und nicht näher bezeichnete Hernia ventralis mit Gangrän</label>
+		<path>\i2b2\ST\ICD-10-GM\XI\K40-K46\K43\K43.7\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>K43.9</code>
+		<label>Sonstige und nicht näher bezeichnete Hernia ventralis ohne Einklemmung und ohne Gangrän</label>
+		<path>\i2b2\ST\ICD-10-GM\XI\K40-K46\K43\K43.9\</path>
+		<level>7</level>
+	</class>
+	<class>
 		<code>K44</code>
 		<label>Hernia diaphragmatica</label>
 		<path>\i2b2\ST\ICD-10-GM\XI\K40-K46\K44\</path>
@@ -5077,123 +5095,129 @@
 		<level>7</level>
 	</class>
 	<class>
-		<code>K55-K63</code>
+		<code>K55-K64</code>
 		<label>Sonstige Krankheiten des Darmes</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\</path>
 		<level>5</level>
 	</class>
 	<class>
 		<code>K55</code>
 		<label>Gefäßkrankheiten des Darmes</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K55\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K55\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K55.2</code>
 		<label>Angiodysplasie des Kolons</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K55\K55.2\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K55\K55.2\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K55.8</code>
 		<label>Sonstige Gefäßkrankheiten des Darmes</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K55\K55.8\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K55\K55.8\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K56</code>
-		<label>Paralytischer Ileus und mechanischer Ileus ohne Hernie</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K56\</path>
+		<label>Paralytischer Ileus und intestinale Obstruktion ohne Hernie</label>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K56\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K57</code>
 		<label>Divertikulose des Darmes</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K57.0</code>
 		<label>Divertikulose des Dünndarmes mit Perforation und Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.0\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.0\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.1</code>
 		<label>Divertikulose des Dünndarmes ohne Perforation oder Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.1\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.1\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.2</code>
 		<label>Divertikulose des Dickdarmes mit Perforation und Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.2\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.2\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.3</code>
 		<label>Divertikulose des Dickdarmes ohne Perforation oder Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.3\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.3\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.4</code>
 		<label>Divertikulose sowohl des Dünndarmes als auch des Dickdarmes mit Perforation und Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.4\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.4\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.5</code>
 		<label>Divertikulose sowohl des Dünndarmes als auch des Dickdarmes ohne Perforation oder Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.5\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.5\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.8</code>
 		<label>Divertikulose des Darmes, Teil nicht näher bezeichnet, mit Perforation und Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.8\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.8\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K57.9</code>
 		<label>Divertikulose des Darmes, Teil nicht näher bezeichnet, ohne Perforation oder Abszess</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K57\K57.9\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K57\K57.9\</path>
 		<level>7</level>
 	</class>
 	<class>
 		<code>K58</code>
 		<label>Reizdarmsyndrom</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K58\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K58\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K59</code>
 		<label>Sonstige funktionelle Darmstörungen</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K59\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K59\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K60</code>
 		<label>Fissur und Fistel in der Anal- und Rektalregion</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K60\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K60\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K61</code>
 		<label>Abszess in der Anal- und Rektalregion</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K61\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K61\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K62</code>
 		<label>Sonstige Krankheiten des Anus und des Rektums</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K62\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K62\</path>
 		<level>6</level>
 	</class>
 	<class>
 		<code>K63</code>
 		<label>Sonstige Krankheiten des Darmes</label>
-		<path>\i2b2\ST\ICD-10-GM\XI\K55-K63\K63\</path>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K63\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>K64</code>
+		<label>Hämorrhoiden und Perianalvenenthrombose</label>
+		<path>\i2b2\ST\ICD-10-GM\XI\K55-K64\K64\</path>
 		<level>6</level>
 	</class>
 	<class>
@@ -6004,12 +6028,6 @@
 		<code>M23.3</code>
 		<label>Sonstige Meniskusschädigungen</label>
 		<path>\i2b2\ST\ICD-10-GM\XIII\M00-M25\M20-M25\M23\M23.3\</path>
-		<level>8</level>
-	</class>
-	<class>
-		<code>M23.4</code>
-		<label>Freier Gelenkkörper im Kniegelenk</label>
-		<path>\i2b2\ST\ICD-10-GM\XIII\M00-M25\M20-M25\M23\M23.4\</path>
 		<level>8</level>
 	</class>
 	<class>
@@ -7046,7 +7064,7 @@
 	</class>
 	<class>
 		<code>O22</code>
-		<label>Venenkrankheiten als Komplikation in der Schwangerschaft</label>
+		<label>Venenkrankheiten und Hämorrhoiden als Komplikationen in der Schwangerschaft</label>
 		<path>\i2b2\ST\ICD-10-GM\XV\O20-O29\O22\</path>
 		<level>6</level>
 	</class>
@@ -7328,7 +7346,7 @@
 	</class>
 	<class>
 		<code>O87</code>
-		<label>Venenkrankheiten als Komplikation im Wochenbett</label>
+		<label>Venenkrankheiten und Hämorrhoiden als Komplikationen im Wochenbett</label>
 		<path>\i2b2\ST\ICD-10-GM\XV\O85-O92\O87\</path>
 		<level>6</level>
 	</class>
@@ -8359,6 +8377,12 @@
 		<level>6</level>
 	</class>
 	<class>
+		<code>Q86.8</code>
+		<label>Sonstige angeborene Fehlbildungssyndrome durch bekannte äußere Ursachen</label>
+		<path>\i2b2\ST\ICD-10-GM\XVII\Q80-Q89\Q86\Q86.8\</path>
+		<level>7</level>
+	</class>
+	<class>
 		<code>Q87</code>
 		<label>Sonstige näher bezeichnete angeborene Fehlbildungssyndrome mit Beteiligung mehrerer Systeme</label>
 		<path>\i2b2\ST\ICD-10-GM\XVII\Q80-Q89\Q87\</path>
@@ -8837,6 +8861,12 @@
 		<label>Ungenau bezeichnete und unbekannte Todesursachen</label>
 		<path>\i2b2\ST\ICD-10-GM\XVIII\R95-R99\</path>
 		<level>5</level>
+	</class>
+	<class>
+		<code>R95</code>
+		<label>Plötzlicher Kindstod</label>
+		<path>\i2b2\ST\ICD-10-GM\XVIII\R95-R99\R95\</path>
+		<level>6</level>
 	</class>
 	<class>
 		<code>R96</code>
@@ -11197,6 +11227,12 @@
 		<level>6</level>
 	</class>
 	<class>
+		<code>Z45.0</code>
+		<label>Anpassung und Handhabung eines kardialen (elektronischen) Geräts</label>
+		<path>\i2b2\ST\ICD-10-GM\XXI\Z40-Z54\Z45\Z45.0\</path>
+		<level>7</level>
+	</class>
+	<class>
 		<code>Z45.2</code>
 		<label>Anpassung und Handhabung eines vaskulären Zugangs</label>
 		<path>\i2b2\ST\ICD-10-GM\XXI\Z40-Z54\Z45\Z45.2\</path>
@@ -11390,7 +11426,7 @@
 	</class>
 	<class>
 		<code>Z93.8</code>
-		<label>Vorhandensein von sonstigen künstlichen Körperöffnungen</label>
+		<label>Vorhandensein sonstiger künstlicher Körperöffnungen</label>
 		<path>\i2b2\ST\ICD-10-GM\XXI\Z80-Z99\Z93\Z93.8\</path>
 		<level>7</level>
 	</class>
@@ -11456,7 +11492,7 @@
 	</class>
 	<class>
 		<code>U00-U49</code>
-		<label>Vorläufige Zuordnungen für Krankheiten mit unklarer Ätiologie</label>
+		<label>Vorläufige Zuordnungen für Krankheiten mit unklarer Ätiologie und nicht belegte Schlüsselnummern</label>
 		<path>\i2b2\ST\ICD-10-GM\XXII\U00-U49\</path>
 		<level>5</level>
 	</class>
@@ -11467,9 +11503,15 @@
 		<level>6</level>
 	</class>
 	<class>
-		<code>U05</code>
-		<label>Nicht belegte Schlüsselnummern</label>
-		<path>\i2b2\ST\ICD-10-GM\XXII\U00-U49\U05\</path>
+		<code>U06</code>
+		<label>Nicht belegte Schlüsselnummer U06</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U00-U49\U06\</path>
+		<level>6</level>
+	</class>
+	<class>
+		<code>U07</code>
+		<label>Nicht belegte Schlüsselnummer U07</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U00-U49\U07\</path>
 		<level>6</level>
 	</class>
 	<class>
@@ -11641,6 +11683,30 @@
 		<level>6</level>
 	</class>
 	<class>
+		<code>U80.0</code>
+		<label>Staphylococcus aureus mit Resistenz gegen Oxacillin, Glykopeptid-Antibiotika, Chinolone, Streptogramine oder Oxazolidinone</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U80-U85\U80\U80.0\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>U80.1</code>
+		<label>Streptococcus pneumoniae mit Resistenz gegen Penicillin, Oxacillin, Makrolid-Antibiotika, Oxazolidinone oder Streptogramine</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U80-U85\U80\U80.1\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>U80.2</code>
+		<label>Enterococcus faecalis mit Resistenz gegen Glykopeptid-Antibiotika oder Oxazolidinone oder mit High-Level-Aminoglykosid-Resistenz</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U80-U85\U80\U80.2\</path>
+		<level>7</level>
+	</class>
+	<class>
+		<code>U80.3</code>
+		<label>Enterococcus faecium mit Resistenz gegen Glykopeptid-Antibiotika, Oxazolidinone oder Streptogramine oder mit High-Level-Aminoglykosid-Resistenz</label>
+		<path>\i2b2\ST\ICD-10-GM\XXII\U80-U85\U80\U80.3\</path>
+		<level>7</level>
+	</class>
+	<class>
 		<code>U82</code>
 		<label>Mykobakterien mit Resistenz gegen Antituberkulotika (Erstrangmedikamente)</label>
 		<path>\i2b2\ST\ICD-10-GM\XXII\U80-U85\U82\</path>
@@ -11654,7 +11720,7 @@
 	</class>
 	<class>
 		<code>U99</code>
-		<label>Nicht belegte Schlüsselnummern</label>
+		<label>Nicht belegte Schlüsselnummer U99</label>
 		<path>\i2b2\ST\ICD-10-GM\XXII\U99-U99\U99\</path>
 		<level>6</level>
 	</class>
