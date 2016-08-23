@@ -660,7 +660,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_15"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="544" posY="416">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="512">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;System.out.println(&quot;success&quot;);&#xA;if (context.dbImport){&#xA;//context.currentFile = &quot;C:\\Desktop\\CSV\\CSV\\blabla.csv&quot;;&#xA;//context.config = &quot;C:\\Desktop\\CSV\\CSV\\blabla.cfg.csv&quot;;&#xA;//context.fileName = &quot;blabla&quot;;&#xA;}&#xA;&#xA;else {&#xA;context.status=context.status+ (context.statusTmp/100)*10;&#xA;StatusListener.setStatus(context.status , &quot;Rotating Data...&quot;,context.currentFile);&#xA;&#xA;&#xA;}"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>

@@ -505,7 +505,7 @@
     <elementParameter field="MEMO" name="COMMENT" value="This SubJob simply loads the generated data into the i2b2-database.&#xD;&#xA;&#xD;&#xA;Input: Several CSV-Files, in i2b2-database-table-form.&#xD;&#xA;- patient_mapping&#xD;&#xA;- patient_dimension&#xD;&#xA;- concept_dimension&#xD;&#xA;- encounter_mapping&#xD;&#xA;- observation_fact&#xD;&#xA;- ontology (=i2b2)&#xD;&#xA;&#xD;&#xA;Output:&#xD;&#xA;full i2b2-datenbase."/>
     <metadata connector="FLOW" name="tRunJob_4"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="96" posY="-32">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="96" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;MasterJob started&quot;);&#xA;System.out.println(context.folderMain);&#xA;context.counter = 0;&#xA;context.status=0.0f;&#xA;context.currentCounter = 0;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -568,7 +568,7 @@
     <elementParameter field="MEMO" name="COMMENT" value="This SubJob creates the i2b2-ontology from the ODM-File."/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="256" posY="-32">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_12" show="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
@@ -734,7 +734,7 @@
     <elementParameter field="CHECK" name="INFORMATION" value="true"/>
     <elementParameter field="MEMO" name="COMMENT" value="StatusListener for submitting the process state to the IDRT-Import-Tool."/>
   </node>
-  <node componentName="tFileList" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-64" posY="-32">
+  <node componentName="tFileList" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-96" posY="-96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileList_4" show="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="context.folderODM"/>
     <elementParameter field="CLOSED_LIST" name="LIST_MODE" value="FILES"/>
@@ -757,9 +757,9 @@
     <elementParameter field="TEXT" name="LABEL" value="open ODM Files"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-224" posY="-32">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-256" posY="-96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.counter++;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.counter++;&#xA;System.out.println(&quot;counter: &quot; + context.counter);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;"/>
     <elementParameter field="TEXT" name="LABEL" value="Select ODM-File"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -1057,7 +1057,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_11"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="-160">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="-160" sizeX="96" sizeY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String foo = &quot;bar&quot;;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -1350,6 +1350,7 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;220;250"/>
   </subjob>
   <subjob>
+    <elementParameter field="CHECK" name="COLLAPSED" value="true" show="false"/>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputXML_1" show="false"/>
     <elementParameter field="TEXT" name="SUBJOB_TITLE" value="Get study ID"/>

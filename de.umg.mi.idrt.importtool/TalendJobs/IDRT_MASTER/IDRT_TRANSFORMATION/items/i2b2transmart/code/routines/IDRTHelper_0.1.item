@@ -211,7 +211,7 @@ public class IDRTHelper {
 
 	}
 	public static String replaceUnwantedStrings(String toReplace){
-		return toReplace.replaceAll("\"", "'").replaceAll("\t", " ").replaceAll("\n"," ");
+		return toReplace.replaceAll("\"", "'").replaceAll("\t", " ").replaceAll("\r", " ").replaceAll("\n"," ").replaceAll(";",",");
 
 	}
 	public void readConfig(File config, char quoteChar) {

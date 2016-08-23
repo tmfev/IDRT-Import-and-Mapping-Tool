@@ -160,9 +160,9 @@ public class IDRTImport {
 		StatusListener.startLogging();
 		ServerView.btnStopSetEnabled(true);
 		CSV_MASTER CSVImport = new CSV_MASTER();
-		
-			exitCode = CSVImport.runJobInTOS(getARGV());
-		
+
+		exitCode = CSVImport.runJobInTOS(getARGV());
+
 		clearInputFolder();
 		if (exitCode == 0 && importTerms) {
 			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
@@ -320,12 +320,6 @@ public class IDRTImport {
 			ServerView.stdImportStarted = true;
 			HashMap<String, String> contextMap = new HashMap<String, String>();
 			final String dbType = server.getDatabaseType();
-			//		contextMap.put("DBHost", server.getIp());
-			//		contextMap.put("DBPassword", server.getPassword());
-			//		contextMap.put("DBUsername", server.getUser());
-			//		contextMap.put("DBInstance", server.getSID());
-			//		contextMap.put("DBPort", server.getPort());
-			//		contextMap.put("DBSchema", project);
 
 			contextMap.put("DB_StagingI2B2_Host", server.getIp());
 			contextMap.put("DB_StagingI2B2_Password", server.getPassword());
@@ -396,7 +390,7 @@ public class IDRTImport {
 	}
 
 	public static int runStarLIMSImport() {
-System.out.println("RUNNING STARLIMSIMPORT@IDRTImport");
+		System.out.println("RUNNING STARLIMSIMPORT@IDRTImport");
 		StatusListener.startLogging();
 		ServerView.btnStopSetEnabled(true);
 		STARLIMS_MASTER StarlimsImport = new STARLIMS_MASTER();

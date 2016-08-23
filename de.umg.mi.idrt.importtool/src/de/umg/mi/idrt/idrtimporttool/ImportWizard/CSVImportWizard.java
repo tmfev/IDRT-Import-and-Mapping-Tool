@@ -280,6 +280,7 @@ public class CSVImportWizard extends Wizard {
 					/**
 					 * page 1
 					 */
+					contextMap.put("dbImport", "false");
 					contextMap.put("DB_StagingI2B2_Host", ipText);
 					contextMap.put("DB_StagingI2B2_Password", passwordText);
 					contextMap.put("DB_StagingI2B2_Username", dbUserText);
