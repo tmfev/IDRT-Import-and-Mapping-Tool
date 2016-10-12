@@ -1,0 +1,7 @@
+"Spaltenname (Pflicht)";"IK";"ENTLASSENDER_STANDORT";"ENTGELTBEREICH";"KH_INTERNES_KENNZEICHEN";"DIAGNOSEART";"ICD_VERSION";"ICD_KODE";"LOKALISATION";"DIAGNOSENSICHERHEIT";"SEKUNDAER_KODE";"LOKALISATION_1";"DIAGNOSENSICHERHEIT_1";"PATIENTENNR"
+"Datentyp (Pflicht)";"Integer";"String";"String";"Integer";"String";"Integer";"String";"String";"String";"String";"String";"String";"Integer"
+"Name (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Tooltip (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Metainformationen";"";"";"";"";"";"";"";"";"";"";"";"";"ObjectID"
+"PID-Generator";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Headline";"0";"";"";"";"";"";"";"";"";"";"";"";""

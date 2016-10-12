@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2015/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2015/fab_3_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2015/icd_3_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2015/ops_3_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/P21_ERWEITERUNG_2015/p21_erweiterung_2015_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung/idrt_jdbc_upload_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung/idrt_to_db_schema_1_0.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/MDR_IDRT_Anbindung/mdr_check_root_1_0.jar"/>
@@ -49,7 +54,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/odm_extract_pd_with_xslt_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/ODM_MASTER/odm_master_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/advancedPersistentLookupLib-1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/commons-collections-3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/dom4j-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/jakarta-oro-2.0.8.jar"/>
@@ -67,7 +71,7 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-8.4-703.jdbc4.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.2-1003.jdbc3.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/postgresql-9.3-1102.jdbc4.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/routines.jar" sourcepath="TalendJobs/lib/systemRoutines.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/routines.jar" sourcepath="TalendJobs/lib/userRoutines.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/saxon9.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/StatusListener29.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/IDRT_MASTER/lib/talend_file_enhanced_20070724.jar"/>

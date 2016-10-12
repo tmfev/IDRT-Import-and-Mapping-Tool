@@ -1,0 +1,7 @@
+"Spaltenname (Pflicht)";"IK";"ENTLASSENDER_STANDORT";"ENTGELTBEREICH";"KH_INTERNES_KENNZEICHEN";"IK_DER_KRANKENKASSE";"GEBURTSJAHR";"GEBURTSMONAT";"GESCHLECHT";"PLZ";"AUFNAHMEDATUM";"AUFNAHMEANLASS";"AUFNAHMEGRUND";"FALLZUSAMMENFUEHRUNG";"FALLZUSAMMENFUEHRUNGSGRUND";"AUFNAHMEGEWICHT";"ENTLASSUNGSDATUM";"ENTLASSUNGSGRUND";"ALTER_IN_TAGEN_AM_AUFNAHMETAG";"ALTER_IN_JAHREN_AM_AUFNAHMETAG";"PATIENTENNUMMER";"INTERKURRENTE_DIALYSEN";"BEATMUNGSSTUNDEN";"BEHANDLUNGSBEGINN_VORSTATIONAER";"BEHANDLUNGSTAGE_VORSTATIONAER";"BEHANDLUNGSENDE_NACHSTATIONAER";"BEHANDLUNGSTAGE_NACHSTATIONAER";"IK_VERLEGUNGS_KH";"BELEGUNGSTAGE_AUSSERH_KHENTGG";"BEURLAUBUNGSTAGE_PSY"
+"Datentyp (Pflicht)";"Integer";"String";"String";"Integer";"String";"String";"Integer";"Integer";"Integer";"String";"Integer";"String";"Float";"String";"Integer";"String";"String";"Integer";"Float";"Integer";"Integer";"Integer";"Integer";"String";"Integer";"Integer";"Integer";"String";"String"
+"Name (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Tooltip (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Metainformationen";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"ObjectID";"";"";"";"";"";"";"";"";""
+"PID-Generator";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"Headline";"0";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
