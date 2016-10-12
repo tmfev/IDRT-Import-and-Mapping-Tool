@@ -541,32 +541,9 @@ public class CSVWizardPage3 extends WizardPage {
 					File configFile = new File(csvFolder
 							+ fileConfigMap
 							.get(table));
-					char inputDelim = DEFAULTDELIM;
-					CSVReader reader = new CSVReader(
-							new FileReader(configFile),
-							inputDelim);
-					String[] testLine = reader.readNext();
-					reader.close();
-					if (testLine != null) {
+					char inputDelim = getDelimiter(configFile.getAbsolutePath());
 
-						if (testLine.length == 1) {
-							System.err
-							.println("Wrong delimiter?"); 
-							System.err.println(inputDelim + "==" + DEFAULTDELIM);
-							if (inputDelim == DEFAULTDELIM) {
-								inputDelim = '\t';
-								System.err
-								.println("Delimiter set to: \\t"); 
-							} else {
-								inputDelim = DEFAULTDELIM;
-								System.err
-								.println("DefDelimiter set to: " 
-										+ DEFAULTDELIM);
-							}
-						}
-						//										DEFAULTDELIM = inputDelim;
-
-						reader = new CSVReader(new FileReader(
+						CSVReader reader = new CSVReader(new FileReader(
 								configFile), inputDelim, QUOTECHAR);
 						String[] line1 = reader.readNext();
 						reader.readNext();
@@ -592,7 +569,6 @@ public class CSVWizardPage3 extends WizardPage {
 							setErrorMessage("No PatientID or ObjectID found in " + table + "!");
 							incompleteConfigs.add(table);
 						}
-					}
 				}
 				else {
 					incompleteConfigs.add(table);

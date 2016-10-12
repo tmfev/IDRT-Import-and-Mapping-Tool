@@ -1049,7 +1049,7 @@ public class TalendDate {
      * {example} getCurrentDate()
      */
     public static Date getCurrentDate() {
-        return Calendar.getInstance().getTime();
+        return new Date();
     }
 
     /**

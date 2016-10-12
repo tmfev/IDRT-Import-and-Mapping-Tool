@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
-  <contextParameter comment="" name="counter" prompt="counter?" promptNeeded="false" type="id_Integer" value=""/>
-  <contextParameter comment="" name="currentCounter" prompt="currentCounter?" promptNeeded="false" type="id_Integer" value=""/>
-  <contextParameter comment="" name="status" prompt="status?" promptNeeded="false" type="id_Float" value=""/>
-  <contextParameter comment="" name="statusTmp" prompt="statusTmp?" promptNeeded="false" type="id_Float" value=""/>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="__90tAJBPEeaNAs9Z8Hyqbw" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="__90tAZBPEeaNAs9Z8Hyqbw" comment="" name="counter" prompt="counter?" promptNeeded="false" type="id_Integer" value=""/>
+  <contextParameter xmi:id="__90tApBPEeaNAs9Z8Hyqbw" comment="" name="currentCounter" prompt="currentCounter?" promptNeeded="false" type="id_Integer" value=""/>
+  <contextParameter xmi:id="__90tA5BPEeaNAs9Z8Hyqbw" comment="" name="status" prompt="status?" promptNeeded="false" type="id_Float" value=""/>
+  <contextParameter xmi:id="__90tBJBPEeaNAs9Z8Hyqbw" comment="" name="statusTmp" prompt="statusTmp?" promptNeeded="false" type="id_Float" value=""/>
 </talendfile:ContextType>
