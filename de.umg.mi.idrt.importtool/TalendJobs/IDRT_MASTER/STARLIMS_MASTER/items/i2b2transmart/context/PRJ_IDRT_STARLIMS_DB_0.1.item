@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_ClassName" prompt="PRJ_IDRT_STARLIMS_ClassName?" promptNeeded="false" type="id_String" value="oracle.jdbc.driver.OracleDriver"/>
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" type="id_String" value="oracle_id"/>
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" type="id_String" value="PRJ_IDRT_STARLIMS"/>
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_DriverJar" prompt="PRJ_IDRT_STARLIMS_DriverJar?" promptNeeded="false" type="id_String" value="C:\\Talend Open Studio V5.3.1\\TOS_DI-Win32-r104014-V5.3.1\\lib\\java\\ojdbc14.jar"/>
-  <contextParameter comment="" name="PRJ_IDRT_STARLIMS_JdbcUrl" prompt="PRJ_IDRT_STARLIMS_JdbcUrl?" promptNeeded="false" type="id_String" value="jdbc:oracle:thin:@141.67.20.199:1514:COGN11"/>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="__9O3IJBPEeaNAs9Z8Hyqbw" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="__9O3IZBPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_ClassName" prompt="PRJ_IDRT_STARLIMS_ClassName?" promptNeeded="false" type="id_String" value="oracle.jdbc.driver.OracleDriver"/>
+  <contextParameter xmi:id="__9O3IpBPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_MappingFile" prompt="PRJ_IDRT_STARLIMS_MappingFile?" promptNeeded="false" type="id_String" value="oracle_id"/>
+  <contextParameter xmi:id="__9O3I5BPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_Password" prompt="PRJ_IDRT_STARLIMS_Password?" promptNeeded="false" type="id_Password" value="h6ewOo3MHoC0dyRNWrnUOg=="/>
+  <contextParameter xmi:id="__9O3JJBPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_Login" prompt="PRJ_IDRT_STARLIMS_Login?" promptNeeded="false" type="id_String" value="PRJ_IDRT_STARLIMS"/>
+  <contextParameter xmi:id="__9O3JZBPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_DriverJar" prompt="PRJ_IDRT_STARLIMS_DriverJar?" promptNeeded="false" type="id_String" value="C:\\Talend Open Studio V5.3.1\\TOS_DI-Win32-r104014-V5.3.1\\lib\\java\\ojdbc14.jar"/>
+  <contextParameter xmi:id="__9O3JpBPEeaNAs9Z8Hyqbw" comment="" name="PRJ_IDRT_STARLIMS_JdbcUrl" prompt="PRJ_IDRT_STARLIMS_JdbcUrl?" promptNeeded="false" type="id_String" value="jdbc:oracle:thin:@141.67.20.199:1514:COGN11"/>
 </talendfile:ContextType>

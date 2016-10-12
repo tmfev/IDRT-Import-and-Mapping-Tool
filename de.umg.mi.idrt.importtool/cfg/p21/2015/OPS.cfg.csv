@@ -1,0 +1,7 @@
+"Spaltenname (Pflicht)";"IK";"ENTLASSENDER_STANDORT";"ENTGELTBEREICH";"KH_INTERNES_KENNZEICHEN";"OPS_VERSION";"OPS_KODE";"LOKALISATION";"OPS_DATUM";"BELEGOPERATEUR";"BELEGANAESTHESIST";"BELEGHEBAMME";"PATIENTENNR"
+"Datentyp (Pflicht)";"Integer";"String";"String";"Integer";"Integer";"String";"String";"Float";"String";"String";"String";"Integer"
+"Name (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";""
+"Tooltip (kann leer sein)";"";"";"";"";"";"";"";"";"";"";"";""
+"Metainformationen";"";"";"";"";"";"";"";"";"";"";"";"ObjectID"
+"PID-Generator";"";"";"";"";"";"";"";"";"";"";"";""
+"Headline";"0";"";"";"";"";"";"";"";"";"";"";""

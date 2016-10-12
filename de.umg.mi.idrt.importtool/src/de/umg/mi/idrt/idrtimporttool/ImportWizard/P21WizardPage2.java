@@ -74,9 +74,6 @@ public class P21WizardPage2 extends WizardPage {
 		return checkContext.getSelection();
 	}
 
-	public static boolean getTerms() {
-		return checkTerms.getSelection();
-	}
 
 	public static boolean getTruncateQueries() {
 		return checkTruncateQueries.getSelection();
@@ -100,7 +97,7 @@ public class P21WizardPage2 extends WizardPage {
 
 	private static Button checkTruncate;
 
-	private static Button checkTerms;
+//	private static Button checkTerms;
 	private static Combo p21VersionCombo;
 	private Label cleanUpLabel;
 

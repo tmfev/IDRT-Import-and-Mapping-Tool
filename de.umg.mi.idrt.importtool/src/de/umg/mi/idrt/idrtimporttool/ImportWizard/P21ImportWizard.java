@@ -137,7 +137,7 @@ public class P21ImportWizard extends Wizard {
 	public boolean performFinish() {
 		try {
 			final boolean cleanUp = P21WizardPage2.getCleanUp();
-			final boolean terms = P21WizardPage2.getTerms();
+//			final boolean terms = P21WizardPage2.getTerms();
 			final String pattern = P21WizardPage2.getPattern(); 
 			final boolean truncateQueries = P21WizardPage2.getTruncateQueries();
 			File inputFolder = FileHandler.getBundleFile("/misc/input/");
@@ -198,20 +198,20 @@ public class P21ImportWizard extends Wizard {
 			version = P21WizardPage2.getP21VersionCombo();
 			p21inputFolderPath	= P21WizardPage2.getFolderCSVText();
 
-			if (P21WizardPage2.getTerms()) {
-				/**
-				 * ST-Import
-				 */
-				File rootDir =FileHandler.getBundleFile("/cfg/Standardterminologien/");
-				contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
-				contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
-				contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
-				contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
-				contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
-				contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
-				contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
-				contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
-			}
+//			if (P21WizardPage2.getTerms()) {
+//				/**
+//				 * ST-Import
+//				 */
+//				File rootDir =FileHandler.getBundleFile("/cfg/Standardterminologien/");
+//				contextMap.put("icd10Dir", rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/ICD-10-GM/" + "/");
+//				contextMap.put("tnmDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/TNM/" + "/");
+//				contextMap.put("rootDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/")+ "/");
+//				contextMap.put("loincDir", rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/LOINC/" + "/");
+//				contextMap.put("opsDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/OPS/" + "/");
+//				contextMap.put("p21Dir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/P21/" + "/");
+//				contextMap.put("drgDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/DRG/" + "/");
+//				contextMap.put("icdoDir",rootDir.getAbsolutePath().replaceAll("\\\\", "/") + "/ICD-O-3/" + "/");
+//			}
 			if (cleanUp) {
 				defaultProps.setProperty("cleanUp", "true");
 				contextMap.put("cleanUp", "true");
@@ -258,10 +258,10 @@ public class P21ImportWizard extends Wizard {
 
 					for (File listOfFile : listOfFiles) {
 						if (listOfFile.getName().endsWith(".cfg.csv")) {
-							File output = new File(CSVPath + listOfFile.getName().toLowerCase());
-							if (listOfFile.getName().toLowerCase().startsWith("fall")) {
-								output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
-							}
+							File output = new File(CSVPath + listOfFile.getName()); //.toLowerCase()
+//							if (listOfFile.getName().toLowerCase().startsWith("fall")) {
+//								output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
+//							}
 							copyFile(listOfFile, output);
 						}
 					}
@@ -271,18 +271,20 @@ public class P21ImportWizard extends Wizard {
 
 					for (File listOfFile : listOfP21InputFiles) {
 						if (listOfFile.getName().endsWith(".csv")) {
-							File output = new File(CSVPath + listOfFile.getName().toLowerCase());
+							File output = new File(CSVPath + listOfFile.getName()); //.toLowerCase()
 
-							if (listOfFile.getName().toLowerCase().startsWith("fall")) {
-								output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
-							}
+//							if (listOfFile.getName().toLowerCase().startsWith("fall")) {
+//								output = new File(CSVPath + "_"+listOfFile.getName().toLowerCase());
+//							}
 							copyFile(listOfFile, output);
 						}
 					}
 
 					IDRTImport.setCompleteContext(contextMap);
 				
-					int exitCode = IDRTImport.runP21Import(version, terms);
+					
+					// TODO is CSV import.
+					int exitCode = IDRTImport.runP21Import(version);
 					done = true;
 					StatusListener.setStatus(0, "", "");  
 					StatusListener.setSubStatus(0.0f, "");

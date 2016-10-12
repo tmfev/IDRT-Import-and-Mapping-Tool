@@ -8,6 +8,7 @@ import i2b2transmart.idrt_stdterm_0_1.IDRT_STDTERM;
 import i2b2transmart.idrt_transformation_0_5.IDRT_TRANSFORMATION;
 import i2b2transmart.idrt_truncate_tables_0_1.IDRT_Truncate_Tables;
 import i2b2transmart.odm_master_0_1.ODM_MASTER;
+import i2b2transmart.p21_erweiterung_2015_0_1.P21_ERWEITERUNG_2015;
 import i2b2transmart.starlims_master_1_0.STARLIMS_MASTER;
 
 import java.io.File;
@@ -444,33 +445,37 @@ public class IDRTImport {
 	 * @param importTerms Import the standard terminologies?
 	 * @return Exitcode from TOS (0=success)
 	 */
-	public static int runP21Import(String version, boolean importTerms) {
+	public static int runP21Import(String version) {
 		StatusListener.startLogging();
-
 		ServerView.btnStopSetEnabled(true);
+		
+		P21_ERWEITERUNG_2015 p21 = new P21_ERWEITERUNG_2015();
+		p21.runJobInTOS(getARGV());
+		
+		
 		CSV_MASTER CSVImport = new CSV_MASTER();
 		exitCode = CSVImport.runJobInTOS(getARGV());
-		clearInputFolder();
-		if (exitCode == 0 && importTerms) {
-			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
-			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
-			//			exitCode = stdTerm.runJobInTOS(getARGV());
-			if (exitCode == 0) {
-				HashMap<String, String> contextMap = new HashMap<String, String>();
-				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
-				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
-				setCompleteContext(contextMap);
-				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
-				exitCode = transform.runJobInTOS(getARGV());
-			}
+//		clearInputFolder();
+//		if (exitCode == 0 && importTerms) {
+//			StatusListener.setStatus(99f, "Importing and Mapping Terminologies", "");
+//			//			IDRT_STDTERM stdTerm = new IDRT_STDTERM();
+//			//			exitCode = stdTerm.runJobInTOS(getARGV());
+//			if (exitCode == 0) {
+//				HashMap<String, String> contextMap = new HashMap<String, String>();
+//				File t_mapping = FileHandler.getBundleFile("/cfg/t_mapping.csv");
+//				contextMap.put("t_mapping_path", t_mapping.getAbsolutePath().replaceAll("\\\\", "/"));
+//				setCompleteContext(contextMap);
+//				IDRT_TRANSFORMATION transform = new IDRT_TRANSFORMATION();
+//				exitCode = transform.runJobInTOS(getARGV());
+//			}
+//			ServerView.btnStopSetEnabled(false);
+//			StatusListener.stopLogging();
+//			return exitCode;
+//		} else {
 			ServerView.btnStopSetEnabled(false);
 			StatusListener.stopLogging();
 			return exitCode;
-		} else {
-			ServerView.btnStopSetEnabled(false);
-			StatusListener.stopLogging();
-			return exitCode;
-		}
+//		}
 	}
 
 	/**

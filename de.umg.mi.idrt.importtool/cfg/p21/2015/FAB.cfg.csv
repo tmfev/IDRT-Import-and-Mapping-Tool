@@ -1,0 +1,7 @@
+"Spaltenname (Pflicht)";"IK";"ENTLASSENDER_STANDORT";"ENTGELTBEREICH";"KH_INTERNES_KENNZEICHEN";"FAB";"FAB_AUFNAHMEDATUM";"FAB_ENTLASSUNGSDATUM";"PATIENTENNR"
+"Datentyp (Pflicht)";"Integer";"String";"String";"Integer";"String";"Float";"Float";"Integer"
+"Name (kann leer sein)";"";"";"";"";"";"";"";""
+"Tooltip (kann leer sein)";"";"";"";"";"";"";"";""
+"Metainformationen";"";"";"";"";"";"";"";"ObjectID"
+"PID-Generator";"";"";"";"";"";"";"";""
+"Headline";"0";"";"";"";"";"";"";""
