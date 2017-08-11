@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="__9fV0JBPEeaNAs9Z8Hyqbw" confirmationNeeded="false" name="Default">
-  <contextParameter xmi:id="__9fV0ZBPEeaNAs9Z8Hyqbw" comment="" name="ont_path" prompt="ont_path?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop_Workspace/ont.csv&quot;"/>
-  <contextParameter xmi:id="__9fV0pBPEeaNAs9Z8Hyqbw" comment="" name="data_path" prompt="data_path?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop_Workspace/data.csv&quot;"/>
-  <contextParameter xmi:id="__9fV05BPEeaNAs9Z8Hyqbw" comment="" name="sprec_path" prompt="sprec_path?" promptNeeded="false" type="id_String" value="&quot;C:\Users\Benjamin\eclipse\workspace_kepler_idrt\de.umg.mi.idrt.ioe.git\de.umg.mi.idrt.importtool\misc\SPREC.xlsx&quot;"/>
-  <contextParameter xmi:id="__9fV1JBPEeaNAs9Z8Hyqbw" comment="" name="rasclientid" prompt="rasclientid?" promptNeeded="false" type="id_String" value="Internal"/>
-  <contextParameter xmi:id="__9fV1ZBPEeaNAs9Z8Hyqbw" comment="" name="rasprojectno" prompt="rasprojectno?" promptNeeded="false" type="id_String" value="GCKD-Studie"/>
-  <contextParameter xmi:id="__9fV1pBPEeaNAs9Z8Hyqbw" comment="" name="language" prompt="language?" promptNeeded="false" type="id_String" value="ENG"/>
-</talendfile:ContextType>

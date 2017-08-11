@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/IDRT-Import-and-Mapping-Tool.iml" filepath="$PROJECT_DIR$/.idea/IDRT-Import-and-Mapping-Tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.umg.mi.idrt.admin/de.umg.mi.idrt.admin.iml" filepath="$PROJECT_DIR$/de.umg.mi.idrt.admin/de.umg.mi.idrt.admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.umg.mi.idrt.importtool/de.umg.mi.idrt.importtool.iml" filepath="$PROJECT_DIR$/de.umg.mi.idrt.importtool/de.umg.mi.idrt.importtool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.umg.mi.idrt.ioe/de.umg.mi.idrt.ioe.iml" filepath="$PROJECT_DIR$/de.umg.mi.idrt.ioe/de.umg.mi.idrt.ioe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.umg.mi.idrt.ioe.master/de.umg.mi.idrt.product.id.iml" filepath="$PROJECT_DIR$/de.umg.mi.idrt.ioe.master/de.umg.mi.idrt.product.id.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.umg.mi.idrt.ioe.feature/de.umg.mi.ioe.feature.iml" filepath="$PROJECT_DIR$/de.umg.mi.idrt.ioe.feature/de.umg.mi.ioe.feature.iml" />
+    </modules>
+  </component>
+</project>

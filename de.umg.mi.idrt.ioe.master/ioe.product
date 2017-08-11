@@ -22,11 +22,12 @@ Standard terminologies-Import-Module: matthias.loebe@imise.uni-leipzig.de; sebas
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms512m -Xmx1024m -Dosgi.nl=en</vmArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms1G -Xmx4G -Dosgi.nl=en</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="/de.umg.mi.idrt.ioe/icons/i2b2_hive_16.gif" i32="/de.umg.mi.idrt.ioe/icons/i2b2_hive_32.gif" i48="/de.umg.mi.idrt.ioe/icons/i2b2_hive_48.gif" i64="/de.umg.mi.idrt.ioe/icons/i2b2_hive_64.gif" i128="/de.umg.mi.idrt.ioe/icons/i2b2_hive_128.gif"/>
+
 
    <launcher name="IDRT IMT">
       <linux icon="/de.umg.mi.idrt.ioe/images/i2b2.xpm"/>

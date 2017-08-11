@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_gpkJ4CmwEeeUWZcLDJNqKA" confirmationNeeded="false" name="Default">
+    <contextParameter xmi:id="_gpkJ4SmwEeeUWZcLDJNqKA" comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
+    <contextParameter xmi:id="_gpkJ4imwEeeUWZcLDJNqKA" comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
+    <contextParameter xmi:id="_gpkJ4ymwEeeUWZcLDJNqKA" comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
+    <contextParameter xmi:id="_gpkJ5CmwEeeUWZcLDJNqKA" comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
+    <contextParameter xmi:id="_gpkJ5SmwEeeUWZcLDJNqKA" comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
+    <contextParameter xmi:id="_gpkJ5imwEeeUWZcLDJNqKA" comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
+    <contextParameter xmi:id="_gpkJ5ymwEeeUWZcLDJNqKA" comment="" name="ItemDataDate" prompt="ItemDataDate?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDate&quot;"/>
+    <contextParameter xmi:id="_gpkJ6CmwEeeUWZcLDJNqKA" comment="" name="ItemDataDatetime" prompt="ItemDataDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkJ6SmwEeeUWZcLDJNqKA" comment="" name="ItemDataDouble" prompt="ItemDataDouble?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDouble&quot;"/>
+    <contextParameter xmi:id="_gpkJ6imwEeeUWZcLDJNqKA" comment="" name="ItemDataDurationDatetime" prompt="ItemDataDurationDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDurationDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkJ6ymwEeeUWZcLDJNqKA" comment="" name="ItemDataFloat" prompt="ItemDataFloat?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataFloat&quot;"/>
+    <contextParameter xmi:id="_gpkJ7CmwEeeUWZcLDJNqKA" comment="" name="ItemDataHexBinary" prompt="ItemDataHexBinary?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexBinary&quot;"/>
+    <contextParameter xmi:id="_gpkJ7SmwEeeUWZcLDJNqKA" comment="" name="ItemDataHexFloat" prompt="ItemDataHexFloat?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexFloat&quot;"/>
+    <contextParameter xmi:id="_gpkJ7imwEeeUWZcLDJNqKA" comment="" name="ItemDataIncompleteDatetime" prompt="ItemDataIncompleteDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIncompleteDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkJ7ymwEeeUWZcLDJNqKA" comment="" name="ItemDataInteger" prompt="ItemDataInteger?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataInteger&quot;"/>
+    <contextParameter xmi:id="_gpkJ8CmwEeeUWZcLDJNqKA" comment="" name="ItemDataIntervalDatetime" prompt="ItemDataIntervalDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIntervalDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkJ8SmwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialDate" prompt="ItemDataPartialDate?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDate&quot;"/>
+    <contextParameter xmi:id="_gpkJ8imwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialDatetime" prompt="ItemDataPartialDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkJ8ymwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialTime" prompt="ItemDataPartialTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialTime&quot;"/>
+    <contextParameter xmi:id="_gpkJ9CmwEeeUWZcLDJNqKA" comment="" name="ItemDataString" prompt="ItemDataString?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataString&quot;"/>
+    <contextParameter xmi:id="_gpkJ9SmwEeeUWZcLDJNqKA" comment="" name="ItemDataTime" prompt="ItemDataTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataTime&quot;"/>
+    <contextParameter xmi:id="_gpkJ9imwEeeUWZcLDJNqKA" comment="" name="ItemDataURI" prompt="ItemDataURI?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataURI&quot;"/>
+    <contextParameter xmi:id="_gpkJ9ymwEeeUWZcLDJNqKA" comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter xmi:id="_gpkJ-CmwEeeUWZcLDJNqKA" comment="" name="currentFile" prompt="currentFile?" promptNeeded="true" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
+    <contextParameter xmi:id="_gpkJ-SmwEeeUWZcLDJNqKA" comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_gpkJ-imwEeeUWZcLDJNqKA" comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_gpkJ-ymwEeeUWZcLDJNqKA" comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_gpkJ_CmwEeeUWZcLDJNqKA" comment="" name="MDPD" prompt="MDPD?" promptNeeded="false" type="id_String" value="&quot;PD&quot;"/>
+    <contextParameter xmi:id="_gpkJ_SmwEeeUWZcLDJNqKA" comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" type="id_String" value="&quot;Patientendaten&quot;"/>
+    <contextParameter xmi:id="_gpkJ_imwEeeUWZcLDJNqKA" comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" type="id_String" value="&quot;Ontology&quot;"/>
+    <contextParameter xmi:id="_gpkJ_ymwEeeUWZcLDJNqKA" comment="" name="includePids" prompt="includePids?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_gpkKACmwEeeUWZcLDJNqKA" comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
+    <contextParameter xmi:id="_gpkKASmwEeeUWZcLDJNqKA" comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
+    <contextParameter xmi:id="_gpkKAimwEeeUWZcLDJNqKA" comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
+    <contextParameter xmi:id="_gpkKAymwEeeUWZcLDJNqKA" comment="" name="encoding" prompt="encoding?" promptNeeded="true" type="id_String" value="&quot;ISO-8859-1&quot;"/>
+    <contextParameter xmi:id="_gpkKBCmwEeeUWZcLDJNqKA" comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
+    <contextParameter xmi:id="_gpkKBSmwEeeUWZcLDJNqKA" comment="" name="importSingleFile" prompt="importSingleFile?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_gpkKBimwEeeUWZcLDJNqKA" comment="" name="importCodelist" prompt="importCodelist?" promptNeeded="true" type="id_Boolean" value="true"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_gpkKBymwEeeUWZcLDJNqKA" confirmationNeeded="false" name="postgres">
+    <contextParameter xmi:id="_gpkKCCmwEeeUWZcLDJNqKA" comment="&quot;Main Folder&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
+    <contextParameter xmi:id="_gpkKCSmwEeeUWZcLDJNqKA" comment="" name="folderTmp" prompt="folderTmp?" promptNeeded="false" type="id_String" value="&quot;tmp/&quot;"/>
+    <contextParameter xmi:id="_gpkKCimwEeeUWZcLDJNqKA" comment="" name="ItemDataAny" prompt="ItemDataAny?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataAny&quot;"/>
+    <contextParameter xmi:id="_gpkKCymwEeeUWZcLDJNqKA" comment="" name="ItemDataBase64Binary" prompt="ItemDataBase64Binary?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Binary&quot;"/>
+    <contextParameter xmi:id="_gpkKDCmwEeeUWZcLDJNqKA" comment="" name="ItemDataBase64Float" prompt="ItemDataBase64Float?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBase64Float&quot;"/>
+    <contextParameter xmi:id="_gpkKDSmwEeeUWZcLDJNqKA" comment="" name="ItemDataBoolean" prompt="ItemDataBoolean?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataBoolean&quot;"/>
+    <contextParameter xmi:id="_gpkKDimwEeeUWZcLDJNqKA" comment="" name="ItemDataDate" prompt="ItemDataDate?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDate&quot;"/>
+    <contextParameter xmi:id="_gpkKDymwEeeUWZcLDJNqKA" comment="" name="ItemDataDatetime" prompt="ItemDataDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkKECmwEeeUWZcLDJNqKA" comment="" name="ItemDataDouble" prompt="ItemDataDouble?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDouble&quot;"/>
+    <contextParameter xmi:id="_gpkKESmwEeeUWZcLDJNqKA" comment="" name="ItemDataDurationDatetime" prompt="ItemDataDurationDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataDurationDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkKEimwEeeUWZcLDJNqKA" comment="" name="ItemDataFloat" prompt="ItemDataFloat?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataFloat&quot;"/>
+    <contextParameter xmi:id="_gpkKEymwEeeUWZcLDJNqKA" comment="" name="ItemDataHexBinary" prompt="ItemDataHexBinary?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexBinary&quot;"/>
+    <contextParameter xmi:id="_gpkKFCmwEeeUWZcLDJNqKA" comment="" name="ItemDataHexFloat" prompt="ItemDataHexFloat?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataHexFloat&quot;"/>
+    <contextParameter xmi:id="_gpkKFSmwEeeUWZcLDJNqKA" comment="" name="ItemDataIncompleteDatetime" prompt="ItemDataIncompleteDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIncompleteDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkKFimwEeeUWZcLDJNqKA" comment="" name="ItemDataInteger" prompt="ItemDataInteger?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataInteger&quot;"/>
+    <contextParameter xmi:id="_gpkKFymwEeeUWZcLDJNqKA" comment="" name="ItemDataIntervalDatetime" prompt="ItemDataIntervalDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataIntervalDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkKGCmwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialDate" prompt="ItemDataPartialDate?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDate&quot;"/>
+    <contextParameter xmi:id="_gpkKGSmwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialDatetime" prompt="ItemDataPartialDatetime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialDatetime&quot;"/>
+    <contextParameter xmi:id="_gpkKGimwEeeUWZcLDJNqKA" comment="" name="ItemDataPartialTime" prompt="ItemDataPartialTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataPartialTime&quot;"/>
+    <contextParameter xmi:id="_gpkKGymwEeeUWZcLDJNqKA" comment="" name="ItemDataString" prompt="ItemDataString?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataString&quot;"/>
+    <contextParameter xmi:id="_gpkKHCmwEeeUWZcLDJNqKA" comment="" name="ItemDataTime" prompt="ItemDataTime?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataTime&quot;"/>
+    <contextParameter xmi:id="_gpkKHSmwEeeUWZcLDJNqKA" comment="" name="ItemDataURI" prompt="ItemDataURI?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemDataURI&quot;"/>
+    <contextParameter xmi:id="_gpkKHimwEeeUWZcLDJNqKA" comment="" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter xmi:id="_gpkKHymwEeeUWZcLDJNqKA" comment="" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_File" value="C:/Desktop_Workspace/IDRT22/ODM/ODM1-3-0_PSY01_20150225-100407.xml"/>
+    <contextParameter xmi:id="_gpkKICmwEeeUWZcLDJNqKA" comment="" name="concept_cd" prompt="concept_cd?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_gpkKISmwEeeUWZcLDJNqKA" comment="" name="concept_path" prompt="concept_path?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_gpkKIimwEeeUWZcLDJNqKA" comment="" name="i2b2HeadNode" prompt="i2b2HeadNode?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_gpkKIymwEeeUWZcLDJNqKA" comment="" name="MDPD" prompt="MDPD?" promptNeeded="false" type="id_String" value="&quot;PD&quot;"/>
+    <contextParameter xmi:id="_gpkKJCmwEeeUWZcLDJNqKA" comment="" name="MDPDName" prompt="MDPDName?" promptNeeded="false" type="id_String" value="&quot;Patientendaten&quot;"/>
+    <contextParameter xmi:id="_gpkKJSmwEeeUWZcLDJNqKA" comment="" name="i2b2HeadNodeName" prompt="i2b2HeadNodeName?" promptNeeded="false" type="id_String" value="&quot;Ontology&quot;"/>
+    <contextParameter xmi:id="_gpkKJimwEeeUWZcLDJNqKA" comment="" name="includePids" prompt="includePids?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_gpkKJymwEeeUWZcLDJNqKA" comment="&quot;Folder with ODM Files&quot;" name="folderODM" prompt="folderODM?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/IDRT22/ODM/&quot;"/>
+    <contextParameter xmi:id="_gpkKKCmwEeeUWZcLDJNqKA" comment="" name="xslt" prompt="xslt?" promptNeeded="false" type="id_String" value="&quot;IDRT.xslt&quot;"/>
+    <contextParameter xmi:id="_gpkKKSmwEeeUWZcLDJNqKA" comment="" name="ItemData" prompt="ItemData?" promptNeeded="false" type="id_String" value="&quot;/ODM/ClinicalData/SubjectData/ItemData&quot;"/>
+    <contextParameter xmi:id="_gpkKKimwEeeUWZcLDJNqKA" comment="" name="encoding" prompt="encoding?" promptNeeded="true" type="id_String" value="&quot;ISO-8859-1&quot;"/>
+    <contextParameter xmi:id="_gpkKKymwEeeUWZcLDJNqKA" comment="" name="xslt_namespace" prompt="xslt_namespace?" promptNeeded="false" type="id_String" value="&quot;no_namespaces.xslt&quot;"/>
+    <contextParameter xmi:id="_gpkKLCmwEeeUWZcLDJNqKA" comment="" name="importSingleFile" prompt="importSingleFile?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_gpkKLSmwEeeUWZcLDJNqKA" comment="" name="importCodelist" prompt="importCodelist?" promptNeeded="true" type="id_Boolean" value="true"/>
+  </talendfile:ContextType>
+</xmi:XMI>

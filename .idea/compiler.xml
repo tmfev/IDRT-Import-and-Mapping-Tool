@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="de.umg.mi.idrt.admin" />
+        <module name="de.umg.mi.idrt.importtool" />
+        <module name="de.umg.mi.idrt.ioe" />
+        <module name="de.umg.mi.idrt.product.id" />
+        <module name="de.umg.mi.ioe.feature" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="de.umg.mi.idrt.admin" target="1.5" />
+      <module name="de.umg.mi.idrt.importtool" target="1.5" />
+      <module name="de.umg.mi.idrt.ioe" target="1.5" />
+      <module name="de.umg.mi.idrt.product.id" target="1.5" />
+      <module name="de.umg.mi.ioe.feature" target="1.5" />
+      <module name="IDRT-Import-and-Mapping-Tool" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

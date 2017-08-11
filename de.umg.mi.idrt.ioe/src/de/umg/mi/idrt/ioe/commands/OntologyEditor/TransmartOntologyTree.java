@@ -146,7 +146,7 @@ public class TransmartOntologyTree extends JTree{
 		tmp.addAll(tempNodes);
 		tempNodes.clear();
 		Collections.sort(tmp, new Comparator<TransmartOntologyTreeItem>() {
-	        @Override
+			@Override
 	        public int compare(TransmartOntologyTreeItem  item1, TransmartOntologyTreeItem  item2)
 	        {
 	            return  item1.getNodePath().compareTo(item2.getNodePath());
