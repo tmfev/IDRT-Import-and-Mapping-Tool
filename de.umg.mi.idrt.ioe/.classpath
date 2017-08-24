@@ -2,46 +2,64 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.umg.mi.idrt.importtool"/>
-	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.17.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/cdatetime-0.14.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/cwt-0.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/datechooser-1.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/forms-1.3.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/gallery-0.5.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/grid-1.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/passwordCrypt.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/pgroup-1.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/postgresql-9.3-1102.jdbc4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/postgresql-9.3-1102.jdbc41.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swing2swt.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swingextensions-0.1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swt_win64.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swt-grouplayout.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/i2b2_postgres2/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/items/"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_alter_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_rebuild_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_stop_indexing_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_transmart_1_0.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_set_patient_count_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createieotables_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createtargetproject_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_rebuild_indexing_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_stop_indexing_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_jdbc_upload_1_0.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_truncate_tables_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createieotables_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_createtargetproject_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_deletetarget_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_savetargetprojects_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtcommand_transformationtotarget_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/tosidrtconnector_0_4.jar"/>
-	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="/de.umg.mi.idrt.importtool/lib/jsonpath.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>
-	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/database_alter_tables_0_1.jar"/>
-	<classpathentry kind="lib" path="TalendJobs/TOSIDRTConnector/idrt_set_patient_count_0_1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/userRoutines.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/routines.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/cdatetime-0.14.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/cwt-0.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/datechooser-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/forms-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/gallery-0.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/grid-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.jface_3.6.1.M20100825-0800.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.wb.swt.jar"/>
+	<classpathentry kind="lib" path="lib/passwordCrypt.jar"/>
+	<classpathentry kind="lib" path="lib/pgroup-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.3-1102.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.3-1102.jdbc41.jar"/>
+	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
+	<classpathentry kind="lib" path="lib/swingextensions-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/swt_win64.jar"/>
+	<classpathentry kind="lib" path="lib/swt-grouplayout.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/advancedPersistentLookupLib-1.0.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/jboss-serialization.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/ojdbc14-9i.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/OpenCSV.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/postgresql-8.4-703.jdbc4.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/postgresql-9.2-1003.jdbc3.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/postgresql-9.3-1102.jdbc4.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/StatusListener29.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/systemRoutines.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/talend_file_enhanced_20070724.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/talendcsv.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
+	<classpathentry kind="lib" path="TalendJobs/lib/trove.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

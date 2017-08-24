@@ -239,6 +239,9 @@ public class ODMImportWizard extends Wizard {
 				contextMap.put("truncateQueries", "false");
 			}
 
+			
+			contextMap.put("importSingleFile", "false");
+			
 			done = false;
 
 			b = new Thread(new Runnable() {

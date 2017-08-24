@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_NMhScIPxEeecbIURYVDAhg" confirmationNeeded="false" name="Default">
+    <contextParameter xmi:id="_NMhScYPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="false" type="id_String" value="jdbc:postgresql://134.76.124.17:1521/i2b2"/>
+    <contextParameter xmi:id="_NMhScoPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Host" prompt="DB_TargetI2B2_Host?" promptNeeded="false" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter xmi:id="_NMhSc4PxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhSdIPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT2&quot;"/>
+    <contextParameter xmi:id="_NMhSdYPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="false" type="id_String" value="&quot;1521&quot;"/>
+    <contextParameter xmi:id="_NMhSdoPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" type="id_Password" value="4Sv1E6pGuLA="/>
+    <contextParameter xmi:id="_NMhSd4PxEeecbIURYVDAhg" comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="false" type="id_String" value="&quot;134.76.124.17&quot;"/>
+    <contextParameter xmi:id="_NMhSeIPxEeecbIURYVDAhg" comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" type="id_String" value="&quot;I2B2IDRT1&quot;"/>
+    <contextParameter xmi:id="_NMhSeYPxEeecbIURYVDAhg" comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" type="id_Password" value="4Sv1E6pGuLA="/>
+    <contextParameter xmi:id="_NMhSeoPxEeecbIURYVDAhg" comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="false" type="id_String" value="1521"/>
+    <contextParameter xmi:id="_NMhSe4PxEeecbIURYVDAhg" comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhSfIPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="false" type="id_String" value="jdbc:postgresql://134.76.124.17:1521/i2b2"/>
+    <contextParameter xmi:id="_NMhSfYPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSfoPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSf4PxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSgIPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
+    <contextParameter xmi:id="_NMhSgYPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_DatabaseType" prompt="DB_TargetI2B2_DatabaseType?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSgoPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_DriverClass" prompt="DB_TargetI2B2_DriverClass?" promptNeeded="false" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
+    <contextParameter xmi:id="_NMhSg4PxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_WHType" prompt="DB_TargetI2B2_WHType?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhShIPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMhShYPxEeecbIURYVDAhg" confirmationNeeded="false" name="postgres">
+    <contextParameter xmi:id="_NMhShoPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_jdbcurl" prompt="DB_TargetI2B2_jdbcurl?" promptNeeded="false" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
+    <contextParameter xmi:id="_NMhSh4PxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Host" prompt="DB_TargetI2B2_Host?" promptNeeded="false" type="id_String" value="&quot;141.5.103.47&quot;"/>
+    <contextParameter xmi:id="_NMhSiIPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Instance" prompt="DB_TargetI2B2_Instance?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhSiYPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Schema" prompt="DB_TargetI2B2_Schema?" promptNeeded="true" type="id_String" value="&quot;i2b2postgresbb2&quot;"/>
+    <contextParameter xmi:id="_NMhSioPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Port" prompt="DB_TargetI2B2_Port?" promptNeeded="false" type="id_String" value="&quot;5432&quot;"/>
+    <contextParameter xmi:id="_NMhSi4PxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Password" prompt="DB_TargetI2B2_Password?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMhSjIPxEeecbIURYVDAhg" comment="old: DBHost" name="DB_StagingI2B2_Host" prompt="DB_StagingI2B2_Host?" promptNeeded="true" type="id_String" value="&quot;141.5.103.47&quot;"/>
+    <contextParameter xmi:id="_NMhSjYPxEeecbIURYVDAhg" comment="old: DBSchema" name="DB_StagingI2B2_Schema" prompt="DB_StagingI2B2_Schema?" promptNeeded="true" type="id_String" value="&quot;i2b2postgresbb1&quot;"/>
+    <contextParameter xmi:id="_NMhSjoPxEeecbIURYVDAhg" comment="old: DBPassword" name="DB_StagingI2B2_Password" prompt="DB_StagingI2B2_Password?" promptNeeded="true" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMhSj4PxEeecbIURYVDAhg" comment="old: DBPort" name="DB_StagingI2B2_Port" prompt="DB_StagingI2B2_Port?" promptNeeded="true" type="id_String" value="5432"/>
+    <contextParameter xmi:id="_NMhSkIPxEeecbIURYVDAhg" comment="old: DBInstance" name="DB_StagingI2B2_Instance" prompt="DB_StagingI2B2_Instance?" promptNeeded="true" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhSkYPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_jdbcurl" prompt="DB_StagingI2B2_jdbcurl?" promptNeeded="true" type="id_String" value="jdbc:postgresql://141.5.103.47:5432/i2b2"/>
+    <contextParameter xmi:id="_NMhSkoPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_Username" prompt="DB_TargetI2B2_Username?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSk4PxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_Username" prompt="DB_StagingI2B2_Username?" promptNeeded="true" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSlIPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_DatabaseType" prompt="DB_StagingI2B2_DatabaseType?" promptNeeded="false" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSlYPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_DriverClass" prompt="DB_StagingI2B2_DriverClass?" promptNeeded="false" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
+    <contextParameter xmi:id="_NMhSloPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_DatabaseType" prompt="DB_TargetI2B2_DatabaseType?" promptNeeded="true" type="id_String" value="&quot;postgres&quot;"/>
+    <contextParameter xmi:id="_NMhSl4PxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_DriverClass" prompt="DB_TargetI2B2_DriverClass?" promptNeeded="true" type="id_String" value="&quot;org.postgresql.Driver&quot;"/>
+    <contextParameter xmi:id="_NMhSmIPxEeecbIURYVDAhg" comment="" name="DB_TargetI2B2_WHType" prompt="DB_TargetI2B2_WHType?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+    <contextParameter xmi:id="_NMhSmYPxEeecbIURYVDAhg" comment="" name="DB_StagingI2B2_WHType" prompt="DB_StagingI2B2_WHType?" promptNeeded="false" type="id_String" value="&quot;i2b2&quot;"/>
+  </talendfile:ContextType>
+</xmi:XMI>

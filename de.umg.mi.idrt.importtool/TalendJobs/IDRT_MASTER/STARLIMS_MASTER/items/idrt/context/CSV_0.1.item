@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_NMVsQIPxEeecbIURYVDAhg" confirmationNeeded="false" name="Default">
+    <contextParameter xmi:id="_NMVsQYPxEeecbIURYVDAhg" comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.cfg.csv&quot;"/>
+    <contextParameter xmi:id="_NMVsQoPxEeecbIURYVDAhg" comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop\CSV\CSV\aic2\sicbm.csv&quot;"/>
+    <contextParameter xmi:id="_NMVsQ4PxEeecbIURYVDAhg" comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
+    <contextParameter xmi:id="_NMVsRIPxEeecbIURYVDAhg" comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/CSV/&quot;"/>
+    <contextParameter xmi:id="_NMVsRYPxEeecbIURYVDAhg" comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter xmi:id="_NMVsRoPxEeecbIURYVDAhg" comment="&quot;Ordner mit CSV Dateien&quot;" name="folderCSV" prompt="folderCSV?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/CSV/CSV/"/>
+    <contextParameter xmi:id="_NMVsR4PxEeecbIURYVDAhg" comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" type="id_String" value="&quot;starlims&quot;"/>
+    <contextParameter xmi:id="_NMVsSIPxEeecbIURYVDAhg" comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
+    <contextParameter xmi:id="_NMVsSYPxEeecbIURYVDAhg" comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter xmi:id="_NMVsSoPxEeecbIURYVDAhg" comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter xmi:id="_NMVsS4PxEeecbIURYVDAhg" comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
+    <contextParameter xmi:id="_NMVsTIPxEeecbIURYVDAhg" comment="" name="escapeChar" prompt="escapeChar?" promptNeeded="true" type="id_Character" value="'\\0'"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMVsTYPxEeecbIURYVDAhg" confirmationNeeded="false" name="postgres">
+    <contextParameter xmi:id="_NMVsToPxEeecbIURYVDAhg" comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\ICD.cfg.csv&quot;"/>
+    <contextParameter xmi:id="_NMVsT4PxEeecbIURYVDAhg" comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\ICD.csv&quot;"/>
+    <contextParameter xmi:id="_NMVsUIPxEeecbIURYVDAhg" comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
+    <contextParameter xmi:id="_NMWTUIPxEeecbIURYVDAhg" comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="&quot;C:/Desktop_Workspace/CSV/&quot;"/>
+    <contextParameter xmi:id="_NMWTUYPxEeecbIURYVDAhg" comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter xmi:id="_NMWTUoPxEeecbIURYVDAhg" comment="&quot;Ordner mit CSV Dateien&quot;" name="folderCSV" prompt="folderCSV?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/CSV/CSV/"/>
+    <contextParameter xmi:id="_NMWTU4PxEeecbIURYVDAhg" comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="true" type="id_String" value="&quot;starlims&quot;"/>
+    <contextParameter xmi:id="_NMWTVIPxEeecbIURYVDAhg" comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
+    <contextParameter xmi:id="_NMWTVYPxEeecbIURYVDAhg" comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter xmi:id="_NMWTVoPxEeecbIURYVDAhg" comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter xmi:id="_NMWTV4PxEeecbIURYVDAhg" comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
+    <contextParameter xmi:id="_NMWTWIPxEeecbIURYVDAhg" comment="" name="escapeChar" prompt="escapeChar?" promptNeeded="false" type="id_Character" value=""/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMWTWYPxEeecbIURYVDAhg" confirmationNeeded="false" name="TestServer">
+    <contextParameter xmi:id="_NMWTWoPxEeecbIURYVDAhg" comment="&quot;aktuelle Config Datei&quot;" name="config" prompt="config?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\Test1_Modifier_Complete.cfg.csv&quot;"/>
+    <contextParameter xmi:id="_NMWTW4PxEeecbIURYVDAhg" comment="&quot;aktuelle Datei&quot;" name="currentFile" prompt="currentFile?" promptNeeded="false" type="id_String" value="&quot;C:\Desktop_Workspace\CSV\CSV\Test1_Modifier_Complete.csv&quot;"/>
+    <contextParameter xmi:id="_NMWTXIPxEeecbIURYVDAhg" comment="" name="output" prompt="output?" promptNeeded="false" type="id_String" value="&quot;output.csv&quot;"/>
+    <contextParameter xmi:id="_NMWTXYPxEeecbIURYVDAhg" comment="&quot;Hauptordner&quot;" name="folderMain" prompt="folderMain?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/IDRT22/"/>
+    <contextParameter xmi:id="_NMWTXoPxEeecbIURYVDAhg" comment="&quot;/output&quot;" name="folderOutput" prompt="folderOutput?" promptNeeded="false" type="id_String" value="&quot;output/&quot;"/>
+    <contextParameter xmi:id="_NMWTX4PxEeecbIURYVDAhg" comment="&quot;Ordner mit CSV Dateien&quot;" name="folderCSV" prompt="folderCSV?" promptNeeded="true" type="id_Directory" value="C:/Desktop_Workspace/CSV/CSV/"/>
+    <contextParameter xmi:id="_NMWTYIPxEeecbIURYVDAhg" comment="&quot;Name der Datei&quot;" name="fileName" prompt="fileName?" promptNeeded="false" type="id_String" value="&quot;Test1_Modifier_Complete&quot;"/>
+    <contextParameter xmi:id="_NMWTYYPxEeecbIURYVDAhg" comment="&quot;Texttrenner&quot;" name="quoteChar" prompt="quoteChar?" promptNeeded="false" type="id_Character" value="&quot;"/>
+    <contextParameter xmi:id="_NMWTYoPxEeecbIURYVDAhg" comment="&quot;zu importierende Tabelle&quot;" name="table" prompt="table?" promptNeeded="false" type="id_String" value="null"/>
+    <contextParameter xmi:id="_NMWTY4PxEeecbIURYVDAhg" comment="" name="datePattern" prompt="datePattern?" promptNeeded="true" type="id_String" value="&quot;dd.MM.yy&quot;"/>
+    <contextParameter xmi:id="_NMWTZIPxEeecbIURYVDAhg" comment="" name="encoding" prompt="encoding?" promptNeeded="false" type="id_String" value="&quot;ISO-8859-15&quot;"/>
+    <contextParameter xmi:id="_NMWTZYPxEeecbIURYVDAhg" comment="" name="escapeChar" prompt="escapeChar?" promptNeeded="false" type="id_Character" value=""/>
+  </talendfile:ContextType>
+</xmi:XMI>

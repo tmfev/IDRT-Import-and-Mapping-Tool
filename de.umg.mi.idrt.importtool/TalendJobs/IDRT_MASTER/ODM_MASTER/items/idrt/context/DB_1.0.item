@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_NMbL0IPxEeecbIURYVDAhg" confirmationNeeded="false" name="Default">
+    <contextParameter xmi:id="_NMbL0YPxEeecbIURYVDAhg" comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter xmi:id="_NMbL0oPxEeecbIURYVDAhg" comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_NMbL04PxEeecbIURYVDAhg" comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMbL1IPxEeecbIURYVDAhg" comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL1YPxEeecbIURYVDAhg" comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL1oPxEeecbIURYVDAhg" comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL14PxEeecbIURYVDAhg" comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter xmi:id="_NMbL2IPxEeecbIURYVDAhg" comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL2YPxEeecbIURYVDAhg" comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL2oPxEeecbIURYVDAhg" comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter xmi:id="_NMbL24PxEeecbIURYVDAhg" comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="true"/>
+    <contextParameter xmi:id="_NMbL3IPxEeecbIURYVDAhg" comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL3YPxEeecbIURYVDAhg" comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="true"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMbL3oPxEeecbIURYVDAhg" confirmationNeeded="false" name="postgres">
+    <contextParameter xmi:id="_NMbL34PxEeecbIURYVDAhg" comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL4IPxEeecbIURYVDAhg" comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_NMbL4YPxEeecbIURYVDAhg" comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMbL4oPxEeecbIURYVDAhg" comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL44PxEeecbIURYVDAhg" comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL5IPxEeecbIURYVDAhg" comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL5YPxEeecbIURYVDAhg" comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter xmi:id="_NMbL5oPxEeecbIURYVDAhg" comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL54PxEeecbIURYVDAhg" comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL6IPxEeecbIURYVDAhg" comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter xmi:id="_NMbL6YPxEeecbIURYVDAhg" comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL6oPxEeecbIURYVDAhg" comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL64PxEeecbIURYVDAhg" comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="false"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMbL7IPxEeecbIURYVDAhg" confirmationNeeded="false" name="TestServer">
+    <contextParameter xmi:id="_NMbL7YPxEeecbIURYVDAhg" comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL7oPxEeecbIURYVDAhg" comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_NMbL74PxEeecbIURYVDAhg" comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMbL8IPxEeecbIURYVDAhg" comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL8YPxEeecbIURYVDAhg" comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL8oPxEeecbIURYVDAhg" comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL84PxEeecbIURYVDAhg" comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter xmi:id="_NMbL9IPxEeecbIURYVDAhg" comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
+    <contextParameter xmi:id="_NMbL9YPxEeecbIURYVDAhg" comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbL9oPxEeecbIURYVDAhg" comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter xmi:id="_NMbL94PxEeecbIURYVDAhg" comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL-IPxEeecbIURYVDAhg" comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL-YPxEeecbIURYVDAhg" comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="false"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_NMbL-oPxEeecbIURYVDAhg" confirmationNeeded="false" name="transmart">
+    <contextParameter xmi:id="_NMbL-4PxEeecbIURYVDAhg" comment="&quot;truncates the project&quot;" name="truncateProject" prompt="truncateProject?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL_IPxEeecbIURYVDAhg" comment="&quot;FTP User&quot;" name="FTPUser" prompt="FTPUser?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter xmi:id="_NMbL_YPxEeecbIURYVDAhg" comment="&quot;FTP Password for ftpUser&quot;" name="FTPPassword" prompt="FTPPassword?" promptNeeded="false" type="id_Password" value=""/>
+    <contextParameter xmi:id="_NMbL_oPxEeecbIURYVDAhg" comment="&quot;Import aus fremder Datenbank?&quot;" name="dbImport" prompt="dbImport?" promptNeeded="false" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbL_4PxEeecbIURYVDAhg" comment="&quot;Import with Identifying Data?&quot;" name="pidgen" prompt="pidgen?" promptNeeded="false" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbMAIPxEeecbIURYVDAhg" comment="&quot;ID-File for PIDGen&quot;" name="idFile" prompt="idFile?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/CSV/idFile.csv&quot;"/>
+    <contextParameter xmi:id="_NMbMAYPxEeecbIURYVDAhg" comment="&quot;URL for PIDGen service&quot;" name="PIDURL" prompt="PIDURL?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter xmi:id="_NMbMAoPxEeecbIURYVDAhg" comment="" name="exportDBConfig" prompt="exportDBConfig?" promptNeeded="false" type="id_String" value="&quot;C:/Desktop/exportConfig.csv&quot;"/>
+    <contextParameter xmi:id="_NMbMA4PxEeecbIURYVDAhg" comment="&quot;executes Patient_Count.sql&quot;" name="cleanUp" prompt="cleanUp?" promptNeeded="true" type="id_Boolean" value=""/>
+    <contextParameter xmi:id="_NMbMBIPxEeecbIURYVDAhg" comment="&quot;DB Coding (e.g. UTF8)" name="coding" prompt="coding?" promptNeeded="false" type="id_String" value="&quot;UTF8&quot;"/>
+    <contextParameter xmi:id="_NMbMBYPxEeecbIURYVDAhg" comment="" name="truncateQueries" prompt="truncateQueries?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbMBoPxEeecbIURYVDAhg" comment="" name="IndexDrop" prompt="IndexDrop?" promptNeeded="true" type="id_Boolean" value="false"/>
+    <contextParameter xmi:id="_NMbMB4PxEeecbIURYVDAhg" comment="" name="IndexStop" prompt="IndexStop?" promptNeeded="true" type="id_Boolean" value="false"/>
+  </talendfile:ContextType>
+</xmi:XMI>
