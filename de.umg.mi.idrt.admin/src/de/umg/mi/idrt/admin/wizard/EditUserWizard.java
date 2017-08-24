@@ -10,7 +10,6 @@ import org.eclipse.jface.wizard.Wizard;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
-import de.umg.mi.idrt.importtool.views.AdminTargetServerView;
 
 
 /**
@@ -71,7 +70,7 @@ public class EditUserWizard extends Wizard {
 			// .executeQuery("update i2b2pm.pm_user_data set password='"+newPassword
 			// + "' where user_id='" + oldUsername + "'");
 		}
-		AdminTargetServerView.refresh();
+//		AdminTargetServerView.refresh();
 		if (EditUserPageOne.getSendEmail()) {
 
 			try {

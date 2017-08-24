@@ -25,6 +25,7 @@
             name="PerspectiveExpert">
       </perspective>
    </extension>
+   
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">
@@ -106,12 +107,6 @@
             icon="images/progress_none.gif"
             id="de.umg.mi.idrt.ioe.ProgressView"
             name="Mapping Editor Progress"
-            restorable="true">
-      </view>
-      <view
-            class="de.umg.mi.idrt.ioe.view.HelpView"
-            id="de.umg.mi.idrt.ioe.help"
-            name="Help"
             restorable="true">
       </view>
    </extension>
