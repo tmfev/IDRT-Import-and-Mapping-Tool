@@ -43,8 +43,6 @@
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/TOSHandler022.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/trove.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/lib/userRoutines.jar"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/i2b2_postgres2" sourcepath="TalendJobs/TOSIDRTConnector/i2b2_postgres2"/>
-	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/items" sourcepath="TalendJobs/TOSIDRTConnector/items"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_alter_tables_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_create_indexing_0_1.jar"/>
 	<classpathentry exported="true" kind="lib" path="TalendJobs/TOSIDRTConnector/database_drop_indexing_0_1.jar"/>
