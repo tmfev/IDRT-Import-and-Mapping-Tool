@@ -12,3 +12,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/passwordCrypt.jar,
  lib/swing2swt.jar,
  .
+Export-Package: de.umg.mi.idrt.admin

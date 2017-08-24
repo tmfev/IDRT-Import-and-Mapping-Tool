@@ -3,6 +3,7 @@ Bundle-Activator: de.umg.mi.idrt.ioe.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Name: IOE Plugin
 Import-Package: de.goettingen.i2b2.importtool.idrt.StatusListener,
+ de.umg.mi.idrt.admin,
  de.umg.mi.idrt.idrtimporttool.importidrt,
  de.umg.mi.idrt.idrtimporttool.messages,
  de.umg.mi.idrt.idrtimporttool.server.Settings,

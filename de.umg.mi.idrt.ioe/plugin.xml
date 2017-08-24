@@ -25,7 +25,6 @@
             name="PerspectiveExpert">
       </perspective>
    </extension>
-   
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">

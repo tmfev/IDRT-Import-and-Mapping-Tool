@@ -31,10 +31,9 @@
 	<classpathentry kind="lib" path="lib/swing2swt.jar"/>
 	<classpathentry kind="lib" path="lib/swt_win64.jar"/>
 	<classpathentry kind="lib" path="lib/swt64.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-9.3-1102.jdbc4.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-9.3-1102.jdbc41.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="lib/json_simple-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jsonpath.jar"/>
@@ -119,7 +118,6 @@
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="TalendJobs/IDRT_MASTER/lib/xpathutil-1.0.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="target/classes"/>
 	<referencedentry kind="lib" path="TalendJobs/TalendJobs/CSV_MASTER/idrt_delete_patients_0_1.jar" sourcepath="TalendJobs/TalendJobs/CSV_MASTER/src"/>
 </classpath>

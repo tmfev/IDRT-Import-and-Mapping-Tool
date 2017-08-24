@@ -1,4 +1,4 @@
-package de.umg.mi.idrt.admin.wizard;
+package de.umg.mi.idrt.idrtimporttool.server.serverWizard;
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -11,7 +11,6 @@ import de.umg.mi.idrt.idrtimporttool.server.Settings.I2B2User;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.Server;
 import de.umg.mi.idrt.idrtimporttool.server.Settings.ServerList;
 import de.umg.mi.idrt.importtool.views.AdminTargetServerView;
-
 
 /**
  * @author Benjamin Baum <benjamin(dot)baum(at)med(dot)uni-goettingen(dot)de>
